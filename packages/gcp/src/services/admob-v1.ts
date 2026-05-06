@@ -607,6 +607,52 @@ export const GenerateNetworkReportRequest =
   }).annotate({ identifier: "GenerateNetworkReportRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -625,7 +671,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = PublisherAccount;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ PublisherAccount;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about the specified AdMob publisher account. */
 export const getAccounts: API.OperationMethod<
@@ -636,7 +682,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsRequest {
@@ -658,7 +704,7 @@ export type ListAccountsResponse = ListPublisherAccountsResponse;
 export const ListAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPublisherAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the AdMob publisher account that was most recently signed in to from the AdMob UI. For more information, see https://support.google.com/admob/answer/10243672. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -669,7 +715,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -701,7 +747,12 @@ export type GenerateAccountsNetworkReportResponse =
 export const GenerateAccountsNetworkReportResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateNetworkReportResponse;
 
-export type GenerateAccountsNetworkReportError = DefaultErrors;
+export type GenerateAccountsNetworkReportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses. */
 export const generateAccountsNetworkReport: API.OperationMethod<
@@ -712,7 +763,7 @@ export const generateAccountsNetworkReport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsNetworkReportRequest,
   output: GenerateAccountsNetworkReportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAdUnitsRequest {
@@ -738,7 +789,7 @@ export type ListAccountsAdUnitsResponse = ListAdUnitsResponse;
 export const ListAccountsAdUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdUnitsResponse;
 
-export type ListAccountsAdUnitsError = DefaultErrors;
+export type ListAccountsAdUnitsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the ad units under the specified AdMob account. */
 export const listAccountsAdUnits: API.PaginatedOperationMethod<
@@ -749,7 +800,7 @@ export const listAccountsAdUnits: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdUnitsRequest,
   output: ListAccountsAdUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -781,7 +832,12 @@ export type GenerateAccountsMediationReportResponse =
 export const GenerateAccountsMediationReportResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateMediationReportResponse;
 
-export type GenerateAccountsMediationReportError = DefaultErrors;
+export type GenerateAccountsMediationReportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses. */
 export const generateAccountsMediationReport: API.OperationMethod<
@@ -792,7 +848,7 @@ export const generateAccountsMediationReport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsMediationReportRequest,
   output: GenerateAccountsMediationReportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAppsRequest {
@@ -818,7 +874,7 @@ export type ListAccountsAppsResponse = ListAppsResponse;
 export const ListAccountsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAppsResponse;
 
-export type ListAccountsAppsError = DefaultErrors;
+export type ListAccountsAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the apps under the specified AdMob account. */
 export const listAccountsApps: API.PaginatedOperationMethod<
@@ -829,7 +885,7 @@ export const listAccountsApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsRequest,
   output: ListAccountsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

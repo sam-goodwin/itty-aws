@@ -281,6 +281,52 @@ export const ListAccountAdminsResponse =
   }).annotate({ identifier: "ListAccountAdminsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -299,7 +345,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified account. Returns `NOT_FOUND` if the account does not exist or if the caller does not have access rights to it. */
 export const getAccounts: API.OperationMethod<
@@ -310,7 +356,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsRequest {
@@ -328,7 +374,12 @@ export const CreateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateAccountsResponse = Account;
 export const CreateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type CreateAccountsError = DefaultErrors;
+export type CreateAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an account with the specified name and type under the given parent. - Personal accounts and Organizations cannot be created. - User Groups cannot be created with a Personal account as primary owner. - Location Groups cannot be created with a primary owner of a Personal account if the Personal account is in an Organization. - Location Groups cannot own Location Groups. */
 export const createAccounts: API.OperationMethod<
@@ -339,7 +390,7 @@ export const createAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsRequest,
   output: CreateAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountsRequest {
@@ -368,7 +419,12 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchAccountsResponse = Account;
 export const PatchAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type PatchAccountsError = DefaultErrors;
+export type PatchAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified business account. Personal accounts cannot be updated using this method. */
 export const patchAccounts: API.OperationMethod<
@@ -379,7 +435,7 @@ export const patchAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsRequest,
   output: PatchAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsRequest {
@@ -409,7 +465,7 @@ export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all of the accounts for the authenticated user. This includes all accounts that the user owns, as well as any accounts for which the user has management rights. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -420,7 +476,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -447,7 +503,12 @@ export type AcceptAccountsInvitationsResponse = Empty;
 export const AcceptAccountsInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AcceptAccountsInvitationsError = DefaultErrors;
+export type AcceptAccountsInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts the specified invitation. */
 export const acceptAccountsInvitations: API.OperationMethod<
@@ -458,7 +519,7 @@ export const acceptAccountsInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptAccountsInvitationsRequest,
   output: AcceptAccountsInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsInvitationsRequest {
@@ -481,7 +542,7 @@ export type ListAccountsInvitationsResponse = ListInvitationsResponse;
 export const ListAccountsInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInvitationsResponse;
 
-export type ListAccountsInvitationsError = DefaultErrors;
+export type ListAccountsInvitationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists pending invitations for the specified account. */
 export const listAccountsInvitations: API.OperationMethod<
@@ -492,7 +553,7 @@ export const listAccountsInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsInvitationsRequest,
   output: ListAccountsInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeclineAccountsInvitationsRequest {
@@ -515,7 +576,12 @@ export type DeclineAccountsInvitationsResponse = Empty;
 export const DeclineAccountsInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeclineAccountsInvitationsError = DefaultErrors;
+export type DeclineAccountsInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Declines the specified invitation. */
 export const declineAccountsInvitations: API.OperationMethod<
@@ -526,7 +592,7 @@ export const declineAccountsInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeclineAccountsInvitationsRequest,
   output: DeclineAccountsInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsAdminsRequest {
@@ -545,7 +611,12 @@ export const DeleteAccountsAdminsRequest =
 export type DeleteAccountsAdminsResponse = Empty;
 export const DeleteAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsAdminsError = DefaultErrors;
+export type DeleteAccountsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified admin from the specified account. */
 export const deleteAccountsAdmins: API.OperationMethod<
@@ -556,7 +627,7 @@ export const deleteAccountsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsAdminsRequest,
   output: DeleteAccountsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsAdminsRequest {
@@ -578,7 +649,12 @@ export const CreateAccountsAdminsRequest =
 export type CreateAccountsAdminsResponse = Admin;
 export const CreateAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
 
-export type CreateAccountsAdminsError = DefaultErrors;
+export type CreateAccountsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Invites the specified user to become an administrator for the specified account. The invitee must accept the invitation in order to be granted access to the account. See AcceptInvitation to programmatically accept an invitation. */
 export const createAccountsAdmins: API.OperationMethod<
@@ -589,7 +665,7 @@ export const createAccountsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsAdminsRequest,
   output: CreateAccountsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountsAdminsRequest {
@@ -614,7 +690,12 @@ export const PatchAccountsAdminsRequest =
 export type PatchAccountsAdminsResponse = Admin;
 export const PatchAccountsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
 
-export type PatchAccountsAdminsError = DefaultErrors;
+export type PatchAccountsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Admin for the specified Account Admin. */
 export const patchAccountsAdmins: API.OperationMethod<
@@ -625,7 +706,7 @@ export const patchAccountsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsAdminsRequest,
   output: PatchAccountsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAdminsRequest {
@@ -645,7 +726,7 @@ export type ListAccountsAdminsResponse = ListAccountAdminsResponse;
 export const ListAccountsAdminsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountAdminsResponse;
 
-export type ListAccountsAdminsError = DefaultErrors;
+export type ListAccountsAdminsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the admins for the specified account. */
 export const listAccountsAdmins: API.OperationMethod<
@@ -656,7 +737,7 @@ export const listAccountsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsAdminsRequest,
   output: ListAccountsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TransferLocationsRequest {
@@ -678,7 +759,12 @@ export const TransferLocationsRequest =
 export type TransferLocationsResponse = Empty;
 export const TransferLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type TransferLocationsError = DefaultErrors;
+export type TransferLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a location from an account that the user owns to another account that the same user administers. The user must be an owner of the account the location is currently associated with and must also be at least a manager of the destination account. */
 export const transferLocations: API.OperationMethod<
@@ -689,7 +775,7 @@ export const transferLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransferLocationsRequest,
   output: TransferLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsAdminsRequest {
@@ -708,7 +794,12 @@ export const DeleteLocationsAdminsRequest =
 export type DeleteLocationsAdminsResponse = Empty;
 export const DeleteLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLocationsAdminsError = DefaultErrors;
+export type DeleteLocationsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified admin as a manager of the specified location. */
 export const deleteLocationsAdmins: API.OperationMethod<
@@ -719,7 +810,7 @@ export const deleteLocationsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsAdminsRequest,
   output: DeleteLocationsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateLocationsAdminsRequest {
@@ -741,7 +832,12 @@ export const CreateLocationsAdminsRequest =
 export type CreateLocationsAdminsResponse = Admin;
 export const CreateLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
 
-export type CreateLocationsAdminsError = DefaultErrors;
+export type CreateLocationsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation. */
 export const createLocationsAdmins: API.OperationMethod<
@@ -752,7 +848,7 @@ export const createLocationsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsAdminsRequest,
   output: CreateLocationsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsAdminsRequest {
@@ -777,7 +873,12 @@ export const PatchLocationsAdminsRequest =
 export type PatchLocationsAdminsResponse = Admin;
 export const PatchLocationsAdminsResponse = /*@__PURE__*/ /*#__PURE__*/ Admin;
 
-export type PatchLocationsAdminsError = DefaultErrors;
+export type PatchLocationsAdminsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated. */
 export const patchLocationsAdmins: API.OperationMethod<
@@ -788,7 +889,7 @@ export const patchLocationsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsAdminsRequest,
   output: PatchLocationsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLocationsAdminsRequest {
@@ -808,7 +909,7 @@ export type ListLocationsAdminsResponse = ListLocationAdminsResponse;
 export const ListLocationsAdminsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationAdminsResponse;
 
-export type ListLocationsAdminsError = DefaultErrors;
+export type ListLocationsAdminsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all of the admins for the specified location. */
 export const listLocationsAdmins: API.OperationMethod<
@@ -819,5 +920,5 @@ export const listLocationsAdmins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLocationsAdminsRequest,
   output: ListLocationsAdminsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

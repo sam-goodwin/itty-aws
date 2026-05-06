@@ -536,6 +536,52 @@ export const BatchDeletePhotosResponse =
   }).annotate({ identifier: "BatchDeletePhotosResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -569,7 +615,7 @@ export type ListPhotosResponse_Op = ListPhotosResponse;
 export const ListPhotosResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListPhotosResponse;
 
-export type ListPhotosError = DefaultErrors;
+export type ListPhotosError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the Photos that belong to the user. > Note: Recently created photos that are still being indexed are not returned in the response. */
 export const listPhotos: API.PaginatedOperationMethod<
@@ -580,7 +626,7 @@ export const listPhotos: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPhotosRequest,
   output: ListPhotosResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -604,7 +650,12 @@ export type BatchDeletePhotosResponse_Op = BatchDeletePhotosResponse;
 export const BatchDeletePhotosResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchDeletePhotosResponse;
 
-export type BatchDeletePhotosError = DefaultErrors;
+export type BatchDeletePhotosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for specific failures that can occur per photo. */
 export const batchDeletePhotos: API.OperationMethod<
@@ -615,7 +666,7 @@ export const batchDeletePhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeletePhotosRequest_Op,
   output: BatchDeletePhotosResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetPhotosRequest {
@@ -644,7 +695,7 @@ export type BatchGetPhotosResponse_Op = BatchGetPhotosResponse;
 export const BatchGetPhotosResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetPhotosResponse;
 
-export type BatchGetPhotosError = DefaultErrors;
+export type BatchGetPhotosError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the metadata of the specified Photo batch. Note that if BatchGetPhotos fails, either critical fields are missing or there is an authentication error. Even if BatchGetPhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific failures that can occur per photo. */
 export const batchGetPhotos: API.OperationMethod<
@@ -655,7 +706,7 @@ export const batchGetPhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetPhotosRequest,
   output: BatchGetPhotosResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchUpdatePhotosRequest_Op {
@@ -675,7 +726,12 @@ export type BatchUpdatePhotosResponse_Op = BatchUpdatePhotosResponse;
 export const BatchUpdatePhotosResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdatePhotosResponse;
 
-export type BatchUpdatePhotosError = DefaultErrors;
+export type BatchUpdatePhotosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata of Photos, such as pose, place association, connections, etc. Changing the pixels of photos is not supported. Note that if BatchUpdatePhotos fails, either critical fields are missing or there is an authentication error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for specific failures that can occur per photo. Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies to all fields. The number of UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. > Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail. */
 export const batchUpdatePhotos: API.OperationMethod<
@@ -686,7 +742,7 @@ export const batchUpdatePhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdatePhotosRequest_Op,
   output: BatchUpdatePhotosResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePhotoSequenceRequest {
@@ -705,7 +761,12 @@ export const DeletePhotoSequenceRequest =
 export type DeletePhotoSequenceResponse = Empty;
 export const DeletePhotoSequenceResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeletePhotoSequenceError = DefaultErrors;
+export type DeletePhotoSequenceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a PhotoSequence and its metadata. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo sequence. * google.rpc.Code.NOT_FOUND if the photo sequence ID does not exist. * google.rpc.Code.FAILED_PRECONDITION if the photo sequence ID is not yet finished processing. */
 export const deletePhotoSequence: API.OperationMethod<
@@ -716,7 +777,7 @@ export const deletePhotoSequence: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePhotoSequenceRequest,
   output: DeletePhotoSequenceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatePhotoSequenceRequest {
@@ -739,7 +800,12 @@ export type CreatePhotoSequenceResponse = Operation;
 export const CreatePhotoSequenceResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreatePhotoSequenceError = DefaultErrors;
+export type CreatePhotoSequenceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** After the client finishes uploading the PhotoSequence with the returned UploadRef, CreatePhotoSequence extracts a sequence of 360 photos from a video or Extensible Device Metadata (XDM, http://www.xdm.org/) to be published to Street View on Google Maps. `CreatePhotoSequence` returns an Operation, with the PhotoSequence Id set in the `Operation.name` field. This method returns the following error codes: * google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the upload reference does not exist. */
 export const createPhotoSequence: API.OperationMethod<
@@ -750,7 +816,7 @@ export const createPhotoSequence: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePhotoSequenceRequest,
   output: CreatePhotoSequenceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartUploadPhotoSequenceRequest {
@@ -774,7 +840,12 @@ export type StartUploadPhotoSequenceResponse = UploadRef;
 export const StartUploadPhotoSequenceResponse =
   /*@__PURE__*/ /*#__PURE__*/ UploadRef;
 
-export type StartUploadPhotoSequenceError = DefaultErrors;
+export type StartUploadPhotoSequenceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an upload session to start uploading photo sequence data. The upload URL of the returned UploadRef is used to upload the data for the `photoSequence`. After the upload is complete, the UploadRef is used with CreatePhotoSequence to create the PhotoSequence object entry. */
 export const startUploadPhotoSequence: API.OperationMethod<
@@ -785,7 +856,7 @@ export const startUploadPhotoSequence: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartUploadPhotoSequenceRequest,
   output: StartUploadPhotoSequenceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPhotoSequenceRequest {
@@ -810,7 +881,7 @@ export const GetPhotoSequenceRequest =
 export type GetPhotoSequenceResponse = Operation;
 export const GetPhotoSequenceResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetPhotoSequenceError = DefaultErrors;
+export type GetPhotoSequenceError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the metadata of the specified PhotoSequence via the Operation interface. This method returns the following three types of responses: * `Operation.done` = false, if the processing of PhotoSequence is not finished yet. * `Operation.done` = true and `Operation.error` is populated, if there was an error in processing. * `Operation.done` = true and `Operation.response` is poulated, which contains a PhotoSequence message. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested PhotoSequence. * google.rpc.Code.NOT_FOUND if the requested PhotoSequence does not exist. */
 export const getPhotoSequence: API.OperationMethod<
@@ -821,7 +892,7 @@ export const getPhotoSequence: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPhotoSequenceRequest,
   output: GetPhotoSequenceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePhotoRequest {
@@ -839,7 +910,12 @@ export const DeletePhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeletePhotoResponse = Empty;
 export const DeletePhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeletePhotoError = DefaultErrors;
+export type DeletePhotoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Photo and its metadata. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. * google.rpc.Code.NOT_FOUND if the photo ID does not exist. */
 export const deletePhoto: API.OperationMethod<
@@ -850,7 +926,7 @@ export const deletePhoto: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePhotoRequest,
   output: DeletePhotoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatePhotoRequest {
@@ -868,7 +944,12 @@ export const CreatePhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreatePhotoResponse = Photo;
 export const CreatePhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Photo;
 
-export type CreatePhotoError = DefaultErrors;
+export type CreatePhotoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** After the client finishes uploading the photo with the returned UploadRef, CreatePhoto publishes the uploaded Photo to Street View on Google Maps. Currently, the only way to set heading, pitch, and roll in CreatePhoto is through the [Photo Sphere XMP metadata](https://developers.google.com/streetview/spherical-metadata) in the photo bytes. CreatePhoto ignores the `pose.heading`, `pose.pitch`, `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose. This method returns the following error codes: * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is not a 360 photo. * google.rpc.Code.NOT_FOUND if the upload reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the storage limit. */
 export const createPhoto: API.OperationMethod<
@@ -879,7 +960,7 @@ export const createPhoto: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePhotoRequest,
   output: CreatePhotoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPhotoRequest {
@@ -905,7 +986,7 @@ export const GetPhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPhotoResponse = Photo;
 export const GetPhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Photo;
 
-export type GetPhotoError = DefaultErrors;
+export type GetPhotoError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the metadata of the specified Photo. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. * google.rpc.Code.NOT_FOUND if the requested Photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed. */
 export const getPhoto: API.OperationMethod<
@@ -916,7 +997,7 @@ export const getPhoto: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPhotoRequest,
   output: GetPhotoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdatePhotoRequest_Op {
@@ -940,7 +1021,12 @@ export const UpdatePhotoRequest_Op = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdatePhotoResponse = Photo;
 export const UpdatePhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Photo;
 
-export type UpdatePhotoError = DefaultErrors;
+export type UpdatePhotoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata of a Photo, such as pose, place association, connections, etc. Changing the pixels of a photo is not supported. Only the fields specified in the updateMask field are used. If `updateMask` is not present, the update applies to all fields. This method returns the following error codes: * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. * google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the requested photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed. */
 export const updatePhoto: API.OperationMethod<
@@ -951,7 +1037,7 @@ export const updatePhoto: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePhotoRequest_Op,
   output: UpdatePhotoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartUploadPhotoRequest {
@@ -970,7 +1056,12 @@ export const StartUploadPhotoRequest =
 export type StartUploadPhotoResponse = UploadRef;
 export const StartUploadPhotoResponse = /*@__PURE__*/ /*#__PURE__*/ UploadRef;
 
-export type StartUploadPhotoError = DefaultErrors;
+export type StartUploadPhotoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an upload session to start uploading photo bytes. The method uses the upload URL of the returned UploadRef to upload the bytes for the Photo. In addition to the photo requirements shown in https://support.google.com/maps/answer/7012050?ref_topic=6275604, the photo must meet the following requirements: * Photo Sphere XMP metadata must be included in the photo metadata. See https://developers.google.com/streetview/spherical-metadata for the required fields. * The pixel size of the photo must meet the size requirements listed in https://support.google.com/maps/answer/7012050?ref_topic=6275604, and the photo must be a full 360 horizontally. After the upload completes, the method uses UploadRef with CreatePhoto to create the Photo object entry. */
 export const startUploadPhoto: API.OperationMethod<
@@ -981,7 +1072,7 @@ export const startUploadPhoto: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartUploadPhotoRequest,
   output: StartUploadPhotoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPhotoSequencesRequest {
@@ -1007,7 +1098,7 @@ export type ListPhotoSequencesResponse_Op = ListPhotoSequencesResponse;
 export const ListPhotoSequencesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListPhotoSequencesResponse;
 
-export type ListPhotoSequencesError = DefaultErrors;
+export type ListPhotoSequencesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the PhotoSequences that belong to the user, in descending CreatePhotoSequence timestamp order. */
 export const listPhotoSequences: API.PaginatedOperationMethod<
@@ -1018,7 +1109,7 @@ export const listPhotoSequences: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPhotoSequencesRequest,
   output: ListPhotoSequencesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

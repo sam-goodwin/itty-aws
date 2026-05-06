@@ -686,6 +686,52 @@ export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -721,7 +767,10 @@ export type ListOrganizationsLocationsResponse =
 export const ListOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListOrganizationsLocationsError = DefaultErrors;
+export type ListOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists locations with recommendations or insights. */
 export const listOrganizationsLocations: API.PaginatedOperationMethod<
@@ -732,7 +781,7 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRequest,
   output: ListOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -757,7 +806,10 @@ export type GetConfigOrganizationsLocationsRecommendersResponse =
 export const GetConfigOrganizationsLocationsRecommendersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
-export type GetConfigOrganizationsLocationsRecommendersError = DefaultErrors;
+export type GetConfigOrganizationsLocationsRecommendersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested Recommender Config. There is only one instance of the config for each Recommender. */
 export const getConfigOrganizationsLocationsRecommenders: API.OperationMethod<
@@ -768,7 +820,7 @@ export const getConfigOrganizationsLocationsRecommenders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigOrganizationsLocationsRecommendersRequest,
   output: GetConfigOrganizationsLocationsRecommendersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigOrganizationsLocationsRecommendersRequest {
@@ -802,7 +854,12 @@ export type UpdateConfigOrganizationsLocationsRecommendersResponse =
 export const UpdateConfigOrganizationsLocationsRecommendersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
-export type UpdateConfigOrganizationsLocationsRecommendersError = DefaultErrors;
+export type UpdateConfigOrganizationsLocationsRecommendersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Recommender Config. This will create a new revision of the config. */
 export const updateConfigOrganizationsLocationsRecommenders: API.OperationMethod<
@@ -813,7 +870,7 @@ export const updateConfigOrganizationsLocationsRecommenders: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigOrganizationsLocationsRecommendersRequest,
   output: UpdateConfigOrganizationsLocationsRecommendersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsRecommendersRecommendationsRequest {
@@ -835,7 +892,9 @@ export const GetOrganizationsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type GetOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -846,7 +905,7 @@ export const getOrganizationsLocationsRecommendersRecommendations: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsRecommendersRecommendationsRequest,
   output: GetOrganizationsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest {
@@ -877,7 +936,11 @@ export const MarkSucceededOrganizationsLocationsRecommendersRecommendationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -889,7 +952,7 @@ export const markSucceededOrganizationsLocationsRecommendersRecommendations: API
   input: MarkSucceededOrganizationsLocationsRecommendersRecommendationsRequest,
   output:
     MarkSucceededOrganizationsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest {
@@ -920,7 +983,11 @@ export const MarkClaimedOrganizationsLocationsRecommendersRecommendationsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -931,7 +998,7 @@ export const markClaimedOrganizationsLocationsRecommendersRecommendations: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkClaimedOrganizationsLocationsRecommendersRecommendationsRequest,
   output: MarkClaimedOrganizationsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest {
@@ -962,7 +1029,11 @@ export const MarkFailedOrganizationsLocationsRecommendersRecommendationsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -973,7 +1044,7 @@ export const markFailedOrganizationsLocationsRecommendersRecommendations: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkFailedOrganizationsLocationsRecommendersRecommendationsRequest,
   output: MarkFailedOrganizationsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsRecommendersRecommendationsRequest {
@@ -1004,7 +1075,9 @@ export const ListOrganizationsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listOrganizationsLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
@@ -1015,7 +1088,7 @@ export const listOrganizationsLocationsRecommendersRecommendations: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRecommendersRecommendationsRequest,
   output: ListOrganizationsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1050,7 +1123,11 @@ export const MarkDismissedOrganizationsLocationsRecommendersRecommendationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedOrganizationsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedOrganizationsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1062,7 +1139,7 @@ export const markDismissedOrganizationsLocationsRecommendersRecommendations: API
   input: MarkDismissedOrganizationsLocationsRecommendersRecommendationsRequest,
   output:
     MarkDismissedOrganizationsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigOrganizationsLocationsInsightTypesRequest {
@@ -1083,7 +1160,10 @@ export type GetConfigOrganizationsLocationsInsightTypesResponse =
 export const GetConfigOrganizationsLocationsInsightTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
-export type GetConfigOrganizationsLocationsInsightTypesError = DefaultErrors;
+export type GetConfigOrganizationsLocationsInsightTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested InsightTypeConfig. There is only one instance of the config for each InsightType. */
 export const getConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
@@ -1094,7 +1174,7 @@ export const getConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigOrganizationsLocationsInsightTypesRequest,
   output: GetConfigOrganizationsLocationsInsightTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigOrganizationsLocationsInsightTypesRequest {
@@ -1128,7 +1208,12 @@ export type UpdateConfigOrganizationsLocationsInsightTypesResponse =
 export const UpdateConfigOrganizationsLocationsInsightTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
-export type UpdateConfigOrganizationsLocationsInsightTypesError = DefaultErrors;
+export type UpdateConfigOrganizationsLocationsInsightTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an InsightTypeConfig change. This will create a new revision of the config. */
 export const updateConfigOrganizationsLocationsInsightTypes: API.OperationMethod<
@@ -1139,7 +1224,7 @@ export const updateConfigOrganizationsLocationsInsightTypes: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigOrganizationsLocationsInsightTypesRequest,
   output: UpdateConfigOrganizationsLocationsInsightTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsInsightTypesInsightsRequest {
@@ -1160,7 +1245,10 @@ export type GetOrganizationsLocationsInsightTypesInsightsResponse =
 export const GetOrganizationsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
-export type GetOrganizationsLocationsInsightTypesInsightsError = DefaultErrors;
+export type GetOrganizationsLocationsInsightTypesInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
@@ -1171,7 +1259,7 @@ export const getOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsInsightTypesInsightsRequest,
   output: GetOrganizationsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest {
@@ -1202,7 +1290,11 @@ export const MarkAcceptedOrganizationsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedOrganizationsLocationsInsightTypesInsightsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedOrganizationsLocationsInsightTypesInsights: API.OperationMethod<
@@ -1213,7 +1305,7 @@ export const markAcceptedOrganizationsLocationsInsightTypesInsights: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkAcceptedOrganizationsLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedOrganizationsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsInsightTypesInsightsRequest {
@@ -1243,7 +1335,10 @@ export type ListOrganizationsLocationsInsightTypesInsightsResponse =
 export const ListOrganizationsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
-export type ListOrganizationsLocationsInsightTypesInsightsError = DefaultErrors;
+export type ListOrganizationsLocationsInsightTypesInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperationMethod<
@@ -1254,7 +1349,7 @@ export const listOrganizationsLocationsInsightTypesInsights: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsInsightTypesInsightsRequest,
   output: ListOrganizationsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1293,7 +1388,7 @@ export type ListProjectsLocationsResponse =
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists locations with recommendations or insights. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1304,7 +1399,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1329,7 +1424,10 @@ export type GetConfigProjectsLocationsRecommendersResponse =
 export const GetConfigProjectsLocationsRecommendersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
-export type GetConfigProjectsLocationsRecommendersError = DefaultErrors;
+export type GetConfigProjectsLocationsRecommendersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested Recommender Config. There is only one instance of the config for each Recommender. */
 export const getConfigProjectsLocationsRecommenders: API.OperationMethod<
@@ -1340,7 +1438,7 @@ export const getConfigProjectsLocationsRecommenders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsLocationsRecommendersRequest,
   output: GetConfigProjectsLocationsRecommendersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigProjectsLocationsRecommendersRequest {
@@ -1374,7 +1472,12 @@ export type UpdateConfigProjectsLocationsRecommendersResponse =
 export const UpdateConfigProjectsLocationsRecommendersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
-export type UpdateConfigProjectsLocationsRecommendersError = DefaultErrors;
+export type UpdateConfigProjectsLocationsRecommendersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Recommender Config. This will create a new revision of the config. */
 export const updateConfigProjectsLocationsRecommenders: API.OperationMethod<
@@ -1385,7 +1488,7 @@ export const updateConfigProjectsLocationsRecommenders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigProjectsLocationsRecommendersRequest,
   output: UpdateConfigProjectsLocationsRecommendersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRecommendersRecommendationsRequest {
@@ -1407,7 +1510,9 @@ export const GetProjectsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type GetProjectsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getProjectsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1418,7 +1523,7 @@ export const getProjectsLocationsRecommendersRecommendations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRecommendersRecommendationsRequest,
   output: GetProjectsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MarkSucceededProjectsLocationsRecommendersRecommendationsRequest {
@@ -1449,7 +1554,11 @@ export const MarkSucceededProjectsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededProjectsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededProjectsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1460,7 +1569,7 @@ export const markSucceededProjectsLocationsRecommendersRecommendations: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkSucceededProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkSucceededProjectsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkFailedProjectsLocationsRecommendersRecommendationsRequest {
@@ -1491,7 +1600,11 @@ export const MarkFailedProjectsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedProjectsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedProjectsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1502,7 +1615,7 @@ export const markFailedProjectsLocationsRecommendersRecommendations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkFailedProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkFailedProjectsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkClaimedProjectsLocationsRecommendersRecommendationsRequest {
@@ -1533,7 +1646,11 @@ export const MarkClaimedProjectsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedProjectsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedProjectsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1544,7 +1661,7 @@ export const markClaimedProjectsLocationsRecommendersRecommendations: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkClaimedProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkClaimedProjectsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkDismissedProjectsLocationsRecommendersRecommendationsRequest {
@@ -1575,7 +1692,11 @@ export const MarkDismissedProjectsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedProjectsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedProjectsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -1586,7 +1707,7 @@ export const markDismissedProjectsLocationsRecommendersRecommendations: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkDismissedProjectsLocationsRecommendersRecommendationsRequest,
   output: MarkDismissedProjectsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRecommendersRecommendationsRequest {
@@ -1617,7 +1738,9 @@ export const ListProjectsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListProjectsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
@@ -1628,7 +1751,7 @@ export const listProjectsLocationsRecommendersRecommendations: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRecommendersRecommendationsRequest,
   output: ListProjectsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1653,7 +1776,10 @@ export type GetConfigProjectsLocationsInsightTypesResponse =
 export const GetConfigProjectsLocationsInsightTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
-export type GetConfigProjectsLocationsInsightTypesError = DefaultErrors;
+export type GetConfigProjectsLocationsInsightTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested InsightTypeConfig. There is only one instance of the config for each InsightType. */
 export const getConfigProjectsLocationsInsightTypes: API.OperationMethod<
@@ -1664,7 +1790,7 @@ export const getConfigProjectsLocationsInsightTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsLocationsInsightTypesRequest,
   output: GetConfigProjectsLocationsInsightTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigProjectsLocationsInsightTypesRequest {
@@ -1698,7 +1824,12 @@ export type UpdateConfigProjectsLocationsInsightTypesResponse =
 export const UpdateConfigProjectsLocationsInsightTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
-export type UpdateConfigProjectsLocationsInsightTypesError = DefaultErrors;
+export type UpdateConfigProjectsLocationsInsightTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an InsightTypeConfig change. This will create a new revision of the config. */
 export const updateConfigProjectsLocationsInsightTypes: API.OperationMethod<
@@ -1709,7 +1840,7 @@ export const updateConfigProjectsLocationsInsightTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigProjectsLocationsInsightTypesRequest,
   output: UpdateConfigProjectsLocationsInsightTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsInsightTypesInsightsRequest {
@@ -1739,7 +1870,10 @@ export type ListProjectsLocationsInsightTypesInsightsResponse =
 export const ListProjectsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
-export type ListProjectsLocationsInsightTypesInsightsError = DefaultErrors;
+export type ListProjectsLocationsInsightTypesInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMethod<
@@ -1750,7 +1884,7 @@ export const listProjectsLocationsInsightTypesInsights: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInsightTypesInsightsRequest,
   output: ListProjectsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1785,7 +1919,11 @@ export const MarkAcceptedProjectsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedProjectsLocationsInsightTypesInsightsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedProjectsLocationsInsightTypesInsights: API.OperationMethod<
@@ -1796,7 +1934,7 @@ export const markAcceptedProjectsLocationsInsightTypesInsights: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkAcceptedProjectsLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedProjectsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsInsightTypesInsightsRequest {
@@ -1817,7 +1955,10 @@ export type GetProjectsLocationsInsightTypesInsightsResponse =
 export const GetProjectsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
-export type GetProjectsLocationsInsightTypesInsightsError = DefaultErrors;
+export type GetProjectsLocationsInsightTypesInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getProjectsLocationsInsightTypesInsights: API.OperationMethod<
@@ -1828,7 +1969,7 @@ export const getProjectsLocationsInsightTypesInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInsightTypesInsightsRequest,
   output: GetProjectsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRecommendersRequest {
@@ -1852,7 +1993,7 @@ export type ListRecommendersResponse =
 export const ListRecommendersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendersResponse;
 
-export type ListRecommendersError = DefaultErrors;
+export type ListRecommendersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all available Recommenders. No IAM permissions are required. */
 export const listRecommenders: API.PaginatedOperationMethod<
@@ -1863,7 +2004,7 @@ export const listRecommenders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRecommendersRequest,
   output: ListRecommendersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1891,7 +2032,7 @@ export type ListInsightTypesResponse =
 export const ListInsightTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightTypesResponse;
 
-export type ListInsightTypesError = DefaultErrors;
+export type ListInsightTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists available InsightTypes. No IAM permissions are required. */
 export const listInsightTypes: API.PaginatedOperationMethod<
@@ -1902,7 +2043,7 @@ export const listInsightTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInsightTypesRequest,
   output: ListInsightTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1941,7 +2082,7 @@ export type ListFoldersLocationsResponse =
 export const ListFoldersLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListFoldersLocationsError = DefaultErrors;
+export type ListFoldersLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists locations with recommendations or insights. */
 export const listFoldersLocations: API.PaginatedOperationMethod<
@@ -1952,7 +2093,7 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRequest,
   output: ListFoldersLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1986,7 +2127,10 @@ export type ListFoldersLocationsInsightTypesInsightsResponse =
 export const ListFoldersLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
-export type ListFoldersLocationsInsightTypesInsightsError = DefaultErrors;
+export type ListFoldersLocationsInsightTypesInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMethod<
@@ -1997,7 +2141,7 @@ export const listFoldersLocationsInsightTypesInsights: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsInsightTypesInsightsRequest,
   output: ListFoldersLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2032,7 +2176,11 @@ export const MarkAcceptedFoldersLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedFoldersLocationsInsightTypesInsightsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedFoldersLocationsInsightTypesInsights: API.OperationMethod<
@@ -2043,7 +2191,7 @@ export const markAcceptedFoldersLocationsInsightTypesInsights: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkAcceptedFoldersLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedFoldersLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersLocationsInsightTypesInsightsRequest {
@@ -2064,7 +2212,10 @@ export type GetFoldersLocationsInsightTypesInsightsResponse =
 export const GetFoldersLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
-export type GetFoldersLocationsInsightTypesInsightsError = DefaultErrors;
+export type GetFoldersLocationsInsightTypesInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getFoldersLocationsInsightTypesInsights: API.OperationMethod<
@@ -2075,7 +2226,7 @@ export const getFoldersLocationsInsightTypesInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsInsightTypesInsightsRequest,
   output: GetFoldersLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFoldersLocationsRecommendersRecommendationsRequest {
@@ -2096,7 +2247,10 @@ export type GetFoldersLocationsRecommendersRecommendationsResponse =
 export const GetFoldersLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
-export type GetFoldersLocationsRecommendersRecommendationsError = DefaultErrors;
+export type GetFoldersLocationsRecommendersRecommendationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getFoldersLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2107,7 +2261,7 @@ export const getFoldersLocationsRecommendersRecommendations: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsRecommendersRecommendationsRequest,
   output: GetFoldersLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MarkSucceededFoldersLocationsRecommendersRecommendationsRequest {
@@ -2138,7 +2292,11 @@ export const MarkSucceededFoldersLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededFoldersLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededFoldersLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2149,7 +2307,7 @@ export const markSucceededFoldersLocationsRecommendersRecommendations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkSucceededFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkSucceededFoldersLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkFailedFoldersLocationsRecommendersRecommendationsRequest {
@@ -2180,7 +2338,11 @@ export const MarkFailedFoldersLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedFoldersLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedFoldersLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2191,7 +2353,7 @@ export const markFailedFoldersLocationsRecommendersRecommendations: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkFailedFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkFailedFoldersLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkClaimedFoldersLocationsRecommendersRecommendationsRequest {
@@ -2222,7 +2384,11 @@ export const MarkClaimedFoldersLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedFoldersLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedFoldersLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2233,7 +2399,7 @@ export const markClaimedFoldersLocationsRecommendersRecommendations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkClaimedFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkClaimedFoldersLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkDismissedFoldersLocationsRecommendersRecommendationsRequest {
@@ -2264,7 +2430,11 @@ export const MarkDismissedFoldersLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedFoldersLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedFoldersLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2275,7 +2445,7 @@ export const markDismissedFoldersLocationsRecommendersRecommendations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkDismissedFoldersLocationsRecommendersRecommendationsRequest,
   output: MarkDismissedFoldersLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLocationsRecommendersRecommendationsRequest {
@@ -2306,7 +2476,9 @@ export const ListFoldersLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListFoldersLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
@@ -2317,7 +2489,7 @@ export const listFoldersLocationsRecommendersRecommendations: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRecommendersRecommendationsRequest,
   output: ListFoldersLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2356,7 +2528,10 @@ export type ListBillingAccountsLocationsResponse =
 export const ListBillingAccountsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListBillingAccountsLocationsError = DefaultErrors;
+export type ListBillingAccountsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists locations with recommendations or insights. */
 export const listBillingAccountsLocations: API.PaginatedOperationMethod<
@@ -2367,7 +2542,7 @@ export const listBillingAccountsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsRequest,
   output: ListBillingAccountsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2392,7 +2567,10 @@ export type GetConfigBillingAccountsLocationsRecommendersResponse =
 export const GetConfigBillingAccountsLocationsRecommendersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
-export type GetConfigBillingAccountsLocationsRecommendersError = DefaultErrors;
+export type GetConfigBillingAccountsLocationsRecommendersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested Recommender Config. There is only one instance of the config for each Recommender. */
 export const getConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
@@ -2403,7 +2581,7 @@ export const getConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigBillingAccountsLocationsRecommendersRequest,
   output: GetConfigBillingAccountsLocationsRecommendersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigBillingAccountsLocationsRecommendersRequest {
@@ -2438,7 +2616,11 @@ export const UpdateConfigBillingAccountsLocationsRecommendersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1RecommenderConfig;
 
 export type UpdateConfigBillingAccountsLocationsRecommendersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Recommender Config. This will create a new revision of the config. */
 export const updateConfigBillingAccountsLocationsRecommenders: API.OperationMethod<
@@ -2449,7 +2631,7 @@ export const updateConfigBillingAccountsLocationsRecommenders: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigBillingAccountsLocationsRecommendersRequest,
   output: UpdateConfigBillingAccountsLocationsRecommendersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingAccountsLocationsRecommendersRecommendationsRequest {
@@ -2471,7 +2653,9 @@ export const GetBillingAccountsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type GetBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested recommendation. Requires the recommender.*.get IAM permission for the specified recommender. */
 export const getBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2482,7 +2666,7 @@ export const getBillingAccountsLocationsRecommendersRecommendations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: GetBillingAccountsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest {
@@ -2513,7 +2697,11 @@ export const MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkSucceededBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markSucceededBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2526,7 +2714,7 @@ export const markSucceededBillingAccountsLocationsRecommendersRecommendations: A
     MarkSucceededBillingAccountsLocationsRecommendersRecommendationsRequest,
   output:
     MarkSucceededBillingAccountsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest {
@@ -2557,7 +2745,11 @@ export const MarkFailedBillingAccountsLocationsRecommendersRecommendationsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkFailedBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markFailedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2568,7 +2760,7 @@ export const markFailedBillingAccountsLocationsRecommendersRecommendations: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkFailedBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: MarkFailedBillingAccountsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest {
@@ -2599,7 +2791,11 @@ export const MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkClaimedBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Recommendation State as Claimed. Users can use this method to indicate to the Recommender API that they are starting to apply the recommendation themselves. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied to recommendations in CLAIMED or ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markClaimedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2611,7 +2807,7 @@ export const markClaimedBillingAccountsLocationsRecommendersRecommendations: API
   input: MarkClaimedBillingAccountsLocationsRecommendersRecommendationsRequest,
   output:
     MarkClaimedBillingAccountsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest {
@@ -2642,7 +2838,11 @@ export const MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Recommendation;
 
 export type MarkDismissedBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the Recommendation State as Dismissed. Users can use this method to indicate to the Recommender API that an ACTIVE recommendation has to be marked back as DISMISSED. MarkRecommendationDismissed can be applied to recommendations in ACTIVE state. Requires the recommender.*.update IAM permission for the specified recommender. */
 export const markDismissedBillingAccountsLocationsRecommendersRecommendations: API.OperationMethod<
@@ -2655,7 +2855,7 @@ export const markDismissedBillingAccountsLocationsRecommendersRecommendations: A
     MarkDismissedBillingAccountsLocationsRecommendersRecommendationsRequest,
   output:
     MarkDismissedBillingAccountsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsLocationsRecommendersRecommendationsRequest {
@@ -2686,7 +2886,9 @@ export const ListBillingAccountsLocationsRecommendersRecommendationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListRecommendationsResponse;
 
 export type ListBillingAccountsLocationsRecommendersRecommendationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists recommendations for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified recommender. */
 export const listBillingAccountsLocationsRecommendersRecommendations: API.PaginatedOperationMethod<
@@ -2697,7 +2899,7 @@ export const listBillingAccountsLocationsRecommendersRecommendations: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsRecommendersRecommendationsRequest,
   output: ListBillingAccountsLocationsRecommendersRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2722,7 +2924,10 @@ export type GetConfigBillingAccountsLocationsInsightTypesResponse =
 export const GetConfigBillingAccountsLocationsInsightTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
-export type GetConfigBillingAccountsLocationsInsightTypesError = DefaultErrors;
+export type GetConfigBillingAccountsLocationsInsightTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested InsightTypeConfig. There is only one instance of the config for each InsightType. */
 export const getConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
@@ -2733,7 +2938,7 @@ export const getConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigBillingAccountsLocationsInsightTypesRequest,
   output: GetConfigBillingAccountsLocationsInsightTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigBillingAccountsLocationsInsightTypesRequest {
@@ -2768,7 +2973,11 @@ export const UpdateConfigBillingAccountsLocationsInsightTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1InsightTypeConfig;
 
 export type UpdateConfigBillingAccountsLocationsInsightTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an InsightTypeConfig change. This will create a new revision of the config. */
 export const updateConfigBillingAccountsLocationsInsightTypes: API.OperationMethod<
@@ -2779,7 +2988,7 @@ export const updateConfigBillingAccountsLocationsInsightTypes: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigBillingAccountsLocationsInsightTypesRequest,
   output: UpdateConfigBillingAccountsLocationsInsightTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingAccountsLocationsInsightTypesInsightsRequest {
@@ -2801,7 +3010,9 @@ export const GetBillingAccountsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type GetBillingAccountsLocationsInsightTypesInsightsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type. */
 export const getBillingAccountsLocationsInsightTypesInsights: API.OperationMethod<
@@ -2812,7 +3023,7 @@ export const getBillingAccountsLocationsInsightTypesInsights: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsInsightTypesInsightsRequest,
   output: GetBillingAccountsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsLocationsInsightTypesInsightsRequest {
@@ -2843,7 +3054,9 @@ export const ListBillingAccountsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1ListInsightsResponse;
 
 export type ListBillingAccountsLocationsInsightTypesInsightsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists insights for the specified Cloud Resource. Requires the recommender.*.list IAM permission for the specified insight type. */
 export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOperationMethod<
@@ -2854,7 +3067,7 @@ export const listBillingAccountsLocationsInsightTypesInsights: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsInsightTypesInsightsRequest,
   output: ListBillingAccountsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2889,7 +3102,11 @@ export const MarkAcceptedBillingAccountsLocationsInsightTypesInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommenderV1beta1Insight;
 
 export type MarkAcceptedBillingAccountsLocationsInsightTypesInsightsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the Insight State as Accepted. Users can use this method to indicate to the Recommender API that they have applied some action based on the insight. This stops the insight content from being updated. MarkInsightAccepted can be applied to insights in ACTIVE state. Requires the recommender.*.update IAM permission for the specified insight. */
 export const markAcceptedBillingAccountsLocationsInsightTypesInsights: API.OperationMethod<
@@ -2900,5 +3117,5 @@ export const markAcceptedBillingAccountsLocationsInsightTypesInsights: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkAcceptedBillingAccountsLocationsInsightTypesInsightsRequest,
   output: MarkAcceptedBillingAccountsLocationsInsightTypesInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

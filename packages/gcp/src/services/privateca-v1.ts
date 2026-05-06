@@ -1320,6 +1320,52 @@ export const ActivateCertificateAuthorityRequest =
   }).annotate({ identifier: "ActivateCertificateAuthorityRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1354,7 +1400,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1365,7 +1411,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1389,7 +1435,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1400,7 +1446,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -1420,7 +1466,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -1431,7 +1482,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -1451,7 +1502,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1462,7 +1516,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -1485,7 +1539,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -1496,7 +1555,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -1530,7 +1589,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1541,7 +1603,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1578,7 +1640,10 @@ export type ListProjectsLocationsCertificateTemplatesResponse =
 export const ListProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCertificateTemplatesResponse;
 
-export type ListProjectsLocationsCertificateTemplatesError = DefaultErrors;
+export type ListProjectsLocationsCertificateTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CertificateTemplates. */
 export const listProjectsLocationsCertificateTemplates: API.PaginatedOperationMethod<
@@ -1589,7 +1654,7 @@ export const listProjectsLocationsCertificateTemplates: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCertificateTemplatesRequest,
   output: ListProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1619,7 +1684,9 @@ export const GetIamPolicyProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsCertificateTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsCertificateTemplates: API.OperationMethod<
@@ -1630,7 +1697,7 @@ export const getIamPolicyProjectsLocationsCertificateTemplates: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsCertificateTemplatesRequest,
   output: GetIamPolicyProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsCertificateTemplatesRequest {
@@ -1653,7 +1720,12 @@ export type DeleteProjectsLocationsCertificateTemplatesResponse = Operation;
 export const DeleteProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsCertificateTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsCertificateTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteCertificateTemplate deletes a CertificateTemplate. */
 export const deleteProjectsLocationsCertificateTemplates: API.OperationMethod<
@@ -1664,7 +1736,7 @@ export const deleteProjectsLocationsCertificateTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCertificateTemplatesRequest,
   output: DeleteProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCertificateTemplatesRequest {
@@ -1685,7 +1757,10 @@ export type GetProjectsLocationsCertificateTemplatesResponse =
 export const GetProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CertificateTemplate;
 
-export type GetProjectsLocationsCertificateTemplatesError = DefaultErrors;
+export type GetProjectsLocationsCertificateTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a CertificateTemplate. */
 export const getProjectsLocationsCertificateTemplates: API.OperationMethod<
@@ -1696,7 +1771,7 @@ export const getProjectsLocationsCertificateTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCertificateTemplatesRequest,
   output: GetProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCertificateTemplatesRequest {
@@ -1731,7 +1806,12 @@ export type CreateProjectsLocationsCertificateTemplatesResponse = Operation;
 export const CreateProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsCertificateTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsCertificateTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new CertificateTemplate in a given Project and Location. */
 export const createProjectsLocationsCertificateTemplates: API.OperationMethod<
@@ -1742,7 +1822,7 @@ export const createProjectsLocationsCertificateTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCertificateTemplatesRequest,
   output: CreateProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCertificateTemplatesRequest {
@@ -1771,7 +1851,12 @@ export type PatchProjectsLocationsCertificateTemplatesResponse = Operation;
 export const PatchProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsCertificateTemplatesError = DefaultErrors;
+export type PatchProjectsLocationsCertificateTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a CertificateTemplate. */
 export const patchProjectsLocationsCertificateTemplates: API.OperationMethod<
@@ -1782,7 +1867,7 @@ export const patchProjectsLocationsCertificateTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCertificateTemplatesRequest,
   output: PatchProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsCertificateTemplatesRequest {
@@ -1810,7 +1895,11 @@ export const SetIamPolicyProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsCertificateTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsCertificateTemplates: API.OperationMethod<
@@ -1821,7 +1910,7 @@ export const setIamPolicyProjectsLocationsCertificateTemplates: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsCertificateTemplatesRequest,
   output: SetIamPolicyProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsCertificateTemplatesRequest {
@@ -1850,7 +1939,11 @@ export const TestIamPermissionsProjectsLocationsCertificateTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsCertificateTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsCertificateTemplates: API.OperationMethod<
@@ -1861,7 +1954,7 @@ export const testIamPermissionsProjectsLocationsCertificateTemplates: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsCertificateTemplatesRequest,
   output: TestIamPermissionsProjectsLocationsCertificateTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCaPoolsRequest {
@@ -1881,7 +1974,10 @@ export type GetProjectsLocationsCaPoolsResponse = CaPool;
 export const GetProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CaPool;
 
-export type GetProjectsLocationsCaPoolsError = DefaultErrors;
+export type GetProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a CaPool. */
 export const getProjectsLocationsCaPools: API.OperationMethod<
@@ -1892,7 +1988,7 @@ export const getProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCaPoolsRequest,
   output: GetProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsCaPoolsRequest {
@@ -1917,7 +2013,10 @@ export type GetIamPolicyProjectsLocationsCaPoolsResponse = Policy;
 export const GetIamPolicyProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsCaPoolsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsCaPools: API.OperationMethod<
@@ -1928,7 +2027,7 @@ export const getIamPolicyProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsCaPoolsRequest,
   output: GetIamPolicyProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FetchCaCertsProjectsLocationsCaPoolsRequest {
@@ -1951,7 +2050,12 @@ export type FetchCaCertsProjectsLocationsCaPoolsResponse = FetchCaCertsResponse;
 export const FetchCaCertsProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchCaCertsResponse;
 
-export type FetchCaCertsProjectsLocationsCaPoolsError = DefaultErrors;
+export type FetchCaCertsProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** FetchCaCerts returns the current trust anchor for the CaPool. This will include CA certificate chains for all certificate authorities in the ENABLED, DISABLED, or STAGED states. */
 export const fetchCaCertsProjectsLocationsCaPools: API.OperationMethod<
@@ -1962,7 +2066,7 @@ export const fetchCaCertsProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchCaCertsProjectsLocationsCaPoolsRequest,
   output: FetchCaCertsProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCaPoolsRequest {
@@ -1991,7 +2095,12 @@ export type CreateProjectsLocationsCaPoolsResponse = Operation;
 export const CreateProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsCaPoolsError = DefaultErrors;
+export type CreateProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a CaPool. */
 export const createProjectsLocationsCaPools: API.OperationMethod<
@@ -2002,7 +2111,7 @@ export const createProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCaPoolsRequest,
   output: CreateProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCaPoolsRequest {
@@ -2031,7 +2140,12 @@ export type PatchProjectsLocationsCaPoolsResponse = Operation;
 export const PatchProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsCaPoolsError = DefaultErrors;
+export type PatchProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a CaPool. */
 export const patchProjectsLocationsCaPools: API.OperationMethod<
@@ -2042,7 +2156,7 @@ export const patchProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCaPoolsRequest,
   output: PatchProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsCaPoolsRequest {
@@ -2069,7 +2183,12 @@ export type SetIamPolicyProjectsLocationsCaPoolsResponse = Policy;
 export const SetIamPolicyProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsCaPoolsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsCaPools: API.OperationMethod<
@@ -2080,7 +2199,7 @@ export const setIamPolicyProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsCaPoolsRequest,
   output: SetIamPolicyProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsCaPoolsRequest {
@@ -2108,7 +2227,12 @@ export type TestIamPermissionsProjectsLocationsCaPoolsResponse =
 export const TestIamPermissionsProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsCaPoolsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsCaPools: API.OperationMethod<
@@ -2119,7 +2243,7 @@ export const testIamPermissionsProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsCaPoolsRequest,
   output: TestIamPermissionsProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCaPoolsRequest {
@@ -2151,7 +2275,10 @@ export type ListProjectsLocationsCaPoolsResponse = ListCaPoolsResponse;
 export const ListProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCaPoolsResponse;
 
-export type ListProjectsLocationsCaPoolsError = DefaultErrors;
+export type ListProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CaPools. */
 export const listProjectsLocationsCaPools: API.PaginatedOperationMethod<
@@ -2162,7 +2289,7 @@ export const listProjectsLocationsCaPools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCaPoolsRequest,
   output: ListProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2194,7 +2321,12 @@ export type DeleteProjectsLocationsCaPoolsResponse = Operation;
 export const DeleteProjectsLocationsCaPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsCaPoolsError = DefaultErrors;
+export type DeleteProjectsLocationsCaPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a CaPool. */
 export const deleteProjectsLocationsCaPools: API.OperationMethod<
@@ -2205,7 +2337,7 @@ export const deleteProjectsLocationsCaPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCaPoolsRequest,
   output: DeleteProjectsLocationsCaPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCaPoolsCertificatesRequest {
@@ -2225,7 +2357,10 @@ export type GetProjectsLocationsCaPoolsCertificatesResponse = Certificate;
 export const GetProjectsLocationsCaPoolsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Certificate;
 
-export type GetProjectsLocationsCaPoolsCertificatesError = DefaultErrors;
+export type GetProjectsLocationsCaPoolsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a Certificate. */
 export const getProjectsLocationsCaPoolsCertificates: API.OperationMethod<
@@ -2236,7 +2371,7 @@ export const getProjectsLocationsCaPoolsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCaPoolsCertificatesRequest,
   output: GetProjectsLocationsCaPoolsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCaPoolsCertificatesRequest {
@@ -2277,7 +2412,12 @@ export type CreateProjectsLocationsCaPoolsCertificatesResponse = Certificate;
 export const CreateProjectsLocationsCaPoolsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Certificate;
 
-export type CreateProjectsLocationsCaPoolsCertificatesError = DefaultErrors;
+export type CreateProjectsLocationsCaPoolsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new Certificate in a given Project, Location from a particular CaPool. */
 export const createProjectsLocationsCaPoolsCertificates: API.OperationMethod<
@@ -2288,7 +2428,7 @@ export const createProjectsLocationsCaPoolsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCaPoolsCertificatesRequest,
   output: CreateProjectsLocationsCaPoolsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCaPoolsCertificatesRequest {
@@ -2317,7 +2457,12 @@ export type PatchProjectsLocationsCaPoolsCertificatesResponse = Certificate;
 export const PatchProjectsLocationsCaPoolsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Certificate;
 
-export type PatchProjectsLocationsCaPoolsCertificatesError = DefaultErrors;
+export type PatchProjectsLocationsCaPoolsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a Certificate. Currently, the only field you can update is the labels field. */
 export const patchProjectsLocationsCaPoolsCertificates: API.OperationMethod<
@@ -2328,7 +2473,7 @@ export const patchProjectsLocationsCaPoolsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCaPoolsCertificatesRequest,
   output: PatchProjectsLocationsCaPoolsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevokeProjectsLocationsCaPoolsCertificatesRequest {
@@ -2351,7 +2496,12 @@ export type RevokeProjectsLocationsCaPoolsCertificatesResponse = Certificate;
 export const RevokeProjectsLocationsCaPoolsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Certificate;
 
-export type RevokeProjectsLocationsCaPoolsCertificatesError = DefaultErrors;
+export type RevokeProjectsLocationsCaPoolsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revoke a Certificate. */
 export const revokeProjectsLocationsCaPoolsCertificates: API.OperationMethod<
@@ -2362,7 +2512,7 @@ export const revokeProjectsLocationsCaPoolsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeProjectsLocationsCaPoolsCertificatesRequest,
   output: RevokeProjectsLocationsCaPoolsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCaPoolsCertificatesRequest {
@@ -2395,7 +2545,10 @@ export type ListProjectsLocationsCaPoolsCertificatesResponse =
 export const ListProjectsLocationsCaPoolsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCertificatesResponse;
 
-export type ListProjectsLocationsCaPoolsCertificatesError = DefaultErrors;
+export type ListProjectsLocationsCaPoolsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Certificates. */
 export const listProjectsLocationsCaPoolsCertificates: API.PaginatedOperationMethod<
@@ -2406,7 +2559,7 @@ export const listProjectsLocationsCaPoolsCertificates: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCaPoolsCertificatesRequest,
   output: ListProjectsLocationsCaPoolsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2432,7 +2585,9 @@ export const GetProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CertificateAuthority;
 
 export type GetProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a CertificateAuthority. */
 export const getProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2443,7 +2598,7 @@ export const getProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: GetProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2465,7 +2620,9 @@ export const FetchProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchCertificateAuthorityCsrResponse;
 
 export type FetchProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetch a certificate signing request (CSR) from a CertificateAuthority that is in state AWAITING_USER_ACTIVATION and is of type SUBORDINATE. The CSR must then be signed by the desired parent Certificate Authority, which could be another CertificateAuthority resource, or could be an on-prem certificate authority. See also ActivateCertificateAuthority. */
 export const fetchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2476,7 +2633,7 @@ export const fetchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: FetchProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2503,7 +2660,11 @@ export const DisableProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DisableProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable a CertificateAuthority. */
 export const disableProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2514,7 +2675,7 @@ export const disableProjectsLocationsCaPoolsCertificateAuthorities: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: DisableProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2551,7 +2712,11 @@ export const CreateProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new CertificateAuthority in a given Project and Location. */
 export const createProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2562,7 +2727,7 @@ export const createProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: CreateProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2587,7 +2752,11 @@ export const EnableProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type EnableProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable a CertificateAuthority. */
 export const enableProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2598,7 +2767,7 @@ export const enableProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: EnableProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2629,7 +2798,11 @@ export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a CertificateAuthority. */
 export const patchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2640,7 +2813,7 @@ export const patchProjectsLocationsCaPoolsCertificateAuthorities: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: PatchProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2667,7 +2840,11 @@ export const ActivateProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ActivateProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activate a CertificateAuthority that is in state AWAITING_USER_ACTIVATION and is of type SUBORDINATE. After the parent Certificate Authority signs a certificate signing request from FetchCertificateAuthorityCsr, this method can complete the activation process. */
 export const activateProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2678,7 +2855,7 @@ export const activateProjectsLocationsCaPoolsCertificateAuthorities: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: ActivateProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2712,7 +2889,9 @@ export const ListProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCertificateAuthoritiesResponse;
 
 export type ListProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CertificateAuthorities. */
 export const listProjectsLocationsCaPoolsCertificateAuthorities: API.PaginatedOperationMethod<
@@ -2723,7 +2902,7 @@ export const listProjectsLocationsCaPoolsCertificateAuthorities: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: ListProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2754,7 +2933,11 @@ export const UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undelete a CertificateAuthority that has been deleted. */
 export const undeleteProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2765,7 +2948,7 @@ export const undeleteProjectsLocationsCaPoolsCertificateAuthorities: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: UndeleteProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest {
@@ -2805,7 +2988,11 @@ export const DeleteProjectsLocationsCaPoolsCertificateAuthoritiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsCaPoolsCertificateAuthoritiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a CertificateAuthority. */
 export const deleteProjectsLocationsCaPoolsCertificateAuthorities: API.OperationMethod<
@@ -2816,7 +3003,7 @@ export const deleteProjectsLocationsCaPoolsCertificateAuthorities: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCaPoolsCertificateAuthoritiesRequest,
   output: DeleteProjectsLocationsCaPoolsCertificateAuthoritiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
@@ -2847,7 +3034,11 @@ export const PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoc
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a CertificateRevocationList. */
 export const patchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2860,7 +3051,7 @@ export const patchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoc
     PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output:
     PatchProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
@@ -2889,7 +3080,11 @@ export const SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2902,7 +3097,7 @@ export const setIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
     SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output:
     SetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
@@ -2931,7 +3126,11 @@ export const TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCer
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2944,7 +3143,7 @@ export const testIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCer
     TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output:
     TestIamPermissionsProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
@@ -2966,7 +3165,9 @@ export const GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocat
   /*@__PURE__*/ /*#__PURE__*/ CertificateRevocationList;
 
 export type GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a CertificateRevocationList. */
 export const getProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -2979,7 +3180,7 @@ export const getProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocat
     GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output:
     GetProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
@@ -3006,7 +3207,9 @@ export const GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.OperationMethod<
@@ -3019,7 +3222,7 @@ export const getIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertifica
     GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output:
     GetIamPolicyProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest {
@@ -3053,7 +3256,9 @@ export const ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoca
   /*@__PURE__*/ /*#__PURE__*/ ListCertificateRevocationListsResponse;
 
 export type ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CertificateRevocationLists. */
 export const listProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationLists: API.PaginatedOperationMethod<
@@ -3066,7 +3271,7 @@ export const listProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevoca
     ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsRequest,
   output:
     ListProjectsLocationsCaPoolsCertificateAuthoritiesCertificateRevocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

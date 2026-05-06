@@ -303,6 +303,12 @@ function loadPatches(
 const RESERVED_SCHEMA_NAMES = new Set([
   "Schema", "Effect", "API", "T", "C", "HttpClient",
   "Credentials", "DefaultErrors",
+  // Standard 4xx error class names emitted via method-keyed defaults
+  // (see `methodDefaultErrorTags`). Several Google APIs ship discovery
+  // schemas literally named `BadRequest` / `NotFound` (e.g.
+  // `datamigration-v1`'s `google.rpc.BadRequest`); rename those to
+  // avoid colliding with the emitted error classes.
+  "NotFound", "Forbidden", "BadRequest", "Conflict",
   // TypeScript built-in global types
   "Record", "Array", "Map", "Set", "Promise", "Error",
   "Function", "Object", "String", "Number", "Boolean",
@@ -410,6 +416,21 @@ function generateService(doc: DiscoveryDoc, patches: ServicePatch): string {
           if (!allErrorCategories.has(tag)) {
             allErrorCategories.set(tag, cats);
           }
+        }
+      }
+    }
+  }
+
+  // Method-keyed default 4xx errors. Walks every operation, unions the
+  // method-appropriate default tags, and registers a default `httpStatus`
+  // matcher for any tag not already supplied by a patch. Patches still win
+  // on matcher shape because of the `!allErrors.has(tag)` guard.
+  for (const op of operations) {
+    for (const tag of methodDefaultErrorTags(op.httpMethod)) {
+      if (!allErrors.has(tag)) {
+        const status = STANDARD_4XX_TAG_TO_STATUS[tag];
+        if (status !== undefined) {
+          allErrors.set(tag, [{ httpStatus: status }]);
         }
       }
     }
@@ -730,6 +751,43 @@ const RETRYABLE_CATEGORIES = new Set([
   "LockedError",
 ]);
 
+/**
+ * Standard 4xx status codes that GCP returns across every service. The error
+ * dispatcher (`packages/gcp/src/client/api.ts`) routes purely on HTTP status,
+ * so the same `{status → tag}` mapping is universally applicable. Patches in
+ * `patches/{service}/{operation}.json` can still override the matchers (or
+ * add additional tags) — they take precedence by virtue of being merged into
+ * `allErrors` first.
+ */
+const STANDARD_4XX_TAG_TO_STATUS: Record<string, number> = {
+  NotFound: 404,
+  Forbidden: 403,
+  BadRequest: 400,
+  Conflict: 409,
+};
+
+/**
+ * Method-keyed default 4xx errors. Reads (`GET`/`HEAD`) get the subset that
+ * REST conventions actually surface; mutations get the full set. This mirrors
+ * the per-operation patches that previously had to be hand-maintained
+ * (cloudresourcemanager + container both encoded the same shape) — see
+ * commit history for the patch files this replaces.
+ */
+function methodDefaultErrorTags(httpMethod: string): readonly string[] {
+  switch (httpMethod.toUpperCase()) {
+    case "GET":
+    case "HEAD":
+      return ["NotFound", "Forbidden"];
+    case "POST":
+    case "PUT":
+    case "PATCH":
+    case "DELETE":
+      return ["NotFound", "Forbidden", "BadRequest", "Conflict"];
+    default:
+      return [];
+  }
+}
+
 function generateErrorClass(
   tag: string,
   matchers: ErrorMatcher[],
@@ -795,12 +853,19 @@ function generateOperation(
     outputName = `${outputName}_Op`;
   }
 
-  // Determine which error tags apply to this operation
+  // Determine which error tags apply to this operation. Patches contribute
+  // first (so a patch can introduce service-specific tags); the
+  // method-keyed defaults from `methodDefaultErrorTags` are then unioned
+  // in. Sets dedupe naturally — a patch and the default may both name
+  // `NotFound`, and only one tag ends up in the union.
   const opErrorTags = new Set<string>();
   if (opPatch.errors) {
     for (const tag of Object.keys(opPatch.errors)) {
       opErrorTags.add(tag);
     }
+  }
+  for (const tag of methodDefaultErrorTags(op.httpMethod)) {
+    opErrorTags.add(tag);
   }
 
   // Check for pagination

@@ -625,6 +625,52 @@ export const ValidateExclusivityResponse =
   }).annotate({ identifier: "ValidateExclusivityResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -659,7 +705,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -670,7 +716,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -694,7 +740,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -705,7 +751,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -739,7 +785,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -750,7 +799,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -777,7 +826,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -788,7 +842,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -808,7 +862,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -819,7 +876,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -839,7 +896,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -850,7 +912,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsMembershipsRequest {
@@ -885,7 +947,12 @@ export type CreateProjectsLocationsMembershipsResponse = Operation;
 export const CreateProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsMembershipsError = DefaultErrors;
+export type CreateProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster. */
 export const createProjectsLocationsMemberships: API.OperationMethod<
@@ -896,7 +963,7 @@ export const createProjectsLocationsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsMembershipsRequest,
   output: CreateProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsMembershipsRequest {
@@ -922,7 +989,12 @@ export type DeleteProjectsLocationsMembershipsResponse = Operation;
 export const DeleteProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsMembershipsError = DefaultErrors;
+export type DeleteProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a Membership. **This is currently only supported for GKE clusters on Google Cloud**. To unregister other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/unregistering-a-cluster. */
 export const deleteProjectsLocationsMemberships: API.OperationMethod<
@@ -933,7 +1005,7 @@ export const deleteProjectsLocationsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsMembershipsRequest,
   output: DeleteProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsMembershipsRequest {
@@ -962,7 +1034,12 @@ export type PatchProjectsLocationsMembershipsResponse = Operation;
 export const PatchProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsMembershipsError = DefaultErrors;
+export type PatchProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Membership. */
 export const patchProjectsLocationsMemberships: API.OperationMethod<
@@ -973,7 +1050,7 @@ export const patchProjectsLocationsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsMembershipsRequest,
   output: PatchProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateExclusivityManifestProjectsLocationsMembershipsRequest {
@@ -1006,7 +1083,9 @@ export const GenerateExclusivityManifestProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateExclusivityManifestResponse;
 
 export type GenerateExclusivityManifestProjectsLocationsMembershipsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GenerateExclusivityManifest generates the manifests to update the exclusivity artifacts in the cluster if needed. Exclusivity artifacts include the Membership custom resource definition (CRD) and the singleton Membership custom resource (CR). Combined with ValidateExclusivity, exclusivity artifacts guarantee that a Kubernetes cluster is only registered to a single GKE Hub. The Membership CRD is versioned, and may require conversion when the GKE Hub API server begins serving a newer version of the CRD and corresponding CR. The response will be the converted CRD and CR if there are any differences between the versions. */
 export const generateExclusivityManifestProjectsLocationsMemberships: API.OperationMethod<
@@ -1017,7 +1096,7 @@ export const generateExclusivityManifestProjectsLocationsMemberships: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateExclusivityManifestProjectsLocationsMembershipsRequest,
   output: GenerateExclusivityManifestProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsMembershipsRequest {
@@ -1044,7 +1123,12 @@ export type SetIamPolicyProjectsLocationsMembershipsResponse = Policy;
 export const SetIamPolicyProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsMembershipsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsMemberships: API.OperationMethod<
@@ -1055,7 +1139,7 @@ export const setIamPolicyProjectsLocationsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsMembershipsRequest,
   output: SetIamPolicyProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsMembershipsRequest {
@@ -1075,7 +1159,10 @@ export type GetProjectsLocationsMembershipsResponse = Membership;
 export const GetProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Membership;
 
-export type GetProjectsLocationsMembershipsError = DefaultErrors;
+export type GetProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a Membership. */
 export const getProjectsLocationsMemberships: API.OperationMethod<
@@ -1086,7 +1173,7 @@ export const getProjectsLocationsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsMembershipsRequest,
   output: GetProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ValidateExclusivityProjectsLocationsMembershipsRequest {
@@ -1119,7 +1206,9 @@ export const ValidateExclusivityProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValidateExclusivityResponse;
 
 export type ValidateExclusivityProjectsLocationsMembershipsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ValidateExclusivity validates the state of exclusivity in the cluster. The validation does not depend on an existing Hub membership resource. */
 export const validateExclusivityProjectsLocationsMemberships: API.OperationMethod<
@@ -1130,7 +1219,7 @@ export const validateExclusivityProjectsLocationsMemberships: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateExclusivityProjectsLocationsMembershipsRequest,
   output: ValidateExclusivityProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsMembershipsRequest {
@@ -1155,7 +1244,10 @@ export type GetIamPolicyProjectsLocationsMembershipsResponse = Policy;
 export const GetIamPolicyProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsMembershipsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsMemberships: API.OperationMethod<
@@ -1166,7 +1258,7 @@ export const getIamPolicyProjectsLocationsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsMembershipsRequest,
   output: GetIamPolicyProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsMembershipsRequest {
@@ -1194,7 +1286,12 @@ export type TestIamPermissionsProjectsLocationsMembershipsResponse =
 export const TestIamPermissionsProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsMembershipsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsMemberships: API.OperationMethod<
@@ -1205,7 +1302,7 @@ export const testIamPermissionsProjectsLocationsMemberships: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsMembershipsRequest,
   output: TestIamPermissionsProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsMembershipsRequest {
@@ -1237,7 +1334,10 @@ export type ListProjectsLocationsMembershipsResponse = ListMembershipsResponse;
 export const ListProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMembershipsResponse;
 
-export type ListProjectsLocationsMembershipsError = DefaultErrors;
+export type ListProjectsLocationsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Memberships in a given project and location. */
 export const listProjectsLocationsMemberships: API.PaginatedOperationMethod<
@@ -1248,7 +1348,7 @@ export const listProjectsLocationsMemberships: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsMembershipsRequest,
   output: ListProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1303,7 +1403,9 @@ export const GenerateConnectManifestProjectsLocationsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateConnectManifestResponse;
 
 export type GenerateConnectManifestProjectsLocationsMembershipsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates the manifest for deployment of the GKE connect agent. **This method is used internally by Google-provided libraries.** Most clients should not need to call this method directly. */
 export const generateConnectManifestProjectsLocationsMemberships: API.OperationMethod<
@@ -1314,5 +1416,5 @@ export const generateConnectManifestProjectsLocationsMemberships: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateConnectManifestProjectsLocationsMembershipsRequest,
   output: GenerateConnectManifestProjectsLocationsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -308,6 +308,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -335,7 +381,12 @@ export type BatchWriteProjectsTracesResponse = Empty;
 export const BatchWriteProjectsTracesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type BatchWriteProjectsTracesError = DefaultErrors;
+export type BatchWriteProjectsTracesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch writes new spans to new or existing traces. You cannot update existing spans. If a span ID already exists, an additional copy of the span will be stored. */
 export const batchWriteProjectsTraces: API.OperationMethod<
@@ -346,7 +397,7 @@ export const batchWriteProjectsTraces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchWriteProjectsTracesRequest,
   output: BatchWriteProjectsTracesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSpanProjectsTracesSpansRequest {
@@ -369,7 +420,12 @@ export type CreateSpanProjectsTracesSpansResponse = Span;
 export const CreateSpanProjectsTracesSpansResponse =
   /*@__PURE__*/ /*#__PURE__*/ Span;
 
-export type CreateSpanProjectsTracesSpansError = DefaultErrors;
+export type CreateSpanProjectsTracesSpansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new span. If a span ID already exists, an additional copy of the span will be stored. */
 export const createSpanProjectsTracesSpans: API.OperationMethod<
@@ -380,5 +436,5 @@ export const createSpanProjectsTracesSpans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSpanProjectsTracesSpansRequest,
   output: CreateSpanProjectsTracesSpansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

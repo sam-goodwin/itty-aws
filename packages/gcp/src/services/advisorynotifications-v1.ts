@@ -209,6 +209,52 @@ export const GoogleCloudAdvisorynotificationsV1Settings =
   }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Settings" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -230,7 +276,10 @@ export type GetSettingsProjectsLocationsResponse =
 export const GetSettingsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1Settings;
 
-export type GetSettingsProjectsLocationsError = DefaultErrors;
+export type GetSettingsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get notification settings. */
 export const getSettingsProjectsLocations: API.OperationMethod<
@@ -241,7 +290,7 @@ export const getSettingsProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsProjectsLocationsRequest,
   output: GetSettingsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSettingsProjectsLocationsRequest {
@@ -267,7 +316,12 @@ export type UpdateSettingsProjectsLocationsResponse =
 export const UpdateSettingsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1Settings;
 
-export type UpdateSettingsProjectsLocationsError = DefaultErrors;
+export type UpdateSettingsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update notification settings. */
 export const updateSettingsProjectsLocations: API.OperationMethod<
@@ -278,7 +332,7 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSettingsProjectsLocationsRequest,
   output: UpdateSettingsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNotificationsRequest {
@@ -313,7 +367,10 @@ export type ListProjectsLocationsNotificationsResponse =
 export const ListProjectsLocationsNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1ListNotificationsResponse;
 
-export type ListProjectsLocationsNotificationsError = DefaultErrors;
+export type ListProjectsLocationsNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists notifications under a given parent. */
 export const listProjectsLocationsNotifications: API.PaginatedOperationMethod<
@@ -324,7 +381,7 @@ export const listProjectsLocationsNotifications: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNotificationsRequest,
   output: ListProjectsLocationsNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -354,7 +411,10 @@ export type GetProjectsLocationsNotificationsResponse =
 export const GetProjectsLocationsNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1Notification;
 
-export type GetProjectsLocationsNotificationsError = DefaultErrors;
+export type GetProjectsLocationsNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a notification. */
 export const getProjectsLocationsNotifications: API.OperationMethod<
@@ -365,7 +425,7 @@ export const getProjectsLocationsNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNotificationsRequest,
   output: GetProjectsLocationsNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSettingsOrganizationsLocationsRequest {
@@ -386,7 +446,10 @@ export type GetSettingsOrganizationsLocationsResponse =
 export const GetSettingsOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1Settings;
 
-export type GetSettingsOrganizationsLocationsError = DefaultErrors;
+export type GetSettingsOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get notification settings. */
 export const getSettingsOrganizationsLocations: API.OperationMethod<
@@ -397,7 +460,7 @@ export const getSettingsOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsOrganizationsLocationsRequest,
   output: GetSettingsOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSettingsOrganizationsLocationsRequest {
@@ -423,7 +486,12 @@ export type UpdateSettingsOrganizationsLocationsResponse =
 export const UpdateSettingsOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1Settings;
 
-export type UpdateSettingsOrganizationsLocationsError = DefaultErrors;
+export type UpdateSettingsOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update notification settings. */
 export const updateSettingsOrganizationsLocations: API.OperationMethod<
@@ -434,7 +502,7 @@ export const updateSettingsOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSettingsOrganizationsLocationsRequest,
   output: UpdateSettingsOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsNotificationsRequest {
@@ -469,7 +537,10 @@ export type ListOrganizationsLocationsNotificationsResponse =
 export const ListOrganizationsLocationsNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1ListNotificationsResponse;
 
-export type ListOrganizationsLocationsNotificationsError = DefaultErrors;
+export type ListOrganizationsLocationsNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists notifications under a given parent. */
 export const listOrganizationsLocationsNotifications: API.PaginatedOperationMethod<
@@ -480,7 +551,7 @@ export const listOrganizationsLocationsNotifications: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsNotificationsRequest,
   output: ListOrganizationsLocationsNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -510,7 +581,10 @@ export type GetOrganizationsLocationsNotificationsResponse =
 export const GetOrganizationsLocationsNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAdvisorynotificationsV1Notification;
 
-export type GetOrganizationsLocationsNotificationsError = DefaultErrors;
+export type GetOrganizationsLocationsNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a notification. */
 export const getOrganizationsLocationsNotifications: API.OperationMethod<
@@ -521,5 +595,5 @@ export const getOrganizationsLocationsNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsNotificationsRequest,
   output: GetOrganizationsLocationsNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

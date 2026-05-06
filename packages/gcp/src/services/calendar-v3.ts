@@ -970,6 +970,52 @@ export const Events = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Events" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -991,7 +1037,7 @@ export const GetAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAclResponse = AclRule;
 export const GetAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
 
-export type GetAclError = DefaultErrors;
+export type GetAclError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an access control rule. */
 export const getAcl: API.OperationMethod<
@@ -1002,7 +1048,7 @@ export const getAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAclRequest,
   output: GetAclResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAclRequest {
@@ -1035,7 +1081,12 @@ export const UpdateAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAclResponse = AclRule;
 export const UpdateAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
 
-export type UpdateAclError = DefaultErrors;
+export type UpdateAclError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an access control rule. */
 export const updateAcl: API.OperationMethod<
@@ -1046,7 +1097,7 @@ export const updateAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAclRequest,
   output: UpdateAclResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAclRequest {
@@ -1070,7 +1121,12 @@ export const DeleteAclResponse: Schema.Schema<DeleteAclResponse> =
     {},
   ) as any as Schema.Schema<DeleteAclResponse>;
 
-export type DeleteAclError = DefaultErrors;
+export type DeleteAclError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an access control rule. */
 export const deleteAcl: API.OperationMethod<
@@ -1081,7 +1137,7 @@ export const deleteAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAclRequest,
   output: DeleteAclResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAclRequest {
@@ -1107,7 +1163,12 @@ export const InsertAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertAclResponse = AclRule;
 export const InsertAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
 
-export type InsertAclError = DefaultErrors;
+export type InsertAclError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an access control rule. */
 export const insertAcl: API.OperationMethod<
@@ -1118,7 +1179,7 @@ export const insertAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAclRequest,
   output: InsertAclResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WatchAclRequest {
@@ -1155,7 +1216,12 @@ export const WatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchAclResponse = Channel;
 export const WatchAclResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchAclError = DefaultErrors;
+export type WatchAclError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watch for changes to ACL resources. */
 export const watchAcl: API.OperationMethod<
@@ -1166,7 +1232,7 @@ export const watchAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchAclRequest,
   output: WatchAclResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAclRequest {
@@ -1196,7 +1262,7 @@ export const ListAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAclResponse = Acl;
 export const ListAclResponse = /*@__PURE__*/ /*#__PURE__*/ Acl;
 
-export type ListAclError = DefaultErrors;
+export type ListAclError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the rules in the access control list for the calendar. */
 export const listAcl: API.PaginatedOperationMethod<
@@ -1207,7 +1273,7 @@ export const listAcl: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAclRequest,
   output: ListAclResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1245,7 +1311,12 @@ export const PatchAclRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchAclResponse = AclRule;
 export const PatchAclResponse = /*@__PURE__*/ /*#__PURE__*/ AclRule;
 
-export type PatchAclError = DefaultErrors;
+export type PatchAclError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an access control rule. This method supports patch semantics. */
 export const patchAcl: API.OperationMethod<
@@ -1256,7 +1327,7 @@ export const patchAcl: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAclRequest,
   output: PatchAclResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSettingsRequest {
@@ -1274,7 +1345,7 @@ export const GetSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSettingsResponse = Setting;
 export const GetSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Setting;
 
-export type GetSettingsError = DefaultErrors;
+export type GetSettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a single user setting. */
 export const getSettings: API.OperationMethod<
@@ -1285,7 +1356,7 @@ export const getSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsRequest,
   output: GetSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WatchSettingsRequest {
@@ -1312,7 +1383,12 @@ export const WatchSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchSettingsResponse = Channel;
 export const WatchSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchSettingsError = DefaultErrors;
+export type WatchSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watch for changes to Settings resources. */
 export const watchSettings: API.OperationMethod<
@@ -1323,7 +1399,7 @@ export const watchSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchSettingsRequest,
   output: WatchSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSettingsRequest {
@@ -1347,7 +1423,7 @@ export const ListSettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListSettingsResponse = Settings;
 export const ListSettingsResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type ListSettingsError = DefaultErrors;
+export type ListSettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns all user settings for the authenticated user. */
 export const listSettings: API.PaginatedOperationMethod<
@@ -1358,7 +1434,7 @@ export const listSettings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSettingsRequest,
   output: ListSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1384,7 +1460,7 @@ export type GetCalendarListResponse = CalendarListEntry;
 export const GetCalendarListResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
 
-export type GetCalendarListError = DefaultErrors;
+export type GetCalendarListError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a calendar from the user's calendar list. */
 export const getCalendarList: API.OperationMethod<
@@ -1395,7 +1471,7 @@ export const getCalendarList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCalendarListRequest,
   output: GetCalendarListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCalendarListRequest {
@@ -1417,7 +1493,12 @@ export const DeleteCalendarListResponse: Schema.Schema<DeleteCalendarListRespons
     {},
   ) as any as Schema.Schema<DeleteCalendarListResponse>;
 
-export type DeleteCalendarListError = DefaultErrors;
+export type DeleteCalendarListError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a calendar from the user's calendar list. */
 export const deleteCalendarList: API.OperationMethod<
@@ -1428,7 +1509,7 @@ export const deleteCalendarList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCalendarListRequest,
   output: DeleteCalendarListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertCalendarListRequest {
@@ -1453,7 +1534,12 @@ export type InsertCalendarListResponse = CalendarListEntry;
 export const InsertCalendarListResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
 
-export type InsertCalendarListError = DefaultErrors;
+export type InsertCalendarListError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an existing calendar into the user's calendar list. */
 export const insertCalendarList: API.OperationMethod<
@@ -1464,7 +1550,7 @@ export const insertCalendarList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCalendarListRequest,
   output: InsertCalendarListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCalendarListRequest {
@@ -1496,7 +1582,12 @@ export type UpdateCalendarListResponse = CalendarListEntry;
 export const UpdateCalendarListResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
 
-export type UpdateCalendarListError = DefaultErrors;
+export type UpdateCalendarListError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing calendar on the user's calendar list. */
 export const updateCalendarList: API.OperationMethod<
@@ -1507,7 +1598,7 @@ export const updateCalendarList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCalendarListRequest,
   output: UpdateCalendarListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WatchCalendarListRequest {
@@ -1557,7 +1648,12 @@ export const WatchCalendarListRequest =
 export type WatchCalendarListResponse = Channel;
 export const WatchCalendarListResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchCalendarListError = DefaultErrors;
+export type WatchCalendarListError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watch for changes to CalendarList resources. */
 export const watchCalendarList: API.OperationMethod<
@@ -1568,7 +1664,7 @@ export const watchCalendarList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchCalendarListRequest,
   output: WatchCalendarListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCalendarListRequest {
@@ -1600,7 +1696,12 @@ export type PatchCalendarListResponse = CalendarListEntry;
 export const PatchCalendarListResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarListEntry;
 
-export type PatchCalendarListError = DefaultErrors;
+export type PatchCalendarListError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing calendar on the user's calendar list. This method supports patch semantics. */
 export const patchCalendarList: API.OperationMethod<
@@ -1611,7 +1712,7 @@ export const patchCalendarList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCalendarListRequest,
   output: PatchCalendarListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCalendarListRequest {
@@ -1655,7 +1756,7 @@ export type ListCalendarListResponse = CalendarList;
 export const ListCalendarListResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarList;
 
-export type ListCalendarListError = DefaultErrors;
+export type ListCalendarListError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the calendars on the user's calendar list. */
 export const listCalendarList: API.PaginatedOperationMethod<
@@ -1666,7 +1767,7 @@ export const listCalendarList: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCalendarListRequest,
   output: ListCalendarListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1692,7 +1793,12 @@ export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
     {},
   ) as any as Schema.Schema<StopChannelsResponse>;
 
-export type StopChannelsError = DefaultErrors;
+export type StopChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stop watching resources through this channel */
 export const stopChannels: API.OperationMethod<
@@ -1703,7 +1809,7 @@ export const stopChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteEventsRequest {
@@ -1735,7 +1841,12 @@ export const DeleteEventsResponse: Schema.Schema<DeleteEventsResponse> =
     {},
   ) as any as Schema.Schema<DeleteEventsResponse>;
 
-export type DeleteEventsError = DefaultErrors;
+export type DeleteEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an event. */
 export const deleteEvents: API.OperationMethod<
@@ -1746,7 +1857,7 @@ export const deleteEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventsRequest,
   output: DeleteEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertEventsRequest {
@@ -1794,7 +1905,12 @@ export const InsertEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertEventsResponse = Event;
 export const InsertEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type InsertEventsError = DefaultErrors;
+export type InsertEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an event. */
 export const insertEvents: API.OperationMethod<
@@ -1805,7 +1921,7 @@ export const insertEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertEventsRequest,
   output: InsertEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InstancesEventsRequest {
@@ -1866,7 +1982,7 @@ export const InstancesEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InstancesEventsResponse = Events;
 export const InstancesEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Events;
 
-export type InstancesEventsError = DefaultErrors;
+export type InstancesEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns instances of the specified recurring event. */
 export const instancesEvents: API.PaginatedOperationMethod<
@@ -1877,7 +1993,7 @@ export const instancesEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: InstancesEventsRequest,
   output: InstancesEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1917,7 +2033,12 @@ export const ImportEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ImportEventsResponse = Event;
 export const ImportEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type ImportEventsError = DefaultErrors;
+export type ImportEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports an event. This operation is used to add a private copy of an existing event to a calendar. Only events with an eventType of default may be imported. Deprecated behavior: If a non-default event is imported, its type will be changed to default and any event-type-specific properties it may have will be dropped. */
 export const importEvents: API.OperationMethod<
@@ -1928,7 +2049,7 @@ export const importEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportEventsRequest,
   output: ImportEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEventsRequest {
@@ -1984,7 +2105,12 @@ export const PatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchEventsResponse = Event;
 export const PatchEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type PatchEventsError = DefaultErrors;
+export type PatchEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an event. This method supports patch semantics. */
 export const patchEvents: API.OperationMethod<
@@ -1995,7 +2121,7 @@ export const patchEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEventsRequest,
   output: PatchEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveEventsRequest {
@@ -2031,7 +2157,12 @@ export const MoveEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MoveEventsResponse = Event;
 export const MoveEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type MoveEventsError = DefaultErrors;
+export type MoveEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be moved; birthday, focusTime, fromGmail, outOfOffice and workingLocation events cannot be moved. */
 export const moveEvents: API.OperationMethod<
@@ -2042,7 +2173,7 @@ export const moveEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveEventsRequest,
   output: MoveEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QuickAddEventsRequest {
@@ -2075,7 +2206,12 @@ export const QuickAddEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QuickAddEventsResponse = Event;
 export const QuickAddEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type QuickAddEventsError = DefaultErrors;
+export type QuickAddEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an event based on a simple text string. */
 export const quickAddEvents: API.OperationMethod<
@@ -2086,7 +2222,7 @@ export const quickAddEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QuickAddEventsRequest,
   output: QuickAddEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WatchEventsRequest {
@@ -2186,7 +2322,12 @@ export const WatchEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchEventsResponse = Channel;
 export const WatchEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchEventsError = DefaultErrors;
+export type WatchEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watch for changes to Events resources. */
 export const watchEvents: API.OperationMethod<
@@ -2197,7 +2338,7 @@ export const watchEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchEventsRequest,
   output: WatchEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEventsRequest {
@@ -2253,7 +2394,12 @@ export const UpdateEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateEventsResponse = Event;
 export const UpdateEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type UpdateEventsError = DefaultErrors;
+export type UpdateEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an event. */
 export const updateEvents: API.OperationMethod<
@@ -2264,7 +2410,7 @@ export const updateEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventsRequest,
   output: UpdateEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEventsRequest {
@@ -2298,7 +2444,7 @@ export const GetEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEventsResponse = Event;
 export const GetEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type GetEventsError = DefaultErrors;
+export type GetEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an event based on its Google Calendar ID. To retrieve an event using its iCalendar ID, call the events.list method using the iCalUID parameter. */
 export const getEvents: API.OperationMethod<
@@ -2309,7 +2455,7 @@ export const getEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventsRequest,
   output: GetEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEventsRequest {
@@ -2402,7 +2548,7 @@ export const ListEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListEventsResponse = Events;
 export const ListEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Events;
 
-export type ListEventsError = DefaultErrors;
+export type ListEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns events on the specified calendar. */
 export const listEvents: API.PaginatedOperationMethod<
@@ -2413,7 +2559,7 @@ export const listEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEventsRequest,
   output: ListEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2437,7 +2583,12 @@ export type QueryFreebusyResponse = FreeBusyResponse;
 export const QueryFreebusyResponse =
   /*@__PURE__*/ /*#__PURE__*/ FreeBusyResponse;
 
-export type QueryFreebusyError = DefaultErrors;
+export type QueryFreebusyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns free/busy information for a set of calendars. */
 export const queryFreebusy: API.OperationMethod<
@@ -2448,7 +2599,7 @@ export const queryFreebusy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryFreebusyRequest,
   output: QueryFreebusyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCalendarsRequest {
@@ -2466,7 +2617,7 @@ export const GetCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCalendarsResponse = Calendar;
 export const GetCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
 
-export type GetCalendarsError = DefaultErrors;
+export type GetCalendarsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns metadata for a calendar. */
 export const getCalendars: API.OperationMethod<
@@ -2477,7 +2628,7 @@ export const getCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCalendarsRequest,
   output: GetCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCalendarsRequest {
@@ -2500,7 +2651,12 @@ export const DeleteCalendarsResponse: Schema.Schema<DeleteCalendarsResponse> =
     {},
   ) as any as Schema.Schema<DeleteCalendarsResponse>;
 
-export type DeleteCalendarsError = DefaultErrors;
+export type DeleteCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars. */
 export const deleteCalendars: API.OperationMethod<
@@ -2511,7 +2667,7 @@ export const deleteCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCalendarsRequest,
   output: DeleteCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertCalendarsRequest {
@@ -2531,7 +2687,12 @@ export const InsertCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertCalendarsResponse = Calendar;
 export const InsertCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
 
-export type InsertCalendarsError = DefaultErrors;
+export type InsertCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a secondary calendar. The authenticated user for the request is made the data owner of the new calendar. Note: We recommend to authenticate as the intended data owner of the calendar. You can use domain-wide delegation of authority to allow applications to act on behalf of a specific user. Don't use a service account for authentication. If you use a service account for authentication, the service account is the data owner, which can lead to unexpected behavior. For example, if a service account is the data owner, data ownership cannot be transferred. */
 export const insertCalendars: API.OperationMethod<
@@ -2542,7 +2703,7 @@ export const insertCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCalendarsRequest,
   output: InsertCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClearCalendarsRequest {
@@ -2567,7 +2728,12 @@ export const ClearCalendarsResponse: Schema.Schema<ClearCalendarsResponse> =
     {},
   ) as any as Schema.Schema<ClearCalendarsResponse>;
 
-export type ClearCalendarsError = DefaultErrors;
+export type ClearCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account. */
 export const clearCalendars: API.OperationMethod<
@@ -2578,7 +2744,7 @@ export const clearCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearCalendarsRequest,
   output: ClearCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCalendarsRequest {
@@ -2601,7 +2767,12 @@ export const UpdateCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateCalendarsResponse = Calendar;
 export const UpdateCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
 
-export type UpdateCalendarsError = DefaultErrors;
+export type UpdateCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates metadata for a calendar. */
 export const updateCalendars: API.OperationMethod<
@@ -2612,7 +2783,7 @@ export const updateCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCalendarsRequest,
   output: UpdateCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCalendarsRequest {
@@ -2633,7 +2804,12 @@ export const PatchCalendarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchCalendarsResponse = Calendar;
 export const PatchCalendarsResponse = /*@__PURE__*/ /*#__PURE__*/ Calendar;
 
-export type PatchCalendarsError = DefaultErrors;
+export type PatchCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates metadata for a calendar. This method supports patch semantics. */
 export const patchCalendars: API.OperationMethod<
@@ -2644,7 +2820,7 @@ export const patchCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCalendarsRequest,
   output: PatchCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetColorsRequest {}
@@ -2659,7 +2835,7 @@ export const GetColorsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetColorsResponse = Colors;
 export const GetColorsResponse = /*@__PURE__*/ /*#__PURE__*/ Colors;
 
-export type GetColorsError = DefaultErrors;
+export type GetColorsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the color definitions for calendars and events. */
 export const getColors: API.OperationMethod<
@@ -2670,5 +2846,5 @@ export const getColors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetColorsRequest,
   output: GetColorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

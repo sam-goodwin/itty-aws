@@ -2496,6 +2496,52 @@ export const SendNotificationChannelVerificationCodeRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2516,7 +2562,10 @@ export type GetProjectsMetricDescriptorsResponse = MetricDescriptor;
 export const GetProjectsMetricDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MetricDescriptor;
 
-export type GetProjectsMetricDescriptorsError = DefaultErrors;
+export type GetProjectsMetricDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single metric descriptor. */
 export const getProjectsMetricDescriptors: API.OperationMethod<
@@ -2527,7 +2576,7 @@ export const getProjectsMetricDescriptors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsMetricDescriptorsRequest,
   output: GetProjectsMetricDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsMetricDescriptorsRequest {
@@ -2547,7 +2596,12 @@ export type DeleteProjectsMetricDescriptorsResponse = Empty;
 export const DeleteProjectsMetricDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsMetricDescriptorsError = DefaultErrors;
+export type DeleteProjectsMetricDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a metric descriptor. Only user-created custom metrics (https://cloud.google.com/monitoring/custom-metrics) can be deleted. */
 export const deleteProjectsMetricDescriptors: API.OperationMethod<
@@ -2558,7 +2612,7 @@ export const deleteProjectsMetricDescriptors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsMetricDescriptorsRequest,
   output: DeleteProjectsMetricDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsMetricDescriptorsRequest {
@@ -2591,7 +2645,10 @@ export type ListProjectsMetricDescriptorsResponse =
 export const ListProjectsMetricDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMetricDescriptorsResponse;
 
-export type ListProjectsMetricDescriptorsError = DefaultErrors;
+export type ListProjectsMetricDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists metric descriptors that match a filter. */
 export const listProjectsMetricDescriptors: API.PaginatedOperationMethod<
@@ -2602,7 +2659,7 @@ export const listProjectsMetricDescriptors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsMetricDescriptorsRequest,
   output: ListProjectsMetricDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2633,7 +2690,12 @@ export type CreateProjectsMetricDescriptorsResponse = MetricDescriptor;
 export const CreateProjectsMetricDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MetricDescriptor;
 
-export type CreateProjectsMetricDescriptorsError = DefaultErrors;
+export type CreateProjectsMetricDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new metric descriptor. The creation is executed asynchronously. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics). The metric descriptor is updated if it already exists, except that metric labels are never removed. */
 export const createProjectsMetricDescriptors: API.OperationMethod<
@@ -2644,7 +2706,7 @@ export const createProjectsMetricDescriptors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsMetricDescriptorsRequest,
   output: CreateProjectsMetricDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateServiceProjectsTimeSeriesRequest {
@@ -2671,7 +2733,12 @@ export type CreateServiceProjectsTimeSeriesResponse = Empty;
 export const CreateServiceProjectsTimeSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CreateServiceProjectsTimeSeriesError = DefaultErrors;
+export type CreateServiceProjectsTimeSeriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or adds data to one or more service time series. A service time series is a time series for a metric from a Google Cloud service. The response is empty if all time series in the request were written. If any time series could not be written, a corresponding failure message is included in the error response. This endpoint rejects writes to user-defined metrics. This method is only for use by Google Cloud services. Use projects.timeSeries.create instead. */
 export const createServiceProjectsTimeSeries: API.OperationMethod<
@@ -2682,7 +2749,7 @@ export const createServiceProjectsTimeSeries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServiceProjectsTimeSeriesRequest,
   output: CreateServiceProjectsTimeSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryProjectsTimeSeriesRequest {
@@ -2709,7 +2776,12 @@ export type QueryProjectsTimeSeriesResponse = QueryTimeSeriesResponse;
 export const QueryProjectsTimeSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryTimeSeriesResponse;
 
-export type QueryProjectsTimeSeriesError = DefaultErrors;
+export type QueryProjectsTimeSeriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries time series by using Monitoring Query Language (MQL). We recommend using PromQL instead of MQL. For more information about the status of MQL, see the MQL deprecation notice (https://cloud.google.com/stackdriver/docs/deprecations/mql). */
 export const queryProjectsTimeSeries: API.OperationMethod<
@@ -2720,7 +2792,7 @@ export const queryProjectsTimeSeries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryProjectsTimeSeriesRequest,
   output: QueryProjectsTimeSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTimeSeriesRequest {
@@ -2875,7 +2947,7 @@ export type ListProjectsTimeSeriesResponse = ListTimeSeriesResponse;
 export const ListProjectsTimeSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTimeSeriesResponse;
 
-export type ListProjectsTimeSeriesError = DefaultErrors;
+export type ListProjectsTimeSeriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists time series that match a filter. */
 export const listProjectsTimeSeries: API.PaginatedOperationMethod<
@@ -2886,7 +2958,7 @@ export const listProjectsTimeSeries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTimeSeriesRequest,
   output: ListProjectsTimeSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2913,7 +2985,12 @@ export type CreateProjectsTimeSeriesResponse = Empty;
 export const CreateProjectsTimeSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CreateProjectsTimeSeriesError = DefaultErrors;
+export type CreateProjectsTimeSeriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or adds data to one or more time series. The response is empty if all time series in the request were written. If any time series could not be written, a corresponding failure message is included in the error response. This method does not support resource locations constraint of an organization policy (https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations#setting_the_organization_policy). */
 export const createProjectsTimeSeries: API.OperationMethod<
@@ -2924,7 +3001,7 @@ export const createProjectsTimeSeries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTimeSeriesRequest,
   output: CreateProjectsTimeSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsMonitoredResourceDescriptorsRequest {
@@ -2954,7 +3031,10 @@ export type ListProjectsMonitoredResourceDescriptorsResponse =
 export const ListProjectsMonitoredResourceDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMonitoredResourceDescriptorsResponse;
 
-export type ListProjectsMonitoredResourceDescriptorsError = DefaultErrors;
+export type ListProjectsMonitoredResourceDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists monitored resource descriptors that match a filter. */
 export const listProjectsMonitoredResourceDescriptors: API.PaginatedOperationMethod<
@@ -2965,7 +3045,7 @@ export const listProjectsMonitoredResourceDescriptors: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsMonitoredResourceDescriptorsRequest,
   output: ListProjectsMonitoredResourceDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2990,7 +3070,10 @@ export type GetProjectsMonitoredResourceDescriptorsResponse =
 export const GetProjectsMonitoredResourceDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MonitoredResourceDescriptor;
 
-export type GetProjectsMonitoredResourceDescriptorsError = DefaultErrors;
+export type GetProjectsMonitoredResourceDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single monitored resource descriptor. */
 export const getProjectsMonitoredResourceDescriptors: API.OperationMethod<
@@ -3001,7 +3084,7 @@ export const getProjectsMonitoredResourceDescriptors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsMonitoredResourceDescriptorsRequest,
   output: GetProjectsMonitoredResourceDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsSnoozesRequest {
@@ -3023,7 +3106,12 @@ export const CreateProjectsSnoozesRequest =
 export type CreateProjectsSnoozesResponse = Snooze;
 export const CreateProjectsSnoozesResponse = /*@__PURE__*/ /*#__PURE__*/ Snooze;
 
-export type CreateProjectsSnoozesError = DefaultErrors;
+export type CreateProjectsSnoozesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Snooze that will prevent alerts, which match the provided criteria, from being opened. The Snooze applies for a specific time interval. */
 export const createProjectsSnoozes: API.OperationMethod<
@@ -3034,7 +3122,7 @@ export const createProjectsSnoozes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSnoozesRequest,
   output: CreateProjectsSnoozesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSnoozesRequest {
@@ -3063,7 +3151,7 @@ export type ListProjectsSnoozesResponse = ListSnoozesResponse;
 export const ListProjectsSnoozesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSnoozesResponse;
 
-export type ListProjectsSnoozesError = DefaultErrors;
+export type ListProjectsSnoozesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the Snoozes associated with a project. Can optionally pass in filter, which specifies predicates to match Snoozes. */
 export const listProjectsSnoozes: API.PaginatedOperationMethod<
@@ -3074,7 +3162,7 @@ export const listProjectsSnoozes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSnoozesRequest,
   output: ListProjectsSnoozesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3103,7 +3191,12 @@ export const PatchProjectsSnoozesRequest =
 export type PatchProjectsSnoozesResponse = Snooze;
 export const PatchProjectsSnoozesResponse = /*@__PURE__*/ /*#__PURE__*/ Snooze;
 
-export type PatchProjectsSnoozesError = DefaultErrors;
+export type PatchProjectsSnoozesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Snooze, identified by its name, with the parameters in the given Snooze object. */
 export const patchProjectsSnoozes: API.OperationMethod<
@@ -3114,7 +3207,7 @@ export const patchProjectsSnoozes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSnoozesRequest,
   output: PatchProjectsSnoozesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSnoozesRequest {
@@ -3133,7 +3226,7 @@ export const GetProjectsSnoozesRequest =
 export type GetProjectsSnoozesResponse = Snooze;
 export const GetProjectsSnoozesResponse = /*@__PURE__*/ /*#__PURE__*/ Snooze;
 
-export type GetProjectsSnoozesError = DefaultErrors;
+export type GetProjectsSnoozesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a Snooze by name. */
 export const getProjectsSnoozes: API.OperationMethod<
@@ -3144,7 +3237,7 @@ export const getProjectsSnoozes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSnoozesRequest,
   output: GetProjectsSnoozesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsUptimeCheckConfigsRequest {
@@ -3171,7 +3264,12 @@ export type CreateProjectsUptimeCheckConfigsResponse = UptimeCheckConfig;
 export const CreateProjectsUptimeCheckConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UptimeCheckConfig;
 
-export type CreateProjectsUptimeCheckConfigsError = DefaultErrors;
+export type CreateProjectsUptimeCheckConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Uptime check configuration. */
 export const createProjectsUptimeCheckConfigs: API.OperationMethod<
@@ -3182,7 +3280,7 @@ export const createProjectsUptimeCheckConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsUptimeCheckConfigsRequest,
   output: CreateProjectsUptimeCheckConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsUptimeCheckConfigsRequest {
@@ -3208,7 +3306,12 @@ export type PatchProjectsUptimeCheckConfigsResponse = UptimeCheckConfig;
 export const PatchProjectsUptimeCheckConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UptimeCheckConfig;
 
-export type PatchProjectsUptimeCheckConfigsError = DefaultErrors;
+export type PatchProjectsUptimeCheckConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an Uptime check configuration. You can either replace the entire configuration with a new one or replace only certain fields in the current configuration by specifying the fields to be updated via updateMask. Returns the updated configuration. */
 export const patchProjectsUptimeCheckConfigs: API.OperationMethod<
@@ -3219,7 +3322,7 @@ export const patchProjectsUptimeCheckConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsUptimeCheckConfigsRequest,
   output: PatchProjectsUptimeCheckConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsUptimeCheckConfigsRequest {
@@ -3249,7 +3352,10 @@ export type ListProjectsUptimeCheckConfigsResponse =
 export const ListProjectsUptimeCheckConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUptimeCheckConfigsResponse;
 
-export type ListProjectsUptimeCheckConfigsError = DefaultErrors;
+export type ListProjectsUptimeCheckConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the existing valid Uptime check configurations for the project (leaving out any invalid configurations). */
 export const listProjectsUptimeCheckConfigs: API.PaginatedOperationMethod<
@@ -3260,7 +3366,7 @@ export const listProjectsUptimeCheckConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsUptimeCheckConfigsRequest,
   output: ListProjectsUptimeCheckConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3284,7 +3390,12 @@ export type DeleteProjectsUptimeCheckConfigsResponse = Empty;
 export const DeleteProjectsUptimeCheckConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsUptimeCheckConfigsError = DefaultErrors;
+export type DeleteProjectsUptimeCheckConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an Uptime check configuration. Note that this method will fail if the Uptime check configuration is referenced by an alert policy or other dependent configs that would be rendered invalid by the deletion. */
 export const deleteProjectsUptimeCheckConfigs: API.OperationMethod<
@@ -3295,7 +3406,7 @@ export const deleteProjectsUptimeCheckConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsUptimeCheckConfigsRequest,
   output: DeleteProjectsUptimeCheckConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsUptimeCheckConfigsRequest {
@@ -3315,7 +3426,10 @@ export type GetProjectsUptimeCheckConfigsResponse = UptimeCheckConfig;
 export const GetProjectsUptimeCheckConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UptimeCheckConfig;
 
-export type GetProjectsUptimeCheckConfigsError = DefaultErrors;
+export type GetProjectsUptimeCheckConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single Uptime check configuration. */
 export const getProjectsUptimeCheckConfigs: API.OperationMethod<
@@ -3326,7 +3440,7 @@ export const getProjectsUptimeCheckConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsUptimeCheckConfigsRequest,
   output: GetProjectsUptimeCheckConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsGroupsRequest {
@@ -3367,7 +3481,7 @@ export type ListProjectsGroupsResponse = ListGroupsResponse;
 export const ListProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGroupsResponse;
 
-export type ListProjectsGroupsError = DefaultErrors;
+export type ListProjectsGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the existing groups. */
 export const listProjectsGroups: API.PaginatedOperationMethod<
@@ -3378,7 +3492,7 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGroupsRequest,
   output: ListProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3401,7 +3515,7 @@ export const GetProjectsGroupsRequest =
 export type GetProjectsGroupsResponse = Group;
 export const GetProjectsGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type GetProjectsGroupsError = DefaultErrors;
+export type GetProjectsGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a single group. */
 export const getProjectsGroups: API.OperationMethod<
@@ -3412,7 +3526,7 @@ export const getProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsGroupsRequest,
   output: GetProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsGroupsRequest {
@@ -3434,7 +3548,12 @@ export const DeleteProjectsGroupsRequest =
 export type DeleteProjectsGroupsResponse = Empty;
 export const DeleteProjectsGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsGroupsError = DefaultErrors;
+export type DeleteProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing group. */
 export const deleteProjectsGroups: API.OperationMethod<
@@ -3445,7 +3564,7 @@ export const deleteProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsGroupsRequest,
   output: DeleteProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsGroupsRequest {
@@ -3472,7 +3591,12 @@ export const CreateProjectsGroupsRequest =
 export type CreateProjectsGroupsResponse = Group;
 export const CreateProjectsGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type CreateProjectsGroupsError = DefaultErrors;
+export type CreateProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new group. */
 export const createProjectsGroups: API.OperationMethod<
@@ -3483,7 +3607,7 @@ export const createProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsGroupsRequest,
   output: CreateProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsGroupsRequest {
@@ -3510,7 +3634,12 @@ export const UpdateProjectsGroupsRequest =
 export type UpdateProjectsGroupsResponse = Group;
 export const UpdateProjectsGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type UpdateProjectsGroupsError = DefaultErrors;
+export type UpdateProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing group. You can change any group attributes except name. */
 export const updateProjectsGroups: API.OperationMethod<
@@ -3521,7 +3650,7 @@ export const updateProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsGroupsRequest,
   output: UpdateProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsGroupsMembersRequest {
@@ -3560,7 +3689,10 @@ export type ListProjectsGroupsMembersResponse = ListGroupMembersResponse;
 export const ListProjectsGroupsMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGroupMembersResponse;
 
-export type ListProjectsGroupsMembersError = DefaultErrors;
+export type ListProjectsGroupsMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the monitored resources that are members of a group. */
 export const listProjectsGroupsMembers: API.PaginatedOperationMethod<
@@ -3571,7 +3703,7 @@ export const listProjectsGroupsMembers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGroupsMembersRequest,
   output: ListProjectsGroupsMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3602,7 +3734,10 @@ export type ListProjectsNotificationChannelDescriptorsResponse =
 export const ListProjectsNotificationChannelDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotificationChannelDescriptorsResponse;
 
-export type ListProjectsNotificationChannelDescriptorsError = DefaultErrors;
+export type ListProjectsNotificationChannelDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the descriptors for supported channel types. The use of descriptors makes it possible for new channel types to be dynamically added. */
 export const listProjectsNotificationChannelDescriptors: API.PaginatedOperationMethod<
@@ -3613,7 +3748,7 @@ export const listProjectsNotificationChannelDescriptors: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotificationChannelDescriptorsRequest,
   output: ListProjectsNotificationChannelDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3638,7 +3773,10 @@ export type GetProjectsNotificationChannelDescriptorsResponse =
 export const GetProjectsNotificationChannelDescriptorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationChannelDescriptor;
 
-export type GetProjectsNotificationChannelDescriptorsError = DefaultErrors;
+export type GetProjectsNotificationChannelDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single channel descriptor. The descriptor indicates which fields are expected / permitted for a notification channel of the given type. */
 export const getProjectsNotificationChannelDescriptors: API.OperationMethod<
@@ -3649,7 +3787,7 @@ export const getProjectsNotificationChannelDescriptors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsNotificationChannelDescriptorsRequest,
   output: GetProjectsNotificationChannelDescriptorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAlertsRequest {
@@ -3681,7 +3819,7 @@ export type ListProjectsAlertsResponse = ListAlertsResponse;
 export const ListProjectsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAlertsResponse;
 
-export type ListProjectsAlertsError = DefaultErrors;
+export type ListProjectsAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the existing alerts for the metrics scope of the project. */
 export const listProjectsAlerts: API.PaginatedOperationMethod<
@@ -3692,7 +3830,7 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAlertsRequest,
   output: ListProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3715,7 +3853,7 @@ export const GetProjectsAlertsRequest =
 export type GetProjectsAlertsResponse = Alert;
 export const GetProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type GetProjectsAlertsError = DefaultErrors;
+export type GetProjectsAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a single alert. */
 export const getProjectsAlerts: API.OperationMethod<
@@ -3726,7 +3864,7 @@ export const getProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAlertsRequest,
   output: GetProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsNotificationChannelsRequest {
@@ -3749,7 +3887,12 @@ export type DeleteProjectsNotificationChannelsResponse = Empty;
 export const DeleteProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsNotificationChannelsError = DefaultErrors;
+export type DeleteProjectsNotificationChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a notification channel.Design your application to single-thread API calls that modify the state of notification channels in a single project. This includes calls to CreateNotificationChannel, DeleteNotificationChannel and UpdateNotificationChannel. */
 export const deleteProjectsNotificationChannels: API.OperationMethod<
@@ -3760,7 +3903,7 @@ export const deleteProjectsNotificationChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsNotificationChannelsRequest,
   output: DeleteProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsNotificationChannelsRequest {
@@ -3780,7 +3923,10 @@ export type GetProjectsNotificationChannelsResponse = NotificationChannel;
 export const GetProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationChannel;
 
-export type GetProjectsNotificationChannelsError = DefaultErrors;
+export type GetProjectsNotificationChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single notification channel. The channel includes the relevant configuration details with which the channel was created. However, the response may truncate or omit passwords, API keys, or other private key matter and thus the response may not be 100% identical to the information that was supplied in the call to the create method. */
 export const getProjectsNotificationChannels: API.OperationMethod<
@@ -3791,7 +3937,7 @@ export const getProjectsNotificationChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsNotificationChannelsRequest,
   output: GetProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SendVerificationCodeProjectsNotificationChannelsRequest {
@@ -3821,7 +3967,11 @@ export const SendVerificationCodeProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type SendVerificationCodeProjectsNotificationChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Causes a verification code to be delivered to the channel. The code can then be supplied in VerifyNotificationChannel to verify the channel. */
 export const sendVerificationCodeProjectsNotificationChannels: API.OperationMethod<
@@ -3832,7 +3982,7 @@ export const sendVerificationCodeProjectsNotificationChannels: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendVerificationCodeProjectsNotificationChannelsRequest,
   output: SendVerificationCodeProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsNotificationChannelsRequest {
@@ -3865,7 +4015,10 @@ export type ListProjectsNotificationChannelsResponse =
 export const ListProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotificationChannelsResponse;
 
-export type ListProjectsNotificationChannelsError = DefaultErrors;
+export type ListProjectsNotificationChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the notification channels that have been created for the project. To list the types of notification channels that are supported, use the ListNotificationChannelDescriptors method. */
 export const listProjectsNotificationChannels: API.PaginatedOperationMethod<
@@ -3876,7 +4029,7 @@ export const listProjectsNotificationChannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotificationChannelsRequest,
   output: ListProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3903,7 +4056,12 @@ export type VerifyProjectsNotificationChannelsResponse = NotificationChannel;
 export const VerifyProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationChannel;
 
-export type VerifyProjectsNotificationChannelsError = DefaultErrors;
+export type VerifyProjectsNotificationChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies a NotificationChannel by proving receipt of the code delivered to the channel as a result of calling SendNotificationChannelVerificationCode. */
 export const verifyProjectsNotificationChannels: API.OperationMethod<
@@ -3914,7 +4072,7 @@ export const verifyProjectsNotificationChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyProjectsNotificationChannelsRequest,
   output: VerifyProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVerificationCodeProjectsNotificationChannelsRequest {
@@ -3945,7 +4103,11 @@ export const GetVerificationCodeProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetNotificationChannelVerificationCodeResponse;
 
 export type GetVerificationCodeProjectsNotificationChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests a verification code for an already verified channel that can then be used in a call to VerifyNotificationChannel() on a different channel with an equivalent identity in the same or in a different project. This makes it possible to copy a channel between projects without requiring manual reverification of the channel. If the channel is not in the verified state, this method will fail (in other words, this may only be used if the SendNotificationChannelVerificationCode and VerifyNotificationChannel paths have already been used to put the given channel into the verified state).There is no guarantee that the verification codes returned by this method will be of a similar structure or form as the ones that are delivered to the channel via SendNotificationChannelVerificationCode; while VerifyNotificationChannel() will recognize both the codes delivered via SendNotificationChannelVerificationCode() and returned from GetNotificationChannelVerificationCode(), it is typically the case that the verification codes delivered via SendNotificationChannelVerificationCode() will be shorter and also have a shorter expiration (e.g. codes such as "G-123456") whereas GetVerificationCode() will typically return a much longer, websafe base 64 encoded string that has a longer expiration time. */
 export const getVerificationCodeProjectsNotificationChannels: API.OperationMethod<
@@ -3956,7 +4118,7 @@ export const getVerificationCodeProjectsNotificationChannels: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVerificationCodeProjectsNotificationChannelsRequest,
   output: GetVerificationCodeProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsNotificationChannelsRequest {
@@ -3983,7 +4145,12 @@ export type CreateProjectsNotificationChannelsResponse = NotificationChannel;
 export const CreateProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationChannel;
 
-export type CreateProjectsNotificationChannelsError = DefaultErrors;
+export type CreateProjectsNotificationChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.Design your application to single-thread API calls that modify the state of notification channels in a single project. This includes calls to CreateNotificationChannel, DeleteNotificationChannel and UpdateNotificationChannel. */
 export const createProjectsNotificationChannels: API.OperationMethod<
@@ -3994,7 +4161,7 @@ export const createProjectsNotificationChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsNotificationChannelsRequest,
   output: CreateProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsNotificationChannelsRequest {
@@ -4020,7 +4187,12 @@ export type PatchProjectsNotificationChannelsResponse = NotificationChannel;
 export const PatchProjectsNotificationChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationChannel;
 
-export type PatchProjectsNotificationChannelsError = DefaultErrors;
+export type PatchProjectsNotificationChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a notification channel. Fields not specified in the field mask remain unchanged.Design your application to single-thread API calls that modify the state of notification channels in a single project. This includes calls to CreateNotificationChannel, DeleteNotificationChannel and UpdateNotificationChannel. */
 export const patchProjectsNotificationChannels: API.OperationMethod<
@@ -4031,7 +4203,7 @@ export const patchProjectsNotificationChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsNotificationChannelsRequest,
   output: PatchProjectsNotificationChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsCollectdTimeSeriesRequest {
@@ -4059,7 +4231,12 @@ export type CreateProjectsCollectdTimeSeriesResponse =
 export const CreateProjectsCollectdTimeSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateCollectdTimeSeriesResponse;
 
-export type CreateProjectsCollectdTimeSeriesError = DefaultErrors;
+export type CreateProjectsCollectdTimeSeriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cloud Monitoring Agent only: Creates a new time series.This method is only for use by the Cloud Monitoring Agent. Use projects.timeSeries.create instead. */
 export const createProjectsCollectdTimeSeries: API.OperationMethod<
@@ -4070,7 +4247,7 @@ export const createProjectsCollectdTimeSeries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsCollectdTimeSeriesRequest,
   output: CreateProjectsCollectdTimeSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsAlertPoliciesRequest {
@@ -4090,7 +4267,12 @@ export type DeleteProjectsAlertPoliciesResponse = Empty;
 export const DeleteProjectsAlertPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsAlertPoliciesError = DefaultErrors;
+export type DeleteProjectsAlertPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy. */
 export const deleteProjectsAlertPolicies: API.OperationMethod<
@@ -4101,7 +4283,7 @@ export const deleteProjectsAlertPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAlertPoliciesRequest,
   output: DeleteProjectsAlertPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAlertPoliciesRequest {
@@ -4121,7 +4303,10 @@ export type GetProjectsAlertPoliciesResponse = AlertPolicy;
 export const GetProjectsAlertPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AlertPolicy;
 
-export type GetProjectsAlertPoliciesError = DefaultErrors;
+export type GetProjectsAlertPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single alerting policy. */
 export const getProjectsAlertPolicies: API.OperationMethod<
@@ -4132,7 +4317,7 @@ export const getProjectsAlertPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAlertPoliciesRequest,
   output: GetProjectsAlertPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAlertPoliciesRequest {
@@ -4164,7 +4349,10 @@ export type ListProjectsAlertPoliciesResponse = ListAlertPoliciesResponse;
 export const ListProjectsAlertPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAlertPoliciesResponse;
 
-export type ListProjectsAlertPoliciesError = DefaultErrors;
+export type ListProjectsAlertPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the existing alerting policies for the workspace. */
 export const listProjectsAlertPolicies: API.PaginatedOperationMethod<
@@ -4175,7 +4363,7 @@ export const listProjectsAlertPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAlertPoliciesRequest,
   output: ListProjectsAlertPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4202,7 +4390,12 @@ export type CreateProjectsAlertPoliciesResponse = AlertPolicy;
 export const CreateProjectsAlertPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AlertPolicy;
 
-export type CreateProjectsAlertPoliciesError = DefaultErrors;
+export type CreateProjectsAlertPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy. */
 export const createProjectsAlertPolicies: API.OperationMethod<
@@ -4213,7 +4406,7 @@ export const createProjectsAlertPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAlertPoliciesRequest,
   output: CreateProjectsAlertPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsAlertPoliciesRequest {
@@ -4239,7 +4432,12 @@ export type PatchProjectsAlertPoliciesResponse = AlertPolicy;
 export const PatchProjectsAlertPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AlertPolicy;
 
-export type PatchProjectsAlertPoliciesError = DefaultErrors;
+export type PatchProjectsAlertPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an alerting policy. You can either replace the entire policy with a new one or replace only certain fields in the current alerting policy by specifying the fields to be updated via updateMask. Returns the updated alerting policy.Design your application to single-thread API calls that modify the state of alerting policies in a single project. This includes calls to CreateAlertPolicy, DeleteAlertPolicy and UpdateAlertPolicy. */
 export const patchProjectsAlertPolicies: API.OperationMethod<
@@ -4250,7 +4448,7 @@ export const patchProjectsAlertPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAlertPoliciesRequest,
   output: PatchProjectsAlertPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsTimeSeriesRequest {
@@ -4405,7 +4603,10 @@ export type ListOrganizationsTimeSeriesResponse = ListTimeSeriesResponse;
 export const ListOrganizationsTimeSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTimeSeriesResponse;
 
-export type ListOrganizationsTimeSeriesError = DefaultErrors;
+export type ListOrganizationsTimeSeriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists time series that match a filter. */
 export const listOrganizationsTimeSeries: API.PaginatedOperationMethod<
@@ -4416,7 +4617,7 @@ export const listOrganizationsTimeSeries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsTimeSeriesRequest,
   output: ListOrganizationsTimeSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4575,7 +4776,7 @@ export type ListFoldersTimeSeriesResponse = ListTimeSeriesResponse;
 export const ListFoldersTimeSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTimeSeriesResponse;
 
-export type ListFoldersTimeSeriesError = DefaultErrors;
+export type ListFoldersTimeSeriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists time series that match a filter. */
 export const listFoldersTimeSeries: API.PaginatedOperationMethod<
@@ -4586,7 +4787,7 @@ export const listFoldersTimeSeries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersTimeSeriesRequest,
   output: ListFoldersTimeSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4614,7 +4815,12 @@ export const CreateServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateServicesResponse = Service;
 export const CreateServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type CreateServicesError = DefaultErrors;
+export type CreateServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a Service. */
 export const createServices: API.OperationMethod<
@@ -4625,7 +4831,7 @@ export const createServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesRequest,
   output: CreateServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServicesRequest {
@@ -4649,7 +4855,12 @@ export const PatchServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchServicesResponse = Service;
 export const PatchServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type PatchServicesError = DefaultErrors;
+export type PatchServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update this Service. */
 export const patchServices: API.OperationMethod<
@@ -4660,7 +4871,7 @@ export const patchServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServicesRequest,
   output: PatchServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesRequest {
@@ -4688,7 +4899,7 @@ export type ListServicesResponse_Op = ListServicesResponse;
 export const ListServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListServicesError = DefaultErrors;
+export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** List Services for this Metrics Scope. */
 export const listServices: API.PaginatedOperationMethod<
@@ -4699,7 +4910,7 @@ export const listServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4721,7 +4932,12 @@ export const DeleteServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteServicesResponse = Empty;
 export const DeleteServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteServicesError = DefaultErrors;
+export type DeleteServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Soft delete this Service. */
 export const deleteServices: API.OperationMethod<
@@ -4732,7 +4948,7 @@ export const deleteServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesRequest,
   output: DeleteServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServicesRequest {
@@ -4750,7 +4966,7 @@ export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetServicesResponse = Service;
 export const GetServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type GetServicesError = DefaultErrors;
+export type GetServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the named Service. */
 export const getServices: API.OperationMethod<
@@ -4761,7 +4977,7 @@ export const getServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesRequest,
   output: GetServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteServicesServiceLevelObjectivesRequest {
@@ -4781,7 +4997,12 @@ export type DeleteServicesServiceLevelObjectivesResponse = Empty;
 export const DeleteServicesServiceLevelObjectivesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteServicesServiceLevelObjectivesError = DefaultErrors;
+export type DeleteServicesServiceLevelObjectivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete the given ServiceLevelObjective. */
 export const deleteServicesServiceLevelObjectives: API.OperationMethod<
@@ -4792,7 +5013,7 @@ export const deleteServicesServiceLevelObjectives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesServiceLevelObjectivesRequest,
   output: DeleteServicesServiceLevelObjectivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServicesServiceLevelObjectivesRequest {
@@ -4815,7 +5036,10 @@ export type GetServicesServiceLevelObjectivesResponse = ServiceLevelObjective;
 export const GetServicesServiceLevelObjectivesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceLevelObjective;
 
-export type GetServicesServiceLevelObjectivesError = DefaultErrors;
+export type GetServicesServiceLevelObjectivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a ServiceLevelObjective by name. */
 export const getServicesServiceLevelObjectives: API.OperationMethod<
@@ -4826,7 +5050,7 @@ export const getServicesServiceLevelObjectives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesServiceLevelObjectivesRequest,
   output: GetServicesServiceLevelObjectivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListServicesServiceLevelObjectivesRequest {
@@ -4859,7 +5083,10 @@ export type ListServicesServiceLevelObjectivesResponse =
 export const ListServicesServiceLevelObjectivesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServiceLevelObjectivesResponse;
 
-export type ListServicesServiceLevelObjectivesError = DefaultErrors;
+export type ListServicesServiceLevelObjectivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the ServiceLevelObjectives for the given Service. */
 export const listServicesServiceLevelObjectives: API.PaginatedOperationMethod<
@@ -4870,7 +5097,7 @@ export const listServicesServiceLevelObjectives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesServiceLevelObjectivesRequest,
   output: ListServicesServiceLevelObjectivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4907,7 +5134,12 @@ export type CreateServicesServiceLevelObjectivesResponse =
 export const CreateServicesServiceLevelObjectivesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceLevelObjective;
 
-export type CreateServicesServiceLevelObjectivesError = DefaultErrors;
+export type CreateServicesServiceLevelObjectivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a ServiceLevelObjective for the given Service. */
 export const createServicesServiceLevelObjectives: API.OperationMethod<
@@ -4918,7 +5150,7 @@ export const createServicesServiceLevelObjectives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesServiceLevelObjectivesRequest,
   output: CreateServicesServiceLevelObjectivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServicesServiceLevelObjectivesRequest {
@@ -4944,7 +5176,12 @@ export type PatchServicesServiceLevelObjectivesResponse = ServiceLevelObjective;
 export const PatchServicesServiceLevelObjectivesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceLevelObjective;
 
-export type PatchServicesServiceLevelObjectivesError = DefaultErrors;
+export type PatchServicesServiceLevelObjectivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the given ServiceLevelObjective. */
 export const patchServicesServiceLevelObjectives: API.OperationMethod<
@@ -4955,7 +5192,7 @@ export const patchServicesServiceLevelObjectives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServicesServiceLevelObjectivesRequest,
   output: PatchServicesServiceLevelObjectivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUptimeCheckIpsRequest {
@@ -4978,7 +5215,7 @@ export type ListUptimeCheckIpsResponse_Op = ListUptimeCheckIpsResponse;
 export const ListUptimeCheckIpsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListUptimeCheckIpsResponse;
 
-export type ListUptimeCheckIpsError = DefaultErrors;
+export type ListUptimeCheckIpsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the list of IP addresses that checkers run from. */
 export const listUptimeCheckIps: API.PaginatedOperationMethod<
@@ -4989,7 +5226,7 @@ export const listUptimeCheckIps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUptimeCheckIpsRequest,
   output: ListUptimeCheckIpsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -241,6 +241,52 @@ export const TestIamPermissionsResponse =
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -273,7 +319,12 @@ export type CreateProjectsLocationsConnectionsResponse = Connection;
 export const CreateProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Connection;
 
-export type CreateProjectsLocationsConnectionsError = DefaultErrors;
+export type CreateProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new connection. */
 export const createProjectsLocationsConnections: API.OperationMethod<
@@ -284,7 +335,7 @@ export const createProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsConnectionsRequest,
   output: CreateProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsConnectionsRequest {
@@ -304,7 +355,10 @@ export type GetProjectsLocationsConnectionsResponse = Connection;
 export const GetProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Connection;
 
-export type GetProjectsLocationsConnectionsError = DefaultErrors;
+export type GetProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns specified connection. */
 export const getProjectsLocationsConnections: API.OperationMethod<
@@ -315,7 +369,7 @@ export const getProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionsRequest,
   output: GetProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsConnectionsRequest {
@@ -341,7 +395,10 @@ export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
 export const ListProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectionsResponse;
 
-export type ListProjectsLocationsConnectionsError = DefaultErrors;
+export type ListProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of connections in the given project. */
 export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
@@ -352,7 +409,7 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRequest,
   output: ListProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -382,7 +439,12 @@ export type PatchProjectsLocationsConnectionsResponse = Connection;
 export const PatchProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Connection;
 
-export type PatchProjectsLocationsConnectionsError = DefaultErrors;
+export type PatchProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified connection. For security reasons, also resets credential if connection properties are in the update field mask. */
 export const patchProjectsLocationsConnections: API.OperationMethod<
@@ -393,7 +455,7 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionsRequest,
   output: PatchProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCredentialProjectsLocationsConnectionsRequest {
@@ -416,7 +478,12 @@ export type UpdateCredentialProjectsLocationsConnectionsResponse = Empty;
 export const UpdateCredentialProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UpdateCredentialProjectsLocationsConnectionsError = DefaultErrors;
+export type UpdateCredentialProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the credential for the specified connection. */
 export const updateCredentialProjectsLocationsConnections: API.OperationMethod<
@@ -427,7 +494,7 @@ export const updateCredentialProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCredentialProjectsLocationsConnectionsRequest,
   output: UpdateCredentialProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsConnectionsRequest {
@@ -447,7 +514,12 @@ export type DeleteProjectsLocationsConnectionsResponse = Empty;
 export const DeleteProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsConnectionsError = DefaultErrors;
+export type DeleteProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes connection and associated credential. */
 export const deleteProjectsLocationsConnections: API.OperationMethod<
@@ -458,7 +530,7 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsConnectionsRequest,
   output: DeleteProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsConnectionsRequest {
@@ -485,7 +557,12 @@ export type GetIamPolicyProjectsLocationsConnectionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsConnectionsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
@@ -496,7 +573,7 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsConnectionsRequest,
   output: GetIamPolicyProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsConnectionsRequest {
@@ -523,7 +600,12 @@ export type SetIamPolicyProjectsLocationsConnectionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsConnectionsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
@@ -534,7 +616,7 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsConnectionsRequest,
   output: SetIamPolicyProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
@@ -562,7 +644,12 @@ export type TestIamPermissionsProjectsLocationsConnectionsResponse =
 export const TestIamPermissionsProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsConnectionsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod<
@@ -573,5 +660,5 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsConnectionsRequest,
   output: TestIamPermissionsProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

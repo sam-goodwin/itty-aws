@@ -38,6 +38,31 @@ export const SearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SearchResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -79,7 +104,7 @@ export type SearchEntitiesResponse = SearchResponse;
 export const SearchEntitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchResponse;
 
-export type SearchEntitiesError = DefaultErrors;
+export type SearchEntitiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org */
 export const searchEntities: API.OperationMethod<
@@ -90,5 +115,5 @@ export const searchEntities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchEntitiesRequest,
   output: SearchEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

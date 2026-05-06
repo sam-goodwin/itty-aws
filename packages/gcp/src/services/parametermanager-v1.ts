@@ -189,6 +189,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -223,7 +269,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -234,7 +280,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -258,7 +304,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -269,7 +315,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsParametersRequest {
@@ -289,7 +335,10 @@ export type GetProjectsLocationsParametersResponse = Parameter;
 export const GetProjectsLocationsParametersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Parameter;
 
-export type GetProjectsLocationsParametersError = DefaultErrors;
+export type GetProjectsLocationsParametersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Parameter. */
 export const getProjectsLocationsParameters: API.OperationMethod<
@@ -300,7 +349,7 @@ export const getProjectsLocationsParameters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsParametersRequest,
   output: GetProjectsLocationsParametersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsParametersRequest {
@@ -323,7 +372,12 @@ export type DeleteProjectsLocationsParametersResponse = Empty;
 export const DeleteProjectsLocationsParametersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsParametersError = DefaultErrors;
+export type DeleteProjectsLocationsParametersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Parameter. */
 export const deleteProjectsLocationsParameters: API.OperationMethod<
@@ -334,7 +388,7 @@ export const deleteProjectsLocationsParameters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsParametersRequest,
   output: DeleteProjectsLocationsParametersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsParametersRequest {
@@ -366,7 +420,10 @@ export type ListProjectsLocationsParametersResponse = ListParametersResponse;
 export const ListProjectsLocationsParametersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListParametersResponse;
 
-export type ListProjectsLocationsParametersError = DefaultErrors;
+export type ListProjectsLocationsParametersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Parameters in a given project and location. */
 export const listProjectsLocationsParameters: API.PaginatedOperationMethod<
@@ -377,7 +434,7 @@ export const listProjectsLocationsParameters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsParametersRequest,
   output: ListProjectsLocationsParametersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -412,7 +469,12 @@ export type CreateProjectsLocationsParametersResponse = Parameter;
 export const CreateProjectsLocationsParametersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Parameter;
 
-export type CreateProjectsLocationsParametersError = DefaultErrors;
+export type CreateProjectsLocationsParametersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Parameter in a given project and location. */
 export const createProjectsLocationsParameters: API.OperationMethod<
@@ -423,7 +485,7 @@ export const createProjectsLocationsParameters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsParametersRequest,
   output: CreateProjectsLocationsParametersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsParametersRequest {
@@ -452,7 +514,12 @@ export type PatchProjectsLocationsParametersResponse = Parameter;
 export const PatchProjectsLocationsParametersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Parameter;
 
-export type PatchProjectsLocationsParametersError = DefaultErrors;
+export type PatchProjectsLocationsParametersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a single Parameter. */
 export const patchProjectsLocationsParameters: API.OperationMethod<
@@ -463,7 +530,7 @@ export const patchProjectsLocationsParameters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsParametersRequest,
   output: PatchProjectsLocationsParametersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsParametersVersionsRequest {
@@ -496,7 +563,10 @@ export type ListProjectsLocationsParametersVersionsResponse =
 export const ListProjectsLocationsParametersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListParameterVersionsResponse;
 
-export type ListProjectsLocationsParametersVersionsError = DefaultErrors;
+export type ListProjectsLocationsParametersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists ParameterVersions in a given project, location, and parameter. */
 export const listProjectsLocationsParametersVersions: API.PaginatedOperationMethod<
@@ -507,7 +577,7 @@ export const listProjectsLocationsParametersVersions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsParametersVersionsRequest,
   output: ListProjectsLocationsParametersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -543,7 +613,12 @@ export type CreateProjectsLocationsParametersVersionsResponse =
 export const CreateProjectsLocationsParametersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ParameterVersion;
 
-export type CreateProjectsLocationsParametersVersionsError = DefaultErrors;
+export type CreateProjectsLocationsParametersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ParameterVersion in a given project, location, and parameter. */
 export const createProjectsLocationsParametersVersions: API.OperationMethod<
@@ -554,7 +629,7 @@ export const createProjectsLocationsParametersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsParametersVersionsRequest,
   output: CreateProjectsLocationsParametersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsParametersVersionsRequest {
@@ -583,7 +658,12 @@ export type PatchProjectsLocationsParametersVersionsResponse = ParameterVersion;
 export const PatchProjectsLocationsParametersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ParameterVersion;
 
-export type PatchProjectsLocationsParametersVersionsError = DefaultErrors;
+export type PatchProjectsLocationsParametersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a single ParameterVersion. */
 export const patchProjectsLocationsParametersVersions: API.OperationMethod<
@@ -594,7 +674,7 @@ export const patchProjectsLocationsParametersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsParametersVersionsRequest,
   output: PatchProjectsLocationsParametersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsParametersVersionsRequest {
@@ -617,7 +697,10 @@ export type GetProjectsLocationsParametersVersionsResponse = ParameterVersion;
 export const GetProjectsLocationsParametersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ParameterVersion;
 
-export type GetProjectsLocationsParametersVersionsError = DefaultErrors;
+export type GetProjectsLocationsParametersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single ParameterVersion. */
 export const getProjectsLocationsParametersVersions: API.OperationMethod<
@@ -628,7 +711,7 @@ export const getProjectsLocationsParametersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsParametersVersionsRequest,
   output: GetProjectsLocationsParametersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsParametersVersionsRequest {
@@ -651,7 +734,12 @@ export type DeleteProjectsLocationsParametersVersionsResponse = Empty;
 export const DeleteProjectsLocationsParametersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsParametersVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsParametersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single ParameterVersion. */
 export const deleteProjectsLocationsParametersVersions: API.OperationMethod<
@@ -662,7 +750,7 @@ export const deleteProjectsLocationsParametersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsParametersVersionsRequest,
   output: DeleteProjectsLocationsParametersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenderProjectsLocationsParametersVersionsRequest {
@@ -683,7 +771,10 @@ export type RenderProjectsLocationsParametersVersionsResponse =
 export const RenderProjectsLocationsParametersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RenderParameterVersionResponse;
 
-export type RenderProjectsLocationsParametersVersionsError = DefaultErrors;
+export type RenderProjectsLocationsParametersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets rendered version of a ParameterVersion. */
 export const renderProjectsLocationsParametersVersions: API.OperationMethod<
@@ -694,5 +785,5 @@ export const renderProjectsLocationsParametersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenderProjectsLocationsParametersVersionsRequest,
   output: RenderProjectsLocationsParametersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -904,6 +904,52 @@ export const CustomDomainMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CustomDomainMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -924,7 +970,7 @@ export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -935,7 +981,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetConfigProjectsSitesRequest {
@@ -955,7 +1001,7 @@ export type GetConfigProjectsSitesResponse = SiteConfig;
 export const GetConfigProjectsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteConfig;
 
-export type GetConfigProjectsSitesError = DefaultErrors;
+export type GetConfigProjectsSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the Hosting metadata for a specific site. */
 export const getConfigProjectsSites: API.OperationMethod<
@@ -966,7 +1012,7 @@ export const getConfigProjectsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsSitesRequest,
   output: GetConfigProjectsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigProjectsSitesRequest {
@@ -992,7 +1038,12 @@ export type UpdateConfigProjectsSitesResponse = SiteConfig;
 export const UpdateConfigProjectsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteConfig;
 
-export type UpdateConfigProjectsSitesError = DefaultErrors;
+export type UpdateConfigProjectsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Hosting metadata for a specific site. */
 export const updateConfigProjectsSites: API.OperationMethod<
@@ -1003,7 +1054,7 @@ export const updateConfigProjectsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigProjectsSitesRequest,
   output: UpdateConfigProjectsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsSitesRequest {
@@ -1033,7 +1084,12 @@ export const CreateProjectsSitesRequest =
 export type CreateProjectsSitesResponse = Site;
 export const CreateProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type CreateProjectsSitesError = DefaultErrors;
+export type CreateProjectsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems. */
 export const createProjectsSites: API.OperationMethod<
@@ -1044,7 +1100,7 @@ export const createProjectsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSitesRequest,
   output: CreateProjectsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsSitesRequest {
@@ -1069,7 +1125,12 @@ export const PatchProjectsSitesRequest =
 export type PatchProjectsSitesResponse = Site;
 export const PatchProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type PatchProjectsSitesError = DefaultErrors;
+export type PatchProjectsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates attributes of the specified Hosting Site. */
 export const patchProjectsSites: API.OperationMethod<
@@ -1080,7 +1141,7 @@ export const patchProjectsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSitesRequest,
   output: PatchProjectsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSitesRequest {
@@ -1099,7 +1160,7 @@ export const GetProjectsSitesRequest =
 export type GetProjectsSitesResponse = Site;
 export const GetProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type GetProjectsSitesError = DefaultErrors;
+export type GetProjectsSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified Hosting Site. */
 export const getProjectsSites: API.OperationMethod<
@@ -1110,7 +1171,7 @@ export const getProjectsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesRequest,
   output: GetProjectsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsSitesRequest {
@@ -1136,7 +1197,7 @@ export type ListProjectsSitesResponse = ListSitesResponse;
 export const ListProjectsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
 
-export type ListProjectsSitesError = DefaultErrors;
+export type ListProjectsSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists each Hosting Site associated with the specified parent Firebase project. */
 export const listProjectsSites: API.PaginatedOperationMethod<
@@ -1147,7 +1208,7 @@ export const listProjectsSites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesRequest,
   output: ListProjectsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1170,7 +1231,12 @@ export const DeleteProjectsSitesRequest =
 export type DeleteProjectsSitesResponse = Empty;
 export const DeleteProjectsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSitesError = DefaultErrors;
+export type DeleteProjectsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Hosting Site from the specified parent Firebase project. */
 export const deleteProjectsSites: API.OperationMethod<
@@ -1181,7 +1247,7 @@ export const deleteProjectsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSitesRequest,
   output: DeleteProjectsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsSitesCustomDomainsRequest {
@@ -1218,7 +1284,12 @@ export type CreateProjectsSitesCustomDomainsResponse = Operation;
 export const CreateProjectsSitesCustomDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsSitesCustomDomainsError = DefaultErrors;
+export type CreateProjectsSitesCustomDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a `CustomDomain`. */
 export const createProjectsSitesCustomDomains: API.OperationMethod<
@@ -1229,7 +1300,7 @@ export const createProjectsSitesCustomDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSitesCustomDomainsRequest,
   output: CreateProjectsSitesCustomDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsSitesCustomDomainsRequest {
@@ -1265,7 +1336,12 @@ export type PatchProjectsSitesCustomDomainsResponse = Operation;
 export const PatchProjectsSitesCustomDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsSitesCustomDomainsError = DefaultErrors;
+export type PatchProjectsSitesCustomDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified `CustomDomain`. */
 export const patchProjectsSitesCustomDomains: API.OperationMethod<
@@ -1276,7 +1352,7 @@ export const patchProjectsSitesCustomDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSitesCustomDomainsRequest,
   output: PatchProjectsSitesCustomDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSitesCustomDomainsRequest {
@@ -1296,7 +1372,10 @@ export type GetProjectsSitesCustomDomainsResponse = CustomDomain;
 export const GetProjectsSitesCustomDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomDomain;
 
-export type GetProjectsSitesCustomDomainsError = DefaultErrors;
+export type GetProjectsSitesCustomDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified `CustomDomain`. */
 export const getProjectsSitesCustomDomains: API.OperationMethod<
@@ -1307,7 +1386,7 @@ export const getProjectsSitesCustomDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesCustomDomainsRequest,
   output: GetProjectsSitesCustomDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsSitesCustomDomainsRequest {
@@ -1338,7 +1417,10 @@ export type ListProjectsSitesCustomDomainsResponse = ListCustomDomainsResponse;
 export const ListProjectsSitesCustomDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomDomainsResponse;
 
-export type ListProjectsSitesCustomDomainsError = DefaultErrors;
+export type ListProjectsSitesCustomDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists each `CustomDomain` associated with the specified parent Hosting site. Returns `CustomDomain`s in a consistent, but undefined, order to facilitate pagination. */
 export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
@@ -1349,7 +1431,7 @@ export const listProjectsSitesCustomDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesCustomDomainsRequest,
   output: ListProjectsSitesCustomDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1386,7 +1468,12 @@ export type DeleteProjectsSitesCustomDomainsResponse = Operation;
 export const DeleteProjectsSitesCustomDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsSitesCustomDomainsError = DefaultErrors;
+export type DeleteProjectsSitesCustomDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified `CustomDomain`. */
 export const deleteProjectsSitesCustomDomains: API.OperationMethod<
@@ -1397,7 +1484,7 @@ export const deleteProjectsSitesCustomDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSitesCustomDomainsRequest,
   output: DeleteProjectsSitesCustomDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsSitesCustomDomainsRequest {
@@ -1420,7 +1507,12 @@ export type UndeleteProjectsSitesCustomDomainsResponse = Operation;
 export const UndeleteProjectsSitesCustomDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsSitesCustomDomainsError = DefaultErrors;
+export type UndeleteProjectsSitesCustomDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes the specified `CustomDomain` if it has been soft-deleted. Hosting retains soft-deleted custom domains for around 30 days before permanently deleting them. */
 export const undeleteProjectsSitesCustomDomains: API.OperationMethod<
@@ -1431,7 +1523,7 @@ export const undeleteProjectsSitesCustomDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsSitesCustomDomainsRequest,
   output: UndeleteProjectsSitesCustomDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSitesCustomDomainsOperationsRequest {
@@ -1466,7 +1558,10 @@ export type ListProjectsSitesCustomDomainsOperationsResponse =
 export const ListProjectsSitesCustomDomainsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsSitesCustomDomainsOperationsError = DefaultErrors;
+export type ListProjectsSitesCustomDomainsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. */
 export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMethod<
@@ -1477,7 +1572,7 @@ export const listProjectsSitesCustomDomainsOperations: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesCustomDomainsOperationsRequest,
   output: ListProjectsSitesCustomDomainsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1501,7 +1596,10 @@ export type GetProjectsSitesCustomDomainsOperationsResponse = Operation;
 export const GetProjectsSitesCustomDomainsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsSitesCustomDomainsOperationsError = DefaultErrors;
+export type GetProjectsSitesCustomDomainsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsSitesCustomDomainsOperations: API.OperationMethod<
@@ -1512,7 +1610,7 @@ export const getProjectsSitesCustomDomainsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesCustomDomainsOperationsRequest,
   output: GetProjectsSitesCustomDomainsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsSitesDomainsRequest {
@@ -1538,7 +1636,10 @@ export type ListProjectsSitesDomainsResponse = ListDomainsResponse;
 export const ListProjectsSitesDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
 
-export type ListProjectsSitesDomainsError = DefaultErrors;
+export type ListProjectsSitesDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the domains for the specified site. */
 export const listProjectsSitesDomains: API.PaginatedOperationMethod<
@@ -1549,7 +1650,7 @@ export const listProjectsSitesDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesDomainsRequest,
   output: ListProjectsSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1573,7 +1674,7 @@ export type GetProjectsSitesDomainsResponse = Domain;
 export const GetProjectsSitesDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type GetProjectsSitesDomainsError = DefaultErrors;
+export type GetProjectsSitesDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a domain mapping on the specified site. */
 export const getProjectsSitesDomains: API.OperationMethod<
@@ -1584,7 +1685,7 @@ export const getProjectsSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesDomainsRequest,
   output: GetProjectsSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsSitesDomainsRequest {
@@ -1607,7 +1708,12 @@ export type CreateProjectsSitesDomainsResponse = Domain;
 export const CreateProjectsSitesDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type CreateProjectsSitesDomainsError = DefaultErrors;
+export type CreateProjectsSitesDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a domain mapping on the specified site. */
 export const createProjectsSitesDomains: API.OperationMethod<
@@ -1618,7 +1724,7 @@ export const createProjectsSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSitesDomainsRequest,
   output: CreateProjectsSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsSitesDomainsRequest {
@@ -1641,7 +1747,12 @@ export type UpdateProjectsSitesDomainsResponse = Domain;
 export const UpdateProjectsSitesDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type UpdateProjectsSitesDomainsError = DefaultErrors;
+export type UpdateProjectsSitesDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified domain mapping, creating the mapping as if it does not exist. */
 export const updateProjectsSitesDomains: API.OperationMethod<
@@ -1652,7 +1763,7 @@ export const updateProjectsSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsSitesDomainsRequest,
   output: UpdateProjectsSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsSitesDomainsRequest {
@@ -1672,7 +1783,12 @@ export type DeleteProjectsSitesDomainsResponse = Empty;
 export const DeleteProjectsSitesDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSitesDomainsError = DefaultErrors;
+export type DeleteProjectsSitesDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the existing domain mapping on the specified site. */
 export const deleteProjectsSitesDomains: API.OperationMethod<
@@ -1683,7 +1799,7 @@ export const deleteProjectsSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSitesDomainsRequest,
   output: DeleteProjectsSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsSitesVersionsRequest {
@@ -1716,7 +1832,12 @@ export type CreateProjectsSitesVersionsResponse = Version;
 export const CreateProjectsSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type CreateProjectsSitesVersionsError = DefaultErrors;
+export type CreateProjectsSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new version for the specified site. */
 export const createProjectsSitesVersions: API.OperationMethod<
@@ -1727,7 +1848,7 @@ export const createProjectsSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSitesVersionsRequest,
   output: CreateProjectsSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsSitesVersionsRequest {
@@ -1753,7 +1874,12 @@ export type PatchProjectsSitesVersionsResponse = Version;
 export const PatchProjectsSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type PatchProjectsSitesVersionsError = DefaultErrors;
+export type PatchProjectsSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified metadata for the specified version. This method will fail with `FAILED_PRECONDITION` in the event of an invalid state transition. The supported [state](../sites.versions#versionstatus) transitions for a version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to set the status of a version to `DELETED`. */
 export const patchProjectsSitesVersions: API.OperationMethod<
@@ -1764,7 +1890,7 @@ export const patchProjectsSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSitesVersionsRequest,
   output: PatchProjectsSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsSitesVersionsRequest {
@@ -1784,7 +1910,12 @@ export type DeleteProjectsSitesVersionsResponse = Empty;
 export const DeleteProjectsSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSitesVersionsError = DefaultErrors;
+export type DeleteProjectsSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified version. */
 export const deleteProjectsSitesVersions: API.OperationMethod<
@@ -1795,7 +1926,7 @@ export const deleteProjectsSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSitesVersionsRequest,
   output: DeleteProjectsSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PopulateFilesProjectsSitesVersionsRequest {
@@ -1823,7 +1954,12 @@ export type PopulateFilesProjectsSitesVersionsResponse =
 export const PopulateFilesProjectsSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PopulateVersionFilesResponse;
 
-export type PopulateFilesProjectsSitesVersionsError = DefaultErrors;
+export type PopulateFilesProjectsSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds content files to the specified version. Each file must be under 2 GB. */
 export const populateFilesProjectsSitesVersions: API.OperationMethod<
@@ -1834,7 +1970,7 @@ export const populateFilesProjectsSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PopulateFilesProjectsSitesVersionsRequest,
   output: PopulateFilesProjectsSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSitesVersionsRequest {
@@ -1863,7 +1999,10 @@ export type ListProjectsSitesVersionsResponse = ListVersionsResponse;
 export const ListProjectsSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
 
-export type ListProjectsSitesVersionsError = DefaultErrors;
+export type ListProjectsSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the versions that have been created for the specified site. This list includes versions for both the default `live` channel and any active preview channels for the specified site. */
 export const listProjectsSitesVersions: API.PaginatedOperationMethod<
@@ -1874,7 +2013,7 @@ export const listProjectsSitesVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesVersionsRequest,
   output: ListProjectsSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1898,7 +2037,10 @@ export type GetProjectsSitesVersionsResponse = Version;
 export const GetProjectsSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type GetProjectsSitesVersionsError = DefaultErrors;
+export type GetProjectsSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the specified version that has been created for the specified site. This can include versions that were created for the default `live` channel or for any active preview channels for the specified site. */
 export const getProjectsSitesVersions: API.OperationMethod<
@@ -1909,7 +2051,7 @@ export const getProjectsSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesVersionsRequest,
   output: GetProjectsSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CloneProjectsSitesVersionsRequest {
@@ -1936,7 +2078,12 @@ export type CloneProjectsSitesVersionsResponse = Operation;
 export const CloneProjectsSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloneProjectsSitesVersionsError = DefaultErrors;
+export type CloneProjectsSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new version on the specified target site using the content of the specified version. */
 export const cloneProjectsSitesVersions: API.OperationMethod<
@@ -1947,7 +2094,7 @@ export const cloneProjectsSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloneProjectsSitesVersionsRequest,
   output: CloneProjectsSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSitesVersionsFilesRequest {
@@ -1976,7 +2123,10 @@ export type ListProjectsSitesVersionsFilesResponse = ListVersionFilesResponse;
 export const ListProjectsSitesVersionsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVersionFilesResponse;
 
-export type ListProjectsSitesVersionsFilesError = DefaultErrors;
+export type ListProjectsSitesVersionsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the remaining files to be uploaded for the specified version. */
 export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
@@ -1987,7 +2137,7 @@ export const listProjectsSitesVersionsFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesVersionsFilesRequest,
   output: ListProjectsSitesVersionsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2017,7 +2167,10 @@ export type ListProjectsSitesReleasesResponse = ListReleasesResponse;
 export const ListProjectsSitesReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
 
-export type ListProjectsSitesReleasesError = DefaultErrors;
+export type ListProjectsSitesReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
 export const listProjectsSitesReleases: API.PaginatedOperationMethod<
@@ -2028,7 +2181,7 @@ export const listProjectsSitesReleases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesReleasesRequest,
   output: ListProjectsSitesReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2052,7 +2205,10 @@ export type GetProjectsSitesReleasesResponse = Release;
 export const GetProjectsSitesReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type GetProjectsSitesReleasesError = DefaultErrors;
+export type GetProjectsSitesReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site. */
 export const getProjectsSitesReleases: API.OperationMethod<
@@ -2063,7 +2219,7 @@ export const getProjectsSitesReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesReleasesRequest,
   output: GetProjectsSitesReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsSitesReleasesRequest {
@@ -2095,7 +2251,12 @@ export type CreateProjectsSitesReleasesResponse = Release;
 export const CreateProjectsSitesReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type CreateProjectsSitesReleasesError = DefaultErrors;
+export type CreateProjectsSitesReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createProjectsSitesReleases: API.OperationMethod<
@@ -2106,7 +2267,7 @@ export const createProjectsSitesReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSitesReleasesRequest,
   output: CreateProjectsSitesReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSitesChannelsRequest {
@@ -2132,7 +2293,10 @@ export type ListProjectsSitesChannelsResponse = ListChannelsResponse;
 export const ListProjectsSitesChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChannelsResponse;
 
-export type ListProjectsSitesChannelsError = DefaultErrors;
+export type ListProjectsSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the channels for the specified site. All sites have a default `live` channel. */
 export const listProjectsSitesChannels: API.PaginatedOperationMethod<
@@ -2143,7 +2307,7 @@ export const listProjectsSitesChannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesChannelsRequest,
   output: ListProjectsSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2177,7 +2341,12 @@ export type CreateProjectsSitesChannelsResponse = Channel;
 export const CreateProjectsSitesChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type CreateProjectsSitesChannelsError = DefaultErrors;
+export type CreateProjectsSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new channel in the specified site. */
 export const createProjectsSitesChannels: API.OperationMethod<
@@ -2188,7 +2357,7 @@ export const createProjectsSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSitesChannelsRequest,
   output: CreateProjectsSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSitesChannelsRequest {
@@ -2208,7 +2377,10 @@ export type GetProjectsSitesChannelsResponse = Channel;
 export const GetProjectsSitesChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type GetProjectsSitesChannelsError = DefaultErrors;
+export type GetProjectsSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves information for the specified channel of the specified site. */
 export const getProjectsSitesChannels: API.OperationMethod<
@@ -2219,7 +2391,7 @@ export const getProjectsSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesChannelsRequest,
   output: GetProjectsSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsSitesChannelsRequest {
@@ -2245,7 +2417,12 @@ export type PatchProjectsSitesChannelsResponse = Channel;
 export const PatchProjectsSitesChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type PatchProjectsSitesChannelsError = DefaultErrors;
+export type PatchProjectsSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information for the specified channel of the specified site. Implicitly creates the channel if it doesn't already exist. */
 export const patchProjectsSitesChannels: API.OperationMethod<
@@ -2256,7 +2433,7 @@ export const patchProjectsSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSitesChannelsRequest,
   output: PatchProjectsSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsSitesChannelsRequest {
@@ -2276,7 +2453,12 @@ export type DeleteProjectsSitesChannelsResponse = Empty;
 export const DeleteProjectsSitesChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSitesChannelsError = DefaultErrors;
+export type DeleteProjectsSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified channel of the specified site. The `live` channel cannot be deleted. */
 export const deleteProjectsSitesChannels: API.OperationMethod<
@@ -2287,7 +2469,7 @@ export const deleteProjectsSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSitesChannelsRequest,
   output: DeleteProjectsSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSitesChannelsReleasesRequest {
@@ -2313,7 +2495,10 @@ export type ListProjectsSitesChannelsReleasesResponse = ListReleasesResponse;
 export const ListProjectsSitesChannelsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
 
-export type ListProjectsSitesChannelsReleasesError = DefaultErrors;
+export type ListProjectsSitesChannelsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
 export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
@@ -2324,7 +2509,7 @@ export const listProjectsSitesChannelsReleases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSitesChannelsReleasesRequest,
   output: ListProjectsSitesChannelsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2348,7 +2533,10 @@ export type GetProjectsSitesChannelsReleasesResponse = Release;
 export const GetProjectsSitesChannelsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type GetProjectsSitesChannelsReleasesError = DefaultErrors;
+export type GetProjectsSitesChannelsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site. */
 export const getProjectsSitesChannelsReleases: API.OperationMethod<
@@ -2359,7 +2547,7 @@ export const getProjectsSitesChannelsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSitesChannelsReleasesRequest,
   output: GetProjectsSitesChannelsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsSitesChannelsReleasesRequest {
@@ -2391,7 +2579,12 @@ export type CreateProjectsSitesChannelsReleasesResponse = Release;
 export const CreateProjectsSitesChannelsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type CreateProjectsSitesChannelsReleasesError = DefaultErrors;
+export type CreateProjectsSitesChannelsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createProjectsSitesChannelsReleases: API.OperationMethod<
@@ -2402,7 +2595,7 @@ export const createProjectsSitesChannelsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSitesChannelsReleasesRequest,
   output: CreateProjectsSitesChannelsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigSitesRequest {
@@ -2420,7 +2613,7 @@ export const GetConfigSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetConfigSitesResponse = SiteConfig;
 export const GetConfigSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SiteConfig;
 
-export type GetConfigSitesError = DefaultErrors;
+export type GetConfigSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the Hosting metadata for a specific site. */
 export const getConfigSites: API.OperationMethod<
@@ -2431,7 +2624,7 @@ export const getConfigSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigSitesRequest,
   output: GetConfigSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigSitesRequest {
@@ -2456,7 +2649,12 @@ export const UpdateConfigSitesRequest =
 export type UpdateConfigSitesResponse = SiteConfig;
 export const UpdateConfigSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SiteConfig;
 
-export type UpdateConfigSitesError = DefaultErrors;
+export type UpdateConfigSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Hosting metadata for a specific site. */
 export const updateConfigSites: API.OperationMethod<
@@ -2467,7 +2665,7 @@ export const updateConfigSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigSitesRequest,
   output: UpdateConfigSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSitesDomainsRequest {
@@ -2493,7 +2691,7 @@ export type ListSitesDomainsResponse = ListDomainsResponse;
 export const ListSitesDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
 
-export type ListSitesDomainsError = DefaultErrors;
+export type ListSitesDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the domains for the specified site. */
 export const listSitesDomains: API.PaginatedOperationMethod<
@@ -2504,7 +2702,7 @@ export const listSitesDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesDomainsRequest,
   output: ListSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2528,7 +2726,7 @@ export const GetSitesDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetSitesDomainsResponse = Domain;
 export const GetSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type GetSitesDomainsError = DefaultErrors;
+export type GetSitesDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a domain mapping on the specified site. */
 export const getSitesDomains: API.OperationMethod<
@@ -2539,7 +2737,7 @@ export const getSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesDomainsRequest,
   output: GetSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateSitesDomainsRequest {
@@ -2561,7 +2759,12 @@ export const CreateSitesDomainsRequest =
 export type CreateSitesDomainsResponse = Domain;
 export const CreateSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type CreateSitesDomainsError = DefaultErrors;
+export type CreateSitesDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a domain mapping on the specified site. */
 export const createSitesDomains: API.OperationMethod<
@@ -2572,7 +2775,7 @@ export const createSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSitesDomainsRequest,
   output: CreateSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSitesDomainsRequest {
@@ -2594,7 +2797,12 @@ export const UpdateSitesDomainsRequest =
 export type UpdateSitesDomainsResponse = Domain;
 export const UpdateSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type UpdateSitesDomainsError = DefaultErrors;
+export type UpdateSitesDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified domain mapping, creating the mapping as if it does not exist. */
 export const updateSitesDomains: API.OperationMethod<
@@ -2605,7 +2813,7 @@ export const updateSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSitesDomainsRequest,
   output: UpdateSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSitesDomainsRequest {
@@ -2624,7 +2832,12 @@ export const DeleteSitesDomainsRequest =
 export type DeleteSitesDomainsResponse = Empty;
 export const DeleteSitesDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSitesDomainsError = DefaultErrors;
+export type DeleteSitesDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the existing domain mapping on the specified site. */
 export const deleteSitesDomains: API.OperationMethod<
@@ -2635,7 +2848,7 @@ export const deleteSitesDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSitesDomainsRequest,
   output: DeleteSitesDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSitesVersionsRequest {
@@ -2667,7 +2880,12 @@ export const CreateSitesVersionsRequest =
 export type CreateSitesVersionsResponse = Version;
 export const CreateSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type CreateSitesVersionsError = DefaultErrors;
+export type CreateSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new version for the specified site. */
 export const createSitesVersions: API.OperationMethod<
@@ -2678,7 +2896,7 @@ export const createSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSitesVersionsRequest,
   output: CreateSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchSitesVersionsRequest {
@@ -2703,7 +2921,12 @@ export const PatchSitesVersionsRequest =
 export type PatchSitesVersionsResponse = Version;
 export const PatchSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type PatchSitesVersionsError = DefaultErrors;
+export type PatchSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified metadata for the specified version. This method will fail with `FAILED_PRECONDITION` in the event of an invalid state transition. The supported [state](../sites.versions#versionstatus) transitions for a version are from `CREATED` to `FINALIZED`. Use [`DeleteVersion`](delete) to set the status of a version to `DELETED`. */
 export const patchSitesVersions: API.OperationMethod<
@@ -2714,7 +2937,7 @@ export const patchSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSitesVersionsRequest,
   output: PatchSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSitesVersionsRequest {
@@ -2733,7 +2956,12 @@ export const DeleteSitesVersionsRequest =
 export type DeleteSitesVersionsResponse = Empty;
 export const DeleteSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSitesVersionsError = DefaultErrors;
+export type DeleteSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified version. */
 export const deleteSitesVersions: API.OperationMethod<
@@ -2744,7 +2972,7 @@ export const deleteSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSitesVersionsRequest,
   output: DeleteSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PopulateFilesSitesVersionsRequest {
@@ -2771,7 +2999,12 @@ export type PopulateFilesSitesVersionsResponse = PopulateVersionFilesResponse;
 export const PopulateFilesSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PopulateVersionFilesResponse;
 
-export type PopulateFilesSitesVersionsError = DefaultErrors;
+export type PopulateFilesSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds content files to the specified version. Each file must be under 2 GB. */
 export const populateFilesSitesVersions: API.OperationMethod<
@@ -2782,7 +3015,7 @@ export const populateFilesSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PopulateFilesSitesVersionsRequest,
   output: PopulateFilesSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSitesVersionsRequest {
@@ -2811,7 +3044,7 @@ export type ListSitesVersionsResponse = ListVersionsResponse;
 export const ListSitesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
 
-export type ListSitesVersionsError = DefaultErrors;
+export type ListSitesVersionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the versions that have been created for the specified site. This list includes versions for both the default `live` channel and any active preview channels for the specified site. */
 export const listSitesVersions: API.PaginatedOperationMethod<
@@ -2822,7 +3055,7 @@ export const listSitesVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesVersionsRequest,
   output: ListSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2845,7 +3078,7 @@ export const GetSitesVersionsRequest =
 export type GetSitesVersionsResponse = Version;
 export const GetSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type GetSitesVersionsError = DefaultErrors;
+export type GetSitesVersionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the specified version that has been created for the specified site. This can include versions that were created for the default `live` channel or for any active preview channels for the specified site. */
 export const getSitesVersions: API.OperationMethod<
@@ -2856,7 +3089,7 @@ export const getSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesVersionsRequest,
   output: GetSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CloneSitesVersionsRequest {
@@ -2882,7 +3115,12 @@ export const CloneSitesVersionsRequest =
 export type CloneSitesVersionsResponse = Operation;
 export const CloneSitesVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloneSitesVersionsError = DefaultErrors;
+export type CloneSitesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new version on the specified target site using the content of the specified version. */
 export const cloneSitesVersions: API.OperationMethod<
@@ -2893,7 +3131,7 @@ export const cloneSitesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloneSitesVersionsRequest,
   output: CloneSitesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSitesVersionsFilesRequest {
@@ -2922,7 +3160,7 @@ export type ListSitesVersionsFilesResponse = ListVersionFilesResponse;
 export const ListSitesVersionsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVersionFilesResponse;
 
-export type ListSitesVersionsFilesError = DefaultErrors;
+export type ListSitesVersionsFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the remaining files to be uploaded for the specified version. */
 export const listSitesVersionsFiles: API.PaginatedOperationMethod<
@@ -2933,7 +3171,7 @@ export const listSitesVersionsFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesVersionsFilesRequest,
   output: ListSitesVersionsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2963,7 +3201,7 @@ export type ListSitesReleasesResponse = ListReleasesResponse;
 export const ListSitesReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
 
-export type ListSitesReleasesError = DefaultErrors;
+export type ListSitesReleasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
 export const listSitesReleases: API.PaginatedOperationMethod<
@@ -2974,7 +3212,7 @@ export const listSitesReleases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesReleasesRequest,
   output: ListSitesReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2997,7 +3235,7 @@ export const GetSitesReleasesRequest =
 export type GetSitesReleasesResponse = Release;
 export const GetSitesReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type GetSitesReleasesError = DefaultErrors;
+export type GetSitesReleasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site. */
 export const getSitesReleases: API.OperationMethod<
@@ -3008,7 +3246,7 @@ export const getSitesReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesReleasesRequest,
   output: GetSitesReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateSitesReleasesRequest {
@@ -3039,7 +3277,12 @@ export const CreateSitesReleasesRequest =
 export type CreateSitesReleasesResponse = Release;
 export const CreateSitesReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type CreateSitesReleasesError = DefaultErrors;
+export type CreateSitesReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createSitesReleases: API.OperationMethod<
@@ -3050,7 +3293,7 @@ export const createSitesReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSitesReleasesRequest,
   output: CreateSitesReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSitesChannelsRequest {
@@ -3076,7 +3319,7 @@ export type ListSitesChannelsResponse = ListChannelsResponse;
 export const ListSitesChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChannelsResponse;
 
-export type ListSitesChannelsError = DefaultErrors;
+export type ListSitesChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the channels for the specified site. All sites have a default `live` channel. */
 export const listSitesChannels: API.PaginatedOperationMethod<
@@ -3087,7 +3330,7 @@ export const listSitesChannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesChannelsRequest,
   output: ListSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3120,7 +3363,12 @@ export const CreateSitesChannelsRequest =
 export type CreateSitesChannelsResponse = Channel;
 export const CreateSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type CreateSitesChannelsError = DefaultErrors;
+export type CreateSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new channel in the specified site. */
 export const createSitesChannels: API.OperationMethod<
@@ -3131,7 +3379,7 @@ export const createSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSitesChannelsRequest,
   output: CreateSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSitesChannelsRequest {
@@ -3150,7 +3398,7 @@ export const GetSitesChannelsRequest =
 export type GetSitesChannelsResponse = Channel;
 export const GetSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type GetSitesChannelsError = DefaultErrors;
+export type GetSitesChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information for the specified channel of the specified site. */
 export const getSitesChannels: API.OperationMethod<
@@ -3161,7 +3409,7 @@ export const getSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesChannelsRequest,
   output: GetSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchSitesChannelsRequest {
@@ -3186,7 +3434,12 @@ export const PatchSitesChannelsRequest =
 export type PatchSitesChannelsResponse = Channel;
 export const PatchSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type PatchSitesChannelsError = DefaultErrors;
+export type PatchSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information for the specified channel of the specified site. Implicitly creates the channel if it doesn't already exist. */
 export const patchSitesChannels: API.OperationMethod<
@@ -3197,7 +3450,7 @@ export const patchSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSitesChannelsRequest,
   output: PatchSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSitesChannelsRequest {
@@ -3216,7 +3469,12 @@ export const DeleteSitesChannelsRequest =
 export type DeleteSitesChannelsResponse = Empty;
 export const DeleteSitesChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSitesChannelsError = DefaultErrors;
+export type DeleteSitesChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified channel of the specified site. The `live` channel cannot be deleted. */
 export const deleteSitesChannels: API.OperationMethod<
@@ -3227,7 +3485,7 @@ export const deleteSitesChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSitesChannelsRequest,
   output: DeleteSitesChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSitesChannelsReleasesRequest {
@@ -3253,7 +3511,10 @@ export type ListSitesChannelsReleasesResponse = ListReleasesResponse;
 export const ListSitesChannelsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
 
-export type ListSitesChannelsReleasesError = DefaultErrors;
+export type ListSitesChannelsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the releases that have been created for the specified site or channel. When used to list releases for a site, this list includes releases for both the default `live` channel and any active preview channels for the specified site. */
 export const listSitesChannelsReleases: API.PaginatedOperationMethod<
@@ -3264,7 +3525,7 @@ export const listSitesChannelsReleases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesChannelsReleasesRequest,
   output: ListSitesChannelsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3288,7 +3549,10 @@ export type GetSitesChannelsReleasesResponse = Release;
 export const GetSitesChannelsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type GetSitesChannelsReleasesError = DefaultErrors;
+export type GetSitesChannelsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site. */
 export const getSitesChannelsReleases: API.OperationMethod<
@@ -3299,7 +3563,7 @@ export const getSitesChannelsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesChannelsReleasesRequest,
   output: GetSitesChannelsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateSitesChannelsReleasesRequest {
@@ -3331,7 +3595,12 @@ export type CreateSitesChannelsReleasesResponse = Release;
 export const CreateSitesChannelsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type CreateSitesChannelsReleasesError = DefaultErrors;
+export type CreateSitesChannelsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new release, which makes the content of the specified version actively display on the appropriate URL(s). */
 export const createSitesChannelsReleases: API.OperationMethod<
@@ -3342,5 +3611,5 @@ export const createSitesChannelsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSitesChannelsReleasesRequest,
   output: CreateSitesChannelsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

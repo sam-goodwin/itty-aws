@@ -444,6 +444,31 @@ export const Search = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Search" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -609,7 +634,7 @@ export const ListCseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListCseResponse = Search;
 export const ListCseResponse = /*@__PURE__*/ /*#__PURE__*/ Search;
 
-export type ListCseError = DefaultErrors;
+export type ListCseError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns metadata about the search performed, metadata about the engine used for the search, and the search results. */
 export const listCse: API.OperationMethod<
@@ -620,7 +645,7 @@ export const listCse: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCseRequest,
   output: ListCseResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCseSiterestrictRequest {
@@ -788,7 +813,7 @@ export const ListCseSiterestrictRequest =
 export type ListCseSiterestrictResponse = Search;
 export const ListCseSiterestrictResponse = /*@__PURE__*/ /*#__PURE__*/ Search;
 
-export type ListCseSiterestrictError = DefaultErrors;
+export type ListCseSiterestrictError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns metadata about the search performed, metadata about the engine used for the search, and the search results. Uses a small set of url patterns. */
 export const listCseSiterestrict: API.OperationMethod<
@@ -799,5 +824,5 @@ export const listCseSiterestrict: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCseSiterestrictRequest,
   output: ListCseSiterestrictResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

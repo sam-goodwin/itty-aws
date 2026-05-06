@@ -1936,6 +1936,52 @@ export const GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1971,7 +2017,7 @@ export type GetRecaptchaConfigV2Response =
 export const GetRecaptchaConfigV2Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2RecaptchaConfig;
 
-export type GetRecaptchaConfigV2Error = DefaultErrors;
+export type GetRecaptchaConfigV2Error = DefaultErrors | NotFound | Forbidden;
 
 /** Gets parameters needed for reCAPTCHA analysis. */
 export const getRecaptchaConfigV2: API.OperationMethod<
@@ -1982,7 +2028,7 @@ export const getRecaptchaConfigV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecaptchaConfigV2Request,
   output: GetRecaptchaConfigV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPasswordPolicyV2Request {
@@ -2003,7 +2049,7 @@ export type GetPasswordPolicyV2Response =
 export const GetPasswordPolicyV2Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2PasswordPolicy;
 
-export type GetPasswordPolicyV2Error = DefaultErrors;
+export type GetPasswordPolicyV2Error = DefaultErrors | NotFound | Forbidden;
 
 /** Gets password policy config set on the project or tenant. */
 export const getPasswordPolicyV2: API.OperationMethod<
@@ -2014,7 +2060,7 @@ export const getPasswordPolicyV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPasswordPolicyV2Request,
   output: GetPasswordPolicyV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetConfigProjectsRequest {
@@ -2034,7 +2080,7 @@ export type GetConfigProjectsResponse = GoogleCloudIdentitytoolkitAdminV2Config;
 export const GetConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2Config;
 
-export type GetConfigProjectsError = DefaultErrors;
+export type GetConfigProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve an Identity Toolkit project configuration. */
 export const getConfigProjects: API.OperationMethod<
@@ -2045,7 +2091,7 @@ export const getConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsRequest,
   output: GetConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConfigProjectsRequest {
@@ -2074,7 +2120,12 @@ export type UpdateConfigProjectsResponse =
 export const UpdateConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2Config;
 
-export type UpdateConfigProjectsError = DefaultErrors;
+export type UpdateConfigProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an Identity Toolkit project configuration. */
 export const updateConfigProjects: API.OperationMethod<
@@ -2085,7 +2136,7 @@ export const updateConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConfigProjectsRequest,
   output: UpdateConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsTenantsRequest {
@@ -2112,7 +2163,12 @@ export type GetIamPolicyProjectsTenantsResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsTenantsError = DefaultErrors;
+export type GetIamPolicyProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource. */
 export const getIamPolicyProjectsTenants: API.OperationMethod<
@@ -2123,7 +2179,7 @@ export const getIamPolicyProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsTenantsRequest,
   output: GetIamPolicyProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsTenantsRequest {
@@ -2153,7 +2209,12 @@ export type TestIamPermissionsProjectsTenantsResponse =
 export const TestIamPermissionsProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsTenantsError = DefaultErrors;
+export type TestIamPermissionsProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the caller's permissions on a resource. An error is returned if the resource does not exist. A caller is not required to have Google IAM permission to make this request. */
 export const testIamPermissionsProjectsTenants: API.OperationMethod<
@@ -2164,7 +2225,7 @@ export const testIamPermissionsProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsTenantsRequest,
   output: TestIamPermissionsProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTenantsRequest {
@@ -2185,7 +2246,7 @@ export type GetProjectsTenantsResponse =
 export const GetProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2Tenant;
 
-export type GetProjectsTenantsError = DefaultErrors;
+export type GetProjectsTenantsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a tenant. Requires read permission on the Tenant resource. */
 export const getProjectsTenants: API.OperationMethod<
@@ -2196,7 +2257,7 @@ export const getProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTenantsRequest,
   output: GetProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsTenantsRequest {
@@ -2222,7 +2283,12 @@ export type CreateProjectsTenantsResponse =
 export const CreateProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2Tenant;
 
-export type CreateProjectsTenantsError = DefaultErrors;
+export type CreateProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a tenant. Requires write permission on the Agent project. */
 export const createProjectsTenants: API.OperationMethod<
@@ -2233,7 +2299,7 @@ export const createProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsRequest,
   output: CreateProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsTenantsRequest {
@@ -2253,7 +2319,12 @@ export type DeleteProjectsTenantsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsTenantsError = DefaultErrors;
+export type DeleteProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a tenant. Requires write permission on the Agent project. */
 export const deleteProjectsTenants: API.OperationMethod<
@@ -2264,7 +2335,7 @@ export const deleteProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsRequest,
   output: DeleteProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTenantsRequest {
@@ -2293,7 +2364,12 @@ export type PatchProjectsTenantsResponse =
 export const PatchProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2Tenant;
 
-export type PatchProjectsTenantsError = DefaultErrors;
+export type PatchProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a tenant. Requires write permission on the Tenant resource. */
 export const patchProjectsTenants: API.OperationMethod<
@@ -2304,7 +2380,7 @@ export const patchProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTenantsRequest,
   output: PatchProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTenantsRequest {
@@ -2331,7 +2407,7 @@ export type ListProjectsTenantsResponse =
 export const ListProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse;
 
-export type ListProjectsTenantsError = DefaultErrors;
+export type ListProjectsTenantsError = DefaultErrors | NotFound | Forbidden;
 
 /** List tenants under the given agent project. Requires read permission on the Agent project. */
 export const listProjectsTenants: API.PaginatedOperationMethod<
@@ -2342,7 +2418,7 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsRequest,
   output: ListProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2373,7 +2449,12 @@ export type SetIamPolicyProjectsTenantsResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsTenantsError = DefaultErrors;
+export type SetIamPolicyProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy for a resource. If the policy exists, it is replaced. Caller must have the right Google IAM permission on the resource. */
 export const setIamPolicyProjectsTenants: API.OperationMethod<
@@ -2384,7 +2465,7 @@ export const setIamPolicyProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsTenantsRequest,
   output: SetIamPolicyProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTenantsDefaultSupportedIdpConfigsRequest {
@@ -2405,7 +2486,10 @@ export type GetProjectsTenantsDefaultSupportedIdpConfigsResponse =
 export const GetProjectsTenantsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 
-export type GetProjectsTenantsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type GetProjectsTenantsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve a default supported Idp configuration for an Identity Toolkit project. */
 export const getProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -2416,7 +2500,7 @@ export const getProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTenantsDefaultSupportedIdpConfigsRequest,
   output: GetProjectsTenantsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsTenantsDefaultSupportedIdpConfigsRequest {
@@ -2450,7 +2534,11 @@ export const CreateProjectsTenantsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 
 export type CreateProjectsTenantsDefaultSupportedIdpConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a default supported Idp configuration for an Identity Toolkit project. */
 export const createProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -2461,7 +2549,7 @@ export const createProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsDefaultSupportedIdpConfigsRequest,
   output: CreateProjectsTenantsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsTenantsDefaultSupportedIdpConfigsRequest {
@@ -2483,7 +2571,11 @@ export const DeleteProjectsTenantsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsTenantsDefaultSupportedIdpConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a default supported Idp configuration for an Identity Toolkit project. */
 export const deleteProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -2494,7 +2586,7 @@ export const deleteProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsDefaultSupportedIdpConfigsRequest,
   output: DeleteProjectsTenantsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTenantsDefaultSupportedIdpConfigsRequest {
@@ -2523,7 +2615,12 @@ export type PatchProjectsTenantsDefaultSupportedIdpConfigsResponse =
 export const PatchProjectsTenantsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 
-export type PatchProjectsTenantsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type PatchProjectsTenantsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a default supported Idp configuration for an Identity Toolkit project. */
 export const patchProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -2534,7 +2631,7 @@ export const patchProjectsTenantsDefaultSupportedIdpConfigs: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTenantsDefaultSupportedIdpConfigsRequest,
   output: PatchProjectsTenantsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTenantsDefaultSupportedIdpConfigsRequest {
@@ -2561,7 +2658,10 @@ export type ListProjectsTenantsDefaultSupportedIdpConfigsResponse =
 export const ListProjectsTenantsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse;
 
-export type ListProjectsTenantsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type ListProjectsTenantsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all default supported Idp configurations for an Identity Toolkit project. */
 export const listProjectsTenantsDefaultSupportedIdpConfigs: API.PaginatedOperationMethod<
@@ -2572,7 +2672,7 @@ export const listProjectsTenantsDefaultSupportedIdpConfigs: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsDefaultSupportedIdpConfigsRequest,
   output: ListProjectsTenantsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2611,7 +2711,12 @@ export type CreateProjectsTenantsInboundSamlConfigsResponse =
 export const CreateProjectsTenantsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 
-export type CreateProjectsTenantsInboundSamlConfigsError = DefaultErrors;
+export type CreateProjectsTenantsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an inbound SAML configuration for an Identity Toolkit project. */
 export const createProjectsTenantsInboundSamlConfigs: API.OperationMethod<
@@ -2622,7 +2727,7 @@ export const createProjectsTenantsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsInboundSamlConfigsRequest,
   output: CreateProjectsTenantsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsTenantsInboundSamlConfigsRequest {
@@ -2643,7 +2748,12 @@ export type DeleteProjectsTenantsInboundSamlConfigsResponse =
 export const DeleteProjectsTenantsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsTenantsInboundSamlConfigsError = DefaultErrors;
+export type DeleteProjectsTenantsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an inbound SAML configuration for an Identity Toolkit project. */
 export const deleteProjectsTenantsInboundSamlConfigs: API.OperationMethod<
@@ -2654,7 +2764,7 @@ export const deleteProjectsTenantsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsInboundSamlConfigsRequest,
   output: DeleteProjectsTenantsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTenantsInboundSamlConfigsRequest {
@@ -2683,7 +2793,12 @@ export type PatchProjectsTenantsInboundSamlConfigsResponse =
 export const PatchProjectsTenantsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 
-export type PatchProjectsTenantsInboundSamlConfigsError = DefaultErrors;
+export type PatchProjectsTenantsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an inbound SAML configuration for an Identity Toolkit project. */
 export const patchProjectsTenantsInboundSamlConfigs: API.OperationMethod<
@@ -2694,7 +2809,7 @@ export const patchProjectsTenantsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTenantsInboundSamlConfigsRequest,
   output: PatchProjectsTenantsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTenantsInboundSamlConfigsRequest {
@@ -2715,7 +2830,10 @@ export type GetProjectsTenantsInboundSamlConfigsResponse =
 export const GetProjectsTenantsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 
-export type GetProjectsTenantsInboundSamlConfigsError = DefaultErrors;
+export type GetProjectsTenantsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve an inbound SAML configuration for an Identity Toolkit project. */
 export const getProjectsTenantsInboundSamlConfigs: API.OperationMethod<
@@ -2726,7 +2844,7 @@ export const getProjectsTenantsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTenantsInboundSamlConfigsRequest,
   output: GetProjectsTenantsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsTenantsInboundSamlConfigsRequest {
@@ -2753,7 +2871,10 @@ export type ListProjectsTenantsInboundSamlConfigsResponse =
 export const ListProjectsTenantsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse;
 
-export type ListProjectsTenantsInboundSamlConfigsError = DefaultErrors;
+export type ListProjectsTenantsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all inbound SAML configurations for an Identity Toolkit project. */
 export const listProjectsTenantsInboundSamlConfigs: API.PaginatedOperationMethod<
@@ -2764,7 +2885,7 @@ export const listProjectsTenantsInboundSamlConfigs: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsInboundSamlConfigsRequest,
   output: ListProjectsTenantsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2789,7 +2910,10 @@ export type GetProjectsTenantsOauthIdpConfigsResponse =
 export const GetProjectsTenantsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 
-export type GetProjectsTenantsOauthIdpConfigsError = DefaultErrors;
+export type GetProjectsTenantsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve an Oidc Idp configuration for an Identity Toolkit project. */
 export const getProjectsTenantsOauthIdpConfigs: API.OperationMethod<
@@ -2800,7 +2924,7 @@ export const getProjectsTenantsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTenantsOauthIdpConfigsRequest,
   output: GetProjectsTenantsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsTenantsOauthIdpConfigsRequest {
@@ -2835,7 +2959,12 @@ export type CreateProjectsTenantsOauthIdpConfigsResponse =
 export const CreateProjectsTenantsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 
-export type CreateProjectsTenantsOauthIdpConfigsError = DefaultErrors;
+export type CreateProjectsTenantsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an Oidc Idp configuration for an Identity Toolkit project. */
 export const createProjectsTenantsOauthIdpConfigs: API.OperationMethod<
@@ -2846,7 +2975,7 @@ export const createProjectsTenantsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsOauthIdpConfigsRequest,
   output: CreateProjectsTenantsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsTenantsOauthIdpConfigsRequest {
@@ -2866,7 +2995,12 @@ export type DeleteProjectsTenantsOauthIdpConfigsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsTenantsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsTenantsOauthIdpConfigsError = DefaultErrors;
+export type DeleteProjectsTenantsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an Oidc Idp configuration for an Identity Toolkit project. */
 export const deleteProjectsTenantsOauthIdpConfigs: API.OperationMethod<
@@ -2877,7 +3011,7 @@ export const deleteProjectsTenantsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsOauthIdpConfigsRequest,
   output: DeleteProjectsTenantsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTenantsOauthIdpConfigsRequest {
@@ -2906,7 +3040,12 @@ export type PatchProjectsTenantsOauthIdpConfigsResponse =
 export const PatchProjectsTenantsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 
-export type PatchProjectsTenantsOauthIdpConfigsError = DefaultErrors;
+export type PatchProjectsTenantsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an Oidc Idp configuration for an Identity Toolkit project. */
 export const patchProjectsTenantsOauthIdpConfigs: API.OperationMethod<
@@ -2917,7 +3056,7 @@ export const patchProjectsTenantsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTenantsOauthIdpConfigsRequest,
   output: PatchProjectsTenantsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTenantsOauthIdpConfigsRequest {
@@ -2944,7 +3083,10 @@ export type ListProjectsTenantsOauthIdpConfigsResponse =
 export const ListProjectsTenantsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse;
 
-export type ListProjectsTenantsOauthIdpConfigsError = DefaultErrors;
+export type ListProjectsTenantsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all Oidc Idp configurations for an Identity Toolkit project. */
 export const listProjectsTenantsOauthIdpConfigs: API.PaginatedOperationMethod<
@@ -2955,7 +3097,7 @@ export const listProjectsTenantsOauthIdpConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsOauthIdpConfigsRequest,
   output: ListProjectsTenantsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2986,7 +3128,10 @@ export type ListProjectsOauthIdpConfigsResponse =
 export const ListProjectsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse;
 
-export type ListProjectsOauthIdpConfigsError = DefaultErrors;
+export type ListProjectsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all Oidc Idp configurations for an Identity Toolkit project. */
 export const listProjectsOauthIdpConfigs: API.PaginatedOperationMethod<
@@ -2997,7 +3142,7 @@ export const listProjectsOauthIdpConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOauthIdpConfigsRequest,
   output: ListProjectsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3036,7 +3181,12 @@ export type CreateProjectsOauthIdpConfigsResponse =
 export const CreateProjectsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 
-export type CreateProjectsOauthIdpConfigsError = DefaultErrors;
+export type CreateProjectsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an Oidc Idp configuration for an Identity Toolkit project. */
 export const createProjectsOauthIdpConfigs: API.OperationMethod<
@@ -3047,7 +3197,7 @@ export const createProjectsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsOauthIdpConfigsRequest,
   output: CreateProjectsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsOauthIdpConfigsRequest {
@@ -3067,7 +3217,12 @@ export type DeleteProjectsOauthIdpConfigsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsOauthIdpConfigsError = DefaultErrors;
+export type DeleteProjectsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an Oidc Idp configuration for an Identity Toolkit project. */
 export const deleteProjectsOauthIdpConfigs: API.OperationMethod<
@@ -3078,7 +3233,7 @@ export const deleteProjectsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsOauthIdpConfigsRequest,
   output: DeleteProjectsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsOauthIdpConfigsRequest {
@@ -3107,7 +3262,12 @@ export type PatchProjectsOauthIdpConfigsResponse =
 export const PatchProjectsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 
-export type PatchProjectsOauthIdpConfigsError = DefaultErrors;
+export type PatchProjectsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an Oidc Idp configuration for an Identity Toolkit project. */
 export const patchProjectsOauthIdpConfigs: API.OperationMethod<
@@ -3118,7 +3278,7 @@ export const patchProjectsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsOauthIdpConfigsRequest,
   output: PatchProjectsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsOauthIdpConfigsRequest {
@@ -3139,7 +3299,10 @@ export type GetProjectsOauthIdpConfigsResponse =
 export const GetProjectsOauthIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig;
 
-export type GetProjectsOauthIdpConfigsError = DefaultErrors;
+export type GetProjectsOauthIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve an Oidc Idp configuration for an Identity Toolkit project. */
 export const getProjectsOauthIdpConfigs: API.OperationMethod<
@@ -3150,7 +3313,7 @@ export const getProjectsOauthIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOauthIdpConfigsRequest,
   output: GetProjectsOauthIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDefaultSupportedIdpConfigsRequest {
@@ -3177,7 +3340,10 @@ export type ListProjectsDefaultSupportedIdpConfigsResponse =
 export const ListProjectsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse;
 
-export type ListProjectsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type ListProjectsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all default supported Idp configurations for an Identity Toolkit project. */
 export const listProjectsDefaultSupportedIdpConfigs: API.PaginatedOperationMethod<
@@ -3188,7 +3354,7 @@ export const listProjectsDefaultSupportedIdpConfigs: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDefaultSupportedIdpConfigsRequest,
   output: ListProjectsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3213,7 +3379,10 @@ export type GetProjectsDefaultSupportedIdpConfigsResponse =
 export const GetProjectsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 
-export type GetProjectsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type GetProjectsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve a default supported Idp configuration for an Identity Toolkit project. */
 export const getProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -3224,7 +3393,7 @@ export const getProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDefaultSupportedIdpConfigsRequest,
   output: GetProjectsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsDefaultSupportedIdpConfigsRequest {
@@ -3257,7 +3426,12 @@ export type CreateProjectsDefaultSupportedIdpConfigsResponse =
 export const CreateProjectsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 
-export type CreateProjectsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type CreateProjectsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a default supported Idp configuration for an Identity Toolkit project. */
 export const createProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -3268,7 +3442,7 @@ export const createProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDefaultSupportedIdpConfigsRequest,
   output: CreateProjectsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsDefaultSupportedIdpConfigsRequest {
@@ -3289,7 +3463,12 @@ export type DeleteProjectsDefaultSupportedIdpConfigsResponse =
 export const DeleteProjectsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type DeleteProjectsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a default supported Idp configuration for an Identity Toolkit project. */
 export const deleteProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -3300,7 +3479,7 @@ export const deleteProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDefaultSupportedIdpConfigsRequest,
   output: DeleteProjectsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsDefaultSupportedIdpConfigsRequest {
@@ -3329,7 +3508,12 @@ export type PatchProjectsDefaultSupportedIdpConfigsResponse =
 export const PatchProjectsDefaultSupportedIdpConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig;
 
-export type PatchProjectsDefaultSupportedIdpConfigsError = DefaultErrors;
+export type PatchProjectsDefaultSupportedIdpConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a default supported Idp configuration for an Identity Toolkit project. */
 export const patchProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
@@ -3340,7 +3524,7 @@ export const patchProjectsDefaultSupportedIdpConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsDefaultSupportedIdpConfigsRequest,
   output: PatchProjectsDefaultSupportedIdpConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InitializeAuthProjectsIdentityPlatformRequest {
@@ -3370,7 +3554,12 @@ export type InitializeAuthProjectsIdentityPlatformResponse =
 export const InitializeAuthProjectsIdentityPlatformResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2InitializeIdentityPlatformResponse;
 
-export type InitializeAuthProjectsIdentityPlatformError = DefaultErrors;
+export type InitializeAuthProjectsIdentityPlatformError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initialize Identity Platform for a Cloud project. Identity Platform is an end-to-end authentication system for third-party users to access your apps and services. These could include mobile/web apps, games, APIs and beyond. This is the publicly available variant of EnableIdentityPlatform that is only available to billing-enabled projects. */
 export const initializeAuthProjectsIdentityPlatform: API.OperationMethod<
@@ -3381,7 +3570,7 @@ export const initializeAuthProjectsIdentityPlatform: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitializeAuthProjectsIdentityPlatformRequest,
   output: InitializeAuthProjectsIdentityPlatformResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInboundSamlConfigsRequest {
@@ -3416,7 +3605,12 @@ export type CreateProjectsInboundSamlConfigsResponse =
 export const CreateProjectsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 
-export type CreateProjectsInboundSamlConfigsError = DefaultErrors;
+export type CreateProjectsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an inbound SAML configuration for an Identity Toolkit project. */
 export const createProjectsInboundSamlConfigs: API.OperationMethod<
@@ -3427,7 +3621,7 @@ export const createProjectsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInboundSamlConfigsRequest,
   output: CreateProjectsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInboundSamlConfigsRequest {
@@ -3447,7 +3641,12 @@ export type DeleteProjectsInboundSamlConfigsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsInboundSamlConfigsError = DefaultErrors;
+export type DeleteProjectsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an inbound SAML configuration for an Identity Toolkit project. */
 export const deleteProjectsInboundSamlConfigs: API.OperationMethod<
@@ -3458,7 +3657,7 @@ export const deleteProjectsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInboundSamlConfigsRequest,
   output: DeleteProjectsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInboundSamlConfigsRequest {
@@ -3487,7 +3686,12 @@ export type PatchProjectsInboundSamlConfigsResponse =
 export const PatchProjectsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 
-export type PatchProjectsInboundSamlConfigsError = DefaultErrors;
+export type PatchProjectsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an inbound SAML configuration for an Identity Toolkit project. */
 export const patchProjectsInboundSamlConfigs: API.OperationMethod<
@@ -3498,7 +3702,7 @@ export const patchProjectsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInboundSamlConfigsRequest,
   output: PatchProjectsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInboundSamlConfigsRequest {
@@ -3519,7 +3723,10 @@ export type GetProjectsInboundSamlConfigsResponse =
 export const GetProjectsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig;
 
-export type GetProjectsInboundSamlConfigsError = DefaultErrors;
+export type GetProjectsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve an inbound SAML configuration for an Identity Toolkit project. */
 export const getProjectsInboundSamlConfigs: API.OperationMethod<
@@ -3530,7 +3737,7 @@ export const getProjectsInboundSamlConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInboundSamlConfigsRequest,
   output: GetProjectsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInboundSamlConfigsRequest {
@@ -3557,7 +3764,10 @@ export type ListProjectsInboundSamlConfigsResponse =
 export const ListProjectsInboundSamlConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse;
 
-export type ListProjectsInboundSamlConfigsError = DefaultErrors;
+export type ListProjectsInboundSamlConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all inbound SAML configurations for an Identity Toolkit project. */
 export const listProjectsInboundSamlConfigs: API.PaginatedOperationMethod<
@@ -3568,7 +3778,7 @@ export const listProjectsInboundSamlConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInboundSamlConfigsRequest,
   output: ListProjectsInboundSamlConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3596,7 +3806,10 @@ export type ListDefaultSupportedIdpsResponse =
 export const ListDefaultSupportedIdpsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse;
 
-export type ListDefaultSupportedIdpsError = DefaultErrors;
+export type ListDefaultSupportedIdpsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all default supported Idps. */
 export const listDefaultSupportedIdps: API.PaginatedOperationMethod<
@@ -3607,7 +3820,7 @@ export const listDefaultSupportedIdps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDefaultSupportedIdpsRequest,
   output: ListDefaultSupportedIdpsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3634,7 +3847,12 @@ export type RevokeTokenAccountsResponse =
 export const RevokeTokenAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2RevokeTokenResponse;
 
-export type RevokeTokenAccountsError = DefaultErrors;
+export type RevokeTokenAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revokes a user's token from an Identity Provider (IdP). This is done by manually providing an IdP credential, and the token types for revocation. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const revokeTokenAccounts: API.OperationMethod<
@@ -3645,7 +3863,7 @@ export const revokeTokenAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeTokenAccountsRequest,
   output: RevokeTokenAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartAccountsMfaEnrollmentRequest {
@@ -3672,7 +3890,12 @@ export type StartAccountsMfaEnrollmentResponse =
 export const StartAccountsMfaEnrollmentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse;
 
-export type StartAccountsMfaEnrollmentError = DefaultErrors;
+export type StartAccountsMfaEnrollmentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Step one of the MFA enrollment process. In SMS case, this sends an SMS verification code to the user. */
 export const startAccountsMfaEnrollment: API.OperationMethod<
@@ -3683,7 +3906,7 @@ export const startAccountsMfaEnrollment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAccountsMfaEnrollmentRequest,
   output: StartAccountsMfaEnrollmentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WithdrawAccountsMfaEnrollmentRequest {
@@ -3710,7 +3933,12 @@ export type WithdrawAccountsMfaEnrollmentResponse =
 export const WithdrawAccountsMfaEnrollmentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2WithdrawMfaResponse;
 
-export type WithdrawAccountsMfaEnrollmentError = DefaultErrors;
+export type WithdrawAccountsMfaEnrollmentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revokes one second factor from the enrolled second factors for an account. */
 export const withdrawAccountsMfaEnrollment: API.OperationMethod<
@@ -3721,7 +3949,7 @@ export const withdrawAccountsMfaEnrollment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WithdrawAccountsMfaEnrollmentRequest,
   output: WithdrawAccountsMfaEnrollmentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FinalizeAccountsMfaEnrollmentRequest {
@@ -3748,7 +3976,12 @@ export type FinalizeAccountsMfaEnrollmentResponse =
 export const FinalizeAccountsMfaEnrollmentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse;
 
-export type FinalizeAccountsMfaEnrollmentError = DefaultErrors;
+export type FinalizeAccountsMfaEnrollmentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finishes enrolling a second factor for the user. */
 export const finalizeAccountsMfaEnrollment: API.OperationMethod<
@@ -3759,7 +3992,7 @@ export const finalizeAccountsMfaEnrollment: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FinalizeAccountsMfaEnrollmentRequest,
   output: FinalizeAccountsMfaEnrollmentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FinalizeAccountsMfaSignInRequest {
@@ -3786,7 +4019,12 @@ export type FinalizeAccountsMfaSignInResponse =
 export const FinalizeAccountsMfaSignInResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse;
 
-export type FinalizeAccountsMfaSignInError = DefaultErrors;
+export type FinalizeAccountsMfaSignInError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies the MFA challenge and performs sign-in */
 export const finalizeAccountsMfaSignIn: API.OperationMethod<
@@ -3797,7 +4035,7 @@ export const finalizeAccountsMfaSignIn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FinalizeAccountsMfaSignInRequest,
   output: FinalizeAccountsMfaSignInResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartAccountsMfaSignInRequest {
@@ -3824,7 +4062,12 @@ export type StartAccountsMfaSignInResponse =
 export const StartAccountsMfaSignInResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV2StartMfaSignInResponse;
 
-export type StartAccountsMfaSignInError = DefaultErrors;
+export type StartAccountsMfaSignInError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends the MFA challenge */
 export const startAccountsMfaSignIn: API.OperationMethod<
@@ -3835,5 +4078,5 @@ export const startAccountsMfaSignIn: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAccountsMfaSignInRequest,
   output: StartAccountsMfaSignInResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -402,6 +402,52 @@ export const DomainComplianceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "DomainComplianceStatus" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -424,7 +470,7 @@ export type ListDomainsResponse_Op = ListDomainsResponse;
 export const ListDomainsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
 
-export type ListDomainsError = DefaultErrors;
+export type ListDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of all domains registered by you, along with their corresponding metadata. The order of domains in the response is unspecified and non-deterministic. Newly registered domains will not necessarily be added to the end of this list. */
 export const listDomains: API.PaginatedOperationMethod<
@@ -435,7 +481,7 @@ export const listDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -459,7 +505,10 @@ export type GetComplianceStatusDomainsResponse = DomainComplianceStatus;
 export const GetComplianceStatusDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DomainComplianceStatus;
 
-export type GetComplianceStatusDomainsError = DefaultErrors;
+export type GetComplianceStatusDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the compliance status for a given domain. Returns PERMISSION_DENIED if you don't have permission to access compliance status for the domain. */
 export const getComplianceStatusDomains: API.OperationMethod<
@@ -470,7 +519,7 @@ export const getComplianceStatusDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetComplianceStatusDomainsRequest,
   output: GetComplianceStatusDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDomainsRequest {
@@ -488,7 +537,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDomainsResponse = Domain;
 export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type GetDomainsError = DefaultErrors;
+export type GetDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves detailed information about a domain registered by you. Returns NOT_FOUND if the domain is not registered by you. Domain represents the metadata of a domain that has been registered within the system and linked to a user. */
 export const getDomains: API.OperationMethod<
@@ -499,7 +548,7 @@ export const getDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainsRequest,
   output: GetDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryDomainsDomainStatsRequest {
@@ -526,7 +575,12 @@ export type QueryDomainsDomainStatsResponse = QueryDomainStatsResponse;
 export const QueryDomainsDomainStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryDomainStatsResponse;
 
-export type QueryDomainsDomainStatsError = DefaultErrors;
+export type QueryDomainsDomainStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves a list of domain statistics for a given domain and time period. Returns statistics only for dates where data is available. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for the domain. */
 export const queryDomainsDomainStats: API.OperationMethod<
@@ -537,7 +591,7 @@ export const queryDomainsDomainStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryDomainsDomainStatsRequest,
   output: QueryDomainsDomainStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchQueryDomainStatsRequest_Op {
@@ -561,7 +615,12 @@ export type BatchQueryDomainStatsResponse_Op = BatchQueryDomainStatsResponse;
 export const BatchQueryDomainStatsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchQueryDomainStatsResponse;
 
-export type BatchQueryDomainStatsError = DefaultErrors;
+export type BatchQueryDomainStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains. */
 export const batchQueryDomainStats: API.OperationMethod<
@@ -572,5 +631,5 @@ export const batchQueryDomainStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchQueryDomainStatsRequest_Op,
   output: BatchQueryDomainStatsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

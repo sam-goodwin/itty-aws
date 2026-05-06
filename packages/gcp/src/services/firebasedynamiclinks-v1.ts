@@ -577,6 +577,52 @@ export const CreateShortDynamicLinkResponse =
   }).annotate({ identifier: "CreateShortDynamicLinkResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -601,7 +647,12 @@ export type CreateManagedShortLinksResponse = CreateManagedShortLinkResponse;
 export const CreateManagedShortLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateManagedShortLinkResponse;
 
-export type CreateManagedShortLinksError = DefaultErrors;
+export type CreateManagedShortLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the link (non unique name for the front end). - The response must be authenticated with an auth token (generated with the admin service account). - The link will appear in the FDL list of links in the console front end. The Dynamic Link domain in the request must be owned by requester's Firebase project. */
 export const createManagedShortLinks: API.OperationMethod<
@@ -612,7 +663,7 @@ export const createManagedShortLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateManagedShortLinksRequest,
   output: CreateManagedShortLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InstallAttributionV1Request {
@@ -634,7 +685,12 @@ export type InstallAttributionV1Response = GetIosPostInstallAttributionResponse;
 export const InstallAttributionV1Response =
   /*@__PURE__*/ /*#__PURE__*/ GetIosPostInstallAttributionResponse;
 
-export type InstallAttributionV1Error = DefaultErrors;
+export type InstallAttributionV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Get iOS strong/weak-match info for post-install attribution. */
 export const installAttributionV1: API.OperationMethod<
@@ -645,7 +701,7 @@ export const installAttributionV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InstallAttributionV1Request,
   output: InstallAttributionV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLinkStatsV1Request {
@@ -672,7 +728,7 @@ export type GetLinkStatsV1Response = DynamicLinkStats;
 export const GetLinkStatsV1Response =
   /*@__PURE__*/ /*#__PURE__*/ DynamicLinkStats;
 
-export type GetLinkStatsV1Error = DefaultErrors;
+export type GetLinkStatsV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens. */
 export const getLinkStatsV1: API.OperationMethod<
@@ -683,7 +739,7 @@ export const getLinkStatsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLinkStatsV1Request,
   output: GetLinkStatsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReopenAttributionV1Request {
@@ -703,7 +759,12 @@ export type ReopenAttributionV1Response = GetIosReopenAttributionResponse;
 export const ReopenAttributionV1Response =
   /*@__PURE__*/ /*#__PURE__*/ GetIosReopenAttributionResponse;
 
-export type ReopenAttributionV1Error = DefaultErrors;
+export type ReopenAttributionV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Get iOS reopen attribution for app universal link open deeplinking. */
 export const reopenAttributionV1: API.OperationMethod<
@@ -714,7 +775,7 @@ export const reopenAttributionV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReopenAttributionV1Request,
   output: ReopenAttributionV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateShortLinksRequest {
@@ -734,7 +795,12 @@ export type CreateShortLinksResponse = CreateShortDynamicLinkResponse;
 export const CreateShortLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateShortDynamicLinkResponse;
 
-export type CreateShortLinksError = DefaultErrors;
+export type CreateShortLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project. */
 export const createShortLinks: API.OperationMethod<
@@ -745,5 +811,5 @@ export const createShortLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateShortLinksRequest,
   output: CreateShortLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

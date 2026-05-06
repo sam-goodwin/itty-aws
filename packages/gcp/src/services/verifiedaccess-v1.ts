@@ -88,6 +88,52 @@ export const VerifyChallengeResponseResult =
   }).annotate({ identifier: "VerifyChallengeResponseResult" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -109,7 +155,12 @@ export type VerifyChallengeResponse = VerifyChallengeResponseResult;
 export const VerifyChallengeResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerifyChallengeResponseResult;
 
-export type VerifyChallengeError = DefaultErrors;
+export type VerifyChallengeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** VerifyChallengeResponse API */
 export const verifyChallenge: API.OperationMethod<
@@ -120,7 +171,7 @@ export const verifyChallenge: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyChallengeRequest,
   output: VerifyChallengeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateChallengeRequest {
@@ -140,7 +191,12 @@ export const CreateChallengeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CreateChallengeResponse = Challenge;
 export const CreateChallengeResponse = /*@__PURE__*/ /*#__PURE__*/ Challenge;
 
-export type CreateChallengeError = DefaultErrors;
+export type CreateChallengeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateChallenge API */
 export const createChallenge: API.OperationMethod<
@@ -151,5 +207,5 @@ export const createChallenge: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChallengeRequest,
   output: CreateChallengeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

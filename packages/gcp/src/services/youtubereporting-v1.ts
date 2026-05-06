@@ -441,6 +441,52 @@ export const ListReportTypesResponse =
   }).annotate({ identifier: "ListReportTypesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -475,7 +521,7 @@ export type ListReportTypesResponse_Op = ListReportTypesResponse;
 export const ListReportTypesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListReportTypesResponse;
 
-export type ListReportTypesError = DefaultErrors;
+export type ListReportTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists report types. */
 export const listReportTypes: API.PaginatedOperationMethod<
@@ -486,7 +532,7 @@ export const listReportTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReportTypesRequest,
   output: ListReportTypesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -508,7 +554,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DownloadMediaResponse = GdataMedia;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ GdataMedia;
 
-export type DownloadMediaError = DefaultErrors;
+export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
 /** Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`. */
 export const downloadMedia: API.OperationMethod<
@@ -519,7 +565,7 @@ export const downloadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateJobsRequest {
@@ -542,7 +588,12 @@ export const CreateJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateJobsResponse = Job;
 export const CreateJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CreateJobsError = DefaultErrors;
+export type CreateJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a job and returns it. */
 export const createJobs: API.OperationMethod<
@@ -553,7 +604,7 @@ export const createJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateJobsRequest,
   output: CreateJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetJobsRequest {
@@ -576,7 +627,7 @@ export const GetJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetJobsResponse = Job;
 export const GetJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type GetJobsError = DefaultErrors;
+export type GetJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a job. */
 export const getJobs: API.OperationMethod<
@@ -587,7 +638,7 @@ export const getJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobsRequest,
   output: GetJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListJobsRequest {
@@ -618,7 +669,7 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListJobsResponse_Op = ListJobsResponse;
 export const ListJobsResponse_Op = /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
 
-export type ListJobsError = DefaultErrors;
+export type ListJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists jobs. */
 export const listJobs: API.PaginatedOperationMethod<
@@ -629,7 +680,7 @@ export const listJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -656,7 +707,12 @@ export const DeleteJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteJobsResponse = Empty;
 export const DeleteJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteJobsError = DefaultErrors;
+export type DeleteJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a job. */
 export const deleteJobs: API.OperationMethod<
@@ -667,7 +723,7 @@ export const deleteJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteJobsRequest,
   output: DeleteJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetJobsReportsRequest {
@@ -693,7 +749,7 @@ export const GetJobsReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetJobsReportsResponse = Report;
 export const GetJobsReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type GetJobsReportsError = DefaultErrors;
+export type GetJobsReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the metadata of a specific report. */
 export const getJobsReports: API.OperationMethod<
@@ -704,7 +760,7 @@ export const getJobsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobsReportsRequest,
   output: GetJobsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListJobsReportsRequest {
@@ -751,7 +807,7 @@ export type ListJobsReportsResponse = ListReportsResponse;
 export const ListJobsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReportsResponse;
 
-export type ListJobsReportsError = DefaultErrors;
+export type ListJobsReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists reports created by a specific job. Returns NOT_FOUND if the job does not exist. */
 export const listJobsReports: API.PaginatedOperationMethod<
@@ -762,7 +818,7 @@ export const listJobsReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsReportsRequest,
   output: ListJobsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

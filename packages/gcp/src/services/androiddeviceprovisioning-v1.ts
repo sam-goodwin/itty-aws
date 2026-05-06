@@ -789,6 +789,52 @@ export const FindDevicesByOwnerRequest =
   }).annotate({ identifier: "FindDevicesByOwnerRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -811,7 +857,7 @@ export type ListCustomersResponse_Op = CustomerListCustomersResponse;
 export const ListCustomersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ CustomerListCustomersResponse;
 
-export type ListCustomersError = DefaultErrors;
+export type ListCustomersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the user's customer accounts. */
 export const listCustomers: API.PaginatedOperationMethod<
@@ -822,7 +868,7 @@ export const listCustomers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersRequest,
   output: ListCustomersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -853,7 +899,12 @@ export type ApplyConfigurationCustomersDevicesResponse = Empty;
 export const ApplyConfigurationCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ApplyConfigurationCustomersDevicesError = DefaultErrors;
+export type ApplyConfigurationCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies a Configuration to the device to register the device for zero-touch enrollment. After applying a configuration to a device, the device automatically provisions itself on first boot, or next factory reset. */
 export const applyConfigurationCustomersDevices: API.OperationMethod<
@@ -864,7 +915,7 @@ export const applyConfigurationCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyConfigurationCustomersDevicesRequest,
   output: ApplyConfigurationCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveConfigurationCustomersDevicesRequest {
@@ -893,7 +944,12 @@ export type RemoveConfigurationCustomersDevicesResponse = Empty;
 export const RemoveConfigurationCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RemoveConfigurationCustomersDevicesError = DefaultErrors;
+export type RemoveConfigurationCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a configuration from device. */
 export const removeConfigurationCustomersDevices: API.OperationMethod<
@@ -904,7 +960,7 @@ export const removeConfigurationCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveConfigurationCustomersDevicesRequest,
   output: RemoveConfigurationCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersDevicesRequest {
@@ -930,7 +986,7 @@ export type ListCustomersDevicesResponse = CustomerListDevicesResponse;
 export const ListCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomerListDevicesResponse;
 
-export type ListCustomersDevicesError = DefaultErrors;
+export type ListCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a customer's devices. */
 export const listCustomersDevices: API.PaginatedOperationMethod<
@@ -941,7 +997,7 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDevicesRequest,
   output: ListCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -964,7 +1020,7 @@ export const GetCustomersDevicesRequest =
 export type GetCustomersDevicesResponse = Device;
 export const GetCustomersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
 
-export type GetCustomersDevicesError = DefaultErrors;
+export type GetCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the details of a device. */
 export const getCustomersDevices: API.OperationMethod<
@@ -975,7 +1031,7 @@ export const getCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersDevicesRequest,
   output: GetCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnclaimCustomersDevicesRequest {
@@ -1002,7 +1058,12 @@ export type UnclaimCustomersDevicesResponse = Empty;
 export const UnclaimCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UnclaimCustomersDevicesError = DefaultErrors;
+export type UnclaimCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unclaims a device from a customer and removes it from zero-touch enrollment. After removing a device, a customer must contact their reseller to register the device into zero-touch enrollment again. */
 export const unclaimCustomersDevices: API.OperationMethod<
@@ -1013,7 +1074,7 @@ export const unclaimCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnclaimCustomersDevicesRequest,
   output: UnclaimCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersDpcsRequest {
@@ -1033,7 +1094,7 @@ export type ListCustomersDpcsResponse = CustomerListDpcsResponse;
 export const ListCustomersDpcsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomerListDpcsResponse;
 
-export type ListCustomersDpcsError = DefaultErrors;
+export type ListCustomersDpcsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the DPCs (device policy controllers) that support zero-touch enrollment. */
 export const listCustomersDpcs: API.OperationMethod<
@@ -1044,7 +1105,7 @@ export const listCustomersDpcs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCustomersDpcsRequest,
   output: ListCustomersDpcsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCustomersConfigurationsRequest {
@@ -1071,7 +1132,12 @@ export type CreateCustomersConfigurationsResponse = Configuration;
 export const CreateCustomersConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Configuration;
 
-export type CreateCustomersConfigurationsError = DefaultErrors;
+export type CreateCustomersConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new configuration. Once created, a customer can apply the configuration to devices. */
 export const createCustomersConfigurations: API.OperationMethod<
@@ -1082,7 +1148,7 @@ export const createCustomersConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersConfigurationsRequest,
   output: CreateCustomersConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersConfigurationsRequest {
@@ -1102,7 +1168,10 @@ export type GetCustomersConfigurationsResponse = Configuration;
 export const GetCustomersConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Configuration;
 
-export type GetCustomersConfigurationsError = DefaultErrors;
+export type GetCustomersConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a configuration. */
 export const getCustomersConfigurations: API.OperationMethod<
@@ -1113,7 +1182,7 @@ export const getCustomersConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersConfigurationsRequest,
   output: GetCustomersConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCustomersConfigurationsRequest {
@@ -1133,7 +1202,12 @@ export type DeleteCustomersConfigurationsResponse = Empty;
 export const DeleteCustomersConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCustomersConfigurationsError = DefaultErrors;
+export type DeleteCustomersConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an unused configuration. The API call fails if the customer has devices with the configuration applied. */
 export const deleteCustomersConfigurations: API.OperationMethod<
@@ -1144,7 +1218,7 @@ export const deleteCustomersConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersConfigurationsRequest,
   output: DeleteCustomersConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersConfigurationsRequest {
@@ -1165,7 +1239,10 @@ export type ListCustomersConfigurationsResponse =
 export const ListCustomersConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomerListConfigurationsResponse;
 
-export type ListCustomersConfigurationsError = DefaultErrors;
+export type ListCustomersConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists a customer's configurations. */
 export const listCustomersConfigurations: API.OperationMethod<
@@ -1176,7 +1253,7 @@ export const listCustomersConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCustomersConfigurationsRequest,
   output: ListCustomersConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchCustomersConfigurationsRequest {
@@ -1202,7 +1279,12 @@ export type PatchCustomersConfigurationsResponse = Configuration;
 export const PatchCustomersConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Configuration;
 
-export type PatchCustomersConfigurationsError = DefaultErrors;
+export type PatchCustomersConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a configuration's field values. */
 export const patchCustomersConfigurations: API.OperationMethod<
@@ -1213,7 +1295,7 @@ export const patchCustomersConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersConfigurationsRequest,
   output: PatchCustomersConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -1231,7 +1313,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1242,7 +1324,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPartnersVendorsRequest {
@@ -1268,7 +1350,7 @@ export type ListPartnersVendorsResponse = ListVendorsResponse;
 export const ListPartnersVendorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVendorsResponse;
 
-export type ListPartnersVendorsError = DefaultErrors;
+export type ListPartnersVendorsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the vendors of the partner. */
 export const listPartnersVendors: API.PaginatedOperationMethod<
@@ -1279,7 +1361,7 @@ export const listPartnersVendors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersVendorsRequest,
   output: ListPartnersVendorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1309,7 +1391,10 @@ export type ListPartnersVendorsCustomersResponse = ListVendorCustomersResponse;
 export const ListPartnersVendorsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVendorCustomersResponse;
 
-export type ListPartnersVendorsCustomersError = DefaultErrors;
+export type ListPartnersVendorsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the customers of the vendor. */
 export const listPartnersVendorsCustomers: API.PaginatedOperationMethod<
@@ -1320,7 +1405,7 @@ export const listPartnersVendorsCustomers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersVendorsCustomersRequest,
   output: ListPartnersVendorsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1347,7 +1432,12 @@ export type CreatePartnersCustomersResponse = Company;
 export const CreatePartnersCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Company;
 
-export type CreatePartnersCustomersError = DefaultErrors;
+export type CreatePartnersCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a customer for zero-touch enrollment. After the method returns successfully, admin and owner roles can manage devices and EMM configs by calling API methods or using their zero-touch enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and explains how to sign into the portal. */
 export const createPartnersCustomers: API.OperationMethod<
@@ -1358,7 +1448,7 @@ export const createPartnersCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePartnersCustomersRequest,
   output: CreatePartnersCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPartnersCustomersRequest {
@@ -1384,7 +1474,7 @@ export type ListPartnersCustomersResponse = ListCustomersResponse;
 export const ListPartnersCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomersResponse;
 
-export type ListPartnersCustomersError = DefaultErrors;
+export type ListPartnersCustomersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the customers that are enrolled to the reseller identified by the `partnerId` argument. This list includes customers that the reseller created and customers that enrolled themselves using the portal. */
 export const listPartnersCustomers: API.PaginatedOperationMethod<
@@ -1395,7 +1485,7 @@ export const listPartnersCustomers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersCustomersRequest,
   output: ListPartnersCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1426,7 +1516,12 @@ export type UnclaimAsyncPartnersDevicesResponse = Operation;
 export const UnclaimAsyncPartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UnclaimAsyncPartnersDevicesError = DefaultErrors;
+export type UnclaimAsyncPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). */
 export const unclaimAsyncPartnersDevices: API.OperationMethod<
@@ -1437,7 +1532,7 @@ export const unclaimAsyncPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnclaimAsyncPartnersDevicesRequest,
   output: UnclaimAsyncPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FindByOwnerPartnersDevicesRequest {
@@ -1464,7 +1559,12 @@ export type FindByOwnerPartnersDevicesResponse = FindDevicesByOwnerResponse;
 export const FindByOwnerPartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FindDevicesByOwnerResponse;
 
-export type FindByOwnerPartnersDevicesError = DefaultErrors;
+export type FindByOwnerPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds devices claimed for customers. The results only contain devices registered to the reseller that's identified by the `partnerId` argument. The customer's devices purchased from other resellers don't appear in the results. */
 export const findByOwnerPartnersDevices: API.OperationMethod<
@@ -1475,7 +1575,7 @@ export const findByOwnerPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindByOwnerPartnersDevicesRequest,
   output: FindByOwnerPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSimLockStatePartnersDevicesRequest {
@@ -1503,7 +1603,12 @@ export type GetSimLockStatePartnersDevicesResponse =
 export const GetSimLockStatePartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetDeviceSimLockStateResponse;
 
-export type GetSimLockStatePartnersDevicesError = DefaultErrors;
+export type GetSimLockStatePartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a device's SIM lock state. */
 export const getSimLockStatePartnersDevices: API.OperationMethod<
@@ -1514,7 +1619,7 @@ export const getSimLockStatePartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSimLockStatePartnersDevicesRequest,
   output: GetSimLockStatePartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MetadataPartnersDevicesRequest {
@@ -1544,7 +1649,12 @@ export type MetadataPartnersDevicesResponse = DeviceMetadata;
 export const MetadataPartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeviceMetadata;
 
-export type MetadataPartnersDevicesError = DefaultErrors;
+export type MetadataPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates reseller metadata associated with the device. Android devices only. */
 export const metadataPartnersDevices: API.OperationMethod<
@@ -1555,7 +1665,7 @@ export const metadataPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MetadataPartnersDevicesRequest,
   output: MetadataPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClaimAsyncPartnersDevicesRequest {
@@ -1582,7 +1692,12 @@ export type ClaimAsyncPartnersDevicesResponse = Operation;
 export const ClaimAsyncPartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ClaimAsyncPartnersDevicesError = DefaultErrors;
+export type ClaimAsyncPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). */
 export const claimAsyncPartnersDevices: API.OperationMethod<
@@ -1593,7 +1708,7 @@ export const claimAsyncPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClaimAsyncPartnersDevicesRequest,
   output: ClaimAsyncPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateMetadataAsyncPartnersDevicesRequest {
@@ -1622,7 +1737,12 @@ export type UpdateMetadataAsyncPartnersDevicesResponse = Operation;
 export const UpdateMetadataAsyncPartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateMetadataAsyncPartnersDevicesError = DefaultErrors;
+export type UpdateMetadataAsyncPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). Android Devices only. */
 export const updateMetadataAsyncPartnersDevices: API.OperationMethod<
@@ -1633,7 +1753,7 @@ export const updateMetadataAsyncPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMetadataAsyncPartnersDevicesRequest,
   output: UpdateMetadataAsyncPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClaimPartnersDevicesRequest {
@@ -1660,7 +1780,12 @@ export type ClaimPartnersDevicesResponse = ClaimDeviceResponse;
 export const ClaimPartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClaimDeviceResponse;
 
-export type ClaimPartnersDevicesError = DefaultErrors;
+export type ClaimPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Claims a device for a customer and adds it to zero-touch enrollment. If the device is already claimed by another customer, the call returns an error. */
 export const claimPartnersDevices: API.OperationMethod<
@@ -1671,7 +1796,7 @@ export const claimPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClaimPartnersDevicesRequest,
   output: ClaimPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FindByIdentifierPartnersDevicesRequest {
@@ -1701,7 +1826,12 @@ export type FindByIdentifierPartnersDevicesResponse =
 export const FindByIdentifierPartnersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FindDevicesByDeviceIdentifierResponse;
 
-export type FindByIdentifierPartnersDevicesError = DefaultErrors;
+export type FindByIdentifierPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds devices by hardware identifiers, such as IMEI. */
 export const findByIdentifierPartnersDevices: API.OperationMethod<
@@ -1712,7 +1842,7 @@ export const findByIdentifierPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindByIdentifierPartnersDevicesRequest,
   output: FindByIdentifierPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPartnersDevicesRequest {
@@ -1731,7 +1861,7 @@ export const GetPartnersDevicesRequest =
 export type GetPartnersDevicesResponse = Device;
 export const GetPartnersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
 
-export type GetPartnersDevicesError = DefaultErrors;
+export type GetPartnersDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a device. */
 export const getPartnersDevices: API.OperationMethod<
@@ -1742,7 +1872,7 @@ export const getPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnersDevicesRequest,
   output: GetPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnclaimPartnersDevicesRequest {
@@ -1768,7 +1898,12 @@ export const UnclaimPartnersDevicesRequest =
 export type UnclaimPartnersDevicesResponse = Empty;
 export const UnclaimPartnersDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UnclaimPartnersDevicesError = DefaultErrors;
+export type UnclaimPartnersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unclaims a device from a customer and removes it from zero-touch enrollment. */
 export const unclaimPartnersDevices: API.OperationMethod<
@@ -1779,5 +1914,5 @@ export const unclaimPartnersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnclaimPartnersDevicesRequest,
   output: UnclaimPartnersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

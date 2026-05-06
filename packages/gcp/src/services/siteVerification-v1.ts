@@ -85,6 +85,52 @@ export const SiteVerificationWebResourceListResponse =
   }).annotate({ identifier: "SiteVerificationWebResourceListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -107,7 +153,12 @@ export const DeleteWebResourceResponse: Schema.Schema<DeleteWebResourceResponse>
     {},
   ) as any as Schema.Schema<DeleteWebResourceResponse>;
 
-export type DeleteWebResourceError = DefaultErrors;
+export type DeleteWebResourceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Relinquish ownership of a website or domain. */
 export const deleteWebResource: API.OperationMethod<
@@ -118,7 +169,7 @@ export const deleteWebResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWebResourceRequest,
   output: DeleteWebResourceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetWebResourceRequest {
@@ -137,7 +188,7 @@ export type GetWebResourceResponse = SiteVerificationWebResourceResource;
 export const GetWebResourceResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
 
-export type GetWebResourceError = DefaultErrors;
+export type GetWebResourceError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the most current data for a website or domain. */
 export const getWebResource: API.OperationMethod<
@@ -148,7 +199,7 @@ export const getWebResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebResourceRequest,
   output: GetWebResourceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetTokenWebResourceRequest {
@@ -171,7 +222,12 @@ export type GetTokenWebResourceResponse =
 export const GetTokenWebResourceResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceGettokenResponse;
 
-export type GetTokenWebResourceError = DefaultErrors;
+export type GetTokenWebResourceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Get a verification token for placing on a website or domain. */
 export const getTokenWebResource: API.OperationMethod<
@@ -182,7 +238,7 @@ export const getTokenWebResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTokenWebResourceRequest,
   output: GetTokenWebResourceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertWebResourceRequest {
@@ -207,7 +263,12 @@ export type InsertWebResourceResponse = SiteVerificationWebResourceResource;
 export const InsertWebResourceResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
 
-export type InsertWebResourceError = DefaultErrors;
+export type InsertWebResourceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attempt verification of a website or domain. */
 export const insertWebResource: API.OperationMethod<
@@ -218,7 +279,7 @@ export const insertWebResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertWebResourceRequest,
   output: InsertWebResourceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListWebResourceRequest {}
@@ -234,7 +295,7 @@ export type ListWebResourceResponse = SiteVerificationWebResourceListResponse;
 export const ListWebResourceResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceListResponse;
 
-export type ListWebResourceError = DefaultErrors;
+export type ListWebResourceError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the list of your verified websites and domains. */
 export const listWebResource: API.OperationMethod<
@@ -245,7 +306,7 @@ export const listWebResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListWebResourceRequest,
   output: ListWebResourceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchWebResourceRequest {
@@ -270,7 +331,12 @@ export type PatchWebResourceResponse = SiteVerificationWebResourceResource;
 export const PatchWebResourceResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
 
-export type PatchWebResourceError = DefaultErrors;
+export type PatchWebResourceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modify the list of owners for your website or domain. This method supports patch semantics. */
 export const patchWebResource: API.OperationMethod<
@@ -281,7 +347,7 @@ export const patchWebResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchWebResourceRequest,
   output: PatchWebResourceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateWebResourceRequest {
@@ -306,7 +372,12 @@ export type UpdateWebResourceResponse = SiteVerificationWebResourceResource;
 export const UpdateWebResourceResponse =
   /*@__PURE__*/ /*#__PURE__*/ SiteVerificationWebResourceResource;
 
-export type UpdateWebResourceError = DefaultErrors;
+export type UpdateWebResourceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modify the list of owners for your website or domain. */
 export const updateWebResource: API.OperationMethod<
@@ -317,5 +388,5 @@ export const updateWebResource: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWebResourceRequest,
   output: UpdateWebResourceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

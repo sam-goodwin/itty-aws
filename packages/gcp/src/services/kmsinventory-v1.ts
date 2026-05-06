@@ -462,6 +462,31 @@ export const GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -497,7 +522,10 @@ export type SearchProjectsProtectedResourcesResponse =
 export const SearchProjectsProtectedResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse;
 
-export type SearchProjectsProtectedResourcesError = DefaultErrors;
+export type SearchProjectsProtectedResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud organization/project. */
 export const searchProjectsProtectedResources: API.PaginatedOperationMethod<
@@ -508,7 +536,7 @@ export const searchProjectsProtectedResources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsProtectedResourcesRequest,
   output: SearchProjectsProtectedResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -539,7 +567,7 @@ export type ListProjectsCryptoKeysResponse =
 export const ListProjectsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudKmsInventoryV1ListCryptoKeysResponse;
 
-export type ListProjectsCryptoKeysError = DefaultErrors;
+export type ListProjectsCryptoKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns cryptographic keys managed by Cloud KMS in a given Cloud project. Note that this data is sourced from snapshots, meaning it may not completely reflect the actual state of key metadata at call time. */
 export const listProjectsCryptoKeys: API.PaginatedOperationMethod<
@@ -550,7 +578,7 @@ export const listProjectsCryptoKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsCryptoKeysRequest,
   output: ListProjectsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -584,7 +612,9 @@ export const GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudKmsInventoryV1ProtectedResourcesSummary;
 
 export type GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey. By default, summary of resources within the same Cloud organization as the key will be returned, which requires the KMS organization service account to be configured(refer https://docs.cloud.google.com/kms/docs/view-key-usage#required-roles). If the KMS organization service account is not configured or key's project is not part of an organization, set fallback_scope to `FALLBACK_SCOPE_PROJECT` to retrieve a summary of protected resources within the key's project. */
 export const getProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -596,7 +626,7 @@ export const getProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeys: AP
   input: GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysRequest,
   output:
     GetProtectedResourcesSummaryProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchOrganizationsProtectedResourcesRequest {
@@ -631,7 +661,10 @@ export type SearchOrganizationsProtectedResourcesResponse =
 export const SearchOrganizationsProtectedResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse;
 
-export type SearchOrganizationsProtectedResourcesError = DefaultErrors;
+export type SearchOrganizationsProtectedResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud organization/project. */
 export const searchOrganizationsProtectedResources: API.PaginatedOperationMethod<
@@ -642,7 +675,7 @@ export const searchOrganizationsProtectedResources: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationsProtectedResourcesRequest,
   output: SearchOrganizationsProtectedResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

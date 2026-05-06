@@ -5087,6 +5087,52 @@ export const ClearValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ClearValuesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5114,7 +5160,12 @@ export type GetByDataFilterSpreadsheetsResponse = Spreadsheet;
 export const GetByDataFilterSpreadsheetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Spreadsheet;
 
-export type GetByDataFilterSpreadsheetsError = DefaultErrors;
+export type GetByDataFilterSpreadsheetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). This method differs from GetSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a dataFilters parameter. Multiple DataFilters can be specified. Specifying one or more data filters returns the portions of the spreadsheet that intersect ranges matched by any of the filters. By default, data within grids is not returned. You can include grid data in one of two ways: * Specify a [field mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields using the `fields` URL parameter in HTTP. * Set the includeGridData parameter to `true`. If a field mask is set, the `includeGridData` parameter is ignored. For large spreadsheets, as a best practice, retrieve only the specific spreadsheet fields that you want. */
 export const getByDataFilterSpreadsheets: API.OperationMethod<
@@ -5125,7 +5176,7 @@ export const getByDataFilterSpreadsheets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetByDataFilterSpreadsheetsRequest,
   output: GetByDataFilterSpreadsheetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateSpreadsheetsRequest {
@@ -5152,7 +5203,12 @@ export type BatchUpdateSpreadsheetsResponse = BatchUpdateSpreadsheetResponse;
 export const BatchUpdateSpreadsheetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateSpreadsheetResponse;
 
-export type BatchUpdateSpreadsheetsError = DefaultErrors;
+export type BatchUpdateSpreadsheetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. The replies will mirror the requests. For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2 empty replies, the actual reply, and another empty reply, in that order. Due to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect exactly your changes after this completes, however it is guaranteed that the updates in the request will be applied together atomically. Your changes may be altered with respect to collaborator changes. If there are no collaborators, the spreadsheet should reflect your changes. */
 export const batchUpdateSpreadsheets: API.OperationMethod<
@@ -5163,7 +5219,7 @@ export const batchUpdateSpreadsheets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateSpreadsheetsRequest,
   output: BatchUpdateSpreadsheetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSpreadsheetsRequest {
@@ -5183,7 +5239,12 @@ export type CreateSpreadsheetsResponse = Spreadsheet;
 export const CreateSpreadsheetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Spreadsheet;
 
-export type CreateSpreadsheetsError = DefaultErrors;
+export type CreateSpreadsheetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a spreadsheet, returning the newly created spreadsheet. */
 export const createSpreadsheets: API.OperationMethod<
@@ -5194,7 +5255,7 @@ export const createSpreadsheets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSpreadsheetsRequest,
   output: CreateSpreadsheetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpreadsheetsRequest {
@@ -5229,7 +5290,7 @@ export const GetSpreadsheetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetSpreadsheetsResponse = Spreadsheet;
 export const GetSpreadsheetsResponse = /*@__PURE__*/ /*#__PURE__*/ Spreadsheet;
 
-export type GetSpreadsheetsError = DefaultErrors;
+export type GetSpreadsheetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. By default, data within grids is not returned. You can include grid data in one of 2 ways: * Specify a [field mask](https://developers.google.com/workspace/sheets/api/guides/field-masks) listing your desired fields using the `fields` URL parameter in HTTP * Set the includeGridData URL parameter to true. If a field mask is set, the `includeGridData` parameter is ignored For large spreadsheets, as a best practice, retrieve only the specific spreadsheet fields that you want. To retrieve only subsets of spreadsheet data, use the ranges URL parameter. Ranges are specified using [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). You can define a single cell (for example, `A1`) or multiple cells (for example, `A1:D5`). You can also get cells from other sheets within the same spreadsheet (for example, `Sheet2!A1:C4`) or retrieve multiple ranges at once (for example, `?ranges=A1:D5&ranges=Sheet2!A1:C4`). Limiting the range returns only the portions of the spreadsheet that intersect the requested ranges. */
 export const getSpreadsheets: API.OperationMethod<
@@ -5240,7 +5301,7 @@ export const getSpreadsheets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpreadsheetsRequest,
   output: GetSpreadsheetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSpreadsheetsValuesRequest {
@@ -5301,7 +5362,12 @@ export type UpdateSpreadsheetsValuesResponse = UpdateValuesResponse;
 export const UpdateSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UpdateValuesResponse;
 
-export type UpdateSpreadsheetsValuesError = DefaultErrors;
+export type UpdateSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption. */
 export const updateSpreadsheetsValues: API.OperationMethod<
@@ -5312,7 +5378,7 @@ export const updateSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSpreadsheetsValuesRequest,
   output: UpdateSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetSpreadsheetsValuesRequest {
@@ -5359,7 +5425,10 @@ export type BatchGetSpreadsheetsValuesResponse = BatchGetValuesResponse;
 export const BatchGetSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetValuesResponse;
 
-export type BatchGetSpreadsheetsValuesError = DefaultErrors;
+export type BatchGetSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. */
 export const batchGetSpreadsheetsValues: API.OperationMethod<
@@ -5370,7 +5439,7 @@ export const batchGetSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetSpreadsheetsValuesRequest,
   output: BatchGetSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchClearSpreadsheetsValuesRequest {
@@ -5397,7 +5466,12 @@ export type BatchClearSpreadsheetsValuesResponse = BatchClearValuesResponse;
 export const BatchClearSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchClearValuesResponse;
 
-export type BatchClearSpreadsheetsValuesError = DefaultErrors;
+export type BatchClearSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting and data validation) are kept. */
 export const batchClearSpreadsheetsValues: API.OperationMethod<
@@ -5408,7 +5482,7 @@ export const batchClearSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchClearSpreadsheetsValuesRequest,
   output: BatchClearSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateSpreadsheetsValuesRequest {
@@ -5435,7 +5509,12 @@ export type BatchUpdateSpreadsheetsValuesResponse = BatchUpdateValuesResponse;
 export const BatchUpdateSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateValuesResponse;
 
-export type BatchUpdateSpreadsheetsValuesError = DefaultErrors;
+export type BatchUpdateSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges. */
 export const batchUpdateSpreadsheetsValues: API.OperationMethod<
@@ -5446,7 +5525,7 @@ export const batchUpdateSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateSpreadsheetsValuesRequest,
   output: BatchUpdateSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetByDataFilterSpreadsheetsValuesRequest {
@@ -5474,7 +5553,12 @@ export type BatchGetByDataFilterSpreadsheetsValuesResponse =
 export const BatchGetByDataFilterSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetValuesByDataFilterResponse;
 
-export type BatchGetByDataFilterSpreadsheetsValuesError = DefaultErrors;
+export type BatchGetByDataFilterSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns one or more ranges of values that match the specified data filters. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned. */
 export const batchGetByDataFilterSpreadsheetsValues: API.OperationMethod<
@@ -5485,7 +5569,7 @@ export const batchGetByDataFilterSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetByDataFilterSpreadsheetsValuesRequest,
   output: BatchGetByDataFilterSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpreadsheetsValuesRequest {
@@ -5530,7 +5614,7 @@ export type GetSpreadsheetsValuesResponse = ValueRange;
 export const GetSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValueRange;
 
-export type GetSpreadsheetsValuesError = DefaultErrors;
+export type GetSpreadsheetsValuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range. */
 export const getSpreadsheetsValues: API.OperationMethod<
@@ -5541,7 +5625,7 @@ export const getSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpreadsheetsValuesRequest,
   output: GetSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AppendSpreadsheetsValuesRequest {
@@ -5607,7 +5691,12 @@ export type AppendSpreadsheetsValuesResponse = AppendValuesResponse;
 export const AppendSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppendValuesResponse;
 
-export type AppendSpreadsheetsValuesError = DefaultErrors;
+export type AppendSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Appends values to a spreadsheet. The input range is used to search for existing data and find a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific details of how tables are detected and data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to. */
 export const appendSpreadsheetsValues: API.OperationMethod<
@@ -5618,7 +5707,7 @@ export const appendSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AppendSpreadsheetsValuesRequest,
   output: AppendSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClearSpreadsheetsValuesRequest {
@@ -5648,7 +5737,12 @@ export type ClearSpreadsheetsValuesResponse = ClearValuesResponse;
 export const ClearSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClearValuesResponse;
 
-export type ClearSpreadsheetsValuesError = DefaultErrors;
+export type ClearSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept. */
 export const clearSpreadsheetsValues: API.OperationMethod<
@@ -5659,7 +5753,7 @@ export const clearSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearSpreadsheetsValuesRequest,
   output: ClearSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateByDataFilterSpreadsheetsValuesRequest {
@@ -5689,7 +5783,12 @@ export type BatchUpdateByDataFilterSpreadsheetsValuesResponse =
 export const BatchUpdateByDataFilterSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateValuesByDataFilterResponse;
 
-export type BatchUpdateByDataFilterSpreadsheetsValuesError = DefaultErrors;
+export type BatchUpdateByDataFilterSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets values in one or more ranges of a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges. */
 export const batchUpdateByDataFilterSpreadsheetsValues: API.OperationMethod<
@@ -5700,7 +5799,7 @@ export const batchUpdateByDataFilterSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateByDataFilterSpreadsheetsValuesRequest,
   output: BatchUpdateByDataFilterSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchClearByDataFilterSpreadsheetsValuesRequest {
@@ -5730,7 +5829,12 @@ export type BatchClearByDataFilterSpreadsheetsValuesResponse =
 export const BatchClearByDataFilterSpreadsheetsValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchClearValuesByDataFilterResponse;
 
-export type BatchClearByDataFilterSpreadsheetsValuesError = DefaultErrors;
+export type BatchClearByDataFilterSpreadsheetsValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears one or more ranges of values from a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc.) are kept. */
 export const batchClearByDataFilterSpreadsheetsValues: API.OperationMethod<
@@ -5741,7 +5845,7 @@ export const batchClearByDataFilterSpreadsheetsValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchClearByDataFilterSpreadsheetsValuesRequest,
   output: BatchClearByDataFilterSpreadsheetsValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpreadsheetsDeveloperMetadataRequest {
@@ -5767,7 +5871,10 @@ export type GetSpreadsheetsDeveloperMetadataResponse = DeveloperMetadata;
 export const GetSpreadsheetsDeveloperMetadataResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeveloperMetadata;
 
-export type GetSpreadsheetsDeveloperMetadataError = DefaultErrors;
+export type GetSpreadsheetsDeveloperMetadataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). */
 export const getSpreadsheetsDeveloperMetadata: API.OperationMethod<
@@ -5778,7 +5885,7 @@ export const getSpreadsheetsDeveloperMetadata: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpreadsheetsDeveloperMetadataRequest,
   output: GetSpreadsheetsDeveloperMetadataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchSpreadsheetsDeveloperMetadataRequest {
@@ -5806,7 +5913,12 @@ export type SearchSpreadsheetsDeveloperMetadataResponse =
 export const SearchSpreadsheetsDeveloperMetadataResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchDeveloperMetadataResponse;
 
-export type SearchSpreadsheetsDeveloperMetadataError = DefaultErrors;
+export type SearchSpreadsheetsDeveloperMetadataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns all developer metadata matching the specified DataFilter. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it. If the DataFilter represents a location in a spreadsheet, this will return all developer metadata associated with locations intersecting that region. */
 export const searchSpreadsheetsDeveloperMetadata: API.OperationMethod<
@@ -5817,7 +5929,7 @@ export const searchSpreadsheetsDeveloperMetadata: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchSpreadsheetsDeveloperMetadataRequest,
   output: SearchSpreadsheetsDeveloperMetadataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CopyToSpreadsheetsSheetsRequest {
@@ -5849,7 +5961,12 @@ export type CopyToSpreadsheetsSheetsResponse = SheetProperties;
 export const CopyToSpreadsheetsSheetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SheetProperties;
 
-export type CopyToSpreadsheetsSheetsError = DefaultErrors;
+export type CopyToSpreadsheetsSheetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet. */
 export const copyToSpreadsheetsSheets: API.OperationMethod<
@@ -5860,5 +5977,5 @@ export const copyToSpreadsheetsSheets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyToSpreadsheetsSheetsRequest,
   output: CopyToSpreadsheetsSheetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

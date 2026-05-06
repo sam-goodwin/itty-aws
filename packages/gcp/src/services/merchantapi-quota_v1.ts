@@ -185,6 +185,31 @@ export const ProductStatusChangeMessage =
   }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -211,7 +236,7 @@ export type ListAccountsQuotasResponse = ListQuotaGroupsResponse;
 export const ListAccountsQuotasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListQuotaGroupsResponse;
 
-export type ListAccountsQuotasError = DefaultErrors;
+export type ListAccountsQuotasError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the daily call quota and usage per group for your Merchant Center account. */
 export const listAccountsQuotas: API.PaginatedOperationMethod<
@@ -222,7 +247,7 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListAccountsQuotasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -246,7 +271,7 @@ export type GetAccountsLimitsResponse = AccountLimit;
 export const GetAccountsLimitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountLimit;
 
-export type GetAccountsLimitsError = DefaultErrors;
+export type GetAccountsLimitsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an account limit. */
 export const getAccountsLimits: API.OperationMethod<
@@ -257,7 +282,7 @@ export const getAccountsLimits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsLimitsRequest,
   output: GetAccountsLimitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsLimitsRequest {
@@ -286,7 +311,7 @@ export type ListAccountsLimitsResponse = ListAccountLimitsResponse;
 export const ListAccountsLimitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountLimitsResponse;
 
-export type ListAccountsLimitsError = DefaultErrors;
+export type ListAccountsLimitsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the limits of an account. */
 export const listAccountsLimits: API.PaginatedOperationMethod<
@@ -297,7 +322,7 @@ export const listAccountsLimits: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLimitsRequest,
   output: ListAccountsLimitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

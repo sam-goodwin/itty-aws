@@ -284,6 +284,52 @@ export const Subscriptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Subscriptions" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -302,7 +348,7 @@ export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCustomersResponse = Customer;
 export const GetCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type GetCustomersError = DefaultErrors;
+export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a customer account. Use this operation to see a customer account already in your reseller management, or to see the minimal account information for an existing customer that you do not manage. For more information about the API response for existing customers, see [retrieving a customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#get_customer). */
 export const getCustomers: API.OperationMethod<
@@ -313,7 +359,7 @@ export const getCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersRequest,
   output: GetCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertCustomersRequest {
@@ -338,7 +384,12 @@ export const InsertCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertCustomersResponse = Customer;
 export const InsertCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type InsertCustomersError = DefaultErrors;
+export type InsertCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Orders a new customer's account. Before ordering a new customer account, establish whether the customer account already exists using the [`customers.get`](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/get) If the customer account exists as a direct Google account or as a resold customer account from another reseller, use the `customerAuthToken\` as described in [order a resold account for an existing customer](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_existing_customer). For more information about ordering a new customer account, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_customer). After creating a new customer account, you must provision a user as an administrator. The customer's administrator is required to sign in to the Admin console and sign the G Suite via Reseller agreement to activate the account. Resellers are prohibited from signing the G Suite via Reseller agreement on the customer's behalf. For more information, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#tos). */
 export const insertCustomers: API.OperationMethod<
@@ -349,7 +400,7 @@ export const insertCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCustomersRequest,
   output: InsertCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCustomersRequest {
@@ -376,7 +427,12 @@ export const UpdateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateCustomersResponse = Customer;
 export const UpdateCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type UpdateCustomersError = DefaultErrors;
+export type UpdateCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a customer account's settings. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [update a customer's settings](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#update_customer). */
 export const updateCustomers: API.OperationMethod<
@@ -387,7 +443,7 @@ export const updateCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCustomersRequest,
   output: UpdateCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCustomersRequest {
@@ -412,7 +468,12 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchCustomersResponse = Customer;
 export const PatchCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type PatchCustomersError = DefaultErrors;
+export type PatchCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a customer account's settings. This method supports patch semantics. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [Verify your domain to unlock Essentials features](https://support.google.com/a/answer/9122284). */
 export const patchCustomers: API.OperationMethod<
@@ -423,7 +484,7 @@ export const patchCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersRequest,
   output: PatchCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetwatchdetailsResellernotifyRequest {}
@@ -442,7 +503,10 @@ export type GetwatchdetailsResellernotifyResponse =
 export const GetwatchdetailsResellernotifyResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResellernotifyGetwatchdetailsResponse;
 
-export type GetwatchdetailsResellernotifyError = DefaultErrors;
+export type GetwatchdetailsResellernotifyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all the details of the watch corresponding to the reseller. */
 export const getwatchdetailsResellernotify: API.OperationMethod<
@@ -453,7 +517,7 @@ export const getwatchdetailsResellernotify: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetwatchdetailsResellernotifyRequest,
   output: GetwatchdetailsResellernotifyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RegisterResellernotifyRequest {
@@ -479,7 +543,12 @@ export type RegisterResellernotifyResponse = ResellernotifyResource;
 export const RegisterResellernotifyResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResellernotifyResource;
 
-export type RegisterResellernotifyError = DefaultErrors;
+export type RegisterResellernotifyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Registers a Reseller for receiving notifications. */
 export const registerResellernotify: API.OperationMethod<
@@ -490,7 +559,7 @@ export const registerResellernotify: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterResellernotifyRequest,
   output: RegisterResellernotifyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnregisterResellernotifyRequest {
@@ -516,7 +585,12 @@ export type UnregisterResellernotifyResponse = ResellernotifyResource;
 export const UnregisterResellernotifyResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResellernotifyResource;
 
-export type UnregisterResellernotifyError = DefaultErrors;
+export type UnregisterResellernotifyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unregisters a Reseller for receiving notifications. */
 export const unregisterResellernotify: API.OperationMethod<
@@ -527,7 +601,7 @@ export const unregisterResellernotify: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnregisterResellernotifyRequest,
   output: UnregisterResellernotifyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateSubscriptionsRequest {
@@ -554,7 +628,12 @@ export type ActivateSubscriptionsResponse = Subscription;
 export const ActivateSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ActivateSubscriptionsError = DefaultErrors;
+export type ActivateSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates a subscription previously suspended by the reseller. If you did not suspend the customer subscription and it is suspended for any other reason, such as for abuse or a pending ToS acceptance, this call will not reactivate the customer subscription. */
 export const activateSubscriptions: API.OperationMethod<
@@ -565,7 +644,7 @@ export const activateSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateSubscriptionsRequest,
   output: ActivateSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ChangePlanSubscriptionsRequest {
@@ -595,7 +674,12 @@ export type ChangePlanSubscriptionsResponse = Subscription;
 export const ChangePlanSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ChangePlanSubscriptionsError = DefaultErrors;
+export type ChangePlanSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a subscription plan. Use this method to update a plan for a 30-day trial or a flexible plan subscription to an annual commitment plan with monthly or yearly payments. How a plan is updated differs depending on the plan and the products. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_subscription_plan). */
 export const changePlanSubscriptions: API.OperationMethod<
@@ -606,7 +690,7 @@ export const changePlanSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ChangePlanSubscriptionsRequest,
   output: ChangePlanSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ChangeRenewalSettingsSubscriptionsRequest {
@@ -636,7 +720,12 @@ export type ChangeRenewalSettingsSubscriptionsResponse = Subscription;
 export const ChangeRenewalSettingsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ChangeRenewalSettingsSubscriptionsError = DefaultErrors;
+export type ChangeRenewalSettingsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user license's renewal settings. This is applicable for accounts with annual commitment plans only. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_renewal). */
 export const changeRenewalSettingsSubscriptions: API.OperationMethod<
@@ -647,7 +736,7 @@ export const changeRenewalSettingsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ChangeRenewalSettingsSubscriptionsRequest,
   output: ChangeRenewalSettingsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ChangeSeatsSubscriptionsRequest {
@@ -677,7 +766,12 @@ export type ChangeSeatsSubscriptionsResponse = Subscription;
 export const ChangeSeatsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ChangeSeatsSubscriptionsError = DefaultErrors;
+export type ChangeSeatsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a subscription's user license settings. For more information about updating an annual commitment plan or a flexible plan subscription’s licenses, see [Manage Subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_subscription_seat). */
 export const changeSeatsSubscriptions: API.OperationMethod<
@@ -688,7 +782,7 @@ export const changeSeatsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ChangeSeatsSubscriptionsRequest,
   output: ChangeSeatsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSubscriptionsRequest {
@@ -723,7 +817,12 @@ export const DeleteSubscriptionsResponse: Schema.Schema<DeleteSubscriptionsRespo
     {},
   ) as any as Schema.Schema<DeleteSubscriptionsResponse>;
 
-export type DeleteSubscriptionsError = DefaultErrors;
+export type DeleteSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels, suspends, or transfers a subscription to direct. */
 export const deleteSubscriptions: API.OperationMethod<
@@ -734,7 +833,7 @@ export const deleteSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionsRequest,
   output: DeleteSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSubscriptionsRequest {
@@ -760,7 +859,7 @@ export type GetSubscriptionsResponse = Subscription;
 export const GetSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetSubscriptionsError = DefaultErrors;
+export type GetSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a specific subscription. The `subscriptionId` can be found using the [Retrieve all reseller subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#get_all_subscriptions) method. For more information about retrieving a specific subscription, see the information descrived in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#get_subscription). */
 export const getSubscriptions: API.OperationMethod<
@@ -771,7 +870,7 @@ export const getSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionsRequest,
   output: GetSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSubscriptionsRequest {
@@ -811,7 +910,12 @@ export type InsertSubscriptionsResponse = Subscription;
 export const InsertSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type InsertSubscriptionsError = DefaultErrors;
+export type InsertSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or transfer a subscription. Create a subscription for a customer's account that you ordered using the [Order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/insert.html) method. For more information about creating a subscription for different payment plans, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#create_subscription).\ If you did not order the customer's account using the customer insert method, use the customer's `customerAuthToken` when creating a subscription for that customer. If transferring a G Suite subscription with an associated Google Drive or Google Vault subscription, use the [batch operation](https://developers.google.com/workspace/admin/reseller/v1/how-tos/batch.html) to transfer all of these subscriptions. For more information, see how to [transfer subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#transfer_a_subscription). */
 export const insertSubscriptions: API.OperationMethod<
@@ -822,7 +926,7 @@ export const insertSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSubscriptionsRequest,
   output: InsertSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSubscriptionsRequest {
@@ -858,7 +962,7 @@ export type ListSubscriptionsResponse = Subscriptions;
 export const ListSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscriptions;
 
-export type ListSubscriptionsError = DefaultErrors;
+export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists of subscriptions managed by the reseller. The list can be all subscriptions, all of a customer's subscriptions, or all of a customer's transferable subscriptions. Optionally, this method can filter the response by a `customerNamePrefix`. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions). */
 export const listSubscriptions: API.PaginatedOperationMethod<
@@ -869,7 +973,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -900,7 +1004,12 @@ export type StartPaidServiceSubscriptionsResponse = Subscription;
 export const StartPaidServiceSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type StartPaidServiceSubscriptionsError = DefaultErrors;
+export type StartPaidServiceSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Immediately move a 30-day free trial subscription to a paid service subscription. This method is only applicable if a payment plan has already been set up for the 30-day trial subscription. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#paid_service). */
 export const startPaidServiceSubscriptions: API.OperationMethod<
@@ -911,7 +1020,7 @@ export const startPaidServiceSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartPaidServiceSubscriptionsRequest,
   output: StartPaidServiceSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SuspendSubscriptionsRequest {
@@ -938,7 +1047,12 @@ export type SuspendSubscriptionsResponse = Subscription;
 export const SuspendSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type SuspendSubscriptionsError = DefaultErrors;
+export type SuspendSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Suspends an active subscription. You can use this method to suspend a paid subscription that is currently in the `ACTIVE` state. * For `FLEXIBLE` subscriptions, billing is paused. * For `ANNUAL_MONTHLY_PAY` or `ANNUAL_YEARLY_PAY` subscriptions: * Suspending the subscription does not change the renewal date that was originally committed to. * A suspended subscription does not renew. If you activate the subscription after the original renewal date, a new annual subscription will be created, starting on the day of activation. We strongly encourage you to suspend subscriptions only for short periods of time as suspensions over 60 days may result in the subscription being cancelled. */
 export const suspendSubscriptions: API.OperationMethod<
@@ -949,5 +1063,5 @@ export const suspendSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuspendSubscriptionsRequest,
   output: SuspendSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

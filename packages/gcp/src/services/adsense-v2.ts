@@ -616,6 +616,52 @@ export const AdClientAdCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "AdClientAdCode" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -634,7 +680,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about the selected AdSense account. */
 export const getAccounts: API.OperationMethod<
@@ -645,7 +691,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListChildAccountsAccountsRequest {
@@ -671,7 +717,10 @@ export type ListChildAccountsAccountsResponse = ListChildAccountsResponse;
 export const ListChildAccountsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChildAccountsResponse;
 
-export type ListChildAccountsAccountsError = DefaultErrors;
+export type ListChildAccountsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all accounts directly managed by the given AdSense account. */
 export const listChildAccountsAccounts: API.PaginatedOperationMethod<
@@ -682,7 +731,7 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChildAccountsAccountsRequest,
   output: ListChildAccountsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -708,7 +757,7 @@ export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all accounts available to this user. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -719,7 +768,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -743,7 +792,10 @@ export type GetAdBlockingRecoveryTagAccountsResponse = AdBlockingRecoveryTag;
 export const GetAdBlockingRecoveryTagAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdBlockingRecoveryTag;
 
-export type GetAdBlockingRecoveryTagAccountsError = DefaultErrors;
+export type GetAdBlockingRecoveryTagAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the ad blocking recovery tag of an account. */
 export const getAdBlockingRecoveryTagAccounts: API.OperationMethod<
@@ -754,7 +806,7 @@ export const getAdBlockingRecoveryTagAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdBlockingRecoveryTagAccountsRequest,
   output: GetAdBlockingRecoveryTagAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsPolicyIssuesRequest {
@@ -774,7 +826,7 @@ export type GetAccountsPolicyIssuesResponse = PolicyIssue;
 export const GetAccountsPolicyIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PolicyIssue;
 
-export type GetAccountsPolicyIssuesError = DefaultErrors;
+export type GetAccountsPolicyIssuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about the selected policy issue. */
 export const getAccountsPolicyIssues: API.OperationMethod<
@@ -785,7 +837,7 @@ export const getAccountsPolicyIssues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsPolicyIssuesRequest,
   output: GetAccountsPolicyIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsPolicyIssuesRequest {
@@ -811,7 +863,10 @@ export type ListAccountsPolicyIssuesResponse = ListPolicyIssuesResponse;
 export const ListAccountsPolicyIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPolicyIssuesResponse;
 
-export type ListAccountsPolicyIssuesError = DefaultErrors;
+export type ListAccountsPolicyIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the policy issues where the specified account is involved, both directly and through any AFP child accounts. */
 export const listAccountsPolicyIssues: API.PaginatedOperationMethod<
@@ -822,7 +877,7 @@ export const listAccountsPolicyIssues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPolicyIssuesRequest,
   output: ListAccountsPolicyIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -846,7 +901,7 @@ export type ListAccountsPaymentsResponse = ListPaymentsResponse;
 export const ListAccountsPaymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPaymentsResponse;
 
-export type ListAccountsPaymentsError = DefaultErrors;
+export type ListAccountsPaymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the payments available for an account. */
 export const listAccountsPayments: API.OperationMethod<
@@ -857,7 +912,7 @@ export const listAccountsPayments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsPaymentsRequest,
   output: ListAccountsPaymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsSitesRequest {
@@ -876,7 +931,7 @@ export const GetAccountsSitesRequest =
 export type GetAccountsSitesResponse = Site;
 export const GetAccountsSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type GetAccountsSitesError = DefaultErrors;
+export type GetAccountsSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about the selected site. */
 export const getAccountsSites: API.OperationMethod<
@@ -887,7 +942,7 @@ export const getAccountsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsSitesRequest,
   output: GetAccountsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsSitesRequest {
@@ -913,7 +968,7 @@ export type ListAccountsSitesResponse = ListSitesResponse;
 export const ListAccountsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
 
-export type ListAccountsSitesError = DefaultErrors;
+export type ListAccountsSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the sites available in an account. */
 export const listAccountsSites: API.PaginatedOperationMethod<
@@ -924,7 +979,7 @@ export const listAccountsSites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsSitesRequest,
   output: ListAccountsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -948,7 +1003,7 @@ export type GetSavedAccountsReportsResponse = SavedReport;
 export const GetSavedAccountsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedReport;
 
-export type GetSavedAccountsReportsError = DefaultErrors;
+export type GetSavedAccountsReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the saved report from the given resource name. */
 export const getSavedAccountsReports: API.OperationMethod<
@@ -959,7 +1014,7 @@ export const getSavedAccountsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSavedAccountsReportsRequest,
   output: GetSavedAccountsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateCsvAccountsReportsRequest {
@@ -1159,7 +1214,10 @@ export type GenerateCsvAccountsReportsResponse = HttpBody;
 export const GenerateCsvAccountsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type GenerateCsvAccountsReportsError = DefaultErrors;
+export type GenerateCsvAccountsReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates a csv formatted ad hoc report. */
 export const generateCsvAccountsReports: API.OperationMethod<
@@ -1170,7 +1228,7 @@ export const generateCsvAccountsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateCsvAccountsReportsRequest,
   output: GenerateCsvAccountsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateAccountsReportsRequest {
@@ -1370,7 +1428,7 @@ export type GenerateAccountsReportsResponse = ReportResult;
 export const GenerateAccountsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReportResult;
 
-export type GenerateAccountsReportsError = DefaultErrors;
+export type GenerateAccountsReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Generates an ad hoc report. */
 export const generateAccountsReports: API.OperationMethod<
@@ -1381,7 +1439,7 @@ export const generateAccountsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsReportsRequest,
   output: GenerateAccountsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateCsvAccountsReportsSavedRequest {
@@ -1462,7 +1520,10 @@ export type GenerateCsvAccountsReportsSavedResponse = HttpBody;
 export const GenerateCsvAccountsReportsSavedResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type GenerateCsvAccountsReportsSavedError = DefaultErrors;
+export type GenerateCsvAccountsReportsSavedError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates a csv formatted saved report. */
 export const generateCsvAccountsReportsSaved: API.OperationMethod<
@@ -1473,7 +1534,7 @@ export const generateCsvAccountsReportsSaved: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateCsvAccountsReportsSavedRequest,
   output: GenerateCsvAccountsReportsSavedResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsReportsSavedRequest {
@@ -1499,7 +1560,10 @@ export type ListAccountsReportsSavedResponse = ListSavedReportsResponse;
 export const ListAccountsReportsSavedResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSavedReportsResponse;
 
-export type ListAccountsReportsSavedError = DefaultErrors;
+export type ListAccountsReportsSavedError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists saved reports. */
 export const listAccountsReportsSaved: API.PaginatedOperationMethod<
@@ -1510,7 +1574,7 @@ export const listAccountsReportsSaved: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsReportsSavedRequest,
   output: ListAccountsReportsSavedResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1595,7 +1659,10 @@ export type GenerateAccountsReportsSavedResponse = ReportResult;
 export const GenerateAccountsReportsSavedResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReportResult;
 
-export type GenerateAccountsReportsSavedError = DefaultErrors;
+export type GenerateAccountsReportsSavedError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates a saved report. */
 export const generateAccountsReportsSaved: API.OperationMethod<
@@ -1606,7 +1673,7 @@ export const generateAccountsReportsSaved: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsReportsSavedRequest,
   output: GenerateAccountsReportsSavedResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsAdclientsRequest {
@@ -1632,7 +1699,7 @@ export type ListAccountsAdclientsResponse = ListAdClientsResponse;
 export const ListAccountsAdclientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdClientsResponse;
 
-export type ListAccountsAdclientsError = DefaultErrors;
+export type ListAccountsAdclientsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the ad clients available in an account. */
 export const listAccountsAdclients: API.PaginatedOperationMethod<
@@ -1643,7 +1710,7 @@ export const listAccountsAdclients: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsRequest,
   output: ListAccountsAdclientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1667,7 +1734,10 @@ export type GetAdcodeAccountsAdclientsResponse = AdClientAdCode;
 export const GetAdcodeAccountsAdclientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdClientAdCode;
 
-export type GetAdcodeAccountsAdclientsError = DefaultErrors;
+export type GetAdcodeAccountsAdclientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the AdSense code for a given ad client. This returns what was previously known as the 'auto ad code'. This is only supported for ad clients with a product_code of AFC. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634). */
 export const getAdcodeAccountsAdclients: API.OperationMethod<
@@ -1678,7 +1748,7 @@ export const getAdcodeAccountsAdclients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdcodeAccountsAdclientsRequest,
   output: GetAdcodeAccountsAdclientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsAdclientsRequest {
@@ -1698,7 +1768,7 @@ export type GetAccountsAdclientsResponse = AdClient;
 export const GetAccountsAdclientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdClient;
 
-export type GetAccountsAdclientsError = DefaultErrors;
+export type GetAccountsAdclientsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the ad client from the given resource name. */
 export const getAccountsAdclients: API.OperationMethod<
@@ -1709,7 +1779,7 @@ export const getAccountsAdclients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsAdclientsRequest,
   output: GetAccountsAdclientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsAdclientsAdunitsRequest {
@@ -1735,7 +1805,10 @@ export type ListAccountsAdclientsAdunitsResponse = ListAdUnitsResponse;
 export const ListAccountsAdclientsAdunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdUnitsResponse;
 
-export type ListAccountsAdclientsAdunitsError = DefaultErrors;
+export type ListAccountsAdclientsAdunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all ad units under a specified account and ad client. */
 export const listAccountsAdclientsAdunits: API.PaginatedOperationMethod<
@@ -1746,7 +1819,7 @@ export const listAccountsAdclientsAdunits: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsAdunitsRequest,
   output: ListAccountsAdclientsAdunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1773,7 +1846,12 @@ export type CreateAccountsAdclientsAdunitsResponse = AdUnit;
 export const CreateAccountsAdclientsAdunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdUnit;
 
-export type CreateAccountsAdclientsAdunitsError = DefaultErrors;
+export type CreateAccountsAdclientsAdunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an ad unit. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. Note that ad units can only be created for ad clients with an "AFC" product code. For more info see the [AdClient resource](/adsense/management/reference/rest/v2/accounts.adclients). For now, this method can only be used to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566 */
 export const createAccountsAdclientsAdunits: API.OperationMethod<
@@ -1784,7 +1862,7 @@ export const createAccountsAdclientsAdunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsAdclientsAdunitsRequest,
   output: CreateAccountsAdclientsAdunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest {
@@ -1812,7 +1890,9 @@ export const ListLinkedCustomChannelsAccountsAdclientsAdunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLinkedCustomChannelsResponse;
 
 export type ListLinkedCustomChannelsAccountsAdclientsAdunitsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the custom channels available for an ad unit. */
 export const listLinkedCustomChannelsAccountsAdclientsAdunits: API.PaginatedOperationMethod<
@@ -1823,7 +1903,7 @@ export const listLinkedCustomChannelsAccountsAdclientsAdunits: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLinkedCustomChannelsAccountsAdclientsAdunitsRequest,
   output: ListLinkedCustomChannelsAccountsAdclientsAdunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1847,7 +1927,10 @@ export type GetAccountsAdclientsAdunitsResponse = AdUnit;
 export const GetAccountsAdclientsAdunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdUnit;
 
-export type GetAccountsAdclientsAdunitsError = DefaultErrors;
+export type GetAccountsAdclientsAdunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an ad unit from a specified account and ad client. */
 export const getAccountsAdclientsAdunits: API.OperationMethod<
@@ -1858,7 +1941,7 @@ export const getAccountsAdclientsAdunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsAdclientsAdunitsRequest,
   output: GetAccountsAdclientsAdunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsAdclientsAdunitsRequest {
@@ -1884,7 +1967,12 @@ export type PatchAccountsAdclientsAdunitsResponse = AdUnit;
 export const PatchAccountsAdclientsAdunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdUnit;
 
-export type PatchAccountsAdclientsAdunitsError = DefaultErrors;
+export type PatchAccountsAdclientsAdunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an ad unit. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. For now, this method can only be used to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566 */
 export const patchAccountsAdclientsAdunits: API.OperationMethod<
@@ -1895,7 +1983,7 @@ export const patchAccountsAdclientsAdunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsAdclientsAdunitsRequest,
   output: PatchAccountsAdclientsAdunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdcodeAccountsAdclientsAdunitsRequest {
@@ -1915,7 +2003,10 @@ export type GetAdcodeAccountsAdclientsAdunitsResponse = AdUnitAdCode;
 export const GetAdcodeAccountsAdclientsAdunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdUnitAdCode;
 
-export type GetAdcodeAccountsAdclientsAdunitsError = DefaultErrors;
+export type GetAdcodeAccountsAdclientsAdunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028). */
 export const getAdcodeAccountsAdclientsAdunits: API.OperationMethod<
@@ -1926,7 +2017,7 @@ export const getAdcodeAccountsAdclientsAdunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdcodeAccountsAdclientsAdunitsRequest,
   output: GetAdcodeAccountsAdclientsAdunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsAdclientsUrlchannelsRequest {
@@ -1946,7 +2037,10 @@ export type GetAccountsAdclientsUrlchannelsResponse = UrlChannel;
 export const GetAccountsAdclientsUrlchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UrlChannel;
 
-export type GetAccountsAdclientsUrlchannelsError = DefaultErrors;
+export type GetAccountsAdclientsUrlchannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about the selected url channel. */
 export const getAccountsAdclientsUrlchannels: API.OperationMethod<
@@ -1957,7 +2051,7 @@ export const getAccountsAdclientsUrlchannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsAdclientsUrlchannelsRequest,
   output: GetAccountsAdclientsUrlchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsAdclientsUrlchannelsRequest {
@@ -1983,7 +2077,10 @@ export type ListAccountsAdclientsUrlchannelsResponse = ListUrlChannelsResponse;
 export const ListAccountsAdclientsUrlchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUrlChannelsResponse;
 
-export type ListAccountsAdclientsUrlchannelsError = DefaultErrors;
+export type ListAccountsAdclientsUrlchannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists active url channels. */
 export const listAccountsAdclientsUrlchannels: API.PaginatedOperationMethod<
@@ -1994,7 +2091,7 @@ export const listAccountsAdclientsUrlchannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsUrlchannelsRequest,
   output: ListAccountsAdclientsUrlchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2018,7 +2115,10 @@ export type GetAccountsAdclientsCustomchannelsResponse = CustomChannel;
 export const GetAccountsAdclientsCustomchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomChannel;
 
-export type GetAccountsAdclientsCustomchannelsError = DefaultErrors;
+export type GetAccountsAdclientsCustomchannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about the selected custom channel. */
 export const getAccountsAdclientsCustomchannels: API.OperationMethod<
@@ -2029,7 +2129,7 @@ export const getAccountsAdclientsCustomchannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsAdclientsCustomchannelsRequest,
   output: GetAccountsAdclientsCustomchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsAdclientsCustomchannelsRequest {
@@ -2056,7 +2156,10 @@ export type ListAccountsAdclientsCustomchannelsResponse =
 export const ListAccountsAdclientsCustomchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomChannelsResponse;
 
-export type ListAccountsAdclientsCustomchannelsError = DefaultErrors;
+export type ListAccountsAdclientsCustomchannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the custom channels available in an ad client. */
 export const listAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
@@ -2067,7 +2170,7 @@ export const listAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdclientsCustomchannelsRequest,
   output: ListAccountsAdclientsCustomchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2098,7 +2201,12 @@ export type CreateAccountsAdclientsCustomchannelsResponse = CustomChannel;
 export const CreateAccountsAdclientsCustomchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomChannel;
 
-export type CreateAccountsAdclientsCustomchannelsError = DefaultErrors;
+export type CreateAccountsAdclientsCustomchannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. */
 export const createAccountsAdclientsCustomchannels: API.OperationMethod<
@@ -2109,7 +2217,7 @@ export const createAccountsAdclientsCustomchannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsAdclientsCustomchannelsRequest,
   output: CreateAccountsAdclientsCustomchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest {
@@ -2137,7 +2245,9 @@ export const ListLinkedAdUnitsAccountsAdclientsCustomchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLinkedAdUnitsResponse;
 
 export type ListLinkedAdUnitsAccountsAdclientsCustomchannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the ad units available for a custom channel. */
 export const listLinkedAdUnitsAccountsAdclientsCustomchannels: API.PaginatedOperationMethod<
@@ -2148,7 +2258,7 @@ export const listLinkedAdUnitsAccountsAdclientsCustomchannels: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLinkedAdUnitsAccountsAdclientsCustomchannelsRequest,
   output: ListLinkedAdUnitsAccountsAdclientsCustomchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2178,7 +2288,12 @@ export type PatchAccountsAdclientsCustomchannelsResponse = CustomChannel;
 export const PatchAccountsAdclientsCustomchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomChannel;
 
-export type PatchAccountsAdclientsCustomchannelsError = DefaultErrors;
+export type PatchAccountsAdclientsCustomchannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. */
 export const patchAccountsAdclientsCustomchannels: API.OperationMethod<
@@ -2189,7 +2304,7 @@ export const patchAccountsAdclientsCustomchannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsAdclientsCustomchannelsRequest,
   output: PatchAccountsAdclientsCustomchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsAdclientsCustomchannelsRequest {
@@ -2209,7 +2324,12 @@ export type DeleteAccountsAdclientsCustomchannelsResponse = Empty;
 export const DeleteAccountsAdclientsCustomchannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsAdclientsCustomchannelsError = DefaultErrors;
+export type DeleteAccountsAdclientsCustomchannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. */
 export const deleteAccountsAdclientsCustomchannels: API.OperationMethod<
@@ -2220,7 +2340,7 @@ export const deleteAccountsAdclientsCustomchannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsAdclientsCustomchannelsRequest,
   output: DeleteAccountsAdclientsCustomchannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAlertsRequest {
@@ -2245,7 +2365,7 @@ export type ListAccountsAlertsResponse = ListAlertsResponse;
 export const ListAccountsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAlertsResponse;
 
-export type ListAccountsAlertsError = DefaultErrors;
+export type ListAccountsAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the alerts available in an account. */
 export const listAccountsAlerts: API.OperationMethod<
@@ -2256,5 +2376,5 @@ export const listAccountsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsAlertsRequest,
   output: ListAccountsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

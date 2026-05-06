@@ -1425,6 +1425,52 @@ export const GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1445,7 +1491,12 @@ export type GenerateInsightsV1betaResponse = GenerateInsightsResponse;
 export const GenerateInsightsV1betaResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateInsightsResponse;
 
-export type GenerateInsightsV1betaError = DefaultErrors;
+export type GenerateInsightsV1betaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyzes cost data for a billing account and/or specific projects. Returns a natural language summary and supporting datasets. */
 export const generateInsightsV1beta: API.OperationMethod<
@@ -1456,7 +1507,7 @@ export const generateInsightsV1beta: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateInsightsV1betaRequest,
   output: GenerateInsightsV1betaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsServicesRequest {
@@ -1483,7 +1534,10 @@ export type ListBillingAccountsServicesResponse =
 export const ListBillingAccountsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountservicesV1betaListBillingAccountServicesResponse;
 
-export type ListBillingAccountsServicesError = DefaultErrors;
+export type ListBillingAccountsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists services visible to a billing account. */
 export const listBillingAccountsServices: API.PaginatedOperationMethod<
@@ -1494,7 +1548,7 @@ export const listBillingAccountsServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsServicesRequest,
   output: ListBillingAccountsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1519,7 +1573,10 @@ export type GetBillingAccountsServicesResponse =
 export const GetBillingAccountsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountservicesV1betaBillingAccountService;
 
-export type GetBillingAccountsServicesError = DefaultErrors;
+export type GetBillingAccountsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Google Cloud service visible to a billing account. */
 export const getBillingAccountsServices: API.OperationMethod<
@@ -1530,7 +1587,7 @@ export const getBillingAccountsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsServicesRequest,
   output: GetBillingAccountsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsSkuGroupsRequest {
@@ -1557,7 +1614,10 @@ export type ListBillingAccountsSkuGroupsResponse =
 export const ListBillingAccountsSkuGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountskugroupsV1betaListBillingAccountSkuGroupsResponse;
 
-export type ListBillingAccountsSkuGroupsError = DefaultErrors;
+export type ListBillingAccountsSkuGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SKU groups visible to a billing account. */
 export const listBillingAccountsSkuGroups: API.PaginatedOperationMethod<
@@ -1568,7 +1628,7 @@ export const listBillingAccountsSkuGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkuGroupsRequest,
   output: ListBillingAccountsSkuGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1593,7 +1653,10 @@ export type GetBillingAccountsSkuGroupsResponse =
 export const GetBillingAccountsSkuGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountskugroupsV1betaBillingAccountSkuGroup;
 
-export type GetBillingAccountsSkuGroupsError = DefaultErrors;
+export type GetBillingAccountsSkuGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a SKU group visible to a billing account. */
 export const getBillingAccountsSkuGroups: API.OperationMethod<
@@ -1604,7 +1667,7 @@ export const getBillingAccountsSkuGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsSkuGroupsRequest,
   output: GetBillingAccountsSkuGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsSkuGroupsSkusRequest {
@@ -1631,7 +1694,10 @@ export type ListBillingAccountsSkuGroupsSkusResponse =
 export const ListBillingAccountsSkuGroupsSkusResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountskugroupskusV1betaListBillingAccountSkuGroupSkusResponse;
 
-export type ListBillingAccountsSkuGroupsSkusError = DefaultErrors;
+export type ListBillingAccountsSkuGroupsSkusError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SKUs that is part of billing account SKU groups. */
 export const listBillingAccountsSkuGroupsSkus: API.PaginatedOperationMethod<
@@ -1642,7 +1708,7 @@ export const listBillingAccountsSkuGroupsSkus: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkuGroupsSkusRequest,
   output: ListBillingAccountsSkuGroupsSkusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1667,7 +1733,10 @@ export type GetBillingAccountsSkuGroupsSkusResponse =
 export const GetBillingAccountsSkuGroupsSkusResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountskugroupskusV1betaBillingAccountSkuGroupSku;
 
-export type GetBillingAccountsSkuGroupsSkusError = DefaultErrors;
+export type GetBillingAccountsSkuGroupsSkusError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a SKU that is part of a billing account SKU group. */
 export const getBillingAccountsSkuGroupsSkus: API.OperationMethod<
@@ -1678,7 +1747,7 @@ export const getBillingAccountsSkuGroupsSkus: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsSkuGroupsSkusRequest,
   output: GetBillingAccountsSkuGroupsSkusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsSkusRequest {
@@ -1708,7 +1777,7 @@ export type ListBillingAccountsSkusResponse =
 export const ListBillingAccountsSkusResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountskusV1betaListBillingAccountSkusResponse;
 
-export type ListBillingAccountsSkusError = DefaultErrors;
+export type ListBillingAccountsSkusError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists SKUs visible to a billing account. */
 export const listBillingAccountsSkus: API.PaginatedOperationMethod<
@@ -1719,7 +1788,7 @@ export const listBillingAccountsSkus: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkusRequest,
   output: ListBillingAccountsSkusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1744,7 +1813,7 @@ export type GetBillingAccountsSkusResponse =
 export const GetBillingAccountsSkusResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku;
 
-export type GetBillingAccountsSkusError = DefaultErrors;
+export type GetBillingAccountsSkusError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a SKU visible to a billing account. */
 export const getBillingAccountsSkus: API.OperationMethod<
@@ -1755,7 +1824,7 @@ export const getBillingAccountsSkus: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsSkusRequest,
   output: GetBillingAccountsSkusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetBillingAccountsSkusPriceRequest {
@@ -1781,7 +1850,10 @@ export type GetBillingAccountsSkusPriceResponse =
 export const GetBillingAccountsSkusPriceResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountpricesV1betaBillingAccountPrice;
 
-export type GetBillingAccountsSkusPriceError = DefaultErrors;
+export type GetBillingAccountsSkusPriceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest price for SKUs available to your Cloud Billing account. */
 export const getBillingAccountsSkusPrice: API.OperationMethod<
@@ -1792,7 +1864,7 @@ export const getBillingAccountsSkusPrice: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsSkusPriceRequest,
   output: GetBillingAccountsSkusPriceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsSkusPricesRequest {
@@ -1824,7 +1896,10 @@ export type ListBillingAccountsSkusPricesResponse =
 export const ListBillingAccountsSkusPricesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBillingaccountpricesV1betaListBillingAccountPricesResponse;
 
-export type ListBillingAccountsSkusPricesError = DefaultErrors;
+export type ListBillingAccountsSkusPricesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the latest prices for SKUs available to your Cloud Billing account. */
 export const listBillingAccountsSkusPrices: API.PaginatedOperationMethod<
@@ -1835,7 +1910,7 @@ export const listBillingAccountsSkusPrices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSkusPricesRequest,
   output: ListBillingAccountsSkusPricesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1863,7 +1938,7 @@ export type GetSkusPriceResponse = GoogleCloudBillingPricesV1betaPrice;
 export const GetSkusPriceResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingPricesV1betaPrice;
 
-export type GetSkusPriceError = DefaultErrors;
+export type GetSkusPriceError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest price for the given SKU. */
 export const getSkusPrice: API.OperationMethod<
@@ -1874,7 +1949,7 @@ export const getSkusPrice: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSkusPriceRequest,
   output: GetSkusPriceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSkusPricesRequest {
@@ -1905,7 +1980,7 @@ export type ListSkusPricesResponse =
 export const ListSkusPricesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingPricesV1betaListPricesResponse;
 
-export type ListSkusPricesError = DefaultErrors;
+export type ListSkusPricesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the latest prices for all SKUs. */
 export const listSkusPrices: API.PaginatedOperationMethod<
@@ -1916,7 +1991,7 @@ export const listSkusPrices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSkusPricesRequest,
   output: ListSkusPricesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1943,7 +2018,7 @@ export type ListSkuGroupsResponse =
 export const ListSkuGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingSkugroupsV1betaListSkuGroupsResponse;
 
-export type ListSkuGroupsError = DefaultErrors;
+export type ListSkuGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all publicly listed SKU groups. */
 export const listSkuGroups: API.PaginatedOperationMethod<
@@ -1954,7 +2029,7 @@ export const listSkuGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSkuGroupsRequest,
   output: ListSkuGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1977,7 +2052,7 @@ export type GetSkuGroupsResponse = GoogleCloudBillingSkugroupsV1betaSkuGroup;
 export const GetSkuGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingSkugroupsV1betaSkuGroup;
 
-export type GetSkuGroupsError = DefaultErrors;
+export type GetSkuGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a publicly listed SKU group. */
 export const getSkuGroups: API.OperationMethod<
@@ -1988,7 +2063,7 @@ export const getSkuGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSkuGroupsRequest,
   output: GetSkuGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSkuGroupsSkusRequest {
@@ -2015,7 +2090,7 @@ export type ListSkuGroupsSkusResponse =
 export const ListSkuGroupsSkusResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingSkugroupskusV1betaListSkuGroupSkusResponse;
 
-export type ListSkuGroupsSkusError = DefaultErrors;
+export type ListSkuGroupsSkusError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all publicly listed SKUs contained by a publicly listed SKU group. */
 export const listSkuGroupsSkus: API.PaginatedOperationMethod<
@@ -2026,7 +2101,7 @@ export const listSkuGroupsSkus: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSkuGroupsSkusRequest,
   output: ListSkuGroupsSkusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2051,7 +2126,7 @@ export type GetSkuGroupsSkusResponse =
 export const GetSkuGroupsSkusResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingSkugroupskusV1betaSkuGroupSku;
 
-export type GetSkuGroupsSkusError = DefaultErrors;
+export type GetSkuGroupsSkusError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a publicly listed SKU that is part of a publicly listed SKU group. */
 export const getSkuGroupsSkus: API.OperationMethod<
@@ -2062,5 +2137,5 @@ export const getSkuGroupsSkus: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSkuGroupsSkusRequest,
   output: GetSkuGroupsSkusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

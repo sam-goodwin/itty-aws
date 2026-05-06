@@ -118,6 +118,52 @@ export const TestIamPermissionsResponse =
   }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -144,7 +190,12 @@ export const GetIamPolicyV1beta1Request =
 export type GetIamPolicyV1beta1Response = Policy;
 export const GetIamPolicyV1beta1Response = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyV1beta1Error = DefaultErrors;
+export type GetIamPolicyV1beta1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api */
 export const getIamPolicyV1beta1: API.OperationMethod<
@@ -155,7 +206,7 @@ export const getIamPolicyV1beta1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyV1beta1Request,
   output: GetIamPolicyV1beta1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsV1beta1Request {
@@ -182,7 +233,12 @@ export type TestIamPermissionsV1beta1Response = TestIamPermissionsResponse;
 export const TestIamPermissionsV1beta1Response =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsV1beta1Error = DefaultErrors;
+export type TestIamPermissionsV1beta1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the resource does not exist or the caller does not have Identity-Aware Proxy permissions a [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api */
 export const testIamPermissionsV1beta1: API.OperationMethod<
@@ -193,7 +249,7 @@ export const testIamPermissionsV1beta1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsV1beta1Request,
   output: TestIamPermissionsV1beta1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyV1beta1Request {
@@ -219,7 +275,12 @@ export const SetIamPolicyV1beta1Request =
 export type SetIamPolicyV1beta1Response = Policy;
 export const SetIamPolicyV1beta1Response = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyV1beta1Error = DefaultErrors;
+export type SetIamPolicyV1beta1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api */
 export const setIamPolicyV1beta1: API.OperationMethod<
@@ -230,5 +291,5 @@ export const setIamPolicyV1beta1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyV1beta1Request,
   output: SetIamPolicyV1beta1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

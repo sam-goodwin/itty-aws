@@ -1976,6 +1976,52 @@ export const GoogleCloudIdentitytoolkitV1GetAccountInfoResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2006,7 +2052,12 @@ export type AccountsProjectsResponse =
 export const AccountsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
 
-export type AccountsProjectsError = DefaultErrors;
+export type AccountsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs up a new email and password user or anonymous user, or upgrades an anonymous user to email and password. For an admin request with a Google OAuth 2.0 credential with the proper [permissions](https://cloud.google.com/identity-platform/docs/access-control), creates a new anonymous, email and password, or phone number user. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const accountsProjects: API.OperationMethod<
@@ -2017,7 +2068,7 @@ export const accountsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccountsProjectsRequest,
   output: AccountsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryAccountsProjectsRequest {
@@ -2047,7 +2098,12 @@ export type QueryAccountsProjectsResponse =
 export const QueryAccountsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 
-export type QueryAccountsProjectsError = DefaultErrors;
+export type QueryAccountsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Looks up user accounts within a project or a tenant based on conditions in the request. */
 export const queryAccountsProjects: API.OperationMethod<
@@ -2058,7 +2114,7 @@ export const queryAccountsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryAccountsProjectsRequest,
   output: QueryAccountsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSessionCookieProjectsRequest {
@@ -2088,7 +2144,12 @@ export type CreateSessionCookieProjectsResponse =
 export const CreateSessionCookieProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
 
-export type CreateSessionCookieProjectsError = DefaultErrors;
+export type CreateSessionCookieProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a session cookie for the given Identity Platform ID token. The session cookie is used by the client to preserve the user's login state. */
 export const createSessionCookieProjects: API.OperationMethod<
@@ -2099,7 +2160,7 @@ export const createSessionCookieProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSessionCookieProjectsRequest,
   output: CreateSessionCookieProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsAccountsRequest {
@@ -2138,7 +2199,10 @@ export type BatchGetProjectsAccountsResponse =
 export const BatchGetProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
 
-export type BatchGetProjectsAccountsError = DefaultErrors;
+export type BatchGetProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Download account information for all accounts on the project in a paginated manner. To use this method requires a Google OAuth 2.0 credential with proper [permissions](https://cloud.google.com/identity-platform/docs/access-control).. Furthermore, additional permissions are needed to get password hash, password salt, and password version from accounts; otherwise these fields are redacted. */
 export const batchGetProjectsAccounts: API.OperationMethod<
@@ -2149,7 +2213,7 @@ export const batchGetProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAccountsRequest,
   output: BatchGetProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsAccountsRequest {
@@ -2179,7 +2243,12 @@ export type DeleteProjectsAccountsResponse =
 export const DeleteProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 
-export type DeleteProjectsAccountsError = DefaultErrors;
+export type DeleteProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user's account. */
 export const deleteProjectsAccounts: API.OperationMethod<
@@ -2190,7 +2259,7 @@ export const deleteProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAccountsRequest,
   output: DeleteProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendOobCodeProjectsAccountsRequest {
@@ -2220,7 +2289,12 @@ export type SendOobCodeProjectsAccountsResponse =
 export const SendOobCodeProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 
-export type SendOobCodeProjectsAccountsError = DefaultErrors;
+export type SendOobCodeProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends an out-of-band confirmation code for an account. Requests from a authenticated request can optionally return a link including the OOB code instead of sending it. */
 export const sendOobCodeProjectsAccounts: API.OperationMethod<
@@ -2231,7 +2305,7 @@ export const sendOobCodeProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendOobCodeProjectsAccountsRequest,
   output: SendOobCodeProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsAccountsRequest {
@@ -2261,7 +2335,12 @@ export type UpdateProjectsAccountsResponse =
 export const UpdateProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 
-export type UpdateProjectsAccountsError = DefaultErrors;
+export type UpdateProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates account-related information for the specified user by setting specific fields or applying action codes. Requests from administrators and end users are supported. */
 export const updateProjectsAccounts: API.OperationMethod<
@@ -2272,7 +2351,7 @@ export const updateProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsAccountsRequest,
   output: UpdateProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteProjectsAccountsRequest {
@@ -2302,7 +2381,12 @@ export type BatchDeleteProjectsAccountsResponse =
 export const BatchDeleteProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
 
-export type BatchDeleteProjectsAccountsError = DefaultErrors;
+export type BatchDeleteProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch deletes multiple accounts. For accounts that fail to be deleted, error info is contained in the response. The method ignores accounts that do not exist or are duplicated in the request. This method requires a Google OAuth 2.0 credential with proper [permissions] (https://cloud.google.com/identity-platform/docs/access-control). */
 export const batchDeleteProjectsAccounts: API.OperationMethod<
@@ -2313,7 +2397,7 @@ export const batchDeleteProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsAccountsRequest,
   output: BatchDeleteProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryProjectsAccountsRequest {
@@ -2343,7 +2427,12 @@ export type QueryProjectsAccountsResponse =
 export const QueryProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 
-export type QueryProjectsAccountsError = DefaultErrors;
+export type QueryProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Looks up user accounts within a project or a tenant based on conditions in the request. */
 export const queryProjectsAccounts: API.OperationMethod<
@@ -2354,7 +2443,7 @@ export const queryProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryProjectsAccountsRequest,
   output: QueryProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsAccountsRequest {
@@ -2384,7 +2473,12 @@ export type BatchCreateProjectsAccountsResponse =
 export const BatchCreateProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1UploadAccountResponse;
 
-export type BatchCreateProjectsAccountsError = DefaultErrors;
+export type BatchCreateProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads multiple accounts into the Google Cloud project. If there is a problem uploading one or more of the accounts, the rest will be uploaded, and a list of the errors will be returned. To use this method requires a Google OAuth 2.0 credential with proper [permissions](https://cloud.google.com/identity-platform/docs/access-control). */
 export const batchCreateProjectsAccounts: API.OperationMethod<
@@ -2395,7 +2489,7 @@ export const batchCreateProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsAccountsRequest,
   output: BatchCreateProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupProjectsAccountsRequest {
@@ -2425,7 +2519,12 @@ export type LookupProjectsAccountsResponse =
 export const LookupProjectsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 
-export type LookupProjectsAccountsError = DefaultErrors;
+export type LookupProjectsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets account information for all matched accounts. For an end user request, retrieves the account of the end user. For an admin request with Google OAuth 2.0 credential, retrieves one or multiple account(s) with matching criteria. */
 export const lookupProjectsAccounts: API.OperationMethod<
@@ -2436,7 +2535,7 @@ export const lookupProjectsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupProjectsAccountsRequest,
   output: LookupProjectsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSessionCookieProjectsTenantsRequest {
@@ -2469,7 +2568,12 @@ export type CreateSessionCookieProjectsTenantsResponse =
 export const CreateSessionCookieProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse;
 
-export type CreateSessionCookieProjectsTenantsError = DefaultErrors;
+export type CreateSessionCookieProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a session cookie for the given Identity Platform ID token. The session cookie is used by the client to preserve the user's login state. */
 export const createSessionCookieProjectsTenants: API.OperationMethod<
@@ -2480,7 +2584,7 @@ export const createSessionCookieProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSessionCookieProjectsTenantsRequest,
   output: CreateSessionCookieProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AccountsProjectsTenantsRequest {
@@ -2513,7 +2617,12 @@ export type AccountsProjectsTenantsResponse =
 export const AccountsProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
 
-export type AccountsProjectsTenantsError = DefaultErrors;
+export type AccountsProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs up a new email and password user or anonymous user, or upgrades an anonymous user to email and password. For an admin request with a Google OAuth 2.0 credential with the proper [permissions](https://cloud.google.com/identity-platform/docs/access-control), creates a new anonymous, email and password, or phone number user. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const accountsProjectsTenants: API.OperationMethod<
@@ -2524,7 +2633,7 @@ export const accountsProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccountsProjectsTenantsRequest,
   output: AccountsProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsTenantsAccountsRequest {
@@ -2557,7 +2666,12 @@ export type UpdateProjectsTenantsAccountsResponse =
 export const UpdateProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 
-export type UpdateProjectsTenantsAccountsError = DefaultErrors;
+export type UpdateProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates account-related information for the specified user by setting specific fields or applying action codes. Requests from administrators and end users are supported. */
 export const updateProjectsTenantsAccounts: API.OperationMethod<
@@ -2568,7 +2682,7 @@ export const updateProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsTenantsAccountsRequest,
   output: UpdateProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteProjectsTenantsAccountsRequest {
@@ -2601,7 +2715,12 @@ export type BatchDeleteProjectsTenantsAccountsResponse =
 export const BatchDeleteProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse;
 
-export type BatchDeleteProjectsTenantsAccountsError = DefaultErrors;
+export type BatchDeleteProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch deletes multiple accounts. For accounts that fail to be deleted, error info is contained in the response. The method ignores accounts that do not exist or are duplicated in the request. This method requires a Google OAuth 2.0 credential with proper [permissions] (https://cloud.google.com/identity-platform/docs/access-control). */
 export const batchDeleteProjectsTenantsAccounts: API.OperationMethod<
@@ -2612,7 +2731,7 @@ export const batchDeleteProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsTenantsAccountsRequest,
   output: BatchDeleteProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsTenantsAccountsRequest {
@@ -2651,7 +2770,10 @@ export type BatchGetProjectsTenantsAccountsResponse =
 export const BatchGetProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DownloadAccountResponse;
 
-export type BatchGetProjectsTenantsAccountsError = DefaultErrors;
+export type BatchGetProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Download account information for all accounts on the project in a paginated manner. To use this method requires a Google OAuth 2.0 credential with proper [permissions](https://cloud.google.com/identity-platform/docs/access-control).. Furthermore, additional permissions are needed to get password hash, password salt, and password version from accounts; otherwise these fields are redacted. */
 export const batchGetProjectsTenantsAccounts: API.OperationMethod<
@@ -2662,7 +2784,7 @@ export const batchGetProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsTenantsAccountsRequest,
   output: BatchGetProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsTenantsAccountsRequest {
@@ -2695,7 +2817,12 @@ export type DeleteProjectsTenantsAccountsResponse =
 export const DeleteProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 
-export type DeleteProjectsTenantsAccountsError = DefaultErrors;
+export type DeleteProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user's account. */
 export const deleteProjectsTenantsAccounts: API.OperationMethod<
@@ -2706,7 +2833,7 @@ export const deleteProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsAccountsRequest,
   output: DeleteProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendOobCodeProjectsTenantsAccountsRequest {
@@ -2739,7 +2866,12 @@ export type SendOobCodeProjectsTenantsAccountsResponse =
 export const SendOobCodeProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 
-export type SendOobCodeProjectsTenantsAccountsError = DefaultErrors;
+export type SendOobCodeProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends an out-of-band confirmation code for an account. Requests from a authenticated request can optionally return a link including the OOB code instead of sending it. */
 export const sendOobCodeProjectsTenantsAccounts: API.OperationMethod<
@@ -2750,7 +2882,7 @@ export const sendOobCodeProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendOobCodeProjectsTenantsAccountsRequest,
   output: SendOobCodeProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupProjectsTenantsAccountsRequest {
@@ -2783,7 +2915,12 @@ export type LookupProjectsTenantsAccountsResponse =
 export const LookupProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 
-export type LookupProjectsTenantsAccountsError = DefaultErrors;
+export type LookupProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets account information for all matched accounts. For an end user request, retrieves the account of the end user. For an admin request with Google OAuth 2.0 credential, retrieves one or multiple account(s) with matching criteria. */
 export const lookupProjectsTenantsAccounts: API.OperationMethod<
@@ -2794,7 +2931,7 @@ export const lookupProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupProjectsTenantsAccountsRequest,
   output: LookupProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryProjectsTenantsAccountsRequest {
@@ -2827,7 +2964,12 @@ export type QueryProjectsTenantsAccountsResponse =
 export const QueryProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1QueryUserInfoResponse;
 
-export type QueryProjectsTenantsAccountsError = DefaultErrors;
+export type QueryProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Looks up user accounts within a project or a tenant based on conditions in the request. */
 export const queryProjectsTenantsAccounts: API.OperationMethod<
@@ -2838,7 +2980,7 @@ export const queryProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryProjectsTenantsAccountsRequest,
   output: QueryProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsTenantsAccountsRequest {
@@ -2871,7 +3013,12 @@ export type BatchCreateProjectsTenantsAccountsResponse =
 export const BatchCreateProjectsTenantsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1UploadAccountResponse;
 
-export type BatchCreateProjectsTenantsAccountsError = DefaultErrors;
+export type BatchCreateProjectsTenantsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads multiple accounts into the Google Cloud project. If there is a problem uploading one or more of the accounts, the rest will be uploaded, and a list of the errors will be returned. To use this method requires a Google OAuth 2.0 credential with proper [permissions](https://cloud.google.com/identity-platform/docs/access-control). */
 export const batchCreateProjectsTenantsAccounts: API.OperationMethod<
@@ -2882,7 +3029,7 @@ export const batchCreateProjectsTenantsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsTenantsAccountsRequest,
   output: BatchCreateProjectsTenantsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSessionCookiePublicKeysV1Request {}
@@ -2898,7 +3045,10 @@ export type GetSessionCookiePublicKeysV1Response =
 export const GetSessionCookiePublicKeysV1Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse;
 
-export type GetSessionCookiePublicKeysV1Error = DefaultErrors;
+export type GetSessionCookiePublicKeysV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the set of public keys of the session cookie JSON Web Token (JWT) signer that can be used to validate the session cookie created through createSessionCookie. */
 export const getSessionCookiePublicKeysV1: API.OperationMethod<
@@ -2909,7 +3059,7 @@ export const getSessionCookiePublicKeysV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSessionCookiePublicKeysV1Request,
   output: GetSessionCookiePublicKeysV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsV1Request {
@@ -2960,7 +3110,7 @@ export type GetProjectsV1Response =
 export const GetProjectsV1Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetProjectConfigResponse;
 
-export type GetProjectsV1Error = DefaultErrors;
+export type GetProjectsV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a project's public Identity Toolkit configuration. (Legacy) This method also supports authenticated calls from a developer to retrieve non-public configuration. */
 export const getProjectsV1: API.OperationMethod<
@@ -2971,7 +3121,7 @@ export const getProjectsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsV1Request,
   output: GetProjectsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPublicKeysV1Request {}
@@ -2989,7 +3139,7 @@ export const GetPublicKeysV1Response: Schema.Schema<GetPublicKeysV1Response> =
     {},
   ) as any as Schema.Schema<GetPublicKeysV1Response>;
 
-export type GetPublicKeysV1Error = DefaultErrors;
+export type GetPublicKeysV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves public keys of the legacy Identity Toolkit token signer to enable third parties to verify the legacy ID token. For now the X509 pem cert is the only format supported. */
 export const getPublicKeysV1: API.OperationMethod<
@@ -3000,7 +3150,7 @@ export const getPublicKeysV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicKeysV1Request,
   output: GetPublicKeysV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetRecaptchaParamsV1Request {}
@@ -3016,7 +3166,7 @@ export type GetRecaptchaParamsV1Response =
 export const GetRecaptchaParamsV1Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse;
 
-export type GetRecaptchaParamsV1Error = DefaultErrors;
+export type GetRecaptchaParamsV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Gets parameters needed for generating a reCAPTCHA challenge. */
 export const getRecaptchaParamsV1: API.OperationMethod<
@@ -3027,7 +3177,7 @@ export const getRecaptchaParamsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecaptchaParamsV1Request,
   output: GetRecaptchaParamsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SendVerificationCodeAccountsRequest {
@@ -3054,7 +3204,12 @@ export type SendVerificationCodeAccountsResponse =
 export const SendVerificationCodeAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse;
 
-export type SendVerificationCodeAccountsError = DefaultErrors;
+export type SendVerificationCodeAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends a SMS verification code for phone number sign-in. To localize the text of the SMS sent to the user, set the HTTP header `X-Firebase-Locale` to the language code that corresponds with the user's locale. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const sendVerificationCodeAccounts: API.OperationMethod<
@@ -3065,7 +3220,7 @@ export const sendVerificationCodeAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendVerificationCodeAccountsRequest,
   output: SendVerificationCodeAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetPasswordAccountsRequest {
@@ -3092,7 +3247,12 @@ export type ResetPasswordAccountsResponse =
 export const ResetPasswordAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1ResetPasswordResponse;
 
-export type ResetPasswordAccountsError = DefaultErrors;
+export type ResetPasswordAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets the password of an account either using an out-of-band code generated by sendOobCode or by specifying the email and password of the account to be modified. Can also check the purpose of an out-of-band code without consuming it. */
 export const resetPasswordAccounts: API.OperationMethod<
@@ -3103,7 +3263,7 @@ export const resetPasswordAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetPasswordAccountsRequest,
   output: ResetPasswordAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignInWithEmailLinkAccountsRequest {
@@ -3130,7 +3290,12 @@ export type SignInWithEmailLinkAccountsResponse =
 export const SignInWithEmailLinkAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse;
 
-export type SignInWithEmailLinkAccountsError = DefaultErrors;
+export type SignInWithEmailLinkAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs in or signs up a user with a out-of-band code from an email link. If a user does not exist with the given email address, a user record will be created. If the sign-in succeeds, an Identity Platform ID and refresh token are issued for the authenticated user. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const signInWithEmailLinkAccounts: API.OperationMethod<
@@ -3141,7 +3306,7 @@ export const signInWithEmailLinkAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignInWithEmailLinkAccountsRequest,
   output: SignInWithEmailLinkAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignInWithPasswordAccountsRequest {
@@ -3168,7 +3333,12 @@ export type SignInWithPasswordAccountsResponse =
 export const SignInWithPasswordAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse;
 
-export type SignInWithPasswordAccountsError = DefaultErrors;
+export type SignInWithPasswordAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs in a user with email and password. If the sign-in succeeds, a new Identity Platform ID token and refresh token are issued for the authenticated user. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const signInWithPasswordAccounts: API.OperationMethod<
@@ -3179,7 +3349,7 @@ export const signInWithPasswordAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignInWithPasswordAccountsRequest,
   output: SignInWithPasswordAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsRequest {
@@ -3201,7 +3371,12 @@ export type UpdateAccountsResponse =
 export const UpdateAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SetAccountInfoResponse;
 
-export type UpdateAccountsError = DefaultErrors;
+export type UpdateAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates account-related information for the specified user by setting specific fields or applying action codes. Requests from administrators and end users are supported. */
 export const updateAccounts: API.OperationMethod<
@@ -3212,7 +3387,7 @@ export const updateAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsRequest,
   output: UpdateAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsRequest {
@@ -3234,7 +3409,12 @@ export type DeleteAccountsResponse =
 export const DeleteAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1DeleteAccountResponse;
 
-export type DeleteAccountsError = DefaultErrors;
+export type DeleteAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user's account. */
 export const deleteAccounts: API.OperationMethod<
@@ -3245,7 +3425,7 @@ export const deleteAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsRequest,
   output: DeleteAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAuthUriAccountsRequest {
@@ -3272,7 +3452,12 @@ export type CreateAuthUriAccountsResponse =
 export const CreateAuthUriAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1CreateAuthUriResponse;
 
-export type CreateAuthUriAccountsError = DefaultErrors;
+export type CreateAuthUriAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** If an email identifier is specified, checks and returns if any user account is registered with the email. If there is a registered account, fetches all providers associated with the account's email. If [email enumeration protection](https://cloud.google.com/identity-platform/docs/admin/email-enumeration-protection) is enabled, this method returns an empty list. If the provider ID of an Identity Provider (IdP) is specified, creates an authorization URI for the IdP. The user can be directed to this URI to sign in with the IdP. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const createAuthUriAccounts: API.OperationMethod<
@@ -3283,7 +3468,7 @@ export const createAuthUriAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAuthUriAccountsRequest,
   output: CreateAuthUriAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendOobCodeAccountsRequest {
@@ -3306,7 +3491,12 @@ export type SendOobCodeAccountsResponse =
 export const SendOobCodeAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetOobCodeResponse;
 
-export type SendOobCodeAccountsError = DefaultErrors;
+export type SendOobCodeAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends an out-of-band confirmation code for an account. Requests from a authenticated request can optionally return a link including the OOB code instead of sending it. */
 export const sendOobCodeAccounts: API.OperationMethod<
@@ -3317,7 +3507,7 @@ export const sendOobCodeAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendOobCodeAccountsRequest,
   output: SendOobCodeAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface IssueSamlResponseAccountsRequest {
@@ -3344,7 +3534,12 @@ export type IssueSamlResponseAccountsResponse =
 export const IssueSamlResponseAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse;
 
-export type IssueSamlResponseAccountsError = DefaultErrors;
+export type IssueSamlResponseAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Experimental */
 export const issueSamlResponseAccounts: API.OperationMethod<
@@ -3355,7 +3550,7 @@ export const issueSamlResponseAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IssueSamlResponseAccountsRequest,
   output: IssueSamlResponseAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyIosClientAccountsRequest {
@@ -3382,7 +3577,12 @@ export type VerifyIosClientAccountsResponse =
 export const VerifyIosClientAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1VerifyIosClientResponse;
 
-export type VerifyIosClientAccountsError = DefaultErrors;
+export type VerifyIosClientAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies an iOS client is a real iOS device. If the request is valid, a receipt will be sent in the response and a secret will be sent via Apple Push Notification Service. The client should send both of them back to certain Identity Platform APIs in a later call (for example, /accounts:sendVerificationCode), in order to verify the client. The bundle ID is required in the request header as `x-ios-bundle-identifier`. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const verifyIosClientAccounts: API.OperationMethod<
@@ -3393,7 +3593,7 @@ export const verifyIosClientAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyIosClientAccountsRequest,
   output: VerifyIosClientAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignInWithIdpAccountsRequest {
@@ -3420,7 +3620,12 @@ export type SignInWithIdpAccountsResponse =
 export const SignInWithIdpAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithIdpResponse;
 
-export type SignInWithIdpAccountsError = DefaultErrors;
+export type SignInWithIdpAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs in or signs up a user using credentials from an Identity Provider (IdP). This is done by manually providing an IdP credential, or by providing the authorization response obtained via the authorization request from CreateAuthUri. If the sign-in succeeds, a new Identity Platform ID token and refresh token are issued for the authenticated user. A new Identity Platform user account will be created if the user has not previously signed in to the IdP with the same account. In addition, when the "One account per email address" setting is enabled, there should not be an existing Identity Platform user account with the same email address for a new user account to be created. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const signInWithIdpAccounts: API.OperationMethod<
@@ -3431,7 +3636,7 @@ export const signInWithIdpAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignInWithIdpAccountsRequest,
   output: SignInWithIdpAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignInWithPhoneNumberAccountsRequest {
@@ -3458,7 +3663,12 @@ export type SignInWithPhoneNumberAccountsResponse =
 export const SignInWithPhoneNumberAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse;
 
-export type SignInWithPhoneNumberAccountsError = DefaultErrors;
+export type SignInWithPhoneNumberAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes a phone number authentication attempt. If a user already exists with the given phone number, an ID token is minted for that user. Otherwise, a new user is created and associated with the phone number. This method may also be used to link a phone number to an existing user. To localize the text of the SMS sent to the user, set the HTTP header `X-Firebase-Locale` to the language code that corresponds with the user's locale. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const signInWithPhoneNumberAccounts: API.OperationMethod<
@@ -3469,7 +3679,7 @@ export const signInWithPhoneNumberAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignInWithPhoneNumberAccountsRequest,
   output: SignInWithPhoneNumberAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignUpAccountsRequest {
@@ -3490,7 +3700,12 @@ export type SignUpAccountsResponse = GoogleCloudIdentitytoolkitV1SignUpResponse;
 export const SignUpAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignUpResponse;
 
-export type SignUpAccountsError = DefaultErrors;
+export type SignUpAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs up a new email and password user or anonymous user, or upgrades an anonymous user to email and password. For an admin request with a Google OAuth 2.0 credential with the proper [permissions](https://cloud.google.com/identity-platform/docs/access-control), creates a new anonymous, email and password, or phone number user. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const signUpAccounts: API.OperationMethod<
@@ -3501,7 +3716,7 @@ export const signUpAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignUpAccountsRequest,
   output: SignUpAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignInWithCustomTokenAccountsRequest {
@@ -3528,7 +3743,12 @@ export type SignInWithCustomTokenAccountsResponse =
 export const SignInWithCustomTokenAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse;
 
-export type SignInWithCustomTokenAccountsError = DefaultErrors;
+export type SignInWithCustomTokenAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs in or signs up a user by exchanging a custom Auth token. Upon a successful sign-in or sign-up, a new Identity Platform ID token and refresh token are issued for the user. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. */
 export const signInWithCustomTokenAccounts: API.OperationMethod<
@@ -3539,7 +3759,7 @@ export const signInWithCustomTokenAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignInWithCustomTokenAccountsRequest,
   output: SignInWithCustomTokenAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignInWithGameCenterAccountsRequest {
@@ -3566,7 +3786,12 @@ export type SignInWithGameCenterAccountsResponse =
 export const SignInWithGameCenterAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse;
 
-export type SignInWithGameCenterAccountsError = DefaultErrors;
+export type SignInWithGameCenterAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs in or signs up a user with iOS Game Center credentials. If the sign-in succeeds, a new Identity Platform ID token and refresh token are issued for the authenticated user. The bundle ID is required in the request header as `x-ios-bundle-identifier`. An [API key](https://cloud.google.com/docs/authentication/api-keys) is required in the request in order to identify the Google Cloud project. Apple has [deprecated the `playerID` field](https://developer.apple.com/documentation/gamekit/gkplayer/1521127-playerid/). The Apple platform Firebase SDK will use `gamePlayerID` and `teamPlayerID` from version 10.5.0 and onwards. Upgrading to SDK version 10.5.0 or later updates existing integrations that use `playerID` to instead use `gamePlayerID` and `teamPlayerID`. When making calls to `signInWithGameCenter`, you must include `playerID` along with the new fields `gamePlayerID` and `teamPlayerID` to successfully identify all existing users. Upgrading existing Game Center sign in integrations to SDK version 10.5.0 or later is irreversible. */
 export const signInWithGameCenterAccounts: API.OperationMethod<
@@ -3577,7 +3802,7 @@ export const signInWithGameCenterAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignInWithGameCenterAccountsRequest,
   output: SignInWithGameCenterAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupAccountsRequest {
@@ -3599,7 +3824,12 @@ export type LookupAccountsResponse =
 export const LookupAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIdentitytoolkitV1GetAccountInfoResponse;
 
-export type LookupAccountsError = DefaultErrors;
+export type LookupAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets account information for all matched accounts. For an end user request, retrieves the account of the end user. For an admin request with Google OAuth 2.0 credential, retrieves one or multiple account(s) with matching criteria. */
 export const lookupAccounts: API.OperationMethod<
@@ -3610,5 +3840,5 @@ export const lookupAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupAccountsRequest,
   output: LookupAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

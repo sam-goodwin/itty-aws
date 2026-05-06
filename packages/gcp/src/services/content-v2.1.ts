@@ -6703,6 +6703,52 @@ export const LiasettingsCustomBatchRequest =
   }).annotate({ identifier: "LiasettingsCustomBatchRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -6728,7 +6774,7 @@ export type ListQuotasResponse = ListMethodQuotasResponse;
 export const ListQuotasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMethodQuotasResponse;
 
-export type ListQuotasError = DefaultErrors;
+export type ListQuotasError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the daily call quota and usage per method for your Merchant Center account. */
 export const listQuotas: API.PaginatedOperationMethod<
@@ -6739,7 +6785,7 @@ export const listQuotas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQuotasRequest,
   output: ListQuotasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6763,7 +6809,7 @@ export type GetFreelistingsprogramResponse = FreeListingsProgramStatus;
 export const GetFreelistingsprogramResponse =
   /*@__PURE__*/ /*#__PURE__*/ FreeListingsProgramStatus;
 
-export type GetFreelistingsprogramError = DefaultErrors;
+export type GetFreelistingsprogramError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the status and review eligibility for the free listing program. Returns errors and warnings if they require action to resolve, will become disapprovals, or impact impressions. Use `accountstatuses` to view all issues for an account. */
 export const getFreelistingsprogram: API.OperationMethod<
@@ -6774,7 +6820,7 @@ export const getFreelistingsprogram: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFreelistingsprogramRequest,
   output: GetFreelistingsprogramResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RequestreviewFreelistingsprogramRequest {
@@ -6803,7 +6849,12 @@ export const RequestreviewFreelistingsprogramResponse: Schema.Schema<Requestrevi
     {},
   ) as any as Schema.Schema<RequestreviewFreelistingsprogramResponse>;
 
-export type RequestreviewFreelistingsprogramError = DefaultErrors;
+export type RequestreviewFreelistingsprogramError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests a review of free listings in a specific region. This method deprecated. Use the `MerchantSupportService` to view product and account issues and request a review. */
 export const requestreviewFreelistingsprogram: API.OperationMethod<
@@ -6814,7 +6865,7 @@ export const requestreviewFreelistingsprogram: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestreviewFreelistingsprogramRequest,
   output: RequestreviewFreelistingsprogramResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFreelistingsprogramCheckoutsettingsRequest {
@@ -6837,7 +6888,10 @@ export type GetFreelistingsprogramCheckoutsettingsResponse = CheckoutSettings;
 export const GetFreelistingsprogramCheckoutsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckoutSettings;
 
-export type GetFreelistingsprogramCheckoutsettingsError = DefaultErrors;
+export type GetFreelistingsprogramCheckoutsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets Checkout settings for the given merchant. This includes information about review state, enrollment state and URL settings. */
 export const getFreelistingsprogramCheckoutsettings: API.OperationMethod<
@@ -6848,7 +6902,7 @@ export const getFreelistingsprogramCheckoutsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFreelistingsprogramCheckoutsettingsRequest,
   output: GetFreelistingsprogramCheckoutsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertFreelistingsprogramCheckoutsettingsRequest {
@@ -6876,7 +6930,12 @@ export type InsertFreelistingsprogramCheckoutsettingsResponse =
 export const InsertFreelistingsprogramCheckoutsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckoutSettings;
 
-export type InsertFreelistingsprogramCheckoutsettingsError = DefaultErrors;
+export type InsertFreelistingsprogramCheckoutsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls merchant in `Checkout` program. */
 export const insertFreelistingsprogramCheckoutsettings: API.OperationMethod<
@@ -6887,7 +6946,7 @@ export const insertFreelistingsprogramCheckoutsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFreelistingsprogramCheckoutsettingsRequest,
   output: InsertFreelistingsprogramCheckoutsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFreelistingsprogramCheckoutsettingsRequest {
@@ -6912,7 +6971,12 @@ export const DeleteFreelistingsprogramCheckoutsettingsResponse: Schema.Schema<De
     {},
   ) as any as Schema.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>;
 
-export type DeleteFreelistingsprogramCheckoutsettingsError = DefaultErrors;
+export type DeleteFreelistingsprogramCheckoutsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes `Checkout` settings and unenrolls merchant from `Checkout` program. */
 export const deleteFreelistingsprogramCheckoutsettings: API.OperationMethod<
@@ -6923,7 +6987,7 @@ export const deleteFreelistingsprogramCheckoutsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFreelistingsprogramCheckoutsettingsRequest,
   output: DeleteFreelistingsprogramCheckoutsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReturnpolicyonlineRequest {
@@ -6949,7 +7013,7 @@ export type GetReturnpolicyonlineResponse = ReturnPolicyOnline;
 export const GetReturnpolicyonlineResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReturnPolicyOnline;
 
-export type GetReturnpolicyonlineError = DefaultErrors;
+export type GetReturnpolicyonlineError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an existing return policy. */
 export const getReturnpolicyonline: API.OperationMethod<
@@ -6960,7 +7024,7 @@ export const getReturnpolicyonline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReturnpolicyonlineRequest,
   output: GetReturnpolicyonlineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchReturnpolicyonlineRequest {
@@ -6990,7 +7054,12 @@ export type PatchReturnpolicyonlineResponse = ReturnPolicyOnline;
 export const PatchReturnpolicyonlineResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReturnPolicyOnline;
 
-export type PatchReturnpolicyonlineError = DefaultErrors;
+export type PatchReturnpolicyonlineError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing return policy. */
 export const patchReturnpolicyonline: API.OperationMethod<
@@ -7001,7 +7070,7 @@ export const patchReturnpolicyonline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchReturnpolicyonlineRequest,
   output: PatchReturnpolicyonlineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListReturnpolicyonlineRequest {
@@ -7021,7 +7090,7 @@ export type ListReturnpolicyonlineResponse = ListReturnPolicyOnlineResponse;
 export const ListReturnpolicyonlineResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReturnPolicyOnlineResponse;
 
-export type ListReturnpolicyonlineError = DefaultErrors;
+export type ListReturnpolicyonlineError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all existing return policies. */
 export const listReturnpolicyonline: API.OperationMethod<
@@ -7032,7 +7101,7 @@ export const listReturnpolicyonline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListReturnpolicyonlineRequest,
   output: ListReturnpolicyonlineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteReturnpolicyonlineRequest {
@@ -7060,7 +7129,12 @@ export const DeleteReturnpolicyonlineResponse: Schema.Schema<DeleteReturnpolicyo
     {},
   ) as any as Schema.Schema<DeleteReturnpolicyonlineResponse>;
 
-export type DeleteReturnpolicyonlineError = DefaultErrors;
+export type DeleteReturnpolicyonlineError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing return policy. */
 export const deleteReturnpolicyonline: API.OperationMethod<
@@ -7071,7 +7145,7 @@ export const deleteReturnpolicyonline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteReturnpolicyonlineRequest,
   output: DeleteReturnpolicyonlineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateReturnpolicyonlineRequest {
@@ -7098,7 +7172,12 @@ export type CreateReturnpolicyonlineResponse = ReturnPolicyOnline;
 export const CreateReturnpolicyonlineResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReturnPolicyOnline;
 
-export type CreateReturnpolicyonlineError = DefaultErrors;
+export type CreateReturnpolicyonlineError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new return policy. */
 export const createReturnpolicyonline: API.OperationMethod<
@@ -7109,7 +7188,7 @@ export const createReturnpolicyonline: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateReturnpolicyonlineRequest,
   output: CreateReturnpolicyonlineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProductdeliverytimeRequest {
@@ -7135,7 +7214,7 @@ export type GetProductdeliverytimeResponse = ProductDeliveryTime;
 export const GetProductdeliverytimeResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductDeliveryTime;
 
-export type GetProductdeliverytimeError = DefaultErrors;
+export type GetProductdeliverytimeError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets `productDeliveryTime` by `productId`. */
 export const getProductdeliverytime: API.OperationMethod<
@@ -7146,7 +7225,7 @@ export const getProductdeliverytime: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProductdeliverytimeRequest,
   output: GetProductdeliverytimeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProductdeliverytimeRequest {
@@ -7174,7 +7253,12 @@ export const DeleteProductdeliverytimeResponse: Schema.Schema<DeleteProductdeliv
     {},
   ) as any as Schema.Schema<DeleteProductdeliverytimeResponse>;
 
-export type DeleteProductdeliverytimeError = DefaultErrors;
+export type DeleteProductdeliverytimeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the delivery time of a product. */
 export const deleteProductdeliverytime: API.OperationMethod<
@@ -7185,7 +7269,7 @@ export const deleteProductdeliverytime: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProductdeliverytimeRequest,
   output: DeleteProductdeliverytimeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProductdeliverytimeRequest {
@@ -7212,7 +7296,12 @@ export type CreateProductdeliverytimeResponse = ProductDeliveryTime;
 export const CreateProductdeliverytimeResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductDeliveryTime;
 
-export type CreateProductdeliverytimeError = DefaultErrors;
+export type CreateProductdeliverytimeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates the delivery time of a product. */
 export const createProductdeliverytime: API.OperationMethod<
@@ -7223,7 +7312,7 @@ export const createProductdeliverytime: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProductdeliverytimeRequest,
   output: CreateProductdeliverytimeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCssesRequest {
@@ -7248,7 +7337,7 @@ export type ListCssesResponse_Op = ListCssesResponse;
 export const ListCssesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCssesResponse;
 
-export type ListCssesError = DefaultErrors;
+export type ListCssesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists CSS domains affiliated with a CSS group. */
 export const listCsses: API.PaginatedOperationMethod<
@@ -7259,7 +7348,7 @@ export const listCsses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCssesRequest,
   output: ListCssesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7284,7 +7373,7 @@ export const GetCssesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCssesResponse = Css;
 export const GetCssesResponse = /*@__PURE__*/ /*#__PURE__*/ Css;
 
-export type GetCssesError = DefaultErrors;
+export type GetCssesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a single CSS domain by ID. */
 export const getCsses: API.OperationMethod<
@@ -7295,7 +7384,7 @@ export const getCsses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCssesRequest,
   output: GetCssesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdatelabelsCssesRequest {
@@ -7324,7 +7413,12 @@ export const UpdatelabelsCssesRequest =
 export type UpdatelabelsCssesResponse = Css;
 export const UpdatelabelsCssesResponse = /*@__PURE__*/ /*#__PURE__*/ Css;
 
-export type UpdatelabelsCssesError = DefaultErrors;
+export type UpdatelabelsCssesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates labels that are assigned to a CSS domain by its CSS group. */
 export const updatelabelsCsses: API.OperationMethod<
@@ -7335,7 +7429,7 @@ export const updatelabelsCsses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatelabelsCssesRequest,
   output: UpdatelabelsCssesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccounttaxRequest {
@@ -7356,7 +7450,7 @@ export const GetAccounttaxRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccounttaxResponse = AccountTax;
 export const GetAccounttaxResponse = /*@__PURE__*/ /*#__PURE__*/ AccountTax;
 
-export type GetAccounttaxError = DefaultErrors;
+export type GetAccounttaxError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the tax settings of the account. */
 export const getAccounttax: API.OperationMethod<
@@ -7367,7 +7461,7 @@ export const getAccounttax: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccounttaxRequest,
   output: GetAccounttaxResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccounttaxRequest {
@@ -7392,7 +7486,7 @@ export type ListAccounttaxResponse = AccounttaxListResponse;
 export const ListAccounttaxResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccounttaxListResponse;
 
-export type ListAccounttaxError = DefaultErrors;
+export type ListAccounttaxError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the tax settings of the sub-accounts in your Merchant Center account. */
 export const listAccounttax: API.PaginatedOperationMethod<
@@ -7403,7 +7497,7 @@ export const listAccounttax: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccounttaxRequest,
   output: ListAccounttaxResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7436,7 +7530,12 @@ export const UpdateAccounttaxRequest =
 export type UpdateAccounttaxResponse = AccountTax;
 export const UpdateAccounttaxResponse = /*@__PURE__*/ /*#__PURE__*/ AccountTax;
 
-export type UpdateAccounttaxError = DefaultErrors;
+export type UpdateAccounttaxError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the tax settings of the account. Any fields that are not provided are deleted from the resource. */
 export const updateAccounttax: API.OperationMethod<
@@ -7447,7 +7546,7 @@ export const updateAccounttax: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccounttaxRequest,
   output: UpdateAccounttaxResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchAccounttaxRequest {
@@ -7467,7 +7566,12 @@ export type CustombatchAccounttaxResponse = AccounttaxCustomBatchResponse;
 export const CustombatchAccounttaxResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccounttaxCustomBatchResponse;
 
-export type CustombatchAccounttaxError = DefaultErrors;
+export type CustombatchAccounttaxError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves and updates tax settings of multiple accounts in a single request. */
 export const custombatchAccounttax: API.OperationMethod<
@@ -7478,7 +7582,7 @@ export const custombatchAccounttax: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchAccounttaxRequest,
   output: CustombatchAccounttaxResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPubsubnotificationsettingsRequest {
@@ -7498,7 +7602,10 @@ export type GetPubsubnotificationsettingsResponse = PubsubNotificationSettings;
 export const GetPubsubnotificationsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PubsubNotificationSettings;
 
-export type GetPubsubnotificationsettingsError = DefaultErrors;
+export type GetPubsubnotificationsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a Merchant Center account's pubsub notification settings. */
 export const getPubsubnotificationsettings: API.OperationMethod<
@@ -7509,7 +7616,7 @@ export const getPubsubnotificationsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPubsubnotificationsettingsRequest,
   output: GetPubsubnotificationsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdatePubsubnotificationsettingsRequest {
@@ -7537,7 +7644,12 @@ export type UpdatePubsubnotificationsettingsResponse =
 export const UpdatePubsubnotificationsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PubsubNotificationSettings;
 
-export type UpdatePubsubnotificationsettingsError = DefaultErrors;
+export type UpdatePubsubnotificationsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Register a Merchant Center account for pubsub notifications. Note that cloud topic name shouldn't be provided as part of the request. */
 export const updatePubsubnotificationsettings: API.OperationMethod<
@@ -7548,7 +7660,7 @@ export const updatePubsubnotificationsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePubsubnotificationsettingsRequest,
   output: UpdatePubsubnotificationsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDatafeedsRequest {
@@ -7569,7 +7681,7 @@ export const GetDatafeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDatafeedsResponse = Datafeed;
 export const GetDatafeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Datafeed;
 
-export type GetDatafeedsError = DefaultErrors;
+export type GetDatafeedsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a datafeed configuration from your Merchant Center account. */
 export const getDatafeeds: API.OperationMethod<
@@ -7580,7 +7692,7 @@ export const getDatafeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDatafeedsRequest,
   output: GetDatafeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDatafeedsRequest {
@@ -7605,7 +7717,7 @@ export type ListDatafeedsResponse = DatafeedsListResponse;
 export const ListDatafeedsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatafeedsListResponse;
 
-export type ListDatafeedsError = DefaultErrors;
+export type ListDatafeedsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the configurations for datafeeds in your Merchant Center account. */
 export const listDatafeeds: API.PaginatedOperationMethod<
@@ -7616,7 +7728,7 @@ export const listDatafeeds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatafeedsRequest,
   output: ListDatafeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7647,7 +7759,12 @@ export type FetchnowDatafeedsResponse = DatafeedsFetchNowResponse;
 export const FetchnowDatafeedsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatafeedsFetchNowResponse;
 
-export type FetchnowDatafeedsError = DefaultErrors;
+export type FetchnowDatafeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Invokes a fetch for the datafeed in your Merchant Center account. If you need to call this method more than once per day, we recommend you use the [Products service](https://developers.google.com/shopping-content/reference/rest/v2.1/products) to update your product data. */
 export const fetchnowDatafeeds: API.OperationMethod<
@@ -7658,7 +7775,7 @@ export const fetchnowDatafeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchnowDatafeedsRequest,
   output: FetchnowDatafeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertDatafeedsRequest {
@@ -7681,7 +7798,12 @@ export const InsertDatafeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertDatafeedsResponse = Datafeed;
 export const InsertDatafeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Datafeed;
 
-export type InsertDatafeedsError = DefaultErrors;
+export type InsertDatafeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Registers a datafeed configuration with your Merchant Center account. */
 export const insertDatafeeds: API.OperationMethod<
@@ -7692,7 +7814,7 @@ export const insertDatafeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDatafeedsRequest,
   output: InsertDatafeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDatafeedsRequest {
@@ -7722,7 +7844,12 @@ export const UpdateDatafeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateDatafeedsResponse = Datafeed;
 export const UpdateDatafeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Datafeed;
 
-export type UpdateDatafeedsError = DefaultErrors;
+export type UpdateDatafeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided are deleted from the resource. */
 export const updateDatafeeds: API.OperationMethod<
@@ -7733,7 +7860,7 @@ export const updateDatafeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDatafeedsRequest,
   output: UpdateDatafeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchDatafeedsRequest {
@@ -7753,7 +7880,12 @@ export type CustombatchDatafeedsResponse = DatafeedsCustomBatchResponse;
 export const CustombatchDatafeedsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatafeedsCustomBatchResponse;
 
-export type CustombatchDatafeedsError = DefaultErrors;
+export type CustombatchDatafeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request. */
 export const custombatchDatafeeds: API.OperationMethod<
@@ -7764,7 +7896,7 @@ export const custombatchDatafeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchDatafeedsRequest,
   output: CustombatchDatafeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDatafeedsRequest {
@@ -7790,7 +7922,12 @@ export const DeleteDatafeedsResponse: Schema.Schema<DeleteDatafeedsResponse> =
     {},
   ) as any as Schema.Schema<DeleteDatafeedsResponse>;
 
-export type DeleteDatafeedsError = DefaultErrors;
+export type DeleteDatafeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a datafeed configuration from your Merchant Center account. */
 export const deleteDatafeeds: API.OperationMethod<
@@ -7801,7 +7938,7 @@ export const deleteDatafeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatafeedsRequest,
   output: DeleteDatafeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetShippingsettingsRequest {
@@ -7827,7 +7964,7 @@ export type GetShippingsettingsResponse = ShippingSettings;
 export const GetShippingsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingSettings;
 
-export type GetShippingsettingsError = DefaultErrors;
+export type GetShippingsettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the shipping settings of the account. */
 export const getShippingsettings: API.OperationMethod<
@@ -7838,7 +7975,7 @@ export const getShippingsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShippingsettingsRequest,
   output: GetShippingsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListShippingsettingsRequest {
@@ -7864,7 +8001,7 @@ export type ListShippingsettingsResponse = ShippingsettingsListResponse;
 export const ListShippingsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingsettingsListResponse;
 
-export type ListShippingsettingsError = DefaultErrors;
+export type ListShippingsettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the shipping settings of the sub-accounts in your Merchant Center account. */
 export const listShippingsettings: API.PaginatedOperationMethod<
@@ -7875,7 +8012,7 @@ export const listShippingsettings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListShippingsettingsRequest,
   output: ListShippingsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7900,7 +8037,10 @@ export type GetsupportedcarriersShippingsettingsResponse =
 export const GetsupportedcarriersShippingsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingsettingsGetSupportedCarriersResponse;
 
-export type GetsupportedcarriersShippingsettingsError = DefaultErrors;
+export type GetsupportedcarriersShippingsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves supported carriers and carrier services for an account. */
 export const getsupportedcarriersShippingsettings: API.OperationMethod<
@@ -7911,7 +8051,7 @@ export const getsupportedcarriersShippingsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetsupportedcarriersShippingsettingsRequest,
   output: GetsupportedcarriersShippingsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetsupportedholidaysShippingsettingsRequest {
@@ -7932,7 +8072,10 @@ export type GetsupportedholidaysShippingsettingsResponse =
 export const GetsupportedholidaysShippingsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingsettingsGetSupportedHolidaysResponse;
 
-export type GetsupportedholidaysShippingsettingsError = DefaultErrors;
+export type GetsupportedholidaysShippingsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves supported holidays for an account. */
 export const getsupportedholidaysShippingsettings: API.OperationMethod<
@@ -7943,7 +8086,7 @@ export const getsupportedholidaysShippingsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetsupportedholidaysShippingsettingsRequest,
   output: GetsupportedholidaysShippingsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetsupportedpickupservicesShippingsettingsRequest {
@@ -7964,7 +8107,10 @@ export type GetsupportedpickupservicesShippingsettingsResponse =
 export const GetsupportedpickupservicesShippingsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingsettingsGetSupportedPickupServicesResponse;
 
-export type GetsupportedpickupservicesShippingsettingsError = DefaultErrors;
+export type GetsupportedpickupservicesShippingsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves supported pickup services for an account. */
 export const getsupportedpickupservicesShippingsettings: API.OperationMethod<
@@ -7975,7 +8121,7 @@ export const getsupportedpickupservicesShippingsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetsupportedpickupservicesShippingsettingsRequest,
   output: GetsupportedpickupservicesShippingsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateShippingsettingsRequest {
@@ -8005,7 +8151,12 @@ export type UpdateShippingsettingsResponse = ShippingSettings;
 export const UpdateShippingsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingSettings;
 
-export type UpdateShippingsettingsError = DefaultErrors;
+export type UpdateShippingsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the shipping settings of the account. Any fields that are not provided are deleted from the resource. */
 export const updateShippingsettings: API.OperationMethod<
@@ -8016,7 +8167,7 @@ export const updateShippingsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateShippingsettingsRequest,
   output: UpdateShippingsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchShippingsettingsRequest {
@@ -8039,7 +8190,12 @@ export type CustombatchShippingsettingsResponse =
 export const CustombatchShippingsettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingsettingsCustomBatchResponse;
 
-export type CustombatchShippingsettingsError = DefaultErrors;
+export type CustombatchShippingsettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves and updates the shipping settings of multiple accounts in a single request. */
 export const custombatchShippingsettings: API.OperationMethod<
@@ -8050,7 +8206,7 @@ export const custombatchShippingsettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchShippingsettingsRequest,
   output: CustombatchShippingsettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPromotionsRequest {
@@ -8071,7 +8227,7 @@ export const GetPromotionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPromotionsResponse = Promotion;
 export const GetPromotionsResponse = /*@__PURE__*/ /*#__PURE__*/ Promotion;
 
-export type GetPromotionsError = DefaultErrors;
+export type GetPromotionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a promotion from your Merchant Center account. */
 export const getPromotions: API.OperationMethod<
@@ -8082,7 +8238,7 @@ export const getPromotions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPromotionsRequest,
   output: GetPromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPromotionsRequest {
@@ -8115,7 +8271,7 @@ export type ListPromotionsResponse = ListPromotionResponse;
 export const ListPromotionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPromotionResponse;
 
-export type ListPromotionsError = DefaultErrors;
+export type ListPromotionsError = DefaultErrors | NotFound | Forbidden;
 
 /** List all promotions from your Merchant Center account. */
 export const listPromotions: API.PaginatedOperationMethod<
@@ -8126,7 +8282,7 @@ export const listPromotions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPromotionsRequest,
   output: ListPromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8152,7 +8308,12 @@ export const CreatePromotionsRequest =
 export type CreatePromotionsResponse = Promotion;
 export const CreatePromotionsResponse = /*@__PURE__*/ /*#__PURE__*/ Promotion;
 
-export type CreatePromotionsError = DefaultErrors;
+export type CreatePromotionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the promotion instead. To [end or delete] (https://developers.google.com/shopping-content/guides/promotions#end_a_promotion) a promotion update the time period of the promotion to a time that has already passed. */
 export const createPromotions: API.OperationMethod<
@@ -8163,7 +8324,7 @@ export const createPromotions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePromotionsRequest,
   output: CreatePromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsRequest {
@@ -8190,7 +8351,12 @@ export const DeleteAccountsResponse: Schema.Schema<DeleteAccountsResponse> =
     {},
   ) as any as Schema.Schema<DeleteAccountsResponse>;
 
-export type DeleteAccountsError = DefaultErrors;
+export type DeleteAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Merchant Center sub-account. */
 export const deleteAccounts: API.OperationMethod<
@@ -8201,7 +8367,7 @@ export const deleteAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsRequest,
   output: DeleteAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RequestphoneverificationAccountsRequest {
@@ -8232,7 +8398,12 @@ export type RequestphoneverificationAccountsResponse =
 export const RequestphoneverificationAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RequestPhoneVerificationResponse;
 
-export type RequestphoneverificationAccountsError = DefaultErrors;
+export type RequestphoneverificationAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Request verification code to start phone verification. */
 export const requestphoneverificationAccounts: API.OperationMethod<
@@ -8243,7 +8414,7 @@ export const requestphoneverificationAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestphoneverificationAccountsRequest,
   output: RequestphoneverificationAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAccountsRequest {
@@ -8264,7 +8435,12 @@ export const InsertAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertAccountsResponse = Account;
 export const InsertAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type InsertAccountsError = DefaultErrors;
+export type InsertAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Merchant Center sub-account. */
 export const insertAccounts: API.OperationMethod<
@@ -8275,7 +8451,7 @@ export const insertAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsRequest,
   output: InsertAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsRequest {
@@ -8303,7 +8479,12 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAccountsResponse = Account;
 export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type UpdateAccountsError = DefaultErrors;
+export type UpdateAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Merchant Center account. Any fields that are not provided are deleted from the resource. */
 export const updateAccounts: API.OperationMethod<
@@ -8314,7 +8495,7 @@ export const updateAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsRequest,
   output: UpdateAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatelabelsAccountsRequest {
@@ -8344,7 +8525,12 @@ export type UpdatelabelsAccountsResponse = AccountsUpdateLabelsResponse;
 export const UpdatelabelsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsUpdateLabelsResponse;
 
-export type UpdatelabelsAccountsError = DefaultErrors;
+export type UpdatelabelsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates labels that are assigned to the Merchant Center account by CSS user. */
 export const updatelabelsAccounts: API.OperationMethod<
@@ -8355,7 +8541,7 @@ export const updatelabelsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatelabelsAccountsRequest,
   output: UpdatelabelsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LinkAccountsRequest {
@@ -8384,7 +8570,12 @@ export type LinkAccountsResponse = AccountsLinkResponse;
 export const LinkAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsLinkResponse;
 
-export type LinkAccountsError = DefaultErrors;
+export type LinkAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs an action on a link between two Merchant Center accounts, namely accountId and linkedAccountId. */
 export const linkAccounts: API.OperationMethod<
@@ -8395,7 +8586,7 @@ export const linkAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkAccountsRequest,
   output: LinkAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListlinksAccountsRequest {
@@ -8427,7 +8618,7 @@ export type ListlinksAccountsResponse = AccountsListLinksResponse;
 export const ListlinksAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsListLinksResponse;
 
-export type ListlinksAccountsError = DefaultErrors;
+export type ListlinksAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the list of accounts linked to your Merchant Center account. */
 export const listlinksAccounts: API.PaginatedOperationMethod<
@@ -8438,7 +8629,7 @@ export const listlinksAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListlinksAccountsRequest,
   output: ListlinksAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8466,7 +8657,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a Merchant Center account. */
 export const getAccounts: API.OperationMethod<
@@ -8477,7 +8668,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsRequest {
@@ -8511,7 +8702,7 @@ export type ListAccountsResponse = AccountsListResponse;
 export const ListAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsListResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the sub-accounts in your Merchant Center account. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -8522,7 +8713,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8556,7 +8747,12 @@ export type VerifyphonenumberAccountsResponse = VerifyPhoneNumberResponse;
 export const VerifyphonenumberAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerifyPhoneNumberResponse;
 
-export type VerifyphonenumberAccountsError = DefaultErrors;
+export type VerifyphonenumberAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates verification code to verify phone number for the account. If successful this will overwrite the value of `accounts.businessinformation.phoneNumber`. Only verified phone number will replace an existing verified phone number. */
 export const verifyphonenumberAccounts: API.OperationMethod<
@@ -8567,7 +8763,7 @@ export const verifyphonenumberAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyphonenumberAccountsRequest,
   output: VerifyphonenumberAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClaimwebsiteAccountsRequest {
@@ -8597,7 +8793,12 @@ export type ClaimwebsiteAccountsResponse = AccountsClaimWebsiteResponse;
 export const ClaimwebsiteAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsClaimWebsiteResponse;
 
-export type ClaimwebsiteAccountsError = DefaultErrors;
+export type ClaimwebsiteAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Claims the website of a Merchant Center sub-account. Merchant accounts with approved third-party CSSs aren't required to claim a website. */
 export const claimwebsiteAccounts: API.OperationMethod<
@@ -8608,7 +8809,7 @@ export const claimwebsiteAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClaimwebsiteAccountsRequest,
   output: ClaimwebsiteAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchAccountsRequest {
@@ -8628,7 +8829,12 @@ export type CustombatchAccountsResponse = AccountsCustomBatchResponse;
 export const CustombatchAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsCustomBatchResponse;
 
-export type CustombatchAccountsError = DefaultErrors;
+export type CustombatchAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts in a single request. */
 export const custombatchAccounts: API.OperationMethod<
@@ -8639,7 +8845,7 @@ export const custombatchAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchAccountsRequest,
   output: CustombatchAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AuthinfoAccountsRequest {}
@@ -8654,7 +8860,7 @@ export type AuthinfoAccountsResponse = AccountsAuthInfoResponse;
 export const AuthinfoAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsAuthInfoResponse;
 
-export type AuthinfoAccountsError = DefaultErrors;
+export type AuthinfoAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns information about the authenticated user. */
 export const authinfoAccounts: API.OperationMethod<
@@ -8665,7 +8871,7 @@ export const authinfoAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AuthinfoAccountsRequest,
   output: AuthinfoAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsLabelsRequest {
@@ -8692,7 +8898,12 @@ export type CreateAccountsLabelsResponse = AccountLabel;
 export const CreateAccountsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountLabel;
 
-export type CreateAccountsLabelsError = DefaultErrors;
+export type CreateAccountsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new label, not assigned to any account. */
 export const createAccountsLabels: API.OperationMethod<
@@ -8703,7 +8914,7 @@ export const createAccountsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsLabelsRequest,
   output: CreateAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsLabelsRequest {
@@ -8728,7 +8939,12 @@ export const DeleteAccountsLabelsResponse: Schema.Schema<DeleteAccountsLabelsRes
     {},
   ) as any as Schema.Schema<DeleteAccountsLabelsResponse>;
 
-export type DeleteAccountsLabelsError = DefaultErrors;
+export type DeleteAccountsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a label and removes it from all accounts to which it was assigned. */
 export const deleteAccountsLabels: API.OperationMethod<
@@ -8739,7 +8955,7 @@ export const deleteAccountsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsLabelsRequest,
   output: DeleteAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsLabelsRequest {
@@ -8765,7 +8981,7 @@ export type ListAccountsLabelsResponse = ListAccountLabelsResponse;
 export const ListAccountsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountLabelsResponse;
 
-export type ListAccountsLabelsError = DefaultErrors;
+export type ListAccountsLabelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the labels assigned to an account. */
 export const listAccountsLabels: API.PaginatedOperationMethod<
@@ -8776,7 +8992,7 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLabelsRequest,
   output: ListAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8810,7 +9026,12 @@ export type PatchAccountsLabelsResponse = AccountLabel;
 export const PatchAccountsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountLabel;
 
-export type PatchAccountsLabelsError = DefaultErrors;
+export type PatchAccountsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label. */
 export const patchAccountsLabels: API.OperationMethod<
@@ -8821,7 +9042,7 @@ export const patchAccountsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsLabelsRequest,
   output: PatchAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsCredentialsRequest {
@@ -8848,7 +9069,12 @@ export type CreateAccountsCredentialsResponse = AccountCredentials;
 export const CreateAccountsCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountCredentials;
 
-export type CreateAccountsCredentialsError = DefaultErrors;
+export type CreateAccountsCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads credentials for the Merchant Center account. If credentials already exist for this Merchant Center account and purpose, this method updates them. */
 export const createAccountsCredentials: API.OperationMethod<
@@ -8859,7 +9085,7 @@ export const createAccountsCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsCredentialsRequest,
   output: CreateAccountsCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsReturncarrierRequest {
@@ -8887,7 +9113,12 @@ export const DeleteAccountsReturncarrierResponse: Schema.Schema<DeleteAccountsRe
     {},
   ) as any as Schema.Schema<DeleteAccountsReturncarrierResponse>;
 
-export type DeleteAccountsReturncarrierError = DefaultErrors;
+export type DeleteAccountsReturncarrierError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a return carrier in the merchant account. */
 export const deleteAccountsReturncarrier: API.OperationMethod<
@@ -8898,7 +9129,7 @@ export const deleteAccountsReturncarrier: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsReturncarrierRequest,
   output: DeleteAccountsReturncarrierResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsReturncarrierRequest {
@@ -8925,7 +9156,12 @@ export type CreateAccountsReturncarrierResponse = AccountReturnCarrier;
 export const CreateAccountsReturncarrierResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountReturnCarrier;
 
-export type CreateAccountsReturncarrierError = DefaultErrors;
+export type CreateAccountsReturncarrierError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Links return carrier to a merchant account. */
 export const createAccountsReturncarrier: API.OperationMethod<
@@ -8936,7 +9172,7 @@ export const createAccountsReturncarrier: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsReturncarrierRequest,
   output: CreateAccountsReturncarrierResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountsReturncarrierRequest {
@@ -8966,7 +9202,12 @@ export type PatchAccountsReturncarrierResponse = AccountReturnCarrier;
 export const PatchAccountsReturncarrierResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountReturnCarrier;
 
-export type PatchAccountsReturncarrierError = DefaultErrors;
+export type PatchAccountsReturncarrierError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a return carrier in the merchant account. */
 export const patchAccountsReturncarrier: API.OperationMethod<
@@ -8977,7 +9218,7 @@ export const patchAccountsReturncarrier: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsReturncarrierRequest,
   output: PatchAccountsReturncarrierResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsReturncarrierRequest {
@@ -8998,7 +9239,10 @@ export type ListAccountsReturncarrierResponse =
 export const ListAccountsReturncarrierResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountReturnCarrierResponse;
 
-export type ListAccountsReturncarrierError = DefaultErrors;
+export type ListAccountsReturncarrierError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists available return carriers in the merchant account. */
 export const listAccountsReturncarrier: API.OperationMethod<
@@ -9009,7 +9253,7 @@ export const listAccountsReturncarrier: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsReturncarrierRequest,
   output: ListAccountsReturncarrierResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchConversionsourcesRequest {
@@ -9042,7 +9286,12 @@ export type PatchConversionsourcesResponse = ConversionSource;
 export const PatchConversionsourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
 
-export type PatchConversionsourcesError = DefaultErrors;
+export type PatchConversionsourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information of an existing conversion source. */
 export const patchConversionsources: API.OperationMethod<
@@ -9053,7 +9302,7 @@ export const patchConversionsources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchConversionsourcesRequest,
   output: PatchConversionsourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConversionsourcesRequest {
@@ -9079,7 +9328,7 @@ export type GetConversionsourcesResponse = ConversionSource;
 export const GetConversionsourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
 
-export type GetConversionsourcesError = DefaultErrors;
+export type GetConversionsourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches a conversion source. */
 export const getConversionsources: API.OperationMethod<
@@ -9090,7 +9339,7 @@ export const getConversionsources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConversionsourcesRequest,
   output: GetConversionsourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConversionsourcesRequest {
@@ -9121,7 +9370,7 @@ export type ListConversionsourcesResponse = ListConversionSourcesResponse;
 export const ListConversionsourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConversionSourcesResponse;
 
-export type ListConversionsourcesError = DefaultErrors;
+export type ListConversionsourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of conversion sources the caller has access to. */
 export const listConversionsources: API.PaginatedOperationMethod<
@@ -9132,7 +9381,7 @@ export const listConversionsources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConversionsourcesRequest,
   output: ListConversionsourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9163,7 +9412,12 @@ export type CreateConversionsourcesResponse = ConversionSource;
 export const CreateConversionsourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
 
-export type CreateConversionsourcesError = DefaultErrors;
+export type CreateConversionsourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new conversion source. */
 export const createConversionsources: API.OperationMethod<
@@ -9174,7 +9428,7 @@ export const createConversionsources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateConversionsourcesRequest,
   output: CreateConversionsourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteConversionsourcesRequest {
@@ -9202,7 +9456,12 @@ export const DeleteConversionsourcesResponse: Schema.Schema<DeleteConversionsour
     {},
   ) as any as Schema.Schema<DeleteConversionsourcesResponse>;
 
-export type DeleteConversionsourcesError = DefaultErrors;
+export type DeleteConversionsourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Archives an existing conversion source. It will be recoverable for 30 days. This archiving behavior is not typical in the Content API and unique to this service. */
 export const deleteConversionsources: API.OperationMethod<
@@ -9213,7 +9472,7 @@ export const deleteConversionsources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConversionsourcesRequest,
   output: DeleteConversionsourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteConversionsourcesRequest {
@@ -9245,7 +9504,12 @@ export const UndeleteConversionsourcesResponse: Schema.Schema<UndeleteConversion
     {},
   ) as any as Schema.Schema<UndeleteConversionsourcesResponse>;
 
-export type UndeleteConversionsourcesError = DefaultErrors;
+export type UndeleteConversionsourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Re-enables an archived conversion source. */
 export const undeleteConversionsources: API.OperationMethod<
@@ -9256,7 +9520,7 @@ export const undeleteConversionsources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteConversionsourcesRequest,
   output: UndeleteConversionsourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCollectionstatusesRequest {
@@ -9282,7 +9546,7 @@ export type GetCollectionstatusesResponse = CollectionStatus;
 export const GetCollectionstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CollectionStatus;
 
-export type GetCollectionstatusesError = DefaultErrors;
+export type GetCollectionstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the status of a collection from your Merchant Center account. */
 export const getCollectionstatuses: API.OperationMethod<
@@ -9293,7 +9557,7 @@ export const getCollectionstatuses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollectionstatusesRequest,
   output: GetCollectionstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCollectionstatusesRequest {
@@ -9319,7 +9583,7 @@ export type ListCollectionstatusesResponse = ListCollectionStatusesResponse;
 export const ListCollectionstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCollectionStatusesResponse;
 
-export type ListCollectionstatusesError = DefaultErrors;
+export type ListCollectionstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the statuses of the collections in your Merchant Center account. */
 export const listCollectionstatuses: API.PaginatedOperationMethod<
@@ -9330,7 +9594,7 @@ export const listCollectionstatuses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionstatusesRequest,
   output: ListCollectionstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9355,7 +9619,7 @@ export const GetProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProductsResponse = Product;
 export const GetProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type GetProductsError = DefaultErrors;
+export type GetProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a product from your Merchant Center account. */
 export const getProducts: API.OperationMethod<
@@ -9366,7 +9630,7 @@ export const getProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProductsRequest,
   output: GetProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProductsRequest {
@@ -9391,7 +9655,7 @@ export type ListProductsResponse = ProductsListResponse;
 export const ListProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductsListResponse;
 
-export type ListProductsError = DefaultErrors;
+export type ListProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the products in your Merchant Center account. The response might contain fewer items than specified by maxResults. Rely on nextPageToken to determine if there are more items to be requested. */
 export const listProducts: API.PaginatedOperationMethod<
@@ -9402,7 +9666,7 @@ export const listProducts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProductsRequest,
   output: ListProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9430,7 +9694,12 @@ export const InsertProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertProductsResponse = Product;
 export const InsertProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type InsertProductsError = DefaultErrors;
+export type InsertProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a product to your Merchant Center account. If an item with the same channel, contentLanguage, offerId, and targetCountry already exists, this method updates that entry. */
 export const insertProducts: API.OperationMethod<
@@ -9441,7 +9710,7 @@ export const insertProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertProductsRequest,
   output: InsertProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProductsRequest {
@@ -9472,7 +9741,12 @@ export const UpdateProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateProductsResponse = Product;
 export const UpdateProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type UpdateProductsError = DefaultErrors;
+export type UpdateProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing product in your Merchant Center account. Only updates attributes provided in the request. */
 export const updateProducts: API.OperationMethod<
@@ -9483,7 +9757,7 @@ export const updateProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProductsRequest,
   output: UpdateProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProductsRequest {
@@ -9510,7 +9784,12 @@ export const DeleteProductsResponse: Schema.Schema<DeleteProductsResponse> =
     {},
   ) as any as Schema.Schema<DeleteProductsResponse>;
 
-export type DeleteProductsError = DefaultErrors;
+export type DeleteProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a product from your Merchant Center account. */
 export const deleteProducts: API.OperationMethod<
@@ -9521,7 +9800,7 @@ export const deleteProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProductsRequest,
   output: DeleteProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchProductsRequest {
@@ -9541,7 +9820,12 @@ export type CustombatchProductsResponse = ProductsCustomBatchResponse;
 export const CustombatchProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductsCustomBatchResponse;
 
-export type CustombatchProductsError = DefaultErrors;
+export type CustombatchProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves, inserts, and deletes multiple products in a single request. */
 export const custombatchProducts: API.OperationMethod<
@@ -9552,7 +9836,7 @@ export const custombatchProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchProductsRequest,
   output: CustombatchProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SalePosRequest {
@@ -9580,7 +9864,12 @@ export const SalePosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SalePosResponse = PosSaleResponse;
 export const SalePosResponse = /*@__PURE__*/ /*#__PURE__*/ PosSaleResponse;
 
-export type SalePosError = DefaultErrors;
+export type SalePosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit a sale event for the given merchant. */
 export const salePos: API.OperationMethod<
@@ -9591,7 +9880,7 @@ export const salePos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SalePosRequest,
   output: SalePosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPosRequest {
@@ -9618,7 +9907,7 @@ export const GetPosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPosResponse = PosStore;
 export const GetPosResponse = /*@__PURE__*/ /*#__PURE__*/ PosStore;
 
-export type GetPosError = DefaultErrors;
+export type GetPosError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about the given store. */
 export const getPos: API.OperationMethod<
@@ -9629,7 +9918,7 @@ export const getPos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPosRequest,
   output: GetPosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InventoryPosRequest {
@@ -9658,7 +9947,12 @@ export type InventoryPosResponse = PosInventoryResponse;
 export const InventoryPosResponse =
   /*@__PURE__*/ /*#__PURE__*/ PosInventoryResponse;
 
-export type InventoryPosError = DefaultErrors;
+export type InventoryPosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit inventory for the given merchant. */
 export const inventoryPos: API.OperationMethod<
@@ -9669,7 +9963,7 @@ export const inventoryPos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InventoryPosRequest,
   output: InventoryPosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPosRequest {
@@ -9690,7 +9984,7 @@ export const ListPosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListPosResponse = PosListResponse;
 export const ListPosResponse = /*@__PURE__*/ /*#__PURE__*/ PosListResponse;
 
-export type ListPosError = DefaultErrors;
+export type ListPosError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the stores of the target merchant. */
 export const listPos: API.OperationMethod<
@@ -9701,7 +9995,7 @@ export const listPos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPosRequest,
   output: ListPosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePosRequest {
@@ -9731,7 +10025,12 @@ export const DeletePosResponse: Schema.Schema<DeletePosResponse> =
     {},
   ) as any as Schema.Schema<DeletePosResponse>;
 
-export type DeletePosError = DefaultErrors;
+export type DeletePosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a store for the given merchant. */
 export const deletePos: API.OperationMethod<
@@ -9742,7 +10041,7 @@ export const deletePos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePosRequest,
   output: DeletePosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchPosRequest {
@@ -9761,7 +10060,12 @@ export type CustombatchPosResponse = PosCustomBatchResponse;
 export const CustombatchPosResponse =
   /*@__PURE__*/ /*#__PURE__*/ PosCustomBatchResponse;
 
-export type CustombatchPosError = DefaultErrors;
+export type CustombatchPosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batches multiple POS-related calls in a single request. */
 export const custombatchPos: API.OperationMethod<
@@ -9772,7 +10076,7 @@ export const custombatchPos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchPosRequest,
   output: CustombatchPosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPosRequest {
@@ -9800,7 +10104,12 @@ export const InsertPosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertPosResponse = PosStore;
 export const InsertPosResponse = /*@__PURE__*/ /*#__PURE__*/ PosStore;
 
-export type InsertPosError = DefaultErrors;
+export type InsertPosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a store for the given merchant. */
 export const insertPos: API.OperationMethod<
@@ -9811,7 +10120,7 @@ export const insertPos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPosRequest,
   output: InsertPosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchRegionalinventoryRequest {
@@ -9834,7 +10143,12 @@ export type CustombatchRegionalinventoryResponse =
 export const CustombatchRegionalinventoryResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionalinventoryCustomBatchResponse;
 
-export type CustombatchRegionalinventoryError = DefaultErrors;
+export type CustombatchRegionalinventoryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates regional inventory for multiple products or regions in a single request. */
 export const custombatchRegionalinventory: API.OperationMethod<
@@ -9845,7 +10159,7 @@ export const custombatchRegionalinventory: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchRegionalinventoryRequest,
   output: CustombatchRegionalinventoryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertRegionalinventoryRequest {
@@ -9875,7 +10189,12 @@ export type InsertRegionalinventoryResponse = RegionalInventory;
 export const InsertRegionalinventoryResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionalInventory;
 
-export type InsertRegionalinventoryError = DefaultErrors;
+export type InsertRegionalinventoryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the regional inventory of a product in your Merchant Center account. If a regional inventory with the same region ID already exists, this method updates that entry. */
 export const insertRegionalinventory: API.OperationMethod<
@@ -9886,7 +10205,7 @@ export const insertRegionalinventory: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionalinventoryRequest,
   output: InsertRegionalinventoryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenderaccountissuesMerchantsupportRequest {
@@ -9922,7 +10241,12 @@ export type RenderaccountissuesMerchantsupportResponse =
 export const RenderaccountissuesMerchantsupportResponse =
   /*@__PURE__*/ /*#__PURE__*/ RenderAccountIssuesResponse;
 
-export type RenderaccountissuesMerchantsupportError = DefaultErrors;
+export type RenderaccountissuesMerchantsupportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provide a list of merchant's issues with a support content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderaccountissuesMerchantsupport: API.OperationMethod<
@@ -9933,7 +10257,7 @@ export const renderaccountissuesMerchantsupport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenderaccountissuesMerchantsupportRequest,
   output: RenderaccountissuesMerchantsupportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenderproductissuesMerchantsupportRequest {
@@ -9972,7 +10296,12 @@ export type RenderproductissuesMerchantsupportResponse =
 export const RenderproductissuesMerchantsupportResponse =
   /*@__PURE__*/ /*#__PURE__*/ RenderProductIssuesResponse;
 
-export type RenderproductissuesMerchantsupportError = DefaultErrors;
+export type RenderproductissuesMerchantsupportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provide a list of issues for merchant's product with a support content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderproductissuesMerchantsupport: API.OperationMethod<
@@ -9983,7 +10312,7 @@ export const renderproductissuesMerchantsupport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenderproductissuesMerchantsupportRequest,
   output: RenderproductissuesMerchantsupportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TriggeractionMerchantsupportRequest {
@@ -10015,7 +10344,12 @@ export type TriggeractionMerchantsupportResponse = TriggerActionResponse;
 export const TriggeractionMerchantsupportResponse =
   /*@__PURE__*/ /*#__PURE__*/ TriggerActionResponse;
 
-export type TriggeractionMerchantsupportError = DefaultErrors;
+export type TriggeractionMerchantsupportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Start an action. The action can be requested by merchants in third-party application. Before merchants can request the action, the third-party application needs to show them action specific content and display a user input form. You can request access using [Trigger action allowlist form](https://docs.google.com/forms/d/e/1FAIpQLSfeV_sBW9MBQv9BMTV6JZ1g11PGHLdHsrefca-9h0LmpU7CUg/viewform?usp=sharing). The action can be successfully started only once all `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain Ids for all problematic field together with translated, human readable error messages that can be shown to the user. */
 export const triggeractionMerchantsupport: API.OperationMethod<
@@ -10026,7 +10360,7 @@ export const triggeractionMerchantsupport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TriggeractionMerchantsupportRequest,
   output: TriggeractionMerchantsupportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDatafeedstatusesRequest {
@@ -10061,7 +10395,7 @@ export type GetDatafeedstatusesResponse = DatafeedStatus;
 export const GetDatafeedstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatafeedStatus;
 
-export type GetDatafeedstatusesError = DefaultErrors;
+export type GetDatafeedstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the status of a datafeed from your Merchant Center account. */
 export const getDatafeedstatuses: API.OperationMethod<
@@ -10072,7 +10406,7 @@ export const getDatafeedstatuses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDatafeedstatusesRequest,
   output: GetDatafeedstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDatafeedstatusesRequest {
@@ -10098,7 +10432,7 @@ export type ListDatafeedstatusesResponse = DatafeedstatusesListResponse;
 export const ListDatafeedstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatafeedstatusesListResponse;
 
-export type ListDatafeedstatusesError = DefaultErrors;
+export type ListDatafeedstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the statuses of the datafeeds in your Merchant Center account. */
 export const listDatafeedstatuses: API.PaginatedOperationMethod<
@@ -10109,7 +10443,7 @@ export const listDatafeedstatuses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatafeedstatusesRequest,
   output: ListDatafeedstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10136,7 +10470,12 @@ export type CustombatchDatafeedstatusesResponse =
 export const CustombatchDatafeedstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatafeedstatusesCustomBatchResponse;
 
-export type CustombatchDatafeedstatusesError = DefaultErrors;
+export type CustombatchDatafeedstatusesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets multiple Merchant Center datafeed statuses in a single request. */
 export const custombatchDatafeedstatuses: API.OperationMethod<
@@ -10147,7 +10486,7 @@ export const custombatchDatafeedstatuses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchDatafeedstatusesRequest,
   output: CustombatchDatafeedstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchReportsRequest {
@@ -10172,7 +10511,12 @@ export const SearchReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SearchReportsResponse = SearchResponse;
 export const SearchReportsResponse = /*@__PURE__*/ /*#__PURE__*/ SearchResponse;
 
-export type SearchReportsError = DefaultErrors;
+export type SearchReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves merchant performance metrics matching the search query and optionally segmented by selected dimensions. */
 export const searchReports: API.OperationMethod<
@@ -10183,7 +10527,7 @@ export const searchReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchReportsRequest,
   output: SearchReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCollectionsRequest {
@@ -10205,7 +10549,12 @@ export const CreateCollectionsRequest =
 export type CreateCollectionsResponse = Collection;
 export const CreateCollectionsResponse = /*@__PURE__*/ /*#__PURE__*/ Collection;
 
-export type CreateCollectionsError = DefaultErrors;
+export type CreateCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a collection to your Merchant Center account. If a collection with the same collectionId already exists, this method updates that entry. In each update, the collection is completely replaced by the fields in the body of the update request. */
 export const createCollections: API.OperationMethod<
@@ -10216,7 +10565,7 @@ export const createCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCollectionsRequest,
   output: CreateCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCollectionsRequest {
@@ -10244,7 +10593,12 @@ export const DeleteCollectionsResponse: Schema.Schema<DeleteCollectionsResponse>
     {},
   ) as any as Schema.Schema<DeleteCollectionsResponse>;
 
-export type DeleteCollectionsError = DefaultErrors;
+export type DeleteCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a collection from your Merchant Center account. */
 export const deleteCollections: API.OperationMethod<
@@ -10255,7 +10609,7 @@ export const deleteCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCollectionsRequest,
   output: DeleteCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCollectionsRequest {
@@ -10276,7 +10630,7 @@ export const GetCollectionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCollectionsResponse = Collection;
 export const GetCollectionsResponse = /*@__PURE__*/ /*#__PURE__*/ Collection;
 
-export type GetCollectionsError = DefaultErrors;
+export type GetCollectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a collection from your Merchant Center account. */
 export const getCollections: API.OperationMethod<
@@ -10287,7 +10641,7 @@ export const getCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCollectionsRequest,
   output: GetCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCollectionsRequest {
@@ -10314,7 +10668,7 @@ export type ListCollectionsResponse_Op = ListCollectionsResponse;
 export const ListCollectionsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCollectionsResponse;
 
-export type ListCollectionsError = DefaultErrors;
+export type ListCollectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the collections in your Merchant Center account. The response might contain fewer items than specified by page_size. Rely on next_page_token to determine if there are more items to be requested. */
 export const listCollections: API.PaginatedOperationMethod<
@@ -10325,7 +10679,7 @@ export const listCollections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCollectionsRequest,
   output: ListCollectionsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10357,7 +10711,7 @@ export type GetAccountstatusesResponse = AccountStatus;
 export const GetAccountstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountStatus;
 
-export type GetAccountstatusesError = DefaultErrors;
+export type GetAccountstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the status of a Merchant Center account. No itemLevelIssues are returned for multi-client accounts. */
 export const getAccountstatuses: API.OperationMethod<
@@ -10368,7 +10722,7 @@ export const getAccountstatuses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountstatusesRequest,
   output: GetAccountstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountstatusesRequest {
@@ -10402,7 +10756,7 @@ export type ListAccountstatusesResponse = AccountstatusesListResponse;
 export const ListAccountstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountstatusesListResponse;
 
-export type ListAccountstatusesError = DefaultErrors;
+export type ListAccountstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the statuses of the sub-accounts in your Merchant Center account. */
 export const listAccountstatuses: API.PaginatedOperationMethod<
@@ -10413,7 +10767,7 @@ export const listAccountstatuses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountstatusesRequest,
   output: ListAccountstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10438,7 +10792,12 @@ export type CustombatchAccountstatusesResponse =
 export const CustombatchAccountstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountstatusesCustomBatchResponse;
 
-export type CustombatchAccountstatusesError = DefaultErrors;
+export type CustombatchAccountstatusesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves multiple Merchant Center account statuses in a single request. */
 export const custombatchAccountstatuses: API.OperationMethod<
@@ -10449,7 +10808,7 @@ export const custombatchAccountstatuses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchAccountstatusesRequest,
   output: CustombatchAccountstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RequestgmbaccessLiasettingsRequest {
@@ -10480,7 +10839,12 @@ export type RequestgmbaccessLiasettingsResponse =
 export const RequestgmbaccessLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsRequestGmbAccessResponse;
 
-export type RequestgmbaccessLiasettingsError = DefaultErrors;
+export type RequestgmbaccessLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests access to a specified Business Profile. */
 export const requestgmbaccessLiasettings: API.OperationMethod<
@@ -10491,7 +10855,7 @@ export const requestgmbaccessLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestgmbaccessLiasettingsRequest,
   output: RequestgmbaccessLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetinventoryverificationcontactLiasettingsRequest {
@@ -10531,7 +10895,12 @@ export type SetinventoryverificationcontactLiasettingsResponse =
 export const SetinventoryverificationcontactLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsSetInventoryVerificationContactResponse;
 
-export type SetinventoryverificationcontactLiasettingsError = DefaultErrors;
+export type SetinventoryverificationcontactLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the inventory verification contact for the specified country. */
 export const setinventoryverificationcontactLiasettings: API.OperationMethod<
@@ -10542,7 +10911,7 @@ export const setinventoryverificationcontactLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetinventoryverificationcontactLiasettingsRequest,
   output: SetinventoryverificationcontactLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLiasettingsRequest {
@@ -10563,7 +10932,7 @@ export const GetLiasettingsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetLiasettingsResponse = LiaSettings;
 export const GetLiasettingsResponse = /*@__PURE__*/ /*#__PURE__*/ LiaSettings;
 
-export type GetLiasettingsError = DefaultErrors;
+export type GetLiasettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the LIA settings of the account. */
 export const getLiasettings: API.OperationMethod<
@@ -10574,7 +10943,7 @@ export const getLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLiasettingsRequest,
   output: GetLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLiasettingsRequest {
@@ -10601,7 +10970,7 @@ export type ListLiasettingsResponse = LiasettingsListResponse;
 export const ListLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsListResponse;
 
-export type ListLiasettingsError = DefaultErrors;
+export type ListLiasettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the LIA settings of the sub-accounts in your Merchant Center account. */
 export const listLiasettings: API.PaginatedOperationMethod<
@@ -10612,7 +10981,7 @@ export const listLiasettings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiasettingsRequest,
   output: ListLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10636,7 +11005,12 @@ export type CustombatchLiasettingsResponse = LiasettingsCustomBatchResponse;
 export const CustombatchLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsCustomBatchResponse;
 
-export type CustombatchLiasettingsError = DefaultErrors;
+export type CustombatchLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves and/or updates the LIA settings of multiple accounts in a single request. */
 export const custombatchLiasettings: API.OperationMethod<
@@ -10647,7 +11021,7 @@ export const custombatchLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchLiasettingsRequest,
   output: CustombatchLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetaccessiblegmbaccountsLiasettingsRequest {
@@ -10674,7 +11048,10 @@ export type GetaccessiblegmbaccountsLiasettingsResponse =
 export const GetaccessiblegmbaccountsLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsGetAccessibleGmbAccountsResponse;
 
-export type GetaccessiblegmbaccountsLiasettingsError = DefaultErrors;
+export type GetaccessiblegmbaccountsLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of accessible Business Profiles. */
 export const getaccessiblegmbaccountsLiasettings: API.OperationMethod<
@@ -10685,7 +11062,7 @@ export const getaccessiblegmbaccountsLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetaccessiblegmbaccountsLiasettingsRequest,
   output: GetaccessiblegmbaccountsLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateLiasettingsRequest {
@@ -10715,7 +11092,12 @@ export type UpdateLiasettingsResponse = LiaSettings;
 export const UpdateLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiaSettings;
 
-export type UpdateLiasettingsError = DefaultErrors;
+export type UpdateLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the LIA settings of the account. Any fields that are not provided are deleted from the resource. */
 export const updateLiasettings: API.OperationMethod<
@@ -10726,7 +11108,7 @@ export const updateLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLiasettingsRequest,
   output: UpdateLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetposdataproviderLiasettingsRequest {
@@ -10767,7 +11149,12 @@ export type SetposdataproviderLiasettingsResponse =
 export const SetposdataproviderLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsSetPosDataProviderResponse;
 
-export type SetposdataproviderLiasettingsError = DefaultErrors;
+export type SetposdataproviderLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the POS data provider for the specified country. */
 export const setposdataproviderLiasettings: API.OperationMethod<
@@ -10778,7 +11165,7 @@ export const setposdataproviderLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetposdataproviderLiasettingsRequest,
   output: SetposdataproviderLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetomnichannelexperienceLiasettingsRequest {
@@ -10817,7 +11204,12 @@ export type SetomnichannelexperienceLiasettingsResponse =
 export const SetomnichannelexperienceLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiaOmnichannelExperience;
 
-export type SetomnichannelexperienceLiasettingsError = DefaultErrors;
+export type SetomnichannelexperienceLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the omnichannel experience for the specified country. Only supported for merchants whose POS data provider is trusted to enable the corresponding experience. For more context, see these help articles [about LFP](https://support.google.com/merchants/answer/7676652) and [how to get started](https://support.google.com/merchants/answer/7676578) with it. */
 export const setomnichannelexperienceLiasettings: API.OperationMethod<
@@ -10828,7 +11220,7 @@ export const setomnichannelexperienceLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetomnichannelexperienceLiasettingsRequest,
   output: SetomnichannelexperienceLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListposdataprovidersLiasettingsRequest {}
@@ -10844,7 +11236,10 @@ export type ListposdataprovidersLiasettingsResponse =
 export const ListposdataprovidersLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsListPosDataProvidersResponse;
 
-export type ListposdataprovidersLiasettingsError = DefaultErrors;
+export type ListposdataprovidersLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of POS data providers that have active settings for the all eiligible countries. */
 export const listposdataprovidersLiasettings: API.OperationMethod<
@@ -10855,7 +11250,7 @@ export const listposdataprovidersLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListposdataprovidersLiasettingsRequest,
   output: ListposdataprovidersLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RequestinventoryverificationLiasettingsRequest {
@@ -10886,7 +11281,12 @@ export type RequestinventoryverificationLiasettingsResponse =
 export const RequestinventoryverificationLiasettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiasettingsRequestInventoryVerificationResponse;
 
-export type RequestinventoryverificationLiasettingsError = DefaultErrors;
+export type RequestinventoryverificationLiasettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests inventory validation for the specified country. */
 export const requestinventoryverificationLiasettings: API.OperationMethod<
@@ -10897,7 +11297,7 @@ export const requestinventoryverificationLiasettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestinventoryverificationLiasettingsRequest,
   output: RequestinventoryverificationLiasettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchProductstatusesRequest {
@@ -10918,7 +11318,12 @@ export type CustombatchProductstatusesResponse =
 export const CustombatchProductstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductstatusesCustomBatchResponse;
 
-export type CustombatchProductstatusesError = DefaultErrors;
+export type CustombatchProductstatusesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the statuses of multiple products in a single request. */
 export const custombatchProductstatuses: API.OperationMethod<
@@ -10929,7 +11334,7 @@ export const custombatchProductstatuses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchProductstatusesRequest,
   output: CustombatchProductstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProductstatusesRequest {
@@ -10957,7 +11362,7 @@ export type GetProductstatusesResponse = ProductStatus;
 export const GetProductstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductStatus;
 
-export type GetProductstatusesError = DefaultErrors;
+export type GetProductstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the status of a product from your Merchant Center account. */
 export const getProductstatuses: API.OperationMethod<
@@ -10968,7 +11373,7 @@ export const getProductstatuses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProductstatusesRequest,
   output: GetProductstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProductstatusesRequest {
@@ -10999,7 +11404,7 @@ export type ListProductstatusesResponse = ProductstatusesListResponse;
 export const ListProductstatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductstatusesListResponse;
 
-export type ListProductstatusesError = DefaultErrors;
+export type ListProductstatusesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the statuses of the products in your Merchant Center account. */
 export const listProductstatuses: API.PaginatedOperationMethod<
@@ -11010,7 +11415,7 @@ export const listProductstatuses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProductstatusesRequest,
   output: ListProductstatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11045,7 +11450,7 @@ export type GenerateRecommendationsResponse_Op =
 export const GenerateRecommendationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ GenerateRecommendationsResponse;
 
-export type GenerateRecommendationsError = DefaultErrors;
+export type GenerateRecommendationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Generates recommendations for a merchant. */
 export const generateRecommendations: API.OperationMethod<
@@ -11056,7 +11461,7 @@ export const generateRecommendations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateRecommendationsRequest,
   output: GenerateRecommendationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReportInteractionRecommendationsRequest {
@@ -11085,7 +11490,12 @@ export const ReportInteractionRecommendationsResponse: Schema.Schema<ReportInter
     {},
   ) as any as Schema.Schema<ReportInteractionRecommendationsResponse>;
 
-export type ReportInteractionRecommendationsError = DefaultErrors;
+export type ReportInteractionRecommendationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reports an interaction on a recommendation for a merchant. */
 export const reportInteractionRecommendations: API.OperationMethod<
@@ -11096,7 +11506,7 @@ export const reportInteractionRecommendations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportInteractionRecommendationsRequest,
   output: ReportInteractionRecommendationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrdertrackingsignalsRequest {
@@ -11123,7 +11533,12 @@ export type CreateOrdertrackingsignalsResponse = OrderTrackingSignal;
 export const CreateOrdertrackingsignalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrderTrackingSignal;
 
-export type CreateOrdertrackingsignalsError = DefaultErrors;
+export type CreateOrdertrackingsignalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new order tracking signal. */
 export const createOrdertrackingsignals: API.OperationMethod<
@@ -11134,7 +11549,7 @@ export const createOrdertrackingsignals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrdertrackingsignalsRequest,
   output: CreateOrdertrackingsignalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CustombatchLocalinventoryRequest {
@@ -11155,7 +11570,12 @@ export type CustombatchLocalinventoryResponse =
 export const CustombatchLocalinventoryResponse =
   /*@__PURE__*/ /*#__PURE__*/ LocalinventoryCustomBatchResponse;
 
-export type CustombatchLocalinventoryError = DefaultErrors;
+export type CustombatchLocalinventoryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates local inventory for multiple products or stores in a single request. */
 export const custombatchLocalinventory: API.OperationMethod<
@@ -11166,7 +11586,7 @@ export const custombatchLocalinventory: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CustombatchLocalinventoryRequest,
   output: CustombatchLocalinventoryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertLocalinventoryRequest {
@@ -11196,7 +11616,12 @@ export type InsertLocalinventoryResponse = LocalInventory;
 export const InsertLocalinventoryResponse =
   /*@__PURE__*/ /*#__PURE__*/ LocalInventory;
 
-export type InsertLocalinventoryError = DefaultErrors;
+export type InsertLocalinventoryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the local inventory of a product in your Merchant Center account. */
 export const insertLocalinventory: API.OperationMethod<
@@ -11207,7 +11632,7 @@ export const insertLocalinventory: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLocalinventoryRequest,
   output: InsertLocalinventoryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetShoppingadsprogramRequest {
@@ -11227,7 +11652,7 @@ export type GetShoppingadsprogramResponse = ShoppingAdsProgramStatus;
 export const GetShoppingadsprogramResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShoppingAdsProgramStatus;
 
-export type GetShoppingadsprogramError = DefaultErrors;
+export type GetShoppingadsprogramError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the status and review eligibility for the Shopping Ads program. Returns errors and warnings if they require action to resolve, will become disapprovals, or impact impressions. Use `accountstatuses` to view all issues for an account. */
 export const getShoppingadsprogram: API.OperationMethod<
@@ -11238,7 +11663,7 @@ export const getShoppingadsprogram: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShoppingadsprogramRequest,
   output: GetShoppingadsprogramResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RequestreviewShoppingadsprogramRequest {
@@ -11267,7 +11692,12 @@ export const RequestreviewShoppingadsprogramResponse: Schema.Schema<Requestrevie
     {},
   ) as any as Schema.Schema<RequestreviewShoppingadsprogramResponse>;
 
-export type RequestreviewShoppingadsprogramError = DefaultErrors;
+export type RequestreviewShoppingadsprogramError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests a review of Shopping ads in a specific region. This method deprecated. Use the `MerchantSupportService` to view product and account issues and request a review. */
 export const requestreviewShoppingadsprogram: API.OperationMethod<
@@ -11278,7 +11708,7 @@ export const requestreviewShoppingadsprogram: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestreviewShoppingadsprogramRequest,
   output: RequestreviewShoppingadsprogramResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionsRequest {
@@ -11302,7 +11732,12 @@ export const DeleteRegionsResponse: Schema.Schema<DeleteRegionsResponse> =
     {},
   ) as any as Schema.Schema<DeleteRegionsResponse>;
 
-export type DeleteRegionsError = DefaultErrors;
+export type DeleteRegionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a region definition from your Merchant Center account. */
 export const deleteRegions: API.OperationMethod<
@@ -11313,7 +11748,7 @@ export const deleteRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionsRequest,
   output: DeleteRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateRegionsRequest {
@@ -11337,7 +11772,12 @@ export const CreateRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateRegionsResponse = Region;
 export const CreateRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
 
-export type CreateRegionsError = DefaultErrors;
+export type CreateRegionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a region definition in your Merchant Center account. */
 export const createRegions: API.OperationMethod<
@@ -11348,7 +11788,7 @@ export const createRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRegionsRequest,
   output: CreateRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRegionsRequest {
@@ -11369,7 +11809,7 @@ export const GetRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRegionsResponse = Region;
 export const GetRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
 
-export type GetRegionsError = DefaultErrors;
+export type GetRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a region defined in your Merchant Center account. */
 export const getRegions: API.OperationMethod<
@@ -11380,7 +11820,7 @@ export const getRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionsRequest,
   output: GetRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchRegionsRequest {
@@ -11411,7 +11851,12 @@ export const PatchRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchRegionsResponse = Region;
 export const PatchRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
 
-export type PatchRegionsError = DefaultErrors;
+export type PatchRegionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a region definition in your Merchant Center account. */
 export const patchRegions: API.OperationMethod<
@@ -11422,7 +11867,7 @@ export const patchRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionsRequest,
   output: PatchRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionsRequest {
@@ -11447,7 +11892,7 @@ export type ListRegionsResponse_Op = ListRegionsResponse;
 export const ListRegionsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListRegionsResponse;
 
-export type ListRegionsError = DefaultErrors;
+export type ListRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the regions in your Merchant Center account. */
 export const listRegions: API.PaginatedOperationMethod<
@@ -11458,7 +11903,7 @@ export const listRegions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -660,6 +660,52 @@ export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListServicesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -694,7 +740,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -705,7 +751,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -729,7 +775,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -740,7 +786,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -774,7 +820,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -785,7 +834,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -809,7 +858,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -820,7 +872,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -840,7 +892,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -851,7 +908,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -874,7 +931,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -885,7 +947,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteGraphqlReadProjectsLocationsServicesRequest {
@@ -913,7 +975,12 @@ export type ExecuteGraphqlReadProjectsLocationsServicesResponse =
 export const ExecuteGraphqlReadProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GraphqlResponse;
 
-export type ExecuteGraphqlReadProjectsLocationsServicesError = DefaultErrors;
+export type ExecuteGraphqlReadProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute any GraphQL query against the Firebase Data Connect's generated GraphQL schema. Grants full read to the connected data sources. `ExecuteGraphqlRead` is identical to `ExecuteGraphql` except it only accepts read-only query. */
 export const executeGraphqlReadProjectsLocationsServices: API.OperationMethod<
@@ -924,7 +991,7 @@ export const executeGraphqlReadProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteGraphqlReadProjectsLocationsServicesRequest,
   output: ExecuteGraphqlReadProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsServicesRequest {
@@ -956,7 +1023,10 @@ export type ListProjectsLocationsServicesResponse = ListServicesResponse;
 export const ListProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListProjectsLocationsServicesError = DefaultErrors;
+export type ListProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Services in a given project and location. */
 export const listProjectsLocationsServices: API.PaginatedOperationMethod<
@@ -967,7 +1037,7 @@ export const listProjectsLocationsServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsServicesRequest,
   output: ListProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -991,7 +1061,10 @@ export type GetProjectsLocationsServicesResponse = Service;
 export const GetProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type GetProjectsLocationsServicesError = DefaultErrors;
+export type GetProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Service. */
 export const getProjectsLocationsServices: API.OperationMethod<
@@ -1002,7 +1075,7 @@ export const getProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsServicesRequest,
   output: GetProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsServicesRequest {
@@ -1036,7 +1109,12 @@ export type CreateProjectsLocationsServicesResponse = Operation;
 export const CreateProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsServicesError = DefaultErrors;
+export type CreateProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Service in a given project and location. */
 export const createProjectsLocationsServices: API.OperationMethod<
@@ -1047,7 +1125,7 @@ export const createProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsServicesRequest,
   output: CreateProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteGraphqlProjectsLocationsServicesRequest {
@@ -1074,7 +1152,12 @@ export type ExecuteGraphqlProjectsLocationsServicesResponse = GraphqlResponse;
 export const ExecuteGraphqlProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GraphqlResponse;
 
-export type ExecuteGraphqlProjectsLocationsServicesError = DefaultErrors;
+export type ExecuteGraphqlProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute any GraphQL query and mutation against the Firebase Data Connect's generated GraphQL schema. Grants full read and write access to the connected data sources. Note: Use introspection query to explore the generated GraphQL schema. */
 export const executeGraphqlProjectsLocationsServices: API.OperationMethod<
@@ -1085,7 +1168,7 @@ export const executeGraphqlProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteGraphqlProjectsLocationsServicesRequest,
   output: ExecuteGraphqlProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsServicesRequest {
@@ -1124,7 +1207,12 @@ export type DeleteProjectsLocationsServicesResponse = Operation;
 export const DeleteProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsServicesError = DefaultErrors;
+export type DeleteProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Service. */
 export const deleteProjectsLocationsServices: API.OperationMethod<
@@ -1135,7 +1223,7 @@ export const deleteProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsServicesRequest,
   output: DeleteProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsServicesRequest {
@@ -1174,7 +1262,12 @@ export type PatchProjectsLocationsServicesResponse = Operation;
 export const PatchProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsServicesError = DefaultErrors;
+export type PatchProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Service. */
 export const patchProjectsLocationsServices: API.OperationMethod<
@@ -1185,7 +1278,7 @@ export const patchProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsServicesRequest,
   output: PatchProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface IntrospectGraphqlProjectsLocationsServicesRequest {
@@ -1213,7 +1306,12 @@ export type IntrospectGraphqlProjectsLocationsServicesResponse =
 export const IntrospectGraphqlProjectsLocationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GraphqlResponse;
 
-export type IntrospectGraphqlProjectsLocationsServicesError = DefaultErrors;
+export type IntrospectGraphqlProjectsLocationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute introspection query against the Firebase Data Connect's generated GraphQL schema. GraphQL introspection query provides metadata such as what tables the schema have, what queries and mutations can be performed on the schema, and so on. Read more at https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read rows from Cloud SQL instance, which can be done via ExecuteGraphqlRead. */
 export const introspectGraphqlProjectsLocationsServices: API.OperationMethod<
@@ -1224,7 +1322,7 @@ export const introspectGraphqlProjectsLocationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IntrospectGraphqlProjectsLocationsServicesRequest,
   output: IntrospectGraphqlProjectsLocationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsServicesConnectorsRequest {
@@ -1244,7 +1342,10 @@ export type GetProjectsLocationsServicesConnectorsResponse = Connector;
 export const GetProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Connector;
 
-export type GetProjectsLocationsServicesConnectorsError = DefaultErrors;
+export type GetProjectsLocationsServicesConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Connector. */
 export const getProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1255,7 +1356,7 @@ export const getProjectsLocationsServicesConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsServicesConnectorsRequest,
   output: GetProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsServicesConnectorsRequest {
@@ -1295,7 +1396,12 @@ export type CreateProjectsLocationsServicesConnectorsResponse = Operation;
 export const CreateProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsServicesConnectorsError = DefaultErrors;
+export type CreateProjectsLocationsServicesConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Connector in a given project and location. The operations are validated against and must be compatible with the active schema. If the operations and schema are not compatible or if the schema is not present, this will result in an error. */
 export const createProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1306,7 +1412,7 @@ export const createProjectsLocationsServicesConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsServicesConnectorsRequest,
   output: CreateProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImpersonateQueryProjectsLocationsServicesConnectorsRequest {
@@ -1335,7 +1441,11 @@ export const ImpersonateQueryProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GraphqlResponse;
 
 export type ImpersonateQueryProjectsLocationsServicesConnectorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Impersonate a query defined on a Firebase Data Connect connector. It grants the admin SDK access to queries defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely. */
 export const impersonateQueryProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1346,7 +1456,7 @@ export const impersonateQueryProjectsLocationsServicesConnectors: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImpersonateQueryProjectsLocationsServicesConnectorsRequest,
   output: ImpersonateQueryProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImpersonateMutationProjectsLocationsServicesConnectorsRequest {
@@ -1375,7 +1485,11 @@ export const ImpersonateMutationProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GraphqlResponse;
 
 export type ImpersonateMutationProjectsLocationsServicesConnectorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Impersonate a mutation defined on a Firebase Data Connect connector. It grants the admin SDK access to mutations defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely. */
 export const impersonateMutationProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1386,7 +1500,7 @@ export const impersonateMutationProjectsLocationsServicesConnectors: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImpersonateMutationProjectsLocationsServicesConnectorsRequest,
   output: ImpersonateMutationProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsServicesConnectorsRequest {
@@ -1419,7 +1533,10 @@ export type ListProjectsLocationsServicesConnectorsResponse =
 export const ListProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectorsResponse;
 
-export type ListProjectsLocationsServicesConnectorsError = DefaultErrors;
+export type ListProjectsLocationsServicesConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Connectors in a given project and location. */
 export const listProjectsLocationsServicesConnectors: API.PaginatedOperationMethod<
@@ -1430,7 +1547,7 @@ export const listProjectsLocationsServicesConnectors: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsServicesConnectorsRequest,
   output: ListProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1463,7 +1580,11 @@ export const ExecuteMutationProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteMutationResponse;
 
 export type ExecuteMutationProjectsLocationsServicesConnectorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute a predefined mutation in a Connector. */
 export const executeMutationProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1474,7 +1595,7 @@ export const executeMutationProjectsLocationsServicesConnectors: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteMutationProjectsLocationsServicesConnectorsRequest,
   output: ExecuteMutationProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsServicesConnectorsRequest {
@@ -1513,7 +1634,12 @@ export type PatchProjectsLocationsServicesConnectorsResponse = Operation;
 export const PatchProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsServicesConnectorsError = DefaultErrors;
+export type PatchProjectsLocationsServicesConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Connector, and creates a new ConnectorRevision with the updated Connector. The operations are validated against and must be compatible with the live schema. If the operations and schema are not compatible or if the schema is not present, this will result in an error. */
 export const patchProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1524,7 +1650,7 @@ export const patchProjectsLocationsServicesConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsServicesConnectorsRequest,
   output: PatchProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsServicesConnectorsRequest {
@@ -1563,7 +1689,12 @@ export type DeleteProjectsLocationsServicesConnectorsResponse = Operation;
 export const DeleteProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsServicesConnectorsError = DefaultErrors;
+export type DeleteProjectsLocationsServicesConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Connector. */
 export const deleteProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1574,7 +1705,7 @@ export const deleteProjectsLocationsServicesConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsServicesConnectorsRequest,
   output: DeleteProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteQueryProjectsLocationsServicesConnectorsRequest {
@@ -1603,7 +1734,11 @@ export const ExecuteQueryProjectsLocationsServicesConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteQueryResponse;
 
 export type ExecuteQueryProjectsLocationsServicesConnectorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute a predefined query in a Connector. */
 export const executeQueryProjectsLocationsServicesConnectors: API.OperationMethod<
@@ -1614,7 +1749,7 @@ export const executeQueryProjectsLocationsServicesConnectors: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteQueryProjectsLocationsServicesConnectorsRequest,
   output: ExecuteQueryProjectsLocationsServicesConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsServicesSchemasRequest {
@@ -1653,7 +1788,12 @@ export type PatchProjectsLocationsServicesSchemasResponse = Operation;
 export const PatchProjectsLocationsServicesSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsServicesSchemasError = DefaultErrors;
+export type PatchProjectsLocationsServicesSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Schema, and creates a new SchemaRevision with the updated Schema. */
 export const patchProjectsLocationsServicesSchemas: API.OperationMethod<
@@ -1664,7 +1804,7 @@ export const patchProjectsLocationsServicesSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsServicesSchemasRequest,
   output: PatchProjectsLocationsServicesSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsServicesSchemasRequest {
@@ -1703,7 +1843,12 @@ export type DeleteProjectsLocationsServicesSchemasResponse = Operation;
 export const DeleteProjectsLocationsServicesSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsServicesSchemasError = DefaultErrors;
+export type DeleteProjectsLocationsServicesSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Schema. Because the schema and connectors must be compatible at all times, if this is called while any connectors are active, this will result in an error. */
 export const deleteProjectsLocationsServicesSchemas: API.OperationMethod<
@@ -1714,7 +1859,7 @@ export const deleteProjectsLocationsServicesSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsServicesSchemasRequest,
   output: DeleteProjectsLocationsServicesSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsServicesSchemasRequest {
@@ -1735,7 +1880,10 @@ export type GetProjectsLocationsServicesSchemasResponse =
 export const GetProjectsLocationsServicesSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Firebasedataconnect_Schema;
 
-export type GetProjectsLocationsServicesSchemasError = DefaultErrors;
+export type GetProjectsLocationsServicesSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Schema. */
 export const getProjectsLocationsServicesSchemas: API.OperationMethod<
@@ -1746,7 +1894,7 @@ export const getProjectsLocationsServicesSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsServicesSchemasRequest,
   output: GetProjectsLocationsServicesSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsServicesSchemasRequest {
@@ -1778,7 +1926,10 @@ export type ListProjectsLocationsServicesSchemasResponse = ListSchemasResponse;
 export const ListProjectsLocationsServicesSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSchemasResponse;
 
-export type ListProjectsLocationsServicesSchemasError = DefaultErrors;
+export type ListProjectsLocationsServicesSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Schemas in a given project and location. */
 export const listProjectsLocationsServicesSchemas: API.PaginatedOperationMethod<
@@ -1789,7 +1940,7 @@ export const listProjectsLocationsServicesSchemas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsServicesSchemasRequest,
   output: ListProjectsLocationsServicesSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1827,7 +1978,12 @@ export type CreateProjectsLocationsServicesSchemasResponse = Operation;
 export const CreateProjectsLocationsServicesSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsServicesSchemasError = DefaultErrors;
+export type CreateProjectsLocationsServicesSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Schema in a given project and location. Only creation of `schemas/main` is supported and calling create with any other schema ID will result in an error. */
 export const createProjectsLocationsServicesSchemas: API.OperationMethod<
@@ -1838,5 +1994,5 @@ export const createProjectsLocationsServicesSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsServicesSchemasRequest,
   output: CreateProjectsLocationsServicesSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

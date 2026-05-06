@@ -522,6 +522,52 @@ export const GoogleCloudDatacatalogLineageV1ListRunsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -543,7 +589,10 @@ export type GetFoldersLocationsConfigResponse =
 export const GetFoldersLocationsConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 
-export type GetFoldersLocationsConfigError = DefaultErrors;
+export type GetFoldersLocationsConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the Config for a given resource. */
 export const getFoldersLocationsConfig: API.OperationMethod<
@@ -554,7 +603,7 @@ export const getFoldersLocationsConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsConfigRequest,
   output: GetFoldersLocationsConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFoldersLocationsConfigRequest {
@@ -580,7 +629,12 @@ export type PatchFoldersLocationsConfigResponse =
 export const PatchFoldersLocationsConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 
-export type PatchFoldersLocationsConfigError = DefaultErrors;
+export type PatchFoldersLocationsConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the Config for a given resource. */
 export const patchFoldersLocationsConfig: API.OperationMethod<
@@ -591,7 +645,7 @@ export const patchFoldersLocationsConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsConfigRequest,
   output: PatchFoldersLocationsConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProcessOpenLineageRunEventProjectsLocationsRequest {
@@ -619,7 +673,12 @@ export type ProcessOpenLineageRunEventProjectsLocationsResponse =
 export const ProcessOpenLineageRunEventProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse;
 
-export type ProcessOpenLineageRunEventProjectsLocationsError = DefaultErrors;
+export type ProcessOpenLineageRunEventProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new lineage events together with their parents: process and run. Updates the process and run if they already exist. Mapped from Open Lineage specification: https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json. */
 export const processOpenLineageRunEventProjectsLocations: API.OperationMethod<
@@ -630,7 +689,7 @@ export const processOpenLineageRunEventProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProcessOpenLineageRunEventProjectsLocationsRequest,
   output: ProcessOpenLineageRunEventProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchSearchLinkProcessesProjectsLocationsRequest {
@@ -660,7 +719,12 @@ export type BatchSearchLinkProcessesProjectsLocationsResponse =
 export const BatchSearchLinkProcessesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse;
 
-export type BatchSearchLinkProcessesProjectsLocationsError = DefaultErrors;
+export type BatchSearchLinkProcessesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieve information about LineageProcesses associated with specific links. LineageProcesses are transformation pipelines that result in data flowing from **source** to **target** assets. Links between assets represent this operation. If you have specific link names, you can use this method to verify which LineageProcesses contribute to creating those links. See the SearchLinks method for more information on how to retrieve link name. You can retrieve the LineageProcess information in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota. */
 export const batchSearchLinkProcessesProjectsLocations: API.OperationMethod<
@@ -671,7 +735,7 @@ export const batchSearchLinkProcessesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchSearchLinkProcessesProjectsLocationsRequest,
   output: BatchSearchLinkProcessesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchLinksProjectsLocationsRequest {
@@ -697,7 +761,12 @@ export type SearchLinksProjectsLocationsResponse =
 export const SearchLinksProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1SearchLinksResponse;
 
-export type SearchLinksProjectsLocationsError = DefaultErrors;
+export type SearchLinksProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieve a list of links connected to a specific asset. Links represent the data flow between **source** (upstream) and **target** (downstream) assets in transformation pipelines. Links are stored in the same project as the Lineage Events that create them. You can retrieve links in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota. */
 export const searchLinksProjectsLocations: API.OperationMethod<
@@ -708,7 +777,7 @@ export const searchLinksProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchLinksProjectsLocationsRequest,
   output: SearchLinksProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -728,7 +797,10 @@ export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -739,7 +811,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -759,7 +831,12 @@ export type DeleteProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -770,7 +847,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -805,7 +882,10 @@ export type ListProjectsLocationsOperationsResponse =
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -816,7 +896,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -845,7 +925,12 @@ export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -856,7 +941,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsConfigRequest {
@@ -877,7 +962,10 @@ export type GetProjectsLocationsConfigResponse =
 export const GetProjectsLocationsConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 
-export type GetProjectsLocationsConfigError = DefaultErrors;
+export type GetProjectsLocationsConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the Config for a given resource. */
 export const getProjectsLocationsConfig: API.OperationMethod<
@@ -888,7 +976,7 @@ export const getProjectsLocationsConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConfigRequest,
   output: GetProjectsLocationsConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsConfigRequest {
@@ -914,7 +1002,12 @@ export type PatchProjectsLocationsConfigResponse =
 export const PatchProjectsLocationsConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 
-export type PatchProjectsLocationsConfigError = DefaultErrors;
+export type PatchProjectsLocationsConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the Config for a given resource. */
 export const patchProjectsLocationsConfig: API.OperationMethod<
@@ -925,7 +1018,7 @@ export const patchProjectsLocationsConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConfigRequest,
   output: PatchProjectsLocationsConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProcessesRequest {
@@ -952,7 +1045,10 @@ export type ListProjectsLocationsProcessesResponse =
 export const ListProjectsLocationsProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1ListProcessesResponse;
 
-export type ListProjectsLocationsProcessesError = DefaultErrors;
+export type ListProjectsLocationsProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List processes in the given project and location. List order is descending by insertion time. */
 export const listProjectsLocationsProcesses: API.PaginatedOperationMethod<
@@ -963,7 +1059,7 @@ export const listProjectsLocationsProcesses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessesRequest,
   output: ListProjectsLocationsProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -996,7 +1092,12 @@ export type CreateProjectsLocationsProcessesResponse =
 export const CreateProjectsLocationsProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1Process;
 
-export type CreateProjectsLocationsProcessesError = DefaultErrors;
+export type CreateProjectsLocationsProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new process. */
 export const createProjectsLocationsProcesses: API.OperationMethod<
@@ -1007,7 +1108,7 @@ export const createProjectsLocationsProcesses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProcessesRequest,
   output: CreateProjectsLocationsProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProcessesRequest {
@@ -1028,7 +1129,10 @@ export type GetProjectsLocationsProcessesResponse =
 export const GetProjectsLocationsProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1Process;
 
-export type GetProjectsLocationsProcessesError = DefaultErrors;
+export type GetProjectsLocationsProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of the specified process. */
 export const getProjectsLocationsProcesses: API.OperationMethod<
@@ -1039,7 +1143,7 @@ export const getProjectsLocationsProcesses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProcessesRequest,
   output: GetProjectsLocationsProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsProcessesRequest {
@@ -1065,7 +1169,12 @@ export type DeleteProjectsLocationsProcessesResponse =
 export const DeleteProjectsLocationsProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsProcessesError = DefaultErrors;
+export type DeleteProjectsLocationsProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the process with the specified name. */
 export const deleteProjectsLocationsProcesses: API.OperationMethod<
@@ -1076,7 +1185,7 @@ export const deleteProjectsLocationsProcesses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProcessesRequest,
   output: DeleteProjectsLocationsProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsProcessesRequest {
@@ -1113,7 +1222,12 @@ export type PatchProjectsLocationsProcessesResponse =
 export const PatchProjectsLocationsProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1Process;
 
-export type PatchProjectsLocationsProcessesError = DefaultErrors;
+export type PatchProjectsLocationsProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a process. */
 export const patchProjectsLocationsProcesses: API.OperationMethod<
@@ -1124,7 +1238,7 @@ export const patchProjectsLocationsProcesses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProcessesRequest,
   output: PatchProjectsLocationsProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsProcessesRunsRequest {
@@ -1153,7 +1267,12 @@ export type CreateProjectsLocationsProcessesRunsResponse =
 export const CreateProjectsLocationsProcessesRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1Run;
 
-export type CreateProjectsLocationsProcessesRunsError = DefaultErrors;
+export type CreateProjectsLocationsProcessesRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new run. */
 export const createProjectsLocationsProcessesRuns: API.OperationMethod<
@@ -1164,7 +1283,7 @@ export const createProjectsLocationsProcessesRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProcessesRunsRequest,
   output: CreateProjectsLocationsProcessesRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProcessesRunsRequest {
@@ -1191,7 +1310,10 @@ export type ListProjectsLocationsProcessesRunsResponse =
 export const ListProjectsLocationsProcessesRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1ListRunsResponse;
 
-export type ListProjectsLocationsProcessesRunsError = DefaultErrors;
+export type ListProjectsLocationsProcessesRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists runs in the given project and location. List order is descending by `start_time`. */
 export const listProjectsLocationsProcessesRuns: API.PaginatedOperationMethod<
@@ -1202,7 +1324,7 @@ export const listProjectsLocationsProcessesRuns: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessesRunsRequest,
   output: ListProjectsLocationsProcessesRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1227,7 +1349,10 @@ export type GetProjectsLocationsProcessesRunsResponse =
 export const GetProjectsLocationsProcessesRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1Run;
 
-export type GetProjectsLocationsProcessesRunsError = DefaultErrors;
+export type GetProjectsLocationsProcessesRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of the specified run. */
 export const getProjectsLocationsProcessesRuns: API.OperationMethod<
@@ -1238,7 +1363,7 @@ export const getProjectsLocationsProcessesRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProcessesRunsRequest,
   output: GetProjectsLocationsProcessesRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsProcessesRunsRequest {
@@ -1264,7 +1389,12 @@ export type DeleteProjectsLocationsProcessesRunsResponse =
 export const DeleteProjectsLocationsProcessesRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsProcessesRunsError = DefaultErrors;
+export type DeleteProjectsLocationsProcessesRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the run with the specified name. */
 export const deleteProjectsLocationsProcessesRuns: API.OperationMethod<
@@ -1275,7 +1405,7 @@ export const deleteProjectsLocationsProcessesRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProcessesRunsRequest,
   output: DeleteProjectsLocationsProcessesRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsProcessesRunsRequest {
@@ -1309,7 +1439,12 @@ export type PatchProjectsLocationsProcessesRunsResponse =
 export const PatchProjectsLocationsProcessesRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1Run;
 
-export type PatchProjectsLocationsProcessesRunsError = DefaultErrors;
+export type PatchProjectsLocationsProcessesRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a run. */
 export const patchProjectsLocationsProcessesRuns: API.OperationMethod<
@@ -1320,7 +1455,7 @@ export const patchProjectsLocationsProcessesRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProcessesRunsRequest,
   output: PatchProjectsLocationsProcessesRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProcessesRunsLineageEventsRequest {
@@ -1348,7 +1483,9 @@ export const ListProjectsLocationsProcessesRunsLineageEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1ListLineageEventsResponse;
 
 export type ListProjectsLocationsProcessesRunsLineageEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists lineage events in the given project and location. The list order is not defined. */
 export const listProjectsLocationsProcessesRunsLineageEvents: API.PaginatedOperationMethod<
@@ -1359,7 +1496,7 @@ export const listProjectsLocationsProcessesRunsLineageEvents: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessesRunsLineageEventsRequest,
   output: ListProjectsLocationsProcessesRunsLineageEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1397,7 +1534,11 @@ export const CreateProjectsLocationsProcessesRunsLineageEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1LineageEvent;
 
 export type CreateProjectsLocationsProcessesRunsLineageEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new lineage event. */
 export const createProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod<
@@ -1408,7 +1549,7 @@ export const createProjectsLocationsProcessesRunsLineageEvents: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProcessesRunsLineageEventsRequest,
   output: CreateProjectsLocationsProcessesRunsLineageEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProcessesRunsLineageEventsRequest {
@@ -1435,7 +1576,11 @@ export const DeleteProjectsLocationsProcessesRunsLineageEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsProcessesRunsLineageEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the lineage event with the specified name. */
 export const deleteProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod<
@@ -1446,7 +1591,7 @@ export const deleteProjectsLocationsProcessesRunsLineageEvents: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProcessesRunsLineageEventsRequest,
   output: DeleteProjectsLocationsProcessesRunsLineageEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProcessesRunsLineageEventsRequest {
@@ -1467,7 +1612,10 @@ export type GetProjectsLocationsProcessesRunsLineageEventsResponse =
 export const GetProjectsLocationsProcessesRunsLineageEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageV1LineageEvent;
 
-export type GetProjectsLocationsProcessesRunsLineageEventsError = DefaultErrors;
+export type GetProjectsLocationsProcessesRunsLineageEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a specified lineage event. */
 export const getProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod<
@@ -1478,7 +1626,7 @@ export const getProjectsLocationsProcessesRunsLineageEvents: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProcessesRunsLineageEventsRequest,
   output: GetProjectsLocationsProcessesRunsLineageEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsLocationsConfigRequest {
@@ -1499,7 +1647,10 @@ export type GetOrganizationsLocationsConfigResponse =
 export const GetOrganizationsLocationsConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 
-export type GetOrganizationsLocationsConfigError = DefaultErrors;
+export type GetOrganizationsLocationsConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the Config for a given resource. */
 export const getOrganizationsLocationsConfig: API.OperationMethod<
@@ -1510,7 +1661,7 @@ export const getOrganizationsLocationsConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsConfigRequest,
   output: GetOrganizationsLocationsConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsLocationsConfigRequest {
@@ -1536,7 +1687,12 @@ export type PatchOrganizationsLocationsConfigResponse =
 export const PatchOrganizationsLocationsConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogLineageConfigmanagementV1Config;
 
-export type PatchOrganizationsLocationsConfigError = DefaultErrors;
+export type PatchOrganizationsLocationsConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the Config for a given resource. */
 export const patchOrganizationsLocationsConfig: API.OperationMethod<
@@ -1547,5 +1703,5 @@ export const patchOrganizationsLocationsConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsConfigRequest,
   output: PatchOrganizationsLocationsConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

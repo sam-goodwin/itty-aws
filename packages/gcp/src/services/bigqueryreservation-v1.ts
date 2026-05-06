@@ -551,6 +551,52 @@ export const ListReservationGroupsResponse =
   }).annotate({ identifier: "ListReservationGroupsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -581,7 +627,10 @@ export type SearchAssignmentsProjectsLocationsResponse =
 export const SearchAssignmentsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchAssignmentsResponse;
 
-export type SearchAssignmentsProjectsLocationsError = DefaultErrors;
+export type SearchAssignmentsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: Looks up assignments for a specified resource for a particular region. If the request is about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned. The same logic applies if the request is about a folder. If the request is about an organization, then assignments created on the organization will be returned (organization doesn't have ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup (project->folder->organization) happens in this API. 3. Parent here is `projects/* /locations/*`, instead of `projects/* /locations/*reservations/*`. **Note** "-" cannot be used for projects nor locations. */
 export const searchAssignmentsProjectsLocations: API.PaginatedOperationMethod<
@@ -592,7 +641,7 @@ export const searchAssignmentsProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAssignmentsProjectsLocationsRequest,
   output: SearchAssignmentsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -626,7 +675,10 @@ export type SearchAllAssignmentsProjectsLocationsResponse =
 export const SearchAllAssignmentsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchAllAssignmentsResponse;
 
-export type SearchAllAssignmentsProjectsLocationsError = DefaultErrors;
+export type SearchAllAssignmentsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Looks up assignments for a specified resource for a particular region. If the request is about a project: 1. Assignments created on the project will be returned if they exist. 2. Otherwise assignments created on the closest ancestor will be returned. 3. Assignments for different JobTypes will all be returned. The same logic applies if the request is about a folder. If the request is about an organization, then assignments created on the organization will be returned (organization doesn't have ancestors). Comparing to ListAssignments, there are some behavior differences: 1. permission on the assignee will be verified in this API. 2. Hierarchy lookup (project->folder->organization) happens in this API. 3. Parent here is `projects/* /locations/*`, instead of `projects/* /locations/*reservations/*`. */
 export const searchAllAssignmentsProjectsLocations: API.PaginatedOperationMethod<
@@ -637,7 +689,7 @@ export const searchAllAssignmentsProjectsLocations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAllAssignmentsProjectsLocationsRequest,
   output: SearchAllAssignmentsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -661,7 +713,10 @@ export type GetBiReservationProjectsLocationsResponse = BiReservation;
 export const GetBiReservationProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BiReservation;
 
-export type GetBiReservationProjectsLocationsError = DefaultErrors;
+export type GetBiReservationProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a BI reservation. */
 export const getBiReservationProjectsLocations: API.OperationMethod<
@@ -672,7 +727,7 @@ export const getBiReservationProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBiReservationProjectsLocationsRequest,
   output: GetBiReservationProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateBiReservationProjectsLocationsRequest {
@@ -698,7 +753,12 @@ export type UpdateBiReservationProjectsLocationsResponse = BiReservation;
 export const UpdateBiReservationProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BiReservation;
 
-export type UpdateBiReservationProjectsLocationsError = DefaultErrors;
+export type UpdateBiReservationProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a BI reservation. Only fields specified in the `field_mask` are updated. A singleton BI reservation always exists with default size 0. In order to reserve BI capacity it needs to be updated to an amount greater than 0. In order to release BI capacity reservation size must be set to 0. */
 export const updateBiReservationProjectsLocations: API.OperationMethod<
@@ -709,7 +769,7 @@ export const updateBiReservationProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBiReservationProjectsLocationsRequest,
   output: UpdateBiReservationProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsReservationsRequest {
@@ -737,7 +797,12 @@ export type CreateProjectsLocationsReservationsResponse = Reservation;
 export const CreateProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
-export type CreateProjectsLocationsReservationsError = DefaultErrors;
+export type CreateProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new reservation resource. */
 export const createProjectsLocationsReservations: API.OperationMethod<
@@ -748,7 +813,7 @@ export const createProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsReservationsRequest,
   output: CreateProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsReservationsRequest {
@@ -775,7 +840,10 @@ export type ListProjectsLocationsReservationsResponse =
 export const ListProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReservationsResponse;
 
-export type ListProjectsLocationsReservationsError = DefaultErrors;
+export type ListProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the reservations for the project in the specified location. */
 export const listProjectsLocationsReservations: API.PaginatedOperationMethod<
@@ -786,7 +854,7 @@ export const listProjectsLocationsReservations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReservationsRequest,
   output: ListProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -810,7 +878,10 @@ export type GetProjectsLocationsReservationsResponse = Reservation;
 export const GetProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
-export type GetProjectsLocationsReservationsError = DefaultErrors;
+export type GetProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about the reservation. */
 export const getProjectsLocationsReservations: API.OperationMethod<
@@ -821,7 +892,7 @@ export const getProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsReservationsRequest,
   output: GetProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsReservationsRequest {
@@ -841,7 +912,12 @@ export type DeleteProjectsLocationsReservationsResponse = Empty;
 export const DeleteProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsReservationsError = DefaultErrors;
+export type DeleteProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has assignments. */
 export const deleteProjectsLocationsReservations: API.OperationMethod<
@@ -852,7 +928,7 @@ export const deleteProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsReservationsRequest,
   output: DeleteProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsReservationsRequest {
@@ -878,7 +954,12 @@ export type PatchProjectsLocationsReservationsResponse = Reservation;
 export const PatchProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
-export type PatchProjectsLocationsReservationsError = DefaultErrors;
+export type PatchProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing reservation resource. */
 export const patchProjectsLocationsReservations: API.OperationMethod<
@@ -889,7 +970,7 @@ export const patchProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsReservationsRequest,
   output: PatchProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FailoverReservationProjectsLocationsReservationsRequest {
@@ -918,7 +999,11 @@ export const FailoverReservationProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
 export type FailoverReservationProjectsLocationsReservationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Fail over a reservation to the secondary location. The operation should be done in the current secondary location, which will be promoted to the new primary location for the reservation. Attempting to failover a reservation in the current primary location will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const failoverReservationProjectsLocationsReservations: API.OperationMethod<
@@ -929,7 +1014,7 @@ export const failoverReservationProjectsLocationsReservations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverReservationProjectsLocationsReservationsRequest,
   output: FailoverReservationProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsReservationsRequest {
@@ -954,7 +1039,10 @@ export type GetIamPolicyProjectsLocationsReservationsResponse = Policy;
 export const GetIamPolicyProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsReservationsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations. */
 export const getIamPolicyProjectsLocationsReservations: API.OperationMethod<
@@ -965,7 +1053,7 @@ export const getIamPolicyProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsReservationsRequest,
   output: GetIamPolicyProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsReservationsRequest {
@@ -992,7 +1080,12 @@ export type SetIamPolicyProjectsLocationsReservationsResponse = Policy;
 export const SetIamPolicyProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsReservationsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Reservations To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations. */
 export const setIamPolicyProjectsLocationsReservations: API.OperationMethod<
@@ -1003,7 +1096,7 @@ export const setIamPolicyProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsReservationsRequest,
   output: SetIamPolicyProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsReservationsRequest {
@@ -1032,7 +1125,11 @@ export const TestIamPermissionsProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsReservationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Reservations No Google IAM permissions are required to call this method. */
 export const testIamPermissionsProjectsLocationsReservations: API.OperationMethod<
@@ -1043,7 +1140,7 @@ export const testIamPermissionsProjectsLocationsReservations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsReservationsRequest,
   output: TestIamPermissionsProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsReservationsAssignmentsRequest {
@@ -1071,7 +1168,12 @@ export type CreateProjectsLocationsReservationsAssignmentsResponse = Assignment;
 export const CreateProjectsLocationsReservationsAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Assignment;
 
-export type CreateProjectsLocationsReservationsAssignmentsError = DefaultErrors;
+export type CreateProjectsLocationsReservationsAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an assignment object which allows the given project to submit jobs of a certain type using slots from the specified reservation. Currently a resource (project, folder, organization) can only have one assignment per each (job_type, location) combination, and that reservation will be used for all jobs of the matching type. Different assignments can be created on different levels of the projects, folders or organization hierarchy. During query execution, the assignment is looked up at the project, folder and organization levels in that order. The first assignment found is applied to the query. When creating assignments, it does not matter if other assignments exist at higher levels. Example: * The organization `organizationA` contains two projects, `project1` and `project2`. * Assignments for all three entities (`organizationA`, `project1`, and `project2`) could all be created and mapped to the same or different reservations. "None" assignments represent an absence of the assignment. Projects assigned to None use on-demand pricing. To create a "None" assignment, use "none" as a reservation_id in the parent. Example parent: `projects/myproject/locations/US/reservations/none`. Returns `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin' permissions on the project using the reservation and the project that owns this reservation. Returns `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does not match location of the reservation. */
 export const createProjectsLocationsReservationsAssignments: API.OperationMethod<
@@ -1082,7 +1184,7 @@ export const createProjectsLocationsReservationsAssignments: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsReservationsAssignmentsRequest,
   output: CreateProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsReservationsAssignmentsRequest {
@@ -1109,7 +1211,10 @@ export type ListProjectsLocationsReservationsAssignmentsResponse =
 export const ListProjectsLocationsReservationsAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAssignmentsResponse;
 
-export type ListProjectsLocationsReservationsAssignmentsError = DefaultErrors;
+export type ListProjectsLocationsReservationsAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists assignments. Only explicitly created assignments will be returned. Example: * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created previously. * CreateAssignment was used previously to define the following associations between entities and reservations: `` and `` In this example, ListAssignments will just return the above two assignments for reservation `res1`, and no expansion/merge will happen. The wildcard "-" can be used for reservations in the request. In that case all assignments belongs to the specified project and location will be listed. **Note** "-" cannot be used for projects nor locations. */
 export const listProjectsLocationsReservationsAssignments: API.PaginatedOperationMethod<
@@ -1120,7 +1225,7 @@ export const listProjectsLocationsReservationsAssignments: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReservationsAssignmentsRequest,
   output: ListProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1144,7 +1249,12 @@ export type DeleteProjectsLocationsReservationsAssignmentsResponse = Empty;
 export const DeleteProjectsLocationsReservationsAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsReservationsAssignmentsError = DefaultErrors;
+export type DeleteProjectsLocationsReservationsAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a assignment. No expansion will happen. Example: * Organization `organizationA` contains two projects, `project1` and `project2`. * Reservation `res1` exists and was created previously. * CreateAssignment was used previously to define the following associations between entities and reservations: `` and `` In this example, deletion of the `` assignment won't affect the other assignment ``. After said deletion, queries from `project1` will still use `res1` while queries from `project2` will switch to use on-demand mode. */
 export const deleteProjectsLocationsReservationsAssignments: API.OperationMethod<
@@ -1155,7 +1265,7 @@ export const deleteProjectsLocationsReservationsAssignments: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsReservationsAssignmentsRequest,
   output: DeleteProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveProjectsLocationsReservationsAssignmentsRequest {
@@ -1178,7 +1288,12 @@ export type MoveProjectsLocationsReservationsAssignmentsResponse = Assignment;
 export const MoveProjectsLocationsReservationsAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Assignment;
 
-export type MoveProjectsLocationsReservationsAssignmentsError = DefaultErrors;
+export type MoveProjectsLocationsReservationsAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an assignment under a new reservation. This differs from removing an existing assignment and recreating a new one by providing a transactional change that ensures an assignee always has an associated reservation. */
 export const moveProjectsLocationsReservationsAssignments: API.OperationMethod<
@@ -1189,7 +1304,7 @@ export const moveProjectsLocationsReservationsAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveProjectsLocationsReservationsAssignmentsRequest,
   output: MoveProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsReservationsAssignmentsRequest {
@@ -1215,7 +1330,12 @@ export type PatchProjectsLocationsReservationsAssignmentsResponse = Assignment;
 export const PatchProjectsLocationsReservationsAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Assignment;
 
-export type PatchProjectsLocationsReservationsAssignmentsError = DefaultErrors;
+export type PatchProjectsLocationsReservationsAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing assignment. Only the `priority` field can be updated. */
 export const patchProjectsLocationsReservationsAssignments: API.OperationMethod<
@@ -1226,7 +1346,7 @@ export const patchProjectsLocationsReservationsAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsReservationsAssignmentsRequest,
   output: PatchProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
@@ -1253,7 +1373,9 @@ export const GetIamPolicyProjectsLocationsReservationsAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsReservationsAssignmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Reservations - ReservationAssignments To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.getIamPolicy` to get policies on reservations. */
 export const getIamPolicyProjectsLocationsReservationsAssignments: API.OperationMethod<
@@ -1264,7 +1386,7 @@ export const getIamPolicyProjectsLocationsReservationsAssignments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsReservationsAssignmentsRequest,
   output: GetIamPolicyProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsReservationsAssignmentsRequest {
@@ -1293,7 +1415,11 @@ export const SetIamPolicyProjectsLocationsReservationsAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsReservationsAssignmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Reservations To call this method, you must have the following Google IAM permissions: - `bigqueryreservation.reservations.setIamPolicy` to set policies on reservations. */
 export const setIamPolicyProjectsLocationsReservationsAssignments: API.OperationMethod<
@@ -1304,7 +1430,7 @@ export const setIamPolicyProjectsLocationsReservationsAssignments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsReservationsAssignmentsRequest,
   output: SetIamPolicyProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest {
@@ -1333,7 +1459,11 @@ export const TestIamPermissionsProjectsLocationsReservationsAssignmentsResponse 
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsReservationsAssignmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Reservations No Google IAM permissions are required to call this method. */
 export const testIamPermissionsProjectsLocationsReservationsAssignments: API.OperationMethod<
@@ -1344,7 +1474,7 @@ export const testIamPermissionsProjectsLocationsReservationsAssignments: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsReservationsAssignmentsRequest,
   output: TestIamPermissionsProjectsLocationsReservationsAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCapacityCommitmentsRequest {
@@ -1382,7 +1512,12 @@ export type CreateProjectsLocationsCapacityCommitmentsResponse =
 export const CreateProjectsLocationsCapacityCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CapacityCommitment;
 
-export type CreateProjectsLocationsCapacityCommitmentsError = DefaultErrors;
+export type CreateProjectsLocationsCapacityCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new capacity commitment resource. */
 export const createProjectsLocationsCapacityCommitments: API.OperationMethod<
@@ -1393,7 +1528,7 @@ export const createProjectsLocationsCapacityCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCapacityCommitmentsRequest,
   output: CreateProjectsLocationsCapacityCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCapacityCommitmentsRequest {
@@ -1420,7 +1555,10 @@ export type ListProjectsLocationsCapacityCommitmentsResponse =
 export const ListProjectsLocationsCapacityCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCapacityCommitmentsResponse;
 
-export type ListProjectsLocationsCapacityCommitmentsError = DefaultErrors;
+export type ListProjectsLocationsCapacityCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the capacity commitments for the admin project. */
 export const listProjectsLocationsCapacityCommitments: API.PaginatedOperationMethod<
@@ -1431,7 +1569,7 @@ export const listProjectsLocationsCapacityCommitments: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCapacityCommitmentsRequest,
   output: ListProjectsLocationsCapacityCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1456,7 +1594,10 @@ export type GetProjectsLocationsCapacityCommitmentsResponse =
 export const GetProjectsLocationsCapacityCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CapacityCommitment;
 
-export type GetProjectsLocationsCapacityCommitmentsError = DefaultErrors;
+export type GetProjectsLocationsCapacityCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about the capacity commitment. */
 export const getProjectsLocationsCapacityCommitments: API.OperationMethod<
@@ -1467,7 +1608,7 @@ export const getProjectsLocationsCapacityCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCapacityCommitmentsRequest,
   output: GetProjectsLocationsCapacityCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsCapacityCommitmentsRequest {
@@ -1490,7 +1631,12 @@ export type DeleteProjectsLocationsCapacityCommitmentsResponse = Empty;
 export const DeleteProjectsLocationsCapacityCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsCapacityCommitmentsError = DefaultErrors;
+export type DeleteProjectsLocationsCapacityCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a capacity commitment. Attempting to delete capacity commitment before its commitment_end_time will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const deleteProjectsLocationsCapacityCommitments: API.OperationMethod<
@@ -1501,7 +1647,7 @@ export const deleteProjectsLocationsCapacityCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCapacityCommitmentsRequest,
   output: DeleteProjectsLocationsCapacityCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCapacityCommitmentsRequest {
@@ -1528,7 +1674,12 @@ export type PatchProjectsLocationsCapacityCommitmentsResponse =
 export const PatchProjectsLocationsCapacityCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CapacityCommitment;
 
-export type PatchProjectsLocationsCapacityCommitmentsError = DefaultErrors;
+export type PatchProjectsLocationsCapacityCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing capacity commitment. Only `plan` and `renewal_plan` fields can be updated. Plan can only be changed to a plan of a longer commitment period. Attempting to change to a plan with shorter commitment period will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const patchProjectsLocationsCapacityCommitments: API.OperationMethod<
@@ -1539,7 +1690,7 @@ export const patchProjectsLocationsCapacityCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCapacityCommitmentsRequest,
   output: PatchProjectsLocationsCapacityCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SplitProjectsLocationsCapacityCommitmentsRequest {
@@ -1563,7 +1714,12 @@ export type SplitProjectsLocationsCapacityCommitmentsResponse =
 export const SplitProjectsLocationsCapacityCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SplitCapacityCommitmentResponse;
 
-export type SplitProjectsLocationsCapacityCommitmentsError = DefaultErrors;
+export type SplitProjectsLocationsCapacityCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Splits capacity commitment to two commitments of the same plan and `commitment_end_time`. A common use case is to enable downgrading commitments. For example, in order to downgrade from 10000 slots to 8000, you might split a 10000 capacity commitment into commitments of 2000 and 8000. Then, you delete the first one after the commitment end time passes. */
 export const splitProjectsLocationsCapacityCommitments: API.OperationMethod<
@@ -1574,7 +1730,7 @@ export const splitProjectsLocationsCapacityCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SplitProjectsLocationsCapacityCommitmentsRequest,
   output: SplitProjectsLocationsCapacityCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MergeProjectsLocationsCapacityCommitmentsRequest {
@@ -1602,7 +1758,12 @@ export type MergeProjectsLocationsCapacityCommitmentsResponse =
 export const MergeProjectsLocationsCapacityCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CapacityCommitment;
 
-export type MergeProjectsLocationsCapacityCommitmentsError = DefaultErrors;
+export type MergeProjectsLocationsCapacityCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Merges capacity commitments of the same plan into a single commitment. The resulting capacity commitment has the greater commitment_end_time out of the to-be-merged capacity commitments. Attempting to merge capacity commitments of different plan will fail with the error code `google.rpc.Code.FAILED_PRECONDITION`. */
 export const mergeProjectsLocationsCapacityCommitments: API.OperationMethod<
@@ -1613,7 +1774,7 @@ export const mergeProjectsLocationsCapacityCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MergeProjectsLocationsCapacityCommitmentsRequest,
   output: MergeProjectsLocationsCapacityCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsReservationGroupsRequest {
@@ -1645,7 +1806,12 @@ export type CreateProjectsLocationsReservationGroupsResponse = ReservationGroup;
 export const CreateProjectsLocationsReservationGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationGroup;
 
-export type CreateProjectsLocationsReservationGroupsError = DefaultErrors;
+export type CreateProjectsLocationsReservationGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new reservation group. */
 export const createProjectsLocationsReservationGroups: API.OperationMethod<
@@ -1656,7 +1822,7 @@ export const createProjectsLocationsReservationGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsReservationGroupsRequest,
   output: CreateProjectsLocationsReservationGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsReservationGroupsRequest {
@@ -1676,7 +1842,10 @@ export type GetProjectsLocationsReservationGroupsResponse = ReservationGroup;
 export const GetProjectsLocationsReservationGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationGroup;
 
-export type GetProjectsLocationsReservationGroupsError = DefaultErrors;
+export type GetProjectsLocationsReservationGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about the reservation group. */
 export const getProjectsLocationsReservationGroups: API.OperationMethod<
@@ -1687,7 +1856,7 @@ export const getProjectsLocationsReservationGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsReservationGroupsRequest,
   output: GetProjectsLocationsReservationGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsReservationGroupsRequest {
@@ -1707,7 +1876,12 @@ export type DeleteProjectsLocationsReservationGroupsResponse = Empty;
 export const DeleteProjectsLocationsReservationGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsReservationGroupsError = DefaultErrors;
+export type DeleteProjectsLocationsReservationGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when reservation has assignments. */
 export const deleteProjectsLocationsReservationGroups: API.OperationMethod<
@@ -1718,7 +1892,7 @@ export const deleteProjectsLocationsReservationGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsReservationGroupsRequest,
   output: DeleteProjectsLocationsReservationGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsReservationGroupsRequest {
@@ -1745,7 +1919,10 @@ export type ListProjectsLocationsReservationGroupsResponse =
 export const ListProjectsLocationsReservationGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReservationGroupsResponse;
 
-export type ListProjectsLocationsReservationGroupsError = DefaultErrors;
+export type ListProjectsLocationsReservationGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the reservation groups for the project in the specified location. */
 export const listProjectsLocationsReservationGroups: API.PaginatedOperationMethod<
@@ -1756,7 +1933,7 @@ export const listProjectsLocationsReservationGroups: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReservationGroupsRequest,
   output: ListProjectsLocationsReservationGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

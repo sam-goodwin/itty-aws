@@ -381,6 +381,52 @@ export const FetchVerificationOptionsRequest =
   }).annotate({ identifier: "FetchVerificationOptionsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -401,7 +447,10 @@ export type GetVoiceOfMerchantStateLocationsResponse = VoiceOfMerchantState;
 export const GetVoiceOfMerchantStateLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VoiceOfMerchantState;
 
-export type GetVoiceOfMerchantStateLocationsError = DefaultErrors;
+export type GetVoiceOfMerchantStateLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the VoiceOfMerchant state. */
 export const getVoiceOfMerchantStateLocations: API.OperationMethod<
@@ -412,7 +461,7 @@ export const getVoiceOfMerchantStateLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVoiceOfMerchantStateLocationsRequest,
   output: GetVoiceOfMerchantStateLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FetchVerificationOptionsLocationsRequest {
@@ -440,7 +489,12 @@ export type FetchVerificationOptionsLocationsResponse =
 export const FetchVerificationOptionsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchVerificationOptionsResponse;
 
-export type FetchVerificationOptionsLocationsError = DefaultErrors;
+export type FetchVerificationOptionsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reports all eligible verification options for a location in a specific language. */
 export const fetchVerificationOptionsLocations: API.OperationMethod<
@@ -451,7 +505,7 @@ export const fetchVerificationOptionsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchVerificationOptionsLocationsRequest,
   output: FetchVerificationOptionsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyLocationsRequest {
@@ -475,7 +529,12 @@ export type VerifyLocationsResponse = VerifyLocationResponse;
 export const VerifyLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerifyLocationResponse;
 
-export type VerifyLocationsError = DefaultErrors;
+export type VerifyLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts the verification process for a location. */
 export const verifyLocations: API.OperationMethod<
@@ -486,7 +545,7 @@ export const verifyLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyLocationsRequest,
   output: VerifyLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteLocationsVerificationsRequest {
@@ -510,7 +569,12 @@ export type CompleteLocationsVerificationsResponse =
 export const CompleteLocationsVerificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompleteVerificationResponse;
 
-export type CompleteLocationsVerificationsError = DefaultErrors;
+export type CompleteLocationsVerificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes a `PENDING` verification. It is only necessary for non `AUTO` verification methods. `AUTO` verification request is instantly `VERIFIED` upon creation. */
 export const completeLocationsVerifications: API.OperationMethod<
@@ -521,7 +585,7 @@ export const completeLocationsVerifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteLocationsVerificationsRequest,
   output: CompleteLocationsVerificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLocationsVerificationsRequest {
@@ -547,7 +611,10 @@ export type ListLocationsVerificationsResponse = ListVerificationsResponse;
 export const ListLocationsVerificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVerificationsResponse;
 
-export type ListLocationsVerificationsError = DefaultErrors;
+export type ListLocationsVerificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List verifications of a location, ordered by create time. */
 export const listLocationsVerifications: API.PaginatedOperationMethod<
@@ -558,7 +625,7 @@ export const listLocationsVerifications: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsVerificationsRequest,
   output: ListLocationsVerificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -589,7 +656,12 @@ export type GenerateVerificationTokensResponse =
 export const GenerateVerificationTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateInstantVerificationTokenResponse;
 
-export type GenerateVerificationTokensError = DefaultErrors;
+export type GenerateVerificationTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generate a token for the provided location data to verify the location. */
 export const generateVerificationTokens: API.OperationMethod<
@@ -600,5 +672,5 @@ export const generateVerificationTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateVerificationTokensRequest,
   output: GenerateVerificationTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

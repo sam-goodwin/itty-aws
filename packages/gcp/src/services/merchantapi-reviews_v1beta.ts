@@ -586,6 +586,52 @@ export const ProductStatusChangeMessage =
   }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -606,7 +652,10 @@ export type GetAccountsMerchantReviewsResponse = MerchantReview;
 export const GetAccountsMerchantReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MerchantReview;
 
-export type GetAccountsMerchantReviewsError = DefaultErrors;
+export type GetAccountsMerchantReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a merchant review. */
 export const getAccountsMerchantReviews: API.OperationMethod<
@@ -617,7 +666,7 @@ export const getAccountsMerchantReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsMerchantReviewsRequest,
   output: GetAccountsMerchantReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsMerchantReviewsRequest {
@@ -637,7 +686,12 @@ export type DeleteAccountsMerchantReviewsResponse = Empty;
 export const DeleteAccountsMerchantReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsMerchantReviewsError = DefaultErrors;
+export type DeleteAccountsMerchantReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes merchant review. */
 export const deleteAccountsMerchantReviews: API.OperationMethod<
@@ -648,7 +702,7 @@ export const deleteAccountsMerchantReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsMerchantReviewsRequest,
   output: DeleteAccountsMerchantReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsMerchantReviewsRequest {
@@ -674,7 +728,10 @@ export type ListAccountsMerchantReviewsResponse = ListMerchantReviewsResponse;
 export const ListAccountsMerchantReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMerchantReviewsResponse;
 
-export type ListAccountsMerchantReviewsError = DefaultErrors;
+export type ListAccountsMerchantReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists merchant reviews. */
 export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
@@ -685,7 +742,7 @@ export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsMerchantReviewsRequest,
   output: ListAccountsMerchantReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -719,7 +776,12 @@ export type InsertAccountsMerchantReviewsResponse = MerchantReview;
 export const InsertAccountsMerchantReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MerchantReview;
 
-export type InsertAccountsMerchantReviewsError = DefaultErrors;
+export type InsertAccountsMerchantReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a review for your Merchant Center account. If the review already exists, then the review is replaced with the new instance. */
 export const insertAccountsMerchantReviews: API.OperationMethod<
@@ -730,7 +792,7 @@ export const insertAccountsMerchantReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsMerchantReviewsRequest,
   output: InsertAccountsMerchantReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAccountsProductReviewsRequest {
@@ -760,7 +822,12 @@ export type InsertAccountsProductReviewsResponse = ProductReview;
 export const InsertAccountsProductReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductReview;
 
-export type InsertAccountsProductReviewsError = DefaultErrors;
+export type InsertAccountsProductReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a product review. */
 export const insertAccountsProductReviews: API.OperationMethod<
@@ -771,7 +838,7 @@ export const insertAccountsProductReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsProductReviewsRequest,
   output: InsertAccountsProductReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsProductReviewsRequest {
@@ -797,7 +864,10 @@ export type ListAccountsProductReviewsResponse = ListProductReviewsResponse;
 export const ListAccountsProductReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductReviewsResponse;
 
-export type ListAccountsProductReviewsError = DefaultErrors;
+export type ListAccountsProductReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists product reviews. */
 export const listAccountsProductReviews: API.PaginatedOperationMethod<
@@ -808,7 +878,7 @@ export const listAccountsProductReviews: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductReviewsRequest,
   output: ListAccountsProductReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -832,7 +902,10 @@ export type GetAccountsProductReviewsResponse = ProductReview;
 export const GetAccountsProductReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductReview;
 
-export type GetAccountsProductReviewsError = DefaultErrors;
+export type GetAccountsProductReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a product review. */
 export const getAccountsProductReviews: API.OperationMethod<
@@ -843,7 +916,7 @@ export const getAccountsProductReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsProductReviewsRequest,
   output: GetAccountsProductReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsProductReviewsRequest {
@@ -863,7 +936,12 @@ export type DeleteAccountsProductReviewsResponse = Empty;
 export const DeleteAccountsProductReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsProductReviewsError = DefaultErrors;
+export type DeleteAccountsProductReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a product review. */
 export const deleteAccountsProductReviews: API.OperationMethod<
@@ -874,5 +952,5 @@ export const deleteAccountsProductReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductReviewsRequest,
   output: DeleteAccountsProductReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

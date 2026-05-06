@@ -67,6 +67,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -93,7 +139,7 @@ export type ListProjectsTraceSinksResponse = ListTraceSinksResponse;
 export const ListProjectsTraceSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTraceSinksResponse;
 
-export type ListProjectsTraceSinksError = DefaultErrors;
+export type ListProjectsTraceSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** List all sinks for the parent resource (GCP project). */
 export const listProjectsTraceSinks: API.PaginatedOperationMethod<
@@ -104,7 +150,7 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTraceSinksRequest,
   output: ListProjectsTraceSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -135,7 +181,12 @@ export type CreateProjectsTraceSinksResponse = TraceSink;
 export const CreateProjectsTraceSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TraceSink;
 
-export type CreateProjectsTraceSinksError = DefaultErrors;
+export type CreateProjectsTraceSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent'). */
 export const createProjectsTraceSinks: API.OperationMethod<
@@ -146,7 +197,7 @@ export const createProjectsTraceSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTraceSinksRequest,
   output: CreateProjectsTraceSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsTraceSinksRequest {
@@ -166,7 +217,12 @@ export type DeleteProjectsTraceSinksResponse = Empty;
 export const DeleteProjectsTraceSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTraceSinksError = DefaultErrors;
+export type DeleteProjectsTraceSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a sink. */
 export const deleteProjectsTraceSinks: API.OperationMethod<
@@ -177,7 +233,7 @@ export const deleteProjectsTraceSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTraceSinksRequest,
   output: DeleteProjectsTraceSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTraceSinksRequest {
@@ -197,7 +253,7 @@ export type GetProjectsTraceSinksResponse = TraceSink;
 export const GetProjectsTraceSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TraceSink;
 
-export type GetProjectsTraceSinksError = DefaultErrors;
+export type GetProjectsTraceSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a trace sink by name under the parent resource (GCP project). */
 export const getProjectsTraceSinks: API.OperationMethod<
@@ -208,7 +264,7 @@ export const getProjectsTraceSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTraceSinksRequest,
   output: GetProjectsTraceSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsTraceSinksRequest {
@@ -234,7 +290,12 @@ export type PatchProjectsTraceSinksResponse = TraceSink;
 export const PatchProjectsTraceSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TraceSink;
 
-export type PatchProjectsTraceSinksError = DefaultErrors;
+export type PatchProjectsTraceSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method updates fields in the existing sink according to the provided update mask. The sink's name cannot be changed nor any output-only fields (e.g. the writer_identity). */
 export const patchProjectsTraceSinks: API.OperationMethod<
@@ -245,5 +306,5 @@ export const patchProjectsTraceSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTraceSinksRequest,
   output: PatchProjectsTraceSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

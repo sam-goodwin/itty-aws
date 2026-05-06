@@ -87,6 +87,52 @@ export const LicenseAssignmentInsert =
   }).annotate({ identifier: "LicenseAssignmentInsert" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -120,7 +166,12 @@ export type UpdateLicenseAssignmentsResponse = LicenseAssignment;
 export const UpdateLicenseAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
 
-export type UpdateLicenseAssignmentsError = DefaultErrors;
+export type UpdateLicenseAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reassign a user's product SKU with a different SKU in the same product. */
 export const updateLicenseAssignments: API.OperationMethod<
@@ -131,7 +182,7 @@ export const updateLicenseAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLicenseAssignmentsRequest,
   output: UpdateLicenseAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLicenseAssignmentsRequest {
@@ -164,7 +215,12 @@ export type PatchLicenseAssignmentsResponse = LicenseAssignment;
 export const PatchLicenseAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
 
-export type PatchLicenseAssignmentsError = DefaultErrors;
+export type PatchLicenseAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reassign a user's product SKU with a different SKU in the same product. This method supports patch semantics. */
 export const patchLicenseAssignments: API.OperationMethod<
@@ -175,7 +231,7 @@ export const patchLicenseAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLicenseAssignmentsRequest,
   output: PatchLicenseAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertLicenseAssignmentsRequest {
@@ -205,7 +261,12 @@ export type InsertLicenseAssignmentsResponse = LicenseAssignment;
 export const InsertLicenseAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
 
-export type InsertLicenseAssignmentsError = DefaultErrors;
+export type InsertLicenseAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assign a license. */
 export const insertLicenseAssignments: API.OperationMethod<
@@ -216,7 +277,7 @@ export const insertLicenseAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLicenseAssignmentsRequest,
   output: InsertLicenseAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListForProductLicenseAssignmentsRequest {
@@ -248,7 +309,10 @@ export type ListForProductLicenseAssignmentsResponse = LicenseAssignmentList;
 export const ListForProductLicenseAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LicenseAssignmentList;
 
-export type ListForProductLicenseAssignmentsError = DefaultErrors;
+export type ListForProductLicenseAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all users assigned licenses for a specific product SKU. */
 export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
@@ -259,7 +323,7 @@ export const listForProductLicenseAssignments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListForProductLicenseAssignmentsRequest,
   output: ListForProductLicenseAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -293,7 +357,12 @@ export type DeleteLicenseAssignmentsResponse = Empty;
 export const DeleteLicenseAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLicenseAssignmentsError = DefaultErrors;
+export type DeleteLicenseAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revoke a license. */
 export const deleteLicenseAssignments: API.OperationMethod<
@@ -304,7 +373,7 @@ export const deleteLicenseAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLicenseAssignmentsRequest,
   output: DeleteLicenseAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListForProductAndSkuLicenseAssignmentsRequest {
@@ -340,7 +409,10 @@ export type ListForProductAndSkuLicenseAssignmentsResponse =
 export const ListForProductAndSkuLicenseAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LicenseAssignmentList;
 
-export type ListForProductAndSkuLicenseAssignmentsError = DefaultErrors;
+export type ListForProductAndSkuLicenseAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all users assigned licenses for a specific product SKU. */
 export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMethod<
@@ -351,7 +423,7 @@ export const listForProductAndSkuLicenseAssignments: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListForProductAndSkuLicenseAssignmentsRequest,
   output: ListForProductAndSkuLicenseAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -385,7 +457,7 @@ export type GetLicenseAssignmentsResponse = LicenseAssignment;
 export const GetLicenseAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LicenseAssignment;
 
-export type GetLicenseAssignmentsError = DefaultErrors;
+export type GetLicenseAssignmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a specific user's license by product SKU. */
 export const getLicenseAssignments: API.OperationMethod<
@@ -396,5 +468,5 @@ export const getLicenseAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLicenseAssignmentsRequest,
   output: GetLicenseAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

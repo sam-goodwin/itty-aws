@@ -972,6 +972,52 @@ export const AnalyzeIamPolicyLongrunningMetadata =
   }).annotate({ identifier: "AnalyzeIamPolicyLongrunningMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -999,7 +1045,12 @@ export type ExportAssetsProjectsResponse = Operation;
 export const ExportAssetsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportAssetsProjectsError = DefaultErrors;
+export type ExportAssetsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports assets with time and resource types to a given Cloud Storage location. The output format is newline-delimited JSON. This API implements the google.longrunning.Operation API allowing you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation result. For regular-size resource parent, the export operation usually finishes within 5 minutes. */
 export const exportAssetsProjects: API.OperationMethod<
@@ -1010,7 +1061,7 @@ export const exportAssetsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportAssetsProjectsRequest,
   output: ExportAssetsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetAssetsHistoryProjectsRequest {
@@ -1055,7 +1106,10 @@ export type BatchGetAssetsHistoryProjectsResponse =
 export const BatchGetAssetsHistoryProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetAssetsHistoryResponse;
 
-export type BatchGetAssetsHistoryProjectsError = DefaultErrors;
+export type BatchGetAssetsHistoryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset does not exist, this API returns an INVALID_ARGUMENT error. */
 export const batchGetAssetsHistoryProjects: API.OperationMethod<
@@ -1066,7 +1120,7 @@ export const batchGetAssetsHistoryProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetAssetsHistoryProjectsRequest,
   output: BatchGetAssetsHistoryProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsOperationsRequest {
@@ -1086,7 +1140,7 @@ export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -1097,7 +1151,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExportAssetsFoldersRequest {
@@ -1124,7 +1178,12 @@ export type ExportAssetsFoldersResponse = Operation;
 export const ExportAssetsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportAssetsFoldersError = DefaultErrors;
+export type ExportAssetsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports assets with time and resource types to a given Cloud Storage location. The output format is newline-delimited JSON. This API implements the google.longrunning.Operation API allowing you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation result. For regular-size resource parent, the export operation usually finishes within 5 minutes. */
 export const exportAssetsFolders: API.OperationMethod<
@@ -1135,7 +1194,7 @@ export const exportAssetsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportAssetsFoldersRequest,
   output: ExportAssetsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersOperationsRequest {
@@ -1155,7 +1214,7 @@ export type GetFoldersOperationsResponse = Operation;
 export const GetFoldersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetFoldersOperationsError = DefaultErrors;
+export type GetFoldersOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersOperations: API.OperationMethod<
@@ -1166,7 +1225,7 @@ export const getFoldersOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersOperationsRequest,
   output: GetFoldersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExportAssetsOrganizationsRequest {
@@ -1193,7 +1252,12 @@ export type ExportAssetsOrganizationsResponse = Operation;
 export const ExportAssetsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportAssetsOrganizationsError = DefaultErrors;
+export type ExportAssetsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports assets with time and resource types to a given Cloud Storage location. The output format is newline-delimited JSON. This API implements the google.longrunning.Operation API allowing you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation result. For regular-size resource parent, the export operation usually finishes within 5 minutes. */
 export const exportAssetsOrganizations: API.OperationMethod<
@@ -1204,7 +1268,7 @@ export const exportAssetsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportAssetsOrganizationsRequest,
   output: ExportAssetsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetAssetsHistoryOrganizationsRequest {
@@ -1249,7 +1313,10 @@ export type BatchGetAssetsHistoryOrganizationsResponse =
 export const BatchGetAssetsHistoryOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetAssetsHistoryResponse;
 
-export type BatchGetAssetsHistoryOrganizationsError = DefaultErrors;
+export type BatchGetAssetsHistoryOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset does not exist, this API returns an INVALID_ARGUMENT error. */
 export const batchGetAssetsHistoryOrganizations: API.OperationMethod<
@@ -1260,7 +1327,7 @@ export const batchGetAssetsHistoryOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetAssetsHistoryOrganizationsRequest,
   output: BatchGetAssetsHistoryOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsOperationsRequest {
@@ -1280,7 +1347,10 @@ export type GetOrganizationsOperationsResponse = Operation;
 export const GetOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOrganizationsOperationsError = DefaultErrors;
+export type GetOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsOperations: API.OperationMethod<
@@ -1291,5 +1361,5 @@ export const getOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsOperationsRequest,
   output: GetOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

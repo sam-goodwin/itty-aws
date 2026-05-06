@@ -1086,6 +1086,52 @@ export const TypesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "TypesListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1124,7 +1170,12 @@ export const InsertDeploymentsRequest =
 export type InsertDeploymentsResponse = Operation;
 export const InsertDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertDeploymentsError = DefaultErrors;
+export type InsertDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a deployment and all of the resources described by the deployment manifest. */
 export const insertDeployments: API.OperationMethod<
@@ -1135,7 +1186,7 @@ export const insertDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDeploymentsRequest,
   output: InsertDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDeploymentsRequest {
@@ -1181,7 +1232,12 @@ export const UpdateDeploymentsRequest =
 export type UpdateDeploymentsResponse = Operation;
 export const UpdateDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateDeploymentsError = DefaultErrors;
+export type UpdateDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a deployment and all of the resources described by the deployment manifest. */
 export const updateDeployments: API.OperationMethod<
@@ -1192,7 +1248,7 @@ export const updateDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeploymentsRequest,
   output: UpdateDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchDeploymentsRequest {
@@ -1238,7 +1294,12 @@ export const PatchDeploymentsRequest =
 export type PatchDeploymentsResponse = Operation;
 export const PatchDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchDeploymentsError = DefaultErrors;
+export type PatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a deployment and all of the resources described by the deployment manifest. */
 export const patchDeployments: API.OperationMethod<
@@ -1249,7 +1310,7 @@ export const patchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDeploymentsRequest,
   output: PatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDeploymentsRequest {
@@ -1283,7 +1344,12 @@ export const DeleteDeploymentsRequest =
 export type DeleteDeploymentsResponse = Operation;
 export const DeleteDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteDeploymentsError = DefaultErrors;
+export type DeleteDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a deployment and all of the resources in the deployment. */
 export const deleteDeployments: API.OperationMethod<
@@ -1294,7 +1360,7 @@ export const deleteDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeploymentsRequest,
   output: DeleteDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDeploymentsRequest {
@@ -1322,7 +1388,7 @@ export const GetDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDeploymentsResponse = Deployment;
 export const GetDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Deployment;
 
-export type GetDeploymentsError = DefaultErrors;
+export type GetDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a specific deployment. */
 export const getDeployments: API.OperationMethod<
@@ -1333,7 +1399,7 @@ export const getDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentsRequest,
   output: GetDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDeploymentsRequest {
@@ -1369,7 +1435,7 @@ export type ListDeploymentsResponse = DeploymentsListResponse;
 export const ListDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeploymentsListResponse;
 
-export type ListDeploymentsError = DefaultErrors;
+export type ListDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all deployments for a given project. */
 export const listDeployments: API.PaginatedOperationMethod<
@@ -1380,7 +1446,7 @@ export const listDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDeploymentsRequest,
   output: ListDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1414,7 +1480,12 @@ export type CancelPreviewDeploymentsResponse = Operation;
 export const CancelPreviewDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelPreviewDeploymentsError = DefaultErrors;
+export type CancelPreviewDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels and removes the preview currently associated with the deployment. */
 export const cancelPreviewDeployments: API.OperationMethod<
@@ -1425,7 +1496,7 @@ export const cancelPreviewDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelPreviewDeploymentsRequest,
   output: CancelPreviewDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopDeploymentsRequest {
@@ -1455,7 +1526,12 @@ export const StopDeploymentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type StopDeploymentsResponse = Operation;
 export const StopDeploymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopDeploymentsError = DefaultErrors;
+export type StopDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started. */
 export const stopDeployments: API.OperationMethod<
@@ -1466,7 +1542,7 @@ export const stopDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopDeploymentsRequest,
   output: StopDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyDeploymentsRequest {
@@ -1501,7 +1577,7 @@ export type GetIamPolicyDeploymentsResponse = Policy;
 export const GetIamPolicyDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyDeploymentsError = DefaultErrors;
+export type GetIamPolicyDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyDeployments: API.OperationMethod<
@@ -1512,7 +1588,7 @@ export const getIamPolicyDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyDeploymentsRequest,
   output: GetIamPolicyDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyDeploymentsRequest {
@@ -1542,7 +1618,12 @@ export type SetIamPolicyDeploymentsResponse = Policy;
 export const SetIamPolicyDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyDeploymentsError = DefaultErrors;
+export type SetIamPolicyDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyDeployments: API.OperationMethod<
@@ -1553,7 +1634,7 @@ export const setIamPolicyDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyDeploymentsRequest,
   output: SetIamPolicyDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsDeploymentsRequest {
@@ -1587,7 +1668,12 @@ export type TestIamPermissionsDeploymentsResponse = TestPermissionsResponse;
 export const TestIamPermissionsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsDeploymentsError = DefaultErrors;
+export type TestIamPermissionsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsDeployments: API.OperationMethod<
@@ -1598,7 +1684,7 @@ export const testIamPermissionsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsDeploymentsRequest,
   output: TestIamPermissionsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManifestsRequest {
@@ -1629,7 +1715,7 @@ export const GetManifestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetManifestsResponse = Manifest;
 export const GetManifestsResponse = /*@__PURE__*/ /*#__PURE__*/ Manifest;
 
-export type GetManifestsError = DefaultErrors;
+export type GetManifestsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a specific manifest. */
 export const getManifests: API.OperationMethod<
@@ -1640,7 +1726,7 @@ export const getManifests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManifestsRequest,
   output: GetManifestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListManifestsRequest {
@@ -1677,7 +1763,7 @@ export type ListManifestsResponse = ManifestsListResponse;
 export const ListManifestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManifestsListResponse;
 
-export type ListManifestsError = DefaultErrors;
+export type ListManifestsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all manifests for a given deployment. */
 export const listManifests: API.PaginatedOperationMethod<
@@ -1688,7 +1774,7 @@ export const listManifests: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManifestsRequest,
   output: ListManifestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1720,7 +1806,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a specific operation. */
 export const getOperations: API.OperationMethod<
@@ -1731,7 +1817,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOperationsRequest {
@@ -1765,7 +1851,7 @@ export type ListOperationsResponse = OperationsListResponse;
 export const ListOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperationsListResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all operations for a project. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -1776,7 +1862,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1811,7 +1897,7 @@ export const GetResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetResourcesResponse = Resource;
 export const GetResourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Resource;
 
-export type GetResourcesError = DefaultErrors;
+export type GetResourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a single resource. */
 export const getResources: API.OperationMethod<
@@ -1822,7 +1908,7 @@ export const getResources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcesRequest,
   output: GetResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListResourcesRequest {
@@ -1859,7 +1945,7 @@ export type ListResourcesResponse = ResourcesListResponse;
 export const ListResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourcesListResponse;
 
-export type ListResourcesError = DefaultErrors;
+export type ListResourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all resources in a given deployment. */
 export const listResources: API.PaginatedOperationMethod<
@@ -1870,7 +1956,7 @@ export const listResources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesRequest,
   output: ListResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1907,7 +1993,7 @@ export const ListTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTypesResponse = TypesListResponse;
 export const ListTypesResponse = /*@__PURE__*/ /*#__PURE__*/ TypesListResponse;
 
-export type ListTypesError = DefaultErrors;
+export type ListTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all resource types for Deployment Manager. */
 export const listTypes: API.PaginatedOperationMethod<
@@ -1918,7 +2004,7 @@ export const listTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTypesRequest,
   output: ListTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

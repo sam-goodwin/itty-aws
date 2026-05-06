@@ -9699,6 +9699,52 @@ export const BulkEditAssignedInventorySourcesResponse =
   }).annotate({ identifier: "BulkEditAssignedInventorySourcesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -9717,7 +9763,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type GetUsersError = DefaultErrors;
+export type GetUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const getUsers: API.OperationMethod<
@@ -9728,7 +9774,7 @@ export const getUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersRequest,
   output: GetUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersRequest {
@@ -9746,7 +9792,12 @@ export const CreateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateUsersResponse = User;
 export const CreateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type CreateUsersError = DefaultErrors;
+export type CreateUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new user. Returns the newly created user if successful. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const createUsers: API.OperationMethod<
@@ -9757,7 +9808,7 @@ export const createUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersRequest,
   output: CreateUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchUsersRequest {
@@ -9781,7 +9832,12 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchUsersResponse = User;
 export const PatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type PatchUsersError = DefaultErrors;
+export type PatchUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing user. Returns the updated user if successful. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const patchUsers: API.OperationMethod<
@@ -9792,7 +9848,7 @@ export const patchUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersRequest,
   output: PatchUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersRequest {
@@ -9820,7 +9876,7 @@ export type ListUsersResponse_Op = ListUsersResponse;
 export const ListUsersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
 
-export type ListUsersError = DefaultErrors;
+export type ListUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists users that are accessible to the current user. If two users have user roles on the same partner or advertiser, they can access each other. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const listUsers: API.PaginatedOperationMethod<
@@ -9831,7 +9887,7 @@ export const listUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9853,7 +9909,12 @@ export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteUsersResponse = Empty;
 export const DeleteUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteUsersError = DefaultErrors;
+export type DeleteUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const deleteUsers: API.OperationMethod<
@@ -9864,7 +9925,7 @@ export const deleteUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersRequest,
   output: DeleteUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkEditAssignedUserRolesUsersRequest {
@@ -9892,7 +9953,12 @@ export type BulkEditAssignedUserRolesUsersResponse =
 export const BulkEditAssignedUserRolesUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditAssignedUserRolesResponse;
 
-export type BulkEditAssignedUserRolesUsersError = DefaultErrors;
+export type BulkEditAssignedUserRolesUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits user roles for a user. The operation will delete the assigned user roles provided in BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles and then assign the user roles provided in BulkEditAssignedUserRolesRequest.createdAssignedUserRoles. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method. */
 export const bulkEditAssignedUserRolesUsers: API.OperationMethod<
@@ -9903,7 +9969,7 @@ export const bulkEditAssignedUserRolesUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditAssignedUserRolesUsersRequest,
   output: BulkEditAssignedUserRolesUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomBiddingAlgorithmsRequest {
@@ -9941,7 +10007,10 @@ export type ListCustomBiddingAlgorithmsResponse_Op =
 export const ListCustomBiddingAlgorithmsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomBiddingAlgorithmsResponse;
 
-export type ListCustomBiddingAlgorithmsError = DefaultErrors;
+export type ListCustomBiddingAlgorithmsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists custom bidding algorithms that are accessible to the current user and can be used in bidding stratgies. The order is defined by the order_by parameter. */
 export const listCustomBiddingAlgorithms: API.PaginatedOperationMethod<
@@ -9952,7 +10021,7 @@ export const listCustomBiddingAlgorithms: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomBiddingAlgorithmsRequest,
   output: ListCustomBiddingAlgorithmsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9990,7 +10059,10 @@ export type UploadScriptCustomBiddingAlgorithmsResponse =
 export const UploadScriptCustomBiddingAlgorithmsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingScriptRef;
 
-export type UploadScriptCustomBiddingAlgorithmsError = DefaultErrors;
+export type UploadScriptCustomBiddingAlgorithmsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Creates a custom bidding script reference object for a script file. The resulting reference object provides a resource path to which the script file should be uploaded. This reference object should be included in when creating a new custom bidding script object. */
 export const uploadScriptCustomBiddingAlgorithms: API.OperationMethod<
@@ -10001,7 +10073,7 @@ export const uploadScriptCustomBiddingAlgorithms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadScriptCustomBiddingAlgorithmsRequest,
   output: UploadScriptCustomBiddingAlgorithmsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UploadRulesCustomBiddingAlgorithmsRequest {
@@ -10035,7 +10107,10 @@ export type UploadRulesCustomBiddingAlgorithmsResponse =
 export const UploadRulesCustomBiddingAlgorithmsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingAlgorithmRulesRef;
 
-export type UploadRulesCustomBiddingAlgorithmsError = DefaultErrors;
+export type UploadRulesCustomBiddingAlgorithmsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Creates a rules reference object for an AlgorithmRules file. The resulting reference object provides a resource path where the AlgorithmRules file should be uploaded. This reference object should be included when creating a new CustomBiddingAlgorithmRules resource. */
 export const uploadRulesCustomBiddingAlgorithms: API.OperationMethod<
@@ -10046,7 +10121,7 @@ export const uploadRulesCustomBiddingAlgorithms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadRulesCustomBiddingAlgorithmsRequest,
   output: UploadRulesCustomBiddingAlgorithmsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCustomBiddingAlgorithmsRequest {
@@ -10079,7 +10154,10 @@ export type GetCustomBiddingAlgorithmsResponse = CustomBiddingAlgorithm;
 export const GetCustomBiddingAlgorithmsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingAlgorithm;
 
-export type GetCustomBiddingAlgorithmsError = DefaultErrors;
+export type GetCustomBiddingAlgorithmsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a custom bidding algorithm. */
 export const getCustomBiddingAlgorithms: API.OperationMethod<
@@ -10090,7 +10168,7 @@ export const getCustomBiddingAlgorithms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomBiddingAlgorithmsRequest,
   output: GetCustomBiddingAlgorithmsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCustomBiddingAlgorithmsRequest {
@@ -10114,7 +10192,12 @@ export type CreateCustomBiddingAlgorithmsResponse = CustomBiddingAlgorithm;
 export const CreateCustomBiddingAlgorithmsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingAlgorithm;
 
-export type CreateCustomBiddingAlgorithmsError = DefaultErrors;
+export type CreateCustomBiddingAlgorithmsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful. */
 export const createCustomBiddingAlgorithms: API.OperationMethod<
@@ -10125,7 +10208,7 @@ export const createCustomBiddingAlgorithms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomBiddingAlgorithmsRequest,
   output: CreateCustomBiddingAlgorithmsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCustomBiddingAlgorithmsRequest {
@@ -10157,7 +10240,12 @@ export type PatchCustomBiddingAlgorithmsResponse = CustomBiddingAlgorithm;
 export const PatchCustomBiddingAlgorithmsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingAlgorithm;
 
-export type PatchCustomBiddingAlgorithmsError = DefaultErrors;
+export type PatchCustomBiddingAlgorithmsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful. Requests updating a custom bidding algorithm assigned to a line item will return an error. */
 export const patchCustomBiddingAlgorithms: API.OperationMethod<
@@ -10168,7 +10256,7 @@ export const patchCustomBiddingAlgorithms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomBiddingAlgorithmsRequest,
   output: PatchCustomBiddingAlgorithmsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomBiddingAlgorithmsScriptsRequest {
@@ -10211,7 +10299,10 @@ export type ListCustomBiddingAlgorithmsScriptsResponse =
 export const ListCustomBiddingAlgorithmsScriptsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomBiddingScriptsResponse;
 
-export type ListCustomBiddingAlgorithmsScriptsError = DefaultErrors;
+export type ListCustomBiddingAlgorithmsScriptsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists custom bidding scripts that belong to the given algorithm. The order is defined by the order_by parameter. */
 export const listCustomBiddingAlgorithmsScripts: API.PaginatedOperationMethod<
@@ -10222,7 +10313,7 @@ export const listCustomBiddingAlgorithmsScripts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomBiddingAlgorithmsScriptsRequest,
   output: ListCustomBiddingAlgorithmsScriptsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10263,7 +10354,12 @@ export type CreateCustomBiddingAlgorithmsScriptsResponse = CustomBiddingScript;
 export const CreateCustomBiddingAlgorithmsScriptsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingScript;
 
-export type CreateCustomBiddingAlgorithmsScriptsError = DefaultErrors;
+export type CreateCustomBiddingAlgorithmsScriptsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new custom bidding script. Returns the newly created script if successful. Requests creating a custom bidding script under an algorithm assigned to a line item will return an error. */
 export const createCustomBiddingAlgorithmsScripts: API.OperationMethod<
@@ -10274,7 +10370,7 @@ export const createCustomBiddingAlgorithmsScripts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomBiddingAlgorithmsScriptsRequest,
   output: CreateCustomBiddingAlgorithmsScriptsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomBiddingAlgorithmsScriptsRequest {
@@ -10312,7 +10408,10 @@ export type GetCustomBiddingAlgorithmsScriptsResponse = CustomBiddingScript;
 export const GetCustomBiddingAlgorithmsScriptsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingScript;
 
-export type GetCustomBiddingAlgorithmsScriptsError = DefaultErrors;
+export type GetCustomBiddingAlgorithmsScriptsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a custom bidding script. */
 export const getCustomBiddingAlgorithmsScripts: API.OperationMethod<
@@ -10323,7 +10422,7 @@ export const getCustomBiddingAlgorithmsScripts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomBiddingAlgorithmsScriptsRequest,
   output: GetCustomBiddingAlgorithmsScriptsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCustomBiddingAlgorithmsRulesRequest {
@@ -10361,7 +10460,12 @@ export type CreateCustomBiddingAlgorithmsRulesResponse =
 export const CreateCustomBiddingAlgorithmsRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingAlgorithmRules;
 
-export type CreateCustomBiddingAlgorithmsRulesError = DefaultErrors;
+export type CreateCustomBiddingAlgorithmsRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new rules resource. Returns the newly created rules resource if successful. Requests creating a custom bidding rules resource under an algorithm assigned to a line item will return an error. */
 export const createCustomBiddingAlgorithmsRules: API.OperationMethod<
@@ -10372,7 +10476,7 @@ export const createCustomBiddingAlgorithmsRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomBiddingAlgorithmsRulesRequest,
   output: CreateCustomBiddingAlgorithmsRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomBiddingAlgorithmsRulesRequest {
@@ -10411,7 +10515,10 @@ export type GetCustomBiddingAlgorithmsRulesResponse =
 export const GetCustomBiddingAlgorithmsRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomBiddingAlgorithmRules;
 
-export type GetCustomBiddingAlgorithmsRulesError = DefaultErrors;
+export type GetCustomBiddingAlgorithmsRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a rules resource. */
 export const getCustomBiddingAlgorithmsRules: API.OperationMethod<
@@ -10422,7 +10529,7 @@ export const getCustomBiddingAlgorithmsRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomBiddingAlgorithmsRulesRequest,
   output: GetCustomBiddingAlgorithmsRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomBiddingAlgorithmsRulesRequest {
@@ -10465,7 +10572,10 @@ export type ListCustomBiddingAlgorithmsRulesResponse =
 export const ListCustomBiddingAlgorithmsRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomBiddingAlgorithmRulesResponse;
 
-export type ListCustomBiddingAlgorithmsRulesError = DefaultErrors;
+export type ListCustomBiddingAlgorithmsRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists rules resources that belong to the given algorithm. The order is defined by the order_by parameter. */
 export const listCustomBiddingAlgorithmsRules: API.PaginatedOperationMethod<
@@ -10476,7 +10586,7 @@ export const listCustomBiddingAlgorithmsRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomBiddingAlgorithmsRulesRequest,
   output: ListCustomBiddingAlgorithmsRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10500,7 +10610,12 @@ export type CreateSdfdownloadtasksResponse = Operation;
 export const CreateSdfdownloadtasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateSdfdownloadtasksError = DefaultErrors;
+export type CreateSdfdownloadtasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a long-running, asynchronous operation. The metadata type of this operation is SdfDownloadTaskMetadata. If the request is successful, the response type of the operation is SdfDownloadTask. The response will not include the download files, which must be retrieved with media.download. The state of operation can be retrieved with `sdfdownloadtasks.operations.get`. Any errors can be found in the error.message. Note that error.details is expected to be empty. */
 export const createSdfdownloadtasks: API.OperationMethod<
@@ -10511,7 +10626,7 @@ export const createSdfdownloadtasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSdfdownloadtasksRequest,
   output: CreateSdfdownloadtasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSdfdownloadtasksOperationsRequest {
@@ -10531,7 +10646,10 @@ export type GetSdfdownloadtasksOperationsResponse = Operation;
 export const GetSdfdownloadtasksOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetSdfdownloadtasksOperationsError = DefaultErrors;
+export type GetSdfdownloadtasksOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at intervals of 30 seconds. */
 export const getSdfdownloadtasksOperations: API.OperationMethod<
@@ -10542,7 +10660,7 @@ export const getSdfdownloadtasksOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSdfdownloadtasksOperationsRequest,
   output: GetSdfdownloadtasksOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInventorySourceGroupsRequest {
@@ -10580,7 +10698,10 @@ export type ListInventorySourceGroupsResponse_Op =
 export const ListInventorySourceGroupsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListInventorySourceGroupsResponse;
 
-export type ListInventorySourceGroupsError = DefaultErrors;
+export type ListInventorySourceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists inventory source groups that are accessible to the current user. The order is defined by the order_by parameter. */
 export const listInventorySourceGroups: API.PaginatedOperationMethod<
@@ -10591,7 +10712,7 @@ export const listInventorySourceGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInventorySourceGroupsRequest,
   output: ListInventorySourceGroupsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10628,7 +10749,12 @@ export type DeleteInventorySourceGroupsResponse = Empty;
 export const DeleteInventorySourceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteInventorySourceGroupsError = DefaultErrors;
+export type DeleteInventorySourceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an inventory source group. */
 export const deleteInventorySourceGroups: API.OperationMethod<
@@ -10639,7 +10765,7 @@ export const deleteInventorySourceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInventorySourceGroupsRequest,
   output: DeleteInventorySourceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInventorySourceGroupsRequest {
@@ -10672,7 +10798,10 @@ export type GetInventorySourceGroupsResponse = InventorySourceGroup;
 export const GetInventorySourceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventorySourceGroup;
 
-export type GetInventorySourceGroupsError = DefaultErrors;
+export type GetInventorySourceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an inventory source group. */
 export const getInventorySourceGroups: API.OperationMethod<
@@ -10683,7 +10812,7 @@ export const getInventorySourceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInventorySourceGroupsRequest,
   output: GetInventorySourceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateInventorySourceGroupsRequest {
@@ -10711,7 +10840,12 @@ export type CreateInventorySourceGroupsResponse = InventorySourceGroup;
 export const CreateInventorySourceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventorySourceGroup;
 
-export type CreateInventorySourceGroupsError = DefaultErrors;
+export type CreateInventorySourceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new inventory source group. Returns the newly created inventory source group if successful. */
 export const createInventorySourceGroups: API.OperationMethod<
@@ -10722,7 +10856,7 @@ export const createInventorySourceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInventorySourceGroupsRequest,
   output: CreateInventorySourceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInventorySourceGroupsRequest {
@@ -10762,7 +10896,12 @@ export type PatchInventorySourceGroupsResponse = InventorySourceGroup;
 export const PatchInventorySourceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventorySourceGroup;
 
-export type PatchInventorySourceGroupsError = DefaultErrors;
+export type PatchInventorySourceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an inventory source group. Returns the updated inventory source group if successful. */
 export const patchInventorySourceGroups: API.OperationMethod<
@@ -10773,7 +10912,7 @@ export const patchInventorySourceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInventorySourceGroupsRequest,
   output: PatchInventorySourceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateInventorySourceGroupsAssignedInventorySourcesRequest {
@@ -10812,7 +10951,11 @@ export const CreateInventorySourceGroupsAssignedInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AssignedInventorySource;
 
 export type CreateInventorySourceGroupsAssignedInventorySourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an assignment between an inventory source and an inventory source group. */
 export const createInventorySourceGroupsAssignedInventorySources: API.OperationMethod<
@@ -10823,7 +10966,7 @@ export const createInventorySourceGroupsAssignedInventorySources: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInventorySourceGroupsAssignedInventorySourcesRequest,
   output: CreateInventorySourceGroupsAssignedInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkEditInventorySourceGroupsAssignedInventorySourcesRequest {
@@ -10856,7 +10999,11 @@ export const BulkEditInventorySourceGroupsAssignedInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditAssignedInventorySourcesResponse;
 
 export type BulkEditInventorySourceGroupsAssignedInventorySourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits multiple assignments between inventory sources and a single inventory source group. The operation will delete the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources. */
 export const bulkEditInventorySourceGroupsAssignedInventorySources: API.OperationMethod<
@@ -10867,7 +11014,7 @@ export const bulkEditInventorySourceGroupsAssignedInventorySources: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditInventorySourceGroupsAssignedInventorySourcesRequest,
   output: BulkEditInventorySourceGroupsAssignedInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInventorySourceGroupsAssignedInventorySourcesRequest {
@@ -10914,7 +11061,9 @@ export const ListInventorySourceGroupsAssignedInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAssignedInventorySourcesResponse;
 
 export type ListInventorySourceGroupsAssignedInventorySourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists inventory sources assigned to an inventory source group. */
 export const listInventorySourceGroupsAssignedInventorySources: API.PaginatedOperationMethod<
@@ -10925,7 +11074,7 @@ export const listInventorySourceGroupsAssignedInventorySources: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInventorySourceGroupsAssignedInventorySourcesRequest,
   output: ListInventorySourceGroupsAssignedInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10968,7 +11117,11 @@ export const DeleteInventorySourceGroupsAssignedInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteInventorySourceGroupsAssignedInventorySourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the assignment between an inventory source and an inventory source group. */
 export const deleteInventorySourceGroupsAssignedInventorySources: API.OperationMethod<
@@ -10979,7 +11132,7 @@ export const deleteInventorySourceGroupsAssignedInventorySources: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInventorySourceGroupsAssignedInventorySourcesRequest,
   output: DeleteInventorySourceGroupsAssignedInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPartnersRequest {
@@ -10997,7 +11150,7 @@ export const GetPartnersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPartnersResponse = Partner;
 export const GetPartnersResponse = /*@__PURE__*/ /*#__PURE__*/ Partner;
 
-export type GetPartnersError = DefaultErrors;
+export type GetPartnersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a partner. */
 export const getPartners: API.OperationMethod<
@@ -11008,7 +11161,7 @@ export const getPartners: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnersRequest,
   output: GetPartnersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EditAssignedTargetingOptionsPartnersRequest {
@@ -11038,7 +11191,12 @@ export type EditAssignedTargetingOptionsPartnersResponse =
 export const EditAssignedTargetingOptionsPartnersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditPartnerAssignedTargetingOptionsResponse;
 
-export type EditAssignedTargetingOptionsPartnersError = DefaultErrors;
+export type EditAssignedTargetingOptionsPartnersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Edits targeting options under a single partner. The operation will delete the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests . */
 export const editAssignedTargetingOptionsPartners: API.OperationMethod<
@@ -11049,7 +11207,7 @@ export const editAssignedTargetingOptionsPartners: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EditAssignedTargetingOptionsPartnersRequest,
   output: EditAssignedTargetingOptionsPartnersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPartnersRequest {
@@ -11077,7 +11235,7 @@ export type ListPartnersResponse_Op = ListPartnersResponse;
 export const ListPartnersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListPartnersResponse;
 
-export type ListPartnersError = DefaultErrors;
+export type ListPartnersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists partners that are accessible to the current user. The order is defined by the order_by parameter. */
 export const listPartners: API.PaginatedOperationMethod<
@@ -11088,7 +11246,7 @@ export const listPartners: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersRequest,
   output: ListPartnersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11176,7 +11334,9 @@ export const GetPartnersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type GetPartnersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option assigned to a partner. */
 export const getPartnersTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -11187,7 +11347,7 @@ export const getPartnersTargetingTypesAssignedTargetingOptions: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnersTargetingTypesAssignedTargetingOptionsRequest,
   output: GetPartnersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePartnersTargetingTypesAssignedTargetingOptionsRequest {
@@ -11270,7 +11430,11 @@ export const CreatePartnersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type CreatePartnersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assigns a targeting option to a partner. Returns the assigned targeting option if successful. */
 export const createPartnersTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -11281,7 +11445,7 @@ export const createPartnersTargetingTypesAssignedTargetingOptions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePartnersTargetingTypesAssignedTargetingOptionsRequest,
   output: CreatePartnersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPartnersTargetingTypesAssignedTargetingOptionsRequest {
@@ -11372,7 +11536,9 @@ export const ListPartnersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPartnerAssignedTargetingOptionsResponse;
 
 export type ListPartnersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to a partner. */
 export const listPartnersTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -11383,7 +11549,7 @@ export const listPartnersTargetingTypesAssignedTargetingOptions: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersTargetingTypesAssignedTargetingOptionsRequest,
   output: ListPartnersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11471,7 +11637,11 @@ export const DeletePartnersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeletePartnersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an assigned targeting option from a partner. */
 export const deletePartnersTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -11482,7 +11652,7 @@ export const deletePartnersTargetingTypesAssignedTargetingOptions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePartnersTargetingTypesAssignedTargetingOptionsRequest,
   output: DeletePartnersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPartnersChannelsRequest {
@@ -11512,7 +11682,7 @@ export const GetPartnersChannelsRequest =
 export type GetPartnersChannelsResponse = Channel;
 export const GetPartnersChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type GetPartnersChannelsError = DefaultErrors;
+export type GetPartnersChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a channel for a partner or advertiser. */
 export const getPartnersChannels: API.OperationMethod<
@@ -11523,7 +11693,7 @@ export const getPartnersChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnersChannelsRequest,
   output: GetPartnersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePartnersChannelsRequest {
@@ -11555,7 +11725,12 @@ export type CreatePartnersChannelsResponse = Channel;
 export const CreatePartnersChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type CreatePartnersChannelsError = DefaultErrors;
+export type CreatePartnersChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new channel. Returns the newly created channel if successful. */
 export const createPartnersChannels: API.OperationMethod<
@@ -11566,7 +11741,7 @@ export const createPartnersChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePartnersChannelsRequest,
   output: CreatePartnersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPartnersChannelsRequest {
@@ -11604,7 +11779,12 @@ export type PatchPartnersChannelsResponse = Channel;
 export const PatchPartnersChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type PatchPartnersChannelsError = DefaultErrors;
+export type PatchPartnersChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a channel. Returns the updated channel if successful. */
 export const patchPartnersChannels: API.OperationMethod<
@@ -11615,7 +11795,7 @@ export const patchPartnersChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPartnersChannelsRequest,
   output: PatchPartnersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPartnersChannelsRequest {
@@ -11652,7 +11832,7 @@ export type ListPartnersChannelsResponse = ListChannelsResponse;
 export const ListPartnersChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChannelsResponse;
 
-export type ListPartnersChannelsError = DefaultErrors;
+export type ListPartnersChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists channels for a partner or advertiser. */
 export const listPartnersChannels: API.PaginatedOperationMethod<
@@ -11663,7 +11843,7 @@ export const listPartnersChannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersChannelsRequest,
   output: ListPartnersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11697,7 +11877,12 @@ export type BulkEditPartnersChannelsSitesResponse = BulkEditSitesResponse;
 export const BulkEditPartnersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditSitesResponse;
 
-export type BulkEditPartnersChannelsSitesError = DefaultErrors;
+export type BulkEditPartnersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits sites under a single channel. The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create the sites provided in BulkEditSitesRequest.created_sites. */
 export const bulkEditPartnersChannelsSites: API.OperationMethod<
@@ -11708,7 +11893,7 @@ export const bulkEditPartnersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditPartnersChannelsSitesRequest,
   output: BulkEditPartnersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplacePartnersChannelsSitesRequest {
@@ -11738,7 +11923,12 @@ export type ReplacePartnersChannelsSitesResponse = ReplaceSitesResponse;
 export const ReplacePartnersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReplaceSitesResponse;
 
-export type ReplacePartnersChannelsSitesError = DefaultErrors;
+export type ReplacePartnersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors. */
 export const replacePartnersChannelsSites: API.OperationMethod<
@@ -11749,7 +11939,7 @@ export const replacePartnersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplacePartnersChannelsSitesRequest,
   output: ReplacePartnersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPartnersChannelsSitesRequest {
@@ -11792,7 +11982,10 @@ export type ListPartnersChannelsSitesResponse = ListSitesResponse;
 export const ListPartnersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
 
-export type ListPartnersChannelsSitesError = DefaultErrors;
+export type ListPartnersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists sites in a channel. */
 export const listPartnersChannelsSites: API.PaginatedOperationMethod<
@@ -11803,7 +11996,7 @@ export const listPartnersChannelsSites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersChannelsSitesRequest,
   output: ListPartnersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11841,7 +12034,12 @@ export type DeletePartnersChannelsSitesResponse = Empty;
 export const DeletePartnersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeletePartnersChannelsSitesError = DefaultErrors;
+export type DeletePartnersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a site from a channel. */
 export const deletePartnersChannelsSites: API.OperationMethod<
@@ -11852,7 +12050,7 @@ export const deletePartnersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePartnersChannelsSitesRequest,
   output: DeletePartnersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatePartnersChannelsSitesRequest {
@@ -11887,7 +12085,12 @@ export type CreatePartnersChannelsSitesResponse = Site;
 export const CreatePartnersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type CreatePartnersChannelsSitesError = DefaultErrors;
+export type CreatePartnersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a site in a channel. */
 export const createPartnersChannelsSites: API.OperationMethod<
@@ -11898,7 +12101,7 @@ export const createPartnersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePartnersChannelsSitesRequest,
   output: CreatePartnersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCombinedAudiencesRequest {
@@ -11929,7 +12132,7 @@ export type GetCombinedAudiencesResponse = CombinedAudience;
 export const GetCombinedAudiencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CombinedAudience;
 
-export type GetCombinedAudiencesError = DefaultErrors;
+export type GetCombinedAudiencesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a combined audience. */
 export const getCombinedAudiences: API.OperationMethod<
@@ -11940,7 +12143,7 @@ export const getCombinedAudiences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCombinedAudiencesRequest,
   output: GetCombinedAudiencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCombinedAudiencesRequest {
@@ -11977,7 +12180,7 @@ export type ListCombinedAudiencesResponse_Op = ListCombinedAudiencesResponse;
 export const ListCombinedAudiencesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCombinedAudiencesResponse;
 
-export type ListCombinedAudiencesError = DefaultErrors;
+export type ListCombinedAudiencesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists combined audiences. The order is defined by the order_by parameter. */
 export const listCombinedAudiences: API.PaginatedOperationMethod<
@@ -11988,7 +12191,7 @@ export const listCombinedAudiences: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCombinedAudiencesRequest,
   output: ListCombinedAudiencesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12014,7 +12217,12 @@ export type UploadMediaResponse = GoogleBytestreamMedia;
 export const UploadMediaResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleBytestreamMedia;
 
-export type UploadMediaError = DefaultErrors;
+export type UploadMediaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.` **Note**: Upload requests will not be successful without including `upload_type=media` query string. */
 export const uploadMedia: API.OperationMethod<
@@ -12025,7 +12233,7 @@ export const uploadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadMediaRequest {
@@ -12044,7 +12252,7 @@ export type DownloadMediaResponse = GoogleBytestreamMedia;
 export const DownloadMediaResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleBytestreamMedia;
 
-export type DownloadMediaError = DefaultErrors;
+export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
 /** Downloads media. Download is supported on the URI `/download/{resource_name=**}?alt=media.` **Note**: Download requests will not be successful without including `alt=media` query string. */
 export const downloadMedia: API.OperationMethod<
@@ -12055,7 +12263,7 @@ export const downloadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSdfuploadtasksOperationsRequest {
@@ -12075,7 +12283,10 @@ export type GetSdfuploadtasksOperationsResponse = Operation;
 export const GetSdfuploadtasksOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetSdfuploadtasksOperationsError = DefaultErrors;
+export type GetSdfuploadtasksOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of an asynchronous SDF download task operation. Clients should poll this method at intervals of 30 seconds. */
 export const getSdfuploadtasksOperations: API.OperationMethod<
@@ -12086,7 +12297,7 @@ export const getSdfuploadtasksOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSdfuploadtasksOperationsRequest,
   output: GetSdfuploadtasksOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateGuaranteedOrdersRequest {
@@ -12114,7 +12325,12 @@ export type CreateGuaranteedOrdersResponse = GuaranteedOrder;
 export const CreateGuaranteedOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuaranteedOrder;
 
-export type CreateGuaranteedOrdersError = DefaultErrors;
+export type CreateGuaranteedOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new guaranteed order. Returns the newly created guaranteed order if successful. */
 export const createGuaranteedOrders: API.OperationMethod<
@@ -12125,7 +12341,7 @@ export const createGuaranteedOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGuaranteedOrdersRequest,
   output: CreateGuaranteedOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGuaranteedOrdersRequest {
@@ -12153,7 +12369,7 @@ export type GetGuaranteedOrdersResponse = GuaranteedOrder;
 export const GetGuaranteedOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuaranteedOrder;
 
-export type GetGuaranteedOrdersError = DefaultErrors;
+export type GetGuaranteedOrdersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a guaranteed order. */
 export const getGuaranteedOrders: API.OperationMethod<
@@ -12164,7 +12380,7 @@ export const getGuaranteedOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGuaranteedOrdersRequest,
   output: GetGuaranteedOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchGuaranteedOrdersRequest {
@@ -12202,7 +12418,12 @@ export type PatchGuaranteedOrdersResponse = GuaranteedOrder;
 export const PatchGuaranteedOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuaranteedOrder;
 
-export type PatchGuaranteedOrdersError = DefaultErrors;
+export type PatchGuaranteedOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing guaranteed order. Returns the updated guaranteed order if successful. */
 export const patchGuaranteedOrders: API.OperationMethod<
@@ -12213,7 +12434,7 @@ export const patchGuaranteedOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGuaranteedOrdersRequest,
   output: PatchGuaranteedOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGuaranteedOrdersRequest {
@@ -12250,7 +12471,7 @@ export type ListGuaranteedOrdersResponse_Op = ListGuaranteedOrdersResponse;
 export const ListGuaranteedOrdersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListGuaranteedOrdersResponse;
 
-export type ListGuaranteedOrdersError = DefaultErrors;
+export type ListGuaranteedOrdersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists guaranteed orders that are accessible to the current user. The order is defined by the order_by parameter. If a filter by entity_status is not specified, guaranteed orders with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
 export const listGuaranteedOrders: API.PaginatedOperationMethod<
@@ -12261,7 +12482,7 @@ export const listGuaranteedOrders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGuaranteedOrdersRequest,
   output: ListGuaranteedOrdersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12296,7 +12517,11 @@ export const EditGuaranteedOrderReadAccessorsGuaranteedOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ EditGuaranteedOrderReadAccessorsResponse;
 
 export type EditGuaranteedOrderReadAccessorsGuaranteedOrdersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Edits read advertisers of a guaranteed order. */
 export const editGuaranteedOrderReadAccessorsGuaranteedOrders: API.OperationMethod<
@@ -12307,7 +12532,7 @@ export const editGuaranteedOrderReadAccessorsGuaranteedOrders: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EditGuaranteedOrderReadAccessorsGuaranteedOrdersRequest,
   output: EditGuaranteedOrderReadAccessorsGuaranteedOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomListsRequest {
@@ -12330,7 +12555,7 @@ export const GetCustomListsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCustomListsResponse = CustomList;
 export const GetCustomListsResponse = /*@__PURE__*/ /*#__PURE__*/ CustomList;
 
-export type GetCustomListsError = DefaultErrors;
+export type GetCustomListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a custom list. */
 export const getCustomLists: API.OperationMethod<
@@ -12341,7 +12566,7 @@ export const getCustomLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomListsRequest,
   output: GetCustomListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomListsRequest {
@@ -12376,7 +12601,7 @@ export type ListCustomListsResponse_Op = ListCustomListsResponse;
 export const ListCustomListsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomListsResponse;
 
-export type ListCustomListsError = DefaultErrors;
+export type ListCustomListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists custom lists. The order is defined by the order_by parameter. */
 export const listCustomLists: API.PaginatedOperationMethod<
@@ -12387,7 +12612,7 @@ export const listCustomLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomListsRequest,
   output: ListCustomListsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12419,7 +12644,7 @@ export type GetGoogleAudiencesResponse = GoogleAudience;
 export const GetGoogleAudiencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAudience;
 
-export type GetGoogleAudiencesError = DefaultErrors;
+export type GetGoogleAudiencesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a Google audience. */
 export const getGoogleAudiences: API.OperationMethod<
@@ -12430,7 +12655,7 @@ export const getGoogleAudiences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGoogleAudiencesRequest,
   output: GetGoogleAudiencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListGoogleAudiencesRequest {
@@ -12467,7 +12692,7 @@ export type ListGoogleAudiencesResponse_Op = ListGoogleAudiencesResponse;
 export const ListGoogleAudiencesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListGoogleAudiencesResponse;
 
-export type ListGoogleAudiencesError = DefaultErrors;
+export type ListGoogleAudiencesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists Google audiences. The order is defined by the order_by parameter. */
 export const listGoogleAudiences: API.PaginatedOperationMethod<
@@ -12478,7 +12703,7 @@ export const listGoogleAudiences: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGoogleAudiencesRequest,
   output: ListGoogleAudiencesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12510,7 +12735,7 @@ export type GetInventorySourcesResponse = InventorySource;
 export const GetInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventorySource;
 
-export type GetInventorySourcesError = DefaultErrors;
+export type GetInventorySourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an inventory source. */
 export const getInventorySources: API.OperationMethod<
@@ -12521,7 +12746,7 @@ export const getInventorySources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInventorySourcesRequest,
   output: GetInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateInventorySourcesRequest {
@@ -12549,7 +12774,12 @@ export type CreateInventorySourcesResponse = InventorySource;
 export const CreateInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventorySource;
 
-export type CreateInventorySourcesError = DefaultErrors;
+export type CreateInventorySourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new inventory source. Returns the newly created inventory source if successful. */
 export const createInventorySources: API.OperationMethod<
@@ -12560,7 +12790,7 @@ export const createInventorySources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInventorySourcesRequest,
   output: CreateInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInventorySourcesRequest {
@@ -12598,7 +12828,12 @@ export type PatchInventorySourcesResponse = InventorySource;
 export const PatchInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventorySource;
 
-export type PatchInventorySourcesError = DefaultErrors;
+export type PatchInventorySourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing inventory source. Returns the updated inventory source if successful. */
 export const patchInventorySources: API.OperationMethod<
@@ -12609,7 +12844,7 @@ export const patchInventorySources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInventorySourcesRequest,
   output: PatchInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInventorySourcesRequest {
@@ -12646,7 +12881,7 @@ export type ListInventorySourcesResponse_Op = ListInventorySourcesResponse;
 export const ListInventorySourcesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListInventorySourcesResponse;
 
-export type ListInventorySourcesError = DefaultErrors;
+export type ListInventorySourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists inventory sources that are accessible to the current user. The order is defined by the order_by parameter. If a filter by entity_status is not specified, inventory sources with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
 export const listInventorySources: API.PaginatedOperationMethod<
@@ -12657,7 +12892,7 @@ export const listInventorySources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInventorySourcesRequest,
   output: ListInventorySourcesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12692,7 +12927,11 @@ export const EditInventorySourceReadWriteAccessorsInventorySourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventorySourceAccessors;
 
 export type EditInventorySourceReadWriteAccessorsInventorySourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Edits read/write accessors of an inventory source. Returns the updated read_write_accessors for the inventory source. */
 export const editInventorySourceReadWriteAccessorsInventorySources: API.OperationMethod<
@@ -12703,7 +12942,7 @@ export const editInventorySourceReadWriteAccessorsInventorySources: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EditInventorySourceReadWriteAccessorsInventorySourcesRequest,
   output: EditInventorySourceReadWriteAccessorsInventorySourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFloodlightGroupsRequest {
@@ -12726,7 +12965,7 @@ export type GetFloodlightGroupsResponse = FloodlightGroup;
 export const GetFloodlightGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightGroup;
 
-export type GetFloodlightGroupsError = DefaultErrors;
+export type GetFloodlightGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a Floodlight group. */
 export const getFloodlightGroups: API.OperationMethod<
@@ -12737,7 +12976,7 @@ export const getFloodlightGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFloodlightGroupsRequest,
   output: GetFloodlightGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFloodlightGroupsRequest {
@@ -12770,7 +13009,12 @@ export type PatchFloodlightGroupsResponse = FloodlightGroup;
 export const PatchFloodlightGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightGroup;
 
-export type PatchFloodlightGroupsError = DefaultErrors;
+export type PatchFloodlightGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Floodlight group. Returns the updated Floodlight group if successful. */
 export const patchFloodlightGroups: API.OperationMethod<
@@ -12781,7 +13025,7 @@ export const patchFloodlightGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFloodlightGroupsRequest,
   output: PatchFloodlightGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFloodlightGroupsFloodlightActivitiesRequest {
@@ -12813,7 +13057,10 @@ export type GetFloodlightGroupsFloodlightActivitiesResponse =
 export const GetFloodlightGroupsFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivity;
 
-export type GetFloodlightGroupsFloodlightActivitiesError = DefaultErrors;
+export type GetFloodlightGroupsFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Floodlight activity. */
 export const getFloodlightGroupsFloodlightActivities: API.OperationMethod<
@@ -12824,7 +13071,7 @@ export const getFloodlightGroupsFloodlightActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFloodlightGroupsFloodlightActivitiesRequest,
   output: GetFloodlightGroupsFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFloodlightGroupsFloodlightActivitiesRequest {
@@ -12860,7 +13107,10 @@ export type ListFloodlightGroupsFloodlightActivitiesResponse =
 export const ListFloodlightGroupsFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFloodlightActivitiesResponse;
 
-export type ListFloodlightGroupsFloodlightActivitiesError = DefaultErrors;
+export type ListFloodlightGroupsFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Floodlight activities in a Floodlight group. */
 export const listFloodlightGroupsFloodlightActivities: API.PaginatedOperationMethod<
@@ -12871,7 +13121,7 @@ export const listFloodlightGroupsFloodlightActivities: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFloodlightGroupsFloodlightActivitiesRequest,
   output: ListFloodlightGroupsFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12898,7 +13148,7 @@ export type AuditAdvertisersResponse = AuditAdvertiserResponse;
 export const AuditAdvertisersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuditAdvertiserResponse;
 
-export type AuditAdvertisersError = DefaultErrors;
+export type AuditAdvertisersError = DefaultErrors | NotFound | Forbidden;
 
 /** Audits an advertiser. Returns the counts of used entities per resource type under the advertiser provided. Used entities count towards their respective resource limit. See https://support.google.com/displayvideo/answer/6071450. */
 export const auditAdvertisers: API.OperationMethod<
@@ -12909,7 +13159,7 @@ export const auditAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AuditAdvertisersRequest,
   output: AuditAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAdvertisersRequest {
@@ -12927,7 +13177,7 @@ export const GetAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAdvertisersResponse = Advertiser;
 export const GetAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
 
-export type GetAdvertisersError = DefaultErrors;
+export type GetAdvertisersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an advertiser. */
 export const getAdvertisers: API.OperationMethod<
@@ -12938,7 +13188,7 @@ export const getAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersRequest,
   output: GetAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersRequest {
@@ -12957,7 +13207,12 @@ export const CreateAdvertisersRequest =
 export type CreateAdvertisersResponse = Advertiser;
 export const CreateAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
 
-export type CreateAdvertisersError = DefaultErrors;
+export type CreateAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new advertiser. Returns the newly created advertiser if successful. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors. */
 export const createAdvertisers: API.OperationMethod<
@@ -12968,7 +13223,7 @@ export const createAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersRequest,
   output: CreateAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersRequest {
@@ -12997,7 +13252,12 @@ export const PatchAdvertisersRequest =
 export type PatchAdvertisersResponse = Advertiser;
 export const PatchAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
 
-export type PatchAdvertisersError = DefaultErrors;
+export type PatchAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing advertiser. Returns the updated advertiser if successful. */
 export const patchAdvertisers: API.OperationMethod<
@@ -13008,7 +13268,7 @@ export const patchAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersRequest,
   output: PatchAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAssignedTargetingOptionsAdvertisersRequest {
@@ -13044,7 +13304,10 @@ export type ListAssignedTargetingOptionsAdvertisersResponse =
 export const ListAssignedTargetingOptionsAdvertisersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkListAdvertiserAssignedTargetingOptionsResponse;
 
-export type ListAssignedTargetingOptionsAdvertisersError = DefaultErrors;
+export type ListAssignedTargetingOptionsAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists assigned targeting options of an advertiser across targeting types. */
 export const listAssignedTargetingOptionsAdvertisers: API.PaginatedOperationMethod<
@@ -13055,7 +13318,7 @@ export const listAssignedTargetingOptionsAdvertisers: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssignedTargetingOptionsAdvertisersRequest,
   output: ListAssignedTargetingOptionsAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13089,7 +13352,12 @@ export type EditAssignedTargetingOptionsAdvertisersResponse =
 export const EditAssignedTargetingOptionsAdvertisersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditAdvertiserAssignedTargetingOptionsResponse;
 
-export type EditAssignedTargetingOptionsAdvertisersError = DefaultErrors;
+export type EditAssignedTargetingOptionsAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Edits targeting options under a single advertiser. The operation will delete the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests . */
 export const editAssignedTargetingOptionsAdvertisers: API.OperationMethod<
@@ -13100,7 +13368,7 @@ export const editAssignedTargetingOptionsAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EditAssignedTargetingOptionsAdvertisersRequest,
   output: EditAssignedTargetingOptionsAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersRequest {
@@ -13133,7 +13401,7 @@ export type ListAdvertisersResponse_Op = ListAdvertisersResponse;
 export const ListAdvertisersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAdvertisersResponse;
 
-export type ListAdvertisersError = DefaultErrors;
+export type ListAdvertisersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists advertisers that are accessible to the current user. The order is defined by the order_by parameter. A single partner_id is required. Cross-partner listing is not supported. */
 export const listAdvertisers: API.PaginatedOperationMethod<
@@ -13144,7 +13412,7 @@ export const listAdvertisers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersRequest,
   output: ListAdvertisersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13167,7 +13435,12 @@ export const DeleteAdvertisersRequest =
 export type DeleteAdvertisersResponse = Empty;
 export const DeleteAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersError = DefaultErrors;
+export type DeleteAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an advertiser. Deleting an advertiser will delete all of its child resources, for example, campaigns, insertion orders and line items. A deleted advertiser cannot be recovered. */
 export const deleteAdvertisers: API.OperationMethod<
@@ -13178,7 +13451,7 @@ export const deleteAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersRequest,
   output: DeleteAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadAdvertisersAssetsRequest {
@@ -13205,7 +13478,12 @@ export type UploadAdvertisersAssetsResponse = CreateAssetResponse;
 export const UploadAdvertisersAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateAssetResponse;
 
-export type UploadAdvertisersAssetsError = DefaultErrors;
+export type UploadAdvertisersAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an asset. Returns the ID of the newly uploaded asset if successful. The asset file size should be no more than 10 MB for images, 200 MB for ZIP files, and 1 GB for videos. Must be used within the [multipart media upload process](/display-video/api/guides/how-tos/upload#multipart). Examples using provided client libraries can be found in our [Creating Creatives guide](/display-video/api/guides/creating-creatives/overview#upload_an_asset). */
 export const uploadAdvertisersAssets: API.OperationMethod<
@@ -13216,7 +13494,7 @@ export const uploadAdvertisersAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadAdvertisersAssetsRequest,
   output: UploadAdvertisersAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersLocationListsRequest {
@@ -13251,7 +13529,10 @@ export type ListAdvertisersLocationListsResponse = ListLocationListsResponse;
 export const ListAdvertisersLocationListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationListsResponse;
 
-export type ListAdvertisersLocationListsError = DefaultErrors;
+export type ListAdvertisersLocationListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists location lists based on a given advertiser id. */
 export const listAdvertisersLocationLists: API.PaginatedOperationMethod<
@@ -13262,7 +13543,7 @@ export const listAdvertisersLocationLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersLocationListsRequest,
   output: ListAdvertisersLocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13292,7 +13573,10 @@ export type GetAdvertisersLocationListsResponse = LocationList;
 export const GetAdvertisersLocationListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LocationList;
 
-export type GetAdvertisersLocationListsError = DefaultErrors;
+export type GetAdvertisersLocationListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a location list. */
 export const getAdvertisersLocationLists: API.OperationMethod<
@@ -13303,7 +13587,7 @@ export const getAdvertisersLocationLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersLocationListsRequest,
   output: GetAdvertisersLocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersLocationListsRequest {
@@ -13330,7 +13614,12 @@ export type CreateAdvertisersLocationListsResponse = LocationList;
 export const CreateAdvertisersLocationListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LocationList;
 
-export type CreateAdvertisersLocationListsError = DefaultErrors;
+export type CreateAdvertisersLocationListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new location list. Returns the newly created location list if successful. */
 export const createAdvertisersLocationLists: API.OperationMethod<
@@ -13341,7 +13630,7 @@ export const createAdvertisersLocationLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersLocationListsRequest,
   output: CreateAdvertisersLocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersLocationListsRequest {
@@ -13374,7 +13663,12 @@ export type PatchAdvertisersLocationListsResponse = LocationList;
 export const PatchAdvertisersLocationListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LocationList;
 
-export type PatchAdvertisersLocationListsError = DefaultErrors;
+export type PatchAdvertisersLocationListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a location list. Returns the updated location list if successful. */
 export const patchAdvertisersLocationLists: API.OperationMethod<
@@ -13385,7 +13679,7 @@ export const patchAdvertisersLocationLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersLocationListsRequest,
   output: PatchAdvertisersLocationListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersLocationListsAssignedLocationsRequest {
@@ -13424,7 +13718,10 @@ export type ListAdvertisersLocationListsAssignedLocationsResponse =
 export const ListAdvertisersLocationListsAssignedLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAssignedLocationsResponse;
 
-export type ListAdvertisersLocationListsAssignedLocationsError = DefaultErrors;
+export type ListAdvertisersLocationListsAssignedLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists locations assigned to a location list. */
 export const listAdvertisersLocationListsAssignedLocations: API.PaginatedOperationMethod<
@@ -13435,7 +13732,7 @@ export const listAdvertisersLocationListsAssignedLocations: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersLocationListsAssignedLocationsRequest,
   output: ListAdvertisersLocationListsAssignedLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13469,7 +13766,11 @@ export const DeleteAdvertisersLocationListsAssignedLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersLocationListsAssignedLocationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the assignment between a location and a location list. */
 export const deleteAdvertisersLocationListsAssignedLocations: API.OperationMethod<
@@ -13480,7 +13781,7 @@ export const deleteAdvertisersLocationListsAssignedLocations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersLocationListsAssignedLocationsRequest,
   output: DeleteAdvertisersLocationListsAssignedLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkEditAdvertisersLocationListsAssignedLocationsRequest {
@@ -13512,7 +13813,11 @@ export const BulkEditAdvertisersLocationListsAssignedLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditAssignedLocationsResponse;
 
 export type BulkEditAdvertisersLocationListsAssignedLocationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits multiple assignments between locations and a single location list. The operation will delete the assigned locations provided in deletedAssignedLocations and then create the assigned locations provided in createdAssignedLocations. */
 export const bulkEditAdvertisersLocationListsAssignedLocations: API.OperationMethod<
@@ -13523,7 +13828,7 @@ export const bulkEditAdvertisersLocationListsAssignedLocations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditAdvertisersLocationListsAssignedLocationsRequest,
   output: BulkEditAdvertisersLocationListsAssignedLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAdvertisersLocationListsAssignedLocationsRequest {
@@ -13555,7 +13860,11 @@ export const CreateAdvertisersLocationListsAssignedLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AssignedLocation;
 
 export type CreateAdvertisersLocationListsAssignedLocationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an assignment between a location and a location list. */
 export const createAdvertisersLocationListsAssignedLocations: API.OperationMethod<
@@ -13566,7 +13875,7 @@ export const createAdvertisersLocationListsAssignedLocations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersLocationListsAssignedLocationsRequest,
   output: CreateAdvertisersLocationListsAssignedLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersInsertionOrdersRequest {
@@ -13592,7 +13901,10 @@ export type GetAdvertisersInsertionOrdersResponse = InsertionOrder;
 export const GetAdvertisersInsertionOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InsertionOrder;
 
-export type GetAdvertisersInsertionOrdersError = DefaultErrors;
+export type GetAdvertisersInsertionOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist. */
 export const getAdvertisersInsertionOrders: API.OperationMethod<
@@ -13603,7 +13915,7 @@ export const getAdvertisersInsertionOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersInsertionOrdersRequest,
   output: GetAdvertisersInsertionOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersInsertionOrdersRequest {
@@ -13630,7 +13942,12 @@ export type CreateAdvertisersInsertionOrdersResponse = InsertionOrder;
 export const CreateAdvertisersInsertionOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InsertionOrder;
 
-export type CreateAdvertisersInsertionOrdersError = DefaultErrors;
+export type CreateAdvertisersInsertionOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new insertion order. Returns the newly created insertion order if successful. */
 export const createAdvertisersInsertionOrders: API.OperationMethod<
@@ -13641,7 +13958,7 @@ export const createAdvertisersInsertionOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersInsertionOrdersRequest,
   output: CreateAdvertisersInsertionOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersInsertionOrdersRequest {
@@ -13674,7 +13991,12 @@ export type PatchAdvertisersInsertionOrdersResponse = InsertionOrder;
 export const PatchAdvertisersInsertionOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InsertionOrder;
 
-export type PatchAdvertisersInsertionOrdersError = DefaultErrors;
+export type PatchAdvertisersInsertionOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing insertion order. Returns the updated insertion order if successful. */
 export const patchAdvertisersInsertionOrders: API.OperationMethod<
@@ -13685,7 +14007,7 @@ export const patchAdvertisersInsertionOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersInsertionOrdersRequest,
   output: PatchAdvertisersInsertionOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersInsertionOrdersRequest {
@@ -13721,7 +14043,10 @@ export type ListAdvertisersInsertionOrdersResponse =
 export const ListAdvertisersInsertionOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInsertionOrdersResponse;
 
-export type ListAdvertisersInsertionOrdersError = DefaultErrors;
+export type ListAdvertisersInsertionOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists insertion orders in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, insertion orders with `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
 export const listAdvertisersInsertionOrders: API.PaginatedOperationMethod<
@@ -13732,7 +14057,7 @@ export const listAdvertisersInsertionOrders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersInsertionOrdersRequest,
   output: ListAdvertisersInsertionOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13762,7 +14087,12 @@ export type DeleteAdvertisersInsertionOrdersResponse = Empty;
 export const DeleteAdvertisersInsertionOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersInsertionOrdersError = DefaultErrors;
+export type DeleteAdvertisersInsertionOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist. The insertion order should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. */
 export const deleteAdvertisersInsertionOrders: API.OperationMethod<
@@ -13773,7 +14103,7 @@ export const deleteAdvertisersInsertionOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersInsertionOrdersRequest,
   output: DeleteAdvertisersInsertionOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest {
@@ -13815,7 +14145,9 @@ export const BulkListAssignedTargetingOptionsAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkListAssignedTargetingOptionsResponse;
 
 export type BulkListAssignedTargetingOptionsAdvertisersLineItemsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists assigned targeting options for multiple line items across targeting types. */
 export const bulkListAssignedTargetingOptionsAdvertisersLineItems: API.PaginatedOperationMethod<
@@ -13826,7 +14158,7 @@ export const bulkListAssignedTargetingOptionsAdvertisersLineItems: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest,
   output: BulkListAssignedTargetingOptionsAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13857,7 +14189,12 @@ export type CreateAdvertisersLineItemsResponse = LineItem;
 export const CreateAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LineItem;
 
-export type CreateAdvertisersLineItemsError = DefaultErrors;
+export type CreateAdvertisersLineItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new line item. Returns the newly created line item if successful. YouTube & Partners line items cannot be created or updated using the API. */
 export const createAdvertisersLineItems: API.OperationMethod<
@@ -13868,7 +14205,7 @@ export const createAdvertisersLineItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersLineItemsRequest,
   output: CreateAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DuplicateAdvertisersLineItemsRequest {
@@ -13898,7 +14235,12 @@ export type DuplicateAdvertisersLineItemsResponse = DuplicateLineItemResponse;
 export const DuplicateAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DuplicateLineItemResponse;
 
-export type DuplicateAdvertisersLineItemsError = DefaultErrors;
+export type DuplicateAdvertisersLineItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Duplicates a line item. Returns the ID of the created line item if successful. YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors. */
 export const duplicateAdvertisersLineItems: API.OperationMethod<
@@ -13909,7 +14251,7 @@ export const duplicateAdvertisersLineItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DuplicateAdvertisersLineItemsRequest,
   output: DuplicateAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest {
@@ -13940,7 +14282,11 @@ export const BulkEditAssignedTargetingOptionsAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditAssignedTargetingOptionsResponse;
 
 export type BulkEditAssignedTargetingOptionsAdvertisersLineItemsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkUpdate * lineItems.patch * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. */
 export const bulkEditAssignedTargetingOptionsAdvertisersLineItems: API.OperationMethod<
@@ -13951,7 +14297,7 @@ export const bulkEditAssignedTargetingOptionsAdvertisersLineItems: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditAssignedTargetingOptionsAdvertisersLineItemsRequest,
   output: BulkEditAssignedTargetingOptionsAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAdvertisersLineItemsRequest {
@@ -13977,7 +14323,12 @@ export type DeleteAdvertisersLineItemsResponse = Empty;
 export const DeleteAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersLineItemsError = DefaultErrors;
+export type DeleteAdvertisersLineItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. YouTube & Partners line items cannot be created or updated using the API. */
 export const deleteAdvertisersLineItems: API.OperationMethod<
@@ -13988,7 +14339,7 @@ export const deleteAdvertisersLineItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersLineItemsRequest,
   output: DeleteAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersLineItemsRequest {
@@ -14014,7 +14365,7 @@ export type GetAdvertisersLineItemsResponse = LineItem;
 export const GetAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LineItem;
 
-export type GetAdvertisersLineItemsError = DefaultErrors;
+export type GetAdvertisersLineItemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a line item. */
 export const getAdvertisersLineItems: API.OperationMethod<
@@ -14025,7 +14376,7 @@ export const getAdvertisersLineItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersLineItemsRequest,
   output: GetAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAdvertisersLineItemsRequest {
@@ -14058,7 +14409,12 @@ export type PatchAdvertisersLineItemsResponse = LineItem;
 export const PatchAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LineItem;
 
-export type PatchAdvertisersLineItemsError = DefaultErrors;
+export type PatchAdvertisersLineItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors. */
 export const patchAdvertisersLineItems: API.OperationMethod<
@@ -14069,7 +14425,7 @@ export const patchAdvertisersLineItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersLineItemsRequest,
   output: PatchAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkUpdateAdvertisersLineItemsRequest {
@@ -14097,7 +14453,12 @@ export type BulkUpdateAdvertisersLineItemsResponse =
 export const BulkUpdateAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkUpdateLineItemsResponse;
 
-export type BulkUpdateAdvertisersLineItemsError = DefaultErrors;
+export type BulkUpdateAdvertisersLineItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. */
 export const bulkUpdateAdvertisersLineItems: API.OperationMethod<
@@ -14108,7 +14469,7 @@ export const bulkUpdateAdvertisersLineItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkUpdateAdvertisersLineItemsRequest,
   output: BulkUpdateAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersLineItemsRequest {
@@ -14140,7 +14501,10 @@ export type ListAdvertisersLineItemsResponse = ListLineItemsResponse;
 export const ListAdvertisersLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLineItemsResponse;
 
-export type ListAdvertisersLineItemsError = DefaultErrors;
+export type ListAdvertisersLineItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists line items in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
 export const listAdvertisersLineItems: API.PaginatedOperationMethod<
@@ -14151,7 +14515,7 @@ export const listAdvertisersLineItems: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersLineItemsRequest,
   output: ListAdvertisersLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14242,7 +14606,9 @@ export const GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRespon
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option assigned to a line item. */
 export const getAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -14253,7 +14619,7 @@ export const getAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
   output: GetAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
@@ -14339,7 +14705,11 @@ export const CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRes
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assigns a targeting option to a line item. Returns the assigned targeting option if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * DeleteLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API. */
 export const createAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -14352,7 +14722,7 @@ export const createAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: A
     CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
   output:
     CreateAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest {
@@ -14446,7 +14816,9 @@ export const ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRespo
   /*@__PURE__*/ /*#__PURE__*/ ListLineItemAssignedTargetingOptionsResponse;
 
 export type ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to a line item. */
 export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -14458,7 +14830,7 @@ export const listAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API
   input: ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
   output:
     ListAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14549,7 +14921,11 @@ export const DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API. */
 export const deleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -14562,7 +14938,7 @@ export const deleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptions: A
     DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsRequest,
   output:
     DeleteAdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest {
@@ -14612,7 +14988,9 @@ export const ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRe
   /*@__PURE__*/ /*#__PURE__*/ ListYoutubeAssetAssociationsResponse;
 
 export type ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the YouTube asset associations linked to the given resource. */
 export const listAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: API.PaginatedOperationMethod<
@@ -14625,7 +15003,7 @@ export const listAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: 
     ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest,
   output:
     ListAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14675,7 +15053,11 @@ export const DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing association between the identified resource and a YouTube asset. *Warning:* This method is only available to an informed subset of users. */
 export const deleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<
@@ -14688,7 +15070,7 @@ export const deleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
     DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest,
   output:
     DeleteAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest {
@@ -14733,7 +15115,11 @@ export const CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
   /*@__PURE__*/ /*#__PURE__*/ YoutubeAssetAssociation;
 
 export type CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new association between the identified resource and a YouTube asset. Returns the newly-created association. *Warning:* This method is only available to an informed subset of users. */
 export const createAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<
@@ -14746,7 +15132,7 @@ export const createAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociations
     CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsRequest,
   output:
     CreateAdvertisersLineItemsYoutubeAssetTypesYoutubeAssetAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersCampaignsRequest {
@@ -14778,7 +15164,10 @@ export type ListAdvertisersCampaignsResponse = ListCampaignsResponse;
 export const ListAdvertisersCampaignsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCampaignsResponse;
 
-export type ListAdvertisersCampaignsError = DefaultErrors;
+export type ListAdvertisersCampaignsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists campaigns in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, campaigns with `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
 export const listAdvertisersCampaigns: API.PaginatedOperationMethod<
@@ -14789,7 +15178,7 @@ export const listAdvertisersCampaigns: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersCampaignsRequest,
   output: ListAdvertisersCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14819,7 +15208,12 @@ export type DeleteAdvertisersCampaignsResponse = Empty;
 export const DeleteAdvertisersCampaignsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersCampaignsError = DefaultErrors;
+export type DeleteAdvertisersCampaignsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors. */
 export const deleteAdvertisersCampaigns: API.OperationMethod<
@@ -14830,7 +15224,7 @@ export const deleteAdvertisersCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersCampaignsRequest,
   output: DeleteAdvertisersCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersCampaignsRequest {
@@ -14856,7 +15250,7 @@ export type GetAdvertisersCampaignsResponse = Campaign;
 export const GetAdvertisersCampaignsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Campaign;
 
-export type GetAdvertisersCampaignsError = DefaultErrors;
+export type GetAdvertisersCampaignsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a campaign. */
 export const getAdvertisersCampaigns: API.OperationMethod<
@@ -14867,7 +15261,7 @@ export const getAdvertisersCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersCampaignsRequest,
   output: GetAdvertisersCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersCampaignsRequest {
@@ -14894,7 +15288,12 @@ export type CreateAdvertisersCampaignsResponse = Campaign;
 export const CreateAdvertisersCampaignsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Campaign;
 
-export type CreateAdvertisersCampaignsError = DefaultErrors;
+export type CreateAdvertisersCampaignsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new campaign. Returns the newly created campaign if successful. */
 export const createAdvertisersCampaigns: API.OperationMethod<
@@ -14905,7 +15304,7 @@ export const createAdvertisersCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersCampaignsRequest,
   output: CreateAdvertisersCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersCampaignsRequest {
@@ -14938,7 +15337,12 @@ export type PatchAdvertisersCampaignsResponse = Campaign;
 export const PatchAdvertisersCampaignsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Campaign;
 
-export type PatchAdvertisersCampaignsError = DefaultErrors;
+export type PatchAdvertisersCampaignsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing campaign. Returns the updated campaign if successful. */
 export const patchAdvertisersCampaigns: API.OperationMethod<
@@ -14949,7 +15353,7 @@ export const patchAdvertisersCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersCampaignsRequest,
   output: PatchAdvertisersCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersAdGroupAdsRequest {
@@ -14975,7 +15379,10 @@ export type GetAdvertisersAdGroupAdsResponse = AdGroupAd;
 export const GetAdvertisersAdGroupAdsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdGroupAd;
 
-export type GetAdvertisersAdGroupAdsError = DefaultErrors;
+export type GetAdvertisersAdGroupAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an ad group ad. */
 export const getAdvertisersAdGroupAds: API.OperationMethod<
@@ -14986,7 +15393,7 @@ export const getAdvertisersAdGroupAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersAdGroupAdsRequest,
   output: GetAdvertisersAdGroupAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersAdGroupAdsRequest {
@@ -15013,7 +15420,12 @@ export type CreateAdvertisersAdGroupAdsResponse = AdGroupAd;
 export const CreateAdvertisersAdGroupAdsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdGroupAd;
 
-export type CreateAdvertisersAdGroupAdsError = DefaultErrors;
+export type CreateAdvertisersAdGroupAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const createAdvertisersAdGroupAds: API.OperationMethod<
@@ -15024,7 +15436,7 @@ export const createAdvertisersAdGroupAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersAdGroupAdsRequest,
   output: CreateAdvertisersAdGroupAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersAdGroupAdsRequest {
@@ -15057,7 +15469,12 @@ export type PatchAdvertisersAdGroupAdsResponse = AdGroupAd;
 export const PatchAdvertisersAdGroupAdsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdGroupAd;
 
-export type PatchAdvertisersAdGroupAdsError = DefaultErrors;
+export type PatchAdvertisersAdGroupAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const patchAdvertisersAdGroupAds: API.OperationMethod<
@@ -15068,7 +15485,7 @@ export const patchAdvertisersAdGroupAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersAdGroupAdsRequest,
   output: PatchAdvertisersAdGroupAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersAdGroupAdsRequest {
@@ -15100,7 +15517,10 @@ export type ListAdvertisersAdGroupAdsResponse = ListAdGroupAdsResponse;
 export const ListAdvertisersAdGroupAdsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdGroupAdsResponse;
 
-export type ListAdvertisersAdGroupAdsError = DefaultErrors;
+export type ListAdvertisersAdGroupAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists ad group ads. */
 export const listAdvertisersAdGroupAds: API.PaginatedOperationMethod<
@@ -15111,7 +15531,7 @@ export const listAdvertisersAdGroupAds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersAdGroupAdsRequest,
   output: ListAdvertisersAdGroupAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15141,7 +15561,12 @@ export type DeleteAdvertisersAdGroupAdsResponse = Empty;
 export const DeleteAdvertisersAdGroupAdsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersAdGroupAdsError = DefaultErrors;
+export type DeleteAdvertisersAdGroupAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const deleteAdvertisersAdGroupAds: API.OperationMethod<
@@ -15152,7 +15577,7 @@ export const deleteAdvertisersAdGroupAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersAdGroupAdsRequest,
   output: DeleteAdvertisersAdGroupAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadAdvertisersAdAssetsRequest {
@@ -15179,7 +15604,12 @@ export type UploadAdvertisersAdAssetsResponse = UploadAdAssetResponse;
 export const UploadAdvertisersAdAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UploadAdAssetResponse;
 
-export type UploadAdvertisersAdAssetsError = DefaultErrors;
+export type UploadAdvertisersAdAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads and creates an ad asset. Returns the ID of the newly-created ad asset if successful. Only supports the uploading of assets with the AdAssetType `AD_ASSET_TYPE_IMAGE`. */
 export const uploadAdvertisersAdAssets: API.OperationMethod<
@@ -15190,7 +15620,7 @@ export const uploadAdvertisersAdAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadAdvertisersAdAssetsRequest,
   output: UploadAdvertisersAdAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersAdAssetsRequest {
@@ -15222,7 +15652,7 @@ export type ListAdvertisersAdAssetsResponse = ListAdAssetsResponse;
 export const ListAdvertisersAdAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdAssetsResponse;
 
-export type ListAdvertisersAdAssetsError = DefaultErrors;
+export type ListAdvertisersAdAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists ad assets under an advertiser ID. Only supports the retrieval of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
 export const listAdvertisersAdAssets: API.PaginatedOperationMethod<
@@ -15233,7 +15663,7 @@ export const listAdvertisersAdAssets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersAdAssetsRequest,
   output: ListAdvertisersAdAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15264,7 +15694,12 @@ export type BulkCreateAdvertisersAdAssetsResponse = BulkCreateAdAssetsResponse;
 export const BulkCreateAdvertisersAdAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkCreateAdAssetsResponse;
 
-export type BulkCreateAdvertisersAdAssetsError = DefaultErrors;
+export type BulkCreateAdvertisersAdAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates multiple ad assets in a single request. Returns the newly-created ad assets if successful. Only supports the creation of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
 export const bulkCreateAdvertisersAdAssets: API.OperationMethod<
@@ -15275,7 +15710,7 @@ export const bulkCreateAdvertisersAdAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkCreateAdvertisersAdAssetsRequest,
   output: BulkCreateAdvertisersAdAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersAdAssetsRequest {
@@ -15301,7 +15736,7 @@ export type GetAdvertisersAdAssetsResponse = AdAsset;
 export const GetAdvertisersAdAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdAsset;
 
-export type GetAdvertisersAdAssetsError = DefaultErrors;
+export type GetAdvertisersAdAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an ad asset. Only supports the retrieval of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
 export const getAdvertisersAdAssets: API.OperationMethod<
@@ -15312,7 +15747,7 @@ export const getAdvertisersAdAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersAdAssetsRequest,
   output: GetAdvertisersAdAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersAdAssetsRequest {
@@ -15339,7 +15774,12 @@ export type CreateAdvertisersAdAssetsResponse = AdAsset;
 export const CreateAdvertisersAdAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdAsset;
 
-export type CreateAdvertisersAdAssetsError = DefaultErrors;
+export type CreateAdvertisersAdAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an ad asset. Returns the newly-created ad asset if successful. Only supports the creation of assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
 export const createAdvertisersAdAssets: API.OperationMethod<
@@ -15350,7 +15790,7 @@ export const createAdvertisersAdAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersAdAssetsRequest,
   output: CreateAdvertisersAdAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersCreativesRequest {
@@ -15382,7 +15822,10 @@ export type ListAdvertisersCreativesResponse = ListCreativesResponse;
 export const ListAdvertisersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativesResponse;
 
-export type ListAdvertisersCreativesError = DefaultErrors;
+export type ListAdvertisersCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists creatives in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the results. */
 export const listAdvertisersCreatives: API.PaginatedOperationMethod<
@@ -15393,7 +15836,7 @@ export const listAdvertisersCreatives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersCreativesRequest,
   output: ListAdvertisersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15423,7 +15866,12 @@ export type DeleteAdvertisersCreativesResponse = Empty;
 export const DeleteAdvertisersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersCreativesError = DefaultErrors;
+export type DeleteAdvertisersCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request. */
 export const deleteAdvertisersCreatives: API.OperationMethod<
@@ -15434,7 +15882,7 @@ export const deleteAdvertisersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersCreativesRequest,
   output: DeleteAdvertisersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersCreativesRequest {
@@ -15460,7 +15908,7 @@ export type GetAdvertisersCreativesResponse = Creative;
 export const GetAdvertisersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type GetAdvertisersCreativesError = DefaultErrors;
+export type GetAdvertisersCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a creative. */
 export const getAdvertisersCreatives: API.OperationMethod<
@@ -15471,7 +15919,7 @@ export const getAdvertisersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersCreativesRequest,
   output: GetAdvertisersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersCreativesRequest {
@@ -15498,7 +15946,12 @@ export type CreateAdvertisersCreativesResponse = Creative;
 export const CreateAdvertisersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type CreateAdvertisersCreativesError = DefaultErrors;
+export type CreateAdvertisersCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new creative. Returns the newly created creative if successful. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request. */
 export const createAdvertisersCreatives: API.OperationMethod<
@@ -15509,7 +15962,7 @@ export const createAdvertisersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersCreativesRequest,
   output: CreateAdvertisersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersCreativesRequest {
@@ -15542,7 +15995,12 @@ export type PatchAdvertisersCreativesResponse = Creative;
 export const PatchAdvertisersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type PatchAdvertisersCreativesError = DefaultErrors;
+export type PatchAdvertisersCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative. Returns the updated creative if successful. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request. */
 export const patchAdvertisersCreatives: API.OperationMethod<
@@ -15553,7 +16011,7 @@ export const patchAdvertisersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersCreativesRequest,
   output: PatchAdvertisersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersChannelsRequest {
@@ -15582,7 +16040,7 @@ export type GetAdvertisersChannelsResponse = Channel;
 export const GetAdvertisersChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type GetAdvertisersChannelsError = DefaultErrors;
+export type GetAdvertisersChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a channel for a partner or advertiser. */
 export const getAdvertisersChannels: API.OperationMethod<
@@ -15593,7 +16051,7 @@ export const getAdvertisersChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersChannelsRequest,
   output: GetAdvertisersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersChannelsRequest {
@@ -15623,7 +16081,12 @@ export type CreateAdvertisersChannelsResponse = Channel;
 export const CreateAdvertisersChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type CreateAdvertisersChannelsError = DefaultErrors;
+export type CreateAdvertisersChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new channel. Returns the newly created channel if successful. */
 export const createAdvertisersChannels: API.OperationMethod<
@@ -15634,7 +16097,7 @@ export const createAdvertisersChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersChannelsRequest,
   output: CreateAdvertisersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersChannelsRequest {
@@ -15670,7 +16133,12 @@ export type PatchAdvertisersChannelsResponse = Channel;
 export const PatchAdvertisersChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type PatchAdvertisersChannelsError = DefaultErrors;
+export type PatchAdvertisersChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a channel. Returns the updated channel if successful. */
 export const patchAdvertisersChannels: API.OperationMethod<
@@ -15681,7 +16149,7 @@ export const patchAdvertisersChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersChannelsRequest,
   output: PatchAdvertisersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersChannelsRequest {
@@ -15716,7 +16184,7 @@ export type ListAdvertisersChannelsResponse = ListChannelsResponse;
 export const ListAdvertisersChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChannelsResponse;
 
-export type ListAdvertisersChannelsError = DefaultErrors;
+export type ListAdvertisersChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists channels for a partner or advertiser. */
 export const listAdvertisersChannels: API.PaginatedOperationMethod<
@@ -15727,7 +16195,7 @@ export const listAdvertisersChannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersChannelsRequest,
   output: ListAdvertisersChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15772,7 +16240,10 @@ export type ListAdvertisersChannelsSitesResponse = ListSitesResponse;
 export const ListAdvertisersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
 
-export type ListAdvertisersChannelsSitesError = DefaultErrors;
+export type ListAdvertisersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists sites in a channel. */
 export const listAdvertisersChannelsSites: API.PaginatedOperationMethod<
@@ -15783,7 +16254,7 @@ export const listAdvertisersChannelsSites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersChannelsSitesRequest,
   output: ListAdvertisersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15819,7 +16290,12 @@ export type DeleteAdvertisersChannelsSitesResponse = Empty;
 export const DeleteAdvertisersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersChannelsSitesError = DefaultErrors;
+export type DeleteAdvertisersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a site from a channel. */
 export const deleteAdvertisersChannelsSites: API.OperationMethod<
@@ -15830,7 +16306,7 @@ export const deleteAdvertisersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersChannelsSitesRequest,
   output: DeleteAdvertisersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkEditAdvertisersChannelsSitesRequest {
@@ -15860,7 +16336,12 @@ export type BulkEditAdvertisersChannelsSitesResponse = BulkEditSitesResponse;
 export const BulkEditAdvertisersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditSitesResponse;
 
-export type BulkEditAdvertisersChannelsSitesError = DefaultErrors;
+export type BulkEditAdvertisersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits sites under a single channel. The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create the sites provided in BulkEditSitesRequest.created_sites. */
 export const bulkEditAdvertisersChannelsSites: API.OperationMethod<
@@ -15871,7 +16352,7 @@ export const bulkEditAdvertisersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditAdvertisersChannelsSitesRequest,
   output: BulkEditAdvertisersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplaceAdvertisersChannelsSitesRequest {
@@ -15901,7 +16382,12 @@ export type ReplaceAdvertisersChannelsSitesResponse = ReplaceSitesResponse;
 export const ReplaceAdvertisersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReplaceSitesResponse;
 
-export type ReplaceAdvertisersChannelsSitesError = DefaultErrors;
+export type ReplaceAdvertisersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors. */
 export const replaceAdvertisersChannelsSites: API.OperationMethod<
@@ -15912,7 +16398,7 @@ export const replaceAdvertisersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceAdvertisersChannelsSitesRequest,
   output: ReplaceAdvertisersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAdvertisersChannelsSitesRequest {
@@ -15945,7 +16431,12 @@ export type CreateAdvertisersChannelsSitesResponse = Site;
 export const CreateAdvertisersChannelsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type CreateAdvertisersChannelsSitesError = DefaultErrors;
+export type CreateAdvertisersChannelsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a site in a channel. */
 export const createAdvertisersChannelsSites: API.OperationMethod<
@@ -15956,7 +16447,7 @@ export const createAdvertisersChannelsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersChannelsSitesRequest,
   output: CreateAdvertisersChannelsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersNegativeKeywordListsRequest {
@@ -15984,7 +16475,10 @@ export type GetAdvertisersNegativeKeywordListsResponse = NegativeKeywordList;
 export const GetAdvertisersNegativeKeywordListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NegativeKeywordList;
 
-export type GetAdvertisersNegativeKeywordListsError = DefaultErrors;
+export type GetAdvertisersNegativeKeywordListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a negative keyword list given an advertiser ID and a negative keyword list ID. */
 export const getAdvertisersNegativeKeywordLists: API.OperationMethod<
@@ -15995,7 +16489,7 @@ export const getAdvertisersNegativeKeywordLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersNegativeKeywordListsRequest,
   output: GetAdvertisersNegativeKeywordListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersNegativeKeywordListsRequest {
@@ -16022,7 +16516,12 @@ export type CreateAdvertisersNegativeKeywordListsResponse = NegativeKeywordList;
 export const CreateAdvertisersNegativeKeywordListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NegativeKeywordList;
 
-export type CreateAdvertisersNegativeKeywordListsError = DefaultErrors;
+export type CreateAdvertisersNegativeKeywordListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new negative keyword list. Returns the newly created negative keyword list if successful. */
 export const createAdvertisersNegativeKeywordLists: API.OperationMethod<
@@ -16033,7 +16532,7 @@ export const createAdvertisersNegativeKeywordLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersNegativeKeywordListsRequest,
   output: CreateAdvertisersNegativeKeywordListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersNegativeKeywordListsRequest {
@@ -16068,7 +16567,12 @@ export type PatchAdvertisersNegativeKeywordListsResponse = NegativeKeywordList;
 export const PatchAdvertisersNegativeKeywordListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NegativeKeywordList;
 
-export type PatchAdvertisersNegativeKeywordListsError = DefaultErrors;
+export type PatchAdvertisersNegativeKeywordListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a negative keyword list. Returns the updated negative keyword list if successful. */
 export const patchAdvertisersNegativeKeywordLists: API.OperationMethod<
@@ -16079,7 +16583,7 @@ export const patchAdvertisersNegativeKeywordLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersNegativeKeywordListsRequest,
   output: PatchAdvertisersNegativeKeywordListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersNegativeKeywordListsRequest {
@@ -16109,7 +16613,10 @@ export type ListAdvertisersNegativeKeywordListsResponse =
 export const ListAdvertisersNegativeKeywordListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNegativeKeywordListsResponse;
 
-export type ListAdvertisersNegativeKeywordListsError = DefaultErrors;
+export type ListAdvertisersNegativeKeywordListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists negative keyword lists based on a given advertiser id. */
 export const listAdvertisersNegativeKeywordLists: API.PaginatedOperationMethod<
@@ -16120,7 +16627,7 @@ export const listAdvertisersNegativeKeywordLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersNegativeKeywordListsRequest,
   output: ListAdvertisersNegativeKeywordListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16152,7 +16659,12 @@ export type DeleteAdvertisersNegativeKeywordListsResponse = Empty;
 export const DeleteAdvertisersNegativeKeywordListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersNegativeKeywordListsError = DefaultErrors;
+export type DeleteAdvertisersNegativeKeywordListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a negative keyword list given an advertiser ID and a negative keyword list ID. */
 export const deleteAdvertisersNegativeKeywordLists: API.OperationMethod<
@@ -16163,7 +16675,7 @@ export const deleteAdvertisersNegativeKeywordLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersNegativeKeywordListsRequest,
   output: DeleteAdvertisersNegativeKeywordListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
@@ -16197,7 +16709,11 @@ export const CreateAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NegativeKeyword;
 
 export type CreateAdvertisersNegativeKeywordListsNegativeKeywordsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a negative keyword in a negative keyword list. */
 export const createAdvertisersNegativeKeywordListsNegativeKeywords: API.OperationMethod<
@@ -16208,7 +16724,7 @@ export const createAdvertisersNegativeKeywordListsNegativeKeywords: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
   output: CreateAdvertisersNegativeKeywordListsNegativeKeywordsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
@@ -16250,7 +16766,9 @@ export const ListAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNegativeKeywordsResponse;
 
 export type ListAdvertisersNegativeKeywordListsNegativeKeywordsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists negative keywords in a negative keyword list. */
 export const listAdvertisersNegativeKeywordListsNegativeKeywords: API.PaginatedOperationMethod<
@@ -16261,7 +16779,7 @@ export const listAdvertisersNegativeKeywordListsNegativeKeywords: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
   output: ListAdvertisersNegativeKeywordListsNegativeKeywordsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16298,7 +16816,11 @@ export const DeleteAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersNegativeKeywordListsNegativeKeywordsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a negative keyword from a negative keyword list. */
 export const deleteAdvertisersNegativeKeywordListsNegativeKeywords: API.OperationMethod<
@@ -16309,7 +16831,7 @@ export const deleteAdvertisersNegativeKeywordListsNegativeKeywords: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
   output: DeleteAdvertisersNegativeKeywordListsNegativeKeywordsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
@@ -16343,7 +16865,11 @@ export const BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditNegativeKeywordsResponse;
 
 export type BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits negative keywords in a single negative keyword list. The operation will delete the negative keywords provided in BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords provided in BulkEditNegativeKeywordsRequest.created_negative_keywords. This operation is guaranteed to be atomic and will never result in a partial success or partial failure. */
 export const bulkEditAdvertisersNegativeKeywordListsNegativeKeywords: API.OperationMethod<
@@ -16354,7 +16880,7 @@ export const bulkEditAdvertisersNegativeKeywordListsNegativeKeywords: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
   output: BulkEditAdvertisersNegativeKeywordListsNegativeKeywordsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest {
@@ -16388,7 +16914,11 @@ export const ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReplaceNegativeKeywordsResponse;
 
 export type ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces all negative keywords in a single negative keyword list. The operation will replace the keywords in a negative keyword list with keywords provided in ReplaceNegativeKeywordsRequest.new_negative_keywords. */
 export const replaceAdvertisersNegativeKeywordListsNegativeKeywords: API.OperationMethod<
@@ -16399,7 +16929,7 @@ export const replaceAdvertisersNegativeKeywordListsNegativeKeywords: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsRequest,
   output: ReplaceAdvertisersNegativeKeywordListsNegativeKeywordsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
@@ -16483,7 +17013,9 @@ export const GetAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type GetAdvertisersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option assigned to an advertiser. */
 export const getAdvertisersTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -16494,7 +17026,7 @@ export const getAdvertisersTargetingTypesAssignedTargetingOptions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
   output: GetAdvertisersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
@@ -16577,7 +17109,11 @@ export const CreateAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type CreateAdvertisersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assigns a targeting option to an advertiser. Returns the assigned targeting option if successful. */
 export const createAdvertisersTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -16588,7 +17124,7 @@ export const createAdvertisersTargetingTypesAssignedTargetingOptions: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
   output: CreateAdvertisersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest {
@@ -16679,7 +17215,9 @@ export const ListAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdvertiserAssignedTargetingOptionsResponse;
 
 export type ListAdvertisersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to an advertiser. */
 export const listAdvertisersTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -16690,7 +17228,7 @@ export const listAdvertisersTargetingTypesAssignedTargetingOptions: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
   output: ListAdvertisersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16778,7 +17316,11 @@ export const DeleteAdvertisersTargetingTypesAssignedTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an assigned targeting option from an advertiser. */
 export const deleteAdvertisersTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -16789,7 +17331,7 @@ export const deleteAdvertisersTargetingTypesAssignedTargetingOptions: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersTargetingTypesAssignedTargetingOptionsRequest,
   output: DeleteAdvertisersTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersInvoicesRequest {
@@ -16827,7 +17369,7 @@ export type ListAdvertisersInvoicesResponse = ListInvoicesResponse;
 export const ListAdvertisersInvoicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInvoicesResponse;
 
-export type ListAdvertisersInvoicesError = DefaultErrors;
+export type ListAdvertisersInvoicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists invoices posted for an advertiser in a given month. Invoices generated by billing profiles with a "Partner" invoice level are not retrievable through this method. */
 export const listAdvertisersInvoices: API.PaginatedOperationMethod<
@@ -16838,7 +17380,7 @@ export const listAdvertisersInvoices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersInvoicesRequest,
   output: ListAdvertisersInvoicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16871,7 +17413,10 @@ export type LookupInvoiceCurrencyAdvertisersInvoicesResponse =
 export const LookupInvoiceCurrencyAdvertisersInvoicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LookupInvoiceCurrencyResponse;
 
-export type LookupInvoiceCurrencyAdvertisersInvoicesError = DefaultErrors;
+export type LookupInvoiceCurrencyAdvertisersInvoicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the invoice currency used by an advertiser in a given month. */
 export const lookupInvoiceCurrencyAdvertisersInvoices: API.OperationMethod<
@@ -16882,7 +17427,7 @@ export const lookupInvoiceCurrencyAdvertisersInvoices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupInvoiceCurrencyAdvertisersInvoicesRequest,
   output: LookupInvoiceCurrencyAdvertisersInvoicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest {
@@ -16924,7 +17469,9 @@ export const BulkListAssignedTargetingOptionsAdvertisersAdGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkListAdGroupAssignedTargetingOptionsResponse;
 
 export type BulkListAssignedTargetingOptionsAdvertisersAdGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned targeting options are not included. */
 export const bulkListAssignedTargetingOptionsAdvertisersAdGroups: API.PaginatedOperationMethod<
@@ -16935,7 +17482,7 @@ export const bulkListAssignedTargetingOptionsAdvertisersAdGroups: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: BulkListAssignedTargetingOptionsAdvertisersAdGroupsRequest,
   output: BulkListAssignedTargetingOptionsAdvertisersAdGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16965,7 +17512,7 @@ export type GetAdvertisersAdGroupsResponse = AdGroup;
 export const GetAdvertisersAdGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdGroup;
 
-export type GetAdvertisersAdGroupsError = DefaultErrors;
+export type GetAdvertisersAdGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an ad group. */
 export const getAdvertisersAdGroups: API.OperationMethod<
@@ -16976,7 +17523,7 @@ export const getAdvertisersAdGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersAdGroupsRequest,
   output: GetAdvertisersAdGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersAdGroupsRequest {
@@ -17003,7 +17550,12 @@ export type CreateAdvertisersAdGroupsResponse = AdGroup;
 export const CreateAdvertisersAdGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdGroup;
 
-export type CreateAdvertisersAdGroupsError = DefaultErrors;
+export type CreateAdvertisersAdGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ad group. Returns the newly created ad group if successful. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const createAdvertisersAdGroups: API.OperationMethod<
@@ -17014,7 +17566,7 @@ export const createAdvertisersAdGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdvertisersAdGroupsRequest,
   output: CreateAdvertisersAdGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersAdGroupsRequest {
@@ -17047,7 +17599,12 @@ export type PatchAdvertisersAdGroupsResponse = AdGroup;
 export const PatchAdvertisersAdGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdGroup;
 
-export type PatchAdvertisersAdGroupsError = DefaultErrors;
+export type PatchAdvertisersAdGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing ad group. Returns the updated ad group if successful. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const patchAdvertisersAdGroups: API.OperationMethod<
@@ -17058,7 +17615,7 @@ export const patchAdvertisersAdGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersAdGroupsRequest,
   output: PatchAdvertisersAdGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest {
@@ -17089,7 +17646,11 @@ export const BulkEditAssignedTargetingOptionsAdvertisersAdGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkEditAdGroupAssignedTargetingOptionsResponse;
 
 export type BulkEditAssignedTargetingOptionsAdvertisersAdGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be applied to all specified ad groups. Specifically, the operation will delete the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group, and then create the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const bulkEditAssignedTargetingOptionsAdvertisersAdGroups: API.OperationMethod<
@@ -17100,7 +17661,7 @@ export const bulkEditAssignedTargetingOptionsAdvertisersAdGroups: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkEditAssignedTargetingOptionsAdvertisersAdGroupsRequest,
   output: BulkEditAssignedTargetingOptionsAdvertisersAdGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersAdGroupsRequest {
@@ -17132,7 +17693,7 @@ export type ListAdvertisersAdGroupsResponse = ListAdGroupsResponse;
 export const ListAdvertisersAdGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdGroupsResponse;
 
-export type ListAdvertisersAdGroupsError = DefaultErrors;
+export type ListAdvertisersAdGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists ad groups. */
 export const listAdvertisersAdGroups: API.PaginatedOperationMethod<
@@ -17143,7 +17704,7 @@ export const listAdvertisersAdGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersAdGroupsRequest,
   output: ListAdvertisersAdGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17173,7 +17734,12 @@ export type DeleteAdvertisersAdGroupsResponse = Empty;
 export const DeleteAdvertisersAdGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdvertisersAdGroupsError = DefaultErrors;
+export type DeleteAdvertisersAdGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const deleteAdvertisersAdGroups: API.OperationMethod<
@@ -17184,7 +17750,7 @@ export const deleteAdvertisersAdGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertisersAdGroupsRequest,
   output: DeleteAdvertisersAdGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
@@ -17271,7 +17837,9 @@ export const GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRespons
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option assigned to an ad group. Inherited assigned targeting options are not included. */
 export const getAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -17282,7 +17850,7 @@ export const getAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
   output: GetAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
@@ -17368,7 +17936,11 @@ export const CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResp
   /*@__PURE__*/ /*#__PURE__*/ AssignedTargetingOption;
 
 export type CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assigns a targeting option to an ad group. Returns the assigned targeting option if successful. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const createAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -17380,7 +17952,7 @@ export const createAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: AP
   input: CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
   output:
     CreateAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest {
@@ -17474,7 +18046,9 @@ export const ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRespon
   /*@__PURE__*/ /*#__PURE__*/ ListAdGroupAssignedTargetingOptionsResponse;
 
 export type ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the targeting options assigned to an ad group. Inherited assigned targeting options are not included. */
 export const listAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.PaginatedOperationMethod<
@@ -17485,7 +18059,7 @@ export const listAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
   output: ListAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17576,7 +18150,11 @@ export const DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResp
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an assigned targeting option from an ad group. This method is only supported for Demand Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources is currently in beta. This method is only available to allowlisted users. */
 export const deleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: API.OperationMethod<
@@ -17588,7 +18166,7 @@ export const deleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptions: AP
   input: DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsRequest,
   output:
     DeleteAdvertisersAdGroupsTargetingTypesAssignedTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest {
@@ -17638,7 +18216,9 @@ export const ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRes
   /*@__PURE__*/ /*#__PURE__*/ ListYoutubeAssetAssociationsResponse;
 
 export type ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the YouTube asset associations linked to the given resource. */
 export const listAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: API.PaginatedOperationMethod<
@@ -17651,7 +18231,7 @@ export const listAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: A
     ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest,
   output:
     ListAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17701,7 +18281,11 @@ export const DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsR
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing association between the identified resource and a YouTube asset. *Warning:* This method is only available to an informed subset of users. */
 export const deleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<
@@ -17714,7 +18298,7 @@ export const deleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations:
     DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest,
   output:
     DeleteAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest {
@@ -17759,7 +18343,11 @@ export const CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsR
   /*@__PURE__*/ /*#__PURE__*/ YoutubeAssetAssociation;
 
 export type CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new association between the identified resource and a YouTube asset. Returns the newly-created association. *Warning:* This method is only available to an informed subset of users. */
 export const createAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations: API.OperationMethod<
@@ -17772,7 +18360,7 @@ export const createAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociations:
     CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsRequest,
   output:
     CreateAdvertisersAdGroupsYoutubeAssetTypesYoutubeAssetAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetingTypesTargetingOptionsRequest {
@@ -17864,7 +18452,10 @@ export type ListTargetingTypesTargetingOptionsResponse =
 export const ListTargetingTypesTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTargetingOptionsResponse;
 
-export type ListTargetingTypesTargetingOptionsError = DefaultErrors;
+export type ListTargetingTypesTargetingOptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists targeting options of a given type. */
 export const listTargetingTypesTargetingOptions: API.PaginatedOperationMethod<
@@ -17875,7 +18466,7 @@ export const listTargetingTypesTargetingOptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetingTypesTargetingOptionsRequest,
   output: ListTargetingTypesTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17961,7 +18552,10 @@ export type GetTargetingTypesTargetingOptionsResponse = TargetingOption;
 export const GetTargetingTypesTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetingOption;
 
-export type GetTargetingTypesTargetingOptionsError = DefaultErrors;
+export type GetTargetingTypesTargetingOptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single targeting option. */
 export const getTargetingTypesTargetingOptions: API.OperationMethod<
@@ -17972,7 +18566,7 @@ export const getTargetingTypesTargetingOptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetingTypesTargetingOptionsRequest,
   output: GetTargetingTypesTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchTargetingTypesTargetingOptionsRequest {
@@ -18051,7 +18645,12 @@ export type SearchTargetingTypesTargetingOptionsResponse =
 export const SearchTargetingTypesTargetingOptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchTargetingOptionsResponse;
 
-export type SearchTargetingTypesTargetingOptionsError = DefaultErrors;
+export type SearchTargetingTypesTargetingOptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches for targeting options of a given type based on the given search terms. */
 export const searchTargetingTypesTargetingOptions: API.OperationMethod<
@@ -18062,7 +18661,7 @@ export const searchTargetingTypesTargetingOptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchTargetingTypesTargetingOptionsRequest,
   output: SearchTargetingTypesTargetingOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFirstPartyAndPartnerAudiencesRequest {
@@ -18096,7 +18695,10 @@ export type GetFirstPartyAndPartnerAudiencesResponse =
 export const GetFirstPartyAndPartnerAudiencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirstPartyAndPartnerAudience;
 
-export type GetFirstPartyAndPartnerAudiencesError = DefaultErrors;
+export type GetFirstPartyAndPartnerAudiencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a first party or partner audience. */
 export const getFirstPartyAndPartnerAudiences: API.OperationMethod<
@@ -18107,7 +18709,7 @@ export const getFirstPartyAndPartnerAudiences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFirstPartyAndPartnerAudiencesRequest,
   output: GetFirstPartyAndPartnerAudiencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateFirstPartyAndPartnerAudiencesRequest {
@@ -18137,7 +18739,12 @@ export type CreateFirstPartyAndPartnerAudiencesResponse =
 export const CreateFirstPartyAndPartnerAudiencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirstPartyAndPartnerAudience;
 
-export type CreateFirstPartyAndPartnerAudiencesError = DefaultErrors;
+export type CreateFirstPartyAndPartnerAudiencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a FirstPartyAndPartnerAudience. Only supported for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID` */
 export const createFirstPartyAndPartnerAudiences: API.OperationMethod<
@@ -18148,7 +18755,7 @@ export const createFirstPartyAndPartnerAudiences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFirstPartyAndPartnerAudiencesRequest,
   output: CreateFirstPartyAndPartnerAudiencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFirstPartyAndPartnerAudiencesRequest {
@@ -18186,7 +18793,12 @@ export type PatchFirstPartyAndPartnerAudiencesResponse =
 export const PatchFirstPartyAndPartnerAudiencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirstPartyAndPartnerAudience;
 
-export type PatchFirstPartyAndPartnerAudiencesError = DefaultErrors;
+export type PatchFirstPartyAndPartnerAudiencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing FirstPartyAndPartnerAudience. Only supported for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID` */
 export const patchFirstPartyAndPartnerAudiences: API.OperationMethod<
@@ -18197,7 +18809,7 @@ export const patchFirstPartyAndPartnerAudiences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFirstPartyAndPartnerAudiencesRequest,
   output: PatchFirstPartyAndPartnerAudiencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EditCustomerMatchMembersFirstPartyAndPartnerAudiencesRequest {
@@ -18228,7 +18840,11 @@ export const EditCustomerMatchMembersFirstPartyAndPartnerAudiencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EditCustomerMatchMembersResponse;
 
 export type EditCustomerMatchMembersFirstPartyAndPartnerAudiencesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the member list of a Customer Match audience. Only supported for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID` */
 export const editCustomerMatchMembersFirstPartyAndPartnerAudiences: API.OperationMethod<
@@ -18239,7 +18855,7 @@ export const editCustomerMatchMembersFirstPartyAndPartnerAudiences: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EditCustomerMatchMembersFirstPartyAndPartnerAudiencesRequest,
   output: EditCustomerMatchMembersFirstPartyAndPartnerAudiencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFirstPartyAndPartnerAudiencesRequest {
@@ -18277,7 +18893,10 @@ export type ListFirstPartyAndPartnerAudiencesResponse_Op =
 export const ListFirstPartyAndPartnerAudiencesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListFirstPartyAndPartnerAudiencesResponse;
 
-export type ListFirstPartyAndPartnerAudiencesError = DefaultErrors;
+export type ListFirstPartyAndPartnerAudiencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists first party and partner audiences. The order is defined by the order_by parameter. */
 export const listFirstPartyAndPartnerAudiences: API.PaginatedOperationMethod<
@@ -18288,7 +18907,7 @@ export const listFirstPartyAndPartnerAudiences: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirstPartyAndPartnerAudiencesRequest,
   output: ListFirstPartyAndPartnerAudiencesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

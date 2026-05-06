@@ -1760,6 +1760,52 @@ export const GoogleMapsPlacesV1AutocompletePlacesRequest =
   }).annotate({ identifier: "GoogleMapsPlacesV1AutocompletePlacesRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1782,7 +1828,12 @@ export type SearchNearbyPlacesResponse = GoogleMapsPlacesV1SearchNearbyResponse;
 export const SearchNearbyPlacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleMapsPlacesV1SearchNearbyResponse;
 
-export type SearchNearbyPlacesError = DefaultErrors;
+export type SearchNearbyPlacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Search for places near locations. */
 export const searchNearbyPlaces: API.OperationMethod<
@@ -1793,7 +1844,7 @@ export const searchNearbyPlaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchNearbyPlacesRequest,
   output: SearchNearbyPlacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AutocompletePlacesRequest {
@@ -1816,7 +1867,12 @@ export type AutocompletePlacesResponse =
 export const AutocompletePlacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleMapsPlacesV1AutocompletePlacesResponse;
 
-export type AutocompletePlacesError = DefaultErrors;
+export type AutocompletePlacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns predictions for the given input. */
 export const autocompletePlaces: API.OperationMethod<
@@ -1827,7 +1883,7 @@ export const autocompletePlaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AutocompletePlacesRequest,
   output: AutocompletePlacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPlacesRequest {
@@ -1859,7 +1915,7 @@ export type GetPlacesResponse = GoogleMapsPlacesV1Place;
 export const GetPlacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleMapsPlacesV1Place;
 
-export type GetPlacesError = DefaultErrors;
+export type GetPlacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the details of a place based on its resource name, which is a string in the `places/{place_id}` format. */
 export const getPlaces: API.OperationMethod<
@@ -1870,7 +1926,7 @@ export const getPlaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlacesRequest,
   output: GetPlacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchTextPlacesRequest {
@@ -1892,7 +1948,12 @@ export type SearchTextPlacesResponse = GoogleMapsPlacesV1SearchTextResponse;
 export const SearchTextPlacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleMapsPlacesV1SearchTextResponse;
 
-export type SearchTextPlacesError = DefaultErrors;
+export type SearchTextPlacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Text query based place search. */
 export const searchTextPlaces: API.OperationMethod<
@@ -1903,7 +1964,7 @@ export const searchTextPlaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchTextPlacesRequest,
   output: SearchTextPlacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMediaPlacesPhotosRequest {
@@ -1936,7 +1997,7 @@ export type GetMediaPlacesPhotosResponse = GoogleMapsPlacesV1PhotoMedia;
 export const GetMediaPlacesPhotosResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleMapsPlacesV1PhotoMedia;
 
-export type GetMediaPlacesPhotosError = DefaultErrors;
+export type GetMediaPlacesPhotosError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a photo media with a photo reference string. */
 export const getMediaPlacesPhotos: API.OperationMethod<
@@ -1947,5 +2008,5 @@ export const getMediaPlacesPhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMediaPlacesPhotosRequest,
   output: GetMediaPlacesPhotosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

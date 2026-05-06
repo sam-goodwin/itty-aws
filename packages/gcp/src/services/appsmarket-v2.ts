@@ -92,6 +92,31 @@ export const CustomerLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CustomerLicense" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -116,7 +141,7 @@ export const GetUserLicenseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUserLicenseResponse = UserLicense;
 export const GetUserLicenseResponse = /*@__PURE__*/ /*#__PURE__*/ UserLicense;
 
-export type GetUserLicenseError = DefaultErrors;
+export type GetUserLicenseError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the user's licensing status to determine if they have permission to use a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api). */
 export const getUserLicense: API.OperationMethod<
@@ -127,7 +152,7 @@ export const getUserLicense: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserLicenseRequest,
   output: GetUserLicenseResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCustomerLicenseRequest {
@@ -153,7 +178,7 @@ export type GetCustomerLicenseResponse = CustomerLicense;
 export const GetCustomerLicenseResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomerLicense;
 
-export type GetCustomerLicenseError = DefaultErrors;
+export type GetCustomerLicenseError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the customer's licensing status to determine if they have access to a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api). */
 export const getCustomerLicense: API.OperationMethod<
@@ -164,5 +189,5 @@ export const getCustomerLicense: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomerLicenseRequest,
   output: GetCustomerLicenseResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -1813,6 +1813,52 @@ export const ListContainersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ListContainersResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1837,7 +1883,7 @@ export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all GTM Accounts that a user has access to. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -1848,7 +1894,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1870,7 +1916,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a GTM Account. */
 export const getAccounts: API.OperationMethod<
@@ -1881,7 +1927,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsRequest {
@@ -1905,7 +1951,12 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAccountsResponse = Account;
 export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type UpdateAccountsError = DefaultErrors;
+export type UpdateAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Account. */
 export const updateAccounts: API.OperationMethod<
@@ -1916,7 +1967,7 @@ export const updateAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsRequest,
   output: UpdateAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsUser_permissionsRequest {
@@ -1939,7 +1990,10 @@ export type ListAccountsUser_permissionsResponse = ListUserPermissionsResponse;
 export const ListAccountsUser_permissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserPermissionsResponse;
 
-export type ListAccountsUser_permissionsError = DefaultErrors;
+export type ListAccountsUser_permissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all users that have access to the account along with Account and Container user access granted to each of them. */
 export const listAccountsUser_permissions: API.PaginatedOperationMethod<
@@ -1950,7 +2004,7 @@ export const listAccountsUser_permissions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsUser_permissionsRequest,
   output: ListAccountsUser_permissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1974,7 +2028,10 @@ export type GetAccountsUser_permissionsResponse = UserPermission;
 export const GetAccountsUser_permissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserPermission;
 
-export type GetAccountsUser_permissionsError = DefaultErrors;
+export type GetAccountsUser_permissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a user's Account & Container access. */
 export const getAccountsUser_permissions: API.OperationMethod<
@@ -1985,7 +2042,7 @@ export const getAccountsUser_permissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsUser_permissionsRequest,
   output: GetAccountsUser_permissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsUser_permissionsRequest {
@@ -2007,7 +2064,12 @@ export const DeleteAccountsUser_permissionsResponse: Schema.Schema<DeleteAccount
     {},
   ) as any as Schema.Schema<DeleteAccountsUser_permissionsResponse>;
 
-export type DeleteAccountsUser_permissionsError = DefaultErrors;
+export type DeleteAccountsUser_permissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a user from the account, revoking access to it and all of its containers. */
 export const deleteAccountsUser_permissions: API.OperationMethod<
@@ -2018,7 +2080,7 @@ export const deleteAccountsUser_permissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsUser_permissionsRequest,
   output: DeleteAccountsUser_permissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsUser_permissionsRequest {
@@ -2045,7 +2107,12 @@ export type CreateAccountsUser_permissionsResponse = UserPermission;
 export const CreateAccountsUser_permissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserPermission;
 
-export type CreateAccountsUser_permissionsError = DefaultErrors;
+export type CreateAccountsUser_permissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a user's Account & Container access. */
 export const createAccountsUser_permissions: API.OperationMethod<
@@ -2056,7 +2123,7 @@ export const createAccountsUser_permissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsUser_permissionsRequest,
   output: CreateAccountsUser_permissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsUser_permissionsRequest {
@@ -2079,7 +2146,12 @@ export type UpdateAccountsUser_permissionsResponse = UserPermission;
 export const UpdateAccountsUser_permissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserPermission;
 
-export type UpdateAccountsUser_permissionsError = DefaultErrors;
+export type UpdateAccountsUser_permissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user's Account & Container access. */
 export const updateAccountsUser_permissions: API.OperationMethod<
@@ -2090,7 +2162,7 @@ export const updateAccountsUser_permissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsUser_permissionsRequest,
   output: UpdateAccountsUser_permissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CombineAccountsContainersRequest {
@@ -2133,7 +2205,12 @@ export type CombineAccountsContainersResponse = Container;
 export const CombineAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type CombineAccountsContainersError = DefaultErrors;
+export type CombineAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Combines Containers. */
 export const combineAccountsContainers: API.OperationMethod<
@@ -2144,7 +2221,7 @@ export const combineAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CombineAccountsContainersRequest,
   output: CombineAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Move_tag_idAccountsContainersRequest {
@@ -2192,7 +2269,12 @@ export type Move_tag_idAccountsContainersResponse = Container;
 export const Move_tag_idAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type Move_tag_idAccountsContainersError = DefaultErrors;
+export type Move_tag_idAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Move Tag ID out of a Container. */
 export const move_tag_idAccountsContainers: API.OperationMethod<
@@ -2203,7 +2285,7 @@ export const move_tag_idAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Move_tag_idAccountsContainersRequest,
   output: Move_tag_idAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersRequest {
@@ -2223,7 +2305,7 @@ export type GetAccountsContainersResponse = Container;
 export const GetAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type GetAccountsContainersError = DefaultErrors;
+export type GetAccountsContainersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a Container. */
 export const getAccountsContainers: API.OperationMethod<
@@ -2234,7 +2316,7 @@ export const getAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersRequest,
   output: GetAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsContainersRequest {
@@ -2261,7 +2343,12 @@ export type CreateAccountsContainersResponse = Container;
 export const CreateAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type CreateAccountsContainersError = DefaultErrors;
+export type CreateAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Container. */
 export const createAccountsContainers: API.OperationMethod<
@@ -2272,7 +2359,7 @@ export const createAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersRequest,
   output: CreateAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersRequest {
@@ -2300,7 +2387,12 @@ export type UpdateAccountsContainersResponse = Container;
 export const UpdateAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type UpdateAccountsContainersError = DefaultErrors;
+export type UpdateAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Container. */
 export const updateAccountsContainers: API.OperationMethod<
@@ -2311,7 +2403,7 @@ export const updateAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersRequest,
   output: UpdateAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupAccountsContainersRequest {
@@ -2336,7 +2428,10 @@ export type LookupAccountsContainersResponse = Container;
 export const LookupAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type LookupAccountsContainersError = DefaultErrors;
+export type LookupAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Looks up a Container by destination ID or tag ID. */
 export const lookupAccountsContainers: API.OperationMethod<
@@ -2347,7 +2442,7 @@ export const lookupAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupAccountsContainersRequest,
   output: LookupAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SnippetAccountsContainersRequest {
@@ -2367,7 +2462,10 @@ export type SnippetAccountsContainersResponse = GetContainerSnippetResponse;
 export const SnippetAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetContainerSnippetResponse;
 
-export type SnippetAccountsContainersError = DefaultErrors;
+export type SnippetAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the tagging snippet for a Container. */
 export const snippetAccountsContainers: API.OperationMethod<
@@ -2378,7 +2476,7 @@ export const snippetAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SnippetAccountsContainersRequest,
   output: SnippetAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersRequest {
@@ -2400,7 +2498,12 @@ export const DeleteAccountsContainersResponse: Schema.Schema<DeleteAccountsConta
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersResponse>;
 
-export type DeleteAccountsContainersError = DefaultErrors;
+export type DeleteAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Container. */
 export const deleteAccountsContainers: API.OperationMethod<
@@ -2411,7 +2514,7 @@ export const deleteAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersRequest,
   output: DeleteAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersRequest {
@@ -2434,7 +2537,7 @@ export type ListAccountsContainersResponse = ListContainersResponse;
 export const ListAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListContainersResponse;
 
-export type ListAccountsContainersError = DefaultErrors;
+export type ListAccountsContainersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all Containers that belongs to a GTM Account. */
 export const listAccountsContainers: API.PaginatedOperationMethod<
@@ -2445,7 +2548,7 @@ export const listAccountsContainers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersRequest,
   output: ListAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2473,7 +2576,12 @@ export type Set_latestAccountsContainersVersionsResponse = ContainerVersion;
 export const Set_latestAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type Set_latestAccountsContainersVersionsError = DefaultErrors;
+export type Set_latestAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the latest version used for synchronization of workspaces when detecting conflicts and errors. */
 export const set_latestAccountsContainersVersions: API.OperationMethod<
@@ -2484,7 +2592,7 @@ export const set_latestAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Set_latestAccountsContainersVersionsRequest,
   output: Set_latestAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LiveAccountsContainersVersionsRequest {
@@ -2504,7 +2612,10 @@ export type LiveAccountsContainersVersionsResponse = ContainerVersion;
 export const LiveAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type LiveAccountsContainersVersionsError = DefaultErrors;
+export type LiveAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the live (i.e. published) container version */
 export const liveAccountsContainersVersions: API.OperationMethod<
@@ -2515,7 +2626,7 @@ export const liveAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LiveAccountsContainersVersionsRequest,
   output: LiveAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsContainersVersionsRequest {
@@ -2543,7 +2654,12 @@ export type UpdateAccountsContainersVersionsResponse = ContainerVersion;
 export const UpdateAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type UpdateAccountsContainersVersionsError = DefaultErrors;
+export type UpdateAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Container Version. */
 export const updateAccountsContainersVersions: API.OperationMethod<
@@ -2554,7 +2670,7 @@ export const updateAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersVersionsRequest,
   output: UpdateAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishAccountsContainersVersionsRequest {
@@ -2584,7 +2700,12 @@ export type PublishAccountsContainersVersionsResponse =
 export const PublishAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublishContainerVersionResponse;
 
-export type PublishAccountsContainersVersionsError = DefaultErrors;
+export type PublishAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publishes a Container Version. */
 export const publishAccountsContainersVersions: API.OperationMethod<
@@ -2595,7 +2716,7 @@ export const publishAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishAccountsContainersVersionsRequest,
   output: PublishAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteAccountsContainersVersionsRequest {
@@ -2619,7 +2740,12 @@ export type UndeleteAccountsContainersVersionsResponse = ContainerVersion;
 export const UndeleteAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type UndeleteAccountsContainersVersionsError = DefaultErrors;
+export type UndeleteAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a Container Version. */
 export const undeleteAccountsContainersVersions: API.OperationMethod<
@@ -2630,7 +2756,7 @@ export const undeleteAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteAccountsContainersVersionsRequest,
   output: UndeleteAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersVersionsRequest {
@@ -2655,7 +2781,10 @@ export type GetAccountsContainersVersionsResponse = ContainerVersion;
 export const GetAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type GetAccountsContainersVersionsError = DefaultErrors;
+export type GetAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Container Version. */
 export const getAccountsContainersVersions: API.OperationMethod<
@@ -2666,7 +2795,7 @@ export const getAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersVersionsRequest,
   output: GetAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersVersionsRequest {
@@ -2688,7 +2817,12 @@ export const DeleteAccountsContainersVersionsResponse: Schema.Schema<DeleteAccou
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersVersionsResponse>;
 
-export type DeleteAccountsContainersVersionsError = DefaultErrors;
+export type DeleteAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Container Version. */
 export const deleteAccountsContainersVersions: API.OperationMethod<
@@ -2699,7 +2833,7 @@ export const deleteAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersVersionsRequest,
   output: DeleteAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersVersion_headersRequest {
@@ -2728,7 +2862,10 @@ export type ListAccountsContainersVersion_headersResponse =
 export const ListAccountsContainersVersion_headersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListContainerVersionsResponse;
 
-export type ListAccountsContainersVersion_headersError = DefaultErrors;
+export type ListAccountsContainersVersion_headersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Container Versions of a GTM Container. */
 export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod<
@@ -2739,7 +2876,7 @@ export const listAccountsContainersVersion_headers: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersVersion_headersRequest,
   output: ListAccountsContainersVersion_headersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2767,7 +2904,10 @@ export type LatestAccountsContainersVersion_headersResponse =
 export const LatestAccountsContainersVersion_headersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersionHeader;
 
-export type LatestAccountsContainersVersion_headersError = DefaultErrors;
+export type LatestAccountsContainersVersion_headersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest container version header */
 export const latestAccountsContainersVersion_headers: API.OperationMethod<
@@ -2778,7 +2918,7 @@ export const latestAccountsContainersVersion_headers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LatestAccountsContainersVersion_headersRequest,
   output: LatestAccountsContainersVersion_headersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReauthorizeAccountsContainersEnvironmentsRequest {
@@ -2805,7 +2945,12 @@ export type ReauthorizeAccountsContainersEnvironmentsResponse = Environment;
 export const ReauthorizeAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type ReauthorizeAccountsContainersEnvironmentsError = DefaultErrors;
+export type ReauthorizeAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Re-generates the authorization code for a GTM Environment. */
 export const reauthorizeAccountsContainersEnvironments: API.OperationMethod<
@@ -2816,7 +2961,7 @@ export const reauthorizeAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReauthorizeAccountsContainersEnvironmentsRequest,
   output: ReauthorizeAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersEnvironmentsRequest {
@@ -2843,7 +2988,12 @@ export type CreateAccountsContainersEnvironmentsResponse = Environment;
 export const CreateAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type CreateAccountsContainersEnvironmentsError = DefaultErrors;
+export type CreateAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Environment. */
 export const createAccountsContainersEnvironments: API.OperationMethod<
@@ -2854,7 +3004,7 @@ export const createAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersEnvironmentsRequest,
   output: CreateAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersEnvironmentsRequest {
@@ -2882,7 +3032,12 @@ export type UpdateAccountsContainersEnvironmentsResponse = Environment;
 export const UpdateAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type UpdateAccountsContainersEnvironmentsError = DefaultErrors;
+export type UpdateAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Environment. */
 export const updateAccountsContainersEnvironments: API.OperationMethod<
@@ -2893,7 +3048,7 @@ export const updateAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersEnvironmentsRequest,
   output: UpdateAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersEnvironmentsRequest {
@@ -2917,7 +3072,10 @@ export type ListAccountsContainersEnvironmentsResponse =
 export const ListAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEnvironmentsResponse;
 
-export type ListAccountsContainersEnvironmentsError = DefaultErrors;
+export type ListAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Environments of a GTM Container. */
 export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
@@ -2928,7 +3086,7 @@ export const listAccountsContainersEnvironments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersEnvironmentsRequest,
   output: ListAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2952,7 +3110,10 @@ export type GetAccountsContainersEnvironmentsResponse = Environment;
 export const GetAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type GetAccountsContainersEnvironmentsError = DefaultErrors;
+export type GetAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Environment. */
 export const getAccountsContainersEnvironments: API.OperationMethod<
@@ -2963,7 +3124,7 @@ export const getAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersEnvironmentsRequest,
   output: GetAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersEnvironmentsRequest {
@@ -2985,7 +3146,12 @@ export const DeleteAccountsContainersEnvironmentsResponse: Schema.Schema<DeleteA
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersEnvironmentsResponse>;
 
-export type DeleteAccountsContainersEnvironmentsError = DefaultErrors;
+export type DeleteAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Environment. */
 export const deleteAccountsContainersEnvironments: API.OperationMethod<
@@ -2996,7 +3162,7 @@ export const deleteAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersEnvironmentsRequest,
   output: DeleteAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Quick_previewAccountsContainersWorkspacesRequest {
@@ -3021,7 +3187,12 @@ export type Quick_previewAccountsContainersWorkspacesResponse =
 export const Quick_previewAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ QuickPreviewResponse;
 
-export type Quick_previewAccountsContainersWorkspacesError = DefaultErrors;
+export type Quick_previewAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Quick previews a workspace by creating a fake container version from all entities in the provided workspace. */
 export const quick_previewAccountsContainersWorkspaces: API.OperationMethod<
@@ -3032,7 +3203,7 @@ export const quick_previewAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Quick_previewAccountsContainersWorkspacesRequest,
   output: Quick_previewAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStatusAccountsContainersWorkspacesRequest {
@@ -3053,7 +3224,10 @@ export type GetStatusAccountsContainersWorkspacesResponse =
 export const GetStatusAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetWorkspaceStatusResponse;
 
-export type GetStatusAccountsContainersWorkspacesError = DefaultErrors;
+export type GetStatusAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Finds conflicting and modified entities in the workspace. */
 export const getStatusAccountsContainersWorkspaces: API.OperationMethod<
@@ -3064,7 +3238,7 @@ export const getStatusAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStatusAccountsContainersWorkspacesRequest,
   output: GetStatusAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsContainersWorkspacesRequest {
@@ -3091,7 +3265,12 @@ export type CreateAccountsContainersWorkspacesResponse = Workspace;
 export const CreateAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Workspace;
 
-export type CreateAccountsContainersWorkspacesError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Workspace. */
 export const createAccountsContainersWorkspaces: API.OperationMethod<
@@ -3102,7 +3281,7 @@ export const createAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesRequest,
   output: CreateAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesRequest {
@@ -3130,7 +3309,12 @@ export type UpdateAccountsContainersWorkspacesResponse = Workspace;
 export const UpdateAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Workspace;
 
-export type UpdateAccountsContainersWorkspacesError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Workspace. */
 export const updateAccountsContainersWorkspaces: API.OperationMethod<
@@ -3141,7 +3325,7 @@ export const updateAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesRequest,
   output: UpdateAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesRequest {
@@ -3164,7 +3348,10 @@ export type ListAccountsContainersWorkspacesResponse = ListWorkspacesResponse;
 export const ListAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkspacesResponse;
 
-export type ListAccountsContainersWorkspacesError = DefaultErrors;
+export type ListAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Workspaces that belong to a GTM Container. */
 export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
@@ -3175,7 +3362,7 @@ export const listAccountsContainersWorkspaces: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesRequest,
   output: ListAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3201,7 +3388,12 @@ export const DeleteAccountsContainersWorkspacesResponse: Schema.Schema<DeleteAcc
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesResponse>;
 
-export type DeleteAccountsContainersWorkspacesError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Workspace. */
 export const deleteAccountsContainersWorkspaces: API.OperationMethod<
@@ -3212,7 +3404,7 @@ export const deleteAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesRequest,
   output: DeleteAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Resolve_conflictAccountsContainersWorkspacesRequest {
@@ -3246,7 +3438,12 @@ export const Resolve_conflictAccountsContainersWorkspacesResponse: Schema.Schema
     {},
   ) as any as Schema.Schema<Resolve_conflictAccountsContainersWorkspacesResponse>;
 
-export type Resolve_conflictAccountsContainersWorkspacesError = DefaultErrors;
+export type Resolve_conflictAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resolves a merge conflict for a workspace entity by updating it to the resolved entity passed in the request. */
 export const resolve_conflictAccountsContainersWorkspaces: API.OperationMethod<
@@ -3257,7 +3454,7 @@ export const resolve_conflictAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Resolve_conflictAccountsContainersWorkspacesRequest,
   output: Resolve_conflictAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Create_versionAccountsContainersWorkspacesRequest {
@@ -3287,7 +3484,12 @@ export type Create_versionAccountsContainersWorkspacesResponse =
 export const Create_versionAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateContainerVersionResponse;
 
-export type Create_versionAccountsContainersWorkspacesError = DefaultErrors;
+export type Create_versionAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Container Version from the entities present in the workspace, deletes the workspace, and sets the base container version to the newly created version. */
 export const create_versionAccountsContainersWorkspaces: API.OperationMethod<
@@ -3298,7 +3500,7 @@ export const create_versionAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Create_versionAccountsContainersWorkspacesRequest,
   output: Create_versionAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SyncAccountsContainersWorkspacesRequest {
@@ -3322,7 +3524,12 @@ export type SyncAccountsContainersWorkspacesResponse = SyncWorkspaceResponse;
 export const SyncAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SyncWorkspaceResponse;
 
-export type SyncAccountsContainersWorkspacesError = DefaultErrors;
+export type SyncAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Syncs a workspace to the latest container version by updating all unmodified workspace entities and displaying conflicts for modified entities. */
 export const syncAccountsContainersWorkspaces: API.OperationMethod<
@@ -3333,7 +3540,7 @@ export const syncAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SyncAccountsContainersWorkspacesRequest,
   output: SyncAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Bulk_updateAccountsContainersWorkspacesRequest {
@@ -3361,7 +3568,12 @@ export type Bulk_updateAccountsContainersWorkspacesResponse =
 export const Bulk_updateAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BulkUpdateWorkspaceResponse;
 
-export type Bulk_updateAccountsContainersWorkspacesError = DefaultErrors;
+export type Bulk_updateAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies multiple entity changes to a workspace in one call. When creating new entities, their entity IDs must be unique and in correct format. That is, they must start with "new_" and followed by number, e.g. "new_1", "new_2". Example body snippet to create myNewTag under myNewFolder is: ``` "changes": [ { "folder": { "folderId": "new_1", "name": "myNewFolder", ... }, "changeStatus": "added" }, { "tag": { "tagId": "new_2", "name": "myNewTag", "parentFolderId": "new_1", ... }, "changeStatus": "added" } ] ``` */
 export const bulk_updateAccountsContainersWorkspaces: API.OperationMethod<
@@ -3372,7 +3584,7 @@ export const bulk_updateAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Bulk_updateAccountsContainersWorkspacesRequest,
   output: Bulk_updateAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersWorkspacesRequest {
@@ -3392,7 +3604,10 @@ export type GetAccountsContainersWorkspacesResponse = Workspace;
 export const GetAccountsContainersWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Workspace;
 
-export type GetAccountsContainersWorkspacesError = DefaultErrors;
+export type GetAccountsContainersWorkspacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Workspace. */
 export const getAccountsContainersWorkspaces: API.OperationMethod<
@@ -3403,7 +3618,7 @@ export const getAccountsContainersWorkspaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesRequest,
   output: GetAccountsContainersWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsContainersWorkspacesZonesRequest {
@@ -3430,7 +3645,12 @@ export type CreateAccountsContainersWorkspacesZonesResponse = Zone;
 export const CreateAccountsContainersWorkspacesZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Zone;
 
-export type CreateAccountsContainersWorkspacesZonesError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Zone. */
 export const createAccountsContainersWorkspacesZones: API.OperationMethod<
@@ -3441,7 +3661,7 @@ export const createAccountsContainersWorkspacesZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesZonesRequest,
   output: CreateAccountsContainersWorkspacesZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesZonesRequest {
@@ -3469,7 +3689,12 @@ export type UpdateAccountsContainersWorkspacesZonesResponse = Zone;
 export const UpdateAccountsContainersWorkspacesZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Zone;
 
-export type UpdateAccountsContainersWorkspacesZonesError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Zone. */
 export const updateAccountsContainersWorkspacesZones: API.OperationMethod<
@@ -3480,7 +3705,7 @@ export const updateAccountsContainersWorkspacesZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesZonesRequest,
   output: UpdateAccountsContainersWorkspacesZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesZonesRequest {
@@ -3503,7 +3728,10 @@ export type ListAccountsContainersWorkspacesZonesResponse = ListZonesResponse;
 export const ListAccountsContainersWorkspacesZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListZonesResponse;
 
-export type ListAccountsContainersWorkspacesZonesError = DefaultErrors;
+export type ListAccountsContainersWorkspacesZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Zones of a GTM container workspace. */
 export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod<
@@ -3514,7 +3742,7 @@ export const listAccountsContainersWorkspacesZones: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesZonesRequest,
   output: ListAccountsContainersWorkspacesZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3538,7 +3766,10 @@ export type GetAccountsContainersWorkspacesZonesResponse = Zone;
 export const GetAccountsContainersWorkspacesZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Zone;
 
-export type GetAccountsContainersWorkspacesZonesError = DefaultErrors;
+export type GetAccountsContainersWorkspacesZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Zone. */
 export const getAccountsContainersWorkspacesZones: API.OperationMethod<
@@ -3549,7 +3780,7 @@ export const getAccountsContainersWorkspacesZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesZonesRequest,
   output: GetAccountsContainersWorkspacesZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesZonesRequest {
@@ -3571,7 +3802,12 @@ export const DeleteAccountsContainersWorkspacesZonesResponse: Schema.Schema<Dele
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesZonesResponse>;
 
-export type DeleteAccountsContainersWorkspacesZonesError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Zone. */
 export const deleteAccountsContainersWorkspacesZones: API.OperationMethod<
@@ -3582,7 +3818,7 @@ export const deleteAccountsContainersWorkspacesZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesZonesRequest,
   output: DeleteAccountsContainersWorkspacesZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesZonesRequest {
@@ -3612,7 +3848,12 @@ export type RevertAccountsContainersWorkspacesZonesResponse =
 export const RevertAccountsContainersWorkspacesZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertZoneResponse;
 
-export type RevertAccountsContainersWorkspacesZonesError = DefaultErrors;
+export type RevertAccountsContainersWorkspacesZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Zone in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesZones: API.OperationMethod<
@@ -3623,7 +3864,7 @@ export const revertAccountsContainersWorkspacesZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesZonesRequest,
   output: RevertAccountsContainersWorkspacesZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersWorkspacesClientsRequest {
@@ -3650,7 +3891,12 @@ export type CreateAccountsContainersWorkspacesClientsResponse = Client;
 export const CreateAccountsContainersWorkspacesClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type CreateAccountsContainersWorkspacesClientsError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Client. */
 export const createAccountsContainersWorkspacesClients: API.OperationMethod<
@@ -3661,7 +3907,7 @@ export const createAccountsContainersWorkspacesClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesClientsRequest,
   output: CreateAccountsContainersWorkspacesClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesClientsRequest {
@@ -3689,7 +3935,12 @@ export type UpdateAccountsContainersWorkspacesClientsResponse = Client;
 export const UpdateAccountsContainersWorkspacesClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type UpdateAccountsContainersWorkspacesClientsError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Client. */
 export const updateAccountsContainersWorkspacesClients: API.OperationMethod<
@@ -3700,7 +3951,7 @@ export const updateAccountsContainersWorkspacesClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesClientsRequest,
   output: UpdateAccountsContainersWorkspacesClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersWorkspacesClientsRequest {
@@ -3720,7 +3971,10 @@ export type GetAccountsContainersWorkspacesClientsResponse = Client;
 export const GetAccountsContainersWorkspacesClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type GetAccountsContainersWorkspacesClientsError = DefaultErrors;
+export type GetAccountsContainersWorkspacesClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Client. */
 export const getAccountsContainersWorkspacesClients: API.OperationMethod<
@@ -3731,7 +3985,7 @@ export const getAccountsContainersWorkspacesClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesClientsRequest,
   output: GetAccountsContainersWorkspacesClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesClientsRequest {
@@ -3753,7 +4007,12 @@ export const DeleteAccountsContainersWorkspacesClientsResponse: Schema.Schema<De
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesClientsResponse>;
 
-export type DeleteAccountsContainersWorkspacesClientsError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Client. */
 export const deleteAccountsContainersWorkspacesClients: API.OperationMethod<
@@ -3764,7 +4023,7 @@ export const deleteAccountsContainersWorkspacesClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesClientsRequest,
   output: DeleteAccountsContainersWorkspacesClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesClientsRequest {
@@ -3794,7 +4053,12 @@ export type RevertAccountsContainersWorkspacesClientsResponse =
 export const RevertAccountsContainersWorkspacesClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertClientResponse;
 
-export type RevertAccountsContainersWorkspacesClientsError = DefaultErrors;
+export type RevertAccountsContainersWorkspacesClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Client in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesClients: API.OperationMethod<
@@ -3805,7 +4069,7 @@ export const revertAccountsContainersWorkspacesClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesClientsRequest,
   output: RevertAccountsContainersWorkspacesClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesClientsRequest {
@@ -3829,7 +4093,10 @@ export type ListAccountsContainersWorkspacesClientsResponse =
 export const ListAccountsContainersWorkspacesClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClientsResponse;
 
-export type ListAccountsContainersWorkspacesClientsError = DefaultErrors;
+export type ListAccountsContainersWorkspacesClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Clients of a GTM container workspace. */
 export const listAccountsContainersWorkspacesClients: API.PaginatedOperationMethod<
@@ -3840,7 +4107,7 @@ export const listAccountsContainersWorkspacesClients: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesClientsRequest,
   output: ListAccountsContainersWorkspacesClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3873,7 +4140,11 @@ export const CreateAccountsContainersWorkspacesTransformationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Transformation;
 
 export type CreateAccountsContainersWorkspacesTransformationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Transformation. */
 export const createAccountsContainersWorkspacesTransformations: API.OperationMethod<
@@ -3884,7 +4155,7 @@ export const createAccountsContainersWorkspacesTransformations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesTransformationsRequest,
   output: CreateAccountsContainersWorkspacesTransformationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesTransformationsRequest {
@@ -3914,7 +4185,11 @@ export const UpdateAccountsContainersWorkspacesTransformationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Transformation;
 
 export type UpdateAccountsContainersWorkspacesTransformationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Transformation. */
 export const updateAccountsContainersWorkspacesTransformations: API.OperationMethod<
@@ -3925,7 +4200,7 @@ export const updateAccountsContainersWorkspacesTransformations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesTransformationsRequest,
   output: UpdateAccountsContainersWorkspacesTransformationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersWorkspacesTransformationsRequest {
@@ -3946,7 +4221,10 @@ export type GetAccountsContainersWorkspacesTransformationsResponse =
 export const GetAccountsContainersWorkspacesTransformationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Transformation;
 
-export type GetAccountsContainersWorkspacesTransformationsError = DefaultErrors;
+export type GetAccountsContainersWorkspacesTransformationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Transformation. */
 export const getAccountsContainersWorkspacesTransformations: API.OperationMethod<
@@ -3957,7 +4235,7 @@ export const getAccountsContainersWorkspacesTransformations: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesTransformationsRequest,
   output: GetAccountsContainersWorkspacesTransformationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesTransformationsRequest {
@@ -3980,7 +4258,11 @@ export const DeleteAccountsContainersWorkspacesTransformationsResponse: Schema.S
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTransformationsResponse>;
 
 export type DeleteAccountsContainersWorkspacesTransformationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Transformation. */
 export const deleteAccountsContainersWorkspacesTransformations: API.OperationMethod<
@@ -3991,7 +4273,7 @@ export const deleteAccountsContainersWorkspacesTransformations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesTransformationsRequest,
   output: DeleteAccountsContainersWorkspacesTransformationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesTransformationsRequest {
@@ -4022,7 +4304,11 @@ export const RevertAccountsContainersWorkspacesTransformationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertTransformationResponse;
 
 export type RevertAccountsContainersWorkspacesTransformationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Transformation in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTransformations: API.OperationMethod<
@@ -4033,7 +4319,7 @@ export const revertAccountsContainersWorkspacesTransformations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesTransformationsRequest,
   output: RevertAccountsContainersWorkspacesTransformationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesTransformationsRequest {
@@ -4058,7 +4344,9 @@ export const ListAccountsContainersWorkspacesTransformationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransformationsResponse;
 
 export type ListAccountsContainersWorkspacesTransformationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Transformations of a GTM container workspace. */
 export const listAccountsContainersWorkspacesTransformations: API.PaginatedOperationMethod<
@@ -4069,7 +4357,7 @@ export const listAccountsContainersWorkspacesTransformations: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTransformationsRequest,
   output: ListAccountsContainersWorkspacesTransformationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4100,7 +4388,12 @@ export type CreateAccountsContainersWorkspacesTagsResponse = Tag;
 export const CreateAccountsContainersWorkspacesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tag;
 
-export type CreateAccountsContainersWorkspacesTagsError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Tag. */
 export const createAccountsContainersWorkspacesTags: API.OperationMethod<
@@ -4111,7 +4404,7 @@ export const createAccountsContainersWorkspacesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesTagsRequest,
   output: CreateAccountsContainersWorkspacesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesTagsRequest {
@@ -4139,7 +4432,12 @@ export type UpdateAccountsContainersWorkspacesTagsResponse = Tag;
 export const UpdateAccountsContainersWorkspacesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tag;
 
-export type UpdateAccountsContainersWorkspacesTagsError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Tag. */
 export const updateAccountsContainersWorkspacesTags: API.OperationMethod<
@@ -4150,7 +4448,7 @@ export const updateAccountsContainersWorkspacesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesTagsRequest,
   output: UpdateAccountsContainersWorkspacesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesTagsRequest {
@@ -4173,7 +4471,10 @@ export type ListAccountsContainersWorkspacesTagsResponse = ListTagsResponse;
 export const ListAccountsContainersWorkspacesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTagsResponse;
 
-export type ListAccountsContainersWorkspacesTagsError = DefaultErrors;
+export type ListAccountsContainersWorkspacesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Tags of a Container. */
 export const listAccountsContainersWorkspacesTags: API.PaginatedOperationMethod<
@@ -4184,7 +4485,7 @@ export const listAccountsContainersWorkspacesTags: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTagsRequest,
   output: ListAccountsContainersWorkspacesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4208,7 +4509,10 @@ export type GetAccountsContainersWorkspacesTagsResponse = Tag;
 export const GetAccountsContainersWorkspacesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tag;
 
-export type GetAccountsContainersWorkspacesTagsError = DefaultErrors;
+export type GetAccountsContainersWorkspacesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Tag. */
 export const getAccountsContainersWorkspacesTags: API.OperationMethod<
@@ -4219,7 +4523,7 @@ export const getAccountsContainersWorkspacesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesTagsRequest,
   output: GetAccountsContainersWorkspacesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesTagsRequest {
@@ -4241,7 +4545,12 @@ export const DeleteAccountsContainersWorkspacesTagsResponse: Schema.Schema<Delet
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTagsResponse>;
 
-export type DeleteAccountsContainersWorkspacesTagsError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Tag. */
 export const deleteAccountsContainersWorkspacesTags: API.OperationMethod<
@@ -4252,7 +4561,7 @@ export const deleteAccountsContainersWorkspacesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesTagsRequest,
   output: DeleteAccountsContainersWorkspacesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesTagsRequest {
@@ -4281,7 +4590,12 @@ export type RevertAccountsContainersWorkspacesTagsResponse = RevertTagResponse;
 export const RevertAccountsContainersWorkspacesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertTagResponse;
 
-export type RevertAccountsContainersWorkspacesTagsError = DefaultErrors;
+export type RevertAccountsContainersWorkspacesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Tag in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTags: API.OperationMethod<
@@ -4292,7 +4606,7 @@ export const revertAccountsContainersWorkspacesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesTagsRequest,
   output: RevertAccountsContainersWorkspacesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersWorkspacesGtag_configRequest {
@@ -4312,7 +4626,10 @@ export type GetAccountsContainersWorkspacesGtag_configResponse = GtagConfig;
 export const GetAccountsContainersWorkspacesGtag_configResponse =
   /*@__PURE__*/ /*#__PURE__*/ GtagConfig;
 
-export type GetAccountsContainersWorkspacesGtag_configError = DefaultErrors;
+export type GetAccountsContainersWorkspacesGtag_configError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Google tag config. */
 export const getAccountsContainersWorkspacesGtag_config: API.OperationMethod<
@@ -4323,7 +4640,7 @@ export const getAccountsContainersWorkspacesGtag_config: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesGtag_configRequest,
   output: GetAccountsContainersWorkspacesGtag_configResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesGtag_configRequest {
@@ -4345,7 +4662,12 @@ export const DeleteAccountsContainersWorkspacesGtag_configResponse: Schema.Schem
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesGtag_configResponse>;
 
-export type DeleteAccountsContainersWorkspacesGtag_configError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesGtag_configError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Google tag config. */
 export const deleteAccountsContainersWorkspacesGtag_config: API.OperationMethod<
@@ -4356,7 +4678,7 @@ export const deleteAccountsContainersWorkspacesGtag_config: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesGtag_configRequest,
   output: DeleteAccountsContainersWorkspacesGtag_configResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesGtag_configRequest {
@@ -4380,7 +4702,10 @@ export type ListAccountsContainersWorkspacesGtag_configResponse =
 export const ListAccountsContainersWorkspacesGtag_configResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGtagConfigResponse;
 
-export type ListAccountsContainersWorkspacesGtag_configError = DefaultErrors;
+export type ListAccountsContainersWorkspacesGtag_configError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Google tag configs in a Container. */
 export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperationMethod<
@@ -4391,7 +4716,7 @@ export const listAccountsContainersWorkspacesGtag_config: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesGtag_configRequest,
   output: ListAccountsContainersWorkspacesGtag_configResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4422,7 +4747,12 @@ export type CreateAccountsContainersWorkspacesGtag_configResponse = GtagConfig;
 export const CreateAccountsContainersWorkspacesGtag_configResponse =
   /*@__PURE__*/ /*#__PURE__*/ GtagConfig;
 
-export type CreateAccountsContainersWorkspacesGtag_configError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesGtag_configError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Google tag config. */
 export const createAccountsContainersWorkspacesGtag_config: API.OperationMethod<
@@ -4433,7 +4763,7 @@ export const createAccountsContainersWorkspacesGtag_config: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesGtag_configRequest,
   output: CreateAccountsContainersWorkspacesGtag_configResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesGtag_configRequest {
@@ -4461,7 +4791,12 @@ export type UpdateAccountsContainersWorkspacesGtag_configResponse = GtagConfig;
 export const UpdateAccountsContainersWorkspacesGtag_configResponse =
   /*@__PURE__*/ /*#__PURE__*/ GtagConfig;
 
-export type UpdateAccountsContainersWorkspacesGtag_configError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesGtag_configError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Google tag config. */
 export const updateAccountsContainersWorkspacesGtag_config: API.OperationMethod<
@@ -4472,7 +4807,7 @@ export const updateAccountsContainersWorkspacesGtag_config: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesGtag_configRequest,
   output: UpdateAccountsContainersWorkspacesGtag_configResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesBuilt_in_variablesRequest {
@@ -4500,7 +4835,9 @@ export const ListAccountsContainersWorkspacesBuilt_in_variablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEnabledBuiltInVariablesResponse;
 
 export type ListAccountsContainersWorkspacesBuilt_in_variablesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the enabled Built-In Variables of a GTM Container. */
 export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOperationMethod<
@@ -4511,7 +4848,7 @@ export const listAccountsContainersWorkspacesBuilt_in_variables: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesBuilt_in_variablesRequest,
   output: ListAccountsContainersWorkspacesBuilt_in_variablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4661,7 +4998,11 @@ export const DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse: Schem
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse>;
 
 export type DeleteAccountsContainersWorkspacesBuilt_in_variablesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes one or more GTM Built-In Variables. */
 export const deleteAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
@@ -4672,7 +5013,7 @@ export const deleteAccountsContainersWorkspacesBuilt_in_variables: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest,
   output: DeleteAccountsContainersWorkspacesBuilt_in_variablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesBuilt_in_variablesRequest {
@@ -4819,7 +5160,11 @@ export const RevertAccountsContainersWorkspacesBuilt_in_variablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertBuiltInVariableResponse;
 
 export type RevertAccountsContainersWorkspacesBuilt_in_variablesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Built-In Variables in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
@@ -4830,7 +5175,7 @@ export const revertAccountsContainersWorkspacesBuilt_in_variables: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesBuilt_in_variablesRequest,
   output: RevertAccountsContainersWorkspacesBuilt_in_variablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersWorkspacesBuilt_in_variablesRequest {
@@ -4979,7 +5324,11 @@ export const CreateAccountsContainersWorkspacesBuilt_in_variablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateBuiltInVariableResponse;
 
 export type CreateAccountsContainersWorkspacesBuilt_in_variablesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates one or more GTM Built-In Variables. */
 export const createAccountsContainersWorkspacesBuilt_in_variables: API.OperationMethod<
@@ -4990,7 +5339,7 @@ export const createAccountsContainersWorkspacesBuilt_in_variables: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesBuilt_in_variablesRequest,
   output: CreateAccountsContainersWorkspacesBuilt_in_variablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersWorkspacesFoldersRequest {
@@ -5017,7 +5366,12 @@ export type CreateAccountsContainersWorkspacesFoldersResponse = Folder;
 export const CreateAccountsContainersWorkspacesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type CreateAccountsContainersWorkspacesFoldersError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Folder. */
 export const createAccountsContainersWorkspacesFolders: API.OperationMethod<
@@ -5028,7 +5382,7 @@ export const createAccountsContainersWorkspacesFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesFoldersRequest,
   output: CreateAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesFoldersRequest {
@@ -5056,7 +5410,12 @@ export type UpdateAccountsContainersWorkspacesFoldersResponse = Folder;
 export const UpdateAccountsContainersWorkspacesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type UpdateAccountsContainersWorkspacesFoldersError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Folder. */
 export const updateAccountsContainersWorkspacesFolders: API.OperationMethod<
@@ -5067,7 +5426,7 @@ export const updateAccountsContainersWorkspacesFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesFoldersRequest,
   output: UpdateAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EntitiesAccountsContainersWorkspacesFoldersRequest {
@@ -5095,7 +5454,12 @@ export type EntitiesAccountsContainersWorkspacesFoldersResponse =
 export const EntitiesAccountsContainersWorkspacesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ FolderEntities;
 
-export type EntitiesAccountsContainersWorkspacesFoldersError = DefaultErrors;
+export type EntitiesAccountsContainersWorkspacesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** List all entities in a GTM Folder. */
 export const entitiesAccountsContainersWorkspacesFolders: API.PaginatedOperationMethod<
@@ -5106,7 +5470,7 @@ export const entitiesAccountsContainersWorkspacesFolders: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: EntitiesAccountsContainersWorkspacesFoldersRequest,
   output: EntitiesAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5155,7 +5519,11 @@ export const Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse:
   ) as any as Schema.Schema<Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse>;
 
 export type Move_entities_to_folderAccountsContainersWorkspacesFoldersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves entities to a GTM Folder. If {folder_id} in the request path equals 0, this will instead move entities out of the folder they currently belong to. */
 export const move_entities_to_folderAccountsContainersWorkspacesFolders: API.OperationMethod<
@@ -5166,7 +5534,7 @@ export const move_entities_to_folderAccountsContainersWorkspacesFolders: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Move_entities_to_folderAccountsContainersWorkspacesFoldersRequest,
   output: Move_entities_to_folderAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersWorkspacesFoldersRequest {
@@ -5186,7 +5554,10 @@ export type GetAccountsContainersWorkspacesFoldersResponse = Folder;
 export const GetAccountsContainersWorkspacesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type GetAccountsContainersWorkspacesFoldersError = DefaultErrors;
+export type GetAccountsContainersWorkspacesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Folder. */
 export const getAccountsContainersWorkspacesFolders: API.OperationMethod<
@@ -5197,7 +5568,7 @@ export const getAccountsContainersWorkspacesFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesFoldersRequest,
   output: GetAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesFoldersRequest {
@@ -5219,7 +5590,12 @@ export const DeleteAccountsContainersWorkspacesFoldersResponse: Schema.Schema<De
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesFoldersResponse>;
 
-export type DeleteAccountsContainersWorkspacesFoldersError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Folder. */
 export const deleteAccountsContainersWorkspacesFolders: API.OperationMethod<
@@ -5230,7 +5606,7 @@ export const deleteAccountsContainersWorkspacesFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesFoldersRequest,
   output: DeleteAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesFoldersRequest {
@@ -5260,7 +5636,12 @@ export type RevertAccountsContainersWorkspacesFoldersResponse =
 export const RevertAccountsContainersWorkspacesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertFolderResponse;
 
-export type RevertAccountsContainersWorkspacesFoldersError = DefaultErrors;
+export type RevertAccountsContainersWorkspacesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Folder in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesFolders: API.OperationMethod<
@@ -5271,7 +5652,7 @@ export const revertAccountsContainersWorkspacesFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesFoldersRequest,
   output: RevertAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesFoldersRequest {
@@ -5295,7 +5676,10 @@ export type ListAccountsContainersWorkspacesFoldersResponse =
 export const ListAccountsContainersWorkspacesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFoldersResponse;
 
-export type ListAccountsContainersWorkspacesFoldersError = DefaultErrors;
+export type ListAccountsContainersWorkspacesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Folders of a Container. */
 export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMethod<
@@ -5306,7 +5690,7 @@ export const listAccountsContainersWorkspacesFolders: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesFoldersRequest,
   output: ListAccountsContainersWorkspacesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5334,7 +5718,10 @@ export type ListAccountsContainersWorkspacesTemplatesResponse =
 export const ListAccountsContainersWorkspacesTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTemplatesResponse;
 
-export type ListAccountsContainersWorkspacesTemplatesError = DefaultErrors;
+export type ListAccountsContainersWorkspacesTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Templates of a GTM container workspace. */
 export const listAccountsContainersWorkspacesTemplates: API.PaginatedOperationMethod<
@@ -5345,7 +5732,7 @@ export const listAccountsContainersWorkspacesTemplates: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTemplatesRequest,
   output: ListAccountsContainersWorkspacesTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5369,7 +5756,10 @@ export type GetAccountsContainersWorkspacesTemplatesResponse = CustomTemplate;
 export const GetAccountsContainersWorkspacesTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomTemplate;
 
-export type GetAccountsContainersWorkspacesTemplatesError = DefaultErrors;
+export type GetAccountsContainersWorkspacesTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Template. */
 export const getAccountsContainersWorkspacesTemplates: API.OperationMethod<
@@ -5380,7 +5770,7 @@ export const getAccountsContainersWorkspacesTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesTemplatesRequest,
   output: GetAccountsContainersWorkspacesTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesTemplatesRequest {
@@ -5402,7 +5792,12 @@ export const DeleteAccountsContainersWorkspacesTemplatesResponse: Schema.Schema<
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTemplatesResponse>;
 
-export type DeleteAccountsContainersWorkspacesTemplatesError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Template. */
 export const deleteAccountsContainersWorkspacesTemplates: API.OperationMethod<
@@ -5413,7 +5808,7 @@ export const deleteAccountsContainersWorkspacesTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesTemplatesRequest,
   output: DeleteAccountsContainersWorkspacesTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesTemplatesRequest {
@@ -5443,7 +5838,12 @@ export type RevertAccountsContainersWorkspacesTemplatesResponse =
 export const RevertAccountsContainersWorkspacesTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertTemplateResponse;
 
-export type RevertAccountsContainersWorkspacesTemplatesError = DefaultErrors;
+export type RevertAccountsContainersWorkspacesTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Template in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTemplates: API.OperationMethod<
@@ -5454,7 +5854,7 @@ export const revertAccountsContainersWorkspacesTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesTemplatesRequest,
   output: RevertAccountsContainersWorkspacesTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Import_from_galleryAccountsContainersWorkspacesTemplatesRequest {
@@ -5498,7 +5898,11 @@ export const Import_from_galleryAccountsContainersWorkspacesTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomTemplate;
 
 export type Import_from_galleryAccountsContainersWorkspacesTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports a GTM Custom Template from Gallery. */
 export const import_from_galleryAccountsContainersWorkspacesTemplates: API.OperationMethod<
@@ -5509,7 +5913,7 @@ export const import_from_galleryAccountsContainersWorkspacesTemplates: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Import_from_galleryAccountsContainersWorkspacesTemplatesRequest,
   output: Import_from_galleryAccountsContainersWorkspacesTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersWorkspacesTemplatesRequest {
@@ -5537,7 +5941,12 @@ export type CreateAccountsContainersWorkspacesTemplatesResponse =
 export const CreateAccountsContainersWorkspacesTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomTemplate;
 
-export type CreateAccountsContainersWorkspacesTemplatesError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Custom Template. */
 export const createAccountsContainersWorkspacesTemplates: API.OperationMethod<
@@ -5548,7 +5957,7 @@ export const createAccountsContainersWorkspacesTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesTemplatesRequest,
   output: CreateAccountsContainersWorkspacesTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesTemplatesRequest {
@@ -5577,7 +5986,12 @@ export type UpdateAccountsContainersWorkspacesTemplatesResponse =
 export const UpdateAccountsContainersWorkspacesTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomTemplate;
 
-export type UpdateAccountsContainersWorkspacesTemplatesError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Template. */
 export const updateAccountsContainersWorkspacesTemplates: API.OperationMethod<
@@ -5588,7 +6002,7 @@ export const updateAccountsContainersWorkspacesTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesTemplatesRequest,
   output: UpdateAccountsContainersWorkspacesTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersWorkspacesVariablesRequest {
@@ -5608,7 +6022,10 @@ export type GetAccountsContainersWorkspacesVariablesResponse = Variable;
 export const GetAccountsContainersWorkspacesVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type GetAccountsContainersWorkspacesVariablesError = DefaultErrors;
+export type GetAccountsContainersWorkspacesVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Variable. */
 export const getAccountsContainersWorkspacesVariables: API.OperationMethod<
@@ -5619,7 +6036,7 @@ export const getAccountsContainersWorkspacesVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesVariablesRequest,
   output: GetAccountsContainersWorkspacesVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesVariablesRequest {
@@ -5641,7 +6058,12 @@ export const DeleteAccountsContainersWorkspacesVariablesResponse: Schema.Schema<
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesVariablesResponse>;
 
-export type DeleteAccountsContainersWorkspacesVariablesError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Variable. */
 export const deleteAccountsContainersWorkspacesVariables: API.OperationMethod<
@@ -5652,7 +6074,7 @@ export const deleteAccountsContainersWorkspacesVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesVariablesRequest,
   output: DeleteAccountsContainersWorkspacesVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesVariablesRequest {
@@ -5682,7 +6104,12 @@ export type RevertAccountsContainersWorkspacesVariablesResponse =
 export const RevertAccountsContainersWorkspacesVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertVariableResponse;
 
-export type RevertAccountsContainersWorkspacesVariablesError = DefaultErrors;
+export type RevertAccountsContainersWorkspacesVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Variable in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesVariables: API.OperationMethod<
@@ -5693,7 +6120,7 @@ export const revertAccountsContainersWorkspacesVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesVariablesRequest,
   output: RevertAccountsContainersWorkspacesVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesVariablesRequest {
@@ -5717,7 +6144,10 @@ export type ListAccountsContainersWorkspacesVariablesResponse =
 export const ListAccountsContainersWorkspacesVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVariablesResponse;
 
-export type ListAccountsContainersWorkspacesVariablesError = DefaultErrors;
+export type ListAccountsContainersWorkspacesVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Variables of a Container. */
 export const listAccountsContainersWorkspacesVariables: API.PaginatedOperationMethod<
@@ -5728,7 +6158,7 @@ export const listAccountsContainersWorkspacesVariables: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesVariablesRequest,
   output: ListAccountsContainersWorkspacesVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5759,7 +6189,12 @@ export type CreateAccountsContainersWorkspacesVariablesResponse = Variable;
 export const CreateAccountsContainersWorkspacesVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type CreateAccountsContainersWorkspacesVariablesError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Variable. */
 export const createAccountsContainersWorkspacesVariables: API.OperationMethod<
@@ -5770,7 +6205,7 @@ export const createAccountsContainersWorkspacesVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesVariablesRequest,
   output: CreateAccountsContainersWorkspacesVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesVariablesRequest {
@@ -5798,7 +6233,12 @@ export type UpdateAccountsContainersWorkspacesVariablesResponse = Variable;
 export const UpdateAccountsContainersWorkspacesVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type UpdateAccountsContainersWorkspacesVariablesError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Variable. */
 export const updateAccountsContainersWorkspacesVariables: API.OperationMethod<
@@ -5809,7 +6249,7 @@ export const updateAccountsContainersWorkspacesVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesVariablesRequest,
   output: UpdateAccountsContainersWorkspacesVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersWorkspacesTriggersRequest {
@@ -5836,7 +6276,12 @@ export type CreateAccountsContainersWorkspacesTriggersResponse = Trigger;
 export const CreateAccountsContainersWorkspacesTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Trigger;
 
-export type CreateAccountsContainersWorkspacesTriggersError = DefaultErrors;
+export type CreateAccountsContainersWorkspacesTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Trigger. */
 export const createAccountsContainersWorkspacesTriggers: API.OperationMethod<
@@ -5847,7 +6292,7 @@ export const createAccountsContainersWorkspacesTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersWorkspacesTriggersRequest,
   output: CreateAccountsContainersWorkspacesTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersWorkspacesTriggersRequest {
@@ -5875,7 +6320,12 @@ export type UpdateAccountsContainersWorkspacesTriggersResponse = Trigger;
 export const UpdateAccountsContainersWorkspacesTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Trigger;
 
-export type UpdateAccountsContainersWorkspacesTriggersError = DefaultErrors;
+export type UpdateAccountsContainersWorkspacesTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Trigger. */
 export const updateAccountsContainersWorkspacesTriggers: API.OperationMethod<
@@ -5886,7 +6336,7 @@ export const updateAccountsContainersWorkspacesTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersWorkspacesTriggersRequest,
   output: UpdateAccountsContainersWorkspacesTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersWorkspacesTriggersRequest {
@@ -5910,7 +6360,10 @@ export type ListAccountsContainersWorkspacesTriggersResponse =
 export const ListAccountsContainersWorkspacesTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTriggersResponse;
 
-export type ListAccountsContainersWorkspacesTriggersError = DefaultErrors;
+export type ListAccountsContainersWorkspacesTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Triggers of a Container. */
 export const listAccountsContainersWorkspacesTriggers: API.PaginatedOperationMethod<
@@ -5921,7 +6374,7 @@ export const listAccountsContainersWorkspacesTriggers: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsContainersWorkspacesTriggersRequest,
   output: ListAccountsContainersWorkspacesTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5945,7 +6398,10 @@ export type GetAccountsContainersWorkspacesTriggersResponse = Trigger;
 export const GetAccountsContainersWorkspacesTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Trigger;
 
-export type GetAccountsContainersWorkspacesTriggersError = DefaultErrors;
+export type GetAccountsContainersWorkspacesTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Trigger. */
 export const getAccountsContainersWorkspacesTriggers: API.OperationMethod<
@@ -5956,7 +6412,7 @@ export const getAccountsContainersWorkspacesTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersWorkspacesTriggersRequest,
   output: GetAccountsContainersWorkspacesTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersWorkspacesTriggersRequest {
@@ -5978,7 +6434,12 @@ export const DeleteAccountsContainersWorkspacesTriggersResponse: Schema.Schema<D
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersWorkspacesTriggersResponse>;
 
-export type DeleteAccountsContainersWorkspacesTriggersError = DefaultErrors;
+export type DeleteAccountsContainersWorkspacesTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Trigger. */
 export const deleteAccountsContainersWorkspacesTriggers: API.OperationMethod<
@@ -5989,7 +6450,7 @@ export const deleteAccountsContainersWorkspacesTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersWorkspacesTriggersRequest,
   output: DeleteAccountsContainersWorkspacesTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevertAccountsContainersWorkspacesTriggersRequest {
@@ -6019,7 +6480,12 @@ export type RevertAccountsContainersWorkspacesTriggersResponse =
 export const RevertAccountsContainersWorkspacesTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevertTriggerResponse;
 
-export type RevertAccountsContainersWorkspacesTriggersError = DefaultErrors;
+export type RevertAccountsContainersWorkspacesTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts changes to a GTM Trigger in a GTM Workspace. */
 export const revertAccountsContainersWorkspacesTriggers: API.OperationMethod<
@@ -6030,7 +6496,7 @@ export const revertAccountsContainersWorkspacesTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevertAccountsContainersWorkspacesTriggersRequest,
   output: RevertAccountsContainersWorkspacesTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersDestinationsRequest {
@@ -6050,7 +6516,10 @@ export type GetAccountsContainersDestinationsResponse = Destination;
 export const GetAccountsContainersDestinationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Destination;
 
-export type GetAccountsContainersDestinationsError = DefaultErrors;
+export type GetAccountsContainersDestinationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Destination. */
 export const getAccountsContainersDestinations: API.OperationMethod<
@@ -6061,7 +6530,7 @@ export const getAccountsContainersDestinations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersDestinationsRequest,
   output: GetAccountsContainersDestinationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LinkAccountsContainersDestinationsRequest {
@@ -6095,7 +6564,12 @@ export type LinkAccountsContainersDestinationsResponse = Destination;
 export const LinkAccountsContainersDestinationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Destination;
 
-export type LinkAccountsContainersDestinationsError = DefaultErrors;
+export type LinkAccountsContainersDestinationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a Destination to this Container and removes it from the Container to which it is currently linked. */
 export const linkAccountsContainersDestinations: API.OperationMethod<
@@ -6106,7 +6580,7 @@ export const linkAccountsContainersDestinations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkAccountsContainersDestinationsRequest,
   output: LinkAccountsContainersDestinationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersDestinationsRequest {
@@ -6127,7 +6601,10 @@ export type ListAccountsContainersDestinationsResponse =
 export const ListAccountsContainersDestinationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDestinationsResponse;
 
-export type ListAccountsContainersDestinationsError = DefaultErrors;
+export type ListAccountsContainersDestinationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Destinations linked to a GTM Container. */
 export const listAccountsContainersDestinations: API.OperationMethod<
@@ -6138,5 +6615,5 @@ export const listAccountsContainersDestinations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersDestinationsRequest,
   output: ListAccountsContainersDestinationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

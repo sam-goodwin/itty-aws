@@ -2243,6 +2243,52 @@ export const ListFilterSetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ListFilterSetsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2275,7 +2321,12 @@ export type CreateBuyersFilterSetsResponse = FilterSet;
 export const CreateBuyersFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FilterSet;
 
-export type CreateBuyersFilterSetsError = DefaultErrors;
+export type CreateBuyersFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the specified filter set for the account with the given account ID. */
 export const createBuyersFilterSets: API.OperationMethod<
@@ -2286,7 +2337,7 @@ export const createBuyersFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBuyersFilterSetsRequest,
   output: CreateBuyersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersFilterSetsRequest {
@@ -2312,7 +2363,7 @@ export type ListBuyersFilterSetsResponse = ListFilterSetsResponse;
 export const ListBuyersFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilterSetsResponse;
 
-export type ListBuyersFilterSetsError = DefaultErrors;
+export type ListBuyersFilterSetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all filter sets for the account with the given account ID. */
 export const listBuyersFilterSets: API.PaginatedOperationMethod<
@@ -2323,7 +2374,7 @@ export const listBuyersFilterSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsRequest,
   output: ListBuyersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2347,7 +2398,7 @@ export type GetBuyersFilterSetsResponse = FilterSet;
 export const GetBuyersFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FilterSet;
 
-export type GetBuyersFilterSetsError = DefaultErrors;
+export type GetBuyersFilterSetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the requested filter set for the account with the given account ID. */
 export const getBuyersFilterSets: API.OperationMethod<
@@ -2358,7 +2409,7 @@ export const getBuyersFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersFilterSetsRequest,
   output: GetBuyersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteBuyersFilterSetsRequest {
@@ -2377,7 +2428,12 @@ export const DeleteBuyersFilterSetsRequest =
 export type DeleteBuyersFilterSetsResponse = Empty;
 export const DeleteBuyersFilterSetsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBuyersFilterSetsError = DefaultErrors;
+export type DeleteBuyersFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the requested filter set from the account with the given account ID. */
 export const deleteBuyersFilterSets: API.OperationMethod<
@@ -2388,7 +2444,7 @@ export const deleteBuyersFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBuyersFilterSetsRequest,
   output: DeleteBuyersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersFilterSetsBidResponsesWithoutBidsRequest {
@@ -2418,7 +2474,10 @@ export type ListBuyersFilterSetsBidResponsesWithoutBidsResponse =
 export const ListBuyersFilterSetsBidResponsesWithoutBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidResponsesWithoutBidsResponse;
 
-export type ListBuyersFilterSetsBidResponsesWithoutBidsError = DefaultErrors;
+export type ListBuyersFilterSetsBidResponsesWithoutBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason. */
 export const listBuyersFilterSetsBidResponsesWithoutBids: API.PaginatedOperationMethod<
@@ -2429,7 +2488,7 @@ export const listBuyersFilterSetsBidResponsesWithoutBids: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsBidResponsesWithoutBidsRequest,
   output: ListBuyersFilterSetsBidResponsesWithoutBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2463,7 +2522,10 @@ export type ListBuyersFilterSetsBidResponseErrorsResponse =
 export const ListBuyersFilterSetsBidResponseErrorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidResponseErrorsResponse;
 
-export type ListBuyersFilterSetsBidResponseErrorsError = DefaultErrors;
+export type ListBuyersFilterSetsBidResponseErrorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all errors that occurred in bid responses, with the number of bid responses affected for each reason. */
 export const listBuyersFilterSetsBidResponseErrors: API.PaginatedOperationMethod<
@@ -2474,7 +2536,7 @@ export const listBuyersFilterSetsBidResponseErrors: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsBidResponseErrorsRequest,
   output: ListBuyersFilterSetsBidResponseErrorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2508,7 +2570,10 @@ export type ListBuyersFilterSetsFilteredBidRequestsResponse =
 export const ListBuyersFilterSetsFilteredBidRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilteredBidRequestsResponse;
 
-export type ListBuyersFilterSetsFilteredBidRequestsError = DefaultErrors;
+export type ListBuyersFilterSetsFilteredBidRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason. */
 export const listBuyersFilterSetsFilteredBidRequests: API.PaginatedOperationMethod<
@@ -2519,7 +2584,7 @@ export const listBuyersFilterSetsFilteredBidRequests: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidRequestsRequest,
   output: ListBuyersFilterSetsFilteredBidRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2549,7 +2614,10 @@ export type ListBuyersFilterSetsLosingBidsResponse = ListLosingBidsResponse;
 export const ListBuyersFilterSetsLosingBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLosingBidsResponse;
 
-export type ListBuyersFilterSetsLosingBidsError = DefaultErrors;
+export type ListBuyersFilterSetsLosingBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bids lost in the auction, with the number of bids that lost for each reason. */
 export const listBuyersFilterSetsLosingBids: API.PaginatedOperationMethod<
@@ -2560,7 +2628,7 @@ export const listBuyersFilterSetsLosingBids: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsLosingBidsRequest,
   output: ListBuyersFilterSetsLosingBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2594,7 +2662,10 @@ export type ListBuyersFilterSetsImpressionMetricsResponse =
 export const ListBuyersFilterSetsImpressionMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListImpressionMetricsResponse;
 
-export type ListBuyersFilterSetsImpressionMetricsError = DefaultErrors;
+export type ListBuyersFilterSetsImpressionMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all metrics that are measured in terms of number of impressions. */
 export const listBuyersFilterSetsImpressionMetrics: API.PaginatedOperationMethod<
@@ -2605,7 +2676,7 @@ export const listBuyersFilterSetsImpressionMetrics: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsImpressionMetricsRequest,
   output: ListBuyersFilterSetsImpressionMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2639,7 +2710,10 @@ export type ListBuyersFilterSetsNonBillableWinningBidsResponse =
 export const ListBuyersFilterSetsNonBillableWinningBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNonBillableWinningBidsResponse;
 
-export type ListBuyersFilterSetsNonBillableWinningBidsError = DefaultErrors;
+export type ListBuyersFilterSetsNonBillableWinningBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which winning bids were not billable, with the number of bids not billed for each reason. */
 export const listBuyersFilterSetsNonBillableWinningBids: API.PaginatedOperationMethod<
@@ -2650,7 +2724,7 @@ export const listBuyersFilterSetsNonBillableWinningBids: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsNonBillableWinningBidsRequest,
   output: ListBuyersFilterSetsNonBillableWinningBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2680,7 +2754,10 @@ export type ListBuyersFilterSetsFilteredBidsResponse = ListFilteredBidsResponse;
 export const ListBuyersFilterSetsFilteredBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilteredBidsResponse;
 
-export type ListBuyersFilterSetsFilteredBidsError = DefaultErrors;
+export type ListBuyersFilterSetsFilteredBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bids were filtered, with the number of bids filtered for each reason. */
 export const listBuyersFilterSetsFilteredBids: API.PaginatedOperationMethod<
@@ -2691,7 +2768,7 @@ export const listBuyersFilterSetsFilteredBids: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidsRequest,
   output: ListBuyersFilterSetsFilteredBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2728,7 +2805,10 @@ export type ListBuyersFilterSetsFilteredBidsDetailsResponse =
 export const ListBuyersFilterSetsFilteredBidsDetailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativeStatusBreakdownByDetailResponse;
 
-export type ListBuyersFilterSetsFilteredBidsDetailsError = DefaultErrors;
+export type ListBuyersFilterSetsFilteredBidsDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail. */
 export const listBuyersFilterSetsFilteredBidsDetails: API.PaginatedOperationMethod<
@@ -2739,7 +2819,7 @@ export const listBuyersFilterSetsFilteredBidsDetails: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidsDetailsRequest,
   output: ListBuyersFilterSetsFilteredBidsDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2776,7 +2856,10 @@ export type ListBuyersFilterSetsFilteredBidsCreativesResponse =
 export const ListBuyersFilterSetsFilteredBidsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativeStatusBreakdownByCreativeResponse;
 
-export type ListBuyersFilterSetsFilteredBidsCreativesError = DefaultErrors;
+export type ListBuyersFilterSetsFilteredBidsCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative. */
 export const listBuyersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMethod<
@@ -2787,7 +2870,7 @@ export const listBuyersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsFilteredBidsCreativesRequest,
   output: ListBuyersFilterSetsFilteredBidsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2817,7 +2900,10 @@ export type ListBuyersFilterSetsBidMetricsResponse = ListBidMetricsResponse;
 export const ListBuyersFilterSetsBidMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidMetricsResponse;
 
-export type ListBuyersFilterSetsBidMetricsError = DefaultErrors;
+export type ListBuyersFilterSetsBidMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all metrics that are measured in terms of number of bids. */
 export const listBuyersFilterSetsBidMetrics: API.PaginatedOperationMethod<
@@ -2828,7 +2914,7 @@ export const listBuyersFilterSetsBidMetrics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFilterSetsBidMetricsRequest,
   output: ListBuyersFilterSetsBidMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2852,7 +2938,10 @@ export type GetBiddersAccountsFilterSetsResponse = FilterSet;
 export const GetBiddersAccountsFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FilterSet;
 
-export type GetBiddersAccountsFilterSetsError = DefaultErrors;
+export type GetBiddersAccountsFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the requested filter set for the account with the given account ID. */
 export const getBiddersAccountsFilterSets: API.OperationMethod<
@@ -2863,7 +2952,7 @@ export const getBiddersAccountsFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBiddersAccountsFilterSetsRequest,
   output: GetBiddersAccountsFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteBiddersAccountsFilterSetsRequest {
@@ -2883,7 +2972,12 @@ export type DeleteBiddersAccountsFilterSetsResponse = Empty;
 export const DeleteBiddersAccountsFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBiddersAccountsFilterSetsError = DefaultErrors;
+export type DeleteBiddersAccountsFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the requested filter set from the account with the given account ID. */
 export const deleteBiddersAccountsFilterSets: API.OperationMethod<
@@ -2894,7 +2988,7 @@ export const deleteBiddersAccountsFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBiddersAccountsFilterSetsRequest,
   output: DeleteBiddersAccountsFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBiddersAccountsFilterSetsRequest {
@@ -2926,7 +3020,12 @@ export type CreateBiddersAccountsFilterSetsResponse = FilterSet;
 export const CreateBiddersAccountsFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FilterSet;
 
-export type CreateBiddersAccountsFilterSetsError = DefaultErrors;
+export type CreateBiddersAccountsFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the specified filter set for the account with the given account ID. */
 export const createBiddersAccountsFilterSets: API.OperationMethod<
@@ -2937,7 +3036,7 @@ export const createBiddersAccountsFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBiddersAccountsFilterSetsRequest,
   output: CreateBiddersAccountsFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBiddersAccountsFilterSetsRequest {
@@ -2963,7 +3062,10 @@ export type ListBiddersAccountsFilterSetsResponse = ListFilterSetsResponse;
 export const ListBiddersAccountsFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilterSetsResponse;
 
-export type ListBiddersAccountsFilterSetsError = DefaultErrors;
+export type ListBiddersAccountsFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all filter sets for the account with the given account ID. */
 export const listBiddersAccountsFilterSets: API.PaginatedOperationMethod<
@@ -2974,7 +3076,7 @@ export const listBiddersAccountsFilterSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsRequest,
   output: ListBiddersAccountsFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3009,7 +3111,9 @@ export const ListBiddersAccountsFilterSetsFilteredBidRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilteredBidRequestsResponse;
 
 export type ListBiddersAccountsFilterSetsFilteredBidRequestsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason. */
 export const listBiddersAccountsFilterSetsFilteredBidRequests: API.PaginatedOperationMethod<
@@ -3020,7 +3124,7 @@ export const listBiddersAccountsFilterSetsFilteredBidRequests: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidRequestsRequest,
   output: ListBiddersAccountsFilterSetsFilteredBidRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3051,7 +3155,10 @@ export type ListBiddersAccountsFilterSetsLosingBidsResponse =
 export const ListBiddersAccountsFilterSetsLosingBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLosingBidsResponse;
 
-export type ListBiddersAccountsFilterSetsLosingBidsError = DefaultErrors;
+export type ListBiddersAccountsFilterSetsLosingBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bids lost in the auction, with the number of bids that lost for each reason. */
 export const listBiddersAccountsFilterSetsLosingBids: API.PaginatedOperationMethod<
@@ -3062,7 +3169,7 @@ export const listBiddersAccountsFilterSetsLosingBids: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsLosingBidsRequest,
   output: ListBiddersAccountsFilterSetsLosingBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3097,7 +3204,9 @@ export const ListBiddersAccountsFilterSetsBidResponsesWithoutBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidResponsesWithoutBidsResponse;
 
 export type ListBiddersAccountsFilterSetsBidResponsesWithoutBidsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason. */
 export const listBiddersAccountsFilterSetsBidResponsesWithoutBids: API.PaginatedOperationMethod<
@@ -3108,7 +3217,7 @@ export const listBiddersAccountsFilterSetsBidResponsesWithoutBids: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsBidResponsesWithoutBidsRequest,
   output: ListBiddersAccountsFilterSetsBidResponsesWithoutBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3142,7 +3251,10 @@ export type ListBiddersAccountsFilterSetsBidResponseErrorsResponse =
 export const ListBiddersAccountsFilterSetsBidResponseErrorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidResponseErrorsResponse;
 
-export type ListBiddersAccountsFilterSetsBidResponseErrorsError = DefaultErrors;
+export type ListBiddersAccountsFilterSetsBidResponseErrorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all errors that occurred in bid responses, with the number of bid responses affected for each reason. */
 export const listBiddersAccountsFilterSetsBidResponseErrors: API.PaginatedOperationMethod<
@@ -3153,7 +3265,7 @@ export const listBiddersAccountsFilterSetsBidResponseErrors: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsBidResponseErrorsRequest,
   output: ListBiddersAccountsFilterSetsBidResponseErrorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3184,7 +3296,10 @@ export type ListBiddersAccountsFilterSetsFilteredBidsResponse =
 export const ListBiddersAccountsFilterSetsFilteredBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilteredBidsResponse;
 
-export type ListBiddersAccountsFilterSetsFilteredBidsError = DefaultErrors;
+export type ListBiddersAccountsFilterSetsFilteredBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bids were filtered, with the number of bids filtered for each reason. */
 export const listBiddersAccountsFilterSetsFilteredBids: API.PaginatedOperationMethod<
@@ -3195,7 +3310,7 @@ export const listBiddersAccountsFilterSetsFilteredBids: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidsRequest,
   output: ListBiddersAccountsFilterSetsFilteredBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3233,7 +3348,9 @@ export const ListBiddersAccountsFilterSetsFilteredBidsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativeStatusBreakdownByCreativeResponse;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsCreativesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative. */
 export const listBiddersAccountsFilterSetsFilteredBidsCreatives: API.PaginatedOperationMethod<
@@ -3244,7 +3361,7 @@ export const listBiddersAccountsFilterSetsFilteredBidsCreatives: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidsCreativesRequest,
   output: ListBiddersAccountsFilterSetsFilteredBidsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3282,7 +3399,9 @@ export const ListBiddersAccountsFilterSetsFilteredBidsDetailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativeStatusBreakdownByDetailResponse;
 
 export type ListBiddersAccountsFilterSetsFilteredBidsDetailsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail. */
 export const listBiddersAccountsFilterSetsFilteredBidsDetails: API.PaginatedOperationMethod<
@@ -3293,7 +3412,7 @@ export const listBiddersAccountsFilterSetsFilteredBidsDetails: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsFilteredBidsDetailsRequest,
   output: ListBiddersAccountsFilterSetsFilteredBidsDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3324,7 +3443,10 @@ export type ListBiddersAccountsFilterSetsBidMetricsResponse =
 export const ListBiddersAccountsFilterSetsBidMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidMetricsResponse;
 
-export type ListBiddersAccountsFilterSetsBidMetricsError = DefaultErrors;
+export type ListBiddersAccountsFilterSetsBidMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all metrics that are measured in terms of number of bids. */
 export const listBiddersAccountsFilterSetsBidMetrics: API.PaginatedOperationMethod<
@@ -3335,7 +3457,7 @@ export const listBiddersAccountsFilterSetsBidMetrics: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsBidMetricsRequest,
   output: ListBiddersAccountsFilterSetsBidMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3369,7 +3491,10 @@ export type ListBiddersAccountsFilterSetsImpressionMetricsResponse =
 export const ListBiddersAccountsFilterSetsImpressionMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListImpressionMetricsResponse;
 
-export type ListBiddersAccountsFilterSetsImpressionMetricsError = DefaultErrors;
+export type ListBiddersAccountsFilterSetsImpressionMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all metrics that are measured in terms of number of impressions. */
 export const listBiddersAccountsFilterSetsImpressionMetrics: API.PaginatedOperationMethod<
@@ -3380,7 +3505,7 @@ export const listBiddersAccountsFilterSetsImpressionMetrics: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsImpressionMetricsRequest,
   output: ListBiddersAccountsFilterSetsImpressionMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3415,7 +3540,9 @@ export const ListBiddersAccountsFilterSetsNonBillableWinningBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNonBillableWinningBidsResponse;
 
 export type ListBiddersAccountsFilterSetsNonBillableWinningBidsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which winning bids were not billable, with the number of bids not billed for each reason. */
 export const listBiddersAccountsFilterSetsNonBillableWinningBids: API.PaginatedOperationMethod<
@@ -3426,7 +3553,7 @@ export const listBiddersAccountsFilterSetsNonBillableWinningBids: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAccountsFilterSetsNonBillableWinningBidsRequest,
   output: ListBiddersAccountsFilterSetsNonBillableWinningBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3450,7 +3577,7 @@ export type GetBiddersFilterSetsResponse = FilterSet;
 export const GetBiddersFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FilterSet;
 
-export type GetBiddersFilterSetsError = DefaultErrors;
+export type GetBiddersFilterSetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the requested filter set for the account with the given account ID. */
 export const getBiddersFilterSets: API.OperationMethod<
@@ -3461,7 +3588,7 @@ export const getBiddersFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBiddersFilterSetsRequest,
   output: GetBiddersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteBiddersFilterSetsRequest {
@@ -3481,7 +3608,12 @@ export type DeleteBiddersFilterSetsResponse = Empty;
 export const DeleteBiddersFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBiddersFilterSetsError = DefaultErrors;
+export type DeleteBiddersFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the requested filter set from the account with the given account ID. */
 export const deleteBiddersFilterSets: API.OperationMethod<
@@ -3492,7 +3624,7 @@ export const deleteBiddersFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBiddersFilterSetsRequest,
   output: DeleteBiddersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBiddersFilterSetsRequest {
@@ -3518,7 +3650,7 @@ export type ListBiddersFilterSetsResponse = ListFilterSetsResponse;
 export const ListBiddersFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilterSetsResponse;
 
-export type ListBiddersFilterSetsError = DefaultErrors;
+export type ListBiddersFilterSetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all filter sets for the account with the given account ID. */
 export const listBiddersFilterSets: API.PaginatedOperationMethod<
@@ -3529,7 +3661,7 @@ export const listBiddersFilterSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsRequest,
   output: ListBiddersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3565,7 +3697,12 @@ export type CreateBiddersFilterSetsResponse = FilterSet;
 export const CreateBiddersFilterSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FilterSet;
 
-export type CreateBiddersFilterSetsError = DefaultErrors;
+export type CreateBiddersFilterSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the specified filter set for the account with the given account ID. */
 export const createBiddersFilterSets: API.OperationMethod<
@@ -3576,7 +3713,7 @@ export const createBiddersFilterSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBiddersFilterSetsRequest,
   output: CreateBiddersFilterSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBiddersFilterSetsBidResponsesWithoutBidsRequest {
@@ -3606,7 +3743,10 @@ export type ListBiddersFilterSetsBidResponsesWithoutBidsResponse =
 export const ListBiddersFilterSetsBidResponsesWithoutBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidResponsesWithoutBidsResponse;
 
-export type ListBiddersFilterSetsBidResponsesWithoutBidsError = DefaultErrors;
+export type ListBiddersFilterSetsBidResponsesWithoutBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason. */
 export const listBiddersFilterSetsBidResponsesWithoutBids: API.PaginatedOperationMethod<
@@ -3617,7 +3757,7 @@ export const listBiddersFilterSetsBidResponsesWithoutBids: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsBidResponsesWithoutBidsRequest,
   output: ListBiddersFilterSetsBidResponsesWithoutBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3651,7 +3791,10 @@ export type ListBiddersFilterSetsBidResponseErrorsResponse =
 export const ListBiddersFilterSetsBidResponseErrorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidResponseErrorsResponse;
 
-export type ListBiddersFilterSetsBidResponseErrorsError = DefaultErrors;
+export type ListBiddersFilterSetsBidResponseErrorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all errors that occurred in bid responses, with the number of bid responses affected for each reason. */
 export const listBiddersFilterSetsBidResponseErrors: API.PaginatedOperationMethod<
@@ -3662,7 +3805,7 @@ export const listBiddersFilterSetsBidResponseErrors: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsBidResponseErrorsRequest,
   output: ListBiddersFilterSetsBidResponseErrorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3696,7 +3839,10 @@ export type ListBiddersFilterSetsFilteredBidRequestsResponse =
 export const ListBiddersFilterSetsFilteredBidRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilteredBidRequestsResponse;
 
-export type ListBiddersFilterSetsFilteredBidRequestsError = DefaultErrors;
+export type ListBiddersFilterSetsFilteredBidRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason. */
 export const listBiddersFilterSetsFilteredBidRequests: API.PaginatedOperationMethod<
@@ -3707,7 +3853,7 @@ export const listBiddersFilterSetsFilteredBidRequests: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidRequestsRequest,
   output: ListBiddersFilterSetsFilteredBidRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3737,7 +3883,10 @@ export type ListBiddersFilterSetsLosingBidsResponse = ListLosingBidsResponse;
 export const ListBiddersFilterSetsLosingBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLosingBidsResponse;
 
-export type ListBiddersFilterSetsLosingBidsError = DefaultErrors;
+export type ListBiddersFilterSetsLosingBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bids lost in the auction, with the number of bids that lost for each reason. */
 export const listBiddersFilterSetsLosingBids: API.PaginatedOperationMethod<
@@ -3748,7 +3897,7 @@ export const listBiddersFilterSetsLosingBids: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsLosingBidsRequest,
   output: ListBiddersFilterSetsLosingBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3782,7 +3931,10 @@ export type ListBiddersFilterSetsImpressionMetricsResponse =
 export const ListBiddersFilterSetsImpressionMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListImpressionMetricsResponse;
 
-export type ListBiddersFilterSetsImpressionMetricsError = DefaultErrors;
+export type ListBiddersFilterSetsImpressionMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all metrics that are measured in terms of number of impressions. */
 export const listBiddersFilterSetsImpressionMetrics: API.PaginatedOperationMethod<
@@ -3793,7 +3945,7 @@ export const listBiddersFilterSetsImpressionMetrics: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsImpressionMetricsRequest,
   output: ListBiddersFilterSetsImpressionMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3827,7 +3979,10 @@ export type ListBiddersFilterSetsNonBillableWinningBidsResponse =
 export const ListBiddersFilterSetsNonBillableWinningBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNonBillableWinningBidsResponse;
 
-export type ListBiddersFilterSetsNonBillableWinningBidsError = DefaultErrors;
+export type ListBiddersFilterSetsNonBillableWinningBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which winning bids were not billable, with the number of bids not billed for each reason. */
 export const listBiddersFilterSetsNonBillableWinningBids: API.PaginatedOperationMethod<
@@ -3838,7 +3993,7 @@ export const listBiddersFilterSetsNonBillableWinningBids: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsNonBillableWinningBidsRequest,
   output: ListBiddersFilterSetsNonBillableWinningBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3869,7 +4024,10 @@ export type ListBiddersFilterSetsFilteredBidsResponse =
 export const ListBiddersFilterSetsFilteredBidsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFilteredBidsResponse;
 
-export type ListBiddersFilterSetsFilteredBidsError = DefaultErrors;
+export type ListBiddersFilterSetsFilteredBidsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all reasons for which bids were filtered, with the number of bids filtered for each reason. */
 export const listBiddersFilterSetsFilteredBids: API.PaginatedOperationMethod<
@@ -3880,7 +4038,7 @@ export const listBiddersFilterSetsFilteredBids: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidsRequest,
   output: ListBiddersFilterSetsFilteredBidsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3917,7 +4075,10 @@ export type ListBiddersFilterSetsFilteredBidsCreativesResponse =
 export const ListBiddersFilterSetsFilteredBidsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativeStatusBreakdownByCreativeResponse;
 
-export type ListBiddersFilterSetsFilteredBidsCreativesError = DefaultErrors;
+export type ListBiddersFilterSetsFilteredBidsCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative. */
 export const listBiddersFilterSetsFilteredBidsCreatives: API.PaginatedOperationMethod<
@@ -3928,7 +4089,7 @@ export const listBiddersFilterSetsFilteredBidsCreatives: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidsCreativesRequest,
   output: ListBiddersFilterSetsFilteredBidsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3965,7 +4126,10 @@ export type ListBiddersFilterSetsFilteredBidsDetailsResponse =
 export const ListBiddersFilterSetsFilteredBidsDetailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativeStatusBreakdownByDetailResponse;
 
-export type ListBiddersFilterSetsFilteredBidsDetailsError = DefaultErrors;
+export type ListBiddersFilterSetsFilteredBidsDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail. */
 export const listBiddersFilterSetsFilteredBidsDetails: API.PaginatedOperationMethod<
@@ -3976,7 +4140,7 @@ export const listBiddersFilterSetsFilteredBidsDetails: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsFilteredBidsDetailsRequest,
   output: ListBiddersFilterSetsFilteredBidsDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4006,7 +4170,10 @@ export type ListBiddersFilterSetsBidMetricsResponse = ListBidMetricsResponse;
 export const ListBiddersFilterSetsBidMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBidMetricsResponse;
 
-export type ListBiddersFilterSetsBidMetricsError = DefaultErrors;
+export type ListBiddersFilterSetsBidMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all metrics that are measured in terms of number of bids. */
 export const listBiddersFilterSetsBidMetrics: API.PaginatedOperationMethod<
@@ -4017,7 +4184,7 @@ export const listBiddersFilterSetsBidMetrics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFilterSetsBidMetricsRequest,
   output: ListBiddersFilterSetsBidMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4047,7 +4214,7 @@ export type GetAccountsCreativesResponse = Creative;
 export const GetAccountsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type GetAccountsCreativesError = DefaultErrors;
+export type GetAccountsCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a creative. */
 export const getAccountsCreatives: API.OperationMethod<
@@ -4058,7 +4225,7 @@ export const getAccountsCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsCreativesRequest,
   output: GetAccountsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StopWatchingAccountsCreativesRequest {
@@ -4088,7 +4255,12 @@ export type StopWatchingAccountsCreativesResponse = Empty;
 export const StopWatchingAccountsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type StopWatchingAccountsCreativesError = DefaultErrors;
+export type StopWatchingAccountsCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops watching a creative. Will stop push notifications being sent to the topics when the creative changes status. */
 export const stopWatchingAccountsCreatives: API.OperationMethod<
@@ -4099,7 +4271,7 @@ export const stopWatchingAccountsCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopWatchingAccountsCreativesRequest,
   output: StopWatchingAccountsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsCreativesRequest {
@@ -4129,7 +4301,12 @@ export type UpdateAccountsCreativesResponse = Creative;
 export const UpdateAccountsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type UpdateAccountsCreativesError = DefaultErrors;
+export type UpdateAccountsCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a creative. */
 export const updateAccountsCreatives: API.OperationMethod<
@@ -4140,7 +4317,7 @@ export const updateAccountsCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsCreativesRequest,
   output: UpdateAccountsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsCreativesRequest {
@@ -4175,7 +4352,12 @@ export type CreateAccountsCreativesResponse = Creative;
 export const CreateAccountsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type CreateAccountsCreativesError = DefaultErrors;
+export type CreateAccountsCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a creative. */
 export const createAccountsCreatives: API.OperationMethod<
@@ -4186,7 +4368,7 @@ export const createAccountsCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsCreativesRequest,
   output: CreateAccountsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsCreativesRequest {
@@ -4215,7 +4397,7 @@ export type ListAccountsCreativesResponse = ListCreativesResponse;
 export const ListAccountsCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativesResponse;
 
-export type ListAccountsCreativesError = DefaultErrors;
+export type ListAccountsCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists creatives. */
 export const listAccountsCreatives: API.PaginatedOperationMethod<
@@ -4226,7 +4408,7 @@ export const listAccountsCreatives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCreativesRequest,
   output: ListAccountsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4259,7 +4441,12 @@ export const WatchAccountsCreativesRequest =
 export type WatchAccountsCreativesResponse = Empty;
 export const WatchAccountsCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type WatchAccountsCreativesError = DefaultErrors;
+export type WatchAccountsCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watches a creative. Will result in push notifications being sent to the topic when the creative changes status. */
 export const watchAccountsCreatives: API.OperationMethod<
@@ -4270,7 +4457,7 @@ export const watchAccountsCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchAccountsCreativesRequest,
   output: WatchAccountsCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveAccountsCreativesDealAssociationsRequest {
@@ -4300,7 +4487,12 @@ export type RemoveAccountsCreativesDealAssociationsResponse = Empty;
 export const RemoveAccountsCreativesDealAssociationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RemoveAccountsCreativesDealAssociationsError = DefaultErrors;
+export type RemoveAccountsCreativesDealAssociationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove the association between a deal and a creative. */
 export const removeAccountsCreativesDealAssociations: API.OperationMethod<
@@ -4311,7 +4503,7 @@ export const removeAccountsCreativesDealAssociations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAccountsCreativesDealAssociationsRequest,
   output: RemoveAccountsCreativesDealAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsCreativesDealAssociationsRequest {
@@ -4347,7 +4539,10 @@ export type ListAccountsCreativesDealAssociationsResponse =
 export const ListAccountsCreativesDealAssociationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDealAssociationsResponse;
 
-export type ListAccountsCreativesDealAssociationsError = DefaultErrors;
+export type ListAccountsCreativesDealAssociationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all creative-deal associations. */
 export const listAccountsCreativesDealAssociations: API.PaginatedOperationMethod<
@@ -4358,7 +4553,7 @@ export const listAccountsCreativesDealAssociations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCreativesDealAssociationsRequest,
   output: ListAccountsCreativesDealAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4392,7 +4587,12 @@ export type AddAccountsCreativesDealAssociationsResponse = Empty;
 export const AddAccountsCreativesDealAssociationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AddAccountsCreativesDealAssociationsError = DefaultErrors;
+export type AddAccountsCreativesDealAssociationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Associate an existing deal with a creative. */
 export const addAccountsCreativesDealAssociations: API.OperationMethod<
@@ -4403,7 +4603,7 @@ export const addAccountsCreativesDealAssociations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAccountsCreativesDealAssociationsRequest,
   output: AddAccountsCreativesDealAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseAccountsFinalizedProposalsRequest {
@@ -4433,7 +4633,12 @@ export type PauseAccountsFinalizedProposalsResponse = Proposal;
 export const PauseAccountsFinalizedProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type PauseAccountsFinalizedProposalsError = DefaultErrors;
+export type PauseAccountsFinalizedProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update given deals to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating. */
 export const pauseAccountsFinalizedProposals: API.OperationMethod<
@@ -4444,7 +4649,7 @@ export const pauseAccountsFinalizedProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseAccountsFinalizedProposalsRequest,
   output: PauseAccountsFinalizedProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsFinalizedProposalsRequest {
@@ -4485,7 +4690,10 @@ export type ListAccountsFinalizedProposalsResponse = ListProposalsResponse;
 export const ListAccountsFinalizedProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProposalsResponse;
 
-export type ListAccountsFinalizedProposalsError = DefaultErrors;
+export type ListAccountsFinalizedProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned. */
 export const listAccountsFinalizedProposals: API.PaginatedOperationMethod<
@@ -4496,7 +4704,7 @@ export const listAccountsFinalizedProposals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsFinalizedProposalsRequest,
   output: ListAccountsFinalizedProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4530,7 +4738,12 @@ export type ResumeAccountsFinalizedProposalsResponse = Proposal;
 export const ResumeAccountsFinalizedProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type ResumeAccountsFinalizedProposalsError = DefaultErrors;
+export type ResumeAccountsFinalizedProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update given deals to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating. */
 export const resumeAccountsFinalizedProposals: API.OperationMethod<
@@ -4541,7 +4754,7 @@ export const resumeAccountsFinalizedProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeAccountsFinalizedProposalsRequest,
   output: ResumeAccountsFinalizedProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsPublisherProfilesRequest {
@@ -4567,7 +4780,10 @@ export type GetAccountsPublisherProfilesResponse = PublisherProfile;
 export const GetAccountsPublisherProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublisherProfile;
 
-export type GetAccountsPublisherProfilesError = DefaultErrors;
+export type GetAccountsPublisherProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested publisher profile by id. */
 export const getAccountsPublisherProfiles: API.OperationMethod<
@@ -4578,7 +4794,7 @@ export const getAccountsPublisherProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsPublisherProfilesRequest,
   output: GetAccountsPublisherProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsPublisherProfilesRequest {
@@ -4608,7 +4824,10 @@ export type ListAccountsPublisherProfilesResponse =
 export const ListAccountsPublisherProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPublisherProfilesResponse;
 
-export type ListAccountsPublisherProfilesError = DefaultErrors;
+export type ListAccountsPublisherProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all publisher profiles visible to the buyer */
 export const listAccountsPublisherProfiles: API.PaginatedOperationMethod<
@@ -4619,7 +4838,7 @@ export const listAccountsPublisherProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPublisherProfilesRequest,
   output: ListAccountsPublisherProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4654,7 +4873,7 @@ export type ListAccountsClientsResponse = ListClientsResponse;
 export const ListAccountsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClientsResponse;
 
-export type ListAccountsClientsError = DefaultErrors;
+export type ListAccountsClientsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the clients for the current sponsor buyer. */
 export const listAccountsClients: API.PaginatedOperationMethod<
@@ -4665,7 +4884,7 @@ export const listAccountsClients: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsClientsRequest,
   output: ListAccountsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4695,7 +4914,12 @@ export const CreateAccountsClientsRequest =
 export type CreateAccountsClientsResponse = Client;
 export const CreateAccountsClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type CreateAccountsClientsError = DefaultErrors;
+export type CreateAccountsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new client buyer. */
 export const createAccountsClients: API.OperationMethod<
@@ -4706,7 +4930,7 @@ export const createAccountsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsClientsRequest,
   output: CreateAccountsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsClientsRequest {
@@ -4731,7 +4955,7 @@ export const GetAccountsClientsRequest =
 export type GetAccountsClientsResponse = Client;
 export const GetAccountsClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type GetAccountsClientsError = DefaultErrors;
+export type GetAccountsClientsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a client buyer with a given client account ID. */
 export const getAccountsClients: API.OperationMethod<
@@ -4742,7 +4966,7 @@ export const getAccountsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsClientsRequest,
   output: GetAccountsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsClientsRequest {
@@ -4771,7 +4995,12 @@ export const UpdateAccountsClientsRequest =
 export type UpdateAccountsClientsResponse = Client;
 export const UpdateAccountsClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type UpdateAccountsClientsError = DefaultErrors;
+export type UpdateAccountsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing client buyer. */
 export const updateAccountsClients: API.OperationMethod<
@@ -4782,7 +5011,7 @@ export const updateAccountsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsClientsRequest,
   output: UpdateAccountsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsClientsUsersRequest {
@@ -4815,7 +5044,12 @@ export type UpdateAccountsClientsUsersResponse = ClientUser;
 export const UpdateAccountsClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUser;
 
-export type UpdateAccountsClientsUsersError = DefaultErrors;
+export type UpdateAccountsClientsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing client user. Only the user status can be changed on update. */
 export const updateAccountsClientsUsers: API.OperationMethod<
@@ -4826,7 +5060,7 @@ export const updateAccountsClientsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsClientsUsersRequest,
   output: UpdateAccountsClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsClientsUsersRequest {
@@ -4855,7 +5089,7 @@ export type GetAccountsClientsUsersResponse = ClientUser;
 export const GetAccountsClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUser;
 
-export type GetAccountsClientsUsersError = DefaultErrors;
+export type GetAccountsClientsUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an existing client user. */
 export const getAccountsClientsUsers: API.OperationMethod<
@@ -4866,7 +5100,7 @@ export const getAccountsClientsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsClientsUsersRequest,
   output: GetAccountsClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsClientsUsersRequest {
@@ -4898,7 +5132,10 @@ export type ListAccountsClientsUsersResponse = ListClientUsersResponse;
 export const ListAccountsClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClientUsersResponse;
 
-export type ListAccountsClientsUsersError = DefaultErrors;
+export type ListAccountsClientsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the known client users for a specified sponsor buyer account ID. */
 export const listAccountsClientsUsers: API.PaginatedOperationMethod<
@@ -4909,7 +5146,7 @@ export const listAccountsClientsUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsClientsUsersRequest,
   output: ListAccountsClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4942,7 +5179,10 @@ export type GetAccountsClientsInvitationsResponse = ClientUserInvitation;
 export const GetAccountsClientsInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUserInvitation;
 
-export type GetAccountsClientsInvitationsError = DefaultErrors;
+export type GetAccountsClientsInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an existing client user invitation. */
 export const getAccountsClientsInvitations: API.OperationMethod<
@@ -4953,7 +5193,7 @@ export const getAccountsClientsInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsClientsInvitationsRequest,
   output: GetAccountsClientsInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsClientsInvitationsRequest {
@@ -4986,7 +5226,10 @@ export type ListAccountsClientsInvitationsResponse =
 export const ListAccountsClientsInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClientUserInvitationsResponse;
 
-export type ListAccountsClientsInvitationsError = DefaultErrors;
+export type ListAccountsClientsInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the client users invitations for a client with a given account ID. */
 export const listAccountsClientsInvitations: API.PaginatedOperationMethod<
@@ -4997,7 +5240,7 @@ export const listAccountsClientsInvitations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsClientsInvitationsRequest,
   output: ListAccountsClientsInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5031,7 +5274,12 @@ export type CreateAccountsClientsInvitationsResponse = ClientUserInvitation;
 export const CreateAccountsClientsInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUserInvitation;
 
-export type CreateAccountsClientsInvitationsError = DefaultErrors;
+export type CreateAccountsClientsInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and sends out an email invitation to access an Ad Exchange client buyer account. */
 export const createAccountsClientsInvitations: API.OperationMethod<
@@ -5042,7 +5290,7 @@ export const createAccountsClientsInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsClientsInvitationsRequest,
   output: CreateAccountsClientsInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsProductsRequest {
@@ -5067,7 +5315,7 @@ export const GetAccountsProductsRequest =
 export type GetAccountsProductsResponse = Product;
 export const GetAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type GetAccountsProductsError = DefaultErrors;
+export type GetAccountsProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the requested product by ID. */
 export const getAccountsProducts: API.OperationMethod<
@@ -5078,7 +5326,7 @@ export const getAccountsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsProductsRequest,
   output: GetAccountsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsProductsRequest {
@@ -5107,7 +5355,7 @@ export type ListAccountsProductsResponse = ListProductsResponse;
 export const ListAccountsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductsResponse;
 
-export type ListAccountsProductsError = DefaultErrors;
+export type ListAccountsProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** List all products visible to the buyer (optionally filtered by the specified PQL query). */
 export const listAccountsProducts: API.PaginatedOperationMethod<
@@ -5118,7 +5366,7 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRequest,
   output: ListAccountsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5152,7 +5400,12 @@ export type CompleteSetupAccountsProposalsResponse = Proposal;
 export const CompleteSetupAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type CompleteSetupAccountsProposalsError = DefaultErrors;
+export type CompleteSetupAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** You can opt-in to manually update proposals to indicate that setup is complete. By default, proposal setup is automatically completed after their deals are finalized. Contact your Technical Account Manager to opt in. Buyers can call this method when the proposal has been finalized, and all the required creatives have been uploaded using the Creatives API. This call updates the `is_setup_completed` field on the deals in the proposal, and notifies the seller. The server then advances the revision number of the most recent proposal. To mark an individual deal as ready to serve, call `buyers.finalizedDeals.setReadyToServe` in the Marketplace API. */
 export const completeSetupAccountsProposals: API.OperationMethod<
@@ -5163,7 +5416,7 @@ export const completeSetupAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteSetupAccountsProposalsRequest,
   output: CompleteSetupAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsProposalsRequest {
@@ -5190,7 +5443,12 @@ export type CreateAccountsProposalsResponse = Proposal;
 export const CreateAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type CreateAccountsProposalsError = DefaultErrors;
+export type CreateAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create the given proposal. Each created proposal and any deals it contains are assigned a unique ID by the server. */
 export const createAccountsProposals: API.OperationMethod<
@@ -5201,7 +5459,7 @@ export const createAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsProposalsRequest,
   output: CreateAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsProposalsRequest {
@@ -5239,7 +5497,7 @@ export type ListAccountsProposalsResponse = ListProposalsResponse;
 export const ListAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProposalsResponse;
 
-export type ListAccountsProposalsError = DefaultErrors;
+export type ListAccountsProposalsError = DefaultErrors | NotFound | Forbidden;
 
 /** List proposals. A filter expression (PQL query) may be specified to filter the results. To retrieve all finalized proposals, regardless if a proposal is being renegotiated, see the FinalizedProposals resource. Note that Bidder/ChildSeat relationships differ from the usual behavior. A Bidder account can only see its child seats' proposals by specifying the ChildSeat's accountId in the request path. */
 export const listAccountsProposals: API.PaginatedOperationMethod<
@@ -5250,7 +5508,7 @@ export const listAccountsProposals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProposalsRequest,
   output: ListAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5284,7 +5542,12 @@ export type AcceptAccountsProposalsResponse = Proposal;
 export const AcceptAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type AcceptAccountsProposalsError = DefaultErrors;
+export type AcceptAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the proposal as accepted at the given revision number. If the number does not match the server's revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher. */
 export const acceptAccountsProposals: API.OperationMethod<
@@ -5295,7 +5558,7 @@ export const acceptAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptAccountsProposalsRequest,
   output: AcceptAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsProposalsRequest {
@@ -5321,7 +5584,7 @@ export type GetAccountsProposalsResponse = Proposal;
 export const GetAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type GetAccountsProposalsError = DefaultErrors;
+export type GetAccountsProposalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a proposal given its ID. The proposal is returned at its head revision. */
 export const getAccountsProposals: API.OperationMethod<
@@ -5332,7 +5595,7 @@ export const getAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsProposalsRequest,
   output: GetAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddNoteAccountsProposalsRequest {
@@ -5362,7 +5625,12 @@ export type AddNoteAccountsProposalsResponse = Note;
 export const AddNoteAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type AddNoteAccountsProposalsError = DefaultErrors;
+export type AddNoteAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new note and attach it to the proposal. The note is assigned a unique ID by the server. The proposal revision number will not increase when associated with a new note. */
 export const addNoteAccountsProposals: API.OperationMethod<
@@ -5373,7 +5641,7 @@ export const addNoteAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddNoteAccountsProposalsRequest,
   output: AddNoteAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseAccountsProposalsRequest {
@@ -5403,7 +5671,12 @@ export type PauseAccountsProposalsResponse = Proposal;
 export const PauseAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type PauseAccountsProposalsError = DefaultErrors;
+export type PauseAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating. */
 export const pauseAccountsProposals: API.OperationMethod<
@@ -5414,7 +5687,7 @@ export const pauseAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseAccountsProposalsRequest,
   output: PauseAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsProposalsRequest {
@@ -5444,7 +5717,12 @@ export type UpdateAccountsProposalsResponse = Proposal;
 export const UpdateAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type UpdateAccountsProposalsError = DefaultErrors;
+export type UpdateAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the given proposal at the client known revision number. If the server revision has advanced since the passed-in `proposal.proposal_revision`, an `ABORTED` error message will be returned. Only the buyer-modifiable fields of the proposal will be updated. Note that the deals in the proposal will be updated to match the passed-in copy. If a passed-in deal does not have a `deal_id`, the server will assign a new unique ID and create the deal. If passed-in deal has a `deal_id`, it will be updated to match the passed-in copy. Any existing deals not present in the passed-in proposal will be deleted. It is an error to pass in a deal with a `deal_id` not present at head. */
 export const updateAccountsProposals: API.OperationMethod<
@@ -5455,7 +5733,7 @@ export const updateAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsProposalsRequest,
   output: UpdateAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelNegotiationAccountsProposalsRequest {
@@ -5485,7 +5763,12 @@ export type CancelNegotiationAccountsProposalsResponse = Proposal;
 export const CancelNegotiationAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type CancelNegotiationAccountsProposalsError = DefaultErrors;
+export type CancelNegotiationAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally. */
 export const cancelNegotiationAccountsProposals: API.OperationMethod<
@@ -5496,7 +5779,7 @@ export const cancelNegotiationAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelNegotiationAccountsProposalsRequest,
   output: CancelNegotiationAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeAccountsProposalsRequest {
@@ -5526,7 +5809,12 @@ export type ResumeAccountsProposalsResponse = Proposal;
 export const ResumeAccountsProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type ResumeAccountsProposalsError = DefaultErrors;
+export type ResumeAccountsProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating. */
 export const resumeAccountsProposals: API.OperationMethod<
@@ -5537,5 +5825,5 @@ export const resumeAccountsProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeAccountsProposalsRequest,
   output: ResumeAccountsProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

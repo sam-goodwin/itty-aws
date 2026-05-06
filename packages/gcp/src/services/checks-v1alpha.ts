@@ -1436,6 +1436,52 @@ export const GoogleChecksAisafetyV1alphaClassifyContentRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1463,7 +1509,12 @@ export const UploadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UploadMediaResponse = Operation;
 export const UploadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UploadMediaError = DefaultErrors;
+export type UploadMediaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyzes the uploaded app bundle and returns a google.longrunning.Operation containing the generated Report. ## Example (upload only) Send a regular POST request with the header `X-Goog-Upload-Protocol: raw`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/* /apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: raw Content-Length: Content-Type: application/octet-stream ``` ## Example (upload with metadata) Send a multipart POST request where the first body part contains the metadata JSON and the second body part contains the binary upload. Include the header `X-Goog-Upload-Protocol: multipart`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/* /apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: multipart Content-Length: ? Content-Type: multipart/related; boundary=BOUNDARY --BOUNDARY Content-Type: application/json {"code_reference_id":"db5bcc20f94055fb5bc08cbb9b0e7a5530308786"} --BOUNDARY --BOUNDARY-- ``` *Note:* Metadata-only requests are not supported. */
 export const uploadMedia: API.OperationMethod<
@@ -1474,7 +1525,7 @@ export const uploadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAppsRequest {
@@ -1501,7 +1552,7 @@ export type ListAccountsAppsResponse =
 export const ListAccountsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChecksAccountV1alphaListAppsResponse;
 
-export type ListAccountsAppsError = DefaultErrors;
+export type ListAccountsAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the apps under the given account. */
 export const listAccountsApps: API.PaginatedOperationMethod<
@@ -1512,7 +1563,7 @@ export const listAccountsApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsRequest,
   output: ListAccountsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1537,7 +1588,7 @@ export type GetAccountsAppsResponse = GoogleChecksAccountV1alphaApp;
 export const GetAccountsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChecksAccountV1alphaApp;
 
-export type GetAccountsAppsError = DefaultErrors;
+export type GetAccountsAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an app. */
 export const getAccountsApps: API.OperationMethod<
@@ -1548,7 +1599,7 @@ export const getAccountsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsAppsRequest,
   output: GetAccountsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsAppsReportsRequest {
@@ -1583,7 +1634,7 @@ export type ListAccountsAppsReportsResponse =
 export const ListAccountsAppsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChecksReportV1alphaListReportsResponse;
 
-export type ListAccountsAppsReportsError = DefaultErrors;
+export type ListAccountsAppsReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists reports for the specified app. By default, only the name and results_uri fields are returned. You can include other fields by listing them in the `fields` URL query parameter. For example, `?fields=reports(name,checks)` will return the name and checks fields. */
 export const listAccountsAppsReports: API.PaginatedOperationMethod<
@@ -1594,7 +1645,7 @@ export const listAccountsAppsReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsReportsRequest,
   output: ListAccountsAppsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1623,7 +1674,7 @@ export type GetAccountsAppsReportsResponse = GoogleChecksReportV1alphaReport;
 export const GetAccountsAppsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChecksReportV1alphaReport;
 
-export type GetAccountsAppsReportsError = DefaultErrors;
+export type GetAccountsAppsReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a report. By default, only the name and results_uri fields are returned. You can include other fields by listing them in the `fields` URL query parameter. For example, `?fields=name,checks` will return the name and checks fields. */
 export const getAccountsAppsReports: API.OperationMethod<
@@ -1634,7 +1685,7 @@ export const getAccountsAppsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsAppsReportsRequest,
   output: GetAccountsAppsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WaitAccountsAppsOperationsRequest {
@@ -1657,7 +1708,12 @@ export type WaitAccountsAppsOperationsResponse = Operation;
 export const WaitAccountsAppsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WaitAccountsAppsOperationsError = DefaultErrors;
+export type WaitAccountsAppsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitAccountsAppsOperations: API.OperationMethod<
@@ -1668,7 +1724,7 @@ export const waitAccountsAppsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WaitAccountsAppsOperationsRequest,
   output: WaitAccountsAppsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsAppsOperationsRequest {
@@ -1688,7 +1744,10 @@ export type GetAccountsAppsOperationsResponse = Operation;
 export const GetAccountsAppsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetAccountsAppsOperationsError = DefaultErrors;
+export type GetAccountsAppsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getAccountsAppsOperations: API.OperationMethod<
@@ -1699,7 +1758,7 @@ export const getAccountsAppsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsAppsOperationsRequest,
   output: GetAccountsAppsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsAppsOperationsRequest {
@@ -1733,7 +1792,10 @@ export type ListAccountsAppsOperationsResponse = ListOperationsResponse;
 export const ListAccountsAppsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListAccountsAppsOperationsError = DefaultErrors;
+export type ListAccountsAppsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listAccountsAppsOperations: API.PaginatedOperationMethod<
@@ -1744,7 +1806,7 @@ export const listAccountsAppsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsOperationsRequest,
   output: ListAccountsAppsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1768,7 +1830,12 @@ export type DeleteAccountsAppsOperationsResponse = Empty;
 export const DeleteAccountsAppsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsAppsOperationsError = DefaultErrors;
+export type DeleteAccountsAppsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteAccountsAppsOperations: API.OperationMethod<
@@ -1779,7 +1846,7 @@ export const deleteAccountsAppsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsAppsOperationsRequest,
   output: DeleteAccountsAppsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelAccountsAppsOperationsRequest {
@@ -1802,7 +1869,12 @@ export type CancelAccountsAppsOperationsResponse = Empty;
 export const CancelAccountsAppsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelAccountsAppsOperationsError = DefaultErrors;
+export type CancelAccountsAppsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelAccountsAppsOperations: API.OperationMethod<
@@ -1813,7 +1885,7 @@ export const cancelAccountsAppsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelAccountsAppsOperationsRequest,
   output: CancelAccountsAppsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsReposOperationsRequest {
@@ -1833,7 +1905,10 @@ export type GetAccountsReposOperationsResponse = Operation;
 export const GetAccountsReposOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetAccountsReposOperationsError = DefaultErrors;
+export type GetAccountsReposOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getAccountsReposOperations: API.OperationMethod<
@@ -1844,7 +1919,7 @@ export const getAccountsReposOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsReposOperationsRequest,
   output: GetAccountsReposOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateAccountsReposScansRequest {
@@ -1873,7 +1948,12 @@ export type GenerateAccountsReposScansResponse = Operation;
 export const GenerateAccountsReposScansResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GenerateAccountsReposScansError = DefaultErrors;
+export type GenerateAccountsReposScansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads the results of local Code Compliance analysis and generates a scan of privacy issues. Returns a google.longrunning.Operation containing analysis and findings. */
 export const generateAccountsReposScans: API.OperationMethod<
@@ -1884,7 +1964,7 @@ export const generateAccountsReposScans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsReposScansRequest,
   output: GenerateAccountsReposScansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsReposScansRequest {
@@ -1904,7 +1984,7 @@ export type GetAccountsReposScansResponse = GoogleChecksRepoScanV1alphaRepoScan;
 export const GetAccountsReposScansResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChecksRepoScanV1alphaRepoScan;
 
-export type GetAccountsReposScansError = DefaultErrors;
+export type GetAccountsReposScansError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a repo scan. By default, only the name and results_uri fields are returned. You can include other fields by listing them in the `fields` URL query parameter. For example, `?fields=name,sources` will return the name and sources fields. */
 export const getAccountsReposScans: API.OperationMethod<
@@ -1915,7 +1995,7 @@ export const getAccountsReposScans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsReposScansRequest,
   output: GetAccountsReposScansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsReposScansRequest {
@@ -1945,7 +2025,7 @@ export type ListAccountsReposScansResponse =
 export const ListAccountsReposScansResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChecksRepoScanV1alphaListRepoScansResponse;
 
-export type ListAccountsReposScansError = DefaultErrors;
+export type ListAccountsReposScansError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists repo scans for the specified repo. */
 export const listAccountsReposScans: API.PaginatedOperationMethod<
@@ -1956,7 +2036,7 @@ export const listAccountsReposScans: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsReposScansRequest,
   output: ListAccountsReposScansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1987,7 +2067,12 @@ export type ClassifyContentAisafetyResponse =
 export const ClassifyContentAisafetyResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChecksAisafetyV1alphaClassifyContentResponse;
 
-export type ClassifyContentAisafetyError = DefaultErrors;
+export type ClassifyContentAisafetyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyze a piece of content with the provided set of policies. */
 export const classifyContentAisafety: API.OperationMethod<
@@ -1998,5 +2083,5 @@ export const classifyContentAisafety: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClassifyContentAisafetyRequest,
   output: ClassifyContentAisafetyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

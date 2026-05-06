@@ -720,6 +720,52 @@ export const RemoveAnalyticsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "RemoveAnalyticsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -738,7 +784,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -749,7 +795,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAnalyticsDetailsProjectsRequest {
@@ -769,7 +815,10 @@ export type GetAnalyticsDetailsProjectsResponse = AnalyticsDetails;
 export const GetAnalyticsDetailsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyticsDetails;
 
-export type GetAnalyticsDetailsProjectsError = DefaultErrors;
+export type GetAnalyticsDetailsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Google Analytics details currently associated with the specified FirebaseProject. If the `FirebaseProject` is not yet linked to Google Analytics, then the response to `GetAnalyticsDetails` is `NOT_FOUND`. */
 export const getAnalyticsDetailsProjects: API.OperationMethod<
@@ -780,7 +829,7 @@ export const getAnalyticsDetailsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAnalyticsDetailsProjectsRequest,
   output: GetAnalyticsDetailsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsRequest {
@@ -798,7 +847,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProjectsResponse = FirebaseProject;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ FirebaseProject;
 
-export type GetProjectsError = DefaultErrors;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified FirebaseProject. */
 export const getProjects: API.OperationMethod<
@@ -809,7 +858,7 @@ export const getProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RemoveAnalyticsProjectsRequest {
@@ -836,7 +885,12 @@ export type RemoveAnalyticsProjectsResponse = Empty;
 export const RemoveAnalyticsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RemoveAnalyticsProjectsError = DefaultErrors;
+export type RemoveAnalyticsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unlinks the specified FirebaseProject from its Google Analytics account. This call removes the association of the specified `FirebaseProject` with its current Google Analytics property. However, this call does not delete the Google Analytics resources, such as the Google Analytics property or any data streams. These resources may be re-associated later to the `FirebaseProject` by calling [`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and specifying the same `analyticsPropertyId`. For Android Apps and iOS Apps, this call re-links data streams with their corresponding apps. However, for Web Apps, this call provisions a *new* data stream for each Web App. To call `RemoveAnalytics`, a project member must be an Owner for the `FirebaseProject`. */
 export const removeAnalyticsProjects: API.OperationMethod<
@@ -847,7 +901,7 @@ export const removeAnalyticsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAnalyticsProjectsRequest,
   output: RemoveAnalyticsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddGoogleAnalyticsProjectsRequest {
@@ -874,7 +928,12 @@ export type AddGoogleAnalyticsProjectsResponse = Operation;
 export const AddGoogleAnalyticsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddGoogleAnalyticsProjectsError = DefaultErrors;
+export type AddGoogleAnalyticsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Links the specified FirebaseProject with an existing [Google Analytics account](http://www.google.com/analytics/). Using this call, you can either: - Specify an `analyticsAccountId` to provision a new Google Analytics property within the specified account and associate the new property with the `FirebaseProject`. - Specify an existing `analyticsPropertyId` to associate the property with the `FirebaseProject`. Note that when you call `AddGoogleAnalytics`: 1. The first check determines if any existing data streams in the Google Analytics property correspond to any existing Firebase Apps in the `FirebaseProject` (based on the `packageName` or `bundleId` associated with the data stream). Then, as applicable, the data streams and apps are linked. Note that this auto-linking only applies to `AndroidApps` and `IosApps`. 2. If no corresponding data streams are found for the Firebase Apps, new data streams are provisioned in the Google Analytics property for each of the Firebase Apps. Note that a new data stream is always provisioned for a Web App even if it was previously associated with a data stream in the Analytics property. Learn more about the hierarchy and structure of Google Analytics accounts in the [Analytics documentation](https://support.google.com/analytics/answer/9303323). The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation` succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to an AnalyticsDetails; if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a google.rpc.Status. To call `AddGoogleAnalytics`, a project member must be an Owner for the existing `FirebaseProject` and have the [`Edit` permission](https://support.google.com/analytics/answer/2884495) for the Google Analytics account. If the `FirebaseProject` already has Google Analytics enabled, and you call `AddGoogleAnalytics` using an `analyticsPropertyId` that's different from the currently associated property, then the call will fail. Analytics may have already been enabled in the Firebase console or by specifying `timeZone` and `regionCode` in the call to [`AddFirebase`](../../v1beta1/projects/addFirebase). */
 export const addGoogleAnalyticsProjects: API.OperationMethod<
@@ -885,7 +944,7 @@ export const addGoogleAnalyticsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddGoogleAnalyticsProjectsRequest,
   output: AddGoogleAnalyticsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdminSdkConfigProjectsRequest {
@@ -905,7 +964,10 @@ export type GetAdminSdkConfigProjectsResponse = AdminSdkConfig;
 export const GetAdminSdkConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdminSdkConfig;
 
-export type GetAdminSdkConfigProjectsError = DefaultErrors;
+export type GetAdminSdkConfigProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the configuration artifact associated with the specified FirebaseProject, which can be used by servers to simplify initialization. Typically, this configuration is used with the Firebase Admin SDK [initializeApp](https://firebase.google.com/docs/admin/setup#initialize_the_sdk) command. */
 export const getAdminSdkConfigProjects: API.OperationMethod<
@@ -916,7 +978,7 @@ export const getAdminSdkConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdminSdkConfigProjectsRequest,
   output: GetAdminSdkConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsRequest {
@@ -941,7 +1003,12 @@ export type PatchProjectsResponse = FirebaseProject;
 export const PatchProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirebaseProject;
 
-export type PatchProjectsError = DefaultErrors;
+export type PatchProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the attributes of the specified FirebaseProject. All [query parameters](#query-parameters) are required. */
 export const patchProjects: API.OperationMethod<
@@ -952,7 +1019,7 @@ export const patchProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsRequest,
   output: PatchProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchAppsProjectsRequest {
@@ -986,7 +1053,7 @@ export type SearchAppsProjectsResponse = SearchFirebaseAppsResponse;
 export const SearchAppsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchFirebaseAppsResponse;
 
-export type SearchAppsProjectsError = DefaultErrors;
+export type SearchAppsProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all available Apps for the specified FirebaseProject. This is a convenience method. Typically, interaction with an App should be done using the platform-specific service, but some tool use-cases require a summary of all known Apps (such as for App selector interfaces). */
 export const searchAppsProjects: API.PaginatedOperationMethod<
@@ -997,7 +1064,7 @@ export const searchAppsProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAppsProjectsRequest,
   output: SearchAppsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1026,7 +1093,7 @@ export type ListProjectsResponse = ListFirebaseProjectsResponse;
 export const ListProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFirebaseProjectsResponse;
 
-export type ListProjectsError = DefaultErrors;
+export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists each FirebaseProject accessible to the caller. The elements are returned in no particular order, but they will be a consistent view of the Projects when additional requests are made with a `pageToken`. This method is eventually consistent with Project mutations, which means newly provisioned Projects and recent modifications to existing Projects might not be reflected in the set of Projects. The list will include only ACTIVE Projects. Use GetFirebaseProject for consistent reads as well as for additional Project details. */
 export const listProjects: API.PaginatedOperationMethod<
@@ -1037,7 +1104,7 @@ export const listProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1068,7 +1135,12 @@ export type AddFirebaseProjectsResponse = Operation;
 export const AddFirebaseProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddFirebaseProjectsError = DefaultErrors;
+export type AddFirebaseProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds Firebase resources and enables Firebase services in the specified existing [Google Cloud `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects). Since a FirebaseProject is actually also a Google Cloud `Project`, a `FirebaseProject` has the same underlying Google Cloud identifiers (`projectNumber` and `projectId`). This allows for easy interop with Google APIs. The result of this call is an [`Operation`](../../v1beta1/operations). Poll the `Operation` to track the provisioning process by calling GetOperation until [`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When `done` is `true`, the `Operation` has either succeeded or failed. If the `Operation` succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to a FirebaseProject; if the `Operation` failed, its [`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a google.rpc.Status. The `Operation` is automatically deleted after completion, so there is no need to call DeleteOperation. This method does not modify any billing account information on the underlying Google Cloud `Project`. To call `AddFirebase`, a project member or service account must have the following permissions (the IAM roles of Editor and Owner contain these permissions): `firebase.projects.update`, `resourcemanager.projects.get`, `serviceusage.services.enable`, and `serviceusage.services.get`. */
 export const addFirebaseProjects: API.OperationMethod<
@@ -1079,7 +1151,7 @@ export const addFirebaseProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddFirebaseProjectsRequest,
   output: AddFirebaseProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveProjectsIosAppsRequest {
@@ -1102,7 +1174,12 @@ export type RemoveProjectsIosAppsResponse = Operation;
 export const RemoveProjectsIosAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveProjectsIosAppsError = DefaultErrors;
+export type RemoveProjectsIosAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified IosApp from the FirebaseProject. */
 export const removeProjectsIosApps: API.OperationMethod<
@@ -1113,7 +1190,7 @@ export const removeProjectsIosApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveProjectsIosAppsRequest,
   output: RemoveProjectsIosAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsIosAppsRequest {
@@ -1144,7 +1221,7 @@ export type ListProjectsIosAppsResponse = ListIosAppsResponse;
 export const ListProjectsIosAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListIosAppsResponse;
 
-export type ListProjectsIosAppsError = DefaultErrors;
+export type ListProjectsIosAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists each IosApp associated with the specified FirebaseProject. The elements are returned in no particular order, but will be a consistent view of the Apps when additional requests are made with a `pageToken`. */
 export const listProjectsIosApps: API.PaginatedOperationMethod<
@@ -1155,7 +1232,7 @@ export const listProjectsIosApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsIosAppsRequest,
   output: ListProjectsIosAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1182,7 +1259,12 @@ export type UndeleteProjectsIosAppsResponse = Operation;
 export const UndeleteProjectsIosAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsIosAppsError = DefaultErrors;
+export type UndeleteProjectsIosAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores the specified IosApp to the FirebaseProject. */
 export const undeleteProjectsIosApps: API.OperationMethod<
@@ -1193,7 +1275,7 @@ export const undeleteProjectsIosApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsIosAppsRequest,
   output: UndeleteProjectsIosAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigProjectsIosAppsRequest {
@@ -1213,7 +1295,10 @@ export type GetConfigProjectsIosAppsResponse = IosAppConfig;
 export const GetConfigProjectsIosAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IosAppConfig;
 
-export type GetConfigProjectsIosAppsError = DefaultErrors;
+export type GetConfigProjectsIosAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the configuration artifact associated with the specified IosApp. */
 export const getConfigProjectsIosApps: API.OperationMethod<
@@ -1224,7 +1309,7 @@ export const getConfigProjectsIosApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsIosAppsRequest,
   output: GetConfigProjectsIosAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsIosAppsRequest {
@@ -1249,7 +1334,12 @@ export const PatchProjectsIosAppsRequest =
 export type PatchProjectsIosAppsResponse = IosApp;
 export const PatchProjectsIosAppsResponse = /*@__PURE__*/ /*#__PURE__*/ IosApp;
 
-export type PatchProjectsIosAppsError = DefaultErrors;
+export type PatchProjectsIosAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the attributes of the specified IosApp. */
 export const patchProjectsIosApps: API.OperationMethod<
@@ -1260,7 +1350,7 @@ export const patchProjectsIosApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsIosAppsRequest,
   output: PatchProjectsIosAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsIosAppsRequest {
@@ -1279,7 +1369,7 @@ export const GetProjectsIosAppsRequest =
 export type GetProjectsIosAppsResponse = IosApp;
 export const GetProjectsIosAppsResponse = /*@__PURE__*/ /*#__PURE__*/ IosApp;
 
-export type GetProjectsIosAppsError = DefaultErrors;
+export type GetProjectsIosAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified IosApp. */
 export const getProjectsIosApps: API.OperationMethod<
@@ -1290,7 +1380,7 @@ export const getProjectsIosApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsIosAppsRequest,
   output: GetProjectsIosAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsIosAppsRequest {
@@ -1313,7 +1403,12 @@ export type CreateProjectsIosAppsResponse = Operation;
 export const CreateProjectsIosAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsIosAppsError = DefaultErrors;
+export type CreateProjectsIosAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`. */
 export const createProjectsIosApps: API.OperationMethod<
@@ -1324,7 +1419,7 @@ export const createProjectsIosApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsIosAppsRequest,
   output: CreateProjectsIosAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigProjectsWebAppsRequest {
@@ -1344,7 +1439,10 @@ export type GetConfigProjectsWebAppsResponse = WebAppConfig;
 export const GetConfigProjectsWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebAppConfig;
 
-export type GetConfigProjectsWebAppsError = DefaultErrors;
+export type GetConfigProjectsWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the configuration artifact associated with the specified WebApp. */
 export const getConfigProjectsWebApps: API.OperationMethod<
@@ -1355,7 +1453,7 @@ export const getConfigProjectsWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsWebAppsRequest,
   output: GetConfigProjectsWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsWebAppsRequest {
@@ -1374,7 +1472,7 @@ export const GetProjectsWebAppsRequest =
 export type GetProjectsWebAppsResponse = WebApp;
 export const GetProjectsWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type GetProjectsWebAppsError = DefaultErrors;
+export type GetProjectsWebAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified WebApp. */
 export const getProjectsWebApps: API.OperationMethod<
@@ -1385,7 +1483,7 @@ export const getProjectsWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsWebAppsRequest,
   output: GetProjectsWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsWebAppsRequest {
@@ -1408,7 +1506,12 @@ export type CreateProjectsWebAppsResponse = Operation;
 export const CreateProjectsWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsWebAppsError = DefaultErrors;
+export type CreateProjectsWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests the creation of a new WebApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`. */
 export const createProjectsWebApps: API.OperationMethod<
@@ -1419,7 +1522,7 @@ export const createProjectsWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsWebAppsRequest,
   output: CreateProjectsWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsWebAppsRequest {
@@ -1444,7 +1547,12 @@ export const PatchProjectsWebAppsRequest =
 export type PatchProjectsWebAppsResponse = WebApp;
 export const PatchProjectsWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type PatchProjectsWebAppsError = DefaultErrors;
+export type PatchProjectsWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the attributes of the specified WebApp. */
 export const patchProjectsWebApps: API.OperationMethod<
@@ -1455,7 +1563,7 @@ export const patchProjectsWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsWebAppsRequest,
   output: PatchProjectsWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsWebAppsRequest {
@@ -1486,7 +1594,7 @@ export type ListProjectsWebAppsResponse = ListWebAppsResponse;
 export const ListProjectsWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWebAppsResponse;
 
-export type ListProjectsWebAppsError = DefaultErrors;
+export type ListProjectsWebAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists each WebApp associated with the specified FirebaseProject. The elements are returned in no particular order, but will be a consistent view of the Apps when additional requests are made with a `pageToken`. */
 export const listProjectsWebApps: API.PaginatedOperationMethod<
@@ -1497,7 +1605,7 @@ export const listProjectsWebApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsWebAppsRequest,
   output: ListProjectsWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1524,7 +1632,12 @@ export type RemoveProjectsWebAppsResponse = Operation;
 export const RemoveProjectsWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveProjectsWebAppsError = DefaultErrors;
+export type RemoveProjectsWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified WebApp from the FirebaseProject. */
 export const removeProjectsWebApps: API.OperationMethod<
@@ -1535,7 +1648,7 @@ export const removeProjectsWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveProjectsWebAppsRequest,
   output: RemoveProjectsWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsWebAppsRequest {
@@ -1558,7 +1671,12 @@ export type UndeleteProjectsWebAppsResponse = Operation;
 export const UndeleteProjectsWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsWebAppsError = DefaultErrors;
+export type UndeleteProjectsWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores the specified WebApp to the FirebaseProject. */
 export const undeleteProjectsWebApps: API.OperationMethod<
@@ -1569,7 +1687,7 @@ export const undeleteProjectsWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsWebAppsRequest,
   output: UndeleteProjectsWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FinalizeProjectsDefaultLocationRequest {
@@ -1596,7 +1714,12 @@ export type FinalizeProjectsDefaultLocationResponse = Operation;
 export const FinalizeProjectsDefaultLocationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type FinalizeProjectsDefaultLocationError = DefaultErrors;
+export type FinalizeProjectsDefaultLocationError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** **DECOMMISSIONED.** **If called, this endpoint will return a 404 error.** _Instead, use the applicable resource-specific REST API to set the location for each resource used in your Project._ Sets the ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location) for the specified FirebaseProject. This method creates a Google App Engine application with a [default Cloud Storage bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket), located in the specified [`locationId`](#body.request_body.FIELDS.location_id). This location must be one of the available [App Engine locations](https://cloud.google.com/about/locations#region). After the location for default Google Cloud resources is finalized, or if it was already set, it cannot be changed. The location for default Google Cloud resources for the specified `FirebaseProject` might already be set because either the underlying Google Cloud `Project` already has an App Engine application or `FinalizeDefaultLocation` was previously called with a specified `locationId`. The result of this call is an [`Operation`](../../v1beta1/operations), which can be used to track the provisioning process. The [`response`](../../v1beta1/operations#Operation.FIELDS.response) type of the `Operation` is google.protobuf.Empty. The `Operation` can be polled by its `name` using GetOperation until `done` is true. When `done` is true, the `Operation` has either succeeded or failed. If the `Operation` has succeeded, its [`response`](../../v1beta1/operations#Operation.FIELDS.response) will be set to a google.protobuf.Empty; if the `Operation` has failed, its `error` will be set to a google.rpc.Status. The `Operation` is automatically deleted after completion, so there is no need to call DeleteOperation. All fields listed in the [request body](#request-body) are required. To call `FinalizeDefaultLocation`, a member must be an Owner of the Project. */
 export const finalizeProjectsDefaultLocation: API.OperationMethod<
@@ -1607,7 +1730,7 @@ export const finalizeProjectsDefaultLocation: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FinalizeProjectsDefaultLocationRequest,
   output: FinalizeProjectsDefaultLocationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsAndroidAppsRequest {
@@ -1630,7 +1753,12 @@ export type UndeleteProjectsAndroidAppsResponse = Operation;
 export const UndeleteProjectsAndroidAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsAndroidAppsError = DefaultErrors;
+export type UndeleteProjectsAndroidAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores the specified AndroidApp to the FirebaseProject. */
 export const undeleteProjectsAndroidApps: API.OperationMethod<
@@ -1641,7 +1769,7 @@ export const undeleteProjectsAndroidApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsAndroidAppsRequest,
   output: UndeleteProjectsAndroidAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveProjectsAndroidAppsRequest {
@@ -1664,7 +1792,12 @@ export type RemoveProjectsAndroidAppsResponse = Operation;
 export const RemoveProjectsAndroidAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveProjectsAndroidAppsError = DefaultErrors;
+export type RemoveProjectsAndroidAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified AndroidApp from the FirebaseProject. */
 export const removeProjectsAndroidApps: API.OperationMethod<
@@ -1675,7 +1808,7 @@ export const removeProjectsAndroidApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveProjectsAndroidAppsRequest,
   output: RemoveProjectsAndroidAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsAndroidAppsRequest {
@@ -1706,7 +1839,7 @@ export type ListProjectsAndroidAppsResponse = ListAndroidAppsResponse;
 export const ListProjectsAndroidAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAndroidAppsResponse;
 
-export type ListProjectsAndroidAppsError = DefaultErrors;
+export type ListProjectsAndroidAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists each AndroidApp associated with the specified FirebaseProject. The elements are returned in no particular order, but will be a consistent view of the Apps when additional requests are made with a `pageToken`. */
 export const listProjectsAndroidApps: API.PaginatedOperationMethod<
@@ -1717,7 +1850,7 @@ export const listProjectsAndroidApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAndroidAppsRequest,
   output: ListProjectsAndroidAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1747,7 +1880,12 @@ export type PatchProjectsAndroidAppsResponse = AndroidApp;
 export const PatchProjectsAndroidAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AndroidApp;
 
-export type PatchProjectsAndroidAppsError = DefaultErrors;
+export type PatchProjectsAndroidAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the attributes of the specified AndroidApp. */
 export const patchProjectsAndroidApps: API.OperationMethod<
@@ -1758,7 +1896,7 @@ export const patchProjectsAndroidApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAndroidAppsRequest,
   output: PatchProjectsAndroidAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAndroidAppsRequest {
@@ -1778,7 +1916,7 @@ export type GetProjectsAndroidAppsResponse = AndroidApp;
 export const GetProjectsAndroidAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AndroidApp;
 
-export type GetProjectsAndroidAppsError = DefaultErrors;
+export type GetProjectsAndroidAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified AndroidApp. */
 export const getProjectsAndroidApps: API.OperationMethod<
@@ -1789,7 +1927,7 @@ export const getProjectsAndroidApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAndroidAppsRequest,
   output: GetProjectsAndroidAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsAndroidAppsRequest {
@@ -1816,7 +1954,12 @@ export type CreateProjectsAndroidAppsResponse = Operation;
 export const CreateProjectsAndroidAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsAndroidAppsError = DefaultErrors;
+export type CreateProjectsAndroidAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests the creation of a new AndroidApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`. */
 export const createProjectsAndroidApps: API.OperationMethod<
@@ -1827,7 +1970,7 @@ export const createProjectsAndroidApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAndroidAppsRequest,
   output: CreateProjectsAndroidAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigProjectsAndroidAppsRequest {
@@ -1847,7 +1990,10 @@ export type GetConfigProjectsAndroidAppsResponse = AndroidAppConfig;
 export const GetConfigProjectsAndroidAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AndroidAppConfig;
 
-export type GetConfigProjectsAndroidAppsError = DefaultErrors;
+export type GetConfigProjectsAndroidAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the configuration artifact associated with the specified AndroidApp. */
 export const getConfigProjectsAndroidApps: API.OperationMethod<
@@ -1858,7 +2004,7 @@ export const getConfigProjectsAndroidApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsAndroidAppsRequest,
   output: GetConfigProjectsAndroidAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAndroidAppsShaRequest {
@@ -1878,7 +2024,10 @@ export type ListProjectsAndroidAppsShaResponse = ListShaCertificatesResponse;
 export const ListProjectsAndroidAppsShaResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListShaCertificatesResponse;
 
-export type ListProjectsAndroidAppsShaError = DefaultErrors;
+export type ListProjectsAndroidAppsShaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the SHA-1 and SHA-256 certificates for the specified AndroidApp. */
 export const listProjectsAndroidAppsSha: API.OperationMethod<
@@ -1889,7 +2038,7 @@ export const listProjectsAndroidAppsSha: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsAndroidAppsShaRequest,
   output: ListProjectsAndroidAppsShaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsAndroidAppsShaRequest {
@@ -1912,7 +2061,12 @@ export type CreateProjectsAndroidAppsShaResponse = ShaCertificate;
 export const CreateProjectsAndroidAppsShaResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShaCertificate;
 
-export type CreateProjectsAndroidAppsShaError = DefaultErrors;
+export type CreateProjectsAndroidAppsShaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a ShaCertificate to the specified AndroidApp. */
 export const createProjectsAndroidAppsSha: API.OperationMethod<
@@ -1923,7 +2077,7 @@ export const createProjectsAndroidAppsSha: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAndroidAppsShaRequest,
   output: CreateProjectsAndroidAppsShaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsAndroidAppsShaRequest {
@@ -1943,7 +2097,12 @@ export type DeleteProjectsAndroidAppsShaResponse = Empty;
 export const DeleteProjectsAndroidAppsShaResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsAndroidAppsShaError = DefaultErrors;
+export type DeleteProjectsAndroidAppsShaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a ShaCertificate from the specified AndroidApp. */
 export const deleteProjectsAndroidAppsSha: API.OperationMethod<
@@ -1954,7 +2113,7 @@ export const deleteProjectsAndroidAppsSha: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAndroidAppsShaRequest,
   output: DeleteProjectsAndroidAppsShaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsAvailableLocationsRequest {
@@ -1981,7 +2140,10 @@ export type ListProjectsAvailableLocationsResponse =
 export const ListProjectsAvailableLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAvailableLocationsResponse;
 
-export type ListProjectsAvailableLocationsError = DefaultErrors;
+export type ListProjectsAvailableLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** **DECOMMISSIONED.** **If called, this endpoint will return a 404 error.** _Instead, use the applicable resource-specific REST API (or associated documentation, as needed) to determine valid locations for each resource used in your Project._ Lists the valid ["locations for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location) for the specified Project (including a FirebaseProject). One of these locations can be selected as the Project's location for default Google Cloud resources, which is the geographical location where the Project's resources associated with Google App Engine (such as the default Cloud Firestore instance) will be provisioned by default. However, if the location for default Google Cloud resources has already been set for the Project, then this setting cannot be changed. This call checks for any possible [location restrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations) for the specified Project and, thus, might return a subset of all possible locations. To list all locations (regardless of any restrictions), call the endpoint without specifying a unique project identifier (that is, `/v1beta1/{parent=projects/-}/listAvailableLocations`). To call `ListAvailableLocations` with a specified project, a member must be at minimum a Viewer of the Project. Calls without a specified project do not require any specific project permissions. */
 export const listProjectsAvailableLocations: API.PaginatedOperationMethod<
@@ -1992,7 +2154,7 @@ export const listProjectsAvailableLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAvailableLocationsRequest,
   output: ListProjectsAvailableLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2019,7 +2181,7 @@ export type ListAvailableProjectsResponse_Op = ListAvailableProjectsResponse;
 export const ListAvailableProjectsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAvailableProjectsResponse;
 
-export type ListAvailableProjectsError = DefaultErrors;
+export type ListAvailableProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists each [Google Cloud `Project`](https://cloud.google.com/resource-manager/reference/rest/v1/projects) that can have Firebase resources added and Firebase services enabled. A Project will only be listed if: - The caller has sufficient [Google IAM](https://cloud.google.com/iam) permissions to call AddFirebase. - The Project is not already a FirebaseProject. - The Project is not in an Organization which has policies that prevent Firebase resources from being added. */
 export const listAvailableProjects: API.PaginatedOperationMethod<
@@ -2030,7 +2192,7 @@ export const listAvailableProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAvailableProjectsRequest,
   output: ListAvailableProjectsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

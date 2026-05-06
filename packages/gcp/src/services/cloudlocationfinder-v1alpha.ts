@@ -121,6 +121,31 @@ export const SearchCloudLocationsResponse =
   }).annotate({ identifier: "SearchCloudLocationsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -155,7 +180,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -166,7 +191,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -190,7 +215,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -201,7 +226,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsCloudLocationsRequest {
@@ -221,7 +246,10 @@ export type GetProjectsLocationsCloudLocationsResponse = CloudLocation;
 export const GetProjectsLocationsCloudLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CloudLocation;
 
-export type GetProjectsLocationsCloudLocationsError = DefaultErrors;
+export type GetProjectsLocationsCloudLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a resource containing information about a cloud location. */
 export const getProjectsLocationsCloudLocations: API.OperationMethod<
@@ -232,7 +260,7 @@ export const getProjectsLocationsCloudLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCloudLocationsRequest,
   output: GetProjectsLocationsCloudLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCloudLocationsRequest {
@@ -262,7 +290,10 @@ export type ListProjectsLocationsCloudLocationsResponse =
 export const ListProjectsLocationsCloudLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCloudLocationsResponse;
 
-export type ListProjectsLocationsCloudLocationsError = DefaultErrors;
+export type ListProjectsLocationsCloudLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists cloud locations under a given project and location. */
 export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
@@ -273,7 +304,7 @@ export const listProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCloudLocationsRequest,
   output: ListProjectsLocationsCloudLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -312,7 +343,10 @@ export type SearchProjectsLocationsCloudLocationsResponse =
 export const SearchProjectsLocationsCloudLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchCloudLocationsResponse;
 
-export type SearchProjectsLocationsCloudLocationsError = DefaultErrors;
+export type SearchProjectsLocationsCloudLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches for cloud locations from a given source location. */
 export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod<
@@ -323,7 +357,7 @@ export const searchProjectsLocationsCloudLocations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsCloudLocationsRequest,
   output: SearchProjectsLocationsCloudLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -546,6 +546,52 @@ export const DestroySecretVersionRequest =
   }).annotate({ identifier: "DestroySecretVersionRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -568,7 +614,12 @@ export const DeleteProjectsSecretsRequest =
 export type DeleteProjectsSecretsResponse = Empty;
 export const DeleteProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSecretsError = DefaultErrors;
+export type DeleteProjectsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Secret. */
 export const deleteProjectsSecrets: API.OperationMethod<
@@ -579,7 +630,7 @@ export const deleteProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSecretsRequest,
   output: DeleteProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSecretsRequest {
@@ -598,7 +649,7 @@ export const GetProjectsSecretsRequest =
 export type GetProjectsSecretsResponse = Secret;
 export const GetProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Secret;
 
-export type GetProjectsSecretsError = DefaultErrors;
+export type GetProjectsSecretsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets metadata for a given Secret. */
 export const getProjectsSecrets: API.OperationMethod<
@@ -609,7 +660,7 @@ export const getProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSecretsRequest,
   output: GetProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsSecretsRequest {
@@ -634,7 +685,12 @@ export const PatchProjectsSecretsRequest =
 export type PatchProjectsSecretsResponse = Secret;
 export const PatchProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Secret;
 
-export type PatchProjectsSecretsError = DefaultErrors;
+export type PatchProjectsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates metadata of an existing Secret. */
 export const patchProjectsSecrets: API.OperationMethod<
@@ -645,7 +701,7 @@ export const patchProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSecretsRequest,
   output: PatchProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsSecretsRequest {
@@ -672,7 +728,12 @@ export type SetIamPolicyProjectsSecretsResponse = Policy;
 export const SetIamPolicyProjectsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsSecretsError = DefaultErrors;
+export type SetIamPolicyProjectsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret. */
 export const setIamPolicyProjectsSecrets: API.OperationMethod<
@@ -683,7 +744,7 @@ export const setIamPolicyProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsSecretsRequest,
   output: SetIamPolicyProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsSecretsRequest {
@@ -711,7 +772,12 @@ export type TestIamPermissionsProjectsSecretsResponse =
 export const TestIamPermissionsProjectsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsSecretsError = DefaultErrors;
+export type TestIamPermissionsProjectsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSecrets: API.OperationMethod<
@@ -722,7 +788,7 @@ export const testIamPermissionsProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsSecretsRequest,
   output: TestIamPermissionsProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSecretsRequest {
@@ -751,7 +817,7 @@ export type ListProjectsSecretsResponse = ListSecretsResponse;
 export const ListProjectsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSecretsResponse;
 
-export type ListProjectsSecretsError = DefaultErrors;
+export type ListProjectsSecretsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists Secrets. */
 export const listProjectsSecrets: API.PaginatedOperationMethod<
@@ -762,7 +828,7 @@ export const listProjectsSecrets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSecretsRequest,
   output: ListProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -791,7 +857,12 @@ export const CreateProjectsSecretsRequest =
 export type CreateProjectsSecretsResponse = Secret;
 export const CreateProjectsSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Secret;
 
-export type CreateProjectsSecretsError = DefaultErrors;
+export type CreateProjectsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Secret containing no SecretVersions. */
 export const createProjectsSecrets: API.OperationMethod<
@@ -802,7 +873,7 @@ export const createProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSecretsRequest,
   output: CreateProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddVersionProjectsSecretsRequest {
@@ -829,7 +900,12 @@ export type AddVersionProjectsSecretsResponse = SecretVersion;
 export const AddVersionProjectsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type AddVersionProjectsSecretsError = DefaultErrors;
+export type AddVersionProjectsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SecretVersion containing secret data and attaches it to an existing Secret. */
 export const addVersionProjectsSecrets: API.OperationMethod<
@@ -840,7 +916,7 @@ export const addVersionProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddVersionProjectsSecretsRequest,
   output: AddVersionProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsSecretsRequest {
@@ -865,7 +941,10 @@ export type GetIamPolicyProjectsSecretsResponse = Policy;
 export const GetIamPolicyProjectsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsSecretsError = DefaultErrors;
+export type GetIamPolicyProjectsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set. */
 export const getIamPolicyProjectsSecrets: API.OperationMethod<
@@ -876,7 +955,7 @@ export const getIamPolicyProjectsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsSecretsRequest,
   output: GetIamPolicyProjectsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnableProjectsSecretsVersionsRequest {
@@ -899,7 +978,12 @@ export type EnableProjectsSecretsVersionsResponse = SecretVersion;
 export const EnableProjectsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type EnableProjectsSecretsVersionsError = DefaultErrors;
+export type EnableProjectsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED. */
 export const enableProjectsSecretsVersions: API.OperationMethod<
@@ -910,7 +994,7 @@ export const enableProjectsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableProjectsSecretsVersionsRequest,
   output: EnableProjectsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSecretsVersionsRequest {
@@ -939,7 +1023,10 @@ export type ListProjectsSecretsVersionsResponse = ListSecretVersionsResponse;
 export const ListProjectsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSecretVersionsResponse;
 
-export type ListProjectsSecretsVersionsError = DefaultErrors;
+export type ListProjectsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SecretVersions. This call does not return secret data. */
 export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
@@ -950,7 +1037,7 @@ export const listProjectsSecretsVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSecretsVersionsRequest,
   output: ListProjectsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -974,7 +1061,10 @@ export type GetProjectsSecretsVersionsResponse = SecretVersion;
 export const GetProjectsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type GetProjectsSecretsVersionsError = DefaultErrors;
+export type GetProjectsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata for a SecretVersion. `projects/* /secrets/* /versions/latest` is an alias to the most recently created SecretVersion. */
 export const getProjectsSecretsVersions: API.OperationMethod<
@@ -985,7 +1075,7 @@ export const getProjectsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSecretsVersionsRequest,
   output: GetProjectsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DisableProjectsSecretsVersionsRequest {
@@ -1008,7 +1098,12 @@ export type DisableProjectsSecretsVersionsResponse = SecretVersion;
 export const DisableProjectsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type DisableProjectsSecretsVersionsError = DefaultErrors;
+export type DisableProjectsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED. */
 export const disableProjectsSecretsVersions: API.OperationMethod<
@@ -1019,7 +1114,7 @@ export const disableProjectsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableProjectsSecretsVersionsRequest,
   output: DisableProjectsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DestroyProjectsSecretsVersionsRequest {
@@ -1042,7 +1137,12 @@ export type DestroyProjectsSecretsVersionsResponse = SecretVersion;
 export const DestroyProjectsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type DestroyProjectsSecretsVersionsError = DefaultErrors;
+export type DestroyProjectsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data. */
 export const destroyProjectsSecretsVersions: API.OperationMethod<
@@ -1053,7 +1153,7 @@ export const destroyProjectsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DestroyProjectsSecretsVersionsRequest,
   output: DestroyProjectsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AccessProjectsSecretsVersionsRequest {
@@ -1073,7 +1173,10 @@ export type AccessProjectsSecretsVersionsResponse = AccessSecretVersionResponse;
 export const AccessProjectsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSecretVersionResponse;
 
-export type AccessProjectsSecretsVersionsError = DefaultErrors;
+export type AccessProjectsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Accesses a SecretVersion. This call returns the secret data. `projects/* /secrets/* /versions/latest` is an alias to the most recently created SecretVersion. */
 export const accessProjectsSecretsVersions: API.OperationMethod<
@@ -1084,7 +1187,7 @@ export const accessProjectsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessProjectsSecretsVersionsRequest,
   output: AccessProjectsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsRequest {
@@ -1104,7 +1207,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1115,7 +1218,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -1149,7 +1252,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1160,7 +1263,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1187,7 +1290,12 @@ export type DeleteProjectsLocationsSecretsResponse = Empty;
 export const DeleteProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsSecretsError = DefaultErrors;
+export type DeleteProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Secret. */
 export const deleteProjectsLocationsSecrets: API.OperationMethod<
@@ -1198,7 +1306,7 @@ export const deleteProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSecretsRequest,
   output: DeleteProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSecretsRequest {
@@ -1218,7 +1326,10 @@ export type GetProjectsLocationsSecretsResponse = Secret;
 export const GetProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Secret;
 
-export type GetProjectsLocationsSecretsError = DefaultErrors;
+export type GetProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata for a given Secret. */
 export const getProjectsLocationsSecrets: API.OperationMethod<
@@ -1229,7 +1340,7 @@ export const getProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecretsRequest,
   output: GetProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsSecretsRequest {
@@ -1255,7 +1366,12 @@ export type PatchProjectsLocationsSecretsResponse = Secret;
 export const PatchProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Secret;
 
-export type PatchProjectsLocationsSecretsError = DefaultErrors;
+export type PatchProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates metadata of an existing Secret. */
 export const patchProjectsLocationsSecrets: API.OperationMethod<
@@ -1266,7 +1382,7 @@ export const patchProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSecretsRequest,
   output: PatchProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsSecretsRequest {
@@ -1293,7 +1409,12 @@ export type SetIamPolicyProjectsLocationsSecretsResponse = Policy;
 export const SetIamPolicyProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsSecretsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret. */
 export const setIamPolicyProjectsLocationsSecrets: API.OperationMethod<
@@ -1304,7 +1425,7 @@ export const setIamPolicyProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsSecretsRequest,
   output: SetIamPolicyProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsSecretsRequest {
@@ -1332,7 +1453,12 @@ export type TestIamPermissionsProjectsLocationsSecretsResponse =
 export const TestIamPermissionsProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsSecretsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsSecrets: API.OperationMethod<
@@ -1343,7 +1469,7 @@ export const testIamPermissionsProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsSecretsRequest,
   output: TestIamPermissionsProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsSecretsRequest {
@@ -1368,7 +1494,10 @@ export type GetIamPolicyProjectsLocationsSecretsResponse = Policy;
 export const GetIamPolicyProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsSecretsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsSecrets: API.OperationMethod<
@@ -1379,7 +1508,7 @@ export const getIamPolicyProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsSecretsRequest,
   output: GetIamPolicyProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsSecretsRequest {
@@ -1405,7 +1534,12 @@ export type CreateProjectsLocationsSecretsResponse = Secret;
 export const CreateProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Secret;
 
-export type CreateProjectsLocationsSecretsError = DefaultErrors;
+export type CreateProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Secret containing no SecretVersions. */
 export const createProjectsLocationsSecrets: API.OperationMethod<
@@ -1416,7 +1550,7 @@ export const createProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecretsRequest,
   output: CreateProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSecretsRequest {
@@ -1445,7 +1579,10 @@ export type ListProjectsLocationsSecretsResponse = ListSecretsResponse;
 export const ListProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSecretsResponse;
 
-export type ListProjectsLocationsSecretsError = DefaultErrors;
+export type ListProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Secrets. */
 export const listProjectsLocationsSecrets: API.PaginatedOperationMethod<
@@ -1456,7 +1593,7 @@ export const listProjectsLocationsSecrets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecretsRequest,
   output: ListProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1487,7 +1624,12 @@ export type AddVersionProjectsLocationsSecretsResponse = SecretVersion;
 export const AddVersionProjectsLocationsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type AddVersionProjectsLocationsSecretsError = DefaultErrors;
+export type AddVersionProjectsLocationsSecretsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SecretVersion containing secret data and attaches it to an existing Secret. */
 export const addVersionProjectsLocationsSecrets: API.OperationMethod<
@@ -1498,7 +1640,7 @@ export const addVersionProjectsLocationsSecrets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddVersionProjectsLocationsSecretsRequest,
   output: AddVersionProjectsLocationsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AccessProjectsLocationsSecretsVersionsRequest {
@@ -1519,7 +1661,10 @@ export type AccessProjectsLocationsSecretsVersionsResponse =
 export const AccessProjectsLocationsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSecretVersionResponse;
 
-export type AccessProjectsLocationsSecretsVersionsError = DefaultErrors;
+export type AccessProjectsLocationsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Accesses a SecretVersion. This call returns the secret data. `projects/* /secrets/* /versions/latest` is an alias to the most recently created SecretVersion. */
 export const accessProjectsLocationsSecretsVersions: API.OperationMethod<
@@ -1530,7 +1675,7 @@ export const accessProjectsLocationsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessProjectsLocationsSecretsVersionsRequest,
   output: AccessProjectsLocationsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnableProjectsLocationsSecretsVersionsRequest {
@@ -1553,7 +1698,12 @@ export type EnableProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const EnableProjectsLocationsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type EnableProjectsLocationsSecretsVersionsError = DefaultErrors;
+export type EnableProjectsLocationsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED. */
 export const enableProjectsLocationsSecretsVersions: API.OperationMethod<
@@ -1564,7 +1714,7 @@ export const enableProjectsLocationsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableProjectsLocationsSecretsVersionsRequest,
   output: EnableProjectsLocationsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSecretsVersionsRequest {
@@ -1594,7 +1744,10 @@ export type ListProjectsLocationsSecretsVersionsResponse =
 export const ListProjectsLocationsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSecretVersionsResponse;
 
-export type ListProjectsLocationsSecretsVersionsError = DefaultErrors;
+export type ListProjectsLocationsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SecretVersions. This call does not return secret data. */
 export const listProjectsLocationsSecretsVersions: API.PaginatedOperationMethod<
@@ -1605,7 +1758,7 @@ export const listProjectsLocationsSecretsVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecretsVersionsRequest,
   output: ListProjectsLocationsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1629,7 +1782,10 @@ export type GetProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const GetProjectsLocationsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type GetProjectsLocationsSecretsVersionsError = DefaultErrors;
+export type GetProjectsLocationsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata for a SecretVersion. `projects/* /secrets/* /versions/latest` is an alias to the most recently created SecretVersion. */
 export const getProjectsLocationsSecretsVersions: API.OperationMethod<
@@ -1640,7 +1796,7 @@ export const getProjectsLocationsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecretsVersionsRequest,
   output: GetProjectsLocationsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DisableProjectsLocationsSecretsVersionsRequest {
@@ -1663,7 +1819,12 @@ export type DisableProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const DisableProjectsLocationsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type DisableProjectsLocationsSecretsVersionsError = DefaultErrors;
+export type DisableProjectsLocationsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED. */
 export const disableProjectsLocationsSecretsVersions: API.OperationMethod<
@@ -1674,7 +1835,7 @@ export const disableProjectsLocationsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableProjectsLocationsSecretsVersionsRequest,
   output: DisableProjectsLocationsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DestroyProjectsLocationsSecretsVersionsRequest {
@@ -1697,7 +1858,12 @@ export type DestroyProjectsLocationsSecretsVersionsResponse = SecretVersion;
 export const DestroyProjectsLocationsSecretsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecretVersion;
 
-export type DestroyProjectsLocationsSecretsVersionsError = DefaultErrors;
+export type DestroyProjectsLocationsSecretsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data. */
 export const destroyProjectsLocationsSecretsVersions: API.OperationMethod<
@@ -1708,5 +1874,5 @@ export const destroyProjectsLocationsSecretsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DestroyProjectsLocationsSecretsVersionsRequest,
   output: DestroyProjectsLocationsSecretsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

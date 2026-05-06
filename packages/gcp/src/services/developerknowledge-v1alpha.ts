@@ -79,6 +79,31 @@ export const BatchGetDocumentsResponse =
   }).annotate({ identifier: "BatchGetDocumentsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -101,7 +126,7 @@ export type BatchGetDocumentsResponse_Op = BatchGetDocumentsResponse;
 export const BatchGetDocumentsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetDocumentsResponse;
 
-export type BatchGetDocumentsError = DefaultErrors;
+export type BatchGetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves multiple documents, each with its full Markdown content. */
 export const batchGetDocuments: API.OperationMethod<
@@ -112,7 +137,7 @@ export const batchGetDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetDocumentsRequest,
   output: BatchGetDocumentsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDocumentsRequest {
@@ -130,7 +155,7 @@ export const GetDocumentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDocumentsResponse = Document;
 export const GetDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Document;
 
-export type GetDocumentsError = DefaultErrors;
+export type GetDocumentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a single document with its full Markdown content. */
 export const getDocuments: API.OperationMethod<
@@ -141,7 +166,7 @@ export const getDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDocumentsRequest,
   output: GetDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchDocumentChunksDocumentsRequest {
@@ -168,7 +193,10 @@ export type SearchDocumentChunksDocumentsResponse =
 export const SearchDocumentChunksDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchDocumentChunksResponse;
 
-export type SearchDocumentChunksDocumentsError = DefaultErrors;
+export type SearchDocumentChunksDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches for developer knowledge across Google's developer documentation. This method returns document chunks based on the user's query. There can be many chunks of the same Document. To retrieve full documents, use DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments with the DocumentChunk.parent returned in the SearchDocumentChunksResponse.results. */
 export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
@@ -179,7 +207,7 @@ export const searchDocumentChunksDocuments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchDocumentChunksDocumentsRequest,
   output: SearchDocumentChunksDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -92,6 +92,52 @@ export const ListTracesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListTracesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -118,7 +164,12 @@ export const PatchTracesProjectsRequest =
 export type PatchTracesProjectsResponse = Empty;
 export const PatchTracesProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type PatchTracesProjectsError = DefaultErrors;
+export type PatchTracesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends trace spans to Cloud Trace. Spans cannot be updated. If the trace ID and span ID already exist, an additional copy of the span will be stored. */
 export const patchTracesProjects: API.OperationMethod<
@@ -129,7 +180,7 @@ export const patchTracesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTracesProjectsRequest,
   output: PatchTracesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTracesRequest {
@@ -175,7 +226,7 @@ export type ListProjectsTracesResponse = ListTracesResponse;
 export const ListProjectsTracesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTracesResponse;
 
-export type ListProjectsTracesError = DefaultErrors;
+export type ListProjectsTracesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of traces that match the specified filter conditions. */
 export const listProjectsTraces: API.PaginatedOperationMethod<
@@ -186,7 +237,7 @@ export const listProjectsTraces: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTracesRequest,
   output: ListProjectsTracesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -212,7 +263,7 @@ export const GetProjectsTracesRequest =
 export type GetProjectsTracesResponse = Trace;
 export const GetProjectsTracesResponse = /*@__PURE__*/ /*#__PURE__*/ Trace;
 
-export type GetProjectsTracesError = DefaultErrors;
+export type GetProjectsTracesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a single trace by its ID. */
 export const getProjectsTraces: API.OperationMethod<
@@ -223,5 +274,5 @@ export const getProjectsTraces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTracesRequest,
   output: GetProjectsTracesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

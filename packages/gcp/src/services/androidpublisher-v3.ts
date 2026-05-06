@@ -5454,6 +5454,52 @@ export const VoidedPurchasesListResponse =
   }).annotate({ identifier: "VoidedPurchasesListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5479,7 +5525,12 @@ export const CreateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateUsersResponse = User;
 export const CreateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type CreateUsersError = DefaultErrors;
+export type CreateUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Grant access for a user to the given developer account. */
 export const createUsers: API.OperationMethod<
@@ -5490,7 +5541,7 @@ export const createUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersRequest,
   output: CreateUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersRequest {
@@ -5515,7 +5566,7 @@ export type ListUsersResponse_Op = ListUsersResponse;
 export const ListUsersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
 
-export type ListUsersError = DefaultErrors;
+export type ListUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all users with access to a developer account. */
 export const listUsers: API.PaginatedOperationMethod<
@@ -5526,7 +5577,7 @@ export const listUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5558,7 +5609,12 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchUsersResponse = User;
 export const PatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type PatchUsersError = DefaultErrors;
+export type PatchUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates access for the user to the developer account. */
 export const patchUsers: API.OperationMethod<
@@ -5569,7 +5625,7 @@ export const patchUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersRequest,
   output: PatchUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersRequest {
@@ -5590,7 +5646,12 @@ export const DeleteUsersResponse: Schema.Schema<DeleteUsersResponse> =
     {},
   ) as any as Schema.Schema<DeleteUsersResponse>;
 
-export type DeleteUsersError = DefaultErrors;
+export type DeleteUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes all access for the user to the given developer account. */
 export const deleteUsers: API.OperationMethod<
@@ -5601,7 +5662,7 @@ export const deleteUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersRequest,
   output: DeleteUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateGrantsRequest {
@@ -5626,7 +5687,12 @@ export const CreateGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateGrantsResponse = Grant;
 export const CreateGrantsResponse = /*@__PURE__*/ /*#__PURE__*/ Grant;
 
-export type CreateGrantsError = DefaultErrors;
+export type CreateGrantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Grant access for a user to the given package. */
 export const createGrants: API.OperationMethod<
@@ -5637,7 +5703,7 @@ export const createGrants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGrantsRequest,
   output: CreateGrantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchGrantsRequest {
@@ -5665,7 +5731,12 @@ export const PatchGrantsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchGrantsResponse = Grant;
 export const PatchGrantsResponse = /*@__PURE__*/ /*#__PURE__*/ Grant;
 
-export type PatchGrantsError = DefaultErrors;
+export type PatchGrantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates access for the user to the given package. */
 export const patchGrants: API.OperationMethod<
@@ -5676,7 +5747,7 @@ export const patchGrants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGrantsRequest,
   output: PatchGrantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGrantsRequest {
@@ -5697,7 +5768,12 @@ export const DeleteGrantsResponse: Schema.Schema<DeleteGrantsResponse> =
     {},
   ) as any as Schema.Schema<DeleteGrantsResponse>;
 
-export type DeleteGrantsError = DefaultErrors;
+export type DeleteGrantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes all access for the user to the given package or developer account. */
 export const deleteGrants: API.OperationMethod<
@@ -5708,7 +5784,7 @@ export const deleteGrants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGrantsRequest,
   output: DeleteGrantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateApprecoveryRequest {
@@ -5735,7 +5811,12 @@ export type CreateApprecoveryResponse = AppRecoveryAction;
 export const CreateApprecoveryResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppRecoveryAction;
 
-export type CreateApprecoveryError = DefaultErrors;
+export type CreateApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an app recovery action with recovery status as DRAFT. Note that this action does not execute the recovery action. */
 export const createApprecovery: API.OperationMethod<
@@ -5746,7 +5827,7 @@ export const createApprecovery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApprecoveryRequest,
   output: CreateApprecoveryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeployApprecoveryRequest {
@@ -5776,7 +5857,12 @@ export type DeployApprecoveryResponse = DeployAppRecoveryResponse;
 export const DeployApprecoveryResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeployAppRecoveryResponse;
 
-export type DeployApprecoveryError = DefaultErrors;
+export type DeployApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deploy an already created app recovery action with recovery status DRAFT. Note that this action activates the recovery action for all targeted users and changes its status to ACTIVE. */
 export const deployApprecovery: API.OperationMethod<
@@ -5787,7 +5873,7 @@ export const deployApprecovery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeployApprecoveryRequest,
   output: DeployApprecoveryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListApprecoveryRequest {
@@ -5816,7 +5902,7 @@ export type ListApprecoveryResponse = ListAppRecoveriesResponse;
 export const ListApprecoveryResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAppRecoveriesResponse;
 
-export type ListApprecoveryError = DefaultErrors;
+export type ListApprecoveryError = DefaultErrors | NotFound | Forbidden;
 
 /** List all app recovery action resources associated with a particular package name and app version. */
 export const listApprecovery: API.OperationMethod<
@@ -5827,7 +5913,7 @@ export const listApprecovery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListApprecoveryRequest,
   output: ListApprecoveryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddTargetingApprecoveryRequest {
@@ -5857,7 +5943,12 @@ export type AddTargetingApprecoveryResponse = AddTargetingResponse;
 export const AddTargetingApprecoveryResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddTargetingResponse;
 
-export type AddTargetingApprecoveryError = DefaultErrors;
+export type AddTargetingApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Incrementally update targeting for a recovery action. Note that only the criteria selected during the creation of recovery action can be expanded. */
 export const addTargetingApprecovery: API.OperationMethod<
@@ -5868,7 +5959,7 @@ export const addTargetingApprecovery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTargetingApprecoveryRequest,
   output: AddTargetingApprecoveryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelApprecoveryRequest {
@@ -5898,7 +5989,12 @@ export type CancelApprecoveryResponse = CancelAppRecoveryResponse;
 export const CancelApprecoveryResponse =
   /*@__PURE__*/ /*#__PURE__*/ CancelAppRecoveryResponse;
 
-export type CancelApprecoveryError = DefaultErrors;
+export type CancelApprecoveryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel an already executing app recovery action. Note that this action changes status of the recovery action to CANCELED. */
 export const cancelApprecovery: API.OperationMethod<
@@ -5909,7 +6005,7 @@ export const cancelApprecovery: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelApprecoveryRequest,
   output: CancelApprecoveryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Getproductpurchasev2PurchasesProductsv2Request {
@@ -5935,7 +6031,10 @@ export type Getproductpurchasev2PurchasesProductsv2Response = ProductPurchaseV2;
 export const Getproductpurchasev2PurchasesProductsv2Response =
   /*@__PURE__*/ /*#__PURE__*/ ProductPurchaseV2;
 
-export type Getproductpurchasev2PurchasesProductsv2Error = DefaultErrors;
+export type Getproductpurchasev2PurchasesProductsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Checks the purchase and consumption status of an inapp item. */
 export const getproductpurchasev2PurchasesProductsv2: API.OperationMethod<
@@ -5946,7 +6045,7 @@ export const getproductpurchasev2PurchasesProductsv2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Getproductpurchasev2PurchasesProductsv2Request,
   output: Getproductpurchasev2PurchasesProductsv2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPurchasesProductsRequest {
@@ -5975,7 +6074,7 @@ export type GetPurchasesProductsResponse = ProductPurchase;
 export const GetPurchasesProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductPurchase;
 
-export type GetPurchasesProductsError = DefaultErrors;
+export type GetPurchasesProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Checks the purchase and consumption status of an inapp item. */
 export const getPurchasesProducts: API.OperationMethod<
@@ -5986,7 +6085,7 @@ export const getPurchasesProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPurchasesProductsRequest,
   output: GetPurchasesProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AcknowledgePurchasesProductsRequest {
@@ -6023,7 +6122,12 @@ export const AcknowledgePurchasesProductsResponse: Schema.Schema<AcknowledgePurc
     {},
   ) as any as Schema.Schema<AcknowledgePurchasesProductsResponse>;
 
-export type AcknowledgePurchasesProductsError = DefaultErrors;
+export type AcknowledgePurchasesProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges a purchase of an inapp item. */
 export const acknowledgePurchasesProducts: API.OperationMethod<
@@ -6034,7 +6138,7 @@ export const acknowledgePurchasesProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgePurchasesProductsRequest,
   output: AcknowledgePurchasesProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConsumePurchasesProductsRequest {
@@ -6066,7 +6170,12 @@ export const ConsumePurchasesProductsResponse: Schema.Schema<ConsumePurchasesPro
     {},
   ) as any as Schema.Schema<ConsumePurchasesProductsResponse>;
 
-export type ConsumePurchasesProductsError = DefaultErrors;
+export type ConsumePurchasesProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Consumes a purchase for an inapp item. */
 export const consumePurchasesProducts: API.OperationMethod<
@@ -6077,7 +6186,7 @@ export const consumePurchasesProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConsumePurchasesProductsRequest,
   output: ConsumePurchasesProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPurchasesSubscriptionsRequest {
@@ -6106,7 +6215,10 @@ export type GetPurchasesSubscriptionsResponse = SubscriptionPurchase;
 export const GetPurchasesSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchase;
 
-export type GetPurchasesSubscriptionsError = DefaultErrors;
+export type GetPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's subscription purchase is valid and returns its expiry time. */
 export const getPurchasesSubscriptions: API.OperationMethod<
@@ -6117,7 +6229,7 @@ export const getPurchasesSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPurchasesSubscriptionsRequest,
   output: GetPurchasesSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelPurchasesSubscriptionsRequest {
@@ -6149,7 +6261,12 @@ export const CancelPurchasesSubscriptionsResponse: Schema.Schema<CancelPurchases
     {},
   ) as any as Schema.Schema<CancelPurchasesSubscriptionsResponse>;
 
-export type CancelPurchasesSubscriptionsError = DefaultErrors;
+export type CancelPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support. */
 export const cancelPurchasesSubscriptions: API.OperationMethod<
@@ -6160,7 +6277,7 @@ export const cancelPurchasesSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelPurchasesSubscriptionsRequest,
   output: CancelPurchasesSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeferPurchasesSubscriptionsRequest {
@@ -6194,7 +6311,12 @@ export type DeferPurchasesSubscriptionsResponse =
 export const DeferPurchasesSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchasesDeferResponse;
 
-export type DeferPurchasesSubscriptionsError = DefaultErrors;
+export type DeferPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Defers a user's subscription purchase until a specified future expiration time. */
 export const deferPurchasesSubscriptions: API.OperationMethod<
@@ -6205,7 +6327,7 @@ export const deferPurchasesSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeferPurchasesSubscriptionsRequest,
   output: DeferPurchasesSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RefundPurchasesSubscriptionsRequest {
@@ -6237,7 +6359,12 @@ export const RefundPurchasesSubscriptionsResponse: Schema.Schema<RefundPurchases
     {},
   ) as any as Schema.Schema<RefundPurchasesSubscriptionsResponse>;
 
-export type RefundPurchasesSubscriptionsError = DefaultErrors;
+export type RefundPurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use orders.refund instead. Refunds a user's subscription purchase, but the subscription remains valid until its expiration time and it will continue to recur. */
 export const refundPurchasesSubscriptions: API.OperationMethod<
@@ -6248,7 +6375,7 @@ export const refundPurchasesSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefundPurchasesSubscriptionsRequest,
   output: RefundPurchasesSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevokePurchasesSubscriptionsRequest {
@@ -6280,7 +6407,12 @@ export const RevokePurchasesSubscriptionsResponse: Schema.Schema<RevokePurchases
     {},
   ) as any as Schema.Schema<RevokePurchasesSubscriptionsResponse>;
 
-export type RevokePurchasesSubscriptionsError = DefaultErrors;
+export type RevokePurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use purchases.subscriptionsv2.revoke instead. Refunds and immediately revokes a user's subscription purchase. Access to the subscription will be terminated immediately and it will stop recurring. */
 export const revokePurchasesSubscriptions: API.OperationMethod<
@@ -6291,7 +6423,7 @@ export const revokePurchasesSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokePurchasesSubscriptionsRequest,
   output: RevokePurchasesSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcknowledgePurchasesSubscriptionsRequest {
@@ -6328,7 +6460,12 @@ export const AcknowledgePurchasesSubscriptionsResponse: Schema.Schema<Acknowledg
     {},
   ) as any as Schema.Schema<AcknowledgePurchasesSubscriptionsResponse>;
 
-export type AcknowledgePurchasesSubscriptionsError = DefaultErrors;
+export type AcknowledgePurchasesSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges a subscription purchase. */
 export const acknowledgePurchasesSubscriptions: API.OperationMethod<
@@ -6339,7 +6476,7 @@ export const acknowledgePurchasesSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgePurchasesSubscriptionsRequest,
   output: AcknowledgePurchasesSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPurchasesSubscriptionsv2Request {
@@ -6365,7 +6502,10 @@ export type GetPurchasesSubscriptionsv2Response = SubscriptionPurchaseV2;
 export const GetPurchasesSubscriptionsv2Response =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionPurchaseV2;
 
-export type GetPurchasesSubscriptionsv2Error = DefaultErrors;
+export type GetPurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get metadata about a subscription */
 export const getPurchasesSubscriptionsv2: API.OperationMethod<
@@ -6376,7 +6516,7 @@ export const getPurchasesSubscriptionsv2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPurchasesSubscriptionsv2Request,
   output: GetPurchasesSubscriptionsv2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RevokePurchasesSubscriptionsv2Request {
@@ -6407,7 +6547,12 @@ export type RevokePurchasesSubscriptionsv2Response =
 export const RevokePurchasesSubscriptionsv2Response =
   /*@__PURE__*/ /*#__PURE__*/ RevokeSubscriptionPurchaseResponse;
 
-export type RevokePurchasesSubscriptionsv2Error = DefaultErrors;
+export type RevokePurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revoke a subscription purchase for the user. */
 export const revokePurchasesSubscriptionsv2: API.OperationMethod<
@@ -6418,7 +6563,7 @@ export const revokePurchasesSubscriptionsv2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokePurchasesSubscriptionsv2Request,
   output: RevokePurchasesSubscriptionsv2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelPurchasesSubscriptionsv2Request {
@@ -6449,7 +6594,12 @@ export type CancelPurchasesSubscriptionsv2Response =
 export const CancelPurchasesSubscriptionsv2Response =
   /*@__PURE__*/ /*#__PURE__*/ CancelSubscriptionPurchaseResponse;
 
-export type CancelPurchasesSubscriptionsv2Error = DefaultErrors;
+export type CancelPurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel a subscription purchase for the user. */
 export const cancelPurchasesSubscriptionsv2: API.OperationMethod<
@@ -6460,7 +6610,7 @@ export const cancelPurchasesSubscriptionsv2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelPurchasesSubscriptionsv2Request,
   output: CancelPurchasesSubscriptionsv2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeferPurchasesSubscriptionsv2Request {
@@ -6491,7 +6641,12 @@ export type DeferPurchasesSubscriptionsv2Response =
 export const DeferPurchasesSubscriptionsv2Response =
   /*@__PURE__*/ /*#__PURE__*/ DeferSubscriptionPurchaseResponse;
 
-export type DeferPurchasesSubscriptionsv2Error = DefaultErrors;
+export type DeferPurchasesSubscriptionsv2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Defers the renewal of a subscription. */
 export const deferPurchasesSubscriptionsv2: API.OperationMethod<
@@ -6502,7 +6657,7 @@ export const deferPurchasesSubscriptionsv2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeferPurchasesSubscriptionsv2Request,
   output: DeferPurchasesSubscriptionsv2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPurchasesVoidedpurchasesRequest {
@@ -6548,7 +6703,10 @@ export type ListPurchasesVoidedpurchasesResponse = VoidedPurchasesListResponse;
 export const ListPurchasesVoidedpurchasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ VoidedPurchasesListResponse;
 
-export type ListPurchasesVoidedpurchasesError = DefaultErrors;
+export type ListPurchasesVoidedpurchasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the purchases that were canceled, refunded or charged-back. */
 export const listPurchasesVoidedpurchases: API.OperationMethod<
@@ -6559,7 +6717,7 @@ export const listPurchasesVoidedpurchases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPurchasesVoidedpurchasesRequest,
   output: ListPurchasesVoidedpurchasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertEditsRequest {
@@ -6584,7 +6742,12 @@ export const InsertEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertEditsResponse = AppEdit;
 export const InsertEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
 
-export type InsertEditsError = DefaultErrors;
+export type InsertEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new edit for an app. */
 export const insertEdits: API.OperationMethod<
@@ -6595,7 +6758,7 @@ export const insertEdits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertEditsRequest,
   output: InsertEditsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEditsRequest {
@@ -6619,7 +6782,7 @@ export const GetEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEditsResponse = AppEdit;
 export const GetEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
 
-export type GetEditsError = DefaultErrors;
+export type GetEditsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an app edit. */
 export const getEdits: API.OperationMethod<
@@ -6630,7 +6793,7 @@ export const getEdits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEditsRequest,
   output: GetEditsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteEditsRequest {
@@ -6657,7 +6820,12 @@ export const DeleteEditsResponse: Schema.Schema<DeleteEditsResponse> =
     {},
   ) as any as Schema.Schema<DeleteEditsResponse>;
 
-export type DeleteEditsError = DefaultErrors;
+export type DeleteEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an app edit. */
 export const deleteEdits: API.OperationMethod<
@@ -6668,7 +6836,7 @@ export const deleteEdits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEditsRequest,
   output: DeleteEditsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CommitEditsRequest {
@@ -6707,7 +6875,12 @@ export const CommitEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CommitEditsResponse = AppEdit;
 export const CommitEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
 
-export type CommitEditsError = DefaultErrors;
+export type CommitEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits an app edit. */
 export const commitEdits: API.OperationMethod<
@@ -6718,7 +6891,7 @@ export const commitEdits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitEditsRequest,
   output: CommitEditsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateEditsRequest {
@@ -6743,7 +6916,12 @@ export const ValidateEditsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ValidateEditsResponse = AppEdit;
 export const ValidateEditsResponse = /*@__PURE__*/ /*#__PURE__*/ AppEdit;
 
-export type ValidateEditsError = DefaultErrors;
+export type ValidateEditsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates an app edit. */
 export const validateEdits: API.OperationMethod<
@@ -6754,7 +6932,7 @@ export const validateEdits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateEditsRequest,
   output: ValidateEditsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadEditsApksRequest {
@@ -6781,7 +6959,12 @@ export const UploadEditsApksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UploadEditsApksResponse = Apk;
 export const UploadEditsApksResponse = /*@__PURE__*/ /*#__PURE__*/ Apk;
 
-export type UploadEditsApksError = DefaultErrors;
+export type UploadEditsApksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an APK and adds to the current edit. */
 export const uploadEditsApks: API.OperationMethod<
@@ -6792,7 +6975,7 @@ export const uploadEditsApks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadEditsApksRequest,
   output: UploadEditsApksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEditsApksRequest {
@@ -6817,7 +7000,7 @@ export type ListEditsApksResponse = ApksListResponse;
 export const ListEditsApksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApksListResponse;
 
-export type ListEditsApksError = DefaultErrors;
+export type ListEditsApksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all current APKs of the app and edit. */
 export const listEditsApks: API.OperationMethod<
@@ -6828,7 +7011,7 @@ export const listEditsApks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEditsApksRequest,
   output: ListEditsApksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddexternallyhostedEditsApksRequest {
@@ -6859,7 +7042,12 @@ export type AddexternallyhostedEditsApksResponse =
 export const AddexternallyhostedEditsApksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApksAddExternallyHostedResponse;
 
-export type AddexternallyhostedEditsApksError = DefaultErrors;
+export type AddexternallyhostedEditsApksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new APK without uploading the APK itself to Google Play, instead hosting the APK at a specified URL. This function is only available to organizations using Managed Play whose application is configured to restrict distribution to the organizations. */
 export const addexternallyhostedEditsApks: API.OperationMethod<
@@ -6870,7 +7058,7 @@ export const addexternallyhostedEditsApks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddexternallyhostedEditsApksRequest,
   output: AddexternallyhostedEditsApksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEditsBundlesRequest {
@@ -6896,7 +7084,7 @@ export type ListEditsBundlesResponse = BundlesListResponse;
 export const ListEditsBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BundlesListResponse;
 
-export type ListEditsBundlesError = DefaultErrors;
+export type ListEditsBundlesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all current Android App Bundles of the app and edit. */
 export const listEditsBundles: API.OperationMethod<
@@ -6907,7 +7095,7 @@ export const listEditsBundles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEditsBundlesRequest,
   output: ListEditsBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UploadEditsBundlesRequest {
@@ -6943,7 +7131,12 @@ export const UploadEditsBundlesRequest =
 export type UploadEditsBundlesResponse = Bundle;
 export const UploadEditsBundlesResponse = /*@__PURE__*/ /*#__PURE__*/ Bundle;
 
-export type UploadEditsBundlesError = DefaultErrors;
+export type UploadEditsBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a new Android App Bundle to this edit. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
 export const uploadEditsBundles: API.OperationMethod<
@@ -6954,7 +7147,7 @@ export const uploadEditsBundles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadEditsBundlesRequest,
   output: UploadEditsBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEditsCountryavailabilityRequest {
@@ -6983,7 +7176,10 @@ export type GetEditsCountryavailabilityResponse = TrackCountryAvailability;
 export const GetEditsCountryavailabilityResponse =
   /*@__PURE__*/ /*#__PURE__*/ TrackCountryAvailability;
 
-export type GetEditsCountryavailabilityError = DefaultErrors;
+export type GetEditsCountryavailabilityError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets country availability. */
 export const getEditsCountryavailability: API.OperationMethod<
@@ -6994,7 +7190,7 @@ export const getEditsCountryavailability: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEditsCountryavailabilityRequest,
   output: GetEditsCountryavailabilityResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UploadEditsDeobfuscationfilesRequest {
@@ -7034,7 +7230,12 @@ export type UploadEditsDeobfuscationfilesResponse =
 export const UploadEditsDeobfuscationfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeobfuscationFilesUploadResponse;
 
-export type UploadEditsDeobfuscationfilesError = DefaultErrors;
+export type UploadEditsDeobfuscationfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a new deobfuscation file and attaches to the specified APK. */
 export const uploadEditsDeobfuscationfiles: API.OperationMethod<
@@ -7045,7 +7246,7 @@ export const uploadEditsDeobfuscationfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadEditsDeobfuscationfilesRequest,
   output: UploadEditsDeobfuscationfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEditsDetailsRequest {
@@ -7071,7 +7272,7 @@ export const GetEditsDetailsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetEditsDetailsResponse = AppDetails;
 export const GetEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
 
-export type GetEditsDetailsError = DefaultErrors;
+export type GetEditsDetailsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details of an app. */
 export const getEditsDetails: API.OperationMethod<
@@ -7082,7 +7283,7 @@ export const getEditsDetails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEditsDetailsRequest,
   output: GetEditsDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEditsDetailsRequest {
@@ -7112,7 +7313,12 @@ export type UpdateEditsDetailsResponse = AppDetails;
 export const UpdateEditsDetailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppDetails;
 
-export type UpdateEditsDetailsError = DefaultErrors;
+export type UpdateEditsDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates details of an app. */
 export const updateEditsDetails: API.OperationMethod<
@@ -7123,7 +7329,7 @@ export const updateEditsDetails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEditsDetailsRequest,
   output: UpdateEditsDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEditsDetailsRequest {
@@ -7152,7 +7358,12 @@ export const PatchEditsDetailsRequest =
 export type PatchEditsDetailsResponse = AppDetails;
 export const PatchEditsDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ AppDetails;
 
-export type PatchEditsDetailsError = DefaultErrors;
+export type PatchEditsDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches details of an app. */
 export const patchEditsDetails: API.OperationMethod<
@@ -7163,7 +7374,7 @@ export const patchEditsDetails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEditsDetailsRequest,
   output: PatchEditsDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEditsExpansionfilesRequest {
@@ -7199,7 +7410,7 @@ export type GetEditsExpansionfilesResponse = ExpansionFile;
 export const GetEditsExpansionfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
 
-export type GetEditsExpansionfilesError = DefaultErrors;
+export type GetEditsExpansionfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the expansion file configuration for the specified APK. */
 export const getEditsExpansionfiles: API.OperationMethod<
@@ -7210,7 +7421,7 @@ export const getEditsExpansionfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEditsExpansionfilesRequest,
   output: GetEditsExpansionfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEditsExpansionfilesRequest {
@@ -7250,7 +7461,12 @@ export type UpdateEditsExpansionfilesResponse = ExpansionFile;
 export const UpdateEditsExpansionfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
 
-export type UpdateEditsExpansionfilesError = DefaultErrors;
+export type UpdateEditsExpansionfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
 export const updateEditsExpansionfiles: API.OperationMethod<
@@ -7261,7 +7477,7 @@ export const updateEditsExpansionfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEditsExpansionfilesRequest,
   output: UpdateEditsExpansionfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEditsExpansionfilesRequest {
@@ -7301,7 +7517,12 @@ export type PatchEditsExpansionfilesResponse = ExpansionFile;
 export const PatchEditsExpansionfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExpansionFile;
 
-export type PatchEditsExpansionfilesError = DefaultErrors;
+export type PatchEditsExpansionfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the APK's expansion file configuration to reference another APK's expansion file. To add a new expansion file use the Upload method. */
 export const patchEditsExpansionfiles: API.OperationMethod<
@@ -7312,7 +7533,7 @@ export const patchEditsExpansionfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEditsExpansionfilesRequest,
   output: PatchEditsExpansionfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadEditsExpansionfilesRequest {
@@ -7349,7 +7570,12 @@ export type UploadEditsExpansionfilesResponse = ExpansionFilesUploadResponse;
 export const UploadEditsExpansionfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExpansionFilesUploadResponse;
 
-export type UploadEditsExpansionfilesError = DefaultErrors;
+export type UploadEditsExpansionfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a new expansion file and attaches to the specified APK. */
 export const uploadEditsExpansionfiles: API.OperationMethod<
@@ -7360,7 +7586,7 @@ export const uploadEditsExpansionfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadEditsExpansionfilesRequest,
   output: UploadEditsExpansionfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEditsImagesRequest {
@@ -7403,7 +7629,7 @@ export type ListEditsImagesResponse = ImagesListResponse;
 export const ListEditsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImagesListResponse;
 
-export type ListEditsImagesError = DefaultErrors;
+export type ListEditsImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all images. The response may be empty. */
 export const listEditsImages: API.OperationMethod<
@@ -7414,7 +7640,7 @@ export const listEditsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEditsImagesRequest,
   output: ListEditsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteEditsImagesRequest {
@@ -7461,7 +7687,12 @@ export const DeleteEditsImagesResponse: Schema.Schema<DeleteEditsImagesResponse>
     {},
   ) as any as Schema.Schema<DeleteEditsImagesResponse>;
 
-export type DeleteEditsImagesError = DefaultErrors;
+export type DeleteEditsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the image (specified by id) from the edit. */
 export const deleteEditsImages: API.OperationMethod<
@@ -7472,7 +7703,7 @@ export const deleteEditsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEditsImagesRequest,
   output: DeleteEditsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteallEditsImagesRequest {
@@ -7514,7 +7745,12 @@ export type DeleteallEditsImagesResponse = ImagesDeleteAllResponse;
 export const DeleteallEditsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImagesDeleteAllResponse;
 
-export type DeleteallEditsImagesError = DefaultErrors;
+export type DeleteallEditsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all images for the specified language and image type. Returns an empty response if no images are found. */
 export const deleteallEditsImages: API.OperationMethod<
@@ -7525,7 +7761,7 @@ export const deleteallEditsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteallEditsImagesRequest,
   output: DeleteallEditsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadEditsImagesRequest {
@@ -7568,7 +7804,12 @@ export type UploadEditsImagesResponse = ImagesUploadResponse;
 export const UploadEditsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImagesUploadResponse;
 
-export type UploadEditsImagesError = DefaultErrors;
+export type UploadEditsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an image of the specified language and image type, and adds to the edit. */
 export const uploadEditsImages: API.OperationMethod<
@@ -7579,7 +7820,7 @@ export const uploadEditsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadEditsImagesRequest,
   output: UploadEditsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEditsListingsRequest {
@@ -7611,7 +7852,12 @@ export const UpdateEditsListingsRequest =
 export type UpdateEditsListingsResponse = Listing;
 export const UpdateEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
 
-export type UpdateEditsListingsError = DefaultErrors;
+export type UpdateEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a localized store listing. */
 export const updateEditsListings: API.OperationMethod<
@@ -7622,7 +7868,7 @@ export const updateEditsListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEditsListingsRequest,
   output: UpdateEditsListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEditsListingsRequest {
@@ -7654,7 +7900,12 @@ export const PatchEditsListingsRequest =
 export type PatchEditsListingsResponse = Listing;
 export const PatchEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
 
-export type PatchEditsListingsError = DefaultErrors;
+export type PatchEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a localized store listing. */
 export const patchEditsListings: API.OperationMethod<
@@ -7665,7 +7916,7 @@ export const patchEditsListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEditsListingsRequest,
   output: PatchEditsListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEditsListingsRequest {
@@ -7693,7 +7944,7 @@ export const GetEditsListingsRequest =
 export type GetEditsListingsResponse = Listing;
 export const GetEditsListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Listing;
 
-export type GetEditsListingsError = DefaultErrors;
+export type GetEditsListingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a localized store listing. */
 export const getEditsListings: API.OperationMethod<
@@ -7704,7 +7955,7 @@ export const getEditsListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEditsListingsRequest,
   output: GetEditsListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEditsListingsRequest {
@@ -7730,7 +7981,7 @@ export type ListEditsListingsResponse = ListingsListResponse;
 export const ListEditsListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListingsListResponse;
 
-export type ListEditsListingsError = DefaultErrors;
+export type ListEditsListingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all localized store listings. */
 export const listEditsListings: API.OperationMethod<
@@ -7741,7 +7992,7 @@ export const listEditsListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEditsListingsRequest,
   output: ListEditsListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteEditsListingsRequest {
@@ -7772,7 +8023,12 @@ export const DeleteEditsListingsResponse: Schema.Schema<DeleteEditsListingsRespo
     {},
   ) as any as Schema.Schema<DeleteEditsListingsResponse>;
 
-export type DeleteEditsListingsError = DefaultErrors;
+export type DeleteEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a localized store listing. */
 export const deleteEditsListings: API.OperationMethod<
@@ -7783,7 +8039,7 @@ export const deleteEditsListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEditsListingsRequest,
   output: DeleteEditsListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteallEditsListingsRequest {
@@ -7811,7 +8067,12 @@ export const DeleteallEditsListingsResponse: Schema.Schema<DeleteallEditsListing
     {},
   ) as any as Schema.Schema<DeleteallEditsListingsResponse>;
 
-export type DeleteallEditsListingsError = DefaultErrors;
+export type DeleteallEditsListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all store listings. */
 export const deleteallEditsListings: API.OperationMethod<
@@ -7822,7 +8083,7 @@ export const deleteallEditsListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteallEditsListingsRequest,
   output: DeleteallEditsListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEditsTestersRequest {
@@ -7851,7 +8112,7 @@ export const GetEditsTestersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetEditsTestersResponse = Testers;
 export const GetEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
 
-export type GetEditsTestersError = DefaultErrors;
+export type GetEditsTestersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets testers. Note: Testers resource does not support email lists. */
 export const getEditsTesters: API.OperationMethod<
@@ -7862,7 +8123,7 @@ export const getEditsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEditsTestersRequest,
   output: GetEditsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEditsTestersRequest {
@@ -7894,7 +8155,12 @@ export const UpdateEditsTestersRequest =
 export type UpdateEditsTestersResponse = Testers;
 export const UpdateEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
 
-export type UpdateEditsTestersError = DefaultErrors;
+export type UpdateEditsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates testers. Note: Testers resource does not support email lists. */
 export const updateEditsTesters: API.OperationMethod<
@@ -7905,7 +8171,7 @@ export const updateEditsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEditsTestersRequest,
   output: UpdateEditsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEditsTestersRequest {
@@ -7937,7 +8203,12 @@ export const PatchEditsTestersRequest =
 export type PatchEditsTestersResponse = Testers;
 export const PatchEditsTestersResponse = /*@__PURE__*/ /*#__PURE__*/ Testers;
 
-export type PatchEditsTestersError = DefaultErrors;
+export type PatchEditsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches testers. Note: Testers resource does not support email lists. */
 export const patchEditsTesters: API.OperationMethod<
@@ -7948,7 +8219,7 @@ export const patchEditsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEditsTestersRequest,
   output: PatchEditsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEditsTracksRequest {
@@ -7975,7 +8246,7 @@ export const GetEditsTracksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEditsTracksResponse = Track;
 export const GetEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
 
-export type GetEditsTracksError = DefaultErrors;
+export type GetEditsTracksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a track. */
 export const getEditsTracks: API.OperationMethod<
@@ -7986,7 +8257,7 @@ export const getEditsTracks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEditsTracksRequest,
   output: GetEditsTracksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEditsTracksRequest {
@@ -8013,7 +8284,7 @@ export type ListEditsTracksResponse = TracksListResponse;
 export const ListEditsTracksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TracksListResponse;
 
-export type ListEditsTracksError = DefaultErrors;
+export type ListEditsTracksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all tracks. */
 export const listEditsTracks: API.OperationMethod<
@@ -8024,7 +8295,7 @@ export const listEditsTracks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEditsTracksRequest,
   output: ListEditsTracksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEditsTracksRequest {
@@ -8056,7 +8327,12 @@ export const UpdateEditsTracksRequest =
 export type UpdateEditsTracksResponse = Track;
 export const UpdateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
 
-export type UpdateEditsTracksError = DefaultErrors;
+export type UpdateEditsTracksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a track. */
 export const updateEditsTracks: API.OperationMethod<
@@ -8067,7 +8343,7 @@ export const updateEditsTracks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEditsTracksRequest,
   output: UpdateEditsTracksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEditsTracksRequest {
@@ -8099,7 +8375,12 @@ export const PatchEditsTracksRequest =
 export type PatchEditsTracksResponse = Track;
 export const PatchEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
 
-export type PatchEditsTracksError = DefaultErrors;
+export type PatchEditsTracksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a track. */
 export const patchEditsTracks: API.OperationMethod<
@@ -8110,7 +8391,7 @@ export const patchEditsTracks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEditsTracksRequest,
   output: PatchEditsTracksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateEditsTracksRequest {
@@ -8139,7 +8420,12 @@ export const CreateEditsTracksRequest =
 export type CreateEditsTracksResponse = Track;
 export const CreateEditsTracksResponse = /*@__PURE__*/ /*#__PURE__*/ Track;
 
-export type CreateEditsTracksError = DefaultErrors;
+export type CreateEditsTracksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new track. */
 export const createEditsTracks: API.OperationMethod<
@@ -8150,7 +8436,7 @@ export const createEditsTracks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEditsTracksRequest,
   output: CreateEditsTracksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateexternaltransactionExternaltransactionsRequest {
@@ -8183,7 +8469,12 @@ export type CreateexternaltransactionExternaltransactionsResponse =
 export const CreateexternaltransactionExternaltransactionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
 
-export type CreateexternaltransactionExternaltransactionsError = DefaultErrors;
+export type CreateexternaltransactionExternaltransactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new external transaction. */
 export const createexternaltransactionExternaltransactions: API.OperationMethod<
@@ -8194,7 +8485,7 @@ export const createexternaltransactionExternaltransactions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateexternaltransactionExternaltransactionsRequest,
   output: CreateexternaltransactionExternaltransactionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RefundexternaltransactionExternaltransactionsRequest {
@@ -8222,7 +8513,12 @@ export type RefundexternaltransactionExternaltransactionsResponse =
 export const RefundexternaltransactionExternaltransactionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
 
-export type RefundexternaltransactionExternaltransactionsError = DefaultErrors;
+export type RefundexternaltransactionExternaltransactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Refunds or partially refunds an existing external transaction. */
 export const refundexternaltransactionExternaltransactions: API.OperationMethod<
@@ -8233,7 +8529,7 @@ export const refundexternaltransactionExternaltransactions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefundexternaltransactionExternaltransactionsRequest,
   output: RefundexternaltransactionExternaltransactionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetexternaltransactionExternaltransactionsRequest {
@@ -8254,7 +8550,10 @@ export type GetexternaltransactionExternaltransactionsResponse =
 export const GetexternaltransactionExternaltransactionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExternalTransaction;
 
-export type GetexternaltransactionExternaltransactionsError = DefaultErrors;
+export type GetexternaltransactionExternaltransactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an existing external transaction. */
 export const getexternaltransactionExternaltransactions: API.OperationMethod<
@@ -8265,7 +8564,7 @@ export const getexternaltransactionExternaltransactions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetexternaltransactionExternaltransactionsRequest,
   output: GetexternaltransactionExternaltransactionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListGeneratedapksRequest {
@@ -8291,7 +8590,7 @@ export type ListGeneratedapksResponse = GeneratedApksListResponse;
 export const ListGeneratedapksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GeneratedApksListResponse;
 
-export type ListGeneratedapksError = DefaultErrors;
+export type ListGeneratedapksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns download metadata for all APKs that were generated from a given app bundle. */
 export const listGeneratedapks: API.OperationMethod<
@@ -8302,7 +8601,7 @@ export const listGeneratedapks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGeneratedapksRequest,
   output: ListGeneratedapksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DownloadGeneratedapksRequest {
@@ -8333,7 +8632,7 @@ export const DownloadGeneratedapksResponse: Schema.Schema<DownloadGeneratedapksR
     {},
   ) as any as Schema.Schema<DownloadGeneratedapksResponse>;
 
-export type DownloadGeneratedapksError = DefaultErrors;
+export type DownloadGeneratedapksError = DefaultErrors | NotFound | Forbidden;
 
 /** Downloads a single signed APK generated from an app bundle. */
 export const downloadGeneratedapks: API.OperationMethod<
@@ -8344,7 +8643,7 @@ export const downloadGeneratedapks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadGeneratedapksRequest,
   output: DownloadGeneratedapksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetInappproductsRequest {
@@ -8370,7 +8669,7 @@ export type GetInappproductsResponse = InAppProduct;
 export const GetInappproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
 
-export type GetInappproductsError = DefaultErrors;
+export type GetInappproductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an in-app product, which can be a managed product or a subscription. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const getInappproducts: API.OperationMethod<
@@ -8381,7 +8680,7 @@ export const getInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInappproductsRequest,
   output: GetInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchGetInappproductsRequest {
@@ -8407,7 +8706,7 @@ export type BatchGetInappproductsResponse = InappproductsBatchGetResponse;
 export const BatchGetInappproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InappproductsBatchGetResponse;
 
-export type BatchGetInappproductsError = DefaultErrors;
+export type BatchGetInappproductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Reads multiple in-app products, which can be managed products or subscriptions. This method should not be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const batchGetInappproducts: API.OperationMethod<
@@ -8418,7 +8717,7 @@ export const batchGetInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetInappproductsRequest,
   output: BatchGetInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInappproductsRequest {
@@ -8450,7 +8749,7 @@ export type ListInappproductsResponse = InappproductsListResponse;
 export const ListInappproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InappproductsListResponse;
 
-export type ListInappproductsError = DefaultErrors;
+export type ListInappproductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken` will be set and the caller should provide its value as a `token` request parameter to retrieve the next page. This method should no longer be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const listInappproducts: API.OperationMethod<
@@ -8461,7 +8760,7 @@ export const listInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListInappproductsRequest,
   output: ListInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInappproductsRequest {
@@ -8493,7 +8792,12 @@ export type InsertInappproductsResponse = InAppProduct;
 export const InsertInappproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
 
-export type InsertInappproductsError = DefaultErrors;
+export type InsertInappproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an in-app product (a managed product or a subscription). This method should no longer be used to create subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const insertInappproducts: API.OperationMethod<
@@ -8504,7 +8808,7 @@ export const insertInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInappproductsRequest,
   output: InsertInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateInappproductsRequest {
@@ -8553,7 +8857,12 @@ export type UpdateInappproductsResponse = InAppProduct;
 export const UpdateInappproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
 
-export type UpdateInappproductsError = DefaultErrors;
+export type UpdateInappproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const updateInappproducts: API.OperationMethod<
@@ -8564,7 +8873,7 @@ export const updateInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInappproductsRequest,
   output: UpdateInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateInappproductsRequest {
@@ -8591,7 +8900,12 @@ export type BatchUpdateInappproductsResponse = InappproductsBatchUpdateResponse;
 export const BatchUpdateInappproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InappproductsBatchUpdateResponse;
 
-export type BatchUpdateInappproductsError = DefaultErrors;
+export type BatchUpdateInappproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or inserts one or more in-app products (managed products or subscriptions). Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const batchUpdateInappproducts: API.OperationMethod<
@@ -8602,7 +8916,7 @@ export const batchUpdateInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateInappproductsRequest,
   output: BatchUpdateInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInappproductsRequest {
@@ -8646,7 +8960,12 @@ export type PatchInappproductsResponse = InAppProduct;
 export const PatchInappproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InAppProduct;
 
-export type PatchInappproductsError = DefaultErrors;
+export type PatchInappproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const patchInappproducts: API.OperationMethod<
@@ -8657,7 +8976,7 @@ export const patchInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInappproductsRequest,
   output: PatchInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInappproductsRequest {
@@ -8694,7 +9013,12 @@ export const DeleteInappproductsResponse: Schema.Schema<DeleteInappproductsRespo
     {},
   ) as any as Schema.Schema<DeleteInappproductsResponse>;
 
-export type DeleteInappproductsError = DefaultErrors;
+export type DeleteInappproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an in-app product (a managed product or a subscription). This method should no longer be used to delete subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const deleteInappproducts: API.OperationMethod<
@@ -8705,7 +9029,7 @@ export const deleteInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInappproductsRequest,
   output: DeleteInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteInappproductsRequest {
@@ -8734,7 +9058,12 @@ export const BatchDeleteInappproductsResponse: Schema.Schema<BatchDeleteInapppro
     {},
   ) as any as Schema.Schema<BatchDeleteInappproductsResponse>;
 
-export type BatchDeleteInappproductsError = DefaultErrors;
+export type BatchDeleteInappproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes in-app products (managed products or subscriptions). Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. This method should not be used to delete subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information. */
 export const batchDeleteInappproducts: API.OperationMethod<
@@ -8745,7 +9074,7 @@ export const batchDeleteInappproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteInappproductsRequest,
   output: BatchDeleteInappproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadapkInternalappsharingartifactsRequest {
@@ -8770,7 +9099,12 @@ export type UploadapkInternalappsharingartifactsResponse =
 export const UploadapkInternalappsharingartifactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InternalAppSharingArtifact;
 
-export type UploadapkInternalappsharingartifactsError = DefaultErrors;
+export type UploadapkInternalappsharingartifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an APK to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
 export const uploadapkInternalappsharingartifacts: API.OperationMethod<
@@ -8781,7 +9115,7 @@ export const uploadapkInternalappsharingartifacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadapkInternalappsharingartifactsRequest,
   output: UploadapkInternalappsharingartifactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadbundleInternalappsharingartifactsRequest {
@@ -8806,7 +9140,12 @@ export type UploadbundleInternalappsharingartifactsResponse =
 export const UploadbundleInternalappsharingartifactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InternalAppSharingArtifact;
 
-export type UploadbundleInternalappsharingartifactsError = DefaultErrors;
+export type UploadbundleInternalappsharingartifactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an app bundle to internal app sharing. If you are using the Google API client libraries, please increase the timeout of the http request before calling this endpoint (a timeout of 2 minutes is recommended). See [Timeouts and Errors](https://developers.google.com/api-client-library/java/google-api-java-client/errors) for an example in java. */
 export const uploadbundleInternalappsharingartifacts: API.OperationMethod<
@@ -8817,7 +9156,7 @@ export const uploadbundleInternalappsharingartifacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadbundleInternalappsharingartifactsRequest,
   output: UploadbundleInternalappsharingartifactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RefundOrdersRequest {
@@ -8848,7 +9187,12 @@ export const RefundOrdersResponse: Schema.Schema<RefundOrdersResponse> =
     {},
   ) as any as Schema.Schema<RefundOrdersResponse>;
 
-export type RefundOrdersError = DefaultErrors;
+export type RefundOrdersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Refunds a user's subscription or in-app purchase order. Orders older than 3 years cannot be refunded. */
 export const refundOrders: API.OperationMethod<
@@ -8859,7 +9203,7 @@ export const refundOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefundOrdersRequest,
   output: RefundOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrdersRequest {
@@ -8883,7 +9227,7 @@ export const GetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrdersResponse = Order;
 export const GetOrdersResponse = /*@__PURE__*/ /*#__PURE__*/ Order;
 
-export type GetOrdersError = DefaultErrors;
+export type GetOrdersError = DefaultErrors | NotFound | Forbidden;
 
 /** Get order details for a single order. */
 export const getOrders: API.OperationMethod<
@@ -8894,7 +9238,7 @@ export const getOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrdersRequest,
   output: GetOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchgetOrdersRequest {
@@ -8921,7 +9265,7 @@ export type BatchgetOrdersResponse = BatchGetOrdersResponse;
 export const BatchgetOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetOrdersResponse;
 
-export type BatchgetOrdersError = DefaultErrors;
+export type BatchgetOrdersError = DefaultErrors | NotFound | Forbidden;
 
 /** Get order details for a list of orders. */
 export const batchgetOrders: API.OperationMethod<
@@ -8932,7 +9276,7 @@ export const batchgetOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchgetOrdersRequest,
   output: BatchgetOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DataSafetyApplicationsRequest {
@@ -8959,7 +9303,12 @@ export type DataSafetyApplicationsResponse = SafetyLabelsUpdateResponse;
 export const DataSafetyApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SafetyLabelsUpdateResponse;
 
-export type DataSafetyApplicationsError = DefaultErrors;
+export type DataSafetyApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Writes the Safety Labels declaration of an app. */
 export const dataSafetyApplications: API.OperationMethod<
@@ -8970,7 +9319,7 @@ export const dataSafetyApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DataSafetyApplicationsRequest,
   output: DataSafetyApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateApplicationsDeviceTierConfigsRequest {
@@ -9002,7 +9351,12 @@ export type CreateApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
 export const CreateApplicationsDeviceTierConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeviceTierConfig;
 
-export type CreateApplicationsDeviceTierConfigsError = DefaultErrors;
+export type CreateApplicationsDeviceTierConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new device tier config for an app. */
 export const createApplicationsDeviceTierConfigs: API.OperationMethod<
@@ -9013,7 +9367,7 @@ export const createApplicationsDeviceTierConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateApplicationsDeviceTierConfigsRequest,
   output: CreateApplicationsDeviceTierConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetApplicationsDeviceTierConfigsRequest {
@@ -9039,7 +9393,10 @@ export type GetApplicationsDeviceTierConfigsResponse = DeviceTierConfig;
 export const GetApplicationsDeviceTierConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeviceTierConfig;
 
-export type GetApplicationsDeviceTierConfigsError = DefaultErrors;
+export type GetApplicationsDeviceTierConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a particular device tier config. */
 export const getApplicationsDeviceTierConfigs: API.OperationMethod<
@@ -9050,7 +9407,7 @@ export const getApplicationsDeviceTierConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationsDeviceTierConfigsRequest,
   output: GetApplicationsDeviceTierConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListApplicationsDeviceTierConfigsRequest {
@@ -9080,7 +9437,10 @@ export type ListApplicationsDeviceTierConfigsResponse =
 export const ListApplicationsDeviceTierConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDeviceTierConfigsResponse;
 
-export type ListApplicationsDeviceTierConfigsError = DefaultErrors;
+export type ListApplicationsDeviceTierConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns created device tier configs, ordered by descending creation time. */
 export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
@@ -9091,7 +9451,7 @@ export const listApplicationsDeviceTierConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsDeviceTierConfigsRequest,
   output: ListApplicationsDeviceTierConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9116,7 +9476,10 @@ export type ListApplicationsTracksReleasesResponse =
 export const ListApplicationsTracksReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReleaseSummariesResponse;
 
-export type ListApplicationsTracksReleasesError = DefaultErrors;
+export type ListApplicationsTracksReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of all releases for a given track. This excludes any releases that are obsolete. */
 export const listApplicationsTracksReleases: API.OperationMethod<
@@ -9127,7 +9490,7 @@ export const listApplicationsTracksReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListApplicationsTracksReleasesRequest,
   output: ListApplicationsTracksReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ConvertRegionPricesMonetizationRequest {
@@ -9155,7 +9518,12 @@ export type ConvertRegionPricesMonetizationResponse =
 export const ConvertRegionPricesMonetizationResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConvertRegionPricesResponse;
 
-export type ConvertRegionPricesMonetizationError = DefaultErrors;
+export type ConvertRegionPricesMonetizationError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Calculates the region prices, using today's exchange rate and country-specific pricing patterns, based on the price in the request for a set of regions. */
 export const convertRegionPricesMonetization: API.OperationMethod<
@@ -9166,7 +9534,7 @@ export const convertRegionPricesMonetization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConvertRegionPricesMonetizationRequest,
   output: ConvertRegionPricesMonetizationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMonetizationOnetimeproductsRequest {
@@ -9192,7 +9560,10 @@ export type GetMonetizationOnetimeproductsResponse = OneTimeProduct;
 export const GetMonetizationOnetimeproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OneTimeProduct;
 
-export type GetMonetizationOnetimeproductsError = DefaultErrors;
+export type GetMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reads a single one-time product. */
 export const getMonetizationOnetimeproducts: API.OperationMethod<
@@ -9203,7 +9574,7 @@ export const getMonetizationOnetimeproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonetizationOnetimeproductsRequest,
   output: GetMonetizationOnetimeproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchGetMonetizationOnetimeproductsRequest {
@@ -9232,7 +9603,10 @@ export type BatchGetMonetizationOnetimeproductsResponse =
 export const BatchGetMonetizationOnetimeproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetOneTimeProductsResponse;
 
-export type BatchGetMonetizationOnetimeproductsError = DefaultErrors;
+export type BatchGetMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reads one or more one-time products. */
 export const batchGetMonetizationOnetimeproducts: API.OperationMethod<
@@ -9243,7 +9617,7 @@ export const batchGetMonetizationOnetimeproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetMonetizationOnetimeproductsRequest,
   output: BatchGetMonetizationOnetimeproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMonetizationOnetimeproductsRequest {
@@ -9273,7 +9647,10 @@ export type ListMonetizationOnetimeproductsResponse =
 export const ListMonetizationOnetimeproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOneTimeProductsResponse;
 
-export type ListMonetizationOnetimeproductsError = DefaultErrors;
+export type ListMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all one-time products under a given app. */
 export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
@@ -9284,7 +9661,7 @@ export const listMonetizationOnetimeproducts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationOnetimeproductsRequest,
   output: ListMonetizationOnetimeproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9340,7 +9717,12 @@ export type PatchMonetizationOnetimeproductsResponse = OneTimeProduct;
 export const PatchMonetizationOnetimeproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OneTimeProduct;
 
-export type PatchMonetizationOnetimeproductsError = DefaultErrors;
+export type PatchMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a one-time product. */
 export const patchMonetizationOnetimeproducts: API.OperationMethod<
@@ -9351,7 +9733,7 @@ export const patchMonetizationOnetimeproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchMonetizationOnetimeproductsRequest,
   output: PatchMonetizationOnetimeproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateMonetizationOnetimeproductsRequest {
@@ -9379,7 +9761,12 @@ export type BatchUpdateMonetizationOnetimeproductsResponse =
 export const BatchUpdateMonetizationOnetimeproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateOneTimeProductsResponse;
 
-export type BatchUpdateMonetizationOnetimeproductsError = DefaultErrors;
+export type BatchUpdateMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates one or more one-time products. */
 export const batchUpdateMonetizationOnetimeproducts: API.OperationMethod<
@@ -9390,7 +9777,7 @@ export const batchUpdateMonetizationOnetimeproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMonetizationOnetimeproductsRequest,
   output: BatchUpdateMonetizationOnetimeproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMonetizationOnetimeproductsRequest {
@@ -9427,7 +9814,12 @@ export const DeleteMonetizationOnetimeproductsResponse: Schema.Schema<DeleteMone
     {},
   ) as any as Schema.Schema<DeleteMonetizationOnetimeproductsResponse>;
 
-export type DeleteMonetizationOnetimeproductsError = DefaultErrors;
+export type DeleteMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a one-time product. */
 export const deleteMonetizationOnetimeproducts: API.OperationMethod<
@@ -9438,7 +9830,7 @@ export const deleteMonetizationOnetimeproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonetizationOnetimeproductsRequest,
   output: DeleteMonetizationOnetimeproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteMonetizationOnetimeproductsRequest {
@@ -9467,7 +9859,12 @@ export const BatchDeleteMonetizationOnetimeproductsResponse: Schema.Schema<Batch
     {},
   ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsResponse>;
 
-export type BatchDeleteMonetizationOnetimeproductsError = DefaultErrors;
+export type BatchDeleteMonetizationOnetimeproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes one or more one-time products. */
 export const batchDeleteMonetizationOnetimeproducts: API.OperationMethod<
@@ -9478,7 +9875,7 @@ export const batchDeleteMonetizationOnetimeproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteMonetizationOnetimeproductsRequest,
   output: BatchDeleteMonetizationOnetimeproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest {
@@ -9512,7 +9909,11 @@ export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsResponse
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdatePurchaseOptionStatesResponse;
 
 export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates or deactivates purchase options across one or multiple one-time products. */
 export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptions: API.OperationMethod<
@@ -9523,7 +9924,7 @@ export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptions: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest,
   output: BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest {
@@ -9556,7 +9957,11 @@ export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse: Sche
   ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse>;
 
 export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes purchase options across one or multiple one-time products. By default this operation will fail if there are any existing offers under the deleted purchase options. Use the force parameter to override the default behavior. */
 export const batchDeleteMonetizationOnetimeproductsPurchaseOptions: API.OperationMethod<
@@ -9567,7 +9972,7 @@ export const batchDeleteMonetizationOnetimeproductsPurchaseOptions: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest,
   output: BatchDeleteMonetizationOnetimeproductsPurchaseOptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -9604,7 +10009,9 @@ export const ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOneTimeProductOffersResponse;
 
 export type ListMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all offers under a given app, product, or purchase option. */
 export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.PaginatedOperationMethod<
@@ -9615,7 +10022,7 @@ export const listMonetizationOnetimeproductsPurchaseOptionsOffers: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: ListMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9656,7 +10063,11 @@ export const BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetOneTimeProductOffersResponse;
 
 export type BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reads one or more one-time product offers. */
 export const batchGetMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -9667,7 +10078,7 @@ export const batchGetMonetizationOnetimeproductsPurchaseOptionsOffers: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -9704,7 +10115,11 @@ export const BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersResponse
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateOneTimeProductOffersResponse;
 
 export type BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates one or more one-time product offers. */
 export const batchUpdateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -9715,7 +10130,7 @@ export const batchUpdateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -9752,7 +10167,11 @@ export const BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRe
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateOneTimeProductOfferStatesResponse;
 
 export type BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a batch of one-time product offer states. */
 export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -9765,7 +10184,7 @@ export const batchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffers: 
     BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output:
     BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -9803,7 +10222,11 @@ export const BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse
   ) as any as Schema.Schema<BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse>;
 
 export type BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes one or more one-time product offers. */
 export const batchDeleteMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -9814,7 +10237,7 @@ export const batchDeleteMonetizationOnetimeproductsPurchaseOptionsOffers: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -9854,7 +10277,11 @@ export const ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OneTimeProductOffer;
 
 export type ActivateMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates a one-time product offer. */
 export const activateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -9865,7 +10292,7 @@ export const activateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: ActivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -9903,7 +10330,11 @@ export const CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OneTimeProductOffer;
 
 export type CancelMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a one-time product offer. */
 export const cancelMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -9914,7 +10345,7 @@ export const cancelMonetizationOnetimeproductsPurchaseOptionsOffers: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: CancelMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest {
@@ -9954,7 +10385,11 @@ export const DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse 
   /*@__PURE__*/ /*#__PURE__*/ OneTimeProductOffer;
 
 export type DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates a one-time product offer. */
 export const deactivateMonetizationOnetimeproductsPurchaseOptionsOffers: API.OperationMethod<
@@ -9965,7 +10400,7 @@ export const deactivateMonetizationOnetimeproductsPurchaseOptionsOffers: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersRequest,
   output: DeactivateMonetizationOnetimeproductsPurchaseOptionsOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMonetizationSubscriptionsRequest {
@@ -9991,7 +10426,10 @@ export type GetMonetizationSubscriptionsResponse = Subscription;
 export const GetMonetizationSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetMonetizationSubscriptionsError = DefaultErrors;
+export type GetMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reads a single subscription. */
 export const getMonetizationSubscriptions: API.OperationMethod<
@@ -10002,7 +10440,7 @@ export const getMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonetizationSubscriptionsRequest,
   output: GetMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchGetMonetizationSubscriptionsRequest {
@@ -10031,7 +10469,10 @@ export type BatchGetMonetizationSubscriptionsResponse =
 export const BatchGetMonetizationSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetSubscriptionsResponse;
 
-export type BatchGetMonetizationSubscriptionsError = DefaultErrors;
+export type BatchGetMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reads one or more subscriptions. */
 export const batchGetMonetizationSubscriptions: API.OperationMethod<
@@ -10042,7 +10483,7 @@ export const batchGetMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetMonetizationSubscriptionsRequest,
   output: BatchGetMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMonetizationSubscriptionsRequest {
@@ -10076,7 +10517,10 @@ export type ListMonetizationSubscriptionsResponse = ListSubscriptionsResponse;
 export const ListMonetizationSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
 
-export type ListMonetizationSubscriptionsError = DefaultErrors;
+export type ListMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all subscriptions under a given app. */
 export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
@@ -10087,7 +10531,7 @@ export const listMonetizationSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationSubscriptionsRequest,
   output: ListMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10126,7 +10570,12 @@ export type CreateMonetizationSubscriptionsResponse = Subscription;
 export const CreateMonetizationSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type CreateMonetizationSubscriptionsError = DefaultErrors;
+export type CreateMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new subscription. Newly added base plans will remain in draft state until activated. */
 export const createMonetizationSubscriptions: API.OperationMethod<
@@ -10137,7 +10586,7 @@ export const createMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonetizationSubscriptionsRequest,
   output: CreateMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchMonetizationSubscriptionsRequest {
@@ -10189,7 +10638,12 @@ export type PatchMonetizationSubscriptionsResponse = Subscription;
 export const PatchMonetizationSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type PatchMonetizationSubscriptionsError = DefaultErrors;
+export type PatchMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing subscription. */
 export const patchMonetizationSubscriptions: API.OperationMethod<
@@ -10200,7 +10654,7 @@ export const patchMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchMonetizationSubscriptionsRequest,
   output: PatchMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateMonetizationSubscriptionsRequest {
@@ -10228,7 +10682,12 @@ export type BatchUpdateMonetizationSubscriptionsResponse =
 export const BatchUpdateMonetizationSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateSubscriptionsResponse;
 
-export type BatchUpdateMonetizationSubscriptionsError = DefaultErrors;
+export type BatchUpdateMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a batch of subscriptions. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateMonetizationSubscriptions: API.OperationMethod<
@@ -10239,7 +10698,7 @@ export const batchUpdateMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMonetizationSubscriptionsRequest,
   output: BatchUpdateMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMonetizationSubscriptionsRequest {
@@ -10267,7 +10726,12 @@ export const DeleteMonetizationSubscriptionsResponse: Schema.Schema<DeleteMoneti
     {},
   ) as any as Schema.Schema<DeleteMonetizationSubscriptionsResponse>;
 
-export type DeleteMonetizationSubscriptionsError = DefaultErrors;
+export type DeleteMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a subscription. A subscription can only be deleted if it has never had a base plan published. */
 export const deleteMonetizationSubscriptions: API.OperationMethod<
@@ -10278,7 +10742,7 @@ export const deleteMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonetizationSubscriptionsRequest,
   output: DeleteMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ArchiveMonetizationSubscriptionsRequest {
@@ -10308,7 +10772,12 @@ export type ArchiveMonetizationSubscriptionsResponse = Subscription;
 export const ArchiveMonetizationSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ArchiveMonetizationSubscriptionsError = DefaultErrors;
+export type ArchiveMonetizationSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: subscription archiving is not supported. */
 export const archiveMonetizationSubscriptions: API.OperationMethod<
@@ -10319,7 +10788,7 @@ export const archiveMonetizationSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ArchiveMonetizationSubscriptionsRequest,
   output: ArchiveMonetizationSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMonetizationSubscriptionsBasePlansRequest {
@@ -10350,7 +10819,12 @@ export const DeleteMonetizationSubscriptionsBasePlansResponse: Schema.Schema<Del
     {},
   ) as any as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansResponse>;
 
-export type DeleteMonetizationSubscriptionsBasePlansError = DefaultErrors;
+export type DeleteMonetizationSubscriptionsBasePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a base plan. Can only be done for draft base plans. This action is irreversible. */
 export const deleteMonetizationSubscriptionsBasePlans: API.OperationMethod<
@@ -10361,7 +10835,7 @@ export const deleteMonetizationSubscriptionsBasePlans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonetizationSubscriptionsBasePlansRequest,
   output: DeleteMonetizationSubscriptionsBasePlansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateMonetizationSubscriptionsBasePlansRequest {
@@ -10394,7 +10868,12 @@ export type ActivateMonetizationSubscriptionsBasePlansResponse = Subscription;
 export const ActivateMonetizationSubscriptionsBasePlansResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ActivateMonetizationSubscriptionsBasePlansError = DefaultErrors;
+export type ActivateMonetizationSubscriptionsBasePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates a base plan. Once activated, base plans will be available to new subscribers. */
 export const activateMonetizationSubscriptionsBasePlans: API.OperationMethod<
@@ -10405,7 +10884,7 @@ export const activateMonetizationSubscriptionsBasePlans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateMonetizationSubscriptionsBasePlansRequest,
   output: ActivateMonetizationSubscriptionsBasePlansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeactivateMonetizationSubscriptionsBasePlansRequest {
@@ -10438,7 +10917,12 @@ export type DeactivateMonetizationSubscriptionsBasePlansResponse = Subscription;
 export const DeactivateMonetizationSubscriptionsBasePlansResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type DeactivateMonetizationSubscriptionsBasePlansError = DefaultErrors;
+export type DeactivateMonetizationSubscriptionsBasePlansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates a base plan. Once deactivated, the base plan will become unavailable to new subscribers, but existing subscribers will maintain their subscription */
 export const deactivateMonetizationSubscriptionsBasePlans: API.OperationMethod<
@@ -10449,7 +10933,7 @@ export const deactivateMonetizationSubscriptionsBasePlans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateMonetizationSubscriptionsBasePlansRequest,
   output: DeactivateMonetizationSubscriptionsBasePlansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest {
@@ -10481,7 +10965,11 @@ export const BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateBasePlanStatesResponse;
 
 export type BatchUpdateStatesMonetizationSubscriptionsBasePlansError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates or deactivates base plans across one or multiple subscriptions. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateStatesMonetizationSubscriptionsBasePlans: API.OperationMethod<
@@ -10492,7 +10980,7 @@ export const batchUpdateStatesMonetizationSubscriptionsBasePlans: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest,
   output: BatchUpdateStatesMonetizationSubscriptionsBasePlansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MigratePricesMonetizationSubscriptionsBasePlansRequest {
@@ -10527,7 +11015,11 @@ export const MigratePricesMonetizationSubscriptionsBasePlansResponse =
   /*@__PURE__*/ /*#__PURE__*/ MigrateBasePlanPricesResponse;
 
 export type MigratePricesMonetizationSubscriptionsBasePlansError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Migrates subscribers from one or more legacy price cohorts to the current price. Requests result in Google Play notifying affected subscribers. Only up to 250 simultaneous legacy price cohorts are supported. */
 export const migratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
@@ -10538,7 +11030,7 @@ export const migratePricesMonetizationSubscriptionsBasePlans: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MigratePricesMonetizationSubscriptionsBasePlansRequest,
   output: MigratePricesMonetizationSubscriptionsBasePlansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchMigratePricesMonetizationSubscriptionsBasePlansRequest {
@@ -10570,7 +11062,11 @@ export const BatchMigratePricesMonetizationSubscriptionsBasePlansResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchMigrateBasePlanPricesResponse;
 
 export type BatchMigratePricesMonetizationSubscriptionsBasePlansError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchMigratePricesMonetizationSubscriptionsBasePlans: API.OperationMethod<
@@ -10581,7 +11077,7 @@ export const batchMigratePricesMonetizationSubscriptionsBasePlans: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchMigratePricesMonetizationSubscriptionsBasePlansRequest,
   output: BatchMigratePricesMonetizationSubscriptionsBasePlansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMonetizationSubscriptionsBasePlansOffersRequest {
@@ -10614,7 +11110,10 @@ export type GetMonetizationSubscriptionsBasePlansOffersResponse =
 export const GetMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
 
-export type GetMonetizationSubscriptionsBasePlansOffersError = DefaultErrors;
+export type GetMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reads a single offer */
 export const getMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -10625,7 +11124,7 @@ export const getMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonetizationSubscriptionsBasePlansOffersRequest,
   output: GetMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchGetMonetizationSubscriptionsBasePlansOffersRequest {
@@ -10660,7 +11159,11 @@ export const BatchGetMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetSubscriptionOffersResponse;
 
 export type BatchGetMonetizationSubscriptionsBasePlansOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reads one or more subscription offers. */
 export const batchGetMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -10671,7 +11174,7 @@ export const batchGetMonetizationSubscriptionsBasePlansOffers: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetMonetizationSubscriptionsBasePlansOffersRequest,
   output: BatchGetMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMonetizationSubscriptionsBasePlansOffersRequest {
@@ -10707,7 +11210,10 @@ export type ListMonetizationSubscriptionsBasePlansOffersResponse =
 export const ListMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionOffersResponse;
 
-export type ListMonetizationSubscriptionsBasePlansOffersError = DefaultErrors;
+export type ListMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all offers under a given subscription. */
 export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperationMethod<
@@ -10718,7 +11224,7 @@ export const listMonetizationSubscriptionsBasePlansOffers: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonetizationSubscriptionsBasePlansOffersRequest,
   output: ListMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10764,7 +11270,12 @@ export type CreateMonetizationSubscriptionsBasePlansOffersResponse =
 export const CreateMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
 
-export type CreateMonetizationSubscriptionsBasePlansOffersError = DefaultErrors;
+export type CreateMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new subscription offer. Only auto-renewing base plans can have subscription offers. The offer state will be DRAFT until it is activated. */
 export const createMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -10775,7 +11286,7 @@ export const createMonetizationSubscriptionsBasePlansOffers: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMonetizationSubscriptionsBasePlansOffersRequest,
   output: CreateMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchMonetizationSubscriptionsBasePlansOffersRequest {
@@ -10834,7 +11345,12 @@ export type PatchMonetizationSubscriptionsBasePlansOffersResponse =
 export const PatchMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
 
-export type PatchMonetizationSubscriptionsBasePlansOffersError = DefaultErrors;
+export type PatchMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing subscription offer. */
 export const patchMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -10845,7 +11361,7 @@ export const patchMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchMonetizationSubscriptionsBasePlansOffersRequest,
   output: PatchMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest {
@@ -10882,7 +11398,11 @@ export const BatchUpdateMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateSubscriptionOffersResponse;
 
 export type BatchUpdateMonetizationSubscriptionsBasePlansOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a batch of subscription offers. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -10893,7 +11413,7 @@ export const batchUpdateMonetizationSubscriptionsBasePlansOffers: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest,
   output: BatchUpdateMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateMonetizationSubscriptionsBasePlansOffersRequest {
@@ -10931,7 +11451,11 @@ export const ActivateMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
 
 export type ActivateMonetizationSubscriptionsBasePlansOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates a subscription offer. Once activated, subscription offers will be available to new subscribers. */
 export const activateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -10942,7 +11466,7 @@ export const activateMonetizationSubscriptionsBasePlansOffers: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateMonetizationSubscriptionsBasePlansOffersRequest,
   output: ActivateMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeactivateMonetizationSubscriptionsBasePlansOffersRequest {
@@ -10982,7 +11506,11 @@ export const DeactivateMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionOffer;
 
 export type DeactivateMonetizationSubscriptionsBasePlansOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates a subscription offer. Once deactivated, existing subscribers will maintain their subscription, but the offer will become unavailable to new subscribers. */
 export const deactivateMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -10993,7 +11521,7 @@ export const deactivateMonetizationSubscriptionsBasePlansOffers: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateMonetizationSubscriptionsBasePlansOffersRequest,
   output: DeactivateMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest {
@@ -11030,7 +11558,11 @@ export const BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateSubscriptionOfferStatesResponse;
 
 export type BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a batch of subscription offer states. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. */
 export const batchUpdateStatesMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -11041,7 +11573,7 @@ export const batchUpdateStatesMonetizationSubscriptionsBasePlansOffers: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest,
   output: BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMonetizationSubscriptionsBasePlansOffersRequest {
@@ -11075,7 +11607,12 @@ export const DeleteMonetizationSubscriptionsBasePlansOffersResponse: Schema.Sche
     {},
   ) as any as Schema.Schema<DeleteMonetizationSubscriptionsBasePlansOffersResponse>;
 
-export type DeleteMonetizationSubscriptionsBasePlansOffersError = DefaultErrors;
+export type DeleteMonetizationSubscriptionsBasePlansOffersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a subscription offer. Can only be done for draft offers. This action is irreversible. */
 export const deleteMonetizationSubscriptionsBasePlansOffers: API.OperationMethod<
@@ -11086,7 +11623,7 @@ export const deleteMonetizationSubscriptionsBasePlansOffers: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMonetizationSubscriptionsBasePlansOffersRequest,
   output: DeleteMonetizationSubscriptionsBasePlansOffersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReviewsRequest {
@@ -11115,7 +11652,7 @@ export const GetReviewsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetReviewsResponse = Review;
 export const GetReviewsResponse = /*@__PURE__*/ /*#__PURE__*/ Review;
 
-export type GetReviewsError = DefaultErrors;
+export type GetReviewsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a single review. */
 export const getReviews: API.OperationMethod<
@@ -11126,7 +11663,7 @@ export const getReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReviewsRequest,
   output: GetReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListReviewsRequest {
@@ -11162,7 +11699,7 @@ export type ListReviewsResponse = ReviewsListResponse;
 export const ListReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReviewsListResponse;
 
-export type ListReviewsError = DefaultErrors;
+export type ListReviewsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all reviews. */
 export const listReviews: API.OperationMethod<
@@ -11173,7 +11710,7 @@ export const listReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListReviewsRequest,
   output: ListReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReplyReviewsRequest {
@@ -11202,7 +11739,12 @@ export type ReplyReviewsResponse = ReviewsReplyResponse;
 export const ReplyReviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReviewsReplyResponse;
 
-export type ReplyReviewsError = DefaultErrors;
+export type ReplyReviewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replies to a single review, or updates an existing reply. */
 export const replyReviews: API.OperationMethod<
@@ -11213,7 +11755,7 @@ export const replyReviews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplyReviewsRequest,
   output: ReplyReviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSystemapksVariantsRequest {
@@ -11243,7 +11785,12 @@ export type CreateSystemapksVariantsResponse = Variant;
 export const CreateSystemapksVariantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variant;
 
-export type CreateSystemapksVariantsError = DefaultErrors;
+export type CreateSystemapksVariantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an APK which is suitable for inclusion in a system image from an already uploaded Android App Bundle. */
 export const createSystemapksVariants: API.OperationMethod<
@@ -11254,7 +11801,7 @@ export const createSystemapksVariants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSystemapksVariantsRequest,
   output: CreateSystemapksVariantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSystemapksVariantsRequest {
@@ -11280,7 +11827,7 @@ export type ListSystemapksVariantsResponse = SystemApksListResponse;
 export const ListSystemapksVariantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SystemApksListResponse;
 
-export type ListSystemapksVariantsError = DefaultErrors;
+export type ListSystemapksVariantsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the list of previously created system APK variants. */
 export const listSystemapksVariants: API.OperationMethod<
@@ -11291,7 +11838,7 @@ export const listSystemapksVariants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSystemapksVariantsRequest,
   output: ListSystemapksVariantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSystemapksVariantsRequest {
@@ -11320,7 +11867,7 @@ export type GetSystemapksVariantsResponse = Variant;
 export const GetSystemapksVariantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variant;
 
-export type GetSystemapksVariantsError = DefaultErrors;
+export type GetSystemapksVariantsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a previously created system APK variant. */
 export const getSystemapksVariants: API.OperationMethod<
@@ -11331,7 +11878,7 @@ export const getSystemapksVariants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSystemapksVariantsRequest,
   output: GetSystemapksVariantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DownloadSystemapksVariantsRequest {
@@ -11362,7 +11909,10 @@ export const DownloadSystemapksVariantsResponse: Schema.Schema<DownloadSystemapk
     {},
   ) as any as Schema.Schema<DownloadSystemapksVariantsResponse>;
 
-export type DownloadSystemapksVariantsError = DefaultErrors;
+export type DownloadSystemapksVariantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads a previously created system APK which is suitable for inclusion in a system image. */
 export const downloadSystemapksVariants: API.OperationMethod<
@@ -11373,5 +11923,5 @@ export const downloadSystemapksVariants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadSystemapksVariantsRequest,
   output: DownloadSystemapksVariantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

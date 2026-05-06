@@ -213,6 +213,52 @@ export const CloseAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "CloseAccountResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -236,7 +282,12 @@ export type ClosePlatformsAccountsResponse = CloseAccountResponse;
 export const ClosePlatformsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CloseAccountResponse;
 
-export type ClosePlatformsAccountsError = DefaultErrors;
+export type ClosePlatformsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Closes a sub-account. */
 export const closePlatformsAccounts: API.OperationMethod<
@@ -247,7 +298,7 @@ export const closePlatformsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClosePlatformsAccountsRequest,
   output: ClosePlatformsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPlatformsAccountsRequest {
@@ -273,7 +324,7 @@ export type ListPlatformsAccountsResponse = ListAccountsResponse;
 export const ListPlatformsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
 
-export type ListPlatformsAccountsError = DefaultErrors;
+export type ListPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a partial view of sub-accounts for a specific parent account. */
 export const listPlatformsAccounts: API.PaginatedOperationMethod<
@@ -284,7 +335,7 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsAccountsRequest,
   output: ListPlatformsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -307,7 +358,7 @@ export const GetPlatformsAccountsRequest =
 export type GetPlatformsAccountsResponse = Account;
 export const GetPlatformsAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetPlatformsAccountsError = DefaultErrors;
+export type GetPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about the selected sub-account. */
 export const getPlatformsAccounts: API.OperationMethod<
@@ -318,7 +369,7 @@ export const getPlatformsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlatformsAccountsRequest,
   output: GetPlatformsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePlatformsAccountsRequest {
@@ -341,7 +392,12 @@ export type CreatePlatformsAccountsResponse = Account;
 export const CreatePlatformsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type CreatePlatformsAccountsError = DefaultErrors;
+export type CreatePlatformsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a sub-account. */
 export const createPlatformsAccounts: API.OperationMethod<
@@ -352,7 +408,7 @@ export const createPlatformsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePlatformsAccountsRequest,
   output: CreatePlatformsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupPlatformsAccountsRequest {
@@ -377,7 +433,7 @@ export type LookupPlatformsAccountsResponse = LookupAccountResponse;
 export const LookupPlatformsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LookupAccountResponse;
 
-export type LookupPlatformsAccountsError = DefaultErrors;
+export type LookupPlatformsAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up information about a sub-account for a specified creation_request_id. If no account exists for the given creation_request_id, returns 404. */
 export const lookupPlatformsAccounts: API.OperationMethod<
@@ -388,7 +444,7 @@ export const lookupPlatformsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupPlatformsAccountsRequest,
   output: LookupPlatformsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPlatformsAccountsSitesRequest {
@@ -408,7 +464,10 @@ export type GetPlatformsAccountsSitesResponse = Site;
 export const GetPlatformsAccountsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type GetPlatformsAccountsSitesError = DefaultErrors;
+export type GetPlatformsAccountsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a site from a specified sub-account. */
 export const getPlatformsAccountsSites: API.OperationMethod<
@@ -419,7 +478,7 @@ export const getPlatformsAccountsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlatformsAccountsSitesRequest,
   output: GetPlatformsAccountsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePlatformsAccountsSitesRequest {
@@ -442,7 +501,12 @@ export type CreatePlatformsAccountsSitesResponse = Site;
 export const CreatePlatformsAccountsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type CreatePlatformsAccountsSitesError = DefaultErrors;
+export type CreatePlatformsAccountsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a site for a specified account. */
 export const createPlatformsAccountsSites: API.OperationMethod<
@@ -453,7 +517,7 @@ export const createPlatformsAccountsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePlatformsAccountsSitesRequest,
   output: CreatePlatformsAccountsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePlatformsAccountsSitesRequest {
@@ -473,7 +537,12 @@ export type DeletePlatformsAccountsSitesResponse = Empty;
 export const DeletePlatformsAccountsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeletePlatformsAccountsSitesError = DefaultErrors;
+export type DeletePlatformsAccountsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a site from a specified account. */
 export const deletePlatformsAccountsSites: API.OperationMethod<
@@ -484,7 +553,7 @@ export const deletePlatformsAccountsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlatformsAccountsSitesRequest,
   output: DeletePlatformsAccountsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPlatformsAccountsSitesRequest {
@@ -510,7 +579,10 @@ export type ListPlatformsAccountsSitesResponse = ListSitesResponse;
 export const ListPlatformsAccountsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSitesResponse;
 
-export type ListPlatformsAccountsSitesError = DefaultErrors;
+export type ListPlatformsAccountsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists sites for a specific account. */
 export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
@@ -521,7 +593,7 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsAccountsSitesRequest,
   output: ListPlatformsAccountsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -546,7 +618,12 @@ export type RequestReviewPlatformsAccountsSitesResponse =
 export const RequestReviewPlatformsAccountsSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RequestSiteReviewResponse;
 
-export type RequestReviewPlatformsAccountsSitesError = DefaultErrors;
+export type RequestReviewPlatformsAccountsSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests the review of a site. The site should be in REQUIRES_REVIEW or NEEDS_ATTENTION state. Note: Make sure you place an [ad tag](https://developers.google.com/adsense/platforms/direct/ad-tags) on your site before requesting a review. */
 export const requestReviewPlatformsAccountsSites: API.OperationMethod<
@@ -557,7 +634,7 @@ export const requestReviewPlatformsAccountsSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestReviewPlatformsAccountsSitesRequest,
   output: RequestReviewPlatformsAccountsSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatePlatformsAccountsEventsRequest {
@@ -580,7 +657,12 @@ export type CreatePlatformsAccountsEventsResponse = Event;
 export const CreatePlatformsAccountsEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Event;
 
-export type CreatePlatformsAccountsEventsError = DefaultErrors;
+export type CreatePlatformsAccountsEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an account event. */
 export const createPlatformsAccountsEvents: API.OperationMethod<
@@ -591,5 +673,5 @@ export const createPlatformsAccountsEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePlatformsAccountsEventsRequest,
   output: CreatePlatformsAccountsEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

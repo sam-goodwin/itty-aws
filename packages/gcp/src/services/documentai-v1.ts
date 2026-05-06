@@ -6409,6 +6409,52 @@ export const GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -6429,7 +6475,7 @@ export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -6440,7 +6486,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FetchProcessorTypesProjectsLocationsRequest {
@@ -6461,7 +6507,10 @@ export type FetchProcessorTypesProjectsLocationsResponse =
 export const FetchProcessorTypesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1FetchProcessorTypesResponse;
 
-export type FetchProcessorTypesProjectsLocationsError = DefaultErrors;
+export type FetchProcessorTypesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetches processor types. Note that we don't use ListProcessorTypes here, because it isn't paginated. */
 export const fetchProcessorTypesProjectsLocations: API.OperationMethod<
@@ -6472,7 +6521,7 @@ export const fetchProcessorTypesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchProcessorTypesProjectsLocationsRequest,
   output: FetchProcessorTypesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -6507,7 +6556,7 @@ export type ListProjectsLocationsResponse =
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -6518,7 +6567,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6542,7 +6591,7 @@ export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationLocation;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -6553,7 +6602,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -6588,7 +6637,10 @@ export type ListProjectsLocationsOperationsResponse =
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -6599,7 +6651,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6623,7 +6675,10 @@ export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -6634,7 +6689,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -6654,7 +6709,12 @@ export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -6665,7 +6725,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProcessProjectsLocationsProcessorsRequest {
@@ -6691,7 +6751,12 @@ export type ProcessProjectsLocationsProcessorsResponse =
 export const ProcessProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ProcessResponse;
 
-export type ProcessProjectsLocationsProcessorsError = DefaultErrors;
+export type ProcessProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Processes a single document. */
 export const processProjectsLocationsProcessors: API.OperationMethod<
@@ -6702,7 +6767,7 @@ export const processProjectsLocationsProcessors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProcessProjectsLocationsProcessorsRequest,
   output: ProcessProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchProcessProjectsLocationsProcessorsRequest {
@@ -6728,7 +6793,12 @@ export type BatchProcessProjectsLocationsProcessorsResponse =
 export const BatchProcessProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type BatchProcessProjectsLocationsProcessorsError = DefaultErrors;
+export type BatchProcessProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format. */
 export const batchProcessProjectsLocationsProcessors: API.OperationMethod<
@@ -6739,7 +6809,7 @@ export const batchProcessProjectsLocationsProcessors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchProcessProjectsLocationsProcessorsRequest,
   output: BatchProcessProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProcessorsRequest {
@@ -6766,7 +6836,10 @@ export type ListProjectsLocationsProcessorsResponse =
 export const ListProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ListProcessorsResponse;
 
-export type ListProjectsLocationsProcessorsError = DefaultErrors;
+export type ListProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all processors which belong to this project. */
 export const listProjectsLocationsProcessors: API.PaginatedOperationMethod<
@@ -6777,7 +6850,7 @@ export const listProjectsLocationsProcessors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorsRequest,
   output: ListProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6802,7 +6875,10 @@ export type GetProjectsLocationsProcessorsResponse =
 export const GetProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1Processor;
 
-export type GetProjectsLocationsProcessorsError = DefaultErrors;
+export type GetProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a processor detail. */
 export const getProjectsLocationsProcessors: API.OperationMethod<
@@ -6813,7 +6889,7 @@ export const getProjectsLocationsProcessors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProcessorsRequest,
   output: GetProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsProcessorsRequest {
@@ -6837,7 +6913,12 @@ export type CreateProjectsLocationsProcessorsResponse =
 export const CreateProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1Processor;
 
-export type CreateProjectsLocationsProcessorsError = DefaultErrors;
+export type CreateProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation. Note that this method requires the `documentai.processors.create` permission on the project, which is highly privileged. A user or service account with this permission can create new processors that can interact with any gcs bucket in your project. */
 export const createProjectsLocationsProcessors: API.OperationMethod<
@@ -6848,7 +6929,7 @@ export const createProjectsLocationsProcessors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProcessorsRequest,
   output: CreateProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProcessorsRequest {
@@ -6869,7 +6950,12 @@ export type DeleteProjectsLocationsProcessorsResponse =
 export const DeleteProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsProcessorsError = DefaultErrors;
+export type DeleteProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the processor, unloads all deployed model artifacts if it was enabled and then deletes all artifacts associated with this processor. */
 export const deleteProjectsLocationsProcessors: API.OperationMethod<
@@ -6880,7 +6966,7 @@ export const deleteProjectsLocationsProcessors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProcessorsRequest,
   output: DeleteProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableProjectsLocationsProcessorsRequest {
@@ -6906,7 +6992,12 @@ export type EnableProjectsLocationsProcessorsResponse =
 export const EnableProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type EnableProjectsLocationsProcessorsError = DefaultErrors;
+export type EnableProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables a processor */
 export const enableProjectsLocationsProcessors: API.OperationMethod<
@@ -6917,7 +7008,7 @@ export const enableProjectsLocationsProcessors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableProjectsLocationsProcessorsRequest,
   output: EnableProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableProjectsLocationsProcessorsRequest {
@@ -6943,7 +7034,12 @@ export type DisableProjectsLocationsProcessorsResponse =
 export const DisableProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DisableProjectsLocationsProcessorsError = DefaultErrors;
+export type DisableProjectsLocationsProcessorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables a processor */
 export const disableProjectsLocationsProcessors: API.OperationMethod<
@@ -6954,7 +7050,7 @@ export const disableProjectsLocationsProcessors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableProjectsLocationsProcessorsRequest,
   output: DisableProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetDefaultProcessorVersionProjectsLocationsProcessorsRequest {
@@ -6985,7 +7081,11 @@ export const SetDefaultProcessorVersionProjectsLocationsProcessorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type SetDefaultProcessorVersionProjectsLocationsProcessorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set the default (active) version of a Processor that will be used in ProcessDocument and BatchProcessDocuments. */
 export const setDefaultProcessorVersionProjectsLocationsProcessors: API.OperationMethod<
@@ -6996,7 +7096,7 @@ export const setDefaultProcessorVersionProjectsLocationsProcessors: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDefaultProcessorVersionProjectsLocationsProcessorsRequest,
   output: SetDefaultProcessorVersionProjectsLocationsProcessorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProcessProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7023,7 +7123,11 @@ export const ProcessProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ProcessResponse;
 
 export type ProcessProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Processes a single document. */
 export const processProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7034,7 +7138,7 @@ export const processProjectsLocationsProcessorsProcessorVersions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProcessProjectsLocationsProcessorsProcessorVersionsRequest,
   output: ProcessProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchProcessProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7061,7 +7165,11 @@ export const BatchProcessProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchProcessProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format. */
 export const batchProcessProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7072,7 +7180,7 @@ export const batchProcessProjectsLocationsProcessorsProcessorVersions: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchProcessProjectsLocationsProcessorsProcessorVersionsRequest,
   output: BatchProcessProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TrainProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7103,7 +7211,11 @@ export const TrainProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type TrainProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Trains a new processor version. Operation metadata is returned as TrainProcessorVersionMetadata. */
 export const trainProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7114,7 +7226,7 @@ export const trainProjectsLocationsProcessorsProcessorVersions: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TrainProjectsLocationsProcessorsProcessorVersionsRequest,
   output: TrainProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7136,7 +7248,9 @@ export const GetProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ProcessorVersion;
 
 export type GetProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a processor version detail. */
 export const getProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7147,7 +7261,7 @@ export const getProjectsLocationsProcessorsProcessorVersions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProcessorsProcessorVersionsRequest,
   output: GetProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7175,7 +7289,9 @@ export const ListProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ListProcessorVersionsResponse;
 
 export type ListProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all versions of a processor. */
 export const listProjectsLocationsProcessorsProcessorVersions: API.PaginatedOperationMethod<
@@ -7186,7 +7302,7 @@ export const listProjectsLocationsProcessorsProcessorVersions: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorsProcessorVersionsRequest,
   output: ListProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7212,7 +7328,11 @@ export const DeleteProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the processor version, all artifacts under the processor version will be deleted. */
 export const deleteProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7223,7 +7343,7 @@ export const deleteProjectsLocationsProcessorsProcessorVersions: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProcessorsProcessorVersionsRequest,
   output: DeleteProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeployProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7250,7 +7370,11 @@ export const DeployProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeployProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deploys the processor version. */
 export const deployProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7261,7 +7385,7 @@ export const deployProjectsLocationsProcessorsProcessorVersions: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeployProjectsLocationsProcessorsProcessorVersionsRequest,
   output: DeployProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeployProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7288,7 +7412,11 @@ export const UndeployProjectsLocationsProcessorsProcessorVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type UndeployProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeploys the processor version. */
 export const undeployProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7299,7 +7427,7 @@ export const undeployProjectsLocationsProcessorsProcessorVersions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeployProjectsLocationsProcessorsProcessorVersionsRequest,
   output: UndeployProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest {
@@ -7330,7 +7458,11 @@ export const EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersion
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Evaluates a ProcessorVersion against annotated documents, producing an Evaluation. */
 export const evaluateProcessorVersionProjectsLocationsProcessorsProcessorVersions: API.OperationMethod<
@@ -7343,7 +7475,7 @@ export const evaluateProcessorVersionProjectsLocationsProcessorsProcessorVersion
     EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsRequest,
   output:
     EvaluateProcessorVersionProjectsLocationsProcessorsProcessorVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest {
@@ -7365,7 +7497,9 @@ export const GetProjectsLocationsProcessorsProcessorVersionsEvaluationsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1Evaluation;
 
 export type GetProjectsLocationsProcessorsProcessorVersionsEvaluationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a specific evaluation. */
 export const getProjectsLocationsProcessorsProcessorVersionsEvaluations: API.OperationMethod<
@@ -7376,7 +7510,7 @@ export const getProjectsLocationsProcessorsProcessorVersionsEvaluations: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest,
   output: GetProjectsLocationsProcessorsProcessorVersionsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest {
@@ -7404,7 +7538,9 @@ export const ListProjectsLocationsProcessorsProcessorVersionsEvaluationsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ListEvaluationsResponse;
 
 export type ListProjectsLocationsProcessorsProcessorVersionsEvaluationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a set of evaluations for a given processor version. */
 export const listProjectsLocationsProcessorsProcessorVersionsEvaluations: API.PaginatedOperationMethod<
@@ -7415,7 +7551,7 @@ export const listProjectsLocationsProcessorsProcessorVersionsEvaluations: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorsProcessorVersionsEvaluationsRequest,
   output: ListProjectsLocationsProcessorsProcessorVersionsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7450,7 +7586,11 @@ export const ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Send a document for Human Review. The input document should be processed by the specified processor. */
 export const reviewDocumentProjectsLocationsProcessorsHumanReviewConfig: API.OperationMethod<
@@ -7461,7 +7601,7 @@ export const reviewDocumentProjectsLocationsProcessorsHumanReviewConfig: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigRequest,
   output: ReviewDocumentProjectsLocationsProcessorsHumanReviewConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProcessorTypesRequest {
@@ -7488,7 +7628,10 @@ export type ListProjectsLocationsProcessorTypesResponse =
 export const ListProjectsLocationsProcessorTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ListProcessorTypesResponse;
 
-export type ListProjectsLocationsProcessorTypesError = DefaultErrors;
+export type ListProjectsLocationsProcessorTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the processor types that exist. */
 export const listProjectsLocationsProcessorTypes: API.PaginatedOperationMethod<
@@ -7499,7 +7642,7 @@ export const listProjectsLocationsProcessorTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProcessorTypesRequest,
   output: ListProjectsLocationsProcessorTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7524,7 +7667,10 @@ export type GetProjectsLocationsProcessorTypesResponse =
 export const GetProjectsLocationsProcessorTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ProcessorType;
 
-export type GetProjectsLocationsProcessorTypesError = DefaultErrors;
+export type GetProjectsLocationsProcessorTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a processor type detail. */
 export const getProjectsLocationsProcessorTypes: API.OperationMethod<
@@ -7535,7 +7681,7 @@ export const getProjectsLocationsProcessorTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProcessorTypesRequest,
   output: GetProjectsLocationsProcessorTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsSchemasRequest {
@@ -7559,7 +7705,12 @@ export type CreateProjectsLocationsSchemasResponse =
 export const CreateProjectsLocationsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1NextSchema;
 
-export type CreateProjectsLocationsSchemasError = DefaultErrors;
+export type CreateProjectsLocationsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a schema. */
 export const createProjectsLocationsSchemas: API.OperationMethod<
@@ -7570,7 +7721,7 @@ export const createProjectsLocationsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSchemasRequest,
   output: CreateProjectsLocationsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsSchemasRequest {
@@ -7597,7 +7748,12 @@ export type PatchProjectsLocationsSchemasResponse =
 export const PatchProjectsLocationsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1NextSchema;
 
-export type PatchProjectsLocationsSchemasError = DefaultErrors;
+export type PatchProjectsLocationsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a schema. Editable fields are: - `display_name` - `labels` */
 export const patchProjectsLocationsSchemas: API.OperationMethod<
@@ -7608,7 +7764,7 @@ export const patchProjectsLocationsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSchemasRequest,
   output: PatchProjectsLocationsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSchemasRequest {
@@ -7631,7 +7787,12 @@ export type DeleteProjectsLocationsSchemasResponse = GoogleLongrunningOperation;
 export const DeleteProjectsLocationsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsSchemasError = DefaultErrors;
+export type DeleteProjectsLocationsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a schema. */
 export const deleteProjectsLocationsSchemas: API.OperationMethod<
@@ -7642,7 +7803,7 @@ export const deleteProjectsLocationsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSchemasRequest,
   output: DeleteProjectsLocationsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSchemasRequest {
@@ -7669,7 +7830,10 @@ export type ListProjectsLocationsSchemasResponse =
 export const ListProjectsLocationsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ListSchemasResponse;
 
-export type ListProjectsLocationsSchemasError = DefaultErrors;
+export type ListProjectsLocationsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Schemas. */
 export const listProjectsLocationsSchemas: API.PaginatedOperationMethod<
@@ -7680,7 +7844,7 @@ export const listProjectsLocationsSchemas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSchemasRequest,
   output: ListProjectsLocationsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7705,7 +7869,10 @@ export type GetProjectsLocationsSchemasResponse =
 export const GetProjectsLocationsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1NextSchema;
 
-export type GetProjectsLocationsSchemasError = DefaultErrors;
+export type GetProjectsLocationsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a schema. */
 export const getProjectsLocationsSchemas: API.OperationMethod<
@@ -7716,7 +7883,7 @@ export const getProjectsLocationsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSchemasRequest,
   output: GetProjectsLocationsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsSchemasSchemaVersionsRequest {
@@ -7746,7 +7913,12 @@ export type CreateProjectsLocationsSchemasSchemaVersionsResponse =
 export const CreateProjectsLocationsSchemasSchemaVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1SchemaVersion;
 
-export type CreateProjectsLocationsSchemasSchemaVersionsError = DefaultErrors;
+export type CreateProjectsLocationsSchemasSchemaVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a schema version. */
 export const createProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
@@ -7757,7 +7929,7 @@ export const createProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSchemasSchemaVersionsRequest,
   output: CreateProjectsLocationsSchemasSchemaVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsSchemasSchemaVersionsRequest {
@@ -7786,7 +7958,12 @@ export type PatchProjectsLocationsSchemasSchemaVersionsResponse =
 export const PatchProjectsLocationsSchemasSchemaVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1SchemaVersion;
 
-export type PatchProjectsLocationsSchemasSchemaVersionsError = DefaultErrors;
+export type PatchProjectsLocationsSchemasSchemaVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a schema version. Editable fields are: - `display_name` - `labels` */
 export const patchProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
@@ -7797,7 +7974,7 @@ export const patchProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSchemasSchemaVersionsRequest,
   output: PatchProjectsLocationsSchemasSchemaVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateProjectsLocationsSchemasSchemaVersionsRequest {
@@ -7827,7 +8004,12 @@ export type GenerateProjectsLocationsSchemasSchemaVersionsResponse =
 export const GenerateProjectsLocationsSchemasSchemaVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1GenerateSchemaVersionResponse;
 
-export type GenerateProjectsLocationsSchemasSchemaVersionsError = DefaultErrors;
+export type GenerateProjectsLocationsSchemasSchemaVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a schema version. */
 export const generateProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
@@ -7838,7 +8020,7 @@ export const generateProjectsLocationsSchemasSchemaVersions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateProjectsLocationsSchemasSchemaVersionsRequest,
   output: GenerateProjectsLocationsSchemasSchemaVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSchemasSchemaVersionsRequest {
@@ -7859,7 +8041,12 @@ export type DeleteProjectsLocationsSchemasSchemaVersionsResponse =
 export const DeleteProjectsLocationsSchemasSchemaVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsSchemasSchemaVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsSchemasSchemaVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a schema version. */
 export const deleteProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
@@ -7870,7 +8057,7 @@ export const deleteProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSchemasSchemaVersionsRequest,
   output: DeleteProjectsLocationsSchemasSchemaVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSchemasSchemaVersionsRequest {
@@ -7897,7 +8084,10 @@ export type ListProjectsLocationsSchemasSchemaVersionsResponse =
 export const ListProjectsLocationsSchemasSchemaVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1ListSchemaVersionsResponse;
 
-export type ListProjectsLocationsSchemasSchemaVersionsError = DefaultErrors;
+export type ListProjectsLocationsSchemasSchemaVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SchemaVersions. */
 export const listProjectsLocationsSchemasSchemaVersions: API.PaginatedOperationMethod<
@@ -7908,7 +8098,7 @@ export const listProjectsLocationsSchemasSchemaVersions: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSchemasSchemaVersionsRequest,
   output: ListProjectsLocationsSchemasSchemaVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7933,7 +8123,10 @@ export type GetProjectsLocationsSchemasSchemaVersionsResponse =
 export const GetProjectsLocationsSchemasSchemaVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDocumentaiV1SchemaVersion;
 
-export type GetProjectsLocationsSchemasSchemaVersionsError = DefaultErrors;
+export type GetProjectsLocationsSchemasSchemaVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a schema version. */
 export const getProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
@@ -7944,7 +8137,7 @@ export const getProjectsLocationsSchemasSchemaVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSchemasSchemaVersionsRequest,
   output: GetProjectsLocationsSchemasSchemaVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOperationsRequest {
@@ -7964,7 +8157,12 @@ export type DeleteOperationsResponse = GoogleProtobufEmpty;
 export const DeleteOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -7975,5 +8173,5 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

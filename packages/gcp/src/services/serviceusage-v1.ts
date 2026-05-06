@@ -2353,6 +2353,52 @@ export const UpdateAdminQuotaPolicyMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2386,7 +2432,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -2397,7 +2443,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2423,7 +2469,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -2434,7 +2485,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -2452,7 +2503,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2463,7 +2514,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOperationsRequest {
@@ -2482,7 +2533,12 @@ export const DeleteOperationsRequest =
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -2493,7 +2549,7 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableServicesRequest {
@@ -2516,7 +2572,12 @@ export const DisableServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DisableServicesResponse = Operation;
 export const DisableServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DisableServicesError = DefaultErrors;
+export type DisableServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled. */
 export const disableServices: API.OperationMethod<
@@ -2527,7 +2588,7 @@ export const disableServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableServicesRequest,
   output: DisableServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchEnableServicesRequest_Op {
@@ -2554,7 +2615,12 @@ export type BatchEnableServicesResponse_Op = Operation;
 export const BatchEnableServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchEnableServicesError = DefaultErrors;
+export type BatchEnableServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. To enable a single service, use the `EnableService` method instead. */
 export const batchEnableServices: API.OperationMethod<
@@ -2565,7 +2631,7 @@ export const batchEnableServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchEnableServicesRequest_Op,
   output: BatchEnableServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetServicesRequest {
@@ -2590,7 +2656,7 @@ export type BatchGetServicesResponse_Op = BatchGetServicesResponse;
 export const BatchGetServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetServicesResponse;
 
-export type BatchGetServicesError = DefaultErrors;
+export type BatchGetServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the service configurations and enabled states for a given list of services. */
 export const batchGetServices: API.OperationMethod<
@@ -2601,7 +2667,7 @@ export const batchGetServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetServicesRequest,
   output: BatchGetServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnableServicesRequest {
@@ -2622,7 +2688,12 @@ export const EnableServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EnableServicesResponse = Operation;
 export const EnableServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnableServicesError = DefaultErrors;
+export type EnableServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable a service so that it can be used with a project. */
 export const enableServices: API.OperationMethod<
@@ -2633,7 +2704,7 @@ export const enableServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableServicesRequest,
   output: EnableServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesRequest {
@@ -2661,7 +2732,7 @@ export type ListServicesResponse_Op = ListServicesResponse;
 export const ListServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListServicesError = DefaultErrors;
+export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** List all services available to the specified project, and the current state of those services with respect to the project. The list includes all public services, all services for which the calling user has the `servicemanagement.services.bind` permission, and all services that have already been enabled on the project. The list can be filtered to only include services in a specific state, for example to only include services enabled on the project. WARNING: If you need to query enabled services frequently or across an organization, you should use [Cloud Asset Inventory API](https://cloud.google.com/asset-inventory/docs/apis), which provides higher throughput and richer filtering capability. */
 export const listServices: API.PaginatedOperationMethod<
@@ -2672,7 +2743,7 @@ export const listServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2695,7 +2766,7 @@ export type GetServicesResponse = GoogleApiServiceusageV1Service;
 export const GetServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiServiceusageV1Service;
 
-export type GetServicesError = DefaultErrors;
+export type GetServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the service configuration and enabled state for a given service. */
 export const getServices: API.OperationMethod<
@@ -2706,5 +2777,5 @@ export const getServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesRequest,
   output: GetServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

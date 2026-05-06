@@ -3942,6 +3942,52 @@ export const ModerateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ModerateTextRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3966,7 +4012,12 @@ export type ClassifyTextDocumentsResponse = ClassifyTextResponse;
 export const ClassifyTextDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClassifyTextResponse;
 
-export type ClassifyTextDocumentsError = DefaultErrors;
+export type ClassifyTextDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Classifies a document into categories. */
 export const classifyTextDocuments: API.OperationMethod<
@@ -3977,7 +4028,7 @@ export const classifyTextDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClassifyTextDocumentsRequest,
   output: ClassifyTextDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeEntitiesDocumentsRequest {
@@ -4001,7 +4052,12 @@ export type AnalyzeEntitiesDocumentsResponse = AnalyzeEntitiesResponse;
 export const AnalyzeEntitiesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeEntitiesResponse;
 
-export type AnalyzeEntitiesDocumentsError = DefaultErrors;
+export type AnalyzeEntitiesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties. */
 export const analyzeEntitiesDocuments: API.OperationMethod<
@@ -4012,7 +4068,7 @@ export const analyzeEntitiesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeEntitiesDocumentsRequest,
   output: AnalyzeEntitiesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeSentimentDocumentsRequest {
@@ -4036,7 +4092,12 @@ export type AnalyzeSentimentDocumentsResponse = AnalyzeSentimentResponse;
 export const AnalyzeSentimentDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeSentimentResponse;
 
-export type AnalyzeSentimentDocumentsError = DefaultErrors;
+export type AnalyzeSentimentDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyzes the sentiment of the provided text. */
 export const analyzeSentimentDocuments: API.OperationMethod<
@@ -4047,7 +4108,7 @@ export const analyzeSentimentDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeSentimentDocumentsRequest,
   output: AnalyzeSentimentDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeSyntaxDocumentsRequest {
@@ -4071,7 +4132,12 @@ export type AnalyzeSyntaxDocumentsResponse = AnalyzeSyntaxResponse;
 export const AnalyzeSyntaxDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeSyntaxResponse;
 
-export type AnalyzeSyntaxDocumentsError = DefaultErrors;
+export type AnalyzeSyntaxDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties. */
 export const analyzeSyntaxDocuments: API.OperationMethod<
@@ -4082,7 +4148,7 @@ export const analyzeSyntaxDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeSyntaxDocumentsRequest,
   output: AnalyzeSyntaxDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModerateTextDocumentsRequest {
@@ -4106,7 +4172,12 @@ export type ModerateTextDocumentsResponse = ModerateTextResponse;
 export const ModerateTextDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ModerateTextResponse;
 
-export type ModerateTextDocumentsError = DefaultErrors;
+export type ModerateTextDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moderates a document for harmful and sensitive categories. */
 export const moderateTextDocuments: API.OperationMethod<
@@ -4117,7 +4188,7 @@ export const moderateTextDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModerateTextDocumentsRequest,
   output: ModerateTextDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateTextDocumentsRequest {
@@ -4141,7 +4212,12 @@ export type AnnotateTextDocumentsResponse = AnnotateTextResponse;
 export const AnnotateTextDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnnotateTextResponse;
 
-export type AnnotateTextDocumentsError = DefaultErrors;
+export type AnnotateTextDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** A convenience method that provides all syntax, sentiment, entity, and classification features in one call. */
 export const annotateTextDocuments: API.OperationMethod<
@@ -4152,7 +4228,7 @@ export const annotateTextDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateTextDocumentsRequest,
   output: AnnotateTextDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeEntitySentimentDocumentsRequest {
@@ -4177,7 +4253,12 @@ export type AnalyzeEntitySentimentDocumentsResponse =
 export const AnalyzeEntitySentimentDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeEntitySentimentResponse;
 
-export type AnalyzeEntitySentimentDocumentsError = DefaultErrors;
+export type AnalyzeEntitySentimentDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions. */
 export const analyzeEntitySentimentDocuments: API.OperationMethod<
@@ -4188,5 +4269,5 @@ export const analyzeEntitySentimentDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeEntitySentimentDocumentsRequest,
   output: AnalyzeEntitySentimentDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

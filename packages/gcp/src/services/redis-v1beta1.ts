@@ -2760,6 +2760,52 @@ export const GoogleCloudRedisV1beta1LocationMetadata =
   }).annotate({ identifier: "GoogleCloudRedisV1beta1LocationMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2794,7 +2840,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2805,7 +2851,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2829,7 +2875,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2840,7 +2886,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSharedRegionalCertificateAuthorityProjectsLocationsRequest {
@@ -2862,7 +2908,9 @@ export const GetSharedRegionalCertificateAuthorityProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SharedRegionalCertificateAuthority;
 
 export type GetSharedRegionalCertificateAuthorityProjectsLocationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of regional certificate authority information for Redis cluster. */
 export const getSharedRegionalCertificateAuthorityProjectsLocations: API.OperationMethod<
@@ -2873,7 +2921,7 @@ export const getSharedRegionalCertificateAuthorityProjectsLocations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSharedRegionalCertificateAuthorityProjectsLocationsRequest,
   output: GetSharedRegionalCertificateAuthorityProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -2907,7 +2955,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -2918,7 +2969,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2942,7 +2993,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -2953,7 +3007,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -2973,7 +3027,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -2984,7 +3043,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -3004,7 +3063,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -3015,7 +3079,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersRequest {
@@ -3041,7 +3105,10 @@ export type ListProjectsLocationsClustersResponse = ListClustersResponse;
 export const ListProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
 
-export type ListProjectsLocationsClustersError = DefaultErrors;
+export type ListProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Redis clusters owned by a project in either the specified location (region) or all locations. The location should have the following format: * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
@@ -3052,7 +3119,7 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsClustersRequest,
   output: ListProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3076,7 +3143,10 @@ export type GetProjectsLocationsClustersResponse = Cluster;
 export const GetProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cluster;
 
-export type GetProjectsLocationsClustersError = DefaultErrors;
+export type GetProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific Redis cluster. */
 export const getProjectsLocationsClusters: API.OperationMethod<
@@ -3087,7 +3157,7 @@ export const getProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersRequest,
   output: GetProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsClustersRequest {
@@ -3116,7 +3186,12 @@ export type PatchProjectsLocationsClustersResponse = Operation;
 export const PatchProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsClustersError = DefaultErrors;
+export type PatchProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata and configuration of a specific Redis cluster. Completed longrunning.Operation will contain the new cluster object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const patchProjectsLocationsClusters: API.OperationMethod<
@@ -3127,7 +3202,7 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsClustersRequest,
   output: PatchProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsClustersRequest {
@@ -3150,7 +3225,12 @@ export type DeleteProjectsLocationsClustersResponse = Operation;
 export const DeleteProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsClustersError = DefaultErrors;
+export type DeleteProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific Redis cluster. Cluster stops serving and data is deleted. */
 export const deleteProjectsLocationsClusters: API.OperationMethod<
@@ -3161,7 +3241,7 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersRequest,
   output: DeleteProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsClustersRequest {
@@ -3194,7 +3274,12 @@ export type CreateProjectsLocationsClustersResponse = Operation;
 export const CreateProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsClustersError = DefaultErrors;
+export type CreateProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Redis cluster based on the specified properties. The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis cluster will be fully functional. The completed longrunning.Operation will contain the new cluster object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const createProjectsLocationsClusters: API.OperationMethod<
@@ -3205,7 +3290,7 @@ export const createProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsClustersRequest,
   output: CreateProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCertificateAuthorityProjectsLocationsClustersRequest {
@@ -3227,7 +3312,9 @@ export const GetCertificateAuthorityProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ CertificateAuthority;
 
 export type GetCertificateAuthorityProjectsLocationsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of certificate authority information for Redis cluster. */
 export const getCertificateAuthorityProjectsLocationsClusters: API.OperationMethod<
@@ -3238,7 +3325,7 @@ export const getCertificateAuthorityProjectsLocationsClusters: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificateAuthorityProjectsLocationsClustersRequest,
   output: GetCertificateAuthorityProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RescheduleClusterMaintenanceProjectsLocationsClustersRequest {
@@ -3269,7 +3356,11 @@ export const RescheduleClusterMaintenanceProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RescheduleClusterMaintenanceProjectsLocationsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reschedules upcoming maintenance event. */
 export const rescheduleClusterMaintenanceProjectsLocationsClusters: API.OperationMethod<
@@ -3280,7 +3371,7 @@ export const rescheduleClusterMaintenanceProjectsLocationsClusters: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RescheduleClusterMaintenanceProjectsLocationsClustersRequest,
   output: RescheduleClusterMaintenanceProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BackupProjectsLocationsClustersRequest {
@@ -3303,7 +3394,12 @@ export type BackupProjectsLocationsClustersResponse = Operation;
 export const BackupProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BackupProjectsLocationsClustersError = DefaultErrors;
+export type BackupProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Backup Redis Cluster. If this is the first time a backup is being created, a backup collection will be created at the backend, and this backup belongs to this collection. Both collection and backup will have a resource name. Backup will be executed for each shard. A replica (primary if nonHA) will be selected to perform the execution. Backup call will be rejected if there is an ongoing backup or update operation. Be aware that during preview, if the cluster's internal software version is too old, critical update will be performed before actual backup. Once the internal software version is updated to the minimum version required by the backup feature, subsequent backups will not require critical update. After preview, there will be no critical update needed for backup. */
 export const backupProjectsLocationsClusters: API.OperationMethod<
@@ -3314,7 +3410,7 @@ export const backupProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BackupProjectsLocationsClustersRequest,
   output: BackupProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddTokenAuthUserProjectsLocationsClustersRequest {
@@ -3341,7 +3437,12 @@ export type AddTokenAuthUserProjectsLocationsClustersResponse = Operation;
 export const AddTokenAuthUserProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddTokenAuthUserProjectsLocationsClustersError = DefaultErrors;
+export type AddTokenAuthUserProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a token auth user for a token based auth enabled cluster. */
 export const addTokenAuthUserProjectsLocationsClusters: API.OperationMethod<
@@ -3352,7 +3453,7 @@ export const addTokenAuthUserProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTokenAuthUserProjectsLocationsClustersRequest,
   output: AddTokenAuthUserProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersTokenAuthUsersRequest {
@@ -3385,7 +3486,10 @@ export type ListProjectsLocationsClustersTokenAuthUsersResponse =
 export const ListProjectsLocationsClustersTokenAuthUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTokenAuthUsersResponse;
 
-export type ListProjectsLocationsClustersTokenAuthUsersError = DefaultErrors;
+export type ListProjectsLocationsClustersTokenAuthUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the token auth users for a token based auth enabled cluster. */
 export const listProjectsLocationsClustersTokenAuthUsers: API.PaginatedOperationMethod<
@@ -3396,7 +3500,7 @@ export const listProjectsLocationsClustersTokenAuthUsers: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsClustersTokenAuthUsersRequest,
   output: ListProjectsLocationsClustersTokenAuthUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3420,7 +3524,10 @@ export type GetProjectsLocationsClustersTokenAuthUsersResponse = TokenAuthUser;
 export const GetProjectsLocationsClustersTokenAuthUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TokenAuthUser;
 
-export type GetProjectsLocationsClustersTokenAuthUsersError = DefaultErrors;
+export type GetProjectsLocationsClustersTokenAuthUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a specific token auth user for a basic auth enabled cluster. */
 export const getProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
@@ -3431,7 +3538,7 @@ export const getProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersTokenAuthUsersRequest,
   output: GetProjectsLocationsClustersTokenAuthUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsClustersTokenAuthUsersRequest {
@@ -3457,7 +3564,12 @@ export type DeleteProjectsLocationsClustersTokenAuthUsersResponse = Operation;
 export const DeleteProjectsLocationsClustersTokenAuthUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsClustersTokenAuthUsersError = DefaultErrors;
+export type DeleteProjectsLocationsClustersTokenAuthUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a token auth user for a token based auth enabled cluster. */
 export const deleteProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
@@ -3468,7 +3580,7 @@ export const deleteProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersTokenAuthUsersRequest,
   output: DeleteProjectsLocationsClustersTokenAuthUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest {
@@ -3497,7 +3609,11 @@ export const AddAuthTokenProjectsLocationsClustersTokenAuthUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type AddAuthTokenProjectsLocationsClustersTokenAuthUsersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a auth token for a user of a token based auth enabled cluster. */
 export const addAuthTokenProjectsLocationsClustersTokenAuthUsers: API.OperationMethod<
@@ -3508,7 +3624,7 @@ export const addAuthTokenProjectsLocationsClustersTokenAuthUsers: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAuthTokenProjectsLocationsClustersTokenAuthUsersRequest,
   output: AddAuthTokenProjectsLocationsClustersTokenAuthUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
@@ -3542,7 +3658,9 @@ export const ListProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuthTokensResponse;
 
 export type ListProjectsLocationsClustersTokenAuthUsersAuthTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the auth tokens for a specific token auth user. */
 export const listProjectsLocationsClustersTokenAuthUsersAuthTokens: API.PaginatedOperationMethod<
@@ -3553,7 +3671,7 @@ export const listProjectsLocationsClustersTokenAuthUsersAuthTokens: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
   output: ListProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3579,7 +3697,9 @@ export const GetProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthToken;
 
 export type GetProjectsLocationsClustersTokenAuthUsersAuthTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a specific auth token for a specific token auth user. */
 export const getProjectsLocationsClustersTokenAuthUsersAuthTokens: API.OperationMethod<
@@ -3590,7 +3710,7 @@ export const getProjectsLocationsClustersTokenAuthUsersAuthTokens: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
   output: GetProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest {
@@ -3612,7 +3732,11 @@ export const DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a auth token for a user of a token based auth enabled instance. */
 export const deleteProjectsLocationsClustersTokenAuthUsersAuthTokens: API.OperationMethod<
@@ -3623,7 +3747,7 @@ export const deleteProjectsLocationsClustersTokenAuthUsersAuthTokens: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensRequest,
   output: DeleteProjectsLocationsClustersTokenAuthUsersAuthTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAclPoliciesRequest {
@@ -3649,7 +3773,10 @@ export type ListProjectsLocationsAclPoliciesResponse = ListAclPoliciesResponse;
 export const ListProjectsLocationsAclPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAclPoliciesResponse;
 
-export type ListProjectsLocationsAclPoliciesError = DefaultErrors;
+export type ListProjectsLocationsAclPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all ACL Policies owned by a project in either the specified location (region) or all locations. The location should have the following format: * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsAclPolicies: API.PaginatedOperationMethod<
@@ -3660,7 +3787,7 @@ export const listProjectsLocationsAclPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAclPoliciesRequest,
   output: ListProjectsLocationsAclPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3684,7 +3811,10 @@ export type GetProjectsLocationsAclPoliciesResponse = AclPolicy;
 export const GetProjectsLocationsAclPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AclPolicy;
 
-export type GetProjectsLocationsAclPoliciesError = DefaultErrors;
+export type GetProjectsLocationsAclPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific Redis Cluster ACL Policy. */
 export const getProjectsLocationsAclPolicies: API.OperationMethod<
@@ -3695,7 +3825,7 @@ export const getProjectsLocationsAclPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAclPoliciesRequest,
   output: GetProjectsLocationsAclPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsAclPoliciesRequest {
@@ -3724,7 +3854,12 @@ export type PatchProjectsLocationsAclPoliciesResponse = Operation;
 export const PatchProjectsLocationsAclPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsAclPoliciesError = DefaultErrors;
+export type PatchProjectsLocationsAclPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the ACL policy. The operation applies the updated ACL policy to all of the linked clusters. If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will contain the new ACL Policy object in the response field. */
 export const patchProjectsLocationsAclPolicies: API.OperationMethod<
@@ -3735,7 +3870,7 @@ export const patchProjectsLocationsAclPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAclPoliciesRequest,
   output: PatchProjectsLocationsAclPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAclPoliciesRequest {
@@ -3761,7 +3896,12 @@ export type DeleteProjectsLocationsAclPoliciesResponse = Operation;
 export const DeleteProjectsLocationsAclPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsAclPoliciesError = DefaultErrors;
+export type DeleteProjectsLocationsAclPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific Acl Policy. This action will delete the Acl Policy and all the rules associated with it. An ACL policy cannot be deleted if it is attached to a cluster. */
 export const deleteProjectsLocationsAclPolicies: API.OperationMethod<
@@ -3772,7 +3912,7 @@ export const deleteProjectsLocationsAclPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAclPoliciesRequest,
   output: DeleteProjectsLocationsAclPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAclPoliciesRequest {
@@ -3807,7 +3947,12 @@ export type CreateProjectsLocationsAclPoliciesResponse = AclPolicy;
 export const CreateProjectsLocationsAclPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AclPolicy;
 
-export type CreateProjectsLocationsAclPoliciesError = DefaultErrors;
+export type CreateProjectsLocationsAclPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an ACL Policy. The creation is executed synchronously and the policy is available for use immediately after the RPC returns. */
 export const createProjectsLocationsAclPolicies: API.OperationMethod<
@@ -3818,7 +3963,7 @@ export const createProjectsLocationsAclPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAclPoliciesRequest,
   output: CreateProjectsLocationsAclPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBackupCollectionsRequest {
@@ -3845,7 +3990,10 @@ export type ListProjectsLocationsBackupCollectionsResponse =
 export const ListProjectsLocationsBackupCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupCollectionsResponse;
 
-export type ListProjectsLocationsBackupCollectionsError = DefaultErrors;
+export type ListProjectsLocationsBackupCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all backup collections owned by a consumer project in either the specified location (region) or all locations. If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsBackupCollections: API.PaginatedOperationMethod<
@@ -3856,7 +4004,7 @@ export const listProjectsLocationsBackupCollections: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBackupCollectionsRequest,
   output: ListProjectsLocationsBackupCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3880,7 +4028,10 @@ export type GetProjectsLocationsBackupCollectionsResponse = BackupCollection;
 export const GetProjectsLocationsBackupCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackupCollection;
 
-export type GetProjectsLocationsBackupCollectionsError = DefaultErrors;
+export type GetProjectsLocationsBackupCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a backup collection. */
 export const getProjectsLocationsBackupCollections: API.OperationMethod<
@@ -3891,7 +4042,7 @@ export const getProjectsLocationsBackupCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBackupCollectionsRequest,
   output: GetProjectsLocationsBackupCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsBackupCollectionsBackupsRequest {
@@ -3918,7 +4069,10 @@ export type ListProjectsLocationsBackupCollectionsBackupsResponse =
 export const ListProjectsLocationsBackupCollectionsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
 
-export type ListProjectsLocationsBackupCollectionsBackupsError = DefaultErrors;
+export type ListProjectsLocationsBackupCollectionsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all backups owned by a backup collection. */
 export const listProjectsLocationsBackupCollectionsBackups: API.PaginatedOperationMethod<
@@ -3929,7 +4083,7 @@ export const listProjectsLocationsBackupCollectionsBackups: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBackupCollectionsBackupsRequest,
   output: ListProjectsLocationsBackupCollectionsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3953,7 +4107,10 @@ export type GetProjectsLocationsBackupCollectionsBackupsResponse = Backup;
 export const GetProjectsLocationsBackupCollectionsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type GetProjectsLocationsBackupCollectionsBackupsError = DefaultErrors;
+export type GetProjectsLocationsBackupCollectionsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific backup. */
 export const getProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
@@ -3964,7 +4121,7 @@ export const getProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBackupCollectionsBackupsRequest,
   output: GetProjectsLocationsBackupCollectionsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsBackupCollectionsBackupsRequest {
@@ -3988,7 +4145,11 @@ export const DeleteProjectsLocationsBackupCollectionsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsBackupCollectionsBackupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific backup. */
 export const deleteProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
@@ -3999,7 +4160,7 @@ export const deleteProjectsLocationsBackupCollectionsBackups: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBackupCollectionsBackupsRequest,
   output: DeleteProjectsLocationsBackupCollectionsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsBackupCollectionsBackupsRequest {
@@ -4023,7 +4184,11 @@ export const ExportProjectsLocationsBackupCollectionsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ExportProjectsLocationsBackupCollectionsBackupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports a specific backup to a customer target Cloud Storage URI. */
 export const exportProjectsLocationsBackupCollectionsBackups: API.OperationMethod<
@@ -4034,7 +4199,7 @@ export const exportProjectsLocationsBackupCollectionsBackups: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsBackupCollectionsBackupsRequest,
   output: ExportProjectsLocationsBackupCollectionsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsInstancesRequest {
@@ -4060,7 +4225,10 @@ export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
 export const ListProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
 
-export type ListProjectsLocationsInstancesError = DefaultErrors;
+export type ListProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Redis instances owned by a project in either the specified location (region) or all locations. The location should have the following format: * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
@@ -4071,7 +4239,7 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesRequest,
   output: ListProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4095,7 +4263,10 @@ export type GetProjectsLocationsInstancesResponse = Instance;
 export const GetProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type GetProjectsLocationsInstancesError = DefaultErrors;
+export type GetProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific Redis instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
@@ -4106,7 +4277,7 @@ export const getProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesRequest,
   output: GetProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAuthStringProjectsLocationsInstancesRequest {
@@ -4127,7 +4298,10 @@ export type GetAuthStringProjectsLocationsInstancesResponse =
 export const GetAuthStringProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceAuthString;
 
-export type GetAuthStringProjectsLocationsInstancesError = DefaultErrors;
+export type GetAuthStringProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the AUTH string for a Redis instance. If AUTH is not enabled for the instance the response will be empty. This information is not included in the details returned to GetInstance. */
 export const getAuthStringProjectsLocationsInstances: API.OperationMethod<
@@ -4138,7 +4312,7 @@ export const getAuthStringProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAuthStringProjectsLocationsInstancesRequest,
   output: GetAuthStringProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -4168,7 +4342,12 @@ export type CreateProjectsLocationsInstancesResponse = Operation;
 export const CreateProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsInstancesError = DefaultErrors;
+export type CreateProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Redis instance based on the specified tier and memory size. By default, the instance is accessible from the project's [default network](https://cloud.google.com/vpc/docs/vpc). The creation is executed asynchronously and callers may check the returned operation to track its progress. Once the operation is completed the Redis instance will be fully functional. The completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const createProjectsLocationsInstances: API.OperationMethod<
@@ -4179,7 +4358,7 @@ export const createProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsInstancesRequest,
   output: CreateProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsInstancesRequest {
@@ -4205,7 +4384,12 @@ export type PatchProjectsLocationsInstancesResponse = Operation;
 export const PatchProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsInstancesError = DefaultErrors;
+export type PatchProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata and configuration of a specific Redis instance. Completed longrunning.Operation will contain the new instance object in the response field. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const patchProjectsLocationsInstances: API.OperationMethod<
@@ -4216,7 +4400,7 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsInstancesRequest,
   output: PatchProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpgradeProjectsLocationsInstancesRequest {
@@ -4239,7 +4423,12 @@ export type UpgradeProjectsLocationsInstancesResponse = Operation;
 export const UpgradeProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpgradeProjectsLocationsInstancesError = DefaultErrors;
+export type UpgradeProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrades Redis instance to the newer Redis version specified in the request. */
 export const upgradeProjectsLocationsInstances: API.OperationMethod<
@@ -4250,7 +4439,7 @@ export const upgradeProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradeProjectsLocationsInstancesRequest,
   output: UpgradeProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsInstancesRequest {
@@ -4273,7 +4462,12 @@ export type ImportProjectsLocationsInstancesResponse = Operation;
 export const ImportProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsInstancesError = DefaultErrors;
+export type ImportProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Import a Redis RDB snapshot file from Cloud Storage into a Redis instance. Redis may stop serving during this operation. Instance state will be IMPORTING for entire operation. When complete, the instance will contain only data from the imported file. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const importProjectsLocationsInstances: API.OperationMethod<
@@ -4284,7 +4478,7 @@ export const importProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsInstancesRequest,
   output: ImportProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsInstancesRequest {
@@ -4307,7 +4501,12 @@ export type ExportProjectsLocationsInstancesResponse = Operation;
 export const ExportProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportProjectsLocationsInstancesError = DefaultErrors;
+export type ExportProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Export Redis instance data into a Redis RDB format file in Cloud Storage. Redis will continue serving during this operation. The returned operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. */
 export const exportProjectsLocationsInstances: API.OperationMethod<
@@ -4318,7 +4517,7 @@ export const exportProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsInstancesRequest,
   output: ExportProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FailoverProjectsLocationsInstancesRequest {
@@ -4341,7 +4540,12 @@ export type FailoverProjectsLocationsInstancesResponse = Operation;
 export const FailoverProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type FailoverProjectsLocationsInstancesError = DefaultErrors;
+export type FailoverProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a failover of the primary node to current replica node for a specific STANDARD tier Cloud Memorystore for Redis instance. */
 export const failoverProjectsLocationsInstances: API.OperationMethod<
@@ -4352,7 +4556,7 @@ export const failoverProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverProjectsLocationsInstancesRequest,
   output: FailoverProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsInstancesRequest {
@@ -4372,7 +4576,12 @@ export type DeleteProjectsLocationsInstancesResponse = Operation;
 export const DeleteProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsInstancesError = DefaultErrors;
+export type DeleteProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific Redis instance. Instance stops serving and data is deleted. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
@@ -4383,7 +4592,7 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsInstancesRequest,
   output: DeleteProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RescheduleMaintenanceProjectsLocationsInstancesRequest {
@@ -4411,7 +4620,11 @@ export const RescheduleMaintenanceProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RescheduleMaintenanceProjectsLocationsInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reschedule maintenance for a given instance in a given project and location. */
 export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMethod<
@@ -4422,5 +4635,5 @@ export const rescheduleMaintenanceProjectsLocationsInstances: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RescheduleMaintenanceProjectsLocationsInstancesRequest,
   output: RescheduleMaintenanceProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

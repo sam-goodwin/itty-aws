@@ -1919,6 +1919,52 @@ export const ListLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListLogsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1938,7 +1984,12 @@ export const DeleteExclusionsRequest =
 export type DeleteExclusionsResponse = Empty;
 export const DeleteExclusionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteExclusionsError = DefaultErrors;
+export type DeleteExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an exclusion in the _Default sink. */
 export const deleteExclusions: API.OperationMethod<
@@ -1949,7 +2000,7 @@ export const deleteExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteExclusionsRequest,
   output: DeleteExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateExclusionsRequest {
@@ -1972,7 +2023,12 @@ export type CreateExclusionsResponse = LogExclusion;
 export const CreateExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type CreateExclusionsError = DefaultErrors;
+export type CreateExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource. */
 export const createExclusions: API.OperationMethod<
@@ -1983,7 +2039,7 @@ export const createExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateExclusionsRequest,
   output: CreateExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListExclusionsRequest {
@@ -2008,7 +2064,7 @@ export type ListExclusionsResponse_Op = ListExclusionsResponse;
 export const ListExclusionsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListExclusionsResponse;
 
-export type ListExclusionsError = DefaultErrors;
+export type ListExclusionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the exclusions on the _Default sink in a parent resource. */
 export const listExclusions: API.PaginatedOperationMethod<
@@ -2019,7 +2075,7 @@ export const listExclusions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListExclusionsRequest,
   output: ListExclusionsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2041,7 +2097,7 @@ export const GetExclusionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetExclusionsResponse = LogExclusion;
 export const GetExclusionsResponse = /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type GetExclusionsError = DefaultErrors;
+export type GetExclusionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the description of an exclusion in the _Default sink. */
 export const getExclusions: API.OperationMethod<
@@ -2052,7 +2108,7 @@ export const getExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetExclusionsRequest,
   output: GetExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchExclusionsRequest {
@@ -2078,7 +2134,12 @@ export const PatchExclusionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PatchExclusionsResponse = LogExclusion;
 export const PatchExclusionsResponse = /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type PatchExclusionsError = DefaultErrors;
+export type PatchExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes one or more properties of an existing exclusion in the _Default sink. */
 export const patchExclusions: API.OperationMethod<
@@ -2089,7 +2150,7 @@ export const patchExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchExclusionsRequest,
   output: PatchExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSettingsProjectsRequest {
@@ -2108,7 +2169,7 @@ export const GetSettingsProjectsRequest =
 export type GetSettingsProjectsResponse = Settings;
 export const GetSettingsProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type GetSettingsProjectsError = DefaultErrors;
+export type GetSettingsProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the settings for the given resource.Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts.See View default resource settings for Logging (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings) for more information. */
 export const getSettingsProjects: API.OperationMethod<
@@ -2119,7 +2180,7 @@ export const getSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsProjectsRequest,
   output: GetSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCmekSettingsProjectsRequest {
@@ -2139,7 +2200,7 @@ export type GetCmekSettingsProjectsResponse = CmekSettings;
 export const GetCmekSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CmekSettings;
 
-export type GetCmekSettingsProjectsError = DefaultErrors;
+export type GetCmekSettingsProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export const getCmekSettingsProjects: API.OperationMethod<
@@ -2150,7 +2211,7 @@ export const getCmekSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekSettingsProjectsRequest,
   output: GetCmekSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -2184,7 +2245,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2195,7 +2256,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2219,7 +2280,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2230,7 +2291,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsSavedQueriesRequest {
@@ -2256,7 +2317,12 @@ export type PatchProjectsLocationsSavedQueriesResponse = SavedQuery;
 export const PatchProjectsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type PatchProjectsLocationsSavedQueriesError = DefaultErrors;
+export type PatchProjectsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing SavedQuery. */
 export const patchProjectsLocationsSavedQueries: API.OperationMethod<
@@ -2267,7 +2333,7 @@ export const patchProjectsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSavedQueriesRequest,
   output: PatchProjectsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSavedQueriesRequest {
@@ -2287,7 +2353,10 @@ export type GetProjectsLocationsSavedQueriesResponse = SavedQuery;
 export const GetProjectsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type GetProjectsLocationsSavedQueriesError = DefaultErrors;
+export type GetProjectsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all data associated with the requested query. */
 export const getProjectsLocationsSavedQueries: API.OperationMethod<
@@ -2298,7 +2367,7 @@ export const getProjectsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSavedQueriesRequest,
   output: GetProjectsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSavedQueriesRequest {
@@ -2328,7 +2397,10 @@ export type ListProjectsLocationsSavedQueriesResponse =
 export const ListProjectsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSavedQueriesResponse;
 
-export type ListProjectsLocationsSavedQueriesError = DefaultErrors;
+export type ListProjectsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the SavedQueries that were created by the user making the request. */
 export const listProjectsLocationsSavedQueries: API.PaginatedOperationMethod<
@@ -2339,7 +2411,7 @@ export const listProjectsLocationsSavedQueries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSavedQueriesRequest,
   output: ListProjectsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2371,7 +2443,12 @@ export type CreateProjectsLocationsSavedQueriesResponse = SavedQuery;
 export const CreateProjectsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type CreateProjectsLocationsSavedQueriesError = DefaultErrors;
+export type CreateProjectsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SavedQuery for the user making the request. */
 export const createProjectsLocationsSavedQueries: API.OperationMethod<
@@ -2382,7 +2459,7 @@ export const createProjectsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSavedQueriesRequest,
   output: CreateProjectsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSavedQueriesRequest {
@@ -2402,7 +2479,12 @@ export type DeleteProjectsLocationsSavedQueriesResponse = Empty;
 export const DeleteProjectsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsSavedQueriesError = DefaultErrors;
+export type DeleteProjectsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing SavedQuery that was created by the user making the request. */
 export const deleteProjectsLocationsSavedQueries: API.OperationMethod<
@@ -2413,7 +2495,7 @@ export const deleteProjectsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSavedQueriesRequest,
   output: DeleteProjectsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsLogScopesRequest {
@@ -2433,7 +2515,12 @@ export type DeleteProjectsLocationsLogScopesResponse = Empty;
 export const DeleteProjectsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsLogScopesError = DefaultErrors;
+export type DeleteProjectsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log scope. */
 export const deleteProjectsLocationsLogScopes: API.OperationMethod<
@@ -2444,7 +2531,7 @@ export const deleteProjectsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsLogScopesRequest,
   output: DeleteProjectsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsLogScopesRequest {
@@ -2470,7 +2557,12 @@ export type CreateProjectsLocationsLogScopesResponse = LogScope;
 export const CreateProjectsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type CreateProjectsLocationsLogScopesError = DefaultErrors;
+export type CreateProjectsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log scope. */
 export const createProjectsLocationsLogScopes: API.OperationMethod<
@@ -2481,7 +2573,7 @@ export const createProjectsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsLogScopesRequest,
   output: CreateProjectsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsLogScopesRequest {
@@ -2507,7 +2599,10 @@ export type ListProjectsLocationsLogScopesResponse = ListLogScopesResponse;
 export const ListProjectsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogScopesResponse;
 
-export type ListProjectsLocationsLogScopesError = DefaultErrors;
+export type ListProjectsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists log scopes. */
 export const listProjectsLocationsLogScopes: API.PaginatedOperationMethod<
@@ -2518,7 +2613,7 @@ export const listProjectsLocationsLogScopes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsLogScopesRequest,
   output: ListProjectsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2542,7 +2637,10 @@ export type GetProjectsLocationsLogScopesResponse = LogScope;
 export const GetProjectsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type GetProjectsLocationsLogScopesError = DefaultErrors;
+export type GetProjectsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a log scope. */
 export const getProjectsLocationsLogScopes: API.OperationMethod<
@@ -2553,7 +2651,7 @@ export const getProjectsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsLogScopesRequest,
   output: GetProjectsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsLogScopesRequest {
@@ -2579,7 +2677,12 @@ export type PatchProjectsLocationsLogScopesResponse = LogScope;
 export const PatchProjectsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type PatchProjectsLocationsLogScopesError = DefaultErrors;
+export type PatchProjectsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log scope. */
 export const patchProjectsLocationsLogScopes: API.OperationMethod<
@@ -2590,7 +2693,7 @@ export const patchProjectsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsLogScopesRequest,
   output: PatchProjectsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRecentQueriesRequest {
@@ -2620,7 +2723,10 @@ export type ListProjectsLocationsRecentQueriesResponse =
 export const ListProjectsLocationsRecentQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRecentQueriesResponse;
 
-export type ListProjectsLocationsRecentQueriesError = DefaultErrors;
+export type ListProjectsLocationsRecentQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the RecentQueries that were created by the user making the request. */
 export const listProjectsLocationsRecentQueries: API.PaginatedOperationMethod<
@@ -2631,7 +2737,7 @@ export const listProjectsLocationsRecentQueries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRecentQueriesRequest,
   output: ListProjectsLocationsRecentQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2661,7 +2767,12 @@ export type PatchProjectsLocationsBucketsResponse = LogBucket;
 export const PatchProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type PatchProjectsLocationsBucketsError = DefaultErrors;
+export type PatchProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const patchProjectsLocationsBuckets: API.OperationMethod<
@@ -2672,7 +2783,7 @@ export const patchProjectsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBucketsRequest,
   output: PatchProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBucketsRequest {
@@ -2692,7 +2803,10 @@ export type GetProjectsLocationsBucketsResponse = LogBucket;
 export const GetProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type GetProjectsLocationsBucketsError = DefaultErrors;
+export type GetProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a log bucket. */
 export const getProjectsLocationsBuckets: API.OperationMethod<
@@ -2703,7 +2817,7 @@ export const getProjectsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBucketsRequest,
   output: GetProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAsyncProjectsLocationsBucketsRequest {
@@ -2733,7 +2847,12 @@ export type CreateAsyncProjectsLocationsBucketsResponse = Operation;
 export const CreateAsyncProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAsyncProjectsLocationsBucketsError = DefaultErrors;
+export type CreateAsyncProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been created, the bucket's location cannot be changed. */
 export const createAsyncProjectsLocationsBuckets: API.OperationMethod<
@@ -2744,7 +2863,7 @@ export const createAsyncProjectsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAsyncProjectsLocationsBucketsRequest,
   output: CreateAsyncProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBucketsRequest {
@@ -2770,7 +2889,10 @@ export type ListProjectsLocationsBucketsResponse = ListBucketsResponse;
 export const ListProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBucketsResponse;
 
-export type ListProjectsLocationsBucketsError = DefaultErrors;
+export type ListProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists log buckets. */
 export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
@@ -2781,7 +2903,7 @@ export const listProjectsLocationsBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsRequest,
   output: ListProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2811,7 +2933,12 @@ export type UpdateAsyncProjectsLocationsBucketsResponse = Operation;
 export const UpdateAsyncProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateAsyncProjectsLocationsBucketsError = DefaultErrors;
+export type UpdateAsyncProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const updateAsyncProjectsLocationsBuckets: API.OperationMethod<
@@ -2822,7 +2949,7 @@ export const updateAsyncProjectsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAsyncProjectsLocationsBucketsRequest,
   output: UpdateAsyncProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBucketsRequest {
@@ -2848,7 +2975,12 @@ export type CreateProjectsLocationsBucketsResponse = LogBucket;
 export const CreateProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type CreateProjectsLocationsBucketsError = DefaultErrors;
+export type CreateProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket that can be used to store log entries. After a bucket has been created, the bucket's location cannot be changed. */
 export const createProjectsLocationsBuckets: API.OperationMethod<
@@ -2859,7 +2991,7 @@ export const createProjectsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBucketsRequest,
   output: CreateProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsBucketsRequest {
@@ -2879,7 +3011,12 @@ export type DeleteProjectsLocationsBucketsResponse = Empty;
 export const DeleteProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsBucketsError = DefaultErrors;
+export type DeleteProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log entries in the bucket will be permanently deleted. */
 export const deleteProjectsLocationsBuckets: API.OperationMethod<
@@ -2890,7 +3027,7 @@ export const deleteProjectsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBucketsRequest,
   output: DeleteProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsLocationsBucketsRequest {
@@ -2913,7 +3050,12 @@ export type UndeleteProjectsLocationsBucketsResponse = Empty;
 export const UndeleteProjectsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UndeleteProjectsLocationsBucketsError = DefaultErrors;
+export type UndeleteProjectsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7 days. */
 export const undeleteProjectsLocationsBuckets: API.OperationMethod<
@@ -2924,7 +3066,7 @@ export const undeleteProjectsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsBucketsRequest,
   output: UndeleteProjectsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBucketsViewsRequest {
@@ -2950,7 +3092,10 @@ export type ListProjectsLocationsBucketsViewsResponse = ListViewsResponse;
 export const ListProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListViewsResponse;
 
-export type ListProjectsLocationsBucketsViewsError = DefaultErrors;
+export type ListProjectsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists views on a log bucket. */
 export const listProjectsLocationsBucketsViews: API.PaginatedOperationMethod<
@@ -2961,7 +3106,7 @@ export const listProjectsLocationsBucketsViews: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsViewsRequest,
   output: ListProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2992,7 +3137,12 @@ export type SetIamPolicyProjectsLocationsBucketsViewsResponse = Policy;
 export const SetIamPolicyProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsBucketsViewsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsLocationsBucketsViews: API.OperationMethod<
@@ -3003,7 +3153,7 @@ export const setIamPolicyProjectsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsBucketsViewsRequest,
   output: SetIamPolicyProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsBucketsViewsRequest {
@@ -3032,7 +3182,11 @@ export const TestIamPermissionsProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBucketsViewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBucketsViews: API.OperationMethod<
@@ -3043,7 +3197,7 @@ export const testIamPermissionsProjectsLocationsBucketsViews: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsBucketsViewsRequest,
   output: TestIamPermissionsProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBucketsViewsRequest {
@@ -3063,7 +3217,10 @@ export type GetProjectsLocationsBucketsViewsResponse = LogView;
 export const GetProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type GetProjectsLocationsBucketsViewsError = DefaultErrors;
+export type GetProjectsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a view on a log bucket. */
 export const getProjectsLocationsBucketsViews: API.OperationMethod<
@@ -3074,7 +3231,7 @@ export const getProjectsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBucketsViewsRequest,
   output: GetProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsBucketsViewsRequest {
@@ -3101,7 +3258,12 @@ export type GetIamPolicyProjectsLocationsBucketsViewsResponse = Policy;
 export const GetIamPolicyProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsBucketsViewsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBucketsViews: API.OperationMethod<
@@ -3112,7 +3274,7 @@ export const getIamPolicyProjectsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsBucketsViewsRequest,
   output: GetIamPolicyProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsBucketsViewsRequest {
@@ -3138,7 +3300,12 @@ export type PatchProjectsLocationsBucketsViewsResponse = LogView;
 export const PatchProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type PatchProjectsLocationsBucketsViewsError = DefaultErrors;
+export type PatchProjectsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a view on a log bucket. This method replaces the value of the filter field from the existing view with the corresponding value from the new view. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can update the view. If this occurs, please try again in a few minutes. */
 export const patchProjectsLocationsBucketsViews: API.OperationMethod<
@@ -3149,7 +3316,7 @@ export const patchProjectsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBucketsViewsRequest,
   output: PatchProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsBucketsViewsRequest {
@@ -3169,7 +3336,12 @@ export type DeleteProjectsLocationsBucketsViewsResponse = Empty;
 export const DeleteProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsBucketsViewsError = DefaultErrors;
+export type DeleteProjectsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can delete the view. If this occurs, please try again in a few minutes. */
 export const deleteProjectsLocationsBucketsViews: API.OperationMethod<
@@ -3180,7 +3352,7 @@ export const deleteProjectsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBucketsViewsRequest,
   output: DeleteProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBucketsViewsRequest {
@@ -3206,7 +3378,12 @@ export type CreateProjectsLocationsBucketsViewsResponse = LogView;
 export const CreateProjectsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type CreateProjectsLocationsBucketsViewsError = DefaultErrors;
+export type CreateProjectsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views. */
 export const createProjectsLocationsBucketsViews: API.OperationMethod<
@@ -3217,7 +3394,7 @@ export const createProjectsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBucketsViewsRequest,
   output: CreateProjectsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBucketsViewsLogsRequest {
@@ -3248,7 +3425,10 @@ export type ListProjectsLocationsBucketsViewsLogsResponse = ListLogsResponse;
 export const ListProjectsLocationsBucketsViewsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListProjectsLocationsBucketsViewsLogsError = DefaultErrors;
+export type ListProjectsLocationsBucketsViewsLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listProjectsLocationsBucketsViewsLogs: API.PaginatedOperationMethod<
@@ -3259,7 +3439,7 @@ export const listProjectsLocationsBucketsViewsLogs: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsViewsLogsRequest,
   output: ListProjectsLocationsBucketsViewsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3289,7 +3469,12 @@ export type CreateProjectsLocationsBucketsLinksResponse = Operation;
 export const CreateProjectsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsBucketsLinksError = DefaultErrors;
+export type CreateProjectsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link. */
 export const createProjectsLocationsBucketsLinks: API.OperationMethod<
@@ -3300,7 +3485,7 @@ export const createProjectsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBucketsLinksRequest,
   output: CreateProjectsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsBucketsLinksRequest {
@@ -3320,7 +3505,12 @@ export type DeleteProjectsLocationsBucketsLinksResponse = Operation;
 export const DeleteProjectsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsBucketsLinksError = DefaultErrors;
+export type DeleteProjectsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a link. This will also delete the corresponding BigQuery linked dataset. */
 export const deleteProjectsLocationsBucketsLinks: API.OperationMethod<
@@ -3331,7 +3521,7 @@ export const deleteProjectsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBucketsLinksRequest,
   output: DeleteProjectsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBucketsLinksRequest {
@@ -3351,7 +3541,10 @@ export type GetProjectsLocationsBucketsLinksResponse = Link;
 export const GetProjectsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Link;
 
-export type GetProjectsLocationsBucketsLinksError = DefaultErrors;
+export type GetProjectsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a link. */
 export const getProjectsLocationsBucketsLinks: API.OperationMethod<
@@ -3362,7 +3555,7 @@ export const getProjectsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBucketsLinksRequest,
   output: GetProjectsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsBucketsLinksRequest {
@@ -3388,7 +3581,10 @@ export type ListProjectsLocationsBucketsLinksResponse = ListLinksResponse;
 export const ListProjectsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLinksResponse;
 
-export type ListProjectsLocationsBucketsLinksError = DefaultErrors;
+export type ListProjectsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists links. */
 export const listProjectsLocationsBucketsLinks: API.PaginatedOperationMethod<
@@ -3399,7 +3595,7 @@ export const listProjectsLocationsBucketsLinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBucketsLinksRequest,
   output: ListProjectsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3423,7 +3619,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -3434,7 +3633,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -3468,7 +3667,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -3479,7 +3681,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3506,7 +3708,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -3517,7 +3724,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLogsRequest {
@@ -3536,7 +3743,12 @@ export const DeleteProjectsLogsRequest =
 export type DeleteProjectsLogsResponse = Empty;
 export const DeleteProjectsLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLogsError = DefaultErrors;
+export type DeleteProjectsLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted. */
 export const deleteProjectsLogs: API.OperationMethod<
@@ -3547,7 +3759,7 @@ export const deleteProjectsLogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLogsRequest,
   output: DeleteProjectsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLogsRequest {
@@ -3578,7 +3790,7 @@ export type ListProjectsLogsResponse = ListLogsResponse;
 export const ListProjectsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListProjectsLogsError = DefaultErrors;
+export type ListProjectsLogsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listProjectsLogs: API.PaginatedOperationMethod<
@@ -3589,7 +3801,7 @@ export const listProjectsLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLogsRequest,
   output: ListProjectsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3619,7 +3831,7 @@ export type ListProjectsMetricsResponse = ListLogMetricsResponse;
 export const ListProjectsMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogMetricsResponse;
 
-export type ListProjectsMetricsError = DefaultErrors;
+export type ListProjectsMetricsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists logs-based metrics. */
 export const listProjectsMetrics: API.PaginatedOperationMethod<
@@ -3630,7 +3842,7 @@ export const listProjectsMetrics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsMetricsRequest,
   output: ListProjectsMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3657,7 +3869,12 @@ export type UpdateProjectsMetricsResponse = LogMetric;
 export const UpdateProjectsMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogMetric;
 
-export type UpdateProjectsMetricsError = DefaultErrors;
+export type UpdateProjectsMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a logs-based metric. */
 export const updateProjectsMetrics: API.OperationMethod<
@@ -3668,7 +3885,7 @@ export const updateProjectsMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsMetricsRequest,
   output: UpdateProjectsMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsMetricsRequest {
@@ -3687,7 +3904,7 @@ export const GetProjectsMetricsRequest =
 export type GetProjectsMetricsResponse = LogMetric;
 export const GetProjectsMetricsResponse = /*@__PURE__*/ /*#__PURE__*/ LogMetric;
 
-export type GetProjectsMetricsError = DefaultErrors;
+export type GetProjectsMetricsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a logs-based metric. */
 export const getProjectsMetrics: API.OperationMethod<
@@ -3698,7 +3915,7 @@ export const getProjectsMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsMetricsRequest,
   output: GetProjectsMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsMetricsRequest {
@@ -3717,7 +3934,12 @@ export const DeleteProjectsMetricsRequest =
 export type DeleteProjectsMetricsResponse = Empty;
 export const DeleteProjectsMetricsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsMetricsError = DefaultErrors;
+export type DeleteProjectsMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a logs-based metric. */
 export const deleteProjectsMetrics: API.OperationMethod<
@@ -3728,7 +3950,7 @@ export const deleteProjectsMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsMetricsRequest,
   output: DeleteProjectsMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsMetricsRequest {
@@ -3751,7 +3973,12 @@ export type CreateProjectsMetricsResponse = LogMetric;
 export const CreateProjectsMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogMetric;
 
-export type CreateProjectsMetricsError = DefaultErrors;
+export type CreateProjectsMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a logs-based metric. */
 export const createProjectsMetrics: API.OperationMethod<
@@ -3762,7 +3989,7 @@ export const createProjectsMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsMetricsRequest,
   output: CreateProjectsMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsExclusionsRequest {
@@ -3782,7 +4009,12 @@ export type DeleteProjectsExclusionsResponse = Empty;
 export const DeleteProjectsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsExclusionsError = DefaultErrors;
+export type DeleteProjectsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an exclusion in the _Default sink. */
 export const deleteProjectsExclusions: API.OperationMethod<
@@ -3793,7 +4025,7 @@ export const deleteProjectsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsExclusionsRequest,
   output: DeleteProjectsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsExclusionsRequest {
@@ -3816,7 +4048,12 @@ export type CreateProjectsExclusionsResponse = LogExclusion;
 export const CreateProjectsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type CreateProjectsExclusionsError = DefaultErrors;
+export type CreateProjectsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource. */
 export const createProjectsExclusions: API.OperationMethod<
@@ -3827,7 +4064,7 @@ export const createProjectsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsExclusionsRequest,
   output: CreateProjectsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsExclusionsRequest {
@@ -3853,7 +4090,12 @@ export type PatchProjectsExclusionsResponse = LogExclusion;
 export const PatchProjectsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type PatchProjectsExclusionsError = DefaultErrors;
+export type PatchProjectsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes one or more properties of an existing exclusion in the _Default sink. */
 export const patchProjectsExclusions: API.OperationMethod<
@@ -3864,7 +4106,7 @@ export const patchProjectsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsExclusionsRequest,
   output: PatchProjectsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsExclusionsRequest {
@@ -3890,7 +4132,7 @@ export type ListProjectsExclusionsResponse = ListExclusionsResponse;
 export const ListProjectsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExclusionsResponse;
 
-export type ListProjectsExclusionsError = DefaultErrors;
+export type ListProjectsExclusionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the exclusions on the _Default sink in a parent resource. */
 export const listProjectsExclusions: API.PaginatedOperationMethod<
@@ -3901,7 +4143,7 @@ export const listProjectsExclusions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsExclusionsRequest,
   output: ListProjectsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3925,7 +4167,7 @@ export type GetProjectsExclusionsResponse = LogExclusion;
 export const GetProjectsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type GetProjectsExclusionsError = DefaultErrors;
+export type GetProjectsExclusionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the description of an exclusion in the _Default sink. */
 export const getProjectsExclusions: API.OperationMethod<
@@ -3936,7 +4178,7 @@ export const getProjectsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsExclusionsRequest,
   output: GetProjectsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsSinksRequest {
@@ -3955,7 +4197,12 @@ export const DeleteProjectsSinksRequest =
 export type DeleteProjectsSinksResponse = Empty;
 export const DeleteProjectsSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSinksError = DefaultErrors;
+export type DeleteProjectsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted. */
 export const deleteProjectsSinks: API.OperationMethod<
@@ -3966,7 +4213,7 @@ export const deleteProjectsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSinksRequest,
   output: DeleteProjectsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsSinksRequest {
@@ -3998,7 +4245,12 @@ export const CreateProjectsSinksRequest =
 export type CreateProjectsSinksResponse = LogSink;
 export const CreateProjectsSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type CreateProjectsSinksError = DefaultErrors;
+export type CreateProjectsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink. */
 export const createProjectsSinks: API.OperationMethod<
@@ -4009,7 +4261,7 @@ export const createProjectsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSinksRequest,
   output: CreateProjectsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSinksRequest {
@@ -4038,7 +4290,7 @@ export type ListProjectsSinksResponse = ListSinksResponse;
 export const ListProjectsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSinksResponse;
 
-export type ListProjectsSinksError = DefaultErrors;
+export type ListProjectsSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists sinks. */
 export const listProjectsSinks: API.PaginatedOperationMethod<
@@ -4049,7 +4301,7 @@ export const listProjectsSinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSinksRequest,
   output: ListProjectsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4088,7 +4340,12 @@ export const UpdateProjectsSinksRequest =
 export type UpdateProjectsSinksResponse = LogSink;
 export const UpdateProjectsSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type UpdateProjectsSinksError = DefaultErrors;
+export type UpdateProjectsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const updateProjectsSinks: API.OperationMethod<
@@ -4099,7 +4356,7 @@ export const updateProjectsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsSinksRequest,
   output: UpdateProjectsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSinksRequest {
@@ -4118,7 +4375,7 @@ export const GetProjectsSinksRequest =
 export type GetProjectsSinksResponse = LogSink;
 export const GetProjectsSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type GetProjectsSinksError = DefaultErrors;
+export type GetProjectsSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a sink. */
 export const getProjectsSinks: API.OperationMethod<
@@ -4129,7 +4386,7 @@ export const getProjectsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSinksRequest,
   output: GetProjectsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsSinksRequest {
@@ -4164,7 +4421,12 @@ export const PatchProjectsSinksRequest =
 export type PatchProjectsSinksResponse = LogSink;
 export const PatchProjectsSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type PatchProjectsSinksError = DefaultErrors;
+export type PatchProjectsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const patchProjectsSinks: API.OperationMethod<
@@ -4175,7 +4437,7 @@ export const patchProjectsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSinksRequest,
   output: PatchProjectsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TailEntriesRequest {
@@ -4194,7 +4456,12 @@ export type TailEntriesResponse = TailLogEntriesResponse;
 export const TailEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TailLogEntriesResponse;
 
-export type TailEntriesError = DefaultErrors;
+export type TailEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Streaming read of log entries as they are received. Until the stream is terminated, it will continue reading logs. */
 export const tailEntries: API.OperationMethod<
@@ -4205,7 +4472,7 @@ export const tailEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TailEntriesRequest,
   output: TailEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CopyEntriesRequest {
@@ -4223,7 +4490,12 @@ export const CopyEntriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CopyEntriesResponse = Operation;
 export const CopyEntriesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CopyEntriesError = DefaultErrors;
+export type CopyEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies a set of log entries from a log bucket to a Cloud Storage bucket. */
 export const copyEntries: API.OperationMethod<
@@ -4234,7 +4506,7 @@ export const copyEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyEntriesRequest,
   output: CopyEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WriteEntriesRequest {
@@ -4253,7 +4525,12 @@ export type WriteEntriesResponse = WriteLogEntriesResponse;
 export const WriteEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WriteLogEntriesResponse;
 
-export type WriteEntriesError = DefaultErrors;
+export type WriteEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Writes log entries to Logging. This API method is the only way to send log entries to Logging. This method is used, directly or indirectly, by the Logging agent (fluentd) and all logging libraries configured to use Logging. A single request may contain log entries for a maximum of 1000 different resource names (projects, organizations, billing accounts or folders), where the resource name for a log entry is determined from its logName field. */
 export const writeEntries: API.OperationMethod<
@@ -4264,7 +4541,7 @@ export const writeEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteEntriesRequest,
   output: WriteEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEntriesRequest {
@@ -4283,7 +4560,12 @@ export type ListEntriesResponse = ListLogEntriesResponse;
 export const ListEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogEntriesResponse;
 
-export type ListEntriesError = DefaultErrors;
+export type ListEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists log entries. Use this method to retrieve log entries that originated from a project/folder/organization/billing account. For ways to export log entries, see Routing overview (https://docs.cloud.google.com/logging/docs/routing/overview). */
 export const listEntries: API.OperationMethod<
@@ -4294,7 +4576,7 @@ export const listEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEntriesRequest,
   output: ListEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCmekSettingsBillingAccountsRequest {
@@ -4314,7 +4596,10 @@ export type GetCmekSettingsBillingAccountsResponse = CmekSettings;
 export const GetCmekSettingsBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CmekSettings;
 
-export type GetCmekSettingsBillingAccountsError = DefaultErrors;
+export type GetCmekSettingsBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export const getCmekSettingsBillingAccounts: API.OperationMethod<
@@ -4325,7 +4610,7 @@ export const getCmekSettingsBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekSettingsBillingAccountsRequest,
   output: GetCmekSettingsBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSettingsBillingAccountsRequest {
@@ -4345,7 +4630,10 @@ export type GetSettingsBillingAccountsResponse = Settings;
 export const GetSettingsBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type GetSettingsBillingAccountsError = DefaultErrors;
+export type GetSettingsBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the settings for the given resource.Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts.See View default resource settings for Logging (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings) for more information. */
 export const getSettingsBillingAccounts: API.OperationMethod<
@@ -4356,7 +4644,7 @@ export const getSettingsBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsBillingAccountsRequest,
   output: GetSettingsBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetBillingAccountsLocationsRequest {
@@ -4376,7 +4664,10 @@ export type GetBillingAccountsLocationsResponse = Location;
 export const GetBillingAccountsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetBillingAccountsLocationsError = DefaultErrors;
+export type GetBillingAccountsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a location. */
 export const getBillingAccountsLocations: API.OperationMethod<
@@ -4387,7 +4678,7 @@ export const getBillingAccountsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsRequest,
   output: GetBillingAccountsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsLocationsRequest {
@@ -4421,7 +4712,10 @@ export type ListBillingAccountsLocationsResponse = ListLocationsResponse;
 export const ListBillingAccountsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListBillingAccountsLocationsError = DefaultErrors;
+export type ListBillingAccountsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listBillingAccountsLocations: API.PaginatedOperationMethod<
@@ -4432,7 +4726,7 @@ export const listBillingAccountsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsRequest,
   output: ListBillingAccountsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4462,7 +4756,10 @@ export type ListBillingAccountsLocationsBucketsResponse = ListBucketsResponse;
 export const ListBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBucketsResponse;
 
-export type ListBillingAccountsLocationsBucketsError = DefaultErrors;
+export type ListBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists log buckets. */
 export const listBillingAccountsLocationsBuckets: API.PaginatedOperationMethod<
@@ -4473,7 +4770,7 @@ export const listBillingAccountsLocationsBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsBucketsRequest,
   output: ListBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4497,7 +4794,10 @@ export type GetBillingAccountsLocationsBucketsResponse = LogBucket;
 export const GetBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type GetBillingAccountsLocationsBucketsError = DefaultErrors;
+export type GetBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a log bucket. */
 export const getBillingAccountsLocationsBuckets: API.OperationMethod<
@@ -4508,7 +4808,7 @@ export const getBillingAccountsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsBucketsRequest,
   output: GetBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAsyncBillingAccountsLocationsBucketsRequest {
@@ -4538,7 +4838,12 @@ export type CreateAsyncBillingAccountsLocationsBucketsResponse = Operation;
 export const CreateAsyncBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAsyncBillingAccountsLocationsBucketsError = DefaultErrors;
+export type CreateAsyncBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been created, the bucket's location cannot be changed. */
 export const createAsyncBillingAccountsLocationsBuckets: API.OperationMethod<
@@ -4549,7 +4854,7 @@ export const createAsyncBillingAccountsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAsyncBillingAccountsLocationsBucketsRequest,
   output: CreateAsyncBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBillingAccountsLocationsBucketsRequest {
@@ -4575,7 +4880,12 @@ export type PatchBillingAccountsLocationsBucketsResponse = LogBucket;
 export const PatchBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type PatchBillingAccountsLocationsBucketsError = DefaultErrors;
+export type PatchBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const patchBillingAccountsLocationsBuckets: API.OperationMethod<
@@ -4586,7 +4896,7 @@ export const patchBillingAccountsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsLocationsBucketsRequest,
   output: PatchBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBillingAccountsLocationsBucketsRequest {
@@ -4606,7 +4916,12 @@ export type DeleteBillingAccountsLocationsBucketsResponse = Empty;
 export const DeleteBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBillingAccountsLocationsBucketsError = DefaultErrors;
+export type DeleteBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log entries in the bucket will be permanently deleted. */
 export const deleteBillingAccountsLocationsBuckets: API.OperationMethod<
@@ -4617,7 +4932,7 @@ export const deleteBillingAccountsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsLocationsBucketsRequest,
   output: DeleteBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteBillingAccountsLocationsBucketsRequest {
@@ -4640,7 +4955,12 @@ export type UndeleteBillingAccountsLocationsBucketsResponse = Empty;
 export const UndeleteBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UndeleteBillingAccountsLocationsBucketsError = DefaultErrors;
+export type UndeleteBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7 days. */
 export const undeleteBillingAccountsLocationsBuckets: API.OperationMethod<
@@ -4651,7 +4971,7 @@ export const undeleteBillingAccountsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteBillingAccountsLocationsBucketsRequest,
   output: UndeleteBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAsyncBillingAccountsLocationsBucketsRequest {
@@ -4677,7 +4997,12 @@ export type UpdateAsyncBillingAccountsLocationsBucketsResponse = Operation;
 export const UpdateAsyncBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateAsyncBillingAccountsLocationsBucketsError = DefaultErrors;
+export type UpdateAsyncBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const updateAsyncBillingAccountsLocationsBuckets: API.OperationMethod<
@@ -4688,7 +5013,7 @@ export const updateAsyncBillingAccountsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAsyncBillingAccountsLocationsBucketsRequest,
   output: UpdateAsyncBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBillingAccountsLocationsBucketsRequest {
@@ -4714,7 +5039,12 @@ export type CreateBillingAccountsLocationsBucketsResponse = LogBucket;
 export const CreateBillingAccountsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type CreateBillingAccountsLocationsBucketsError = DefaultErrors;
+export type CreateBillingAccountsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket that can be used to store log entries. After a bucket has been created, the bucket's location cannot be changed. */
 export const createBillingAccountsLocationsBuckets: API.OperationMethod<
@@ -4725,7 +5055,7 @@ export const createBillingAccountsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsLocationsBucketsRequest,
   output: CreateBillingAccountsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBillingAccountsLocationsBucketsViewsRequest {
@@ -4751,7 +5081,12 @@ export type PatchBillingAccountsLocationsBucketsViewsResponse = LogView;
 export const PatchBillingAccountsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type PatchBillingAccountsLocationsBucketsViewsError = DefaultErrors;
+export type PatchBillingAccountsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a view on a log bucket. This method replaces the value of the filter field from the existing view with the corresponding value from the new view. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can update the view. If this occurs, please try again in a few minutes. */
 export const patchBillingAccountsLocationsBucketsViews: API.OperationMethod<
@@ -4762,7 +5097,7 @@ export const patchBillingAccountsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsLocationsBucketsViewsRequest,
   output: PatchBillingAccountsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingAccountsLocationsBucketsViewsRequest {
@@ -4782,7 +5117,10 @@ export type GetBillingAccountsLocationsBucketsViewsResponse = LogView;
 export const GetBillingAccountsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type GetBillingAccountsLocationsBucketsViewsError = DefaultErrors;
+export type GetBillingAccountsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a view on a log bucket. */
 export const getBillingAccountsLocationsBucketsViews: API.OperationMethod<
@@ -4793,7 +5131,7 @@ export const getBillingAccountsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsBucketsViewsRequest,
   output: GetBillingAccountsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsLocationsBucketsViewsRequest {
@@ -4820,7 +5158,10 @@ export type ListBillingAccountsLocationsBucketsViewsResponse =
 export const ListBillingAccountsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListViewsResponse;
 
-export type ListBillingAccountsLocationsBucketsViewsError = DefaultErrors;
+export type ListBillingAccountsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists views on a log bucket. */
 export const listBillingAccountsLocationsBucketsViews: API.PaginatedOperationMethod<
@@ -4831,7 +5172,7 @@ export const listBillingAccountsLocationsBucketsViews: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsBucketsViewsRequest,
   output: ListBillingAccountsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4861,7 +5202,12 @@ export type CreateBillingAccountsLocationsBucketsViewsResponse = LogView;
 export const CreateBillingAccountsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type CreateBillingAccountsLocationsBucketsViewsError = DefaultErrors;
+export type CreateBillingAccountsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views. */
 export const createBillingAccountsLocationsBucketsViews: API.OperationMethod<
@@ -4872,7 +5218,7 @@ export const createBillingAccountsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsLocationsBucketsViewsRequest,
   output: CreateBillingAccountsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBillingAccountsLocationsBucketsViewsRequest {
@@ -4892,7 +5238,12 @@ export type DeleteBillingAccountsLocationsBucketsViewsResponse = Empty;
 export const DeleteBillingAccountsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBillingAccountsLocationsBucketsViewsError = DefaultErrors;
+export type DeleteBillingAccountsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can delete the view. If this occurs, please try again in a few minutes. */
 export const deleteBillingAccountsLocationsBucketsViews: API.OperationMethod<
@@ -4903,7 +5254,7 @@ export const deleteBillingAccountsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsLocationsBucketsViewsRequest,
   output: DeleteBillingAccountsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsLocationsBucketsViewsLogsRequest {
@@ -4935,7 +5286,10 @@ export type ListBillingAccountsLocationsBucketsViewsLogsResponse =
 export const ListBillingAccountsLocationsBucketsViewsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListBillingAccountsLocationsBucketsViewsLogsError = DefaultErrors;
+export type ListBillingAccountsLocationsBucketsViewsLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listBillingAccountsLocationsBucketsViewsLogs: API.PaginatedOperationMethod<
@@ -4946,7 +5300,7 @@ export const listBillingAccountsLocationsBucketsViewsLogs: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsBucketsViewsLogsRequest,
   output: ListBillingAccountsLocationsBucketsViewsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4970,7 +5324,10 @@ export type GetBillingAccountsLocationsBucketsLinksResponse = Link;
 export const GetBillingAccountsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Link;
 
-export type GetBillingAccountsLocationsBucketsLinksError = DefaultErrors;
+export type GetBillingAccountsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a link. */
 export const getBillingAccountsLocationsBucketsLinks: API.OperationMethod<
@@ -4981,7 +5338,7 @@ export const getBillingAccountsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsBucketsLinksRequest,
   output: GetBillingAccountsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsLocationsBucketsLinksRequest {
@@ -5008,7 +5365,10 @@ export type ListBillingAccountsLocationsBucketsLinksResponse =
 export const ListBillingAccountsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLinksResponse;
 
-export type ListBillingAccountsLocationsBucketsLinksError = DefaultErrors;
+export type ListBillingAccountsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists links. */
 export const listBillingAccountsLocationsBucketsLinks: API.PaginatedOperationMethod<
@@ -5019,7 +5379,7 @@ export const listBillingAccountsLocationsBucketsLinks: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsBucketsLinksRequest,
   output: ListBillingAccountsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5049,7 +5409,12 @@ export type CreateBillingAccountsLocationsBucketsLinksResponse = Operation;
 export const CreateBillingAccountsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateBillingAccountsLocationsBucketsLinksError = DefaultErrors;
+export type CreateBillingAccountsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link. */
 export const createBillingAccountsLocationsBucketsLinks: API.OperationMethod<
@@ -5060,7 +5425,7 @@ export const createBillingAccountsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsLocationsBucketsLinksRequest,
   output: CreateBillingAccountsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBillingAccountsLocationsBucketsLinksRequest {
@@ -5080,7 +5445,12 @@ export type DeleteBillingAccountsLocationsBucketsLinksResponse = Operation;
 export const DeleteBillingAccountsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteBillingAccountsLocationsBucketsLinksError = DefaultErrors;
+export type DeleteBillingAccountsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a link. This will also delete the corresponding BigQuery linked dataset. */
 export const deleteBillingAccountsLocationsBucketsLinks: API.OperationMethod<
@@ -5091,7 +5461,7 @@ export const deleteBillingAccountsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsLocationsBucketsLinksRequest,
   output: DeleteBillingAccountsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelBillingAccountsLocationsOperationsRequest {
@@ -5114,7 +5484,12 @@ export type CancelBillingAccountsLocationsOperationsResponse = Empty;
 export const CancelBillingAccountsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelBillingAccountsLocationsOperationsError = DefaultErrors;
+export type CancelBillingAccountsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelBillingAccountsLocationsOperations: API.OperationMethod<
@@ -5125,7 +5500,7 @@ export const cancelBillingAccountsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelBillingAccountsLocationsOperationsRequest,
   output: CancelBillingAccountsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingAccountsLocationsOperationsRequest {
@@ -5145,7 +5520,10 @@ export type GetBillingAccountsLocationsOperationsResponse = Operation;
 export const GetBillingAccountsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetBillingAccountsLocationsOperationsError = DefaultErrors;
+export type GetBillingAccountsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getBillingAccountsLocationsOperations: API.OperationMethod<
@@ -5156,7 +5534,7 @@ export const getBillingAccountsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsOperationsRequest,
   output: GetBillingAccountsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsLocationsOperationsRequest {
@@ -5191,7 +5569,10 @@ export type ListBillingAccountsLocationsOperationsResponse =
 export const ListBillingAccountsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListBillingAccountsLocationsOperationsError = DefaultErrors;
+export type ListBillingAccountsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listBillingAccountsLocationsOperations: API.PaginatedOperationMethod<
@@ -5202,7 +5583,7 @@ export const listBillingAccountsLocationsOperations: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsOperationsRequest,
   output: ListBillingAccountsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5236,7 +5617,10 @@ export type ListBillingAccountsLocationsRecentQueriesResponse =
 export const ListBillingAccountsLocationsRecentQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRecentQueriesResponse;
 
-export type ListBillingAccountsLocationsRecentQueriesError = DefaultErrors;
+export type ListBillingAccountsLocationsRecentQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the RecentQueries that were created by the user making the request. */
 export const listBillingAccountsLocationsRecentQueries: API.PaginatedOperationMethod<
@@ -5247,7 +5631,7 @@ export const listBillingAccountsLocationsRecentQueries: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsRecentQueriesRequest,
   output: ListBillingAccountsLocationsRecentQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5271,7 +5655,12 @@ export type DeleteBillingAccountsLocationsSavedQueriesResponse = Empty;
 export const DeleteBillingAccountsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBillingAccountsLocationsSavedQueriesError = DefaultErrors;
+export type DeleteBillingAccountsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing SavedQuery that was created by the user making the request. */
 export const deleteBillingAccountsLocationsSavedQueries: API.OperationMethod<
@@ -5282,7 +5671,7 @@ export const deleteBillingAccountsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsLocationsSavedQueriesRequest,
   output: DeleteBillingAccountsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBillingAccountsLocationsSavedQueriesRequest {
@@ -5310,7 +5699,12 @@ export type CreateBillingAccountsLocationsSavedQueriesResponse = SavedQuery;
 export const CreateBillingAccountsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type CreateBillingAccountsLocationsSavedQueriesError = DefaultErrors;
+export type CreateBillingAccountsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SavedQuery for the user making the request. */
 export const createBillingAccountsLocationsSavedQueries: API.OperationMethod<
@@ -5321,7 +5715,7 @@ export const createBillingAccountsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsLocationsSavedQueriesRequest,
   output: CreateBillingAccountsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsLocationsSavedQueriesRequest {
@@ -5351,7 +5745,10 @@ export type ListBillingAccountsLocationsSavedQueriesResponse =
 export const ListBillingAccountsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSavedQueriesResponse;
 
-export type ListBillingAccountsLocationsSavedQueriesError = DefaultErrors;
+export type ListBillingAccountsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the SavedQueries that were created by the user making the request. */
 export const listBillingAccountsLocationsSavedQueries: API.PaginatedOperationMethod<
@@ -5362,7 +5759,7 @@ export const listBillingAccountsLocationsSavedQueries: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLocationsSavedQueriesRequest,
   output: ListBillingAccountsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5386,7 +5783,10 @@ export type GetBillingAccountsLocationsSavedQueriesResponse = SavedQuery;
 export const GetBillingAccountsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type GetBillingAccountsLocationsSavedQueriesError = DefaultErrors;
+export type GetBillingAccountsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all data associated with the requested query. */
 export const getBillingAccountsLocationsSavedQueries: API.OperationMethod<
@@ -5397,7 +5797,7 @@ export const getBillingAccountsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsLocationsSavedQueriesRequest,
   output: GetBillingAccountsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchBillingAccountsLocationsSavedQueriesRequest {
@@ -5423,7 +5823,12 @@ export type PatchBillingAccountsLocationsSavedQueriesResponse = SavedQuery;
 export const PatchBillingAccountsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type PatchBillingAccountsLocationsSavedQueriesError = DefaultErrors;
+export type PatchBillingAccountsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing SavedQuery. */
 export const patchBillingAccountsLocationsSavedQueries: API.OperationMethod<
@@ -5434,7 +5839,7 @@ export const patchBillingAccountsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsLocationsSavedQueriesRequest,
   output: PatchBillingAccountsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBillingAccountsSinksRequest {
@@ -5454,7 +5859,12 @@ export type DeleteBillingAccountsSinksResponse = Empty;
 export const DeleteBillingAccountsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBillingAccountsSinksError = DefaultErrors;
+export type DeleteBillingAccountsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted. */
 export const deleteBillingAccountsSinks: API.OperationMethod<
@@ -5465,7 +5875,7 @@ export const deleteBillingAccountsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsSinksRequest,
   output: DeleteBillingAccountsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBillingAccountsSinksRequest {
@@ -5498,7 +5908,12 @@ export type CreateBillingAccountsSinksResponse = LogSink;
 export const CreateBillingAccountsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type CreateBillingAccountsSinksError = DefaultErrors;
+export type CreateBillingAccountsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink. */
 export const createBillingAccountsSinks: API.OperationMethod<
@@ -5509,7 +5924,7 @@ export const createBillingAccountsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsSinksRequest,
   output: CreateBillingAccountsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsSinksRequest {
@@ -5538,7 +5953,10 @@ export type ListBillingAccountsSinksResponse = ListSinksResponse;
 export const ListBillingAccountsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSinksResponse;
 
-export type ListBillingAccountsSinksError = DefaultErrors;
+export type ListBillingAccountsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists sinks. */
 export const listBillingAccountsSinks: API.PaginatedOperationMethod<
@@ -5549,7 +5967,7 @@ export const listBillingAccountsSinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSinksRequest,
   output: ListBillingAccountsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5589,7 +6007,12 @@ export type UpdateBillingAccountsSinksResponse = LogSink;
 export const UpdateBillingAccountsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type UpdateBillingAccountsSinksError = DefaultErrors;
+export type UpdateBillingAccountsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const updateBillingAccountsSinks: API.OperationMethod<
@@ -5600,7 +6023,7 @@ export const updateBillingAccountsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBillingAccountsSinksRequest,
   output: UpdateBillingAccountsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingAccountsSinksRequest {
@@ -5620,7 +6043,7 @@ export type GetBillingAccountsSinksResponse = LogSink;
 export const GetBillingAccountsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type GetBillingAccountsSinksError = DefaultErrors;
+export type GetBillingAccountsSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a sink. */
 export const getBillingAccountsSinks: API.OperationMethod<
@@ -5631,7 +6054,7 @@ export const getBillingAccountsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsSinksRequest,
   output: GetBillingAccountsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchBillingAccountsSinksRequest {
@@ -5667,7 +6090,12 @@ export type PatchBillingAccountsSinksResponse = LogSink;
 export const PatchBillingAccountsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type PatchBillingAccountsSinksError = DefaultErrors;
+export type PatchBillingAccountsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const patchBillingAccountsSinks: API.OperationMethod<
@@ -5678,7 +6106,7 @@ export const patchBillingAccountsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsSinksRequest,
   output: PatchBillingAccountsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBillingAccountsExclusionsRequest {
@@ -5701,7 +6129,12 @@ export type CreateBillingAccountsExclusionsResponse = LogExclusion;
 export const CreateBillingAccountsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type CreateBillingAccountsExclusionsError = DefaultErrors;
+export type CreateBillingAccountsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource. */
 export const createBillingAccountsExclusions: API.OperationMethod<
@@ -5712,7 +6145,7 @@ export const createBillingAccountsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsExclusionsRequest,
   output: CreateBillingAccountsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBillingAccountsExclusionsRequest {
@@ -5732,7 +6165,12 @@ export type DeleteBillingAccountsExclusionsResponse = Empty;
 export const DeleteBillingAccountsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBillingAccountsExclusionsError = DefaultErrors;
+export type DeleteBillingAccountsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an exclusion in the _Default sink. */
 export const deleteBillingAccountsExclusions: API.OperationMethod<
@@ -5743,7 +6181,7 @@ export const deleteBillingAccountsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsExclusionsRequest,
   output: DeleteBillingAccountsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBillingAccountsExclusionsRequest {
@@ -5769,7 +6207,12 @@ export type PatchBillingAccountsExclusionsResponse = LogExclusion;
 export const PatchBillingAccountsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type PatchBillingAccountsExclusionsError = DefaultErrors;
+export type PatchBillingAccountsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes one or more properties of an existing exclusion in the _Default sink. */
 export const patchBillingAccountsExclusions: API.OperationMethod<
@@ -5780,7 +6223,7 @@ export const patchBillingAccountsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsExclusionsRequest,
   output: PatchBillingAccountsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingAccountsExclusionsRequest {
@@ -5800,7 +6243,10 @@ export type GetBillingAccountsExclusionsResponse = LogExclusion;
 export const GetBillingAccountsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type GetBillingAccountsExclusionsError = DefaultErrors;
+export type GetBillingAccountsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the description of an exclusion in the _Default sink. */
 export const getBillingAccountsExclusions: API.OperationMethod<
@@ -5811,7 +6257,7 @@ export const getBillingAccountsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsExclusionsRequest,
   output: GetBillingAccountsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsExclusionsRequest {
@@ -5837,7 +6283,10 @@ export type ListBillingAccountsExclusionsResponse = ListExclusionsResponse;
 export const ListBillingAccountsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExclusionsResponse;
 
-export type ListBillingAccountsExclusionsError = DefaultErrors;
+export type ListBillingAccountsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the exclusions on the _Default sink in a parent resource. */
 export const listBillingAccountsExclusions: API.PaginatedOperationMethod<
@@ -5848,7 +6297,7 @@ export const listBillingAccountsExclusions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsExclusionsRequest,
   output: ListBillingAccountsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5872,7 +6321,12 @@ export type DeleteBillingAccountsLogsResponse = Empty;
 export const DeleteBillingAccountsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBillingAccountsLogsError = DefaultErrors;
+export type DeleteBillingAccountsLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted. */
 export const deleteBillingAccountsLogs: API.OperationMethod<
@@ -5883,7 +6337,7 @@ export const deleteBillingAccountsLogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsLogsRequest,
   output: DeleteBillingAccountsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsLogsRequest {
@@ -5914,7 +6368,7 @@ export type ListBillingAccountsLogsResponse = ListLogsResponse;
 export const ListBillingAccountsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListBillingAccountsLogsError = DefaultErrors;
+export type ListBillingAccountsLogsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listBillingAccountsLogs: API.PaginatedOperationMethod<
@@ -5925,7 +6379,7 @@ export const listBillingAccountsLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsLogsRequest,
   output: ListBillingAccountsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5947,7 +6401,7 @@ export const GetSinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSinksResponse = LogSink;
 export const GetSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type GetSinksError = DefaultErrors;
+export type GetSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a sink. */
 export const getSinks: API.OperationMethod<
@@ -5958,7 +6412,7 @@ export const getSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSinksRequest,
   output: GetSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSinksRequest {
@@ -5986,7 +6440,7 @@ export type ListSinksResponse_Op = ListSinksResponse;
 export const ListSinksResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListSinksResponse;
 
-export type ListSinksError = DefaultErrors;
+export type ListSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists sinks. */
 export const listSinks: API.PaginatedOperationMethod<
@@ -5997,7 +6451,7 @@ export const listSinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSinksRequest,
   output: ListSinksResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6035,7 +6489,12 @@ export const UpdateSinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateSinksResponse = LogSink;
 export const UpdateSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type UpdateSinksError = DefaultErrors;
+export type UpdateSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const updateSinks: API.OperationMethod<
@@ -6046,7 +6505,7 @@ export const updateSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSinksRequest,
   output: UpdateSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSinksRequest {
@@ -6077,7 +6536,12 @@ export const CreateSinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateSinksResponse = LogSink;
 export const CreateSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type CreateSinksError = DefaultErrors;
+export type CreateSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink. */
 export const createSinks: API.OperationMethod<
@@ -6088,7 +6552,7 @@ export const createSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSinksRequest,
   output: CreateSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSinksRequest {
@@ -6106,7 +6570,12 @@ export const DeleteSinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteSinksResponse = Empty;
 export const DeleteSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSinksError = DefaultErrors;
+export type DeleteSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted. */
 export const deleteSinks: API.OperationMethod<
@@ -6117,7 +6586,7 @@ export const deleteSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSinksRequest,
   output: DeleteSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCmekSettingsV2Request {
@@ -6137,7 +6606,7 @@ export type GetCmekSettingsV2Response = CmekSettings;
 export const GetCmekSettingsV2Response =
   /*@__PURE__*/ /*#__PURE__*/ CmekSettings;
 
-export type GetCmekSettingsV2Error = DefaultErrors;
+export type GetCmekSettingsV2Error = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export const getCmekSettingsV2: API.OperationMethod<
@@ -6148,7 +6617,7 @@ export const getCmekSettingsV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekSettingsV2Request,
   output: GetCmekSettingsV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSettingsV2Request {
@@ -6166,7 +6635,7 @@ export const GetSettingsV2Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSettingsV2Response = Settings;
 export const GetSettingsV2Response = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type GetSettingsV2Error = DefaultErrors;
+export type GetSettingsV2Error = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the settings for the given resource.Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts.See View default resource settings for Logging (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings) for more information. */
 export const getSettingsV2: API.OperationMethod<
@@ -6177,7 +6646,7 @@ export const getSettingsV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsV2Request,
   output: GetSettingsV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateCmekSettingsV2Request {
@@ -6203,7 +6672,12 @@ export type UpdateCmekSettingsV2Response = CmekSettings;
 export const UpdateCmekSettingsV2Response =
   /*@__PURE__*/ /*#__PURE__*/ CmekSettings;
 
-export type UpdateCmekSettingsV2Error = DefaultErrors;
+export type UpdateCmekSettingsV2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.UpdateCmekSettings fails when any of the following are true: The value of kms_key_name is invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export const updateCmekSettingsV2: API.OperationMethod<
@@ -6214,7 +6688,7 @@ export const updateCmekSettingsV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCmekSettingsV2Request,
   output: UpdateCmekSettingsV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSettingsV2Request {
@@ -6239,7 +6713,12 @@ export const UpdateSettingsV2Request =
 export type UpdateSettingsV2Response = Settings;
 export const UpdateSettingsV2Response = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type UpdateSettingsV2Error = DefaultErrors;
+export type UpdateSettingsV2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the settings for the given resource. This method applies to all feature configurations for organization and folders.UpdateSettings fails when any of the following are true: The value of storage_location either isn't supported by Logging or violates the location OrgPolicy. The default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See Configure default settings for organizations and folders (https://docs.cloud.google.com/logging/docs/default-settings) for more information. */
 export const updateSettingsV2: API.OperationMethod<
@@ -6250,7 +6729,7 @@ export const updateSettingsV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSettingsV2Request,
   output: UpdateSettingsV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSettingsFoldersRequest {
@@ -6276,7 +6755,12 @@ export type UpdateSettingsFoldersResponse = Settings;
 export const UpdateSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type UpdateSettingsFoldersError = DefaultErrors;
+export type UpdateSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the settings for the given resource. This method applies to all feature configurations for organization and folders.UpdateSettings fails when any of the following are true: The value of storage_location either isn't supported by Logging or violates the location OrgPolicy. The default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See Configure default settings for organizations and folders (https://docs.cloud.google.com/logging/docs/default-settings) for more information. */
 export const updateSettingsFolders: API.OperationMethod<
@@ -6287,7 +6771,7 @@ export const updateSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSettingsFoldersRequest,
   output: UpdateSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCmekSettingsFoldersRequest {
@@ -6307,7 +6791,7 @@ export type GetCmekSettingsFoldersResponse = CmekSettings;
 export const GetCmekSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ CmekSettings;
 
-export type GetCmekSettingsFoldersError = DefaultErrors;
+export type GetCmekSettingsFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export const getCmekSettingsFolders: API.OperationMethod<
@@ -6318,7 +6802,7 @@ export const getCmekSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekSettingsFoldersRequest,
   output: GetCmekSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSettingsFoldersRequest {
@@ -6337,7 +6821,7 @@ export const GetSettingsFoldersRequest =
 export type GetSettingsFoldersResponse = Settings;
 export const GetSettingsFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type GetSettingsFoldersError = DefaultErrors;
+export type GetSettingsFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the settings for the given resource.Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts.See View default resource settings for Logging (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings) for more information. */
 export const getSettingsFolders: API.OperationMethod<
@@ -6348,7 +6832,7 @@ export const getSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsFoldersRequest,
   output: GetSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFoldersExclusionsRequest {
@@ -6368,7 +6852,12 @@ export type DeleteFoldersExclusionsResponse = Empty;
 export const DeleteFoldersExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersExclusionsError = DefaultErrors;
+export type DeleteFoldersExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an exclusion in the _Default sink. */
 export const deleteFoldersExclusions: API.OperationMethod<
@@ -6379,7 +6868,7 @@ export const deleteFoldersExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersExclusionsRequest,
   output: DeleteFoldersExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersExclusionsRequest {
@@ -6402,7 +6891,12 @@ export type CreateFoldersExclusionsResponse = LogExclusion;
 export const CreateFoldersExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type CreateFoldersExclusionsError = DefaultErrors;
+export type CreateFoldersExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource. */
 export const createFoldersExclusions: API.OperationMethod<
@@ -6413,7 +6907,7 @@ export const createFoldersExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersExclusionsRequest,
   output: CreateFoldersExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersExclusionsRequest {
@@ -6439,7 +6933,12 @@ export type PatchFoldersExclusionsResponse = LogExclusion;
 export const PatchFoldersExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type PatchFoldersExclusionsError = DefaultErrors;
+export type PatchFoldersExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes one or more properties of an existing exclusion in the _Default sink. */
 export const patchFoldersExclusions: API.OperationMethod<
@@ -6450,7 +6949,7 @@ export const patchFoldersExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersExclusionsRequest,
   output: PatchFoldersExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersExclusionsRequest {
@@ -6476,7 +6975,7 @@ export type ListFoldersExclusionsResponse = ListExclusionsResponse;
 export const ListFoldersExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExclusionsResponse;
 
-export type ListFoldersExclusionsError = DefaultErrors;
+export type ListFoldersExclusionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the exclusions on the _Default sink in a parent resource. */
 export const listFoldersExclusions: API.PaginatedOperationMethod<
@@ -6487,7 +6986,7 @@ export const listFoldersExclusions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersExclusionsRequest,
   output: ListFoldersExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6511,7 +7010,7 @@ export type GetFoldersExclusionsResponse = LogExclusion;
 export const GetFoldersExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type GetFoldersExclusionsError = DefaultErrors;
+export type GetFoldersExclusionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the description of an exclusion in the _Default sink. */
 export const getFoldersExclusions: API.OperationMethod<
@@ -6522,7 +7021,7 @@ export const getFoldersExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersExclusionsRequest,
   output: GetFoldersExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFoldersLogsRequest {
@@ -6541,7 +7040,12 @@ export const DeleteFoldersLogsRequest =
 export type DeleteFoldersLogsResponse = Empty;
 export const DeleteFoldersLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersLogsError = DefaultErrors;
+export type DeleteFoldersLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted. */
 export const deleteFoldersLogs: API.OperationMethod<
@@ -6552,7 +7056,7 @@ export const deleteFoldersLogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLogsRequest,
   output: DeleteFoldersLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLogsRequest {
@@ -6584,7 +7088,7 @@ export type ListFoldersLogsResponse = ListLogsResponse;
 export const ListFoldersLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListFoldersLogsError = DefaultErrors;
+export type ListFoldersLogsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listFoldersLogs: API.PaginatedOperationMethod<
@@ -6595,7 +7099,7 @@ export const listFoldersLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLogsRequest,
   output: ListFoldersLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6618,7 +7122,12 @@ export const DeleteFoldersSinksRequest =
 export type DeleteFoldersSinksResponse = Empty;
 export const DeleteFoldersSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersSinksError = DefaultErrors;
+export type DeleteFoldersSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted. */
 export const deleteFoldersSinks: API.OperationMethod<
@@ -6629,7 +7138,7 @@ export const deleteFoldersSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersSinksRequest,
   output: DeleteFoldersSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersSinksRequest {
@@ -6661,7 +7170,12 @@ export const CreateFoldersSinksRequest =
 export type CreateFoldersSinksResponse = LogSink;
 export const CreateFoldersSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type CreateFoldersSinksError = DefaultErrors;
+export type CreateFoldersSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink. */
 export const createFoldersSinks: API.OperationMethod<
@@ -6672,7 +7186,7 @@ export const createFoldersSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersSinksRequest,
   output: CreateFoldersSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersSinksRequest {
@@ -6707,7 +7221,12 @@ export const PatchFoldersSinksRequest =
 export type PatchFoldersSinksResponse = LogSink;
 export const PatchFoldersSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type PatchFoldersSinksError = DefaultErrors;
+export type PatchFoldersSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const patchFoldersSinks: API.OperationMethod<
@@ -6718,7 +7237,7 @@ export const patchFoldersSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersSinksRequest,
   output: PatchFoldersSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersSinksRequest {
@@ -6747,7 +7266,7 @@ export type ListFoldersSinksResponse = ListSinksResponse;
 export const ListFoldersSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSinksResponse;
 
-export type ListFoldersSinksError = DefaultErrors;
+export type ListFoldersSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists sinks. */
 export const listFoldersSinks: API.PaginatedOperationMethod<
@@ -6758,7 +7277,7 @@ export const listFoldersSinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersSinksRequest,
   output: ListFoldersSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6797,7 +7316,12 @@ export const UpdateFoldersSinksRequest =
 export type UpdateFoldersSinksResponse = LogSink;
 export const UpdateFoldersSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type UpdateFoldersSinksError = DefaultErrors;
+export type UpdateFoldersSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const updateFoldersSinks: API.OperationMethod<
@@ -6808,7 +7332,7 @@ export const updateFoldersSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFoldersSinksRequest,
   output: UpdateFoldersSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersSinksRequest {
@@ -6828,7 +7352,7 @@ export const GetFoldersSinksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetFoldersSinksResponse = LogSink;
 export const GetFoldersSinksResponse = /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type GetFoldersSinksError = DefaultErrors;
+export type GetFoldersSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a sink. */
 export const getFoldersSinks: API.OperationMethod<
@@ -6839,7 +7363,7 @@ export const getFoldersSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersSinksRequest,
   output: GetFoldersSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersLocationsRequest {
@@ -6873,7 +7397,7 @@ export type ListFoldersLocationsResponse = ListLocationsResponse;
 export const ListFoldersLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListFoldersLocationsError = DefaultErrors;
+export type ListFoldersLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listFoldersLocations: API.PaginatedOperationMethod<
@@ -6884,7 +7408,7 @@ export const listFoldersLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRequest,
   output: ListFoldersLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6907,7 +7431,7 @@ export const GetFoldersLocationsRequest =
 export type GetFoldersLocationsResponse = Location;
 export const GetFoldersLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetFoldersLocationsError = DefaultErrors;
+export type GetFoldersLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getFoldersLocations: API.OperationMethod<
@@ -6918,7 +7442,7 @@ export const getFoldersLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsRequest,
   output: GetFoldersLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFoldersLocationsOperationsRequest {
@@ -6938,7 +7462,10 @@ export type GetFoldersLocationsOperationsResponse = Operation;
 export const GetFoldersLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetFoldersLocationsOperationsError = DefaultErrors;
+export type GetFoldersLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsOperations: API.OperationMethod<
@@ -6949,7 +7476,7 @@ export const getFoldersLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsOperationsRequest,
   output: GetFoldersLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersLocationsOperationsRequest {
@@ -6983,7 +7510,10 @@ export type ListFoldersLocationsOperationsResponse = ListOperationsResponse;
 export const ListFoldersLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListFoldersLocationsOperationsError = DefaultErrors;
+export type ListFoldersLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
@@ -6994,7 +7524,7 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsOperationsRequest,
   output: ListFoldersLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7021,7 +7551,12 @@ export type CancelFoldersLocationsOperationsResponse = Empty;
 export const CancelFoldersLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelFoldersLocationsOperationsError = DefaultErrors;
+export type CancelFoldersLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelFoldersLocationsOperations: API.OperationMethod<
@@ -7032,7 +7567,7 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelFoldersLocationsOperationsRequest,
   output: CancelFoldersLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersLocationsBucketsRequest {
@@ -7058,7 +7593,12 @@ export type PatchFoldersLocationsBucketsResponse = LogBucket;
 export const PatchFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type PatchFoldersLocationsBucketsError = DefaultErrors;
+export type PatchFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const patchFoldersLocationsBuckets: API.OperationMethod<
@@ -7069,7 +7609,7 @@ export const patchFoldersLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsBucketsRequest,
   output: PatchFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLocationsBucketsRequest {
@@ -7095,7 +7635,10 @@ export type ListFoldersLocationsBucketsResponse = ListBucketsResponse;
 export const ListFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBucketsResponse;
 
-export type ListFoldersLocationsBucketsError = DefaultErrors;
+export type ListFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists log buckets. */
 export const listFoldersLocationsBuckets: API.PaginatedOperationMethod<
@@ -7106,7 +7649,7 @@ export const listFoldersLocationsBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsBucketsRequest,
   output: ListFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7130,7 +7673,10 @@ export type GetFoldersLocationsBucketsResponse = LogBucket;
 export const GetFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type GetFoldersLocationsBucketsError = DefaultErrors;
+export type GetFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a log bucket. */
 export const getFoldersLocationsBuckets: API.OperationMethod<
@@ -7141,7 +7687,7 @@ export const getFoldersLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsBucketsRequest,
   output: GetFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAsyncFoldersLocationsBucketsRequest {
@@ -7171,7 +7717,12 @@ export type CreateAsyncFoldersLocationsBucketsResponse = Operation;
 export const CreateAsyncFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAsyncFoldersLocationsBucketsError = DefaultErrors;
+export type CreateAsyncFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been created, the bucket's location cannot be changed. */
 export const createAsyncFoldersLocationsBuckets: API.OperationMethod<
@@ -7182,7 +7733,7 @@ export const createAsyncFoldersLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAsyncFoldersLocationsBucketsRequest,
   output: CreateAsyncFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersLocationsBucketsRequest {
@@ -7202,7 +7753,12 @@ export type DeleteFoldersLocationsBucketsResponse = Empty;
 export const DeleteFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersLocationsBucketsError = DefaultErrors;
+export type DeleteFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log entries in the bucket will be permanently deleted. */
 export const deleteFoldersLocationsBuckets: API.OperationMethod<
@@ -7213,7 +7769,7 @@ export const deleteFoldersLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsBucketsRequest,
   output: DeleteFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteFoldersLocationsBucketsRequest {
@@ -7236,7 +7792,12 @@ export type UndeleteFoldersLocationsBucketsResponse = Empty;
 export const UndeleteFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UndeleteFoldersLocationsBucketsError = DefaultErrors;
+export type UndeleteFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7 days. */
 export const undeleteFoldersLocationsBuckets: API.OperationMethod<
@@ -7247,7 +7808,7 @@ export const undeleteFoldersLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteFoldersLocationsBucketsRequest,
   output: UndeleteFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAsyncFoldersLocationsBucketsRequest {
@@ -7273,7 +7834,12 @@ export type UpdateAsyncFoldersLocationsBucketsResponse = Operation;
 export const UpdateAsyncFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateAsyncFoldersLocationsBucketsError = DefaultErrors;
+export type UpdateAsyncFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const updateAsyncFoldersLocationsBuckets: API.OperationMethod<
@@ -7284,7 +7850,7 @@ export const updateAsyncFoldersLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAsyncFoldersLocationsBucketsRequest,
   output: UpdateAsyncFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersLocationsBucketsRequest {
@@ -7310,7 +7876,12 @@ export type CreateFoldersLocationsBucketsResponse = LogBucket;
 export const CreateFoldersLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type CreateFoldersLocationsBucketsError = DefaultErrors;
+export type CreateFoldersLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket that can be used to store log entries. After a bucket has been created, the bucket's location cannot be changed. */
 export const createFoldersLocationsBuckets: API.OperationMethod<
@@ -7321,7 +7892,7 @@ export const createFoldersLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsBucketsRequest,
   output: CreateFoldersLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyFoldersLocationsBucketsViewsRequest {
@@ -7348,7 +7919,12 @@ export type GetIamPolicyFoldersLocationsBucketsViewsResponse = Policy;
 export const GetIamPolicyFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyFoldersLocationsBucketsViewsError = DefaultErrors;
+export type GetIamPolicyFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyFoldersLocationsBucketsViews: API.OperationMethod<
@@ -7359,7 +7935,7 @@ export const getIamPolicyFoldersLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyFoldersLocationsBucketsViewsRequest,
   output: GetIamPolicyFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersLocationsBucketsViewsRequest {
@@ -7385,7 +7961,12 @@ export type PatchFoldersLocationsBucketsViewsResponse = LogView;
 export const PatchFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type PatchFoldersLocationsBucketsViewsError = DefaultErrors;
+export type PatchFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a view on a log bucket. This method replaces the value of the filter field from the existing view with the corresponding value from the new view. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can update the view. If this occurs, please try again in a few minutes. */
 export const patchFoldersLocationsBucketsViews: API.OperationMethod<
@@ -7396,7 +7977,7 @@ export const patchFoldersLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsBucketsViewsRequest,
   output: PatchFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLocationsBucketsViewsRequest {
@@ -7422,7 +8003,10 @@ export type ListFoldersLocationsBucketsViewsResponse = ListViewsResponse;
 export const ListFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListViewsResponse;
 
-export type ListFoldersLocationsBucketsViewsError = DefaultErrors;
+export type ListFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists views on a log bucket. */
 export const listFoldersLocationsBucketsViews: API.PaginatedOperationMethod<
@@ -7433,7 +8017,7 @@ export const listFoldersLocationsBucketsViews: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsBucketsViewsRequest,
   output: ListFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7464,7 +8048,12 @@ export type SetIamPolicyFoldersLocationsBucketsViewsResponse = Policy;
 export const SetIamPolicyFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyFoldersLocationsBucketsViewsError = DefaultErrors;
+export type SetIamPolicyFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyFoldersLocationsBucketsViews: API.OperationMethod<
@@ -7475,7 +8064,7 @@ export const setIamPolicyFoldersLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyFoldersLocationsBucketsViewsRequest,
   output: SetIamPolicyFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsFoldersLocationsBucketsViewsRequest {
@@ -7503,7 +8092,12 @@ export type TestIamPermissionsFoldersLocationsBucketsViewsResponse =
 export const TestIamPermissionsFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsFoldersLocationsBucketsViewsError = DefaultErrors;
+export type TestIamPermissionsFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsFoldersLocationsBucketsViews: API.OperationMethod<
@@ -7514,7 +8108,7 @@ export const testIamPermissionsFoldersLocationsBucketsViews: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsFoldersLocationsBucketsViewsRequest,
   output: TestIamPermissionsFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersLocationsBucketsViewsRequest {
@@ -7534,7 +8128,10 @@ export type GetFoldersLocationsBucketsViewsResponse = LogView;
 export const GetFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type GetFoldersLocationsBucketsViewsError = DefaultErrors;
+export type GetFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a view on a log bucket. */
 export const getFoldersLocationsBucketsViews: API.OperationMethod<
@@ -7545,7 +8142,7 @@ export const getFoldersLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsBucketsViewsRequest,
   output: GetFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFoldersLocationsBucketsViewsRequest {
@@ -7565,7 +8162,12 @@ export type DeleteFoldersLocationsBucketsViewsResponse = Empty;
 export const DeleteFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersLocationsBucketsViewsError = DefaultErrors;
+export type DeleteFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can delete the view. If this occurs, please try again in a few minutes. */
 export const deleteFoldersLocationsBucketsViews: API.OperationMethod<
@@ -7576,7 +8178,7 @@ export const deleteFoldersLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsBucketsViewsRequest,
   output: DeleteFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersLocationsBucketsViewsRequest {
@@ -7602,7 +8204,12 @@ export type CreateFoldersLocationsBucketsViewsResponse = LogView;
 export const CreateFoldersLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type CreateFoldersLocationsBucketsViewsError = DefaultErrors;
+export type CreateFoldersLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views. */
 export const createFoldersLocationsBucketsViews: API.OperationMethod<
@@ -7613,7 +8220,7 @@ export const createFoldersLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsBucketsViewsRequest,
   output: CreateFoldersLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLocationsBucketsViewsLogsRequest {
@@ -7644,7 +8251,10 @@ export type ListFoldersLocationsBucketsViewsLogsResponse = ListLogsResponse;
 export const ListFoldersLocationsBucketsViewsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListFoldersLocationsBucketsViewsLogsError = DefaultErrors;
+export type ListFoldersLocationsBucketsViewsLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listFoldersLocationsBucketsViewsLogs: API.PaginatedOperationMethod<
@@ -7655,7 +8265,7 @@ export const listFoldersLocationsBucketsViewsLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsBucketsViewsLogsRequest,
   output: ListFoldersLocationsBucketsViewsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7685,7 +8295,10 @@ export type ListFoldersLocationsBucketsLinksResponse = ListLinksResponse;
 export const ListFoldersLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLinksResponse;
 
-export type ListFoldersLocationsBucketsLinksError = DefaultErrors;
+export type ListFoldersLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists links. */
 export const listFoldersLocationsBucketsLinks: API.PaginatedOperationMethod<
@@ -7696,7 +8309,7 @@ export const listFoldersLocationsBucketsLinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsBucketsLinksRequest,
   output: ListFoldersLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7720,7 +8333,10 @@ export type GetFoldersLocationsBucketsLinksResponse = Link;
 export const GetFoldersLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Link;
 
-export type GetFoldersLocationsBucketsLinksError = DefaultErrors;
+export type GetFoldersLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a link. */
 export const getFoldersLocationsBucketsLinks: API.OperationMethod<
@@ -7731,7 +8347,7 @@ export const getFoldersLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsBucketsLinksRequest,
   output: GetFoldersLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFoldersLocationsBucketsLinksRequest {
@@ -7751,7 +8367,12 @@ export type DeleteFoldersLocationsBucketsLinksResponse = Operation;
 export const DeleteFoldersLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteFoldersLocationsBucketsLinksError = DefaultErrors;
+export type DeleteFoldersLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a link. This will also delete the corresponding BigQuery linked dataset. */
 export const deleteFoldersLocationsBucketsLinks: API.OperationMethod<
@@ -7762,7 +8383,7 @@ export const deleteFoldersLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsBucketsLinksRequest,
   output: DeleteFoldersLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersLocationsBucketsLinksRequest {
@@ -7788,7 +8409,12 @@ export type CreateFoldersLocationsBucketsLinksResponse = Operation;
 export const CreateFoldersLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateFoldersLocationsBucketsLinksError = DefaultErrors;
+export type CreateFoldersLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link. */
 export const createFoldersLocationsBucketsLinks: API.OperationMethod<
@@ -7799,7 +8425,7 @@ export const createFoldersLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsBucketsLinksRequest,
   output: CreateFoldersLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersLocationsSavedQueriesRequest {
@@ -7825,7 +8451,12 @@ export type PatchFoldersLocationsSavedQueriesResponse = SavedQuery;
 export const PatchFoldersLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type PatchFoldersLocationsSavedQueriesError = DefaultErrors;
+export type PatchFoldersLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing SavedQuery. */
 export const patchFoldersLocationsSavedQueries: API.OperationMethod<
@@ -7836,7 +8467,7 @@ export const patchFoldersLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsSavedQueriesRequest,
   output: PatchFoldersLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersLocationsSavedQueriesRequest {
@@ -7856,7 +8487,10 @@ export type GetFoldersLocationsSavedQueriesResponse = SavedQuery;
 export const GetFoldersLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type GetFoldersLocationsSavedQueriesError = DefaultErrors;
+export type GetFoldersLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all data associated with the requested query. */
 export const getFoldersLocationsSavedQueries: API.OperationMethod<
@@ -7867,7 +8501,7 @@ export const getFoldersLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsSavedQueriesRequest,
   output: GetFoldersLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersLocationsSavedQueriesRequest {
@@ -7896,7 +8530,10 @@ export type ListFoldersLocationsSavedQueriesResponse = ListSavedQueriesResponse;
 export const ListFoldersLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSavedQueriesResponse;
 
-export type ListFoldersLocationsSavedQueriesError = DefaultErrors;
+export type ListFoldersLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the SavedQueries that were created by the user making the request. */
 export const listFoldersLocationsSavedQueries: API.PaginatedOperationMethod<
@@ -7907,7 +8544,7 @@ export const listFoldersLocationsSavedQueries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsSavedQueriesRequest,
   output: ListFoldersLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7939,7 +8576,12 @@ export type CreateFoldersLocationsSavedQueriesResponse = SavedQuery;
 export const CreateFoldersLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type CreateFoldersLocationsSavedQueriesError = DefaultErrors;
+export type CreateFoldersLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SavedQuery for the user making the request. */
 export const createFoldersLocationsSavedQueries: API.OperationMethod<
@@ -7950,7 +8592,7 @@ export const createFoldersLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsSavedQueriesRequest,
   output: CreateFoldersLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersLocationsSavedQueriesRequest {
@@ -7970,7 +8612,12 @@ export type DeleteFoldersLocationsSavedQueriesResponse = Empty;
 export const DeleteFoldersLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersLocationsSavedQueriesError = DefaultErrors;
+export type DeleteFoldersLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing SavedQuery that was created by the user making the request. */
 export const deleteFoldersLocationsSavedQueries: API.OperationMethod<
@@ -7981,7 +8628,7 @@ export const deleteFoldersLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsSavedQueriesRequest,
   output: DeleteFoldersLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersLocationsLogScopesRequest {
@@ -8001,7 +8648,12 @@ export type DeleteFoldersLocationsLogScopesResponse = Empty;
 export const DeleteFoldersLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersLocationsLogScopesError = DefaultErrors;
+export type DeleteFoldersLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log scope. */
 export const deleteFoldersLocationsLogScopes: API.OperationMethod<
@@ -8012,7 +8664,7 @@ export const deleteFoldersLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsLogScopesRequest,
   output: DeleteFoldersLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersLocationsLogScopesRequest {
@@ -8038,7 +8690,12 @@ export type CreateFoldersLocationsLogScopesResponse = LogScope;
 export const CreateFoldersLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type CreateFoldersLocationsLogScopesError = DefaultErrors;
+export type CreateFoldersLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log scope. */
 export const createFoldersLocationsLogScopes: API.OperationMethod<
@@ -8049,7 +8706,7 @@ export const createFoldersLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsLogScopesRequest,
   output: CreateFoldersLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersLocationsLogScopesRequest {
@@ -8075,7 +8732,12 @@ export type PatchFoldersLocationsLogScopesResponse = LogScope;
 export const PatchFoldersLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type PatchFoldersLocationsLogScopesError = DefaultErrors;
+export type PatchFoldersLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log scope. */
 export const patchFoldersLocationsLogScopes: API.OperationMethod<
@@ -8086,7 +8748,7 @@ export const patchFoldersLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsLogScopesRequest,
   output: PatchFoldersLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLocationsLogScopesRequest {
@@ -8112,7 +8774,10 @@ export type ListFoldersLocationsLogScopesResponse = ListLogScopesResponse;
 export const ListFoldersLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogScopesResponse;
 
-export type ListFoldersLocationsLogScopesError = DefaultErrors;
+export type ListFoldersLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists log scopes. */
 export const listFoldersLocationsLogScopes: API.PaginatedOperationMethod<
@@ -8123,7 +8788,7 @@ export const listFoldersLocationsLogScopes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsLogScopesRequest,
   output: ListFoldersLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8147,7 +8812,10 @@ export type GetFoldersLocationsLogScopesResponse = LogScope;
 export const GetFoldersLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type GetFoldersLocationsLogScopesError = DefaultErrors;
+export type GetFoldersLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a log scope. */
 export const getFoldersLocationsLogScopes: API.OperationMethod<
@@ -8158,7 +8826,7 @@ export const getFoldersLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsLogScopesRequest,
   output: GetFoldersLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersLocationsRecentQueriesRequest {
@@ -8188,7 +8856,10 @@ export type ListFoldersLocationsRecentQueriesResponse =
 export const ListFoldersLocationsRecentQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRecentQueriesResponse;
 
-export type ListFoldersLocationsRecentQueriesError = DefaultErrors;
+export type ListFoldersLocationsRecentQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the RecentQueries that were created by the user making the request. */
 export const listFoldersLocationsRecentQueries: API.PaginatedOperationMethod<
@@ -8199,7 +8870,7 @@ export const listFoldersLocationsRecentQueries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsRecentQueriesRequest,
   output: ListFoldersLocationsRecentQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8221,7 +8892,7 @@ export const GetLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetLocationsResponse = Location;
 export const GetLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetLocationsError = DefaultErrors;
+export type GetLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getLocations: API.OperationMethod<
@@ -8232,7 +8903,7 @@ export const getLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsRequest,
   output: GetLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLocationsRequest {
@@ -8265,7 +8936,7 @@ export type ListLocationsResponse_Op = ListLocationsResponse;
 export const ListLocationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListLocationsError = DefaultErrors;
+export type ListLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listLocations: API.PaginatedOperationMethod<
@@ -8276,7 +8947,7 @@ export const listLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsRequest,
   output: ListLocationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8303,7 +8974,12 @@ export type CancelLocationsOperationsResponse = Empty;
 export const CancelLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelLocationsOperationsError = DefaultErrors;
+export type CancelLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelLocationsOperations: API.OperationMethod<
@@ -8314,7 +8990,7 @@ export const cancelLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelLocationsOperationsRequest,
   output: CancelLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLocationsOperationsRequest {
@@ -8348,7 +9024,7 @@ export type ListLocationsOperationsResponse = ListOperationsResponse;
 export const ListLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListLocationsOperationsError = DefaultErrors;
+export type ListLocationsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listLocationsOperations: API.PaginatedOperationMethod<
@@ -8359,7 +9035,7 @@ export const listLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsOperationsRequest,
   output: ListLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8383,7 +9059,7 @@ export type GetLocationsOperationsResponse = Operation;
 export const GetLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetLocationsOperationsError = DefaultErrors;
+export type GetLocationsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getLocationsOperations: API.OperationMethod<
@@ -8394,7 +9070,7 @@ export const getLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsOperationsRequest,
   output: GetLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLocationsBucketsRequest {
@@ -8420,7 +9096,7 @@ export type ListLocationsBucketsResponse = ListBucketsResponse;
 export const ListLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBucketsResponse;
 
-export type ListLocationsBucketsError = DefaultErrors;
+export type ListLocationsBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists log buckets. */
 export const listLocationsBuckets: API.PaginatedOperationMethod<
@@ -8431,7 +9107,7 @@ export const listLocationsBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsBucketsRequest,
   output: ListLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8455,7 +9131,7 @@ export type GetLocationsBucketsResponse = LogBucket;
 export const GetLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type GetLocationsBucketsError = DefaultErrors;
+export type GetLocationsBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a log bucket. */
 export const getLocationsBuckets: API.OperationMethod<
@@ -8466,7 +9142,7 @@ export const getLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsBucketsRequest,
   output: GetLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAsyncLocationsBucketsRequest {
@@ -8496,7 +9172,12 @@ export type CreateAsyncLocationsBucketsResponse = Operation;
 export const CreateAsyncLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAsyncLocationsBucketsError = DefaultErrors;
+export type CreateAsyncLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been created, the bucket's location cannot be changed. */
 export const createAsyncLocationsBuckets: API.OperationMethod<
@@ -8507,7 +9188,7 @@ export const createAsyncLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAsyncLocationsBucketsRequest,
   output: CreateAsyncLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsBucketsRequest {
@@ -8533,7 +9214,12 @@ export type PatchLocationsBucketsResponse = LogBucket;
 export const PatchLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type PatchLocationsBucketsError = DefaultErrors;
+export type PatchLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const patchLocationsBuckets: API.OperationMethod<
@@ -8544,7 +9230,7 @@ export const patchLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsBucketsRequest,
   output: PatchLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsBucketsRequest {
@@ -8563,7 +9249,12 @@ export const DeleteLocationsBucketsRequest =
 export type DeleteLocationsBucketsResponse = Empty;
 export const DeleteLocationsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLocationsBucketsError = DefaultErrors;
+export type DeleteLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log entries in the bucket will be permanently deleted. */
 export const deleteLocationsBuckets: API.OperationMethod<
@@ -8574,7 +9265,7 @@ export const deleteLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsBucketsRequest,
   output: DeleteLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteLocationsBucketsRequest {
@@ -8597,7 +9288,12 @@ export type UndeleteLocationsBucketsResponse = Empty;
 export const UndeleteLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UndeleteLocationsBucketsError = DefaultErrors;
+export type UndeleteLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7 days. */
 export const undeleteLocationsBuckets: API.OperationMethod<
@@ -8608,7 +9304,7 @@ export const undeleteLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteLocationsBucketsRequest,
   output: UndeleteLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAsyncLocationsBucketsRequest {
@@ -8634,7 +9330,12 @@ export type UpdateAsyncLocationsBucketsResponse = Operation;
 export const UpdateAsyncLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateAsyncLocationsBucketsError = DefaultErrors;
+export type UpdateAsyncLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const updateAsyncLocationsBuckets: API.OperationMethod<
@@ -8645,7 +9346,7 @@ export const updateAsyncLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAsyncLocationsBucketsRequest,
   output: UpdateAsyncLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateLocationsBucketsRequest {
@@ -8671,7 +9372,12 @@ export type CreateLocationsBucketsResponse = LogBucket;
 export const CreateLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type CreateLocationsBucketsError = DefaultErrors;
+export type CreateLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket that can be used to store log entries. After a bucket has been created, the bucket's location cannot be changed. */
 export const createLocationsBuckets: API.OperationMethod<
@@ -8682,7 +9388,7 @@ export const createLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsBucketsRequest,
   output: CreateLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyLocationsBucketsViewsRequest {
@@ -8709,7 +9415,12 @@ export type GetIamPolicyLocationsBucketsViewsResponse = Policy;
 export const GetIamPolicyLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyLocationsBucketsViewsError = DefaultErrors;
+export type GetIamPolicyLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyLocationsBucketsViews: API.OperationMethod<
@@ -8720,7 +9431,7 @@ export const getIamPolicyLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyLocationsBucketsViewsRequest,
   output: GetIamPolicyLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsBucketsViewsRequest {
@@ -8746,7 +9457,12 @@ export type PatchLocationsBucketsViewsResponse = LogView;
 export const PatchLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type PatchLocationsBucketsViewsError = DefaultErrors;
+export type PatchLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a view on a log bucket. This method replaces the value of the filter field from the existing view with the corresponding value from the new view. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can update the view. If this occurs, please try again in a few minutes. */
 export const patchLocationsBucketsViews: API.OperationMethod<
@@ -8757,7 +9473,7 @@ export const patchLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsBucketsViewsRequest,
   output: PatchLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyLocationsBucketsViewsRequest {
@@ -8784,7 +9500,12 @@ export type SetIamPolicyLocationsBucketsViewsResponse = Policy;
 export const SetIamPolicyLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyLocationsBucketsViewsError = DefaultErrors;
+export type SetIamPolicyLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyLocationsBucketsViews: API.OperationMethod<
@@ -8795,7 +9516,7 @@ export const setIamPolicyLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyLocationsBucketsViewsRequest,
   output: SetIamPolicyLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsLocationsBucketsViewsRequest {
@@ -8823,7 +9544,12 @@ export type TestIamPermissionsLocationsBucketsViewsResponse =
 export const TestIamPermissionsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsLocationsBucketsViewsError = DefaultErrors;
+export type TestIamPermissionsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsLocationsBucketsViews: API.OperationMethod<
@@ -8834,7 +9560,7 @@ export const testIamPermissionsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsLocationsBucketsViewsRequest,
   output: TestIamPermissionsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsBucketsViewsRequest {
@@ -8854,7 +9580,10 @@ export type GetLocationsBucketsViewsResponse = LogView;
 export const GetLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type GetLocationsBucketsViewsError = DefaultErrors;
+export type GetLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a view on a log bucket. */
 export const getLocationsBucketsViews: API.OperationMethod<
@@ -8865,7 +9594,7 @@ export const getLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsBucketsViewsRequest,
   output: GetLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLocationsBucketsViewsRequest {
@@ -8891,7 +9620,10 @@ export type ListLocationsBucketsViewsResponse = ListViewsResponse;
 export const ListLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListViewsResponse;
 
-export type ListLocationsBucketsViewsError = DefaultErrors;
+export type ListLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists views on a log bucket. */
 export const listLocationsBucketsViews: API.PaginatedOperationMethod<
@@ -8902,7 +9634,7 @@ export const listLocationsBucketsViews: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsBucketsViewsRequest,
   output: ListLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8932,7 +9664,12 @@ export type CreateLocationsBucketsViewsResponse = LogView;
 export const CreateLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type CreateLocationsBucketsViewsError = DefaultErrors;
+export type CreateLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views. */
 export const createLocationsBucketsViews: API.OperationMethod<
@@ -8943,7 +9680,7 @@ export const createLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsBucketsViewsRequest,
   output: CreateLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsBucketsViewsRequest {
@@ -8963,7 +9700,12 @@ export type DeleteLocationsBucketsViewsResponse = Empty;
 export const DeleteLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLocationsBucketsViewsError = DefaultErrors;
+export type DeleteLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can delete the view. If this occurs, please try again in a few minutes. */
 export const deleteLocationsBucketsViews: API.OperationMethod<
@@ -8974,7 +9716,7 @@ export const deleteLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsBucketsViewsRequest,
   output: DeleteLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateLocationsBucketsLinksRequest {
@@ -9000,7 +9742,12 @@ export type CreateLocationsBucketsLinksResponse = Operation;
 export const CreateLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateLocationsBucketsLinksError = DefaultErrors;
+export type CreateLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link. */
 export const createLocationsBucketsLinks: API.OperationMethod<
@@ -9011,7 +9758,7 @@ export const createLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsBucketsLinksRequest,
   output: CreateLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsBucketsLinksRequest {
@@ -9031,7 +9778,12 @@ export type DeleteLocationsBucketsLinksResponse = Operation;
 export const DeleteLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteLocationsBucketsLinksError = DefaultErrors;
+export type DeleteLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a link. This will also delete the corresponding BigQuery linked dataset. */
 export const deleteLocationsBucketsLinks: API.OperationMethod<
@@ -9042,7 +9794,7 @@ export const deleteLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsBucketsLinksRequest,
   output: DeleteLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsBucketsLinksRequest {
@@ -9062,7 +9814,10 @@ export type GetLocationsBucketsLinksResponse = Link;
 export const GetLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Link;
 
-export type GetLocationsBucketsLinksError = DefaultErrors;
+export type GetLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a link. */
 export const getLocationsBucketsLinks: API.OperationMethod<
@@ -9073,7 +9828,7 @@ export const getLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsBucketsLinksRequest,
   output: GetLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLocationsBucketsLinksRequest {
@@ -9099,7 +9854,10 @@ export type ListLocationsBucketsLinksResponse = ListLinksResponse;
 export const ListLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLinksResponse;
 
-export type ListLocationsBucketsLinksError = DefaultErrors;
+export type ListLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists links. */
 export const listLocationsBucketsLinks: API.PaginatedOperationMethod<
@@ -9110,7 +9868,7 @@ export const listLocationsBucketsLinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsBucketsLinksRequest,
   output: ListLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9138,7 +9896,10 @@ export type ListMonitoredResourceDescriptorsResponse_Op =
 export const ListMonitoredResourceDescriptorsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListMonitoredResourceDescriptorsResponse;
 
-export type ListMonitoredResourceDescriptorsError = DefaultErrors;
+export type ListMonitoredResourceDescriptorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the descriptors for monitored resource types used by Logging. */
 export const listMonitoredResourceDescriptors: API.PaginatedOperationMethod<
@@ -9149,7 +9910,7 @@ export const listMonitoredResourceDescriptors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMonitoredResourceDescriptorsRequest,
   output: ListMonitoredResourceDescriptorsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9171,7 +9932,12 @@ export const DeleteLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteLogsResponse = Empty;
 export const DeleteLogsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLogsError = DefaultErrors;
+export type DeleteLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted. */
 export const deleteLogs: API.OperationMethod<
@@ -9182,7 +9948,7 @@ export const deleteLogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLogsRequest,
   output: DeleteLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLogsRequest {
@@ -9211,7 +9977,7 @@ export const ListLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListLogsResponse_Op = ListLogsResponse;
 export const ListLogsResponse_Op = /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListLogsError = DefaultErrors;
+export type ListLogsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listLogs: API.PaginatedOperationMethod<
@@ -9222,7 +9988,7 @@ export const listLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLogsRequest,
   output: ListLogsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9252,7 +10018,12 @@ export type UpdateSettingsOrganizationsResponse = Settings;
 export const UpdateSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type UpdateSettingsOrganizationsError = DefaultErrors;
+export type UpdateSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the settings for the given resource. This method applies to all feature configurations for organization and folders.UpdateSettings fails when any of the following are true: The value of storage_location either isn't supported by Logging or violates the location OrgPolicy. The default_sink_config field is set, but it has an unspecified filter write mode. The value of kms_key_name is invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See Configure default settings for organizations and folders (https://docs.cloud.google.com/logging/docs/default-settings) for more information. */
 export const updateSettingsOrganizations: API.OperationMethod<
@@ -9263,7 +10034,7 @@ export const updateSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSettingsOrganizationsRequest,
   output: UpdateSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCmekSettingsOrganizationsRequest {
@@ -9289,7 +10060,12 @@ export type UpdateCmekSettingsOrganizationsResponse = CmekSettings;
 export const UpdateCmekSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CmekSettings;
 
-export type UpdateCmekSettingsOrganizationsError = DefaultErrors;
+export type UpdateCmekSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Log Router CMEK settings for the given resource.Note: CMEK for the Log Router can currently only be configured for Google Cloud organizations. Once configured, it applies to all projects and folders in the Google Cloud organization.UpdateCmekSettings fails when any of the following are true: The value of kms_key_name is invalid. The associated service account doesn't have the required roles/cloudkms.cryptoKeyEncrypterDecrypter role assigned for the key. Access to the key is disabled.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export const updateCmekSettingsOrganizations: API.OperationMethod<
@@ -9300,7 +10076,7 @@ export const updateCmekSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCmekSettingsOrganizationsRequest,
   output: UpdateCmekSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSettingsOrganizationsRequest {
@@ -9320,7 +10096,10 @@ export type GetSettingsOrganizationsResponse = Settings;
 export const GetSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type GetSettingsOrganizationsError = DefaultErrors;
+export type GetSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the settings for the given resource.Note: Settings can be retrieved for Google Cloud projects, folders, organizations, and billing accounts.See View default resource settings for Logging (https://docs.cloud.google.com/logging/docs/default-settings#view-org-settings) for more information. */
 export const getSettingsOrganizations: API.OperationMethod<
@@ -9331,7 +10110,7 @@ export const getSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsOrganizationsRequest,
   output: GetSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCmekSettingsOrganizationsRequest {
@@ -9351,7 +10130,10 @@ export type GetCmekSettingsOrganizationsResponse = CmekSettings;
 export const GetCmekSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CmekSettings;
 
-export type GetCmekSettingsOrganizationsError = DefaultErrors;
+export type GetCmekSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Logging CMEK settings for the given resource.Note: CMEK for the Log Router can be configured for Google Cloud projects, folders, organizations, and billing accounts. Once configured for an organization, it applies to all projects and folders in the Google Cloud organization.See Configure CMEK for Cloud Logging (https://docs.cloud.google.com/logging/docs/routing/managed-encryption) for more information. */
 export const getCmekSettingsOrganizations: API.OperationMethod<
@@ -9362,7 +10144,7 @@ export const getCmekSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekSettingsOrganizationsRequest,
   output: GetCmekSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsLocationsRequest {
@@ -9382,7 +10164,10 @@ export type GetOrganizationsLocationsResponse = Location;
 export const GetOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetOrganizationsLocationsError = DefaultErrors;
+export type GetOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a location. */
 export const getOrganizationsLocations: API.OperationMethod<
@@ -9393,7 +10178,7 @@ export const getOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsRequest,
   output: GetOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsRequest {
@@ -9427,7 +10212,10 @@ export type ListOrganizationsLocationsResponse = ListLocationsResponse;
 export const ListOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListOrganizationsLocationsError = DefaultErrors;
+export type ListOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listOrganizationsLocations: API.PaginatedOperationMethod<
@@ -9438,7 +10226,7 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRequest,
   output: ListOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9465,7 +10253,12 @@ export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOrganizationsLocationsOperationsError = DefaultErrors;
+export type CancelOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelOrganizationsLocationsOperations: API.OperationMethod<
@@ -9476,7 +10269,7 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsOperationsRequest,
   output: CancelOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsOperationsRequest {
@@ -9511,7 +10304,10 @@ export type ListOrganizationsLocationsOperationsResponse =
 export const ListOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOrganizationsLocationsOperationsError = DefaultErrors;
+export type ListOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
@@ -9522,7 +10318,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9546,7 +10342,10 @@ export type GetOrganizationsLocationsOperationsResponse = Operation;
 export const GetOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOrganizationsLocationsOperationsError = DefaultErrors;
+export type GetOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOperations: API.OperationMethod<
@@ -9557,7 +10356,7 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOperationsRequest,
   output: GetOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsLocationsSavedQueriesRequest {
@@ -9585,7 +10384,12 @@ export type CreateOrganizationsLocationsSavedQueriesResponse = SavedQuery;
 export const CreateOrganizationsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type CreateOrganizationsLocationsSavedQueriesError = DefaultErrors;
+export type CreateOrganizationsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SavedQuery for the user making the request. */
 export const createOrganizationsLocationsSavedQueries: API.OperationMethod<
@@ -9596,7 +10400,7 @@ export const createOrganizationsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsSavedQueriesRequest,
   output: CreateOrganizationsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsSavedQueriesRequest {
@@ -9616,7 +10420,12 @@ export type DeleteOrganizationsLocationsSavedQueriesResponse = Empty;
 export const DeleteOrganizationsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsSavedQueriesError = DefaultErrors;
+export type DeleteOrganizationsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing SavedQuery that was created by the user making the request. */
 export const deleteOrganizationsLocationsSavedQueries: API.OperationMethod<
@@ -9627,7 +10436,7 @@ export const deleteOrganizationsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsSavedQueriesRequest,
   output: DeleteOrganizationsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsSavedQueriesRequest {
@@ -9653,7 +10462,12 @@ export type PatchOrganizationsLocationsSavedQueriesResponse = SavedQuery;
 export const PatchOrganizationsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type PatchOrganizationsLocationsSavedQueriesError = DefaultErrors;
+export type PatchOrganizationsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing SavedQuery. */
 export const patchOrganizationsLocationsSavedQueries: API.OperationMethod<
@@ -9664,7 +10478,7 @@ export const patchOrganizationsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsSavedQueriesRequest,
   output: PatchOrganizationsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsSavedQueriesRequest {
@@ -9684,7 +10498,10 @@ export type GetOrganizationsLocationsSavedQueriesResponse = SavedQuery;
 export const GetOrganizationsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type GetOrganizationsLocationsSavedQueriesError = DefaultErrors;
+export type GetOrganizationsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all data associated with the requested query. */
 export const getOrganizationsLocationsSavedQueries: API.OperationMethod<
@@ -9695,7 +10512,7 @@ export const getOrganizationsLocationsSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsSavedQueriesRequest,
   output: GetOrganizationsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsSavedQueriesRequest {
@@ -9725,7 +10542,10 @@ export type ListOrganizationsLocationsSavedQueriesResponse =
 export const ListOrganizationsLocationsSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSavedQueriesResponse;
 
-export type ListOrganizationsLocationsSavedQueriesError = DefaultErrors;
+export type ListOrganizationsLocationsSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the SavedQueries that were created by the user making the request. */
 export const listOrganizationsLocationsSavedQueries: API.PaginatedOperationMethod<
@@ -9736,7 +10556,7 @@ export const listOrganizationsLocationsSavedQueries: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsSavedQueriesRequest,
   output: ListOrganizationsLocationsSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9760,7 +10580,12 @@ export type DeleteOrganizationsLocationsLogScopesResponse = Empty;
 export const DeleteOrganizationsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsLogScopesError = DefaultErrors;
+export type DeleteOrganizationsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log scope. */
 export const deleteOrganizationsLocationsLogScopes: API.OperationMethod<
@@ -9771,7 +10596,7 @@ export const deleteOrganizationsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsLogScopesRequest,
   output: DeleteOrganizationsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsLogScopesRequest {
@@ -9797,7 +10622,12 @@ export type CreateOrganizationsLocationsLogScopesResponse = LogScope;
 export const CreateOrganizationsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type CreateOrganizationsLocationsLogScopesError = DefaultErrors;
+export type CreateOrganizationsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log scope. */
 export const createOrganizationsLocationsLogScopes: API.OperationMethod<
@@ -9808,7 +10638,7 @@ export const createOrganizationsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsLogScopesRequest,
   output: CreateOrganizationsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsLogScopesRequest {
@@ -9834,7 +10664,12 @@ export type PatchOrganizationsLocationsLogScopesResponse = LogScope;
 export const PatchOrganizationsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type PatchOrganizationsLocationsLogScopesError = DefaultErrors;
+export type PatchOrganizationsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log scope. */
 export const patchOrganizationsLocationsLogScopes: API.OperationMethod<
@@ -9845,7 +10680,7 @@ export const patchOrganizationsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsLogScopesRequest,
   output: PatchOrganizationsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsLogScopesRequest {
@@ -9871,7 +10706,10 @@ export type ListOrganizationsLocationsLogScopesResponse = ListLogScopesResponse;
 export const ListOrganizationsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogScopesResponse;
 
-export type ListOrganizationsLocationsLogScopesError = DefaultErrors;
+export type ListOrganizationsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists log scopes. */
 export const listOrganizationsLocationsLogScopes: API.PaginatedOperationMethod<
@@ -9882,7 +10720,7 @@ export const listOrganizationsLocationsLogScopes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsLogScopesRequest,
   output: ListOrganizationsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9906,7 +10744,10 @@ export type GetOrganizationsLocationsLogScopesResponse = LogScope;
 export const GetOrganizationsLocationsLogScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogScope;
 
-export type GetOrganizationsLocationsLogScopesError = DefaultErrors;
+export type GetOrganizationsLocationsLogScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a log scope. */
 export const getOrganizationsLocationsLogScopes: API.OperationMethod<
@@ -9917,7 +10758,7 @@ export const getOrganizationsLocationsLogScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsLogScopesRequest,
   output: GetOrganizationsLocationsLogScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsRecentQueriesRequest {
@@ -9947,7 +10788,10 @@ export type ListOrganizationsLocationsRecentQueriesResponse =
 export const ListOrganizationsLocationsRecentQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRecentQueriesResponse;
 
-export type ListOrganizationsLocationsRecentQueriesError = DefaultErrors;
+export type ListOrganizationsLocationsRecentQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the RecentQueries that were created by the user making the request. */
 export const listOrganizationsLocationsRecentQueries: API.PaginatedOperationMethod<
@@ -9958,7 +10802,7 @@ export const listOrganizationsLocationsRecentQueries: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRecentQueriesRequest,
   output: ListOrganizationsLocationsRecentQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9982,7 +10826,10 @@ export type GetOrganizationsLocationsBucketsResponse = LogBucket;
 export const GetOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type GetOrganizationsLocationsBucketsError = DefaultErrors;
+export type GetOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a log bucket. */
 export const getOrganizationsLocationsBuckets: API.OperationMethod<
@@ -9993,7 +10840,7 @@ export const getOrganizationsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsBucketsRequest,
   output: GetOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAsyncOrganizationsLocationsBucketsRequest {
@@ -10023,7 +10870,12 @@ export type CreateAsyncOrganizationsLocationsBucketsResponse = Operation;
 export const CreateAsyncOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAsyncOrganizationsLocationsBucketsError = DefaultErrors;
+export type CreateAsyncOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket asynchronously that can be used to store log entries.After a bucket has been created, the bucket's location cannot be changed. */
 export const createAsyncOrganizationsLocationsBuckets: API.OperationMethod<
@@ -10034,7 +10886,7 @@ export const createAsyncOrganizationsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAsyncOrganizationsLocationsBucketsRequest,
   output: CreateAsyncOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsBucketsRequest {
@@ -10060,7 +10912,10 @@ export type ListOrganizationsLocationsBucketsResponse = ListBucketsResponse;
 export const ListOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBucketsResponse;
 
-export type ListOrganizationsLocationsBucketsError = DefaultErrors;
+export type ListOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists log buckets. */
 export const listOrganizationsLocationsBuckets: API.PaginatedOperationMethod<
@@ -10071,7 +10926,7 @@ export const listOrganizationsLocationsBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsBucketsRequest,
   output: ListOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10101,7 +10956,12 @@ export type PatchOrganizationsLocationsBucketsResponse = LogBucket;
 export const PatchOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type PatchOrganizationsLocationsBucketsError = DefaultErrors;
+export type PatchOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const patchOrganizationsLocationsBuckets: API.OperationMethod<
@@ -10112,7 +10972,7 @@ export const patchOrganizationsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsBucketsRequest,
   output: PatchOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAsyncOrganizationsLocationsBucketsRequest {
@@ -10138,7 +10998,12 @@ export type UpdateAsyncOrganizationsLocationsBucketsResponse = Operation;
 export const UpdateAsyncOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateAsyncOrganizationsLocationsBucketsError = DefaultErrors;
+export type UpdateAsyncOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a log bucket asynchronously.If the bucket has a lifecycle_state of DELETE_REQUESTED, then FAILED_PRECONDITION will be returned.After a bucket has been created, the bucket's location cannot be changed. */
 export const updateAsyncOrganizationsLocationsBuckets: API.OperationMethod<
@@ -10149,7 +11014,7 @@ export const updateAsyncOrganizationsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAsyncOrganizationsLocationsBucketsRequest,
   output: UpdateAsyncOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsBucketsRequest {
@@ -10175,7 +11040,12 @@ export type CreateOrganizationsLocationsBucketsResponse = LogBucket;
 export const CreateOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogBucket;
 
-export type CreateOrganizationsLocationsBucketsError = DefaultErrors;
+export type CreateOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a log bucket that can be used to store log entries. After a bucket has been created, the bucket's location cannot be changed. */
 export const createOrganizationsLocationsBuckets: API.OperationMethod<
@@ -10186,7 +11056,7 @@ export const createOrganizationsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsBucketsRequest,
   output: CreateOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsBucketsRequest {
@@ -10206,7 +11076,12 @@ export type DeleteOrganizationsLocationsBucketsResponse = Empty;
 export const DeleteOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsBucketsError = DefaultErrors;
+export type DeleteOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a log bucket.Changes the bucket's lifecycle_state to the DELETE_REQUESTED state. After 7 days, the bucket will be purged and all log entries in the bucket will be permanently deleted. */
 export const deleteOrganizationsLocationsBuckets: API.OperationMethod<
@@ -10217,7 +11092,7 @@ export const deleteOrganizationsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsBucketsRequest,
   output: DeleteOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteOrganizationsLocationsBucketsRequest {
@@ -10240,7 +11115,12 @@ export type UndeleteOrganizationsLocationsBucketsResponse = Empty;
 export const UndeleteOrganizationsLocationsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UndeleteOrganizationsLocationsBucketsError = DefaultErrors;
+export type UndeleteOrganizationsLocationsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a log bucket. A bucket that has been deleted can be undeleted within the grace period of 7 days. */
 export const undeleteOrganizationsLocationsBuckets: API.OperationMethod<
@@ -10251,7 +11131,7 @@ export const undeleteOrganizationsLocationsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteOrganizationsLocationsBucketsRequest,
   output: UndeleteOrganizationsLocationsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyOrganizationsLocationsBucketsViewsRequest {
@@ -10278,7 +11158,12 @@ export type GetIamPolicyOrganizationsLocationsBucketsViewsResponse = Policy;
 export const GetIamPolicyOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyOrganizationsLocationsBucketsViewsError = DefaultErrors;
+export type GetIamPolicyOrganizationsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyOrganizationsLocationsBucketsViews: API.OperationMethod<
@@ -10289,7 +11174,7 @@ export const getIamPolicyOrganizationsLocationsBucketsViews: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsLocationsBucketsViewsRequest,
   output: GetIamPolicyOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsBucketsViewsRequest {
@@ -10315,7 +11200,12 @@ export type PatchOrganizationsLocationsBucketsViewsResponse = LogView;
 export const PatchOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type PatchOrganizationsLocationsBucketsViewsError = DefaultErrors;
+export type PatchOrganizationsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a view on a log bucket. This method replaces the value of the filter field from the existing view with the corresponding value from the new view. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can update the view. If this occurs, please try again in a few minutes. */
 export const patchOrganizationsLocationsBucketsViews: API.OperationMethod<
@@ -10326,7 +11216,7 @@ export const patchOrganizationsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsBucketsViewsRequest,
   output: PatchOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsBucketsViewsRequest {
@@ -10352,7 +11242,10 @@ export type ListOrganizationsLocationsBucketsViewsResponse = ListViewsResponse;
 export const ListOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListViewsResponse;
 
-export type ListOrganizationsLocationsBucketsViewsError = DefaultErrors;
+export type ListOrganizationsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists views on a log bucket. */
 export const listOrganizationsLocationsBucketsViews: API.PaginatedOperationMethod<
@@ -10363,7 +11256,7 @@ export const listOrganizationsLocationsBucketsViews: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsBucketsViewsRequest,
   output: ListOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10394,7 +11287,12 @@ export type SetIamPolicyOrganizationsLocationsBucketsViewsResponse = Policy;
 export const SetIamPolicyOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyOrganizationsLocationsBucketsViewsError = DefaultErrors;
+export type SetIamPolicyOrganizationsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyOrganizationsLocationsBucketsViews: API.OperationMethod<
@@ -10405,7 +11303,7 @@ export const setIamPolicyOrganizationsLocationsBucketsViews: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsLocationsBucketsViewsRequest,
   output: SetIamPolicyOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsOrganizationsLocationsBucketsViewsRequest {
@@ -10434,7 +11332,11 @@ export const TestIamPermissionsOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsOrganizationsLocationsBucketsViewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsOrganizationsLocationsBucketsViews: API.OperationMethod<
@@ -10445,7 +11347,7 @@ export const testIamPermissionsOrganizationsLocationsBucketsViews: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsLocationsBucketsViewsRequest,
   output: TestIamPermissionsOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsBucketsViewsRequest {
@@ -10465,7 +11367,10 @@ export type GetOrganizationsLocationsBucketsViewsResponse = LogView;
 export const GetOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type GetOrganizationsLocationsBucketsViewsError = DefaultErrors;
+export type GetOrganizationsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a view on a log bucket. */
 export const getOrganizationsLocationsBucketsViews: API.OperationMethod<
@@ -10476,7 +11381,7 @@ export const getOrganizationsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsBucketsViewsRequest,
   output: GetOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsLocationsBucketsViewsRequest {
@@ -10496,7 +11401,12 @@ export type DeleteOrganizationsLocationsBucketsViewsResponse = Empty;
 export const DeleteOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsBucketsViewsError = DefaultErrors;
+export type DeleteOrganizationsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a view on a log bucket. If an UNAVAILABLE error is returned, this indicates that system is not in a state where it can delete the view. If this occurs, please try again in a few minutes. */
 export const deleteOrganizationsLocationsBucketsViews: API.OperationMethod<
@@ -10507,7 +11417,7 @@ export const deleteOrganizationsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsBucketsViewsRequest,
   output: DeleteOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsBucketsViewsRequest {
@@ -10533,7 +11443,12 @@ export type CreateOrganizationsLocationsBucketsViewsResponse = LogView;
 export const CreateOrganizationsLocationsBucketsViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogView;
 
-export type CreateOrganizationsLocationsBucketsViewsError = DefaultErrors;
+export type CreateOrganizationsLocationsBucketsViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views. */
 export const createOrganizationsLocationsBucketsViews: API.OperationMethod<
@@ -10544,7 +11459,7 @@ export const createOrganizationsLocationsBucketsViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsBucketsViewsRequest,
   output: CreateOrganizationsLocationsBucketsViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsBucketsViewsLogsRequest {
@@ -10576,7 +11491,10 @@ export type ListOrganizationsLocationsBucketsViewsLogsResponse =
 export const ListOrganizationsLocationsBucketsViewsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListOrganizationsLocationsBucketsViewsLogsError = DefaultErrors;
+export type ListOrganizationsLocationsBucketsViewsLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listOrganizationsLocationsBucketsViewsLogs: API.PaginatedOperationMethod<
@@ -10587,7 +11505,7 @@ export const listOrganizationsLocationsBucketsViewsLogs: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsBucketsViewsLogsRequest,
   output: ListOrganizationsLocationsBucketsViewsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10617,7 +11535,12 @@ export type CreateOrganizationsLocationsBucketsLinksResponse = Operation;
 export const CreateOrganizationsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateOrganizationsLocationsBucketsLinksError = DefaultErrors;
+export type CreateOrganizationsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Asynchronously creates a linked dataset in BigQuery which makes it possible to use BigQuery to read the logs stored in the log bucket. A log bucket may currently only contain one link. */
 export const createOrganizationsLocationsBucketsLinks: API.OperationMethod<
@@ -10628,7 +11551,7 @@ export const createOrganizationsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsBucketsLinksRequest,
   output: CreateOrganizationsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsBucketsLinksRequest {
@@ -10648,7 +11571,12 @@ export type DeleteOrganizationsLocationsBucketsLinksResponse = Operation;
 export const DeleteOrganizationsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteOrganizationsLocationsBucketsLinksError = DefaultErrors;
+export type DeleteOrganizationsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a link. This will also delete the corresponding BigQuery linked dataset. */
 export const deleteOrganizationsLocationsBucketsLinks: API.OperationMethod<
@@ -10659,7 +11587,7 @@ export const deleteOrganizationsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsBucketsLinksRequest,
   output: DeleteOrganizationsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsBucketsLinksRequest {
@@ -10679,7 +11607,10 @@ export type GetOrganizationsLocationsBucketsLinksResponse = Link;
 export const GetOrganizationsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Link;
 
-export type GetOrganizationsLocationsBucketsLinksError = DefaultErrors;
+export type GetOrganizationsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a link. */
 export const getOrganizationsLocationsBucketsLinks: API.OperationMethod<
@@ -10690,7 +11621,7 @@ export const getOrganizationsLocationsBucketsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsBucketsLinksRequest,
   output: GetOrganizationsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsBucketsLinksRequest {
@@ -10716,7 +11647,10 @@ export type ListOrganizationsLocationsBucketsLinksResponse = ListLinksResponse;
 export const ListOrganizationsLocationsBucketsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLinksResponse;
 
-export type ListOrganizationsLocationsBucketsLinksError = DefaultErrors;
+export type ListOrganizationsLocationsBucketsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists links. */
 export const listOrganizationsLocationsBucketsLinks: API.PaginatedOperationMethod<
@@ -10727,7 +11661,7 @@ export const listOrganizationsLocationsBucketsLinks: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsBucketsLinksRequest,
   output: ListOrganizationsLocationsBucketsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10757,7 +11691,10 @@ export type ListOrganizationsExclusionsResponse = ListExclusionsResponse;
 export const ListOrganizationsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExclusionsResponse;
 
-export type ListOrganizationsExclusionsError = DefaultErrors;
+export type ListOrganizationsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the exclusions on the _Default sink in a parent resource. */
 export const listOrganizationsExclusions: API.PaginatedOperationMethod<
@@ -10768,7 +11705,7 @@ export const listOrganizationsExclusions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsExclusionsRequest,
   output: ListOrganizationsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10792,7 +11729,10 @@ export type GetOrganizationsExclusionsResponse = LogExclusion;
 export const GetOrganizationsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type GetOrganizationsExclusionsError = DefaultErrors;
+export type GetOrganizationsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the description of an exclusion in the _Default sink. */
 export const getOrganizationsExclusions: API.OperationMethod<
@@ -10803,7 +11743,7 @@ export const getOrganizationsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsExclusionsRequest,
   output: GetOrganizationsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsExclusionsRequest {
@@ -10829,7 +11769,12 @@ export type PatchOrganizationsExclusionsResponse = LogExclusion;
 export const PatchOrganizationsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type PatchOrganizationsExclusionsError = DefaultErrors;
+export type PatchOrganizationsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes one or more properties of an existing exclusion in the _Default sink. */
 export const patchOrganizationsExclusions: API.OperationMethod<
@@ -10840,7 +11785,7 @@ export const patchOrganizationsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsExclusionsRequest,
   output: PatchOrganizationsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsExclusionsRequest {
@@ -10860,7 +11805,12 @@ export type DeleteOrganizationsExclusionsResponse = Empty;
 export const DeleteOrganizationsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsExclusionsError = DefaultErrors;
+export type DeleteOrganizationsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an exclusion in the _Default sink. */
 export const deleteOrganizationsExclusions: API.OperationMethod<
@@ -10871,7 +11821,7 @@ export const deleteOrganizationsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsExclusionsRequest,
   output: DeleteOrganizationsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsExclusionsRequest {
@@ -10894,7 +11844,12 @@ export type CreateOrganizationsExclusionsResponse = LogExclusion;
 export const CreateOrganizationsExclusionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogExclusion;
 
-export type CreateOrganizationsExclusionsError = DefaultErrors;
+export type CreateOrganizationsExclusionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource. */
 export const createOrganizationsExclusions: API.OperationMethod<
@@ -10905,7 +11860,7 @@ export const createOrganizationsExclusions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsExclusionsRequest,
   output: CreateOrganizationsExclusionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLogsRequest {
@@ -10925,7 +11880,12 @@ export type DeleteOrganizationsLogsResponse = Empty;
 export const DeleteOrganizationsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLogsError = DefaultErrors;
+export type DeleteOrganizationsLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all the log entries in a log for the global _Default Log Bucket. The log reappears if it receives new entries. Log entries written shortly before the delete operation might not be deleted. Entries received after the delete operation with a timestamp before the operation will be deleted. */
 export const deleteOrganizationsLogs: API.OperationMethod<
@@ -10936,7 +11896,7 @@ export const deleteOrganizationsLogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLogsRequest,
   output: DeleteOrganizationsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLogsRequest {
@@ -10967,7 +11927,7 @@ export type ListOrganizationsLogsResponse = ListLogsResponse;
 export const ListOrganizationsLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogsResponse;
 
-export type ListOrganizationsLogsError = DefaultErrors;
+export type ListOrganizationsLogsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the logs in projects, organizations, folders, or billing accounts. Only logs that have entries are listed. */
 export const listOrganizationsLogs: API.PaginatedOperationMethod<
@@ -10978,7 +11938,7 @@ export const listOrganizationsLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLogsRequest,
   output: ListOrganizationsLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11018,7 +11978,12 @@ export type PatchOrganizationsSinksResponse = LogSink;
 export const PatchOrganizationsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type PatchOrganizationsSinksError = DefaultErrors;
+export type PatchOrganizationsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const patchOrganizationsSinks: API.OperationMethod<
@@ -11029,7 +11994,7 @@ export const patchOrganizationsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSinksRequest,
   output: PatchOrganizationsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSinksRequest {
@@ -11058,7 +12023,7 @@ export type ListOrganizationsSinksResponse = ListSinksResponse;
 export const ListOrganizationsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSinksResponse;
 
-export type ListOrganizationsSinksError = DefaultErrors;
+export type ListOrganizationsSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists sinks. */
 export const listOrganizationsSinks: API.PaginatedOperationMethod<
@@ -11069,7 +12034,7 @@ export const listOrganizationsSinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSinksRequest,
   output: ListOrganizationsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11109,7 +12074,12 @@ export type UpdateOrganizationsSinksResponse = LogSink;
 export const UpdateOrganizationsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type UpdateOrganizationsSinksError = DefaultErrors;
+export type UpdateOrganizationsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a sink. This method replaces the values of the destination and filter fields of the existing sink with the corresponding values from the new sink.The updated sink might also have a new writer_identity; see the unique_writer_identity field. */
 export const updateOrganizationsSinks: API.OperationMethod<
@@ -11120,7 +12090,7 @@ export const updateOrganizationsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsSinksRequest,
   output: UpdateOrganizationsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSinksRequest {
@@ -11140,7 +12110,7 @@ export type GetOrganizationsSinksResponse = LogSink;
 export const GetOrganizationsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type GetOrganizationsSinksError = DefaultErrors;
+export type GetOrganizationsSinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a sink. */
 export const getOrganizationsSinks: API.OperationMethod<
@@ -11151,7 +12121,7 @@ export const getOrganizationsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSinksRequest,
   output: GetOrganizationsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsSinksRequest {
@@ -11171,7 +12141,12 @@ export type DeleteOrganizationsSinksResponse = Empty;
 export const DeleteOrganizationsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsSinksError = DefaultErrors;
+export type DeleteOrganizationsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a sink. If the sink has a unique writer_identity, then that service account is also deleted. */
 export const deleteOrganizationsSinks: API.OperationMethod<
@@ -11182,7 +12157,7 @@ export const deleteOrganizationsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSinksRequest,
   output: DeleteOrganizationsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSinksRequest {
@@ -11215,7 +12190,12 @@ export type CreateOrganizationsSinksResponse = LogSink;
 export const CreateOrganizationsSinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogSink;
 
-export type CreateOrganizationsSinksError = DefaultErrors;
+export type CreateOrganizationsSinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink. */
 export const createOrganizationsSinks: API.OperationMethod<
@@ -11226,5 +12206,5 @@ export const createOrganizationsSinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSinksRequest,
   output: CreateOrganizationsSinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

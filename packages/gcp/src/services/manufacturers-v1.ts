@@ -669,6 +669,52 @@ export const ListProductCertificationsResponse =
   }).annotate({ identifier: "ListProductCertificationsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -701,7 +747,7 @@ export const GetAccountsProductsRequest =
 export type GetAccountsProductsResponse = Product;
 export const GetAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type GetAccountsProductsError = DefaultErrors;
+export type GetAccountsProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the product from a Manufacturer Center account, including product issues. A recently updated product takes around 15 minutes to process. Changes are only visible after it has been processed. While some issues may be available once the product has been processed, other issues may take days to appear. */
 export const getAccountsProducts: API.OperationMethod<
@@ -712,7 +758,7 @@ export const getAccountsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsProductsRequest,
   output: GetAccountsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsProductsRequest {
@@ -734,7 +780,12 @@ export const DeleteAccountsProductsRequest =
 export type DeleteAccountsProductsResponse = Empty;
 export const DeleteAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsProductsError = DefaultErrors;
+export type DeleteAccountsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the product from a Manufacturer Center account. */
 export const deleteAccountsProducts: API.OperationMethod<
@@ -745,7 +796,7 @@ export const deleteAccountsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductsRequest,
   output: DeleteAccountsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsProductsRequest {
@@ -781,7 +832,7 @@ export type ListAccountsProductsResponse = ListProductsResponse;
 export const ListAccountsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductsResponse;
 
-export type ListAccountsProductsError = DefaultErrors;
+export type ListAccountsProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the products in a Manufacturer Center account. */
 export const listAccountsProducts: API.PaginatedOperationMethod<
@@ -792,7 +843,7 @@ export const listAccountsProducts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRequest,
   output: ListAccountsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -825,7 +876,12 @@ export const UpdateAccountsProductsRequest =
 export type UpdateAccountsProductsResponse = Empty;
 export const UpdateAccountsProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UpdateAccountsProductsError = DefaultErrors;
+export type UpdateAccountsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts or updates the attributes of the product in a Manufacturer Center account. Creates a product with the provided attributes. If the product already exists, then all attributes are replaced with the new ones. The checks at upload time are minimal. All required attributes need to be present for a product to be valid. Issues may show up later after the API has accepted a new upload for a product and it is possible to overwrite an existing valid product with an invalid product. To detect this, you should retrieve the product and check it for issues once the new version is available. Uploaded attributes first need to be processed before they can be retrieved. Until then, new products will be unavailable, and retrieval of previously uploaded products will return the original state of the product. */
 export const updateAccountsProducts: API.OperationMethod<
@@ -836,7 +892,7 @@ export const updateAccountsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsProductsRequest,
   output: UpdateAccountsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsLanguagesProductCertificationsRequest {
@@ -863,7 +919,10 @@ export type ListAccountsLanguagesProductCertificationsResponse =
 export const ListAccountsLanguagesProductCertificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductCertificationsResponse;
 
-export type ListAccountsLanguagesProductCertificationsError = DefaultErrors;
+export type ListAccountsLanguagesProductCertificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists product certifications from a specified certification body. This method can only be called by certification bodies. */
 export const listAccountsLanguagesProductCertifications: API.PaginatedOperationMethod<
@@ -874,7 +933,7 @@ export const listAccountsLanguagesProductCertifications: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLanguagesProductCertificationsRequest,
   output: ListAccountsLanguagesProductCertificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -905,7 +964,12 @@ export type PatchAccountsLanguagesProductCertificationsResponse =
 export const PatchAccountsLanguagesProductCertificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductCertification;
 
-export type PatchAccountsLanguagesProductCertificationsError = DefaultErrors;
+export type PatchAccountsLanguagesProductCertificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates (or creates if allow_missing = true) a product certification which links certifications with products. This method can only be called by certification bodies. */
 export const patchAccountsLanguagesProductCertifications: API.OperationMethod<
@@ -916,7 +980,7 @@ export const patchAccountsLanguagesProductCertifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsLanguagesProductCertificationsRequest,
   output: PatchAccountsLanguagesProductCertificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsLanguagesProductCertificationsRequest {
@@ -937,7 +1001,10 @@ export type GetAccountsLanguagesProductCertificationsResponse =
 export const GetAccountsLanguagesProductCertificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductCertification;
 
-export type GetAccountsLanguagesProductCertificationsError = DefaultErrors;
+export type GetAccountsLanguagesProductCertificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a product certification by its name. This method can only be called by certification bodies. */
 export const getAccountsLanguagesProductCertifications: API.OperationMethod<
@@ -948,7 +1015,7 @@ export const getAccountsLanguagesProductCertifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsLanguagesProductCertificationsRequest,
   output: GetAccountsLanguagesProductCertificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsLanguagesProductCertificationsRequest {
@@ -968,7 +1035,12 @@ export type DeleteAccountsLanguagesProductCertificationsResponse = Empty;
 export const DeleteAccountsLanguagesProductCertificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsLanguagesProductCertificationsError = DefaultErrors;
+export type DeleteAccountsLanguagesProductCertificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a product certification by its name. This method can only be called by certification bodies. */
 export const deleteAccountsLanguagesProductCertifications: API.OperationMethod<
@@ -979,5 +1051,5 @@ export const deleteAccountsLanguagesProductCertifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsLanguagesProductCertificationsRequest,
   output: DeleteAccountsLanguagesProductCertificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

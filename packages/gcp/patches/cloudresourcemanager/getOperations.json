@@ -1,6 +1,0 @@
-{
-  "errors": {
-    "Forbidden": [{ "httpStatus": 403 }],
-    "NotFound": [{ "httpStatus": 404 }]
-  }
-}

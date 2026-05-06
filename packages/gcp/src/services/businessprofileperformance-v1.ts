@@ -196,6 +196,31 @@ export const FetchMultiDailyMetricsTimeSeriesResponse =
   }).annotate({ identifier: "FetchMultiDailyMetricsTimeSeriesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -268,7 +293,10 @@ export type FetchMultiDailyMetricsTimeSeriesLocationsResponse =
 export const FetchMultiDailyMetricsTimeSeriesLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchMultiDailyMetricsTimeSeriesResponse;
 
-export type FetchMultiDailyMetricsTimeSeriesLocationsError = DefaultErrors;
+export type FetchMultiDailyMetricsTimeSeriesLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the values for each date from a given time range and optionally the sub entity type, where applicable, that are associated with the specific daily metrics. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&dailyMetrics=CALL_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31` */
 export const fetchMultiDailyMetricsTimeSeriesLocations: API.OperationMethod<
@@ -279,7 +307,7 @@ export const fetchMultiDailyMetricsTimeSeriesLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchMultiDailyMetricsTimeSeriesLocationsRequest,
   output: FetchMultiDailyMetricsTimeSeriesLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDailyMetricsTimeSeriesLocationsRequest {
@@ -382,7 +410,10 @@ export type GetDailyMetricsTimeSeriesLocationsResponse =
 export const GetDailyMetricsTimeSeriesLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetDailyMetricsTimeSeriesResponse;
 
-export type GetDailyMetricsTimeSeriesLocationsError = DefaultErrors;
+export type GetDailyMetricsTimeSeriesLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the values for each date from a given time range that are associated with the specific daily metric. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31` */
 export const getDailyMetricsTimeSeriesLocations: API.OperationMethod<
@@ -393,7 +424,7 @@ export const getDailyMetricsTimeSeriesLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDailyMetricsTimeSeriesLocationsRequest,
   output: GetDailyMetricsTimeSeriesLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLocationsSearchkeywordsImpressionsMonthlyRequest {
@@ -453,7 +484,10 @@ export type ListLocationsSearchkeywordsImpressionsMonthlyResponse =
 export const ListLocationsSearchkeywordsImpressionsMonthlyResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSearchKeywordImpressionsMonthlyResponse;
 
-export type ListLocationsSearchkeywordsImpressionsMonthlyError = DefaultErrors;
+export type ListLocationsSearchkeywordsImpressionsMonthlyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the search keywords used to find a business in search or maps. Each search keyword is accompanied by impressions which are aggregated on a monthly basis. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345/searchkeywords/impressions/monthly?monthly_range.start_month.year=2022&monthly_range.start_month.month=1&monthly_range.end_month.year=2022&monthly_range.end_month.month=3` */
 export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperationMethod<
@@ -464,7 +498,7 @@ export const listLocationsSearchkeywordsImpressionsMonthly: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsSearchkeywordsImpressionsMonthlyRequest,
   output: ListLocationsSearchkeywordsImpressionsMonthlyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

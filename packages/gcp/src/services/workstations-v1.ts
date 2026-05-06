@@ -963,6 +963,52 @@ export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -997,7 +1043,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1008,7 +1054,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1032,7 +1078,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1043,7 +1089,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -1063,7 +1109,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1074,7 +1123,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -1094,7 +1143,12 @@ export type DeleteProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -1105,7 +1159,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -1139,7 +1193,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1150,7 +1207,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1177,7 +1234,12 @@ export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -1188,7 +1250,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsWorkstationClustersRequest {
@@ -1225,7 +1287,12 @@ export type CreateProjectsLocationsWorkstationClustersResponse = Operation;
 export const CreateProjectsLocationsWorkstationClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsWorkstationClustersError = DefaultErrors;
+export type CreateProjectsLocationsWorkstationClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new workstation cluster. */
 export const createProjectsLocationsWorkstationClusters: API.OperationMethod<
@@ -1236,7 +1303,7 @@ export const createProjectsLocationsWorkstationClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkstationClustersRequest,
   output: CreateProjectsLocationsWorkstationClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsWorkstationClustersRequest {
@@ -1267,7 +1334,12 @@ export type DeleteProjectsLocationsWorkstationClustersResponse = Operation;
 export const DeleteProjectsLocationsWorkstationClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsWorkstationClustersError = DefaultErrors;
+export type DeleteProjectsLocationsWorkstationClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified workstation cluster. */
 export const deleteProjectsLocationsWorkstationClusters: API.OperationMethod<
@@ -1278,7 +1350,7 @@ export const deleteProjectsLocationsWorkstationClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkstationClustersRequest,
   output: DeleteProjectsLocationsWorkstationClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkstationClustersRequest {
@@ -1308,7 +1380,10 @@ export type ListProjectsLocationsWorkstationClustersResponse =
 export const ListProjectsLocationsWorkstationClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkstationClustersResponse;
 
-export type ListProjectsLocationsWorkstationClustersError = DefaultErrors;
+export type ListProjectsLocationsWorkstationClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all workstation clusters in the specified location. */
 export const listProjectsLocationsWorkstationClusters: API.PaginatedOperationMethod<
@@ -1319,7 +1394,7 @@ export const listProjectsLocationsWorkstationClusters: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkstationClustersRequest,
   output: ListProjectsLocationsWorkstationClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1344,7 +1419,10 @@ export type GetProjectsLocationsWorkstationClustersResponse =
 export const GetProjectsLocationsWorkstationClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkstationCluster;
 
-export type GetProjectsLocationsWorkstationClustersError = DefaultErrors;
+export type GetProjectsLocationsWorkstationClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the requested workstation cluster. */
 export const getProjectsLocationsWorkstationClusters: API.OperationMethod<
@@ -1355,7 +1433,7 @@ export const getProjectsLocationsWorkstationClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkstationClustersRequest,
   output: GetProjectsLocationsWorkstationClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsWorkstationClustersRequest {
@@ -1391,7 +1469,12 @@ export type PatchProjectsLocationsWorkstationClustersResponse = Operation;
 export const PatchProjectsLocationsWorkstationClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsWorkstationClustersError = DefaultErrors;
+export type PatchProjectsLocationsWorkstationClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing workstation cluster. */
 export const patchProjectsLocationsWorkstationClusters: API.OperationMethod<
@@ -1402,7 +1485,7 @@ export const patchProjectsLocationsWorkstationClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsWorkstationClustersRequest,
   output: PatchProjectsLocationsWorkstationClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
@@ -1424,7 +1507,9 @@ export const GetProjectsLocationsWorkstationClustersWorkstationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkstationConfig;
 
 export type GetProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the requested workstation configuration. */
 export const getProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
@@ -1435,7 +1520,7 @@ export const getProjectsLocationsWorkstationClustersWorkstationConfigs: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: GetProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
@@ -1466,7 +1551,9 @@ export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRes
   /*@__PURE__*/ /*#__PURE__*/ ListUsableWorkstationConfigsResponse;
 
 export type ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all workstation configurations in the specified cluster on which the caller has the "workstations.workstation.create" permission. */
 export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigs: API.PaginatedOperationMethod<
@@ -1479,7 +1566,7 @@ export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigs: A
     ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output:
     ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1522,7 +1609,11 @@ export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsRespons
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new workstation configuration. */
 export const createProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
@@ -1533,7 +1624,7 @@ export const createProjectsLocationsWorkstationClustersWorkstationConfigs: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: CreateProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
@@ -1571,7 +1662,11 @@ export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsResponse
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing workstation configuration. */
 export const patchProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
@@ -1582,7 +1677,7 @@ export const patchProjectsLocationsWorkstationClustersWorkstationConfigs: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: PatchProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
@@ -1613,7 +1708,9 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsResponse 
   /*@__PURE__*/ /*#__PURE__*/ ListWorkstationConfigsResponse;
 
 export type ListProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all workstation configurations in the specified cluster. */
 export const listProjectsLocationsWorkstationClustersWorkstationConfigs: API.PaginatedOperationMethod<
@@ -1624,7 +1721,7 @@ export const listProjectsLocationsWorkstationClustersWorkstationConfigs: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: ListProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1655,7 +1752,9 @@ export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsR
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
@@ -1668,7 +1767,7 @@ export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs:
     GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output:
     GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
@@ -1701,7 +1800,11 @@ export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRespons
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified workstation configuration. */
 export const deleteProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
@@ -1712,7 +1815,7 @@ export const deleteProjectsLocationsWorkstationClustersWorkstationConfigs: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output: DeleteProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
@@ -1741,7 +1844,11 @@ export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsR
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
@@ -1754,7 +1861,7 @@ export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigs:
     SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output:
     SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest {
@@ -1783,7 +1890,11 @@ export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigs: API.OperationMethod<
@@ -1796,7 +1907,7 @@ export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
     TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsRequest,
   output:
     TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -1827,7 +1938,9 @@ export const ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
   /*@__PURE__*/ /*#__PURE__*/ ListWorkstationsResponse;
 
 export type ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all Workstations using the specified workstation configuration. */
 export const listProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.PaginatedOperationMethod<
@@ -1840,7 +1953,7 @@ export const listProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
     ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     ListProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1871,7 +1984,9 @@ export const GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -1884,7 +1999,7 @@ export const getIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
     GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     GetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -1914,7 +2029,11 @@ export const DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified workstation. */
 export const deleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -1927,7 +2046,7 @@ export const deleteProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
     DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     DeleteProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -1956,7 +2075,11 @@ export const SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -1969,7 +2092,7 @@ export const setIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsW
     SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     SetIamPolicyProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -1998,7 +2121,11 @@ export const GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationC
   /*@__PURE__*/ /*#__PURE__*/ GenerateAccessTokenResponse;
 
 export type GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a short-lived credential that can be used to send authenticated and authorized traffic to a workstation. Once generated this token cannot be revoked and is good for the lifetime of the token. */
 export const generateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -2011,7 +2138,7 @@ export const generateAccessTokenProjectsLocationsWorkstationClustersWorkstationC
     GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     GenerateAccessTokenProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -2040,7 +2167,11 @@ export const TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -2053,7 +2184,7 @@ export const testIamPermissionsProjectsLocationsWorkstationClustersWorkstationCo
     TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     TestIamPermissionsProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -2078,7 +2209,11 @@ export const StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts running a workstation so that users can connect to it. */
 export const startProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -2091,7 +2226,7 @@ export const startProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
     StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     StartProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -2113,7 +2248,9 @@ export const GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstatio
   /*@__PURE__*/ /*#__PURE__*/ Workstation;
 
 export type GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the requested workstation. */
 export const getProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -2126,7 +2263,7 @@ export const getProjectsLocationsWorkstationClustersWorkstationConfigsWorkstatio
     GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     GetProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -2151,7 +2288,11 @@ export const StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops running a workstation, reducing costs. */
 export const stopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -2164,7 +2305,7 @@ export const stopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstati
     StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     StopProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -2192,7 +2333,9 @@ export const ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWor
   /*@__PURE__*/ /*#__PURE__*/ ListUsableWorkstationsResponse;
 
 export type ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all workstations using the specified workstation configuration on which the caller has the "workstations.workstations.use" permission. */
 export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.PaginatedOperationMethod<
@@ -2205,7 +2348,7 @@ export const listUsableProjectsLocationsWorkstationClustersWorkstationConfigsWor
     ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     ListUsableProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2244,7 +2387,11 @@ export const CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new workstation. */
 export const createProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -2257,7 +2404,7 @@ export const createProjectsLocationsWorkstationClustersWorkstationConfigsWorksta
     CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     CreateProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest {
@@ -2295,7 +2442,11 @@ export const PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing workstation. */
 export const patchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstations: API.OperationMethod<
@@ -2308,5 +2459,5 @@ export const patchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstat
     PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsRequest,
   output:
     PatchProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

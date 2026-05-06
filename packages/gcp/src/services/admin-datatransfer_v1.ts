@@ -145,6 +145,52 @@ export const ApplicationsListResponse =
   }).annotate({ identifier: "ApplicationsListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -183,7 +229,7 @@ export type ListTransfersResponse = DataTransfersListResponse;
 export const ListTransfersResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataTransfersListResponse;
 
-export type ListTransfersError = DefaultErrors;
+export type ListTransfersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the transfers for a customer by source user, destination user, or status. */
 export const listTransfers: API.PaginatedOperationMethod<
@@ -194,7 +240,7 @@ export const listTransfers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTransfersRequest,
   output: ListTransfersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -222,7 +268,12 @@ export const InsertTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertTransfersResponse = DataTransfer;
 export const InsertTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
 
-export type InsertTransfersError = DefaultErrors;
+export type InsertTransfersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a data transfer request. See the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for specific application requirements. */
 export const insertTransfers: API.OperationMethod<
@@ -233,7 +284,7 @@ export const insertTransfers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTransfersRequest,
   output: InsertTransfersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTransfersRequest {
@@ -254,7 +305,7 @@ export const GetTransfersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTransfersResponse = DataTransfer;
 export const GetTransfersResponse = /*@__PURE__*/ /*#__PURE__*/ DataTransfer;
 
-export type GetTransfersError = DefaultErrors;
+export type GetTransfersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a data transfer request by its resource ID. */
 export const getTransfers: API.OperationMethod<
@@ -265,7 +316,7 @@ export const getTransfers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTransfersRequest,
   output: GetTransfersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetApplicationsRequest {
@@ -288,7 +339,7 @@ export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetApplicationsResponse = Application;
 export const GetApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ Application;
 
-export type GetApplicationsError = DefaultErrors;
+export type GetApplicationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about an application for the given application ID. */
 export const getApplications: API.OperationMethod<
@@ -299,7 +350,7 @@ export const getApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationsRequest,
   output: GetApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListApplicationsRequest {
@@ -325,7 +376,7 @@ export type ListApplicationsResponse = ApplicationsListResponse;
 export const ListApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApplicationsListResponse;
 
-export type ListApplicationsError = DefaultErrors;
+export type ListApplicationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the applications available for data transfer for a customer. */
 export const listApplications: API.PaginatedOperationMethod<
@@ -336,7 +387,7 @@ export const listApplications: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApplicationsRequest,
   output: ListApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

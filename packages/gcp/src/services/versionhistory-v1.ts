@@ -186,6 +186,31 @@ export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListVersionsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -211,7 +236,7 @@ export type ListPlatformsResponse_Op = ListPlatformsResponse;
 export const ListPlatformsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListPlatformsResponse;
 
-export type ListPlatformsError = DefaultErrors;
+export type ListPlatformsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns list of platforms that are available for a given product. The resource "product" has no resource name in its name. */
 export const listPlatforms: API.PaginatedOperationMethod<
@@ -222,7 +247,7 @@ export const listPlatforms: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsRequest,
   output: ListPlatformsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -252,7 +277,7 @@ export type ListPlatformsChannelsResponse = ListChannelsResponse;
 export const ListPlatformsChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChannelsResponse;
 
-export type ListPlatformsChannelsError = DefaultErrors;
+export type ListPlatformsChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns list of channels that are available for a given platform. */
 export const listPlatformsChannels: API.PaginatedOperationMethod<
@@ -263,7 +288,7 @@ export const listPlatformsChannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsRequest,
   output: ListPlatformsChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -299,7 +324,10 @@ export type ListPlatformsChannelsVersionsResponse = ListVersionsResponse;
 export const ListPlatformsChannelsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
 
-export type ListPlatformsChannelsVersionsError = DefaultErrors;
+export type ListPlatformsChannelsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns list of version for the given platform/channel. */
 export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
@@ -310,7 +338,7 @@ export const listPlatformsChannelsVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsVersionsRequest,
   output: ListPlatformsChannelsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -347,7 +375,10 @@ export type ListPlatformsChannelsVersionsReleasesResponse =
 export const ListPlatformsChannelsVersionsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
 
-export type ListPlatformsChannelsVersionsReleasesError = DefaultErrors;
+export type ListPlatformsChannelsVersionsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns list of releases of the given version. */
 export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod<
@@ -358,7 +389,7 @@ export const listPlatformsChannelsVersionsReleases: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlatformsChannelsVersionsReleasesRequest,
   output: ListPlatformsChannelsVersionsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

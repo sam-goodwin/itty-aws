@@ -1026,6 +1026,52 @@ export const SetupFunctionUpgradeConfigRequest =
   }).annotate({ identifier: "SetupFunctionUpgradeConfigRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1060,7 +1106,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1071,7 +1117,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1101,7 +1147,12 @@ export type PatchProjectsLocationsFunctionsResponse = Operation;
 export const PatchProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsFunctionsError = DefaultErrors;
+export type PatchProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates existing function. */
 export const patchProjectsLocationsFunctions: API.OperationMethod<
@@ -1112,7 +1163,7 @@ export const patchProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsFunctionsRequest,
   output: PatchProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsFunctionsRequest {
@@ -1135,7 +1186,10 @@ export type GetProjectsLocationsFunctionsResponse = Cloudfunctions_Function;
 export const GetProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cloudfunctions_Function;
 
-export type GetProjectsLocationsFunctionsError = DefaultErrors;
+export type GetProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a function with the given name from the requested project. */
 export const getProjectsLocationsFunctions: API.OperationMethod<
@@ -1146,7 +1200,7 @@ export const getProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsFunctionsRequest,
   output: GetProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest {
@@ -1177,7 +1231,11 @@ export const CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits a function upgrade from GCF Gen1 to GCF Gen2. This action deletes the Gen1 function, leaving the Gen2 function active and manageable by the GCFv2 API. */
 export const commitFunctionUpgradeAsGen2ProjectsLocationsFunctions: API.OperationMethod<
@@ -1188,7 +1246,7 @@ export const commitFunctionUpgradeAsGen2ProjectsLocationsFunctions: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsRequest,
   output: CommitFunctionUpgradeAsGen2ProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetachFunctionProjectsLocationsFunctionsRequest {
@@ -1211,7 +1269,12 @@ export type DetachFunctionProjectsLocationsFunctionsResponse = Operation;
 export const DetachFunctionProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DetachFunctionProjectsLocationsFunctionsError = DefaultErrors;
+export type DetachFunctionProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detaches 2nd Gen function to Cloud Run function. */
 export const detachFunctionProjectsLocationsFunctions: API.OperationMethod<
@@ -1222,7 +1285,7 @@ export const detachFunctionProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachFunctionProjectsLocationsFunctionsRequest,
   output: DetachFunctionProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AbortFunctionUpgradeProjectsLocationsFunctionsRequest {
@@ -1249,7 +1312,12 @@ export type AbortFunctionUpgradeProjectsLocationsFunctionsResponse = Operation;
 export const AbortFunctionUpgradeProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AbortFunctionUpgradeProjectsLocationsFunctionsError = DefaultErrors;
+export type AbortFunctionUpgradeProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Aborts generation upgrade process for a function with the given name from the specified project. Deletes all 2nd Gen copy related configuration and resources which were created during the upgrade process. */
 export const abortFunctionUpgradeProjectsLocationsFunctions: API.OperationMethod<
@@ -1260,7 +1328,7 @@ export const abortFunctionUpgradeProjectsLocationsFunctions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AbortFunctionUpgradeProjectsLocationsFunctionsRequest,
   output: AbortFunctionUpgradeProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsFunctionsRequest {
@@ -1280,7 +1348,12 @@ export type DeleteProjectsLocationsFunctionsResponse = Operation;
 export const DeleteProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsFunctionsError = DefaultErrors;
+export type DeleteProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a function with the given name from the specified project. If the given function is used by some trigger, the trigger will be updated to remove this function. */
 export const deleteProjectsLocationsFunctions: API.OperationMethod<
@@ -1291,7 +1364,7 @@ export const deleteProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsFunctionsRequest,
   output: DeleteProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateUploadUrlProjectsLocationsFunctionsRequest {
@@ -1319,7 +1392,12 @@ export type GenerateUploadUrlProjectsLocationsFunctionsResponse =
 export const GenerateUploadUrlProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateUploadUrlResponse;
 
-export type GenerateUploadUrlProjectsLocationsFunctionsError = DefaultErrors;
+export type GenerateUploadUrlProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a signed URL for uploading a function source code. For more information about the signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls. Once the function source code upload is complete, the used signed URL should be provided in CreateFunction or UpdateFunction request as a reference to the function source code. When uploading source code to the generated signed URL, please follow these restrictions: * Source file type should be a zip file. * No credentials should be attached - the signed URLs provide access to the target bucket using internal service identity; if credentials were attached, the identity from the credentials would be used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT request, specify this header: * `content-type: application/zip` Do not specify this header: * `Authorization: Bearer YOUR_TOKEN` */
 export const generateUploadUrlProjectsLocationsFunctions: API.OperationMethod<
@@ -1330,7 +1408,7 @@ export const generateUploadUrlProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateUploadUrlProjectsLocationsFunctionsRequest,
   output: GenerateUploadUrlProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateDownloadUrlProjectsLocationsFunctionsRequest {
@@ -1358,7 +1436,12 @@ export type GenerateDownloadUrlProjectsLocationsFunctionsResponse =
 export const GenerateDownloadUrlProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateDownloadUrlResponse;
 
-export type GenerateDownloadUrlProjectsLocationsFunctionsError = DefaultErrors;
+export type GenerateDownloadUrlProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a signed URL for downloading deployed function source code. The URL is only valid for a limited period and should be used within 30 minutes of generation. For more information about the signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls */
 export const generateDownloadUrlProjectsLocationsFunctions: API.OperationMethod<
@@ -1369,7 +1452,7 @@ export const generateDownloadUrlProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateDownloadUrlProjectsLocationsFunctionsRequest,
   output: GenerateDownloadUrlProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsFunctionsRequest {
@@ -1395,7 +1478,12 @@ export type CreateProjectsLocationsFunctionsResponse = Operation;
 export const CreateProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsFunctionsError = DefaultErrors;
+export type CreateProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error. */
 export const createProjectsLocationsFunctions: API.OperationMethod<
@@ -1406,7 +1494,7 @@ export const createProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsFunctionsRequest,
   output: CreateProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest {
@@ -1437,7 +1525,11 @@ export const RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the traffic target of a function from the original 1st Gen function to the 2nd Gen copy. This is the second step of the multi step process to upgrade 1st Gen functions to 2nd Gen. After this operation, all new traffic will be served by 2nd Gen copy. */
 export const redirectFunctionUpgradeTrafficProjectsLocationsFunctions: API.OperationMethod<
@@ -1448,7 +1540,7 @@ export const redirectFunctionUpgradeTrafficProjectsLocationsFunctions: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsRequest,
   output: RedirectFunctionUpgradeTrafficProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CommitFunctionUpgradeProjectsLocationsFunctionsRequest {
@@ -1476,7 +1568,11 @@ export const CommitFunctionUpgradeProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CommitFunctionUpgradeProjectsLocationsFunctionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finalizes the upgrade after which function upgrade can not be rolled back. This is the last step of the multi step process to upgrade 1st Gen functions to 2nd Gen. Deletes all original 1st Gen related configuration and resources. */
 export const commitFunctionUpgradeProjectsLocationsFunctions: API.OperationMethod<
@@ -1487,7 +1583,7 @@ export const commitFunctionUpgradeProjectsLocationsFunctions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitFunctionUpgradeProjectsLocationsFunctionsRequest,
   output: CommitFunctionUpgradeProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsFunctionsRequest {
@@ -1514,7 +1610,12 @@ export type SetIamPolicyProjectsLocationsFunctionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsFunctionsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsFunctions: API.OperationMethod<
@@ -1525,7 +1626,7 @@ export const setIamPolicyProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsFunctionsRequest,
   output: SetIamPolicyProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsFunctionsRequest {
@@ -1550,7 +1651,10 @@ export type GetIamPolicyProjectsLocationsFunctionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsFunctionsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsFunctions: API.OperationMethod<
@@ -1561,7 +1665,7 @@ export const getIamPolicyProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsFunctionsRequest,
   output: GetIamPolicyProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsFunctionsRequest {
@@ -1589,7 +1693,12 @@ export type TestIamPermissionsProjectsLocationsFunctionsResponse =
 export const TestIamPermissionsProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsFunctionsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsFunctions: API.OperationMethod<
@@ -1600,7 +1709,7 @@ export const testIamPermissionsProjectsLocationsFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsFunctionsRequest,
   output: TestIamPermissionsProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsFunctionsRequest {
@@ -1632,7 +1741,10 @@ export type ListProjectsLocationsFunctionsResponse = ListFunctionsResponse;
 export const ListProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFunctionsResponse;
 
-export type ListProjectsLocationsFunctionsError = DefaultErrors;
+export type ListProjectsLocationsFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of functions that belong to the requested project. */
 export const listProjectsLocationsFunctions: API.PaginatedOperationMethod<
@@ -1643,7 +1755,7 @@ export const listProjectsLocationsFunctions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsFunctionsRequest,
   output: ListProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1678,7 +1790,11 @@ export const RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reverts the traffic target of a function from the 2nd Gen copy to the original 1st Gen function. After this operation, all new traffic would be served by the 1st Gen. */
 export const rollbackFunctionUpgradeTrafficProjectsLocationsFunctions: API.OperationMethod<
@@ -1689,7 +1805,7 @@ export const rollbackFunctionUpgradeTrafficProjectsLocationsFunctions: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsRequest,
   output: RollbackFunctionUpgradeTrafficProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest {
@@ -1718,7 +1834,11 @@ export const SetupFunctionUpgradeConfigProjectsLocationsFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetupFunctionUpgradeConfigProjectsLocationsFunctionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a 2nd Gen copy of the function configuration based on the 1st Gen function with the given name. This is the first step of the multi step process to upgrade 1st Gen functions to 2nd Gen. Only 2nd Gen configuration is setup as part of this request and traffic continues to be served by 1st Gen. */
 export const setupFunctionUpgradeConfigProjectsLocationsFunctions: API.OperationMethod<
@@ -1729,7 +1849,7 @@ export const setupFunctionUpgradeConfigProjectsLocationsFunctions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetupFunctionUpgradeConfigProjectsLocationsFunctionsRequest,
   output: SetupFunctionUpgradeConfigProjectsLocationsFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRuntimesRequest {
@@ -1752,7 +1872,10 @@ export type ListProjectsLocationsRuntimesResponse = ListRuntimesResponse;
 export const ListProjectsLocationsRuntimesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRuntimesResponse;
 
-export type ListProjectsLocationsRuntimesError = DefaultErrors;
+export type ListProjectsLocationsRuntimesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of runtimes that are supported for the requested project. */
 export const listProjectsLocationsRuntimes: API.OperationMethod<
@@ -1763,7 +1886,7 @@ export const listProjectsLocationsRuntimes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsRuntimesRequest,
   output: ListProjectsLocationsRuntimesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -1797,7 +1920,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1808,7 +1934,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1832,7 +1958,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1843,5 +1972,5 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

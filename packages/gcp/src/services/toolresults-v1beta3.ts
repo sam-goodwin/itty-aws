@@ -1748,6 +1748,52 @@ export const InsufficientCoverage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "InsufficientCoverage" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1771,7 +1817,7 @@ export type GetSettingsProjectsResponse = ProjectSettings;
 export const GetSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectSettings;
 
-export type GetSettingsProjectsError = DefaultErrors;
+export type GetSettingsProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the Tool Results settings for a project. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read from project */
 export const getSettingsProjects: API.OperationMethod<
@@ -1782,7 +1828,7 @@ export const getSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsProjectsRequest,
   output: GetSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InitializeSettingsProjectsRequest {
@@ -1806,7 +1852,12 @@ export type InitializeSettingsProjectsResponse = ProjectSettings;
 export const InitializeSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectSettings;
 
-export type InitializeSettingsProjectsError = DefaultErrors;
+export type InitializeSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates resources for settings which have not yet been set. Currently, this creates a single resource: a Google Cloud Storage bucket, to be used as the default bucket for this project. The bucket is created in an FTL-own storage project. Except for in rare cases, calling this method in parallel from multiple clients will only create a single bucket. In order to avoid unnecessary storage charges, the bucket is configured to automatically delete objects older than 60 days. The bucket is created with the following permissions: - Owner access for owners of central storage project (FTL-owned) - Writer access for owners/editors of customer project - Reader access for viewers of customer project The default ACL on objects created in the bucket is: - Owner access for owners of central storage project - Reader access for owners/editors/viewers of customer project See Google Cloud Storage documentation for more details. If there is already a default bucket set and the project can access the bucket, this call does nothing. However, if the project doesn't have the permission to access the bucket or the bucket is deleted, a new bucket will be created. May return any canonical error codes, including the following: - PERMISSION_DENIED - if the user is not authorized to write to project - Any error code raised by Google Cloud Storage */
 export const initializeSettingsProjects: API.OperationMethod<
@@ -1817,7 +1868,7 @@ export const initializeSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitializeSettingsProjectsRequest,
   output: InitializeSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsHistoriesRequest {
@@ -1847,7 +1898,12 @@ export type CreateProjectsHistoriesResponse = History;
 export const CreateProjectsHistoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ History;
 
-export type CreateProjectsHistoriesError = DefaultErrors;
+export type CreateProjectsHistoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist */
 export const createProjectsHistories: API.OperationMethod<
@@ -1858,7 +1914,7 @@ export const createProjectsHistories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsHistoriesRequest,
   output: CreateProjectsHistoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsHistoriesRequest {
@@ -1883,7 +1939,7 @@ export const GetProjectsHistoriesRequest =
 export type GetProjectsHistoriesResponse = History;
 export const GetProjectsHistoriesResponse = /*@__PURE__*/ /*#__PURE__*/ History;
 
-export type GetProjectsHistoriesError = DefaultErrors;
+export type GetProjectsHistoriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist */
 export const getProjectsHistories: API.OperationMethod<
@@ -1894,7 +1950,7 @@ export const getProjectsHistories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHistoriesRequest,
   output: GetProjectsHistoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsHistoriesRequest {
@@ -1928,7 +1984,7 @@ export type ListProjectsHistoriesResponse = ListHistoriesResponse;
 export const ListProjectsHistoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHistoriesResponse;
 
-export type ListProjectsHistoriesError = DefaultErrors;
+export type ListProjectsHistoriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists Histories for a given Project. The histories are sorted by modification time in descending order. The history_id key will be used to order the history with the same modification time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist */
 export const listProjectsHistories: API.PaginatedOperationMethod<
@@ -1939,7 +1995,7 @@ export const listProjectsHistories: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesRequest,
   output: ListProjectsHistoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1976,7 +2032,12 @@ export type CreateProjectsHistoriesExecutionsResponse = Execution;
 export const CreateProjectsHistoriesExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Execution;
 
-export type CreateProjectsHistoriesExecutionsError = DefaultErrors;
+export type CreateProjectsHistoriesExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Execution. The returned Execution will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist */
 export const createProjectsHistoriesExecutions: API.OperationMethod<
@@ -1987,7 +2048,7 @@ export const createProjectsHistoriesExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsHistoriesExecutionsRequest,
   output: CreateProjectsHistoriesExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsHistoriesExecutionsRequest {
@@ -2019,7 +2080,10 @@ export type ListProjectsHistoriesExecutionsResponse = ListExecutionsResponse;
 export const ListProjectsHistoriesExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExecutionsResponse;
 
-export type ListProjectsHistoriesExecutionsError = DefaultErrors;
+export type ListProjectsHistoriesExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Executions for a given History. The executions are sorted by creation_time in descending order. The execution_id key will be used to order the executions with the same creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist */
 export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
@@ -2030,7 +2094,7 @@ export const listProjectsHistoriesExecutions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsRequest,
   output: ListProjectsHistoriesExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2063,7 +2127,10 @@ export type GetProjectsHistoriesExecutionsResponse = Execution;
 export const GetProjectsHistoriesExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Execution;
 
-export type GetProjectsHistoriesExecutionsError = DefaultErrors;
+export type GetProjectsHistoriesExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist */
 export const getProjectsHistoriesExecutions: API.OperationMethod<
@@ -2074,7 +2141,7 @@ export const getProjectsHistoriesExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHistoriesExecutionsRequest,
   output: GetProjectsHistoriesExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsHistoriesExecutionsRequest {
@@ -2110,7 +2177,12 @@ export type PatchProjectsHistoriesExecutionsResponse = Execution;
 export const PatchProjectsHistoriesExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Execution;
 
-export type PatchProjectsHistoriesExecutionsError = DefaultErrors;
+export type PatchProjectsHistoriesExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Execution with the supplied partial entity. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal - NOT_FOUND - if the containing History does not exist */
 export const patchProjectsHistoriesExecutions: API.OperationMethod<
@@ -2121,7 +2193,7 @@ export const patchProjectsHistoriesExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsHistoriesExecutionsRequest,
   output: PatchProjectsHistoriesExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsHistoriesExecutionsStepsRequest {
@@ -2157,7 +2229,12 @@ export type CreateProjectsHistoriesExecutionsStepsResponse = Step;
 export const CreateProjectsHistoriesExecutionsStepsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Step;
 
-export type CreateProjectsHistoriesExecutionsStepsError = DefaultErrors;
+export type CreateProjectsHistoriesExecutionsStepsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Step. The returned Step will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist */
 export const createProjectsHistoriesExecutionsSteps: API.OperationMethod<
@@ -2168,7 +2245,7 @@ export const createProjectsHistoriesExecutionsSteps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsHistoriesExecutionsStepsRequest,
   output: CreateProjectsHistoriesExecutionsStepsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AccessibilityClustersProjectsHistoriesExecutionsStepsRequest {
@@ -2196,7 +2273,9 @@ export const AccessibilityClustersProjectsHistoriesExecutionsStepsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStepAccessibilityClustersResponse;
 
 export type AccessibilityClustersProjectsHistoriesExecutionsStepsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists accessibility clusters for a given Step May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the containing Step does not exist */
 export const accessibilityClustersProjectsHistoriesExecutionsSteps: API.OperationMethod<
@@ -2207,7 +2286,7 @@ export const accessibilityClustersProjectsHistoriesExecutionsSteps: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessibilityClustersProjectsHistoriesExecutionsStepsRequest,
   output: AccessibilityClustersProjectsHistoriesExecutionsStepsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest {
@@ -2241,7 +2320,9 @@ export const GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PerfMetricsSummary;
 
 export type GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a PerfMetricsSummary. May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not exist */
 export const getPerfMetricsSummaryProjectsHistoriesExecutionsSteps: API.OperationMethod<
@@ -2252,7 +2333,7 @@ export const getPerfMetricsSummaryProjectsHistoriesExecutionsSteps: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsRequest,
   output: GetPerfMetricsSummaryProjectsHistoriesExecutionsStepsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsHistoriesExecutionsStepsRequest {
@@ -2287,7 +2368,10 @@ export type ListProjectsHistoriesExecutionsStepsResponse = ListStepsResponse;
 export const ListProjectsHistoriesExecutionsStepsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStepsResponse;
 
-export type ListProjectsHistoriesExecutionsStepsError = DefaultErrors;
+export type ListProjectsHistoriesExecutionsStepsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Steps for a given Execution. The steps are sorted by creation_time in descending order. The step_id key will be used to order the steps with the same creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist */
 export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
@@ -2298,7 +2382,7 @@ export const listProjectsHistoriesExecutionsSteps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsRequest,
   output: ListProjectsHistoriesExecutionsStepsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2339,7 +2423,11 @@ export const PublishXunitXmlFilesProjectsHistoriesExecutionsStepsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Step;
 
 export type PublishXunitXmlFilesProjectsHistoriesExecutionsStepsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publish xml files to an existing Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g. try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing Execution does not exist */
 export const publishXunitXmlFilesProjectsHistoriesExecutionsSteps: API.OperationMethod<
@@ -2350,7 +2438,7 @@ export const publishXunitXmlFilesProjectsHistoriesExecutionsSteps: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishXunitXmlFilesProjectsHistoriesExecutionsStepsRequest,
   output: PublishXunitXmlFilesProjectsHistoriesExecutionsStepsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsHistoriesExecutionsStepsRequest {
@@ -2382,7 +2470,10 @@ export type GetProjectsHistoriesExecutionsStepsResponse = Step;
 export const GetProjectsHistoriesExecutionsStepsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Step;
 
-export type GetProjectsHistoriesExecutionsStepsError = DefaultErrors;
+export type GetProjectsHistoriesExecutionsStepsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist */
 export const getProjectsHistoriesExecutionsSteps: API.OperationMethod<
@@ -2393,7 +2484,7 @@ export const getProjectsHistoriesExecutionsSteps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHistoriesExecutionsStepsRequest,
   output: GetProjectsHistoriesExecutionsStepsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsHistoriesExecutionsStepsRequest {
@@ -2432,7 +2523,12 @@ export type PatchProjectsHistoriesExecutionsStepsResponse = Step;
 export const PatchProjectsHistoriesExecutionsStepsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Step;
 
-export type PatchProjectsHistoriesExecutionsStepsError = DefaultErrors;
+export type PatchProjectsHistoriesExecutionsStepsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Step with the supplied partial entity. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g try to upload a duplicate xml file), if the updated step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist */
 export const patchProjectsHistoriesExecutionsSteps: API.OperationMethod<
@@ -2443,7 +2539,7 @@ export const patchProjectsHistoriesExecutionsSteps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsHistoriesExecutionsStepsRequest,
   output: PatchProjectsHistoriesExecutionsStepsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsHistoriesExecutionsStepsThumbnailsRequest {
@@ -2482,7 +2578,10 @@ export type ListProjectsHistoriesExecutionsStepsThumbnailsResponse =
 export const ListProjectsHistoriesExecutionsStepsThumbnailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStepThumbnailsResponse;
 
-export type ListProjectsHistoriesExecutionsStepsThumbnailsError = DefaultErrors;
+export type ListProjectsHistoriesExecutionsStepsThumbnailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists thumbnails of images attached to a step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images do not exist */
 export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperationMethod<
@@ -2493,7 +2592,7 @@ export const listProjectsHistoriesExecutionsStepsThumbnails: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsThumbnailsRequest,
   output: ListProjectsHistoriesExecutionsStepsThumbnailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2532,7 +2631,10 @@ export type GetProjectsHistoriesExecutionsStepsTestCasesResponse = TestCase;
 export const GetProjectsHistoriesExecutionsStepsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestCase;
 
-export type GetProjectsHistoriesExecutionsStepsTestCasesError = DefaultErrors;
+export type GetProjectsHistoriesExecutionsStepsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a Test Case for a Step. Experimental test cases API. Still in active development. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing Test Case does not exist */
 export const getProjectsHistoriesExecutionsStepsTestCases: API.OperationMethod<
@@ -2543,7 +2645,7 @@ export const getProjectsHistoriesExecutionsStepsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHistoriesExecutionsStepsTestCasesRequest,
   output: GetProjectsHistoriesExecutionsStepsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsHistoriesExecutionsStepsTestCasesRequest {
@@ -2582,7 +2684,10 @@ export type ListProjectsHistoriesExecutionsStepsTestCasesResponse =
 export const ListProjectsHistoriesExecutionsStepsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTestCasesResponse;
 
-export type ListProjectsHistoriesExecutionsStepsTestCasesError = DefaultErrors;
+export type ListProjectsHistoriesExecutionsStepsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Test Cases attached to a Step. Experimental test cases API. Still in active development. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing Step does not exist */
 export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperationMethod<
@@ -2593,7 +2698,7 @@ export const listProjectsHistoriesExecutionsStepsTestCases: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsTestCasesRequest,
   output: ListProjectsHistoriesExecutionsStepsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2635,7 +2740,11 @@ export const CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ PerfMetricsSummary;
 
 export type CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a PerfMetricsSummary resource. Returns the existing one if it has already been created. May return any of the following error code(s): - NOT_FOUND - The containing Step does not exist */
 export const createProjectsHistoriesExecutionsStepsPerfMetricsSummary: API.OperationMethod<
@@ -2646,7 +2755,7 @@ export const createProjectsHistoriesExecutionsStepsPerfMetricsSummary: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryRequest,
   output: CreateProjectsHistoriesExecutionsStepsPerfMetricsSummaryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
@@ -2684,7 +2793,11 @@ export const CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PerfSampleSeries;
 
 export type CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist */
 export const createProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationMethod<
@@ -2695,7 +2808,7 @@ export const createProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
   output: CreateProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
@@ -2732,7 +2845,9 @@ export const GetProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PerfSampleSeries;
 
 export type GetProjectsHistoriesExecutionsStepsPerfSampleSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist */
 export const getProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationMethod<
@@ -2743,7 +2858,7 @@ export const getProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
   output: GetProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest {
@@ -2788,7 +2903,9 @@ export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPerfSampleSeriesResponse;
 
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists PerfSampleSeries for a given Step. The request provides an optional filter which specifies one or more PerfMetricsType to include in the result; if none returns all. The resulting PerfSampleSeries are sorted by ids. May return any of the following canonical error codes: - NOT_FOUND - The containing Step does not exist */
 export const listProjectsHistoriesExecutionsStepsPerfSampleSeries: API.OperationMethod<
@@ -2799,7 +2916,7 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeries: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsHistoriesExecutionsStepsPerfSampleSeriesRequest,
   output: ListProjectsHistoriesExecutionsStepsPerfSampleSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest {
@@ -2842,7 +2959,9 @@ export const ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResponse
   /*@__PURE__*/ /*#__PURE__*/ ListPerfSamplesResponse;
 
 export type ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Performance Samples of a given Sample Series - The list results are sorted by timestamps ascending - The default page size is 500 samples; and maximum size allowed 5000 - The response token indicates the last returned PerfSample timestamp - When the results size exceeds the page size, submit a subsequent request including the page token to return the rest of the samples up to the page limit May return any of the following canonical error codes: - OUT_OF_RANGE - The specified request page_token is out of valid range - NOT_FOUND - The containing PerfSampleSeries does not exist */
 export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.PaginatedOperationMethod<
@@ -2853,7 +2972,7 @@ export const listProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
   output: ListProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2898,7 +3017,11 @@ export const BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesR
   /*@__PURE__*/ /*#__PURE__*/ BatchCreatePerfSamplesResponse;
 
 export type BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a batch of PerfSamples - a client can submit multiple batches of Perf Samples through repeated calls to this method in order to split up a large request payload - duplicates and existing timestamp entries will be ignored. - the batch operation may partially succeed - the set of elements successfully inserted is returned in the response (omits items which already existed in the database). May return any of the following canonical error codes: - NOT_FOUND - The containing PerfSampleSeries does not exist */
 export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples: API.OperationMethod<
@@ -2911,7 +3034,7 @@ export const batchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples:
     BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest,
   output:
     BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsHistoriesExecutionsEnvironmentsRequest {
@@ -2947,7 +3070,10 @@ export type ListProjectsHistoriesExecutionsEnvironmentsResponse =
 export const ListProjectsHistoriesExecutionsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEnvironmentsResponse;
 
-export type ListProjectsHistoriesExecutionsEnvironmentsError = DefaultErrors;
+export type ListProjectsHistoriesExecutionsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Environments for a given Execution. The Environments are sorted by display name. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing Execution does not exist */
 export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperationMethod<
@@ -2958,7 +3084,7 @@ export const listProjectsHistoriesExecutionsEnvironments: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHistoriesExecutionsEnvironmentsRequest,
   output: ListProjectsHistoriesExecutionsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2994,7 +3120,10 @@ export type GetProjectsHistoriesExecutionsEnvironmentsResponse = Environment;
 export const GetProjectsHistoriesExecutionsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type GetProjectsHistoriesExecutionsEnvironmentsError = DefaultErrors;
+export type GetProjectsHistoriesExecutionsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an Environment. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Environment does not exist */
 export const getProjectsHistoriesExecutionsEnvironments: API.OperationMethod<
@@ -3005,7 +3134,7 @@ export const getProjectsHistoriesExecutionsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHistoriesExecutionsEnvironmentsRequest,
   output: GetProjectsHistoriesExecutionsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsHistoriesExecutionsClustersRequest {
@@ -3037,7 +3166,10 @@ export type GetProjectsHistoriesExecutionsClustersResponse = ScreenshotCluster;
 export const GetProjectsHistoriesExecutionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScreenshotCluster;
 
-export type GetProjectsHistoriesExecutionsClustersError = DefaultErrors;
+export type GetProjectsHistoriesExecutionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a single screenshot cluster by its ID */
 export const getProjectsHistoriesExecutionsClusters: API.OperationMethod<
@@ -3048,7 +3180,7 @@ export const getProjectsHistoriesExecutionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHistoriesExecutionsClustersRequest,
   output: GetProjectsHistoriesExecutionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsHistoriesExecutionsClustersRequest {
@@ -3078,7 +3210,10 @@ export type ListProjectsHistoriesExecutionsClustersResponse =
 export const ListProjectsHistoriesExecutionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListScreenshotClustersResponse;
 
-export type ListProjectsHistoriesExecutionsClustersError = DefaultErrors;
+export type ListProjectsHistoriesExecutionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Screenshot Clusters Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are created after the execution is finished. Clusters are created from a set of screenshots. Between any two screenshots, a matching score is calculated based off their metadata that determines how similar they are. Screenshots are placed in the cluster that has screens which have the highest matching scores. */
 export const listProjectsHistoriesExecutionsClusters: API.OperationMethod<
@@ -3089,5 +3224,5 @@ export const listProjectsHistoriesExecutionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsHistoriesExecutionsClustersRequest,
   output: ListProjectsHistoriesExecutionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -943,17 +943,14 @@ export const TestIamPermissionsRequest =
 // Errors
 // ==========================================================================
 
-export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
-  "BadRequest",
-  {
-    code: Schema.optional(Schema.Number),
-    message: Schema.String,
-    status: Schema.optional(Schema.String),
-    reason: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-  },
-) {}
-T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
 
 export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
   "Forbidden",
@@ -967,14 +964,17 @@ export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
 ) {}
 T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
 
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
-  code: Schema.optional(Schema.Number),
-  message: Schema.String,
-  status: Schema.optional(Schema.String),
-  reason: Schema.optional(Schema.String),
-  domain: Schema.optional(Schema.String),
-}) {}
-T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
 
 export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
   code: Schema.optional(Schema.Number),
@@ -1004,7 +1004,12 @@ export const CreateLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateLiensResponse = Lien;
 export const CreateLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
 
-export type CreateLiensError = DefaultErrors;
+export type CreateLiensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied. */
 export const createLiens: API.OperationMethod<
@@ -1015,7 +1020,7 @@ export const createLiens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLiensRequest,
   output: CreateLiensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLiensRequest {
@@ -1033,7 +1038,7 @@ export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetLiensResponse = Lien;
 export const GetLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
 
-export type GetLiensError = DefaultErrors;
+export type GetLiensError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get` */
 export const getLiens: API.OperationMethod<
@@ -1044,7 +1049,7 @@ export const getLiens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLiensRequest,
   output: GetLiensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteLiensRequest {
@@ -1062,7 +1067,12 @@ export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteLiensResponse = Empty;
 export const DeleteLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLiensError = DefaultErrors;
+export type DeleteLiensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.updateLiens`. */
 export const deleteLiens: API.OperationMethod<
@@ -1073,7 +1083,7 @@ export const deleteLiens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiensRequest,
   output: DeleteLiensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLiensRequest {
@@ -1098,7 +1108,7 @@ export type ListLiensResponse_Op = ListLiensResponse;
 export const ListLiensResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListLiensResponse;
 
-export type ListLiensError = DefaultErrors;
+export type ListLiensError = DefaultErrors | NotFound | Forbidden;
 
 /** List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`. */
 export const listLiens: API.PaginatedOperationMethod<
@@ -1109,7 +1119,7 @@ export const listLiens: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiensRequest,
   output: ListLiensResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1136,7 +1146,12 @@ export const UndeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UndeleteFoldersResponse = Operation;
 export const UndeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteFoldersError = DefaultErrors;
+export type UndeleteFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels the deletion request for a folder. This method may be called on a folder in any state. If the folder is in the ACTIVE state the result will be a no-op success. In order to succeed, the folder's parent must be in the ACTIVE state. In addition, reintroducing the folder into the tree must not violate folder naming, height, and fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete` permission on the identified folder. */
 export const undeleteFolders: API.OperationMethod<
@@ -1147,7 +1162,7 @@ export const undeleteFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteFoldersRequest,
   output: UndeleteFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveFoldersRequest {
@@ -1168,7 +1183,12 @@ export const MoveFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MoveFoldersResponse = Operation;
 export const MoveFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveFoldersError = DefaultErrors;
+export type MoveFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a folder under a new resource parent. Returns an `Operation` which can be used to track the progress of the folder move workflow. Upon success, the `Operation.response` field will be populated with the moved folder. Upon failure, a `FolderOperationError` categorizing the failure cause will be returned - if the failure occurs synchronously then the `FolderOperationError` will be returned in the `Status.details` field. If it occurs asynchronously, then the FolderOperation will be returned in the `Operation.error` field. In addition, the `Operation.metadata` field will be populated with a `FolderOperation` message as an aid to stateless clients. Folder moves will be rejected if they violate either the naming, height, or fanout constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move` permission on the folder's current and proposed new parent. */
 export const moveFolders: API.OperationMethod<
@@ -1179,7 +1199,7 @@ export const moveFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveFoldersRequest,
   output: MoveFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyFoldersRequest {
@@ -1205,7 +1225,12 @@ export const GetIamPolicyFoldersRequest =
 export type GetIamPolicyFoldersResponse = Policy;
 export const GetIamPolicyFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyFoldersError = DefaultErrors;
+export type GetIamPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder. */
 export const getIamPolicyFolders: API.OperationMethod<
@@ -1216,7 +1241,7 @@ export const getIamPolicyFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyFoldersRequest,
   output: GetIamPolicyFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersRequest {
@@ -1234,7 +1259,7 @@ export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFoldersResponse = Folder;
 export const GetFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type GetFoldersError = DefaultErrors;
+export type GetFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a folder identified by the supplied resource name. Valid folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder. */
 export const getFolders: API.OperationMethod<
@@ -1245,7 +1270,7 @@ export const getFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersRequest,
   output: GetFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFoldersRequest {
@@ -1263,7 +1288,12 @@ export const DeleteFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteFoldersResponse = Operation;
 export const DeleteFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteFoldersError = DefaultErrors;
+export type DeleteFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests deletion of a folder. The folder is moved into the DELETE_REQUESTED state immediately, and is deleted approximately 30 days later. This method may only be called on an empty folder, where a folder is empty if it doesn't contain any folders or projects in the ACTIVE state. If called on a folder in DELETE_REQUESTED state the operation will result in a no-op success. The caller must have `resourcemanager.folders.delete` permission on the identified folder. */
 export const deleteFolders: API.OperationMethod<
@@ -1274,7 +1304,7 @@ export const deleteFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersRequest,
   output: DeleteFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersRequest {
@@ -1298,7 +1328,12 @@ export const PatchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchFoldersResponse = Operation;
 export const PatchFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchFoldersError = DefaultErrors;
+export type PatchFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a folder, changing its `display_name`. Changes to the folder `display_name` will be rejected if they violate either the `display_name` formatting rules or the naming constraints described in the CreateFolder documentation. The folder's `display_name` must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be between 3 and 30 characters. This is captured by the regular expression: `\p{L}\p{N}{1,28}[\p{L}\p{N}]`. The caller must have `resourcemanager.folders.update` permission on the identified folder. If the update fails due to the unique name constraint then a `PreconditionFailure` explaining this violation will be returned in the Status.details field. */
 export const patchFolders: API.OperationMethod<
@@ -1309,7 +1344,7 @@ export const patchFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersRequest,
   output: PatchFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyFoldersRequest {
@@ -1335,7 +1370,12 @@ export const SetIamPolicyFoldersRequest =
 export type SetIamPolicyFoldersResponse = Policy;
 export const SetIamPolicyFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyFoldersError = DefaultErrors;
+export type SetIamPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a folder, replacing any existing policy. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder. */
 export const setIamPolicyFolders: API.OperationMethod<
@@ -1346,7 +1386,7 @@ export const setIamPolicyFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyFoldersRequest,
   output: SetIamPolicyFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsFoldersRequest {
@@ -1373,7 +1413,12 @@ export type TestIamPermissionsFoldersResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsFoldersError = DefaultErrors;
+export type TestIamPermissionsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified folder. The `resource` field should be the folder's resource name, for example: "folders/1234". There are no permissions required for making this API call. */
 export const testIamPermissionsFolders: API.OperationMethod<
@@ -1384,7 +1429,7 @@ export const testIamPermissionsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsFoldersRequest,
   output: TestIamPermissionsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersRequest {
@@ -1402,7 +1447,12 @@ export const CreateFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateFoldersResponse = Operation;
 export const CreateFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateFoldersError = DefaultErrors;
+export type CreateFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a folder in the resource hierarchy. Returns an `Operation` which can be used to track the progress of the folder creation workflow. Upon success, the `Operation.response` field will be populated with the created Folder. In order to succeed, the addition of this new folder must not violate the folder naming, height, or fanout constraints. + The folder's `display_name` must be distinct from all other folders that share its parent. + The addition of the folder must not cause the active folder hierarchy to exceed a height of 10. Note, the full active + deleted folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the folder must not cause the total number of folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the `CreateFolder` request, with status code `FAILED_PRECONDITION` and an error description. Other folder constraint violations will be communicated in the `Operation`, with the specific `PreconditionFailure` returned in the details list in the `Operation.error` field. The caller must have `resourcemanager.folders.create` permission on the identified parent. */
 export const createFolders: API.OperationMethod<
@@ -1413,7 +1463,7 @@ export const createFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersRequest,
   output: CreateFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersRequest {
@@ -1441,7 +1491,7 @@ export type ListFoldersResponse_Op = ListFoldersResponse;
 export const ListFoldersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListFoldersResponse;
 
-export type ListFoldersError = DefaultErrors;
+export type ListFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the folders that are direct descendants of supplied parent resource. `list()` provides a strongly consistent view of the folders underneath the specified parent resource. `list()` returns folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent. */
 export const listFolders: API.PaginatedOperationMethod<
@@ -1452,7 +1502,7 @@ export const listFolders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
   output: ListFoldersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1481,7 +1531,7 @@ export type SearchFoldersResponse_Op = SearchFoldersResponse;
 export const SearchFoldersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchFoldersResponse;
 
-export type SearchFoldersError = DefaultErrors;
+export type SearchFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Search for folders that match specific filter criteria. `search()` provides an eventually consistent view of the folders a user has access to which meet the specified filter criteria. This will only return folders on which the caller has the permission `resourcemanager.folders.get`. */
 export const searchFolders: API.PaginatedOperationMethod<
@@ -1492,7 +1542,7 @@ export const searchFolders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchFoldersRequest,
   output: SearchFoldersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1522,7 +1572,12 @@ export type PatchFoldersCapabilitiesResponse = Operation;
 export const PatchFoldersCapabilitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchFoldersCapabilitiesError = DefaultErrors;
+export type PatchFoldersCapabilitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Capability. */
 export const patchFoldersCapabilities: API.OperationMethod<
@@ -1533,7 +1588,7 @@ export const patchFoldersCapabilities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersCapabilitiesRequest,
   output: PatchFoldersCapabilitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersCapabilitiesRequest {
@@ -1553,7 +1608,7 @@ export type GetFoldersCapabilitiesResponse = Capability;
 export const GetFoldersCapabilitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Capability;
 
-export type GetFoldersCapabilitiesError = DefaultErrors;
+export type GetFoldersCapabilitiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the Capability identified by the supplied resource name. */
 export const getFoldersCapabilities: API.OperationMethod<
@@ -1564,7 +1619,7 @@ export const getFoldersCapabilities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersCapabilitiesRequest,
   output: GetFoldersCapabilitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEffectiveTagsRequest {
@@ -1590,7 +1645,7 @@ export type ListEffectiveTagsResponse_Op = ListEffectiveTagsResponse;
 export const ListEffectiveTagsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveTagsResponse;
 
-export type ListEffectiveTagsError = DefaultErrors;
+export type ListEffectiveTagsError = DefaultErrors | NotFound | Forbidden;
 
 /** Return a list of effective tags for the given Google Cloud resource, as specified in `parent`. */
 export const listEffectiveTags: API.PaginatedOperationMethod<
@@ -1601,7 +1656,7 @@ export const listEffectiveTags: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEffectiveTagsRequest,
   output: ListEffectiveTagsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1625,7 +1680,10 @@ export type GetLocationsTagBindingCollectionsResponse = TagBindingCollection;
 export const GetLocationsTagBindingCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TagBindingCollection;
 
-export type GetLocationsTagBindingCollectionsError = DefaultErrors;
+export type GetLocationsTagBindingCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns tag bindings directly attached to a GCP resource. */
 export const getLocationsTagBindingCollections: API.OperationMethod<
@@ -1636,7 +1694,7 @@ export const getLocationsTagBindingCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsTagBindingCollectionsRequest,
   output: GetLocationsTagBindingCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchLocationsTagBindingCollectionsRequest {
@@ -1662,7 +1720,12 @@ export type PatchLocationsTagBindingCollectionsResponse = Operation;
 export const PatchLocationsTagBindingCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchLocationsTagBindingCollectionsError = DefaultErrors;
+export type PatchLocationsTagBindingCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates tag bindings directly attached to a GCP resource. Update_mask can be kept empty or "*". */
 export const patchLocationsTagBindingCollections: API.OperationMethod<
@@ -1673,7 +1736,7 @@ export const patchLocationsTagBindingCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsTagBindingCollectionsRequest,
   output: PatchLocationsTagBindingCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsEffectiveTagBindingCollectionsRequest {
@@ -1694,7 +1757,10 @@ export type GetLocationsEffectiveTagBindingCollectionsResponse =
 export const GetLocationsEffectiveTagBindingCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EffectiveTagBindingCollection;
 
-export type GetLocationsEffectiveTagBindingCollectionsError = DefaultErrors;
+export type GetLocationsEffectiveTagBindingCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns effective tag bindings on a GCP resource. */
 export const getLocationsEffectiveTagBindingCollections: API.OperationMethod<
@@ -1705,7 +1771,7 @@ export const getLocationsEffectiveTagBindingCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsEffectiveTagBindingCollectionsRequest,
   output: GetLocationsEffectiveTagBindingCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsRequest {
@@ -1754,9 +1820,10 @@ export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsError =
   | DefaultErrors
-  | BadRequest
+  | NotFound
   | Forbidden
-  | NotFound;
+  | BadRequest
+  | Conflict;
 
 /** Marks the project identified by the specified `name` (for example, `projects/415104041262`) for deletion. This method will only affect the project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the project with GetProject, and the project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the project is not retrievable by the GetProject, ListProjects, and SearchProjects methods. The caller must have `resourcemanager.projects.delete` permissions for this project. */
 export const deleteProjects: API.OperationMethod<
@@ -1767,7 +1834,7 @@ export const deleteProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRequest,
   output: DeleteProjectsResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsRequest {
@@ -1793,9 +1860,10 @@ export const PatchProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsError =
   | DefaultErrors
-  | BadRequest
+  | NotFound
   | Forbidden
-  | NotFound;
+  | BadRequest
+  | Conflict;
 
 /** Updates the `display_name` and labels of the project identified by the specified `name` (for example, `projects/415104041262`). Deleting all labels requires an update mask for labels field. The caller must have `resourcemanager.projects.update` permission for this project. */
 export const patchProjects: API.OperationMethod<
@@ -1806,7 +1874,7 @@ export const patchProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsRequest,
   output: PatchProjectsResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsRequest {
@@ -1832,7 +1900,12 @@ export const SetIamPolicyProjectsRequest =
 export type SetIamPolicyProjectsResponse = Policy;
 export const SetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsError = DefaultErrors;
+export type SetIamPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123. CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings. Note: Removing service accounts from policies or changing their roles can render services completely inoperable. It is important to understand how the service account is being used before removing or updating its roles. The following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a project directly without any restrictions. However, to be added as an owner, a user must be invited using the Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. + Invitations to grant the owner role cannot be sent using `setIamPolicy()`; they must be sent only using the Cloud Platform Console. + If the project is not part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. If the project is part of an organization, you can remove all owners, potentially making the organization inaccessible. */
 export const setIamPolicyProjects: API.OperationMethod<
@@ -1843,7 +1916,7 @@ export const setIamPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsRequest,
   output: SetIamPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsRequest {
@@ -1865,7 +1938,12 @@ export const UndeleteProjectsRequest =
 export type UndeleteProjectsResponse = Operation;
 export const UndeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsError = DefaultErrors;
+export type UndeleteProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores the project identified by the specified `name` (for example, `projects/415104041262`). You can only use this method for a project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the project cannot be restored. The caller must have `resourcemanager.projects.undelete` permission for this project. */
 export const undeleteProjects: API.OperationMethod<
@@ -1876,7 +1954,7 @@ export const undeleteProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsRequest,
   output: UndeleteProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveProjectsRequest {
@@ -1897,7 +1975,12 @@ export const MoveProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MoveProjectsResponse = Operation;
 export const MoveProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveProjectsError = DefaultErrors;
+export type MoveProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Move a project to another place in your resource hierarchy, under a new resource parent. Returns an operation which can be used to track the process of the project move workflow. Upon success, the `Operation.response` field will be populated with the moved project. The caller must have `resourcemanager.projects.move` permission on the project, on the project's current and proposed new parent. If project has no current parent, or it currently does not have an associated organization resource, you will also need the `resourcemanager.projects.setIamPolicy` permission in the project. */
 export const moveProjects: API.OperationMethod<
@@ -1908,7 +1991,7 @@ export const moveProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveProjectsRequest,
   output: MoveProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsRequest {
@@ -1934,7 +2017,12 @@ export const GetIamPolicyProjectsRequest =
 export type GetIamPolicyProjectsResponse = Policy;
 export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsError = DefaultErrors;
+export type GetIamPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the IAM access control policy for the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123. Permission is denied if the policy or the resource do not exist. */
 export const getIamPolicyProjects: API.OperationMethod<
@@ -1945,7 +2033,7 @@ export const getIamPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsRequest,
   output: GetIamPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsRequest {
@@ -1970,7 +2058,7 @@ export type SearchProjectsResponse_Op = SearchProjectsResponse;
 export const SearchProjectsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchProjectsResponse;
 
-export type SearchProjectsError = DefaultErrors;
+export type SearchProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Search for projects that the caller has the `resourcemanager.projects.get` permission on, and also satisfy the specified query. This method returns projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. */
 export const searchProjects: API.PaginatedOperationMethod<
@@ -1981,7 +2069,7 @@ export const searchProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsRequest,
   output: SearchProjectsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2013,7 +2101,7 @@ export type ListProjectsResponse_Op = ListProjectsResponse;
 export const ListProjectsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListProjectsResponse;
 
-export type ListProjectsError = DefaultErrors;
+export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists projects that are direct children of the specified folder or organization resource. `list()` provides a strongly consistent view of the projects underneath the specified parent resource. `list()` returns projects sorted based upon the (ascending) lexical ordering of their `display_name`. The caller must have `resourcemanager.projects.list` permission on the identified parent. */
 export const listProjects: API.PaginatedOperationMethod<
@@ -2024,7 +2112,7 @@ export const listProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2055,7 +2143,12 @@ export type TestIamPermissionsProjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsError = DefaultErrors;
+export type TestIamPermissionsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified project, in the format `projects/{ProjectIdOrNumber}` e.g. projects/123.. */
 export const testIamPermissionsProjects: API.OperationMethod<
@@ -2066,7 +2159,7 @@ export const testIamPermissionsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsRequest,
   output: TestIamPermissionsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsRequest {
@@ -2086,8 +2179,9 @@ export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsError =
   | DefaultErrors
-  | BadRequest
+  | NotFound
   | Forbidden
+  | BadRequest
   | Conflict;
 
 /** Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`. */
@@ -2099,7 +2193,7 @@ export const createProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRequest,
   output: CreateProjectsResponse,
-  errors: [BadRequest, Forbidden, Conflict],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyOrganizationsRequest {
@@ -2126,7 +2220,12 @@ export type SetIamPolicyOrganizationsResponse = Policy;
 export const SetIamPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyOrganizationsError = DefaultErrors;
+export type SetIamPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on an organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization. */
 export const setIamPolicyOrganizations: API.OperationMethod<
@@ -2137,7 +2236,7 @@ export const setIamPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsRequest,
   output: SetIamPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsRequest {
@@ -2157,7 +2256,7 @@ export type GetOrganizationsResponse = Organization;
 export const GetOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Organization;
 
-export type GetOrganizationsError = DefaultErrors;
+export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches an organization resource identified by the specified resource name. */
 export const getOrganizations: API.OperationMethod<
@@ -2168,7 +2267,7 @@ export const getOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsRequest,
   output: GetOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchOrganizationsRequest {
@@ -2194,7 +2293,7 @@ export type SearchOrganizationsResponse_Op = SearchOrganizationsResponse;
 export const SearchOrganizationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchOrganizationsResponse;
 
-export type SearchOrganizationsError = DefaultErrors;
+export type SearchOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches organization resources that are visible to the user and satisfy the specified filter. This method returns organizations in an unspecified order. New organizations do not necessarily appear at the end of the results, and may take a small amount of time to appear. Search will only return organizations on which the user has the permission `resourcemanager.organizations.get` or has super admin privileges. */
 export const searchOrganizations: API.PaginatedOperationMethod<
@@ -2205,7 +2304,7 @@ export const searchOrganizations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationsRequest,
   output: SearchOrganizationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2236,7 +2335,12 @@ export type GetIamPolicyOrganizationsResponse = Policy;
 export const GetIamPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyOrganizationsError = DefaultErrors;
+export type GetIamPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an organization resource. The policy may be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, for example: "organizations/123". Authorization requires the IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization. */
 export const getIamPolicyOrganizations: API.OperationMethod<
@@ -2247,7 +2351,7 @@ export const getIamPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsRequest,
   output: GetIamPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsOrganizationsRequest {
@@ -2275,7 +2379,12 @@ export type TestIamPermissionsOrganizationsResponse =
 export const TestIamPermissionsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsOrganizationsError = DefaultErrors;
+export type TestIamPermissionsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has on the specified organization. The `resource` field should be the organization's resource name, for example: "organizations/123". There are no permissions required for making this API call. */
 export const testIamPermissionsOrganizations: API.OperationMethod<
@@ -2286,7 +2395,7 @@ export const testIamPermissionsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsRequest,
   output: TestIamPermissionsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateTagKeysRequest {
@@ -2309,7 +2418,12 @@ export const CreateTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateTagKeysResponse = Operation;
 export const CreateTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateTagKeysError = DefaultErrors;
+export type CreateTagKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 1000 TagKeys can exist under a parent at any given time. */
 export const createTagKeys: API.OperationMethod<
@@ -2320,7 +2434,7 @@ export const createTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTagKeysRequest,
   output: CreateTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsTagKeysRequest {
@@ -2347,7 +2461,12 @@ export type TestIamPermissionsTagKeysResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsTagKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsTagKeysError = DefaultErrors;
+export type TestIamPermissionsTagKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified TagKey. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". There are no permissions required for making this API call. */
 export const testIamPermissionsTagKeys: API.OperationMethod<
@@ -2358,7 +2477,7 @@ export const testIamPermissionsTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsTagKeysRequest,
   output: TestIamPermissionsTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTagKeysRequest {
@@ -2383,7 +2502,7 @@ export type ListTagKeysResponse_Op = ListTagKeysResponse;
 export const ListTagKeysResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListTagKeysResponse;
 
-export type ListTagKeysError = DefaultErrors;
+export type ListTagKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all TagKeys for a parent resource. */
 export const listTagKeys: API.PaginatedOperationMethod<
@@ -2394,7 +2513,7 @@ export const listTagKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagKeysRequest,
   output: ListTagKeysResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2424,7 +2543,12 @@ export const GetIamPolicyTagKeysRequest =
 export type GetIamPolicyTagKeysResponse = Policy;
 export const GetIamPolicyTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyTagKeysError = DefaultErrors;
+export type GetIamPolicyTagKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a TagKey. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `cloudresourcemanager.googleapis.com/tagKeys.getIamPolicy` permission on the specified TagKey. */
 export const getIamPolicyTagKeys: API.OperationMethod<
@@ -2435,7 +2559,7 @@ export const getIamPolicyTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyTagKeysRequest,
   output: GetIamPolicyTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNamespacedTagKeysRequest {
@@ -2454,7 +2578,7 @@ export const GetNamespacedTagKeysRequest =
 export type GetNamespacedTagKeysResponse = TagKey;
 export const GetNamespacedTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ TagKey;
 
-export type GetNamespacedTagKeysError = DefaultErrors;
+export type GetNamespacedTagKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a TagKey by its namespaced name. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it. */
 export const getNamespacedTagKeys: API.OperationMethod<
@@ -2465,7 +2589,7 @@ export const getNamespacedTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNamespacedTagKeysRequest,
   output: GetNamespacedTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchTagKeysRequest {
@@ -2494,7 +2618,12 @@ export const PatchTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchTagKeysResponse = Operation;
 export const PatchTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchTagKeysError = DefaultErrors;
+export type PatchTagKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the attributes of the TagKey resource. */
 export const patchTagKeys: API.OperationMethod<
@@ -2505,7 +2634,7 @@ export const patchTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTagKeysRequest,
   output: PatchTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyTagKeysRequest {
@@ -2531,7 +2660,12 @@ export const SetIamPolicyTagKeysRequest =
 export type SetIamPolicyTagKeysResponse = Policy;
 export const SetIamPolicyTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyTagKeysError = DefaultErrors;
+export type SetIamPolicyTagKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a TagKey, replacing any existing policy. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `resourcemanager.tagKeys.setIamPolicy` permission on the identified tagValue. */
 export const setIamPolicyTagKeys: API.OperationMethod<
@@ -2542,7 +2676,7 @@ export const setIamPolicyTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyTagKeysRequest,
   output: SetIamPolicyTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTagKeysRequest {
@@ -2560,7 +2694,7 @@ export const GetTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTagKeysResponse = TagKey;
 export const GetTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ TagKey;
 
-export type GetTagKeysError = DefaultErrors;
+export type GetTagKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it. */
 export const getTagKeys: API.OperationMethod<
@@ -2571,7 +2705,7 @@ export const getTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTagKeysRequest,
   output: GetTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteTagKeysRequest {
@@ -2597,7 +2731,12 @@ export const DeleteTagKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteTagKeysResponse = Operation;
 export const DeleteTagKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTagKeysError = DefaultErrors;
+export type DeleteTagKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TagKey. The TagKey cannot be deleted if it has any child TagValues. */
 export const deleteTagKeys: API.OperationMethod<
@@ -2608,7 +2747,7 @@ export const deleteTagKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTagKeysRequest,
   output: DeleteTagKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -2626,7 +2765,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors | Forbidden | NotFound;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2637,7 +2776,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [Forbidden, NotFound],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListTagValuesRequest {
@@ -2662,7 +2801,7 @@ export type ListTagValuesResponse_Op = ListTagValuesResponse;
 export const ListTagValuesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListTagValuesResponse;
 
-export type ListTagValuesError = DefaultErrors;
+export type ListTagValuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all TagValues for a specific TagKey. */
 export const listTagValues: API.PaginatedOperationMethod<
@@ -2673,7 +2812,7 @@ export const listTagValues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagValuesRequest,
   output: ListTagValuesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2702,7 +2841,12 @@ export const CreateTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type CreateTagValuesResponse = Operation;
 export const CreateTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateTagValuesError = DefaultErrors;
+export type CreateTagValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 1000 TagValues can exist under a TagKey at any given time. */
 export const createTagValues: API.OperationMethod<
@@ -2713,7 +2857,7 @@ export const createTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTagValuesRequest,
   output: CreateTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsTagValuesRequest {
@@ -2740,7 +2884,12 @@ export type TestIamPermissionsTagValuesResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsTagValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsTagValuesError = DefaultErrors;
+export type TestIamPermissionsTagValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified TagValue. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. There are no permissions required for making this API call. */
 export const testIamPermissionsTagValues: API.OperationMethod<
@@ -2751,7 +2900,7 @@ export const testIamPermissionsTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsTagValuesRequest,
   output: TestIamPermissionsTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyTagValuesRequest {
@@ -2777,7 +2926,12 @@ export const GetIamPolicyTagValuesRequest =
 export type GetIamPolicyTagValuesResponse = Policy;
 export const GetIamPolicyTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyTagValuesError = DefaultErrors;
+export type GetIamPolicyTagValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a TagValue. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have the `cloudresourcemanager.googleapis.com/tagValues.getIamPolicy` permission on the identified TagValue to get the access control policy. */
 export const getIamPolicyTagValues: API.OperationMethod<
@@ -2788,7 +2942,7 @@ export const getIamPolicyTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyTagValuesRequest,
   output: GetIamPolicyTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNamespacedTagValuesRequest {
@@ -2808,7 +2962,7 @@ export type GetNamespacedTagValuesResponse = TagValue;
 export const GetNamespacedTagValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TagValue;
 
-export type GetNamespacedTagValuesError = DefaultErrors;
+export type GetNamespacedTagValuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a TagValue by its namespaced name. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it. */
 export const getNamespacedTagValues: API.OperationMethod<
@@ -2819,7 +2973,7 @@ export const getNamespacedTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNamespacedTagValuesRequest,
   output: GetNamespacedTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchTagValuesRequest {
@@ -2848,7 +3002,12 @@ export const PatchTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchTagValuesResponse = Operation;
 export const PatchTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchTagValuesError = DefaultErrors;
+export type PatchTagValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the attributes of the TagValue resource. */
 export const patchTagValues: API.OperationMethod<
@@ -2859,7 +3018,7 @@ export const patchTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTagValuesRequest,
   output: PatchTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyTagValuesRequest {
@@ -2885,7 +3044,12 @@ export const SetIamPolicyTagValuesRequest =
 export type SetIamPolicyTagValuesResponse = Policy;
 export const SetIamPolicyTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyTagValuesError = DefaultErrors;
+export type SetIamPolicyTagValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a TagValue, replacing any existing policy. The `resource` field should be the TagValue's resource name. For example: `tagValues/1234`. The caller must have `resourcemanager.tagValues.setIamPolicy` permission on the identified tagValue. */
 export const setIamPolicyTagValues: API.OperationMethod<
@@ -2896,7 +3060,7 @@ export const setIamPolicyTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyTagValuesRequest,
   output: SetIamPolicyTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTagValuesRequest {
@@ -2914,7 +3078,7 @@ export const GetTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTagValuesResponse = TagValue;
 export const GetTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ TagValue;
 
-export type GetTagValuesError = DefaultErrors;
+export type GetTagValuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it. */
 export const getTagValues: API.OperationMethod<
@@ -2925,7 +3089,7 @@ export const getTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTagValuesRequest,
   output: GetTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteTagValuesRequest {
@@ -2953,7 +3117,12 @@ export const DeleteTagValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteTagValuesResponse = Operation;
 export const DeleteTagValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTagValuesError = DefaultErrors;
+export type DeleteTagValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TagValue. The TagValue cannot have any bindings when it is deleted. */
 export const deleteTagValues: API.OperationMethod<
@@ -2964,7 +3133,7 @@ export const deleteTagValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTagValuesRequest,
   output: DeleteTagValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTagValuesTagHoldsRequest {
@@ -2989,7 +3158,12 @@ export type DeleteTagValuesTagHoldsResponse = Operation;
 export const DeleteTagValuesTagHoldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTagValuesTagHoldsError = DefaultErrors;
+export type DeleteTagValuesTagHoldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TagHold. */
 export const deleteTagValuesTagHolds: API.OperationMethod<
@@ -3000,7 +3174,7 @@ export const deleteTagValuesTagHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTagValuesTagHoldsRequest,
   output: DeleteTagValuesTagHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTagValuesTagHoldsRequest {
@@ -3029,7 +3203,7 @@ export type ListTagValuesTagHoldsResponse = ListTagHoldsResponse;
 export const ListTagValuesTagHoldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTagHoldsResponse;
 
-export type ListTagValuesTagHoldsError = DefaultErrors;
+export type ListTagValuesTagHoldsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists TagHolds under a TagValue. */
 export const listTagValuesTagHolds: API.PaginatedOperationMethod<
@@ -3040,7 +3214,7 @@ export const listTagValuesTagHolds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagValuesTagHoldsRequest,
   output: ListTagValuesTagHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3072,7 +3246,12 @@ export type CreateTagValuesTagHoldsResponse = Operation;
 export const CreateTagValuesTagHoldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateTagValuesTagHoldsError = DefaultErrors;
+export type CreateTagValuesTagHoldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TagHold. Returns ALREADY_EXISTS if a TagHold with the same resource and origin exists under the same TagValue. */
 export const createTagValuesTagHolds: API.OperationMethod<
@@ -3083,7 +3262,7 @@ export const createTagValuesTagHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTagValuesTagHoldsRequest,
   output: CreateTagValuesTagHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTagBindingsRequest {
@@ -3102,7 +3281,12 @@ export const DeleteTagBindingsRequest =
 export type DeleteTagBindingsResponse = Operation;
 export const DeleteTagBindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTagBindingsError = DefaultErrors;
+export type DeleteTagBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TagBinding. */
 export const deleteTagBindings: API.OperationMethod<
@@ -3113,7 +3297,7 @@ export const deleteTagBindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTagBindingsRequest,
   output: DeleteTagBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTagBindingsRequest {
@@ -3140,7 +3324,7 @@ export type ListTagBindingsResponse_Op = ListTagBindingsResponse;
 export const ListTagBindingsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListTagBindingsResponse;
 
-export type ListTagBindingsError = DefaultErrors;
+export type ListTagBindingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the TagBindings for the given Google Cloud resource, as specified with `parent`. NOTE: The `parent` field is expected to be a full resource name: https://cloud.google.com/apis/design/resource_names#full_resource_name */
 export const listTagBindings: API.PaginatedOperationMethod<
@@ -3151,7 +3335,7 @@ export const listTagBindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTagBindingsRequest,
   output: ListTagBindingsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3179,7 +3363,12 @@ export const CreateTagBindingsRequest =
 export type CreateTagBindingsResponse = Operation;
 export const CreateTagBindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateTagBindingsError = DefaultErrors;
+export type CreateTagBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TagBinding between a TagValue and a Google Cloud resource. */
 export const createTagBindings: API.OperationMethod<
@@ -3190,5 +3379,5 @@ export const createTagBindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTagBindingsRequest,
   output: CreateTagBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

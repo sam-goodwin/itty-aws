@@ -250,6 +250,52 @@ export const ListRegionalInventoriesResponse =
   }).annotate({ identifier: "ListRegionalInventoriesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -277,7 +323,12 @@ export type InsertAccountsProductsLocalInventoriesResponse = LocalInventory;
 export const InsertAccountsProductsLocalInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LocalInventory;
 
-export type InsertAccountsProductsLocalInventoriesError = DefaultErrors;
+export type InsertAccountsProductsLocalInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a `LocalInventory` resource to a product in your merchant account. Replaces the full `LocalInventory` resource if an entry with the same `storeCode` already exists for the product. It might take up to 30 minutes for the new or updated `LocalInventory` resource to appear in products. */
 export const insertAccountsProductsLocalInventories: API.OperationMethod<
@@ -288,7 +339,7 @@ export const insertAccountsProductsLocalInventories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsProductsLocalInventoriesRequest,
   output: InsertAccountsProductsLocalInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsProductsLocalInventoriesRequest {
@@ -318,7 +369,10 @@ export type ListAccountsProductsLocalInventoriesResponse =
 export const ListAccountsProductsLocalInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocalInventoriesResponse;
 
-export type ListAccountsProductsLocalInventoriesError = DefaultErrors;
+export type ListAccountsProductsLocalInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the `LocalInventory` resources for the given product in your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results. `LocalInventory` resources are listed per product for a given account. */
 export const listAccountsProductsLocalInventories: API.PaginatedOperationMethod<
@@ -329,7 +383,7 @@ export const listAccountsProductsLocalInventories: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsLocalInventoriesRequest,
   output: ListAccountsProductsLocalInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -353,7 +407,12 @@ export type DeleteAccountsProductsLocalInventoriesResponse = Empty;
 export const DeleteAccountsProductsLocalInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsProductsLocalInventoriesError = DefaultErrors;
+export type DeleteAccountsProductsLocalInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified `LocalInventory` from the given product in your merchant account. It might take a up to an hour for the `LocalInventory` to be deleted from the specific product. Once you have received a successful delete response, wait for that period before attempting a delete again. */
 export const deleteAccountsProductsLocalInventories: API.OperationMethod<
@@ -364,7 +423,7 @@ export const deleteAccountsProductsLocalInventories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductsLocalInventoriesRequest,
   output: DeleteAccountsProductsLocalInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAccountsProductsRegionalInventoriesRequest {
@@ -392,7 +451,12 @@ export type InsertAccountsProductsRegionalInventoriesResponse =
 export const InsertAccountsProductsRegionalInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionalInventory;
 
-export type InsertAccountsProductsRegionalInventoriesError = DefaultErrors;
+export type InsertAccountsProductsRegionalInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a `RegionalInventory` to a given product in your merchant account. Replaces the full `RegionalInventory` resource if an entry with the same `region` already exists for the product. It might take up to 30 minutes for the new or updated `RegionalInventory` resource to appear in products. */
 export const insertAccountsProductsRegionalInventories: API.OperationMethod<
@@ -403,7 +467,7 @@ export const insertAccountsProductsRegionalInventories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsProductsRegionalInventoriesRequest,
   output: InsertAccountsProductsRegionalInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsProductsRegionalInventoriesRequest {
@@ -433,7 +497,10 @@ export type ListAccountsProductsRegionalInventoriesResponse =
 export const ListAccountsProductsRegionalInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRegionalInventoriesResponse;
 
-export type ListAccountsProductsRegionalInventoriesError = DefaultErrors;
+export type ListAccountsProductsRegionalInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the `RegionalInventory` resources for the given product in your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results. `RegionalInventory` resources are listed per product for a given account. */
 export const listAccountsProductsRegionalInventories: API.PaginatedOperationMethod<
@@ -444,7 +511,7 @@ export const listAccountsProductsRegionalInventories: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProductsRegionalInventoriesRequest,
   output: ListAccountsProductsRegionalInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -468,7 +535,12 @@ export type DeleteAccountsProductsRegionalInventoriesResponse = Empty;
 export const DeleteAccountsProductsRegionalInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsProductsRegionalInventoriesError = DefaultErrors;
+export type DeleteAccountsProductsRegionalInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified `RegionalInventory` resource from the given product in your merchant account. It might take up to an hour for the `RegionalInventory` to be deleted from the specific product. Once you have received a successful delete response, wait for that period before attempting a delete again. */
 export const deleteAccountsProductsRegionalInventories: API.OperationMethod<
@@ -479,5 +551,5 @@ export const deleteAccountsProductsRegionalInventories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsProductsRegionalInventoriesRequest,
   output: DeleteAccountsProductsRegionalInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

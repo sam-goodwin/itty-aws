@@ -1128,6 +1128,52 @@ export const SeekResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "SeekResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1155,7 +1201,12 @@ export type SetIamPolicyProjectsTopicsResponse = Policy;
 export const SetIamPolicyProjectsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsTopicsError = DefaultErrors;
+export type SetIamPolicyProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsTopics: API.OperationMethod<
@@ -1166,7 +1217,7 @@ export const setIamPolicyProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsTopicsRequest,
   output: SetIamPolicyProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsTopicsRequest {
@@ -1191,7 +1242,10 @@ export type GetIamPolicyProjectsTopicsResponse = Policy;
 export const GetIamPolicyProjectsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsTopicsError = DefaultErrors;
+export type GetIamPolicyProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsTopics: API.OperationMethod<
@@ -1202,7 +1256,7 @@ export const getIamPolicyProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsTopicsRequest,
   output: GetIamPolicyProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsTopicsRequest {
@@ -1230,7 +1284,12 @@ export type TestIamPermissionsProjectsTopicsResponse =
 export const TestIamPermissionsProjectsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsTopicsError = DefaultErrors;
+export type TestIamPermissionsProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsTopics: API.OperationMethod<
@@ -1241,7 +1300,7 @@ export const testIamPermissionsProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsTopicsRequest,
   output: TestIamPermissionsProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsTopicsRequest {
@@ -1263,7 +1322,12 @@ export const CreateProjectsTopicsRequest =
 export type CreateProjectsTopicsResponse = Topic;
 export const CreateProjectsTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type CreateProjectsTopicsError = DefaultErrors;
+export type CreateProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the given topic with the given name. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). */
 export const createProjectsTopics: API.OperationMethod<
@@ -1274,7 +1338,7 @@ export const createProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTopicsRequest,
   output: CreateProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTopicsRequest {
@@ -1296,7 +1360,12 @@ export const PatchProjectsTopicsRequest =
 export type PatchProjectsTopicsResponse = Topic;
 export const PatchProjectsTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type PatchProjectsTopicsError = DefaultErrors;
+export type PatchProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing topic by updating the fields specified in the update mask. Note that certain properties of a topic are not modifiable. */
 export const patchProjectsTopics: API.OperationMethod<
@@ -1307,7 +1376,7 @@ export const patchProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTopicsRequest,
   output: PatchProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishProjectsTopicsRequest {
@@ -1330,7 +1399,12 @@ export type PublishProjectsTopicsResponse = PublishResponse;
 export const PublishProjectsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublishResponse;
 
-export type PublishProjectsTopicsError = DefaultErrors;
+export type PublishProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does not exist. */
 export const publishProjectsTopics: API.OperationMethod<
@@ -1341,7 +1415,7 @@ export const publishProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishProjectsTopicsRequest,
   output: PublishProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTopicsRequest {
@@ -1360,7 +1434,7 @@ export const GetProjectsTopicsRequest =
 export type GetProjectsTopicsResponse = Topic;
 export const GetProjectsTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type GetProjectsTopicsError = DefaultErrors;
+export type GetProjectsTopicsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the configuration of a topic. */
 export const getProjectsTopics: API.OperationMethod<
@@ -1371,7 +1445,7 @@ export const getProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTopicsRequest,
   output: GetProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsTopicsRequest {
@@ -1397,7 +1471,7 @@ export type ListProjectsTopicsResponse = ListTopicsResponse;
 export const ListProjectsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTopicsResponse;
 
-export type ListProjectsTopicsError = DefaultErrors;
+export type ListProjectsTopicsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists matching topics. */
 export const listProjectsTopics: API.PaginatedOperationMethod<
@@ -1408,7 +1482,7 @@ export const listProjectsTopics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsRequest,
   output: ListProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1431,7 +1505,12 @@ export const DeleteProjectsTopicsRequest =
 export type DeleteProjectsTopicsResponse = Empty;
 export const DeleteProjectsTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTopicsError = DefaultErrors;
+export type DeleteProjectsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the topic with the given name. Returns `NOT_FOUND` if the topic does not exist. After a topic is deleted, a new topic may be created with the same name; this is an entirely new topic with none of the old configuration or subscriptions. Existing subscriptions to this topic are not deleted, but their `topic` field is set to `_deleted-topic_`. */
 export const deleteProjectsTopics: API.OperationMethod<
@@ -1442,7 +1521,7 @@ export const deleteProjectsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTopicsRequest,
   output: DeleteProjectsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTopicsSubscriptionsRequest {
@@ -1469,7 +1548,10 @@ export type ListProjectsTopicsSubscriptionsResponse =
 export const ListProjectsTopicsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTopicSubscriptionsResponse;
 
-export type ListProjectsTopicsSubscriptionsError = DefaultErrors;
+export type ListProjectsTopicsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the names of the attached subscriptions on this topic. */
 export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
@@ -1480,7 +1562,7 @@ export const listProjectsTopicsSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsSubscriptionsRequest,
   output: ListProjectsTopicsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1510,7 +1592,10 @@ export type ListProjectsTopicsSnapshotsResponse = ListTopicSnapshotsResponse;
 export const ListProjectsTopicsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTopicSnapshotsResponse;
 
-export type ListProjectsTopicsSnapshotsError = DefaultErrors;
+export type ListProjectsTopicsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the names of the snapshots on this topic. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
 export const listProjectsTopicsSnapshots: API.PaginatedOperationMethod<
@@ -1521,7 +1606,7 @@ export const listProjectsTopicsSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTopicsSnapshotsRequest,
   output: ListProjectsTopicsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1552,7 +1637,12 @@ export type SetIamPolicyProjectsSubscriptionsResponse = Policy;
 export const SetIamPolicyProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsSubscriptionsError = DefaultErrors;
+export type SetIamPolicyProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
@@ -1563,7 +1653,7 @@ export const setIamPolicyProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsSubscriptionsRequest,
   output: SetIamPolicyProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsSubscriptionsRequest {
@@ -1588,7 +1678,10 @@ export type GetIamPolicyProjectsSubscriptionsResponse = Policy;
 export const GetIamPolicyProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsSubscriptionsError = DefaultErrors;
+export type GetIamPolicyProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsSubscriptions: API.OperationMethod<
@@ -1599,7 +1692,7 @@ export const getIamPolicyProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsSubscriptionsRequest,
   output: GetIamPolicyProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsSubscriptionsRequest {
@@ -1627,7 +1720,12 @@ export type TestIamPermissionsProjectsSubscriptionsResponse =
 export const TestIamPermissionsProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsSubscriptionsError = DefaultErrors;
+export type TestIamPermissionsProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
@@ -1638,7 +1736,7 @@ export const testIamPermissionsProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsSubscriptionsRequest,
   output: TestIamPermissionsProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetachProjectsSubscriptionsRequest {
@@ -1658,7 +1756,12 @@ export type DetachProjectsSubscriptionsResponse = DetachSubscriptionResponse;
 export const DetachProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DetachSubscriptionResponse;
 
-export type DetachProjectsSubscriptionsError = DefaultErrors;
+export type DetachProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detaches a subscription from this topic. All messages retained in the subscription are dropped. Subsequent `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will stop. */
 export const detachProjectsSubscriptions: API.OperationMethod<
@@ -1669,7 +1772,7 @@ export const detachProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachProjectsSubscriptionsRequest,
   output: DetachProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsSubscriptionsRequest {
@@ -1692,7 +1795,12 @@ export type CreateProjectsSubscriptionsResponse = Subscription;
 export const CreateProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type CreateProjectsSubscriptionsError = DefaultErrors;
+export type CreateProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request. */
 export const createProjectsSubscriptions: API.OperationMethod<
@@ -1703,7 +1811,7 @@ export const createProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSubscriptionsRequest,
   output: CreateProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSubscriptionsRequest {
@@ -1723,7 +1831,10 @@ export type GetProjectsSubscriptionsResponse = Subscription;
 export const GetProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetProjectsSubscriptionsError = DefaultErrors;
+export type GetProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the configuration details of a subscription. */
 export const getProjectsSubscriptions: API.OperationMethod<
@@ -1734,7 +1845,7 @@ export const getProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSubscriptionsRequest,
   output: GetProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsSubscriptionsRequest {
@@ -1757,7 +1868,12 @@ export type PatchProjectsSubscriptionsResponse = Subscription;
 export const PatchProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type PatchProjectsSubscriptionsError = DefaultErrors;
+export type PatchProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing subscription by updating the fields specified in the update mask. Note that certain properties of a subscription, such as its topic, are not modifiable. */
 export const patchProjectsSubscriptions: API.OperationMethod<
@@ -1768,7 +1884,7 @@ export const patchProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSubscriptionsRequest,
   output: PatchProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSubscriptionsRequest {
@@ -1794,7 +1910,10 @@ export type ListProjectsSubscriptionsResponse = ListSubscriptionsResponse;
 export const ListProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
 
-export type ListProjectsSubscriptionsError = DefaultErrors;
+export type ListProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists matching subscriptions. */
 export const listProjectsSubscriptions: API.PaginatedOperationMethod<
@@ -1805,7 +1924,7 @@ export const listProjectsSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSubscriptionsRequest,
   output: ListProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1829,7 +1948,12 @@ export type DeleteProjectsSubscriptionsResponse = Empty;
 export const DeleteProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSubscriptionsError = DefaultErrors;
+export type DeleteProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing subscription. All messages retained in the subscription are immediately dropped. Calls to `Pull` after deletion will return `NOT_FOUND`. After a subscription is deleted, a new one may be created with the same name, but the new one has no association with the old subscription or its topic unless the same topic is specified. */
 export const deleteProjectsSubscriptions: API.OperationMethod<
@@ -1840,7 +1964,7 @@ export const deleteProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSubscriptionsRequest,
   output: DeleteProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyAckDeadlineProjectsSubscriptionsRequest {
@@ -1867,7 +1991,12 @@ export type ModifyAckDeadlineProjectsSubscriptionsResponse = Empty;
 export const ModifyAckDeadlineProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ModifyAckDeadlineProjectsSubscriptionsError = DefaultErrors;
+export type ModifyAckDeadlineProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the ack deadline for a specific message. This method is useful to indicate that more time is needed to process a message by the subscriber, or to make the message available for redelivery if the processing was interrupted. Note that this does not modify the subscription-level `ackDeadlineSeconds` used for subsequent messages. */
 export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
@@ -1878,7 +2007,7 @@ export const modifyAckDeadlineProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyAckDeadlineProjectsSubscriptionsRequest,
   output: ModifyAckDeadlineProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcknowledgeProjectsSubscriptionsRequest {
@@ -1905,7 +2034,12 @@ export type AcknowledgeProjectsSubscriptionsResponse = Empty;
 export const AcknowledgeProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AcknowledgeProjectsSubscriptionsError = DefaultErrors;
+export type AcknowledgeProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages from the subscription. Acknowledging a message whose ack deadline has expired may succeed, but such a message may be redelivered later. Acknowledging a message more than once will not result in an error. */
 export const acknowledgeProjectsSubscriptions: API.OperationMethod<
@@ -1916,7 +2050,7 @@ export const acknowledgeProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgeProjectsSubscriptionsRequest,
   output: AcknowledgeProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PullProjectsSubscriptionsRequest {
@@ -1939,7 +2073,12 @@ export type PullProjectsSubscriptionsResponse = PullResponse;
 export const PullProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PullResponse;
 
-export type PullProjectsSubscriptionsError = DefaultErrors;
+export type PullProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pulls messages from the server. */
 export const pullProjectsSubscriptions: API.OperationMethod<
@@ -1950,7 +2089,7 @@ export const pullProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PullProjectsSubscriptionsRequest,
   output: PullProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyPushConfigProjectsSubscriptionsRequest {
@@ -1977,7 +2116,12 @@ export type ModifyPushConfigProjectsSubscriptionsResponse = Empty;
 export const ModifyPushConfigProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ModifyPushConfigProjectsSubscriptionsError = DefaultErrors;
+export type ModifyPushConfigProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the `PushConfig` for a specified subscription. This may be used to change a push subscription to a pull one (signified by an empty `PushConfig`) or vice versa, or change the endpoint URL and other attributes of a push subscription. Messages will accumulate for delivery continuously through the call regardless of changes to the `PushConfig`. */
 export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
@@ -1988,7 +2132,7 @@ export const modifyPushConfigProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyPushConfigProjectsSubscriptionsRequest,
   output: ModifyPushConfigProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SeekProjectsSubscriptionsRequest {
@@ -2011,7 +2155,12 @@ export type SeekProjectsSubscriptionsResponse = SeekResponse;
 export const SeekProjectsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SeekResponse;
 
-export type SeekProjectsSubscriptionsError = DefaultErrors;
+export type SeekProjectsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided in the request. Snapshots are used in [Seek] (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. Note that both the subscription and the snapshot must be on the same topic. */
 export const seekProjectsSubscriptions: API.OperationMethod<
@@ -2022,7 +2171,7 @@ export const seekProjectsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SeekProjectsSubscriptionsRequest,
   output: SeekProjectsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsSnapshotsRequest {
@@ -2049,7 +2198,12 @@ export type SetIamPolicyProjectsSnapshotsResponse = Policy;
 export const SetIamPolicyProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsSnapshotsError = DefaultErrors;
+export type SetIamPolicyProjectsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsSnapshots: API.OperationMethod<
@@ -2060,7 +2214,7 @@ export const setIamPolicyProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsSnapshotsRequest,
   output: SetIamPolicyProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsSnapshotsRequest {
@@ -2085,7 +2239,10 @@ export type GetIamPolicyProjectsSnapshotsResponse = Policy;
 export const GetIamPolicyProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsSnapshotsError = DefaultErrors;
+export type GetIamPolicyProjectsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsSnapshots: API.OperationMethod<
@@ -2096,7 +2253,7 @@ export const getIamPolicyProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsSnapshotsRequest,
   output: GetIamPolicyProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsSnapshotsRequest {
@@ -2124,7 +2281,12 @@ export type TestIamPermissionsProjectsSnapshotsResponse =
 export const TestIamPermissionsProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsSnapshotsError = DefaultErrors;
+export type TestIamPermissionsProjectsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSnapshots: API.OperationMethod<
@@ -2135,7 +2297,7 @@ export const testIamPermissionsProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsSnapshotsRequest,
   output: TestIamPermissionsProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSnapshotsRequest {
@@ -2155,7 +2317,7 @@ export type GetProjectsSnapshotsResponse = Snapshot;
 export const GetProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type GetProjectsSnapshotsError = DefaultErrors;
+export type GetProjectsSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the configuration details of a snapshot. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
 export const getProjectsSnapshots: API.OperationMethod<
@@ -2166,7 +2328,7 @@ export const getProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSnapshotsRequest,
   output: GetProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsSnapshotsRequest {
@@ -2192,7 +2354,7 @@ export type ListProjectsSnapshotsResponse = ListSnapshotsResponse;
 export const ListProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
 
-export type ListProjectsSnapshotsError = DefaultErrors;
+export type ListProjectsSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the existing snapshots. Snapshots are used in [Seek]( https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
 export const listProjectsSnapshots: API.PaginatedOperationMethod<
@@ -2203,7 +2365,7 @@ export const listProjectsSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSnapshotsRequest,
   output: ListProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2230,7 +2392,12 @@ export type CreateProjectsSnapshotsResponse = Snapshot;
 export const CreateProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type CreateProjectsSnapshotsError = DefaultErrors;
+export type CreateProjectsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request. */
 export const createProjectsSnapshots: API.OperationMethod<
@@ -2241,7 +2408,7 @@ export const createProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSnapshotsRequest,
   output: CreateProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsSnapshotsRequest {
@@ -2264,7 +2431,12 @@ export type PatchProjectsSnapshotsResponse = Snapshot;
 export const PatchProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type PatchProjectsSnapshotsError = DefaultErrors;
+export type PatchProjectsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing snapshot by updating the fields specified in the update mask. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. */
 export const patchProjectsSnapshots: API.OperationMethod<
@@ -2275,7 +2447,7 @@ export const patchProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSnapshotsRequest,
   output: PatchProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsSnapshotsRequest {
@@ -2295,7 +2467,12 @@ export type DeleteProjectsSnapshotsResponse = Empty;
 export const DeleteProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSnapshotsError = DefaultErrors;
+export type DeleteProjectsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an existing snapshot. Snapshots are used in [Seek] (https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. When the snapshot is deleted, all messages retained in the snapshot are immediately dropped. After a snapshot is deleted, a new one may be created with the same name, but the new one has no association with the old snapshot or its subscription, unless the same subscription is specified. */
 export const deleteProjectsSnapshots: API.OperationMethod<
@@ -2306,7 +2483,7 @@ export const deleteProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSnapshotsRequest,
   output: DeleteProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsSchemasRequest {
@@ -2333,7 +2510,12 @@ export type SetIamPolicyProjectsSchemasResponse = Policy;
 export const SetIamPolicyProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsSchemasError = DefaultErrors;
+export type SetIamPolicyProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsSchemas: API.OperationMethod<
@@ -2344,7 +2526,7 @@ export const setIamPolicyProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsSchemasRequest,
   output: SetIamPolicyProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsSchemasRequest {
@@ -2369,7 +2551,10 @@ export type GetIamPolicyProjectsSchemasResponse = Policy;
 export const GetIamPolicyProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsSchemasError = DefaultErrors;
+export type GetIamPolicyProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsSchemas: API.OperationMethod<
@@ -2380,7 +2565,7 @@ export const getIamPolicyProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsSchemasRequest,
   output: GetIamPolicyProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsSchemasRequest {
@@ -2408,7 +2593,12 @@ export type TestIamPermissionsProjectsSchemasResponse =
 export const TestIamPermissionsProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsSchemasError = DefaultErrors;
+export type TestIamPermissionsProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsSchemas: API.OperationMethod<
@@ -2419,7 +2609,7 @@ export const testIamPermissionsProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsSchemasRequest,
   output: TestIamPermissionsProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsSchemasRequest {
@@ -2445,7 +2635,12 @@ export type CreateProjectsSchemasResponse = Pubsub_Schema;
 export const CreateProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Pubsub_Schema;
 
-export type CreateProjectsSchemasError = DefaultErrors;
+export type CreateProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a schema. */
 export const createProjectsSchemas: API.OperationMethod<
@@ -2456,7 +2651,7 @@ export const createProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSchemasRequest,
   output: CreateProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSchemasRequest {
@@ -2479,7 +2674,7 @@ export type GetProjectsSchemasResponse = Pubsub_Schema;
 export const GetProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Pubsub_Schema;
 
-export type GetProjectsSchemasError = DefaultErrors;
+export type GetProjectsSchemasError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a schema. */
 export const getProjectsSchemas: API.OperationMethod<
@@ -2490,7 +2685,7 @@ export const getProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSchemasRequest,
   output: GetProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsSchemasRequest {
@@ -2519,7 +2714,7 @@ export type ListProjectsSchemasResponse = ListSchemasResponse;
 export const ListProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSchemasResponse;
 
-export type ListProjectsSchemasError = DefaultErrors;
+export type ListProjectsSchemasError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists schemas in a project. */
 export const listProjectsSchemas: API.PaginatedOperationMethod<
@@ -2530,7 +2725,7 @@ export const listProjectsSchemas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSchemasRequest,
   output: ListProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2563,7 +2758,10 @@ export type ListRevisionsProjectsSchemasResponse = ListSchemaRevisionsResponse;
 export const ListRevisionsProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSchemaRevisionsResponse;
 
-export type ListRevisionsProjectsSchemasError = DefaultErrors;
+export type ListRevisionsProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all schema revisions for the named schema. */
 export const listRevisionsProjectsSchemas: API.PaginatedOperationMethod<
@@ -2574,7 +2772,7 @@ export const listRevisionsProjectsSchemas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsSchemasRequest,
   output: ListRevisionsProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2601,7 +2799,12 @@ export type CommitProjectsSchemasResponse = Pubsub_Schema;
 export const CommitProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Pubsub_Schema;
 
-export type CommitProjectsSchemasError = DefaultErrors;
+export type CommitProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits a new schema revision to an existing schema. */
 export const commitProjectsSchemas: API.OperationMethod<
@@ -2612,7 +2815,7 @@ export const commitProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitProjectsSchemasRequest,
   output: CommitProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RollbackProjectsSchemasRequest {
@@ -2635,7 +2838,12 @@ export type RollbackProjectsSchemasResponse = Pubsub_Schema;
 export const RollbackProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Pubsub_Schema;
 
-export type RollbackProjectsSchemasError = DefaultErrors;
+export type RollbackProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new schema revision that is a copy of the provided revision_id. */
 export const rollbackProjectsSchemas: API.OperationMethod<
@@ -2646,7 +2854,7 @@ export const rollbackProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackProjectsSchemasRequest,
   output: RollbackProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRevisionProjectsSchemasRequest {
@@ -2669,7 +2877,12 @@ export type DeleteRevisionProjectsSchemasResponse = Pubsub_Schema;
 export const DeleteRevisionProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ Pubsub_Schema;
 
-export type DeleteRevisionProjectsSchemasError = DefaultErrors;
+export type DeleteRevisionProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific schema revision. */
 export const deleteRevisionProjectsSchemas: API.OperationMethod<
@@ -2680,7 +2893,7 @@ export const deleteRevisionProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRevisionProjectsSchemasRequest,
   output: DeleteRevisionProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsSchemasRequest {
@@ -2699,7 +2912,12 @@ export const DeleteProjectsSchemasRequest =
 export type DeleteProjectsSchemasResponse = Empty;
 export const DeleteProjectsSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsSchemasError = DefaultErrors;
+export type DeleteProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a schema. */
 export const deleteProjectsSchemas: API.OperationMethod<
@@ -2710,7 +2928,7 @@ export const deleteProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSchemasRequest,
   output: DeleteProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateProjectsSchemasRequest {
@@ -2737,7 +2955,12 @@ export type ValidateProjectsSchemasResponse = ValidateSchemaResponse;
 export const ValidateProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValidateSchemaResponse;
 
-export type ValidateProjectsSchemasError = DefaultErrors;
+export type ValidateProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a schema. */
 export const validateProjectsSchemas: API.OperationMethod<
@@ -2748,7 +2971,7 @@ export const validateProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateProjectsSchemasRequest,
   output: ValidateProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateMessageProjectsSchemasRequest {
@@ -2775,7 +2998,12 @@ export type ValidateMessageProjectsSchemasResponse = ValidateMessageResponse;
 export const ValidateMessageProjectsSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValidateMessageResponse;
 
-export type ValidateMessageProjectsSchemasError = DefaultErrors;
+export type ValidateMessageProjectsSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a message against a schema. */
 export const validateMessageProjectsSchemas: API.OperationMethod<
@@ -2786,5 +3014,5 @@ export const validateMessageProjectsSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateMessageProjectsSchemasRequest,
   output: ValidateMessageProjectsSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

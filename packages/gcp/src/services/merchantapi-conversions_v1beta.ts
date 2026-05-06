@@ -225,6 +225,52 @@ export const ProductStatusChangeMessage =
   }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -252,7 +298,12 @@ export type CreateAccountsConversionSourcesResponse = ConversionSource;
 export const CreateAccountsConversionSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
 
-export type CreateAccountsConversionSourcesError = DefaultErrors;
+export type CreateAccountsConversionSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new conversion source. */
 export const createAccountsConversionSources: API.OperationMethod<
@@ -263,7 +314,7 @@ export const createAccountsConversionSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsConversionSourcesRequest,
   output: CreateAccountsConversionSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsConversionSourcesRequest {
@@ -283,7 +334,12 @@ export type DeleteAccountsConversionSourcesResponse = Empty;
 export const DeleteAccountsConversionSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsConversionSourcesError = DefaultErrors;
+export type DeleteAccountsConversionSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Archives an existing conversion source. If the conversion source is a Merchant Center Destination, it will be recoverable for 30 days. If the conversion source is a Google Analytics Link, it will be deleted immediately and can be restored by creating a new one. */
 export const deleteAccountsConversionSources: API.OperationMethod<
@@ -294,7 +350,7 @@ export const deleteAccountsConversionSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsConversionSourcesRequest,
   output: DeleteAccountsConversionSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsConversionSourcesRequest {
@@ -314,7 +370,10 @@ export type GetAccountsConversionSourcesResponse = ConversionSource;
 export const GetAccountsConversionSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
 
-export type GetAccountsConversionSourcesError = DefaultErrors;
+export type GetAccountsConversionSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetches a conversion source. */
 export const getAccountsConversionSources: API.OperationMethod<
@@ -325,7 +384,7 @@ export const getAccountsConversionSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsConversionSourcesRequest,
   output: GetAccountsConversionSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UndeleteAccountsConversionSourcesRequest {
@@ -352,7 +411,12 @@ export type UndeleteAccountsConversionSourcesResponse = ConversionSource;
 export const UndeleteAccountsConversionSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
 
-export type UndeleteAccountsConversionSourcesError = DefaultErrors;
+export type UndeleteAccountsConversionSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Re-enables an archived conversion source. Only Available for Merchant Center Destination conversion sources. */
 export const undeleteAccountsConversionSources: API.OperationMethod<
@@ -363,7 +427,7 @@ export const undeleteAccountsConversionSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteAccountsConversionSourcesRequest,
   output: UndeleteAccountsConversionSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsConversionSourcesRequest {
@@ -398,7 +462,10 @@ export type ListAccountsConversionSourcesResponse =
 export const ListAccountsConversionSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConversionSourcesResponse;
 
-export type ListAccountsConversionSourcesError = DefaultErrors;
+export type ListAccountsConversionSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of conversion sources the caller has access to. */
 export const listAccountsConversionSources: API.PaginatedOperationMethod<
@@ -409,7 +476,7 @@ export const listAccountsConversionSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsConversionSourcesRequest,
   output: ListAccountsConversionSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -443,7 +510,12 @@ export type PatchAccountsConversionSourcesResponse = ConversionSource;
 export const PatchAccountsConversionSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionSource;
 
-export type PatchAccountsConversionSourcesError = DefaultErrors;
+export type PatchAccountsConversionSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information of an existing conversion source. Available only for Merchant Center Destination conversion sources. */
 export const patchAccountsConversionSources: API.OperationMethod<
@@ -454,5 +526,5 @@ export const patchAccountsConversionSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsConversionSourcesRequest,
   output: PatchAccountsConversionSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

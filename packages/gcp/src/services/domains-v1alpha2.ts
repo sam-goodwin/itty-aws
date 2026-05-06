@@ -1122,6 +1122,52 @@ export const RetrieveGoogleDomainsForwardingConfigResponse =
   }).annotate({ identifier: "RetrieveGoogleDomainsForwardingConfigResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1156,7 +1202,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1167,7 +1213,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1191,7 +1237,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1202,7 +1248,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest {
@@ -1233,7 +1279,9 @@ export const RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRespon
   /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsDnsRecordsResponse;
 
 export type RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the DNS records from the Google Domains DNS zone for domains that use the deprecated `google_domains_dns` in the `Registration`'s `dns_settings`. */
 export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.PaginatedOperationMethod<
@@ -1244,7 +1292,7 @@ export const retrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrations: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsRequest,
   output: RetrieveGoogleDomainsDnsRecordsProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1273,7 +1321,9 @@ export const RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations
   /*@__PURE__*/ /*#__PURE__*/ RetrieveGoogleDomainsForwardingConfigResponse;
 
 export type RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google Domains UI. The configuration is present only for domains with the `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A forwarding configuration might not work correctly if required DNS records are not present in the domain's authoritative DNS Zone. */
 export const retrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations: API.OperationMethod<
@@ -1286,7 +1336,7 @@ export const retrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrations
     RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsRequest,
   output:
     RetrieveGoogleDomainsForwardingConfigProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchDomainsProjectsLocationsRegistrationsRequest {
@@ -1313,7 +1363,10 @@ export type SearchDomainsProjectsLocationsRegistrationsResponse =
 export const SearchDomainsProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchDomainsResponse;
 
-export type SearchDomainsProjectsLocationsRegistrationsError = DefaultErrors;
+export type SearchDomainsProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches for available domain names similar to the provided query. Availability results from this method are approximate; call `RetrieveRegisterParameters` on a domain before registering to confirm availability. */
 export const searchDomainsProjectsLocationsRegistrations: API.OperationMethod<
@@ -1324,7 +1377,7 @@ export const searchDomainsProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchDomainsProjectsLocationsRegistrationsRequest,
   output: SearchDomainsProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveTransferParametersProjectsLocationsRegistrationsRequest {
@@ -1352,7 +1405,9 @@ export const RetrieveTransferParametersProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveTransferParametersResponse;
 
 export type RetrieveTransferParametersProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Gets parameters needed to transfer a domain name from another registrar to Cloud Domains. For domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead. Use the returned values to call `TransferDomain`. */
 export const retrieveTransferParametersProjectsLocationsRegistrations: API.OperationMethod<
@@ -1363,7 +1418,7 @@ export const retrieveTransferParametersProjectsLocationsRegistrations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveTransferParametersProjectsLocationsRegistrationsRequest,
   output: RetrieveTransferParametersProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveImportableDomainsProjectsLocationsRegistrationsRequest {
@@ -1394,7 +1449,9 @@ export const RetrieveImportableDomainsProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveImportableDomainsResponse;
 
 export type RetrieveImportableDomainsProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Lists domain names from [Google Domains](https://domains.google/) that can be imported to Cloud Domains using the `ImportDomain` method. Since individual users can own domains in Google Domains, the list of domains returned depends on the individual user making the call. Domains already managed by Cloud Domains are not returned. */
 export const retrieveImportableDomainsProjectsLocationsRegistrations: API.PaginatedOperationMethod<
@@ -1405,7 +1462,7 @@ export const retrieveImportableDomainsProjectsLocationsRegistrations: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: RetrieveImportableDomainsProjectsLocationsRegistrationsRequest,
   output: RetrieveImportableDomainsProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1435,7 +1492,12 @@ export type PatchProjectsLocationsRegistrationsResponse = Operation;
 export const PatchProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsRegistrationsError = DefaultErrors;
+export type PatchProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates select fields of a `Registration` resource, notably `labels`. To update other fields, use the appropriate custom update method: * To update management settings, see `ConfigureManagementSettings` * To update DNS configuration, see `ConfigureDnsSettings` * To update contact information, see `ConfigureContactSettings` */
 export const patchProjectsLocationsRegistrations: API.OperationMethod<
@@ -1446,7 +1508,7 @@ export const patchProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRegistrationsRequest,
   output: PatchProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsRegistrationsRequest {
@@ -1473,7 +1535,12 @@ export type SetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
 export const SetIamPolicyProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsRegistrationsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
@@ -1484,7 +1551,7 @@ export const setIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsRegistrationsRequest,
   output: SetIamPolicyProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RegisterProjectsLocationsRegistrationsRequest {
@@ -1511,7 +1578,12 @@ export type RegisterProjectsLocationsRegistrationsResponse = Operation;
 export const RegisterProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RegisterProjectsLocationsRegistrationsError = DefaultErrors;
+export type RegisterProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration. */
 export const registerProjectsLocationsRegistrations: API.OperationMethod<
@@ -1522,7 +1594,7 @@ export const registerProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterProjectsLocationsRegistrationsRequest,
   output: RegisterProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenewDomainProjectsLocationsRegistrationsRequest {
@@ -1549,7 +1621,12 @@ export type RenewDomainProjectsLocationsRegistrationsResponse = Operation;
 export const RenewDomainProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RenewDomainProjectsLocationsRegistrationsError = DefaultErrors;
+export type RenewDomainProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renews a recently expired domain. This method can only be called on domains that expired in the previous 30 days. After the renewal, the new expiration time of the domain is one year after the old expiration time and you are charged a `yearly_price` for the renewal. */
 export const renewDomainProjectsLocationsRegistrations: API.OperationMethod<
@@ -1560,7 +1637,7 @@ export const renewDomainProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenewDomainProjectsLocationsRegistrationsRequest,
   output: RenewDomainProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRegistrationsRequest {
@@ -1590,7 +1667,10 @@ export type ListProjectsLocationsRegistrationsResponse =
 export const ListProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRegistrationsResponse;
 
-export type ListProjectsLocationsRegistrationsError = DefaultErrors;
+export type ListProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the `Registration` resources in a project. */
 export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
@@ -1601,7 +1681,7 @@ export const listProjectsLocationsRegistrations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRegistrationsRequest,
   output: ListProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1632,7 +1712,12 @@ export type ImportProjectsLocationsRegistrationsResponse = Operation;
 export const ImportProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsRegistrationsError = DefaultErrors;
+export type ImportProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Imports a domain name from [Google Domains](https://domains.google/) for use in Cloud Domains. To transfer a domain from another registrar, use the `TransferDomain` method instead. Since individual users can own domains in Google Domains, the calling user must have ownership permission on the domain. */
 export const importProjectsLocationsRegistrations: API.OperationMethod<
@@ -1643,7 +1728,7 @@ export const importProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsRegistrationsRequest,
   output: ImportProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsRegistrationsRequest {
@@ -1672,7 +1757,11 @@ export const TestIamPermissionsProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsRegistrations: API.OperationMethod<
@@ -1683,7 +1772,7 @@ export const testIamPermissionsProjectsLocationsRegistrations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsRegistrationsRequest,
   output: TestIamPermissionsProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TransferProjectsLocationsRegistrationsRequest {
@@ -1710,7 +1799,12 @@ export type TransferProjectsLocationsRegistrationsResponse = Operation;
 export const TransferProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type TransferProjectsLocationsRegistrationsError = DefaultErrors;
+export type TransferProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Transfers a domain name from another registrar to Cloud Domains. For domains already managed by [Google Domains](https://domains.google/), use `ImportDomain` instead. Before calling this method, go to the domain's current registrar to unlock the domain for transfer and retrieve the domain's transfer authorization code. Then call `RetrieveTransferParameters` to confirm that the domain is unlocked and to get values needed to build a call to this method. A successful call creates a `Registration` resource in state `TRANSFER_PENDING`. It can take several days to complete the transfer process. The registrant can often speed up this process by approving the transfer through the current registrar, either by clicking a link in an email from the registrar or by visiting the registrar's website. A few minutes after transfer approval, the resource transitions to state `ACTIVE`, indicating that the transfer was successful. If the transfer is rejected or the request expires without being approved, the resource can end up in state `TRANSFER_FAILED`. If transfer fails, you can safely delete the resource and retry the transfer. */
 export const transferProjectsLocationsRegistrations: API.OperationMethod<
@@ -1721,7 +1815,7 @@ export const transferProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransferProjectsLocationsRegistrationsRequest,
   output: TransferProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConfigureDnsSettingsProjectsLocationsRegistrationsRequest {
@@ -1750,7 +1844,11 @@ export const ConfigureDnsSettingsProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ConfigureDnsSettingsProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `Registration`'s DNS settings. */
 export const configureDnsSettingsProjectsLocationsRegistrations: API.OperationMethod<
@@ -1761,7 +1859,7 @@ export const configureDnsSettingsProjectsLocationsRegistrations: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConfigureDnsSettingsProjectsLocationsRegistrationsRequest,
   output: ConfigureDnsSettingsProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConfigureManagementSettingsProjectsLocationsRegistrationsRequest {
@@ -1792,7 +1890,11 @@ export const ConfigureManagementSettingsProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ConfigureManagementSettingsProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `Registration`'s management settings. */
 export const configureManagementSettingsProjectsLocationsRegistrations: API.OperationMethod<
@@ -1803,7 +1905,7 @@ export const configureManagementSettingsProjectsLocationsRegistrations: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConfigureManagementSettingsProjectsLocationsRegistrationsRequest,
   output: ConfigureManagementSettingsProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsRegistrationsRequest {
@@ -1826,7 +1928,12 @@ export type ExportProjectsLocationsRegistrationsResponse = Operation;
 export const ExportProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportProjectsLocationsRegistrationsError = DefaultErrors;
+export type ExportProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) Exports a `Registration` resource, such that it is no longer managed by Cloud Domains. When an active domain is successfully exported, you can continue to use the domain in [Google Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are subsequently managed there. The domain does not renew automatically unless the new owner sets up billing in Google Domains. */
 export const exportProjectsLocationsRegistrations: API.OperationMethod<
@@ -1837,7 +1944,7 @@ export const exportProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsRegistrationsRequest,
   output: ExportProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveRegisterParametersProjectsLocationsRegistrationsRequest {
@@ -1865,7 +1972,9 @@ export const RetrieveRegisterParametersProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveRegisterParametersResponse;
 
 export type RetrieveRegisterParametersProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets parameters needed to register a new domain name, including price and up-to-date availability. Use the returned values to call `RegisterDomain`. */
 export const retrieveRegisterParametersProjectsLocationsRegistrations: API.OperationMethod<
@@ -1876,7 +1985,7 @@ export const retrieveRegisterParametersProjectsLocationsRegistrations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveRegisterParametersProjectsLocationsRegistrationsRequest,
   output: RetrieveRegisterParametersProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InitiatePushTransferProjectsLocationsRegistrationsRequest {
@@ -1905,7 +2014,11 @@ export const InitiatePushTransferProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type InitiatePushTransferProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates the `Push Transfer` process to transfer the domain to another registrar. The process might complete instantly or might require confirmation or additional work. Check the emails sent to the email address of the registrant. The process is aborted after a timeout if it's not completed. This method is only supported for domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties`. The domain must also be unlocked before it can be transferred to a different registrar. For more information, see [Transfer a registered domain to another registrar](https://cloud.google.com/domains/docs/transfer-domain-to-another-registrar). */
 export const initiatePushTransferProjectsLocationsRegistrations: API.OperationMethod<
@@ -1916,7 +2029,7 @@ export const initiatePushTransferProjectsLocationsRegistrations: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitiatePushTransferProjectsLocationsRegistrationsRequest,
   output: InitiatePushTransferProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsRegistrationsRequest {
@@ -1941,7 +2054,10 @@ export type GetIamPolicyProjectsLocationsRegistrationsResponse = Policy;
 export const GetIamPolicyProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsRegistrationsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
@@ -1952,7 +2068,7 @@ export const getIamPolicyProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsRegistrationsRequest,
   output: GetIamPolicyProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsRegistrationsRequest {
@@ -1972,7 +2088,10 @@ export type GetProjectsLocationsRegistrationsResponse = Registration;
 export const GetProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Registration;
 
-export type GetProjectsLocationsRegistrationsError = DefaultErrors;
+export type GetProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a `Registration` resource. */
 export const getProjectsLocationsRegistrations: API.OperationMethod<
@@ -1983,7 +2102,7 @@ export const getProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRegistrationsRequest,
   output: GetProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ConfigureContactSettingsProjectsLocationsRegistrationsRequest {
@@ -2012,7 +2131,11 @@ export const ConfigureContactSettingsProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ConfigureContactSettingsProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `Registration`'s contact settings. Some changes require confirmation by the domain's registrant contact . Caution: Please consider carefully any changes to contact privacy settings when changing from `REDACTED_CONTACT_DATA` to `PUBLIC_CONTACT_DATA.` There may be a delay in reflecting updates you make to registrant contact information such that any changes you make to contact privacy (including from `REDACTED_CONTACT_DATA` to `PUBLIC_CONTACT_DATA`) will be applied without delay but changes to registrant contact information may take a limited time to be publicized. This means that changes to contact privacy from `REDACTED_CONTACT_DATA` to `PUBLIC_CONTACT_DATA` may make the previous registrant contact data public until the modified registrant contact details are published. */
 export const configureContactSettingsProjectsLocationsRegistrations: API.OperationMethod<
@@ -2023,7 +2146,7 @@ export const configureContactSettingsProjectsLocationsRegistrations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConfigureContactSettingsProjectsLocationsRegistrationsRequest,
   output: ConfigureContactSettingsProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetAuthorizationCodeProjectsLocationsRegistrationsRequest {
@@ -2052,7 +2175,11 @@ export const ResetAuthorizationCodeProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizationCode;
 
 export type ResetAuthorizationCodeProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets the authorization code of the `Registration` to a new random string. You can call this method only after 60 days have elapsed since the initial domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain to a different registrar. */
 export const resetAuthorizationCodeProjectsLocationsRegistrations: API.OperationMethod<
@@ -2063,7 +2190,7 @@ export const resetAuthorizationCodeProjectsLocationsRegistrations: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAuthorizationCodeProjectsLocationsRegistrationsRequest,
   output: ResetAuthorizationCodeProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest {
@@ -2088,7 +2215,9 @@ export const RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizationCode;
 
 export type RetrieveAuthorizationCodeProjectsLocationsRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the authorization code of the `Registration` for the purpose of transferring the domain to another registrar. You can call this method only after 60 days have elapsed since the initial domain registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain to a different registrar. */
 export const retrieveAuthorizationCodeProjectsLocationsRegistrations: API.OperationMethod<
@@ -2099,7 +2228,7 @@ export const retrieveAuthorizationCodeProjectsLocationsRegistrations: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveAuthorizationCodeProjectsLocationsRegistrationsRequest,
   output: RetrieveAuthorizationCodeProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsRegistrationsRequest {
@@ -2119,7 +2248,12 @@ export type DeleteProjectsLocationsRegistrationsResponse = Operation;
 export const DeleteProjectsLocationsRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsRegistrationsError = DefaultErrors;
+export type DeleteProjectsLocationsRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Registration` resource. This method works on any `Registration` resource using [Subscription or Commitment billing](/domains/pricing#billing-models), provided that the resource was created at least 1 day in the past. When an active registration is successfully deleted, you can continue to use the domain in [Google Domains](https://domains.google/) until it expires. The calling user becomes the domain's sole owner in Google Domains, and permissions for the domain are subsequently managed there. The domain does not renew automatically unless the new owner sets up billing in Google Domains. After January 2024 you will only be able to delete `Registration` resources when `state` is one of: `EXPORTED`, `EXPIRED`,`REGISTRATION_FAILED` or `TRANSFER_FAILED`. See [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) for more details. */
 export const deleteProjectsLocationsRegistrations: API.OperationMethod<
@@ -2130,7 +2264,7 @@ export const deleteProjectsLocationsRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRegistrationsRequest,
   output: DeleteProjectsLocationsRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -2164,7 +2298,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -2175,7 +2312,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2199,7 +2336,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -2210,5 +2350,5 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

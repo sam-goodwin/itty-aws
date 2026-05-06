@@ -1250,6 +1250,52 @@ export const BulkRestoreObjectsRequest =
   }).annotate({ identifier: "BulkRestoreObjectsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1277,7 +1323,12 @@ export type InsertAnywhereCachesResponse = GoogleLongrunningOperation;
 export const InsertAnywhereCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type InsertAnywhereCachesError = DefaultErrors;
+export type InsertAnywhereCachesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Anywhere Cache instance. */
 export const insertAnywhereCaches: API.OperationMethod<
@@ -1288,7 +1339,7 @@ export const insertAnywhereCaches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAnywhereCachesRequest,
   output: InsertAnywhereCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAnywhereCachesRequest {
@@ -1318,7 +1369,12 @@ export type UpdateAnywhereCachesResponse = GoogleLongrunningOperation;
 export const UpdateAnywhereCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type UpdateAnywhereCachesError = DefaultErrors;
+export type UpdateAnywhereCachesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the config of an Anywhere Cache instance. */
 export const updateAnywhereCaches: API.OperationMethod<
@@ -1329,7 +1385,7 @@ export const updateAnywhereCaches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAnywhereCachesRequest,
   output: UpdateAnywhereCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAnywhereCachesRequest {
@@ -1355,7 +1411,7 @@ export type GetAnywhereCachesResponse = AnywhereCache;
 export const GetAnywhereCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
 
-export type GetAnywhereCachesError = DefaultErrors;
+export type GetAnywhereCachesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the metadata of an Anywhere Cache instance. */
 export const getAnywhereCaches: API.OperationMethod<
@@ -1366,7 +1422,7 @@ export const getAnywhereCaches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAnywhereCachesRequest,
   output: GetAnywhereCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAnywhereCachesRequest {
@@ -1392,7 +1448,7 @@ export type ListAnywhereCachesResponse = AnywhereCaches;
 export const ListAnywhereCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnywhereCaches;
 
-export type ListAnywhereCachesError = DefaultErrors;
+export type ListAnywhereCachesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of Anywhere Cache instances of the bucket matching the criteria. */
 export const listAnywhereCaches: API.PaginatedOperationMethod<
@@ -1403,7 +1459,7 @@ export const listAnywhereCaches: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnywhereCachesRequest,
   output: ListAnywhereCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1435,7 +1491,12 @@ export type PauseAnywhereCachesResponse = AnywhereCache;
 export const PauseAnywhereCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
 
-export type PauseAnywhereCachesError = DefaultErrors;
+export type PauseAnywhereCachesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pauses an Anywhere Cache instance. */
 export const pauseAnywhereCaches: API.OperationMethod<
@@ -1446,7 +1507,7 @@ export const pauseAnywhereCaches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseAnywhereCachesRequest,
   output: PauseAnywhereCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeAnywhereCachesRequest {
@@ -1473,7 +1534,12 @@ export type ResumeAnywhereCachesResponse = AnywhereCache;
 export const ResumeAnywhereCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
 
-export type ResumeAnywhereCachesError = DefaultErrors;
+export type ResumeAnywhereCachesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resumes a paused or disabled Anywhere Cache instance. */
 export const resumeAnywhereCaches: API.OperationMethod<
@@ -1484,7 +1550,7 @@ export const resumeAnywhereCaches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeAnywhereCachesRequest,
   output: ResumeAnywhereCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableAnywhereCachesRequest {
@@ -1511,7 +1577,12 @@ export type DisableAnywhereCachesResponse = AnywhereCache;
 export const DisableAnywhereCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnywhereCache;
 
-export type DisableAnywhereCachesError = DefaultErrors;
+export type DisableAnywhereCachesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables an Anywhere Cache instance. */
 export const disableAnywhereCaches: API.OperationMethod<
@@ -1522,7 +1593,7 @@ export const disableAnywhereCaches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableAnywhereCachesRequest,
   output: DisableAnywhereCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBucketAccessControlsRequest {
@@ -1552,7 +1623,12 @@ export const DeleteBucketAccessControlsResponse: Schema.Schema<DeleteBucketAcces
     {},
   ) as any as Schema.Schema<DeleteBucketAccessControlsResponse>;
 
-export type DeleteBucketAccessControlsError = DefaultErrors;
+export type DeleteBucketAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes the ACL entry for the specified entity on the specified bucket. */
 export const deleteBucketAccessControls: API.OperationMethod<
@@ -1563,7 +1639,7 @@ export const deleteBucketAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketAccessControlsRequest,
   output: DeleteBucketAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBucketAccessControlsRequest {
@@ -1591,7 +1667,7 @@ export type GetBucketAccessControlsResponse = BucketAccessControl;
 export const GetBucketAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
 
-export type GetBucketAccessControlsError = DefaultErrors;
+export type GetBucketAccessControlsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the ACL entry for the specified entity on the specified bucket. */
 export const getBucketAccessControls: API.OperationMethod<
@@ -1602,7 +1678,7 @@ export const getBucketAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketAccessControlsRequest,
   output: GetBucketAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertBucketAccessControlsRequest {
@@ -1630,7 +1706,12 @@ export type InsertBucketAccessControlsResponse = BucketAccessControl;
 export const InsertBucketAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
 
-export type InsertBucketAccessControlsError = DefaultErrors;
+export type InsertBucketAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ACL entry on the specified bucket. */
 export const insertBucketAccessControls: API.OperationMethod<
@@ -1641,7 +1722,7 @@ export const insertBucketAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertBucketAccessControlsRequest,
   output: InsertBucketAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBucketAccessControlsRequest {
@@ -1666,7 +1747,10 @@ export type ListBucketAccessControlsResponse = BucketAccessControls;
 export const ListBucketAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BucketAccessControls;
 
-export type ListBucketAccessControlsError = DefaultErrors;
+export type ListBucketAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves ACL entries on the specified bucket. */
 export const listBucketAccessControls: API.OperationMethod<
@@ -1677,7 +1761,7 @@ export const listBucketAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBucketAccessControlsRequest,
   output: ListBucketAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchBucketAccessControlsRequest {
@@ -1708,7 +1792,12 @@ export type PatchBucketAccessControlsResponse = BucketAccessControl;
 export const PatchBucketAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
 
-export type PatchBucketAccessControlsError = DefaultErrors;
+export type PatchBucketAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches an ACL entry on the specified bucket. */
 export const patchBucketAccessControls: API.OperationMethod<
@@ -1719,7 +1808,7 @@ export const patchBucketAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBucketAccessControlsRequest,
   output: PatchBucketAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateBucketAccessControlsRequest {
@@ -1750,7 +1839,12 @@ export type UpdateBucketAccessControlsResponse = BucketAccessControl;
 export const UpdateBucketAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BucketAccessControl;
 
-export type UpdateBucketAccessControlsError = DefaultErrors;
+export type UpdateBucketAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an ACL entry on the specified bucket. */
 export const updateBucketAccessControls: API.OperationMethod<
@@ -1761,7 +1855,7 @@ export const updateBucketAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBucketAccessControlsRequest,
   output: UpdateBucketAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBucketsRequest {
@@ -1795,7 +1889,12 @@ export const DeleteBucketsResponse: Schema.Schema<DeleteBucketsResponse> =
     {},
   ) as any as Schema.Schema<DeleteBucketsResponse>;
 
-export type DeleteBucketsError = DefaultErrors;
+export type DeleteBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an empty bucket. Deletions are permanent unless soft delete is enabled on the bucket. */
 export const deleteBuckets: API.OperationMethod<
@@ -1806,7 +1905,7 @@ export const deleteBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBucketsRequest,
   output: DeleteBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreBucketsRequest {
@@ -1833,7 +1932,12 @@ export const RestoreBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RestoreBucketsResponse = Bucket;
 export const RestoreBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type RestoreBucketsError = DefaultErrors;
+export type RestoreBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a soft-deleted bucket. */
 export const restoreBuckets: API.OperationMethod<
@@ -1844,7 +1948,7 @@ export const restoreBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreBucketsRequest,
   output: RestoreBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RelocateBucketsRequest {
@@ -1868,7 +1972,12 @@ export type RelocateBucketsResponse = GoogleLongrunningOperation;
 export const RelocateBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type RelocateBucketsError = DefaultErrors;
+export type RelocateBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a long-running Relocate Bucket operation on the specified bucket. */
 export const relocateBuckets: API.OperationMethod<
@@ -1879,7 +1988,7 @@ export const relocateBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RelocateBucketsRequest,
   output: RelocateBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBucketsRequest {
@@ -1919,7 +2028,7 @@ export const GetBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetBucketsResponse = Bucket;
 export const GetBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type GetBucketsError = DefaultErrors;
+export type GetBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns metadata for the specified bucket. */
 export const getBuckets: API.OperationMethod<
@@ -1930,7 +2039,7 @@ export const getBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBucketsRequest,
   output: GetBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyBucketsRequest {
@@ -1959,7 +2068,7 @@ export const GetIamPolicyBucketsRequest =
 export type GetIamPolicyBucketsResponse = Policy;
 export const GetIamPolicyBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyBucketsError = DefaultErrors;
+export type GetIamPolicyBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an IAM policy for the specified bucket. */
 export const getIamPolicyBuckets: API.OperationMethod<
@@ -1970,7 +2079,7 @@ export const getIamPolicyBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyBucketsRequest,
   output: GetIamPolicyBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetStorageLayoutBucketsRequest {
@@ -1993,7 +2102,7 @@ export type GetStorageLayoutBucketsResponse = BucketStorageLayout;
 export const GetStorageLayoutBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BucketStorageLayout;
 
-export type GetStorageLayoutBucketsError = DefaultErrors;
+export type GetStorageLayoutBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the storage layout configuration for the specified bucket. Note that this operation requires storage.objects.list permission. */
 export const getStorageLayoutBuckets: API.OperationMethod<
@@ -2004,7 +2113,7 @@ export const getStorageLayoutBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStorageLayoutBucketsRequest,
   output: GetStorageLayoutBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertBucketsRequest {
@@ -2059,7 +2168,12 @@ export const InsertBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertBucketsResponse = Bucket;
 export const InsertBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type InsertBucketsError = DefaultErrors;
+export type InsertBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new bucket. */
 export const insertBuckets: API.OperationMethod<
@@ -2070,7 +2184,7 @@ export const insertBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertBucketsRequest,
   output: InsertBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBucketsRequest {
@@ -2111,7 +2225,7 @@ export const ListBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListBucketsResponse = Buckets;
 export const ListBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Buckets;
 
-export type ListBucketsError = DefaultErrors;
+export type ListBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of buckets for a given project. */
 export const listBuckets: API.PaginatedOperationMethod<
@@ -2122,7 +2236,7 @@ export const listBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBucketsRequest,
   output: ListBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2161,7 +2275,12 @@ export type LockRetentionPolicyBucketsResponse = Bucket;
 export const LockRetentionPolicyBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type LockRetentionPolicyBucketsError = DefaultErrors;
+export type LockRetentionPolicyBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Locks retention policy on a bucket. */
 export const lockRetentionPolicyBuckets: API.OperationMethod<
@@ -2172,7 +2291,7 @@ export const lockRetentionPolicyBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LockRetentionPolicyBucketsRequest,
   output: LockRetentionPolicyBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBucketsRequest {
@@ -2232,7 +2351,12 @@ export const PatchBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchBucketsResponse = Bucket;
 export const PatchBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type PatchBucketsError = DefaultErrors;
+export type PatchBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. */
 export const patchBuckets: API.OperationMethod<
@@ -2243,7 +2367,7 @@ export const patchBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBucketsRequest,
   output: PatchBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyBucketsRequest {
@@ -2270,7 +2394,12 @@ export const SetIamPolicyBucketsRequest =
 export type SetIamPolicyBucketsResponse = Policy;
 export const SetIamPolicyBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyBucketsError = DefaultErrors;
+export type SetIamPolicyBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an IAM policy for the specified bucket. */
 export const setIamPolicyBuckets: API.OperationMethod<
@@ -2281,7 +2410,7 @@ export const setIamPolicyBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyBucketsRequest,
   output: SetIamPolicyBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsBucketsRequest {
@@ -2309,7 +2438,10 @@ export type TestIamPermissionsBucketsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsBucketsError = DefaultErrors;
+export type TestIamPermissionsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Tests a set of permissions on the given bucket to see which, if any, are held by the caller. */
 export const testIamPermissionsBuckets: API.OperationMethod<
@@ -2320,7 +2452,7 @@ export const testIamPermissionsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBucketsRequest,
   output: TestIamPermissionsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateBucketsRequest {
@@ -2380,7 +2512,12 @@ export const UpdateBucketsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateBucketsResponse = Bucket;
 export const UpdateBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type UpdateBucketsError = DefaultErrors;
+export type UpdateBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a bucket. Changes to the bucket will be readable immediately after writing, but configuration changes may take time to propagate. */
 export const updateBuckets: API.OperationMethod<
@@ -2391,7 +2528,7 @@ export const updateBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBucketsRequest,
   output: UpdateBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOperationsRequest {
@@ -2420,7 +2557,12 @@ export const CancelOperationsResponse: Schema.Schema<CancelOperationsResponse> =
     {},
   ) as any as Schema.Schema<CancelOperationsResponse>;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. */
 export const cancelOperations: API.OperationMethod<
@@ -2431,7 +2573,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -2453,7 +2595,7 @@ export type GetOperationsResponse = GoogleLongrunningOperation;
 export const GetOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. */
 export const getOperations: API.OperationMethod<
@@ -2464,7 +2606,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AdvanceRelocateBucketOperationsRequest {
@@ -2498,7 +2640,12 @@ export const AdvanceRelocateBucketOperationsResponse: Schema.Schema<AdvanceReloc
     {},
   ) as any as Schema.Schema<AdvanceRelocateBucketOperationsResponse>;
 
-export type AdvanceRelocateBucketOperationsError = DefaultErrors;
+export type AdvanceRelocateBucketOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous advancement of the relocate bucket operation in the case of required write downtime, to allow it to lock the bucket at the source location, and proceed with the bucket location swap. The server makes a best effort to advance the relocate bucket operation, but success is not guaranteed. */
 export const advanceRelocateBucketOperations: API.OperationMethod<
@@ -2509,7 +2656,7 @@ export const advanceRelocateBucketOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AdvanceRelocateBucketOperationsRequest,
   output: AdvanceRelocateBucketOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOperationsRequest {
@@ -2537,7 +2684,7 @@ export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -2548,7 +2695,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2573,7 +2720,12 @@ export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
     {},
   ) as any as Schema.Schema<StopChannelsResponse>;
 
-export type StopChannelsError = DefaultErrors;
+export type StopChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stop watching resources through this channel */
 export const stopChannels: API.OperationMethod<
@@ -2584,7 +2736,7 @@ export const stopChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDefaultObjectAccessControlsRequest {
@@ -2614,7 +2766,12 @@ export const DeleteDefaultObjectAccessControlsResponse: Schema.Schema<DeleteDefa
     {},
   ) as any as Schema.Schema<DeleteDefaultObjectAccessControlsResponse>;
 
-export type DeleteDefaultObjectAccessControlsError = DefaultErrors;
+export type DeleteDefaultObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes the default object ACL entry for the specified entity on the specified bucket. */
 export const deleteDefaultObjectAccessControls: API.OperationMethod<
@@ -2625,7 +2782,7 @@ export const deleteDefaultObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDefaultObjectAccessControlsRequest,
   output: DeleteDefaultObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDefaultObjectAccessControlsRequest {
@@ -2653,7 +2810,10 @@ export type GetDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const GetDefaultObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type GetDefaultObjectAccessControlsError = DefaultErrors;
+export type GetDefaultObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the default object ACL entry for the specified entity on the specified bucket. */
 export const getDefaultObjectAccessControls: API.OperationMethod<
@@ -2664,7 +2824,7 @@ export const getDefaultObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDefaultObjectAccessControlsRequest,
   output: GetDefaultObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertDefaultObjectAccessControlsRequest {
@@ -2696,7 +2856,12 @@ export type InsertDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const InsertDefaultObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type InsertDefaultObjectAccessControlsError = DefaultErrors;
+export type InsertDefaultObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new default object ACL entry on the specified bucket. */
 export const insertDefaultObjectAccessControls: API.OperationMethod<
@@ -2707,7 +2872,7 @@ export const insertDefaultObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDefaultObjectAccessControlsRequest,
   output: InsertDefaultObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDefaultObjectAccessControlsRequest {
@@ -2742,7 +2907,10 @@ export type ListDefaultObjectAccessControlsResponse = ObjectAccessControls;
 export const ListDefaultObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControls;
 
-export type ListDefaultObjectAccessControlsError = DefaultErrors;
+export type ListDefaultObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves default object ACL entries on the specified bucket. */
 export const listDefaultObjectAccessControls: API.OperationMethod<
@@ -2753,7 +2921,7 @@ export const listDefaultObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDefaultObjectAccessControlsRequest,
   output: ListDefaultObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchDefaultObjectAccessControlsRequest {
@@ -2788,7 +2956,12 @@ export type PatchDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const PatchDefaultObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type PatchDefaultObjectAccessControlsError = DefaultErrors;
+export type PatchDefaultObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a default object ACL entry on the specified bucket. */
 export const patchDefaultObjectAccessControls: API.OperationMethod<
@@ -2799,7 +2972,7 @@ export const patchDefaultObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDefaultObjectAccessControlsRequest,
   output: PatchDefaultObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDefaultObjectAccessControlsRequest {
@@ -2834,7 +3007,12 @@ export type UpdateDefaultObjectAccessControlsResponse = ObjectAccessControl;
 export const UpdateDefaultObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type UpdateDefaultObjectAccessControlsError = DefaultErrors;
+export type UpdateDefaultObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a default object ACL entry on the specified bucket. */
 export const updateDefaultObjectAccessControls: API.OperationMethod<
@@ -2845,7 +3023,7 @@ export const updateDefaultObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDefaultObjectAccessControlsRequest,
   output: UpdateDefaultObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersRequest {
@@ -2879,7 +3057,12 @@ export const DeleteFoldersResponse: Schema.Schema<DeleteFoldersResponse> =
     {},
   ) as any as Schema.Schema<DeleteFoldersResponse>;
 
-export type DeleteFoldersError = DefaultErrors;
+export type DeleteFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a folder. Only applicable to buckets with hierarchical namespace enabled. */
 export const deleteFolders: API.OperationMethod<
@@ -2890,7 +3073,7 @@ export const deleteFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersRequest,
   output: DeleteFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRecursiveFoldersRequest {
@@ -2927,7 +3110,12 @@ export type DeleteRecursiveFoldersResponse = GoogleLongrunningOperation;
 export const DeleteRecursiveFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteRecursiveFoldersError = DefaultErrors;
+export type DeleteRecursiveFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a folder recursively. Only applicable to buckets with hierarchical namespace enabled. */
 export const deleteRecursiveFolders: API.OperationMethod<
@@ -2938,7 +3126,7 @@ export const deleteRecursiveFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRecursiveFoldersRequest,
   output: DeleteRecursiveFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersRequest {
@@ -2969,7 +3157,7 @@ export const GetFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFoldersResponse = Folder;
 export const GetFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type GetFoldersError = DefaultErrors;
+export type GetFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns metadata for the specified folder. Only applicable to buckets with hierarchical namespace enabled. */
 export const getFolders: API.OperationMethod<
@@ -2980,7 +3168,7 @@ export const getFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersRequest,
   output: GetFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertFoldersRequest {
@@ -3004,7 +3192,12 @@ export const InsertFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertFoldersResponse = Folder;
 export const InsertFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type InsertFoldersError = DefaultErrors;
+export type InsertFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new folder. Only applicable to buckets with hierarchical namespace enabled. */
 export const insertFolders: API.OperationMethod<
@@ -3015,7 +3208,7 @@ export const insertFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFoldersRequest,
   output: InsertFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersRequest {
@@ -3051,7 +3244,7 @@ export const ListFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListFoldersResponse = Folders;
 export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Folders;
 
-export type ListFoldersError = DefaultErrors;
+export type ListFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of folders matching the criteria. Only applicable to buckets with hierarchical namespace enabled. */
 export const listFolders: API.PaginatedOperationMethod<
@@ -3062,7 +3255,7 @@ export const listFolders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersRequest,
   output: ListFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3106,7 +3299,12 @@ export type RenameFoldersResponse = GoogleLongrunningOperation;
 export const RenameFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type RenameFoldersError = DefaultErrors;
+export type RenameFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renames a source folder to a destination folder. Only applicable to buckets with hierarchical namespace enabled. */
 export const renameFolders: API.OperationMethod<
@@ -3117,7 +3315,7 @@ export const renameFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenameFoldersRequest,
   output: RenameFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteManagedFoldersRequest {
@@ -3160,7 +3358,12 @@ export const DeleteManagedFoldersResponse: Schema.Schema<DeleteManagedFoldersRes
     {},
   ) as any as Schema.Schema<DeleteManagedFoldersResponse>;
 
-export type DeleteManagedFoldersError = DefaultErrors;
+export type DeleteManagedFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a managed folder. */
 export const deleteManagedFolders: API.OperationMethod<
@@ -3171,7 +3374,7 @@ export const deleteManagedFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagedFoldersRequest,
   output: DeleteManagedFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagedFoldersRequest {
@@ -3207,7 +3410,7 @@ export type GetManagedFoldersResponse = ManagedFolder;
 export const GetManagedFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedFolder;
 
-export type GetManagedFoldersError = DefaultErrors;
+export type GetManagedFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns metadata of the specified managed folder. */
 export const getManagedFolders: API.OperationMethod<
@@ -3218,7 +3421,7 @@ export const getManagedFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedFoldersRequest,
   output: GetManagedFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyManagedFoldersRequest {
@@ -3254,7 +3457,10 @@ export type GetIamPolicyManagedFoldersResponse = Policy;
 export const GetIamPolicyManagedFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyManagedFoldersError = DefaultErrors;
+export type GetIamPolicyManagedFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns an IAM policy for the specified managed folder. */
 export const getIamPolicyManagedFolders: API.OperationMethod<
@@ -3265,7 +3471,7 @@ export const getIamPolicyManagedFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyManagedFoldersRequest,
   output: GetIamPolicyManagedFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagedFoldersRequest {
@@ -3292,7 +3498,12 @@ export type InsertManagedFoldersResponse = ManagedFolder;
 export const InsertManagedFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedFolder;
 
-export type InsertManagedFoldersError = DefaultErrors;
+export type InsertManagedFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new managed folder. */
 export const insertManagedFolders: API.OperationMethod<
@@ -3303,7 +3514,7 @@ export const insertManagedFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagedFoldersRequest,
   output: InsertManagedFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagedFoldersRequest {
@@ -3332,7 +3543,7 @@ export type ListManagedFoldersResponse = ManagedFolders;
 export const ListManagedFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedFolders;
 
-export type ListManagedFoldersError = DefaultErrors;
+export type ListManagedFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists managed folders in the given bucket. */
 export const listManagedFolders: API.PaginatedOperationMethod<
@@ -3343,7 +3554,7 @@ export const listManagedFolders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedFoldersRequest,
   output: ListManagedFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3383,7 +3594,12 @@ export type SetIamPolicyManagedFoldersResponse = Policy;
 export const SetIamPolicyManagedFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyManagedFoldersError = DefaultErrors;
+export type SetIamPolicyManagedFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an IAM policy for the specified managed folder. */
 export const setIamPolicyManagedFolders: API.OperationMethod<
@@ -3394,7 +3610,7 @@ export const setIamPolicyManagedFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyManagedFoldersRequest,
   output: SetIamPolicyManagedFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsManagedFoldersRequest {
@@ -3429,7 +3645,10 @@ export type TestIamPermissionsManagedFoldersResponse =
 export const TestIamPermissionsManagedFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsManagedFoldersError = DefaultErrors;
+export type TestIamPermissionsManagedFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Tests a set of permissions on the given managed folder to see which, if any, are held by the caller. */
 export const testIamPermissionsManagedFolders: API.OperationMethod<
@@ -3440,7 +3659,7 @@ export const testIamPermissionsManagedFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsManagedFoldersRequest,
   output: TestIamPermissionsManagedFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteNotificationsRequest {
@@ -3473,7 +3692,12 @@ export const DeleteNotificationsResponse: Schema.Schema<DeleteNotificationsRespo
     {},
   ) as any as Schema.Schema<DeleteNotificationsResponse>;
 
-export type DeleteNotificationsError = DefaultErrors;
+export type DeleteNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a notification subscription. */
 export const deleteNotifications: API.OperationMethod<
@@ -3484,7 +3708,7 @@ export const deleteNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNotificationsRequest,
   output: DeleteNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNotificationsRequest {
@@ -3515,7 +3739,7 @@ export type GetNotificationsResponse = Notification;
 export const GetNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Notification;
 
-export type GetNotificationsError = DefaultErrors;
+export type GetNotificationsError = DefaultErrors | NotFound | Forbidden;
 
 /** View a notification configuration. */
 export const getNotifications: API.OperationMethod<
@@ -3526,7 +3750,7 @@ export const getNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNotificationsRequest,
   output: GetNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNotificationsRequest {
@@ -3558,7 +3782,12 @@ export type InsertNotificationsResponse = Notification;
 export const InsertNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Notification;
 
-export type InsertNotificationsError = DefaultErrors;
+export type InsertNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a notification subscription for a given bucket. */
 export const insertNotifications: API.OperationMethod<
@@ -3569,7 +3798,7 @@ export const insertNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNotificationsRequest,
   output: InsertNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNotificationsRequest {
@@ -3594,7 +3823,7 @@ export type ListNotificationsResponse = Notifications;
 export const ListNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Notifications;
 
-export type ListNotificationsError = DefaultErrors;
+export type ListNotificationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of notification subscriptions for a given bucket. */
 export const listNotifications: API.OperationMethod<
@@ -3605,7 +3834,7 @@ export const listNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListNotificationsRequest,
   output: ListNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteObjectAccessControlsRequest {
@@ -3641,7 +3870,12 @@ export const DeleteObjectAccessControlsResponse: Schema.Schema<DeleteObjectAcces
     {},
   ) as any as Schema.Schema<DeleteObjectAccessControlsResponse>;
 
-export type DeleteObjectAccessControlsError = DefaultErrors;
+export type DeleteObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes the ACL entry for the specified entity on the specified object. */
 export const deleteObjectAccessControls: API.OperationMethod<
@@ -3652,7 +3886,7 @@ export const deleteObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObjectAccessControlsRequest,
   output: DeleteObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetObjectAccessControlsRequest {
@@ -3686,7 +3920,7 @@ export type GetObjectAccessControlsResponse = ObjectAccessControl;
 export const GetObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type GetObjectAccessControlsError = DefaultErrors;
+export type GetObjectAccessControlsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the ACL entry for the specified entity on the specified object. */
 export const getObjectAccessControls: API.OperationMethod<
@@ -3697,7 +3931,7 @@ export const getObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectAccessControlsRequest,
   output: GetObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertObjectAccessControlsRequest {
@@ -3735,7 +3969,12 @@ export type InsertObjectAccessControlsResponse = ObjectAccessControl;
 export const InsertObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type InsertObjectAccessControlsError = DefaultErrors;
+export type InsertObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ACL entry on the specified object. */
 export const insertObjectAccessControls: API.OperationMethod<
@@ -3746,7 +3985,7 @@ export const insertObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertObjectAccessControlsRequest,
   output: InsertObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListObjectAccessControlsRequest {
@@ -3777,7 +4016,10 @@ export type ListObjectAccessControlsResponse = ObjectAccessControls;
 export const ListObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControls;
 
-export type ListObjectAccessControlsError = DefaultErrors;
+export type ListObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves ACL entries on the specified object. */
 export const listObjectAccessControls: API.OperationMethod<
@@ -3788,7 +4030,7 @@ export const listObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListObjectAccessControlsRequest,
   output: ListObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchObjectAccessControlsRequest {
@@ -3829,7 +4071,12 @@ export type PatchObjectAccessControlsResponse = ObjectAccessControl;
 export const PatchObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type PatchObjectAccessControlsError = DefaultErrors;
+export type PatchObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches an ACL entry on the specified object. */
 export const patchObjectAccessControls: API.OperationMethod<
@@ -3840,7 +4087,7 @@ export const patchObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchObjectAccessControlsRequest,
   output: PatchObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateObjectAccessControlsRequest {
@@ -3881,7 +4128,12 @@ export type UpdateObjectAccessControlsResponse = ObjectAccessControl;
 export const UpdateObjectAccessControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ObjectAccessControl;
 
-export type UpdateObjectAccessControlsError = DefaultErrors;
+export type UpdateObjectAccessControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an ACL entry on the specified object. */
 export const updateObjectAccessControls: API.OperationMethod<
@@ -3892,7 +4144,7 @@ export const updateObjectAccessControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateObjectAccessControlsRequest,
   output: UpdateObjectAccessControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComposeObjectsRequest {
@@ -3954,7 +4206,12 @@ export type ComposeObjectsResponse = Storage_Object;
 export const ComposeObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type ComposeObjectsError = DefaultErrors;
+export type ComposeObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Concatenates a list of existing objects into a new object in the same bucket. */
 export const composeObjects: API.OperationMethod<
@@ -3965,7 +4222,7 @@ export const composeObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComposeObjectsRequest,
   output: ComposeObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CopyObjectsRequest {
@@ -4067,7 +4324,12 @@ export const CopyObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CopyObjectsResponse = Storage_Object;
 export const CopyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type CopyObjectsError = DefaultErrors;
+export type CopyObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies a source object to a destination object. Optionally overrides metadata. */
 export const copyObjects: API.OperationMethod<
@@ -4078,7 +4340,7 @@ export const copyObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyObjectsRequest,
   output: CopyObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteObjectsRequest {
@@ -4128,7 +4390,12 @@ export const DeleteObjectsResponse: Schema.Schema<DeleteObjectsResponse> =
     {},
   ) as any as Schema.Schema<DeleteObjectsResponse>;
 
-export type DeleteObjectsError = DefaultErrors;
+export type DeleteObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used. */
 export const deleteObjects: API.OperationMethod<
@@ -4139,7 +4406,7 @@ export const deleteObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteObjectsRequest,
   output: DeleteObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetObjectsRequest {
@@ -4197,7 +4464,7 @@ export const GetObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetObjectsResponse = Storage_Object;
 export const GetObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type GetObjectsError = DefaultErrors;
+export type GetObjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an object or its metadata. */
 export const getObjects: API.OperationMethod<
@@ -4208,7 +4475,7 @@ export const getObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetObjectsRequest,
   output: GetObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyObjectsRequest {
@@ -4238,7 +4505,7 @@ export const GetIamPolicyObjectsRequest =
 export type GetIamPolicyObjectsResponse = Policy;
 export const GetIamPolicyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyObjectsError = DefaultErrors;
+export type GetIamPolicyObjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an IAM policy for the specified object. */
 export const getIamPolicyObjects: API.OperationMethod<
@@ -4249,7 +4516,7 @@ export const getIamPolicyObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyObjectsRequest,
   output: GetIamPolicyObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertObjectsRequest {
@@ -4319,7 +4586,12 @@ export const InsertObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertObjectsResponse = Storage_Object;
 export const InsertObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type InsertObjectsError = DefaultErrors;
+export type InsertObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stores a new object and metadata. */
 export const insertObjects: API.OperationMethod<
@@ -4330,7 +4602,7 @@ export const insertObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertObjectsRequest,
   output: InsertObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListObjectsRequest {
@@ -4394,7 +4666,7 @@ export const ListObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListObjectsResponse = Objects;
 export const ListObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Objects;
 
-export type ListObjectsError = DefaultErrors;
+export type ListObjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of objects matching the criteria. */
 export const listObjects: API.PaginatedOperationMethod<
@@ -4405,7 +4677,7 @@ export const listObjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListObjectsRequest,
   output: ListObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4480,7 +4752,12 @@ export const PatchObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchObjectsResponse = Storage_Object;
 export const PatchObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type PatchObjectsError = DefaultErrors;
+export type PatchObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches an object's metadata. */
 export const patchObjects: API.OperationMethod<
@@ -4491,7 +4768,7 @@ export const patchObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchObjectsRequest,
   output: PatchObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RewriteObjectsRequest {
@@ -4609,7 +4886,12 @@ export type RewriteObjectsResponse = RewriteResponse;
 export const RewriteObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RewriteResponse;
 
-export type RewriteObjectsError = DefaultErrors;
+export type RewriteObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rewrites a source object to a destination object. Optionally overrides metadata. */
 export const rewriteObjects: API.OperationMethod<
@@ -4620,7 +4902,7 @@ export const rewriteObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RewriteObjectsRequest,
   output: RewriteObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveObjectsRequest {
@@ -4694,7 +4976,12 @@ export const MoveObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MoveObjectsResponse = Storage_Object;
 export const MoveObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type MoveObjectsError = DefaultErrors;
+export type MoveObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the source object to the destination object in the same bucket. */
 export const moveObjects: API.OperationMethod<
@@ -4705,7 +4992,7 @@ export const moveObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveObjectsRequest,
   output: MoveObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyObjectsRequest {
@@ -4738,7 +5025,12 @@ export const SetIamPolicyObjectsRequest =
 export type SetIamPolicyObjectsResponse = Policy;
 export const SetIamPolicyObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyObjectsError = DefaultErrors;
+export type SetIamPolicyObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an IAM policy for the specified object. */
 export const setIamPolicyObjects: API.OperationMethod<
@@ -4749,7 +5041,7 @@ export const setIamPolicyObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyObjectsRequest,
   output: SetIamPolicyObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsObjectsRequest {
@@ -4786,7 +5078,10 @@ export type TestIamPermissionsObjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsObjectsError = DefaultErrors;
+export type TestIamPermissionsObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Tests a set of permissions on the given object to see which, if any, are held by the caller. */
 export const testIamPermissionsObjects: API.OperationMethod<
@@ -4797,7 +5092,7 @@ export const testIamPermissionsObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsObjectsRequest,
   output: TestIamPermissionsObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateObjectsRequest {
@@ -4867,7 +5162,12 @@ export const UpdateObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateObjectsResponse = Storage_Object;
 export const UpdateObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type UpdateObjectsError = DefaultErrors;
+export type UpdateObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an object's metadata. */
 export const updateObjects: API.OperationMethod<
@@ -4878,7 +5178,7 @@ export const updateObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateObjectsRequest,
   output: UpdateObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WatchAllObjectsRequest {
@@ -4937,7 +5237,12 @@ export const WatchAllObjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WatchAllObjectsResponse = Channel;
 export const WatchAllObjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchAllObjectsError = DefaultErrors;
+export type WatchAllObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watch for changes on all objects in a bucket. */
 export const watchAllObjects: API.OperationMethod<
@@ -4948,7 +5253,7 @@ export const watchAllObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchAllObjectsRequest,
   output: WatchAllObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreObjectsRequest {
@@ -5013,7 +5318,12 @@ export type RestoreObjectsResponse = Storage_Object;
 export const RestoreObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Storage_Object;
 
-export type RestoreObjectsError = DefaultErrors;
+export type RestoreObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a soft-deleted object. */
 export const restoreObjects: API.OperationMethod<
@@ -5024,7 +5334,7 @@ export const restoreObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreObjectsRequest,
   output: RestoreObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkRestoreObjectsRequest_Op {
@@ -5047,7 +5357,12 @@ export type BulkRestoreObjectsResponse = GoogleLongrunningOperation;
 export const BulkRestoreObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type BulkRestoreObjectsError = DefaultErrors;
+export type BulkRestoreObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a long-running bulk restore operation on the specified bucket. */
 export const bulkRestoreObjects: API.OperationMethod<
@@ -5058,7 +5373,7 @@ export const bulkRestoreObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkRestoreObjectsRequest_Op,
   output: BulkRestoreObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsHmacKeysRequest {
@@ -5090,7 +5405,12 @@ export type CreateProjectsHmacKeysResponse = HmacKey;
 export const CreateProjectsHmacKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ HmacKey;
 
-export type CreateProjectsHmacKeysError = DefaultErrors;
+export type CreateProjectsHmacKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new HMAC key for the specified service account. */
 export const createProjectsHmacKeys: API.OperationMethod<
@@ -5101,7 +5421,7 @@ export const createProjectsHmacKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsHmacKeysRequest,
   output: CreateProjectsHmacKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsHmacKeysRequest {
@@ -5134,7 +5454,12 @@ export const DeleteProjectsHmacKeysResponse: Schema.Schema<DeleteProjectsHmacKey
     {},
   ) as any as Schema.Schema<DeleteProjectsHmacKeysResponse>;
 
-export type DeleteProjectsHmacKeysError = DefaultErrors;
+export type DeleteProjectsHmacKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an HMAC key. */
 export const deleteProjectsHmacKeys: API.OperationMethod<
@@ -5145,7 +5470,7 @@ export const deleteProjectsHmacKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsHmacKeysRequest,
   output: DeleteProjectsHmacKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsHmacKeysRequest {
@@ -5173,7 +5498,7 @@ export type GetProjectsHmacKeysResponse = HmacKeyMetadata;
 export const GetProjectsHmacKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ HmacKeyMetadata;
 
-export type GetProjectsHmacKeysError = DefaultErrors;
+export type GetProjectsHmacKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an HMAC key's metadata */
 export const getProjectsHmacKeys: API.OperationMethod<
@@ -5184,7 +5509,7 @@ export const getProjectsHmacKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsHmacKeysRequest,
   output: GetProjectsHmacKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsHmacKeysRequest {
@@ -5225,7 +5550,7 @@ export type ListProjectsHmacKeysResponse = HmacKeysMetadata;
 export const ListProjectsHmacKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ HmacKeysMetadata;
 
-export type ListProjectsHmacKeysError = DefaultErrors;
+export type ListProjectsHmacKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of HMAC keys matching the criteria. */
 export const listProjectsHmacKeys: API.PaginatedOperationMethod<
@@ -5236,7 +5561,7 @@ export const listProjectsHmacKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsHmacKeysRequest,
   output: ListProjectsHmacKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5276,7 +5601,12 @@ export type UpdateProjectsHmacKeysResponse = HmacKeyMetadata;
 export const UpdateProjectsHmacKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ HmacKeyMetadata;
 
-export type UpdateProjectsHmacKeysError = DefaultErrors;
+export type UpdateProjectsHmacKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the state of an HMAC key. See the [HMAC Key resource descriptor](https://cloud.google.com/storage/docs/json_api/v1/projects/hmacKeys/update#request-body) for valid states. */
 export const updateProjectsHmacKeys: API.OperationMethod<
@@ -5287,7 +5617,7 @@ export const updateProjectsHmacKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsHmacKeysRequest,
   output: UpdateProjectsHmacKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsServiceAccountRequest {
@@ -5312,7 +5642,10 @@ export type GetProjectsServiceAccountResponse = ServiceAccount;
 export const GetProjectsServiceAccountResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccount;
 
-export type GetProjectsServiceAccountError = DefaultErrors;
+export type GetProjectsServiceAccountError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the email address of this project's Google Cloud Storage service account. */
 export const getProjectsServiceAccount: API.OperationMethod<
@@ -5323,5 +5656,5 @@ export const getProjectsServiceAccount: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsServiceAccountRequest,
   output: GetProjectsServiceAccountResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

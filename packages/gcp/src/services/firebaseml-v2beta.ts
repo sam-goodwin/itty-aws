@@ -2328,6 +2328,52 @@ export const GoogleCloudAiplatformV1beta1GenerateContentResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2359,7 +2405,11 @@ export const GenerateContentProjectsLocationsPublishersModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1beta1GenerateContentResponse;
 
 export type GenerateContentProjectsLocationsPublishersModelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generate content with multimodal inputs. */
 export const generateContentProjectsLocationsPublishersModels: API.OperationMethod<
@@ -2370,7 +2420,7 @@ export const generateContentProjectsLocationsPublishersModels: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateContentProjectsLocationsPublishersModelsRequest,
   output: GenerateContentProjectsLocationsPublishersModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamGenerateContentProjectsLocationsPublishersModelsRequest {
@@ -2401,7 +2451,11 @@ export const StreamGenerateContentProjectsLocationsPublishersModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1beta1GenerateContentResponse;
 
 export type StreamGenerateContentProjectsLocationsPublishersModelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generate content with multimodal inputs with streaming support. */
 export const streamGenerateContentProjectsLocationsPublishersModels: API.OperationMethod<
@@ -2412,7 +2466,7 @@ export const streamGenerateContentProjectsLocationsPublishersModels: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StreamGenerateContentProjectsLocationsPublishersModelsRequest,
   output: StreamGenerateContentProjectsLocationsPublishersModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CountTokensProjectsLocationsPublishersModelsRequest {
@@ -2442,7 +2496,12 @@ export type CountTokensProjectsLocationsPublishersModelsResponse =
 export const CountTokensProjectsLocationsPublishersModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAiplatformV1beta1CountTokensResponse;
 
-export type CountTokensProjectsLocationsPublishersModelsError = DefaultErrors;
+export type CountTokensProjectsLocationsPublishersModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform a token counting. */
 export const countTokensProjectsLocationsPublishersModels: API.OperationMethod<
@@ -2453,5 +2512,5 @@ export const countTokensProjectsLocationsPublishersModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountTokensProjectsLocationsPublishersModelsRequest,
   output: CountTokensProjectsLocationsPublishersModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

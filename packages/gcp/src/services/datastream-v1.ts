@@ -69,14 +69,14 @@ export const FieldViolation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   reason: Schema.optional(Schema.String),
 }).annotate({ identifier: "FieldViolation" });
 
-export interface BadRequest {
+export interface Datastream_BadRequest {
   /** Describes all violations in a client request. */
   fieldViolations?: ReadonlyArray<FieldViolation>;
 }
 
-export const BadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+export const Datastream_BadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   fieldViolations: Schema.optional(Schema.Array(FieldViolation)),
-}).annotate({ identifier: "BadRequest" });
+}).annotate({ identifier: "Datastream_BadRequest" });
 
 export interface StopBackfillJobRequest {}
 
@@ -2581,6 +2581,52 @@ export const FetchStaticIpsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "FetchStaticIpsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2615,7 +2661,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2626,7 +2672,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2650,7 +2696,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2661,7 +2707,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FetchStaticIpsProjectsLocationsRequest {
@@ -2687,7 +2733,10 @@ export type FetchStaticIpsProjectsLocationsResponse = FetchStaticIpsResponse;
 export const FetchStaticIpsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchStaticIpsResponse;
 
-export type FetchStaticIpsProjectsLocationsError = DefaultErrors;
+export type FetchStaticIpsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** The FetchStaticIps API call exposes the static IP addresses used by Datastream. */
 export const fetchStaticIpsProjectsLocations: API.PaginatedOperationMethod<
@@ -2698,7 +2747,7 @@ export const fetchStaticIpsProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FetchStaticIpsProjectsLocationsRequest,
   output: FetchStaticIpsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2736,7 +2785,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -2747,7 +2799,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2771,7 +2823,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -2782,7 +2837,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -2805,7 +2860,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -2816,7 +2876,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -2836,7 +2896,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -2847,7 +2912,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPrivateConnectionsRequest {
@@ -2867,7 +2932,10 @@ export type GetProjectsLocationsPrivateConnectionsResponse = PrivateConnection;
 export const GetProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PrivateConnection;
 
-export type GetProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type GetProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to get details about a private connectivity configuration. */
 export const getProjectsLocationsPrivateConnections: API.OperationMethod<
@@ -2878,7 +2946,7 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateConnectionsRequest,
   output: GetProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateConnectionsRequest {
@@ -2911,7 +2979,10 @@ export type ListProjectsLocationsPrivateConnectionsResponse =
 export const ListProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPrivateConnectionsResponse;
 
-export type ListProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type ListProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to list private connectivity configurations in a project and location. */
 export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMethod<
@@ -2922,7 +2993,7 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateConnectionsRequest,
   output: ListProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2969,7 +3040,12 @@ export type CreateProjectsLocationsPrivateConnectionsResponse = Operation;
 export const CreateProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type CreateProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to create a private connectivity configuration. */
 export const createProjectsLocationsPrivateConnections: API.OperationMethod<
@@ -2980,7 +3056,7 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateConnectionsRequest,
   output: CreateProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPrivateConnectionsRequest {
@@ -3006,7 +3082,12 @@ export type DeleteProjectsLocationsPrivateConnectionsResponse = Operation;
 export const DeleteProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type DeleteProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to delete a private connectivity configuration. */
 export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
@@ -3017,7 +3098,7 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateConnectionsRequest,
   output: DeleteProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPrivateConnectionsRoutesRequest {
@@ -3037,7 +3118,10 @@ export type GetProjectsLocationsPrivateConnectionsRoutesResponse = Route;
 export const GetProjectsLocationsPrivateConnectionsRoutesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Route;
 
-export type GetProjectsLocationsPrivateConnectionsRoutesError = DefaultErrors;
+export type GetProjectsLocationsPrivateConnectionsRoutesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to get details about a route. */
 export const getProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
@@ -3048,7 +3132,7 @@ export const getProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateConnectionsRoutesRequest,
   output: GetProjectsLocationsPrivateConnectionsRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateConnectionsRoutesRequest {
@@ -3081,7 +3165,10 @@ export type ListProjectsLocationsPrivateConnectionsRoutesResponse =
 export const ListProjectsLocationsPrivateConnectionsRoutesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRoutesResponse;
 
-export type ListProjectsLocationsPrivateConnectionsRoutesError = DefaultErrors;
+export type ListProjectsLocationsPrivateConnectionsRoutesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to list routes created for a private connectivity configuration in a project and location. */
 export const listProjectsLocationsPrivateConnectionsRoutes: API.PaginatedOperationMethod<
@@ -3092,7 +3179,7 @@ export const listProjectsLocationsPrivateConnectionsRoutes: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateConnectionsRoutesRequest,
   output: ListProjectsLocationsPrivateConnectionsRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3126,7 +3213,11 @@ export const CreateProjectsLocationsPrivateConnectionsRoutesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateConnectionsRoutesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to create a route for a private connectivity configuration in a project and location. */
 export const createProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
@@ -3137,7 +3228,7 @@ export const createProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateConnectionsRoutesRequest,
   output: CreateProjectsLocationsPrivateConnectionsRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPrivateConnectionsRoutesRequest {
@@ -3161,7 +3252,11 @@ export const DeleteProjectsLocationsPrivateConnectionsRoutesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsPrivateConnectionsRoutesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to delete a route. */
 export const deleteProjectsLocationsPrivateConnectionsRoutes: API.OperationMethod<
@@ -3172,7 +3267,7 @@ export const deleteProjectsLocationsPrivateConnectionsRoutes: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateConnectionsRoutesRequest,
   output: DeleteProjectsLocationsPrivateConnectionsRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DiscoverProjectsLocationsConnectionProfilesRequest {
@@ -3200,7 +3295,12 @@ export type DiscoverProjectsLocationsConnectionProfilesResponse =
 export const DiscoverProjectsLocationsConnectionProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DiscoverConnectionProfileResponse;
 
-export type DiscoverProjectsLocationsConnectionProfilesError = DefaultErrors;
+export type DiscoverProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to discover a connection profile. The discover API call exposes the data objects and metadata belonging to the profile. Typically, a request returns children data objects of a parent data object that's optionally supplied in the request. */
 export const discoverProjectsLocationsConnectionProfiles: API.OperationMethod<
@@ -3211,7 +3311,7 @@ export const discoverProjectsLocationsConnectionProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DiscoverProjectsLocationsConnectionProfilesRequest,
   output: DiscoverProjectsLocationsConnectionProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsConnectionProfilesRequest {
@@ -3234,7 +3334,12 @@ export type DeleteProjectsLocationsConnectionProfilesResponse = Operation;
 export const DeleteProjectsLocationsConnectionProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsConnectionProfilesError = DefaultErrors;
+export type DeleteProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to delete a connection profile. */
 export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
@@ -3245,7 +3350,7 @@ export const deleteProjectsLocationsConnectionProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsConnectionProfilesRequest,
   output: DeleteProjectsLocationsConnectionProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsConnectionProfilesRequest {
@@ -3278,7 +3383,10 @@ export type ListProjectsLocationsConnectionProfilesResponse =
 export const ListProjectsLocationsConnectionProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectionProfilesResponse;
 
-export type ListProjectsLocationsConnectionProfilesError = DefaultErrors;
+export type ListProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to list connection profiles created in a project and location. */
 export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMethod<
@@ -3289,7 +3397,7 @@ export const listProjectsLocationsConnectionProfiles: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionProfilesRequest,
   output: ListProjectsLocationsConnectionProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3313,7 +3421,10 @@ export type GetProjectsLocationsConnectionProfilesResponse = ConnectionProfile;
 export const GetProjectsLocationsConnectionProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConnectionProfile;
 
-export type GetProjectsLocationsConnectionProfilesError = DefaultErrors;
+export type GetProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to get details about a connection profile. */
 export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
@@ -3324,7 +3435,7 @@ export const getProjectsLocationsConnectionProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionProfilesRequest,
   output: GetProjectsLocationsConnectionProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsConnectionProfilesRequest {
@@ -3361,7 +3472,12 @@ export type PatchProjectsLocationsConnectionProfilesResponse = Operation;
 export const PatchProjectsLocationsConnectionProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsConnectionProfilesError = DefaultErrors;
+export type PatchProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to update the parameters of a connection profile. */
 export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
@@ -3372,7 +3488,7 @@ export const patchProjectsLocationsConnectionProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionProfilesRequest,
   output: PatchProjectsLocationsConnectionProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsConnectionProfilesRequest {
@@ -3415,7 +3531,12 @@ export type CreateProjectsLocationsConnectionProfilesResponse = Operation;
 export const CreateProjectsLocationsConnectionProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsConnectionProfilesError = DefaultErrors;
+export type CreateProjectsLocationsConnectionProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to create a connection profile in a project and location. */
 export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
@@ -3426,7 +3547,7 @@ export const createProjectsLocationsConnectionProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsConnectionProfilesRequest,
   output: CreateProjectsLocationsConnectionProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsStreamsRequest {
@@ -3449,7 +3570,12 @@ export type DeleteProjectsLocationsStreamsResponse = Operation;
 export const DeleteProjectsLocationsStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsStreamsError = DefaultErrors;
+export type DeleteProjectsLocationsStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to delete a stream. */
 export const deleteProjectsLocationsStreams: API.OperationMethod<
@@ -3460,7 +3586,7 @@ export const deleteProjectsLocationsStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsStreamsRequest,
   output: DeleteProjectsLocationsStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsStreamsRequest {
@@ -3497,7 +3623,12 @@ export type CreateProjectsLocationsStreamsResponse = Operation;
 export const CreateProjectsLocationsStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsStreamsError = DefaultErrors;
+export type CreateProjectsLocationsStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to create a stream. */
 export const createProjectsLocationsStreams: API.OperationMethod<
@@ -3508,7 +3639,7 @@ export const createProjectsLocationsStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsStreamsRequest,
   output: CreateProjectsLocationsStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunProjectsLocationsStreamsRequest {
@@ -3531,7 +3662,12 @@ export type RunProjectsLocationsStreamsResponse = Operation;
 export const RunProjectsLocationsStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunProjectsLocationsStreamsError = DefaultErrors;
+export type RunProjectsLocationsStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to start, resume or recover a stream with a non default CDC strategy. */
 export const runProjectsLocationsStreams: API.OperationMethod<
@@ -3542,7 +3678,7 @@ export const runProjectsLocationsStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunProjectsLocationsStreamsRequest,
   output: RunProjectsLocationsStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsStreamsRequest {
@@ -3574,7 +3710,10 @@ export type ListProjectsLocationsStreamsResponse = ListStreamsResponse;
 export const ListProjectsLocationsStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStreamsResponse;
 
-export type ListProjectsLocationsStreamsError = DefaultErrors;
+export type ListProjectsLocationsStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to list streams in a project and location. */
 export const listProjectsLocationsStreams: API.PaginatedOperationMethod<
@@ -3585,7 +3724,7 @@ export const listProjectsLocationsStreams: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStreamsRequest,
   output: ListProjectsLocationsStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3609,7 +3748,10 @@ export type GetProjectsLocationsStreamsResponse = Stream;
 export const GetProjectsLocationsStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Stream;
 
-export type GetProjectsLocationsStreamsError = DefaultErrors;
+export type GetProjectsLocationsStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to get details about a stream. */
 export const getProjectsLocationsStreams: API.OperationMethod<
@@ -3620,7 +3762,7 @@ export const getProjectsLocationsStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsStreamsRequest,
   output: GetProjectsLocationsStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsStreamsRequest {
@@ -3657,7 +3799,12 @@ export type PatchProjectsLocationsStreamsResponse = Operation;
 export const PatchProjectsLocationsStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsStreamsError = DefaultErrors;
+export type PatchProjectsLocationsStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to update the configuration of a stream. */
 export const patchProjectsLocationsStreams: API.OperationMethod<
@@ -3668,7 +3815,7 @@ export const patchProjectsLocationsStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsStreamsRequest,
   output: PatchProjectsLocationsStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupProjectsLocationsStreamsObjectsRequest {
@@ -3695,7 +3842,12 @@ export type LookupProjectsLocationsStreamsObjectsResponse = StreamObject;
 export const LookupProjectsLocationsStreamsObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StreamObject;
 
-export type LookupProjectsLocationsStreamsObjectsError = DefaultErrors;
+export type LookupProjectsLocationsStreamsObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to look up a stream object by its source object identifier. */
 export const lookupProjectsLocationsStreamsObjects: API.OperationMethod<
@@ -3706,7 +3858,7 @@ export const lookupProjectsLocationsStreamsObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupProjectsLocationsStreamsObjectsRequest,
   output: LookupProjectsLocationsStreamsObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartBackfillJobProjectsLocationsStreamsObjectsRequest {
@@ -3735,7 +3887,11 @@ export const StartBackfillJobProjectsLocationsStreamsObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StartBackfillJobResponse;
 
 export type StartBackfillJobProjectsLocationsStreamsObjectsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to start a backfill job for the specified stream object. */
 export const startBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod<
@@ -3746,7 +3902,7 @@ export const startBackfillJobProjectsLocationsStreamsObjects: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartBackfillJobProjectsLocationsStreamsObjectsRequest,
   output: StartBackfillJobProjectsLocationsStreamsObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopBackfillJobProjectsLocationsStreamsObjectsRequest {
@@ -3774,7 +3930,12 @@ export type StopBackfillJobProjectsLocationsStreamsObjectsResponse =
 export const StopBackfillJobProjectsLocationsStreamsObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StopBackfillJobResponse;
 
-export type StopBackfillJobProjectsLocationsStreamsObjectsError = DefaultErrors;
+export type StopBackfillJobProjectsLocationsStreamsObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use this method to stop a backfill job for the specified stream object. */
 export const stopBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod<
@@ -3785,7 +3946,7 @@ export const stopBackfillJobProjectsLocationsStreamsObjects: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopBackfillJobProjectsLocationsStreamsObjectsRequest,
   output: StopBackfillJobProjectsLocationsStreamsObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsStreamsObjectsRequest {
@@ -3805,7 +3966,10 @@ export type GetProjectsLocationsStreamsObjectsResponse = StreamObject;
 export const GetProjectsLocationsStreamsObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StreamObject;
 
-export type GetProjectsLocationsStreamsObjectsError = DefaultErrors;
+export type GetProjectsLocationsStreamsObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to get details about a stream object. */
 export const getProjectsLocationsStreamsObjects: API.OperationMethod<
@@ -3816,7 +3980,7 @@ export const getProjectsLocationsStreamsObjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsStreamsObjectsRequest,
   output: GetProjectsLocationsStreamsObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsStreamsObjectsRequest {
@@ -3843,7 +4007,10 @@ export type ListProjectsLocationsStreamsObjectsResponse =
 export const ListProjectsLocationsStreamsObjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStreamObjectsResponse;
 
-export type ListProjectsLocationsStreamsObjectsError = DefaultErrors;
+export type ListProjectsLocationsStreamsObjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Use this method to list the objects of a specific stream. */
 export const listProjectsLocationsStreamsObjects: API.PaginatedOperationMethod<
@@ -3854,7 +4021,7 @@ export const listProjectsLocationsStreamsObjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStreamsObjectsRequest,
   output: ListProjectsLocationsStreamsObjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

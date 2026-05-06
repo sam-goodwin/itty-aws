@@ -7359,6 +7359,52 @@ export const VulnerabilitySnapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "VulnerabilitySnapshot" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -7380,7 +7426,10 @@ export type GetSecurityCenterSettingsOrganizationsResponse =
 export const GetSecurityCenterSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityCenterSettings;
 
-export type GetSecurityCenterSettingsOrganizationsError = DefaultErrors;
+export type GetSecurityCenterSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the SecurityCenterSettings resource. */
 export const getSecurityCenterSettingsOrganizations: API.OperationMethod<
@@ -7391,7 +7440,7 @@ export const getSecurityCenterSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityCenterSettingsOrganizationsRequest,
   output: GetSecurityCenterSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetContainerThreatDetectionSettingsOrganizationsRequest {
@@ -7413,7 +7462,9 @@ export const GetContainerThreatDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type GetContainerThreatDetectionSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateContainerThreatDetectionSettings for this purpose. */
 export const getContainerThreatDetectionSettingsOrganizations: API.OperationMethod<
@@ -7424,7 +7475,7 @@ export const getContainerThreatDetectionSettingsOrganizations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsOrganizationsRequest,
   output: GetContainerThreatDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSecurityHealthAnalyticsSettingsOrganizationsRequest {
@@ -7446,7 +7497,9 @@ export const GetSecurityHealthAnalyticsSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type GetSecurityHealthAnalyticsSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose. */
 export const getSecurityHealthAnalyticsSettingsOrganizations: API.OperationMethod<
@@ -7457,7 +7510,7 @@ export const getSecurityHealthAnalyticsSettingsOrganizations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityHealthAnalyticsSettingsOrganizationsRequest,
   output: GetSecurityHealthAnalyticsSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest {
@@ -7485,7 +7538,11 @@ export const UpdateSecurityHealthAnalyticsSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type UpdateSecurityHealthAnalyticsSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the SecurityHealthAnalyticsSettings resource. */
 export const updateSecurityHealthAnalyticsSettingsOrganizations: API.OperationMethod<
@@ -7496,7 +7553,7 @@ export const updateSecurityHealthAnalyticsSettingsOrganizations: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityHealthAnalyticsSettingsOrganizationsRequest,
   output: UpdateSecurityHealthAnalyticsSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRapidVulnerabilityDetectionSettingsOrganizationsRequest {
@@ -7518,7 +7575,9 @@ export const GetRapidVulnerabilityDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type GetRapidVulnerabilityDetectionSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this purpose. */
 export const getRapidVulnerabilityDetectionSettingsOrganizations: API.OperationMethod<
@@ -7529,7 +7588,7 @@ export const getRapidVulnerabilityDetectionSettingsOrganizations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRapidVulnerabilityDetectionSettingsOrganizationsRequest,
   output: GetRapidVulnerabilityDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest {
@@ -7559,7 +7618,11 @@ export const UpdateRapidVulnerabilityDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type UpdateRapidVulnerabilityDetectionSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the RapidVulnerabilityDetectionSettings resource. */
 export const updateRapidVulnerabilityDetectionSettingsOrganizations: API.OperationMethod<
@@ -7570,7 +7633,7 @@ export const updateRapidVulnerabilityDetectionSettingsOrganizations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRapidVulnerabilityDetectionSettingsOrganizationsRequest,
   output: UpdateRapidVulnerabilityDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateContainerThreatDetectionSettingsOrganizationsRequest {
@@ -7598,7 +7661,11 @@ export const UpdateContainerThreatDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the ContainerThreatDetectionSettings resource. */
 export const updateContainerThreatDetectionSettingsOrganizations: API.OperationMethod<
@@ -7609,7 +7676,7 @@ export const updateContainerThreatDetectionSettingsOrganizations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContainerThreatDetectionSettingsOrganizationsRequest,
   output: UpdateContainerThreatDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEventThreatDetectionSettingsOrganizationsRequest {
@@ -7630,7 +7697,10 @@ export type GetEventThreatDetectionSettingsOrganizationsResponse =
 export const GetEventThreatDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
-export type GetEventThreatDetectionSettingsOrganizationsError = DefaultErrors;
+export type GetEventThreatDetectionSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for this purpose. */
 export const getEventThreatDetectionSettingsOrganizations: API.OperationMethod<
@@ -7641,7 +7711,7 @@ export const getEventThreatDetectionSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventThreatDetectionSettingsOrganizationsRequest,
   output: GetEventThreatDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetWebSecurityScannerSettingsOrganizationsRequest {
@@ -7662,7 +7732,10 @@ export type GetWebSecurityScannerSettingsOrganizationsResponse =
 export const GetWebSecurityScannerSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type GetWebSecurityScannerSettingsOrganizationsError = DefaultErrors;
+export type GetWebSecurityScannerSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for this purpose. */
 export const getWebSecurityScannerSettingsOrganizations: API.OperationMethod<
@@ -7673,7 +7746,7 @@ export const getWebSecurityScannerSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebSecurityScannerSettingsOrganizationsRequest,
   output: GetWebSecurityScannerSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSubscriptionOrganizationsRequest {
@@ -7693,7 +7766,10 @@ export type GetSubscriptionOrganizationsResponse = Subscription;
 export const GetSubscriptionOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetSubscriptionOrganizationsError = DefaultErrors;
+export type GetSubscriptionOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the Subscription resource. */
 export const getSubscriptionOrganizations: API.OperationMethod<
@@ -7704,7 +7780,7 @@ export const getSubscriptionOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionOrganizationsRequest,
   output: GetSubscriptionOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest {
@@ -7734,7 +7810,11 @@ export const UpdateVirtualMachineThreatDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type UpdateVirtualMachineThreatDetectionSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the VirtualMachineThreatDetectionSettings resource. */
 export const updateVirtualMachineThreatDetectionSettingsOrganizations: API.OperationMethod<
@@ -7745,7 +7825,7 @@ export const updateVirtualMachineThreatDetectionSettingsOrganizations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVirtualMachineThreatDetectionSettingsOrganizationsRequest,
   output: UpdateVirtualMachineThreatDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEventThreatDetectionSettingsOrganizationsRequest {
@@ -7773,7 +7853,11 @@ export const UpdateEventThreatDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
 export type UpdateEventThreatDetectionSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the EventThreatDetectionSettings resource. */
 export const updateEventThreatDetectionSettingsOrganizations: API.OperationMethod<
@@ -7784,7 +7868,7 @@ export const updateEventThreatDetectionSettingsOrganizations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventThreatDetectionSettingsOrganizationsRequest,
   output: UpdateEventThreatDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateWebSecurityScannerSettingsOrganizationsRequest {
@@ -7811,7 +7895,12 @@ export type UpdateWebSecurityScannerSettingsOrganizationsResponse =
 export const UpdateWebSecurityScannerSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type UpdateWebSecurityScannerSettingsOrganizationsError = DefaultErrors;
+export type UpdateWebSecurityScannerSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the WebSecurityScannerSettings resource. */
 export const updateWebSecurityScannerSettingsOrganizations: API.OperationMethod<
@@ -7822,7 +7911,7 @@ export const updateWebSecurityScannerSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWebSecurityScannerSettingsOrganizationsRequest,
   output: UpdateWebSecurityScannerSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVirtualMachineThreatDetectionSettingsOrganizationsRequest {
@@ -7844,7 +7933,9 @@ export const GetVirtualMachineThreatDetectionSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type GetVirtualMachineThreatDetectionSettingsOrganizationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this purpose. */
 export const getVirtualMachineThreatDetectionSettingsOrganizations: API.OperationMethod<
@@ -7855,7 +7946,7 @@ export const getVirtualMachineThreatDetectionSettingsOrganizations: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVirtualMachineThreatDetectionSettingsOrganizationsRequest,
   output: GetVirtualMachineThreatDetectionSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest {
@@ -7882,7 +7973,9 @@ export const CalculateOrganizationsVirtualMachineThreatDetectionSettingsResponse
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type CalculateOrganizationsVirtualMachineThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateOrganizationsVirtualMachineThreatDetectionSettings: API.OperationMethod<
@@ -7893,7 +7986,7 @@ export const calculateOrganizationsVirtualMachineThreatDetectionSettings: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsVirtualMachineThreatDetectionSettingsRequest,
   output: CalculateOrganizationsVirtualMachineThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateOrganizationsEventThreatDetectionSettingsRequest {
@@ -7920,7 +8013,9 @@ export const CalculateOrganizationsEventThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
 export type CalculateOrganizationsEventThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateOrganizationsEventThreatDetectionSettings: API.OperationMethod<
@@ -7931,7 +8026,7 @@ export const calculateOrganizationsEventThreatDetectionSettings: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsEventThreatDetectionSettingsRequest,
   output: CalculateOrganizationsEventThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest {
@@ -7953,7 +8048,9 @@ export const CalculateOrganizationsRapidVulnerabilityDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type CalculateOrganizationsRapidVulnerabilityDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateOrganizationsRapidVulnerabilityDetectionSettings: API.OperationMethod<
@@ -7964,7 +8061,7 @@ export const calculateOrganizationsRapidVulnerabilityDetectionSettings: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsRapidVulnerabilityDetectionSettingsRequest,
   output: CalculateOrganizationsRapidVulnerabilityDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateOrganizationsWebSecurityScannerSettingsRequest {
@@ -7991,7 +8088,9 @@ export const CalculateOrganizationsWebSecurityScannerSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
 export type CalculateOrganizationsWebSecurityScannerSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateOrganizationsWebSecurityScannerSettings: API.OperationMethod<
@@ -8002,7 +8101,7 @@ export const calculateOrganizationsWebSecurityScannerSettings: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsWebSecurityScannerSettingsRequest,
   output: CalculateOrganizationsWebSecurityScannerSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateOrganizationsContainerThreatDetectionSettingsRequest {
@@ -8029,7 +8128,9 @@ export const CalculateOrganizationsContainerThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateOrganizationsContainerThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateOrganizationsContainerThreatDetectionSettings: API.OperationMethod<
@@ -8040,7 +8141,7 @@ export const calculateOrganizationsContainerThreatDetectionSettings: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsContainerThreatDetectionSettingsRequest,
   output: CalculateOrganizationsContainerThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest {
@@ -8067,7 +8168,9 @@ export const CalculateOrganizationsSecurityHealthAnalyticsSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type CalculateOrganizationsSecurityHealthAnalyticsSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateOrganizationsSecurityHealthAnalyticsSettings: API.OperationMethod<
@@ -8078,7 +8181,7 @@ export const calculateOrganizationsSecurityHealthAnalyticsSettings: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateOrganizationsSecurityHealthAnalyticsSettingsRequest,
   output: CalculateOrganizationsSecurityHealthAnalyticsSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEventThreatDetectionSettingsFoldersRequest {
@@ -8105,7 +8208,12 @@ export type UpdateEventThreatDetectionSettingsFoldersResponse =
 export const UpdateEventThreatDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
-export type UpdateEventThreatDetectionSettingsFoldersError = DefaultErrors;
+export type UpdateEventThreatDetectionSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the EventThreatDetectionSettings resource. */
 export const updateEventThreatDetectionSettingsFolders: API.OperationMethod<
@@ -8116,7 +8224,7 @@ export const updateEventThreatDetectionSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventThreatDetectionSettingsFoldersRequest,
   output: UpdateEventThreatDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateVirtualMachineThreatDetectionSettingsFoldersRequest {
@@ -8146,7 +8254,11 @@ export const UpdateVirtualMachineThreatDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type UpdateVirtualMachineThreatDetectionSettingsFoldersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the VirtualMachineThreatDetectionSettings resource. */
 export const updateVirtualMachineThreatDetectionSettingsFolders: API.OperationMethod<
@@ -8157,7 +8269,7 @@ export const updateVirtualMachineThreatDetectionSettingsFolders: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVirtualMachineThreatDetectionSettingsFoldersRequest,
   output: UpdateVirtualMachineThreatDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetWebSecurityScannerSettingsFoldersRequest {
@@ -8178,7 +8290,10 @@ export type GetWebSecurityScannerSettingsFoldersResponse =
 export const GetWebSecurityScannerSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type GetWebSecurityScannerSettingsFoldersError = DefaultErrors;
+export type GetWebSecurityScannerSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for this purpose. */
 export const getWebSecurityScannerSettingsFolders: API.OperationMethod<
@@ -8189,7 +8304,7 @@ export const getWebSecurityScannerSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebSecurityScannerSettingsFoldersRequest,
   output: GetWebSecurityScannerSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetEventThreatDetectionSettingsFoldersRequest {
@@ -8210,7 +8325,10 @@ export type GetEventThreatDetectionSettingsFoldersResponse =
 export const GetEventThreatDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
-export type GetEventThreatDetectionSettingsFoldersError = DefaultErrors;
+export type GetEventThreatDetectionSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for this purpose. */
 export const getEventThreatDetectionSettingsFolders: API.OperationMethod<
@@ -8221,7 +8339,7 @@ export const getEventThreatDetectionSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventThreatDetectionSettingsFoldersRequest,
   output: GetEventThreatDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateContainerThreatDetectionSettingsFoldersRequest {
@@ -8248,7 +8366,12 @@ export type UpdateContainerThreatDetectionSettingsFoldersResponse =
 export const UpdateContainerThreatDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
-export type UpdateContainerThreatDetectionSettingsFoldersError = DefaultErrors;
+export type UpdateContainerThreatDetectionSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the ContainerThreatDetectionSettings resource. */
 export const updateContainerThreatDetectionSettingsFolders: API.OperationMethod<
@@ -8259,7 +8382,7 @@ export const updateContainerThreatDetectionSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContainerThreatDetectionSettingsFoldersRequest,
   output: UpdateContainerThreatDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVirtualMachineThreatDetectionSettingsFoldersRequest {
@@ -8281,7 +8404,9 @@ export const GetVirtualMachineThreatDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type GetVirtualMachineThreatDetectionSettingsFoldersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this purpose. */
 export const getVirtualMachineThreatDetectionSettingsFolders: API.OperationMethod<
@@ -8292,7 +8417,7 @@ export const getVirtualMachineThreatDetectionSettingsFolders: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVirtualMachineThreatDetectionSettingsFoldersRequest,
   output: GetVirtualMachineThreatDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateWebSecurityScannerSettingsFoldersRequest {
@@ -8319,7 +8444,12 @@ export type UpdateWebSecurityScannerSettingsFoldersResponse =
 export const UpdateWebSecurityScannerSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type UpdateWebSecurityScannerSettingsFoldersError = DefaultErrors;
+export type UpdateWebSecurityScannerSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the WebSecurityScannerSettings resource. */
 export const updateWebSecurityScannerSettingsFolders: API.OperationMethod<
@@ -8330,7 +8460,7 @@ export const updateWebSecurityScannerSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWebSecurityScannerSettingsFoldersRequest,
   output: UpdateWebSecurityScannerSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetContainerThreatDetectionSettingsFoldersRequest {
@@ -8351,7 +8481,10 @@ export type GetContainerThreatDetectionSettingsFoldersResponse =
 export const GetContainerThreatDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
-export type GetContainerThreatDetectionSettingsFoldersError = DefaultErrors;
+export type GetContainerThreatDetectionSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateContainerThreatDetectionSettings for this purpose. */
 export const getContainerThreatDetectionSettingsFolders: API.OperationMethod<
@@ -8362,7 +8495,7 @@ export const getContainerThreatDetectionSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsFoldersRequest,
   output: GetContainerThreatDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSecurityHealthAnalyticsSettingsFoldersRequest {
@@ -8383,7 +8516,10 @@ export type GetSecurityHealthAnalyticsSettingsFoldersResponse =
 export const GetSecurityHealthAnalyticsSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
-export type GetSecurityHealthAnalyticsSettingsFoldersError = DefaultErrors;
+export type GetSecurityHealthAnalyticsSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose. */
 export const getSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
@@ -8394,7 +8530,7 @@ export const getSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityHealthAnalyticsSettingsFoldersRequest,
   output: GetSecurityHealthAnalyticsSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSecurityCenterSettingsFoldersRequest {
@@ -8414,7 +8550,10 @@ export type GetSecurityCenterSettingsFoldersResponse = SecurityCenterSettings;
 export const GetSecurityCenterSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityCenterSettings;
 
-export type GetSecurityCenterSettingsFoldersError = DefaultErrors;
+export type GetSecurityCenterSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the SecurityCenterSettings resource. */
 export const getSecurityCenterSettingsFolders: API.OperationMethod<
@@ -8425,7 +8564,7 @@ export const getSecurityCenterSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityCenterSettingsFoldersRequest,
   output: GetSecurityCenterSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetRapidVulnerabilityDetectionSettingsFoldersRequest {
@@ -8446,7 +8585,10 @@ export type GetRapidVulnerabilityDetectionSettingsFoldersResponse =
 export const GetRapidVulnerabilityDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
-export type GetRapidVulnerabilityDetectionSettingsFoldersError = DefaultErrors;
+export type GetRapidVulnerabilityDetectionSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this purpose. */
 export const getRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
@@ -8457,7 +8599,7 @@ export const getRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRapidVulnerabilityDetectionSettingsFoldersRequest,
   output: GetRapidVulnerabilityDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateRapidVulnerabilityDetectionSettingsFoldersRequest {
@@ -8487,7 +8629,11 @@ export const UpdateRapidVulnerabilityDetectionSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type UpdateRapidVulnerabilityDetectionSettingsFoldersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the RapidVulnerabilityDetectionSettings resource. */
 export const updateRapidVulnerabilityDetectionSettingsFolders: API.OperationMethod<
@@ -8498,7 +8644,7 @@ export const updateRapidVulnerabilityDetectionSettingsFolders: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRapidVulnerabilityDetectionSettingsFoldersRequest,
   output: UpdateRapidVulnerabilityDetectionSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSecurityHealthAnalyticsSettingsFoldersRequest {
@@ -8525,7 +8671,12 @@ export type UpdateSecurityHealthAnalyticsSettingsFoldersResponse =
 export const UpdateSecurityHealthAnalyticsSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
-export type UpdateSecurityHealthAnalyticsSettingsFoldersError = DefaultErrors;
+export type UpdateSecurityHealthAnalyticsSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the SecurityHealthAnalyticsSettings resource. */
 export const updateSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
@@ -8536,7 +8687,7 @@ export const updateSecurityHealthAnalyticsSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityHealthAnalyticsSettingsFoldersRequest,
   output: UpdateSecurityHealthAnalyticsSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CalculateFoldersEventThreatDetectionSettingsRequest {
@@ -8562,7 +8713,10 @@ export type CalculateFoldersEventThreatDetectionSettingsResponse =
 export const CalculateFoldersEventThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
-export type CalculateFoldersEventThreatDetectionSettingsError = DefaultErrors;
+export type CalculateFoldersEventThreatDetectionSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateFoldersEventThreatDetectionSettings: API.OperationMethod<
@@ -8573,7 +8727,7 @@ export const calculateFoldersEventThreatDetectionSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateFoldersEventThreatDetectionSettingsRequest,
   output: CalculateFoldersEventThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateFoldersVirtualMachineThreatDetectionSettingsRequest {
@@ -8600,7 +8754,9 @@ export const CalculateFoldersVirtualMachineThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type CalculateFoldersVirtualMachineThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateFoldersVirtualMachineThreatDetectionSettings: API.OperationMethod<
@@ -8611,7 +8767,7 @@ export const calculateFoldersVirtualMachineThreatDetectionSettings: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateFoldersVirtualMachineThreatDetectionSettingsRequest,
   output: CalculateFoldersVirtualMachineThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateFoldersContainerThreatDetectionSettingsRequest {
@@ -8638,7 +8794,9 @@ export const CalculateFoldersContainerThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateFoldersContainerThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateFoldersContainerThreatDetectionSettings: API.OperationMethod<
@@ -8649,7 +8807,7 @@ export const calculateFoldersContainerThreatDetectionSettings: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateFoldersContainerThreatDetectionSettingsRequest,
   output: CalculateFoldersContainerThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateFoldersSecurityHealthAnalyticsSettingsRequest {
@@ -8676,7 +8834,9 @@ export const CalculateFoldersSecurityHealthAnalyticsSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type CalculateFoldersSecurityHealthAnalyticsSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateFoldersSecurityHealthAnalyticsSettings: API.OperationMethod<
@@ -8687,7 +8847,7 @@ export const calculateFoldersSecurityHealthAnalyticsSettings: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateFoldersSecurityHealthAnalyticsSettingsRequest,
   output: CalculateFoldersSecurityHealthAnalyticsSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateFoldersRapidVulnerabilityDetectionSettingsRequest {
@@ -8709,7 +8869,9 @@ export const CalculateFoldersRapidVulnerabilityDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type CalculateFoldersRapidVulnerabilityDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateFoldersRapidVulnerabilityDetectionSettings: API.OperationMethod<
@@ -8720,7 +8882,7 @@ export const calculateFoldersRapidVulnerabilityDetectionSettings: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateFoldersRapidVulnerabilityDetectionSettingsRequest,
   output: CalculateFoldersRapidVulnerabilityDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateFoldersWebSecurityScannerSettingsRequest {
@@ -8746,7 +8908,10 @@ export type CalculateFoldersWebSecurityScannerSettingsResponse =
 export const CalculateFoldersWebSecurityScannerSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type CalculateFoldersWebSecurityScannerSettingsError = DefaultErrors;
+export type CalculateFoldersWebSecurityScannerSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateFoldersWebSecurityScannerSettings: API.OperationMethod<
@@ -8757,7 +8922,7 @@ export const calculateFoldersWebSecurityScannerSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateFoldersWebSecurityScannerSettingsRequest,
   output: CalculateFoldersWebSecurityScannerSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSecurityHealthAnalyticsSettingsProjectsRequest {
@@ -8784,7 +8949,12 @@ export type UpdateSecurityHealthAnalyticsSettingsProjectsResponse =
 export const UpdateSecurityHealthAnalyticsSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
-export type UpdateSecurityHealthAnalyticsSettingsProjectsError = DefaultErrors;
+export type UpdateSecurityHealthAnalyticsSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the SecurityHealthAnalyticsSettings resource. */
 export const updateSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
@@ -8795,7 +8965,7 @@ export const updateSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityHealthAnalyticsSettingsProjectsRequest,
   output: UpdateSecurityHealthAnalyticsSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRapidVulnerabilityDetectionSettingsProjectsRequest {
@@ -8816,7 +8986,10 @@ export type GetRapidVulnerabilityDetectionSettingsProjectsResponse =
 export const GetRapidVulnerabilityDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
-export type GetRapidVulnerabilityDetectionSettingsProjectsError = DefaultErrors;
+export type GetRapidVulnerabilityDetectionSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetRapidVulnerabilityDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateRapidVulnerabilityDetectionSettings for this purpose. */
 export const getRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod<
@@ -8827,7 +9000,7 @@ export const getRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRapidVulnerabilityDetectionSettingsProjectsRequest,
   output: GetRapidVulnerabilityDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateRapidVulnerabilityDetectionSettingsProjectsRequest {
@@ -8857,7 +9030,11 @@ export const UpdateRapidVulnerabilityDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type UpdateRapidVulnerabilityDetectionSettingsProjectsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the RapidVulnerabilityDetectionSettings resource. */
 export const updateRapidVulnerabilityDetectionSettingsProjects: API.OperationMethod<
@@ -8868,7 +9045,7 @@ export const updateRapidVulnerabilityDetectionSettingsProjects: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRapidVulnerabilityDetectionSettingsProjectsRequest,
   output: UpdateRapidVulnerabilityDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSecurityCenterSettingsProjectsRequest {
@@ -8888,7 +9065,10 @@ export type GetSecurityCenterSettingsProjectsResponse = SecurityCenterSettings;
 export const GetSecurityCenterSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityCenterSettings;
 
-export type GetSecurityCenterSettingsProjectsError = DefaultErrors;
+export type GetSecurityCenterSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the SecurityCenterSettings resource. */
 export const getSecurityCenterSettingsProjects: API.OperationMethod<
@@ -8899,7 +9079,7 @@ export const getSecurityCenterSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityCenterSettingsProjectsRequest,
   output: GetSecurityCenterSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetContainerThreatDetectionSettingsProjectsRequest {
@@ -8920,7 +9100,10 @@ export type GetContainerThreatDetectionSettingsProjectsResponse =
 export const GetContainerThreatDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
-export type GetContainerThreatDetectionSettingsProjectsError = DefaultErrors;
+export type GetContainerThreatDetectionSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateContainerThreatDetectionSettings for this purpose. */
 export const getContainerThreatDetectionSettingsProjects: API.OperationMethod<
@@ -8931,7 +9114,7 @@ export const getContainerThreatDetectionSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsProjectsRequest,
   output: GetContainerThreatDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSecurityHealthAnalyticsSettingsProjectsRequest {
@@ -8952,7 +9135,10 @@ export type GetSecurityHealthAnalyticsSettingsProjectsResponse =
 export const GetSecurityHealthAnalyticsSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
-export type GetSecurityHealthAnalyticsSettingsProjectsError = DefaultErrors;
+export type GetSecurityHealthAnalyticsSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the SecurityHealthAnalyticsSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetSecurityHealthAnalyticsSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateSecurityHealthAnalyticsSettings for this purpose. */
 export const getSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
@@ -8963,7 +9149,7 @@ export const getSecurityHealthAnalyticsSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityHealthAnalyticsSettingsProjectsRequest,
   output: GetSecurityHealthAnalyticsSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateWebSecurityScannerSettingsProjectsRequest {
@@ -8990,7 +9176,12 @@ export type UpdateWebSecurityScannerSettingsProjectsResponse =
 export const UpdateWebSecurityScannerSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type UpdateWebSecurityScannerSettingsProjectsError = DefaultErrors;
+export type UpdateWebSecurityScannerSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the WebSecurityScannerSettings resource. */
 export const updateWebSecurityScannerSettingsProjects: API.OperationMethod<
@@ -9001,7 +9192,7 @@ export const updateWebSecurityScannerSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWebSecurityScannerSettingsProjectsRequest,
   output: UpdateWebSecurityScannerSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVirtualMachineThreatDetectionSettingsProjectsRequest {
@@ -9023,7 +9214,9 @@ export const GetVirtualMachineThreatDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type GetVirtualMachineThreatDetectionSettingsProjectsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the VirtualMachineThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetVirtualMachineThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateVirtualMachineThreatDetectionSettings for this purpose. */
 export const getVirtualMachineThreatDetectionSettingsProjects: API.OperationMethod<
@@ -9034,7 +9227,7 @@ export const getVirtualMachineThreatDetectionSettingsProjects: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVirtualMachineThreatDetectionSettingsProjectsRequest,
   output: GetVirtualMachineThreatDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateContainerThreatDetectionSettingsProjectsRequest {
@@ -9061,7 +9254,12 @@ export type UpdateContainerThreatDetectionSettingsProjectsResponse =
 export const UpdateContainerThreatDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
-export type UpdateContainerThreatDetectionSettingsProjectsError = DefaultErrors;
+export type UpdateContainerThreatDetectionSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the ContainerThreatDetectionSettings resource. */
 export const updateContainerThreatDetectionSettingsProjects: API.OperationMethod<
@@ -9072,7 +9270,7 @@ export const updateContainerThreatDetectionSettingsProjects: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContainerThreatDetectionSettingsProjectsRequest,
   output: UpdateContainerThreatDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEventThreatDetectionSettingsProjectsRequest {
@@ -9093,7 +9291,10 @@ export type GetEventThreatDetectionSettingsProjectsResponse =
 export const GetEventThreatDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
-export type GetEventThreatDetectionSettingsProjectsError = DefaultErrors;
+export type GetEventThreatDetectionSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the EventThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetEventThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateEventThreatDetectionSettings for this purpose. */
 export const getEventThreatDetectionSettingsProjects: API.OperationMethod<
@@ -9104,7 +9305,7 @@ export const getEventThreatDetectionSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventThreatDetectionSettingsProjectsRequest,
   output: GetEventThreatDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateVirtualMachineThreatDetectionSettingsProjectsRequest {
@@ -9134,7 +9335,11 @@ export const UpdateVirtualMachineThreatDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type UpdateVirtualMachineThreatDetectionSettingsProjectsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the VirtualMachineThreatDetectionSettings resource. */
 export const updateVirtualMachineThreatDetectionSettingsProjects: API.OperationMethod<
@@ -9145,7 +9350,7 @@ export const updateVirtualMachineThreatDetectionSettingsProjects: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVirtualMachineThreatDetectionSettingsProjectsRequest,
   output: UpdateVirtualMachineThreatDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetWebSecurityScannerSettingsProjectsRequest {
@@ -9166,7 +9371,10 @@ export type GetWebSecurityScannerSettingsProjectsResponse =
 export const GetWebSecurityScannerSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type GetWebSecurityScannerSettingsProjectsError = DefaultErrors;
+export type GetWebSecurityScannerSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the WebSecurityScannerSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetWebSecurityScannerSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateWebSecurityScannerSettings for this purpose. */
 export const getWebSecurityScannerSettingsProjects: API.OperationMethod<
@@ -9177,7 +9385,7 @@ export const getWebSecurityScannerSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebSecurityScannerSettingsProjectsRequest,
   output: GetWebSecurityScannerSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEventThreatDetectionSettingsProjectsRequest {
@@ -9204,7 +9412,12 @@ export type UpdateEventThreatDetectionSettingsProjectsResponse =
 export const UpdateEventThreatDetectionSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
-export type UpdateEventThreatDetectionSettingsProjectsError = DefaultErrors;
+export type UpdateEventThreatDetectionSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the EventThreatDetectionSettings resource. */
 export const updateEventThreatDetectionSettingsProjects: API.OperationMethod<
@@ -9215,7 +9428,7 @@ export const updateEventThreatDetectionSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventThreatDetectionSettingsProjectsRequest,
   output: UpdateEventThreatDetectionSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest {
@@ -9237,7 +9450,9 @@ export const GetContainerThreatDetectionSettingsProjectsLocationsClustersRespons
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type GetContainerThreatDetectionSettingsProjectsLocationsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the ContainerThreatDetectionSettings resource. In the returned settings response, a missing field only indicates that it was not explicitly set, so no assumption should be made about these fields. In other words, GetContainerThreatDetectionSettings does not calculate the effective service settings for the resource, which accounts for inherited settings and defaults. Instead, use CalculateContainerThreatDetectionSettings for this purpose. */
 export const getContainerThreatDetectionSettingsProjectsLocationsClusters: API.OperationMethod<
@@ -9248,7 +9463,7 @@ export const getContainerThreatDetectionSettingsProjectsLocationsClusters: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
   output: GetContainerThreatDetectionSettingsProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest {
@@ -9276,7 +9491,11 @@ export const UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResp
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type UpdateContainerThreatDetectionSettingsProjectsLocationsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the ContainerThreatDetectionSettings resource. */
 export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: API.OperationMethod<
@@ -9288,7 +9507,7 @@ export const updateContainerThreatDetectionSettingsProjectsLocationsClusters: AP
   input: UpdateContainerThreatDetectionSettingsProjectsLocationsClustersRequest,
   output:
     UpdateContainerThreatDetectionSettingsProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest {
@@ -9315,7 +9534,9 @@ export const CalculateProjectsLocationsClustersContainerThreatDetectionSettingsR
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateProjectsLocationsClustersContainerThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsLocationsClustersContainerThreatDetectionSettings: API.OperationMethod<
@@ -9328,7 +9549,7 @@ export const calculateProjectsLocationsClustersContainerThreatDetectionSettings:
     CalculateProjectsLocationsClustersContainerThreatDetectionSettingsRequest,
   output:
     CalculateProjectsLocationsClustersContainerThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateProjectsContainerThreatDetectionSettingsRequest {
@@ -9355,7 +9576,9 @@ export const CalculateProjectsContainerThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerThreatDetectionSettings;
 
 export type CalculateProjectsContainerThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective ContainerThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsContainerThreatDetectionSettings: API.OperationMethod<
@@ -9366,7 +9589,7 @@ export const calculateProjectsContainerThreatDetectionSettings: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateProjectsContainerThreatDetectionSettingsRequest,
   output: CalculateProjectsContainerThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateProjectsSecurityHealthAnalyticsSettingsRequest {
@@ -9393,7 +9616,9 @@ export const CalculateProjectsSecurityHealthAnalyticsSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityHealthAnalyticsSettings;
 
 export type CalculateProjectsSecurityHealthAnalyticsSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective SecurityHealthAnalyticsSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsSecurityHealthAnalyticsSettings: API.OperationMethod<
@@ -9404,7 +9629,7 @@ export const calculateProjectsSecurityHealthAnalyticsSettings: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateProjectsSecurityHealthAnalyticsSettingsRequest,
   output: CalculateProjectsSecurityHealthAnalyticsSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateProjectsRapidVulnerabilityDetectionSettingsRequest {
@@ -9426,7 +9651,9 @@ export const CalculateProjectsRapidVulnerabilityDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RapidVulnerabilityDetectionSettings;
 
 export type CalculateProjectsRapidVulnerabilityDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective RapidVulnerabilityDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsRapidVulnerabilityDetectionSettings: API.OperationMethod<
@@ -9437,7 +9664,7 @@ export const calculateProjectsRapidVulnerabilityDetectionSettings: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateProjectsRapidVulnerabilityDetectionSettingsRequest,
   output: CalculateProjectsRapidVulnerabilityDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateProjectsWebSecurityScannerSettingsRequest {
@@ -9463,7 +9690,10 @@ export type CalculateProjectsWebSecurityScannerSettingsResponse =
 export const CalculateProjectsWebSecurityScannerSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebSecurityScannerSettings;
 
-export type CalculateProjectsWebSecurityScannerSettingsError = DefaultErrors;
+export type CalculateProjectsWebSecurityScannerSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective WebSecurityScannerSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsWebSecurityScannerSettings: API.OperationMethod<
@@ -9474,7 +9704,7 @@ export const calculateProjectsWebSecurityScannerSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateProjectsWebSecurityScannerSettingsRequest,
   output: CalculateProjectsWebSecurityScannerSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateProjectsEventThreatDetectionSettingsRequest {
@@ -9500,7 +9730,10 @@ export type CalculateProjectsEventThreatDetectionSettingsResponse =
 export const CalculateProjectsEventThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionSettings;
 
-export type CalculateProjectsEventThreatDetectionSettingsError = DefaultErrors;
+export type CalculateProjectsEventThreatDetectionSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective EventThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsEventThreatDetectionSettings: API.OperationMethod<
@@ -9511,7 +9744,7 @@ export const calculateProjectsEventThreatDetectionSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateProjectsEventThreatDetectionSettingsRequest,
   output: CalculateProjectsEventThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalculateProjectsVirtualMachineThreatDetectionSettingsRequest {
@@ -9538,7 +9771,9 @@ export const CalculateProjectsVirtualMachineThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VirtualMachineThreatDetectionSettings;
 
 export type CalculateProjectsVirtualMachineThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Calculates the effective VirtualMachineThreatDetectionSettings based on its level in the resource hierarchy and its settings. Settings provided closer to the target resource take precedence over those further away (e.g. folder will override organization level settings). The default SCC setting for the detector service defaults can be overridden at organization, folder and project levels. No assumptions should be made about the SCC defaults as it is considered an internal implementation detail. */
 export const calculateProjectsVirtualMachineThreatDetectionSettings: API.OperationMethod<
@@ -9549,5 +9784,5 @@ export const calculateProjectsVirtualMachineThreatDetectionSettings: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateProjectsVirtualMachineThreatDetectionSettingsRequest,
   output: CalculateProjectsVirtualMachineThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

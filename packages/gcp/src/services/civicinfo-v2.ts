@@ -580,6 +580,31 @@ export const CivicinfoApiprotosV2DivisionByAddressResponse =
   }).annotate({ identifier: "CivicinfoApiprotosV2DivisionByAddressResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -619,7 +644,7 @@ export type VoterInfoQueryElectionsResponse =
 export const VoterInfoQueryElectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2VoterInfoResponse;
 
-export type VoterInfoQueryElectionsError = DefaultErrors;
+export type VoterInfoQueryElectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up information relevant to a voter based on the voter's registered address. */
 export const voterInfoQueryElections: API.OperationMethod<
@@ -630,7 +655,7 @@ export const voterInfoQueryElections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VoterInfoQueryElectionsRequest,
   output: VoterInfoQueryElectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ElectionQueryElectionsRequest {
@@ -653,7 +678,7 @@ export type ElectionQueryElectionsResponse =
 export const ElectionQueryElectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2ElectionsQueryResponse;
 
-export type ElectionQueryElectionsError = DefaultErrors;
+export type ElectionQueryElectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** List of available elections to query. */
 export const electionQueryElections: API.OperationMethod<
@@ -664,7 +689,7 @@ export const electionQueryElections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ElectionQueryElectionsRequest,
   output: ElectionQueryElectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchDivisionsRequest {
@@ -686,7 +711,7 @@ export type SearchDivisionsResponse =
 export const SearchDivisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2DivisionSearchResponse;
 
-export type SearchDivisionsError = DefaultErrors;
+export type SearchDivisionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches for political divisions by their natural name or OCD ID. */
 export const searchDivisions: API.OperationMethod<
@@ -697,7 +722,7 @@ export const searchDivisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchDivisionsRequest,
   output: SearchDivisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryDivisionByAddressDivisionsRequest {
@@ -717,7 +742,10 @@ export type QueryDivisionByAddressDivisionsResponse =
 export const QueryDivisionByAddressDivisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CivicinfoApiprotosV2DivisionByAddressResponse;
 
-export type QueryDivisionByAddressDivisionsError = DefaultErrors;
+export type QueryDivisionByAddressDivisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lookup OCDIDs and names for divisions related to an address. */
 export const queryDivisionByAddressDivisions: API.OperationMethod<
@@ -728,5 +756,5 @@ export const queryDivisionByAddressDivisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryDivisionByAddressDivisionsRequest,
   output: QueryDivisionByAddressDivisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

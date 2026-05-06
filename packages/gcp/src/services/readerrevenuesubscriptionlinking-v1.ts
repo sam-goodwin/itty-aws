@@ -80,6 +80,52 @@ export const ReaderEntitlements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ReaderEntitlements" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -100,7 +146,10 @@ export type GetEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const GetEntitlementsPublicationsReadersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
 
-export type GetEntitlementsPublicationsReadersError = DefaultErrors;
+export type GetEntitlementsPublicationsReadersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the reader entitlements for a publication reader. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist. */
 export const getEntitlementsPublicationsReaders: API.OperationMethod<
@@ -111,7 +160,7 @@ export const getEntitlementsPublicationsReaders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEntitlementsPublicationsReadersRequest,
   output: GetEntitlementsPublicationsReadersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEntitlementsPublicationsReadersRequest {
@@ -137,7 +186,12 @@ export type UpdateEntitlementsPublicationsReadersResponse = ReaderEntitlements;
 export const UpdateEntitlementsPublicationsReadersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReaderEntitlements;
 
-export type UpdateEntitlementsPublicationsReadersError = DefaultErrors;
+export type UpdateEntitlementsPublicationsReadersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the reader entitlements for a publication reader. The entire reader entitlements will be overwritten by the new reader entitlements in the payload, like a PUT. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist. */
 export const updateEntitlementsPublicationsReaders: API.OperationMethod<
@@ -148,7 +202,7 @@ export const updateEntitlementsPublicationsReaders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEntitlementsPublicationsReadersRequest,
   output: UpdateEntitlementsPublicationsReadersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPublicationsReadersRequest {
@@ -168,7 +222,7 @@ export type GetPublicationsReadersResponse = Reader;
 export const GetPublicationsReadersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reader;
 
-export type GetPublicationsReadersError = DefaultErrors;
+export type GetPublicationsReadersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist. */
 export const getPublicationsReaders: API.OperationMethod<
@@ -179,7 +233,7 @@ export const getPublicationsReaders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicationsReadersRequest,
   output: GetPublicationsReadersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePublicationsReadersRequest {
@@ -202,7 +256,12 @@ export type DeletePublicationsReadersResponse = DeleteReaderResponse;
 export const DeletePublicationsReadersResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeleteReaderResponse;
 
-export type DeletePublicationsReadersError = DefaultErrors;
+export type DeletePublicationsReadersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present. */
 export const deletePublicationsReaders: API.OperationMethod<
@@ -213,5 +272,5 @@ export const deletePublicationsReaders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePublicationsReadersRequest,
   output: DeletePublicationsReadersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

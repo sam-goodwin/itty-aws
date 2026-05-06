@@ -92,6 +92,52 @@ export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Item" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -117,7 +163,12 @@ export const UpdateItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateItemsResponse = Item;
 export const UpdateItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
 
-export type UpdateItemsError = DefaultErrors;
+export type UpdateItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing item. */
 export const updateItems: API.OperationMethod<
@@ -128,7 +179,7 @@ export const updateItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateItemsRequest,
   output: UpdateItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertItemsRequest {
@@ -148,7 +199,12 @@ export const InsertItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertItemsResponse = Item;
 export const InsertItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
 
-export type InsertItemsError = DefaultErrors;
+export type InsertItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new item. */
 export const insertItems: API.OperationMethod<
@@ -159,7 +215,7 @@ export const insertItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertItemsRequest,
   output: InsertItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishItemsRequest {
@@ -199,7 +255,12 @@ export const PublishItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PublishItemsResponse = Item2;
 export const PublishItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item2;
 
-export type PublishItemsError = DefaultErrors;
+export type PublishItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publishes an item. */
 export const publishItems: API.OperationMethod<
@@ -210,7 +271,7 @@ export const publishItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishItemsRequest,
   output: PublishItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetItemsRequest {
@@ -231,7 +292,7 @@ export const GetItemsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetItemsResponse = Item;
 export const GetItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Item;
 
-export type GetItemsError = DefaultErrors;
+export type GetItemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets your own Chrome Web Store item. */
 export const getItems: API.OperationMethod<
@@ -242,5 +303,5 @@ export const getItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetItemsRequest,
   output: GetItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

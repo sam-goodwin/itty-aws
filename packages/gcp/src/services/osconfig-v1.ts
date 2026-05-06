@@ -2136,6 +2136,52 @@ export const StatusProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "StatusProto" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2170,7 +2216,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -2181,7 +2230,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2205,7 +2254,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -2216,7 +2268,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -2236,7 +2288,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -2247,7 +2304,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -2270,7 +2327,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -2281,7 +2343,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectFeatureSettingsProjectsLocationsGlobalRequest {
@@ -2303,7 +2365,9 @@ export const GetProjectFeatureSettingsProjectsLocationsGlobalResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectFeatureSettings;
 
 export type GetProjectFeatureSettingsProjectsLocationsGlobalError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetProjectFeatureSettings returns the VM Manager feature settings for a project. */
 export const getProjectFeatureSettingsProjectsLocationsGlobal: API.OperationMethod<
@@ -2314,7 +2378,7 @@ export const getProjectFeatureSettingsProjectsLocationsGlobal: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectFeatureSettingsProjectsLocationsGlobalRequest,
   output: GetProjectFeatureSettingsProjectsLocationsGlobalResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateProjectFeatureSettingsProjectsLocationsGlobalRequest {
@@ -2342,7 +2406,11 @@ export const UpdateProjectFeatureSettingsProjectsLocationsGlobalResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectFeatureSettings;
 
 export type UpdateProjectFeatureSettingsProjectsLocationsGlobalError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** UpdateProjectFeatureSettings sets the VM Manager features for a project. */
 export const updateProjectFeatureSettingsProjectsLocationsGlobal: API.OperationMethod<
@@ -2353,7 +2421,7 @@ export const updateProjectFeatureSettingsProjectsLocationsGlobal: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectFeatureSettingsProjectsLocationsGlobalRequest,
   output: UpdateProjectFeatureSettingsProjectsLocationsGlobalResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsOsPolicyAssignmentsRequest {
@@ -2388,7 +2456,12 @@ export type CreateProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const CreateProjectsLocationsOsPolicyAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsOsPolicyAssignmentsError = DefaultErrors;
+export type CreateProjectsLocationsOsPolicyAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an OS policy assignment. This method also creates the first revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel). */
 export const createProjectsLocationsOsPolicyAssignments: API.OperationMethod<
@@ -2399,7 +2472,7 @@ export const createProjectsLocationsOsPolicyAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsOsPolicyAssignmentsRequest,
   output: CreateProjectsLocationsOsPolicyAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsOsPolicyAssignmentsRequest {
@@ -2433,7 +2506,12 @@ export type PatchProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const PatchProjectsLocationsOsPolicyAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsOsPolicyAssignmentsError = DefaultErrors;
+export type PatchProjectsLocationsOsPolicyAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an existing OS policy assignment. This method creates a new revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel). */
 export const patchProjectsLocationsOsPolicyAssignments: API.OperationMethod<
@@ -2444,7 +2522,7 @@ export const patchProjectsLocationsOsPolicyAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsOsPolicyAssignmentsRequest,
   output: PatchProjectsLocationsOsPolicyAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOsPolicyAssignmentsRequest {
@@ -2465,7 +2543,10 @@ export type GetProjectsLocationsOsPolicyAssignmentsResponse =
 export const GetProjectsLocationsOsPolicyAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OSPolicyAssignment;
 
-export type GetProjectsLocationsOsPolicyAssignmentsError = DefaultErrors;
+export type GetProjectsLocationsOsPolicyAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter. */
 export const getProjectsLocationsOsPolicyAssignments: API.OperationMethod<
@@ -2476,7 +2557,7 @@ export const getProjectsLocationsOsPolicyAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOsPolicyAssignmentsRequest,
   output: GetProjectsLocationsOsPolicyAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOsPolicyAssignmentsRequest {
@@ -2503,7 +2584,10 @@ export type ListProjectsLocationsOsPolicyAssignmentsResponse =
 export const ListProjectsLocationsOsPolicyAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOSPolicyAssignmentsResponse;
 
-export type ListProjectsLocationsOsPolicyAssignmentsError = DefaultErrors;
+export type ListProjectsLocationsOsPolicyAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the OS policy assignments under the parent resource. For each OS policy assignment, the latest revision is returned. */
 export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMethod<
@@ -2514,7 +2598,7 @@ export const listProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListProjectsLocationsOsPolicyAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2546,7 +2630,9 @@ export const ListRevisionsProjectsLocationsOsPolicyAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOSPolicyAssignmentRevisionsResponse;
 
 export type ListRevisionsProjectsLocationsOsPolicyAssignmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the OS policy assignment revisions for a given OS policy assignment. */
 export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOperationMethod<
@@ -2557,7 +2643,7 @@ export const listRevisionsProjectsLocationsOsPolicyAssignments: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsOsPolicyAssignmentsRequest,
   output: ListRevisionsProjectsLocationsOsPolicyAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2584,7 +2670,12 @@ export type DeleteProjectsLocationsOsPolicyAssignmentsResponse = Operation;
 export const DeleteProjectsLocationsOsPolicyAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsOsPolicyAssignmentsError = DefaultErrors;
+export type DeleteProjectsLocationsOsPolicyAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete the OS policy assignment. This method creates a new revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. If the LRO completes and is not cancelled, all revisions associated with the OS policy assignment are deleted. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel). */
 export const deleteProjectsLocationsOsPolicyAssignments: API.OperationMethod<
@@ -2595,7 +2686,7 @@ export const deleteProjectsLocationsOsPolicyAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOsPolicyAssignmentsRequest,
   output: DeleteProjectsLocationsOsPolicyAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOsPolicyAssignmentsOperationsRequest {
@@ -2617,7 +2708,9 @@ export const GetProjectsLocationsOsPolicyAssignmentsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsOsPolicyAssignmentsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOsPolicyAssignmentsOperations: API.OperationMethod<
@@ -2628,7 +2721,7 @@ export const getProjectsLocationsOsPolicyAssignmentsOperations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOsPolicyAssignmentsOperationsRequest,
   output: GetProjectsLocationsOsPolicyAssignmentsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest {
@@ -2653,7 +2746,11 @@ export const CancelProjectsLocationsOsPolicyAssignmentsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type CancelProjectsLocationsOsPolicyAssignmentsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOsPolicyAssignmentsOperations: API.OperationMethod<
@@ -2664,7 +2761,7 @@ export const cancelProjectsLocationsOsPolicyAssignmentsOperations: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOsPolicyAssignmentsOperationsRequest,
   output: CancelProjectsLocationsOsPolicyAssignmentsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest {
@@ -2686,7 +2783,9 @@ export const GetProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OSPolicyAssignmentReport;
 
 export type GetProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the OS policy assignment report for the specified Compute Engine VM instance. */
 export const getProjectsLocationsInstancesOsPolicyAssignmentsReports: API.OperationMethod<
@@ -2697,7 +2796,7 @@ export const getProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   output: GetProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest {
@@ -2728,7 +2827,9 @@ export const ListProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOSPolicyAssignmentReportsResponse;
 
 export type ListProjectsLocationsInstancesOsPolicyAssignmentsReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List OS policy assignment reports for all Compute Engine VM instances in the specified zone. */
 export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.PaginatedOperationMethod<
@@ -2739,7 +2840,7 @@ export const listProjectsLocationsInstancesOsPolicyAssignmentsReports: API.Pagin
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesOsPolicyAssignmentsReportsRequest,
   output: ListProjectsLocationsInstancesOsPolicyAssignmentsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2766,7 +2867,10 @@ export type GetProjectsLocationsInstancesInventoriesResponse = Inventory;
 export const GetProjectsLocationsInstancesInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Inventory;
 
-export type GetProjectsLocationsInstancesInventoriesError = DefaultErrors;
+export type GetProjectsLocationsInstancesInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get inventory data for the specified VM instance. If the VM has no associated inventory, the message `NOT_FOUND` is returned. */
 export const getProjectsLocationsInstancesInventories: API.OperationMethod<
@@ -2777,7 +2881,7 @@ export const getProjectsLocationsInstancesInventories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesInventoriesRequest,
   output: GetProjectsLocationsInstancesInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsInstancesInventoriesRequest {
@@ -2810,7 +2914,10 @@ export type ListProjectsLocationsInstancesInventoriesResponse =
 export const ListProjectsLocationsInstancesInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInventoriesResponse;
 
-export type ListProjectsLocationsInstancesInventoriesError = DefaultErrors;
+export type ListProjectsLocationsInstancesInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List inventory data for all VM instances in the specified zone. */
 export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMethod<
@@ -2821,7 +2928,7 @@ export const listProjectsLocationsInstancesInventories: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesInventoriesRequest,
   output: ListProjectsLocationsInstancesInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2847,7 +2954,9 @@ export const GetProjectsLocationsInstancesVulnerabilityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VulnerabilityReport;
 
 export type GetProjectsLocationsInstancesVulnerabilityReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the vulnerability report for the specified VM instance. Only VMs with inventory data have vulnerability reports associated with them. */
 export const getProjectsLocationsInstancesVulnerabilityReports: API.OperationMethod<
@@ -2858,7 +2967,7 @@ export const getProjectsLocationsInstancesVulnerabilityReports: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesVulnerabilityReportsRequest,
   output: GetProjectsLocationsInstancesVulnerabilityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsInstancesVulnerabilityReportsRequest {
@@ -2889,7 +2998,9 @@ export const ListProjectsLocationsInstancesVulnerabilityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVulnerabilityReportsResponse;
 
 export type ListProjectsLocationsInstancesVulnerabilityReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List vulnerability reports for all VM instances in the specified zone. */
 export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOperationMethod<
@@ -2900,7 +3011,7 @@ export const listProjectsLocationsInstancesVulnerabilityReports: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesVulnerabilityReportsRequest,
   output: ListProjectsLocationsInstancesVulnerabilityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2931,7 +3042,12 @@ export type ExecuteProjectsPatchJobsResponse = PatchJob;
 export const ExecuteProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchJob;
 
-export type ExecuteProjectsPatchJobsError = DefaultErrors;
+export type ExecuteProjectsPatchJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch VM instances by creating and running a patch job. */
 export const executeProjectsPatchJobs: API.OperationMethod<
@@ -2942,7 +3058,7 @@ export const executeProjectsPatchJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsPatchJobsRequest,
   output: ExecuteProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsPatchJobsRequest {
@@ -2962,7 +3078,7 @@ export type GetProjectsPatchJobsResponse = PatchJob;
 export const GetProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchJob;
 
-export type GetProjectsPatchJobsError = DefaultErrors;
+export type GetProjectsPatchJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the patch job. This can be used to track the progress of an ongoing patch job or review the details of completed jobs. */
 export const getProjectsPatchJobs: API.OperationMethod<
@@ -2973,7 +3089,7 @@ export const getProjectsPatchJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsPatchJobsRequest,
   output: GetProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsPatchJobsRequest {
@@ -2996,7 +3112,12 @@ export type CancelProjectsPatchJobsResponse = PatchJob;
 export const CancelProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchJob;
 
-export type CancelProjectsPatchJobsError = DefaultErrors;
+export type CancelProjectsPatchJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted. */
 export const cancelProjectsPatchJobs: API.OperationMethod<
@@ -3007,7 +3128,7 @@ export const cancelProjectsPatchJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsPatchJobsRequest,
   output: CancelProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsPatchJobsRequest {
@@ -3036,7 +3157,7 @@ export type ListProjectsPatchJobsResponse = ListPatchJobsResponse;
 export const ListProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPatchJobsResponse;
 
-export type ListProjectsPatchJobsError = DefaultErrors;
+export type ListProjectsPatchJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a list of patch jobs. */
 export const listProjectsPatchJobs: API.PaginatedOperationMethod<
@@ -3047,7 +3168,7 @@ export const listProjectsPatchJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsRequest,
   output: ListProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3081,7 +3202,10 @@ export type ListProjectsPatchJobsInstanceDetailsResponse =
 export const ListProjectsPatchJobsInstanceDetailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPatchJobInstanceDetailsResponse;
 
-export type ListProjectsPatchJobsInstanceDetailsError = DefaultErrors;
+export type ListProjectsPatchJobsInstanceDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of instance details for a given patch job. */
 export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
@@ -3092,7 +3216,7 @@ export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsInstanceDetailsRequest,
   output: ListProjectsPatchJobsInstanceDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3128,7 +3252,12 @@ export type CreateProjectsPatchDeploymentsResponse = PatchDeployment;
 export const CreateProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type CreateProjectsPatchDeploymentsError = DefaultErrors;
+export type CreateProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an OS Config patch deployment. */
 export const createProjectsPatchDeployments: API.OperationMethod<
@@ -3139,7 +3268,7 @@ export const createProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsPatchDeploymentsRequest,
   output: CreateProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsPatchDeploymentsRequest {
@@ -3159,7 +3288,10 @@ export type GetProjectsPatchDeploymentsResponse = PatchDeployment;
 export const GetProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type GetProjectsPatchDeploymentsError = DefaultErrors;
+export type GetProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an OS Config patch deployment. */
 export const getProjectsPatchDeployments: API.OperationMethod<
@@ -3170,7 +3302,7 @@ export const getProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsPatchDeploymentsRequest,
   output: GetProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsPatchDeploymentsRequest {
@@ -3196,7 +3328,10 @@ export type ListProjectsPatchDeploymentsResponse = ListPatchDeploymentsResponse;
 export const ListProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPatchDeploymentsResponse;
 
-export type ListProjectsPatchDeploymentsError = DefaultErrors;
+export type ListProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a page of OS Config patch deployments. */
 export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
@@ -3207,7 +3342,7 @@ export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchDeploymentsRequest,
   output: ListProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3231,7 +3366,12 @@ export type DeleteProjectsPatchDeploymentsResponse = Empty;
 export const DeleteProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsPatchDeploymentsError = DefaultErrors;
+export type DeleteProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an OS Config patch deployment. */
 export const deleteProjectsPatchDeployments: API.OperationMethod<
@@ -3242,7 +3382,7 @@ export const deleteProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsPatchDeploymentsRequest,
   output: DeleteProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsPatchDeploymentsRequest {
@@ -3268,7 +3408,12 @@ export type PatchProjectsPatchDeploymentsResponse = PatchDeployment;
 export const PatchProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type PatchProjectsPatchDeploymentsError = DefaultErrors;
+export type PatchProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an OS Config patch deployment. */
 export const patchProjectsPatchDeployments: API.OperationMethod<
@@ -3279,7 +3424,7 @@ export const patchProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsPatchDeploymentsRequest,
   output: PatchProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseProjectsPatchDeploymentsRequest {
@@ -3302,7 +3447,12 @@ export type PauseProjectsPatchDeploymentsResponse = PatchDeployment;
 export const PauseProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type PauseProjectsPatchDeploymentsError = DefaultErrors;
+export type PauseProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Change state of patch deployment to "PAUSED". Patch deployment in paused state doesn't generate patch jobs. */
 export const pauseProjectsPatchDeployments: API.OperationMethod<
@@ -3313,7 +3463,7 @@ export const pauseProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseProjectsPatchDeploymentsRequest,
   output: PauseProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeProjectsPatchDeploymentsRequest {
@@ -3336,7 +3486,12 @@ export type ResumeProjectsPatchDeploymentsResponse = PatchDeployment;
 export const ResumeProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type ResumeProjectsPatchDeploymentsError = DefaultErrors;
+export type ResumeProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Change state of patch deployment back to "ACTIVE". Patch deployment in active state continues to generate patch jobs. */
 export const resumeProjectsPatchDeployments: API.OperationMethod<
@@ -3347,5 +3502,5 @@ export const resumeProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeProjectsPatchDeploymentsRequest,
   output: ResumeProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

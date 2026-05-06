@@ -425,6 +425,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -448,7 +494,12 @@ export type StartProjectsScanConfigsResponse = ScanRun;
 export const StartProjectsScanConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScanRun;
 
-export type StartProjectsScanConfigsError = DefaultErrors;
+export type StartProjectsScanConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Start a ScanRun according to the given ScanConfig. */
 export const startProjectsScanConfigs: API.OperationMethod<
@@ -459,7 +510,7 @@ export const startProjectsScanConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartProjectsScanConfigsRequest,
   output: StartProjectsScanConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsScanConfigsRequest {
@@ -485,7 +536,12 @@ export type PatchProjectsScanConfigsResponse = ScanConfig;
 export const PatchProjectsScanConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
 
-export type PatchProjectsScanConfigsError = DefaultErrors;
+export type PatchProjectsScanConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a ScanConfig. This method support partial update of a ScanConfig. */
 export const patchProjectsScanConfigs: API.OperationMethod<
@@ -496,7 +552,7 @@ export const patchProjectsScanConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsScanConfigsRequest,
   output: PatchProjectsScanConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsScanConfigsRequest {
@@ -516,7 +572,12 @@ export type DeleteProjectsScanConfigsResponse = Empty;
 export const DeleteProjectsScanConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsScanConfigsError = DefaultErrors;
+export type DeleteProjectsScanConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing ScanConfig and its child resources. */
 export const deleteProjectsScanConfigs: API.OperationMethod<
@@ -527,7 +588,7 @@ export const deleteProjectsScanConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsScanConfigsRequest,
   output: DeleteProjectsScanConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsScanConfigsRequest {
@@ -547,7 +608,7 @@ export type GetProjectsScanConfigsResponse = ScanConfig;
 export const GetProjectsScanConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
 
-export type GetProjectsScanConfigsError = DefaultErrors;
+export type GetProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a ScanConfig. */
 export const getProjectsScanConfigs: API.OperationMethod<
@@ -558,7 +619,7 @@ export const getProjectsScanConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsScanConfigsRequest,
   output: GetProjectsScanConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsScanConfigsRequest {
@@ -584,7 +645,7 @@ export type ListProjectsScanConfigsResponse = ListScanConfigsResponse;
 export const ListProjectsScanConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListScanConfigsResponse;
 
-export type ListProjectsScanConfigsError = DefaultErrors;
+export type ListProjectsScanConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists ScanConfigs under a given project. */
 export const listProjectsScanConfigs: API.PaginatedOperationMethod<
@@ -595,7 +656,7 @@ export const listProjectsScanConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsRequest,
   output: ListProjectsScanConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -626,7 +687,12 @@ export type CreateProjectsScanConfigsResponse = ScanConfig;
 export const CreateProjectsScanConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScanConfig;
 
-export type CreateProjectsScanConfigsError = DefaultErrors;
+export type CreateProjectsScanConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ScanConfig. */
 export const createProjectsScanConfigs: API.OperationMethod<
@@ -637,7 +703,7 @@ export const createProjectsScanConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsScanConfigsRequest,
   output: CreateProjectsScanConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsScanConfigsScanRunsRequest {
@@ -657,7 +723,10 @@ export type GetProjectsScanConfigsScanRunsResponse = ScanRun;
 export const GetProjectsScanConfigsScanRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScanRun;
 
-export type GetProjectsScanConfigsScanRunsError = DefaultErrors;
+export type GetProjectsScanConfigsScanRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ScanRun. */
 export const getProjectsScanConfigsScanRuns: API.OperationMethod<
@@ -668,7 +737,7 @@ export const getProjectsScanConfigsScanRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsScanConfigsScanRunsRequest,
   output: GetProjectsScanConfigsScanRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StopProjectsScanConfigsScanRunsRequest {
@@ -691,7 +760,12 @@ export type StopProjectsScanConfigsScanRunsResponse = ScanRun;
 export const StopProjectsScanConfigsScanRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScanRun;
 
-export type StopProjectsScanConfigsScanRunsError = DefaultErrors;
+export type StopProjectsScanConfigsScanRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops a ScanRun. The stopped ScanRun is returned. */
 export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
@@ -702,7 +776,7 @@ export const stopProjectsScanConfigsScanRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopProjectsScanConfigsScanRunsRequest,
   output: StopProjectsScanConfigsScanRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsScanConfigsScanRunsRequest {
@@ -728,7 +802,10 @@ export type ListProjectsScanConfigsScanRunsResponse = ListScanRunsResponse;
 export const ListProjectsScanConfigsScanRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListScanRunsResponse;
 
-export type ListProjectsScanConfigsScanRunsError = DefaultErrors;
+export type ListProjectsScanConfigsScanRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time. */
 export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
@@ -739,7 +816,7 @@ export const listProjectsScanConfigsScanRuns: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsRequest,
   output: ListProjectsScanConfigsScanRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -770,7 +847,10 @@ export type ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
 export const ListProjectsScanConfigsScanRunsCrawledUrlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCrawledUrlsResponse;
 
-export type ListProjectsScanConfigsScanRunsCrawledUrlsError = DefaultErrors;
+export type ListProjectsScanConfigsScanRunsCrawledUrlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List CrawledUrls under a given ScanRun. */
 export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationMethod<
@@ -781,7 +861,7 @@ export const listProjectsScanConfigsScanRunsCrawledUrls: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsCrawledUrlsRequest,
   output: ListProjectsScanConfigsScanRunsCrawledUrlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -807,7 +887,9 @@ export const ListProjectsScanConfigsScanRunsFindingTypeStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFindingTypeStatsResponse;
 
 export type ListProjectsScanConfigsScanRunsFindingTypeStatsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all FindingTypeStats under a given ScanRun. */
 export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMethod<
@@ -818,7 +900,7 @@ export const listProjectsScanConfigsScanRunsFindingTypeStats: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsScanConfigsScanRunsFindingTypeStatsRequest,
   output: ListProjectsScanConfigsScanRunsFindingTypeStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsScanConfigsScanRunsFindingsRequest {
@@ -848,7 +930,10 @@ export type ListProjectsScanConfigsScanRunsFindingsResponse =
 export const ListProjectsScanConfigsScanRunsFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
 
-export type ListProjectsScanConfigsScanRunsFindingsError = DefaultErrors;
+export type ListProjectsScanConfigsScanRunsFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List Findings under a given ScanRun. */
 export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMethod<
@@ -859,7 +944,7 @@ export const listProjectsScanConfigsScanRunsFindings: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsScanConfigsScanRunsFindingsRequest,
   output: ListProjectsScanConfigsScanRunsFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -883,7 +968,10 @@ export type GetProjectsScanConfigsScanRunsFindingsResponse = Finding;
 export const GetProjectsScanConfigsScanRunsFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type GetProjectsScanConfigsScanRunsFindingsError = DefaultErrors;
+export type GetProjectsScanConfigsScanRunsFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Finding. */
 export const getProjectsScanConfigsScanRunsFindings: API.OperationMethod<
@@ -894,5 +982,5 @@ export const getProjectsScanConfigsScanRunsFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsScanConfigsScanRunsFindingsRequest,
   output: GetProjectsScanConfigsScanRunsFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

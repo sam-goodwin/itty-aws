@@ -2315,6 +2315,52 @@ export const UserDeletionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "UserDeletionRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2334,7 +2380,7 @@ export const ListMetadataColumnsRequest =
 export type ListMetadataColumnsResponse = Columns;
 export const ListMetadataColumnsResponse = /*@__PURE__*/ /*#__PURE__*/ Columns;
 
-export type ListMetadataColumnsError = DefaultErrors;
+export type ListMetadataColumnsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all columns for a report type */
 export const listMetadataColumns: API.OperationMethod<
@@ -2345,7 +2391,7 @@ export const listMetadataColumns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMetadataColumnsRequest,
   output: ListMetadataColumnsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagementRemarketingAudienceRequest {
@@ -2378,7 +2424,12 @@ export const DeleteManagementRemarketingAudienceResponse: Schema.Schema<DeleteMa
     {},
   ) as any as Schema.Schema<DeleteManagementRemarketingAudienceResponse>;
 
-export type DeleteManagementRemarketingAudienceError = DefaultErrors;
+export type DeleteManagementRemarketingAudienceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a remarketing audience. */
 export const deleteManagementRemarketingAudience: API.OperationMethod<
@@ -2389,7 +2440,7 @@ export const deleteManagementRemarketingAudience: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementRemarketingAudienceRequest,
   output: DeleteManagementRemarketingAudienceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagementRemarketingAudienceRequest {
@@ -2424,7 +2475,12 @@ export type UpdateManagementRemarketingAudienceResponse = RemarketingAudience;
 export const UpdateManagementRemarketingAudienceResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingAudience;
 
-export type UpdateManagementRemarketingAudienceError = DefaultErrors;
+export type UpdateManagementRemarketingAudienceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing remarketing audience. */
 export const updateManagementRemarketingAudience: API.OperationMethod<
@@ -2435,7 +2491,7 @@ export const updateManagementRemarketingAudience: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementRemarketingAudienceRequest,
   output: UpdateManagementRemarketingAudienceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementRemarketingAudienceRequest {
@@ -2466,7 +2522,10 @@ export type GetManagementRemarketingAudienceResponse = RemarketingAudience;
 export const GetManagementRemarketingAudienceResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingAudience;
 
-export type GetManagementRemarketingAudienceError = DefaultErrors;
+export type GetManagementRemarketingAudienceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a remarketing audience to which the user has access. */
 export const getManagementRemarketingAudience: API.OperationMethod<
@@ -2477,7 +2536,7 @@ export const getManagementRemarketingAudience: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementRemarketingAudienceRequest,
   output: GetManagementRemarketingAudienceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchManagementRemarketingAudienceRequest {
@@ -2512,7 +2571,12 @@ export type PatchManagementRemarketingAudienceResponse = RemarketingAudience;
 export const PatchManagementRemarketingAudienceResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingAudience;
 
-export type PatchManagementRemarketingAudienceError = DefaultErrors;
+export type PatchManagementRemarketingAudienceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing remarketing audience. This method supports patch semantics. */
 export const patchManagementRemarketingAudience: API.OperationMethod<
@@ -2523,7 +2587,7 @@ export const patchManagementRemarketingAudience: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementRemarketingAudienceRequest,
   output: PatchManagementRemarketingAudienceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementRemarketingAudienceRequest {
@@ -2561,7 +2625,10 @@ export type ListManagementRemarketingAudienceResponse = RemarketingAudiences;
 export const ListManagementRemarketingAudienceResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingAudiences;
 
-export type ListManagementRemarketingAudienceError = DefaultErrors;
+export type ListManagementRemarketingAudienceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists remarketing audiences to which the user has access. */
 export const listManagementRemarketingAudience: API.OperationMethod<
@@ -2572,7 +2639,7 @@ export const listManagementRemarketingAudience: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementRemarketingAudienceRequest,
   output: ListManagementRemarketingAudienceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementRemarketingAudienceRequest {
@@ -2602,7 +2669,12 @@ export type InsertManagementRemarketingAudienceResponse = RemarketingAudience;
 export const InsertManagementRemarketingAudienceResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingAudience;
 
-export type InsertManagementRemarketingAudienceError = DefaultErrors;
+export type InsertManagementRemarketingAudienceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new remarketing audience. */
 export const insertManagementRemarketingAudience: API.OperationMethod<
@@ -2613,7 +2685,7 @@ export const insertManagementRemarketingAudience: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementRemarketingAudienceRequest,
   output: InsertManagementRemarketingAudienceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementWebpropertiesRequest {
@@ -2639,7 +2711,10 @@ export type GetManagementWebpropertiesResponse = Webproperty;
 export const GetManagementWebpropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Webproperty;
 
-export type GetManagementWebpropertiesError = DefaultErrors;
+export type GetManagementWebpropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a web property to which the user has access. */
 export const getManagementWebproperties: API.OperationMethod<
@@ -2650,7 +2725,7 @@ export const getManagementWebproperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementWebpropertiesRequest,
   output: GetManagementWebpropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateManagementWebpropertiesRequest {
@@ -2680,7 +2755,12 @@ export type UpdateManagementWebpropertiesResponse = Webproperty;
 export const UpdateManagementWebpropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Webproperty;
 
-export type UpdateManagementWebpropertiesError = DefaultErrors;
+export type UpdateManagementWebpropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing web property. */
 export const updateManagementWebproperties: API.OperationMethod<
@@ -2691,7 +2771,7 @@ export const updateManagementWebproperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementWebpropertiesRequest,
   output: UpdateManagementWebpropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementWebpropertiesRequest {
@@ -2724,7 +2804,10 @@ export type ListManagementWebpropertiesResponse = Webproperties;
 export const ListManagementWebpropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Webproperties;
 
-export type ListManagementWebpropertiesError = DefaultErrors;
+export type ListManagementWebpropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists web properties to which the user has access. */
 export const listManagementWebproperties: API.OperationMethod<
@@ -2735,7 +2818,7 @@ export const listManagementWebproperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementWebpropertiesRequest,
   output: ListManagementWebpropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementWebpropertiesRequest {
@@ -2762,7 +2845,12 @@ export type InsertManagementWebpropertiesResponse = Webproperty;
 export const InsertManagementWebpropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Webproperty;
 
-export type InsertManagementWebpropertiesError = DefaultErrors;
+export type InsertManagementWebpropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new property if the account has fewer than 20 properties. Web properties are visible in the Google Analytics interface only if they have at least one profile. */
 export const insertManagementWebproperties: API.OperationMethod<
@@ -2773,7 +2861,7 @@ export const insertManagementWebproperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementWebpropertiesRequest,
   output: InsertManagementWebpropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchManagementWebpropertiesRequest {
@@ -2803,7 +2891,12 @@ export type PatchManagementWebpropertiesResponse = Webproperty;
 export const PatchManagementWebpropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Webproperty;
 
-export type PatchManagementWebpropertiesError = DefaultErrors;
+export type PatchManagementWebpropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing web property. This method supports patch semantics. */
 export const patchManagementWebproperties: API.OperationMethod<
@@ -2814,7 +2907,7 @@ export const patchManagementWebproperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementWebpropertiesRequest,
   output: PatchManagementWebpropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementAccountSummariesRequest {
@@ -2841,7 +2934,10 @@ export type ListManagementAccountSummariesResponse = AccountSummaries;
 export const ListManagementAccountSummariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountSummaries;
 
-export type ListManagementAccountSummariesError = DefaultErrors;
+export type ListManagementAccountSummariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user has access. */
 export const listManagementAccountSummaries: API.OperationMethod<
@@ -2852,7 +2948,7 @@ export const listManagementAccountSummaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementAccountSummariesRequest,
   output: ListManagementAccountSummariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUploadDataManagementUploadsRequest {
@@ -2889,7 +2985,12 @@ export const DeleteUploadDataManagementUploadsResponse: Schema.Schema<DeleteUplo
     {},
   ) as any as Schema.Schema<DeleteUploadDataManagementUploadsResponse>;
 
-export type DeleteUploadDataManagementUploadsError = DefaultErrors;
+export type DeleteUploadDataManagementUploadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete data associated with a previous upload. */
 export const deleteUploadDataManagementUploads: API.OperationMethod<
@@ -2900,7 +3001,7 @@ export const deleteUploadDataManagementUploads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUploadDataManagementUploadsRequest,
   output: DeleteUploadDataManagementUploadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadDataManagementUploadsRequest {
@@ -2930,7 +3031,12 @@ export type UploadDataManagementUploadsResponse = Upload;
 export const UploadDataManagementUploadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Upload;
 
-export type UploadDataManagementUploadsError = DefaultErrors;
+export type UploadDataManagementUploadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upload data for a custom data source. */
 export const uploadDataManagementUploads: API.OperationMethod<
@@ -2941,7 +3047,7 @@ export const uploadDataManagementUploads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadDataManagementUploadsRequest,
   output: UploadDataManagementUploadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementUploadsRequest {
@@ -2980,7 +3086,7 @@ export type ListManagementUploadsResponse = Uploads;
 export const ListManagementUploadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Uploads;
 
-export type ListManagementUploadsError = DefaultErrors;
+export type ListManagementUploadsError = DefaultErrors | NotFound | Forbidden;
 
 /** List uploads to which the user has access. */
 export const listManagementUploads: API.OperationMethod<
@@ -2991,7 +3097,7 @@ export const listManagementUploads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementUploadsRequest,
   output: ListManagementUploadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetManagementUploadsRequest {
@@ -3022,7 +3128,7 @@ export const GetManagementUploadsRequest =
 export type GetManagementUploadsResponse = Upload;
 export const GetManagementUploadsResponse = /*@__PURE__*/ /*#__PURE__*/ Upload;
 
-export type GetManagementUploadsError = DefaultErrors;
+export type GetManagementUploadsError = DefaultErrors | NotFound | Forbidden;
 
 /** List uploads to which the user has access. */
 export const getManagementUploads: API.OperationMethod<
@@ -3033,7 +3139,7 @@ export const getManagementUploads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementUploadsRequest,
   output: GetManagementUploadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagementProfileUserLinksRequest {
@@ -3067,7 +3173,12 @@ export const DeleteManagementProfileUserLinksResponse: Schema.Schema<DeleteManag
     {},
   ) as any as Schema.Schema<DeleteManagementProfileUserLinksResponse>;
 
-export type DeleteManagementProfileUserLinksError = DefaultErrors;
+export type DeleteManagementProfileUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a user from the given view (profile). */
 export const deleteManagementProfileUserLinks: API.OperationMethod<
@@ -3078,7 +3189,7 @@ export const deleteManagementProfileUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementProfileUserLinksRequest,
   output: DeleteManagementProfileUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagementProfileUserLinksRequest {
@@ -3114,7 +3225,12 @@ export type UpdateManagementProfileUserLinksResponse = EntityUserLink;
 export const UpdateManagementProfileUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLink;
 
-export type UpdateManagementProfileUserLinksError = DefaultErrors;
+export type UpdateManagementProfileUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates permissions for an existing user on the given view (profile). */
 export const updateManagementProfileUserLinks: API.OperationMethod<
@@ -3125,7 +3241,7 @@ export const updateManagementProfileUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementProfileUserLinksRequest,
   output: UpdateManagementProfileUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementProfileUserLinksRequest {
@@ -3164,7 +3280,10 @@ export type ListManagementProfileUserLinksResponse = EntityUserLinks;
 export const ListManagementProfileUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLinks;
 
-export type ListManagementProfileUserLinksError = DefaultErrors;
+export type ListManagementProfileUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists profile-user links for a given view (profile). */
 export const listManagementProfileUserLinks: API.OperationMethod<
@@ -3175,7 +3294,7 @@ export const listManagementProfileUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementProfileUserLinksRequest,
   output: ListManagementProfileUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementProfileUserLinksRequest {
@@ -3208,7 +3327,12 @@ export type InsertManagementProfileUserLinksResponse = EntityUserLink;
 export const InsertManagementProfileUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLink;
 
-export type InsertManagementProfileUserLinksError = DefaultErrors;
+export type InsertManagementProfileUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a new user to the given view (profile). */
 export const insertManagementProfileUserLinks: API.OperationMethod<
@@ -3219,7 +3343,7 @@ export const insertManagementProfileUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementProfileUserLinksRequest,
   output: InsertManagementProfileUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementUnsampledReportsRequest {
@@ -3251,7 +3375,10 @@ export type GetManagementUnsampledReportsResponse = UnsampledReport;
 export const GetManagementUnsampledReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UnsampledReport;
 
-export type GetManagementUnsampledReportsError = DefaultErrors;
+export type GetManagementUnsampledReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a single unsampled report. */
 export const getManagementUnsampledReports: API.OperationMethod<
@@ -3262,7 +3389,7 @@ export const getManagementUnsampledReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementUnsampledReportsRequest,
   output: GetManagementUnsampledReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementUnsampledReportsRequest {
@@ -3295,7 +3422,12 @@ export type InsertManagementUnsampledReportsResponse = UnsampledReport;
 export const InsertManagementUnsampledReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UnsampledReport;
 
-export type InsertManagementUnsampledReportsError = DefaultErrors;
+export type InsertManagementUnsampledReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new unsampled report. */
 export const insertManagementUnsampledReports: API.OperationMethod<
@@ -3306,7 +3438,7 @@ export const insertManagementUnsampledReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementUnsampledReportsRequest,
   output: InsertManagementUnsampledReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementUnsampledReportsRequest {
@@ -3345,7 +3477,10 @@ export type ListManagementUnsampledReportsResponse = UnsampledReports;
 export const ListManagementUnsampledReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UnsampledReports;
 
-export type ListManagementUnsampledReportsError = DefaultErrors;
+export type ListManagementUnsampledReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists unsampled reports to which the user has access. */
 export const listManagementUnsampledReports: API.OperationMethod<
@@ -3356,7 +3491,7 @@ export const listManagementUnsampledReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementUnsampledReportsRequest,
   output: ListManagementUnsampledReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagementUnsampledReportsRequest {
@@ -3390,7 +3525,12 @@ export const DeleteManagementUnsampledReportsResponse: Schema.Schema<DeleteManag
     {},
   ) as any as Schema.Schema<DeleteManagementUnsampledReportsResponse>;
 
-export type DeleteManagementUnsampledReportsError = DefaultErrors;
+export type DeleteManagementUnsampledReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an unsampled report. */
 export const deleteManagementUnsampledReports: API.OperationMethod<
@@ -3401,7 +3541,7 @@ export const deleteManagementUnsampledReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementUnsampledReportsRequest,
   output: DeleteManagementUnsampledReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchManagementGoalsRequest {
@@ -3436,7 +3576,12 @@ export const PatchManagementGoalsRequest =
 export type PatchManagementGoalsResponse = Goal;
 export const PatchManagementGoalsResponse = /*@__PURE__*/ /*#__PURE__*/ Goal;
 
-export type PatchManagementGoalsError = DefaultErrors;
+export type PatchManagementGoalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing goal. This method supports patch semantics. */
 export const patchManagementGoals: API.OperationMethod<
@@ -3447,7 +3592,7 @@ export const patchManagementGoals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementGoalsRequest,
   output: PatchManagementGoalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertManagementGoalsRequest {
@@ -3479,7 +3624,12 @@ export const InsertManagementGoalsRequest =
 export type InsertManagementGoalsResponse = Goal;
 export const InsertManagementGoalsResponse = /*@__PURE__*/ /*#__PURE__*/ Goal;
 
-export type InsertManagementGoalsError = DefaultErrors;
+export type InsertManagementGoalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new goal. */
 export const insertManagementGoals: API.OperationMethod<
@@ -3490,7 +3640,7 @@ export const insertManagementGoals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementGoalsRequest,
   output: InsertManagementGoalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementGoalsRequest {
@@ -3528,7 +3678,7 @@ export const ListManagementGoalsRequest =
 export type ListManagementGoalsResponse = Goals;
 export const ListManagementGoalsResponse = /*@__PURE__*/ /*#__PURE__*/ Goals;
 
-export type ListManagementGoalsError = DefaultErrors;
+export type ListManagementGoalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists goals to which the user has access. */
 export const listManagementGoals: API.OperationMethod<
@@ -3539,7 +3689,7 @@ export const listManagementGoals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementGoalsRequest,
   output: ListManagementGoalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateManagementGoalsRequest {
@@ -3574,7 +3724,12 @@ export const UpdateManagementGoalsRequest =
 export type UpdateManagementGoalsResponse = Goal;
 export const UpdateManagementGoalsResponse = /*@__PURE__*/ /*#__PURE__*/ Goal;
 
-export type UpdateManagementGoalsError = DefaultErrors;
+export type UpdateManagementGoalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing goal. */
 export const updateManagementGoals: API.OperationMethod<
@@ -3585,7 +3740,7 @@ export const updateManagementGoals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementGoalsRequest,
   output: UpdateManagementGoalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementGoalsRequest {
@@ -3616,7 +3771,7 @@ export const GetManagementGoalsRequest =
 export type GetManagementGoalsResponse = Goal;
 export const GetManagementGoalsResponse = /*@__PURE__*/ /*#__PURE__*/ Goal;
 
-export type GetManagementGoalsError = DefaultErrors;
+export type GetManagementGoalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a goal to which the user has access. */
 export const getManagementGoals: API.OperationMethod<
@@ -3627,7 +3782,7 @@ export const getManagementGoals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementGoalsRequest,
   output: GetManagementGoalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListManagementWebpropertyUserLinksRequest {
@@ -3663,7 +3818,10 @@ export type ListManagementWebpropertyUserLinksResponse = EntityUserLinks;
 export const ListManagementWebpropertyUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLinks;
 
-export type ListManagementWebpropertyUserLinksError = DefaultErrors;
+export type ListManagementWebpropertyUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists webProperty-user links for a given web property. */
 export const listManagementWebpropertyUserLinks: API.OperationMethod<
@@ -3674,7 +3832,7 @@ export const listManagementWebpropertyUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementWebpropertyUserLinksRequest,
   output: ListManagementWebpropertyUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementWebpropertyUserLinksRequest {
@@ -3704,7 +3862,12 @@ export type InsertManagementWebpropertyUserLinksResponse = EntityUserLink;
 export const InsertManagementWebpropertyUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLink;
 
-export type InsertManagementWebpropertyUserLinksError = DefaultErrors;
+export type InsertManagementWebpropertyUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a new user to the given web property. */
 export const insertManagementWebpropertyUserLinks: API.OperationMethod<
@@ -3715,7 +3878,7 @@ export const insertManagementWebpropertyUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementWebpropertyUserLinksRequest,
   output: InsertManagementWebpropertyUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteManagementWebpropertyUserLinksRequest {
@@ -3746,7 +3909,12 @@ export const DeleteManagementWebpropertyUserLinksResponse: Schema.Schema<DeleteM
     {},
   ) as any as Schema.Schema<DeleteManagementWebpropertyUserLinksResponse>;
 
-export type DeleteManagementWebpropertyUserLinksError = DefaultErrors;
+export type DeleteManagementWebpropertyUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a user from the given web property. */
 export const deleteManagementWebpropertyUserLinks: API.OperationMethod<
@@ -3757,7 +3925,7 @@ export const deleteManagementWebpropertyUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementWebpropertyUserLinksRequest,
   output: DeleteManagementWebpropertyUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagementWebpropertyUserLinksRequest {
@@ -3790,7 +3958,12 @@ export type UpdateManagementWebpropertyUserLinksResponse = EntityUserLink;
 export const UpdateManagementWebpropertyUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLink;
 
-export type UpdateManagementWebpropertyUserLinksError = DefaultErrors;
+export type UpdateManagementWebpropertyUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates permissions for an existing user on the given web property. */
 export const updateManagementWebpropertyUserLinks: API.OperationMethod<
@@ -3801,7 +3974,7 @@ export const updateManagementWebpropertyUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementWebpropertyUserLinksRequest,
   output: UpdateManagementWebpropertyUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementAccountsRequest {
@@ -3828,7 +4001,7 @@ export type ListManagementAccountsResponse = Accounts;
 export const ListManagementAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Accounts;
 
-export type ListManagementAccountsError = DefaultErrors;
+export type ListManagementAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all accounts to which the user has access. */
 export const listManagementAccounts: API.OperationMethod<
@@ -3839,7 +4012,7 @@ export const listManagementAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementAccountsRequest,
   output: ListManagementAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateManagementCustomMetricsRequest {
@@ -3877,7 +4050,12 @@ export type UpdateManagementCustomMetricsResponse = CustomMetric;
 export const UpdateManagementCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomMetric;
 
-export type UpdateManagementCustomMetricsError = DefaultErrors;
+export type UpdateManagementCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing custom metric. */
 export const updateManagementCustomMetrics: API.OperationMethod<
@@ -3888,7 +4066,7 @@ export const updateManagementCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementCustomMetricsRequest,
   output: UpdateManagementCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementCustomMetricsRequest {
@@ -3917,7 +4095,10 @@ export type GetManagementCustomMetricsResponse = CustomMetric;
 export const GetManagementCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomMetric;
 
-export type GetManagementCustomMetricsError = DefaultErrors;
+export type GetManagementCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a custom metric to which the user has access. */
 export const getManagementCustomMetrics: API.OperationMethod<
@@ -3928,7 +4109,7 @@ export const getManagementCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementCustomMetricsRequest,
   output: GetManagementCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchManagementCustomMetricsRequest {
@@ -3966,7 +4147,12 @@ export type PatchManagementCustomMetricsResponse = CustomMetric;
 export const PatchManagementCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomMetric;
 
-export type PatchManagementCustomMetricsError = DefaultErrors;
+export type PatchManagementCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing custom metric. This method supports patch semantics. */
 export const patchManagementCustomMetrics: API.OperationMethod<
@@ -3977,7 +4163,7 @@ export const patchManagementCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementCustomMetricsRequest,
   output: PatchManagementCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementCustomMetricsRequest {
@@ -4013,7 +4199,10 @@ export type ListManagementCustomMetricsResponse = CustomMetrics;
 export const ListManagementCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomMetrics;
 
-export type ListManagementCustomMetricsError = DefaultErrors;
+export type ListManagementCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists custom metrics to which the user has access. */
 export const listManagementCustomMetrics: API.OperationMethod<
@@ -4024,7 +4213,7 @@ export const listManagementCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementCustomMetricsRequest,
   output: ListManagementCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementCustomMetricsRequest {
@@ -4054,7 +4243,12 @@ export type InsertManagementCustomMetricsResponse = CustomMetric;
 export const InsertManagementCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomMetric;
 
-export type InsertManagementCustomMetricsError = DefaultErrors;
+export type InsertManagementCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new custom metric. */
 export const insertManagementCustomMetrics: API.OperationMethod<
@@ -4065,7 +4259,7 @@ export const insertManagementCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementCustomMetricsRequest,
   output: InsertManagementCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteManagementAccountUserLinksRequest {
@@ -4093,7 +4287,12 @@ export const DeleteManagementAccountUserLinksResponse: Schema.Schema<DeleteManag
     {},
   ) as any as Schema.Schema<DeleteManagementAccountUserLinksResponse>;
 
-export type DeleteManagementAccountUserLinksError = DefaultErrors;
+export type DeleteManagementAccountUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a user from the given account. */
 export const deleteManagementAccountUserLinks: API.OperationMethod<
@@ -4104,7 +4303,7 @@ export const deleteManagementAccountUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementAccountUserLinksRequest,
   output: DeleteManagementAccountUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagementAccountUserLinksRequest {
@@ -4134,7 +4333,12 @@ export type UpdateManagementAccountUserLinksResponse = EntityUserLink;
 export const UpdateManagementAccountUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLink;
 
-export type UpdateManagementAccountUserLinksError = DefaultErrors;
+export type UpdateManagementAccountUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates permissions for an existing user on the given account. */
 export const updateManagementAccountUserLinks: API.OperationMethod<
@@ -4145,7 +4349,7 @@ export const updateManagementAccountUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementAccountUserLinksRequest,
   output: UpdateManagementAccountUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementAccountUserLinksRequest {
@@ -4178,7 +4382,10 @@ export type ListManagementAccountUserLinksResponse = EntityUserLinks;
 export const ListManagementAccountUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLinks;
 
-export type ListManagementAccountUserLinksError = DefaultErrors;
+export type ListManagementAccountUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists account-user links for a given account. */
 export const listManagementAccountUserLinks: API.OperationMethod<
@@ -4189,7 +4396,7 @@ export const listManagementAccountUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementAccountUserLinksRequest,
   output: ListManagementAccountUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementAccountUserLinksRequest {
@@ -4216,7 +4423,12 @@ export type InsertManagementAccountUserLinksResponse = EntityUserLink;
 export const InsertManagementAccountUserLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityUserLink;
 
-export type InsertManagementAccountUserLinksError = DefaultErrors;
+export type InsertManagementAccountUserLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a new user to the given account. */
 export const insertManagementAccountUserLinks: API.OperationMethod<
@@ -4227,7 +4439,7 @@ export const insertManagementAccountUserLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementAccountUserLinksRequest,
   output: InsertManagementAccountUserLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementProfileFilterLinksRequest {
@@ -4266,7 +4478,10 @@ export type ListManagementProfileFilterLinksResponse = ProfileFilterLinks;
 export const ListManagementProfileFilterLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProfileFilterLinks;
 
-export type ListManagementProfileFilterLinksError = DefaultErrors;
+export type ListManagementProfileFilterLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all profile filter links for a profile. */
 export const listManagementProfileFilterLinks: API.OperationMethod<
@@ -4277,7 +4492,7 @@ export const listManagementProfileFilterLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementProfileFilterLinksRequest,
   output: ListManagementProfileFilterLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementProfileFilterLinksRequest {
@@ -4310,7 +4525,12 @@ export type InsertManagementProfileFilterLinksResponse = ProfileFilterLink;
 export const InsertManagementProfileFilterLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProfileFilterLink;
 
-export type InsertManagementProfileFilterLinksError = DefaultErrors;
+export type InsertManagementProfileFilterLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new profile filter link. */
 export const insertManagementProfileFilterLinks: API.OperationMethod<
@@ -4321,7 +4541,7 @@ export const insertManagementProfileFilterLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementProfileFilterLinksRequest,
   output: InsertManagementProfileFilterLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchManagementProfileFilterLinksRequest {
@@ -4357,7 +4577,12 @@ export type PatchManagementProfileFilterLinksResponse = ProfileFilterLink;
 export const PatchManagementProfileFilterLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProfileFilterLink;
 
-export type PatchManagementProfileFilterLinksError = DefaultErrors;
+export type PatchManagementProfileFilterLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an existing profile filter link. This method supports patch semantics. */
 export const patchManagementProfileFilterLinks: API.OperationMethod<
@@ -4368,7 +4593,7 @@ export const patchManagementProfileFilterLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementProfileFilterLinksRequest,
   output: PatchManagementProfileFilterLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementProfileFilterLinksRequest {
@@ -4400,7 +4625,10 @@ export type GetManagementProfileFilterLinksResponse = ProfileFilterLink;
 export const GetManagementProfileFilterLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProfileFilterLink;
 
-export type GetManagementProfileFilterLinksError = DefaultErrors;
+export type GetManagementProfileFilterLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a single profile filter link. */
 export const getManagementProfileFilterLinks: API.OperationMethod<
@@ -4411,7 +4639,7 @@ export const getManagementProfileFilterLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementProfileFilterLinksRequest,
   output: GetManagementProfileFilterLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagementProfileFilterLinksRequest {
@@ -4445,7 +4673,12 @@ export const DeleteManagementProfileFilterLinksResponse: Schema.Schema<DeleteMan
     {},
   ) as any as Schema.Schema<DeleteManagementProfileFilterLinksResponse>;
 
-export type DeleteManagementProfileFilterLinksError = DefaultErrors;
+export type DeleteManagementProfileFilterLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a profile filter link. */
 export const deleteManagementProfileFilterLinks: API.OperationMethod<
@@ -4456,7 +4689,7 @@ export const deleteManagementProfileFilterLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementProfileFilterLinksRequest,
   output: DeleteManagementProfileFilterLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagementProfileFilterLinksRequest {
@@ -4492,7 +4725,12 @@ export type UpdateManagementProfileFilterLinksResponse = ProfileFilterLink;
 export const UpdateManagementProfileFilterLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProfileFilterLink;
 
-export type UpdateManagementProfileFilterLinksError = DefaultErrors;
+export type UpdateManagementProfileFilterLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an existing profile filter link. */
 export const updateManagementProfileFilterLinks: API.OperationMethod<
@@ -4503,7 +4741,7 @@ export const updateManagementProfileFilterLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementProfileFilterLinksRequest,
   output: UpdateManagementProfileFilterLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementProfilesRequest {
@@ -4532,7 +4770,7 @@ export type GetManagementProfilesResponse = Profile;
 export const GetManagementProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type GetManagementProfilesError = DefaultErrors;
+export type GetManagementProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a view (profile) to which the user has access. */
 export const getManagementProfiles: API.OperationMethod<
@@ -4543,7 +4781,7 @@ export const getManagementProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementProfilesRequest,
   output: GetManagementProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagementProfilesRequest {
@@ -4574,7 +4812,12 @@ export const DeleteManagementProfilesResponse: Schema.Schema<DeleteManagementPro
     {},
   ) as any as Schema.Schema<DeleteManagementProfilesResponse>;
 
-export type DeleteManagementProfilesError = DefaultErrors;
+export type DeleteManagementProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a view (profile). */
 export const deleteManagementProfiles: API.OperationMethod<
@@ -4585,7 +4828,7 @@ export const deleteManagementProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementProfilesRequest,
   output: DeleteManagementProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagementProfilesRequest {
@@ -4618,7 +4861,12 @@ export type UpdateManagementProfilesResponse = Profile;
 export const UpdateManagementProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type UpdateManagementProfilesError = DefaultErrors;
+export type UpdateManagementProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing view (profile). */
 export const updateManagementProfiles: API.OperationMethod<
@@ -4629,7 +4877,7 @@ export const updateManagementProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementProfilesRequest,
   output: UpdateManagementProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementProfilesRequest {
@@ -4665,7 +4913,7 @@ export type ListManagementProfilesResponse = Profiles;
 export const ListManagementProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profiles;
 
-export type ListManagementProfilesError = DefaultErrors;
+export type ListManagementProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists views (profiles) to which the user has access. */
 export const listManagementProfiles: API.OperationMethod<
@@ -4676,7 +4924,7 @@ export const listManagementProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementProfilesRequest,
   output: ListManagementProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementProfilesRequest {
@@ -4706,7 +4954,12 @@ export type InsertManagementProfilesResponse = Profile;
 export const InsertManagementProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type InsertManagementProfilesError = DefaultErrors;
+export type InsertManagementProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new view (profile). */
 export const insertManagementProfiles: API.OperationMethod<
@@ -4717,7 +4970,7 @@ export const insertManagementProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementProfilesRequest,
   output: InsertManagementProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchManagementProfilesRequest {
@@ -4750,7 +5003,12 @@ export type PatchManagementProfilesResponse = Profile;
 export const PatchManagementProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type PatchManagementProfilesError = DefaultErrors;
+export type PatchManagementProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing view (profile). This method supports patch semantics. */
 export const patchManagementProfiles: API.OperationMethod<
@@ -4761,7 +5019,7 @@ export const patchManagementProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementProfilesRequest,
   output: PatchManagementProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertManagementFiltersRequest {
@@ -4788,7 +5046,12 @@ export type InsertManagementFiltersResponse = Filter;
 export const InsertManagementFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Filter;
 
-export type InsertManagementFiltersError = DefaultErrors;
+export type InsertManagementFiltersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new filter. */
 export const insertManagementFilters: API.OperationMethod<
@@ -4799,7 +5062,7 @@ export const insertManagementFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementFiltersRequest,
   output: InsertManagementFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementFiltersRequest {
@@ -4829,7 +5092,7 @@ export type ListManagementFiltersResponse = Filters;
 export const ListManagementFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Filters;
 
-export type ListManagementFiltersError = DefaultErrors;
+export type ListManagementFiltersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all filters for an account */
 export const listManagementFilters: API.OperationMethod<
@@ -4840,7 +5103,7 @@ export const listManagementFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementFiltersRequest,
   output: ListManagementFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchManagementFiltersRequest {
@@ -4870,7 +5133,12 @@ export type PatchManagementFiltersResponse = Filter;
 export const PatchManagementFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Filter;
 
-export type PatchManagementFiltersError = DefaultErrors;
+export type PatchManagementFiltersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing filter. This method supports patch semantics. */
 export const patchManagementFilters: API.OperationMethod<
@@ -4881,7 +5149,7 @@ export const patchManagementFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementFiltersRequest,
   output: PatchManagementFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementFiltersRequest {
@@ -4906,7 +5174,7 @@ export const GetManagementFiltersRequest =
 export type GetManagementFiltersResponse = Filter;
 export const GetManagementFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Filter;
 
-export type GetManagementFiltersError = DefaultErrors;
+export type GetManagementFiltersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns filters to which the user has access. */
 export const getManagementFilters: API.OperationMethod<
@@ -4917,7 +5185,7 @@ export const getManagementFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementFiltersRequest,
   output: GetManagementFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateManagementFiltersRequest {
@@ -4947,7 +5215,12 @@ export type UpdateManagementFiltersResponse = Filter;
 export const UpdateManagementFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Filter;
 
-export type UpdateManagementFiltersError = DefaultErrors;
+export type UpdateManagementFiltersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing filter. */
 export const updateManagementFilters: API.OperationMethod<
@@ -4958,7 +5231,7 @@ export const updateManagementFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementFiltersRequest,
   output: UpdateManagementFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteManagementFiltersRequest {
@@ -4984,7 +5257,12 @@ export type DeleteManagementFiltersResponse = Filter;
 export const DeleteManagementFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Filter;
 
-export type DeleteManagementFiltersError = DefaultErrors;
+export type DeleteManagementFiltersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a filter. */
 export const deleteManagementFilters: API.OperationMethod<
@@ -4995,7 +5273,7 @@ export const deleteManagementFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementFiltersRequest,
   output: DeleteManagementFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementCustomDataSourcesRequest {
@@ -5031,7 +5309,10 @@ export type ListManagementCustomDataSourcesResponse = CustomDataSources;
 export const ListManagementCustomDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomDataSources;
 
-export type ListManagementCustomDataSourcesError = DefaultErrors;
+export type ListManagementCustomDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List custom data sources to which the user has access. */
 export const listManagementCustomDataSources: API.OperationMethod<
@@ -5042,7 +5323,7 @@ export const listManagementCustomDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementCustomDataSourcesRequest,
   output: ListManagementCustomDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchManagementExperimentsRequest {
@@ -5078,7 +5359,12 @@ export type PatchManagementExperimentsResponse = Experiment;
 export const PatchManagementExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Experiment;
 
-export type PatchManagementExperimentsError = DefaultErrors;
+export type PatchManagementExperimentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an existing experiment. This method supports patch semantics. */
 export const patchManagementExperiments: API.OperationMethod<
@@ -5089,7 +5375,7 @@ export const patchManagementExperiments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementExperimentsRequest,
   output: PatchManagementExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertManagementExperimentsRequest {
@@ -5122,7 +5408,12 @@ export type InsertManagementExperimentsResponse = Experiment;
 export const InsertManagementExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Experiment;
 
-export type InsertManagementExperimentsError = DefaultErrors;
+export type InsertManagementExperimentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new experiment. */
 export const insertManagementExperiments: API.OperationMethod<
@@ -5133,7 +5424,7 @@ export const insertManagementExperiments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementExperimentsRequest,
   output: InsertManagementExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementExperimentsRequest {
@@ -5172,7 +5463,10 @@ export type ListManagementExperimentsResponse = Experiments;
 export const ListManagementExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Experiments;
 
-export type ListManagementExperimentsError = DefaultErrors;
+export type ListManagementExperimentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists experiments to which the user has access. */
 export const listManagementExperiments: API.OperationMethod<
@@ -5183,7 +5477,7 @@ export const listManagementExperiments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementExperimentsRequest,
   output: ListManagementExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateManagementExperimentsRequest {
@@ -5219,7 +5513,12 @@ export type UpdateManagementExperimentsResponse = Experiment;
 export const UpdateManagementExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Experiment;
 
-export type UpdateManagementExperimentsError = DefaultErrors;
+export type UpdateManagementExperimentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an existing experiment. */
 export const updateManagementExperiments: API.OperationMethod<
@@ -5230,7 +5529,7 @@ export const updateManagementExperiments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementExperimentsRequest,
   output: UpdateManagementExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteManagementExperimentsRequest {
@@ -5264,7 +5563,12 @@ export const DeleteManagementExperimentsResponse: Schema.Schema<DeleteManagement
     {},
   ) as any as Schema.Schema<DeleteManagementExperimentsResponse>;
 
-export type DeleteManagementExperimentsError = DefaultErrors;
+export type DeleteManagementExperimentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an experiment. */
 export const deleteManagementExperiments: API.OperationMethod<
@@ -5275,7 +5579,7 @@ export const deleteManagementExperiments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementExperimentsRequest,
   output: DeleteManagementExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementExperimentsRequest {
@@ -5307,7 +5611,10 @@ export type GetManagementExperimentsResponse = Experiment;
 export const GetManagementExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Experiment;
 
-export type GetManagementExperimentsError = DefaultErrors;
+export type GetManagementExperimentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns an experiment to which the user has access. */
 export const getManagementExperiments: API.OperationMethod<
@@ -5318,7 +5625,7 @@ export const getManagementExperiments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementExperimentsRequest,
   output: GetManagementExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetManagementCustomDimensionsRequest {
@@ -5347,7 +5654,10 @@ export type GetManagementCustomDimensionsResponse = CustomDimension;
 export const GetManagementCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomDimension;
 
-export type GetManagementCustomDimensionsError = DefaultErrors;
+export type GetManagementCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a custom dimension to which the user has access. */
 export const getManagementCustomDimensions: API.OperationMethod<
@@ -5358,7 +5668,7 @@ export const getManagementCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementCustomDimensionsRequest,
   output: GetManagementCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateManagementCustomDimensionsRequest {
@@ -5396,7 +5706,12 @@ export type UpdateManagementCustomDimensionsResponse = CustomDimension;
 export const UpdateManagementCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomDimension;
 
-export type UpdateManagementCustomDimensionsError = DefaultErrors;
+export type UpdateManagementCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing custom dimension. */
 export const updateManagementCustomDimensions: API.OperationMethod<
@@ -5407,7 +5722,7 @@ export const updateManagementCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementCustomDimensionsRequest,
   output: UpdateManagementCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertManagementCustomDimensionsRequest {
@@ -5437,7 +5752,12 @@ export type InsertManagementCustomDimensionsResponse = CustomDimension;
 export const InsertManagementCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomDimension;
 
-export type InsertManagementCustomDimensionsError = DefaultErrors;
+export type InsertManagementCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new custom dimension. */
 export const insertManagementCustomDimensions: API.OperationMethod<
@@ -5448,7 +5768,7 @@ export const insertManagementCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementCustomDimensionsRequest,
   output: InsertManagementCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementCustomDimensionsRequest {
@@ -5484,7 +5804,10 @@ export type ListManagementCustomDimensionsResponse = CustomDimensions;
 export const ListManagementCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomDimensions;
 
-export type ListManagementCustomDimensionsError = DefaultErrors;
+export type ListManagementCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists custom dimensions to which the user has access. */
 export const listManagementCustomDimensions: API.OperationMethod<
@@ -5495,7 +5818,7 @@ export const listManagementCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementCustomDimensionsRequest,
   output: ListManagementCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchManagementCustomDimensionsRequest {
@@ -5533,7 +5856,12 @@ export type PatchManagementCustomDimensionsResponse = CustomDimension;
 export const PatchManagementCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomDimension;
 
-export type PatchManagementCustomDimensionsError = DefaultErrors;
+export type PatchManagementCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing custom dimension. This method supports patch semantics. */
 export const patchManagementCustomDimensions: API.OperationMethod<
@@ -5544,7 +5872,7 @@ export const patchManagementCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementCustomDimensionsRequest,
   output: PatchManagementCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagementWebPropertyAdWordsLinksRequest {
@@ -5575,7 +5903,10 @@ export type GetManagementWebPropertyAdWordsLinksResponse = EntityAdWordsLink;
 export const GetManagementWebPropertyAdWordsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityAdWordsLink;
 
-export type GetManagementWebPropertyAdWordsLinksError = DefaultErrors;
+export type GetManagementWebPropertyAdWordsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a web property-Google Ads link to which the user has access. */
 export const getManagementWebPropertyAdWordsLinks: API.OperationMethod<
@@ -5586,7 +5917,7 @@ export const getManagementWebPropertyAdWordsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagementWebPropertyAdWordsLinksRequest,
   output: GetManagementWebPropertyAdWordsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagementWebPropertyAdWordsLinksRequest {
@@ -5619,7 +5950,12 @@ export const DeleteManagementWebPropertyAdWordsLinksResponse: Schema.Schema<Dele
     {},
   ) as any as Schema.Schema<DeleteManagementWebPropertyAdWordsLinksResponse>;
 
-export type DeleteManagementWebPropertyAdWordsLinksError = DefaultErrors;
+export type DeleteManagementWebPropertyAdWordsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a web property-Google Ads link. */
 export const deleteManagementWebPropertyAdWordsLinks: API.OperationMethod<
@@ -5630,7 +5966,7 @@ export const deleteManagementWebPropertyAdWordsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagementWebPropertyAdWordsLinksRequest,
   output: DeleteManagementWebPropertyAdWordsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagementWebPropertyAdWordsLinksRequest {
@@ -5665,7 +6001,12 @@ export type UpdateManagementWebPropertyAdWordsLinksResponse = EntityAdWordsLink;
 export const UpdateManagementWebPropertyAdWordsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityAdWordsLink;
 
-export type UpdateManagementWebPropertyAdWordsLinksError = DefaultErrors;
+export type UpdateManagementWebPropertyAdWordsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing webProperty-Google Ads link. */
 export const updateManagementWebPropertyAdWordsLinks: API.OperationMethod<
@@ -5676,7 +6017,7 @@ export const updateManagementWebPropertyAdWordsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagementWebPropertyAdWordsLinksRequest,
   output: UpdateManagementWebPropertyAdWordsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementWebPropertyAdWordsLinksRequest {
@@ -5712,7 +6053,10 @@ export type ListManagementWebPropertyAdWordsLinksResponse = EntityAdWordsLinks;
 export const ListManagementWebPropertyAdWordsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityAdWordsLinks;
 
-export type ListManagementWebPropertyAdWordsLinksError = DefaultErrors;
+export type ListManagementWebPropertyAdWordsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists webProperty-Google Ads links for a given web property. */
 export const listManagementWebPropertyAdWordsLinks: API.OperationMethod<
@@ -5723,7 +6067,7 @@ export const listManagementWebPropertyAdWordsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementWebPropertyAdWordsLinksRequest,
   output: ListManagementWebPropertyAdWordsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertManagementWebPropertyAdWordsLinksRequest {
@@ -5753,7 +6097,12 @@ export type InsertManagementWebPropertyAdWordsLinksResponse = EntityAdWordsLink;
 export const InsertManagementWebPropertyAdWordsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityAdWordsLink;
 
-export type InsertManagementWebPropertyAdWordsLinksError = DefaultErrors;
+export type InsertManagementWebPropertyAdWordsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a webProperty-Google Ads link. */
 export const insertManagementWebPropertyAdWordsLinks: API.OperationMethod<
@@ -5764,7 +6113,7 @@ export const insertManagementWebPropertyAdWordsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertManagementWebPropertyAdWordsLinksRequest,
   output: InsertManagementWebPropertyAdWordsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchManagementWebPropertyAdWordsLinksRequest {
@@ -5799,7 +6148,12 @@ export type PatchManagementWebPropertyAdWordsLinksResponse = EntityAdWordsLink;
 export const PatchManagementWebPropertyAdWordsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityAdWordsLink;
 
-export type PatchManagementWebPropertyAdWordsLinksError = DefaultErrors;
+export type PatchManagementWebPropertyAdWordsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing webProperty-Google Ads link. This method supports patch semantics. */
 export const patchManagementWebPropertyAdWordsLinks: API.OperationMethod<
@@ -5810,7 +6164,7 @@ export const patchManagementWebPropertyAdWordsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagementWebPropertyAdWordsLinksRequest,
   output: PatchManagementWebPropertyAdWordsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface HashClientIdManagementClientIdRequest {
@@ -5834,7 +6188,12 @@ export type HashClientIdManagementClientIdResponse = HashClientIdResponse;
 export const HashClientIdManagementClientIdResponse =
   /*@__PURE__*/ /*#__PURE__*/ HashClientIdResponse;
 
-export type HashClientIdManagementClientIdError = DefaultErrors;
+export type HashClientIdManagementClientIdError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Hashes the given Client ID. */
 export const hashClientIdManagementClientId: API.OperationMethod<
@@ -5845,7 +6204,7 @@ export const hashClientIdManagementClientId: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HashClientIdManagementClientIdRequest,
   output: HashClientIdManagementClientIdResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagementSegmentsRequest {
@@ -5872,7 +6231,7 @@ export type ListManagementSegmentsResponse = Segments;
 export const ListManagementSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Segments;
 
-export type ListManagementSegmentsError = DefaultErrors;
+export type ListManagementSegmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists segments to which the user has access. */
 export const listManagementSegments: API.OperationMethod<
@@ -5883,7 +6242,7 @@ export const listManagementSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagementSegmentsRequest,
   output: ListManagementSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDataRealtimeRequest {
@@ -5920,7 +6279,7 @@ export const GetDataRealtimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetDataRealtimeResponse = RealtimeData;
 export const GetDataRealtimeResponse = /*@__PURE__*/ /*#__PURE__*/ RealtimeData;
 
-export type GetDataRealtimeError = DefaultErrors;
+export type GetDataRealtimeError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns real time data for a view (profile). */
 export const getDataRealtime: API.OperationMethod<
@@ -5931,7 +6290,7 @@ export const getDataRealtime: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataRealtimeRequest,
   output: GetDataRealtimeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDataGaRequest {
@@ -5993,7 +6352,7 @@ export const GetDataGaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDataGaResponse = GaData;
 export const GetDataGaResponse = /*@__PURE__*/ /*#__PURE__*/ GaData;
 
-export type GetDataGaError = DefaultErrors;
+export type GetDataGaError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns Analytics data for a view (profile). */
 export const getDataGa: API.OperationMethod<
@@ -6004,7 +6363,7 @@ export const getDataGa: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataGaRequest,
   output: GetDataGaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDataMcfRequest {
@@ -6055,7 +6414,7 @@ export const GetDataMcfRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDataMcfResponse = McfData;
 export const GetDataMcfResponse = /*@__PURE__*/ /*#__PURE__*/ McfData;
 
-export type GetDataMcfError = DefaultErrors;
+export type GetDataMcfError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns Analytics Multi-Channel Funnels data for a view (profile). */
 export const getDataMcf: API.OperationMethod<
@@ -6066,7 +6425,7 @@ export const getDataMcf: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataMcfRequest,
   output: GetDataMcfResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountTicketProvisioningRequest {
@@ -6090,7 +6449,12 @@ export type CreateAccountTicketProvisioningResponse = AccountTicket;
 export const CreateAccountTicketProvisioningResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountTicket;
 
-export type CreateAccountTicketProvisioningError = DefaultErrors;
+export type CreateAccountTicketProvisioningError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an account ticket. */
 export const createAccountTicketProvisioning: API.OperationMethod<
@@ -6101,7 +6465,7 @@ export const createAccountTicketProvisioning: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountTicketProvisioningRequest,
   output: CreateAccountTicketProvisioningResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountTreeProvisioningRequest {
@@ -6125,7 +6489,12 @@ export type CreateAccountTreeProvisioningResponse = AccountTreeResponse;
 export const CreateAccountTreeProvisioningResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountTreeResponse;
 
-export type CreateAccountTreeProvisioningError = DefaultErrors;
+export type CreateAccountTreeProvisioningError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provision account. */
 export const createAccountTreeProvisioning: API.OperationMethod<
@@ -6136,7 +6505,7 @@ export const createAccountTreeProvisioning: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountTreeProvisioningRequest,
   output: CreateAccountTreeProvisioningResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpsertUserDeletionUserDeletionRequestRequest {
@@ -6160,7 +6529,12 @@ export type UpsertUserDeletionUserDeletionRequestResponse = UserDeletionRequest;
 export const UpsertUserDeletionUserDeletionRequestResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserDeletionRequest;
 
-export type UpsertUserDeletionUserDeletionRequestError = DefaultErrors;
+export type UpsertUserDeletionUserDeletionRequestError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Insert or update a user deletion requests. */
 export const upsertUserDeletionUserDeletionRequest: API.OperationMethod<
@@ -6171,5 +6545,5 @@ export const upsertUserDeletionUserDeletionRequest: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpsertUserDeletionUserDeletionRequestRequest,
   output: UpsertUserDeletionUserDeletionRequestResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

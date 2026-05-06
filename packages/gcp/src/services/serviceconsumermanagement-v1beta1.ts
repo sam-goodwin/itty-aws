@@ -1985,6 +1985,52 @@ export const V1beta1EnableConsumerResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2009,7 +2055,10 @@ export type GetServicesConsumerQuotaMetricsResponse =
 export const GetServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ V1Beta1ConsumerQuotaMetric;
 
-export type GetServicesConsumerQuotaMetricsError = DefaultErrors;
+export type GetServicesConsumerQuotaMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a summary of quota information for a specific quota metric. */
 export const getServicesConsumerQuotaMetrics: API.OperationMethod<
@@ -2020,7 +2069,7 @@ export const getServicesConsumerQuotaMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsRequest,
   output: GetServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportProducerOverridesServicesConsumerQuotaMetricsRequest {
@@ -2051,7 +2100,11 @@ export const ImportProducerOverridesServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ImportProducerOverridesServicesConsumerQuotaMetricsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create or update multiple producer overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set. */
 export const importProducerOverridesServicesConsumerQuotaMetrics: API.OperationMethod<
@@ -2062,7 +2115,7 @@ export const importProducerOverridesServicesConsumerQuotaMetrics: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProducerOverridesServicesConsumerQuotaMetricsRequest,
   output: ImportProducerOverridesServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConsumerQuotaMetricsRequest {
@@ -2092,7 +2145,10 @@ export type ListServicesConsumerQuotaMetricsResponse =
 export const ListServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ V1Beta1ListConsumerQuotaMetricsResponse;
 
-export type ListServicesConsumerQuotaMetricsError = DefaultErrors;
+export type ListServicesConsumerQuotaMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a summary of all quota information about this consumer that is visible to the service producer, for each quota metric defined by the service. Each metric includes information about all of its defined limits. Each limit includes the limit configuration (quota unit, preciseness, default value), the current effective limit value, and all of the overrides applied to the limit. */
 export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
@@ -2103,7 +2159,7 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsRequest,
   output: ListServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2138,7 +2194,11 @@ export const ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create or update multiple producer quota policies atomically, all on the same ancestor, but on many different metrics or limits. The name field in the quota policy message should not be set. */
 export const importProducerQuotaPoliciesServicesConsumerQuotaMetrics: API.OperationMethod<
@@ -2149,7 +2209,7 @@ export const importProducerQuotaPoliciesServicesConsumerQuotaMetrics: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsRequest,
   output: ImportProducerQuotaPoliciesServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServicesConsumerQuotaMetricsLimitsRequest {
@@ -2173,7 +2233,10 @@ export type GetServicesConsumerQuotaMetricsLimitsResponse =
 export const GetServicesConsumerQuotaMetricsLimitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ V1Beta1ConsumerQuotaLimit;
 
-export type GetServicesConsumerQuotaMetricsLimitsError = DefaultErrors;
+export type GetServicesConsumerQuotaMetricsLimitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a summary of quota information for a specific quota limit. */
 export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
@@ -2184,7 +2247,7 @@ export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsLimitsRequest,
   output: GetServicesConsumerQuotaMetricsLimitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
@@ -2230,7 +2293,11 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsProducerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a producer override. A producer override is applied by the owner or administrator of a service to increase or decrease the amount of quota a consumer of the service is allowed to use. To create multiple overrides at once, use ImportProducerOverrides instead. If an override with the specified dimensions already exists, this call will fail. To overwrite an existing override if one is already present ("upsert" semantics), use ImportProducerOverrides instead. */
 export const createServicesConsumerQuotaMetricsLimitsProducerOverrides: API.OperationMethod<
@@ -2241,7 +2308,7 @@ export const createServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
@@ -2280,7 +2347,11 @@ export const DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a producer override. */
 export const deleteServicesConsumerQuotaMetricsLimitsProducerOverrides: API.OperationMethod<
@@ -2291,7 +2362,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
@@ -2336,7 +2407,11 @@ export const PatchServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsProducerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a producer override. */
 export const patchServicesConsumerQuotaMetricsLimitsProducerOverrides: API.OperationMethod<
@@ -2347,7 +2422,7 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest {
@@ -2375,7 +2450,9 @@ export const ListServicesConsumerQuotaMetricsLimitsProducerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ V1Beta1ListProducerOverridesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsProducerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all producer overrides on this limit. */
 export const listServicesConsumerQuotaMetricsLimitsProducerOverrides: API.PaginatedOperationMethod<
@@ -2386,7 +2463,7 @@ export const listServicesConsumerQuotaMetricsLimitsProducerOverrides: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsProducerOverridesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsProducerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2432,7 +2509,11 @@ export const CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a producer quota policy. A producer quota policy is applied by the owner or administrator of a service at an org or folder node to set the default quota limit for all consumers under the node where the policy is created. To create multiple policies at once, use ImportProducerQuotaPolicies instead. If a policy with the specified dimensions already exists, this call will fail. To overwrite an existing policy if one is already present ("upsert" semantics), use ImportProducerQuotaPolicies instead. */
 export const createServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.OperationMethod<
@@ -2443,7 +2524,7 @@ export const createServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest {
@@ -2478,7 +2559,11 @@ export const DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a producer quota policy. */
 export const deleteServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.OperationMethod<
@@ -2489,7 +2574,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest {
@@ -2530,7 +2615,11 @@ export const PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRespons
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a producer quota policy. */
 export const patchServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.OperationMethod<
@@ -2541,7 +2630,7 @@ export const patchServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest {
@@ -2569,7 +2658,9 @@ export const ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse
   /*@__PURE__*/ /*#__PURE__*/ V1Beta1ListProducerQuotaPoliciesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all producer policies created at current consumer node for a limit. */
 export const listServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.PaginatedOperationMethod<
@@ -2580,7 +2671,7 @@ export const listServicesConsumerQuotaMetricsLimitsProducerQuotaPolicies: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsProducerQuotaPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2602,7 +2693,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2613,5 +2704,5 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

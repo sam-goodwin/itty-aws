@@ -1410,6 +1410,52 @@ export const GoogleAnalyticsAdminV1betaListCustomDimensionsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1436,7 +1482,7 @@ export type ListAccountsResponse =
 export const ListAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns all accounts accessible by the caller. Note that these accounts might not currently have GA properties. Soft-deleted (ie: "trashed") accounts are excluded by default. Returns an empty list if no relevant accounts are found. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -1447,7 +1493,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1472,7 +1518,10 @@ export type GetDataSharingSettingsAccountsResponse =
 export const GetDataSharingSettingsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataSharingSettings;
 
-export type GetDataSharingSettingsAccountsError = DefaultErrors;
+export type GetDataSharingSettingsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get data sharing settings on an account. Data sharing settings are singletons. */
 export const getDataSharingSettingsAccounts: API.OperationMethod<
@@ -1483,7 +1532,7 @@ export const getDataSharingSettingsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataSharingSettingsAccountsRequest,
   output: GetDataSharingSettingsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsRequest {
@@ -1502,7 +1551,7 @@ export type GetAccountsResponse = GoogleAnalyticsAdminV1betaAccount;
 export const GetAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaAccount;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lookup for a single Account. */
 export const getAccounts: API.OperationMethod<
@@ -1513,7 +1562,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsRequest {
@@ -1538,7 +1587,12 @@ export type PatchAccountsResponse = GoogleAnalyticsAdminV1betaAccount;
 export const PatchAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaAccount;
 
-export type PatchAccountsError = DefaultErrors;
+export type PatchAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an account. */
 export const patchAccounts: API.OperationMethod<
@@ -1549,7 +1603,7 @@ export const patchAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsRequest,
   output: PatchAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsRequest {
@@ -1568,7 +1622,12 @@ export type DeleteAccountsResponse = GoogleProtobufEmpty;
 export const DeleteAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteAccountsError = DefaultErrors;
+export type DeleteAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a method to restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks, Streams, AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found. */
 export const deleteAccounts: API.OperationMethod<
@@ -1579,7 +1638,7 @@ export const deleteAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsRequest,
   output: DeleteAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvisionAccountTicketAccountsRequest {
@@ -1606,7 +1665,12 @@ export type ProvisionAccountTicketAccountsResponse =
 export const ProvisionAccountTicketAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProvisionAccountTicketResponse;
 
-export type ProvisionAccountTicketAccountsError = DefaultErrors;
+export type ProvisionAccountTicketAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests a ticket for creating an account. */
 export const provisionAccountTicketAccounts: API.OperationMethod<
@@ -1617,7 +1681,7 @@ export const provisionAccountTicketAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionAccountTicketAccountsRequest,
   output: ProvisionAccountTicketAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchChangeHistoryEventsAccountsRequest {
@@ -1647,7 +1711,12 @@ export type SearchChangeHistoryEventsAccountsResponse =
 export const SearchChangeHistoryEventsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsResponse;
 
-export type SearchChangeHistoryEventsAccountsError = DefaultErrors;
+export type SearchChangeHistoryEventsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches through all changes to an account or its children given the specified set of filters. Only returns the subset of changes supported by the API. The UI may return additional changes. */
 export const searchChangeHistoryEventsAccounts: API.OperationMethod<
@@ -1658,7 +1727,7 @@ export const searchChangeHistoryEventsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchChangeHistoryEventsAccountsRequest,
   output: SearchChangeHistoryEventsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunAccessReportAccountsRequest {
@@ -1688,7 +1757,12 @@ export type RunAccessReportAccountsResponse =
 export const RunAccessReportAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaRunAccessReportResponse;
 
-export type RunAccessReportAccountsError = DefaultErrors;
+export type RunAccessReportAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a customized report of data access records. The report provides records of each time a user reads Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be requested for a property. Reports may be requested for any property, but dimensions that aren't related to quota can only be requested on Google Analytics 360 properties. This method is only available to Administrators. These data access records include GA UI Reporting, GA UI Explorations, GA Data API, and other products like Firebase & Admob that can retrieve data from Google Analytics through a linkage. These records don't include property configuration changes like adding a stream or changing a property's time zone. For configuration change history, see [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents). To give your feedback on this API, complete the [Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform) form. */
 export const runAccessReportAccounts: API.OperationMethod<
@@ -1699,7 +1773,7 @@ export const runAccessReportAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunAccessReportAccountsRequest,
   output: RunAccessReportAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountSummariesRequest {
@@ -1723,7 +1797,7 @@ export type ListAccountSummariesResponse =
 export const ListAccountSummariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListAccountSummariesResponse;
 
-export type ListAccountSummariesError = DefaultErrors;
+export type ListAccountSummariesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns summaries of all accounts accessible by the caller. */
 export const listAccountSummaries: API.PaginatedOperationMethod<
@@ -1734,7 +1808,7 @@ export const listAccountSummaries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountSummariesRequest,
   output: ListAccountSummariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1767,7 +1841,12 @@ export type UpdateDataRetentionSettingsPropertiesResponse =
 export const UpdateDataRetentionSettingsPropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataRetentionSettings;
 
-export type UpdateDataRetentionSettingsPropertiesError = DefaultErrors;
+export type UpdateDataRetentionSettingsPropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the singleton data retention settings for this property. */
 export const updateDataRetentionSettingsProperties: API.OperationMethod<
@@ -1778,7 +1857,7 @@ export const updateDataRetentionSettingsProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataRetentionSettingsPropertiesRequest,
   output: UpdateDataRetentionSettingsPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatePropertiesRequest {
@@ -1800,7 +1879,12 @@ export type CreatePropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const CreatePropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
-export type CreatePropertiesError = DefaultErrors;
+export type CreatePropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Google Analytics property with the specified location and attributes. */
 export const createProperties: API.OperationMethod<
@@ -1811,7 +1895,7 @@ export const createProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesRequest,
   output: CreatePropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDataRetentionSettingsPropertiesRequest {
@@ -1832,7 +1916,10 @@ export type GetDataRetentionSettingsPropertiesResponse =
 export const GetDataRetentionSettingsPropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataRetentionSettings;
 
-export type GetDataRetentionSettingsPropertiesError = DefaultErrors;
+export type GetDataRetentionSettingsPropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the singleton data retention settings for this property. */
 export const getDataRetentionSettingsProperties: API.OperationMethod<
@@ -1843,7 +1930,7 @@ export const getDataRetentionSettingsProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataRetentionSettingsPropertiesRequest,
   output: GetDataRetentionSettingsPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPropertiesRequest {
@@ -1862,7 +1949,7 @@ export type GetPropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const GetPropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
-export type GetPropertiesError = DefaultErrors;
+export type GetPropertiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lookup for a single GA Property. */
 export const getProperties: API.OperationMethod<
@@ -1873,7 +1960,7 @@ export const getProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesRequest,
   output: GetPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AcknowledgeUserDataCollectionPropertiesRequest {
@@ -1903,7 +1990,12 @@ export type AcknowledgeUserDataCollectionPropertiesResponse =
 export const AcknowledgeUserDataCollectionPropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaAcknowledgeUserDataCollectionResponse;
 
-export type AcknowledgeUserDataCollectionPropertiesError = DefaultErrors;
+export type AcknowledgeUserDataCollectionPropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges the terms of user data collection for the specified property. This acknowledgement must be completed (either in the Google Analytics UI or through this API) before MeasurementProtocolSecret resources may be created. */
 export const acknowledgeUserDataCollectionProperties: API.OperationMethod<
@@ -1914,7 +2006,7 @@ export const acknowledgeUserDataCollectionProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgeUserDataCollectionPropertiesRequest,
   output: AcknowledgeUserDataCollectionPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunAccessReportPropertiesRequest {
@@ -1944,7 +2036,12 @@ export type RunAccessReportPropertiesResponse =
 export const RunAccessReportPropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaRunAccessReportResponse;
 
-export type RunAccessReportPropertiesError = DefaultErrors;
+export type RunAccessReportPropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a customized report of data access records. The report provides records of each time a user reads Google Analytics reporting data. Access records are retained for up to 2 years. Data Access Reports can be requested for a property. Reports may be requested for any property, but dimensions that aren't related to quota can only be requested on Google Analytics 360 properties. This method is only available to Administrators. These data access records include GA UI Reporting, GA UI Explorations, GA Data API, and other products like Firebase & Admob that can retrieve data from Google Analytics through a linkage. These records don't include property configuration changes like adding a stream or changing a property's time zone. For configuration change history, see [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents). To give your feedback on this API, complete the [Google Analytics Access Reports feedback](https://docs.google.com/forms/d/e/1FAIpQLSdmEBUrMzAEdiEKk5TV5dEHvDUZDRlgWYdQdAeSdtR4hVjEhw/viewform) form. */
 export const runAccessReportProperties: API.OperationMethod<
@@ -1955,7 +2052,7 @@ export const runAccessReportProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunAccessReportPropertiesRequest,
   output: RunAccessReportPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesRequest {
@@ -1984,7 +2081,7 @@ export type ListPropertiesResponse =
 export const ListPropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListPropertiesResponse;
 
-export type ListPropertiesError = DefaultErrors;
+export type ListPropertiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns child Properties under the specified parent Account. Properties will be excluded if the caller does not have access. Soft-deleted (ie: "trashed") properties are excluded by default. Returns an empty list if no relevant properties are found. */
 export const listProperties: API.PaginatedOperationMethod<
@@ -1995,7 +2092,7 @@ export const listProperties: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesRequest,
   output: ListPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2028,7 +2125,12 @@ export type PatchPropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const PatchPropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
-export type PatchPropertiesError = DefaultErrors;
+export type PatchPropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a property. */
 export const patchProperties: API.OperationMethod<
@@ -2039,7 +2141,7 @@ export const patchProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesRequest,
   output: PatchPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePropertiesRequest {
@@ -2059,7 +2161,12 @@ export type DeletePropertiesResponse = GoogleAnalyticsAdminV1betaProperty;
 export const DeletePropertiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaProperty;
 
-export type DeletePropertiesError = DefaultErrors;
+export type DeletePropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams, AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found. */
 export const deleteProperties: API.OperationMethod<
@@ -2070,7 +2177,7 @@ export const deleteProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesRequest,
   output: DeletePropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesCustomDimensionsRequest {
@@ -2097,7 +2204,10 @@ export type ListPropertiesCustomDimensionsResponse =
 export const ListPropertiesCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListCustomDimensionsResponse;
 
-export type ListPropertiesCustomDimensionsError = DefaultErrors;
+export type ListPropertiesCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CustomDimensions on a property. */
 export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
@@ -2108,7 +2218,7 @@ export const listPropertiesCustomDimensions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomDimensionsRequest,
   output: ListPropertiesCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2137,7 +2247,12 @@ export type ArchivePropertiesCustomDimensionsResponse = GoogleProtobufEmpty;
 export const ArchivePropertiesCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type ArchivePropertiesCustomDimensionsError = DefaultErrors;
+export type ArchivePropertiesCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Archives a CustomDimension on a property. */
 export const archivePropertiesCustomDimensions: API.OperationMethod<
@@ -2148,7 +2263,7 @@ export const archivePropertiesCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ArchivePropertiesCustomDimensionsRequest,
   output: ArchivePropertiesCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPropertiesCustomDimensionsRequest {
@@ -2177,7 +2292,12 @@ export type PatchPropertiesCustomDimensionsResponse =
 export const PatchPropertiesCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
 
-export type PatchPropertiesCustomDimensionsError = DefaultErrors;
+export type PatchPropertiesCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a CustomDimension on a property. */
 export const patchPropertiesCustomDimensions: API.OperationMethod<
@@ -2188,7 +2308,7 @@ export const patchPropertiesCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesCustomDimensionsRequest,
   output: PatchPropertiesCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPropertiesCustomDimensionsRequest {
@@ -2209,7 +2329,10 @@ export type GetPropertiesCustomDimensionsResponse =
 export const GetPropertiesCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
 
-export type GetPropertiesCustomDimensionsError = DefaultErrors;
+export type GetPropertiesCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lookup for a single CustomDimension. */
 export const getPropertiesCustomDimensions: API.OperationMethod<
@@ -2220,7 +2343,7 @@ export const getPropertiesCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesCustomDimensionsRequest,
   output: GetPropertiesCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePropertiesCustomDimensionsRequest {
@@ -2250,7 +2373,12 @@ export type CreatePropertiesCustomDimensionsResponse =
 export const CreatePropertiesCustomDimensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomDimension;
 
-export type CreatePropertiesCustomDimensionsError = DefaultErrors;
+export type CreatePropertiesCustomDimensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a CustomDimension. */
 export const createPropertiesCustomDimensions: API.OperationMethod<
@@ -2261,7 +2389,7 @@ export const createPropertiesCustomDimensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesCustomDimensionsRequest,
   output: CreatePropertiesCustomDimensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesGoogleAdsLinksRequest {
@@ -2288,7 +2416,10 @@ export type ListPropertiesGoogleAdsLinksResponse =
 export const ListPropertiesGoogleAdsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListGoogleAdsLinksResponse;
 
-export type ListPropertiesGoogleAdsLinksError = DefaultErrors;
+export type ListPropertiesGoogleAdsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists GoogleAdsLinks on a property. */
 export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
@@ -2299,7 +2430,7 @@ export const listPropertiesGoogleAdsLinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesGoogleAdsLinksRequest,
   output: ListPropertiesGoogleAdsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2333,7 +2464,12 @@ export type CreatePropertiesGoogleAdsLinksResponse =
 export const CreatePropertiesGoogleAdsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaGoogleAdsLink;
 
-export type CreatePropertiesGoogleAdsLinksError = DefaultErrors;
+export type CreatePropertiesGoogleAdsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GoogleAdsLink. */
 export const createPropertiesGoogleAdsLinks: API.OperationMethod<
@@ -2344,7 +2480,7 @@ export const createPropertiesGoogleAdsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesGoogleAdsLinksRequest,
   output: CreatePropertiesGoogleAdsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPropertiesGoogleAdsLinksRequest {
@@ -2373,7 +2509,12 @@ export type PatchPropertiesGoogleAdsLinksResponse =
 export const PatchPropertiesGoogleAdsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaGoogleAdsLink;
 
-export type PatchPropertiesGoogleAdsLinksError = DefaultErrors;
+export type PatchPropertiesGoogleAdsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GoogleAdsLink on a property */
 export const patchPropertiesGoogleAdsLinks: API.OperationMethod<
@@ -2384,7 +2525,7 @@ export const patchPropertiesGoogleAdsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesGoogleAdsLinksRequest,
   output: PatchPropertiesGoogleAdsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePropertiesGoogleAdsLinksRequest {
@@ -2404,7 +2545,12 @@ export type DeletePropertiesGoogleAdsLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesGoogleAdsLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeletePropertiesGoogleAdsLinksError = DefaultErrors;
+export type DeletePropertiesGoogleAdsLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GoogleAdsLink on a property */
 export const deletePropertiesGoogleAdsLinks: API.OperationMethod<
@@ -2415,7 +2561,7 @@ export const deletePropertiesGoogleAdsLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesGoogleAdsLinksRequest,
   output: DeletePropertiesGoogleAdsLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPropertiesConversionEventsRequest {
@@ -2444,7 +2590,12 @@ export type PatchPropertiesConversionEventsResponse =
 export const PatchPropertiesConversionEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
 
-export type PatchPropertiesConversionEventsError = DefaultErrors;
+export type PatchPropertiesConversionEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `UpdateKeyEvent` instead. Updates a conversion event with the specified attributes. */
 export const patchPropertiesConversionEvents: API.OperationMethod<
@@ -2455,7 +2606,7 @@ export const patchPropertiesConversionEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesConversionEventsRequest,
   output: PatchPropertiesConversionEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPropertiesConversionEventsRequest {
@@ -2476,7 +2627,10 @@ export type GetPropertiesConversionEventsResponse =
 export const GetPropertiesConversionEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
 
-export type GetPropertiesConversionEventsError = DefaultErrors;
+export type GetPropertiesConversionEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: Use `GetKeyEvent` instead. Retrieve a single conversion event. */
 export const getPropertiesConversionEvents: API.OperationMethod<
@@ -2487,7 +2641,7 @@ export const getPropertiesConversionEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesConversionEventsRequest,
   output: GetPropertiesConversionEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePropertiesConversionEventsRequest {
@@ -2507,7 +2661,12 @@ export type DeletePropertiesConversionEventsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesConversionEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeletePropertiesConversionEventsError = DefaultErrors;
+export type DeletePropertiesConversionEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `DeleteKeyEvent` instead. Deletes a conversion event in a property. */
 export const deletePropertiesConversionEvents: API.OperationMethod<
@@ -2518,7 +2677,7 @@ export const deletePropertiesConversionEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesConversionEventsRequest,
   output: DeletePropertiesConversionEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesConversionEventsRequest {
@@ -2545,7 +2704,10 @@ export type ListPropertiesConversionEventsResponse =
 export const ListPropertiesConversionEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListConversionEventsResponse;
 
-export type ListPropertiesConversionEventsError = DefaultErrors;
+export type ListPropertiesConversionEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: Use `ListKeyEvents` instead. Returns a list of conversion events in the specified parent property. Returns an empty list if no conversion events are found. */
 export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
@@ -2556,7 +2718,7 @@ export const listPropertiesConversionEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesConversionEventsRequest,
   output: ListPropertiesConversionEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2590,7 +2752,12 @@ export type CreatePropertiesConversionEventsResponse =
 export const CreatePropertiesConversionEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaConversionEvent;
 
-export type CreatePropertiesConversionEventsError = DefaultErrors;
+export type CreatePropertiesConversionEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `CreateKeyEvent` instead. Creates a conversion event with the specified attributes. */
 export const createPropertiesConversionEvents: API.OperationMethod<
@@ -2601,7 +2768,7 @@ export const createPropertiesConversionEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesConversionEventsRequest,
   output: CreatePropertiesConversionEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesFirebaseLinksRequest {
@@ -2628,7 +2795,10 @@ export type ListPropertiesFirebaseLinksResponse =
 export const ListPropertiesFirebaseLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListFirebaseLinksResponse;
 
-export type ListPropertiesFirebaseLinksError = DefaultErrors;
+export type ListPropertiesFirebaseLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists FirebaseLinks on a property. Properties can have at most one FirebaseLink. */
 export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
@@ -2639,7 +2809,7 @@ export const listPropertiesFirebaseLinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesFirebaseLinksRequest,
   output: ListPropertiesFirebaseLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2673,7 +2843,12 @@ export type CreatePropertiesFirebaseLinksResponse =
 export const CreatePropertiesFirebaseLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaFirebaseLink;
 
-export type CreatePropertiesFirebaseLinksError = DefaultErrors;
+export type CreatePropertiesFirebaseLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a FirebaseLink. Properties can have at most one FirebaseLink. */
 export const createPropertiesFirebaseLinks: API.OperationMethod<
@@ -2684,7 +2859,7 @@ export const createPropertiesFirebaseLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesFirebaseLinksRequest,
   output: CreatePropertiesFirebaseLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePropertiesFirebaseLinksRequest {
@@ -2704,7 +2879,12 @@ export type DeletePropertiesFirebaseLinksResponse = GoogleProtobufEmpty;
 export const DeletePropertiesFirebaseLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeletePropertiesFirebaseLinksError = DefaultErrors;
+export type DeletePropertiesFirebaseLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a FirebaseLink on a property */
 export const deletePropertiesFirebaseLinks: API.OperationMethod<
@@ -2715,7 +2895,7 @@ export const deletePropertiesFirebaseLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesFirebaseLinksRequest,
   output: DeletePropertiesFirebaseLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatePropertiesCustomMetricsRequest {
@@ -2745,7 +2925,12 @@ export type CreatePropertiesCustomMetricsResponse =
 export const CreatePropertiesCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
 
-export type CreatePropertiesCustomMetricsError = DefaultErrors;
+export type CreatePropertiesCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a CustomMetric. */
 export const createPropertiesCustomMetrics: API.OperationMethod<
@@ -2756,7 +2941,7 @@ export const createPropertiesCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesCustomMetricsRequest,
   output: CreatePropertiesCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPropertiesCustomMetricsRequest {
@@ -2785,7 +2970,12 @@ export type PatchPropertiesCustomMetricsResponse =
 export const PatchPropertiesCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
 
-export type PatchPropertiesCustomMetricsError = DefaultErrors;
+export type PatchPropertiesCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a CustomMetric on a property. */
 export const patchPropertiesCustomMetrics: API.OperationMethod<
@@ -2796,7 +2986,7 @@ export const patchPropertiesCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesCustomMetricsRequest,
   output: PatchPropertiesCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPropertiesCustomMetricsRequest {
@@ -2817,7 +3007,10 @@ export type GetPropertiesCustomMetricsResponse =
 export const GetPropertiesCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaCustomMetric;
 
-export type GetPropertiesCustomMetricsError = DefaultErrors;
+export type GetPropertiesCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lookup for a single CustomMetric. */
 export const getPropertiesCustomMetrics: API.OperationMethod<
@@ -2828,7 +3021,7 @@ export const getPropertiesCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesCustomMetricsRequest,
   output: GetPropertiesCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPropertiesCustomMetricsRequest {
@@ -2855,7 +3048,10 @@ export type ListPropertiesCustomMetricsResponse =
 export const ListPropertiesCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListCustomMetricsResponse;
 
-export type ListPropertiesCustomMetricsError = DefaultErrors;
+export type ListPropertiesCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CustomMetrics on a property. */
 export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
@@ -2866,7 +3062,7 @@ export const listPropertiesCustomMetrics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesCustomMetricsRequest,
   output: ListPropertiesCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2895,7 +3091,12 @@ export type ArchivePropertiesCustomMetricsResponse = GoogleProtobufEmpty;
 export const ArchivePropertiesCustomMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type ArchivePropertiesCustomMetricsError = DefaultErrors;
+export type ArchivePropertiesCustomMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Archives a CustomMetric on a property. */
 export const archivePropertiesCustomMetrics: API.OperationMethod<
@@ -2906,7 +3107,7 @@ export const archivePropertiesCustomMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ArchivePropertiesCustomMetricsRequest,
   output: ArchivePropertiesCustomMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPropertiesDataStreamsRequest {
@@ -2935,7 +3136,12 @@ export type PatchPropertiesDataStreamsResponse =
 export const PatchPropertiesDataStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
 
-export type PatchPropertiesDataStreamsError = DefaultErrors;
+export type PatchPropertiesDataStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a DataStream on a property. */
 export const patchPropertiesDataStreams: API.OperationMethod<
@@ -2946,7 +3152,7 @@ export const patchPropertiesDataStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesDataStreamsRequest,
   output: PatchPropertiesDataStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPropertiesDataStreamsRequest {
@@ -2967,7 +3173,10 @@ export type GetPropertiesDataStreamsResponse =
 export const GetPropertiesDataStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
 
-export type GetPropertiesDataStreamsError = DefaultErrors;
+export type GetPropertiesDataStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lookup for a single DataStream. */
 export const getPropertiesDataStreams: API.OperationMethod<
@@ -2978,7 +3187,7 @@ export const getPropertiesDataStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesDataStreamsRequest,
   output: GetPropertiesDataStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePropertiesDataStreamsRequest {
@@ -2998,7 +3207,12 @@ export type DeletePropertiesDataStreamsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesDataStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeletePropertiesDataStreamsError = DefaultErrors;
+export type DeletePropertiesDataStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a DataStream on a property. */
 export const deletePropertiesDataStreams: API.OperationMethod<
@@ -3009,7 +3223,7 @@ export const deletePropertiesDataStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesDataStreamsRequest,
   output: DeletePropertiesDataStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesDataStreamsRequest {
@@ -3036,7 +3250,10 @@ export type ListPropertiesDataStreamsResponse =
 export const ListPropertiesDataStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListDataStreamsResponse;
 
-export type ListPropertiesDataStreamsError = DefaultErrors;
+export type ListPropertiesDataStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists DataStreams on a property. */
 export const listPropertiesDataStreams: API.PaginatedOperationMethod<
@@ -3047,7 +3264,7 @@ export const listPropertiesDataStreams: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsRequest,
   output: ListPropertiesDataStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3081,7 +3298,12 @@ export type CreatePropertiesDataStreamsResponse =
 export const CreatePropertiesDataStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaDataStream;
 
-export type CreatePropertiesDataStreamsError = DefaultErrors;
+export type CreatePropertiesDataStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a DataStream. */
 export const createPropertiesDataStreams: API.OperationMethod<
@@ -3092,7 +3314,7 @@ export const createPropertiesDataStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesDataStreamsRequest,
   output: CreatePropertiesDataStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest {
@@ -3123,7 +3345,11 @@ export const CreatePropertiesDataStreamsMeasurementProtocolSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 
 export type CreatePropertiesDataStreamsMeasurementProtocolSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a measurement protocol secret. */
 export const createPropertiesDataStreamsMeasurementProtocolSecrets: API.OperationMethod<
@@ -3134,7 +3360,7 @@ export const createPropertiesDataStreamsMeasurementProtocolSecrets: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: CreatePropertiesDataStreamsMeasurementProtocolSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesDataStreamsMeasurementProtocolSecretsRequest {
@@ -3165,7 +3391,9 @@ export const ListPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListMeasurementProtocolSecretsResponse;
 
 export type ListPropertiesDataStreamsMeasurementProtocolSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns child MeasurementProtocolSecrets under the specified parent Property. */
 export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedOperationMethod<
@@ -3176,7 +3404,7 @@ export const listPropertiesDataStreamsMeasurementProtocolSecrets: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: ListPropertiesDataStreamsMeasurementProtocolSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3202,7 +3430,9 @@ export const GetPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 
 export type GetPropertiesDataStreamsMeasurementProtocolSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lookup for a single MeasurementProtocolSecret. */
 export const getPropertiesDataStreamsMeasurementProtocolSecrets: API.OperationMethod<
@@ -3213,7 +3443,7 @@ export const getPropertiesDataStreamsMeasurementProtocolSecrets: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: GetPropertiesDataStreamsMeasurementProtocolSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest {
@@ -3243,7 +3473,11 @@ export const PatchPropertiesDataStreamsMeasurementProtocolSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaMeasurementProtocolSecret;
 
 export type PatchPropertiesDataStreamsMeasurementProtocolSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a measurement protocol secret. */
 export const patchPropertiesDataStreamsMeasurementProtocolSecrets: API.OperationMethod<
@@ -3254,7 +3488,7 @@ export const patchPropertiesDataStreamsMeasurementProtocolSecrets: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: PatchPropertiesDataStreamsMeasurementProtocolSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest {
@@ -3276,7 +3510,11 @@ export const DeletePropertiesDataStreamsMeasurementProtocolSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeletePropertiesDataStreamsMeasurementProtocolSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes target MeasurementProtocolSecret. */
 export const deletePropertiesDataStreamsMeasurementProtocolSecrets: API.OperationMethod<
@@ -3287,7 +3525,7 @@ export const deletePropertiesDataStreamsMeasurementProtocolSecrets: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesDataStreamsMeasurementProtocolSecretsRequest,
   output: DeletePropertiesDataStreamsMeasurementProtocolSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPropertiesKeyEventsRequest {
@@ -3316,7 +3554,12 @@ export type PatchPropertiesKeyEventsResponse =
 export const PatchPropertiesKeyEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
 
-export type PatchPropertiesKeyEventsError = DefaultErrors;
+export type PatchPropertiesKeyEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Key Event. */
 export const patchPropertiesKeyEvents: API.OperationMethod<
@@ -3327,7 +3570,7 @@ export const patchPropertiesKeyEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesKeyEventsRequest,
   output: PatchPropertiesKeyEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPropertiesKeyEventsRequest {
@@ -3347,7 +3590,7 @@ export type GetPropertiesKeyEventsResponse = GoogleAnalyticsAdminV1betaKeyEvent;
 export const GetPropertiesKeyEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
 
-export type GetPropertiesKeyEventsError = DefaultErrors;
+export type GetPropertiesKeyEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve a single Key Event. */
 export const getPropertiesKeyEvents: API.OperationMethod<
@@ -3358,7 +3601,7 @@ export const getPropertiesKeyEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesKeyEventsRequest,
   output: GetPropertiesKeyEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePropertiesKeyEventsRequest {
@@ -3378,7 +3621,12 @@ export type DeletePropertiesKeyEventsResponse = GoogleProtobufEmpty;
 export const DeletePropertiesKeyEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeletePropertiesKeyEventsError = DefaultErrors;
+export type DeletePropertiesKeyEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Key Event. */
 export const deletePropertiesKeyEvents: API.OperationMethod<
@@ -3389,7 +3637,7 @@ export const deletePropertiesKeyEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesKeyEventsRequest,
   output: DeletePropertiesKeyEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesKeyEventsRequest {
@@ -3416,7 +3664,7 @@ export type ListPropertiesKeyEventsResponse =
 export const ListPropertiesKeyEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaListKeyEventsResponse;
 
-export type ListPropertiesKeyEventsError = DefaultErrors;
+export type ListPropertiesKeyEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of Key Events in the specified parent property. Returns an empty list if no Key Events are found. */
 export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
@@ -3427,7 +3675,7 @@ export const listPropertiesKeyEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPropertiesKeyEventsRequest,
   output: ListPropertiesKeyEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3461,7 +3709,12 @@ export type CreatePropertiesKeyEventsResponse =
 export const CreatePropertiesKeyEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAnalyticsAdminV1betaKeyEvent;
 
-export type CreatePropertiesKeyEventsError = DefaultErrors;
+export type CreatePropertiesKeyEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Key Event. */
 export const createPropertiesKeyEvents: API.OperationMethod<
@@ -3472,5 +3725,5 @@ export const createPropertiesKeyEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePropertiesKeyEventsRequest,
   output: CreatePropertiesKeyEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

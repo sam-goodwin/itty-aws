@@ -177,6 +177,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -197,7 +243,7 @@ export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -208,7 +254,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DownloadProjectsModelsRequest {
@@ -228,7 +274,7 @@ export type DownloadProjectsModelsResponse = DownloadModelResponse;
 export const DownloadProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DownloadModelResponse;
 
-export type DownloadProjectsModelsError = DefaultErrors;
+export type DownloadProjectsModelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets Download information for a model. This is meant for downloading model resources onto devices. It gives very limited information about the model. */
 export const downloadProjectsModels: API.OperationMethod<
@@ -239,7 +285,7 @@ export const downloadProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadProjectsModelsRequest,
   output: DownloadProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsModelsRequest {
@@ -262,7 +308,12 @@ export type CreateProjectsModelsResponse = Operation;
 export const CreateProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsModelsError = DefaultErrors;
+export type CreateProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a model in Firebase ML. The longrunning operation will eventually return a Model */
 export const createProjectsModels: API.OperationMethod<
@@ -273,7 +324,7 @@ export const createProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsModelsRequest,
   output: CreateProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsModelsRequest {
@@ -302,7 +353,7 @@ export type ListProjectsModelsResponse = ListModelsResponse;
 export const ListProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListModelsResponse;
 
-export type ListProjectsModelsError = DefaultErrors;
+export type ListProjectsModelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the models */
 export const listProjectsModels: API.PaginatedOperationMethod<
@@ -313,7 +364,7 @@ export const listProjectsModels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsModelsRequest,
   output: ListProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -343,7 +394,12 @@ export type PatchProjectsModelsResponse = Operation;
 export const PatchProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsModelsError = DefaultErrors;
+export type PatchProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a model. The longrunning operation will eventually return a Model. */
 export const patchProjectsModels: API.OperationMethod<
@@ -354,7 +410,7 @@ export const patchProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsModelsRequest,
   output: PatchProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsModelsRequest {
@@ -373,7 +429,7 @@ export const GetProjectsModelsRequest =
 export type GetProjectsModelsResponse = Model;
 export const GetProjectsModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Model;
 
-export type GetProjectsModelsError = DefaultErrors;
+export type GetProjectsModelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a model resource. */
 export const getProjectsModels: API.OperationMethod<
@@ -384,7 +440,7 @@ export const getProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsModelsRequest,
   output: GetProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsModelsRequest {
@@ -403,7 +459,12 @@ export const DeleteProjectsModelsRequest =
 export type DeleteProjectsModelsResponse = Empty;
 export const DeleteProjectsModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsModelsError = DefaultErrors;
+export type DeleteProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a model */
 export const deleteProjectsModels: API.OperationMethod<
@@ -414,5 +475,5 @@ export const deleteProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsModelsRequest,
   output: DeleteProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

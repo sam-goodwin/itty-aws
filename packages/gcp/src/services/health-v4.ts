@@ -2073,6 +2073,52 @@ export const DailyRollUpDataPointsRequest =
   }).annotate({ identifier: "DailyRollUpDataPointsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2092,7 +2138,7 @@ export const GetSettingsUsersRequest =
 export type GetSettingsUsersResponse = Settings;
 export const GetSettingsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type GetSettingsUsersError = DefaultErrors;
+export type GetSettingsUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns user settings details. */
 export const getSettingsUsers: API.OperationMethod<
@@ -2103,7 +2149,7 @@ export const getSettingsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsUsersRequest,
   output: GetSettingsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIdentityUsersRequest {
@@ -2122,7 +2168,7 @@ export const GetIdentityUsersRequest =
 export type GetIdentityUsersResponse = Identity;
 export const GetIdentityUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Identity;
 
-export type GetIdentityUsersError = DefaultErrors;
+export type GetIdentityUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the user's identity. It includes the legacy Fitbit user ID and the Google user ID and it can be used by migrating clients to map identifiers between the two systems. */
 export const getIdentityUsers: API.OperationMethod<
@@ -2133,7 +2179,7 @@ export const getIdentityUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdentityUsersRequest,
   output: GetIdentityUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSettingsUsersRequest {
@@ -2158,7 +2204,12 @@ export const UpdateSettingsUsersRequest =
 export type UpdateSettingsUsersResponse = Settings;
 export const UpdateSettingsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type UpdateSettingsUsersError = DefaultErrors;
+export type UpdateSettingsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the user's settings details. */
 export const updateSettingsUsers: API.OperationMethod<
@@ -2169,7 +2220,7 @@ export const updateSettingsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSettingsUsersRequest,
   output: UpdateSettingsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProfileUsersRequest {
@@ -2189,7 +2240,7 @@ export const GetProfileUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetProfileUsersResponse = Profile;
 export const GetProfileUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type GetProfileUsersError = DefaultErrors;
+export type GetProfileUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns user Profile details. */
 export const getProfileUsers: API.OperationMethod<
@@ -2200,7 +2251,7 @@ export const getProfileUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProfileUsersRequest,
   output: GetProfileUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateProfileUsersRequest {
@@ -2225,7 +2276,12 @@ export const UpdateProfileUsersRequest =
 export type UpdateProfileUsersResponse = Profile;
 export const UpdateProfileUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type UpdateProfileUsersError = DefaultErrors;
+export type UpdateProfileUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the user's profile details. */
 export const updateProfileUsers: API.OperationMethod<
@@ -2236,7 +2292,7 @@ export const updateProfileUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProfileUsersRequest,
   output: UpdateProfileUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateUsersDataTypesDataPointsRequest {
@@ -2259,7 +2315,12 @@ export type CreateUsersDataTypesDataPointsResponse = Operation;
 export const CreateUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateUsersDataTypesDataPointsError = DefaultErrors;
+export type CreateUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a single identifiable data point. */
 export const createUsersDataTypesDataPoints: API.OperationMethod<
@@ -2270,7 +2331,7 @@ export const createUsersDataTypesDataPoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersDataTypesDataPointsRequest,
   output: CreateUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersDataTypesDataPointsRequest {
@@ -2299,7 +2360,10 @@ export type ListUsersDataTypesDataPointsResponse = ListDataPointsResponse;
 export const ListUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataPointsResponse;
 
-export type ListUsersDataTypesDataPointsError = DefaultErrors;
+export type ListUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Query user health and fitness data points. */
 export const listUsersDataTypesDataPoints: API.PaginatedOperationMethod<
@@ -2310,7 +2374,7 @@ export const listUsersDataTypesDataPoints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDataTypesDataPointsRequest,
   output: ListUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2342,7 +2406,12 @@ export type DailyRollUpUsersDataTypesDataPointsResponse =
 export const DailyRollUpUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DailyRollUpDataPointsResponse;
 
-export type DailyRollUpUsersDataTypesDataPointsError = DefaultErrors;
+export type DailyRollUpUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Roll up data points over civil time intervals for supported data types. */
 export const dailyRollUpUsersDataTypesDataPoints: API.OperationMethod<
@@ -2353,7 +2422,7 @@ export const dailyRollUpUsersDataTypesDataPoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DailyRollUpUsersDataTypesDataPointsRequest,
   output: DailyRollUpUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportExerciseTcxUsersDataTypesDataPointsRequest {
@@ -2379,7 +2448,10 @@ export type ExportExerciseTcxUsersDataTypesDataPointsResponse =
 export const ExportExerciseTcxUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExportExerciseTcxResponse;
 
-export type ExportExerciseTcxUsersDataTypesDataPointsError = DefaultErrors;
+export type ExportExerciseTcxUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Exports exercise data in TCX format. Note: While the Authorization section below states that any one of the listed scopes is accepted, this specific method requires the user to provide both one of the `activity_and_fitness` scopes (`normal` or `readonly`) AND one of the `location` scopes (`normal` or `readonly`) in their access token to succeed. */
 export const exportExerciseTcxUsersDataTypesDataPoints: API.OperationMethod<
@@ -2390,7 +2462,7 @@ export const exportExerciseTcxUsersDataTypesDataPoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportExerciseTcxUsersDataTypesDataPointsRequest,
   output: ExportExerciseTcxUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RollUpUsersDataTypesDataPointsRequest {
@@ -2417,7 +2489,12 @@ export type RollUpUsersDataTypesDataPointsResponse = RollUpDataPointsResponse;
 export const RollUpUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RollUpDataPointsResponse;
 
-export type RollUpUsersDataTypesDataPointsError = DefaultErrors;
+export type RollUpUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Roll up data points over physical time intervals for supported data types. */
 export const rollUpUsersDataTypesDataPoints: API.OperationMethod<
@@ -2428,7 +2505,7 @@ export const rollUpUsersDataTypesDataPoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollUpUsersDataTypesDataPointsRequest,
   output: RollUpUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchUsersDataTypesDataPointsRequest {
@@ -2451,7 +2528,12 @@ export type PatchUsersDataTypesDataPointsResponse = Operation;
 export const PatchUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchUsersDataTypesDataPointsError = DefaultErrors;
+export type PatchUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a single identifiable data point. If a data point with the specified `name` is not found, the request will fail. */
 export const patchUsersDataTypesDataPoints: API.OperationMethod<
@@ -2462,7 +2544,7 @@ export const patchUsersDataTypesDataPoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersDataTypesDataPointsRequest,
   output: PatchUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteUsersDataTypesDataPointsRequest {
@@ -2489,7 +2571,12 @@ export type BatchDeleteUsersDataTypesDataPointsResponse = Operation;
 export const BatchDeleteUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchDeleteUsersDataTypesDataPointsError = DefaultErrors;
+export type BatchDeleteUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a batch of identifyable data points. */
 export const batchDeleteUsersDataTypesDataPoints: API.OperationMethod<
@@ -2500,7 +2587,7 @@ export const batchDeleteUsersDataTypesDataPoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteUsersDataTypesDataPointsRequest,
   output: BatchDeleteUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReconcileUsersDataTypesDataPointsRequest {
@@ -2535,7 +2622,10 @@ export type ReconcileUsersDataTypesDataPointsResponse =
 export const ReconcileUsersDataTypesDataPointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReconcileDataPointsResponse;
 
-export type ReconcileUsersDataTypesDataPointsError = DefaultErrors;
+export type ReconcileUsersDataTypesDataPointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reconcile data points from multiple data sources into a single data stream. */
 export const reconcileUsersDataTypesDataPoints: API.PaginatedOperationMethod<
@@ -2546,7 +2636,7 @@ export const reconcileUsersDataTypesDataPoints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ReconcileUsersDataTypesDataPointsRequest,
   output: ReconcileUsersDataTypesDataPointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -555,6 +555,52 @@ export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -585,7 +631,12 @@ export type ImportDocumentsProjectsDatabasesResponse =
 export const ImportDocumentsProjectsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportDocumentsProjectsDatabasesError = DefaultErrors;
+export type ImportDocumentsProjectsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore. */
 export const importDocumentsProjectsDatabases: API.OperationMethod<
@@ -596,7 +647,7 @@ export const importDocumentsProjectsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportDocumentsProjectsDatabasesRequest,
   output: ImportDocumentsProjectsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportDocumentsProjectsDatabasesRequest {
@@ -626,7 +677,12 @@ export type ExportDocumentsProjectsDatabasesResponse =
 export const ExportDocumentsProjectsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportDocumentsProjectsDatabasesError = DefaultErrors;
+export type ExportDocumentsProjectsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. */
 export const exportDocumentsProjectsDatabases: API.OperationMethod<
@@ -637,7 +693,7 @@ export const exportDocumentsProjectsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportDocumentsProjectsDatabasesRequest,
   output: ExportDocumentsProjectsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDatabasesCollectionGroupsIndexesRequest {
@@ -667,7 +723,10 @@ export type ListProjectsDatabasesCollectionGroupsIndexesResponse =
 export const ListProjectsDatabasesCollectionGroupsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta2ListIndexesResponse;
 
-export type ListProjectsDatabasesCollectionGroupsIndexesError = DefaultErrors;
+export type ListProjectsDatabasesCollectionGroupsIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists composite indexes. */
 export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperationMethod<
@@ -678,7 +737,7 @@ export const listProjectsDatabasesCollectionGroupsIndexes: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesCollectionGroupsIndexesRequest,
   output: ListProjectsDatabasesCollectionGroupsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -706,7 +765,12 @@ export type CreateProjectsDatabasesCollectionGroupsIndexesResponse =
 export const CreateProjectsDatabasesCollectionGroupsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsDatabasesCollectionGroupsIndexesError = DefaultErrors;
+export type CreateProjectsDatabasesCollectionGroupsIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata. */
 export const createProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
@@ -717,7 +781,7 @@ export const createProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDatabasesCollectionGroupsIndexesRequest,
   output: CreateProjectsDatabasesCollectionGroupsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatabasesCollectionGroupsIndexesRequest {
@@ -738,7 +802,10 @@ export type GetProjectsDatabasesCollectionGroupsIndexesResponse =
 export const GetProjectsDatabasesCollectionGroupsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta2Index;
 
-export type GetProjectsDatabasesCollectionGroupsIndexesError = DefaultErrors;
+export type GetProjectsDatabasesCollectionGroupsIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a composite index. */
 export const getProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
@@ -749,7 +816,7 @@ export const getProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatabasesCollectionGroupsIndexesRequest,
   output: GetProjectsDatabasesCollectionGroupsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsDatabasesCollectionGroupsIndexesRequest {
@@ -769,7 +836,12 @@ export type DeleteProjectsDatabasesCollectionGroupsIndexesResponse = Empty;
 export const DeleteProjectsDatabasesCollectionGroupsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsDatabasesCollectionGroupsIndexesError = DefaultErrors;
+export type DeleteProjectsDatabasesCollectionGroupsIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a composite index. */
 export const deleteProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod<
@@ -780,7 +852,7 @@ export const deleteProjectsDatabasesCollectionGroupsIndexes: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatabasesCollectionGroupsIndexesRequest,
   output: DeleteProjectsDatabasesCollectionGroupsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatabasesCollectionGroupsFieldsRequest {
@@ -801,7 +873,10 @@ export type GetProjectsDatabasesCollectionGroupsFieldsResponse =
 export const GetProjectsDatabasesCollectionGroupsFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta2Field;
 
-export type GetProjectsDatabasesCollectionGroupsFieldsError = DefaultErrors;
+export type GetProjectsDatabasesCollectionGroupsFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the metadata and configuration for a Field. */
 export const getProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
@@ -812,7 +887,7 @@ export const getProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatabasesCollectionGroupsFieldsRequest,
   output: GetProjectsDatabasesCollectionGroupsFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsDatabasesCollectionGroupsFieldsRequest {
@@ -839,7 +914,12 @@ export type PatchProjectsDatabasesCollectionGroupsFieldsResponse =
 export const PatchProjectsDatabasesCollectionGroupsFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsDatabasesCollectionGroupsFieldsError = DefaultErrors;
+export type PatchProjectsDatabasesCollectionGroupsFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: `{ paths: "index_config" }`. This call returns a google.longrunning.Operation which may be used to track the status of the field update. The metadata for the operation will be the type FieldOperationMetadata. To configure the default field settings for the database, use the special `Field` with resource name: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`. */
 export const patchProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
@@ -850,7 +930,7 @@ export const patchProjectsDatabasesCollectionGroupsFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsDatabasesCollectionGroupsFieldsRequest,
   output: PatchProjectsDatabasesCollectionGroupsFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDatabasesCollectionGroupsFieldsRequest {
@@ -880,7 +960,10 @@ export type ListProjectsDatabasesCollectionGroupsFieldsResponse =
 export const ListProjectsDatabasesCollectionGroupsFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta2ListFieldsResponse;
 
-export type ListProjectsDatabasesCollectionGroupsFieldsError = DefaultErrors;
+export type ListProjectsDatabasesCollectionGroupsFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the field configuration and metadata for this database. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false`. */
 export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperationMethod<
@@ -891,7 +974,7 @@ export const listProjectsDatabasesCollectionGroupsFields: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesCollectionGroupsFieldsRequest,
   output: ListProjectsDatabasesCollectionGroupsFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -5354,6 +5354,52 @@ export const WorkflowMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "WorkflowMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5388,7 +5434,10 @@ export type ListProjectsRegionsOperationsResponse = ListOperationsResponse;
 export const ListProjectsRegionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsRegionsOperationsError = DefaultErrors;
+export type ListProjectsRegionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsRegionsOperations: API.PaginatedOperationMethod<
@@ -5399,7 +5448,7 @@ export const listProjectsRegionsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsOperationsRequest,
   output: ListProjectsRegionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5423,7 +5472,10 @@ export type GetProjectsRegionsOperationsResponse = Operation;
 export const GetProjectsRegionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsRegionsOperationsError = DefaultErrors;
+export type GetProjectsRegionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsRegionsOperations: API.OperationMethod<
@@ -5434,7 +5486,7 @@ export const getProjectsRegionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRegionsOperationsRequest,
   output: GetProjectsRegionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsRegionsOperationsRequest {
@@ -5454,7 +5506,12 @@ export type DeleteProjectsRegionsOperationsResponse = Empty;
 export const DeleteProjectsRegionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsRegionsOperationsError = DefaultErrors;
+export type DeleteProjectsRegionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. */
 export const deleteProjectsRegionsOperations: API.OperationMethod<
@@ -5465,7 +5522,7 @@ export const deleteProjectsRegionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRegionsOperationsRequest,
   output: DeleteProjectsRegionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsRegionsOperationsRequest {
@@ -5485,7 +5542,12 @@ export type CancelProjectsRegionsOperationsResponse = Empty;
 export const CancelProjectsRegionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsRegionsOperationsError = DefaultErrors;
+export type CancelProjectsRegionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelProjectsRegionsOperations: API.OperationMethod<
@@ -5496,7 +5558,7 @@ export const cancelProjectsRegionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsRegionsOperationsRequest,
   output: CancelProjectsRegionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsRegionsOperationsRequest {
@@ -5523,7 +5585,12 @@ export type SetIamPolicyProjectsRegionsOperationsResponse = Policy;
 export const SetIamPolicyProjectsRegionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsRegionsOperationsError = DefaultErrors;
+export type SetIamPolicyProjectsRegionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsOperations: API.OperationMethod<
@@ -5534,7 +5601,7 @@ export const setIamPolicyProjectsRegionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsRegionsOperationsRequest,
   output: SetIamPolicyProjectsRegionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsRegionsOperationsRequest {
@@ -5561,7 +5628,12 @@ export type GetIamPolicyProjectsRegionsOperationsResponse = Policy;
 export const GetIamPolicyProjectsRegionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsRegionsOperationsError = DefaultErrors;
+export type GetIamPolicyProjectsRegionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsOperations: API.OperationMethod<
@@ -5572,7 +5644,7 @@ export const getIamPolicyProjectsRegionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsRegionsOperationsRequest,
   output: GetIamPolicyProjectsRegionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsRegionsOperationsRequest {
@@ -5600,7 +5672,12 @@ export type TestIamPermissionsProjectsRegionsOperationsResponse =
 export const TestIamPermissionsProjectsRegionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsRegionsOperationsError = DefaultErrors;
+export type TestIamPermissionsProjectsRegionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsOperations: API.OperationMethod<
@@ -5611,7 +5688,7 @@ export const testIamPermissionsProjectsRegionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsRegionsOperationsRequest,
   output: TestIamPermissionsProjectsRegionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsRegionsClustersRequest {
@@ -5653,7 +5730,12 @@ export type CreateProjectsRegionsClustersResponse = Operation;
 export const CreateProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsRegionsClustersError = DefaultErrors;
+export type CreateProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). */
 export const createProjectsRegionsClusters: API.OperationMethod<
@@ -5664,7 +5746,7 @@ export const createProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRegionsClustersRequest,
   output: CreateProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsRegionsClustersRequest {
@@ -5708,7 +5790,12 @@ export type PatchProjectsRegionsClustersResponse = Operation;
 export const PatchProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsRegionsClustersError = DefaultErrors;
+export type PatchProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). The cluster must be in a RUNNING state or an error is returned. */
 export const patchProjectsRegionsClusters: API.OperationMethod<
@@ -5719,7 +5806,7 @@ export const patchProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsRegionsClustersRequest,
   output: PatchProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopProjectsRegionsClustersRequest {
@@ -5752,7 +5839,12 @@ export type StopProjectsRegionsClustersResponse = Operation;
 export const StopProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopProjectsRegionsClustersError = DefaultErrors;
+export type StopProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops a cluster in a project. */
 export const stopProjectsRegionsClusters: API.OperationMethod<
@@ -5763,7 +5855,7 @@ export const stopProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopProjectsRegionsClustersRequest,
   output: StopProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartProjectsRegionsClustersRequest {
@@ -5796,7 +5888,12 @@ export type StartProjectsRegionsClustersResponse = Operation;
 export const StartProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartProjectsRegionsClustersError = DefaultErrors;
+export type StartProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a cluster in a project. */
 export const startProjectsRegionsClusters: API.OperationMethod<
@@ -5807,7 +5904,7 @@ export const startProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartProjectsRegionsClustersRequest,
   output: StartProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RepairProjectsRegionsClustersRequest {
@@ -5840,7 +5937,12 @@ export type RepairProjectsRegionsClustersResponse = Operation;
 export const RepairProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RepairProjectsRegionsClustersError = DefaultErrors;
+export type RepairProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Repairs a cluster. */
 export const repairProjectsRegionsClusters: API.OperationMethod<
@@ -5851,7 +5953,7 @@ export const repairProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RepairProjectsRegionsClustersRequest,
   output: RepairProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsRegionsClustersRequest {
@@ -5893,7 +5995,12 @@ export type DeleteProjectsRegionsClustersResponse = Operation;
 export const DeleteProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsRegionsClustersError = DefaultErrors;
+export type DeleteProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). */
 export const deleteProjectsRegionsClusters: API.OperationMethod<
@@ -5904,7 +6011,7 @@ export const deleteProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRegionsClustersRequest,
   output: DeleteProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRegionsClustersRequest {
@@ -5933,7 +6040,10 @@ export type GetProjectsRegionsClustersResponse = Cluster;
 export const GetProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cluster;
 
-export type GetProjectsRegionsClustersError = DefaultErrors;
+export type GetProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the resource representation for a cluster in a project. */
 export const getProjectsRegionsClusters: API.OperationMethod<
@@ -5944,7 +6054,7 @@ export const getProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRegionsClustersRequest,
   output: GetProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsRegionsClustersRequest {
@@ -5979,7 +6089,10 @@ export type ListProjectsRegionsClustersResponse = ListClustersResponse;
 export const ListProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
 
-export type ListProjectsRegionsClustersError = DefaultErrors;
+export type ListProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all regions/{region}/clusters in a project alphabetically. */
 export const listProjectsRegionsClusters: API.PaginatedOperationMethod<
@@ -5990,7 +6103,7 @@ export const listProjectsRegionsClusters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsClustersRequest,
   output: ListProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6027,7 +6140,12 @@ export type DiagnoseProjectsRegionsClustersResponse = Operation;
 export const DiagnoseProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DiagnoseProjectsRegionsClustersError = DefaultErrors;
+export type DiagnoseProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets cluster diagnostic information. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata). After the operation completes, Operation.response contains DiagnoseClusterResults (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#diagnoseclusterresults). */
 export const diagnoseProjectsRegionsClusters: API.OperationMethod<
@@ -6038,7 +6156,7 @@ export const diagnoseProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DiagnoseProjectsRegionsClustersRequest,
   output: DiagnoseProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InjectCredentialsProjectsRegionsClustersRequest {
@@ -6071,7 +6189,12 @@ export type InjectCredentialsProjectsRegionsClustersResponse = Operation;
 export const InjectCredentialsProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InjectCredentialsProjectsRegionsClustersError = DefaultErrors;
+export type InjectCredentialsProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inject encrypted credentials into all of the VMs in a cluster.The target cluster must be a personal auth cluster assigned to the user who is issuing the RPC. */
 export const injectCredentialsProjectsRegionsClusters: API.OperationMethod<
@@ -6082,7 +6205,7 @@ export const injectCredentialsProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InjectCredentialsProjectsRegionsClustersRequest,
   output: InjectCredentialsProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsRegionsClustersRequest {
@@ -6109,7 +6232,12 @@ export type SetIamPolicyProjectsRegionsClustersResponse = Policy;
 export const SetIamPolicyProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsRegionsClustersError = DefaultErrors;
+export type SetIamPolicyProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsClusters: API.OperationMethod<
@@ -6120,7 +6248,7 @@ export const setIamPolicyProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsRegionsClustersRequest,
   output: SetIamPolicyProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsRegionsClustersRequest {
@@ -6147,7 +6275,12 @@ export type GetIamPolicyProjectsRegionsClustersResponse = Policy;
 export const GetIamPolicyProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsRegionsClustersError = DefaultErrors;
+export type GetIamPolicyProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsClusters: API.OperationMethod<
@@ -6158,7 +6291,7 @@ export const getIamPolicyProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsRegionsClustersRequest,
   output: GetIamPolicyProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsRegionsClustersRequest {
@@ -6186,7 +6319,12 @@ export type TestIamPermissionsProjectsRegionsClustersResponse =
 export const TestIamPermissionsProjectsRegionsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsRegionsClustersError = DefaultErrors;
+export type TestIamPermissionsProjectsRegionsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsClusters: API.OperationMethod<
@@ -6197,7 +6335,7 @@ export const testIamPermissionsProjectsRegionsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsRegionsClustersRequest,
   output: TestIamPermissionsProjectsRegionsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsRegionsClustersNodeGroupsRequest {
@@ -6233,7 +6371,12 @@ export type CreateProjectsRegionsClustersNodeGroupsResponse = Operation;
 export const CreateProjectsRegionsClustersNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsRegionsClustersNodeGroupsError = DefaultErrors;
+export type CreateProjectsRegionsClustersNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata). */
 export const createProjectsRegionsClustersNodeGroups: API.OperationMethod<
@@ -6244,7 +6387,7 @@ export const createProjectsRegionsClustersNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRegionsClustersNodeGroupsRequest,
   output: CreateProjectsRegionsClustersNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResizeProjectsRegionsClustersNodeGroupsRequest {
@@ -6267,7 +6410,12 @@ export type ResizeProjectsRegionsClustersNodeGroupsResponse = Operation;
 export const ResizeProjectsRegionsClustersNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResizeProjectsRegionsClustersNodeGroupsError = DefaultErrors;
+export type ResizeProjectsRegionsClustersNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resizes a node group in a cluster. The returned Operation.metadata is NodeGroupOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#nodegroupoperationmetadata). */
 export const resizeProjectsRegionsClustersNodeGroups: API.OperationMethod<
@@ -6278,7 +6426,7 @@ export const resizeProjectsRegionsClustersNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResizeProjectsRegionsClustersNodeGroupsRequest,
   output: ResizeProjectsRegionsClustersNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RepairProjectsRegionsClustersNodeGroupsRequest {
@@ -6301,7 +6449,12 @@ export type RepairProjectsRegionsClustersNodeGroupsResponse = Operation;
 export const RepairProjectsRegionsClustersNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RepairProjectsRegionsClustersNodeGroupsError = DefaultErrors;
+export type RepairProjectsRegionsClustersNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Repair nodes in a node group. */
 export const repairProjectsRegionsClustersNodeGroups: API.OperationMethod<
@@ -6312,7 +6465,7 @@ export const repairProjectsRegionsClustersNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RepairProjectsRegionsClustersNodeGroupsRequest,
   output: RepairProjectsRegionsClustersNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRegionsClustersNodeGroupsRequest {
@@ -6332,7 +6485,10 @@ export type GetProjectsRegionsClustersNodeGroupsResponse = NodeGroup;
 export const GetProjectsRegionsClustersNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeGroup;
 
-export type GetProjectsRegionsClustersNodeGroupsError = DefaultErrors;
+export type GetProjectsRegionsClustersNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the resource representation for a node group in a cluster. */
 export const getProjectsRegionsClustersNodeGroups: API.OperationMethod<
@@ -6343,7 +6499,7 @@ export const getProjectsRegionsClustersNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRegionsClustersNodeGroupsRequest,
   output: GetProjectsRegionsClustersNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsRegionsAutoscalingPoliciesRequest {
@@ -6371,7 +6527,12 @@ export type CreateProjectsRegionsAutoscalingPoliciesResponse =
 export const CreateProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalingPolicy;
 
-export type CreateProjectsRegionsAutoscalingPoliciesError = DefaultErrors;
+export type CreateProjectsRegionsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new autoscaling policy. */
 export const createProjectsRegionsAutoscalingPolicies: API.OperationMethod<
@@ -6382,7 +6543,7 @@ export const createProjectsRegionsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRegionsAutoscalingPoliciesRequest,
   output: CreateProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsRegionsAutoscalingPoliciesRequest {
@@ -6406,7 +6567,12 @@ export type UpdateProjectsRegionsAutoscalingPoliciesResponse =
 export const UpdateProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalingPolicy;
 
-export type UpdateProjectsRegionsAutoscalingPoliciesError = DefaultErrors;
+export type UpdateProjectsRegionsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates will be full replacements. */
 export const updateProjectsRegionsAutoscalingPolicies: API.OperationMethod<
@@ -6417,7 +6583,7 @@ export const updateProjectsRegionsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsRegionsAutoscalingPoliciesRequest,
   output: UpdateProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRegionsAutoscalingPoliciesRequest {
@@ -6437,7 +6603,10 @@ export type GetProjectsRegionsAutoscalingPoliciesResponse = AutoscalingPolicy;
 export const GetProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalingPolicy;
 
-export type GetProjectsRegionsAutoscalingPoliciesError = DefaultErrors;
+export type GetProjectsRegionsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves autoscaling policy. */
 export const getProjectsRegionsAutoscalingPolicies: API.OperationMethod<
@@ -6448,7 +6617,7 @@ export const getProjectsRegionsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRegionsAutoscalingPoliciesRequest,
   output: GetProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsRegionsAutoscalingPoliciesRequest {
@@ -6475,7 +6644,10 @@ export type ListProjectsRegionsAutoscalingPoliciesResponse =
 export const ListProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAutoscalingPoliciesResponse;
 
-export type ListProjectsRegionsAutoscalingPoliciesError = DefaultErrors;
+export type ListProjectsRegionsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists autoscaling policies in the project. */
 export const listProjectsRegionsAutoscalingPolicies: API.PaginatedOperationMethod<
@@ -6486,7 +6658,7 @@ export const listProjectsRegionsAutoscalingPolicies: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsAutoscalingPoliciesRequest,
   output: ListProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6510,7 +6682,12 @@ export type DeleteProjectsRegionsAutoscalingPoliciesResponse = Empty;
 export const DeleteProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsRegionsAutoscalingPoliciesError = DefaultErrors;
+export type DeleteProjectsRegionsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in use by one or more clusters. */
 export const deleteProjectsRegionsAutoscalingPolicies: API.OperationMethod<
@@ -6521,7 +6698,7 @@ export const deleteProjectsRegionsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRegionsAutoscalingPoliciesRequest,
   output: DeleteProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest {
@@ -6548,7 +6725,12 @@ export type SetIamPolicyProjectsRegionsAutoscalingPoliciesResponse = Policy;
 export const SetIamPolicyProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsRegionsAutoscalingPoliciesError = DefaultErrors;
+export type SetIamPolicyProjectsRegionsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod<
@@ -6559,7 +6741,7 @@ export const setIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsRegionsAutoscalingPoliciesRequest,
   output: SetIamPolicyProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest {
@@ -6586,7 +6768,12 @@ export type GetIamPolicyProjectsRegionsAutoscalingPoliciesResponse = Policy;
 export const GetIamPolicyProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsRegionsAutoscalingPoliciesError = DefaultErrors;
+export type GetIamPolicyProjectsRegionsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod<
@@ -6597,7 +6784,7 @@ export const getIamPolicyProjectsRegionsAutoscalingPolicies: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsRegionsAutoscalingPoliciesRequest,
   output: GetIamPolicyProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest {
@@ -6626,7 +6813,11 @@ export const TestIamPermissionsProjectsRegionsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsRegionsAutoscalingPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsAutoscalingPolicies: API.OperationMethod<
@@ -6637,7 +6828,7 @@ export const testIamPermissionsProjectsRegionsAutoscalingPolicies: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsRegionsAutoscalingPoliciesRequest,
   output: TestIamPermissionsProjectsRegionsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubmitProjectsRegionsJobsRequest {
@@ -6667,7 +6858,12 @@ export type SubmitProjectsRegionsJobsResponse = Job;
 export const SubmitProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type SubmitProjectsRegionsJobsError = DefaultErrors;
+export type SubmitProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submits a job to a cluster. */
 export const submitProjectsRegionsJobs: API.OperationMethod<
@@ -6678,7 +6874,7 @@ export const submitProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitProjectsRegionsJobsRequest,
   output: SubmitProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubmitAsOperationProjectsRegionsJobsRequest {
@@ -6708,7 +6904,12 @@ export type SubmitAsOperationProjectsRegionsJobsResponse = Operation;
 export const SubmitAsOperationProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SubmitAsOperationProjectsRegionsJobsError = DefaultErrors;
+export type SubmitAsOperationProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submits job to a cluster. */
 export const submitAsOperationProjectsRegionsJobs: API.OperationMethod<
@@ -6719,7 +6920,7 @@ export const submitAsOperationProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitAsOperationProjectsRegionsJobsRequest,
   output: SubmitAsOperationProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRegionsJobsRequest {
@@ -6747,7 +6948,7 @@ export const GetProjectsRegionsJobsRequest =
 export type GetProjectsRegionsJobsResponse = Job;
 export const GetProjectsRegionsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type GetProjectsRegionsJobsError = DefaultErrors;
+export type GetProjectsRegionsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the resource representation for a job in a project. */
 export const getProjectsRegionsJobs: API.OperationMethod<
@@ -6758,7 +6959,7 @@ export const getProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRegionsJobsRequest,
   output: GetProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsRegionsJobsRequest {
@@ -6803,7 +7004,7 @@ export type ListProjectsRegionsJobsResponse = ListJobsResponse;
 export const ListProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
 
-export type ListProjectsRegionsJobsError = DefaultErrors;
+export type ListProjectsRegionsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists regions/{region}/jobs in a project. */
 export const listProjectsRegionsJobs: API.PaginatedOperationMethod<
@@ -6814,7 +7015,7 @@ export const listProjectsRegionsJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsJobsRequest,
   output: ListProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6853,7 +7054,12 @@ export const PatchProjectsRegionsJobsRequest =
 export type PatchProjectsRegionsJobsResponse = Job;
 export const PatchProjectsRegionsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type PatchProjectsRegionsJobsError = DefaultErrors;
+export type PatchProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a job in a project. */
 export const patchProjectsRegionsJobs: API.OperationMethod<
@@ -6864,7 +7070,7 @@ export const patchProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsRegionsJobsRequest,
   output: PatchProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsRegionsJobsRequest {
@@ -6897,7 +7103,12 @@ export type CancelProjectsRegionsJobsResponse = Job;
 export const CancelProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CancelProjectsRegionsJobsError = DefaultErrors;
+export type CancelProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/list) or regions/{region}/jobs.get (https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.jobs/get). */
 export const cancelProjectsRegionsJobs: API.OperationMethod<
@@ -6908,7 +7119,7 @@ export const cancelProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsRegionsJobsRequest,
   output: CancelProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsRegionsJobsRequest {
@@ -6937,7 +7148,12 @@ export type DeleteProjectsRegionsJobsResponse = Empty;
 export const DeleteProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsRegionsJobsError = DefaultErrors;
+export type DeleteProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the job from the project. If the job is active, the delete fails, and the response returns FAILED_PRECONDITION. */
 export const deleteProjectsRegionsJobs: API.OperationMethod<
@@ -6948,7 +7164,7 @@ export const deleteProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRegionsJobsRequest,
   output: DeleteProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsRegionsJobsRequest {
@@ -6975,7 +7191,12 @@ export type SetIamPolicyProjectsRegionsJobsResponse = Policy;
 export const SetIamPolicyProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsRegionsJobsError = DefaultErrors;
+export type SetIamPolicyProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsJobs: API.OperationMethod<
@@ -6986,7 +7207,7 @@ export const setIamPolicyProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsRegionsJobsRequest,
   output: SetIamPolicyProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsRegionsJobsRequest {
@@ -7013,7 +7234,12 @@ export type GetIamPolicyProjectsRegionsJobsResponse = Policy;
 export const GetIamPolicyProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsRegionsJobsError = DefaultErrors;
+export type GetIamPolicyProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsJobs: API.OperationMethod<
@@ -7024,7 +7250,7 @@ export const getIamPolicyProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsRegionsJobsRequest,
   output: GetIamPolicyProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsRegionsJobsRequest {
@@ -7052,7 +7278,12 @@ export type TestIamPermissionsProjectsRegionsJobsResponse =
 export const TestIamPermissionsProjectsRegionsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsRegionsJobsError = DefaultErrors;
+export type TestIamPermissionsProjectsRegionsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsJobs: API.OperationMethod<
@@ -7063,7 +7294,7 @@ export const testIamPermissionsProjectsRegionsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsRegionsJobsRequest,
   output: TestIamPermissionsProjectsRegionsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsRegionsWorkflowTemplatesRequest {
@@ -7090,7 +7321,12 @@ export type CreateProjectsRegionsWorkflowTemplatesResponse = WorkflowTemplate;
 export const CreateProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkflowTemplate;
 
-export type CreateProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type CreateProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new workflow template. */
 export const createProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7101,7 +7337,7 @@ export const createProjectsRegionsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRegionsWorkflowTemplatesRequest,
   output: CreateProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRegionsWorkflowTemplatesRequest {
@@ -7124,7 +7360,10 @@ export type GetProjectsRegionsWorkflowTemplatesResponse = WorkflowTemplate;
 export const GetProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkflowTemplate;
 
-export type GetProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type GetProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter. */
 export const getProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7135,7 +7374,7 @@ export const getProjectsRegionsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRegionsWorkflowTemplatesRequest,
   output: GetProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InstantiateProjectsRegionsWorkflowTemplatesRequest {
@@ -7160,7 +7399,12 @@ export type InstantiateProjectsRegionsWorkflowTemplatesResponse = Operation;
 export const InstantiateProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InstantiateProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type InstantiateProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7171,7 +7415,7 @@ export const instantiateProjectsRegionsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InstantiateProjectsRegionsWorkflowTemplatesRequest,
   output: InstantiateProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InstantiateInlineProjectsRegionsWorkflowTemplatesRequest {
@@ -7203,7 +7447,11 @@ export const InstantiateInlineProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type InstantiateInlineProjectsRegionsWorkflowTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateInlineProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7214,7 +7462,7 @@ export const instantiateInlineProjectsRegionsWorkflowTemplates: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InstantiateInlineProjectsRegionsWorkflowTemplatesRequest,
   output: InstantiateInlineProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsRegionsWorkflowTemplatesRequest {
@@ -7237,7 +7485,12 @@ export type UpdateProjectsRegionsWorkflowTemplatesResponse = WorkflowTemplate;
 export const UpdateProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkflowTemplate;
 
-export type UpdateProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type UpdateProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates (replaces) workflow template. The updated template must contain version that matches the current server version. */
 export const updateProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7248,7 +7501,7 @@ export const updateProjectsRegionsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsRegionsWorkflowTemplatesRequest,
   output: UpdateProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsRegionsWorkflowTemplatesRequest {
@@ -7275,7 +7528,10 @@ export type ListProjectsRegionsWorkflowTemplatesResponse =
 export const ListProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkflowTemplatesResponse;
 
-export type ListProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type ListProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists workflows that match the specified filter in the request. */
 export const listProjectsRegionsWorkflowTemplates: API.PaginatedOperationMethod<
@@ -7286,7 +7542,7 @@ export const listProjectsRegionsWorkflowTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRegionsWorkflowTemplatesRequest,
   output: ListProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7313,7 +7569,12 @@ export type DeleteProjectsRegionsWorkflowTemplatesResponse = Empty;
 export const DeleteProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type DeleteProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a workflow template. It does not cancel in-progress workflows. */
 export const deleteProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7324,7 +7585,7 @@ export const deleteProjectsRegionsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRegionsWorkflowTemplatesRequest,
   output: DeleteProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsRegionsWorkflowTemplatesRequest {
@@ -7351,7 +7612,12 @@ export type SetIamPolicyProjectsRegionsWorkflowTemplatesResponse = Policy;
 export const SetIamPolicyProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type SetIamPolicyProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7362,7 +7628,7 @@ export const setIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsRegionsWorkflowTemplatesRequest,
   output: SetIamPolicyProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsRegionsWorkflowTemplatesRequest {
@@ -7389,7 +7655,12 @@ export type GetIamPolicyProjectsRegionsWorkflowTemplatesResponse = Policy;
 export const GetIamPolicyProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsRegionsWorkflowTemplatesError = DefaultErrors;
+export type GetIamPolicyProjectsRegionsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7400,7 +7671,7 @@ export const getIamPolicyProjectsRegionsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsRegionsWorkflowTemplatesRequest,
   output: GetIamPolicyProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest {
@@ -7429,7 +7700,11 @@ export const TestIamPermissionsProjectsRegionsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsRegionsWorkflowTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsRegionsWorkflowTemplates: API.OperationMethod<
@@ -7440,7 +7715,7 @@ export const testIamPermissionsProjectsRegionsWorkflowTemplates: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsRegionsWorkflowTemplatesRequest,
   output: TestIamPermissionsProjectsRegionsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -7474,7 +7749,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -7485,7 +7763,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7509,7 +7787,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -7520,7 +7801,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -7540,7 +7821,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -7551,7 +7837,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -7571,7 +7857,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -7582,7 +7873,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBatchesRequest {
@@ -7611,7 +7902,12 @@ export type CreateProjectsLocationsBatchesResponse = Operation;
 export const CreateProjectsLocationsBatchesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsBatchesError = DefaultErrors;
+export type CreateProjectsLocationsBatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a batch workload that executes asynchronously. */
 export const createProjectsLocationsBatches: API.OperationMethod<
@@ -7622,7 +7918,7 @@ export const createProjectsLocationsBatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBatchesRequest,
   output: CreateProjectsLocationsBatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBatchesRequest {
@@ -7642,7 +7938,10 @@ export type GetProjectsLocationsBatchesResponse = Batch;
 export const GetProjectsLocationsBatchesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Batch;
 
-export type GetProjectsLocationsBatchesError = DefaultErrors;
+export type GetProjectsLocationsBatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the batch workload resource representation. */
 export const getProjectsLocationsBatches: API.OperationMethod<
@@ -7653,7 +7952,7 @@ export const getProjectsLocationsBatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBatchesRequest,
   output: GetProjectsLocationsBatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsBatchesRequest {
@@ -7685,7 +7984,10 @@ export type ListProjectsLocationsBatchesResponse = ListBatchesResponse;
 export const ListProjectsLocationsBatchesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBatchesResponse;
 
-export type ListProjectsLocationsBatchesError = DefaultErrors;
+export type ListProjectsLocationsBatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists batch workloads. */
 export const listProjectsLocationsBatches: API.PaginatedOperationMethod<
@@ -7696,7 +7998,7 @@ export const listProjectsLocationsBatches: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBatchesRequest,
   output: ListProjectsLocationsBatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7720,7 +8022,12 @@ export type DeleteProjectsLocationsBatchesResponse = Empty;
 export const DeleteProjectsLocationsBatchesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsBatchesError = DefaultErrors;
+export type DeleteProjectsLocationsBatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the batch workload resource. If the batch is not in a CANCELLED, SUCCEEDED or FAILED State, the delete operation fails and the response returns FAILED_PRECONDITION. */
 export const deleteProjectsLocationsBatches: API.OperationMethod<
@@ -7731,7 +8038,7 @@ export const deleteProjectsLocationsBatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBatchesRequest,
   output: DeleteProjectsLocationsBatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeProjectsLocationsBatchesRequest {
@@ -7754,7 +8061,12 @@ export type AnalyzeProjectsLocationsBatchesResponse = Operation;
 export const AnalyzeProjectsLocationsBatchesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AnalyzeProjectsLocationsBatchesError = DefaultErrors;
+export type AnalyzeProjectsLocationsBatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyze a Batch for possible recommendations and insights. */
 export const analyzeProjectsLocationsBatches: API.OperationMethod<
@@ -7765,7 +8077,7 @@ export const analyzeProjectsLocationsBatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeProjectsLocationsBatchesRequest,
   output: AnalyzeProjectsLocationsBatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WriteProjectsLocationsBatchesSparkApplicationsRequest {
@@ -7791,7 +8103,12 @@ export type WriteProjectsLocationsBatchesSparkApplicationsResponse =
 export const WriteProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WriteSparkApplicationContextResponse;
 
-export type WriteProjectsLocationsBatchesSparkApplicationsError = DefaultErrors;
+export type WriteProjectsLocationsBatchesSparkApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Write wrapper objects from dataplane to spanner */
 export const writeProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -7802,7 +8119,7 @@ export const writeProjectsLocationsBatchesSparkApplications: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteProjectsLocationsBatchesSparkApplicationsRequest,
   output: WriteProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsLocationsBatchesSparkApplicationsRequest {
@@ -7851,7 +8168,9 @@ export const SearchProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationsResponse;
 
 export type SearchProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain high level information and list of Spark Applications corresponding to a batch */
 export const searchProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -7862,7 +8181,7 @@ export const searchProjectsLocationsBatchesSparkApplications: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7891,7 +8210,9 @@ export const AccessProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationResponse;
 
 export type AccessProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain high level information corresponding to a single Spark Application. */
 export const accessProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -7902,7 +8223,7 @@ export const accessProjectsLocationsBatchesSparkApplications: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessProjectsLocationsBatchesSparkApplicationsRequest,
   output: AccessProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchJobsProjectsLocationsBatchesSparkApplicationsRequest {
@@ -7942,7 +8263,9 @@ export const SearchJobsProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationJobsResponse;
 
 export type SearchJobsProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain list of spark jobs corresponding to a Spark Application. */
 export const searchJobsProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -7953,7 +8276,7 @@ export const searchJobsProjectsLocationsBatchesSparkApplications: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchJobsProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7985,7 +8308,9 @@ export const AccessJobProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationJobResponse;
 
 export type AccessJobProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a spark job for a Spark Application. */
 export const accessJobProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -7996,7 +8321,7 @@ export const accessJobProjectsLocationsBatchesSparkApplications: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessJobProjectsLocationsBatchesSparkApplicationsRequest,
   output: AccessJobProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchStagesProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8044,7 +8369,9 @@ export const SearchStagesProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationStagesResponse;
 
 export type SearchStagesProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to stages for a Spark Application. */
 export const searchStagesProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -8055,7 +8382,7 @@ export const searchStagesProjectsLocationsBatchesSparkApplications: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchStagesProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchStagesProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8098,7 +8425,9 @@ export const SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRespons
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationStageAttemptsResponse;
 
 export type SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a spark stage attempts for a Spark Application. */
 export const searchStageAttemptsProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -8109,7 +8438,7 @@ export const searchStageAttemptsProjectsLocationsBatchesSparkApplications: API.P
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchStageAttemptsProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8151,7 +8480,9 @@ export const AccessStageAttemptProjectsLocationsBatchesSparkApplicationsResponse
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationStageAttemptResponse;
 
 export type AccessStageAttemptProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a spark stage attempt for a Spark Application. */
 export const accessStageAttemptProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8162,7 +8493,7 @@ export const accessStageAttemptProjectsLocationsBatchesSparkApplications: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessStageAttemptProjectsLocationsBatchesSparkApplicationsRequest,
   output: AccessStageAttemptProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8216,7 +8547,9 @@ export const SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRes
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationStageAttemptTasksResponse;
 
 export type SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to tasks for a spark stage attempt for a Spark Application. */
 export const searchStageAttemptTasksProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -8229,7 +8562,7 @@ export const searchStageAttemptTasksProjectsLocationsBatchesSparkApplications: A
     SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
   output:
     SearchStageAttemptTasksProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8273,7 +8606,9 @@ export const SearchExecutorsProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationExecutorsResponse;
 
 export type SearchExecutorsProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to executors for a Spark Application. */
 export const searchExecutorsProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -8284,7 +8619,7 @@ export const searchExecutorsProjectsLocationsBatchesSparkApplications: API.Pagin
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchExecutorsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchExecutorsProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8327,7 +8662,9 @@ export const SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationExecutorStageSummaryResponse;
 
 export type SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain executor summary with respect to a spark stage attempt. */
 export const searchExecutorStageSummaryProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -8340,7 +8677,7 @@ export const searchExecutorStageSummaryProjectsLocationsBatchesSparkApplications
     SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsRequest,
   output:
     SearchExecutorStageSummaryProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8383,7 +8720,9 @@ export const SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSparkApplicationSqlQueriesResponse;
 
 export type SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to SQL Queries for a Spark Application. */
 export const searchSqlQueriesProjectsLocationsBatchesSparkApplications: API.PaginatedOperationMethod<
@@ -8394,7 +8733,7 @@ export const searchSqlQueriesProjectsLocationsBatchesSparkApplications: API.Pagi
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsRequest,
   output: SearchSqlQueriesProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8436,7 +8775,9 @@ export const AccessSqlQueryProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationSqlQueryResponse;
 
 export type AccessSqlQueryProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a particular SQL Query for a Spark Application. */
 export const accessSqlQueryProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8447,7 +8788,7 @@ export const accessSqlQueryProjectsLocationsBatchesSparkApplications: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessSqlQueryProjectsLocationsBatchesSparkApplicationsRequest,
   output: AccessSqlQueryProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8477,7 +8818,9 @@ export const AccessSqlPlanProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationSqlSparkPlanGraphResponse;
 
 export type AccessSqlPlanProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessSqlPlanProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8488,7 +8831,7 @@ export const accessSqlPlanProjectsLocationsBatchesSparkApplications: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessSqlPlanProjectsLocationsBatchesSparkApplicationsRequest,
   output: AccessSqlPlanProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8516,7 +8859,9 @@ export const AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRespons
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationStageRddOperationGraphResponse;
 
 export type AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessStageRddGraphProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8527,7 +8872,7 @@ export const accessStageRddGraphProjectsLocationsBatchesSparkApplications: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsRequest,
   output: AccessStageRddGraphProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8552,7 +8897,9 @@ export const AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRespo
   /*@__PURE__*/ /*#__PURE__*/ AccessSparkApplicationEnvironmentInfoResponse;
 
 export type AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain environment details for a Spark Application */
 export const accessEnvironmentInfoProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8564,7 +8911,7 @@ export const accessEnvironmentInfoProjectsLocationsBatchesSparkApplications: API
   input: AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsRequest,
   output:
     AccessEnvironmentInfoProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8589,7 +8936,9 @@ export const SummarizeJobsProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSparkApplicationJobsResponse;
 
 export type SummarizeJobsProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Jobs for a Spark Application */
 export const summarizeJobsProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8600,7 +8949,7 @@ export const summarizeJobsProjectsLocationsBatchesSparkApplications: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SummarizeJobsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SummarizeJobsProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8625,7 +8974,9 @@ export const SummarizeStagesProjectsLocationsBatchesSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSparkApplicationStagesResponse;
 
 export type SummarizeStagesProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Stages for a Spark Application */
 export const summarizeStagesProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8636,7 +8987,7 @@ export const summarizeStagesProjectsLocationsBatchesSparkApplications: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SummarizeStagesProjectsLocationsBatchesSparkApplicationsRequest,
   output: SummarizeStagesProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8669,7 +9020,9 @@ export const SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSparkApplicationStageAttemptTasksResponse;
 
 export type SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Tasks for a Spark Application Stage Attempt */
 export const summarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8682,7 +9035,7 @@ export const summarizeStageAttemptTasksProjectsLocationsBatchesSparkApplications
     SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsRequest,
   output:
     SummarizeStageAttemptTasksProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest {
@@ -8707,7 +9060,9 @@ export const SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsResponse
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSparkApplicationExecutorsResponse;
 
 export type SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Executor Summary for a Spark Application */
 export const summarizeExecutorsProjectsLocationsBatchesSparkApplications: API.OperationMethod<
@@ -8718,7 +9073,7 @@ export const summarizeExecutorsProjectsLocationsBatchesSparkApplications: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsRequest,
   output: SummarizeExecutorsProjectsLocationsBatchesSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsSessionsRequest {
@@ -8747,7 +9102,12 @@ export type CreateProjectsLocationsSessionsResponse = Operation;
 export const CreateProjectsLocationsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsSessionsError = DefaultErrors;
+export type CreateProjectsLocationsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an interactive session asynchronously. */
 export const createProjectsLocationsSessions: API.OperationMethod<
@@ -8758,7 +9118,7 @@ export const createProjectsLocationsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSessionsRequest,
   output: CreateProjectsLocationsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSessionsRequest {
@@ -8778,7 +9138,10 @@ export type GetProjectsLocationsSessionsResponse = Session;
 export const GetProjectsLocationsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Session;
 
-export type GetProjectsLocationsSessionsError = DefaultErrors;
+export type GetProjectsLocationsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the resource representation for an interactive session. */
 export const getProjectsLocationsSessions: API.OperationMethod<
@@ -8789,7 +9152,7 @@ export const getProjectsLocationsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSessionsRequest,
   output: GetProjectsLocationsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSessionsRequest {
@@ -8818,7 +9181,10 @@ export type ListProjectsLocationsSessionsResponse = ListSessionsResponse;
 export const ListProjectsLocationsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSessionsResponse;
 
-export type ListProjectsLocationsSessionsError = DefaultErrors;
+export type ListProjectsLocationsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists interactive sessions. */
 export const listProjectsLocationsSessions: API.PaginatedOperationMethod<
@@ -8829,7 +9195,7 @@ export const listProjectsLocationsSessions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSessionsRequest,
   output: ListProjectsLocationsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8856,7 +9222,12 @@ export type TerminateProjectsLocationsSessionsResponse = Operation;
 export const TerminateProjectsLocationsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type TerminateProjectsLocationsSessionsError = DefaultErrors;
+export type TerminateProjectsLocationsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Terminates the interactive session. */
 export const terminateProjectsLocationsSessions: API.OperationMethod<
@@ -8867,7 +9238,7 @@ export const terminateProjectsLocationsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TerminateProjectsLocationsSessionsRequest,
   output: TerminateProjectsLocationsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSessionsRequest {
@@ -8890,7 +9261,12 @@ export type DeleteProjectsLocationsSessionsResponse = Operation;
 export const DeleteProjectsLocationsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsSessionsError = DefaultErrors;
+export type DeleteProjectsLocationsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the interactive session resource. If the session is not in terminal state, it is terminated, and then deleted. */
 export const deleteProjectsLocationsSessions: API.OperationMethod<
@@ -8901,7 +9277,7 @@ export const deleteProjectsLocationsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSessionsRequest,
   output: DeleteProjectsLocationsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WriteProjectsLocationsSessionsSparkApplicationsRequest {
@@ -8928,7 +9304,11 @@ export const WriteProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WriteSessionSparkApplicationContextResponse;
 
 export type WriteProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Write wrapper objects from dataplane to spanner */
 export const writeProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -8939,7 +9319,7 @@ export const writeProjectsLocationsSessionsSparkApplications: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteProjectsLocationsSessionsSparkApplicationsRequest,
   output: WriteProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsLocationsSessionsSparkApplicationsRequest {
@@ -8988,7 +9368,9 @@ export const SearchProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationsResponse;
 
 export type SearchProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain high level information and list of Spark Applications corresponding to a batch */
 export const searchProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -8999,7 +9381,7 @@ export const searchProjectsLocationsSessionsSparkApplications: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9028,7 +9410,9 @@ export const AccessProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationResponse;
 
 export type AccessProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain high level information corresponding to a single Spark Application. */
 export const accessProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9039,7 +9423,7 @@ export const accessProjectsLocationsSessionsSparkApplications: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessProjectsLocationsSessionsSparkApplicationsRequest,
   output: AccessProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchJobsProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9084,7 +9468,9 @@ export const SearchJobsProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationJobsResponse;
 
 export type SearchJobsProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain list of spark jobs corresponding to a Spark Application. */
 export const searchJobsProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -9095,7 +9481,7 @@ export const searchJobsProjectsLocationsSessionsSparkApplications: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchJobsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchJobsProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9127,7 +9513,9 @@ export const AccessJobProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationJobResponse;
 
 export type AccessJobProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a spark job for a Spark Application. */
 export const accessJobProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9138,7 +9526,7 @@ export const accessJobProjectsLocationsSessionsSparkApplications: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessJobProjectsLocationsSessionsSparkApplicationsRequest,
   output: AccessJobProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchStagesProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9191,7 +9579,9 @@ export const SearchStagesProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationStagesResponse;
 
 export type SearchStagesProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to stages for a Spark Application. */
 export const searchStagesProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -9202,7 +9592,7 @@ export const searchStagesProjectsLocationsSessionsSparkApplications: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchStagesProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchStagesProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9245,7 +9635,9 @@ export const SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRespon
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationStageAttemptsResponse;
 
 export type SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a spark stage attempts for a Spark Application. */
 export const searchStageAttemptsProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -9256,7 +9648,7 @@ export const searchStageAttemptsProjectsLocationsSessionsSparkApplications: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchStageAttemptsProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9298,7 +9690,9 @@ export const AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRespons
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationStageAttemptResponse;
 
 export type AccessStageAttemptProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a spark stage attempt for a Spark Application. */
 export const accessStageAttemptProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9309,7 +9703,7 @@ export const accessStageAttemptProjectsLocationsSessionsSparkApplications: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessStageAttemptProjectsLocationsSessionsSparkApplicationsRequest,
   output: AccessStageAttemptProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9363,7 +9757,9 @@ export const SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRe
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationStageAttemptTasksResponse;
 
 export type SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to tasks for a spark stage attempt for a Spark Application. */
 export const searchStageAttemptTasksProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -9376,7 +9772,7 @@ export const searchStageAttemptTasksProjectsLocationsSessionsSparkApplications: 
     SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
   output:
     SearchStageAttemptTasksProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9420,7 +9816,9 @@ export const SearchExecutorsProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationExecutorsResponse;
 
 export type SearchExecutorsProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to executors for a Spark Application. */
 export const searchExecutorsProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -9431,7 +9829,7 @@ export const searchExecutorsProjectsLocationsSessionsSparkApplications: API.Pagi
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchExecutorsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchExecutorsProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9474,7 +9872,9 @@ export const SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplication
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationExecutorStageSummaryResponse;
 
 export type SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain executor summary with respect to a spark stage attempt. */
 export const searchExecutorStageSummaryProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -9487,7 +9887,7 @@ export const searchExecutorStageSummaryProjectsLocationsSessionsSparkApplication
     SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsRequest,
   output:
     SearchExecutorStageSummaryProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9535,7 +9935,9 @@ export const SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsResponse 
   /*@__PURE__*/ /*#__PURE__*/ SearchSessionSparkApplicationSqlQueriesResponse;
 
 export type SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to SQL Queries for a Spark Application. */
 export const searchSqlQueriesProjectsLocationsSessionsSparkApplications: API.PaginatedOperationMethod<
@@ -9546,7 +9948,7 @@ export const searchSqlQueriesProjectsLocationsSessionsSparkApplications: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsRequest,
   output: SearchSqlQueriesProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9588,7 +9990,9 @@ export const AccessSqlQueryProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationSqlQueryResponse;
 
 export type AccessSqlQueryProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain data corresponding to a particular SQL Query for a Spark Application. */
 export const accessSqlQueryProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9599,7 +10003,7 @@ export const accessSqlQueryProjectsLocationsSessionsSparkApplications: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessSqlQueryProjectsLocationsSessionsSparkApplicationsRequest,
   output: AccessSqlQueryProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9629,7 +10033,9 @@ export const AccessSqlPlanProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationSqlSparkPlanGraphResponse;
 
 export type AccessSqlPlanProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain Spark Plan Graph for a Spark Application SQL execution. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessSqlPlanProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9640,7 +10046,7 @@ export const accessSqlPlanProjectsLocationsSessionsSparkApplications: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessSqlPlanProjectsLocationsSessionsSparkApplicationsRequest,
   output: AccessSqlPlanProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9668,7 +10074,9 @@ export const AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRespon
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationStageRddOperationGraphResponse;
 
 export type AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain RDD operation graph for a Spark Application Stage. Limits the number of clusters returned as part of the graph to 10000. */
 export const accessStageRddGraphProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9679,7 +10087,7 @@ export const accessStageRddGraphProjectsLocationsSessionsSparkApplications: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsRequest,
   output: AccessStageRddGraphProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9704,7 +10112,9 @@ export const AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsResp
   /*@__PURE__*/ /*#__PURE__*/ AccessSessionSparkApplicationEnvironmentInfoResponse;
 
 export type AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain environment details for a Spark Application */
 export const accessEnvironmentInfoProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9716,7 +10126,7 @@ export const accessEnvironmentInfoProjectsLocationsSessionsSparkApplications: AP
   input: AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsRequest,
   output:
     AccessEnvironmentInfoProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9746,7 +10156,9 @@ export const SummarizeJobsProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSessionSparkApplicationJobsResponse;
 
 export type SummarizeJobsProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Jobs for a Spark Application */
 export const summarizeJobsProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9757,7 +10169,7 @@ export const summarizeJobsProjectsLocationsSessionsSparkApplications: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SummarizeJobsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SummarizeJobsProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9787,7 +10199,9 @@ export const SummarizeStagesProjectsLocationsSessionsSparkApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSessionSparkApplicationStagesResponse;
 
 export type SummarizeStagesProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Stages for a Spark Application */
 export const summarizeStagesProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9798,7 +10212,7 @@ export const summarizeStagesProjectsLocationsSessionsSparkApplications: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SummarizeStagesProjectsLocationsSessionsSparkApplicationsRequest,
   output: SummarizeStagesProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9831,7 +10245,9 @@ export const SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplication
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSessionSparkApplicationStageAttemptTasksResponse;
 
 export type SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Tasks for a Spark Application Stage Attempt */
 export const summarizeStageAttemptTasksProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9844,7 +10260,7 @@ export const summarizeStageAttemptTasksProjectsLocationsSessionsSparkApplication
     SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsRequest,
   output:
     SummarizeStageAttemptTasksProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest {
@@ -9869,7 +10285,9 @@ export const SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRespons
   /*@__PURE__*/ /*#__PURE__*/ SummarizeSessionSparkApplicationExecutorsResponse;
 
 export type SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Obtain summary of Executor Summary for a Spark Application */
 export const summarizeExecutorsProjectsLocationsSessionsSparkApplications: API.OperationMethod<
@@ -9880,7 +10298,7 @@ export const summarizeExecutorsProjectsLocationsSessionsSparkApplications: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsRequest,
   output: SummarizeExecutorsProjectsLocationsSessionsSparkApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAutoscalingPoliciesRequest {
@@ -9908,7 +10326,12 @@ export type CreateProjectsLocationsAutoscalingPoliciesResponse =
 export const CreateProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalingPolicy;
 
-export type CreateProjectsLocationsAutoscalingPoliciesError = DefaultErrors;
+export type CreateProjectsLocationsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new autoscaling policy. */
 export const createProjectsLocationsAutoscalingPolicies: API.OperationMethod<
@@ -9919,7 +10342,7 @@ export const createProjectsLocationsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAutoscalingPoliciesRequest,
   output: CreateProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsLocationsAutoscalingPoliciesRequest {
@@ -9943,7 +10366,12 @@ export type UpdateProjectsLocationsAutoscalingPoliciesResponse =
 export const UpdateProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalingPolicy;
 
-export type UpdateProjectsLocationsAutoscalingPoliciesError = DefaultErrors;
+export type UpdateProjectsLocationsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates (replaces) autoscaling policy.Disabled check for update_mask, because all updates will be full replacements. */
 export const updateProjectsLocationsAutoscalingPolicies: API.OperationMethod<
@@ -9954,7 +10382,7 @@ export const updateProjectsLocationsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsAutoscalingPoliciesRequest,
   output: UpdateProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAutoscalingPoliciesRequest {
@@ -9974,7 +10402,10 @@ export type GetProjectsLocationsAutoscalingPoliciesResponse = AutoscalingPolicy;
 export const GetProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalingPolicy;
 
-export type GetProjectsLocationsAutoscalingPoliciesError = DefaultErrors;
+export type GetProjectsLocationsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves autoscaling policy. */
 export const getProjectsLocationsAutoscalingPolicies: API.OperationMethod<
@@ -9985,7 +10416,7 @@ export const getProjectsLocationsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAutoscalingPoliciesRequest,
   output: GetProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAutoscalingPoliciesRequest {
@@ -10012,7 +10443,10 @@ export type ListProjectsLocationsAutoscalingPoliciesResponse =
 export const ListProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAutoscalingPoliciesResponse;
 
-export type ListProjectsLocationsAutoscalingPoliciesError = DefaultErrors;
+export type ListProjectsLocationsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists autoscaling policies in the project. */
 export const listProjectsLocationsAutoscalingPolicies: API.PaginatedOperationMethod<
@@ -10023,7 +10457,7 @@ export const listProjectsLocationsAutoscalingPolicies: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAutoscalingPoliciesRequest,
   output: ListProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10047,7 +10481,12 @@ export type DeleteProjectsLocationsAutoscalingPoliciesResponse = Empty;
 export const DeleteProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAutoscalingPoliciesError = DefaultErrors;
+export type DeleteProjectsLocationsAutoscalingPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an autoscaling policy. It is an error to delete an autoscaling policy that is in use by one or more clusters. */
 export const deleteProjectsLocationsAutoscalingPolicies: API.OperationMethod<
@@ -10058,7 +10497,7 @@ export const deleteProjectsLocationsAutoscalingPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAutoscalingPoliciesRequest,
   output: DeleteProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest {
@@ -10086,7 +10525,11 @@ export const SetIamPolicyProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsAutoscalingPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMethod<
@@ -10097,7 +10540,7 @@ export const setIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAutoscalingPoliciesRequest,
   output: SetIamPolicyProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest {
@@ -10125,7 +10568,11 @@ export const GetIamPolicyProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsAutoscalingPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMethod<
@@ -10136,7 +10583,7 @@ export const getIamPolicyProjectsLocationsAutoscalingPolicies: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsAutoscalingPoliciesRequest,
   output: GetIamPolicyProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest {
@@ -10165,7 +10612,11 @@ export const TestIamPermissionsProjectsLocationsAutoscalingPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAutoscalingPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAutoscalingPolicies: API.OperationMethod<
@@ -10176,7 +10627,7 @@ export const testIamPermissionsProjectsLocationsAutoscalingPolicies: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsAutoscalingPoliciesRequest,
   output: TestIamPermissionsProjectsLocationsAutoscalingPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsSessionTemplatesRequest {
@@ -10203,7 +10654,12 @@ export type CreateProjectsLocationsSessionTemplatesResponse = SessionTemplate;
 export const CreateProjectsLocationsSessionTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SessionTemplate;
 
-export type CreateProjectsLocationsSessionTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsSessionTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a session template synchronously. */
 export const createProjectsLocationsSessionTemplates: API.OperationMethod<
@@ -10214,7 +10670,7 @@ export const createProjectsLocationsSessionTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSessionTemplatesRequest,
   output: CreateProjectsLocationsSessionTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsSessionTemplatesRequest {
@@ -10237,7 +10693,12 @@ export type PatchProjectsLocationsSessionTemplatesResponse = SessionTemplate;
 export const PatchProjectsLocationsSessionTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SessionTemplate;
 
-export type PatchProjectsLocationsSessionTemplatesError = DefaultErrors;
+export type PatchProjectsLocationsSessionTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the session template synchronously. */
 export const patchProjectsLocationsSessionTemplates: API.OperationMethod<
@@ -10248,7 +10709,7 @@ export const patchProjectsLocationsSessionTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSessionTemplatesRequest,
   output: PatchProjectsLocationsSessionTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSessionTemplatesRequest {
@@ -10268,7 +10729,10 @@ export type GetProjectsLocationsSessionTemplatesResponse = SessionTemplate;
 export const GetProjectsLocationsSessionTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SessionTemplate;
 
-export type GetProjectsLocationsSessionTemplatesError = DefaultErrors;
+export type GetProjectsLocationsSessionTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the resource representation for a session template. */
 export const getProjectsLocationsSessionTemplates: API.OperationMethod<
@@ -10279,7 +10743,7 @@ export const getProjectsLocationsSessionTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSessionTemplatesRequest,
   output: GetProjectsLocationsSessionTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSessionTemplatesRequest {
@@ -10309,7 +10773,10 @@ export type ListProjectsLocationsSessionTemplatesResponse =
 export const ListProjectsLocationsSessionTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSessionTemplatesResponse;
 
-export type ListProjectsLocationsSessionTemplatesError = DefaultErrors;
+export type ListProjectsLocationsSessionTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists session templates. */
 export const listProjectsLocationsSessionTemplates: API.PaginatedOperationMethod<
@@ -10320,7 +10787,7 @@ export const listProjectsLocationsSessionTemplates: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSessionTemplatesRequest,
   output: ListProjectsLocationsSessionTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10344,7 +10811,12 @@ export type DeleteProjectsLocationsSessionTemplatesResponse = Empty;
 export const DeleteProjectsLocationsSessionTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsSessionTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsSessionTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a session template. */
 export const deleteProjectsLocationsSessionTemplates: API.OperationMethod<
@@ -10355,7 +10827,7 @@ export const deleteProjectsLocationsSessionTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSessionTemplatesRequest,
   output: DeleteProjectsLocationsSessionTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsWorkflowTemplatesRequest {
@@ -10382,7 +10854,12 @@ export type CreateProjectsLocationsWorkflowTemplatesResponse = WorkflowTemplate;
 export const CreateProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkflowTemplate;
 
-export type CreateProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new workflow template. */
 export const createProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10393,7 +10870,7 @@ export const createProjectsLocationsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkflowTemplatesRequest,
   output: CreateProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkflowTemplatesRequest {
@@ -10416,7 +10893,10 @@ export type GetProjectsLocationsWorkflowTemplatesResponse = WorkflowTemplate;
 export const GetProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkflowTemplate;
 
-export type GetProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type GetProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the latest workflow template.Can retrieve previously instantiated template by specifying optional version parameter. */
 export const getProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10427,7 +10907,7 @@ export const getProjectsLocationsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkflowTemplatesRequest,
   output: GetProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InstantiateProjectsLocationsWorkflowTemplatesRequest {
@@ -10452,7 +10932,12 @@ export type InstantiateProjectsLocationsWorkflowTemplatesResponse = Operation;
 export const InstantiateProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InstantiateProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type InstantiateProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10463,7 +10948,7 @@ export const instantiateProjectsLocationsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InstantiateProjectsLocationsWorkflowTemplatesRequest,
   output: InstantiateProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InstantiateInlineProjectsLocationsWorkflowTemplatesRequest {
@@ -10495,7 +10980,11 @@ export const InstantiateInlineProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type InstantiateInlineProjectsLocationsWorkflowTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty. */
 export const instantiateInlineProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10506,7 +10995,7 @@ export const instantiateInlineProjectsLocationsWorkflowTemplates: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InstantiateInlineProjectsLocationsWorkflowTemplatesRequest,
   output: InstantiateInlineProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsLocationsWorkflowTemplatesRequest {
@@ -10529,7 +11018,12 @@ export type UpdateProjectsLocationsWorkflowTemplatesResponse = WorkflowTemplate;
 export const UpdateProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkflowTemplate;
 
-export type UpdateProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type UpdateProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates (replaces) workflow template. The updated template must contain version that matches the current server version. */
 export const updateProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10540,7 +11034,7 @@ export const updateProjectsLocationsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsWorkflowTemplatesRequest,
   output: UpdateProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkflowTemplatesRequest {
@@ -10567,7 +11061,10 @@ export type ListProjectsLocationsWorkflowTemplatesResponse =
 export const ListProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkflowTemplatesResponse;
 
-export type ListProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type ListProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists workflows that match the specified filter in the request. */
 export const listProjectsLocationsWorkflowTemplates: API.PaginatedOperationMethod<
@@ -10578,7 +11075,7 @@ export const listProjectsLocationsWorkflowTemplates: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowTemplatesRequest,
   output: ListProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10605,7 +11102,12 @@ export type DeleteProjectsLocationsWorkflowTemplatesResponse = Empty;
 export const DeleteProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a workflow template. It does not cancel in-progress workflows. */
 export const deleteProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10616,7 +11118,7 @@ export const deleteProjectsLocationsWorkflowTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkflowTemplatesRequest,
   output: DeleteProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsWorkflowTemplatesRequest {
@@ -10643,7 +11145,12 @@ export type SetIamPolicyProjectsLocationsWorkflowTemplatesResponse = Policy;
 export const SetIamPolicyProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors. */
 export const setIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10654,7 +11161,7 @@ export const setIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsWorkflowTemplatesRequest,
   output: SetIamPolicyProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsWorkflowTemplatesRequest {
@@ -10681,7 +11188,12 @@ export type GetIamPolicyProjectsLocationsWorkflowTemplatesResponse = Policy;
 export const GetIamPolicyProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsWorkflowTemplatesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsWorkflowTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10692,7 +11204,7 @@ export const getIamPolicyProjectsLocationsWorkflowTemplates: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsWorkflowTemplatesRequest,
   output: GetIamPolicyProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest {
@@ -10721,7 +11233,11 @@ export const TestIamPermissionsProjectsLocationsWorkflowTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsWorkflowTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsWorkflowTemplates: API.OperationMethod<
@@ -10732,5 +11248,5 @@ export const testIamPermissionsProjectsLocationsWorkflowTemplates: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsWorkflowTemplatesRequest,
   output: TestIamPermissionsProjectsLocationsWorkflowTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

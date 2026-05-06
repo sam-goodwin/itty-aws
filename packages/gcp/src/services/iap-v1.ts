@@ -553,6 +553,52 @@ export const IapSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "IapSettings" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -572,7 +618,7 @@ export const GetIapSettingsV1Request =
 export type GetIapSettingsV1Response = IapSettings;
 export const GetIapSettingsV1Response = /*@__PURE__*/ /*#__PURE__*/ IapSettings;
 
-export type GetIapSettingsV1Error = DefaultErrors;
+export type GetIapSettingsV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the IAP settings on a particular IAP protected resource. */
 export const getIapSettingsV1: API.OperationMethod<
@@ -583,7 +629,7 @@ export const getIapSettingsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIapSettingsV1Request,
   output: GetIapSettingsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateIapSettingsV1Request {
@@ -609,7 +655,12 @@ export type UpdateIapSettingsV1Response = IapSettings;
 export const UpdateIapSettingsV1Response =
   /*@__PURE__*/ /*#__PURE__*/ IapSettings;
 
-export type UpdateIapSettingsV1Error = DefaultErrors;
+export type UpdateIapSettingsV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the IAP settings on a particular IAP protected resource. It replaces all fields unless the `update_mask` is set. */
 export const updateIapSettingsV1: API.OperationMethod<
@@ -620,7 +671,7 @@ export const updateIapSettingsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIapSettingsV1Request,
   output: UpdateIapSettingsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateAttributeExpressionV1Request {
@@ -648,7 +699,12 @@ export type ValidateAttributeExpressionV1Response =
 export const ValidateAttributeExpressionV1Response =
   /*@__PURE__*/ /*#__PURE__*/ ValidateIapAttributeExpressionResponse;
 
-export type ValidateAttributeExpressionV1Error = DefaultErrors;
+export type ValidateAttributeExpressionV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates that a given CEL expression conforms to IAP restrictions. */
 export const validateAttributeExpressionV1: API.OperationMethod<
@@ -659,7 +715,7 @@ export const validateAttributeExpressionV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateAttributeExpressionV1Request,
   output: ValidateAttributeExpressionV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyV1Request {
@@ -680,7 +736,12 @@ export const SetIamPolicyV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SetIamPolicyV1Response = Policy;
 export const SetIamPolicyV1Response = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyV1Error = DefaultErrors;
+export type SetIamPolicyV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api */
 export const setIamPolicyV1: API.OperationMethod<
@@ -691,7 +752,7 @@ export const setIamPolicyV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyV1Request,
   output: SetIamPolicyV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyV1Request {
@@ -712,7 +773,12 @@ export const GetIamPolicyV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetIamPolicyV1Response = Policy;
 export const GetIamPolicyV1Response = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyV1Error = DefaultErrors;
+export type GetIamPolicyV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api */
 export const getIamPolicyV1: API.OperationMethod<
@@ -723,7 +789,7 @@ export const getIamPolicyV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyV1Request,
   output: GetIamPolicyV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsV1Request {
@@ -750,7 +816,12 @@ export type TestIamPermissionsV1Response = TestIamPermissionsResponse;
 export const TestIamPermissionsV1Response =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsV1Error = DefaultErrors;
+export type TestIamPermissionsV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api */
 export const testIamPermissionsV1: API.OperationMethod<
@@ -761,7 +832,7 @@ export const testIamPermissionsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsV1Request,
   output: TestIamPermissionsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsIap_tunnelLocationsDestGroupsRequest {
@@ -788,7 +859,10 @@ export type ListProjectsIap_tunnelLocationsDestGroupsResponse =
 export const ListProjectsIap_tunnelLocationsDestGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTunnelDestGroupsResponse;
 
-export type ListProjectsIap_tunnelLocationsDestGroupsError = DefaultErrors;
+export type ListProjectsIap_tunnelLocationsDestGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the existing TunnelDestGroups. To group across all locations, use a `-` as the location ID. For example: `/v1/projects/123/iap_tunnel/locations/-/destGroups` */
 export const listProjectsIap_tunnelLocationsDestGroups: API.PaginatedOperationMethod<
@@ -799,7 +873,7 @@ export const listProjectsIap_tunnelLocationsDestGroups: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsIap_tunnelLocationsDestGroupsRequest,
   output: ListProjectsIap_tunnelLocationsDestGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -823,7 +897,12 @@ export type DeleteProjectsIap_tunnelLocationsDestGroupsResponse = Empty;
 export const DeleteProjectsIap_tunnelLocationsDestGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsIap_tunnelLocationsDestGroupsError = DefaultErrors;
+export type DeleteProjectsIap_tunnelLocationsDestGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TunnelDestGroup. */
 export const deleteProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
@@ -834,7 +913,7 @@ export const deleteProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsIap_tunnelLocationsDestGroupsRequest,
   output: DeleteProjectsIap_tunnelLocationsDestGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsIap_tunnelLocationsDestGroupsRequest {
@@ -861,7 +940,12 @@ export type PatchProjectsIap_tunnelLocationsDestGroupsResponse =
 export const PatchProjectsIap_tunnelLocationsDestGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TunnelDestGroup;
 
-export type PatchProjectsIap_tunnelLocationsDestGroupsError = DefaultErrors;
+export type PatchProjectsIap_tunnelLocationsDestGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a TunnelDestGroup. */
 export const patchProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
@@ -872,7 +956,7 @@ export const patchProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsIap_tunnelLocationsDestGroupsRequest,
   output: PatchProjectsIap_tunnelLocationsDestGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsIap_tunnelLocationsDestGroupsRequest {
@@ -892,7 +976,10 @@ export type GetProjectsIap_tunnelLocationsDestGroupsResponse = TunnelDestGroup;
 export const GetProjectsIap_tunnelLocationsDestGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TunnelDestGroup;
 
-export type GetProjectsIap_tunnelLocationsDestGroupsError = DefaultErrors;
+export type GetProjectsIap_tunnelLocationsDestGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an existing TunnelDestGroup. */
 export const getProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
@@ -903,7 +990,7 @@ export const getProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsIap_tunnelLocationsDestGroupsRequest,
   output: GetProjectsIap_tunnelLocationsDestGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsIap_tunnelLocationsDestGroupsRequest {
@@ -932,7 +1019,12 @@ export type CreateProjectsIap_tunnelLocationsDestGroupsResponse =
 export const CreateProjectsIap_tunnelLocationsDestGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TunnelDestGroup;
 
-export type CreateProjectsIap_tunnelLocationsDestGroupsError = DefaultErrors;
+export type CreateProjectsIap_tunnelLocationsDestGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new TunnelDestGroup. */
 export const createProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
@@ -943,7 +1035,7 @@ export const createProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsIap_tunnelLocationsDestGroupsRequest,
   output: CreateProjectsIap_tunnelLocationsDestGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsBrandsRequest {
@@ -962,7 +1054,7 @@ export const GetProjectsBrandsRequest =
 export type GetProjectsBrandsResponse = Brand;
 export const GetProjectsBrandsResponse = /*@__PURE__*/ /*#__PURE__*/ Brand;
 
-export type GetProjectsBrandsError = DefaultErrors;
+export type GetProjectsBrandsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the OAuth brand of the project. */
 export const getProjectsBrands: API.OperationMethod<
@@ -973,7 +1065,7 @@ export const getProjectsBrands: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsBrandsRequest,
   output: GetProjectsBrandsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsBrandsRequest {
@@ -995,7 +1087,12 @@ export const CreateProjectsBrandsRequest =
 export type CreateProjectsBrandsResponse = Brand;
 export const CreateProjectsBrandsResponse = /*@__PURE__*/ /*#__PURE__*/ Brand;
 
-export type CreateProjectsBrandsError = DefaultErrors;
+export type CreateProjectsBrandsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal only", meaning that OAuth clients created under it only accept requests from users who belong to the same Google Workspace organization as the project. The brand is created in an un-reviewed status. NOTE: The "internal only" status can be manually changed in the Google Cloud Console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller. */
 export const createProjectsBrands: API.OperationMethod<
@@ -1006,7 +1103,7 @@ export const createProjectsBrands: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsBrandsRequest,
   output: CreateProjectsBrandsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsBrandsRequest {
@@ -1026,7 +1123,7 @@ export type ListProjectsBrandsResponse = ListBrandsResponse;
 export const ListProjectsBrandsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBrandsResponse;
 
-export type ListProjectsBrandsError = DefaultErrors;
+export type ListProjectsBrandsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the existing brands for the project. */
 export const listProjectsBrands: API.OperationMethod<
@@ -1037,7 +1134,7 @@ export const listProjectsBrands: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsBrandsRequest,
   output: ListProjectsBrandsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsBrandsIdentityAwareProxyClientsRequest {
@@ -1065,7 +1162,12 @@ export type CreateProjectsBrandsIdentityAwareProxyClientsResponse =
 export const CreateProjectsBrandsIdentityAwareProxyClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentityAwareProxyClient;
 
-export type CreateProjectsBrandsIdentityAwareProxyClientsError = DefaultErrors;
+export type CreateProjectsBrandsIdentityAwareProxyClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use. */
 export const createProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
@@ -1076,7 +1178,7 @@ export const createProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsBrandsIdentityAwareProxyClientsRequest,
   output: CreateProjectsBrandsIdentityAwareProxyClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest {
@@ -1103,7 +1205,11 @@ export const ResetSecretProjectsBrandsIdentityAwareProxyClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentityAwareProxyClient;
 
 export type ResetSecretProjectsBrandsIdentityAwareProxyClientsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret was compromised. Requires that the client is owned by IAP. */
 export const resetSecretProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
@@ -1114,7 +1220,7 @@ export const resetSecretProjectsBrandsIdentityAwareProxyClients: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetSecretProjectsBrandsIdentityAwareProxyClientsRequest,
   output: ResetSecretProjectsBrandsIdentityAwareProxyClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsBrandsIdentityAwareProxyClientsRequest {
@@ -1135,7 +1241,10 @@ export type GetProjectsBrandsIdentityAwareProxyClientsResponse =
 export const GetProjectsBrandsIdentityAwareProxyClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentityAwareProxyClient;
 
-export type GetProjectsBrandsIdentityAwareProxyClientsError = DefaultErrors;
+export type GetProjectsBrandsIdentityAwareProxyClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP. */
 export const getProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
@@ -1146,7 +1255,7 @@ export const getProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsBrandsIdentityAwareProxyClientsRequest,
   output: GetProjectsBrandsIdentityAwareProxyClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsBrandsIdentityAwareProxyClientsRequest {
@@ -1173,7 +1282,10 @@ export type ListProjectsBrandsIdentityAwareProxyClientsResponse =
 export const ListProjectsBrandsIdentityAwareProxyClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListIdentityAwareProxyClientsResponse;
 
-export type ListProjectsBrandsIdentityAwareProxyClientsError = DefaultErrors;
+export type ListProjectsBrandsIdentityAwareProxyClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the existing clients for the brand. */
 export const listProjectsBrandsIdentityAwareProxyClients: API.PaginatedOperationMethod<
@@ -1184,7 +1296,7 @@ export const listProjectsBrandsIdentityAwareProxyClients: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBrandsIdentityAwareProxyClientsRequest,
   output: ListProjectsBrandsIdentityAwareProxyClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1208,7 +1320,12 @@ export type DeleteProjectsBrandsIdentityAwareProxyClientsResponse = Empty;
 export const DeleteProjectsBrandsIdentityAwareProxyClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsBrandsIdentityAwareProxyClientsError = DefaultErrors;
+export type DeleteProjectsBrandsIdentityAwareProxyClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing obsolete clients, managing the number of clients in a given project, and cleaning up after tests. Requires that the client is owned by IAP. */
 export const deleteProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
@@ -1219,5 +1336,5 @@ export const deleteProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsBrandsIdentityAwareProxyClientsRequest,
   output: DeleteProjectsBrandsIdentityAwareProxyClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -1317,6 +1317,52 @@ export const SignupNewUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SignupNewUserResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1345,7 +1391,10 @@ export type GetProjectConfigRelyingpartyResponse =
 export const GetProjectConfigRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentitytoolkitRelyingpartyGetProjectConfigResponse;
 
-export type GetProjectConfigRelyingpartyError = DefaultErrors;
+export type GetProjectConfigRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get project configuration. */
 export const getProjectConfigRelyingparty: API.OperationMethod<
@@ -1356,7 +1405,7 @@ export const getProjectConfigRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectConfigRelyingpartyRequest,
   output: GetProjectConfigRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SignupNewUserRelyingpartyRequest {
@@ -1378,7 +1427,12 @@ export type SignupNewUserRelyingpartyResponse = SignupNewUserResponse;
 export const SignupNewUserRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ SignupNewUserResponse;
 
-export type SignupNewUserRelyingpartyError = DefaultErrors;
+export type SignupNewUserRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signup new user. */
 export const signupNewUserRelyingparty: API.OperationMethod<
@@ -1389,7 +1443,7 @@ export const signupNewUserRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignupNewUserRelyingpartyRequest,
   output: SignupNewUserRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyCustomTokenRelyingpartyRequest {
@@ -1411,7 +1465,12 @@ export type VerifyCustomTokenRelyingpartyResponse = VerifyCustomTokenResponse;
 export const VerifyCustomTokenRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerifyCustomTokenResponse;
 
-export type VerifyCustomTokenRelyingpartyError = DefaultErrors;
+export type VerifyCustomTokenRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies the developer asserted ID token. */
 export const verifyCustomTokenRelyingparty: API.OperationMethod<
@@ -1422,7 +1481,7 @@ export const verifyCustomTokenRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyCustomTokenRelyingpartyRequest,
   output: VerifyCustomTokenRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetPasswordRelyingpartyRequest {
@@ -1444,7 +1503,12 @@ export type ResetPasswordRelyingpartyResponse = ResetPasswordResponse;
 export const ResetPasswordRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResetPasswordResponse;
 
-export type ResetPasswordRelyingpartyError = DefaultErrors;
+export type ResetPasswordRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reset password for a user. */
 export const resetPasswordRelyingparty: API.OperationMethod<
@@ -1455,7 +1519,7 @@ export const resetPasswordRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetPasswordRelyingpartyRequest,
   output: ResetPasswordRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetAccountInfoRelyingpartyRequest {
@@ -1477,7 +1541,12 @@ export type SetAccountInfoRelyingpartyResponse = SetAccountInfoResponse;
 export const SetAccountInfoRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ SetAccountInfoResponse;
 
-export type SetAccountInfoRelyingpartyError = DefaultErrors;
+export type SetAccountInfoRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set account info for a user. */
 export const setAccountInfoRelyingparty: API.OperationMethod<
@@ -1488,7 +1557,7 @@ export const setAccountInfoRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAccountInfoRelyingpartyRequest,
   output: SetAccountInfoRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountRelyingpartyRequest {
@@ -1510,7 +1579,12 @@ export type DeleteAccountRelyingpartyResponse = DeleteAccountResponse;
 export const DeleteAccountRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeleteAccountResponse;
 
-export type DeleteAccountRelyingpartyError = DefaultErrors;
+export type DeleteAccountRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete user account. */
 export const deleteAccountRelyingparty: API.OperationMethod<
@@ -1521,7 +1595,7 @@ export const deleteAccountRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountRelyingpartyRequest,
   output: DeleteAccountRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EmailLinkSigninRelyingpartyRequest {
@@ -1543,7 +1617,12 @@ export type EmailLinkSigninRelyingpartyResponse = EmailLinkSigninResponse;
 export const EmailLinkSigninRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ EmailLinkSigninResponse;
 
-export type EmailLinkSigninRelyingpartyError = DefaultErrors;
+export type EmailLinkSigninRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reset password for a user. */
 export const emailLinkSigninRelyingparty: API.OperationMethod<
@@ -1554,7 +1633,7 @@ export const emailLinkSigninRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EmailLinkSigninRelyingpartyRequest,
   output: EmailLinkSigninRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPublicKeysRelyingpartyRequest {}
@@ -1570,7 +1649,10 @@ export type GetPublicKeysRelyingpartyResponse =
 export const GetPublicKeysRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentitytoolkitRelyingpartyGetPublicKeysResponse;
 
-export type GetPublicKeysRelyingpartyError = DefaultErrors;
+export type GetPublicKeysRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get token signing public key. */
 export const getPublicKeysRelyingparty: API.OperationMethod<
@@ -1581,7 +1663,7 @@ export const getPublicKeysRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicKeysRelyingpartyRequest,
   output: GetPublicKeysRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface VerifyAssertionRelyingpartyRequest {
@@ -1603,7 +1685,12 @@ export type VerifyAssertionRelyingpartyResponse = VerifyAssertionResponse;
 export const VerifyAssertionRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerifyAssertionResponse;
 
-export type VerifyAssertionRelyingpartyError = DefaultErrors;
+export type VerifyAssertionRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies the assertion returned by the IdP. */
 export const verifyAssertionRelyingparty: API.OperationMethod<
@@ -1614,7 +1701,7 @@ export const verifyAssertionRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyAssertionRelyingpartyRequest,
   output: VerifyAssertionRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAuthUriRelyingpartyRequest {
@@ -1636,7 +1723,12 @@ export type CreateAuthUriRelyingpartyResponse = CreateAuthUriResponse;
 export const CreateAuthUriRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateAuthUriResponse;
 
-export type CreateAuthUriRelyingpartyError = DefaultErrors;
+export type CreateAuthUriRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the URI used by the IdP to authenticate the user. */
 export const createAuthUriRelyingparty: API.OperationMethod<
@@ -1647,7 +1739,7 @@ export const createAuthUriRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAuthUriRelyingpartyRequest,
   output: CreateAuthUriRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendVerificationCodeRelyingpartyRequest {
@@ -1670,7 +1762,12 @@ export type SendVerificationCodeRelyingpartyResponse =
 export const SendVerificationCodeRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentitytoolkitRelyingpartySendVerificationCodeResponse;
 
-export type SendVerificationCodeRelyingpartyError = DefaultErrors;
+export type SendVerificationCodeRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Send SMS verification code. */
 export const sendVerificationCodeRelyingparty: API.OperationMethod<
@@ -1681,7 +1778,7 @@ export const sendVerificationCodeRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendVerificationCodeRelyingpartyRequest,
   output: SendVerificationCodeRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadAccountRelyingpartyRequest {
@@ -1703,7 +1800,12 @@ export type DownloadAccountRelyingpartyResponse = DownloadAccountResponse;
 export const DownloadAccountRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ DownloadAccountResponse;
 
-export type DownloadAccountRelyingpartyError = DefaultErrors;
+export type DownloadAccountRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch download user accounts. */
 export const downloadAccountRelyingparty: API.OperationMethod<
@@ -1714,7 +1816,7 @@ export const downloadAccountRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadAccountRelyingpartyRequest,
   output: DownloadAccountRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetProjectConfigRelyingpartyRequest {
@@ -1737,7 +1839,12 @@ export type SetProjectConfigRelyingpartyResponse =
 export const SetProjectConfigRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentitytoolkitRelyingpartySetProjectConfigResponse;
 
-export type SetProjectConfigRelyingpartyError = DefaultErrors;
+export type SetProjectConfigRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set project configuration. */
 export const setProjectConfigRelyingparty: API.OperationMethod<
@@ -1748,7 +1855,7 @@ export const setProjectConfigRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetProjectConfigRelyingpartyRequest,
   output: SetProjectConfigRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountInfoRelyingpartyRequest {
@@ -1770,7 +1877,12 @@ export type GetAccountInfoRelyingpartyResponse = GetAccountInfoResponse;
 export const GetAccountInfoRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetAccountInfoResponse;
 
-export type GetAccountInfoRelyingpartyError = DefaultErrors;
+export type GetAccountInfoRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the account info. */
 export const getAccountInfoRelyingparty: API.OperationMethod<
@@ -1781,7 +1893,7 @@ export const getAccountInfoRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountInfoRelyingpartyRequest,
   output: GetAccountInfoRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRecaptchaParamRelyingpartyRequest {}
@@ -1796,7 +1908,10 @@ export type GetRecaptchaParamRelyingpartyResponse = GetRecaptchaParamResponse;
 export const GetRecaptchaParamRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetRecaptchaParamResponse;
 
-export type GetRecaptchaParamRelyingpartyError = DefaultErrors;
+export type GetRecaptchaParamRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get recaptcha secure param. */
 export const getRecaptchaParamRelyingparty: API.OperationMethod<
@@ -1807,7 +1922,7 @@ export const getRecaptchaParamRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRecaptchaParamRelyingpartyRequest,
   output: GetRecaptchaParamRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface VerifyPasswordRelyingpartyRequest {
@@ -1829,7 +1944,12 @@ export type VerifyPasswordRelyingpartyResponse = VerifyPasswordResponse;
 export const VerifyPasswordRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerifyPasswordResponse;
 
-export type VerifyPasswordRelyingpartyError = DefaultErrors;
+export type VerifyPasswordRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies the user entered password. */
 export const verifyPasswordRelyingparty: API.OperationMethod<
@@ -1840,7 +1960,7 @@ export const verifyPasswordRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyPasswordRelyingpartyRequest,
   output: VerifyPasswordRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOobConfirmationCodeRelyingpartyRequest {
@@ -1861,7 +1981,12 @@ export type GetOobConfirmationCodeRelyingpartyResponse =
 export const GetOobConfirmationCodeRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetOobConfirmationCodeResponse;
 
-export type GetOobConfirmationCodeRelyingpartyError = DefaultErrors;
+export type GetOobConfirmationCodeRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Get a code for user action confirmation. */
 export const getOobConfirmationCodeRelyingparty: API.OperationMethod<
@@ -1872,7 +1997,7 @@ export const getOobConfirmationCodeRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOobConfirmationCodeRelyingpartyRequest,
   output: GetOobConfirmationCodeRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadAccountRelyingpartyRequest {
@@ -1894,7 +2019,12 @@ export type UploadAccountRelyingpartyResponse = UploadAccountResponse;
 export const UploadAccountRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ UploadAccountResponse;
 
-export type UploadAccountRelyingpartyError = DefaultErrors;
+export type UploadAccountRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch upload existing user accounts. */
 export const uploadAccountRelyingparty: API.OperationMethod<
@@ -1905,7 +2035,7 @@ export const uploadAccountRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadAccountRelyingpartyRequest,
   output: UploadAccountRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyPhoneNumberRelyingpartyRequest {
@@ -1928,7 +2058,12 @@ export type VerifyPhoneNumberRelyingpartyResponse =
 export const VerifyPhoneNumberRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse;
 
-export type VerifyPhoneNumberRelyingpartyError = DefaultErrors;
+export type VerifyPhoneNumberRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies ownership of a phone number and creates/updates the user account accordingly. */
 export const verifyPhoneNumberRelyingparty: API.OperationMethod<
@@ -1939,7 +2074,7 @@ export const verifyPhoneNumberRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyPhoneNumberRelyingpartyRequest,
   output: VerifyPhoneNumberRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignOutUserRelyingpartyRequest {
@@ -1962,7 +2097,12 @@ export type SignOutUserRelyingpartyResponse =
 export const SignOutUserRelyingpartyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdentitytoolkitRelyingpartySignOutUserResponse;
 
-export type SignOutUserRelyingpartyError = DefaultErrors;
+export type SignOutUserRelyingpartyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sign out user. */
 export const signOutUserRelyingparty: API.OperationMethod<
@@ -1973,5 +2113,5 @@ export const signOutUserRelyingparty: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignOutUserRelyingpartyRequest,
   output: SignOutUserRelyingpartyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

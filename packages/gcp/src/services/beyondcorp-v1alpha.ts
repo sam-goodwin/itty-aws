@@ -2340,6 +2340,52 @@ export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ListConnectorsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2375,7 +2421,7 @@ export type ListProjectsLocationsResponse =
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2386,7 +2432,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2410,7 +2456,7 @@ export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationLocation;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2421,7 +2467,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsApplicationsRequest {
@@ -2447,7 +2493,10 @@ export type GetIamPolicyProjectsLocationsApplicationsResponse =
 export const GetIamPolicyProjectsLocationsApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsApplicationsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsApplications: API.OperationMethod<
@@ -2458,7 +2507,7 @@ export const getIamPolicyProjectsLocationsApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApplicationsRequest,
   output: GetIamPolicyProjectsLocationsApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsApplicationsRequest {
@@ -2486,7 +2535,12 @@ export type SetIamPolicyProjectsLocationsApplicationsResponse =
 export const SetIamPolicyProjectsLocationsApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsLocationsApplicationsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsApplications: API.OperationMethod<
@@ -2497,7 +2551,7 @@ export const setIamPolicyProjectsLocationsApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApplicationsRequest,
   output: SetIamPolicyProjectsLocationsApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsApplicationsRequest {
@@ -2528,7 +2582,11 @@ export const TestIamPermissionsProjectsLocationsApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsApplications: API.OperationMethod<
@@ -2539,7 +2597,7 @@ export const testIamPermissionsProjectsLocationsApplications: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApplicationsRequest,
   output: TestIamPermissionsProjectsLocationsApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsConnectorsRequest {
@@ -2580,7 +2638,12 @@ export type CreateProjectsLocationsConnectorsResponse =
 export const CreateProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsConnectorsError = DefaultErrors;
+export type CreateProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Connector in a given project and location. */
 export const createProjectsLocationsConnectors: API.OperationMethod<
@@ -2591,7 +2654,7 @@ export const createProjectsLocationsConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsConnectorsRequest,
   output: CreateProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsConnectorsRequest {
@@ -2626,7 +2689,12 @@ export type PatchProjectsLocationsConnectorsResponse =
 export const PatchProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsConnectorsError = DefaultErrors;
+export type PatchProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Connector. */
 export const patchProjectsLocationsConnectors: API.OperationMethod<
@@ -2637,7 +2705,7 @@ export const patchProjectsLocationsConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectorsRequest,
   output: PatchProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsConnectorsRequest {
@@ -2666,7 +2734,12 @@ export type DeleteProjectsLocationsConnectorsResponse =
 export const DeleteProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsConnectorsError = DefaultErrors;
+export type DeleteProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Connector. */
 export const deleteProjectsLocationsConnectors: API.OperationMethod<
@@ -2677,7 +2750,7 @@ export const deleteProjectsLocationsConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsConnectorsRequest,
   output: DeleteProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReportStatusProjectsLocationsConnectorsRequest {
@@ -2705,7 +2778,12 @@ export type ReportStatusProjectsLocationsConnectorsResponse =
 export const ReportStatusProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ReportStatusProjectsLocationsConnectorsError = DefaultErrors;
+export type ReportStatusProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Report status for a given connector. */
 export const reportStatusProjectsLocationsConnectors: API.OperationMethod<
@@ -2716,7 +2794,7 @@ export const reportStatusProjectsLocationsConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportStatusProjectsLocationsConnectorsRequest,
   output: ReportStatusProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsConnectorsRequest {
@@ -2736,7 +2814,10 @@ export type GetProjectsLocationsConnectorsResponse = Connector;
 export const GetProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Connector;
 
-export type GetProjectsLocationsConnectorsError = DefaultErrors;
+export type GetProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Connector. */
 export const getProjectsLocationsConnectors: API.OperationMethod<
@@ -2747,7 +2828,7 @@ export const getProjectsLocationsConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectorsRequest,
   output: GetProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResolveInstanceConfigProjectsLocationsConnectorsRequest {
@@ -2772,7 +2853,9 @@ export const ResolveInstanceConfigProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResolveInstanceConfigResponse;
 
 export type ResolveInstanceConfigProjectsLocationsConnectorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets instance configuration for a given connector. An internal method called by a connector to get its container config. */
 export const resolveInstanceConfigProjectsLocationsConnectors: API.OperationMethod<
@@ -2783,7 +2866,7 @@ export const resolveInstanceConfigProjectsLocationsConnectors: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveInstanceConfigProjectsLocationsConnectorsRequest,
   output: ResolveInstanceConfigProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsConnectorsRequest {
@@ -2810,7 +2893,12 @@ export type SetIamPolicyProjectsLocationsConnectorsResponse = GoogleIamV1Policy;
 export const SetIamPolicyProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsLocationsConnectorsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsConnectors: API.OperationMethod<
@@ -2821,7 +2909,7 @@ export const setIamPolicyProjectsLocationsConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsConnectorsRequest,
   output: SetIamPolicyProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsConnectorsRequest {
@@ -2853,7 +2941,10 @@ export type ListProjectsLocationsConnectorsResponse = ListConnectorsResponse;
 export const ListProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectorsResponse;
 
-export type ListProjectsLocationsConnectorsError = DefaultErrors;
+export type ListProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Connectors in a given project and location. */
 export const listProjectsLocationsConnectors: API.PaginatedOperationMethod<
@@ -2864,7 +2955,7 @@ export const listProjectsLocationsConnectors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectorsRequest,
   output: ListProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2893,7 +2984,10 @@ export type GetIamPolicyProjectsLocationsConnectorsResponse = GoogleIamV1Policy;
 export const GetIamPolicyProjectsLocationsConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsConnectorsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsConnectors: API.OperationMethod<
@@ -2904,7 +2998,7 @@ export const getIamPolicyProjectsLocationsConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsConnectorsRequest,
   output: GetIamPolicyProjectsLocationsConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsSecurityGatewaysRequest {
@@ -2925,7 +3019,10 @@ export type GetProjectsLocationsSecurityGatewaysResponse =
 export const GetProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway;
 
-export type GetProjectsLocationsSecurityGatewaysError = DefaultErrors;
+export type GetProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single SecurityGateway. */
 export const getProjectsLocationsSecurityGateways: API.OperationMethod<
@@ -2936,7 +3033,7 @@ export const getProjectsLocationsSecurityGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecurityGatewaysRequest,
   output: GetProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsSecurityGatewaysRequest {
@@ -2964,7 +3061,12 @@ export type SetIamPolicyProjectsLocationsSecurityGatewaysResponse =
 export const SetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsLocationsSecurityGatewaysError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
@@ -2975,7 +3077,7 @@ export const setIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsSecurityGatewaysRequest,
   output: SetIamPolicyProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsSecurityGatewaysRequest {
@@ -3006,7 +3108,11 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsSecurityGateways: API.OperationMethod<
@@ -3017,7 +3123,7 @@ export const testIamPermissionsProjectsLocationsSecurityGateways: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsSecurityGatewaysRequest,
   output: TestIamPermissionsProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSecurityGatewaysRequest {
@@ -3050,7 +3156,10 @@ export type ListProjectsLocationsSecurityGatewaysResponse =
 export const ListProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1alphaListSecurityGatewaysResponse;
 
-export type ListProjectsLocationsSecurityGatewaysError = DefaultErrors;
+export type ListProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SecurityGateways in a given project and location. */
 export const listProjectsLocationsSecurityGateways: API.PaginatedOperationMethod<
@@ -3061,7 +3170,7 @@ export const listProjectsLocationsSecurityGateways: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecurityGatewaysRequest,
   output: ListProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3091,7 +3200,10 @@ export type GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
 export const GetIamPolicyProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsSecurityGatewaysError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
@@ -3102,7 +3214,7 @@ export const getIamPolicyProjectsLocationsSecurityGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsSecurityGatewaysRequest,
   output: GetIamPolicyProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsSecurityGatewaysRequest {
@@ -3140,7 +3252,12 @@ export type CreateProjectsLocationsSecurityGatewaysResponse =
 export const CreateProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsSecurityGatewaysError = DefaultErrors;
+export type CreateProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Security Gateway in a given project and location. */
 export const createProjectsLocationsSecurityGateways: API.OperationMethod<
@@ -3151,7 +3268,7 @@ export const createProjectsLocationsSecurityGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecurityGatewaysRequest,
   output: CreateProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsSecurityGatewaysRequest {
@@ -3183,7 +3300,12 @@ export type PatchProjectsLocationsSecurityGatewaysResponse =
 export const PatchProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsSecurityGatewaysError = DefaultErrors;
+export type PatchProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single SecurityGateway. */
 export const patchProjectsLocationsSecurityGateways: API.OperationMethod<
@@ -3194,7 +3316,7 @@ export const patchProjectsLocationsSecurityGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSecurityGatewaysRequest,
   output: PatchProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSecurityGatewaysRequest {
@@ -3223,7 +3345,12 @@ export type DeleteProjectsLocationsSecurityGatewaysResponse =
 export const DeleteProjectsLocationsSecurityGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsSecurityGatewaysError = DefaultErrors;
+export type DeleteProjectsLocationsSecurityGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single SecurityGateway. */
 export const deleteProjectsLocationsSecurityGateways: API.OperationMethod<
@@ -3234,7 +3361,7 @@ export const deleteProjectsLocationsSecurityGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSecurityGatewaysRequest,
   output: DeleteProjectsLocationsSecurityGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -3264,7 +3391,11 @@ export const DeleteProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single application. */
 export const deleteProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -3275,7 +3406,7 @@ export const deleteProjectsLocationsSecurityGatewaysApplications: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: DeleteProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -3314,7 +3445,11 @@ export const CreateProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Application in a given project and location. */
 export const createProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -3325,7 +3460,7 @@ export const createProjectsLocationsSecurityGatewaysApplications: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: CreateProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -3358,7 +3493,11 @@ export const PatchProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Application. */
 export const patchProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -3369,7 +3508,7 @@ export const patchProjectsLocationsSecurityGatewaysApplications: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: PatchProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -3396,7 +3535,9 @@ export const GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -3407,7 +3548,7 @@ export const getIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: GetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -3441,7 +3582,9 @@ export const ListProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1alphaListApplicationsResponse;
 
 export type ListProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Applications in a given project and location. */
 export const listProjectsLocationsSecurityGatewaysApplications: API.PaginatedOperationMethod<
@@ -3452,7 +3595,7 @@ export const listProjectsLocationsSecurityGatewaysApplications: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: ListProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3485,7 +3628,11 @@ export const SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -3496,7 +3643,7 @@ export const setIamPolicyProjectsLocationsSecurityGatewaysApplications: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: SetIamPolicyProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -3527,7 +3674,11 @@ export const TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -3539,7 +3690,7 @@ export const testIamPermissionsProjectsLocationsSecurityGatewaysApplications: AP
   input: TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsRequest,
   output:
     TestIamPermissionsProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSecurityGatewaysApplicationsRequest {
@@ -3561,7 +3712,9 @@ export const GetProjectsLocationsSecurityGatewaysApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSecuritygatewaysV1alphaApplication;
 
 export type GetProjectsLocationsSecurityGatewaysApplicationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Application. */
 export const getProjectsLocationsSecurityGatewaysApplications: API.OperationMethod<
@@ -3572,7 +3725,7 @@ export const getProjectsLocationsSecurityGatewaysApplications: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecurityGatewaysApplicationsRequest,
   output: GetProjectsLocationsSecurityGatewaysApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsInsightsRequest {
@@ -3626,7 +3779,10 @@ export type ListProjectsLocationsInsightsResponse =
 export const ListProjectsLocationsInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse;
 
-export type ListProjectsLocationsInsightsError = DefaultErrors;
+export type ListProjectsLocationsInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists for all the available insights that could be fetched from the system. Allows to filter using category. Setting the `view` to `BASIC` will let you iterate over the list of insight metadatas. */
 export const listProjectsLocationsInsights: API.PaginatedOperationMethod<
@@ -3637,7 +3793,7 @@ export const listProjectsLocationsInsights: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInsightsRequest,
   output: ListProjectsLocationsInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3665,7 +3821,10 @@ export type GetProjectsLocationsInsightsResponse =
 export const GetProjectsLocationsInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight;
 
-export type GetProjectsLocationsInsightsError = DefaultErrors;
+export type GetProjectsLocationsInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the value for a selected particular insight with default configuration. The default aggregation level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be returned for recent 7 days starting the day before. The insight data size will be limited to 50 rows. Use the organization level path for fetching at org level and project level path for fetching the insight value specific to a particular project. Setting the `view` to `BASIC` will only return the metadata for the insight. */
 export const getProjectsLocationsInsights: API.OperationMethod<
@@ -3676,7 +3835,7 @@ export const getProjectsLocationsInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInsightsRequest,
   output: GetProjectsLocationsInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ConfiguredInsightProjectsLocationsInsightsRequest {
@@ -3739,7 +3898,10 @@ export type ConfiguredInsightProjectsLocationsInsightsResponse =
 export const ConfiguredInsightProjectsLocationsInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse;
 
-export type ConfiguredInsightProjectsLocationsInsightsError = DefaultErrors;
+export type ConfiguredInsightProjectsLocationsInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the value for a selected particular insight based on the provided filters. Use the organization level path for fetching at org level and project level path for fetching the insight value specific to a particular project. */
 export const configuredInsightProjectsLocationsInsights: API.PaginatedOperationMethod<
@@ -3750,7 +3912,7 @@ export const configuredInsightProjectsLocationsInsights: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ConfiguredInsightProjectsLocationsInsightsRequest,
   output: ConfiguredInsightProjectsLocationsInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3780,7 +3942,10 @@ export type GetIamPolicyProjectsLocationsConnectionsResponse =
 export const GetIamPolicyProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsConnectionsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
@@ -3791,7 +3956,7 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsConnectionsRequest,
   output: GetIamPolicyProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsConnectionsRequest {
@@ -3823,7 +3988,10 @@ export type ListProjectsLocationsConnectionsResponse = ListConnectionsResponse;
 export const ListProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectionsResponse;
 
-export type ListProjectsLocationsConnectionsError = DefaultErrors;
+export type ListProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Connections in a given project and location. */
 export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
@@ -3834,7 +4002,7 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRequest,
   output: ListProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3866,7 +4034,12 @@ export type SetIamPolicyProjectsLocationsConnectionsResponse =
 export const SetIamPolicyProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsLocationsConnectionsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
@@ -3877,7 +4050,7 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsConnectionsRequest,
   output: SetIamPolicyProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsConnectionsRequest {
@@ -3897,7 +4070,10 @@ export type GetProjectsLocationsConnectionsResponse = Connection;
 export const GetProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Connection;
 
-export type GetProjectsLocationsConnectionsError = DefaultErrors;
+export type GetProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Connection. */
 export const getProjectsLocationsConnections: API.OperationMethod<
@@ -3908,7 +4084,7 @@ export const getProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionsRequest,
   output: GetProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsConnectionsRequest {
@@ -3937,7 +4113,12 @@ export type DeleteProjectsLocationsConnectionsResponse =
 export const DeleteProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsConnectionsError = DefaultErrors;
+export type DeleteProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Connection. */
 export const deleteProjectsLocationsConnections: API.OperationMethod<
@@ -3948,7 +4129,7 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsConnectionsRequest,
   output: DeleteProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsConnectionsRequest {
@@ -3989,7 +4170,12 @@ export type CreateProjectsLocationsConnectionsResponse =
 export const CreateProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsConnectionsError = DefaultErrors;
+export type CreateProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Connection in a given project and location. */
 export const createProjectsLocationsConnections: API.OperationMethod<
@@ -4000,7 +4186,7 @@ export const createProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsConnectionsRequest,
   output: CreateProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsConnectionsRequest {
@@ -4040,7 +4226,12 @@ export type PatchProjectsLocationsConnectionsResponse =
 export const PatchProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsConnectionsError = DefaultErrors;
+export type PatchProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Connection. */
 export const patchProjectsLocationsConnections: API.OperationMethod<
@@ -4051,7 +4242,7 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionsRequest,
   output: PatchProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResolveProjectsLocationsConnectionsRequest {
@@ -4083,7 +4274,10 @@ export type ResolveProjectsLocationsConnectionsResponse =
 export const ResolveProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResolveConnectionsResponse;
 
-export type ResolveProjectsLocationsConnectionsError = DefaultErrors;
+export type ResolveProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Resolves connections details for a given connector. An internal method called by a connector to find connections to connect to. */
 export const resolveProjectsLocationsConnections: API.PaginatedOperationMethod<
@@ -4094,7 +4288,7 @@ export const resolveProjectsLocationsConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ResolveProjectsLocationsConnectionsRequest,
   output: ResolveProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4125,7 +4319,9 @@ export const GetIamPolicyProjectsLocationsApplicationDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsApplicationDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsApplicationDomains: API.OperationMethod<
@@ -4136,7 +4332,7 @@ export const getIamPolicyProjectsLocationsApplicationDomains: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsApplicationDomainsRequest,
   output: GetIamPolicyProjectsLocationsApplicationDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsApplicationDomainsRequest {
@@ -4165,7 +4361,11 @@ export const SetIamPolicyProjectsLocationsApplicationDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsApplicationDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsApplicationDomains: API.OperationMethod<
@@ -4176,7 +4376,7 @@ export const setIamPolicyProjectsLocationsApplicationDomains: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsApplicationDomainsRequest,
   output: SetIamPolicyProjectsLocationsApplicationDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsApplicationDomainsRequest {
@@ -4207,7 +4407,11 @@ export const TestIamPermissionsProjectsLocationsApplicationDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsApplicationDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsApplicationDomains: API.OperationMethod<
@@ -4218,7 +4422,7 @@ export const testIamPermissionsProjectsLocationsApplicationDomains: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsApplicationDomainsRequest,
   output: TestIamPermissionsProjectsLocationsApplicationDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAppGatewaysRequest {
@@ -4259,7 +4463,12 @@ export type CreateProjectsLocationsAppGatewaysResponse =
 export const CreateProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsAppGatewaysError = DefaultErrors;
+export type CreateProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new AppGateway in a given project and location. */
 export const createProjectsLocationsAppGateways: API.OperationMethod<
@@ -4270,7 +4479,7 @@ export const createProjectsLocationsAppGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppGatewaysRequest,
   output: CreateProjectsLocationsAppGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppGatewaysRequest {
@@ -4299,7 +4508,12 @@ export type DeleteProjectsLocationsAppGatewaysResponse =
 export const DeleteProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsAppGatewaysError = DefaultErrors;
+export type DeleteProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single AppGateway. */
 export const deleteProjectsLocationsAppGateways: API.OperationMethod<
@@ -4310,7 +4524,7 @@ export const deleteProjectsLocationsAppGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppGatewaysRequest,
   output: DeleteProjectsLocationsAppGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppGatewaysRequest {
@@ -4330,7 +4544,10 @@ export type GetProjectsLocationsAppGatewaysResponse = AppGateway;
 export const GetProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppGateway;
 
-export type GetProjectsLocationsAppGatewaysError = DefaultErrors;
+export type GetProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single AppGateway. */
 export const getProjectsLocationsAppGateways: API.OperationMethod<
@@ -4341,7 +4558,7 @@ export const getProjectsLocationsAppGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppGatewaysRequest,
   output: GetProjectsLocationsAppGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsAppGatewaysRequest {
@@ -4369,7 +4586,12 @@ export type SetIamPolicyProjectsLocationsAppGatewaysResponse =
 export const SetIamPolicyProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsLocationsAppGatewaysError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
@@ -4380,7 +4602,7 @@ export const setIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAppGatewaysRequest,
   output: SetIamPolicyProjectsLocationsAppGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsAppGatewaysRequest {
@@ -4410,7 +4632,12 @@ export type TestIamPermissionsProjectsLocationsAppGatewaysResponse =
 export const TestIamPermissionsProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsAppGatewaysError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAppGateways: API.OperationMethod<
@@ -4421,7 +4648,7 @@ export const testIamPermissionsProjectsLocationsAppGateways: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsAppGatewaysRequest,
   output: TestIamPermissionsProjectsLocationsAppGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppGatewaysRequest {
@@ -4453,7 +4680,10 @@ export type ListProjectsLocationsAppGatewaysResponse = ListAppGatewaysResponse;
 export const ListProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAppGatewaysResponse;
 
-export type ListProjectsLocationsAppGatewaysError = DefaultErrors;
+export type ListProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists AppGateways in a given project and location. */
 export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
@@ -4464,7 +4694,7 @@ export const listProjectsLocationsAppGateways: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppGatewaysRequest,
   output: ListProjectsLocationsAppGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4494,7 +4724,10 @@ export type GetIamPolicyProjectsLocationsAppGatewaysResponse =
 export const GetIamPolicyProjectsLocationsAppGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsAppGatewaysError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsAppGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
@@ -4505,7 +4738,7 @@ export const getIamPolicyProjectsLocationsAppGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsAppGatewaysRequest,
   output: GetIamPolicyProjectsLocationsAppGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -4540,7 +4773,10 @@ export type ListProjectsLocationsOperationsResponse =
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -4551,7 +4787,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4580,7 +4816,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -4591,7 +4832,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -4611,7 +4852,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -4622,7 +4868,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -4642,7 +4888,10 @@ export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -4653,7 +4902,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsAppConnectorsRequest {
@@ -4679,7 +4928,10 @@ export type GetIamPolicyProjectsLocationsAppConnectorsResponse =
 export const GetIamPolicyProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsAppConnectorsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
@@ -4690,7 +4942,7 @@ export const getIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsAppConnectorsRequest,
   output: GetIamPolicyProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAppConnectorsRequest {
@@ -4723,7 +4975,10 @@ export type ListProjectsLocationsAppConnectorsResponse =
 export const ListProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1alphaListAppConnectorsResponse;
 
-export type ListProjectsLocationsAppConnectorsError = DefaultErrors;
+export type ListProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists AppConnectors in a given project and location. */
 export const listProjectsLocationsAppConnectors: API.PaginatedOperationMethod<
@@ -4734,7 +4989,7 @@ export const listProjectsLocationsAppConnectors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppConnectorsRequest,
   output: ListProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4763,7 +5018,9 @@ export const ResolveInstanceConfigProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1alphaResolveInstanceConfigResponse;
 
 export type ResolveInstanceConfigProjectsLocationsAppConnectorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets instance configuration for a given AppConnector. An internal method called by a AppConnector to get its container config. */
 export const resolveInstanceConfigProjectsLocationsAppConnectors: API.OperationMethod<
@@ -4774,7 +5031,7 @@ export const resolveInstanceConfigProjectsLocationsAppConnectors: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveInstanceConfigProjectsLocationsAppConnectorsRequest,
   output: ResolveInstanceConfigProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsAppConnectorsRequest {
@@ -4802,7 +5059,12 @@ export type SetIamPolicyProjectsLocationsAppConnectorsResponse =
 export const SetIamPolicyProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsLocationsAppConnectorsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
@@ -4813,7 +5075,7 @@ export const setIamPolicyProjectsLocationsAppConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAppConnectorsRequest,
   output: SetIamPolicyProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppConnectorsRequest {
@@ -4834,7 +5096,10 @@ export type GetProjectsLocationsAppConnectorsResponse =
 export const GetProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnector;
 
-export type GetProjectsLocationsAppConnectorsError = DefaultErrors;
+export type GetProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single AppConnector. */
 export const getProjectsLocationsAppConnectors: API.OperationMethod<
@@ -4845,7 +5110,7 @@ export const getProjectsLocationsAppConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppConnectorsRequest,
   output: GetProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsAppConnectorsRequest {
@@ -4874,7 +5139,12 @@ export type DeleteProjectsLocationsAppConnectorsResponse =
 export const DeleteProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsAppConnectorsError = DefaultErrors;
+export type DeleteProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single AppConnector. */
 export const deleteProjectsLocationsAppConnectors: API.OperationMethod<
@@ -4885,7 +5155,7 @@ export const deleteProjectsLocationsAppConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppConnectorsRequest,
   output: DeleteProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReportStatusProjectsLocationsAppConnectorsRequest {
@@ -4915,7 +5185,12 @@ export type ReportStatusProjectsLocationsAppConnectorsResponse =
 export const ReportStatusProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ReportStatusProjectsLocationsAppConnectorsError = DefaultErrors;
+export type ReportStatusProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Report status for a given connector. */
 export const reportStatusProjectsLocationsAppConnectors: API.OperationMethod<
@@ -4926,7 +5201,7 @@ export const reportStatusProjectsLocationsAppConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportStatusProjectsLocationsAppConnectorsRequest,
   output: ReportStatusProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAppConnectorsRequest {
@@ -4969,7 +5244,12 @@ export type CreateProjectsLocationsAppConnectorsResponse =
 export const CreateProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsAppConnectorsError = DefaultErrors;
+export type CreateProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new AppConnector in a given project and location. */
 export const createProjectsLocationsAppConnectors: API.OperationMethod<
@@ -4980,7 +5260,7 @@ export const createProjectsLocationsAppConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppConnectorsRequest,
   output: CreateProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppConnectorsRequest {
@@ -5017,7 +5297,12 @@ export type PatchProjectsLocationsAppConnectorsResponse =
 export const PatchProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsAppConnectorsError = DefaultErrors;
+export type PatchProjectsLocationsAppConnectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single AppConnector. */
 export const patchProjectsLocationsAppConnectors: API.OperationMethod<
@@ -5028,7 +5313,7 @@ export const patchProjectsLocationsAppConnectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppConnectorsRequest,
   output: PatchProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsAppConnectorsRequest {
@@ -5059,7 +5344,11 @@ export const TestIamPermissionsProjectsLocationsAppConnectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAppConnectorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAppConnectors: API.OperationMethod<
@@ -5070,7 +5359,7 @@ export const testIamPermissionsProjectsLocationsAppConnectors: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsAppConnectorsRequest,
   output: TestIamPermissionsProjectsLocationsAppConnectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppConnectionsRequest {
@@ -5091,7 +5380,10 @@ export type GetProjectsLocationsAppConnectionsResponse =
 export const GetProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnection;
 
-export type GetProjectsLocationsAppConnectionsError = DefaultErrors;
+export type GetProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single AppConnection. */
 export const getProjectsLocationsAppConnections: API.OperationMethod<
@@ -5102,7 +5394,7 @@ export const getProjectsLocationsAppConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppConnectionsRequest,
   output: GetProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsAppConnectionsRequest {
@@ -5130,7 +5422,12 @@ export type SetIamPolicyProjectsLocationsAppConnectionsResponse =
 export const SetIamPolicyProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyProjectsLocationsAppConnectionsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
@@ -5141,7 +5438,7 @@ export const setIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsAppConnectionsRequest,
   output: SetIamPolicyProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppConnectionsRequest {
@@ -5174,7 +5471,10 @@ export type ListProjectsLocationsAppConnectionsResponse =
 export const ListProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1alphaListAppConnectionsResponse;
 
-export type ListProjectsLocationsAppConnectionsError = DefaultErrors;
+export type ListProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists AppConnections in a given project and location. */
 export const listProjectsLocationsAppConnections: API.PaginatedOperationMethod<
@@ -5185,7 +5485,7 @@ export const listProjectsLocationsAppConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppConnectionsRequest,
   output: ListProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5215,7 +5515,10 @@ export type GetIamPolicyProjectsLocationsAppConnectionsResponse =
 export const GetIamPolicyProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyProjectsLocationsAppConnectionsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
@@ -5226,7 +5529,7 @@ export const getIamPolicyProjectsLocationsAppConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsAppConnectionsRequest,
   output: GetIamPolicyProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsAppConnectionsRequest {
@@ -5257,7 +5560,11 @@ export const TestIamPermissionsProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsAppConnectionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsAppConnections: API.OperationMethod<
@@ -5268,7 +5575,7 @@ export const testIamPermissionsProjectsLocationsAppConnections: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsAppConnectionsRequest,
   output: TestIamPermissionsProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAppConnectionsRequest {
@@ -5311,7 +5618,12 @@ export type CreateProjectsLocationsAppConnectionsResponse =
 export const CreateProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsAppConnectionsError = DefaultErrors;
+export type CreateProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new AppConnection in a given project and location. */
 export const createProjectsLocationsAppConnections: API.OperationMethod<
@@ -5322,7 +5634,7 @@ export const createProjectsLocationsAppConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppConnectionsRequest,
   output: CreateProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppConnectionsRequest {
@@ -5364,7 +5676,12 @@ export type PatchProjectsLocationsAppConnectionsResponse =
 export const PatchProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsAppConnectionsError = DefaultErrors;
+export type PatchProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single AppConnection. */
 export const patchProjectsLocationsAppConnections: API.OperationMethod<
@@ -5375,7 +5692,7 @@ export const patchProjectsLocationsAppConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppConnectionsRequest,
   output: PatchProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResolveProjectsLocationsAppConnectionsRequest {
@@ -5407,7 +5724,10 @@ export type ResolveProjectsLocationsAppConnectionsResponse =
 export const ResolveProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpAppconnectionsV1alphaResolveAppConnectionsResponse;
 
-export type ResolveProjectsLocationsAppConnectionsError = DefaultErrors;
+export type ResolveProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Resolves AppConnections details for a given AppConnector. An internal method called by a connector to find AppConnections to connect to. */
 export const resolveProjectsLocationsAppConnections: API.PaginatedOperationMethod<
@@ -5418,7 +5738,7 @@ export const resolveProjectsLocationsAppConnections: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ResolveProjectsLocationsAppConnectionsRequest,
   output: ResolveProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5451,7 +5771,12 @@ export type DeleteProjectsLocationsAppConnectionsResponse =
 export const DeleteProjectsLocationsAppConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsAppConnectionsError = DefaultErrors;
+export type DeleteProjectsLocationsAppConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single AppConnection. */
 export const deleteProjectsLocationsAppConnections: API.OperationMethod<
@@ -5462,7 +5787,7 @@ export const deleteProjectsLocationsAppConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppConnectionsRequest,
   output: DeleteProjectsLocationsAppConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsSubscriptionsRequest {
@@ -5492,7 +5817,12 @@ export type CreateOrganizationsLocationsSubscriptionsResponse =
 export const CreateOrganizationsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription;
 
-export type CreateOrganizationsLocationsSubscriptionsError = DefaultErrors;
+export type CreateOrganizationsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new BeyondCorp Enterprise Subscription in a given organization. Location will always be global as BeyondCorp subscriptions are per organization. */
 export const createOrganizationsLocationsSubscriptions: API.OperationMethod<
@@ -5503,7 +5833,7 @@ export const createOrganizationsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsSubscriptionsRequest,
   output: CreateOrganizationsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsSubscriptionsRequest {
@@ -5535,7 +5865,12 @@ export type PatchOrganizationsLocationsSubscriptionsResponse =
 export const PatchOrganizationsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription;
 
-export type PatchOrganizationsLocationsSubscriptionsError = DefaultErrors;
+export type PatchOrganizationsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing BeyondCorp Enterprise Subscription in a given organization. Location will always be global as BeyondCorp subscriptions are per organization. */
 export const patchOrganizationsLocationsSubscriptions: API.OperationMethod<
@@ -5546,7 +5881,7 @@ export const patchOrganizationsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsSubscriptionsRequest,
   output: PatchOrganizationsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestartOrganizationsLocationsSubscriptionsRequest {
@@ -5570,7 +5905,10 @@ export type RestartOrganizationsLocationsSubscriptionsResponse =
 export const RestartOrganizationsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaRestartSubscriptionResponse;
 
-export type RestartOrganizationsLocationsSubscriptionsError = DefaultErrors;
+export type RestartOrganizationsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Restarts an existing BeyondCorp Enterprise Subscription in a given organization, that is scheduled for cancellation. Location will always be global as BeyondCorp subscriptions are per organization. Returns the timestamp for when the cancellation will become effective */
 export const restartOrganizationsLocationsSubscriptions: API.OperationMethod<
@@ -5581,7 +5919,7 @@ export const restartOrganizationsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestartOrganizationsLocationsSubscriptionsRequest,
   output: RestartOrganizationsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelOrganizationsLocationsSubscriptionsRequest {
@@ -5605,7 +5943,10 @@ export type CancelOrganizationsLocationsSubscriptionsResponse =
 export const CancelOrganizationsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse;
 
-export type CancelOrganizationsLocationsSubscriptionsError = DefaultErrors;
+export type CancelOrganizationsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Cancels an existing BeyondCorp Enterprise Subscription in a given organization. Location will always be global as BeyondCorp subscriptions are per organization. Returns the timestamp for when the cancellation will become effective */
 export const cancelOrganizationsLocationsSubscriptions: API.OperationMethod<
@@ -5616,7 +5957,7 @@ export const cancelOrganizationsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsSubscriptionsRequest,
   output: CancelOrganizationsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsSubscriptionsRequest {
@@ -5643,7 +5984,10 @@ export type ListOrganizationsLocationsSubscriptionsResponse =
 export const ListOrganizationsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse;
 
-export type ListOrganizationsLocationsSubscriptionsError = DefaultErrors;
+export type ListOrganizationsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Subscriptions in a given organization and location. */
 export const listOrganizationsLocationsSubscriptions: API.PaginatedOperationMethod<
@@ -5654,7 +5998,7 @@ export const listOrganizationsLocationsSubscriptions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsSubscriptionsRequest,
   output: ListOrganizationsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5679,7 +6023,10 @@ export type GetOrganizationsLocationsSubscriptionsResponse =
 export const GetOrganizationsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription;
 
-export type GetOrganizationsLocationsSubscriptionsError = DefaultErrors;
+export type GetOrganizationsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Subscription. */
 export const getOrganizationsLocationsSubscriptions: API.OperationMethod<
@@ -5690,7 +6037,7 @@ export const getOrganizationsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsSubscriptionsRequest,
   output: GetOrganizationsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsOperationsRequest {
@@ -5725,7 +6072,10 @@ export type ListOrganizationsLocationsOperationsResponse =
 export const ListOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListOrganizationsLocationsOperationsError = DefaultErrors;
+export type ListOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
@@ -5736,7 +6086,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5765,7 +6115,12 @@ export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOrganizationsLocationsOperationsError = DefaultErrors;
+export type CancelOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsLocationsOperations: API.OperationMethod<
@@ -5776,7 +6131,7 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsOperationsRequest,
   output: CancelOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsOperationsRequest {
@@ -5796,7 +6151,12 @@ export type DeleteOrganizationsLocationsOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsOperationsError = DefaultErrors;
+export type DeleteOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsLocationsOperations: API.OperationMethod<
@@ -5807,7 +6167,7 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsOperationsRequest,
   output: DeleteOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsOperationsRequest {
@@ -5828,7 +6188,10 @@ export type GetOrganizationsLocationsOperationsResponse =
 export const GetOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetOrganizationsLocationsOperationsError = DefaultErrors;
+export type GetOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOperations: API.OperationMethod<
@@ -5839,7 +6202,7 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOperationsRequest,
   output: GetOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsInsightsRequest {
@@ -5893,7 +6256,10 @@ export type ListOrganizationsLocationsInsightsResponse =
 export const ListOrganizationsLocationsInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformInsightsV1alphaListInsightsResponse;
 
-export type ListOrganizationsLocationsInsightsError = DefaultErrors;
+export type ListOrganizationsLocationsInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists for all the available insights that could be fetched from the system. Allows to filter using category. Setting the `view` to `BASIC` will let you iterate over the list of insight metadatas. */
 export const listOrganizationsLocationsInsights: API.PaginatedOperationMethod<
@@ -5904,7 +6270,7 @@ export const listOrganizationsLocationsInsights: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsInsightsRequest,
   output: ListOrganizationsLocationsInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5932,7 +6298,10 @@ export type GetOrganizationsLocationsInsightsResponse =
 export const GetOrganizationsLocationsInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformInsightsV1alphaInsight;
 
-export type GetOrganizationsLocationsInsightsError = DefaultErrors;
+export type GetOrganizationsLocationsInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the value for a selected particular insight with default configuration. The default aggregation level is 'DAILY' and no grouping will be applied or default grouping if applicable. The data will be returned for recent 7 days starting the day before. The insight data size will be limited to 50 rows. Use the organization level path for fetching at org level and project level path for fetching the insight value specific to a particular project. Setting the `view` to `BASIC` will only return the metadata for the insight. */
 export const getOrganizationsLocationsInsights: API.OperationMethod<
@@ -5943,7 +6312,7 @@ export const getOrganizationsLocationsInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsInsightsRequest,
   output: GetOrganizationsLocationsInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ConfiguredInsightOrganizationsLocationsInsightsRequest {
@@ -6007,7 +6376,9 @@ export const ConfiguredInsightOrganizationsLocationsInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBeyondcorpSaasplatformInsightsV1alphaConfiguredInsightResponse;
 
 export type ConfiguredInsightOrganizationsLocationsInsightsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the value for a selected particular insight based on the provided filters. Use the organization level path for fetching at org level and project level path for fetching the insight value specific to a particular project. */
 export const configuredInsightOrganizationsLocationsInsights: API.PaginatedOperationMethod<
@@ -6018,7 +6389,7 @@ export const configuredInsightOrganizationsLocationsInsights: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ConfiguredInsightOrganizationsLocationsInsightsRequest,
   output: ConfiguredInsightOrganizationsLocationsInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

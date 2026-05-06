@@ -1270,6 +1270,52 @@ export const ListTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListTenantsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1315,7 +1361,10 @@ export type CompleteQueryProjectsTenantsResponse = CompleteQueryResponse;
 export const CompleteQueryProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompleteQueryResponse;
 
-export type CompleteQueryProjectsTenantsError = DefaultErrors;
+export type CompleteQueryProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box. */
 export const completeQueryProjectsTenants: API.OperationMethod<
@@ -1326,7 +1375,7 @@ export const completeQueryProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteQueryProjectsTenantsRequest,
   output: CompleteQueryProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsTenantsRequest {
@@ -1345,7 +1394,12 @@ export const DeleteProjectsTenantsRequest =
 export type DeleteProjectsTenantsResponse = Empty;
 export const DeleteProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTenantsError = DefaultErrors;
+export type DeleteProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes specified tenant. */
 export const deleteProjectsTenants: API.OperationMethod<
@@ -1356,7 +1410,7 @@ export const deleteProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsRequest,
   output: DeleteProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTenantsRequest {
@@ -1382,7 +1436,7 @@ export type ListProjectsTenantsResponse = ListTenantsResponse;
 export const ListProjectsTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTenantsResponse;
 
-export type ListProjectsTenantsError = DefaultErrors;
+export type ListProjectsTenantsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all tenants associated with the project. */
 export const listProjectsTenants: API.PaginatedOperationMethod<
@@ -1393,7 +1447,7 @@ export const listProjectsTenants: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsRequest,
   output: ListProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1419,7 +1473,12 @@ export const CreateProjectsTenantsRequest =
 export type CreateProjectsTenantsResponse = Tenant;
 export const CreateProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
 
-export type CreateProjectsTenantsError = DefaultErrors;
+export type CreateProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new tenant entity. */
 export const createProjectsTenants: API.OperationMethod<
@@ -1430,7 +1489,7 @@ export const createProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsRequest,
   output: CreateProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTenantsRequest {
@@ -1449,7 +1508,7 @@ export const GetProjectsTenantsRequest =
 export type GetProjectsTenantsResponse = Tenant;
 export const GetProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
 
-export type GetProjectsTenantsError = DefaultErrors;
+export type GetProjectsTenantsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves specified tenant. */
 export const getProjectsTenants: API.OperationMethod<
@@ -1460,7 +1519,7 @@ export const getProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTenantsRequest,
   output: GetProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsTenantsRequest {
@@ -1485,7 +1544,12 @@ export const PatchProjectsTenantsRequest =
 export type PatchProjectsTenantsResponse = Tenant;
 export const PatchProjectsTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Tenant;
 
-export type PatchProjectsTenantsError = DefaultErrors;
+export type PatchProjectsTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates specified tenant. */
 export const patchProjectsTenants: API.OperationMethod<
@@ -1496,7 +1560,7 @@ export const patchProjectsTenants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTenantsRequest,
   output: PatchProjectsTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsTenantsJobsRequest {
@@ -1516,7 +1580,12 @@ export type DeleteProjectsTenantsJobsResponse = Empty;
 export const DeleteProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTenantsJobsError = DefaultErrors;
+export type DeleteProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes. */
 export const deleteProjectsTenantsJobs: API.OperationMethod<
@@ -1527,7 +1596,7 @@ export const deleteProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsJobsRequest,
   output: DeleteProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTenantsJobsRequest {
@@ -1552,7 +1621,12 @@ export const PatchProjectsTenantsJobsRequest =
 export type PatchProjectsTenantsJobsResponse = Job;
 export const PatchProjectsTenantsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type PatchProjectsTenantsJobsError = DefaultErrors;
+export type PatchProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes. */
 export const patchProjectsTenantsJobs: API.OperationMethod<
@@ -1563,7 +1637,7 @@ export const patchProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTenantsJobsRequest,
   output: PatchProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateProjectsTenantsJobsRequest {
@@ -1590,7 +1664,12 @@ export type BatchUpdateProjectsTenantsJobsResponse = Operation;
 export const BatchUpdateProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchUpdateProjectsTenantsJobsError = DefaultErrors;
+export type BatchUpdateProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Begins executing a batch update jobs operation. */
 export const batchUpdateProjectsTenantsJobs: API.OperationMethod<
@@ -1601,7 +1680,7 @@ export const batchUpdateProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateProjectsTenantsJobsRequest,
   output: BatchUpdateProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTenantsJobsRequest {
@@ -1639,7 +1718,7 @@ export type ListProjectsTenantsJobsResponse = ListJobsResponse;
 export const ListProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
 
-export type ListProjectsTenantsJobsError = DefaultErrors;
+export type ListProjectsTenantsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists jobs by filter. */
 export const listProjectsTenantsJobs: API.PaginatedOperationMethod<
@@ -1650,7 +1729,7 @@ export const listProjectsTenantsJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsJobsRequest,
   output: ListProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1681,7 +1760,12 @@ export type SearchForAlertProjectsTenantsJobsResponse = SearchJobsResponse;
 export const SearchForAlertProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchJobsResponse;
 
-export type SearchForAlertProjectsTenantsJobsError = DefaultErrors;
+export type SearchForAlertProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), it has different algorithmic adjustments that are designed to specifically target passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against. */
 export const searchForAlertProjectsTenantsJobs: API.OperationMethod<
@@ -1692,7 +1776,7 @@ export const searchForAlertProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchForAlertProjectsTenantsJobsRequest,
   output: SearchForAlertProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsTenantsJobsRequest {
@@ -1719,7 +1803,12 @@ export type BatchCreateProjectsTenantsJobsResponse = Operation;
 export const BatchCreateProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchCreateProjectsTenantsJobsError = DefaultErrors;
+export type BatchCreateProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Begins executing a batch create jobs operation. */
 export const batchCreateProjectsTenantsJobs: API.OperationMethod<
@@ -1730,7 +1819,7 @@ export const batchCreateProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsTenantsJobsRequest,
   output: BatchCreateProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsTenantsJobsRequest {
@@ -1753,7 +1842,12 @@ export type CreateProjectsTenantsJobsResponse = Job;
 export const CreateProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CreateProjectsTenantsJobsError = DefaultErrors;
+export type CreateProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes. */
 export const createProjectsTenantsJobs: API.OperationMethod<
@@ -1764,7 +1858,7 @@ export const createProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsJobsRequest,
   output: CreateProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteProjectsTenantsJobsRequest {
@@ -1791,7 +1885,12 @@ export type BatchDeleteProjectsTenantsJobsResponse = Operation;
 export const BatchDeleteProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchDeleteProjectsTenantsJobsError = DefaultErrors;
+export type BatchDeleteProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Begins executing a batch delete jobs operation. */
 export const batchDeleteProjectsTenantsJobs: API.OperationMethod<
@@ -1802,7 +1901,7 @@ export const batchDeleteProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsTenantsJobsRequest,
   output: BatchDeleteProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsTenantsJobsRequest {
@@ -1825,7 +1924,12 @@ export type SearchProjectsTenantsJobsResponse = SearchJobsResponse;
 export const SearchProjectsTenantsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchJobsResponse;
 
-export type SearchProjectsTenantsJobsError = DefaultErrors;
+export type SearchProjectsTenantsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against. */
 export const searchProjectsTenantsJobs: API.OperationMethod<
@@ -1836,7 +1940,7 @@ export const searchProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsTenantsJobsRequest,
   output: SearchProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTenantsJobsRequest {
@@ -1855,7 +1959,7 @@ export const GetProjectsTenantsJobsRequest =
 export type GetProjectsTenantsJobsResponse = Job;
 export const GetProjectsTenantsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type GetProjectsTenantsJobsError = DefaultErrors;
+export type GetProjectsTenantsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days. */
 export const getProjectsTenantsJobs: API.OperationMethod<
@@ -1866,7 +1970,7 @@ export const getProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTenantsJobsRequest,
   output: GetProjectsTenantsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsTenantsCompaniesRequest {
@@ -1886,7 +1990,12 @@ export type DeleteProjectsTenantsCompaniesResponse = Empty;
 export const DeleteProjectsTenantsCompaniesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTenantsCompaniesError = DefaultErrors;
+export type DeleteProjectsTenantsCompaniesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes specified company. Prerequisite: The company has no jobs associated with it. */
 export const deleteProjectsTenantsCompanies: API.OperationMethod<
@@ -1897,7 +2006,7 @@ export const deleteProjectsTenantsCompanies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTenantsCompaniesRequest,
   output: DeleteProjectsTenantsCompaniesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTenantsCompaniesRequest {
@@ -1917,7 +2026,10 @@ export type GetProjectsTenantsCompaniesResponse = Company;
 export const GetProjectsTenantsCompaniesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Company;
 
-export type GetProjectsTenantsCompaniesError = DefaultErrors;
+export type GetProjectsTenantsCompaniesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves specified company. */
 export const getProjectsTenantsCompanies: API.OperationMethod<
@@ -1928,7 +2040,7 @@ export const getProjectsTenantsCompanies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTenantsCompaniesRequest,
   output: GetProjectsTenantsCompaniesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsTenantsCompaniesRequest {
@@ -1954,7 +2066,12 @@ export type PatchProjectsTenantsCompaniesResponse = Company;
 export const PatchProjectsTenantsCompaniesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Company;
 
-export type PatchProjectsTenantsCompaniesError = DefaultErrors;
+export type PatchProjectsTenantsCompaniesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates specified company. */
 export const patchProjectsTenantsCompanies: API.OperationMethod<
@@ -1965,7 +2082,7 @@ export const patchProjectsTenantsCompanies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTenantsCompaniesRequest,
   output: PatchProjectsTenantsCompaniesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsTenantsCompaniesRequest {
@@ -1988,7 +2105,12 @@ export type CreateProjectsTenantsCompaniesResponse = Company;
 export const CreateProjectsTenantsCompaniesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Company;
 
-export type CreateProjectsTenantsCompaniesError = DefaultErrors;
+export type CreateProjectsTenantsCompaniesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new company entity. */
 export const createProjectsTenantsCompanies: API.OperationMethod<
@@ -1999,7 +2121,7 @@ export const createProjectsTenantsCompanies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsCompaniesRequest,
   output: CreateProjectsTenantsCompaniesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTenantsCompaniesRequest {
@@ -2030,7 +2152,10 @@ export type ListProjectsTenantsCompaniesResponse = ListCompaniesResponse;
 export const ListProjectsTenantsCompaniesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCompaniesResponse;
 
-export type ListProjectsTenantsCompaniesError = DefaultErrors;
+export type ListProjectsTenantsCompaniesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all companies associated with the project. */
 export const listProjectsTenantsCompanies: API.PaginatedOperationMethod<
@@ -2041,7 +2166,7 @@ export const listProjectsTenantsCompanies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTenantsCompaniesRequest,
   output: ListProjectsTenantsCompaniesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2068,7 +2193,12 @@ export type CreateProjectsTenantsClientEventsResponse = ClientEvent;
 export const CreateProjectsTenantsClientEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientEvent;
 
-export type CreateProjectsTenantsClientEventsError = DefaultErrors;
+export type CreateProjectsTenantsClientEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools. */
 export const createProjectsTenantsClientEvents: API.OperationMethod<
@@ -2079,7 +2209,7 @@ export const createProjectsTenantsClientEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsClientEventsRequest,
   output: CreateProjectsTenantsClientEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsOperationsRequest {
@@ -2099,7 +2229,7 @@ export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -2110,5 +2240,5 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

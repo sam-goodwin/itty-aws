@@ -1777,6 +1777,52 @@ export const GoogleAppsDriveLabelsV2betaListLabelsResponse =
   }).annotate({ identifier: "GoogleAppsDriveLabelsV2betaListLabelsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1801,7 +1847,7 @@ export type GetCapabilitiesUsersResponse =
 export const GetCapabilitiesUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaUserCapabilities;
 
-export type GetCapabilitiesUsersError = DefaultErrors;
+export type GetCapabilitiesUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the user capabilities. */
 export const getCapabilitiesUsers: API.OperationMethod<
@@ -1812,7 +1858,7 @@ export const getCapabilitiesUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCapabilitiesUsersRequest,
   output: GetCapabilitiesUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetLabelLimitsRequest {
@@ -1831,7 +1877,7 @@ export type GetLabelLimitsResponse = GoogleAppsDriveLabelsV2betaLabelLimits;
 export const GetLabelLimitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelLimits;
 
-export type GetLabelLimitsError = DefaultErrors;
+export type GetLabelLimitsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the constraints on the structure of a label; such as, the maximum number of fields allowed and maximum length of the label title. */
 export const getLabelLimits: API.OperationMethod<
@@ -1842,7 +1888,7 @@ export const getLabelLimits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLabelLimitsRequest,
   output: GetLabelLimitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteLabelsRequest {
@@ -1871,7 +1917,12 @@ export type DeleteLabelsResponse = GoogleProtobufEmpty;
 export const DeleteLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteLabelsError = DefaultErrors;
+export type DeleteLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a label and related metadata on Drive items. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Once deleted, the label and related Drive item metadata will be deleted. Only draft labels and disabled labels may be deleted. */
 export const deleteLabels: API.OperationMethod<
@@ -1882,7 +1933,7 @@ export const deleteLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLabelsRequest,
   output: DeleteLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateLabelsRequest {
@@ -1911,7 +1962,12 @@ export type CreateLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const CreateLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
-export type CreateLabelsError = DefaultErrors;
+export type CreateLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a label. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label). */
 export const createLabels: API.OperationMethod<
@@ -1922,7 +1978,7 @@ export const createLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLabelsRequest,
   output: CreateLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeltaLabelsRequest {
@@ -1947,7 +2003,12 @@ export type DeltaLabelsResponse =
 export const DeltaLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaDeltaUpdateLabelResponse;
 
-export type DeltaLabelsError = DefaultErrors;
+export type DeltaLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a single label by applying a set of update requests resulting in a new draft revision. For more information, see [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label). The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting draft revision must be published before the changes may be used with Drive items. */
 export const deltaLabels: API.OperationMethod<
@@ -1958,7 +2019,7 @@ export const deltaLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeltaLabelsRequest,
   output: DeltaLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishLabelsRequest {
@@ -1982,7 +2043,12 @@ export type PublishLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const PublishLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
-export type PublishLabelsError = DefaultErrors;
+export type PublishLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publish all draft changes to the label. Once published, the label may not return to its draft state. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label). Publishing a label will result in a new published revision. All previous draft revisions will be deleted. Previous published revisions will be kept but are subject to automated deletion as needed. For more information, see [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). Once published, some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the label will be rejected. For example, the following changes to a label will be rejected after the label is published: * The label cannot be directly deleted. It must be disabled first, then deleted. * `Field.FieldType` cannot be changed. * Changes to field validation options cannot reject something that was previously accepted. * Reducing the maximum entries. */
 export const publishLabels: API.OperationMethod<
@@ -1993,7 +2059,7 @@ export const publishLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishLabelsRequest,
   output: PublishLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLabelsRequest {
@@ -2045,7 +2111,7 @@ export type ListLabelsResponse = GoogleAppsDriveLabelsV2betaListLabelsResponse;
 export const ListLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelsResponse;
 
-export type ListLabelsError = DefaultErrors;
+export type ListLabelsError = DefaultErrors | NotFound | Forbidden;
 
 /** List labels. For more information, see [Search for labels](https://developers.google.com/workspace/drive/labels/guides/search-label). */
 export const listLabels: API.PaginatedOperationMethod<
@@ -2056,7 +2122,7 @@ export const listLabels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRequest,
   output: ListLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2095,7 +2161,12 @@ export type UpdatePermissionsLabelsResponse =
 export const UpdatePermissionsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
-export type UpdatePermissionsLabelsError = DefaultErrors;
+export type UpdatePermissionsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const updatePermissionsLabels: API.OperationMethod<
@@ -2106,7 +2177,7 @@ export const updatePermissionsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePermissionsLabelsRequest,
   output: UpdatePermissionsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLabelsRequest {
@@ -2138,7 +2209,7 @@ export type GetLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const GetLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
-export type GetLabelsError = DefaultErrors;
+export type GetLabelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a label by its resource name. For more information, see [Search for labels](https://developers.google.com/workspace/drive/labels/guides/search-label). Resource name may be any of: * `labels/{id}` - See `labels/{id}@latest` * `labels/{id}@latest` - Gets the latest revision of the label. * `labels/{id}@published` - Gets the current published revision of the label. * `labels/{id}@{revision_id}` - Gets the label at the specified revision ID. */
 export const getLabels: API.OperationMethod<
@@ -2149,7 +2220,7 @@ export const getLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLabelsRequest,
   output: GetLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DisableLabelsRequest {
@@ -2173,7 +2244,12 @@ export type DisableLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const DisableLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
-export type DisableLabelsError = DefaultErrors;
+export type DisableLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable a published label. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Disabling a label will result in a new disabled published revision based on the current published revision. If there's a draft revision, a new disabled draft revision will be created based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`. */
 export const disableLabels: API.OperationMethod<
@@ -2184,7 +2260,7 @@ export const disableLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableLabelsRequest,
   output: DisableLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableLabelsRequest {
@@ -2208,7 +2284,12 @@ export type EnableLabelsResponse = GoogleAppsDriveLabelsV2betaLabel;
 export const EnableLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
-export type EnableLabelsError = DefaultErrors;
+export type EnableLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable a disabled label and restore it to its published state. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). This will result in a new published revision based on the current disabled published revision. If there's an existing disabled draft revision, a new revision will be created based on that draft and will be enabled. */
 export const enableLabels: API.OperationMethod<
@@ -2219,7 +2300,7 @@ export const enableLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableLabelsRequest,
   output: EnableLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLabelCopyModeLabelsRequest {
@@ -2249,7 +2330,12 @@ export type UpdateLabelCopyModeLabelsResponse =
 export const UpdateLabelCopyModeLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
-export type UpdateLabelCopyModeLabelsError = DefaultErrors;
+export type UpdateLabelCopyModeLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't require publishing, and take effect immediately. */
 export const updateLabelCopyModeLabels: API.OperationMethod<
@@ -2260,7 +2346,7 @@ export const updateLabelCopyModeLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLabelCopyModeLabelsRequest,
   output: UpdateLabelCopyModeLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLabelEnabledAppSettingsLabelsRequest {
@@ -2290,7 +2376,12 @@ export type UpdateLabelEnabledAppSettingsLabelsResponse =
 export const UpdateLabelEnabledAppSettingsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabel;
 
-export type UpdateLabelEnabledAppSettingsLabelsError = DefaultErrors;
+export type UpdateLabelEnabledAppSettingsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace app allows it to be used in that app. This change isn't revisioned, doesn't require publishing, and takes effect immediately. */
 export const updateLabelEnabledAppSettingsLabels: API.OperationMethod<
@@ -2301,7 +2392,7 @@ export const updateLabelEnabledAppSettingsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLabelEnabledAppSettingsLabelsRequest,
   output: UpdateLabelEnabledAppSettingsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLabelsLocksRequest {
@@ -2329,7 +2420,7 @@ export type ListLabelsLocksResponse =
 export const ListLabelsLocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
 
-export type ListLabelsLocksError = DefaultErrors;
+export type ListLabelsLocksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the label locks on a label. */
 export const listLabelsLocks: API.PaginatedOperationMethod<
@@ -2340,7 +2431,7 @@ export const listLabelsLocks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsLocksRequest,
   output: ListLabelsLocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2374,7 +2465,12 @@ export type BatchUpdateLabelsPermissionsResponse =
 export const BatchUpdateLabelsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
 
-export type BatchUpdateLabelsPermissionsError = DefaultErrors;
+export type BatchUpdateLabelsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchUpdateLabelsPermissions: API.OperationMethod<
@@ -2385,7 +2481,7 @@ export const batchUpdateLabelsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateLabelsPermissionsRequest,
   output: BatchUpdateLabelsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLabelsPermissionsRequest {
@@ -2410,7 +2506,12 @@ export type DeleteLabelsPermissionsResponse = GoogleProtobufEmpty;
 export const DeleteLabelsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteLabelsPermissionsError = DefaultErrors;
+export type DeleteLabelsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const deleteLabelsPermissions: API.OperationMethod<
@@ -2421,7 +2522,7 @@ export const deleteLabelsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLabelsPermissionsRequest,
   output: DeleteLabelsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLabelsPermissionsRequest {
@@ -2453,7 +2554,7 @@ export type ListLabelsPermissionsResponse =
 export const ListLabelsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
 
-export type ListLabelsPermissionsError = DefaultErrors;
+export type ListLabelsPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a label's permissions. */
 export const listLabelsPermissions: API.PaginatedOperationMethod<
@@ -2464,7 +2565,7 @@ export const listLabelsPermissions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsPermissionsRequest,
   output: ListLabelsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2497,7 +2598,12 @@ export type BatchDeleteLabelsPermissionsResponse = GoogleProtobufEmpty;
 export const BatchDeleteLabelsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchDeleteLabelsPermissionsError = DefaultErrors;
+export type BatchDeleteLabelsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchDeleteLabelsPermissions: API.OperationMethod<
@@ -2508,7 +2614,7 @@ export const batchDeleteLabelsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteLabelsPermissionsRequest,
   output: BatchDeleteLabelsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateLabelsPermissionsRequest {
@@ -2543,7 +2649,12 @@ export type CreateLabelsPermissionsResponse =
 export const CreateLabelsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
-export type CreateLabelsPermissionsError = DefaultErrors;
+export type CreateLabelsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const createLabelsPermissions: API.OperationMethod<
@@ -2554,7 +2665,7 @@ export const createLabelsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLabelsPermissionsRequest,
   output: CreateLabelsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePermissionsLabelsRevisionsRequest {
@@ -2589,7 +2700,12 @@ export type UpdatePermissionsLabelsRevisionsResponse =
 export const UpdatePermissionsLabelsRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
-export type UpdatePermissionsLabelsRevisionsError = DefaultErrors;
+export type UpdatePermissionsLabelsRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const updatePermissionsLabelsRevisions: API.OperationMethod<
@@ -2600,7 +2716,7 @@ export const updatePermissionsLabelsRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePermissionsLabelsRevisionsRequest,
   output: UpdatePermissionsLabelsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLabelsRevisionsPermissionsRequest {
@@ -2625,7 +2741,12 @@ export type DeleteLabelsRevisionsPermissionsResponse = GoogleProtobufEmpty;
 export const DeleteLabelsRevisionsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteLabelsRevisionsPermissionsError = DefaultErrors;
+export type DeleteLabelsRevisionsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const deleteLabelsRevisionsPermissions: API.OperationMethod<
@@ -2636,7 +2757,7 @@ export const deleteLabelsRevisionsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLabelsRevisionsPermissionsRequest,
   output: DeleteLabelsRevisionsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateLabelsRevisionsPermissionsRequest {
@@ -2666,7 +2787,12 @@ export type BatchUpdateLabelsRevisionsPermissionsResponse =
 export const BatchUpdateLabelsRevisionsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse;
 
-export type BatchUpdateLabelsRevisionsPermissionsError = DefaultErrors;
+export type BatchUpdateLabelsRevisionsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchUpdateLabelsRevisionsPermissions: API.OperationMethod<
@@ -2677,7 +2803,7 @@ export const batchUpdateLabelsRevisionsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateLabelsRevisionsPermissionsRequest,
   output: BatchUpdateLabelsRevisionsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLabelsRevisionsPermissionsRequest {
@@ -2709,7 +2835,10 @@ export type ListLabelsRevisionsPermissionsResponse =
 export const ListLabelsRevisionsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelPermissionsResponse;
 
-export type ListLabelsRevisionsPermissionsError = DefaultErrors;
+export type ListLabelsRevisionsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists a label's permissions. */
 export const listLabelsRevisionsPermissions: API.PaginatedOperationMethod<
@@ -2720,7 +2849,7 @@ export const listLabelsRevisionsPermissions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRevisionsPermissionsRequest,
   output: ListLabelsRevisionsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2753,7 +2882,12 @@ export type BatchDeleteLabelsRevisionsPermissionsResponse = GoogleProtobufEmpty;
 export const BatchDeleteLabelsRevisionsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchDeleteLabelsRevisionsPermissionsError = DefaultErrors;
+export type BatchDeleteLabelsRevisionsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const batchDeleteLabelsRevisionsPermissions: API.OperationMethod<
@@ -2764,7 +2898,7 @@ export const batchDeleteLabelsRevisionsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteLabelsRevisionsPermissionsRequest,
   output: BatchDeleteLabelsRevisionsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateLabelsRevisionsPermissionsRequest {
@@ -2799,7 +2933,12 @@ export type CreateLabelsRevisionsPermissionsResponse =
 export const CreateLabelsRevisionsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaLabelPermission;
 
-export type CreateLabelsRevisionsPermissionsError = DefaultErrors;
+export type CreateLabelsRevisionsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing. */
 export const createLabelsRevisionsPermissions: API.OperationMethod<
@@ -2810,7 +2949,7 @@ export const createLabelsRevisionsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLabelsRevisionsPermissionsRequest,
   output: CreateLabelsRevisionsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLabelsRevisionsLocksRequest {
@@ -2837,7 +2976,10 @@ export type ListLabelsRevisionsLocksResponse =
 export const ListLabelsRevisionsLocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsDriveLabelsV2betaListLabelLocksResponse;
 
-export type ListLabelsRevisionsLocksError = DefaultErrors;
+export type ListLabelsRevisionsLocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the label locks on a label. */
 export const listLabelsRevisionsLocks: API.PaginatedOperationMethod<
@@ -2848,7 +2990,7 @@ export const listLabelsRevisionsLocks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsRevisionsLocksRequest,
   output: ListLabelsRevisionsLocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

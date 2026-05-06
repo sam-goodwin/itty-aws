@@ -1567,6 +1567,52 @@ export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Status" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1588,7 +1634,12 @@ export type IngestEventsResponse_Op = IngestEventsResponse;
 export const IngestEventsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ IngestEventsResponse;
 
-export type IngestEventsError = DefaultErrors;
+export type IngestEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a list of Event resources from the provided Destination. */
 export const ingestEvents: API.OperationMethod<
@@ -1599,7 +1650,7 @@ export const ingestEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IngestEventsRequest_Op,
   output: IngestEventsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveRequestStatusRequest {
@@ -1619,7 +1670,7 @@ export type RetrieveRequestStatusResponse_Op = RetrieveRequestStatusResponse;
 export const RetrieveRequestStatusResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveRequestStatusResponse;
 
-export type RetrieveRequestStatusError = DefaultErrors;
+export type RetrieveRequestStatusError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the status of a request given request id. */
 export const retrieveRequestStatus: API.OperationMethod<
@@ -1630,7 +1681,7 @@ export const retrieveRequestStatus: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveRequestStatusRequest,
   output: RetrieveRequestStatusResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountTypesAccountsUserListDirectLicensesRequest {
@@ -1651,7 +1702,10 @@ export type GetAccountTypesAccountsUserListDirectLicensesResponse =
 export const GetAccountTypesAccountsUserListDirectLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserListDirectLicense;
 
-export type GetAccountTypesAccountsUserListDirectLicensesError = DefaultErrors;
+export type GetAccountTypesAccountsUserListDirectLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a user list direct license. This feature is only available to data partners. */
 export const getAccountTypesAccountsUserListDirectLicenses: API.OperationMethod<
@@ -1662,7 +1716,7 @@ export const getAccountTypesAccountsUserListDirectLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountTypesAccountsUserListDirectLicensesRequest,
   output: GetAccountTypesAccountsUserListDirectLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountTypesAccountsUserListDirectLicensesRequest {
@@ -1692,7 +1746,10 @@ export type ListAccountTypesAccountsUserListDirectLicensesResponse =
 export const ListAccountTypesAccountsUserListDirectLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserListDirectLicensesResponse;
 
-export type ListAccountTypesAccountsUserListDirectLicensesError = DefaultErrors;
+export type ListAccountTypesAccountsUserListDirectLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all user list direct licenses owned by the parent account. This feature is only available to data partners. */
 export const listAccountTypesAccountsUserListDirectLicenses: API.PaginatedOperationMethod<
@@ -1703,7 +1760,7 @@ export const listAccountTypesAccountsUserListDirectLicenses: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountTypesAccountsUserListDirectLicensesRequest,
   output: ListAccountTypesAccountsUserListDirectLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1736,7 +1793,11 @@ export const CreateAccountTypesAccountsUserListDirectLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserListDirectLicense;
 
 export type CreateAccountTypesAccountsUserListDirectLicensesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a user list direct license. This feature is only available to data partners. */
 export const createAccountTypesAccountsUserListDirectLicenses: API.OperationMethod<
@@ -1747,7 +1808,7 @@ export const createAccountTypesAccountsUserListDirectLicenses: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountTypesAccountsUserListDirectLicensesRequest,
   output: CreateAccountTypesAccountsUserListDirectLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountTypesAccountsUserListDirectLicensesRequest {
@@ -1775,7 +1836,11 @@ export const PatchAccountTypesAccountsUserListDirectLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserListDirectLicense;
 
 export type PatchAccountTypesAccountsUserListDirectLicensesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user list direct license. This feature is only available to data partners. */
 export const patchAccountTypesAccountsUserListDirectLicenses: API.OperationMethod<
@@ -1786,7 +1851,7 @@ export const patchAccountTypesAccountsUserListDirectLicenses: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountTypesAccountsUserListDirectLicensesRequest,
   output: PatchAccountTypesAccountsUserListDirectLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountTypesAccountsUserListGlobalLicensesRequest {
@@ -1807,7 +1872,10 @@ export type GetAccountTypesAccountsUserListGlobalLicensesResponse =
 export const GetAccountTypesAccountsUserListGlobalLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserListGlobalLicense;
 
-export type GetAccountTypesAccountsUserListGlobalLicensesError = DefaultErrors;
+export type GetAccountTypesAccountsUserListGlobalLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a user list global license. This feature is only available to data partners. */
 export const getAccountTypesAccountsUserListGlobalLicenses: API.OperationMethod<
@@ -1818,7 +1886,7 @@ export const getAccountTypesAccountsUserListGlobalLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountTypesAccountsUserListGlobalLicensesRequest,
   output: GetAccountTypesAccountsUserListGlobalLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountTypesAccountsUserListGlobalLicensesRequest {
@@ -1848,7 +1916,10 @@ export type ListAccountTypesAccountsUserListGlobalLicensesResponse =
 export const ListAccountTypesAccountsUserListGlobalLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserListGlobalLicensesResponse;
 
-export type ListAccountTypesAccountsUserListGlobalLicensesError = DefaultErrors;
+export type ListAccountTypesAccountsUserListGlobalLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all user list global licenses owned by the parent account. This feature is only available to data partners. */
 export const listAccountTypesAccountsUserListGlobalLicenses: API.PaginatedOperationMethod<
@@ -1859,7 +1930,7 @@ export const listAccountTypesAccountsUserListGlobalLicenses: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountTypesAccountsUserListGlobalLicensesRequest,
   output: ListAccountTypesAccountsUserListGlobalLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1892,7 +1963,11 @@ export const CreateAccountTypesAccountsUserListGlobalLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserListGlobalLicense;
 
 export type CreateAccountTypesAccountsUserListGlobalLicensesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a user list global license. This feature is only available to data partners. */
 export const createAccountTypesAccountsUserListGlobalLicenses: API.OperationMethod<
@@ -1903,7 +1978,7 @@ export const createAccountTypesAccountsUserListGlobalLicenses: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountTypesAccountsUserListGlobalLicensesRequest,
   output: CreateAccountTypesAccountsUserListGlobalLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountTypesAccountsUserListGlobalLicensesRequest {
@@ -1931,7 +2006,11 @@ export const PatchAccountTypesAccountsUserListGlobalLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserListGlobalLicense;
 
 export type PatchAccountTypesAccountsUserListGlobalLicensesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user list global license. This feature is only available to data partners. */
 export const patchAccountTypesAccountsUserListGlobalLicenses: API.OperationMethod<
@@ -1942,7 +2021,7 @@ export const patchAccountTypesAccountsUserListGlobalLicenses: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountTypesAccountsUserListGlobalLicensesRequest,
   output: PatchAccountTypesAccountsUserListGlobalLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest {
@@ -1976,7 +2055,9 @@ export const ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
   /*@__PURE__*/ /*#__PURE__*/ ListUserListGlobalLicenseCustomerInfosResponse;
 
 export type ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all customer info for a user list global license. This feature is only available to data partners. */
 export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfos: API.PaginatedOperationMethod<
@@ -1989,7 +2070,7 @@ export const listAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicense
     ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosRequest,
   output:
     ListAccountTypesAccountsUserListGlobalLicensesUserListGlobalLicenseCustomerInfosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2021,7 +2102,12 @@ export type RetrieveAccountTypesAccountsInsightsResponse =
 export const RetrieveAccountTypesAccountsInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveInsightsResponse;
 
-export type RetrieveAccountTypesAccountsInsightsError = DefaultErrors;
+export type RetrieveAccountTypesAccountsInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves marketing data insights for a given user list. This feature is only available to data partners. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}` */
 export const retrieveAccountTypesAccountsInsights: API.OperationMethod<
@@ -2032,7 +2118,7 @@ export const retrieveAccountTypesAccountsInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveAccountTypesAccountsInsightsRequest,
   output: RetrieveAccountTypesAccountsInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountTypesAccountsPartnerLinksRequest {
@@ -2055,7 +2141,12 @@ export type CreateAccountTypesAccountsPartnerLinksResponse = PartnerLink;
 export const CreateAccountTypesAccountsPartnerLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ PartnerLink;
 
-export type CreateAccountTypesAccountsPartnerLinksError = DefaultErrors;
+export type CreateAccountTypesAccountsPartnerLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a partner link for the given account. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` */
 export const createAccountTypesAccountsPartnerLinks: API.OperationMethod<
@@ -2066,7 +2157,7 @@ export const createAccountTypesAccountsPartnerLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountTypesAccountsPartnerLinksRequest,
   output: CreateAccountTypesAccountsPartnerLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchAccountTypesAccountsPartnerLinksRequest {
@@ -2096,7 +2187,10 @@ export type SearchAccountTypesAccountsPartnerLinksResponse =
 export const SearchAccountTypesAccountsPartnerLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchPartnerLinksResponse;
 
-export type SearchAccountTypesAccountsPartnerLinksError = DefaultErrors;
+export type SearchAccountTypesAccountsPartnerLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches for all partner links to and from a given account. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` */
 export const searchAccountTypesAccountsPartnerLinks: API.PaginatedOperationMethod<
@@ -2107,7 +2201,7 @@ export const searchAccountTypesAccountsPartnerLinks: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAccountTypesAccountsPartnerLinksRequest,
   output: SearchAccountTypesAccountsPartnerLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2131,7 +2225,12 @@ export type DeleteAccountTypesAccountsPartnerLinksResponse = Empty;
 export const DeleteAccountTypesAccountsPartnerLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountTypesAccountsPartnerLinksError = DefaultErrors;
+export type DeleteAccountTypesAccountsPartnerLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a partner link for the given account. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` */
 export const deleteAccountTypesAccountsPartnerLinks: API.OperationMethod<
@@ -2142,7 +2241,7 @@ export const deleteAccountTypesAccountsPartnerLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountTypesAccountsPartnerLinksRequest,
   output: DeleteAccountTypesAccountsPartnerLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountTypesAccountsUserListsRequest {
@@ -2162,7 +2261,10 @@ export type GetAccountTypesAccountsUserListsResponse = UserList;
 export const GetAccountTypesAccountsUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type GetAccountTypesAccountsUserListsError = DefaultErrors;
+export type GetAccountTypesAccountsUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a UserList. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}` */
 export const getAccountTypesAccountsUserLists: API.OperationMethod<
@@ -2173,7 +2275,7 @@ export const getAccountTypesAccountsUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountTypesAccountsUserListsRequest,
   output: GetAccountTypesAccountsUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountTypesAccountsUserListsRequest {
@@ -2204,7 +2306,12 @@ export type PatchAccountTypesAccountsUserListsResponse = UserList;
 export const PatchAccountTypesAccountsUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type PatchAccountTypesAccountsUserListsError = DefaultErrors;
+export type PatchAccountTypesAccountsUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a UserList. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}` */
 export const patchAccountTypesAccountsUserLists: API.OperationMethod<
@@ -2215,7 +2322,7 @@ export const patchAccountTypesAccountsUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountTypesAccountsUserListsRequest,
   output: PatchAccountTypesAccountsUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountTypesAccountsUserListsRequest {
@@ -2240,7 +2347,12 @@ export type DeleteAccountTypesAccountsUserListsResponse = Empty;
 export const DeleteAccountTypesAccountsUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountTypesAccountsUserListsError = DefaultErrors;
+export type DeleteAccountTypesAccountsUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a UserList. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}` */
 export const deleteAccountTypesAccountsUserLists: API.OperationMethod<
@@ -2251,7 +2363,7 @@ export const deleteAccountTypesAccountsUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountTypesAccountsUserListsRequest,
   output: DeleteAccountTypesAccountsUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountTypesAccountsUserListsRequest {
@@ -2280,7 +2392,10 @@ export type ListAccountTypesAccountsUserListsResponse = ListUserListsResponse;
 export const ListAccountTypesAccountsUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserListsResponse;
 
-export type ListAccountTypesAccountsUserListsError = DefaultErrors;
+export type ListAccountTypesAccountsUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists UserLists. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}` */
 export const listAccountTypesAccountsUserLists: API.PaginatedOperationMethod<
@@ -2291,7 +2406,7 @@ export const listAccountTypesAccountsUserLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountTypesAccountsUserListsRequest,
   output: ListAccountTypesAccountsUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2323,7 +2438,12 @@ export type CreateAccountTypesAccountsUserListsResponse = UserList;
 export const CreateAccountTypesAccountsUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type CreateAccountTypesAccountsUserListsError = DefaultErrors;
+export type CreateAccountTypesAccountsUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a UserList. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request: * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}` * `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}` */
 export const createAccountTypesAccountsUserLists: API.OperationMethod<
@@ -2334,7 +2454,7 @@ export const createAccountTypesAccountsUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountTypesAccountsUserListsRequest,
   output: CreateAccountTypesAccountsUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveAudienceMembersRequest_Op {
@@ -2358,7 +2478,12 @@ export type RemoveAudienceMembersResponse_Op = RemoveAudienceMembersResponse;
 export const RemoveAudienceMembersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ RemoveAudienceMembersResponse;
 
-export type RemoveAudienceMembersError = DefaultErrors;
+export type RemoveAudienceMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a list of AudienceMember resources from the provided Destination. */
 export const removeAudienceMembers: API.OperationMethod<
@@ -2369,7 +2494,7 @@ export const removeAudienceMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAudienceMembersRequest_Op,
   output: RemoveAudienceMembersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface IngestAudienceMembersRequest_Op {
@@ -2393,7 +2518,12 @@ export type IngestAudienceMembersResponse_Op = IngestAudienceMembersResponse;
 export const IngestAudienceMembersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ IngestAudienceMembersResponse;
 
-export type IngestAudienceMembersError = DefaultErrors;
+export type IngestAudienceMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a list of AudienceMember resources to the provided Destination. */
 export const ingestAudienceMembers: API.OperationMethod<
@@ -2404,5 +2534,5 @@ export const ingestAudienceMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IngestAudienceMembersRequest_Op,
   output: IngestAudienceMembersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

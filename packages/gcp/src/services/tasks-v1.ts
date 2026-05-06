@@ -192,6 +192,52 @@ export const TaskLists = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "TaskLists" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -223,7 +269,12 @@ export const InsertTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertTasksResponse = Task;
 export const InsertTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type InsertTasksError = DefaultErrors;
+export type InsertTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new task on the specified task list. Tasks assigned from Docs or Chat Spaces cannot be inserted from Tasks Public API; they can only be created by assigning them from Docs or Chat Spaces. A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time. */
 export const insertTasks: API.OperationMethod<
@@ -234,7 +285,7 @@ export const insertTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTasksRequest,
   output: InsertTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTasksRequest {
@@ -255,7 +306,7 @@ export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTasksResponse = Task;
 export const GetTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type GetTasksError = DefaultErrors;
+export type GetTasksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified task. */
 export const getTasks: API.OperationMethod<
@@ -266,7 +317,7 @@ export const getTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTasksRequest,
   output: GetTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MoveTasksRequest {
@@ -302,7 +353,12 @@ export const MoveTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MoveTasksResponse = Task;
 export const MoveTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type MoveTasksError = DefaultErrors;
+export type MoveTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the specified task to another position in the destination task list. If the destination list is not specified, the task is moved within its current list. This can include putting it as a child task under a new parent and/or move it to a different position among its sibling tasks. A user can have up to 2,000 subtasks per task. */
 export const moveTasks: API.OperationMethod<
@@ -313,7 +369,7 @@ export const moveTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveTasksRequest,
   output: MoveTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTasksRequest {
@@ -372,7 +428,7 @@ export const ListTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTasksResponse = Tasks;
 export const ListTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Tasks;
 
-export type ListTasksError = DefaultErrors;
+export type ListTasksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns all tasks in the specified task list. Doesn't return assigned tasks by default (from Docs, Chat Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time. */
 export const listTasks: API.PaginatedOperationMethod<
@@ -383,7 +439,7 @@ export const listTasks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTasksRequest,
   output: ListTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -412,7 +468,12 @@ export const DeleteTasksResponse: Schema.Schema<DeleteTasksResponse> =
     {},
   ) as any as Schema.Schema<DeleteTasksResponse>;
 
-export type DeleteTasksError = DefaultErrors;
+export type DeleteTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified task from the task list. If the task is assigned, both the assigned task and the original task (in Docs, Chat Spaces) are deleted. To delete the assigned task only, navigate to the assignment surface and unassign the task from there. */
 export const deleteTasks: API.OperationMethod<
@@ -423,7 +484,7 @@ export const deleteTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTasksRequest,
   output: DeleteTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchTasksRequest {
@@ -451,7 +512,12 @@ export const PatchTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchTasksResponse = Task;
 export const PatchTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type PatchTasksError = DefaultErrors;
+export type PatchTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified task. This method supports patch semantics. */
 export const patchTasks: API.OperationMethod<
@@ -462,7 +528,7 @@ export const patchTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTasksRequest,
   output: PatchTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateTasksRequest {
@@ -490,7 +556,12 @@ export const UpdateTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateTasksResponse = Task;
 export const UpdateTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type UpdateTasksError = DefaultErrors;
+export type UpdateTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified task. */
 export const updateTasks: API.OperationMethod<
@@ -501,7 +572,7 @@ export const updateTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTasksRequest,
   output: UpdateTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClearTasksRequest {
@@ -526,7 +597,12 @@ export const ClearTasksResponse: Schema.Schema<ClearTasksResponse> =
     {},
   ) as any as Schema.Schema<ClearTasksResponse>;
 
-export type ClearTasksError = DefaultErrors;
+export type ClearTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears all completed tasks from the specified task list. The affected tasks will be marked as 'hidden' and no longer be returned by default when retrieving all tasks for a task list. */
 export const clearTasks: API.OperationMethod<
@@ -537,7 +613,7 @@ export const clearTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearTasksRequest,
   output: ClearTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTasklistsRequest {
@@ -558,7 +634,7 @@ export const ListTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTasklistsResponse = TaskLists;
 export const ListTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskLists;
 
-export type ListTasklistsError = DefaultErrors;
+export type ListTasklistsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns all the authenticated user's task lists. A user can have up to 2000 lists at a time. */
 export const listTasklists: API.PaginatedOperationMethod<
@@ -569,7 +645,7 @@ export const listTasklists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTasklistsRequest,
   output: ListTasklistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -594,7 +670,12 @@ export const InsertTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertTasklistsResponse = TaskList;
 export const InsertTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
 
-export type InsertTasklistsError = DefaultErrors;
+export type InsertTasklistsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new task list and adds it to the authenticated user's task lists. A user can have up to 2000 lists at a time. */
 export const insertTasklists: API.OperationMethod<
@@ -605,7 +686,7 @@ export const insertTasklists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTasklistsRequest,
   output: InsertTasklistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTasklistsRequest {
@@ -623,7 +704,7 @@ export const GetTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTasklistsResponse = TaskList;
 export const GetTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
 
-export type GetTasklistsError = DefaultErrors;
+export type GetTasklistsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the authenticated user's specified task list. */
 export const getTasklists: API.OperationMethod<
@@ -634,7 +715,7 @@ export const getTasklists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTasklistsRequest,
   output: GetTasklistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchTasklistsRequest {
@@ -659,7 +740,12 @@ export const PatchTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchTasklistsResponse = TaskList;
 export const PatchTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
 
-export type PatchTasklistsError = DefaultErrors;
+export type PatchTasklistsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the authenticated user's specified task list. This method supports patch semantics. */
 export const patchTasklists: API.OperationMethod<
@@ -670,7 +756,7 @@ export const patchTasklists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTasklistsRequest,
   output: PatchTasklistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateTasklistsRequest {
@@ -697,7 +783,12 @@ export const UpdateTasklistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateTasklistsResponse = TaskList;
 export const UpdateTasklistsResponse = /*@__PURE__*/ /*#__PURE__*/ TaskList;
 
-export type UpdateTasklistsError = DefaultErrors;
+export type UpdateTasklistsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the authenticated user's specified task list. */
 export const updateTasklists: API.OperationMethod<
@@ -708,7 +799,7 @@ export const updateTasklists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTasklistsRequest,
   output: UpdateTasklistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTasklistsRequest {
@@ -731,7 +822,12 @@ export const DeleteTasklistsResponse: Schema.Schema<DeleteTasklistsResponse> =
     {},
   ) as any as Schema.Schema<DeleteTasklistsResponse>;
 
-export type DeleteTasklistsError = DefaultErrors;
+export type DeleteTasklistsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted. */
 export const deleteTasklists: API.OperationMethod<
@@ -742,5 +838,5 @@ export const deleteTasklists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTasklistsRequest,
   output: DeleteTasklistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

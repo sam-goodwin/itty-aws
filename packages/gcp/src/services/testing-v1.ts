@@ -1618,6 +1618,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1656,7 +1702,10 @@ export type GetTestEnvironmentCatalogResponse = TestEnvironmentCatalog;
 export const GetTestEnvironmentCatalogResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestEnvironmentCatalog;
 
-export type GetTestEnvironmentCatalogError = DefaultErrors;
+export type GetTestEnvironmentCatalogError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the catalog of supported test environments. May return any of the following canonical error codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist - INTERNAL - if an internal error occurred */
 export const getTestEnvironmentCatalog: API.OperationMethod<
@@ -1667,7 +1716,7 @@ export const getTestEnvironmentCatalog: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTestEnvironmentCatalogRequest,
   output: GetTestEnvironmentCatalogResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetApkDetailsApplicationDetailServiceRequest {
@@ -1697,7 +1746,12 @@ export type GetApkDetailsApplicationDetailServiceResponse =
 export const GetApkDetailsApplicationDetailServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetApkDetailsResponse;
 
-export type GetApkDetailsApplicationDetailServiceError = DefaultErrors;
+export type GetApkDetailsApplicationDetailServiceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the details of an Android application APK. */
 export const getApkDetailsApplicationDetailService: API.OperationMethod<
@@ -1708,7 +1762,7 @@ export const getApkDetailsApplicationDetailService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApkDetailsApplicationDetailServiceRequest,
   output: GetApkDetailsApplicationDetailServiceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTestMatricesRequest {
@@ -1734,7 +1788,7 @@ export type GetProjectsTestMatricesResponse = TestMatrix;
 export const GetProjectsTestMatricesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestMatrix;
 
-export type GetProjectsTestMatricesError = DefaultErrors;
+export type GetProjectsTestMatricesError = DefaultErrors | NotFound | Forbidden;
 
 /** Checks the status of a test matrix and the executions once they are created. The test matrix will contain the list of test executions to run if and only if the resultStorage.toolResultsExecution fields have been populated. Note: Flaky test executions may be added to the matrix at a later stage. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist */
 export const getProjectsTestMatrices: API.OperationMethod<
@@ -1745,7 +1799,7 @@ export const getProjectsTestMatrices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTestMatricesRequest,
   output: GetProjectsTestMatricesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsTestMatricesRequest {
@@ -1772,7 +1826,12 @@ export type CancelProjectsTestMatricesResponse = CancelTestMatrixResponse;
 export const CancelProjectsTestMatricesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CancelTestMatrixResponse;
 
-export type CancelProjectsTestMatricesError = DefaultErrors;
+export type CancelProjectsTestMatricesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist */
 export const cancelProjectsTestMatrices: API.OperationMethod<
@@ -1783,7 +1842,7 @@ export const cancelProjectsTestMatrices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsTestMatricesRequest,
   output: CancelProjectsTestMatricesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsTestMatricesRequest {
@@ -1813,7 +1872,12 @@ export type CreateProjectsTestMatricesResponse = TestMatrix;
 export const CreateProjectsTestMatricesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestMatrix;
 
-export type CreateProjectsTestMatricesError = DefaultErrors;
+export type CreateProjectsTestMatricesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. The returned matrix will not yet contain the executions that will be created for this matrix. Execution creation happens later on and will require a call to GetTestMatrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices. */
 export const createProjectsTestMatrices: API.OperationMethod<
@@ -1824,7 +1888,7 @@ export const createProjectsTestMatrices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTestMatricesRequest,
   output: CreateProjectsTestMatricesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDeviceSessionsRequest {
@@ -1853,7 +1917,10 @@ export type ListProjectsDeviceSessionsResponse = ListDeviceSessionsResponse;
 export const ListProjectsDeviceSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDeviceSessionsResponse;
 
-export type ListProjectsDeviceSessionsError = DefaultErrors;
+export type ListProjectsDeviceSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user. */
 export const listProjectsDeviceSessions: API.PaginatedOperationMethod<
@@ -1864,7 +1931,7 @@ export const listProjectsDeviceSessions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDeviceSessionsRequest,
   output: ListProjectsDeviceSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1888,7 +1955,10 @@ export type GetProjectsDeviceSessionsResponse = DeviceSession;
 export const GetProjectsDeviceSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeviceSession;
 
-export type GetProjectsDeviceSessionsError = DefaultErrors;
+export type GetProjectsDeviceSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession. */
 export const getProjectsDeviceSessions: API.OperationMethod<
@@ -1899,7 +1969,7 @@ export const getProjectsDeviceSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDeviceSessionsRequest,
   output: GetProjectsDeviceSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsDeviceSessionsRequest {
@@ -1922,7 +1992,12 @@ export type CancelProjectsDeviceSessionsResponse = Empty;
 export const CancelProjectsDeviceSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsDeviceSessionsError = DefaultErrors;
+export type CancelProjectsDeviceSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes the DeviceSession to state FINISHED and terminates all connections. Canceled sessions are not deleted and can be retrieved or listed by the user until they expire based on the 28 day deletion policy. */
 export const cancelProjectsDeviceSessions: API.OperationMethod<
@@ -1933,7 +2008,7 @@ export const cancelProjectsDeviceSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsDeviceSessionsRequest,
   output: CancelProjectsDeviceSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsDeviceSessionsRequest {
@@ -1959,7 +2034,12 @@ export type PatchProjectsDeviceSessionsResponse = DeviceSession;
 export const PatchProjectsDeviceSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeviceSession;
 
-export type PatchProjectsDeviceSessionsError = DefaultErrors;
+export type PatchProjectsDeviceSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current device session to the fields described by the update_mask. */
 export const patchProjectsDeviceSessions: API.OperationMethod<
@@ -1970,7 +2050,7 @@ export const patchProjectsDeviceSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsDeviceSessionsRequest,
   output: PatchProjectsDeviceSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsDeviceSessionsRequest {
@@ -1997,7 +2077,12 @@ export type CreateProjectsDeviceSessionsResponse = DeviceSession;
 export const CreateProjectsDeviceSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeviceSession;
 
-export type CreateProjectsDeviceSessionsError = DefaultErrors;
+export type CreateProjectsDeviceSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** POST /v1/projects/{project_id}/deviceSessions */
 export const createProjectsDeviceSessions: API.OperationMethod<
@@ -2008,5 +2093,5 @@ export const createProjectsDeviceSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDeviceSessionsRequest,
   output: CreateProjectsDeviceSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

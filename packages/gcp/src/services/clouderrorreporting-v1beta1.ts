@@ -269,6 +269,52 @@ export const ReportErrorEventResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -289,7 +335,12 @@ export type DeleteEventsProjectsResponse = DeleteEventsResponse;
 export const DeleteEventsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeleteEventsResponse;
 
-export type DeleteEventsProjectsError = DefaultErrors;
+export type DeleteEventsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all error events of a given project. */
 export const deleteEventsProjects: API.OperationMethod<
@@ -300,7 +351,7 @@ export const deleteEventsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventsProjectsRequest,
   output: DeleteEventsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsGroupsRequest {
@@ -319,7 +370,7 @@ export const GetProjectsGroupsRequest =
 export type GetProjectsGroupsResponse = ErrorGroup;
 export const GetProjectsGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ ErrorGroup;
 
-export type GetProjectsGroupsError = DefaultErrors;
+export type GetProjectsGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the specified group. */
 export const getProjectsGroups: API.OperationMethod<
@@ -330,7 +381,7 @@ export const getProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsGroupsRequest,
   output: GetProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateProjectsGroupsRequest {
@@ -353,7 +404,12 @@ export type UpdateProjectsGroupsResponse = ErrorGroup;
 export const UpdateProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ErrorGroup;
 
-export type UpdateProjectsGroupsError = DefaultErrors;
+export type UpdateProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replace the data for the specified group. Fails if the group does not exist. */
 export const updateProjectsGroups: API.OperationMethod<
@@ -364,7 +420,7 @@ export const updateProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsGroupsRequest,
   output: UpdateProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsGroupStatsRequest {
@@ -448,7 +504,7 @@ export type ListProjectsGroupStatsResponse = ListGroupStatsResponse;
 export const ListProjectsGroupStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGroupStatsResponse;
 
-export type ListProjectsGroupStatsError = DefaultErrors;
+export type ListProjectsGroupStatsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the specified groups. */
 export const listProjectsGroupStats: API.PaginatedOperationMethod<
@@ -459,7 +515,7 @@ export const listProjectsGroupStats: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGroupStatsRequest,
   output: ListProjectsGroupStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -519,7 +575,7 @@ export type ListProjectsEventsResponse = ListEventsResponse;
 export const ListProjectsEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEventsResponse;
 
-export type ListProjectsEventsError = DefaultErrors;
+export type ListProjectsEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the specified events. */
 export const listProjectsEvents: API.PaginatedOperationMethod<
@@ -530,7 +586,7 @@ export const listProjectsEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsEventsRequest,
   output: ListProjectsEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -561,7 +617,12 @@ export type ReportProjectsEventsResponse = ReportErrorEventResponse;
 export const ReportProjectsEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReportErrorEventResponse;
 
-export type ReportProjectsEventsError = DefaultErrors;
+export type ReportProjectsEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Report an individual error event and record the event to a log. This endpoint accepts **either** an OAuth token, **or** an [API key](https://support.google.com/cloud/answer/6158862) for authentication. To use an API key, append it to the URL as the value of a `key` parameter. For example: `POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:** [Error Reporting] (https://cloud.google.com/error-reporting) is a service built on Cloud Logging and can analyze log entries when all of the following are true: * Customer-managed encryption keys (CMEK) are disabled on the log bucket. * The log bucket satisfies one of the following: * The log bucket is stored in the same project where the logs originated. * The logs were routed to a project, and then that project stored those logs in a log bucket that it owns. */
 export const reportProjectsEvents: API.OperationMethod<
@@ -572,7 +633,7 @@ export const reportProjectsEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportProjectsEventsRequest,
   output: ReportProjectsEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteEventsProjectsLocationsRequest {
@@ -592,7 +653,12 @@ export type DeleteEventsProjectsLocationsResponse = DeleteEventsResponse;
 export const DeleteEventsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeleteEventsResponse;
 
-export type DeleteEventsProjectsLocationsError = DefaultErrors;
+export type DeleteEventsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all error events of a given project. */
 export const deleteEventsProjectsLocations: API.OperationMethod<
@@ -603,7 +669,7 @@ export const deleteEventsProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventsProjectsLocationsRequest,
   output: DeleteEventsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsGroupsRequest {
@@ -623,7 +689,10 @@ export type GetProjectsLocationsGroupsResponse = ErrorGroup;
 export const GetProjectsLocationsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ErrorGroup;
 
-export type GetProjectsLocationsGroupsError = DefaultErrors;
+export type GetProjectsLocationsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the specified group. */
 export const getProjectsLocationsGroups: API.OperationMethod<
@@ -634,7 +703,7 @@ export const getProjectsLocationsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGroupsRequest,
   output: GetProjectsLocationsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateProjectsLocationsGroupsRequest {
@@ -657,7 +726,12 @@ export type UpdateProjectsLocationsGroupsResponse = ErrorGroup;
 export const UpdateProjectsLocationsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ErrorGroup;
 
-export type UpdateProjectsLocationsGroupsError = DefaultErrors;
+export type UpdateProjectsLocationsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replace the data for the specified group. Fails if the group does not exist. */
 export const updateProjectsLocationsGroups: API.OperationMethod<
@@ -668,7 +742,7 @@ export const updateProjectsLocationsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsGroupsRequest,
   output: UpdateProjectsLocationsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGroupStatsRequest {
@@ -752,7 +826,10 @@ export type ListProjectsLocationsGroupStatsResponse = ListGroupStatsResponse;
 export const ListProjectsLocationsGroupStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGroupStatsResponse;
 
-export type ListProjectsLocationsGroupStatsError = DefaultErrors;
+export type ListProjectsLocationsGroupStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the specified groups. */
 export const listProjectsLocationsGroupStats: API.PaginatedOperationMethod<
@@ -763,7 +840,7 @@ export const listProjectsLocationsGroupStats: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGroupStatsRequest,
   output: ListProjectsLocationsGroupStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -823,7 +900,10 @@ export type ListProjectsLocationsEventsResponse = ListEventsResponse;
 export const ListProjectsLocationsEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEventsResponse;
 
-export type ListProjectsLocationsEventsError = DefaultErrors;
+export type ListProjectsLocationsEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the specified events. */
 export const listProjectsLocationsEvents: API.PaginatedOperationMethod<
@@ -834,7 +914,7 @@ export const listProjectsLocationsEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEventsRequest,
   output: ListProjectsLocationsEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

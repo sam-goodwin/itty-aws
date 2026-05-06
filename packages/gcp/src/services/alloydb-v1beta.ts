@@ -3406,6 +3406,52 @@ export const CloudControl2SharedOperationsReconciliationOperationMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3441,7 +3487,7 @@ export type ListProjectsLocationsResponse =
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -3452,7 +3498,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3476,7 +3522,7 @@ export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationLocation;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -3487,7 +3533,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -3521,7 +3567,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -3532,7 +3581,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3556,7 +3605,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -3567,7 +3619,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -3587,7 +3639,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -3598,7 +3655,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -3618,7 +3675,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -3629,7 +3691,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreFromCloudSQLProjectsLocationsClustersRequest {
@@ -3656,7 +3718,12 @@ export type RestoreFromCloudSQLProjectsLocationsClustersResponse = Operation;
 export const RestoreFromCloudSQLProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestoreFromCloudSQLProjectsLocationsClustersError = DefaultErrors;
+export type RestoreFromCloudSQLProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores an AlloyDB cluster from a CloudSQL resource. */
 export const restoreFromCloudSQLProjectsLocationsClusters: API.OperationMethod<
@@ -3667,7 +3734,7 @@ export const restoreFromCloudSQLProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreFromCloudSQLProjectsLocationsClustersRequest,
   output: RestoreFromCloudSQLProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersRequest {
@@ -3699,7 +3766,10 @@ export type ListProjectsLocationsClustersResponse = ListClustersResponse;
 export const ListProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
 
-export type ListProjectsLocationsClustersError = DefaultErrors;
+export type ListProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Clusters in a given project and location. */
 export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
@@ -3710,7 +3780,7 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsClustersRequest,
   output: ListProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3741,7 +3811,10 @@ export type GetProjectsLocationsClustersResponse = Cluster;
 export const GetProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cluster;
 
-export type GetProjectsLocationsClustersError = DefaultErrors;
+export type GetProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Cluster. */
 export const getProjectsLocationsClusters: API.OperationMethod<
@@ -3752,7 +3825,7 @@ export const getProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersRequest,
   output: GetProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsClustersRequest {
@@ -3786,7 +3859,12 @@ export type CreateProjectsLocationsClustersResponse = Operation;
 export const CreateProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsClustersError = DefaultErrors;
+export type CreateProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Cluster in a given project and location. */
 export const createProjectsLocationsClusters: API.OperationMethod<
@@ -3797,7 +3875,7 @@ export const createProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsClustersRequest,
   output: CreateProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsClustersRequest {
@@ -3836,7 +3914,12 @@ export type PatchProjectsLocationsClustersResponse = Operation;
 export const PatchProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsClustersError = DefaultErrors;
+export type PatchProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Cluster. */
 export const patchProjectsLocationsClusters: API.OperationMethod<
@@ -3847,7 +3930,7 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsClustersRequest,
   output: PatchProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsClustersRequest {
@@ -3870,7 +3953,12 @@ export type ExportProjectsLocationsClustersResponse = Operation;
 export const ExportProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportProjectsLocationsClustersError = DefaultErrors;
+export type ExportProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports data from the cluster. Imperative only. */
 export const exportProjectsLocationsClusters: API.OperationMethod<
@@ -3881,7 +3969,7 @@ export const exportProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsClustersRequest,
   output: ExportProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsClustersRequest {
@@ -3904,7 +3992,12 @@ export type ImportProjectsLocationsClustersResponse = Operation;
 export const ImportProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsClustersError = DefaultErrors;
+export type ImportProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports data to the cluster. Imperative only. */
 export const importProjectsLocationsClusters: API.OperationMethod<
@@ -3915,7 +4008,7 @@ export const importProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsClustersRequest,
   output: ImportProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpgradeProjectsLocationsClustersRequest {
@@ -3938,7 +4031,12 @@ export type UpgradeProjectsLocationsClustersResponse = Operation;
 export const UpgradeProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpgradeProjectsLocationsClustersError = DefaultErrors;
+export type UpgradeProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrades a single Cluster. Imperative only. */
 export const upgradeProjectsLocationsClusters: API.OperationMethod<
@@ -3949,7 +4047,7 @@ export const upgradeProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpgradeProjectsLocationsClustersRequest,
   output: UpgradeProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsClustersRequest {
@@ -3983,7 +4081,12 @@ export type DeleteProjectsLocationsClustersResponse = Operation;
 export const DeleteProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsClustersError = DefaultErrors;
+export type DeleteProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Cluster. */
 export const deleteProjectsLocationsClusters: API.OperationMethod<
@@ -3994,7 +4097,7 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersRequest,
   output: DeleteProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PromoteProjectsLocationsClustersRequest {
@@ -4017,7 +4120,12 @@ export type PromoteProjectsLocationsClustersResponse = Operation;
 export const PromoteProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PromoteProjectsLocationsClustersError = DefaultErrors;
+export type PromoteProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Promotes a SECONDARY cluster. This turns down replication from the PRIMARY cluster and promotes a secondary cluster into its own standalone cluster. Imperative only. */
 export const promoteProjectsLocationsClusters: API.OperationMethod<
@@ -4028,7 +4136,7 @@ export const promoteProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PromoteProjectsLocationsClustersRequest,
   output: PromoteProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SwitchoverProjectsLocationsClustersRequest {
@@ -4051,7 +4159,12 @@ export type SwitchoverProjectsLocationsClustersResponse = Operation;
 export const SwitchoverProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SwitchoverProjectsLocationsClustersError = DefaultErrors;
+export type SwitchoverProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly promoted cluster. */
 export const switchoverProjectsLocationsClusters: API.OperationMethod<
@@ -4062,7 +4175,7 @@ export const switchoverProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchoverProjectsLocationsClustersRequest,
   output: SwitchoverProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsLocationsClustersRequest {
@@ -4089,7 +4202,12 @@ export type RestoreProjectsLocationsClustersResponse = Operation;
 export const RestoreProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestoreProjectsLocationsClustersError = DefaultErrors;
+export type RestoreProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Cluster in a given project and location, with a volume restored from the provided source, either a backup ID or a point-in-time and a source cluster. */
 export const restoreProjectsLocationsClusters: API.OperationMethod<
@@ -4100,7 +4218,7 @@ export const restoreProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsClustersRequest,
   output: RestoreProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatesecondaryProjectsLocationsClustersRequest {
@@ -4138,7 +4256,12 @@ export type CreatesecondaryProjectsLocationsClustersResponse = Operation;
 export const CreatesecondaryProjectsLocationsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreatesecondaryProjectsLocationsClustersError = DefaultErrors;
+export type CreatesecondaryProjectsLocationsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a cluster of type SECONDARY in the given location using the primary cluster as the source. */
 export const createsecondaryProjectsLocationsClusters: API.OperationMethod<
@@ -4149,7 +4272,7 @@ export const createsecondaryProjectsLocationsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatesecondaryProjectsLocationsClustersRequest,
   output: CreatesecondaryProjectsLocationsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsClustersInstancesRequest {
@@ -4182,7 +4305,10 @@ export type ListProjectsLocationsClustersInstancesResponse =
 export const ListProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
 
-export type ListProjectsLocationsClustersInstancesError = DefaultErrors;
+export type ListProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Instances in a given project and location. */
 export const listProjectsLocationsClustersInstances: API.PaginatedOperationMethod<
@@ -4193,7 +4319,7 @@ export const listProjectsLocationsClustersInstances: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsClustersInstancesRequest,
   output: ListProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4224,7 +4350,10 @@ export type GetProjectsLocationsClustersInstancesResponse = Instance;
 export const GetProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type GetProjectsLocationsClustersInstancesError = DefaultErrors;
+export type GetProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Instance. */
 export const getProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4235,7 +4364,7 @@ export const getProjectsLocationsClustersInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersInstancesRequest,
   output: GetProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsClustersInstancesRequest {
@@ -4273,7 +4402,12 @@ export type CreateProjectsLocationsClustersInstancesResponse = Operation;
 export const CreateProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsClustersInstancesError = DefaultErrors;
+export type CreateProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Instance in a given project and location. */
 export const createProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4284,7 +4418,7 @@ export const createProjectsLocationsClustersInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsClustersInstancesRequest,
   output: CreateProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreatesecondaryProjectsLocationsClustersInstancesRequest {
@@ -4324,7 +4458,11 @@ export const CreatesecondaryProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreatesecondaryProjectsLocationsClustersInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SECONDARY Instance in a given project and location. */
 export const createsecondaryProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4335,7 +4473,7 @@ export const createsecondaryProjectsLocationsClustersInstances: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatesecondaryProjectsLocationsClustersInstancesRequest,
   output: CreatesecondaryProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsClustersInstancesRequest {
@@ -4374,7 +4512,12 @@ export type PatchProjectsLocationsClustersInstancesResponse = Operation;
 export const PatchProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsClustersInstancesError = DefaultErrors;
+export type PatchProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Instance. */
 export const patchProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4385,7 +4528,7 @@ export const patchProjectsLocationsClustersInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsClustersInstancesRequest,
   output: PatchProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsClustersInstancesRequest {
@@ -4416,7 +4559,12 @@ export type DeleteProjectsLocationsClustersInstancesResponse = Operation;
 export const DeleteProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsClustersInstancesError = DefaultErrors;
+export type DeleteProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Instance. */
 export const deleteProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4427,7 +4575,7 @@ export const deleteProjectsLocationsClustersInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersInstancesRequest,
   output: DeleteProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FailoverProjectsLocationsClustersInstancesRequest {
@@ -4450,7 +4598,12 @@ export type FailoverProjectsLocationsClustersInstancesResponse = Operation;
 export const FailoverProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type FailoverProjectsLocationsClustersInstancesError = DefaultErrors;
+export type FailoverProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Forces a Failover for a highly available instance. Failover promotes the HA standby instance as the new primary. Imperative only. */
 export const failoverProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4461,7 +4614,7 @@ export const failoverProjectsLocationsClustersInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverProjectsLocationsClustersInstancesRequest,
   output: FailoverProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InjectFaultProjectsLocationsClustersInstancesRequest {
@@ -4488,7 +4641,12 @@ export type InjectFaultProjectsLocationsClustersInstancesResponse = Operation;
 export const InjectFaultProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InjectFaultProjectsLocationsClustersInstancesError = DefaultErrors;
+export type InjectFaultProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Injects fault in an instance. Imperative only. */
 export const injectFaultProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4499,7 +4657,7 @@ export const injectFaultProjectsLocationsClustersInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InjectFaultProjectsLocationsClustersInstancesRequest,
   output: InjectFaultProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestartProjectsLocationsClustersInstancesRequest {
@@ -4522,7 +4680,12 @@ export type RestartProjectsLocationsClustersInstancesResponse = Operation;
 export const RestartProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestartProjectsLocationsClustersInstancesError = DefaultErrors;
+export type RestartProjectsLocationsClustersInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restart an Instance in a cluster. Imperative only. */
 export const restartProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4533,7 +4696,7 @@ export const restartProjectsLocationsClustersInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestartProjectsLocationsClustersInstancesRequest,
   output: RestartProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConnectionInfoProjectsLocationsClustersInstancesRequest {
@@ -4558,7 +4721,9 @@ export const GetConnectionInfoProjectsLocationsClustersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConnectionInfo;
 
 export type GetConnectionInfoProjectsLocationsClustersInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get instance metadata used for a connection. */
 export const getConnectionInfoProjectsLocationsClustersInstances: API.OperationMethod<
@@ -4569,7 +4734,7 @@ export const getConnectionInfoProjectsLocationsClustersInstances: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectionInfoProjectsLocationsClustersInstancesRequest,
   output: GetConnectionInfoProjectsLocationsClustersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsClustersUsersRequest {
@@ -4601,7 +4766,10 @@ export type ListProjectsLocationsClustersUsersResponse = ListUsersResponse;
 export const ListProjectsLocationsClustersUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
 
-export type ListProjectsLocationsClustersUsersError = DefaultErrors;
+export type ListProjectsLocationsClustersUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Users in a given project and location. */
 export const listProjectsLocationsClustersUsers: API.PaginatedOperationMethod<
@@ -4612,7 +4780,7 @@ export const listProjectsLocationsClustersUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsClustersUsersRequest,
   output: ListProjectsLocationsClustersUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4636,7 +4804,10 @@ export type GetProjectsLocationsClustersUsersResponse = User;
 export const GetProjectsLocationsClustersUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type GetProjectsLocationsClustersUsersError = DefaultErrors;
+export type GetProjectsLocationsClustersUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single User. */
 export const getProjectsLocationsClustersUsers: API.OperationMethod<
@@ -4647,7 +4818,7 @@ export const getProjectsLocationsClustersUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsClustersUsersRequest,
   output: GetProjectsLocationsClustersUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsClustersUsersRequest {
@@ -4681,7 +4852,12 @@ export type CreateProjectsLocationsClustersUsersResponse = User;
 export const CreateProjectsLocationsClustersUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type CreateProjectsLocationsClustersUsersError = DefaultErrors;
+export type CreateProjectsLocationsClustersUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new User in a given project, location, and cluster. */
 export const createProjectsLocationsClustersUsers: API.OperationMethod<
@@ -4692,7 +4868,7 @@ export const createProjectsLocationsClustersUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsClustersUsersRequest,
   output: CreateProjectsLocationsClustersUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsClustersUsersRequest {
@@ -4731,7 +4907,12 @@ export type PatchProjectsLocationsClustersUsersResponse = User;
 export const PatchProjectsLocationsClustersUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type PatchProjectsLocationsClustersUsersError = DefaultErrors;
+export type PatchProjectsLocationsClustersUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single User. */
 export const patchProjectsLocationsClustersUsers: API.OperationMethod<
@@ -4742,7 +4923,7 @@ export const patchProjectsLocationsClustersUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsClustersUsersRequest,
   output: PatchProjectsLocationsClustersUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsClustersUsersRequest {
@@ -4770,7 +4951,12 @@ export type DeleteProjectsLocationsClustersUsersResponse = Empty;
 export const DeleteProjectsLocationsClustersUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsClustersUsersError = DefaultErrors;
+export type DeleteProjectsLocationsClustersUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single User. */
 export const deleteProjectsLocationsClustersUsers: API.OperationMethod<
@@ -4781,7 +4967,7 @@ export const deleteProjectsLocationsClustersUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsClustersUsersRequest,
   output: DeleteProjectsLocationsClustersUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsEndpointsRequest {
@@ -4801,7 +4987,10 @@ export type GetProjectsLocationsEndpointsResponse = Endpoint;
 export const GetProjectsLocationsEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Endpoint;
 
-export type GetProjectsLocationsEndpointsError = DefaultErrors;
+export type GetProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Endpoint. */
 export const getProjectsLocationsEndpoints: API.OperationMethod<
@@ -4812,7 +5001,7 @@ export const getProjectsLocationsEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsEndpointsRequest,
   output: GetProjectsLocationsEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsEndpointsRequest {
@@ -4844,7 +5033,10 @@ export type ListProjectsLocationsEndpointsResponse = ListEndpointsResponse;
 export const ListProjectsLocationsEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEndpointsResponse;
 
-export type ListProjectsLocationsEndpointsError = DefaultErrors;
+export type ListProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Endpoints in a given project and location. */
 export const listProjectsLocationsEndpoints: API.PaginatedOperationMethod<
@@ -4855,7 +5047,7 @@ export const listProjectsLocationsEndpoints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEndpointsRequest,
   output: ListProjectsLocationsEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4897,7 +5089,12 @@ export type CreateProjectsLocationsEndpointsResponse = Operation;
 export const CreateProjectsLocationsEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsEndpointsError = DefaultErrors;
+export type CreateProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Endpoint in a given project and location. */
 export const createProjectsLocationsEndpoints: API.OperationMethod<
@@ -4908,7 +5105,7 @@ export const createProjectsLocationsEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEndpointsRequest,
   output: CreateProjectsLocationsEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsEndpointsRequest {
@@ -4947,7 +5144,12 @@ export type PatchProjectsLocationsEndpointsResponse = Operation;
 export const PatchProjectsLocationsEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsEndpointsError = DefaultErrors;
+export type PatchProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Endpoint. */
 export const patchProjectsLocationsEndpoints: API.OperationMethod<
@@ -4958,7 +5160,7 @@ export const patchProjectsLocationsEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsEndpointsRequest,
   output: PatchProjectsLocationsEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEndpointsRequest {
@@ -4989,7 +5191,12 @@ export type DeleteProjectsLocationsEndpointsResponse = Operation;
 export const DeleteProjectsLocationsEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsEndpointsError = DefaultErrors;
+export type DeleteProjectsLocationsEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Endpoint. */
 export const deleteProjectsLocationsEndpoints: API.OperationMethod<
@@ -5000,7 +5207,7 @@ export const deleteProjectsLocationsEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEndpointsRequest,
   output: DeleteProjectsLocationsEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBackupsRequest {
@@ -5039,7 +5246,10 @@ export type ListProjectsLocationsBackupsResponse = ListBackupsResponse;
 export const ListProjectsLocationsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
 
-export type ListProjectsLocationsBackupsError = DefaultErrors;
+export type ListProjectsLocationsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Backups in a given project and location. */
 export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
@@ -5050,7 +5260,7 @@ export const listProjectsLocationsBackups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBackupsRequest,
   output: ListProjectsLocationsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5081,7 +5291,10 @@ export type GetProjectsLocationsBackupsResponse = Backup;
 export const GetProjectsLocationsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type GetProjectsLocationsBackupsError = DefaultErrors;
+export type GetProjectsLocationsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Backup. */
 export const getProjectsLocationsBackups: API.OperationMethod<
@@ -5092,7 +5305,7 @@ export const getProjectsLocationsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBackupsRequest,
   output: GetProjectsLocationsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsBackupsRequest {
@@ -5126,7 +5339,12 @@ export type CreateProjectsLocationsBackupsResponse = Operation;
 export const CreateProjectsLocationsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsBackupsError = DefaultErrors;
+export type CreateProjectsLocationsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Backup in a given project and location. */
 export const createProjectsLocationsBackups: API.OperationMethod<
@@ -5137,7 +5355,7 @@ export const createProjectsLocationsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBackupsRequest,
   output: CreateProjectsLocationsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsBackupsRequest {
@@ -5176,7 +5394,12 @@ export type PatchProjectsLocationsBackupsResponse = Operation;
 export const PatchProjectsLocationsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsBackupsError = DefaultErrors;
+export type PatchProjectsLocationsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single Backup. */
 export const patchProjectsLocationsBackups: API.OperationMethod<
@@ -5187,7 +5410,7 @@ export const patchProjectsLocationsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBackupsRequest,
   output: PatchProjectsLocationsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsBackupsRequest {
@@ -5218,7 +5441,12 @@ export type DeleteProjectsLocationsBackupsResponse = Operation;
 export const DeleteProjectsLocationsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsBackupsError = DefaultErrors;
+export type DeleteProjectsLocationsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single Backup. */
 export const deleteProjectsLocationsBackups: API.OperationMethod<
@@ -5229,7 +5457,7 @@ export const deleteProjectsLocationsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBackupsRequest,
   output: DeleteProjectsLocationsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSupportedDatabaseFlagsRequest {
@@ -5259,7 +5487,10 @@ export type ListProjectsLocationsSupportedDatabaseFlagsResponse =
 export const ListProjectsLocationsSupportedDatabaseFlagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSupportedDatabaseFlagsResponse;
 
-export type ListProjectsLocationsSupportedDatabaseFlagsError = DefaultErrors;
+export type ListProjectsLocationsSupportedDatabaseFlagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SupportedDatabaseFlags for a given project and location. */
 export const listProjectsLocationsSupportedDatabaseFlags: API.PaginatedOperationMethod<
@@ -5270,7 +5501,7 @@ export const listProjectsLocationsSupportedDatabaseFlags: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSupportedDatabaseFlagsRequest,
   output: ListProjectsLocationsSupportedDatabaseFlagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

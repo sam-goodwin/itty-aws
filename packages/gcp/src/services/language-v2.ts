@@ -3625,6 +3625,52 @@ export const XPSPreprocessResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "XPSPreprocessResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3649,7 +3695,12 @@ export type ModerateTextDocumentsResponse = ModerateTextResponse;
 export const ModerateTextDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ModerateTextResponse;
 
-export type ModerateTextDocumentsError = DefaultErrors;
+export type ModerateTextDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moderates a document for harmful and sensitive categories. */
 export const moderateTextDocuments: API.OperationMethod<
@@ -3660,7 +3711,7 @@ export const moderateTextDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModerateTextDocumentsRequest,
   output: ModerateTextDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateTextDocumentsRequest {
@@ -3684,7 +3735,12 @@ export type AnnotateTextDocumentsResponse = AnnotateTextResponse;
 export const AnnotateTextDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnnotateTextResponse;
 
-export type AnnotateTextDocumentsError = DefaultErrors;
+export type AnnotateTextDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** A convenience method that provides all features in one call. */
 export const annotateTextDocuments: API.OperationMethod<
@@ -3695,7 +3751,7 @@ export const annotateTextDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateTextDocumentsRequest,
   output: AnnotateTextDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClassifyTextDocumentsRequest {
@@ -3719,7 +3775,12 @@ export type ClassifyTextDocumentsResponse = ClassifyTextResponse;
 export const ClassifyTextDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClassifyTextResponse;
 
-export type ClassifyTextDocumentsError = DefaultErrors;
+export type ClassifyTextDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Classifies a document into categories. */
 export const classifyTextDocuments: API.OperationMethod<
@@ -3730,7 +3791,7 @@ export const classifyTextDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClassifyTextDocumentsRequest,
   output: ClassifyTextDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeSentimentDocumentsRequest {
@@ -3754,7 +3815,12 @@ export type AnalyzeSentimentDocumentsResponse = AnalyzeSentimentResponse;
 export const AnalyzeSentimentDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeSentimentResponse;
 
-export type AnalyzeSentimentDocumentsError = DefaultErrors;
+export type AnalyzeSentimentDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyzes the sentiment of the provided text. */
 export const analyzeSentimentDocuments: API.OperationMethod<
@@ -3765,7 +3831,7 @@ export const analyzeSentimentDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeSentimentDocumentsRequest,
   output: AnalyzeSentimentDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeEntitiesDocumentsRequest {
@@ -3789,7 +3855,12 @@ export type AnalyzeEntitiesDocumentsResponse = AnalyzeEntitiesResponse;
 export const AnalyzeEntitiesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeEntitiesResponse;
 
-export type AnalyzeEntitiesDocumentsError = DefaultErrors;
+export type AnalyzeEntitiesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds named entities (currently proper names and common nouns) in the text along with entity types, probability, mentions for each entity, and other properties. */
 export const analyzeEntitiesDocuments: API.OperationMethod<
@@ -3800,5 +3871,5 @@ export const analyzeEntitiesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeEntitiesDocumentsRequest,
   output: AnalyzeEntitiesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

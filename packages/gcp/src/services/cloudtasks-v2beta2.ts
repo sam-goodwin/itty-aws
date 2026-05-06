@@ -769,6 +769,52 @@ export const CmekConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CmekConfig" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -803,7 +849,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -814,7 +860,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -838,7 +884,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -849,7 +895,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateCmekConfigProjectsLocationsRequest {
@@ -875,7 +921,12 @@ export type UpdateCmekConfigProjectsLocationsResponse = CmekConfig;
 export const UpdateCmekConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CmekConfig;
 
-export type UpdateCmekConfigProjectsLocationsError = DefaultErrors;
+export type UpdateCmekConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key associated with the Cloud Tasks location (Creates if the key does not already exist). All new tasks created in the location will be encrypted at-rest with the KMS-key provided in the config. */
 export const updateCmekConfigProjectsLocations: API.OperationMethod<
@@ -886,7 +937,7 @@ export const updateCmekConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCmekConfigProjectsLocationsRequest,
   output: UpdateCmekConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCmekConfigProjectsLocationsRequest {
@@ -906,7 +957,10 @@ export type GetCmekConfigProjectsLocationsResponse = CmekConfig;
 export const GetCmekConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CmekConfig;
 
-export type GetCmekConfigProjectsLocationsError = DefaultErrors;
+export type GetCmekConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks lcoation. By default there is no kms_key configured. */
 export const getCmekConfigProjectsLocations: API.OperationMethod<
@@ -917,7 +971,7 @@ export const getCmekConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekConfigProjectsLocationsRequest,
   output: GetCmekConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -937,7 +991,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -948,7 +1005,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsQueuesRequest {
@@ -980,7 +1037,10 @@ export type ListProjectsLocationsQueuesResponse = ListQueuesResponse;
 export const ListProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListQueuesResponse;
 
-export type ListProjectsLocationsQueuesError = DefaultErrors;
+export type ListProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists queues. Queues are returned in lexicographical order. */
 export const listProjectsLocationsQueues: API.PaginatedOperationMethod<
@@ -991,7 +1051,7 @@ export const listProjectsLocationsQueues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsQueuesRequest,
   output: ListProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1018,7 +1078,10 @@ export type GetProjectsLocationsQueuesResponse = Queue;
 export const GetProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Queue;
 
-export type GetProjectsLocationsQueuesError = DefaultErrors;
+export type GetProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a queue. */
 export const getProjectsLocationsQueues: API.OperationMethod<
@@ -1029,7 +1092,7 @@ export const getProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsQueuesRequest,
   output: GetProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsQueuesRequest {
@@ -1052,7 +1115,12 @@ export type CreateProjectsLocationsQueuesResponse = Queue;
 export const CreateProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Queue;
 
-export type CreateProjectsLocationsQueuesError = DefaultErrors;
+export type CreateProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method. */
 export const createProjectsLocationsQueues: API.OperationMethod<
@@ -1063,7 +1131,7 @@ export const createProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsQueuesRequest,
   output: CreateProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsQueuesRequest {
@@ -1089,7 +1157,12 @@ export type PatchProjectsLocationsQueuesResponse = Queue;
 export const PatchProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Queue;
 
-export type PatchProjectsLocationsQueuesError = DefaultErrors;
+export type PatchProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a queue. This method creates the queue if it does not exist and updates the queue if it does exist. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method. */
 export const patchProjectsLocationsQueues: API.OperationMethod<
@@ -1100,7 +1173,7 @@ export const patchProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsQueuesRequest,
   output: PatchProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsQueuesRequest {
@@ -1120,7 +1193,12 @@ export type DeleteProjectsLocationsQueuesResponse = Empty;
 export const DeleteProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsQueuesError = DefaultErrors;
+export type DeleteProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a queue. This command will delete the queue even if it has tasks in it. Note: If you delete a queue, you may be prevented from creating a new queue with the same name as the deleted queue for a tombstone window of up to 3 days. During this window, the CreateQueue operation may appear to recreate the queue, but this can be misleading. If you attempt to create a queue with the same name as one that is in the tombstone window, run GetQueue to confirm that the queue creation was successful. If GetQueue returns 200 response code, your queue was successfully created with the name of the previously deleted queue. Otherwise, your queue did not successfully recreate. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method. */
 export const deleteProjectsLocationsQueues: API.OperationMethod<
@@ -1131,7 +1209,7 @@ export const deleteProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsQueuesRequest,
   output: DeleteProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsQueuesRequest {
@@ -1154,7 +1232,12 @@ export type PurgeProjectsLocationsQueuesResponse = Queue;
 export const PurgeProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Queue;
 
-export type PurgeProjectsLocationsQueuesError = DefaultErrors;
+export type PurgeProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Purges a queue by deleting all of its tasks. All tasks created before this method is called are permanently deleted. Purge operations can take up to one minute to take effect. Tasks might be dispatched before the purge takes effect. A purge is irreversible. */
 export const purgeProjectsLocationsQueues: API.OperationMethod<
@@ -1165,7 +1248,7 @@ export const purgeProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsQueuesRequest,
   output: PurgeProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseProjectsLocationsQueuesRequest {
@@ -1188,7 +1271,12 @@ export type PauseProjectsLocationsQueuesResponse = Queue;
 export const PauseProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Queue;
 
-export type PauseProjectsLocationsQueuesError = DefaultErrors;
+export type PauseProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pauses the queue. If a queue is paused then the system will stop dispatching tasks until the queue is resumed via ResumeQueue. Tasks can still be added when the queue is paused. A queue is paused if its state is PAUSED. */
 export const pauseProjectsLocationsQueues: API.OperationMethod<
@@ -1199,7 +1287,7 @@ export const pauseProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseProjectsLocationsQueuesRequest,
   output: PauseProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeProjectsLocationsQueuesRequest {
@@ -1222,7 +1310,12 @@ export type ResumeProjectsLocationsQueuesResponse = Queue;
 export const ResumeProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Queue;
 
-export type ResumeProjectsLocationsQueuesError = DefaultErrors;
+export type ResumeProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resume a queue. This method resumes a queue after it has been PAUSED or DISABLED. The state of a queue is stored in the queue's state; after calling this method it will be set to RUNNING. WARNING: Resuming many high-QPS queues at the same time can lead to target overloading. If you are resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling Risks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling). */
 export const resumeProjectsLocationsQueues: API.OperationMethod<
@@ -1233,7 +1326,7 @@ export const resumeProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeProjectsLocationsQueuesRequest,
   output: ResumeProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsQueuesRequest {
@@ -1260,7 +1353,12 @@ export type GetIamPolicyProjectsLocationsQueuesResponse = Policy;
 export const GetIamPolicyProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsQueuesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a Queue. Returns an empty policy if the resource exists and does not have a policy set. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.getIamPolicy` */
 export const getIamPolicyProjectsLocationsQueues: API.OperationMethod<
@@ -1271,7 +1369,7 @@ export const getIamPolicyProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsQueuesRequest,
   output: GetIamPolicyProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsQueuesRequest {
@@ -1298,7 +1396,12 @@ export type SetIamPolicyProjectsLocationsQueuesResponse = Policy;
 export const SetIamPolicyProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsQueuesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy for a Queue. Replaces any existing policy. Note: The Cloud Console does not check queue-level IAM permissions yet. Project-level permissions are required to use the Cloud Console. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.setIamPolicy` */
 export const setIamPolicyProjectsLocationsQueues: API.OperationMethod<
@@ -1309,7 +1412,7 @@ export const setIamPolicyProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsQueuesRequest,
   output: SetIamPolicyProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsQueuesRequest {
@@ -1337,7 +1440,12 @@ export type TestIamPermissionsProjectsLocationsQueuesResponse =
 export const TestIamPermissionsProjectsLocationsQueuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsQueuesError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsQueuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on a Queue. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsQueues: API.OperationMethod<
@@ -1348,7 +1456,7 @@ export const testIamPermissionsProjectsLocationsQueues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsQueuesRequest,
   output: TestIamPermissionsProjectsLocationsQueuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsQueuesTasksRequest {
@@ -1379,7 +1487,10 @@ export type ListProjectsLocationsQueuesTasksResponse = ListTasksResponse;
 export const ListProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTasksResponse;
 
-export type ListProjectsLocationsQueuesTasksError = DefaultErrors;
+export type ListProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the tasks in a queue. By default, only the BASIC view is retrieved due to performance considerations; response_view controls the subset of information which is returned. The tasks may be returned in any order. The ordering may change at any time. */
 export const listProjectsLocationsQueuesTasks: API.PaginatedOperationMethod<
@@ -1390,7 +1501,7 @@ export const listProjectsLocationsQueuesTasks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsQueuesTasksRequest,
   output: ListProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1419,7 +1530,10 @@ export type GetProjectsLocationsQueuesTasksResponse = Task;
 export const GetProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type GetProjectsLocationsQueuesTasksError = DefaultErrors;
+export type GetProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a task. */
 export const getProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1430,7 +1544,7 @@ export const getProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsQueuesTasksRequest,
   output: GetProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsQueuesTasksRequest {
@@ -1453,7 +1567,12 @@ export type CreateProjectsLocationsQueuesTasksResponse = Task;
 export const CreateProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type CreateProjectsLocationsQueuesTasksError = DefaultErrors;
+export type CreateProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a task and adds it to a queue. Tasks cannot be updated after creation; there is no UpdateTask command. * For App Engine queues, the maximum task size is 100KB. * For pull queues, the maximum task size is 1MB. */
 export const createProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1464,7 +1583,7 @@ export const createProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsQueuesTasksRequest,
   output: CreateProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsQueuesTasksRequest {
@@ -1484,7 +1603,12 @@ export type DeleteProjectsLocationsQueuesTasksResponse = Empty;
 export const DeleteProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsQueuesTasksError = DefaultErrors;
+export type DeleteProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a task. A task can be deleted if it is scheduled or dispatched. A task cannot be deleted if it has completed successfully or permanently failed. */
 export const deleteProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1495,7 +1619,7 @@ export const deleteProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsQueuesTasksRequest,
   output: DeleteProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LeaseProjectsLocationsQueuesTasksRequest {
@@ -1522,7 +1646,12 @@ export type LeaseProjectsLocationsQueuesTasksResponse = LeaseTasksResponse;
 export const LeaseProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaseTasksResponse;
 
-export type LeaseProjectsLocationsQueuesTasksError = DefaultErrors;
+export type LeaseProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Leases tasks from a pull queue for lease_duration. This method is invoked by the worker to obtain a lease. The worker must acknowledge the task via AcknowledgeTask after they have performed the work associated with the task. The payload is intended to store data that the worker needs to perform the work associated with the task. To return the payloads in the response, set response_view to FULL. A maximum of 10 qps of LeaseTasks requests are allowed per queue. RESOURCE_EXHAUSTED is returned when this limit is exceeded. RESOURCE_EXHAUSTED is also returned when max_tasks_dispatched_per_second is exceeded. */
 export const leaseProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1533,7 +1662,7 @@ export const leaseProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LeaseProjectsLocationsQueuesTasksRequest,
   output: LeaseProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcknowledgeProjectsLocationsQueuesTasksRequest {
@@ -1560,7 +1689,12 @@ export type AcknowledgeProjectsLocationsQueuesTasksResponse = Empty;
 export const AcknowledgeProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AcknowledgeProjectsLocationsQueuesTasksError = DefaultErrors;
+export type AcknowledgeProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges a pull task. The worker, that is, the entity that leased this task must call this method to indicate that the work associated with the task has finished. The worker must acknowledge a task within the lease_duration or the lease will expire and the task will become available to be leased again. After the task is acknowledged, it will not be returned by a later LeaseTasks, GetTask, or ListTasks. */
 export const acknowledgeProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1571,7 +1705,7 @@ export const acknowledgeProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgeProjectsLocationsQueuesTasksRequest,
   output: AcknowledgeProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenewLeaseProjectsLocationsQueuesTasksRequest {
@@ -1598,7 +1732,12 @@ export type RenewLeaseProjectsLocationsQueuesTasksResponse = Task;
 export const RenewLeaseProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type RenewLeaseProjectsLocationsQueuesTasksError = DefaultErrors;
+export type RenewLeaseProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renew the current lease of a pull task. The worker can use this method to extend the lease by a new duration, starting from now. The new task lease will be returned in the task's schedule_time. */
 export const renewLeaseProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1609,7 +1748,7 @@ export const renewLeaseProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenewLeaseProjectsLocationsQueuesTasksRequest,
   output: RenewLeaseProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelLeaseProjectsLocationsQueuesTasksRequest {
@@ -1636,7 +1775,12 @@ export type CancelLeaseProjectsLocationsQueuesTasksResponse = Task;
 export const CancelLeaseProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type CancelLeaseProjectsLocationsQueuesTasksError = DefaultErrors;
+export type CancelLeaseProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel a pull task's lease. The worker can use this method to cancel a task's lease by setting its schedule_time to now. This will make the task available to be leased to the next caller of LeaseTasks. */
 export const cancelLeaseProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1647,7 +1791,7 @@ export const cancelLeaseProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelLeaseProjectsLocationsQueuesTasksRequest,
   output: CancelLeaseProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunProjectsLocationsQueuesTasksRequest {
@@ -1670,7 +1814,12 @@ export type RunProjectsLocationsQueuesTasksResponse = Task;
 export const RunProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type RunProjectsLocationsQueuesTasksError = DefaultErrors;
+export type RunProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Forces a task to run now. When this method is called, Cloud Tasks will dispatch the task, even if the task is already running, the queue has reached its RateLimits or is PAUSED. This command is meant to be used for manual debugging. For example, RunTask can be used to retry a failed task after a fix has been made or to manually force a task to be dispatched now. The dispatched task is returned. That is, the task that is returned contains the status after the task is dispatched but before the task is received by its target. If Cloud Tasks receives a successful response from the task's target, then the task will be deleted; otherwise the task's schedule_time will be reset to the time that RunTask was called plus the retry delay specified in the queue's RetryConfig. RunTask returns NOT_FOUND when it is called on a task that has already succeeded or permanently failed. RunTask cannot be called on a pull task. */
 export const runProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1681,7 +1830,7 @@ export const runProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunProjectsLocationsQueuesTasksRequest,
   output: RunProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BufferProjectsLocationsQueuesTasksRequest {
@@ -1711,7 +1860,12 @@ export type BufferProjectsLocationsQueuesTasksResponse = BufferTaskResponse;
 export const BufferProjectsLocationsQueuesTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ BufferTaskResponse;
 
-export type BufferProjectsLocationsQueuesTasksError = DefaultErrors;
+export type BufferProjectsLocationsQueuesTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and buffers a new task without the need to explicitly define a Task message. The queue must have HTTP target. To create the task with a custom ID, use the following format and set TASK_ID to your desired ID: projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID:buffer To create the task with an automatically generated ID, use the following format: projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks:buffer. */
 export const bufferProjectsLocationsQueuesTasks: API.OperationMethod<
@@ -1722,7 +1876,7 @@ export const bufferProjectsLocationsQueuesTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BufferProjectsLocationsQueuesTasksRequest,
   output: BufferProjectsLocationsQueuesTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateApiQueueRequest {
@@ -1743,7 +1897,12 @@ export const UpdateApiQueueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateApiQueueResponse = Empty;
 export const UpdateApiQueueResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UpdateApiQueueError = DefaultErrors;
+export type UpdateApiQueueError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update queue list by uploading a queue.yaml file. The queue.yaml file is supplied in the request body as a YAML encoded string. This method was added to support gcloud clients versions before 322.0.0. New clients should use CreateQueue instead of this method. */
 export const updateApiQueue: API.OperationMethod<
@@ -1754,5 +1913,5 @@ export const updateApiQueue: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApiQueueRequest,
   output: UpdateApiQueueResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

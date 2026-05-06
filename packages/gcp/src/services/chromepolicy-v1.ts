@@ -1033,6 +1033,52 @@ export const GoogleChromePolicyVersionsV1RemoveCertificateRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1062,7 +1108,12 @@ export type UploadMediaResponse =
 export const UploadMediaResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1UploadPolicyFileResponse;
 
-export type UploadMediaError = DefaultErrors;
+export type UploadMediaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an enterprise file from the content provided by user. Returns a public download url for end user. */
 export const uploadMedia: API.OperationMethod<
@@ -1073,7 +1124,7 @@ export const uploadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResolveCustomersPoliciesRequest {
@@ -1103,7 +1154,12 @@ export type ResolveCustomersPoliciesResponse =
 export const ResolveCustomersPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1ResolveResponse;
 
-export type ResolveCustomersPoliciesError = DefaultErrors;
+export type ResolveCustomersPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the resolved policy values for a list of policies that match a search query. */
 export const resolveCustomersPolicies: API.OperationMethod<
@@ -1114,7 +1170,7 @@ export const resolveCustomersPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveCustomersPoliciesRequest,
   output: ResolveCustomersPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteCustomersPoliciesGroupsRequest {
@@ -1143,7 +1199,12 @@ export type BatchDeleteCustomersPoliciesGroupsResponse = GoogleProtobufEmpty;
 export const BatchDeleteCustomersPoliciesGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchDeleteCustomersPoliciesGroupsError = DefaultErrors;
+export type BatchDeleteCustomersPoliciesGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status. */
 export const batchDeleteCustomersPoliciesGroups: API.OperationMethod<
@@ -1154,7 +1215,7 @@ export const batchDeleteCustomersPoliciesGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteCustomersPoliciesGroupsRequest,
   output: BatchDeleteCustomersPoliciesGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest {
@@ -1185,7 +1246,11 @@ export const UpdateGroupPriorityOrderingCustomersPoliciesGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateGroupPriorityOrderingCustomersPoliciesGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status. */
 export const updateGroupPriorityOrderingCustomersPoliciesGroups: API.OperationMethod<
@@ -1196,7 +1261,7 @@ export const updateGroupPriorityOrderingCustomersPoliciesGroups: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupPriorityOrderingCustomersPoliciesGroupsRequest,
   output: UpdateGroupPriorityOrderingCustomersPoliciesGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchModifyCustomersPoliciesGroupsRequest {
@@ -1225,7 +1290,12 @@ export type BatchModifyCustomersPoliciesGroupsResponse = GoogleProtobufEmpty;
 export const BatchModifyCustomersPoliciesGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchModifyCustomersPoliciesGroupsError = DefaultErrors;
+export type BatchModifyCustomersPoliciesGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status. */
 export const batchModifyCustomersPoliciesGroups: API.OperationMethod<
@@ -1236,7 +1306,7 @@ export const batchModifyCustomersPoliciesGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchModifyCustomersPoliciesGroupsRequest,
   output: BatchModifyCustomersPoliciesGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGroupPriorityOrderingCustomersPoliciesGroupsRequest {
@@ -1267,7 +1337,11 @@ export const ListGroupPriorityOrderingCustomersPoliciesGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse;
 
 export type ListGroupPriorityOrderingCustomersPoliciesGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status. */
 export const listGroupPriorityOrderingCustomersPoliciesGroups: API.OperationMethod<
@@ -1278,7 +1352,7 @@ export const listGroupPriorityOrderingCustomersPoliciesGroups: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGroupPriorityOrderingCustomersPoliciesGroupsRequest,
   output: ListGroupPriorityOrderingCustomersPoliciesGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DefineNetworkCustomersPoliciesNetworksRequest {
@@ -1308,7 +1382,12 @@ export type DefineNetworkCustomersPoliciesNetworksResponse =
 export const DefineNetworkCustomersPoliciesNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1DefineNetworkResponse;
 
-export type DefineNetworkCustomersPoliciesNetworksError = DefaultErrors;
+export type DefineNetworkCustomersPoliciesNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Define a new network. */
 export const defineNetworkCustomersPoliciesNetworks: API.OperationMethod<
@@ -1319,7 +1398,7 @@ export const defineNetworkCustomersPoliciesNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DefineNetworkCustomersPoliciesNetworksRequest,
   output: DefineNetworkCustomersPoliciesNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveCertificateCustomersPoliciesNetworksRequest {
@@ -1349,7 +1428,12 @@ export type RemoveCertificateCustomersPoliciesNetworksResponse =
 export const RemoveCertificateCustomersPoliciesNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1RemoveCertificateResponse;
 
-export type RemoveCertificateCustomersPoliciesNetworksError = DefaultErrors;
+export type RemoveCertificateCustomersPoliciesNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove an existing certificate by guid. */
 export const removeCertificateCustomersPoliciesNetworks: API.OperationMethod<
@@ -1360,7 +1444,7 @@ export const removeCertificateCustomersPoliciesNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveCertificateCustomersPoliciesNetworksRequest,
   output: RemoveCertificateCustomersPoliciesNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveNetworkCustomersPoliciesNetworksRequest {
@@ -1390,7 +1474,12 @@ export type RemoveNetworkCustomersPoliciesNetworksResponse =
 export const RemoveNetworkCustomersPoliciesNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1RemoveNetworkResponse;
 
-export type RemoveNetworkCustomersPoliciesNetworksError = DefaultErrors;
+export type RemoveNetworkCustomersPoliciesNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove an existing network by guid. */
 export const removeNetworkCustomersPoliciesNetworks: API.OperationMethod<
@@ -1401,7 +1490,7 @@ export const removeNetworkCustomersPoliciesNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveNetworkCustomersPoliciesNetworksRequest,
   output: RemoveNetworkCustomersPoliciesNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DefineCertificateCustomersPoliciesNetworksRequest {
@@ -1431,7 +1520,12 @@ export type DefineCertificateCustomersPoliciesNetworksResponse =
 export const DefineCertificateCustomersPoliciesNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1DefineCertificateResponse;
 
-export type DefineCertificateCustomersPoliciesNetworksError = DefaultErrors;
+export type DefineCertificateCustomersPoliciesNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a certificate at a specified OU for a customer. */
 export const defineCertificateCustomersPoliciesNetworks: API.OperationMethod<
@@ -1442,7 +1536,7 @@ export const defineCertificateCustomersPoliciesNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DefineCertificateCustomersPoliciesNetworksRequest,
   output: DefineCertificateCustomersPoliciesNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchInheritCustomersPoliciesOrgunitsRequest {
@@ -1471,7 +1565,12 @@ export type BatchInheritCustomersPoliciesOrgunitsResponse = GoogleProtobufEmpty;
 export const BatchInheritCustomersPoliciesOrgunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchInheritCustomersPoliciesOrgunitsError = DefaultErrors;
+export type BatchInheritCustomersPoliciesOrgunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status. */
 export const batchInheritCustomersPoliciesOrgunits: API.OperationMethod<
@@ -1482,7 +1581,7 @@ export const batchInheritCustomersPoliciesOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchInheritCustomersPoliciesOrgunitsRequest,
   output: BatchInheritCustomersPoliciesOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchModifyCustomersPoliciesOrgunitsRequest {
@@ -1511,7 +1610,12 @@ export type BatchModifyCustomersPoliciesOrgunitsResponse = GoogleProtobufEmpty;
 export const BatchModifyCustomersPoliciesOrgunitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchModifyCustomersPoliciesOrgunitsError = DefaultErrors;
+export type BatchModifyCustomersPoliciesOrgunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status. */
 export const batchModifyCustomersPoliciesOrgunits: API.OperationMethod<
@@ -1522,7 +1626,7 @@ export const batchModifyCustomersPoliciesOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchModifyCustomersPoliciesOrgunitsRequest,
   output: BatchModifyCustomersPoliciesOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersPolicySchemasRequest {
@@ -1543,7 +1647,10 @@ export type GetCustomersPolicySchemasResponse =
 export const GetCustomersPolicySchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1PolicySchema;
 
-export type GetCustomersPolicySchemasError = DefaultErrors;
+export type GetCustomersPolicySchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a specific policy schema for a customer by its resource name. */
 export const getCustomersPolicySchemas: API.OperationMethod<
@@ -1554,7 +1661,7 @@ export const getCustomersPolicySchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersPolicySchemasRequest,
   output: GetCustomersPolicySchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersPolicySchemasRequest {
@@ -1584,7 +1691,10 @@ export type ListCustomersPolicySchemasResponse =
 export const ListCustomersPolicySchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromePolicyVersionsV1ListPolicySchemasResponse;
 
-export type ListCustomersPolicySchemasError = DefaultErrors;
+export type ListCustomersPolicySchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of policy schemas that match a specified filter value for a given customer. */
 export const listCustomersPolicySchemas: API.PaginatedOperationMethod<
@@ -1595,7 +1705,7 @@ export const listCustomersPolicySchemas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersPolicySchemasRequest,
   output: ListCustomersPolicySchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

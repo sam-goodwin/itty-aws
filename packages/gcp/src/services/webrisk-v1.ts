@@ -282,6 +282,52 @@ export const GoogleCloudWebriskV1ComputeThreatListDiffResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -312,7 +358,7 @@ export type SearchHashesResponse = GoogleCloudWebriskV1SearchHashesResponse;
 export const SearchHashesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1SearchHashesResponse;
 
-export type SearchHashesError = DefaultErrors;
+export type SearchHashesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the full hashes that match the requested hash prefix. This is used after a hash prefix is looked up in a threatList and there is a match. The client side threatList only holds partial hashes so the client must query this method to determine if there is a full hash match of a threat. */
 export const searchHashes: API.OperationMethod<
@@ -323,7 +369,7 @@ export const searchHashes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchHashesRequest,
   output: SearchHashesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsOperationsRequest {
@@ -358,7 +404,7 @@ export type ListProjectsOperationsResponse =
 export const ListProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsOperationsError = DefaultErrors;
+export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsOperations: API.PaginatedOperationMethod<
@@ -369,7 +415,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -393,7 +439,12 @@ export type DeleteProjectsOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsOperationsError = DefaultErrors;
+export type DeleteProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsOperations: API.OperationMethod<
@@ -404,7 +455,7 @@ export const deleteProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsOperationsRequest,
   output: DeleteProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsOperationsRequest {
@@ -429,7 +480,12 @@ export type CancelProjectsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsOperationsError = DefaultErrors;
+export type CancelProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsOperations: API.OperationMethod<
@@ -440,7 +496,7 @@ export const cancelProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsOperationsRequest {
@@ -460,7 +516,7 @@ export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -471,7 +527,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsSubmissionsRequest {
@@ -494,7 +550,12 @@ export type CreateProjectsSubmissionsResponse = GoogleCloudWebriskV1Submission;
 export const CreateProjectsSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1Submission;
 
-export type CreateProjectsSubmissionsError = DefaultErrors;
+export type CreateProjectsSubmissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Submission of a URI suspected of containing phishing content to be reviewed. If the result verifies the existence of malicious phishing content, the site will be added to the [Google's Social Engineering lists](https://support.google.com/webmasters/answer/6350487/) in order to protect users that could get exposed to this threat in the future. Only allowlisted projects can use this method during Early Access. Please reach out to Sales or your customer engineer to obtain access. */
 export const createProjectsSubmissions: API.OperationMethod<
@@ -505,7 +566,7 @@ export const createProjectsSubmissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSubmissionsRequest,
   output: CreateProjectsSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComputeDiffThreatListsRequest {
@@ -556,7 +617,7 @@ export type ComputeDiffThreatListsResponse =
 export const ComputeDiffThreatListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1ComputeThreatListDiffResponse;
 
-export type ComputeDiffThreatListsError = DefaultErrors;
+export type ComputeDiffThreatListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the most recent threat list diffs. These diffs should be applied to a local database of hashes to keep it up-to-date. If the local database is empty or excessively out-of-date, a complete snapshot of the database will be returned. This Method only updates a single ThreatList at a time. To update multiple ThreatList databases, this method needs to be called once for each list. */
 export const computeDiffThreatLists: API.OperationMethod<
@@ -567,7 +628,7 @@ export const computeDiffThreatLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComputeDiffThreatListsRequest,
   output: ComputeDiffThreatListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchUrisRequest {
@@ -597,7 +658,7 @@ export type SearchUrisResponse = GoogleCloudWebriskV1SearchUrisResponse;
 export const SearchUrisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudWebriskV1SearchUrisResponse;
 
-export type SearchUrisError = DefaultErrors;
+export type SearchUrisError = DefaultErrors | NotFound | Forbidden;
 
 /** This method is used to check whether a URI is on a given threatList. Multiple threatLists may be searched in a single query. The response will list all requested threatLists the URI was found to match. If the URI is not found on any of the requested ThreatList an empty response will be returned. */
 export const searchUris: API.OperationMethod<
@@ -608,5 +669,5 @@ export const searchUris: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchUrisRequest,
   output: SearchUrisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

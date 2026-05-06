@@ -3175,6 +3175,52 @@ export const CopyBackupMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "CopyBackupMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3206,7 +3252,7 @@ export type ListScansResponse_Op = ListScansResponse;
 export const ListScansResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListScansResponse;
 
-export type ListScansError = DefaultErrors;
+export type ListScansError = DefaultErrors | NotFound | Forbidden;
 
 /** Return available scans given a Database-specific resource name. */
 export const listScans: API.PaginatedOperationMethod<
@@ -3217,7 +3263,7 @@ export const listScans: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScansRequest,
   output: ListScansResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3247,7 +3293,10 @@ export type ListProjectsInstanceConfigsResponse = ListInstanceConfigsResponse;
 export const ListProjectsInstanceConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstanceConfigsResponse;
 
-export type ListProjectsInstanceConfigsError = DefaultErrors;
+export type ListProjectsInstanceConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the supported instance configurations for a given project. Returns both Google-managed configurations and user-managed configurations. */
 export const listProjectsInstanceConfigs: API.PaginatedOperationMethod<
@@ -3258,7 +3307,7 @@ export const listProjectsInstanceConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigsRequest,
   output: ListProjectsInstanceConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3282,7 +3331,10 @@ export type GetProjectsInstanceConfigsResponse = InstanceConfig;
 export const GetProjectsInstanceConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceConfig;
 
-export type GetProjectsInstanceConfigsError = DefaultErrors;
+export type GetProjectsInstanceConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a particular instance configuration. */
 export const getProjectsInstanceConfigs: API.OperationMethod<
@@ -3293,7 +3345,7 @@ export const getProjectsInstanceConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstanceConfigsRequest,
   output: GetProjectsInstanceConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsInstanceConfigsRequest {
@@ -3320,7 +3372,12 @@ export type CreateProjectsInstanceConfigsResponse = Operation;
 export const CreateProjectsInstanceConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstanceConfigsError = DefaultErrors;
+export type CreateProjectsInstanceConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instance configuration and begins preparing it to be used. The returned long-running operation can be used to track the progress of preparing the new instance configuration. The instance configuration name is assigned by the caller. If the named instance configuration already exists, `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the request returns: * The instance configuration is readable via the API, with all requested attributes. The instance configuration's reconciling field is set to true. Its state is `CREATING`. While the operation is pending: * Cancelling the operation renders the instance configuration immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to modify the instance configuration are rejected. Upon completion of the returned operation: * Instances can be created using the instance configuration. * The instance configuration's reconciling field becomes false. Its state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance configuration. The metadata field type is CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.create` permission on the resource parent. */
 export const createProjectsInstanceConfigs: API.OperationMethod<
@@ -3331,7 +3388,7 @@ export const createProjectsInstanceConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstanceConfigsRequest,
   output: CreateProjectsInstanceConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstanceConfigsRequest {
@@ -3359,7 +3416,12 @@ export type DeleteProjectsInstanceConfigsResponse = Empty;
 export const DeleteProjectsInstanceConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstanceConfigsError = DefaultErrors;
+export type DeleteProjectsInstanceConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the instance configuration. Deletion is only allowed when no instances are using the configuration. If any instances are using the configuration, returns `FAILED_PRECONDITION`. Only user-managed configurations can be deleted. Authorization requires `spanner.instanceConfigs.delete` permission on the resource name. */
 export const deleteProjectsInstanceConfigs: API.OperationMethod<
@@ -3370,7 +3432,7 @@ export const deleteProjectsInstanceConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstanceConfigsRequest,
   output: DeleteProjectsInstanceConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInstanceConfigsRequest {
@@ -3393,7 +3455,12 @@ export type PatchProjectsInstanceConfigsResponse = Operation;
 export const PatchProjectsInstanceConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstanceConfigsError = DefaultErrors;
+export type PatchProjectsInstanceConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an instance configuration. The returned long-running operation can be used to track the progress of updating the instance. If the named instance configuration does not exist, returns `NOT_FOUND`. Only user-managed configurations can be updated. Immediately after the request returns: * The instance configuration's reconciling field is set to true. While the operation is pending: * Cancelling the operation sets its metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance configuration are rejected. * Reading the instance configuration via the API continues to give the pre-request values. Upon completion of the returned operation: * Creating instances using the instance configuration uses the new values. * The new values of the instance configuration are readable via the API. * The instance configuration's reconciling field becomes false. The returned long-running operation will have a name of the format `/operations/` and can be used to track the instance configuration modification. The metadata field type is UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.update` permission on the resource name. */
 export const patchProjectsInstanceConfigs: API.OperationMethod<
@@ -3404,7 +3471,7 @@ export const patchProjectsInstanceConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstanceConfigsRequest,
   output: PatchProjectsInstanceConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstanceConfigsOperationsRequest {
@@ -3439,7 +3506,10 @@ export type ListProjectsInstanceConfigsOperationsResponse =
 export const ListProjectsInstanceConfigsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsInstanceConfigsOperationsError = DefaultErrors;
+export type ListProjectsInstanceConfigsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstanceConfigsOperations: API.PaginatedOperationMethod<
@@ -3450,7 +3520,7 @@ export const listProjectsInstanceConfigsOperations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigsOperationsRequest,
   output: ListProjectsInstanceConfigsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3474,7 +3544,10 @@ export type GetProjectsInstanceConfigsOperationsResponse = Operation;
 export const GetProjectsInstanceConfigsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsInstanceConfigsOperationsError = DefaultErrors;
+export type GetProjectsInstanceConfigsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstanceConfigsOperations: API.OperationMethod<
@@ -3485,7 +3558,7 @@ export const getProjectsInstanceConfigsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstanceConfigsOperationsRequest,
   output: GetProjectsInstanceConfigsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsInstanceConfigsOperationsRequest {
@@ -3505,7 +3578,12 @@ export type DeleteProjectsInstanceConfigsOperationsResponse = Empty;
 export const DeleteProjectsInstanceConfigsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstanceConfigsOperationsError = DefaultErrors;
+export type DeleteProjectsInstanceConfigsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstanceConfigsOperations: API.OperationMethod<
@@ -3516,7 +3594,7 @@ export const deleteProjectsInstanceConfigsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstanceConfigsOperationsRequest,
   output: DeleteProjectsInstanceConfigsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsInstanceConfigsOperationsRequest {
@@ -3536,7 +3614,12 @@ export type CancelProjectsInstanceConfigsOperationsResponse = Empty;
 export const CancelProjectsInstanceConfigsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsInstanceConfigsOperationsError = DefaultErrors;
+export type CancelProjectsInstanceConfigsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstanceConfigsOperations: API.OperationMethod<
@@ -3547,7 +3630,7 @@ export const cancelProjectsInstanceConfigsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsInstanceConfigsOperationsRequest,
   output: CancelProjectsInstanceConfigsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstanceConfigsSsdCachesOperationsRequest {
@@ -3582,7 +3665,10 @@ export type ListProjectsInstanceConfigsSsdCachesOperationsResponse =
 export const ListProjectsInstanceConfigsSsdCachesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsInstanceConfigsSsdCachesOperationsError = DefaultErrors;
+export type ListProjectsInstanceConfigsSsdCachesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstanceConfigsSsdCachesOperations: API.PaginatedOperationMethod<
@@ -3593,7 +3679,7 @@ export const listProjectsInstanceConfigsSsdCachesOperations: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigsSsdCachesOperationsRequest,
   output: ListProjectsInstanceConfigsSsdCachesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3617,7 +3703,10 @@ export type GetProjectsInstanceConfigsSsdCachesOperationsResponse = Operation;
 export const GetProjectsInstanceConfigsSsdCachesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsInstanceConfigsSsdCachesOperationsError = DefaultErrors;
+export type GetProjectsInstanceConfigsSsdCachesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
@@ -3628,7 +3717,7 @@ export const getProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstanceConfigsSsdCachesOperationsRequest,
   output: GetProjectsInstanceConfigsSsdCachesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsInstanceConfigsSsdCachesOperationsRequest {
@@ -3649,7 +3738,11 @@ export const DeleteProjectsInstanceConfigsSsdCachesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsInstanceConfigsSsdCachesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
@@ -3660,7 +3753,7 @@ export const deleteProjectsInstanceConfigsSsdCachesOperations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstanceConfigsSsdCachesOperationsRequest,
   output: DeleteProjectsInstanceConfigsSsdCachesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsInstanceConfigsSsdCachesOperationsRequest {
@@ -3681,7 +3774,11 @@ export const CancelProjectsInstanceConfigsSsdCachesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type CancelProjectsInstanceConfigsSsdCachesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstanceConfigsSsdCachesOperations: API.OperationMethod<
@@ -3692,7 +3789,7 @@ export const cancelProjectsInstanceConfigsSsdCachesOperations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsInstanceConfigsSsdCachesOperationsRequest,
   output: CancelProjectsInstanceConfigsSsdCachesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstanceConfigOperationsRequest {
@@ -3722,7 +3819,10 @@ export type ListProjectsInstanceConfigOperationsResponse =
 export const ListProjectsInstanceConfigOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstanceConfigOperationsResponse;
 
-export type ListProjectsInstanceConfigOperationsError = DefaultErrors;
+export type ListProjectsInstanceConfigOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the user-managed instance configuration long-running operations in the given project. An instance configuration operation has a name of the form `projects//instanceConfigs//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most recently started operation. */
 export const listProjectsInstanceConfigOperations: API.PaginatedOperationMethod<
@@ -3733,7 +3833,7 @@ export const listProjectsInstanceConfigOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstanceConfigOperationsRequest,
   output: ListProjectsInstanceConfigOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3771,7 +3871,7 @@ export type ListProjectsInstancesResponse = ListInstancesResponse;
 export const ListProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
 
-export type ListProjectsInstancesError = DefaultErrors;
+export type ListProjectsInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all instances in the given project. */
 export const listProjectsInstances: API.PaginatedOperationMethod<
@@ -3782,7 +3882,7 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesRequest,
   output: ListProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3809,7 +3909,7 @@ export type GetProjectsInstancesResponse = Instance;
 export const GetProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type GetProjectsInstancesError = DefaultErrors;
+export type GetProjectsInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a particular instance. */
 export const getProjectsInstances: API.OperationMethod<
@@ -3820,7 +3920,7 @@ export const getProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesRequest,
   output: GetProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsInstancesRequest {
@@ -3843,7 +3943,12 @@ export type CreateProjectsInstancesResponse = Operation;
 export const CreateProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesError = DefaultErrors;
+export type CreateProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instance and begins preparing it to begin serving. The returned long-running operation can be used to track the progress of preparing the new instance. The instance name is assigned by the caller. If the named instance already exists, `CreateInstance` returns `ALREADY_EXISTS`. Immediately upon completion of this request: * The instance is readable via the API, with all requested attributes but no allocated resources. Its state is `CREATING`. Until completion of the returned operation: * Cancelling the operation renders the instance immediately unreadable via the API. * The instance can be deleted. * All other attempts to modify the instance are rejected. Upon completion of the returned operation: * Billing for all successfully-allocated resources begins (some types may have lower than the requested levels). * Databases can be created in the instance. * The instance's allocated resource levels are readable via the API. * The instance's state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance. The metadata field type is CreateInstanceMetadata. The response field type is Instance, if successful. */
 export const createProjectsInstances: API.OperationMethod<
@@ -3854,7 +3959,7 @@ export const createProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesRequest,
   output: CreateProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInstancesRequest {
@@ -3877,7 +3982,12 @@ export type PatchProjectsInstancesResponse = Operation;
 export const PatchProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesError = DefaultErrors;
+export type PatchProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an instance, and begins allocating or releasing resources as requested. The returned long-running operation can be used to track the progress of updating the instance. If the named instance does not exist, returns `NOT_FOUND`. Immediately upon completion of this request: * For resource types for which a decrease in the instance's allocation has been requested, billing is based on the newly-requested level. Until completion of the returned operation: * Cancelling the operation sets its metadata's cancel_time, and begins restoring resources to their pre-request values. The operation is guaranteed to succeed at undoing all resource changes, after which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance are rejected. * Reading the instance via the API continues to give the pre-request resource levels. Upon completion of the returned operation: * Billing begins for all successfully-allocated resources (some types may have lower than the requested levels). * All newly-reserved resources are available for serving the instance's tables. * The instance's new resource levels are readable via the API. The returned long-running operation will have a name of the format `/operations/` and can be used to track the instance modification. The metadata field type is UpdateInstanceMetadata. The response field type is Instance, if successful. Authorization requires `spanner.instances.update` permission on the resource name. */
 export const patchProjectsInstances: API.OperationMethod<
@@ -3888,7 +3998,7 @@ export const patchProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesRequest,
   output: PatchProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveProjectsInstancesRequest {
@@ -3911,7 +4021,12 @@ export type MoveProjectsInstancesResponse = Operation;
 export const MoveProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveProjectsInstancesError = DefaultErrors;
+export type MoveProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an instance to the target instance configuration. You can use the returned long-running operation to track the progress of moving the instance. `MoveInstance` returns `FAILED_PRECONDITION` if the instance meets any of the following criteria: * Is undergoing a move to a different instance configuration * Has backups * Has an ongoing update * Contains any CMEK-enabled databases * Is a free trial instance While the operation is pending: * All other attempts to modify the instance, including changes to its compute capacity, are rejected. * The following database and backup admin operations are rejected: * `DatabaseAdmin.CreateDatabase` * `DatabaseAdmin.UpdateDatabaseDdl` (disabled if default_leader is specified in the request.) * `DatabaseAdmin.RestoreDatabase` * `DatabaseAdmin.CreateBackup` * `DatabaseAdmin.CopyBackup` * Both the source and target instance configurations are subject to hourly compute and storage charges. * The instance might experience higher read-write latencies and a higher transaction abort rate. However, moving an instance doesn't cause any downtime. The returned long-running operation has a name of the format `/operations/` and can be used to track the move instance operation. The metadata field type is MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation sets its metadata's cancel_time. Cancellation is not immediate because it involves moving any data previously moved to the target instance configuration back to the original instance configuration. You can use this operation to track the progress of the cancellation. Upon successful completion of the cancellation, the operation terminates with `CANCELLED` status. If not cancelled, upon completion of the returned operation: * The instance successfully moves to the target instance configuration. * You are billed for compute and storage in target instance configuration. Authorization requires the `spanner.instances.update` permission on the resource instance. For more details, see [Move an instance](https://cloud.google.com/spanner/docs/move-instance). */
 export const moveProjectsInstances: API.OperationMethod<
@@ -3922,7 +4037,7 @@ export const moveProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveProjectsInstancesRequest,
   output: MoveProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesRequest {
@@ -3950,7 +4065,12 @@ export type TestIamPermissionsProjectsInstancesResponse =
 export const TestIamPermissionsProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsInstancesError = DefaultErrors;
+export type TestIamPermissionsProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified instance resource. Attempting this RPC on a non-existent Cloud Spanner instance resource will result in a NOT_FOUND error if the user has `spanner.instances.list` permission on the containing Google Cloud Project. Otherwise returns an empty set of permissions. */
 export const testIamPermissionsProjectsInstances: API.OperationMethod<
@@ -3961,7 +4081,7 @@ export const testIamPermissionsProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesRequest,
   output: TestIamPermissionsProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesRequest {
@@ -3981,7 +4101,12 @@ export type DeleteProjectsInstancesResponse = Empty;
 export const DeleteProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesError = DefaultErrors;
+export type DeleteProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an instance. Immediately upon completion of the request: * Billing ceases for all of the instance's reserved resources. Soon afterward: * The instance and *all of its databases* immediately and irrevocably disappear from the API. All data in the databases is permanently deleted. */
 export const deleteProjectsInstances: API.OperationMethod<
@@ -3992,7 +4117,7 @@ export const deleteProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesRequest,
   output: DeleteProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesRequest {
@@ -4019,7 +4144,12 @@ export type SetIamPolicyProjectsInstancesResponse = Policy;
 export const SetIamPolicyProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on an instance resource. Replaces any existing policy. Authorization requires `spanner.instances.setIamPolicy` on resource. */
 export const setIamPolicyProjectsInstances: API.OperationMethod<
@@ -4030,7 +4160,7 @@ export const setIamPolicyProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesRequest,
   output: SetIamPolicyProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesRequest {
@@ -4057,7 +4187,12 @@ export type GetIamPolicyProjectsInstancesResponse = Policy;
 export const GetIamPolicyProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. Authorization requires `spanner.instances.getIamPolicy` on resource. */
 export const getIamPolicyProjectsInstances: API.OperationMethod<
@@ -4068,7 +4203,7 @@ export const getIamPolicyProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesRequest,
   output: GetIamPolicyProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInstancesBackupsRequest {
@@ -4094,7 +4229,12 @@ export type PatchProjectsInstancesBackupsResponse = Backup;
 export const PatchProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type PatchProjectsInstancesBackupsError = DefaultErrors;
+export type PatchProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a pending or completed Backup. */
 export const patchProjectsInstancesBackups: API.OperationMethod<
@@ -4105,7 +4245,7 @@ export const patchProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesBackupsRequest,
   output: PatchProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CopyProjectsInstancesBackupsRequest {
@@ -4128,7 +4268,12 @@ export type CopyProjectsInstancesBackupsResponse = Operation;
 export const CopyProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CopyProjectsInstancesBackupsError = DefaultErrors;
+export type CopyProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts copying a Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track copying of the backup. The operation is associated with the destination backup. The metadata field type is CopyBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the copying and delete the destination backup. Concurrent CopyBackup requests can run on the same source backup. */
 export const copyProjectsInstancesBackups: API.OperationMethod<
@@ -4139,7 +4284,7 @@ export const copyProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyProjectsInstancesBackupsRequest,
   output: CopyProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesBackupsRequest {
@@ -4167,7 +4312,12 @@ export type TestIamPermissionsProjectsInstancesBackupsResponse =
 export const TestIamPermissionsProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsInstancesBackupsError = DefaultErrors;
+export type TestIamPermissionsProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesBackups: API.OperationMethod<
@@ -4178,7 +4328,7 @@ export const testIamPermissionsProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesBackupsRequest,
   output: TestIamPermissionsProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesBackupsRequest {
@@ -4198,7 +4348,10 @@ export type GetProjectsInstancesBackupsResponse = Backup;
 export const GetProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type GetProjectsInstancesBackupsError = DefaultErrors;
+export type GetProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata on a pending or completed Backup. */
 export const getProjectsInstancesBackups: API.OperationMethod<
@@ -4209,7 +4362,7 @@ export const getProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesBackupsRequest,
   output: GetProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesBackupsRequest {
@@ -4238,7 +4391,10 @@ export type ListProjectsInstancesBackupsResponse = ListBackupsResponse;
 export const ListProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
 
-export type ListProjectsInstancesBackupsError = DefaultErrors;
+export type ListProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists completed and pending backups. Backups returned are ordered by `create_time` in descending order, starting from the most recent `create_time`. */
 export const listProjectsInstancesBackups: API.PaginatedOperationMethod<
@@ -4249,7 +4405,7 @@ export const listProjectsInstancesBackups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesBackupsRequest,
   output: ListProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4299,7 +4455,12 @@ export type CreateProjectsInstancesBackupsResponse = Operation;
 export const CreateProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesBackupsError = DefaultErrors;
+export type CreateProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. There can be only one pending backup creation per database. Backup creation of different databases can run concurrently. */
 export const createProjectsInstancesBackups: API.OperationMethod<
@@ -4310,7 +4471,7 @@ export const createProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesBackupsRequest,
   output: CreateProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesBackupsRequest {
@@ -4337,7 +4498,12 @@ export type SetIamPolicyProjectsInstancesBackupsResponse = Policy;
 export const SetIamPolicyProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesBackupsError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource. */
 export const setIamPolicyProjectsInstancesBackups: API.OperationMethod<
@@ -4348,7 +4514,7 @@ export const setIamPolicyProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesBackupsRequest,
   output: SetIamPolicyProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesBackupsRequest {
@@ -4375,7 +4541,12 @@ export type GetIamPolicyProjectsInstancesBackupsResponse = Policy;
 export const GetIamPolicyProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesBackupsError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.getIamPolicy` permission on resource. */
 export const getIamPolicyProjectsInstancesBackups: API.OperationMethod<
@@ -4386,7 +4557,7 @@ export const getIamPolicyProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesBackupsRequest,
   output: GetIamPolicyProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesBackupsRequest {
@@ -4406,7 +4577,12 @@ export type DeleteProjectsInstancesBackupsResponse = Empty;
 export const DeleteProjectsInstancesBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesBackupsError = DefaultErrors;
+export type DeleteProjectsInstancesBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a pending or completed Backup. */
 export const deleteProjectsInstancesBackups: API.OperationMethod<
@@ -4417,7 +4593,7 @@ export const deleteProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesBackupsRequest,
   output: DeleteProjectsInstancesBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesBackupsOperationsRequest {
@@ -4437,7 +4613,12 @@ export type DeleteProjectsInstancesBackupsOperationsResponse = Empty;
 export const DeleteProjectsInstancesBackupsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesBackupsOperationsError = DefaultErrors;
+export type DeleteProjectsInstancesBackupsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesBackupsOperations: API.OperationMethod<
@@ -4448,7 +4629,7 @@ export const deleteProjectsInstancesBackupsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesBackupsOperationsRequest,
   output: DeleteProjectsInstancesBackupsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsInstancesBackupsOperationsRequest {
@@ -4468,7 +4649,12 @@ export type CancelProjectsInstancesBackupsOperationsResponse = Empty;
 export const CancelProjectsInstancesBackupsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsInstancesBackupsOperationsError = DefaultErrors;
+export type CancelProjectsInstancesBackupsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesBackupsOperations: API.OperationMethod<
@@ -4479,7 +4665,7 @@ export const cancelProjectsInstancesBackupsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsInstancesBackupsOperationsRequest,
   output: CancelProjectsInstancesBackupsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesBackupsOperationsRequest {
@@ -4514,7 +4700,10 @@ export type ListProjectsInstancesBackupsOperationsResponse =
 export const ListProjectsInstancesBackupsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsInstancesBackupsOperationsError = DefaultErrors;
+export type ListProjectsInstancesBackupsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesBackupsOperations: API.PaginatedOperationMethod<
@@ -4525,7 +4714,7 @@ export const listProjectsInstancesBackupsOperations: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesBackupsOperationsRequest,
   output: ListProjectsInstancesBackupsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4549,7 +4738,10 @@ export type GetProjectsInstancesBackupsOperationsResponse = Operation;
 export const GetProjectsInstancesBackupsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsInstancesBackupsOperationsError = DefaultErrors;
+export type GetProjectsInstancesBackupsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesBackupsOperations: API.OperationMethod<
@@ -4560,7 +4752,7 @@ export const getProjectsInstancesBackupsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesBackupsOperationsRequest,
   output: GetProjectsInstancesBackupsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesBackupOperationsRequest {
@@ -4590,7 +4782,10 @@ export type ListProjectsInstancesBackupOperationsResponse =
 export const ListProjectsInstancesBackupOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupOperationsResponse;
 
-export type ListProjectsInstancesBackupOperationsError = DefaultErrors;
+export type ListProjectsInstancesBackupOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the backup long-running operations in the given instance. A backup operation has a name of the form `projects//instances//backups//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. Operations returned are ordered by `operation.metadata.value.progress.start_time` in descending order starting from the most recently started operation. */
 export const listProjectsInstancesBackupOperations: API.PaginatedOperationMethod<
@@ -4601,7 +4796,7 @@ export const listProjectsInstancesBackupOperations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesBackupOperationsRequest,
   output: ListProjectsInstancesBackupOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4637,7 +4832,10 @@ export type ListProjectsInstancesInstancePartitionsResponse =
 export const ListProjectsInstancesInstancePartitionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancePartitionsResponse;
 
-export type ListProjectsInstancesInstancePartitionsError = DefaultErrors;
+export type ListProjectsInstancesInstancePartitionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all instance partitions for the given instance. */
 export const listProjectsInstancesInstancePartitions: API.PaginatedOperationMethod<
@@ -4648,7 +4846,7 @@ export const listProjectsInstancesInstancePartitions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesInstancePartitionsRequest,
   output: ListProjectsInstancesInstancePartitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4672,7 +4870,10 @@ export type GetProjectsInstancesInstancePartitionsResponse = InstancePartition;
 export const GetProjectsInstancesInstancePartitionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstancePartition;
 
-export type GetProjectsInstancesInstancePartitionsError = DefaultErrors;
+export type GetProjectsInstancesInstancePartitionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a particular instance partition. */
 export const getProjectsInstancesInstancePartitions: API.OperationMethod<
@@ -4683,7 +4884,7 @@ export const getProjectsInstancesInstancePartitions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesInstancePartitionsRequest,
   output: GetProjectsInstancesInstancePartitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsInstancesInstancePartitionsRequest {
@@ -4710,7 +4911,12 @@ export type CreateProjectsInstancesInstancePartitionsResponse = Operation;
 export const CreateProjectsInstancesInstancePartitionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesInstancePartitionsError = DefaultErrors;
+export type CreateProjectsInstancesInstancePartitionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instance partition and begins preparing it to be used. The returned long-running operation can be used to track the progress of preparing the new instance partition. The instance partition name is assigned by the caller. If the named instance partition already exists, `CreateInstancePartition` returns `ALREADY_EXISTS`. Immediately upon completion of this request: * The instance partition is readable via the API, with all requested attributes but no allocated resources. Its state is `CREATING`. Until completion of the returned operation: * Cancelling the operation renders the instance partition immediately unreadable via the API. * The instance partition can be deleted. * All other attempts to modify the instance partition are rejected. Upon completion of the returned operation: * Billing for all successfully-allocated resources begins (some types may have lower than the requested levels). * Databases can start using this instance partition. * The instance partition's allocated resource levels are readable via the API. * The instance partition's state becomes `READY`. The returned long-running operation will have a name of the format `/operations/` and can be used to track creation of the instance partition. The metadata field type is CreateInstancePartitionMetadata. The response field type is InstancePartition, if successful. */
 export const createProjectsInstancesInstancePartitions: API.OperationMethod<
@@ -4721,7 +4927,7 @@ export const createProjectsInstancesInstancePartitions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesInstancePartitionsRequest,
   output: CreateProjectsInstancesInstancePartitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesInstancePartitionsRequest {
@@ -4744,7 +4950,12 @@ export type DeleteProjectsInstancesInstancePartitionsResponse = Empty;
 export const DeleteProjectsInstancesInstancePartitionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesInstancePartitionsError = DefaultErrors;
+export type DeleteProjectsInstancesInstancePartitionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing instance partition. Requires that the instance partition is not used by any database or backup and is not the default instance partition of an instance. Authorization requires `spanner.instancePartitions.delete` permission on the resource name. */
 export const deleteProjectsInstancesInstancePartitions: API.OperationMethod<
@@ -4755,7 +4966,7 @@ export const deleteProjectsInstancesInstancePartitions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesInstancePartitionsRequest,
   output: DeleteProjectsInstancesInstancePartitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInstancesInstancePartitionsRequest {
@@ -4778,7 +4989,12 @@ export type PatchProjectsInstancesInstancePartitionsResponse = Operation;
 export const PatchProjectsInstancesInstancePartitionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesInstancePartitionsError = DefaultErrors;
+export type PatchProjectsInstancesInstancePartitionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an instance partition, and begins allocating or releasing resources as requested. The returned long-running operation can be used to track the progress of updating the instance partition. If the named instance partition does not exist, returns `NOT_FOUND`. Immediately upon completion of this request: * For resource types for which a decrease in the instance partition's allocation has been requested, billing is based on the newly-requested level. Until completion of the returned operation: * Cancelling the operation sets its metadata's cancel_time, and begins restoring resources to their pre-request values. The operation is guaranteed to succeed at undoing all resource changes, after which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance partition are rejected. * Reading the instance partition via the API continues to give the pre-request resource levels. Upon completion of the returned operation: * Billing begins for all successfully-allocated resources (some types may have lower than the requested levels). * All newly-reserved resources are available for serving the instance partition's tables. * The instance partition's new resource levels are readable via the API. The returned long-running operation will have a name of the format `/operations/` and can be used to track the instance partition modification. The metadata field type is UpdateInstancePartitionMetadata. The response field type is InstancePartition, if successful. Authorization requires `spanner.instancePartitions.update` permission on the resource name. */
 export const patchProjectsInstancesInstancePartitions: API.OperationMethod<
@@ -4789,7 +5005,7 @@ export const patchProjectsInstancesInstancePartitions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesInstancePartitionsRequest,
   output: PatchProjectsInstancesInstancePartitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesInstancePartitionsOperationsRequest {
@@ -4825,7 +5041,9 @@ export const ListProjectsInstancesInstancePartitionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsInstancesInstancePartitionsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesInstancePartitionsOperations: API.PaginatedOperationMethod<
@@ -4836,7 +5054,7 @@ export const listProjectsInstancesInstancePartitionsOperations: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesInstancePartitionsOperationsRequest,
   output: ListProjectsInstancesInstancePartitionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4862,7 +5080,9 @@ export const GetProjectsInstancesInstancePartitionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsInstancesInstancePartitionsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesInstancePartitionsOperations: API.OperationMethod<
@@ -4873,7 +5093,7 @@ export const getProjectsInstancesInstancePartitionsOperations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesInstancePartitionsOperationsRequest,
   output: GetProjectsInstancesInstancePartitionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsInstancesInstancePartitionsOperationsRequest {
@@ -4894,7 +5114,11 @@ export const DeleteProjectsInstancesInstancePartitionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesInstancePartitionsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesInstancePartitionsOperations: API.OperationMethod<
@@ -4905,7 +5129,7 @@ export const deleteProjectsInstancesInstancePartitionsOperations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesInstancePartitionsOperationsRequest,
   output: DeleteProjectsInstancesInstancePartitionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsInstancesInstancePartitionsOperationsRequest {
@@ -4926,7 +5150,11 @@ export const CancelProjectsInstancesInstancePartitionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type CancelProjectsInstancesInstancePartitionsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesInstancePartitionsOperations: API.OperationMethod<
@@ -4937,7 +5165,7 @@ export const cancelProjectsInstancesInstancePartitionsOperations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsInstancesInstancePartitionsOperationsRequest,
   output: CancelProjectsInstancesInstancePartitionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesDatabaseOperationsRequest {
@@ -4967,7 +5195,10 @@ export type ListProjectsInstancesDatabaseOperationsResponse =
 export const ListProjectsInstancesDatabaseOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDatabaseOperationsResponse;
 
-export type ListProjectsInstancesDatabaseOperationsError = DefaultErrors;
+export type ListProjectsInstancesDatabaseOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists database longrunning-operations. A database operation has a name of the form `projects//instances//databases//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. */
 export const listProjectsInstancesDatabaseOperations: API.PaginatedOperationMethod<
@@ -4978,7 +5209,7 @@ export const listProjectsInstancesDatabaseOperations: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabaseOperationsRequest,
   output: ListProjectsInstancesDatabaseOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5005,7 +5236,12 @@ export type CreateProjectsInstancesDatabasesResponse = Operation;
 export const CreateProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesDatabasesError = DefaultErrors;
+export type CreateProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful. */
 export const createProjectsInstancesDatabases: API.OperationMethod<
@@ -5016,7 +5252,7 @@ export const createProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesDatabasesRequest,
   output: CreateProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesDatabasesRequest {
@@ -5042,7 +5278,10 @@ export type ListProjectsInstancesDatabasesResponse = ListDatabasesResponse;
 export const ListProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDatabasesResponse;
 
-export type ListProjectsInstancesDatabasesError = DefaultErrors;
+export type ListProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Cloud Spanner databases. */
 export const listProjectsInstancesDatabases: API.PaginatedOperationMethod<
@@ -5053,7 +5292,7 @@ export const listProjectsInstancesDatabases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesRequest,
   output: ListProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5077,7 +5316,10 @@ export type GetProjectsInstancesDatabasesResponse = Database;
 export const GetProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Database;
 
-export type GetProjectsInstancesDatabasesError = DefaultErrors;
+export type GetProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the state of a Cloud Spanner database. */
 export const getProjectsInstancesDatabases: API.OperationMethod<
@@ -5088,7 +5330,7 @@ export const getProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesDatabasesRequest,
   output: GetProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsInstancesDatabasesRequest {
@@ -5116,7 +5358,12 @@ export type TestIamPermissionsProjectsInstancesDatabasesResponse =
 export const TestIamPermissionsProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsInstancesDatabasesError = DefaultErrors;
+export type TestIamPermissionsProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesDatabases: API.OperationMethod<
@@ -5127,7 +5374,7 @@ export const testIamPermissionsProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesDatabasesRequest,
   output: TestIamPermissionsProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDdlProjectsInstancesDatabasesRequest {
@@ -5150,7 +5397,12 @@ export type UpdateDdlProjectsInstancesDatabasesResponse = Operation;
 export const UpdateDdlProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateDdlProjectsInstancesDatabasesError = DefaultErrors;
+export type UpdateDdlProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the schema of a Cloud Spanner database by creating/altering/dropping tables, columns, indexes, etc. The returned long-running operation will have a name of the format `/operations/` and can be used to track execution of the schema changes. The metadata field type is UpdateDatabaseDdlMetadata. The operation has no response. */
 export const updateDdlProjectsInstancesDatabases: API.OperationMethod<
@@ -5161,7 +5413,7 @@ export const updateDdlProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDdlProjectsInstancesDatabasesRequest,
   output: UpdateDdlProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsInstancesDatabasesRequest {
@@ -5188,7 +5440,12 @@ export type RestoreProjectsInstancesDatabasesResponse = Operation;
 export const RestoreProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestoreProjectsInstancesDatabasesError = DefaultErrors;
+export type RestoreProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new database by restoring from a completed backup. The new database must be in the same project and in an instance with the same instance configuration as the instance containing the backup. The returned database long-running operation has a name of the format `projects//instances//databases//operations/`, and can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreDatabaseMetadata. The response type is Database, if successful. Cancelling the returned operation will stop the restore and delete the database. There can be only one database being restored into an instance at a time. Once the restore operation completes, a new restore operation can be initiated, without waiting for the optimize operation associated with the first restore to complete. */
 export const restoreProjectsInstancesDatabases: API.OperationMethod<
@@ -5199,7 +5456,7 @@ export const restoreProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsInstancesDatabasesRequest,
   output: RestoreProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ChangequorumProjectsInstancesDatabasesRequest {
@@ -5222,7 +5479,12 @@ export type ChangequorumProjectsInstancesDatabasesResponse = Operation;
 export const ChangequorumProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ChangequorumProjectsInstancesDatabasesError = DefaultErrors;
+export type ChangequorumProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** `ChangeQuorum` is strictly restricted to databases that use dual-region instance configurations. Initiates a background operation to change the quorum of a database from dual-region mode to single-region mode or vice versa. The returned long-running operation has a name of the format `projects//instances//databases//operations/` and can be used to track execution of the `ChangeQuorum`. The metadata field type is ChangeQuorumMetadata. Authorization requires `spanner.databases.changequorum` permission on the resource database. */
 export const changequorumProjectsInstancesDatabases: API.OperationMethod<
@@ -5233,7 +5495,7 @@ export const changequorumProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ChangequorumProjectsInstancesDatabasesRequest,
   output: ChangequorumProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetScansProjectsInstancesDatabasesRequest {
@@ -5262,7 +5524,10 @@ export type GetScansProjectsInstancesDatabasesResponse = Scan;
 export const GetScansProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Scan;
 
-export type GetScansProjectsInstancesDatabasesError = DefaultErrors;
+export type GetScansProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Request a specific scan with Database-specific data for Cloud Key Visualizer. */
 export const getScansProjectsInstancesDatabases: API.OperationMethod<
@@ -5273,7 +5538,7 @@ export const getScansProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetScansProjectsInstancesDatabasesRequest,
   output: GetScansProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDdlProjectsInstancesDatabasesRequest {
@@ -5293,7 +5558,10 @@ export type GetDdlProjectsInstancesDatabasesResponse = GetDatabaseDdlResponse;
 export const GetDdlProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetDatabaseDdlResponse;
 
-export type GetDdlProjectsInstancesDatabasesError = DefaultErrors;
+export type GetDdlProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the schema of a Cloud Spanner database as a list of formatted DDL statements. This method does not show pending schema updates, those may be queried using the Operations API. */
 export const getDdlProjectsInstancesDatabases: API.OperationMethod<
@@ -5304,7 +5572,7 @@ export const getDdlProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDdlProjectsInstancesDatabasesRequest,
   output: GetDdlProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsInstancesDatabasesRequest {
@@ -5330,7 +5598,12 @@ export type PatchProjectsInstancesDatabasesResponse = Operation;
 export const PatchProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesDatabasesError = DefaultErrors;
+export type PatchProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Cloud Spanner database. The returned long-running operation can be used to track the progress of updating the database. If the named database does not exist, returns `NOT_FOUND`. While the operation is pending: * The database's reconciling field is set to true. * Cancelling the operation is best-effort. If the cancellation succeeds, the operation metadata's cancel_time is set, the updates are reverted, and the operation terminates with a `CANCELLED` status. * New UpdateDatabase requests will return a `FAILED_PRECONDITION` error until the pending operation is done (returns successfully or with error). * Reading the database via the API continues to give the pre-request values. Upon completion of the returned operation: * The new values are in effect and readable via the API. * The database's reconciling field becomes false. The returned long-running operation will have a name of the format `projects//instances//databases//operations/` and can be used to track the database modification. The metadata field type is UpdateDatabaseMetadata. The response field type is Database, if successful. */
 export const patchProjectsInstancesDatabases: API.OperationMethod<
@@ -5341,7 +5614,7 @@ export const patchProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesDatabasesRequest,
   output: PatchProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesDatabasesRequest {
@@ -5368,7 +5641,12 @@ export type SetIamPolicyProjectsInstancesDatabasesResponse = Policy;
 export const SetIamPolicyProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesDatabasesError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource. */
 export const setIamPolicyProjectsInstancesDatabases: API.OperationMethod<
@@ -5379,7 +5657,7 @@ export const setIamPolicyProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesDatabasesRequest,
   output: SetIamPolicyProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesDatabasesRequest {
@@ -5406,7 +5684,12 @@ export type GetIamPolicyProjectsInstancesDatabasesResponse = Policy;
 export const GetIamPolicyProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesDatabasesError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.getIamPolicy` permission on resource. */
 export const getIamPolicyProjectsInstancesDatabases: API.OperationMethod<
@@ -5417,7 +5700,7 @@ export const getIamPolicyProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesDatabasesRequest,
   output: GetIamPolicyProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddSplitPointsProjectsInstancesDatabasesRequest {
@@ -5445,7 +5728,12 @@ export type AddSplitPointsProjectsInstancesDatabasesResponse =
 export const AddSplitPointsProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddSplitPointsResponse;
 
-export type AddSplitPointsProjectsInstancesDatabasesError = DefaultErrors;
+export type AddSplitPointsProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds split points to specified tables and indexes of a database. */
 export const addSplitPointsProjectsInstancesDatabases: API.OperationMethod<
@@ -5456,7 +5744,7 @@ export const addSplitPointsProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddSplitPointsProjectsInstancesDatabasesRequest,
   output: AddSplitPointsProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DropDatabaseProjectsInstancesDatabasesRequest {
@@ -5476,7 +5764,12 @@ export type DropDatabaseProjectsInstancesDatabasesResponse = Empty;
 export const DropDatabaseProjectsInstancesDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DropDatabaseProjectsInstancesDatabasesError = DefaultErrors;
+export type DropDatabaseProjectsInstancesDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Drops (aka deletes) a Cloud Spanner database. Completed backups for the database will be retained according to their `expire_time`. Note: Cloud Spanner might continue to accept requests for a few seconds after the database has been deleted. */
 export const dropDatabaseProjectsInstancesDatabases: API.OperationMethod<
@@ -5487,7 +5780,7 @@ export const dropDatabaseProjectsInstancesDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DropDatabaseProjectsInstancesDatabasesRequest,
   output: DropDatabaseProjectsInstancesDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest {
@@ -5516,7 +5809,11 @@ export const TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesDatabasesDatabaseRoles: API.OperationMethod<
@@ -5527,7 +5824,7 @@ export const testIamPermissionsProjectsInstancesDatabasesDatabaseRoles: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesRequest,
   output: TestIamPermissionsProjectsInstancesDatabasesDatabaseRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesDatabasesDatabaseRolesRequest {
@@ -5554,7 +5851,10 @@ export type ListProjectsInstancesDatabasesDatabaseRolesResponse =
 export const ListProjectsInstancesDatabasesDatabaseRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDatabaseRolesResponse;
 
-export type ListProjectsInstancesDatabasesDatabaseRolesError = DefaultErrors;
+export type ListProjectsInstancesDatabasesDatabaseRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Cloud Spanner database roles. */
 export const listProjectsInstancesDatabasesDatabaseRoles: API.PaginatedOperationMethod<
@@ -5565,7 +5865,7 @@ export const listProjectsInstancesDatabasesDatabaseRoles: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesDatabaseRolesRequest,
   output: ListProjectsInstancesDatabasesDatabaseRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5604,7 +5904,10 @@ export type ListProjectsInstancesDatabasesOperationsResponse =
 export const ListProjectsInstancesDatabasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsInstancesDatabasesOperationsError = DefaultErrors;
+export type ListProjectsInstancesDatabasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesDatabasesOperations: API.PaginatedOperationMethod<
@@ -5615,7 +5918,7 @@ export const listProjectsInstancesDatabasesOperations: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesOperationsRequest,
   output: ListProjectsInstancesDatabasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5639,7 +5942,10 @@ export type GetProjectsInstancesDatabasesOperationsResponse = Operation;
 export const GetProjectsInstancesDatabasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsInstancesDatabasesOperationsError = DefaultErrors;
+export type GetProjectsInstancesDatabasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesDatabasesOperations: API.OperationMethod<
@@ -5650,7 +5956,7 @@ export const getProjectsInstancesDatabasesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesDatabasesOperationsRequest,
   output: GetProjectsInstancesDatabasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsInstancesDatabasesOperationsRequest {
@@ -5670,7 +5976,12 @@ export type DeleteProjectsInstancesDatabasesOperationsResponse = Empty;
 export const DeleteProjectsInstancesDatabasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesDatabasesOperationsError = DefaultErrors;
+export type DeleteProjectsInstancesDatabasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesDatabasesOperations: API.OperationMethod<
@@ -5681,7 +5992,7 @@ export const deleteProjectsInstancesDatabasesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesDatabasesOperationsRequest,
   output: DeleteProjectsInstancesDatabasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsInstancesDatabasesOperationsRequest {
@@ -5701,7 +6012,12 @@ export type CancelProjectsInstancesDatabasesOperationsResponse = Empty;
 export const CancelProjectsInstancesDatabasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsInstancesDatabasesOperationsError = DefaultErrors;
+export type CancelProjectsInstancesDatabasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesDatabasesOperations: API.OperationMethod<
@@ -5712,7 +6028,7 @@ export const cancelProjectsInstancesDatabasesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsInstancesDatabasesOperationsRequest,
   output: CancelProjectsInstancesDatabasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BeginTransactionProjectsInstancesDatabasesSessionsRequest {
@@ -5741,7 +6057,11 @@ export const BeginTransactionProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Transaction;
 
 export type BeginTransactionProjectsInstancesDatabasesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Begins a new transaction. This step can often be skipped: Read, ExecuteSql and Commit can begin a new transaction as a side-effect. */
 export const beginTransactionProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -5752,7 +6072,7 @@ export const beginTransactionProjectsInstancesDatabasesSessions: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BeginTransactionProjectsInstancesDatabasesSessionsRequest,
   output: BeginTransactionProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PartitionReadProjectsInstancesDatabasesSessionsRequest {
@@ -5781,7 +6101,11 @@ export const PartitionReadProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PartitionResponse;
 
 export type PartitionReadProjectsInstancesDatabasesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a set of partition tokens that can be used to execute a read operation in parallel. Each of the returned partition tokens can be used by StreamingRead to specify a subset of the read result to read. The same session and read-only transaction must be used by the `PartitionReadRequest` used to create the partition tokens and the `ReadRequests` that use the partition tokens. There are no ordering guarantees on rows returned among the returned partition tokens, or even within each individual `StreamingRead` call issued with a `partition_token`. Partition tokens become invalid when the session used to create them is deleted, is idle for too long, begins a new transaction, or becomes too old. When any of these happen, it isn't possible to resume the read, and the whole operation must be restarted from the beginning. */
 export const partitionReadProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -5792,7 +6116,7 @@ export const partitionReadProjectsInstancesDatabasesSessions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PartitionReadProjectsInstancesDatabasesSessionsRequest,
   output: PartitionReadProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RollbackProjectsInstancesDatabasesSessionsRequest {
@@ -5815,7 +6139,12 @@ export type RollbackProjectsInstancesDatabasesSessionsResponse = Empty;
 export const RollbackProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RollbackProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type RollbackProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rolls back a transaction, releasing any locks it holds. It's a good idea to call this for any transaction that includes one or more Read or ExecuteSql requests and ultimately decides not to commit. `Rollback` returns `OK` if it successfully aborts the transaction, the transaction was already aborted, or the transaction isn't found. `Rollback` never returns `ABORTED`. */
 export const rollbackProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -5826,7 +6155,7 @@ export const rollbackProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackProjectsInstancesDatabasesSessionsRequest,
   output: RollbackProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchWriteProjectsInstancesDatabasesSessionsRequest {
@@ -5850,7 +6179,12 @@ export type BatchWriteProjectsInstancesDatabasesSessionsResponse =
 export const BatchWriteProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchWriteResponse;
 
-export type BatchWriteProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type BatchWriteProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batches the supplied mutation groups in a collection of efficient transactions. All mutations in a group are committed atomically. However, mutations across groups can be committed non-atomically in an unspecified order and thus, they must be independent of each other. Partial failure is possible, that is, some groups might have been committed successfully, while some might have failed. The results of individual batches are streamed into the response as the batches are applied. `BatchWrite` requests are not replay protected, meaning that each mutation group can be applied more than once. Replays of non-idempotent mutations can have undesirable effects. For example, replays of an insert mutation can produce an already exists error or if you use generated or commit timestamp-based keys, it can result in additional rows being added to the mutation's table. We recommend structuring your mutation groups to be idempotent to avoid this issue. */
 export const batchWriteProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -5861,7 +6195,7 @@ export const batchWriteProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchWriteProjectsInstancesDatabasesSessionsRequest,
   output: BatchWriteProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsInstancesDatabasesSessionsRequest {
@@ -5889,7 +6223,12 @@ export type BatchCreateProjectsInstancesDatabasesSessionsResponse =
 export const BatchCreateProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateSessionsResponse;
 
-export type BatchCreateProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type BatchCreateProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates multiple new sessions. This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for best practices on session cache management. */
 export const batchCreateProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -5900,7 +6239,7 @@ export const batchCreateProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsInstancesDatabasesSessionsRequest,
   output: BatchCreateProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CommitProjectsInstancesDatabasesSessionsRequest {
@@ -5923,7 +6262,12 @@ export type CommitProjectsInstancesDatabasesSessionsResponse = CommitResponse;
 export const CommitProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommitResponse;
 
-export type CommitProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type CommitProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits a transaction. The request includes the mutations to be applied to rows in the database. `Commit` might return an `ABORTED` error. This can occur at any time; commonly, the cause is conflicts with concurrent transactions. However, it can also happen for a variety of other reasons. If `Commit` returns `ABORTED`, the caller should retry the transaction from the beginning, reusing the same session. On very rare occasions, `Commit` might return `UNKNOWN`. This can happen, for example, if the client job experiences a 1+ hour networking failure. At that point, Cloud Spanner has lost track of the transaction outcome and we recommend that you perform another read from the database to see the state of things as they are now. */
 export const commitProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -5934,7 +6278,7 @@ export const commitProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitProjectsInstancesDatabasesSessionsRequest,
   output: CommitProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AdaptMessageProjectsInstancesDatabasesSessionsRequest {
@@ -5958,7 +6302,12 @@ export type AdaptMessageProjectsInstancesDatabasesSessionsResponse =
 export const AdaptMessageProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdaptMessageResponse;
 
-export type AdaptMessageProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type AdaptMessageProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Handles a single message from the client and returns the result as a stream. The server will interpret the message frame and respond with message frames to the client. */
 export const adaptMessageProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -5969,7 +6318,7 @@ export const adaptMessageProjectsInstancesDatabasesSessions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AdaptMessageProjectsInstancesDatabasesSessionsRequest,
   output: AdaptMessageProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PartitionQueryProjectsInstancesDatabasesSessionsRequest {
@@ -5998,7 +6347,11 @@ export const PartitionQueryProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PartitionResponse;
 
 export type PartitionQueryProjectsInstancesDatabasesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a set of partition tokens that can be used to execute a query operation in parallel. Each of the returned partition tokens can be used by ExecuteStreamingSql to specify a subset of the query result to read. The same session and read-only transaction must be used by the `PartitionQueryRequest` used to create the partition tokens and the `ExecuteSqlRequests` that use the partition tokens. Partition tokens become invalid when the session used to create them is deleted, is idle for too long, begins a new transaction, or becomes too old. When any of these happen, it isn't possible to resume the query, and the whole operation must be restarted from the beginning. */
 export const partitionQueryProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6009,7 +6362,7 @@ export const partitionQueryProjectsInstancesDatabasesSessions: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PartitionQueryProjectsInstancesDatabasesSessionsRequest,
   output: PartitionQueryProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest {
@@ -6038,7 +6391,11 @@ export const ExecuteBatchDmlProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteBatchDmlResponse;
 
 export type ExecuteBatchDmlProjectsInstancesDatabasesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a batch of SQL DML statements. This method allows many statements to be run with lower latency than submitting them sequentially with ExecuteSql. Statements are executed in sequential order. A request can succeed even if a statement fails. The ExecuteBatchDmlResponse.status field in the response provides information about the statement that failed. Clients must inspect this field to determine whether an error occurred. Execution stops after the first failed statement; the remaining statements are not executed. */
 export const executeBatchDmlProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6049,7 +6406,7 @@ export const executeBatchDmlProjectsInstancesDatabasesSessions: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteBatchDmlProjectsInstancesDatabasesSessionsRequest,
   output: ExecuteBatchDmlProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteSqlProjectsInstancesDatabasesSessionsRequest {
@@ -6072,7 +6429,12 @@ export type ExecuteSqlProjectsInstancesDatabasesSessionsResponse = ResultSet;
 export const ExecuteSqlProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResultSet;
 
-export type ExecuteSqlProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type ExecuteSqlProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes an SQL statement, returning all results in a single reply. This method can't be used to return a result set larger than 10 MiB; if the query yields more data than that, the query fails with a `FAILED_PRECONDITION` error. Operations inside read-write transactions might return `ABORTED`. If this occurs, the application should restart the transaction from the beginning. See Transaction for more details. Larger result sets can be fetched in streaming fashion by calling ExecuteStreamingSql instead. The query string can be SQL or [Graph Query Language (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro). */
 export const executeSqlProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6083,7 +6445,7 @@ export const executeSqlProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteSqlProjectsInstancesDatabasesSessionsRequest,
   output: ExecuteSqlProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReadProjectsInstancesDatabasesSessionsRequest {
@@ -6106,7 +6468,12 @@ export type ReadProjectsInstancesDatabasesSessionsResponse = ResultSet;
 export const ReadProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResultSet;
 
-export type ReadProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type ReadProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reads rows from the database using key lookups and scans, as a simple key/value style alternative to ExecuteSql. This method can't be used to return a result set larger than 10 MiB; if the read matches more data than that, the read fails with a `FAILED_PRECONDITION` error. Reads inside read-write transactions might return `ABORTED`. If this occurs, the application should restart the transaction from the beginning. See Transaction for more details. Larger result sets can be yielded in streaming fashion by calling StreamingRead instead. */
 export const readProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6117,7 +6484,7 @@ export const readProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReadProjectsInstancesDatabasesSessionsRequest,
   output: ReadProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesDatabasesSessionsRequest {
@@ -6140,7 +6507,12 @@ export type CreateProjectsInstancesDatabasesSessionsResponse = Session;
 export const CreateProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Session;
 
-export type CreateProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type CreateProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it's a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner can delete sessions when no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, for example, `"SELECT 1"`. */
 export const createProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6151,7 +6523,7 @@ export const createProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesDatabasesSessionsRequest,
   output: CreateProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamingReadProjectsInstancesDatabasesSessionsRequest {
@@ -6180,7 +6552,11 @@ export const StreamingReadProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PartialResultSet;
 
 export type StreamingReadProjectsInstancesDatabasesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Like Read, except returns the result set as a stream. Unlike Read, there is no limit on the size of the returned result set. However, no individual row in the result set can exceed 100 MiB, and no column value can exceed 10 MiB. */
 export const streamingReadProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6191,7 +6567,7 @@ export const streamingReadProjectsInstancesDatabasesSessions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StreamingReadProjectsInstancesDatabasesSessionsRequest,
   output: StreamingReadProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AdapterProjectsInstancesDatabasesSessionsRequest {
@@ -6218,7 +6594,12 @@ export type AdapterProjectsInstancesDatabasesSessionsResponse = AdapterSession;
 export const AdapterProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdapterSession;
 
-export type AdapterProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type AdapterProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new session to be used for requests made by the adapter. A session identifies a specific incarnation of a database resource and is meant to be reused across many `AdaptMessage` calls. */
 export const adapterProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6229,7 +6610,7 @@ export const adapterProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AdapterProjectsInstancesDatabasesSessionsRequest,
   output: AdapterProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesDatabasesSessionsRequest {
@@ -6249,7 +6630,10 @@ export type GetProjectsInstancesDatabasesSessionsResponse = Session;
 export const GetProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Session;
 
-export type GetProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type GetProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a session. Returns `NOT_FOUND` if the session doesn't exist. This is mainly useful for determining whether a session is still alive. */
 export const getProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6260,7 +6644,7 @@ export const getProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesDatabasesSessionsRequest,
   output: GetProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesDatabasesSessionsRequest {
@@ -6290,7 +6674,10 @@ export type ListProjectsInstancesDatabasesSessionsResponse =
 export const ListProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSessionsResponse;
 
-export type ListProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type ListProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all sessions in a given database. */
 export const listProjectsInstancesDatabasesSessions: API.PaginatedOperationMethod<
@@ -6301,7 +6688,7 @@ export const listProjectsInstancesDatabasesSessions: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesSessionsRequest,
   output: ListProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6325,7 +6712,12 @@ export type DeleteProjectsInstancesDatabasesSessionsResponse = Empty;
 export const DeleteProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesDatabasesSessionsError = DefaultErrors;
+export type DeleteProjectsInstancesDatabasesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Ends a session, releasing server resources associated with it. This asynchronously triggers the cancellation of any operations that are running with this session. */
 export const deleteProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6336,7 +6728,7 @@ export const deleteProjectsInstancesDatabasesSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesDatabasesSessionsRequest,
   output: DeleteProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest {
@@ -6365,7 +6757,11 @@ export const ExecuteStreamingSqlProjectsInstancesDatabasesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PartialResultSet;
 
 export type ExecuteStreamingSqlProjectsInstancesDatabasesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Like ExecuteSql, except returns the result set as a stream. Unlike ExecuteSql, there is no limit on the size of the returned result set. However, no individual row in the result set can exceed 100 MiB, and no column value can exceed 10 MiB. The query string can be SQL or [Graph Query Language (GQL)](https://cloud.google.com/spanner/docs/reference/standard-sql/graph-intro). */
 export const executeStreamingSqlProjectsInstancesDatabasesSessions: API.OperationMethod<
@@ -6376,7 +6772,7 @@ export const executeStreamingSqlProjectsInstancesDatabasesSessions: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteStreamingSqlProjectsInstancesDatabasesSessionsRequest,
   output: ExecuteStreamingSqlProjectsInstancesDatabasesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -6410,7 +6806,11 @@ export const CreateProjectsInstancesDatabasesBackupSchedulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackupSchedule;
 
 export type CreateProjectsInstancesDatabasesBackupSchedulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new backup schedule. */
 export const createProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
@@ -6421,7 +6821,7 @@ export const createProjectsInstancesDatabasesBackupSchedules: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesDatabasesBackupSchedulesRequest,
   output: CreateProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -6450,7 +6850,11 @@ export const SetIamPolicyProjectsInstancesDatabasesBackupSchedulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesDatabasesBackupSchedulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.setIamPolicy` permission on resource. */
 export const setIamPolicyProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
@@ -6461,7 +6865,7 @@ export const setIamPolicyProjectsInstancesDatabasesBackupSchedules: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest,
   output: SetIamPolicyProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -6490,7 +6894,11 @@ export const GetIamPolicyProjectsInstancesDatabasesBackupSchedulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesDatabasesBackupSchedulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a database or backup resource. Returns an empty policy if a database or backup exists but does not have a policy set. Authorization requires `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.getIamPolicy` permission on resource. For backup schedules, authorization requires `spanner.backupSchedules.getIamPolicy` permission on resource. */
 export const getIamPolicyProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
@@ -6501,7 +6909,7 @@ export const getIamPolicyProjectsInstancesDatabasesBackupSchedules: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesDatabasesBackupSchedulesRequest,
   output: GetIamPolicyProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -6522,7 +6930,11 @@ export const DeleteProjectsInstancesDatabasesBackupSchedulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsInstancesDatabasesBackupSchedulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a backup schedule. */
 export const deleteProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
@@ -6533,7 +6945,7 @@ export const deleteProjectsInstancesDatabasesBackupSchedules: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesDatabasesBackupSchedulesRequest,
   output: DeleteProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -6554,7 +6966,10 @@ export type GetProjectsInstancesDatabasesBackupSchedulesResponse =
 export const GetProjectsInstancesDatabasesBackupSchedulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackupSchedule;
 
-export type GetProjectsInstancesDatabasesBackupSchedulesError = DefaultErrors;
+export type GetProjectsInstancesDatabasesBackupSchedulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets backup schedule for the input schedule name. */
 export const getProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
@@ -6565,7 +6980,7 @@ export const getProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesDatabasesBackupSchedulesRequest,
   output: GetProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -6592,7 +7007,10 @@ export type ListProjectsInstancesDatabasesBackupSchedulesResponse =
 export const ListProjectsInstancesDatabasesBackupSchedulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupSchedulesResponse;
 
-export type ListProjectsInstancesDatabasesBackupSchedulesError = DefaultErrors;
+export type ListProjectsInstancesDatabasesBackupSchedulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the backup schedules for the database. */
 export const listProjectsInstancesDatabasesBackupSchedules: API.PaginatedOperationMethod<
@@ -6603,7 +7021,7 @@ export const listProjectsInstancesDatabasesBackupSchedules: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesDatabasesBackupSchedulesRequest,
   output: ListProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6636,7 +7054,11 @@ export const TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesResponse
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified database or backup resource. Attempting this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise returns an empty set of permissions. Calling this method on a backup that does not exist will result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing instance. Calling this method on a backup schedule that does not exist will result in a NOT_FOUND error if the user has `spanner.backupSchedules.list` permission on the containing database. */
 export const testIamPermissionsProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
@@ -6647,7 +7069,7 @@ export const testIamPermissionsProjectsInstancesDatabasesBackupSchedules: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesRequest,
   output: TestIamPermissionsProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInstancesDatabasesBackupSchedulesRequest {
@@ -6674,7 +7096,12 @@ export type PatchProjectsInstancesDatabasesBackupSchedulesResponse =
 export const PatchProjectsInstancesDatabasesBackupSchedulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackupSchedule;
 
-export type PatchProjectsInstancesDatabasesBackupSchedulesError = DefaultErrors;
+export type PatchProjectsInstancesDatabasesBackupSchedulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a backup schedule. */
 export const patchProjectsInstancesDatabasesBackupSchedules: API.OperationMethod<
@@ -6685,7 +7112,7 @@ export const patchProjectsInstancesDatabasesBackupSchedules: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesDatabasesBackupSchedulesRequest,
   output: PatchProjectsInstancesDatabasesBackupSchedulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesInstancePartitionOperationsRequest {
@@ -6721,7 +7148,9 @@ export const ListProjectsInstancesInstancePartitionOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancePartitionOperationsResponse;
 
 export type ListProjectsInstancesInstancePartitionOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists instance partition long-running operations in the given instance. An instance partition operation has a name of the form `projects//instances//instancePartitions//operations/`. The long-running operation metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include those that have completed/failed/canceled within the last 7 days, and pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most recently started operation. Authorization requires `spanner.instancePartitionOperations.list` permission on the resource parent. */
 export const listProjectsInstancesInstancePartitionOperations: API.PaginatedOperationMethod<
@@ -6732,7 +7161,7 @@ export const listProjectsInstancesInstancePartitionOperations: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesInstancePartitionOperationsRequest,
   output: ListProjectsInstancesInstancePartitionOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6756,7 +7185,12 @@ export type DeleteProjectsInstancesOperationsResponse = Empty;
 export const DeleteProjectsInstancesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesOperationsError = DefaultErrors;
+export type DeleteProjectsInstancesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsInstancesOperations: API.OperationMethod<
@@ -6767,7 +7201,7 @@ export const deleteProjectsInstancesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesOperationsRequest,
   output: DeleteProjectsInstancesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsInstancesOperationsRequest {
@@ -6787,7 +7221,12 @@ export type CancelProjectsInstancesOperationsResponse = Empty;
 export const CancelProjectsInstancesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsInstancesOperationsError = DefaultErrors;
+export type CancelProjectsInstancesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsInstancesOperations: API.OperationMethod<
@@ -6798,7 +7237,7 @@ export const cancelProjectsInstancesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsInstancesOperationsRequest,
   output: CancelProjectsInstancesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesOperationsRequest {
@@ -6832,7 +7271,10 @@ export type ListProjectsInstancesOperationsResponse = ListOperationsResponse;
 export const ListProjectsInstancesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsInstancesOperationsError = DefaultErrors;
+export type ListProjectsInstancesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsInstancesOperations: API.PaginatedOperationMethod<
@@ -6843,7 +7285,7 @@ export const listProjectsInstancesOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesOperationsRequest,
   output: ListProjectsInstancesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6867,7 +7309,10 @@ export type GetProjectsInstancesOperationsResponse = Operation;
 export const GetProjectsInstancesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsInstancesOperationsError = DefaultErrors;
+export type GetProjectsInstancesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsInstancesOperations: API.OperationMethod<
@@ -6878,5 +7323,5 @@ export const getProjectsInstancesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesOperationsRequest,
   output: GetProjectsInstancesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

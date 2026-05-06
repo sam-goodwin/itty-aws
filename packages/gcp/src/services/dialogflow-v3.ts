@@ -11628,6 +11628,52 @@ export const GoogleCloudDialogflowV3alpha1ConversationSignals =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -11658,7 +11704,7 @@ export type ListProjectsOperationsResponse =
 export const ListProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsOperationsError = DefaultErrors;
+export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 export const listProjectsOperations: API.PaginatedOperationMethod<
   ListProjectsOperationsRequest,
@@ -11668,7 +11714,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11691,7 +11737,7 @@ export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 export const getProjectsOperations: API.OperationMethod<
   GetProjectsOperationsRequest,
@@ -11701,7 +11747,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsOperationsRequest {
@@ -11720,7 +11766,12 @@ export type CancelProjectsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsOperationsError = DefaultErrors;
+export type CancelProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const cancelProjectsOperations: API.OperationMethod<
   CancelProjectsOperationsRequest,
@@ -11730,7 +11781,7 @@ export const cancelProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -11760,7 +11811,7 @@ export type ListProjectsLocationsResponse =
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 export const listProjectsLocations: API.PaginatedOperationMethod<
   ListProjectsLocationsRequest,
@@ -11770,7 +11821,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11793,7 +11844,7 @@ export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationLocation;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsRequest,
@@ -11803,7 +11854,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -11833,7 +11884,10 @@ export type ListProjectsLocationsOperationsResponse =
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   ListProjectsLocationsOperationsRequest,
@@ -11843,7 +11897,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11866,7 +11920,10 @@ export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsRequest,
@@ -11876,7 +11933,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -11895,7 +11952,12 @@ export type CancelProjectsLocationsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsRequest,
@@ -11905,7 +11967,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsSecuritySettingsRequest {
@@ -11934,7 +11996,12 @@ export type CreateProjectsLocationsSecuritySettingsResponse =
 export const CreateProjectsLocationsSecuritySettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SecuritySettings;
 
-export type CreateProjectsLocationsSecuritySettingsError = DefaultErrors;
+export type CreateProjectsLocationsSecuritySettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsSecuritySettings: API.OperationMethod<
   CreateProjectsLocationsSecuritySettingsRequest,
@@ -11944,7 +12011,7 @@ export const createProjectsLocationsSecuritySettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSecuritySettingsRequest,
   output: CreateProjectsLocationsSecuritySettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSecuritySettingsRequest {
@@ -11964,7 +12031,10 @@ export type GetProjectsLocationsSecuritySettingsResponse =
 export const GetProjectsLocationsSecuritySettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SecuritySettings;
 
-export type GetProjectsLocationsSecuritySettingsError = DefaultErrors;
+export type GetProjectsLocationsSecuritySettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsSecuritySettings: API.OperationMethod<
   GetProjectsLocationsSecuritySettingsRequest,
@@ -11974,7 +12044,7 @@ export const getProjectsLocationsSecuritySettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSecuritySettingsRequest,
   output: GetProjectsLocationsSecuritySettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsSecuritySettingsRequest {
@@ -12001,7 +12071,12 @@ export type PatchProjectsLocationsSecuritySettingsResponse =
 export const PatchProjectsLocationsSecuritySettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SecuritySettings;
 
-export type PatchProjectsLocationsSecuritySettingsError = DefaultErrors;
+export type PatchProjectsLocationsSecuritySettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsSecuritySettings: API.OperationMethod<
   PatchProjectsLocationsSecuritySettingsRequest,
@@ -12011,7 +12086,7 @@ export const patchProjectsLocationsSecuritySettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSecuritySettingsRequest,
   output: PatchProjectsLocationsSecuritySettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSecuritySettingsRequest {
@@ -12035,7 +12110,10 @@ export type ListProjectsLocationsSecuritySettingsResponse =
 export const ListProjectsLocationsSecuritySettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListSecuritySettingsResponse;
 
-export type ListProjectsLocationsSecuritySettingsError = DefaultErrors;
+export type ListProjectsLocationsSecuritySettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsSecuritySettings: API.PaginatedOperationMethod<
   ListProjectsLocationsSecuritySettingsRequest,
@@ -12045,7 +12123,7 @@ export const listProjectsLocationsSecuritySettings: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSecuritySettingsRequest,
   output: ListProjectsLocationsSecuritySettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12069,7 +12147,12 @@ export type DeleteProjectsLocationsSecuritySettingsResponse =
 export const DeleteProjectsLocationsSecuritySettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsSecuritySettingsError = DefaultErrors;
+export type DeleteProjectsLocationsSecuritySettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsSecuritySettings: API.OperationMethod<
   DeleteProjectsLocationsSecuritySettingsRequest,
@@ -12079,7 +12162,7 @@ export const deleteProjectsLocationsSecuritySettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSecuritySettingsRequest,
   output: DeleteProjectsLocationsSecuritySettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsRequest {
@@ -12103,7 +12186,10 @@ export type ListProjectsLocationsAgentsResponse =
 export const ListProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListAgentsResponse;
 
-export type ListProjectsLocationsAgentsError = DefaultErrors;
+export type ListProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgents: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsRequest,
@@ -12113,7 +12199,7 @@ export const listProjectsLocationsAgents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsRequest,
   output: ListProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12136,7 +12222,10 @@ export type GetProjectsLocationsAgentsResponse = GoogleCloudDialogflowCxV3Agent;
 export const GetProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Agent;
 
-export type GetProjectsLocationsAgentsError = DefaultErrors;
+export type GetProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgents: API.OperationMethod<
   GetProjectsLocationsAgentsRequest,
@@ -12146,7 +12235,7 @@ export const getProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsRequest,
   output: GetProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsRequest {
@@ -12169,7 +12258,12 @@ export type CreateProjectsLocationsAgentsResponse =
 export const CreateProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Agent;
 
-export type CreateProjectsLocationsAgentsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgents: API.OperationMethod<
   CreateProjectsLocationsAgentsRequest,
@@ -12179,7 +12273,7 @@ export const createProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsRequest,
   output: CreateProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsRequest {
@@ -12204,7 +12298,12 @@ export type PatchProjectsLocationsAgentsResponse =
 export const PatchProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Agent;
 
-export type PatchProjectsLocationsAgentsError = DefaultErrors;
+export type PatchProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgents: API.OperationMethod<
   PatchProjectsLocationsAgentsRequest,
@@ -12214,7 +12313,7 @@ export const patchProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsRequest,
   output: PatchProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsRequest {
@@ -12233,7 +12332,12 @@ export type DeleteProjectsLocationsAgentsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgents: API.OperationMethod<
   DeleteProjectsLocationsAgentsRequest,
@@ -12243,7 +12347,7 @@ export const deleteProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsRequest,
   output: DeleteProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsAgentsRequest {
@@ -12267,7 +12371,12 @@ export type ExportProjectsLocationsAgentsResponse = GoogleLongrunningOperation;
 export const ExportProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportProjectsLocationsAgentsError = DefaultErrors;
+export type ExportProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const exportProjectsLocationsAgents: API.OperationMethod<
   ExportProjectsLocationsAgentsRequest,
@@ -12277,7 +12386,7 @@ export const exportProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsRequest,
   output: ExportProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsLocationsAgentsRequest {
@@ -12301,7 +12410,12 @@ export type RestoreProjectsLocationsAgentsResponse = GoogleLongrunningOperation;
 export const RestoreProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type RestoreProjectsLocationsAgentsError = DefaultErrors;
+export type RestoreProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const restoreProjectsLocationsAgents: API.OperationMethod<
   RestoreProjectsLocationsAgentsRequest,
@@ -12311,7 +12425,7 @@ export const restoreProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsAgentsRequest,
   output: RestoreProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateProjectsLocationsAgentsRequest {
@@ -12336,7 +12450,12 @@ export type ValidateProjectsLocationsAgentsResponse =
 export const ValidateProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3AgentValidationResult;
 
-export type ValidateProjectsLocationsAgentsError = DefaultErrors;
+export type ValidateProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const validateProjectsLocationsAgents: API.OperationMethod<
   ValidateProjectsLocationsAgentsRequest,
@@ -12346,7 +12465,7 @@ export const validateProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateProjectsLocationsAgentsRequest,
   output: ValidateProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetValidationResultProjectsLocationsAgentsRequest {
@@ -12370,7 +12489,10 @@ export type GetValidationResultProjectsLocationsAgentsResponse =
 export const GetValidationResultProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3AgentValidationResult;
 
-export type GetValidationResultProjectsLocationsAgentsError = DefaultErrors;
+export type GetValidationResultProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getValidationResultProjectsLocationsAgents: API.OperationMethod<
   GetValidationResultProjectsLocationsAgentsRequest,
@@ -12380,7 +12502,7 @@ export const getValidationResultProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetValidationResultProjectsLocationsAgentsRequest,
   output: GetValidationResultProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetGenerativeSettingsProjectsLocationsAgentsRequest {
@@ -12404,7 +12526,10 @@ export type GetGenerativeSettingsProjectsLocationsAgentsResponse =
 export const GetGenerativeSettingsProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3GenerativeSettings;
 
-export type GetGenerativeSettingsProjectsLocationsAgentsError = DefaultErrors;
+export type GetGenerativeSettingsProjectsLocationsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getGenerativeSettingsProjectsLocationsAgents: API.OperationMethod<
   GetGenerativeSettingsProjectsLocationsAgentsRequest,
@@ -12414,7 +12539,7 @@ export const getGenerativeSettingsProjectsLocationsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGenerativeSettingsProjectsLocationsAgentsRequest,
   output: GetGenerativeSettingsProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateGenerativeSettingsProjectsLocationsAgentsRequest {
@@ -12442,7 +12567,11 @@ export const UpdateGenerativeSettingsProjectsLocationsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3GenerativeSettings;
 
 export type UpdateGenerativeSettingsProjectsLocationsAgentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const updateGenerativeSettingsProjectsLocationsAgents: API.OperationMethod<
   UpdateGenerativeSettingsProjectsLocationsAgentsRequest,
@@ -12452,7 +12581,7 @@ export const updateGenerativeSettingsProjectsLocationsAgents: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGenerativeSettingsProjectsLocationsAgentsRequest,
   output: UpdateGenerativeSettingsProjectsLocationsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAgentsFlowsRequest {
@@ -12479,7 +12608,12 @@ export type CreateProjectsLocationsAgentsFlowsResponse =
 export const CreateProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Flow;
 
-export type CreateProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsFlows: API.OperationMethod<
   CreateProjectsLocationsAgentsFlowsRequest,
@@ -12489,7 +12623,7 @@ export const createProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsRequest,
   output: CreateProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsFlowsRequest {
@@ -12510,7 +12644,12 @@ export type DeleteProjectsLocationsAgentsFlowsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsFlows: API.OperationMethod<
   DeleteProjectsLocationsAgentsFlowsRequest,
@@ -12520,7 +12659,7 @@ export const deleteProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsRequest,
   output: DeleteProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsFlowsRequest {
@@ -12548,7 +12687,10 @@ export type ListProjectsLocationsAgentsFlowsResponse =
 export const ListProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListFlowsResponse;
 
-export type ListProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type ListProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsFlows: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsFlowsRequest,
@@ -12558,7 +12700,7 @@ export const listProjectsLocationsAgentsFlows: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsRequest,
   output: ListProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12586,7 +12728,10 @@ export type GetProjectsLocationsAgentsFlowsResponse =
 export const GetProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Flow;
 
-export type GetProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type GetProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsFlows: API.OperationMethod<
   GetProjectsLocationsAgentsFlowsRequest,
@@ -12596,7 +12741,7 @@ export const getProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsRequest,
   output: GetProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsAgentsFlowsRequest {
@@ -12625,7 +12770,12 @@ export type PatchProjectsLocationsAgentsFlowsResponse =
 export const PatchProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Flow;
 
-export type PatchProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type PatchProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsFlows: API.OperationMethod<
   PatchProjectsLocationsAgentsFlowsRequest,
@@ -12635,7 +12785,7 @@ export const patchProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsRequest,
   output: PatchProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TrainProjectsLocationsAgentsFlowsRequest {
@@ -12660,7 +12810,12 @@ export type TrainProjectsLocationsAgentsFlowsResponse =
 export const TrainProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type TrainProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type TrainProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const trainProjectsLocationsAgentsFlows: API.OperationMethod<
   TrainProjectsLocationsAgentsFlowsRequest,
@@ -12670,7 +12825,7 @@ export const trainProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TrainProjectsLocationsAgentsFlowsRequest,
   output: TrainProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateProjectsLocationsAgentsFlowsRequest {
@@ -12695,7 +12850,12 @@ export type ValidateProjectsLocationsAgentsFlowsResponse =
 export const ValidateProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3FlowValidationResult;
 
-export type ValidateProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type ValidateProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const validateProjectsLocationsAgentsFlows: API.OperationMethod<
   ValidateProjectsLocationsAgentsFlowsRequest,
@@ -12705,7 +12865,7 @@ export const validateProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateProjectsLocationsAgentsFlowsRequest,
   output: ValidateProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetValidationResultProjectsLocationsAgentsFlowsRequest {
@@ -12730,7 +12890,9 @@ export const GetValidationResultProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3FlowValidationResult;
 
 export type GetValidationResultProjectsLocationsAgentsFlowsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getValidationResultProjectsLocationsAgentsFlows: API.OperationMethod<
   GetValidationResultProjectsLocationsAgentsFlowsRequest,
@@ -12740,7 +12902,7 @@ export const getValidationResultProjectsLocationsAgentsFlows: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetValidationResultProjectsLocationsAgentsFlowsRequest,
   output: GetValidationResultProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportProjectsLocationsAgentsFlowsRequest {
@@ -12765,7 +12927,12 @@ export type ImportProjectsLocationsAgentsFlowsResponse =
 export const ImportProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type ImportProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const importProjectsLocationsAgentsFlows: API.OperationMethod<
   ImportProjectsLocationsAgentsFlowsRequest,
@@ -12775,7 +12942,7 @@ export const importProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsFlowsRequest,
   output: ImportProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsAgentsFlowsRequest {
@@ -12800,7 +12967,12 @@ export type ExportProjectsLocationsAgentsFlowsResponse =
 export const ExportProjectsLocationsAgentsFlowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportProjectsLocationsAgentsFlowsError = DefaultErrors;
+export type ExportProjectsLocationsAgentsFlowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const exportProjectsLocationsAgentsFlows: API.OperationMethod<
   ExportProjectsLocationsAgentsFlowsRequest,
@@ -12810,7 +12982,7 @@ export const exportProjectsLocationsAgentsFlows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsFlowsRequest,
   output: ExportProjectsLocationsAgentsFlowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsFlowsPagesRequest {
@@ -12838,7 +13010,10 @@ export type ListProjectsLocationsAgentsFlowsPagesResponse =
 export const ListProjectsLocationsAgentsFlowsPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListPagesResponse;
 
-export type ListProjectsLocationsAgentsFlowsPagesError = DefaultErrors;
+export type ListProjectsLocationsAgentsFlowsPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsFlowsPages: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsFlowsPagesRequest,
@@ -12848,7 +13023,7 @@ export const listProjectsLocationsAgentsFlowsPages: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsPagesRequest,
   output: ListProjectsLocationsAgentsFlowsPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12876,7 +13051,10 @@ export type GetProjectsLocationsAgentsFlowsPagesResponse =
 export const GetProjectsLocationsAgentsFlowsPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Page;
 
-export type GetProjectsLocationsAgentsFlowsPagesError = DefaultErrors;
+export type GetProjectsLocationsAgentsFlowsPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   GetProjectsLocationsAgentsFlowsPagesRequest,
@@ -12886,7 +13064,7 @@ export const getProjectsLocationsAgentsFlowsPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsPagesRequest,
   output: GetProjectsLocationsAgentsFlowsPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsFlowsPagesRequest {
@@ -12913,7 +13091,12 @@ export type CreateProjectsLocationsAgentsFlowsPagesResponse =
 export const CreateProjectsLocationsAgentsFlowsPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Page;
 
-export type CreateProjectsLocationsAgentsFlowsPagesError = DefaultErrors;
+export type CreateProjectsLocationsAgentsFlowsPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   CreateProjectsLocationsAgentsFlowsPagesRequest,
@@ -12923,7 +13106,7 @@ export const createProjectsLocationsAgentsFlowsPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsPagesRequest,
   output: CreateProjectsLocationsAgentsFlowsPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsFlowsPagesRequest {
@@ -12952,7 +13135,12 @@ export type PatchProjectsLocationsAgentsFlowsPagesResponse =
 export const PatchProjectsLocationsAgentsFlowsPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Page;
 
-export type PatchProjectsLocationsAgentsFlowsPagesError = DefaultErrors;
+export type PatchProjectsLocationsAgentsFlowsPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   PatchProjectsLocationsAgentsFlowsPagesRequest,
@@ -12962,7 +13150,7 @@ export const patchProjectsLocationsAgentsFlowsPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsPagesRequest,
   output: PatchProjectsLocationsAgentsFlowsPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsFlowsPagesRequest {
@@ -12984,7 +13172,12 @@ export type DeleteProjectsLocationsAgentsFlowsPagesResponse =
 export const DeleteProjectsLocationsAgentsFlowsPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsFlowsPagesError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsFlowsPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsFlowsPages: API.OperationMethod<
   DeleteProjectsLocationsAgentsFlowsPagesRequest,
@@ -12994,7 +13187,7 @@ export const deleteProjectsLocationsAgentsFlowsPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsPagesRequest,
   output: DeleteProjectsLocationsAgentsFlowsPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest {
@@ -13023,7 +13216,9 @@ export const ListProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse;
 
 export type ListProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsFlowsTransitionRouteGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
@@ -13033,7 +13228,7 @@ export const listProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: ListProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13062,7 +13257,9 @@ export const GetProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TransitionRouteGroup;
 
 export type GetProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsFlowsTransitionRouteGroups: API.OperationMethod<
   GetProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
@@ -13072,7 +13269,7 @@ export const getProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: GetProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest {
@@ -13106,7 +13303,11 @@ export const CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TransitionRouteGroup;
 
 export type CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsFlowsTransitionRouteGroups: API.OperationMethod<
   CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
@@ -13116,7 +13317,7 @@ export const createProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: CreateProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest {
@@ -13148,7 +13349,11 @@ export const PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TransitionRouteGroup;
 
 export type PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsFlowsTransitionRouteGroups: API.OperationMethod<
   PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
@@ -13158,7 +13363,7 @@ export const patchProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: PatchProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest {
@@ -13181,7 +13386,11 @@ export const DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsFlowsTransitionRouteGroups: API.OperationMethod<
   DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
@@ -13191,7 +13400,7 @@ export const deleteProjectsLocationsAgentsFlowsTransitionRouteGroups: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsRequest,
   output: DeleteProjectsLocationsAgentsFlowsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsFlowsVersionsRequest {
@@ -13215,7 +13424,10 @@ export type ListProjectsLocationsAgentsFlowsVersionsResponse =
 export const ListProjectsLocationsAgentsFlowsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListVersionsResponse;
 
-export type ListProjectsLocationsAgentsFlowsVersionsError = DefaultErrors;
+export type ListProjectsLocationsAgentsFlowsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsFlowsVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsFlowsVersionsRequest,
@@ -13225,7 +13437,7 @@ export const listProjectsLocationsAgentsFlowsVersions: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsFlowsVersionsRequest,
   output: ListProjectsLocationsAgentsFlowsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13249,7 +13461,10 @@ export type GetProjectsLocationsAgentsFlowsVersionsResponse =
 export const GetProjectsLocationsAgentsFlowsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Version;
 
-export type GetProjectsLocationsAgentsFlowsVersionsError = DefaultErrors;
+export type GetProjectsLocationsAgentsFlowsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   GetProjectsLocationsAgentsFlowsVersionsRequest,
@@ -13259,7 +13474,7 @@ export const getProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsFlowsVersionsRequest,
   output: GetProjectsLocationsAgentsFlowsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsFlowsVersionsRequest {
@@ -13282,7 +13497,12 @@ export type CreateProjectsLocationsAgentsFlowsVersionsResponse =
 export const CreateProjectsLocationsAgentsFlowsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsAgentsFlowsVersionsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsFlowsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   CreateProjectsLocationsAgentsFlowsVersionsRequest,
@@ -13292,7 +13512,7 @@ export const createProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsFlowsVersionsRequest,
   output: CreateProjectsLocationsAgentsFlowsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsFlowsVersionsRequest {
@@ -13317,7 +13537,12 @@ export type PatchProjectsLocationsAgentsFlowsVersionsResponse =
 export const PatchProjectsLocationsAgentsFlowsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Version;
 
-export type PatchProjectsLocationsAgentsFlowsVersionsError = DefaultErrors;
+export type PatchProjectsLocationsAgentsFlowsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   PatchProjectsLocationsAgentsFlowsVersionsRequest,
@@ -13327,7 +13552,7 @@ export const patchProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsFlowsVersionsRequest,
   output: PatchProjectsLocationsAgentsFlowsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsFlowsVersionsRequest {
@@ -13347,7 +13572,12 @@ export type DeleteProjectsLocationsAgentsFlowsVersionsResponse =
 export const DeleteProjectsLocationsAgentsFlowsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsFlowsVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsFlowsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   DeleteProjectsLocationsAgentsFlowsVersionsRequest,
@@ -13357,7 +13587,7 @@ export const deleteProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsFlowsVersionsRequest,
   output: DeleteProjectsLocationsAgentsFlowsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LoadProjectsLocationsAgentsFlowsVersionsRequest {
@@ -13382,7 +13612,12 @@ export type LoadProjectsLocationsAgentsFlowsVersionsResponse =
 export const LoadProjectsLocationsAgentsFlowsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type LoadProjectsLocationsAgentsFlowsVersionsError = DefaultErrors;
+export type LoadProjectsLocationsAgentsFlowsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const loadProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   LoadProjectsLocationsAgentsFlowsVersionsRequest,
@@ -13392,7 +13627,7 @@ export const loadProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LoadProjectsLocationsAgentsFlowsVersionsRequest,
   output: LoadProjectsLocationsAgentsFlowsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompareVersionsProjectsLocationsAgentsFlowsVersionsRequest {
@@ -13422,7 +13657,11 @@ export const CompareVersionsProjectsLocationsAgentsFlowsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3CompareVersionsResponse;
 
 export type CompareVersionsProjectsLocationsAgentsFlowsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const compareVersionsProjectsLocationsAgentsFlowsVersions: API.OperationMethod<
   CompareVersionsProjectsLocationsAgentsFlowsVersionsRequest,
@@ -13432,7 +13671,7 @@ export const compareVersionsProjectsLocationsAgentsFlowsVersions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompareVersionsProjectsLocationsAgentsFlowsVersionsRequest,
   output: CompareVersionsProjectsLocationsAgentsFlowsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsChangelogsRequest {
@@ -13458,7 +13697,10 @@ export type ListProjectsLocationsAgentsChangelogsResponse =
 export const ListProjectsLocationsAgentsChangelogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListChangelogsResponse;
 
-export type ListProjectsLocationsAgentsChangelogsError = DefaultErrors;
+export type ListProjectsLocationsAgentsChangelogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsChangelogs: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsChangelogsRequest,
@@ -13468,7 +13710,7 @@ export const listProjectsLocationsAgentsChangelogs: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsChangelogsRequest,
   output: ListProjectsLocationsAgentsChangelogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13492,7 +13734,10 @@ export type GetProjectsLocationsAgentsChangelogsResponse =
 export const GetProjectsLocationsAgentsChangelogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Changelog;
 
-export type GetProjectsLocationsAgentsChangelogsError = DefaultErrors;
+export type GetProjectsLocationsAgentsChangelogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsChangelogs: API.OperationMethod<
   GetProjectsLocationsAgentsChangelogsRequest,
@@ -13502,7 +13747,7 @@ export const getProjectsLocationsAgentsChangelogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsChangelogsRequest,
   output: GetProjectsLocationsAgentsChangelogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsAgentsEntityTypesRequest {
@@ -13526,7 +13771,10 @@ export type GetProjectsLocationsAgentsEntityTypesResponse =
 export const GetProjectsLocationsAgentsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3EntityType;
 
-export type GetProjectsLocationsAgentsEntityTypesError = DefaultErrors;
+export type GetProjectsLocationsAgentsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   GetProjectsLocationsAgentsEntityTypesRequest,
@@ -13536,7 +13784,7 @@ export const getProjectsLocationsAgentsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEntityTypesRequest,
   output: GetProjectsLocationsAgentsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsEntityTypesRequest {
@@ -13565,7 +13813,12 @@ export type CreateProjectsLocationsAgentsEntityTypesResponse =
 export const CreateProjectsLocationsAgentsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3EntityType;
 
-export type CreateProjectsLocationsAgentsEntityTypesError = DefaultErrors;
+export type CreateProjectsLocationsAgentsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   CreateProjectsLocationsAgentsEntityTypesRequest,
@@ -13575,7 +13828,7 @@ export const createProjectsLocationsAgentsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEntityTypesRequest,
   output: CreateProjectsLocationsAgentsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsEntityTypesRequest {
@@ -13606,7 +13859,12 @@ export type PatchProjectsLocationsAgentsEntityTypesResponse =
 export const PatchProjectsLocationsAgentsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3EntityType;
 
-export type PatchProjectsLocationsAgentsEntityTypesError = DefaultErrors;
+export type PatchProjectsLocationsAgentsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   PatchProjectsLocationsAgentsEntityTypesRequest,
@@ -13616,7 +13874,7 @@ export const patchProjectsLocationsAgentsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEntityTypesRequest,
   output: PatchProjectsLocationsAgentsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsEntityTypesRequest {
@@ -13638,7 +13896,12 @@ export type DeleteProjectsLocationsAgentsEntityTypesResponse =
 export const DeleteProjectsLocationsAgentsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsEntityTypesError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   DeleteProjectsLocationsAgentsEntityTypesRequest,
@@ -13648,7 +13911,7 @@ export const deleteProjectsLocationsAgentsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEntityTypesRequest,
   output: DeleteProjectsLocationsAgentsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsEntityTypesRequest {
@@ -13676,7 +13939,10 @@ export type ListProjectsLocationsAgentsEntityTypesResponse =
 export const ListProjectsLocationsAgentsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListEntityTypesResponse;
 
-export type ListProjectsLocationsAgentsEntityTypesError = DefaultErrors;
+export type ListProjectsLocationsAgentsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsEntityTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsEntityTypesRequest,
@@ -13686,7 +13952,7 @@ export const listProjectsLocationsAgentsEntityTypes: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEntityTypesRequest,
   output: ListProjectsLocationsAgentsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13719,7 +13985,12 @@ export type ExportProjectsLocationsAgentsEntityTypesResponse =
 export const ExportProjectsLocationsAgentsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportProjectsLocationsAgentsEntityTypesError = DefaultErrors;
+export type ExportProjectsLocationsAgentsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const exportProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   ExportProjectsLocationsAgentsEntityTypesRequest,
@@ -13729,7 +14000,7 @@ export const exportProjectsLocationsAgentsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsEntityTypesRequest,
   output: ExportProjectsLocationsAgentsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsAgentsEntityTypesRequest {
@@ -13758,7 +14029,12 @@ export type ImportProjectsLocationsAgentsEntityTypesResponse =
 export const ImportProjectsLocationsAgentsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsAgentsEntityTypesError = DefaultErrors;
+export type ImportProjectsLocationsAgentsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const importProjectsLocationsAgentsEntityTypes: API.OperationMethod<
   ImportProjectsLocationsAgentsEntityTypesRequest,
@@ -13768,7 +14044,7 @@ export const importProjectsLocationsAgentsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsEntityTypesRequest,
   output: ImportProjectsLocationsAgentsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsIntentsRequest {
@@ -13802,7 +14078,10 @@ export type ListProjectsLocationsAgentsIntentsResponse =
 export const ListProjectsLocationsAgentsIntentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListIntentsResponse;
 
-export type ListProjectsLocationsAgentsIntentsError = DefaultErrors;
+export type ListProjectsLocationsAgentsIntentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsIntents: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsIntentsRequest,
@@ -13812,7 +14091,7 @@ export const listProjectsLocationsAgentsIntents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsIntentsRequest,
   output: ListProjectsLocationsAgentsIntentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13840,7 +14119,10 @@ export type GetProjectsLocationsAgentsIntentsResponse =
 export const GetProjectsLocationsAgentsIntentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Intent;
 
-export type GetProjectsLocationsAgentsIntentsError = DefaultErrors;
+export type GetProjectsLocationsAgentsIntentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsIntents: API.OperationMethod<
   GetProjectsLocationsAgentsIntentsRequest,
@@ -13850,7 +14132,7 @@ export const getProjectsLocationsAgentsIntents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsIntentsRequest,
   output: GetProjectsLocationsAgentsIntentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsIntentsRequest {
@@ -13877,7 +14159,12 @@ export type CreateProjectsLocationsAgentsIntentsResponse =
 export const CreateProjectsLocationsAgentsIntentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Intent;
 
-export type CreateProjectsLocationsAgentsIntentsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsIntentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsIntents: API.OperationMethod<
   CreateProjectsLocationsAgentsIntentsRequest,
@@ -13887,7 +14174,7 @@ export const createProjectsLocationsAgentsIntents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsIntentsRequest,
   output: CreateProjectsLocationsAgentsIntentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsIntentsRequest {
@@ -13916,7 +14203,12 @@ export type PatchProjectsLocationsAgentsIntentsResponse =
 export const PatchProjectsLocationsAgentsIntentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Intent;
 
-export type PatchProjectsLocationsAgentsIntentsError = DefaultErrors;
+export type PatchProjectsLocationsAgentsIntentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsIntents: API.OperationMethod<
   PatchProjectsLocationsAgentsIntentsRequest,
@@ -13926,7 +14218,7 @@ export const patchProjectsLocationsAgentsIntents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsIntentsRequest,
   output: PatchProjectsLocationsAgentsIntentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsIntentsRequest {
@@ -13945,7 +14237,12 @@ export type DeleteProjectsLocationsAgentsIntentsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsIntentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsIntentsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsIntentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsIntents: API.OperationMethod<
   DeleteProjectsLocationsAgentsIntentsRequest,
@@ -13955,7 +14252,7 @@ export const deleteProjectsLocationsAgentsIntents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsIntentsRequest,
   output: DeleteProjectsLocationsAgentsIntentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsAgentsIntentsRequest {
@@ -13984,7 +14281,12 @@ export type ImportProjectsLocationsAgentsIntentsResponse =
 export const ImportProjectsLocationsAgentsIntentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsAgentsIntentsError = DefaultErrors;
+export type ImportProjectsLocationsAgentsIntentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const importProjectsLocationsAgentsIntents: API.OperationMethod<
   ImportProjectsLocationsAgentsIntentsRequest,
@@ -13994,7 +14296,7 @@ export const importProjectsLocationsAgentsIntents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsIntentsRequest,
   output: ImportProjectsLocationsAgentsIntentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsAgentsIntentsRequest {
@@ -14023,7 +14325,12 @@ export type ExportProjectsLocationsAgentsIntentsResponse =
 export const ExportProjectsLocationsAgentsIntentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportProjectsLocationsAgentsIntentsError = DefaultErrors;
+export type ExportProjectsLocationsAgentsIntentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const exportProjectsLocationsAgentsIntents: API.OperationMethod<
   ExportProjectsLocationsAgentsIntentsRequest,
@@ -14033,7 +14340,7 @@ export const exportProjectsLocationsAgentsIntents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsIntentsRequest,
   output: ExportProjectsLocationsAgentsIntentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetectIntentProjectsLocationsAgentsSessionsRequest {
@@ -14062,7 +14369,12 @@ export type DetectIntentProjectsLocationsAgentsSessionsResponse =
 export const DetectIntentProjectsLocationsAgentsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3DetectIntentResponse;
 
-export type DetectIntentProjectsLocationsAgentsSessionsError = DefaultErrors;
+export type DetectIntentProjectsLocationsAgentsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const detectIntentProjectsLocationsAgentsSessions: API.OperationMethod<
   DetectIntentProjectsLocationsAgentsSessionsRequest,
@@ -14072,7 +14384,7 @@ export const detectIntentProjectsLocationsAgentsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetectIntentProjectsLocationsAgentsSessionsRequest,
   output: DetectIntentProjectsLocationsAgentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ServerStreamingDetectIntentProjectsLocationsAgentsSessionsRequest {
@@ -14102,7 +14414,11 @@ export const ServerStreamingDetectIntentProjectsLocationsAgentsSessionsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3DetectIntentResponse;
 
 export type ServerStreamingDetectIntentProjectsLocationsAgentsSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const serverStreamingDetectIntentProjectsLocationsAgentsSessions: API.OperationMethod<
   ServerStreamingDetectIntentProjectsLocationsAgentsSessionsRequest,
@@ -14112,7 +14428,7 @@ export const serverStreamingDetectIntentProjectsLocationsAgentsSessions: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ServerStreamingDetectIntentProjectsLocationsAgentsSessionsRequest,
   output: ServerStreamingDetectIntentProjectsLocationsAgentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MatchIntentProjectsLocationsAgentsSessionsRequest {
@@ -14137,7 +14453,12 @@ export type MatchIntentProjectsLocationsAgentsSessionsResponse =
 export const MatchIntentProjectsLocationsAgentsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3MatchIntentResponse;
 
-export type MatchIntentProjectsLocationsAgentsSessionsError = DefaultErrors;
+export type MatchIntentProjectsLocationsAgentsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const matchIntentProjectsLocationsAgentsSessions: API.OperationMethod<
   MatchIntentProjectsLocationsAgentsSessionsRequest,
@@ -14147,7 +14468,7 @@ export const matchIntentProjectsLocationsAgentsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MatchIntentProjectsLocationsAgentsSessionsRequest,
   output: MatchIntentProjectsLocationsAgentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FulfillIntentProjectsLocationsAgentsSessionsRequest {
@@ -14176,7 +14497,12 @@ export type FulfillIntentProjectsLocationsAgentsSessionsResponse =
 export const FulfillIntentProjectsLocationsAgentsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3FulfillIntentResponse;
 
-export type FulfillIntentProjectsLocationsAgentsSessionsError = DefaultErrors;
+export type FulfillIntentProjectsLocationsAgentsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const fulfillIntentProjectsLocationsAgentsSessions: API.OperationMethod<
   FulfillIntentProjectsLocationsAgentsSessionsRequest,
@@ -14186,7 +14512,7 @@ export const fulfillIntentProjectsLocationsAgentsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FulfillIntentProjectsLocationsAgentsSessionsRequest,
   output: FulfillIntentProjectsLocationsAgentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubmitAnswerFeedbackProjectsLocationsAgentsSessionsRequest {
@@ -14216,7 +14542,11 @@ export const SubmitAnswerFeedbackProjectsLocationsAgentsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3AnswerFeedback;
 
 export type SubmitAnswerFeedbackProjectsLocationsAgentsSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const submitAnswerFeedbackProjectsLocationsAgentsSessions: API.OperationMethod<
   SubmitAnswerFeedbackProjectsLocationsAgentsSessionsRequest,
@@ -14226,7 +14556,7 @@ export const submitAnswerFeedbackProjectsLocationsAgentsSessions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitAnswerFeedbackProjectsLocationsAgentsSessionsRequest,
   output: SubmitAnswerFeedbackProjectsLocationsAgentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsSessionsEntityTypesRequest {
@@ -14250,7 +14580,10 @@ export type ListProjectsLocationsAgentsSessionsEntityTypesResponse =
 export const ListProjectsLocationsAgentsSessionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse;
 
-export type ListProjectsLocationsAgentsSessionsEntityTypesError = DefaultErrors;
+export type ListProjectsLocationsAgentsSessionsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsSessionsEntityTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsSessionsEntityTypesRequest,
@@ -14260,7 +14593,7 @@ export const listProjectsLocationsAgentsSessionsEntityTypes: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: ListProjectsLocationsAgentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14284,7 +14617,10 @@ export type GetProjectsLocationsAgentsSessionsEntityTypesResponse =
 export const GetProjectsLocationsAgentsSessionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SessionEntityType;
 
-export type GetProjectsLocationsAgentsSessionsEntityTypesError = DefaultErrors;
+export type GetProjectsLocationsAgentsSessionsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsSessionsEntityTypes: API.OperationMethod<
   GetProjectsLocationsAgentsSessionsEntityTypesRequest,
@@ -14294,7 +14630,7 @@ export const getProjectsLocationsAgentsSessionsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: GetProjectsLocationsAgentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsSessionsEntityTypesRequest {
@@ -14320,7 +14656,11 @@ export const CreateProjectsLocationsAgentsSessionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SessionEntityType;
 
 export type CreateProjectsLocationsAgentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsSessionsEntityTypes: API.OperationMethod<
   CreateProjectsLocationsAgentsSessionsEntityTypesRequest,
@@ -14330,7 +14670,7 @@ export const createProjectsLocationsAgentsSessionsEntityTypes: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: CreateProjectsLocationsAgentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsSessionsEntityTypesRequest {
@@ -14358,7 +14698,11 @@ export const PatchProjectsLocationsAgentsSessionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SessionEntityType;
 
 export type PatchProjectsLocationsAgentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsSessionsEntityTypes: API.OperationMethod<
   PatchProjectsLocationsAgentsSessionsEntityTypesRequest,
@@ -14368,7 +14712,7 @@ export const patchProjectsLocationsAgentsSessionsEntityTypes: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: PatchProjectsLocationsAgentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsSessionsEntityTypesRequest {
@@ -14389,7 +14733,11 @@ export const DeleteProjectsLocationsAgentsSessionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsSessionsEntityTypes: API.OperationMethod<
   DeleteProjectsLocationsAgentsSessionsEntityTypesRequest,
@@ -14399,7 +14747,7 @@ export const deleteProjectsLocationsAgentsSessionsEntityTypes: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsSessionsEntityTypesRequest,
   output: DeleteProjectsLocationsAgentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsTransitionRouteGroupsRequest {
@@ -14428,7 +14776,9 @@ export const ListProjectsLocationsAgentsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse;
 
 export type ListProjectsLocationsAgentsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsTransitionRouteGroups: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsTransitionRouteGroupsRequest,
@@ -14438,7 +14788,7 @@ export const listProjectsLocationsAgentsTransitionRouteGroups: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: ListProjectsLocationsAgentsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14467,7 +14817,9 @@ export const GetProjectsLocationsAgentsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TransitionRouteGroup;
 
 export type GetProjectsLocationsAgentsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsTransitionRouteGroups: API.OperationMethod<
   GetProjectsLocationsAgentsTransitionRouteGroupsRequest,
@@ -14477,7 +14829,7 @@ export const getProjectsLocationsAgentsTransitionRouteGroups: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: GetProjectsLocationsAgentsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsTransitionRouteGroupsRequest {
@@ -14511,7 +14863,11 @@ export const CreateProjectsLocationsAgentsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TransitionRouteGroup;
 
 export type CreateProjectsLocationsAgentsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsTransitionRouteGroups: API.OperationMethod<
   CreateProjectsLocationsAgentsTransitionRouteGroupsRequest,
@@ -14521,7 +14877,7 @@ export const createProjectsLocationsAgentsTransitionRouteGroups: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: CreateProjectsLocationsAgentsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsTransitionRouteGroupsRequest {
@@ -14553,7 +14909,11 @@ export const PatchProjectsLocationsAgentsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TransitionRouteGroup;
 
 export type PatchProjectsLocationsAgentsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsTransitionRouteGroups: API.OperationMethod<
   PatchProjectsLocationsAgentsTransitionRouteGroupsRequest,
@@ -14563,7 +14923,7 @@ export const patchProjectsLocationsAgentsTransitionRouteGroups: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: PatchProjectsLocationsAgentsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsTransitionRouteGroupsRequest {
@@ -14586,7 +14946,11 @@ export const DeleteProjectsLocationsAgentsTransitionRouteGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsTransitionRouteGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsTransitionRouteGroups: API.OperationMethod<
   DeleteProjectsLocationsAgentsTransitionRouteGroupsRequest,
@@ -14596,7 +14960,7 @@ export const deleteProjectsLocationsAgentsTransitionRouteGroups: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsTransitionRouteGroupsRequest,
   output: DeleteProjectsLocationsAgentsTransitionRouteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsTestCasesRequest {
@@ -14622,7 +14986,10 @@ export type ListProjectsLocationsAgentsTestCasesResponse =
 export const ListProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListTestCasesResponse;
 
-export type ListProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type ListProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsTestCases: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsTestCasesRequest,
@@ -14632,7 +14999,7 @@ export const listProjectsLocationsAgentsTestCases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTestCasesRequest,
   output: ListProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14665,7 +15032,12 @@ export type BatchDeleteProjectsLocationsAgentsTestCasesResponse =
 export const BatchDeleteProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchDeleteProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type BatchDeleteProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const batchDeleteProjectsLocationsAgentsTestCases: API.OperationMethod<
   BatchDeleteProjectsLocationsAgentsTestCasesRequest,
@@ -14675,7 +15047,7 @@ export const batchDeleteProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsLocationsAgentsTestCasesRequest,
   output: BatchDeleteProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAgentsTestCasesRequest {
@@ -14695,7 +15067,10 @@ export type GetProjectsLocationsAgentsTestCasesResponse =
 export const GetProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TestCase;
 
-export type GetProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type GetProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsTestCases: API.OperationMethod<
   GetProjectsLocationsAgentsTestCasesRequest,
@@ -14705,7 +15080,7 @@ export const getProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsTestCasesRequest,
   output: GetProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsTestCasesRequest {
@@ -14728,7 +15103,12 @@ export type CreateProjectsLocationsAgentsTestCasesResponse =
 export const CreateProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TestCase;
 
-export type CreateProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type CreateProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsTestCases: API.OperationMethod<
   CreateProjectsLocationsAgentsTestCasesRequest,
@@ -14738,7 +15118,7 @@ export const createProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsTestCasesRequest,
   output: CreateProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsTestCasesRequest {
@@ -14763,7 +15143,12 @@ export type PatchProjectsLocationsAgentsTestCasesResponse =
 export const PatchProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TestCase;
 
-export type PatchProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type PatchProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsTestCases: API.OperationMethod<
   PatchProjectsLocationsAgentsTestCasesRequest,
@@ -14773,7 +15158,7 @@ export const patchProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsTestCasesRequest,
   output: PatchProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunProjectsLocationsAgentsTestCasesRequest {
@@ -14798,7 +15183,12 @@ export type RunProjectsLocationsAgentsTestCasesResponse =
 export const RunProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type RunProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type RunProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const runProjectsLocationsAgentsTestCases: API.OperationMethod<
   RunProjectsLocationsAgentsTestCasesRequest,
@@ -14808,7 +15198,7 @@ export const runProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunProjectsLocationsAgentsTestCasesRequest,
   output: RunProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchRunProjectsLocationsAgentsTestCasesRequest {
@@ -14837,7 +15227,12 @@ export type BatchRunProjectsLocationsAgentsTestCasesResponse =
 export const BatchRunProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type BatchRunProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type BatchRunProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const batchRunProjectsLocationsAgentsTestCases: API.OperationMethod<
   BatchRunProjectsLocationsAgentsTestCasesRequest,
@@ -14847,7 +15242,7 @@ export const batchRunProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchRunProjectsLocationsAgentsTestCasesRequest,
   output: BatchRunProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CalculateCoverageProjectsLocationsAgentsTestCasesRequest {
@@ -14875,7 +15270,9 @@ export const CalculateCoverageProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3CalculateCoverageResponse;
 
 export type CalculateCoverageProjectsLocationsAgentsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const calculateCoverageProjectsLocationsAgentsTestCases: API.OperationMethod<
   CalculateCoverageProjectsLocationsAgentsTestCasesRequest,
@@ -14885,7 +15282,7 @@ export const calculateCoverageProjectsLocationsAgentsTestCases: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalculateCoverageProjectsLocationsAgentsTestCasesRequest,
   output: CalculateCoverageProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportProjectsLocationsAgentsTestCasesRequest {
@@ -14914,7 +15311,12 @@ export type ImportProjectsLocationsAgentsTestCasesResponse =
 export const ImportProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type ImportProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const importProjectsLocationsAgentsTestCases: API.OperationMethod<
   ImportProjectsLocationsAgentsTestCasesRequest,
@@ -14924,7 +15326,7 @@ export const importProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsTestCasesRequest,
   output: ImportProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsAgentsTestCasesRequest {
@@ -14953,7 +15355,12 @@ export type ExportProjectsLocationsAgentsTestCasesResponse =
 export const ExportProjectsLocationsAgentsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportProjectsLocationsAgentsTestCasesError = DefaultErrors;
+export type ExportProjectsLocationsAgentsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const exportProjectsLocationsAgentsTestCases: API.OperationMethod<
   ExportProjectsLocationsAgentsTestCasesRequest,
@@ -14963,7 +15370,7 @@ export const exportProjectsLocationsAgentsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsTestCasesRequest,
   output: ExportProjectsLocationsAgentsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsTestCasesResultsRequest {
@@ -14989,7 +15396,10 @@ export type ListProjectsLocationsAgentsTestCasesResultsResponse =
 export const ListProjectsLocationsAgentsTestCasesResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListTestCaseResultsResponse;
 
-export type ListProjectsLocationsAgentsTestCasesResultsError = DefaultErrors;
+export type ListProjectsLocationsAgentsTestCasesResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsTestCasesResults: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsTestCasesResultsRequest,
@@ -14999,7 +15409,7 @@ export const listProjectsLocationsAgentsTestCasesResults: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsTestCasesResultsRequest,
   output: ListProjectsLocationsAgentsTestCasesResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15023,7 +15433,10 @@ export type GetProjectsLocationsAgentsTestCasesResultsResponse =
 export const GetProjectsLocationsAgentsTestCasesResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3TestCaseResult;
 
-export type GetProjectsLocationsAgentsTestCasesResultsError = DefaultErrors;
+export type GetProjectsLocationsAgentsTestCasesResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsTestCasesResults: API.OperationMethod<
   GetProjectsLocationsAgentsTestCasesResultsRequest,
@@ -15033,7 +15446,7 @@ export const getProjectsLocationsAgentsTestCasesResults: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsTestCasesResultsRequest,
   output: GetProjectsLocationsAgentsTestCasesResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAgentsWebhooksRequest {
@@ -15057,7 +15470,10 @@ export type ListProjectsLocationsAgentsWebhooksResponse =
 export const ListProjectsLocationsAgentsWebhooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListWebhooksResponse;
 
-export type ListProjectsLocationsAgentsWebhooksError = DefaultErrors;
+export type ListProjectsLocationsAgentsWebhooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsWebhooks: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsWebhooksRequest,
@@ -15067,7 +15483,7 @@ export const listProjectsLocationsAgentsWebhooks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsWebhooksRequest,
   output: ListProjectsLocationsAgentsWebhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15091,7 +15507,10 @@ export type GetProjectsLocationsAgentsWebhooksResponse =
 export const GetProjectsLocationsAgentsWebhooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Webhook;
 
-export type GetProjectsLocationsAgentsWebhooksError = DefaultErrors;
+export type GetProjectsLocationsAgentsWebhooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsWebhooks: API.OperationMethod<
   GetProjectsLocationsAgentsWebhooksRequest,
@@ -15101,7 +15520,7 @@ export const getProjectsLocationsAgentsWebhooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsWebhooksRequest,
   output: GetProjectsLocationsAgentsWebhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsWebhooksRequest {
@@ -15124,7 +15543,12 @@ export type CreateProjectsLocationsAgentsWebhooksResponse =
 export const CreateProjectsLocationsAgentsWebhooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Webhook;
 
-export type CreateProjectsLocationsAgentsWebhooksError = DefaultErrors;
+export type CreateProjectsLocationsAgentsWebhooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsWebhooks: API.OperationMethod<
   CreateProjectsLocationsAgentsWebhooksRequest,
@@ -15134,7 +15558,7 @@ export const createProjectsLocationsAgentsWebhooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsWebhooksRequest,
   output: CreateProjectsLocationsAgentsWebhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsWebhooksRequest {
@@ -15159,7 +15583,12 @@ export type PatchProjectsLocationsAgentsWebhooksResponse =
 export const PatchProjectsLocationsAgentsWebhooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Webhook;
 
-export type PatchProjectsLocationsAgentsWebhooksError = DefaultErrors;
+export type PatchProjectsLocationsAgentsWebhooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsWebhooks: API.OperationMethod<
   PatchProjectsLocationsAgentsWebhooksRequest,
@@ -15169,7 +15598,7 @@ export const patchProjectsLocationsAgentsWebhooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsWebhooksRequest,
   output: PatchProjectsLocationsAgentsWebhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsWebhooksRequest {
@@ -15190,7 +15619,12 @@ export type DeleteProjectsLocationsAgentsWebhooksResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsWebhooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsWebhooksError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsWebhooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsWebhooks: API.OperationMethod<
   DeleteProjectsLocationsAgentsWebhooksRequest,
@@ -15200,7 +15634,7 @@ export const deleteProjectsLocationsAgentsWebhooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsWebhooksRequest,
   output: DeleteProjectsLocationsAgentsWebhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsEnvironmentsRequest {
@@ -15224,7 +15658,10 @@ export type ListProjectsLocationsAgentsEnvironmentsResponse =
 export const ListProjectsLocationsAgentsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListEnvironmentsResponse;
 
-export type ListProjectsLocationsAgentsEnvironmentsError = DefaultErrors;
+export type ListProjectsLocationsAgentsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsEnvironments: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsEnvironmentsRequest,
@@ -15234,7 +15671,7 @@ export const listProjectsLocationsAgentsEnvironments: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15258,7 +15695,10 @@ export type GetProjectsLocationsAgentsEnvironmentsResponse =
 export const GetProjectsLocationsAgentsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Environment;
 
-export type GetProjectsLocationsAgentsEnvironmentsError = DefaultErrors;
+export type GetProjectsLocationsAgentsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsEnvironments: API.OperationMethod<
   GetProjectsLocationsAgentsEnvironmentsRequest,
@@ -15268,7 +15708,7 @@ export const getProjectsLocationsAgentsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsRequest,
   output: GetProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsEnvironmentsRequest {
@@ -15293,7 +15733,12 @@ export type CreateProjectsLocationsAgentsEnvironmentsResponse =
 export const CreateProjectsLocationsAgentsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsAgentsEnvironmentsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsEnvironments: API.OperationMethod<
   CreateProjectsLocationsAgentsEnvironmentsRequest,
@@ -15303,7 +15748,7 @@ export const createProjectsLocationsAgentsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEnvironmentsRequest,
   output: CreateProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsEnvironmentsRequest {
@@ -15330,7 +15775,12 @@ export type PatchProjectsLocationsAgentsEnvironmentsResponse =
 export const PatchProjectsLocationsAgentsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsAgentsEnvironmentsError = DefaultErrors;
+export type PatchProjectsLocationsAgentsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsEnvironments: API.OperationMethod<
   PatchProjectsLocationsAgentsEnvironmentsRequest,
@@ -15340,7 +15790,7 @@ export const patchProjectsLocationsAgentsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEnvironmentsRequest,
   output: PatchProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsEnvironmentsRequest {
@@ -15360,7 +15810,12 @@ export type DeleteProjectsLocationsAgentsEnvironmentsResponse =
 export const DeleteProjectsLocationsAgentsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsEnvironmentsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsEnvironments: API.OperationMethod<
   DeleteProjectsLocationsAgentsEnvironmentsRequest,
@@ -15370,7 +15825,7 @@ export const deleteProjectsLocationsAgentsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEnvironmentsRequest,
   output: DeleteProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest {
@@ -15395,7 +15850,9 @@ export const LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse;
 
 export type LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const lookupEnvironmentHistoryProjectsLocationsAgentsEnvironments: API.PaginatedOperationMethod<
   LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest,
@@ -15405,7 +15862,7 @@ export const lookupEnvironmentHistoryProjectsLocationsAgentsEnvironments: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsRequest,
   output: LookupEnvironmentHistoryProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15439,7 +15896,11 @@ export const RunContinuousTestProjectsLocationsAgentsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type RunContinuousTestProjectsLocationsAgentsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const runContinuousTestProjectsLocationsAgentsEnvironments: API.OperationMethod<
   RunContinuousTestProjectsLocationsAgentsEnvironmentsRequest,
@@ -15449,7 +15910,7 @@ export const runContinuousTestProjectsLocationsAgentsEnvironments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunContinuousTestProjectsLocationsAgentsEnvironmentsRequest,
   output: RunContinuousTestProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeployFlowProjectsLocationsAgentsEnvironmentsRequest {
@@ -15478,7 +15939,12 @@ export type DeployFlowProjectsLocationsAgentsEnvironmentsResponse =
 export const DeployFlowProjectsLocationsAgentsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeployFlowProjectsLocationsAgentsEnvironmentsError = DefaultErrors;
+export type DeployFlowProjectsLocationsAgentsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deployFlowProjectsLocationsAgentsEnvironments: API.OperationMethod<
   DeployFlowProjectsLocationsAgentsEnvironmentsRequest,
@@ -15488,7 +15954,7 @@ export const deployFlowProjectsLocationsAgentsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeployFlowProjectsLocationsAgentsEnvironmentsRequest,
   output: DeployFlowProjectsLocationsAgentsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest {
@@ -15513,7 +15979,9 @@ export const ListProjectsLocationsAgentsEnvironmentsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListDeploymentsResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsEnvironmentsDeployments: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
@@ -15523,7 +15991,7 @@ export const listProjectsLocationsAgentsEnvironmentsDeployments: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15548,7 +16016,9 @@ export const GetProjectsLocationsAgentsEnvironmentsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Deployment;
 
 export type GetProjectsLocationsAgentsEnvironmentsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsEnvironmentsDeployments: API.OperationMethod<
   GetProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
@@ -15558,7 +16028,7 @@ export const getProjectsLocationsAgentsEnvironmentsDeployments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsDeploymentsRequest,
   output: GetProjectsLocationsAgentsEnvironmentsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest {
@@ -15588,7 +16058,11 @@ export const DetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3DetectIntentResponse;
 
 export type DetectIntentProjectsLocationsAgentsEnvironmentsSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const detectIntentProjectsLocationsAgentsEnvironmentsSessions: API.OperationMethod<
   DetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
@@ -15598,7 +16072,7 @@ export const detectIntentProjectsLocationsAgentsEnvironmentsSessions: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output: DetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest {
@@ -15628,7 +16102,11 @@ export const ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessi
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3DetectIntentResponse;
 
 export type ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const serverStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessions: API.OperationMethod<
   ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
@@ -15640,7 +16118,7 @@ export const serverStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessi
     ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output:
     ServerStreamingDetectIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest {
@@ -15666,7 +16144,11 @@ export const MatchIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3MatchIntentResponse;
 
 export type MatchIntentProjectsLocationsAgentsEnvironmentsSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const matchIntentProjectsLocationsAgentsEnvironmentsSessions: API.OperationMethod<
   MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
@@ -15676,7 +16158,7 @@ export const matchIntentProjectsLocationsAgentsEnvironmentsSessions: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MatchIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output: MatchIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsRequest {
@@ -15706,7 +16188,11 @@ export const FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3FulfillIntentResponse;
 
 export type FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const fulfillIntentProjectsLocationsAgentsEnvironmentsSessions: API.OperationMethod<
   FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
@@ -15716,7 +16202,7 @@ export const fulfillIntentProjectsLocationsAgentsEnvironmentsSessions: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsRequest,
   output: FulfillIntentProjectsLocationsAgentsEnvironmentsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest {
@@ -15741,7 +16227,9 @@ export const ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListSessionEntityTypesResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
@@ -15751,7 +16239,7 @@ export const listProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: ListProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15776,7 +16264,9 @@ export const GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SessionEntityType;
 
 export type GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.OperationMethod<
   GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
@@ -15786,7 +16276,7 @@ export const getProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: GetProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest {
@@ -15812,7 +16302,11 @@ export const CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SessionEntityType;
 
 export type CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.OperationMethod<
   CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
@@ -15822,7 +16316,7 @@ export const createProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: CreateProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest {
@@ -15850,7 +16344,11 @@ export const PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3SessionEntityType;
 
 export type PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.OperationMethod<
   PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
@@ -15860,7 +16358,7 @@ export const patchProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: PatchProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest {
@@ -15881,7 +16379,11 @@ export const DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.OperationMethod<
   DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
@@ -15891,7 +16393,7 @@ export const deleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypes: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesRequest,
   output: DeleteProjectsLocationsAgentsEnvironmentsSessionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest {
@@ -15916,7 +16418,9 @@ export const ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListContinuousTestResultsResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsEnvironmentsContinuousTestResults: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest,
@@ -15926,7 +16430,7 @@ export const listProjectsLocationsAgentsEnvironmentsContinuousTestResults: API.P
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsContinuousTestResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15955,7 +16459,9 @@ export const ListProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListExperimentsResponse;
 
 export type ListProjectsLocationsAgentsEnvironmentsExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsEnvironmentsExperiments: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsEnvironmentsExperimentsRequest,
@@ -15965,7 +16471,7 @@ export const listProjectsLocationsAgentsEnvironmentsExperiments: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: ListProjectsLocationsAgentsEnvironmentsExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15990,7 +16496,9 @@ export const GetProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Experiment;
 
 export type GetProjectsLocationsAgentsEnvironmentsExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMethod<
   GetProjectsLocationsAgentsEnvironmentsExperimentsRequest,
@@ -16000,7 +16508,7 @@ export const getProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: GetProjectsLocationsAgentsEnvironmentsExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsEnvironmentsExperimentsRequest {
@@ -16026,7 +16534,11 @@ export const CreateProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Experiment;
 
 export type CreateProjectsLocationsAgentsEnvironmentsExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMethod<
   CreateProjectsLocationsAgentsEnvironmentsExperimentsRequest,
@@ -16036,7 +16548,7 @@ export const createProjectsLocationsAgentsEnvironmentsExperiments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: CreateProjectsLocationsAgentsEnvironmentsExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsEnvironmentsExperimentsRequest {
@@ -16064,7 +16576,11 @@ export const PatchProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Experiment;
 
 export type PatchProjectsLocationsAgentsEnvironmentsExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMethod<
   PatchProjectsLocationsAgentsEnvironmentsExperimentsRequest,
@@ -16074,7 +16590,7 @@ export const patchProjectsLocationsAgentsEnvironmentsExperiments: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: PatchProjectsLocationsAgentsEnvironmentsExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsEnvironmentsExperimentsRequest {
@@ -16095,7 +16611,11 @@ export const DeleteProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsAgentsEnvironmentsExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMethod<
   DeleteProjectsLocationsAgentsEnvironmentsExperimentsRequest,
@@ -16105,7 +16625,7 @@ export const deleteProjectsLocationsAgentsEnvironmentsExperiments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: DeleteProjectsLocationsAgentsEnvironmentsExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartProjectsLocationsAgentsEnvironmentsExperimentsRequest {
@@ -16131,7 +16651,11 @@ export const StartProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Experiment;
 
 export type StartProjectsLocationsAgentsEnvironmentsExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const startProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMethod<
   StartProjectsLocationsAgentsEnvironmentsExperimentsRequest,
@@ -16141,7 +16665,7 @@ export const startProjectsLocationsAgentsEnvironmentsExperiments: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: StartProjectsLocationsAgentsEnvironmentsExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopProjectsLocationsAgentsEnvironmentsExperimentsRequest {
@@ -16167,7 +16691,11 @@ export const StopProjectsLocationsAgentsEnvironmentsExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Experiment;
 
 export type StopProjectsLocationsAgentsEnvironmentsExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const stopProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMethod<
   StopProjectsLocationsAgentsEnvironmentsExperimentsRequest,
@@ -16177,7 +16705,7 @@ export const stopProjectsLocationsAgentsEnvironmentsExperiments: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopProjectsLocationsAgentsEnvironmentsExperimentsRequest,
   output: StopProjectsLocationsAgentsEnvironmentsExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsGeneratorsRequest {
@@ -16205,7 +16733,10 @@ export type ListProjectsLocationsAgentsGeneratorsResponse =
 export const ListProjectsLocationsAgentsGeneratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListGeneratorsResponse;
 
-export type ListProjectsLocationsAgentsGeneratorsError = DefaultErrors;
+export type ListProjectsLocationsAgentsGeneratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsGenerators: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsGeneratorsRequest,
@@ -16215,7 +16746,7 @@ export const listProjectsLocationsAgentsGenerators: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsGeneratorsRequest,
   output: ListProjectsLocationsAgentsGeneratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16243,7 +16774,10 @@ export type GetProjectsLocationsAgentsGeneratorsResponse =
 export const GetProjectsLocationsAgentsGeneratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Generator;
 
-export type GetProjectsLocationsAgentsGeneratorsError = DefaultErrors;
+export type GetProjectsLocationsAgentsGeneratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsGenerators: API.OperationMethod<
   GetProjectsLocationsAgentsGeneratorsRequest,
@@ -16253,7 +16787,7 @@ export const getProjectsLocationsAgentsGenerators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsGeneratorsRequest,
   output: GetProjectsLocationsAgentsGeneratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAgentsGeneratorsRequest {
@@ -16282,7 +16816,12 @@ export type CreateProjectsLocationsAgentsGeneratorsResponse =
 export const CreateProjectsLocationsAgentsGeneratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Generator;
 
-export type CreateProjectsLocationsAgentsGeneratorsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsGeneratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsGenerators: API.OperationMethod<
   CreateProjectsLocationsAgentsGeneratorsRequest,
@@ -16292,7 +16831,7 @@ export const createProjectsLocationsAgentsGenerators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsGeneratorsRequest,
   output: CreateProjectsLocationsAgentsGeneratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsGeneratorsRequest {
@@ -16323,7 +16862,12 @@ export type PatchProjectsLocationsAgentsGeneratorsResponse =
 export const PatchProjectsLocationsAgentsGeneratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Generator;
 
-export type PatchProjectsLocationsAgentsGeneratorsError = DefaultErrors;
+export type PatchProjectsLocationsAgentsGeneratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsGenerators: API.OperationMethod<
   PatchProjectsLocationsAgentsGeneratorsRequest,
@@ -16333,7 +16877,7 @@ export const patchProjectsLocationsAgentsGenerators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsGeneratorsRequest,
   output: PatchProjectsLocationsAgentsGeneratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsGeneratorsRequest {
@@ -16355,7 +16899,12 @@ export type DeleteProjectsLocationsAgentsGeneratorsResponse =
 export const DeleteProjectsLocationsAgentsGeneratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsGeneratorsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsGeneratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsGenerators: API.OperationMethod<
   DeleteProjectsLocationsAgentsGeneratorsRequest,
@@ -16365,7 +16914,7 @@ export const deleteProjectsLocationsAgentsGenerators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsGeneratorsRequest,
   output: DeleteProjectsLocationsAgentsGeneratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAgentsPlaybooksRequest {
@@ -16388,7 +16937,12 @@ export type CreateProjectsLocationsAgentsPlaybooksResponse =
 export const CreateProjectsLocationsAgentsPlaybooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Playbook;
 
-export type CreateProjectsLocationsAgentsPlaybooksError = DefaultErrors;
+export type CreateProjectsLocationsAgentsPlaybooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   CreateProjectsLocationsAgentsPlaybooksRequest,
@@ -16398,7 +16952,7 @@ export const createProjectsLocationsAgentsPlaybooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsPlaybooksRequest,
   output: CreateProjectsLocationsAgentsPlaybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsPlaybooksRequest {
@@ -16418,7 +16972,12 @@ export type DeleteProjectsLocationsAgentsPlaybooksResponse =
 export const DeleteProjectsLocationsAgentsPlaybooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsPlaybooksError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsPlaybooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   DeleteProjectsLocationsAgentsPlaybooksRequest,
@@ -16428,7 +16987,7 @@ export const deleteProjectsLocationsAgentsPlaybooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsPlaybooksRequest,
   output: DeleteProjectsLocationsAgentsPlaybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsPlaybooksRequest {
@@ -16452,7 +17011,10 @@ export type ListProjectsLocationsAgentsPlaybooksResponse =
 export const ListProjectsLocationsAgentsPlaybooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListPlaybooksResponse;
 
-export type ListProjectsLocationsAgentsPlaybooksError = DefaultErrors;
+export type ListProjectsLocationsAgentsPlaybooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsPlaybooks: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsPlaybooksRequest,
@@ -16462,7 +17024,7 @@ export const listProjectsLocationsAgentsPlaybooks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksRequest,
   output: ListProjectsLocationsAgentsPlaybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16486,7 +17048,10 @@ export type GetProjectsLocationsAgentsPlaybooksResponse =
 export const GetProjectsLocationsAgentsPlaybooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Playbook;
 
-export type GetProjectsLocationsAgentsPlaybooksError = DefaultErrors;
+export type GetProjectsLocationsAgentsPlaybooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   GetProjectsLocationsAgentsPlaybooksRequest,
@@ -16496,7 +17061,7 @@ export const getProjectsLocationsAgentsPlaybooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsPlaybooksRequest,
   output: GetProjectsLocationsAgentsPlaybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExportProjectsLocationsAgentsPlaybooksRequest {
@@ -16521,7 +17086,12 @@ export type ExportProjectsLocationsAgentsPlaybooksResponse =
 export const ExportProjectsLocationsAgentsPlaybooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportProjectsLocationsAgentsPlaybooksError = DefaultErrors;
+export type ExportProjectsLocationsAgentsPlaybooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const exportProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   ExportProjectsLocationsAgentsPlaybooksRequest,
@@ -16531,7 +17101,7 @@ export const exportProjectsLocationsAgentsPlaybooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAgentsPlaybooksRequest,
   output: ExportProjectsLocationsAgentsPlaybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsAgentsPlaybooksRequest {
@@ -16560,7 +17130,12 @@ export type ImportProjectsLocationsAgentsPlaybooksResponse =
 export const ImportProjectsLocationsAgentsPlaybooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsAgentsPlaybooksError = DefaultErrors;
+export type ImportProjectsLocationsAgentsPlaybooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const importProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   ImportProjectsLocationsAgentsPlaybooksRequest,
@@ -16570,7 +17145,7 @@ export const importProjectsLocationsAgentsPlaybooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsAgentsPlaybooksRequest,
   output: ImportProjectsLocationsAgentsPlaybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAgentsPlaybooksRequest {
@@ -16595,7 +17170,12 @@ export type PatchProjectsLocationsAgentsPlaybooksResponse =
 export const PatchProjectsLocationsAgentsPlaybooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Playbook;
 
-export type PatchProjectsLocationsAgentsPlaybooksError = DefaultErrors;
+export type PatchProjectsLocationsAgentsPlaybooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsPlaybooks: API.OperationMethod<
   PatchProjectsLocationsAgentsPlaybooksRequest,
@@ -16605,7 +17185,7 @@ export const patchProjectsLocationsAgentsPlaybooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsPlaybooksRequest,
   output: PatchProjectsLocationsAgentsPlaybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAgentsPlaybooksExamplesRequest {
@@ -16628,7 +17208,12 @@ export type CreateProjectsLocationsAgentsPlaybooksExamplesResponse =
 export const CreateProjectsLocationsAgentsPlaybooksExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Example;
 
-export type CreateProjectsLocationsAgentsPlaybooksExamplesError = DefaultErrors;
+export type CreateProjectsLocationsAgentsPlaybooksExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
   CreateProjectsLocationsAgentsPlaybooksExamplesRequest,
@@ -16638,7 +17223,7 @@ export const createProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: CreateProjectsLocationsAgentsPlaybooksExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsPlaybooksExamplesRequest {
@@ -16658,7 +17243,12 @@ export type DeleteProjectsLocationsAgentsPlaybooksExamplesResponse =
 export const DeleteProjectsLocationsAgentsPlaybooksExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsPlaybooksExamplesError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsPlaybooksExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
   DeleteProjectsLocationsAgentsPlaybooksExamplesRequest,
@@ -16668,7 +17258,7 @@ export const deleteProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: DeleteProjectsLocationsAgentsPlaybooksExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsPlaybooksExamplesRequest {
@@ -16696,7 +17286,10 @@ export type ListProjectsLocationsAgentsPlaybooksExamplesResponse =
 export const ListProjectsLocationsAgentsPlaybooksExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListExamplesResponse;
 
-export type ListProjectsLocationsAgentsPlaybooksExamplesError = DefaultErrors;
+export type ListProjectsLocationsAgentsPlaybooksExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsPlaybooksExamples: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsPlaybooksExamplesRequest,
@@ -16706,7 +17299,7 @@ export const listProjectsLocationsAgentsPlaybooksExamples: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: ListProjectsLocationsAgentsPlaybooksExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16730,7 +17323,10 @@ export type GetProjectsLocationsAgentsPlaybooksExamplesResponse =
 export const GetProjectsLocationsAgentsPlaybooksExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Example;
 
-export type GetProjectsLocationsAgentsPlaybooksExamplesError = DefaultErrors;
+export type GetProjectsLocationsAgentsPlaybooksExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
   GetProjectsLocationsAgentsPlaybooksExamplesRequest,
@@ -16740,7 +17336,7 @@ export const getProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: GetProjectsLocationsAgentsPlaybooksExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsAgentsPlaybooksExamplesRequest {
@@ -16765,7 +17361,12 @@ export type PatchProjectsLocationsAgentsPlaybooksExamplesResponse =
 export const PatchProjectsLocationsAgentsPlaybooksExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Example;
 
-export type PatchProjectsLocationsAgentsPlaybooksExamplesError = DefaultErrors;
+export type PatchProjectsLocationsAgentsPlaybooksExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
   PatchProjectsLocationsAgentsPlaybooksExamplesRequest,
@@ -16775,7 +17376,7 @@ export const patchProjectsLocationsAgentsPlaybooksExamples: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsPlaybooksExamplesRequest,
   output: PatchProjectsLocationsAgentsPlaybooksExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAgentsPlaybooksVersionsRequest {
@@ -16800,7 +17401,12 @@ export type CreateProjectsLocationsAgentsPlaybooksVersionsResponse =
 export const CreateProjectsLocationsAgentsPlaybooksVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3PlaybookVersion;
 
-export type CreateProjectsLocationsAgentsPlaybooksVersionsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsPlaybooksVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod<
   CreateProjectsLocationsAgentsPlaybooksVersionsRequest,
@@ -16810,7 +17416,7 @@ export const createProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: CreateProjectsLocationsAgentsPlaybooksVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAgentsPlaybooksVersionsRequest {
@@ -16830,7 +17436,10 @@ export type GetProjectsLocationsAgentsPlaybooksVersionsResponse =
 export const GetProjectsLocationsAgentsPlaybooksVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3PlaybookVersion;
 
-export type GetProjectsLocationsAgentsPlaybooksVersionsError = DefaultErrors;
+export type GetProjectsLocationsAgentsPlaybooksVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod<
   GetProjectsLocationsAgentsPlaybooksVersionsRequest,
@@ -16840,7 +17449,7 @@ export const getProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: GetProjectsLocationsAgentsPlaybooksVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RestoreProjectsLocationsAgentsPlaybooksVersionsRequest {
@@ -16866,7 +17475,11 @@ export const RestoreProjectsLocationsAgentsPlaybooksVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3RestorePlaybookVersionResponse;
 
 export type RestoreProjectsLocationsAgentsPlaybooksVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const restoreProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod<
   RestoreProjectsLocationsAgentsPlaybooksVersionsRequest,
@@ -16876,7 +17489,7 @@ export const restoreProjectsLocationsAgentsPlaybooksVersions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: RestoreProjectsLocationsAgentsPlaybooksVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsPlaybooksVersionsRequest {
@@ -16900,7 +17513,10 @@ export type ListProjectsLocationsAgentsPlaybooksVersionsResponse =
 export const ListProjectsLocationsAgentsPlaybooksVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListPlaybookVersionsResponse;
 
-export type ListProjectsLocationsAgentsPlaybooksVersionsError = DefaultErrors;
+export type ListProjectsLocationsAgentsPlaybooksVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsPlaybooksVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsPlaybooksVersionsRequest,
@@ -16910,7 +17526,7 @@ export const listProjectsLocationsAgentsPlaybooksVersions: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: ListProjectsLocationsAgentsPlaybooksVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16934,7 +17550,12 @@ export type DeleteProjectsLocationsAgentsPlaybooksVersionsResponse =
 export const DeleteProjectsLocationsAgentsPlaybooksVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsPlaybooksVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsPlaybooksVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod<
   DeleteProjectsLocationsAgentsPlaybooksVersionsRequest,
@@ -16944,7 +17565,7 @@ export const deleteProjectsLocationsAgentsPlaybooksVersions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsPlaybooksVersionsRequest,
   output: DeleteProjectsLocationsAgentsPlaybooksVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAgentsToolsRequest {
@@ -16967,7 +17588,12 @@ export type CreateProjectsLocationsAgentsToolsResponse =
 export const CreateProjectsLocationsAgentsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Tool;
 
-export type CreateProjectsLocationsAgentsToolsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsTools: API.OperationMethod<
   CreateProjectsLocationsAgentsToolsRequest,
@@ -16977,7 +17603,7 @@ export const createProjectsLocationsAgentsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsToolsRequest,
   output: CreateProjectsLocationsAgentsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsToolsRequest {
@@ -17001,7 +17627,10 @@ export type ListProjectsLocationsAgentsToolsResponse =
 export const ListProjectsLocationsAgentsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListToolsResponse;
 
-export type ListProjectsLocationsAgentsToolsError = DefaultErrors;
+export type ListProjectsLocationsAgentsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsTools: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsToolsRequest,
@@ -17011,7 +17640,7 @@ export const listProjectsLocationsAgentsTools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsToolsRequest,
   output: ListProjectsLocationsAgentsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17035,7 +17664,10 @@ export type GetProjectsLocationsAgentsToolsResponse =
 export const GetProjectsLocationsAgentsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Tool;
 
-export type GetProjectsLocationsAgentsToolsError = DefaultErrors;
+export type GetProjectsLocationsAgentsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsTools: API.OperationMethod<
   GetProjectsLocationsAgentsToolsRequest,
@@ -17045,7 +17677,7 @@ export const getProjectsLocationsAgentsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsToolsRequest,
   output: GetProjectsLocationsAgentsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsAgentsToolsRequest {
@@ -17070,7 +17702,12 @@ export type PatchProjectsLocationsAgentsToolsResponse =
 export const PatchProjectsLocationsAgentsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3Tool;
 
-export type PatchProjectsLocationsAgentsToolsError = DefaultErrors;
+export type PatchProjectsLocationsAgentsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const patchProjectsLocationsAgentsTools: API.OperationMethod<
   PatchProjectsLocationsAgentsToolsRequest,
@@ -17080,7 +17717,7 @@ export const patchProjectsLocationsAgentsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAgentsToolsRequest,
   output: PatchProjectsLocationsAgentsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAgentsToolsRequest {
@@ -17101,7 +17738,12 @@ export type DeleteProjectsLocationsAgentsToolsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAgentsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsToolsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsTools: API.OperationMethod<
   DeleteProjectsLocationsAgentsToolsRequest,
@@ -17111,7 +17753,7 @@ export const deleteProjectsLocationsAgentsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsToolsRequest,
   output: DeleteProjectsLocationsAgentsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAgentsToolsVersionsRequest {
@@ -17135,7 +17777,10 @@ export type ListProjectsLocationsAgentsToolsVersionsResponse =
 export const ListProjectsLocationsAgentsToolsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ListToolVersionsResponse;
 
-export type ListProjectsLocationsAgentsToolsVersionsError = DefaultErrors;
+export type ListProjectsLocationsAgentsToolsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const listProjectsLocationsAgentsToolsVersions: API.PaginatedOperationMethod<
   ListProjectsLocationsAgentsToolsVersionsRequest,
@@ -17145,7 +17790,7 @@ export const listProjectsLocationsAgentsToolsVersions: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAgentsToolsVersionsRequest,
   output: ListProjectsLocationsAgentsToolsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17174,7 +17819,12 @@ export type CreateProjectsLocationsAgentsToolsVersionsResponse =
 export const CreateProjectsLocationsAgentsToolsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ToolVersion;
 
-export type CreateProjectsLocationsAgentsToolsVersionsError = DefaultErrors;
+export type CreateProjectsLocationsAgentsToolsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const createProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   CreateProjectsLocationsAgentsToolsVersionsRequest,
@@ -17184,7 +17834,7 @@ export const createProjectsLocationsAgentsToolsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAgentsToolsVersionsRequest,
   output: CreateProjectsLocationsAgentsToolsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAgentsToolsVersionsRequest {
@@ -17204,7 +17854,10 @@ export type GetProjectsLocationsAgentsToolsVersionsResponse =
 export const GetProjectsLocationsAgentsToolsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3ToolVersion;
 
-export type GetProjectsLocationsAgentsToolsVersionsError = DefaultErrors;
+export type GetProjectsLocationsAgentsToolsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   GetProjectsLocationsAgentsToolsVersionsRequest,
@@ -17214,7 +17867,7 @@ export const getProjectsLocationsAgentsToolsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAgentsToolsVersionsRequest,
   output: GetProjectsLocationsAgentsToolsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsAgentsToolsVersionsRequest {
@@ -17236,7 +17889,12 @@ export type DeleteProjectsLocationsAgentsToolsVersionsResponse =
 export const DeleteProjectsLocationsAgentsToolsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAgentsToolsVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsAgentsToolsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const deleteProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   DeleteProjectsLocationsAgentsToolsVersionsRequest,
@@ -17246,7 +17904,7 @@ export const deleteProjectsLocationsAgentsToolsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAgentsToolsVersionsRequest,
   output: DeleteProjectsLocationsAgentsToolsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsLocationsAgentsToolsVersionsRequest {
@@ -17271,7 +17929,12 @@ export type RestoreProjectsLocationsAgentsToolsVersionsResponse =
 export const RestoreProjectsLocationsAgentsToolsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDialogflowCxV3RestoreToolVersionResponse;
 
-export type RestoreProjectsLocationsAgentsToolsVersionsError = DefaultErrors;
+export type RestoreProjectsLocationsAgentsToolsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const restoreProjectsLocationsAgentsToolsVersions: API.OperationMethod<
   RestoreProjectsLocationsAgentsToolsVersionsRequest,
@@ -17281,5 +17944,5 @@ export const restoreProjectsLocationsAgentsToolsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsAgentsToolsVersionsRequest,
   output: RestoreProjectsLocationsAgentsToolsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

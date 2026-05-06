@@ -142,6 +142,52 @@ export const UpsertAnswerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "UpsertAnswerRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -179,7 +225,7 @@ export type ListLocationsQuestionsResponse = ListQuestionsResponse;
 export const ListLocationsQuestionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListQuestionsResponse;
 
-export type ListLocationsQuestionsError = DefaultErrors;
+export type ListLocationsQuestionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the paginated list of questions and some of its answers for a specified location. This operation is only valid if the specified location is verified. */
 export const listLocationsQuestions: API.PaginatedOperationMethod<
@@ -190,7 +236,7 @@ export const listLocationsQuestions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsQuestionsRequest,
   output: ListLocationsQuestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -217,7 +263,12 @@ export type CreateLocationsQuestionsResponse = Question;
 export const CreateLocationsQuestionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Question;
 
-export type CreateLocationsQuestionsError = DefaultErrors;
+export type CreateLocationsQuestionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a question for the specified location. */
 export const createLocationsQuestions: API.OperationMethod<
@@ -228,7 +279,7 @@ export const createLocationsQuestions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsQuestionsRequest,
   output: CreateLocationsQuestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsQuestionsRequest {
@@ -254,7 +305,12 @@ export type PatchLocationsQuestionsResponse = Question;
 export const PatchLocationsQuestionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Question;
 
-export type PatchLocationsQuestionsError = DefaultErrors;
+export type PatchLocationsQuestionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a specific question written by the current user. */
 export const patchLocationsQuestions: API.OperationMethod<
@@ -265,7 +321,7 @@ export const patchLocationsQuestions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsQuestionsRequest,
   output: PatchLocationsQuestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsQuestionsRequest {
@@ -285,7 +341,12 @@ export type DeleteLocationsQuestionsResponse = Empty;
 export const DeleteLocationsQuestionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLocationsQuestionsError = DefaultErrors;
+export type DeleteLocationsQuestionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific question written by the current user. */
 export const deleteLocationsQuestions: API.OperationMethod<
@@ -296,7 +357,7 @@ export const deleteLocationsQuestions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsQuestionsRequest,
   output: DeleteLocationsQuestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLocationsQuestionsAnswersRequest {
@@ -325,7 +386,10 @@ export type ListLocationsQuestionsAnswersResponse = ListAnswersResponse;
 export const ListLocationsQuestionsAnswersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAnswersResponse;
 
-export type ListLocationsQuestionsAnswersError = DefaultErrors;
+export type ListLocationsQuestionsAnswersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the paginated list of answers for a specified question. */
 export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
@@ -336,7 +400,7 @@ export const listLocationsQuestionsAnswers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsQuestionsAnswersRequest,
   output: ListLocationsQuestionsAnswersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -367,7 +431,12 @@ export type UpsertLocationsQuestionsAnswersResponse = Answer;
 export const UpsertLocationsQuestionsAnswersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Answer;
 
-export type UpsertLocationsQuestionsAnswersError = DefaultErrors;
+export type UpsertLocationsQuestionsAnswersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an answer or updates the existing answer written by the user for the specified question. A user can only create one answer per question. */
 export const upsertLocationsQuestionsAnswers: API.OperationMethod<
@@ -378,7 +447,7 @@ export const upsertLocationsQuestionsAnswers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpsertLocationsQuestionsAnswersRequest,
   output: UpsertLocationsQuestionsAnswersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsQuestionsAnswersRequest {
@@ -398,7 +467,12 @@ export type DeleteLocationsQuestionsAnswersResponse = Empty;
 export const DeleteLocationsQuestionsAnswersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLocationsQuestionsAnswersError = DefaultErrors;
+export type DeleteLocationsQuestionsAnswersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the answer written by the current user to a question. */
 export const deleteLocationsQuestionsAnswers: API.OperationMethod<
@@ -409,5 +483,5 @@ export const deleteLocationsQuestionsAnswers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsQuestionsAnswersRequest,
   output: DeleteLocationsQuestionsAnswersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

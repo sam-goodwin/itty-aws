@@ -1635,6 +1635,52 @@ export const BooksVolumesRecommendedRateResponse =
   }).annotate({ identifier: "BooksVolumesRecommendedRateResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1662,7 +1708,7 @@ export const GetBookshelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetBookshelvesResponse = Bookshelf;
 export const GetBookshelvesResponse = /*@__PURE__*/ /*#__PURE__*/ Bookshelf;
 
-export type GetBookshelvesError = DefaultErrors;
+export type GetBookshelvesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves metadata for a specific bookshelf for the specified user. */
 export const getBookshelves: API.OperationMethod<
@@ -1673,7 +1719,7 @@ export const getBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBookshelvesRequest,
   output: GetBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBookshelvesRequest {
@@ -1696,7 +1742,7 @@ export const ListBookshelvesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ListBookshelvesResponse = Bookshelves;
 export const ListBookshelvesResponse = /*@__PURE__*/ /*#__PURE__*/ Bookshelves;
 
-export type ListBookshelvesError = DefaultErrors;
+export type ListBookshelvesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of public bookshelves for the specified user. */
 export const listBookshelves: API.OperationMethod<
@@ -1707,7 +1753,7 @@ export const listBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBookshelvesRequest,
   output: ListBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBookshelvesVolumesRequest {
@@ -1747,7 +1793,7 @@ export type ListBookshelvesVolumesResponse = Volumes;
 export const ListBookshelvesVolumesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type ListBookshelvesVolumesError = DefaultErrors;
+export type ListBookshelvesVolumesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves volumes in a specific bookshelf for the specified user. */
 export const listBookshelvesVolumes: API.OperationMethod<
@@ -1758,7 +1804,7 @@ export const listBookshelvesVolumes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBookshelvesVolumesRequest,
   output: ListBookshelvesVolumesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddBookCloudloadingRequest {
@@ -1795,7 +1841,12 @@ export type AddBookCloudloadingResponse = BooksCloudloadingResource;
 export const AddBookCloudloadingResponse =
   /*@__PURE__*/ /*#__PURE__*/ BooksCloudloadingResource;
 
-export type AddBookCloudloadingError = DefaultErrors;
+export type AddBookCloudloadingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add a user-upload volume and triggers processing. */
 export const addBookCloudloading: API.OperationMethod<
@@ -1806,7 +1857,7 @@ export const addBookCloudloading: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddBookCloudloadingRequest,
   output: AddBookCloudloadingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBookCloudloadingRequest {
@@ -1829,7 +1880,12 @@ export const DeleteBookCloudloadingRequest =
 export type DeleteBookCloudloadingResponse = Empty;
 export const DeleteBookCloudloadingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBookCloudloadingError = DefaultErrors;
+export type DeleteBookCloudloadingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove the book and its contents */
 export const deleteBookCloudloading: API.OperationMethod<
@@ -1840,7 +1896,7 @@ export const deleteBookCloudloading: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBookCloudloadingRequest,
   output: DeleteBookCloudloadingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateBookCloudloadingRequest {
@@ -1864,7 +1920,12 @@ export type UpdateBookCloudloadingResponse = BooksCloudloadingResource;
 export const UpdateBookCloudloadingResponse =
   /*@__PURE__*/ /*#__PURE__*/ BooksCloudloadingResource;
 
-export type UpdateBookCloudloadingError = DefaultErrors;
+export type UpdateBookCloudloadingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user-upload volume. */
 export const updateBookCloudloading: API.OperationMethod<
@@ -1875,7 +1936,7 @@ export const updateBookCloudloading: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBookCloudloadingRequest,
   output: UpdateBookCloudloadingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOfflineMetadataDictionaryRequest {
@@ -1895,7 +1956,10 @@ export type ListOfflineMetadataDictionaryResponse = Metadata;
 export const ListOfflineMetadataDictionaryResponse =
   /*@__PURE__*/ /*#__PURE__*/ Metadata;
 
-export type ListOfflineMetadataDictionaryError = DefaultErrors;
+export type ListOfflineMetadataDictionaryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of offline dictionary metadata available */
 export const listOfflineMetadataDictionary: API.OperationMethod<
@@ -1906,7 +1970,7 @@ export const listOfflineMetadataDictionary: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOfflineMetadataDictionaryRequest,
   output: ListOfflineMetadataDictionaryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFamilyInfoFamilysharingRequest {
@@ -1926,7 +1990,10 @@ export type GetFamilyInfoFamilysharingResponse = FamilyInfo;
 export const GetFamilyInfoFamilysharingResponse =
   /*@__PURE__*/ /*#__PURE__*/ FamilyInfo;
 
-export type GetFamilyInfoFamilysharingError = DefaultErrors;
+export type GetFamilyInfoFamilysharingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information regarding the family that the user is part of. */
 export const getFamilyInfoFamilysharing: API.OperationMethod<
@@ -1937,7 +2004,7 @@ export const getFamilyInfoFamilysharing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFamilyInfoFamilysharingRequest,
   output: GetFamilyInfoFamilysharingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ShareFamilysharingRequest {
@@ -1966,7 +2033,12 @@ export const ShareFamilysharingRequest =
 export type ShareFamilysharingResponse = Empty;
 export const ShareFamilysharingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ShareFamilysharingError = DefaultErrors;
+export type ShareFamilysharingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates sharing of the content with the user's family. Empty response indicates success. */
 export const shareFamilysharing: API.OperationMethod<
@@ -1977,7 +2049,7 @@ export const shareFamilysharing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ShareFamilysharingRequest,
   output: ShareFamilysharingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnshareFamilysharingRequest {
@@ -2006,7 +2078,12 @@ export const UnshareFamilysharingRequest =
 export type UnshareFamilysharingResponse = Empty;
 export const UnshareFamilysharingResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UnshareFamilysharingError = DefaultErrors;
+export type UnshareFamilysharingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates revoking content that has already been shared with the user's family. Empty response indicates success. */
 export const unshareFamilysharing: API.OperationMethod<
@@ -2017,7 +2094,7 @@ export const unshareFamilysharing: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnshareFamilysharingRequest,
   output: UnshareFamilysharingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLayersRequest {
@@ -2049,7 +2126,7 @@ export const GetLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetLayersResponse = Layersummary;
 export const GetLayersResponse = /*@__PURE__*/ /*#__PURE__*/ Layersummary;
 
-export type GetLayersError = DefaultErrors;
+export type GetLayersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the layer summary for a volume. */
 export const getLayers: API.OperationMethod<
@@ -2060,7 +2137,7 @@ export const getLayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLayersRequest,
   output: GetLayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLayersRequest {
@@ -2092,7 +2169,7 @@ export const ListLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListLayersResponse = Layersummaries;
 export const ListLayersResponse = /*@__PURE__*/ /*#__PURE__*/ Layersummaries;
 
-export type ListLayersError = DefaultErrors;
+export type ListLayersError = DefaultErrors | NotFound | Forbidden;
 
 /** List the layer summaries for a volume. */
 export const listLayers: API.OperationMethod<
@@ -2103,7 +2180,7 @@ export const listLayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLayersRequest,
   output: ListLayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetLayersAnnotationDataRequest {
@@ -2155,7 +2232,7 @@ export type GetLayersAnnotationDataResponse = DictionaryAnnotationdata;
 export const GetLayersAnnotationDataResponse =
   /*@__PURE__*/ /*#__PURE__*/ DictionaryAnnotationdata;
 
-export type GetLayersAnnotationDataError = DefaultErrors;
+export type GetLayersAnnotationDataError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the annotation data. */
 export const getLayersAnnotationData: API.OperationMethod<
@@ -2166,7 +2243,7 @@ export const getLayersAnnotationData: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLayersAnnotationDataRequest,
   output: GetLayersAnnotationDataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLayersAnnotationDataRequest {
@@ -2227,7 +2304,10 @@ export type ListLayersAnnotationDataResponse = Annotationsdata;
 export const ListLayersAnnotationDataResponse =
   /*@__PURE__*/ /*#__PURE__*/ Annotationsdata;
 
-export type ListLayersAnnotationDataError = DefaultErrors;
+export type ListLayersAnnotationDataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the annotation data for a volume and layer. */
 export const listLayersAnnotationData: API.PaginatedOperationMethod<
@@ -2238,7 +2318,7 @@ export const listLayersAnnotationData: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLayersAnnotationDataRequest,
   output: ListLayersAnnotationDataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2278,7 +2358,10 @@ export type GetLayersVolumeAnnotationsResponse = Volumeannotation;
 export const GetLayersVolumeAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumeannotation;
 
-export type GetLayersVolumeAnnotationsError = DefaultErrors;
+export type GetLayersVolumeAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the volume annotation. */
 export const getLayersVolumeAnnotations: API.OperationMethod<
@@ -2289,7 +2372,7 @@ export const getLayersVolumeAnnotations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLayersVolumeAnnotationsRequest,
   output: GetLayersVolumeAnnotationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLayersVolumeAnnotationsRequest {
@@ -2364,7 +2447,10 @@ export type ListLayersVolumeAnnotationsResponse = Volumeannotations;
 export const ListLayersVolumeAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumeannotations;
 
-export type ListLayersVolumeAnnotationsError = DefaultErrors;
+export type ListLayersVolumeAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the volume annotations for a volume and layer. */
 export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
@@ -2375,7 +2461,7 @@ export const listLayersVolumeAnnotations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLayersVolumeAnnotationsRequest,
   output: ListLayersVolumeAnnotationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2400,7 +2486,7 @@ export type GetUserSettingsMyconfigResponse = Usersettings;
 export const GetUserSettingsMyconfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Usersettings;
 
-export type GetUserSettingsMyconfigError = DefaultErrors;
+export type GetUserSettingsMyconfigError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the current settings for the user. */
 export const getUserSettingsMyconfig: API.OperationMethod<
@@ -2411,7 +2497,7 @@ export const getUserSettingsMyconfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserSettingsMyconfigRequest,
   output: GetUserSettingsMyconfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReleaseDownloadAccessMyconfigRequest {
@@ -2444,7 +2530,12 @@ export type ReleaseDownloadAccessMyconfigResponse = DownloadAccesses;
 export const ReleaseDownloadAccessMyconfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ DownloadAccesses;
 
-export type ReleaseDownloadAccessMyconfigError = DefaultErrors;
+export type ReleaseDownloadAccessMyconfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Release downloaded content access restriction. */
 export const releaseDownloadAccessMyconfig: API.OperationMethod<
@@ -2455,7 +2546,7 @@ export const releaseDownloadAccessMyconfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReleaseDownloadAccessMyconfigRequest,
   output: ReleaseDownloadAccessMyconfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RequestAccessMyconfigRequest {
@@ -2501,7 +2592,12 @@ export type RequestAccessMyconfigResponse = RequestAccessData;
 export const RequestAccessMyconfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ RequestAccessData;
 
-export type RequestAccessMyconfigError = DefaultErrors;
+export type RequestAccessMyconfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Request concurrent and download access restrictions. */
 export const requestAccessMyconfig: API.OperationMethod<
@@ -2512,7 +2608,7 @@ export const requestAccessMyconfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestAccessMyconfigRequest,
   output: RequestAccessMyconfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SyncVolumeLicensesMyconfigRequest {
@@ -2565,7 +2661,12 @@ export type SyncVolumeLicensesMyconfigResponse = Volumes;
 export const SyncVolumeLicensesMyconfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type SyncVolumeLicensesMyconfigError = DefaultErrors;
+export type SyncVolumeLicensesMyconfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Request downloaded content access for specified volumes on the My eBooks shelf. */
 export const syncVolumeLicensesMyconfig: API.OperationMethod<
@@ -2576,7 +2677,7 @@ export const syncVolumeLicensesMyconfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SyncVolumeLicensesMyconfigRequest,
   output: SyncVolumeLicensesMyconfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateUserSettingsMyconfigRequest {
@@ -2600,7 +2701,12 @@ export type UpdateUserSettingsMyconfigResponse = Usersettings;
 export const UpdateUserSettingsMyconfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Usersettings;
 
-export type UpdateUserSettingsMyconfigError = DefaultErrors;
+export type UpdateUserSettingsMyconfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects will retain the existing value. */
 export const updateUserSettingsMyconfig: API.OperationMethod<
@@ -2611,7 +2717,7 @@ export const updateUserSettingsMyconfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserSettingsMyconfigRequest,
   output: UpdateUserSettingsMyconfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMylibraryAnnotationsRequest {
@@ -2637,7 +2743,12 @@ export type DeleteMylibraryAnnotationsResponse = Empty;
 export const DeleteMylibraryAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteMylibraryAnnotationsError = DefaultErrors;
+export type DeleteMylibraryAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an annotation. */
 export const deleteMylibraryAnnotations: API.OperationMethod<
@@ -2648,7 +2759,7 @@ export const deleteMylibraryAnnotations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMylibraryAnnotationsRequest,
   output: DeleteMylibraryAnnotationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertMylibraryAnnotationsRequest {
@@ -2688,7 +2799,12 @@ export type InsertMylibraryAnnotationsResponse = Annotation;
 export const InsertMylibraryAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Annotation;
 
-export type InsertMylibraryAnnotationsError = DefaultErrors;
+export type InsertMylibraryAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new annotation. */
 export const insertMylibraryAnnotations: API.OperationMethod<
@@ -2699,7 +2815,7 @@ export const insertMylibraryAnnotations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertMylibraryAnnotationsRequest,
   output: InsertMylibraryAnnotationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMylibraryAnnotationsRequest {
@@ -2752,7 +2868,10 @@ export type ListMylibraryAnnotationsResponse = Annotations;
 export const ListMylibraryAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Annotations;
 
-export type ListMylibraryAnnotationsError = DefaultErrors;
+export type ListMylibraryAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of annotations, possibly filtered. */
 export const listMylibraryAnnotations: API.PaginatedOperationMethod<
@@ -2763,7 +2882,7 @@ export const listMylibraryAnnotations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMylibraryAnnotationsRequest,
   output: ListMylibraryAnnotationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2798,7 +2917,12 @@ export type SummaryMylibraryAnnotationsResponse = AnnotationsSummary;
 export const SummaryMylibraryAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnnotationsSummary;
 
-export type SummaryMylibraryAnnotationsError = DefaultErrors;
+export type SummaryMylibraryAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the summary of specified layers. */
 export const summaryMylibraryAnnotations: API.OperationMethod<
@@ -2809,7 +2933,7 @@ export const summaryMylibraryAnnotations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SummaryMylibraryAnnotationsRequest,
   output: SummaryMylibraryAnnotationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateMylibraryAnnotationsRequest {
@@ -2839,7 +2963,12 @@ export type UpdateMylibraryAnnotationsResponse = Annotation;
 export const UpdateMylibraryAnnotationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Annotation;
 
-export type UpdateMylibraryAnnotationsError = DefaultErrors;
+export type UpdateMylibraryAnnotationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing annotation. */
 export const updateMylibraryAnnotations: API.OperationMethod<
@@ -2850,7 +2979,7 @@ export const updateMylibraryAnnotations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMylibraryAnnotationsRequest,
   output: UpdateMylibraryAnnotationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddVolumeMylibraryBookshelvesRequest {
@@ -2888,7 +3017,12 @@ export type AddVolumeMylibraryBookshelvesResponse = Empty;
 export const AddVolumeMylibraryBookshelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AddVolumeMylibraryBookshelvesError = DefaultErrors;
+export type AddVolumeMylibraryBookshelvesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a volume to a bookshelf. */
 export const addVolumeMylibraryBookshelves: API.OperationMethod<
@@ -2899,7 +3033,7 @@ export const addVolumeMylibraryBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddVolumeMylibraryBookshelvesRequest,
   output: AddVolumeMylibraryBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClearVolumesMylibraryBookshelvesRequest {
@@ -2926,7 +3060,12 @@ export type ClearVolumesMylibraryBookshelvesResponse = Empty;
 export const ClearVolumesMylibraryBookshelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ClearVolumesMylibraryBookshelvesError = DefaultErrors;
+export type ClearVolumesMylibraryBookshelvesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears all volumes from a bookshelf. */
 export const clearVolumesMylibraryBookshelves: API.OperationMethod<
@@ -2937,7 +3076,7 @@ export const clearVolumesMylibraryBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearVolumesMylibraryBookshelvesRequest,
   output: ClearVolumesMylibraryBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMylibraryBookshelvesRequest {
@@ -2960,7 +3099,7 @@ export type GetMylibraryBookshelvesResponse = Bookshelf;
 export const GetMylibraryBookshelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Bookshelf;
 
-export type GetMylibraryBookshelvesError = DefaultErrors;
+export type GetMylibraryBookshelvesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves metadata for a specific bookshelf belonging to the authenticated user. */
 export const getMylibraryBookshelves: API.OperationMethod<
@@ -2971,7 +3110,7 @@ export const getMylibraryBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMylibraryBookshelvesRequest,
   output: GetMylibraryBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMylibraryBookshelvesRequest {
@@ -2991,7 +3130,10 @@ export type ListMylibraryBookshelvesResponse = Bookshelves;
 export const ListMylibraryBookshelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Bookshelves;
 
-export type ListMylibraryBookshelvesError = DefaultErrors;
+export type ListMylibraryBookshelvesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of bookshelves belonging to the authenticated user. */
 export const listMylibraryBookshelves: API.OperationMethod<
@@ -3002,7 +3144,7 @@ export const listMylibraryBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMylibraryBookshelvesRequest,
   output: ListMylibraryBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MoveVolumeMylibraryBookshelvesRequest {
@@ -3035,7 +3177,12 @@ export type MoveVolumeMylibraryBookshelvesResponse = Empty;
 export const MoveVolumeMylibraryBookshelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type MoveVolumeMylibraryBookshelvesError = DefaultErrors;
+export type MoveVolumeMylibraryBookshelvesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a volume within a bookshelf. */
 export const moveVolumeMylibraryBookshelves: API.OperationMethod<
@@ -3046,7 +3193,7 @@ export const moveVolumeMylibraryBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveVolumeMylibraryBookshelvesRequest,
   output: MoveVolumeMylibraryBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveVolumeMylibraryBookshelvesRequest {
@@ -3079,7 +3226,12 @@ export type RemoveVolumeMylibraryBookshelvesResponse = Empty;
 export const RemoveVolumeMylibraryBookshelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RemoveVolumeMylibraryBookshelvesError = DefaultErrors;
+export type RemoveVolumeMylibraryBookshelvesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a volume from a bookshelf. */
 export const removeVolumeMylibraryBookshelves: API.OperationMethod<
@@ -3090,7 +3242,7 @@ export const removeVolumeMylibraryBookshelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveVolumeMylibraryBookshelvesRequest,
   output: RemoveVolumeMylibraryBookshelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMylibraryBookshelvesVolumesRequest {
@@ -3136,7 +3288,10 @@ export type ListMylibraryBookshelvesVolumesResponse = Volumes;
 export const ListMylibraryBookshelvesVolumesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type ListMylibraryBookshelvesVolumesError = DefaultErrors;
+export type ListMylibraryBookshelvesVolumesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets volume information for volumes on a bookshelf. */
 export const listMylibraryBookshelvesVolumes: API.OperationMethod<
@@ -3147,7 +3302,7 @@ export const listMylibraryBookshelvesVolumes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMylibraryBookshelvesVolumesRequest,
   output: ListMylibraryBookshelvesVolumesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetMylibraryReadingpositionsRequest {
@@ -3178,7 +3333,10 @@ export type GetMylibraryReadingpositionsResponse = ReadingPosition;
 export const GetMylibraryReadingpositionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReadingPosition;
 
-export type GetMylibraryReadingpositionsError = DefaultErrors;
+export type GetMylibraryReadingpositionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves my reading position information for a volume. */
 export const getMylibraryReadingpositions: API.OperationMethod<
@@ -3189,7 +3347,7 @@ export const getMylibraryReadingpositions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMylibraryReadingpositionsRequest,
   output: GetMylibraryReadingpositionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetPositionMylibraryReadingpositionsRequest {
@@ -3243,7 +3401,12 @@ export type SetPositionMylibraryReadingpositionsResponse = Empty;
 export const SetPositionMylibraryReadingpositionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type SetPositionMylibraryReadingpositionsError = DefaultErrors;
+export type SetPositionMylibraryReadingpositionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets my reading position information for a volume. */
 export const setPositionMylibraryReadingpositions: API.OperationMethod<
@@ -3254,7 +3417,7 @@ export const setPositionMylibraryReadingpositions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetPositionMylibraryReadingpositionsRequest,
   output: SetPositionMylibraryReadingpositionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNotificationRequest {
@@ -3280,7 +3443,7 @@ export const GetNotificationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetNotificationResponse = Notification;
 export const GetNotificationResponse = /*@__PURE__*/ /*#__PURE__*/ Notification;
 
-export type GetNotificationError = DefaultErrors;
+export type GetNotificationError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns notification details for a given notification id. */
 export const getNotification: API.OperationMethod<
@@ -3291,7 +3454,7 @@ export const getNotification: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNotificationRequest,
   output: GetNotificationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCategoriesOnboardingRequest {
@@ -3311,7 +3474,10 @@ export type ListCategoriesOnboardingResponse = Category;
 export const ListCategoriesOnboardingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Category;
 
-export type ListCategoriesOnboardingError = DefaultErrors;
+export type ListCategoriesOnboardingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List categories for onboarding experience. */
 export const listCategoriesOnboarding: API.OperationMethod<
@@ -3322,7 +3488,7 @@ export const listCategoriesOnboarding: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCategoriesOnboardingRequest,
   output: ListCategoriesOnboardingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCategoryVolumesOnboardingRequest {
@@ -3362,7 +3528,10 @@ export type ListCategoryVolumesOnboardingResponse = Volume2;
 export const ListCategoryVolumesOnboardingResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volume2;
 
-export type ListCategoryVolumesOnboardingError = DefaultErrors;
+export type ListCategoryVolumesOnboardingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List available volumes under categories for onboarding experience. */
 export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
@@ -3373,7 +3542,7 @@ export const listCategoryVolumesOnboarding: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCategoryVolumesOnboardingRequest,
   output: ListCategoryVolumesOnboardingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3410,7 +3579,7 @@ export type GetPersonalizedstreamResponse = Discoveryclusters;
 export const GetPersonalizedstreamResponse =
   /*@__PURE__*/ /*#__PURE__*/ Discoveryclusters;
 
-export type GetPersonalizedstreamError = DefaultErrors;
+export type GetPersonalizedstreamError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a stream of personalized book clusters */
 export const getPersonalizedstream: API.OperationMethod<
@@ -3421,7 +3590,7 @@ export const getPersonalizedstream: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPersonalizedstreamRequest,
   output: GetPersonalizedstreamResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AcceptPromoofferRequest {
@@ -3466,7 +3635,12 @@ export const AcceptPromoofferRequest =
 export type AcceptPromoofferResponse = Empty;
 export const AcceptPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AcceptPromoofferError = DefaultErrors;
+export type AcceptPromoofferError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts the promo offer. */
 export const acceptPromooffer: API.OperationMethod<
@@ -3477,7 +3651,7 @@ export const acceptPromooffer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptPromoofferRequest,
   output: AcceptPromoofferResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DismissPromoofferRequest {
@@ -3520,7 +3694,12 @@ export const DismissPromoofferRequest =
 export type DismissPromoofferResponse = Empty;
 export const DismissPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DismissPromoofferError = DefaultErrors;
+export type DismissPromoofferError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the promo offer as dismissed. */
 export const dismissPromooffer: API.OperationMethod<
@@ -3531,7 +3710,7 @@ export const dismissPromooffer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DismissPromoofferRequest,
   output: DismissPromoofferResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPromoofferRequest {
@@ -3566,7 +3745,7 @@ export const GetPromoofferRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPromoofferResponse = Offers;
 export const GetPromoofferResponse = /*@__PURE__*/ /*#__PURE__*/ Offers;
 
-export type GetPromoofferError = DefaultErrors;
+export type GetPromoofferError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of promo offers available to the user */
 export const getPromooffer: API.OperationMethod<
@@ -3577,7 +3756,7 @@ export const getPromooffer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPromoofferRequest,
   output: GetPromoofferResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSeriesRequest {
@@ -3595,7 +3774,7 @@ export const GetSeriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSeriesResponse = Series;
 export const GetSeriesResponse = /*@__PURE__*/ /*#__PURE__*/ Series;
 
-export type GetSeriesError = DefaultErrors;
+export type GetSeriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns Series metadata for the given series ids. */
 export const getSeries: API.OperationMethod<
@@ -3606,7 +3785,7 @@ export const getSeries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSeriesRequest,
   output: GetSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSeriesMembershipRequest {
@@ -3632,7 +3811,7 @@ export type GetSeriesMembershipResponse = Seriesmembership;
 export const GetSeriesMembershipResponse =
   /*@__PURE__*/ /*#__PURE__*/ Seriesmembership;
 
-export type GetSeriesMembershipError = DefaultErrors;
+export type GetSeriesMembershipError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns Series membership data given the series id. */
 export const getSeriesMembership: API.OperationMethod<
@@ -3643,7 +3822,7 @@ export const getSeriesMembership: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSeriesMembershipRequest,
   output: GetSeriesMembershipResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetVolumesRequest {
@@ -3682,7 +3861,7 @@ export const GetVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetVolumesResponse = Volume;
 export const GetVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Volume;
 
-export type GetVolumesError = DefaultErrors;
+export type GetVolumesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets volume information for a single volume. */
 export const getVolumes: API.OperationMethod<
@@ -3693,7 +3872,7 @@ export const getVolumes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVolumesRequest,
   output: GetVolumesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListVolumesRequest {
@@ -3778,7 +3957,7 @@ export const ListVolumesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListVolumesResponse = Volumes;
 export const ListVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type ListVolumesError = DefaultErrors;
+export type ListVolumesError = DefaultErrors | NotFound | Forbidden;
 
 /** Performs a book search. */
 export const listVolumes: API.OperationMethod<
@@ -3789,7 +3968,7 @@ export const listVolumes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVolumesRequest,
   output: ListVolumesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListVolumesAssociatedRequest {
@@ -3834,7 +4013,7 @@ export type ListVolumesAssociatedResponse = Volumes;
 export const ListVolumesAssociatedResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type ListVolumesAssociatedError = DefaultErrors;
+export type ListVolumesAssociatedError = DefaultErrors | NotFound | Forbidden;
 
 /** Return a list of associated books. */
 export const listVolumesAssociated: API.OperationMethod<
@@ -3845,7 +4024,7 @@ export const listVolumesAssociated: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVolumesAssociatedRequest,
   output: ListVolumesAssociatedResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListVolumesMybooksRequest {
@@ -3901,7 +4080,7 @@ export const ListVolumesMybooksRequest =
 export type ListVolumesMybooksResponse = Volumes;
 export const ListVolumesMybooksResponse = /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type ListVolumesMybooksError = DefaultErrors;
+export type ListVolumesMybooksError = DefaultErrors | NotFound | Forbidden;
 
 /** Return a list of books in My Library. */
 export const listVolumesMybooks: API.OperationMethod<
@@ -3912,7 +4091,7 @@ export const listVolumesMybooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVolumesMybooksRequest,
   output: ListVolumesMybooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListVolumesRecommendedRequest {
@@ -3944,7 +4123,7 @@ export type ListVolumesRecommendedResponse = Volumes;
 export const ListVolumesRecommendedResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type ListVolumesRecommendedError = DefaultErrors;
+export type ListVolumesRecommendedError = DefaultErrors | NotFound | Forbidden;
 
 /** Return a list of recommended books for the current user. */
 export const listVolumesRecommended: API.OperationMethod<
@@ -3955,7 +4134,7 @@ export const listVolumesRecommended: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVolumesRecommendedRequest,
   output: ListVolumesRecommendedResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RateVolumesRecommendedRequest {
@@ -3989,7 +4168,12 @@ export type RateVolumesRecommendedResponse =
 export const RateVolumesRecommendedResponse =
   /*@__PURE__*/ /*#__PURE__*/ BooksVolumesRecommendedRateResponse;
 
-export type RateVolumesRecommendedError = DefaultErrors;
+export type RateVolumesRecommendedError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rate a recommended book for the current user. */
 export const rateVolumesRecommended: API.OperationMethod<
@@ -4000,7 +4184,7 @@ export const rateVolumesRecommended: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RateVolumesRecommendedRequest,
   output: RateVolumesRecommendedResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListVolumesUseruploadedRequest {
@@ -4044,7 +4228,7 @@ export type ListVolumesUseruploadedResponse = Volumes;
 export const ListVolumesUseruploadedResponse =
   /*@__PURE__*/ /*#__PURE__*/ Volumes;
 
-export type ListVolumesUseruploadedError = DefaultErrors;
+export type ListVolumesUseruploadedError = DefaultErrors | NotFound | Forbidden;
 
 /** Return a list of books uploaded by the current user. */
 export const listVolumesUseruploaded: API.OperationMethod<
@@ -4055,5 +4239,5 @@ export const listVolumesUseruploaded: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVolumesUseruploadedRequest,
   output: ListVolumesUseruploadedResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

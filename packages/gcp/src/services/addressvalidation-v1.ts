@@ -537,6 +537,52 @@ export const GoogleMapsAddressvalidationV1ValidateAddressResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -560,7 +606,12 @@ export type ValidateAddressV1Response =
 export const ValidateAddressV1Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleMapsAddressvalidationV1ValidateAddressResponse;
 
-export type ValidateAddressV1Error = DefaultErrors;
+export type ValidateAddressV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates an address. */
 export const validateAddressV1: API.OperationMethod<
@@ -571,7 +622,7 @@ export const validateAddressV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateAddressV1Request,
   output: ValidateAddressV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvideValidationFeedbackV1Request {
@@ -598,7 +649,12 @@ export type ProvideValidationFeedbackV1Response =
 export const ProvideValidationFeedbackV1Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse;
 
-export type ProvideValidationFeedbackV1Error = DefaultErrors;
+export type ProvideValidationFeedbackV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Feedback about the outcome of the sequence of validation attempts. This should be the last call made after a sequence of validation calls for the same address, and should be called once the transaction is concluded. This should only be sent once for the sequence of `ValidateAddress` requests needed to validate an address fully. */
 export const provideValidationFeedbackV1: API.OperationMethod<
@@ -609,5 +665,5 @@ export const provideValidationFeedbackV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvideValidationFeedbackV1Request,
   output: ProvideValidationFeedbackV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

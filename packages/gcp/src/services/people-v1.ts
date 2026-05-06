@@ -1407,6 +1407,52 @@ export const SearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SearchResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1446,7 +1492,7 @@ export const GetPeopleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPeopleResponse_Op = Person;
 export const GetPeopleResponse_Op = /*@__PURE__*/ /*#__PURE__*/ Person;
 
-export type GetPeopleError = DefaultErrors;
+export type GetPeopleError = DefaultErrors | NotFound | Forbidden;
 
 /** Provides information about a person by specifying a resource name. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified. */
 export const getPeople: API.OperationMethod<
@@ -1457,7 +1503,7 @@ export const getPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPeopleRequest,
   output: GetPeopleResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchUpdateContactsPeopleRequest {
@@ -1481,7 +1527,12 @@ export type BatchUpdateContactsPeopleResponse = BatchUpdateContactsResponse;
 export const BatchUpdateContactsPeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateContactsResponse;
 
-export type BatchUpdateContactsPeopleError = DefaultErrors;
+export type BatchUpdateContactsPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const batchUpdateContactsPeople: API.OperationMethod<
@@ -1492,7 +1543,7 @@ export const batchUpdateContactsPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateContactsPeopleRequest,
   output: BatchUpdateContactsPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteContactsPeopleRequest {
@@ -1516,7 +1567,12 @@ export type BatchDeleteContactsPeopleResponse = Empty;
 export const BatchDeleteContactsPeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type BatchDeleteContactsPeopleError = DefaultErrors;
+export type BatchDeleteContactsPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const batchDeleteContactsPeople: API.OperationMethod<
@@ -1527,7 +1583,7 @@ export const batchDeleteContactsPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteContactsPeopleRequest,
   output: BatchDeleteContactsPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateContactPeopleRequest {
@@ -1562,7 +1618,12 @@ export const CreateContactPeopleRequest =
 export type CreateContactPeopleResponse = Person;
 export const CreateContactPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Person;
 
-export type CreateContactPeopleError = DefaultErrors;
+export type CreateContactPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new contact and return the person resource for that contact. The request returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const createContactPeople: API.OperationMethod<
@@ -1573,7 +1634,7 @@ export const createContactPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContactPeopleRequest,
   output: CreateContactPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateContactPhotoPeopleRequest {
@@ -1600,7 +1661,12 @@ export type UpdateContactPhotoPeopleResponse = UpdateContactPhotoResponse;
 export const UpdateContactPhotoPeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ UpdateContactPhotoResponse;
 
-export type UpdateContactPhotoPeopleError = DefaultErrors;
+export type UpdateContactPhotoPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a contact's photo. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const updateContactPhotoPeople: API.OperationMethod<
@@ -1611,7 +1677,7 @@ export const updateContactPhotoPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContactPhotoPeopleRequest,
   output: UpdateContactPhotoPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchContactsPeopleRequest {
@@ -1648,7 +1714,7 @@ export type SearchContactsPeopleResponse = SearchResponse;
 export const SearchContactsPeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchResponse;
 
-export type SearchContactsPeopleError = DefaultErrors;
+export type SearchContactsPeopleError = DefaultErrors | NotFound | Forbidden;
 
 /** Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from the CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty query to update the cache. See https://developers.google.com/people/v1/contacts#search_the_users_contacts */
 export const searchContactsPeople: API.OperationMethod<
@@ -1659,7 +1725,7 @@ export const searchContactsPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchContactsPeopleRequest,
   output: SearchContactsPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetBatchGetPeopleRequest {
@@ -1702,7 +1768,7 @@ export type GetBatchGetPeopleResponse = GetPeopleResponse;
 export const GetBatchGetPeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetPeopleResponse;
 
-export type GetBatchGetPeopleError = DefaultErrors;
+export type GetBatchGetPeopleError = DefaultErrors | NotFound | Forbidden;
 
 /** Provides information about a list of specific people by specifying a list of requested resource names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified. */
 export const getBatchGetPeople: API.OperationMethod<
@@ -1713,7 +1779,7 @@ export const getBatchGetPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBatchGetPeopleRequest,
   output: GetBatchGetPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteContactPhotoPeopleRequest {
@@ -1749,7 +1815,12 @@ export type DeleteContactPhotoPeopleResponse = DeleteContactPhotoResponse;
 export const DeleteContactPhotoPeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeleteContactPhotoResponse;
 
-export type DeleteContactPhotoPeopleError = DefaultErrors;
+export type DeleteContactPhotoPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a contact's photo. Mutate requests for the same user should be done sequentially to avoid // lock contention. */
 export const deleteContactPhotoPeople: API.OperationMethod<
@@ -1760,7 +1831,7 @@ export const deleteContactPhotoPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContactPhotoPeopleRequest,
   output: DeleteContactPhotoPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDirectoryPeoplePeopleRequest {
@@ -1811,7 +1882,10 @@ export type ListDirectoryPeoplePeopleResponse = ListDirectoryPeopleResponse;
 export const ListDirectoryPeoplePeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDirectoryPeopleResponse;
 
-export type ListDirectoryPeoplePeopleError = DefaultErrors;
+export type ListDirectoryPeoplePeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Provides a list of domain profiles and domain contacts in the authenticated user's domain directory. When the `sync_token` is specified, resources deleted since the last sync will be returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request parameters must match the first call. Writes may have a propagation delay of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the directory people that have changed](/people/v1/directory#list_the_directory_people_that_have_changed). */
 export const listDirectoryPeoplePeople: API.PaginatedOperationMethod<
@@ -1822,7 +1896,7 @@ export const listDirectoryPeoplePeople: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDirectoryPeoplePeopleRequest,
   output: ListDirectoryPeoplePeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1850,7 +1924,12 @@ export type BatchCreateContactsPeopleResponse = BatchCreateContactsResponse;
 export const BatchCreateContactsPeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateContactsResponse;
 
-export type BatchCreateContactsPeopleError = DefaultErrors;
+export type BatchCreateContactsPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a batch of new contacts and return the PersonResponses for the newly Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const batchCreateContactsPeople: API.OperationMethod<
@@ -1861,7 +1940,7 @@ export const batchCreateContactsPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateContactsPeopleRequest,
   output: BatchCreateContactsPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateContactPeopleRequest {
@@ -1908,7 +1987,12 @@ export const UpdateContactPeopleRequest =
 export type UpdateContactPeopleResponse = Person;
 export const UpdateContactPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Person;
 
-export type UpdateContactPeopleError = DefaultErrors;
+export type UpdateContactPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update contact data for an existing contact person. Any non-contact data will not be modified. Any non-contact data in the person to update will be ignored. All fields specified in the `update_mask` will be replaced. The server returns a 400 error if `person.metadata.sources` is not specified for the contact to be updated or if there is no contact source. The server returns a 400 error with reason `"failedPrecondition"` if `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed since its data was read. Clients should get the latest person and merge their updates into the latest person. If making sequential updates to the same person, the etag from the `updateContact` response should be used to avoid failures. The server returns a 400 error if `memberships` are being updated and there are no contact group memberships specified on the person. The server returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const updateContactPeople: API.OperationMethod<
@@ -1919,7 +2003,7 @@ export const updateContactPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContactPeopleRequest,
   output: UpdateContactPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchDirectoryPeoplePeopleRequest {
@@ -1965,7 +2049,10 @@ export type SearchDirectoryPeoplePeopleResponse = SearchDirectoryPeopleResponse;
 export const SearchDirectoryPeoplePeopleResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchDirectoryPeopleResponse;
 
-export type SearchDirectoryPeoplePeopleError = DefaultErrors;
+export type SearchDirectoryPeoplePeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Provides a list of domain profiles and domain contacts in the authenticated user's domain directory that match the search query. */
 export const searchDirectoryPeoplePeople: API.PaginatedOperationMethod<
@@ -1976,7 +2063,7 @@ export const searchDirectoryPeoplePeople: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchDirectoryPeoplePeopleRequest,
   output: SearchDirectoryPeoplePeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1999,7 +2086,12 @@ export const DeleteContactPeopleRequest =
 export type DeleteContactPeopleResponse = Empty;
 export const DeleteContactPeopleResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteContactPeopleError = DefaultErrors;
+export type DeleteContactPeopleError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a contact person. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const deleteContactPeople: API.OperationMethod<
@@ -2010,7 +2102,7 @@ export const deleteContactPeople: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContactPeopleRequest,
   output: DeleteContactPeopleResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPeopleConnectionsRequest {
@@ -2073,7 +2165,7 @@ export type ListPeopleConnectionsResponse = ListConnectionsResponse;
 export const ListPeopleConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectionsResponse;
 
-export type ListPeopleConnectionsError = DefaultErrors;
+export type ListPeopleConnectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Provides a list of the authenticated user's contacts. Sync tokens expire 7 days after the full sync. A request with an expired sync token will get an error with an [google.rpc.ErrorInfo](https://cloud.google.com/apis/design/errors#error_info) with reason "EXPIRED_SYNC_TOKEN". In the case of such an error clients should make a full sync request without a `sync_token`. The first page of a full sync request has an additional quota. If the quota is exceeded, a 429 error will be returned. This quota is fixed and can not be increased. When the `sync_token` is specified, resources deleted since the last sync will be returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request parameters must match the first call. Writes may have a propagation delay of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the user's contacts that have changed](/people/v1/contacts#list_the_users_contacts_that_have_changed). */
 export const listPeopleConnections: API.PaginatedOperationMethod<
@@ -2084,7 +2176,7 @@ export const listPeopleConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPeopleConnectionsRequest,
   output: ListPeopleConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2133,7 +2225,7 @@ export type ListOtherContactsResponse_Op = ListOtherContactsResponse;
 export const ListOtherContactsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOtherContactsResponse;
 
-export type ListOtherContactsError = DefaultErrors;
+export type ListOtherContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** List all "Other contacts", that is contacts that are not in a contact group. "Other contacts" are typically auto created contacts from interactions. Sync tokens expire 7 days after the full sync. A request with an expired sync token will get an error with an [google.rpc.ErrorInfo](https://cloud.google.com/apis/design/errors#error_info) with reason "EXPIRED_SYNC_TOKEN". In the case of such an error clients should make a full sync request without a `sync_token`. The first page of a full sync request has an additional quota. If the quota is exceeded, a 429 error will be returned. This quota is fixed and can not be increased. When the `sync_token` is specified, resources deleted since the last sync will be returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request parameters must match the first call. Writes may have a propagation delay of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the user's other contacts that have changed](/people/v1/other-contacts#list_the_users_other_contacts_that_have_changed). */
 export const listOtherContacts: API.PaginatedOperationMethod<
@@ -2144,7 +2236,7 @@ export const listOtherContacts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOtherContactsRequest,
   output: ListOtherContactsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2177,7 +2269,12 @@ export type CopyOtherContactToMyContactsGroupOtherContactsResponse = Person;
 export const CopyOtherContactToMyContactsGroupOtherContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Person;
 
-export type CopyOtherContactToMyContactsGroupOtherContactsError = DefaultErrors;
+export type CopyOtherContactToMyContactsGroupOtherContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies an "Other contact" to a new contact in the user's "myContacts" group Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const copyOtherContactToMyContactsGroupOtherContacts: API.OperationMethod<
@@ -2188,7 +2285,7 @@ export const copyOtherContactToMyContactsGroupOtherContacts: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyOtherContactToMyContactsGroupOtherContactsRequest,
   output: CopyOtherContactToMyContactsGroupOtherContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchOtherContactsRequest {
@@ -2214,7 +2311,7 @@ export type SearchOtherContactsResponse = SearchResponse;
 export const SearchOtherContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchResponse;
 
-export type SearchOtherContactsError = DefaultErrors;
+export type SearchOtherContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** Provides a list of contacts in the authenticated user's other contacts that matches the search query. The query matches on a contact's `names`, `emailAddresses`, and `phoneNumbers` fields that are from the OTHER_CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty query to update the cache. See https://developers.google.com/people/v1/other-contacts#search_the_users_other_contacts */
 export const searchOtherContacts: API.OperationMethod<
@@ -2225,7 +2322,7 @@ export const searchOtherContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchOtherContactsRequest,
   output: SearchOtherContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteContactGroupsRequest {
@@ -2249,7 +2346,12 @@ export const DeleteContactGroupsRequest =
 export type DeleteContactGroupsResponse = Empty;
 export const DeleteContactGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteContactGroupsError = DefaultErrors;
+export type DeleteContactGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an existing contact group owned by the authenticated user by specifying a contact group resource name. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const deleteContactGroups: API.OperationMethod<
@@ -2260,7 +2362,7 @@ export const deleteContactGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContactGroupsRequest,
   output: DeleteContactGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetContactGroupsRequest {
@@ -2288,7 +2390,7 @@ export type GetContactGroupsResponse = ContactGroup;
 export const GetContactGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContactGroup;
 
-export type GetContactGroupsError = DefaultErrors;
+export type GetContactGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a specific contact group owned by the authenticated user by specifying a contact group resource name. */
 export const getContactGroups: API.OperationMethod<
@@ -2299,7 +2401,7 @@ export const getContactGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContactGroupsRequest,
   output: GetContactGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateContactGroupsRequest {
@@ -2322,7 +2424,12 @@ export type UpdateContactGroupsResponse = ContactGroup;
 export const UpdateContactGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContactGroup;
 
-export type UpdateContactGroupsError = DefaultErrors;
+export type UpdateContactGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the name of an existing contact group owned by the authenticated user. Updated contact group names must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const updateContactGroups: API.OperationMethod<
@@ -2333,7 +2440,7 @@ export const updateContactGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContactGroupsRequest,
   output: UpdateContactGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListContactGroupsRequest {
@@ -2364,7 +2471,7 @@ export type ListContactGroupsResponse_Op = ListContactGroupsResponse;
 export const ListContactGroupsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListContactGroupsResponse;
 
-export type ListContactGroupsError = DefaultErrors;
+export type ListContactGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** List all contact groups owned by the authenticated user. Members of the contact groups are not populated. */
 export const listContactGroups: API.PaginatedOperationMethod<
@@ -2375,7 +2482,7 @@ export const listContactGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListContactGroupsRequest,
   output: ListContactGroupsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2399,7 +2506,12 @@ export type CreateContactGroupsResponse = ContactGroup;
 export const CreateContactGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContactGroup;
 
-export type CreateContactGroupsError = DefaultErrors;
+export type CreateContactGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new contact group owned by the authenticated user. Created contact group names must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures. */
 export const createContactGroups: API.OperationMethod<
@@ -2410,7 +2522,7 @@ export const createContactGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateContactGroupsRequest,
   output: CreateContactGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetContactGroupsRequest {
@@ -2440,7 +2552,7 @@ export type BatchGetContactGroupsResponse_Op = BatchGetContactGroupsResponse;
 export const BatchGetContactGroupsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetContactGroupsResponse;
 
-export type BatchGetContactGroupsError = DefaultErrors;
+export type BatchGetContactGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names. */
 export const batchGetContactGroups: API.OperationMethod<
@@ -2451,7 +2563,7 @@ export const batchGetContactGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetContactGroupsRequest,
   output: BatchGetContactGroupsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ModifyContactGroupsMembersRequest {
@@ -2479,7 +2591,12 @@ export type ModifyContactGroupsMembersResponse =
 export const ModifyContactGroupsMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ModifyContactGroupMembersResponse;
 
-export type ModifyContactGroupsMembersError = DefaultErrors;
+export type ModifyContactGroupsMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modify the members of a contact group owned by the authenticated user. The only system contact groups that can have members added are `contactGroups/myContacts` and `contactGroups/starred`. Other system contact groups are deprecated and can only have contacts removed. */
 export const modifyContactGroupsMembers: API.OperationMethod<
@@ -2490,5 +2607,5 @@ export const modifyContactGroupsMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyContactGroupsMembersRequest,
   output: ModifyContactGroupsMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

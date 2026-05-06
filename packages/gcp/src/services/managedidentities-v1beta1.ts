@@ -1222,6 +1222,52 @@ export const GoogleCloudSaasacceleratorManagementProvidersV1Instance =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1256,7 +1302,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1267,7 +1313,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1291,7 +1337,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1302,7 +1348,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsGlobalOperationsRequest {
@@ -1337,7 +1383,10 @@ export type ListProjectsLocationsGlobalOperationsResponse =
 export const ListProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type ListProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod<
@@ -1348,7 +1397,7 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalOperationsRequest,
   output: ListProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1372,7 +1421,10 @@ export type GetProjectsLocationsGlobalOperationsResponse = Operation;
 export const GetProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type GetProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsGlobalOperations: API.OperationMethod<
@@ -1383,7 +1435,7 @@ export const getProjectsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalOperationsRequest,
   output: GetProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsGlobalOperationsRequest {
@@ -1403,7 +1455,12 @@ export type DeleteProjectsLocationsGlobalOperationsResponse = Empty;
 export const DeleteProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
@@ -1414,7 +1471,7 @@ export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalOperationsRequest,
   output: DeleteProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsGlobalOperationsRequest {
@@ -1437,7 +1494,12 @@ export type CancelProjectsLocationsGlobalOperationsResponse = Empty;
 export const CancelProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type CancelProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
@@ -1448,7 +1510,7 @@ export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsGlobalOperationsRequest,
   output: CancelProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetachTrustProjectsLocationsGlobalDomainsRequest {
@@ -1475,7 +1537,12 @@ export type DetachTrustProjectsLocationsGlobalDomainsResponse = Operation;
 export const DetachTrustProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DetachTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type DetachTrustProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an AD trust. */
 export const detachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1486,7 +1553,7 @@ export const detachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachTrustProjectsLocationsGlobalDomainsRequest,
   output: DetachTrustProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsLocationsGlobalDomainsRequest {
@@ -1509,7 +1576,12 @@ export type RestoreProjectsLocationsGlobalDomainsResponse = Operation;
 export const RestoreProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestoreProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type RestoreProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** RestoreBackup restores domain mentioned in the RestoreBackupRequest */
 export const restoreProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1520,7 +1592,7 @@ export const restoreProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsGlobalDomainsRequest,
   output: RestoreProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsGlobalDomainsRequest {
@@ -1547,7 +1619,12 @@ export type SetIamPolicyProjectsLocationsGlobalDomainsResponse = Policy;
 export const SetIamPolicyProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1558,7 +1635,7 @@ export const setIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsGlobalDomainsRequest,
   output: SetIamPolicyProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGlobalDomainsRequest {
@@ -1584,7 +1661,12 @@ export type CreateProjectsLocationsGlobalDomainsResponse = Operation;
 export const CreateProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type CreateProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Microsoft AD domain. */
 export const createProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1595,7 +1677,7 @@ export const createProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalDomainsRequest,
   output: CreateProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsGlobalDomainsRequest {
@@ -1615,7 +1697,10 @@ export type GetProjectsLocationsGlobalDomainsResponse = Domain;
 export const GetProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type GetProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type GetProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a domain. */
 export const getProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1626,7 +1711,7 @@ export const getProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalDomainsRequest,
   output: GetProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsGlobalDomainsRequest {
@@ -1655,7 +1740,11 @@ export const TestIamPermissionsProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsGlobalDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1666,7 +1755,7 @@ export const testIamPermissionsProjectsLocationsGlobalDomains: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsGlobalDomainsRequest,
   output: TestIamPermissionsProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest {
@@ -1695,7 +1784,11 @@ export const CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckMigrationPermissionResponse;
 
 export type CheckMigrationPermissionProjectsLocationsGlobalDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CheckMigrationPermission API gets the current state of DomainMigration */
 export const checkMigrationPermissionProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1706,7 +1799,7 @@ export const checkMigrationPermissionProjectsLocationsGlobalDomains: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckMigrationPermissionProjectsLocationsGlobalDomainsRequest,
   output: CheckMigrationPermissionProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExtendSchemaProjectsLocationsGlobalDomainsRequest {
@@ -1733,7 +1826,12 @@ export type ExtendSchemaProjectsLocationsGlobalDomainsResponse = Operation;
 export const ExtendSchemaProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExtendSchemaProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type ExtendSchemaProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Extend Schema for Domain */
 export const extendSchemaProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1744,7 +1842,7 @@ export const extendSchemaProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExtendSchemaProjectsLocationsGlobalDomainsRequest,
   output: ExtendSchemaProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateTrustProjectsLocationsGlobalDomainsRequest {
@@ -1771,7 +1869,12 @@ export type ValidateTrustProjectsLocationsGlobalDomainsResponse = Operation;
 export const ValidateTrustProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ValidateTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type ValidateTrustProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a trust state, that the target domain is reachable, and that the target domain is able to accept incoming trust requests. */
 export const validateTrustProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1782,7 +1885,7 @@ export const validateTrustProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateTrustProjectsLocationsGlobalDomainsRequest,
   output: ValidateTrustProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsGlobalDomainsRequest {
@@ -1802,7 +1905,12 @@ export type DeleteProjectsLocationsGlobalDomainsResponse = Operation;
 export const DeleteProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type DeleteProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a domain. */
 export const deleteProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1813,7 +1921,7 @@ export const deleteProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalDomainsRequest,
   output: DeleteProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest {
@@ -1845,7 +1953,11 @@ export const UpdateLdapssettingsProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UpdateLdapssettingsProjectsLocationsGlobalDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a single ldaps settings. */
 export const updateLdapssettingsProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1856,7 +1968,7 @@ export const updateLdapssettingsProjectsLocationsGlobalDomains: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLdapssettingsProjectsLocationsGlobalDomainsRequest,
   output: UpdateLdapssettingsProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLdapssettingsProjectsLocationsGlobalDomainsRequest {
@@ -1877,7 +1989,10 @@ export type GetLdapssettingsProjectsLocationsGlobalDomainsResponse =
 export const GetLdapssettingsProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LDAPSSettings;
 
-export type GetLdapssettingsProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type GetLdapssettingsProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the domain ldaps settings. */
 export const getLdapssettingsProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1888,7 +2003,7 @@ export const getLdapssettingsProjectsLocationsGlobalDomains: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLdapssettingsProjectsLocationsGlobalDomainsRequest,
   output: GetLdapssettingsProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DomainJoinMachineProjectsLocationsGlobalDomainsRequest {
@@ -1917,7 +2032,11 @@ export const DomainJoinMachineProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DomainJoinMachineResponse;
 
 export type DomainJoinMachineProjectsLocationsGlobalDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DomainJoinMachine API joins a Compute Engine VM to the domain */
 export const domainJoinMachineProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1928,7 +2047,7 @@ export const domainJoinMachineProjectsLocationsGlobalDomains: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DomainJoinMachineProjectsLocationsGlobalDomainsRequest,
   output: DomainJoinMachineProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsGlobalDomainsRequest {
@@ -1953,7 +2072,10 @@ export type GetIamPolicyProjectsLocationsGlobalDomainsResponse = Policy;
 export const GetIamPolicyProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -1964,7 +2086,7 @@ export const getIamPolicyProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsGlobalDomainsRequest,
   output: GetIamPolicyProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResetAdminPasswordProjectsLocationsGlobalDomainsRequest {
@@ -1993,7 +2115,11 @@ export const ResetAdminPasswordProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResetAdminPasswordResponse;
 
 export type ResetAdminPasswordProjectsLocationsGlobalDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets a domain's administrator password. */
 export const resetAdminPasswordProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -2004,7 +2130,7 @@ export const resetAdminPasswordProjectsLocationsGlobalDomains: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAdminPasswordProjectsLocationsGlobalDomainsRequest,
   output: ResetAdminPasswordProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableMigrationProjectsLocationsGlobalDomainsRequest {
@@ -2031,7 +2157,12 @@ export type DisableMigrationProjectsLocationsGlobalDomainsResponse = Operation;
 export const DisableMigrationProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DisableMigrationProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type DisableMigrationProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable Domain Migration */
 export const disableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -2042,7 +2173,7 @@ export const disableMigrationProjectsLocationsGlobalDomains: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableMigrationProjectsLocationsGlobalDomainsRequest,
   output: DisableMigrationProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsGlobalDomainsRequest {
@@ -2068,7 +2199,12 @@ export type PatchProjectsLocationsGlobalDomainsResponse = Operation;
 export const PatchProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type PatchProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata and configuration of a domain. */
 export const patchProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -2079,7 +2215,7 @@ export const patchProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalDomainsRequest,
   output: PatchProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttachTrustProjectsLocationsGlobalDomainsRequest {
@@ -2106,7 +2242,12 @@ export type AttachTrustProjectsLocationsGlobalDomainsResponse = Operation;
 export const AttachTrustProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AttachTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type AttachTrustProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an AD trust to a domain. */
 export const attachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -2117,7 +2258,7 @@ export const attachTrustProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachTrustProjectsLocationsGlobalDomainsRequest,
   output: AttachTrustProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableMigrationProjectsLocationsGlobalDomainsRequest {
@@ -2144,7 +2285,12 @@ export type EnableMigrationProjectsLocationsGlobalDomainsResponse = Operation;
 export const EnableMigrationProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnableMigrationProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type EnableMigrationProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable Domain Migration */
 export const enableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -2155,7 +2301,7 @@ export const enableMigrationProjectsLocationsGlobalDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableMigrationProjectsLocationsGlobalDomainsRequest,
   output: EnableMigrationProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlobalDomainsRequest {
@@ -2187,7 +2333,10 @@ export type ListProjectsLocationsGlobalDomainsResponse = ListDomainsResponse;
 export const ListProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
 
-export type ListProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type ListProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists domains in a project. */
 export const listProjectsLocationsGlobalDomains: API.PaginatedOperationMethod<
@@ -2198,7 +2347,7 @@ export const listProjectsLocationsGlobalDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalDomainsRequest,
   output: ListProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2229,7 +2378,12 @@ export type ReconfigureTrustProjectsLocationsGlobalDomainsResponse = Operation;
 export const ReconfigureTrustProjectsLocationsGlobalDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ReconfigureTrustProjectsLocationsGlobalDomainsError = DefaultErrors;
+export type ReconfigureTrustProjectsLocationsGlobalDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the DNS conditional forwarder. */
 export const reconfigureTrustProjectsLocationsGlobalDomains: API.OperationMethod<
@@ -2240,7 +2394,7 @@ export const reconfigureTrustProjectsLocationsGlobalDomains: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReconfigureTrustProjectsLocationsGlobalDomainsRequest,
   output: ReconfigureTrustProjectsLocationsGlobalDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest {
@@ -2274,7 +2428,9 @@ export const ListProjectsLocationsGlobalDomainsSqlIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSqlIntegrationsResponse;
 
 export type ListProjectsLocationsGlobalDomainsSqlIntegrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SqlIntegrations in a given domain. */
 export const listProjectsLocationsGlobalDomainsSqlIntegrations: API.PaginatedOperationMethod<
@@ -2285,7 +2441,7 @@ export const listProjectsLocationsGlobalDomainsSqlIntegrations: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalDomainsSqlIntegrationsRequest,
   output: ListProjectsLocationsGlobalDomainsSqlIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2311,7 +2467,9 @@ export const GetProjectsLocationsGlobalDomainsSqlIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SqlIntegration;
 
 export type GetProjectsLocationsGlobalDomainsSqlIntegrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single sqlIntegration. */
 export const getProjectsLocationsGlobalDomainsSqlIntegrations: API.OperationMethod<
@@ -2322,7 +2480,7 @@ export const getProjectsLocationsGlobalDomainsSqlIntegrations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalDomainsSqlIntegrationsRequest,
   output: GetProjectsLocationsGlobalDomainsSqlIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
@@ -2348,7 +2506,9 @@ export const GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsGlobalDomainsBackupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
@@ -2359,7 +2519,7 @@ export const getIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
   output: GetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsGlobalDomainsBackupsRequest {
@@ -2379,7 +2539,10 @@ export type GetProjectsLocationsGlobalDomainsBackupsResponse = Backup;
 export const GetProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type GetProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
+export type GetProjectsLocationsGlobalDomainsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Backup. */
 export const getProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
@@ -2390,7 +2553,7 @@ export const getProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalDomainsBackupsRequest,
   output: GetProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest {
@@ -2419,7 +2582,11 @@ export const TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsGlobalDomainsBackupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
@@ -2430,7 +2597,7 @@ export const testIamPermissionsProjectsLocationsGlobalDomainsBackups: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsGlobalDomainsBackupsRequest,
   output: TestIamPermissionsProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGlobalDomainsBackupsRequest {
@@ -2456,7 +2623,12 @@ export type CreateProjectsLocationsGlobalDomainsBackupsResponse = Operation;
 export const CreateProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
+export type CreateProjectsLocationsGlobalDomainsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Backup for a domain. */
 export const createProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
@@ -2467,7 +2639,7 @@ export const createProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalDomainsBackupsRequest,
   output: CreateProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsGlobalDomainsBackupsRequest {
@@ -2493,7 +2665,12 @@ export type PatchProjectsLocationsGlobalDomainsBackupsResponse = Operation;
 export const PatchProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
+export type PatchProjectsLocationsGlobalDomainsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the labels for specified Backup. */
 export const patchProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
@@ -2504,7 +2681,7 @@ export const patchProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalDomainsBackupsRequest,
   output: PatchProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest {
@@ -2532,7 +2709,11 @@ export const SetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsGlobalDomainsBackupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
@@ -2543,7 +2724,7 @@ export const setIamPolicyProjectsLocationsGlobalDomainsBackups: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsGlobalDomainsBackupsRequest,
   output: SetIamPolicyProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlobalDomainsBackupsRequest {
@@ -2576,7 +2757,10 @@ export type ListProjectsLocationsGlobalDomainsBackupsResponse =
 export const ListProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
 
-export type ListProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
+export type ListProjectsLocationsGlobalDomainsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Backup in a given project. */
 export const listProjectsLocationsGlobalDomainsBackups: API.PaginatedOperationMethod<
@@ -2587,7 +2771,7 @@ export const listProjectsLocationsGlobalDomainsBackups: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalDomainsBackupsRequest,
   output: ListProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2611,7 +2795,12 @@ export type DeleteProjectsLocationsGlobalDomainsBackupsResponse = Operation;
 export const DeleteProjectsLocationsGlobalDomainsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGlobalDomainsBackupsError = DefaultErrors;
+export type DeleteProjectsLocationsGlobalDomainsBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes identified Backup. */
 export const deleteProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
@@ -2622,7 +2811,7 @@ export const deleteProjectsLocationsGlobalDomainsBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalDomainsBackupsRequest,
   output: DeleteProjectsLocationsGlobalDomainsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlobalPeeringsRequest {
@@ -2654,7 +2843,10 @@ export type ListProjectsLocationsGlobalPeeringsResponse = ListPeeringsResponse;
 export const ListProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPeeringsResponse;
 
-export type ListProjectsLocationsGlobalPeeringsError = DefaultErrors;
+export type ListProjectsLocationsGlobalPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Peerings in a given project. */
 export const listProjectsLocationsGlobalPeerings: API.PaginatedOperationMethod<
@@ -2665,7 +2857,7 @@ export const listProjectsLocationsGlobalPeerings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalPeeringsRequest,
   output: ListProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2689,7 +2881,12 @@ export type DeleteProjectsLocationsGlobalPeeringsResponse = Operation;
 export const DeleteProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGlobalPeeringsError = DefaultErrors;
+export type DeleteProjectsLocationsGlobalPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes identified Peering. */
 export const deleteProjectsLocationsGlobalPeerings: API.OperationMethod<
@@ -2700,7 +2897,7 @@ export const deleteProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalPeeringsRequest,
   output: DeleteProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGlobalPeeringsRequest {
@@ -2730,7 +2927,12 @@ export type CreateProjectsLocationsGlobalPeeringsResponse = Operation;
 export const CreateProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGlobalPeeringsError = DefaultErrors;
+export type CreateProjectsLocationsGlobalPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Peering for Managed AD instance. */
 export const createProjectsLocationsGlobalPeerings: API.OperationMethod<
@@ -2741,7 +2943,7 @@ export const createProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalPeeringsRequest,
   output: CreateProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsGlobalPeeringsRequest {
@@ -2767,7 +2969,12 @@ export type PatchProjectsLocationsGlobalPeeringsResponse = Operation;
 export const PatchProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsGlobalPeeringsError = DefaultErrors;
+export type PatchProjectsLocationsGlobalPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the labels for specified Peering. */
 export const patchProjectsLocationsGlobalPeerings: API.OperationMethod<
@@ -2778,7 +2985,7 @@ export const patchProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalPeeringsRequest,
   output: PatchProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsGlobalPeeringsRequest {
@@ -2805,7 +3012,12 @@ export type SetIamPolicyProjectsLocationsGlobalPeeringsResponse = Policy;
 export const SetIamPolicyProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsGlobalPeeringsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsGlobalPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsGlobalPeerings: API.OperationMethod<
@@ -2816,7 +3028,7 @@ export const setIamPolicyProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsGlobalPeeringsRequest,
   output: SetIamPolicyProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsGlobalPeeringsRequest {
@@ -2841,7 +3053,10 @@ export type GetIamPolicyProjectsLocationsGlobalPeeringsResponse = Policy;
 export const GetIamPolicyProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsGlobalPeeringsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsGlobalPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsGlobalPeerings: API.OperationMethod<
@@ -2852,7 +3067,7 @@ export const getIamPolicyProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsGlobalPeeringsRequest,
   output: GetIamPolicyProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsGlobalPeeringsRequest {
@@ -2872,7 +3087,10 @@ export type GetProjectsLocationsGlobalPeeringsResponse = Peering;
 export const GetProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Peering;
 
-export type GetProjectsLocationsGlobalPeeringsError = DefaultErrors;
+export type GetProjectsLocationsGlobalPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Peering. */
 export const getProjectsLocationsGlobalPeerings: API.OperationMethod<
@@ -2883,7 +3101,7 @@ export const getProjectsLocationsGlobalPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalPeeringsRequest,
   output: GetProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsGlobalPeeringsRequest {
@@ -2912,7 +3130,11 @@ export const TestIamPermissionsProjectsLocationsGlobalPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsGlobalPeeringsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsGlobalPeerings: API.OperationMethod<
@@ -2923,5 +3145,5 @@ export const testIamPermissionsProjectsLocationsGlobalPeerings: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsGlobalPeeringsRequest,
   output: TestIamPermissionsProjectsLocationsGlobalPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -4364,6 +4364,52 @@ export const Command = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Command" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -4396,7 +4442,12 @@ export const CreateSignupUrlsRequest =
 export type CreateSignupUrlsResponse = SignupUrl;
 export const CreateSignupUrlsResponse = /*@__PURE__*/ /*#__PURE__*/ SignupUrl;
 
-export type CreateSignupUrlsError = DefaultErrors;
+export type CreateSignupUrlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an enterprise signup URL. */
 export const createSignupUrls: API.OperationMethod<
@@ -4407,7 +4458,7 @@ export const createSignupUrls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignupUrlsRequest,
   output: CreateSignupUrlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEnterprisesRequest {
@@ -4425,7 +4476,7 @@ export const GetEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEnterprisesResponse = Enterprise;
 export const GetEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
 
-export type GetEnterprisesError = DefaultErrors;
+export type GetEnterprisesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an enterprise. */
 export const getEnterprises: API.OperationMethod<
@@ -4436,7 +4487,7 @@ export const getEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesRequest,
   output: GetEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesRequest {
@@ -4466,7 +4517,7 @@ export type ListEnterprisesResponse_Op = ListEnterprisesResponse;
 export const ListEnterprisesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListEnterprisesResponse;
 
-export type ListEnterprisesError = DefaultErrors;
+export type ListEnterprisesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists EMM-managed enterprises. Only BASIC fields are returned. */
 export const listEnterprises: API.PaginatedOperationMethod<
@@ -4477,7 +4528,7 @@ export const listEnterprises: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesRequest,
   output: ListEnterprisesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4506,7 +4557,12 @@ export const PatchEnterprisesRequest =
 export type PatchEnterprisesResponse = Enterprise;
 export const PatchEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
 
-export type PatchEnterprisesError = DefaultErrors;
+export type PatchEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an enterprise. See also: SigninDetail */
 export const patchEnterprises: API.OperationMethod<
@@ -4517,7 +4573,7 @@ export const patchEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEnterprisesRequest,
   output: PatchEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateEnterprisesRequest {
@@ -4554,7 +4610,12 @@ export const CreateEnterprisesRequest =
 export type CreateEnterprisesResponse = Enterprise;
 export const CreateEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
 
-export type CreateEnterprisesError = DefaultErrors;
+export type CreateEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an enterprise. This is the last step in the enterprise signup flow. See also: SigninDetail */
 export const createEnterprises: API.OperationMethod<
@@ -4565,7 +4626,7 @@ export const createEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnterprisesRequest,
   output: CreateEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteEnterprisesRequest {
@@ -4584,7 +4645,12 @@ export const DeleteEnterprisesRequest =
 export type DeleteEnterprisesResponse = Empty;
 export const DeleteEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteEnterprisesError = DefaultErrors;
+export type DeleteEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes an enterprise and all accounts and data associated with it. Warning: this will result in a cascaded deletion of all AM API devices associated with the deleted enterprise. Only available for EMM-managed enterprises. */
 export const deleteEnterprises: API.OperationMethod<
@@ -4595,7 +4661,7 @@ export const deleteEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesRequest,
   output: DeleteEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateEnterpriseUpgradeUrlEnterprisesRequest {
@@ -4625,7 +4691,12 @@ export type GenerateEnterpriseUpgradeUrlEnterprisesResponse =
 export const GenerateEnterpriseUpgradeUrlEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateEnterpriseUpgradeUrlResponse;
 
-export type GenerateEnterpriseUpgradeUrlEnterprisesError = DefaultErrors;
+export type GenerateEnterpriseUpgradeUrlEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a managed Google domain. See the guide (https://developers.google.com/android/management/upgrade-an-enterprise) for more details. */
 export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
@@ -4636,7 +4707,7 @@ export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateEnterpriseUpgradeUrlEnterprisesRequest,
   output: GenerateEnterpriseUpgradeUrlEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateEnterprisesMigrationTokensRequest {
@@ -4663,7 +4734,12 @@ export type CreateEnterprisesMigrationTokensResponse = MigrationToken;
 export const CreateEnterprisesMigrationTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ MigrationToken;
 
-export type CreateEnterprisesMigrationTokensError = DefaultErrors;
+export type CreateEnterprisesMigrationTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a migration token, to migrate an existing device from being managed by the EMM's Device Policy Controller (DPC) to being managed by the Android Management API. See the guide (https://developers.google.com/android/management/dpc-migration) for more details. */
 export const createEnterprisesMigrationTokens: API.OperationMethod<
@@ -4674,7 +4750,7 @@ export const createEnterprisesMigrationTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnterprisesMigrationTokensRequest,
   output: CreateEnterprisesMigrationTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEnterprisesMigrationTokensRequest {
@@ -4694,7 +4770,10 @@ export type GetEnterprisesMigrationTokensResponse = MigrationToken;
 export const GetEnterprisesMigrationTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ MigrationToken;
 
-export type GetEnterprisesMigrationTokensError = DefaultErrors;
+export type GetEnterprisesMigrationTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a migration token. */
 export const getEnterprisesMigrationTokens: API.OperationMethod<
@@ -4705,7 +4784,7 @@ export const getEnterprisesMigrationTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesMigrationTokensRequest,
   output: GetEnterprisesMigrationTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesMigrationTokensRequest {
@@ -4732,7 +4811,10 @@ export type ListEnterprisesMigrationTokensResponse =
 export const ListEnterprisesMigrationTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMigrationTokensResponse;
 
-export type ListEnterprisesMigrationTokensError = DefaultErrors;
+export type ListEnterprisesMigrationTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists migration tokens. */
 export const listEnterprisesMigrationTokens: API.PaginatedOperationMethod<
@@ -4743,7 +4825,7 @@ export const listEnterprisesMigrationTokens: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesMigrationTokensRequest,
   output: ListEnterprisesMigrationTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4774,7 +4856,12 @@ export type CreateEnterprisesEnrollmentTokensResponse = EnrollmentToken;
 export const CreateEnterprisesEnrollmentTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ EnrollmentToken;
 
-export type CreateEnterprisesEnrollmentTokensError = DefaultErrors;
+export type CreateEnterprisesEnrollmentTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an enrollment token for a given enterprise. It's up to the caller's responsibility to manage the lifecycle of newly created tokens and deleting them when they're not intended to be used anymore. */
 export const createEnterprisesEnrollmentTokens: API.OperationMethod<
@@ -4785,7 +4872,7 @@ export const createEnterprisesEnrollmentTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnterprisesEnrollmentTokensRequest,
   output: CreateEnterprisesEnrollmentTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEnterprisesEnrollmentTokensRequest {
@@ -4805,7 +4892,10 @@ export type GetEnterprisesEnrollmentTokensResponse = EnrollmentToken;
 export const GetEnterprisesEnrollmentTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ EnrollmentToken;
 
-export type GetEnterprisesEnrollmentTokensError = DefaultErrors;
+export type GetEnterprisesEnrollmentTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an active, unexpired enrollment token. A partial view of the enrollment token is returned. Only the following fields are populated: name, expirationTimestamp, allowPersonalUsage, value, qrCode. This method is meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens as soon as they're not intended to be used anymore. */
 export const getEnterprisesEnrollmentTokens: API.OperationMethod<
@@ -4816,7 +4906,7 @@ export const getEnterprisesEnrollmentTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesEnrollmentTokensRequest,
   output: GetEnterprisesEnrollmentTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesEnrollmentTokensRequest {
@@ -4843,7 +4933,10 @@ export type ListEnterprisesEnrollmentTokensResponse =
 export const ListEnterprisesEnrollmentTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEnrollmentTokensResponse;
 
-export type ListEnterprisesEnrollmentTokensError = DefaultErrors;
+export type ListEnterprisesEnrollmentTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists active, unexpired enrollment tokens for a given enterprise. The list items contain only a partial view of EnrollmentToken object. Only the following fields are populated: name, expirationTimestamp, allowPersonalUsage, value, qrCode. This method is meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens as soon as they're not intended to be used anymore. */
 export const listEnterprisesEnrollmentTokens: API.PaginatedOperationMethod<
@@ -4854,7 +4947,7 @@ export const listEnterprisesEnrollmentTokens: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesEnrollmentTokensRequest,
   output: ListEnterprisesEnrollmentTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4878,7 +4971,12 @@ export type DeleteEnterprisesEnrollmentTokensResponse = Empty;
 export const DeleteEnterprisesEnrollmentTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteEnterprisesEnrollmentTokensError = DefaultErrors;
+export type DeleteEnterprisesEnrollmentTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an enrollment token. This operation invalidates the token, preventing its future use. */
 export const deleteEnterprisesEnrollmentTokens: API.OperationMethod<
@@ -4889,7 +4987,7 @@ export const deleteEnterprisesEnrollmentTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesEnrollmentTokensRequest,
   output: DeleteEnterprisesEnrollmentTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateEnterprisesWebTokensRequest {
@@ -4912,7 +5010,12 @@ export type CreateEnterprisesWebTokensResponse = WebToken;
 export const CreateEnterprisesWebTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebToken;
 
-export type CreateEnterprisesWebTokensError = DefaultErrors;
+export type CreateEnterprisesWebTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a web token to access an embeddable managed Google Play web UI for a given enterprise. */
 export const createEnterprisesWebTokens: API.OperationMethod<
@@ -4923,7 +5026,7 @@ export const createEnterprisesWebTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnterprisesWebTokensRequest,
   output: CreateEnterprisesWebTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEnterprisesWebAppsRequest {
@@ -4949,7 +5052,12 @@ export type PatchEnterprisesWebAppsResponse = WebApp;
 export const PatchEnterprisesWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type PatchEnterprisesWebAppsError = DefaultErrors;
+export type PatchEnterprisesWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a web app. */
 export const patchEnterprisesWebApps: API.OperationMethod<
@@ -4960,7 +5068,7 @@ export const patchEnterprisesWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEnterprisesWebAppsRequest,
   output: PatchEnterprisesWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEnterprisesWebAppsRequest {
@@ -4979,7 +5087,7 @@ export const GetEnterprisesWebAppsRequest =
 export type GetEnterprisesWebAppsResponse = WebApp;
 export const GetEnterprisesWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type GetEnterprisesWebAppsError = DefaultErrors;
+export type GetEnterprisesWebAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a web app. */
 export const getEnterprisesWebApps: API.OperationMethod<
@@ -4990,7 +5098,7 @@ export const getEnterprisesWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesWebAppsRequest,
   output: GetEnterprisesWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesWebAppsRequest {
@@ -5016,7 +5124,7 @@ export type ListEnterprisesWebAppsResponse = ListWebAppsResponse;
 export const ListEnterprisesWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWebAppsResponse;
 
-export type ListEnterprisesWebAppsError = DefaultErrors;
+export type ListEnterprisesWebAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists web apps for a given enterprise. */
 export const listEnterprisesWebApps: API.PaginatedOperationMethod<
@@ -5027,7 +5135,7 @@ export const listEnterprisesWebApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesWebAppsRequest,
   output: ListEnterprisesWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5051,7 +5159,12 @@ export type DeleteEnterprisesWebAppsResponse = Empty;
 export const DeleteEnterprisesWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteEnterprisesWebAppsError = DefaultErrors;
+export type DeleteEnterprisesWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a web app. */
 export const deleteEnterprisesWebApps: API.OperationMethod<
@@ -5062,7 +5175,7 @@ export const deleteEnterprisesWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesWebAppsRequest,
   output: DeleteEnterprisesWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateEnterprisesWebAppsRequest {
@@ -5085,7 +5198,12 @@ export type CreateEnterprisesWebAppsResponse = WebApp;
 export const CreateEnterprisesWebAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type CreateEnterprisesWebAppsError = DefaultErrors;
+export type CreateEnterprisesWebAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a web app. */
 export const createEnterprisesWebApps: API.OperationMethod<
@@ -5096,7 +5214,7 @@ export const createEnterprisesWebApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnterprisesWebAppsRequest,
   output: CreateEnterprisesWebAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEnterprisesDevicesRequest {
@@ -5122,7 +5240,12 @@ export type PatchEnterprisesDevicesResponse = Device;
 export const PatchEnterprisesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Device;
 
-export type PatchEnterprisesDevicesError = DefaultErrors;
+export type PatchEnterprisesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a device. */
 export const patchEnterprisesDevices: API.OperationMethod<
@@ -5133,7 +5256,7 @@ export const patchEnterprisesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEnterprisesDevicesRequest,
   output: PatchEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEnterprisesDevicesRequest {
@@ -5152,7 +5275,7 @@ export const GetEnterprisesDevicesRequest =
 export type GetEnterprisesDevicesResponse = Device;
 export const GetEnterprisesDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
 
-export type GetEnterprisesDevicesError = DefaultErrors;
+export type GetEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a device. Deleted devices will respond with a 404 error. */
 export const getEnterprisesDevices: API.OperationMethod<
@@ -5163,7 +5286,7 @@ export const getEnterprisesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesDevicesRequest,
   output: GetEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesDevicesRequest {
@@ -5189,7 +5312,7 @@ export type ListEnterprisesDevicesResponse = ListDevicesResponse;
 export const ListEnterprisesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDevicesResponse;
 
-export type ListEnterprisesDevicesError = DefaultErrors;
+export type ListEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists devices for a given enterprise. Deleted devices are not returned in the response. */
 export const listEnterprisesDevices: API.PaginatedOperationMethod<
@@ -5200,7 +5323,7 @@ export const listEnterprisesDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesDevicesRequest,
   output: ListEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5227,7 +5350,12 @@ export type IssueCommandEnterprisesDevicesResponse = Operation;
 export const IssueCommandEnterprisesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type IssueCommandEnterprisesDevicesError = DefaultErrors;
+export type IssueCommandEnterprisesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Issues a command to a device. The Operation resource returned contains a Command in its metadata field. Use the get operation method to get the status of the command. */
 export const issueCommandEnterprisesDevices: API.OperationMethod<
@@ -5238,7 +5366,7 @@ export const issueCommandEnterprisesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IssueCommandEnterprisesDevicesRequest,
   output: IssueCommandEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteEnterprisesDevicesRequest {
@@ -5273,7 +5401,12 @@ export type DeleteEnterprisesDevicesResponse = Empty;
 export const DeleteEnterprisesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteEnterprisesDevicesError = DefaultErrors;
+export type DeleteEnterprisesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a device. This operation attempts to wipe the device but this is not guaranteed to succeed if the device is offline for an extended period. Deleted devices do not show up in enterprises.devices.list calls and a 404 is returned from enterprises.devices.get. */
 export const deleteEnterprisesDevices: API.OperationMethod<
@@ -5284,7 +5417,7 @@ export const deleteEnterprisesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesDevicesRequest,
   output: DeleteEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEnterprisesDevicesOperationsRequest {
@@ -5318,7 +5451,10 @@ export type ListEnterprisesDevicesOperationsResponse = ListOperationsResponse;
 export const ListEnterprisesDevicesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListEnterprisesDevicesOperationsError = DefaultErrors;
+export type ListEnterprisesDevicesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listEnterprisesDevicesOperations: API.PaginatedOperationMethod<
@@ -5329,7 +5465,7 @@ export const listEnterprisesDevicesOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesDevicesOperationsRequest,
   output: ListEnterprisesDevicesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5353,7 +5489,10 @@ export type GetEnterprisesDevicesOperationsResponse = Operation;
 export const GetEnterprisesDevicesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetEnterprisesDevicesOperationsError = DefaultErrors;
+export type GetEnterprisesDevicesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getEnterprisesDevicesOperations: API.OperationMethod<
@@ -5364,7 +5503,7 @@ export const getEnterprisesDevicesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesDevicesOperationsRequest,
   output: GetEnterprisesDevicesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelEnterprisesDevicesOperationsRequest {
@@ -5384,7 +5523,12 @@ export type CancelEnterprisesDevicesOperationsResponse = Empty;
 export const CancelEnterprisesDevicesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelEnterprisesDevicesOperationsError = DefaultErrors;
+export type CancelEnterprisesDevicesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED. */
 export const cancelEnterprisesDevicesOperations: API.OperationMethod<
@@ -5395,7 +5539,7 @@ export const cancelEnterprisesDevicesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelEnterprisesDevicesOperationsRequest,
   output: CancelEnterprisesDevicesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEnterprisesPoliciesRequest {
@@ -5415,7 +5559,7 @@ export type GetEnterprisesPoliciesResponse = Policy;
 export const GetEnterprisesPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetEnterprisesPoliciesError = DefaultErrors;
+export type GetEnterprisesPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a policy. */
 export const getEnterprisesPolicies: API.OperationMethod<
@@ -5426,7 +5570,7 @@ export const getEnterprisesPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesPoliciesRequest,
   output: GetEnterprisesPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesPoliciesRequest {
@@ -5452,7 +5596,7 @@ export type ListEnterprisesPoliciesResponse = ListPoliciesResponse;
 export const ListEnterprisesPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPoliciesResponse;
 
-export type ListEnterprisesPoliciesError = DefaultErrors;
+export type ListEnterprisesPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists policies for a given enterprise. */
 export const listEnterprisesPolicies: API.PaginatedOperationMethod<
@@ -5463,7 +5607,7 @@ export const listEnterprisesPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListEnterprisesPoliciesRequest,
   output: ListEnterprisesPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5495,7 +5639,12 @@ export type ModifyPolicyApplicationsEnterprisesPoliciesResponse =
 export const ModifyPolicyApplicationsEnterprisesPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ModifyPolicyApplicationsResponse;
 
-export type ModifyPolicyApplicationsEnterprisesPoliciesError = DefaultErrors;
+export type ModifyPolicyApplicationsEnterprisesPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or creates applications in a policy. */
 export const modifyPolicyApplicationsEnterprisesPolicies: API.OperationMethod<
@@ -5506,7 +5655,7 @@ export const modifyPolicyApplicationsEnterprisesPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyPolicyApplicationsEnterprisesPoliciesRequest,
   output: ModifyPolicyApplicationsEnterprisesPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemovePolicyApplicationsEnterprisesPoliciesRequest {
@@ -5534,7 +5683,12 @@ export type RemovePolicyApplicationsEnterprisesPoliciesResponse =
 export const RemovePolicyApplicationsEnterprisesPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemovePolicyApplicationsResponse;
 
-export type RemovePolicyApplicationsEnterprisesPoliciesError = DefaultErrors;
+export type RemovePolicyApplicationsEnterprisesPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes applications in a policy. */
 export const removePolicyApplicationsEnterprisesPolicies: API.OperationMethod<
@@ -5545,7 +5699,7 @@ export const removePolicyApplicationsEnterprisesPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemovePolicyApplicationsEnterprisesPoliciesRequest,
   output: RemovePolicyApplicationsEnterprisesPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEnterprisesPoliciesRequest {
@@ -5571,7 +5725,12 @@ export type PatchEnterprisesPoliciesResponse = Policy;
 export const PatchEnterprisesPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type PatchEnterprisesPoliciesError = DefaultErrors;
+export type PatchEnterprisesPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or creates a policy. */
 export const patchEnterprisesPolicies: API.OperationMethod<
@@ -5582,7 +5741,7 @@ export const patchEnterprisesPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEnterprisesPoliciesRequest,
   output: PatchEnterprisesPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteEnterprisesPoliciesRequest {
@@ -5602,7 +5761,12 @@ export type DeleteEnterprisesPoliciesResponse = Empty;
 export const DeleteEnterprisesPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteEnterprisesPoliciesError = DefaultErrors;
+export type DeleteEnterprisesPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a policy. This operation is only permitted if no devices are currently referencing the policy. */
 export const deleteEnterprisesPolicies: API.OperationMethod<
@@ -5613,7 +5777,7 @@ export const deleteEnterprisesPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEnterprisesPoliciesRequest,
   output: DeleteEnterprisesPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEnterprisesApplicationsRequest {
@@ -5638,7 +5802,10 @@ export type GetEnterprisesApplicationsResponse = Application;
 export const GetEnterprisesApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Application;
 
-export type GetEnterprisesApplicationsError = DefaultErrors;
+export type GetEnterprisesApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets info about an application. */
 export const getEnterprisesApplications: API.OperationMethod<
@@ -5649,7 +5816,7 @@ export const getEnterprisesApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesApplicationsRequest,
   output: GetEnterprisesApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProvisioningInfoRequest {
@@ -5669,7 +5836,7 @@ export type GetProvisioningInfoResponse = ProvisioningInfo;
 export const GetProvisioningInfoResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProvisioningInfo;
 
-export type GetProvisioningInfoError = DefaultErrors;
+export type GetProvisioningInfoError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the device provisioning information by the identifier provided in the sign-in url. */
 export const getProvisioningInfo: API.OperationMethod<
@@ -5680,5 +5847,5 @@ export const getProvisioningInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProvisioningInfoRequest,
   output: GetProvisioningInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

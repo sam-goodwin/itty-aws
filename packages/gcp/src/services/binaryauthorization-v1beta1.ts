@@ -359,6 +359,52 @@ export const ValidateAttestationOccurrenceRequest =
   }).annotate({ identifier: "ValidateAttestationOccurrenceRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -378,7 +424,7 @@ export const GetPolicySystempolicyRequest =
 export type GetPolicySystempolicyResponse = Policy;
 export const GetPolicySystempolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetPolicySystempolicyError = DefaultErrors;
+export type GetPolicySystempolicyError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the current system policy in the specified location. */
 export const getPolicySystempolicy: API.OperationMethod<
@@ -389,7 +435,7 @@ export const getPolicySystempolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPolicySystempolicyRequest,
   output: GetPolicySystempolicyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPolicyProjectsRequest {
@@ -408,7 +454,7 @@ export const GetPolicyProjectsRequest =
 export type GetPolicyProjectsResponse = Policy;
 export const GetPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetPolicyProjectsError = DefaultErrors;
+export type GetPolicyProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** A policy specifies the attestors that must attest to a container image, before the project is allowed to deploy that image. There is at most one policy per project. All image admission requests are permitted if a project has no policy. Gets the policy for this project. Returns a default policy if the project does not have one. */
 export const getPolicyProjects: API.OperationMethod<
@@ -419,7 +465,7 @@ export const getPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPolicyProjectsRequest,
   output: GetPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdatePolicyProjectsRequest {
@@ -441,7 +487,12 @@ export const UpdatePolicyProjectsRequest =
 export type UpdatePolicyProjectsResponse = Policy;
 export const UpdatePolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type UpdatePolicyProjectsError = DefaultErrors;
+export type UpdatePolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a project's policy, and returns a copy of the new policy. A policy is always updated as a whole, to avoid race conditions with concurrent policy enforcement (or management!) requests. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed. */
 export const updatePolicyProjects: API.OperationMethod<
@@ -452,7 +503,7 @@ export const updatePolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePolicyProjectsRequest,
   output: UpdatePolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAttestorsRequest {
@@ -472,7 +523,7 @@ export type GetProjectsAttestorsResponse = Attestor;
 export const GetProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Attestor;
 
-export type GetProjectsAttestorsError = DefaultErrors;
+export type GetProjectsAttestorsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an attestor. Returns NOT_FOUND if the attestor does not exist. */
 export const getProjectsAttestors: API.OperationMethod<
@@ -483,7 +534,7 @@ export const getProjectsAttestors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAttestorsRequest,
   output: GetProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAttestorsRequest {
@@ -509,7 +560,7 @@ export type ListProjectsAttestorsResponse = ListAttestorsResponse;
 export const ListProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAttestorsResponse;
 
-export type ListProjectsAttestorsError = DefaultErrors;
+export type ListProjectsAttestorsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists attestors. Returns INVALID_ARGUMENT if the project does not exist. */
 export const listProjectsAttestors: API.PaginatedOperationMethod<
@@ -520,7 +571,7 @@ export const listProjectsAttestors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAttestorsRequest,
   output: ListProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -552,7 +603,12 @@ export type TestIamPermissionsProjectsAttestorsResponse =
 export const TestIamPermissionsProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsAttestorsError = DefaultErrors;
+export type TestIamPermissionsProjectsAttestorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsAttestors: API.OperationMethod<
@@ -563,7 +619,7 @@ export const testIamPermissionsProjectsAttestors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsAttestorsRequest,
   output: TestIamPermissionsProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsAttestorsRequest {
@@ -586,7 +642,12 @@ export type UpdateProjectsAttestorsResponse = Attestor;
 export const UpdateProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Attestor;
 
-export type UpdateProjectsAttestorsError = DefaultErrors;
+export type UpdateProjectsAttestorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an attestor. Returns NOT_FOUND if the attestor does not exist. */
 export const updateProjectsAttestors: API.OperationMethod<
@@ -597,7 +658,7 @@ export const updateProjectsAttestors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsAttestorsRequest,
   output: UpdateProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsAttestorsRequest {
@@ -627,7 +688,12 @@ export type CreateProjectsAttestorsResponse = Attestor;
 export const CreateProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Attestor;
 
-export type CreateProjectsAttestorsError = DefaultErrors;
+export type CreateProjectsAttestorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists. */
 export const createProjectsAttestors: API.OperationMethod<
@@ -638,7 +704,7 @@ export const createProjectsAttestors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAttestorsRequest,
   output: CreateProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsAttestorsRequest {
@@ -665,7 +731,12 @@ export type SetIamPolicyProjectsAttestorsResponse = IamPolicy;
 export const SetIamPolicyProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
 
-export type SetIamPolicyProjectsAttestorsError = DefaultErrors;
+export type SetIamPolicyProjectsAttestorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsAttestors: API.OperationMethod<
@@ -676,7 +747,7 @@ export const setIamPolicyProjectsAttestors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsAttestorsRequest,
   output: SetIamPolicyProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsAttestorsRequest {
@@ -696,7 +767,12 @@ export type DeleteProjectsAttestorsResponse = Empty;
 export const DeleteProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsAttestorsError = DefaultErrors;
+export type DeleteProjectsAttestorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an attestor. Returns NOT_FOUND if the attestor does not exist. */
 export const deleteProjectsAttestors: API.OperationMethod<
@@ -707,7 +783,7 @@ export const deleteProjectsAttestors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAttestorsRequest,
   output: DeleteProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateAttestationOccurrenceProjectsAttestorsRequest {
@@ -737,7 +813,12 @@ export type ValidateAttestationOccurrenceProjectsAttestorsResponse =
 export const ValidateAttestationOccurrenceProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValidateAttestationOccurrenceResponse;
 
-export type ValidateAttestationOccurrenceProjectsAttestorsError = DefaultErrors;
+export type ValidateAttestationOccurrenceProjectsAttestorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns whether the given `Attestation` for the given image URI was signed by the given `Attestor` */
 export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod<
@@ -748,7 +829,7 @@ export const validateAttestationOccurrenceProjectsAttestors: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateAttestationOccurrenceProjectsAttestorsRequest,
   output: ValidateAttestationOccurrenceProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsAttestorsRequest {
@@ -773,7 +854,10 @@ export type GetIamPolicyProjectsAttestorsResponse = IamPolicy;
 export const GetIamPolicyProjectsAttestorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
 
-export type GetIamPolicyProjectsAttestorsError = DefaultErrors;
+export type GetIamPolicyProjectsAttestorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsAttestors: API.OperationMethod<
@@ -784,7 +868,7 @@ export const getIamPolicyProjectsAttestors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsAttestorsRequest,
   output: GetIamPolicyProjectsAttestorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsPolicyRequest {
@@ -811,7 +895,12 @@ export type SetIamPolicyProjectsPolicyResponse = IamPolicy;
 export const SetIamPolicyProjectsPolicyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
 
-export type SetIamPolicyProjectsPolicyError = DefaultErrors;
+export type SetIamPolicyProjectsPolicyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsPolicy: API.OperationMethod<
@@ -822,7 +911,7 @@ export const setIamPolicyProjectsPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsPolicyRequest,
   output: SetIamPolicyProjectsPolicyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsPolicyRequest {
@@ -847,7 +936,10 @@ export type GetIamPolicyProjectsPolicyResponse = IamPolicy;
 export const GetIamPolicyProjectsPolicyResponse =
   /*@__PURE__*/ /*#__PURE__*/ IamPolicy;
 
-export type GetIamPolicyProjectsPolicyError = DefaultErrors;
+export type GetIamPolicyProjectsPolicyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsPolicy: API.OperationMethod<
@@ -858,7 +950,7 @@ export const getIamPolicyProjectsPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsPolicyRequest,
   output: GetIamPolicyProjectsPolicyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsPolicyRequest {
@@ -886,7 +978,12 @@ export type TestIamPermissionsProjectsPolicyResponse =
 export const TestIamPermissionsProjectsPolicyResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsPolicyError = DefaultErrors;
+export type TestIamPermissionsProjectsPolicyError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsPolicy: API.OperationMethod<
@@ -897,5 +994,5 @@ export const testIamPermissionsProjectsPolicy: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsPolicyRequest,
   output: TestIamPermissionsProjectsPolicyResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

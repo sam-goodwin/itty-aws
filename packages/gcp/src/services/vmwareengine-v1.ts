@@ -2036,6 +2036,52 @@ export const ListNetworkPoliciesResponse =
   }).annotate({ identifier: "ListNetworkPoliciesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2056,7 +2102,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2067,7 +2113,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDnsBindPermissionProjectsLocationsRequest {
@@ -2087,7 +2133,10 @@ export type GetDnsBindPermissionProjectsLocationsResponse = DnsBindPermission;
 export const GetDnsBindPermissionProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DnsBindPermission;
 
-export type GetDnsBindPermissionProjectsLocationsError = DefaultErrors;
+export type GetDnsBindPermissionProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets all the principals having bind permission on the intranet VPC associated with the consumer project granted by the Grant API. DnsBindPermission is a global resource and location can only be global. */
 export const getDnsBindPermissionProjectsLocations: API.OperationMethod<
@@ -2098,7 +2147,7 @@ export const getDnsBindPermissionProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDnsBindPermissionProjectsLocationsRequest,
   output: GetDnsBindPermissionProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -2132,7 +2181,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2143,7 +2192,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2187,7 +2236,12 @@ export type CreateProjectsLocationsVmwareEngineNetworksResponse = Operation;
 export const CreateProjectsLocationsVmwareEngineNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsVmwareEngineNetworksError = DefaultErrors;
+export type CreateProjectsLocationsVmwareEngineNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new VMware Engine network that can be used by a private cloud. */
 export const createProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
@@ -2198,7 +2252,7 @@ export const createProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVmwareEngineNetworksRequest,
   output: CreateProjectsLocationsVmwareEngineNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsVmwareEngineNetworksRequest {
@@ -2224,7 +2278,12 @@ export type DeleteProjectsLocationsVmwareEngineNetworksResponse = Operation;
 export const DeleteProjectsLocationsVmwareEngineNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsVmwareEngineNetworksError = DefaultErrors;
+export type DeleteProjectsLocationsVmwareEngineNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `VmwareEngineNetwork` resource. You can only delete a VMware Engine network after all resources that refer to it are deleted. For example, a private cloud, a network peering, and a network policy can all refer to the same VMware Engine network. */
 export const deleteProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
@@ -2235,7 +2294,7 @@ export const deleteProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsVmwareEngineNetworksRequest,
   output: DeleteProjectsLocationsVmwareEngineNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsVmwareEngineNetworksRequest {
@@ -2256,7 +2315,10 @@ export type GetProjectsLocationsVmwareEngineNetworksResponse =
 export const GetProjectsLocationsVmwareEngineNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ VmwareEngineNetwork;
 
-export type GetProjectsLocationsVmwareEngineNetworksError = DefaultErrors;
+export type GetProjectsLocationsVmwareEngineNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `VmwareEngineNetwork` resource by its resource name. The resource contains details of the VMware Engine network, such as its VMware Engine network type, peered networks in a service project, and state (for example, `CREATING`, `ACTIVE`, `DELETING`). */
 export const getProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
@@ -2267,7 +2329,7 @@ export const getProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareEngineNetworksRequest,
   output: GetProjectsLocationsVmwareEngineNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsVmwareEngineNetworksRequest {
@@ -2301,7 +2363,12 @@ export type PatchProjectsLocationsVmwareEngineNetworksResponse = Operation;
 export const PatchProjectsLocationsVmwareEngineNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsVmwareEngineNetworksError = DefaultErrors;
+export type PatchProjectsLocationsVmwareEngineNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a VMware Engine network resource. Only the following fields can be updated: `description`. Only fields specified in `updateMask` are applied. */
 export const patchProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
@@ -2312,7 +2379,7 @@ export const patchProjectsLocationsVmwareEngineNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVmwareEngineNetworksRequest,
   output: PatchProjectsLocationsVmwareEngineNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsVmwareEngineNetworksRequest {
@@ -2345,7 +2412,10 @@ export type ListProjectsLocationsVmwareEngineNetworksResponse =
 export const ListProjectsLocationsVmwareEngineNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVmwareEngineNetworksResponse;
 
-export type ListProjectsLocationsVmwareEngineNetworksError = DefaultErrors;
+export type ListProjectsLocationsVmwareEngineNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `VmwareEngineNetwork` resources in a given project and location. */
 export const listProjectsLocationsVmwareEngineNetworks: API.PaginatedOperationMethod<
@@ -2356,7 +2426,7 @@ export const listProjectsLocationsVmwareEngineNetworks: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareEngineNetworksRequest,
   output: ListProjectsLocationsVmwareEngineNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2383,7 +2453,12 @@ export type RevokeProjectsLocationsDnsBindPermissionResponse = Operation;
 export const RevokeProjectsLocationsDnsBindPermissionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RevokeProjectsLocationsDnsBindPermissionError = DefaultErrors;
+export type RevokeProjectsLocationsDnsBindPermissionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revokes the bind permission from the customer provided principal(user / service account) on the intranet VPC associated with the consumer project. DnsBindPermission is a global resource and location can only be global. */
 export const revokeProjectsLocationsDnsBindPermission: API.OperationMethod<
@@ -2394,7 +2469,7 @@ export const revokeProjectsLocationsDnsBindPermission: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeProjectsLocationsDnsBindPermissionRequest,
   output: RevokeProjectsLocationsDnsBindPermissionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GrantProjectsLocationsDnsBindPermissionRequest {
@@ -2417,7 +2492,12 @@ export type GrantProjectsLocationsDnsBindPermissionResponse = Operation;
 export const GrantProjectsLocationsDnsBindPermissionResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GrantProjectsLocationsDnsBindPermissionError = DefaultErrors;
+export type GrantProjectsLocationsDnsBindPermissionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Grants the bind permission to the customer provided principal(user / service account) to bind their DNS zone with the intranet VPC associated with the project. DnsBindPermission is a global resource and location can only be global. */
 export const grantProjectsLocationsDnsBindPermission: API.OperationMethod<
@@ -2428,7 +2508,7 @@ export const grantProjectsLocationsDnsBindPermission: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GrantProjectsLocationsDnsBindPermissionRequest,
   output: GrantProjectsLocationsDnsBindPermissionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest {
@@ -2457,7 +2537,11 @@ export const ResetNsxCredentialsProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ResetNsxCredentialsProjectsLocationsPrivateCloudsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets credentials of the NSX appliance. */
 export const resetNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2468,7 +2552,7 @@ export const resetNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetNsxCredentialsProjectsLocationsPrivateCloudsRequest,
   output: ResetNsxCredentialsProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
@@ -2493,7 +2577,9 @@ export const ShowVcenterCredentialsProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Vmwareengine_Credentials;
 
 export type ShowVcenterCredentialsProjectsLocationsPrivateCloudsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of credentials for Vcenter appliance. */
 export const showVcenterCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2504,7 +2590,7 @@ export const showVcenterCredentialsProjectsLocationsPrivateClouds: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
   output: ShowVcenterCredentialsProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDnsForwardingProjectsLocationsPrivateCloudsRequest {
@@ -2525,7 +2611,10 @@ export type GetDnsForwardingProjectsLocationsPrivateCloudsResponse =
 export const GetDnsForwardingProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DnsForwarding;
 
-export type GetDnsForwardingProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type GetDnsForwardingProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the `DnsForwarding` config. */
 export const getDnsForwardingProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2536,7 +2625,7 @@ export const getDnsForwardingProjectsLocationsPrivateClouds: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDnsForwardingProjectsLocationsPrivateCloudsRequest,
   output: GetDnsForwardingProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsPrivateCloudsRequest {
@@ -2556,7 +2645,10 @@ export type GetProjectsLocationsPrivateCloudsResponse = PrivateCloud;
 export const GetProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PrivateCloud;
 
-export type GetProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type GetProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `PrivateCloud` resource by its resource name. */
 export const getProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2567,7 +2659,7 @@ export const getProjectsLocationsPrivateClouds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsRequest,
   output: GetProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest {
@@ -2596,7 +2688,11 @@ export const ResetVcenterCredentialsProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ResetVcenterCredentialsProjectsLocationsPrivateCloudsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets credentials of the Vcenter appliance. */
 export const resetVcenterCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2607,7 +2703,7 @@ export const resetVcenterCredentialsProjectsLocationsPrivateClouds: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetVcenterCredentialsProjectsLocationsPrivateCloudsRequest,
   output: ResetVcenterCredentialsProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsPrivateCloudsRequest {
@@ -2641,7 +2737,12 @@ export type PatchProjectsLocationsPrivateCloudsResponse = Operation;
 export const PatchProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type PatchProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`. Only fields specified in `updateMask` are applied. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2652,7 +2753,7 @@ export const patchProjectsLocationsPrivateClouds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateCloudsRequest,
   output: PatchProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPrivateCloudsRequest {
@@ -2692,7 +2793,12 @@ export type CreateProjectsLocationsPrivateCloudsResponse = Operation;
 export const CreateProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type CreateProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `PrivateCloud` resource in a given project and location. Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. Creating a private cloud also creates a [management cluster](https://cloud.google.com/vmware-engine/docs/concepts-vmware-components) for that private cloud. */
 export const createProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2703,7 +2809,7 @@ export const createProjectsLocationsPrivateClouds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateCloudsRequest,
   output: CreateProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsPrivateCloudsRequest {
@@ -2730,7 +2836,12 @@ export type SetIamPolicyProjectsLocationsPrivateCloudsResponse = Policy;
 export const SetIamPolicyProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2741,7 +2852,7 @@ export const setIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsPrivateCloudsRequest,
   output: SetIamPolicyProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsPrivateCloudsRequest {
@@ -2766,7 +2877,10 @@ export type GetIamPolicyProjectsLocationsPrivateCloudsResponse = Policy;
 export const GetIamPolicyProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2777,7 +2891,7 @@ export const getIamPolicyProjectsLocationsPrivateClouds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsPrivateCloudsRequest,
   output: GetIamPolicyProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest {
@@ -2808,7 +2922,11 @@ export const PrivateCloudDeletionNowProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PrivateCloudDeletionNowProjectsLocationsPrivateCloudsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accelerates the deletion of a private cloud that is currently in soft deletion A `PrivateCloud` resource in soft deletion has `PrivateCloud.state` set to `SOFT_DELETED` and `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed. */
 export const privateCloudDeletionNowProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2819,7 +2937,7 @@ export const privateCloudDeletionNowProjectsLocationsPrivateClouds: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PrivateCloudDeletionNowProjectsLocationsPrivateCloudsRequest,
   output: PrivateCloudDeletionNowProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsRequest {
@@ -2852,7 +2970,10 @@ export type ListProjectsLocationsPrivateCloudsResponse =
 export const ListProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPrivateCloudsResponse;
 
-export type ListProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type ListProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `PrivateCloud` resources in a given project and location. */
 export const listProjectsLocationsPrivateClouds: API.PaginatedOperationMethod<
@@ -2863,7 +2984,7 @@ export const listProjectsLocationsPrivateClouds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsRequest,
   output: ListProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2896,7 +3017,12 @@ export type DeleteProjectsLocationsPrivateCloudsResponse = Operation;
 export const DeleteProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type DeleteProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Schedules a `PrivateCloud` resource for deletion. A `PrivateCloud` resource scheduled for deletion has `PrivateCloud.state` set to `DELETED` and `expireTime` set to the time when deletion is final and can no longer be reversed. The delete operation is marked as done as soon as the `PrivateCloud` is successfully scheduled for deletion (this also applies when `delayHours` is set to zero), and the operation is not kept in pending state until `PrivateCloud` is purged. `PrivateCloud` can be restored using `UndeletePrivateCloud` method before the `expireTime` elapses. When `expireTime` is reached, deletion is final and all private cloud resources are irreversibly removed and billing stops. During the final removal process, `PrivateCloud.state` is set to `PURGING`. `PrivateCloud` can be polled using standard `GET` method for the whole period of deletion and purging. It will not be returned only when it is completely purged. */
 export const deleteProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2907,7 +3033,7 @@ export const deleteProjectsLocationsPrivateClouds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateCloudsRequest,
   output: DeleteProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsRequest {
@@ -2936,7 +3062,11 @@ export const TestIamPermissionsProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsPrivateCloudsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2947,7 +3077,7 @@ export const testIamPermissionsProjectsLocationsPrivateClouds: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsPrivateCloudsRequest,
   output: TestIamPermissionsProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsLocationsPrivateCloudsRequest {
@@ -2970,7 +3100,12 @@ export type UndeleteProjectsLocationsPrivateCloudsResponse = Operation;
 export const UndeleteProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsLocationsPrivateCloudsError = DefaultErrors;
+export type UndeleteProjectsLocationsPrivateCloudsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a private cloud that was previously scheduled for deletion by `DeletePrivateCloud`. A `PrivateCloud` resource scheduled for deletion has `PrivateCloud.state` set to `DELETED` and `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed. */
 export const undeleteProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -2981,7 +3116,7 @@ export const undeleteProjectsLocationsPrivateClouds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsPrivateCloudsRequest,
   output: UndeleteProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest {
@@ -3003,7 +3138,9 @@ export const ShowNsxCredentialsProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Vmwareengine_Credentials;
 
 export type ShowNsxCredentialsProjectsLocationsPrivateCloudsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of credentials for NSX appliance. */
 export const showNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -3014,7 +3151,7 @@ export const showNsxCredentialsProjectsLocationsPrivateClouds: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest,
   output: ShowNsxCredentialsProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest {
@@ -3045,7 +3182,11 @@ export const UpdateDnsForwardingProjectsLocationsPrivateCloudsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UpdateDnsForwardingProjectsLocationsPrivateCloudsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of the `DnsForwarding` config, like associated domains. Only fields specified in `update_mask` are applied. */
 export const updateDnsForwardingProjectsLocationsPrivateClouds: API.OperationMethod<
@@ -3056,7 +3197,7 @@ export const updateDnsForwardingProjectsLocationsPrivateClouds: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDnsForwardingProjectsLocationsPrivateCloudsRequest,
   output: UpdateDnsForwardingProjectsLocationsPrivateCloudsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPrivateCloudsLoggingServersRequest {
@@ -3093,7 +3234,11 @@ export const CreateProjectsLocationsPrivateCloudsLoggingServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateCloudsLoggingServersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new logging server for a given private cloud. */
 export const createProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
@@ -3104,7 +3249,7 @@ export const createProjectsLocationsPrivateCloudsLoggingServers: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateCloudsLoggingServersRequest,
   output: CreateProjectsLocationsPrivateCloudsLoggingServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPrivateCloudsLoggingServersRequest {
@@ -3129,7 +3274,11 @@ export const DeleteProjectsLocationsPrivateCloudsLoggingServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsPrivateCloudsLoggingServersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single logging server. */
 export const deleteProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
@@ -3140,7 +3289,7 @@ export const deleteProjectsLocationsPrivateCloudsLoggingServers: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateCloudsLoggingServersRequest,
   output: DeleteProjectsLocationsPrivateCloudsLoggingServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPrivateCloudsLoggingServersRequest {
@@ -3162,7 +3311,9 @@ export const GetProjectsLocationsPrivateCloudsLoggingServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoggingServer;
 
 export type GetProjectsLocationsPrivateCloudsLoggingServersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a logging server. */
 export const getProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
@@ -3173,7 +3324,7 @@ export const getProjectsLocationsPrivateCloudsLoggingServers: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsLoggingServersRequest,
   output: GetProjectsLocationsPrivateCloudsLoggingServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsPrivateCloudsLoggingServersRequest {
@@ -3204,7 +3355,11 @@ export const PatchProjectsLocationsPrivateCloudsLoggingServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsPrivateCloudsLoggingServersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single logging server. Only fields specified in `update_mask` are applied. */
 export const patchProjectsLocationsPrivateCloudsLoggingServers: API.OperationMethod<
@@ -3215,7 +3370,7 @@ export const patchProjectsLocationsPrivateCloudsLoggingServers: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateCloudsLoggingServersRequest,
   output: PatchProjectsLocationsPrivateCloudsLoggingServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsLoggingServersRequest {
@@ -3249,7 +3404,9 @@ export const ListProjectsLocationsPrivateCloudsLoggingServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLoggingServersResponse;
 
 export type ListProjectsLocationsPrivateCloudsLoggingServersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists logging servers configured for a given private cloud. */
 export const listProjectsLocationsPrivateCloudsLoggingServers: API.PaginatedOperationMethod<
@@ -3260,7 +3417,7 @@ export const listProjectsLocationsPrivateCloudsLoggingServers: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsLoggingServersRequest,
   output: ListProjectsLocationsPrivateCloudsLoggingServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3284,7 +3441,10 @@ export type GetProjectsLocationsPrivateCloudsUpgradesResponse = Upgrade;
 export const GetProjectsLocationsPrivateCloudsUpgradesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Upgrade;
 
-export type GetProjectsLocationsPrivateCloudsUpgradesError = DefaultErrors;
+export type GetProjectsLocationsPrivateCloudsUpgradesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a private cloud `Upgrade` resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
@@ -3295,7 +3455,7 @@ export const getProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsUpgradesRequest,
   output: GetProjectsLocationsPrivateCloudsUpgradesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsUpgradesRequest {
@@ -3328,7 +3488,10 @@ export type ListProjectsLocationsPrivateCloudsUpgradesResponse =
 export const ListProjectsLocationsPrivateCloudsUpgradesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUpgradesResponse;
 
-export type ListProjectsLocationsPrivateCloudsUpgradesError = DefaultErrors;
+export type ListProjectsLocationsPrivateCloudsUpgradesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists past, ongoing and upcoming `Upgrades` for the given private cloud. */
 export const listProjectsLocationsPrivateCloudsUpgrades: API.PaginatedOperationMethod<
@@ -3339,7 +3502,7 @@ export const listProjectsLocationsPrivateCloudsUpgrades: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsUpgradesRequest,
   output: ListProjectsLocationsPrivateCloudsUpgradesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3372,7 +3535,12 @@ export type PatchProjectsLocationsPrivateCloudsUpgradesResponse = Operation;
 export const PatchProjectsLocationsPrivateCloudsUpgradesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsPrivateCloudsUpgradesError = DefaultErrors;
+export type PatchProjectsLocationsPrivateCloudsUpgradesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the private cloud `Upgrade` resource. Only `schedule` field can updated. The schedule can only be updated when the upgrade has not started and schedule edit window is open. Only fields specified in `update_mask` are considered. */
 export const patchProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
@@ -3383,7 +3551,7 @@ export const patchProjectsLocationsPrivateCloudsUpgrades: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateCloudsUpgradesRequest,
   output: PatchProjectsLocationsPrivateCloudsUpgradesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsPrivateCloudsClustersRequest {
@@ -3417,7 +3585,12 @@ export type PatchProjectsLocationsPrivateCloudsClustersResponse = Operation;
 export const PatchProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsPrivateCloudsClustersError = DefaultErrors;
+export type PatchProjectsLocationsPrivateCloudsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a `Cluster` resource. Only fields specified in `updateMask` are applied. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3428,7 +3601,7 @@ export const patchProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateCloudsClustersRequest,
   output: PatchProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
@@ -3457,7 +3630,11 @@ export const UnmountDatastoreProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UnmountDatastoreProjectsLocationsPrivateCloudsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unmounts a `Datastore` on a cluster resource */
 export const unmountDatastoreProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3468,7 +3645,7 @@ export const unmountDatastoreProjectsLocationsPrivateCloudsClusters: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnmountDatastoreProjectsLocationsPrivateCloudsClustersRequest,
   output: UnmountDatastoreProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPrivateCloudsClustersRequest {
@@ -3488,7 +3665,10 @@ export type GetProjectsLocationsPrivateCloudsClustersResponse = Cluster;
 export const GetProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cluster;
 
-export type GetProjectsLocationsPrivateCloudsClustersError = DefaultErrors;
+export type GetProjectsLocationsPrivateCloudsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `Cluster` resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3499,7 +3679,7 @@ export const getProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsClustersRequest,
   output: GetProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest {
@@ -3528,7 +3708,11 @@ export const TestIamPermissionsProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsPrivateCloudsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3539,7 +3723,7 @@ export const testIamPermissionsProjectsLocationsPrivateCloudsClusters: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsPrivateCloudsClustersRequest,
   output: TestIamPermissionsProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPrivateCloudsClustersRequest {
@@ -3573,7 +3757,12 @@ export type CreateProjectsLocationsPrivateCloudsClustersResponse = Operation;
 export const CreateProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsPrivateCloudsClustersError = DefaultErrors;
+export type CreateProjectsLocationsPrivateCloudsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new cluster in a given private cloud. Creating a new cluster provides additional nodes for use in the parent private cloud and requires sufficient [node quota](https://cloud.google.com/vmware-engine/quotas). */
 export const createProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3584,7 +3773,7 @@ export const createProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateCloudsClustersRequest,
   output: CreateProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
@@ -3612,7 +3801,11 @@ export const SetIamPolicyProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsPrivateCloudsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3623,7 +3816,7 @@ export const setIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsPrivateCloudsClustersRequest,
   output: SetIamPolicyProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest {
@@ -3649,7 +3842,9 @@ export const GetIamPolicyProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsPrivateCloudsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3660,7 +3855,7 @@ export const getIamPolicyProjectsLocationsPrivateCloudsClusters: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsPrivateCloudsClustersRequest,
   output: GetIamPolicyProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsClustersRequest {
@@ -3693,7 +3888,10 @@ export type ListProjectsLocationsPrivateCloudsClustersResponse =
 export const ListProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
 
-export type ListProjectsLocationsPrivateCloudsClustersError = DefaultErrors;
+export type ListProjectsLocationsPrivateCloudsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `Cluster` resources in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsClusters: API.PaginatedOperationMethod<
@@ -3704,7 +3902,7 @@ export const listProjectsLocationsPrivateCloudsClusters: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsClustersRequest,
   output: ListProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3731,7 +3929,12 @@ export type DeleteProjectsLocationsPrivateCloudsClustersResponse = Operation;
 export const DeleteProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsPrivateCloudsClustersError = DefaultErrors;
+export type DeleteProjectsLocationsPrivateCloudsClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Cluster` resource. To avoid unintended data loss, migrate or gracefully shut down any workloads running on the cluster before deletion. You cannot delete the management cluster of a private cloud using this method. */
 export const deleteProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3742,7 +3945,7 @@ export const deleteProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateCloudsClustersRequest,
   output: DeleteProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MountDatastoreProjectsLocationsPrivateCloudsClustersRequest {
@@ -3767,7 +3970,11 @@ export const MountDatastoreProjectsLocationsPrivateCloudsClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type MountDatastoreProjectsLocationsPrivateCloudsClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mounts a `Datastore` on a cluster resource */
 export const mountDatastoreProjectsLocationsPrivateCloudsClusters: API.OperationMethod<
@@ -3778,7 +3985,7 @@ export const mountDatastoreProjectsLocationsPrivateCloudsClusters: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MountDatastoreProjectsLocationsPrivateCloudsClustersRequest,
   output: MountDatastoreProjectsLocationsPrivateCloudsClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPrivateCloudsClustersNodesRequest {
@@ -3798,7 +4005,10 @@ export type GetProjectsLocationsPrivateCloudsClustersNodesResponse = Node;
 export const GetProjectsLocationsPrivateCloudsClustersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Node;
 
-export type GetProjectsLocationsPrivateCloudsClustersNodesError = DefaultErrors;
+export type GetProjectsLocationsPrivateCloudsClustersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single node. */
 export const getProjectsLocationsPrivateCloudsClustersNodes: API.OperationMethod<
@@ -3809,7 +4019,7 @@ export const getProjectsLocationsPrivateCloudsClustersNodes: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsClustersNodesRequest,
   output: GetProjectsLocationsPrivateCloudsClustersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsClustersNodesRequest {
@@ -3837,7 +4047,9 @@ export const ListProjectsLocationsPrivateCloudsClustersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNodesResponse;
 
 export type ListProjectsLocationsPrivateCloudsClustersNodesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists nodes in a given cluster. */
 export const listProjectsLocationsPrivateCloudsClustersNodes: API.PaginatedOperationMethod<
@@ -3848,7 +4060,7 @@ export const listProjectsLocationsPrivateCloudsClustersNodes: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsClustersNodesRequest,
   output: ListProjectsLocationsPrivateCloudsClustersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3889,7 +4101,11 @@ export const CreateProjectsLocationsPrivateCloudsHcxActivationKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateCloudsHcxActivationKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new HCX activation key in a given private cloud. */
 export const createProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
@@ -3900,7 +4116,7 @@ export const createProjectsLocationsPrivateCloudsHcxActivationKeys: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output: CreateProjectsLocationsPrivateCloudsHcxActivationKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
@@ -3929,7 +4145,11 @@ export const SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysResponse
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
@@ -3940,7 +4160,7 @@ export const setIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output: SetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
@@ -3967,7 +4187,9 @@ export const GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysResponse
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
@@ -3978,7 +4200,7 @@ export const getIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeys: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output: GetIamPolicyProjectsLocationsPrivateCloudsHcxActivationKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
@@ -4006,7 +4228,9 @@ export const ListProjectsLocationsPrivateCloudsHcxActivationKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHcxActivationKeysResponse;
 
 export type ListProjectsLocationsPrivateCloudsHcxActivationKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `HcxActivationKey` resources in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsHcxActivationKeys: API.PaginatedOperationMethod<
@@ -4017,7 +4241,7 @@ export const listProjectsLocationsPrivateCloudsHcxActivationKeys: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output: ListProjectsLocationsPrivateCloudsHcxActivationKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4043,7 +4267,9 @@ export const GetProjectsLocationsPrivateCloudsHcxActivationKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ HcxActivationKey;
 
 export type GetProjectsLocationsPrivateCloudsHcxActivationKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `HcxActivationKey` resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
@@ -4054,7 +4280,7 @@ export const getProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output: GetProjectsLocationsPrivateCloudsHcxActivationKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest {
@@ -4083,7 +4309,11 @@ export const TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRe
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeys: API.OperationMethod<
@@ -4096,7 +4326,7 @@ export const testIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeys: 
     TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysRequest,
   output:
     TestIamPermissionsProjectsLocationsPrivateCloudsHcxActivationKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
@@ -4127,7 +4357,11 @@ export const PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRespons
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `ManagementDnsZoneBinding` resource. Only fields specified in `update_mask` are applied. */
 export const patchProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4138,7 +4372,7 @@ export const patchProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
   output: PatchProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
@@ -4172,7 +4406,9 @@ export const ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse
   /*@__PURE__*/ /*#__PURE__*/ ListManagementDnsZoneBindingsResponse;
 
 export type ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Consumer VPCs bound to Management DNS Zone of a given private cloud. */
 export const listProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.PaginatedOperationMethod<
@@ -4183,7 +4419,7 @@ export const listProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
   output: ListProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4209,7 +4445,9 @@ export const GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse 
   /*@__PURE__*/ /*#__PURE__*/ ManagementDnsZoneBinding;
 
 export type GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a 'ManagementDnsZoneBinding' resource by its resource name. */
 export const getProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4220,7 +4458,7 @@ export const getProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
   output: GetProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
@@ -4247,7 +4485,11 @@ export const RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retries to create a `ManagementDnsZoneBinding` resource that is in failed state. */
 export const repairProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4258,7 +4500,7 @@ export const repairProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
   output: RepairProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
@@ -4283,7 +4525,11 @@ export const DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `ManagementDnsZoneBinding` resource. When a management DNS zone binding is deleted, the corresponding consumer VPC network is no longer bound to the management DNS zone. */
 export const deleteProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4294,7 +4540,7 @@ export const deleteProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
   output: DeleteProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest {
@@ -4331,7 +4577,11 @@ export const CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `ManagementDnsZoneBinding` resource in a private cloud. This RPC creates the DNS binding and the resource that represents the DNS binding of the consumer VPC network to the management DNS zone. A management DNS zone is the Cloud DNS cross-project binding zone that VMware Engine creates for each private cloud. It contains FQDNs and corresponding IP addresses for the private cloud's ESXi hosts and management VM appliances like vCenter and NSX Manager. */
 export const createProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.OperationMethod<
@@ -4342,7 +4592,7 @@ export const createProjectsLocationsPrivateCloudsManagementDnsZoneBindings: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsRequest,
   output: CreateProjectsLocationsPrivateCloudsManagementDnsZoneBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPrivateCloudsSubnetsRequest {
@@ -4362,7 +4612,10 @@ export type GetProjectsLocationsPrivateCloudsSubnetsResponse = Subnet;
 export const GetProjectsLocationsPrivateCloudsSubnetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subnet;
 
-export type GetProjectsLocationsPrivateCloudsSubnetsError = DefaultErrors;
+export type GetProjectsLocationsPrivateCloudsSubnetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single subnet. */
 export const getProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
@@ -4373,7 +4626,7 @@ export const getProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsSubnetsRequest,
   output: GetProjectsLocationsPrivateCloudsSubnetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsSubnetsRequest {
@@ -4400,7 +4653,10 @@ export type ListProjectsLocationsPrivateCloudsSubnetsResponse =
 export const ListProjectsLocationsPrivateCloudsSubnetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSubnetsResponse;
 
-export type ListProjectsLocationsPrivateCloudsSubnetsError = DefaultErrors;
+export type ListProjectsLocationsPrivateCloudsSubnetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists subnets in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsSubnets: API.PaginatedOperationMethod<
@@ -4411,7 +4667,7 @@ export const listProjectsLocationsPrivateCloudsSubnets: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsSubnetsRequest,
   output: ListProjectsLocationsPrivateCloudsSubnetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4441,7 +4697,12 @@ export type PatchProjectsLocationsPrivateCloudsSubnetsResponse = Operation;
 export const PatchProjectsLocationsPrivateCloudsSubnetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsPrivateCloudsSubnetsError = DefaultErrors;
+export type PatchProjectsLocationsPrivateCloudsSubnetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single subnet. Only fields specified in `update_mask` are applied. *Note*: This API is synchronous and always returns a successful `google.longrunning.Operation` (LRO). The returned LRO will only have `done` and `response` fields. */
 export const patchProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
@@ -4452,7 +4713,7 @@ export const patchProjectsLocationsPrivateCloudsSubnets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateCloudsSubnetsRequest,
   output: PatchProjectsLocationsPrivateCloudsSubnetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest {
@@ -4477,7 +4738,11 @@ export const DeleteProjectsLocationsPrivateCloudsExternalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsPrivateCloudsExternalAddressesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single external IP address. When you delete an external IP address, connectivity between the external IP address and the corresponding internal IP address is lost. */
 export const deleteProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
@@ -4488,7 +4753,7 @@ export const deleteProjectsLocationsPrivateCloudsExternalAddresses: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateCloudsExternalAddressesRequest,
   output: DeleteProjectsLocationsPrivateCloudsExternalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPrivateCloudsExternalAddressesRequest {
@@ -4530,7 +4795,11 @@ export const CreateProjectsLocationsPrivateCloudsExternalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsPrivateCloudsExternalAddressesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `ExternalAddress` resource in a given private cloud. The network policy that corresponds to the private cloud must have the external IP address network service enabled (`NetworkPolicy.external_ip`). */
 export const createProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
@@ -4541,7 +4810,7 @@ export const createProjectsLocationsPrivateCloudsExternalAddresses: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateCloudsExternalAddressesRequest,
   output: CreateProjectsLocationsPrivateCloudsExternalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsPrivateCloudsExternalAddressesRequest {
@@ -4577,7 +4846,11 @@ export const PatchProjectsLocationsPrivateCloudsExternalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsPrivateCloudsExternalAddressesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single external IP address. Only fields specified in `update_mask` are applied. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
@@ -4588,7 +4861,7 @@ export const patchProjectsLocationsPrivateCloudsExternalAddresses: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateCloudsExternalAddressesRequest,
   output: PatchProjectsLocationsPrivateCloudsExternalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPrivateCloudsExternalAddressesRequest {
@@ -4622,7 +4895,9 @@ export const ListProjectsLocationsPrivateCloudsExternalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExternalAddressesResponse;
 
 export type ListProjectsLocationsPrivateCloudsExternalAddressesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists external IP addresses assigned to VMware workload VMs in a given private cloud. */
 export const listProjectsLocationsPrivateCloudsExternalAddresses: API.PaginatedOperationMethod<
@@ -4633,7 +4908,7 @@ export const listProjectsLocationsPrivateCloudsExternalAddresses: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateCloudsExternalAddressesRequest,
   output: ListProjectsLocationsPrivateCloudsExternalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4659,7 +4934,9 @@ export const GetProjectsLocationsPrivateCloudsExternalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExternalAddress;
 
 export type GetProjectsLocationsPrivateCloudsExternalAddressesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single external IP address. */
 export const getProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMethod<
@@ -4670,7 +4947,7 @@ export const getProjectsLocationsPrivateCloudsExternalAddresses: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateCloudsExternalAddressesRequest,
   output: GetProjectsLocationsPrivateCloudsExternalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsAnnouncementsRequest {
@@ -4690,7 +4967,10 @@ export type GetProjectsLocationsAnnouncementsResponse = Announcement;
 export const GetProjectsLocationsAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Announcement;
 
-export type GetProjectsLocationsAnnouncementsError = DefaultErrors;
+export type GetProjectsLocationsAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `Announcement` by its resource name. */
 export const getProjectsLocationsAnnouncements: API.OperationMethod<
@@ -4701,7 +4981,7 @@ export const getProjectsLocationsAnnouncements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAnnouncementsRequest,
   output: GetProjectsLocationsAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAnnouncementsRequest {
@@ -4734,7 +5014,10 @@ export type ListProjectsLocationsAnnouncementsResponse =
 export const ListProjectsLocationsAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAnnouncementsResponse;
 
-export type ListProjectsLocationsAnnouncementsError = DefaultErrors;
+export type ListProjectsLocationsAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `Announcements` for a given region and project */
 export const listProjectsLocationsAnnouncements: API.PaginatedOperationMethod<
@@ -4745,7 +5028,7 @@ export const listProjectsLocationsAnnouncements: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAnnouncementsRequest,
   output: ListProjectsLocationsAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4769,7 +5052,10 @@ export type GetProjectsLocationsDatastoresResponse = Datastore;
 export const GetProjectsLocationsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Datastore;
 
-export type GetProjectsLocationsDatastoresError = DefaultErrors;
+export type GetProjectsLocationsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `Datastore` resource by its resource name. The resource contains details of the Datastore, such as its description, subnets, type, and more. */
 export const getProjectsLocationsDatastores: API.OperationMethod<
@@ -4780,7 +5066,7 @@ export const getProjectsLocationsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatastoresRequest,
   output: GetProjectsLocationsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsDatastoresRequest {
@@ -4815,7 +5101,10 @@ export type ListProjectsLocationsDatastoresResponse = ListDatastoresResponse;
 export const ListProjectsLocationsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDatastoresResponse;
 
-export type ListProjectsLocationsDatastoresError = DefaultErrors;
+export type ListProjectsLocationsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `Datastore` resources in a given project and location. */
 export const listProjectsLocationsDatastores: API.PaginatedOperationMethod<
@@ -4826,7 +5115,7 @@ export const listProjectsLocationsDatastores: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatastoresRequest,
   output: ListProjectsLocationsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4859,7 +5148,12 @@ export type PatchProjectsLocationsDatastoresResponse = Operation;
 export const PatchProjectsLocationsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsDatastoresError = DefaultErrors;
+export type PatchProjectsLocationsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a Datastore resource. Only fields specified in `updateMask` are applied. */
 export const patchProjectsLocationsDatastores: API.OperationMethod<
@@ -4870,7 +5164,7 @@ export const patchProjectsLocationsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatastoresRequest,
   output: PatchProjectsLocationsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatastoresRequest {
@@ -4901,7 +5195,12 @@ export type CreateProjectsLocationsDatastoresResponse = Operation;
 export const CreateProjectsLocationsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsDatastoresError = DefaultErrors;
+export type CreateProjectsLocationsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `Datastore` resource in a given project and location. */
 export const createProjectsLocationsDatastores: API.OperationMethod<
@@ -4912,7 +5211,7 @@ export const createProjectsLocationsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatastoresRequest,
   output: CreateProjectsLocationsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDatastoresRequest {
@@ -4938,7 +5237,12 @@ export type DeleteProjectsLocationsDatastoresResponse = Operation;
 export const DeleteProjectsLocationsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsDatastoresError = DefaultErrors;
+export type DeleteProjectsLocationsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Datastore` resource. You can only delete a Datastore after all resources that refer to it are deleted. For example, multiple clusters of the same private cloud or different private clouds can refer to the same datastore. */
 export const deleteProjectsLocationsDatastores: API.OperationMethod<
@@ -4949,7 +5253,7 @@ export const deleteProjectsLocationsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatastoresRequest,
   output: DeleteProjectsLocationsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -4969,7 +5273,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -4980,7 +5287,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -5014,7 +5321,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -5025,7 +5335,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5049,7 +5359,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -5060,7 +5375,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsNetworkPeeringsRequest {
@@ -5100,7 +5415,12 @@ export type CreateProjectsLocationsNetworkPeeringsResponse = Operation;
 export const CreateProjectsLocationsNetworkPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsNetworkPeeringsError = DefaultErrors;
+export type CreateProjectsLocationsNetworkPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new network peering between the peer network and VMware Engine network provided in a `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global. */
 export const createProjectsLocationsNetworkPeerings: API.OperationMethod<
@@ -5111,7 +5431,7 @@ export const createProjectsLocationsNetworkPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsNetworkPeeringsRequest,
   output: CreateProjectsLocationsNetworkPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsNetworkPeeringsRequest {
@@ -5134,7 +5454,12 @@ export type DeleteProjectsLocationsNetworkPeeringsResponse = Operation;
 export const DeleteProjectsLocationsNetworkPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsNetworkPeeringsError = DefaultErrors;
+export type DeleteProjectsLocationsNetworkPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `NetworkPeering` resource. When a network peering is deleted for a VMware Engine network, the peer network becomes inaccessible to that VMware Engine network. NetworkPeering is a global resource and location can only be global. */
 export const deleteProjectsLocationsNetworkPeerings: API.OperationMethod<
@@ -5145,7 +5470,7 @@ export const deleteProjectsLocationsNetworkPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsNetworkPeeringsRequest,
   output: DeleteProjectsLocationsNetworkPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsNetworkPeeringsRequest {
@@ -5165,7 +5490,10 @@ export type GetProjectsLocationsNetworkPeeringsResponse = NetworkPeering;
 export const GetProjectsLocationsNetworkPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkPeering;
 
-export type GetProjectsLocationsNetworkPeeringsError = DefaultErrors;
+export type GetProjectsLocationsNetworkPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the network peering, such as peered networks, import and export custom route configurations, and peering state. NetworkPeering is a global resource and location can only be global. */
 export const getProjectsLocationsNetworkPeerings: API.OperationMethod<
@@ -5176,7 +5504,7 @@ export const getProjectsLocationsNetworkPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNetworkPeeringsRequest,
   output: GetProjectsLocationsNetworkPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsNetworkPeeringsRequest {
@@ -5210,7 +5538,12 @@ export type PatchProjectsLocationsNetworkPeeringsResponse = Operation;
 export const PatchProjectsLocationsNetworkPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsNetworkPeeringsError = DefaultErrors;
+export type PatchProjectsLocationsNetworkPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a `NetworkPeering` resource. Only the `description` field can be updated. Only fields specified in `updateMask` are applied. NetworkPeering is a global resource and location can only be global. */
 export const patchProjectsLocationsNetworkPeerings: API.OperationMethod<
@@ -5221,7 +5554,7 @@ export const patchProjectsLocationsNetworkPeerings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsNetworkPeeringsRequest,
   output: PatchProjectsLocationsNetworkPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNetworkPeeringsRequest {
@@ -5254,7 +5587,10 @@ export type ListProjectsLocationsNetworkPeeringsResponse =
 export const ListProjectsLocationsNetworkPeeringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNetworkPeeringsResponse;
 
-export type ListProjectsLocationsNetworkPeeringsError = DefaultErrors;
+export type ListProjectsLocationsNetworkPeeringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `NetworkPeering` resources in a given project. NetworkPeering is a global resource and location can only be global. */
 export const listProjectsLocationsNetworkPeerings: API.PaginatedOperationMethod<
@@ -5265,7 +5601,7 @@ export const listProjectsLocationsNetworkPeerings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkPeeringsRequest,
   output: ListProjectsLocationsNetworkPeeringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5300,7 +5636,9 @@ export const ListProjectsLocationsNetworkPeeringsPeeringRoutesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPeeringRoutesResponse;
 
 export type ListProjectsLocationsNetworkPeeringsPeeringRoutesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the network peering routes exchanged over a peering connection. NetworkPeering is a global resource and location can only be global. */
 export const listProjectsLocationsNetworkPeeringsPeeringRoutes: API.PaginatedOperationMethod<
@@ -5311,7 +5649,7 @@ export const listProjectsLocationsNetworkPeeringsPeeringRoutes: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkPeeringsPeeringRoutesRequest,
   output: ListProjectsLocationsNetworkPeeringsPeeringRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5355,7 +5693,12 @@ export type CreateProjectsLocationsPrivateConnectionsResponse = Operation;
 export const CreateProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type CreateProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new private connection that can be used for accessing private Clouds. */
 export const createProjectsLocationsPrivateConnections: API.OperationMethod<
@@ -5366,7 +5709,7 @@ export const createProjectsLocationsPrivateConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPrivateConnectionsRequest,
   output: CreateProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPrivateConnectionsRequest {
@@ -5389,7 +5732,12 @@ export type DeleteProjectsLocationsPrivateConnectionsResponse = Operation;
 export const DeleteProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type DeleteProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `PrivateConnection` resource. When a private connection is deleted for a VMware Engine network, the connected network becomes inaccessible to that VMware Engine network. */
 export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
@@ -5400,7 +5748,7 @@ export const deleteProjectsLocationsPrivateConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPrivateConnectionsRequest,
   output: DeleteProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPrivateConnectionsRequest {
@@ -5420,7 +5768,10 @@ export type GetProjectsLocationsPrivateConnectionsResponse = PrivateConnection;
 export const GetProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PrivateConnection;
 
-export type GetProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type GetProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `PrivateConnection` resource by its resource name. The resource contains details of the private connection, such as connected network, routing mode and state. */
 export const getProjectsLocationsPrivateConnections: API.OperationMethod<
@@ -5431,7 +5782,7 @@ export const getProjectsLocationsPrivateConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPrivateConnectionsRequest,
   output: GetProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPrivateConnectionsRequest {
@@ -5464,7 +5815,10 @@ export type ListProjectsLocationsPrivateConnectionsResponse =
 export const ListProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPrivateConnectionsResponse;
 
-export type ListProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type ListProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `PrivateConnection` resources in a given project and location. */
 export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMethod<
@@ -5475,7 +5829,7 @@ export const listProjectsLocationsPrivateConnections: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateConnectionsRequest,
   output: ListProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5513,7 +5867,12 @@ export type PatchProjectsLocationsPrivateConnectionsResponse = Operation;
 export const PatchProjectsLocationsPrivateConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsPrivateConnectionsError = DefaultErrors;
+export type PatchProjectsLocationsPrivateConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a `PrivateConnection` resource. Only `description` and `routing_mode` fields can be updated. Only fields specified in `updateMask` are applied. */
 export const patchProjectsLocationsPrivateConnections: API.OperationMethod<
@@ -5524,7 +5883,7 @@ export const patchProjectsLocationsPrivateConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPrivateConnectionsRequest,
   output: PatchProjectsLocationsPrivateConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest {
@@ -5552,7 +5911,9 @@ export const ListProjectsLocationsPrivateConnectionsPeeringRoutesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPrivateConnectionPeeringRoutesResponse;
 
 export type ListProjectsLocationsPrivateConnectionsPeeringRoutesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the private connection routes exchanged over a peering connection. */
 export const listProjectsLocationsPrivateConnectionsPeeringRoutes: API.PaginatedOperationMethod<
@@ -5563,7 +5924,7 @@ export const listProjectsLocationsPrivateConnectionsPeeringRoutes: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPrivateConnectionsPeeringRoutesRequest,
   output: ListProjectsLocationsPrivateConnectionsPeeringRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5607,7 +5968,12 @@ export type CreateProjectsLocationsNetworkPoliciesResponse = Operation;
 export const CreateProjectsLocationsNetworkPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsNetworkPoliciesError = DefaultErrors;
+export type CreateProjectsLocationsNetworkPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new network policy in a given VMware Engine network of a project and location (region). A new network policy cannot be created if another network policy already exists in the same scope. */
 export const createProjectsLocationsNetworkPolicies: API.OperationMethod<
@@ -5618,7 +5984,7 @@ export const createProjectsLocationsNetworkPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsNetworkPoliciesRequest,
   output: CreateProjectsLocationsNetworkPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsNetworkPoliciesRequest {
@@ -5641,7 +6007,12 @@ export type DeleteProjectsLocationsNetworkPoliciesResponse = Operation;
 export const DeleteProjectsLocationsNetworkPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsNetworkPoliciesError = DefaultErrors;
+export type DeleteProjectsLocationsNetworkPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `NetworkPolicy` resource. A network policy cannot be deleted when `NetworkService.state` is set to `RECONCILING` for either its external IP or internet access service. */
 export const deleteProjectsLocationsNetworkPolicies: API.OperationMethod<
@@ -5652,7 +6023,7 @@ export const deleteProjectsLocationsNetworkPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsNetworkPoliciesRequest,
   output: DeleteProjectsLocationsNetworkPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest {
@@ -5683,7 +6054,9 @@ export const FetchExternalAddressesProjectsLocationsNetworkPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchNetworkPolicyExternalAddressesResponse;
 
 export type FetchExternalAddressesProjectsLocationsNetworkPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists external IP addresses assigned to VMware workload VMs within the scope of the given network policy. */
 export const fetchExternalAddressesProjectsLocationsNetworkPolicies: API.PaginatedOperationMethod<
@@ -5694,7 +6067,7 @@ export const fetchExternalAddressesProjectsLocationsNetworkPolicies: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FetchExternalAddressesProjectsLocationsNetworkPoliciesRequest,
   output: FetchExternalAddressesProjectsLocationsNetworkPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5718,7 +6091,10 @@ export type GetProjectsLocationsNetworkPoliciesResponse = NetworkPolicy;
 export const GetProjectsLocationsNetworkPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkPolicy;
 
-export type GetProjectsLocationsNetworkPoliciesError = DefaultErrors;
+export type GetProjectsLocationsNetworkPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `NetworkPolicy` resource by its resource name. */
 export const getProjectsLocationsNetworkPolicies: API.OperationMethod<
@@ -5729,7 +6105,7 @@ export const getProjectsLocationsNetworkPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNetworkPoliciesRequest,
   output: GetProjectsLocationsNetworkPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsNetworkPoliciesRequest {
@@ -5762,7 +6138,10 @@ export type ListProjectsLocationsNetworkPoliciesResponse =
 export const ListProjectsLocationsNetworkPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNetworkPoliciesResponse;
 
-export type ListProjectsLocationsNetworkPoliciesError = DefaultErrors;
+export type ListProjectsLocationsNetworkPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `NetworkPolicy` resources in a specified project and location. */
 export const listProjectsLocationsNetworkPolicies: API.PaginatedOperationMethod<
@@ -5773,7 +6152,7 @@ export const listProjectsLocationsNetworkPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkPoliciesRequest,
   output: ListProjectsLocationsNetworkPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5811,7 +6190,12 @@ export type PatchProjectsLocationsNetworkPoliciesResponse = Operation;
 export const PatchProjectsLocationsNetworkPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsNetworkPoliciesError = DefaultErrors;
+export type PatchProjectsLocationsNetworkPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a `NetworkPolicy` resource. Only the following fields can be updated: `internet_access`, `external_ip`, `edge_services_cidr`. Only fields specified in `updateMask` are applied. When updating a network policy, the external IP network service can only be disabled if there are no external IP addresses present in the scope of the policy. Also, a `NetworkService` cannot be updated when `NetworkService.state` is set to `RECONCILING`. During operation processing, the resource is temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you can't update the resource. Use the operation status to determine when the processing fully completes. */
 export const patchProjectsLocationsNetworkPolicies: API.OperationMethod<
@@ -5822,7 +6206,7 @@ export const patchProjectsLocationsNetworkPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsNetworkPoliciesRequest,
   output: PatchProjectsLocationsNetworkPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
@@ -5847,7 +6231,11 @@ export const DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single external access rule. */
 export const deleteProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
@@ -5858,7 +6246,7 @@ export const deleteProjectsLocationsNetworkPoliciesExternalAccessRules: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
   output: DeleteProjectsLocationsNetworkPoliciesExternalAccessRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
@@ -5900,7 +6288,11 @@ export const CreateProjectsLocationsNetworkPoliciesExternalAccessRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsNetworkPoliciesExternalAccessRulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new external access rule in a given network policy. */
 export const createProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
@@ -5911,7 +6303,7 @@ export const createProjectsLocationsNetworkPoliciesExternalAccessRules: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
   output: CreateProjectsLocationsNetworkPoliciesExternalAccessRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
@@ -5947,7 +6339,11 @@ export const PatchProjectsLocationsNetworkPoliciesExternalAccessRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsNetworkPoliciesExternalAccessRulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single external access rule. Only fields specified in `update_mask` are applied. */
 export const patchProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
@@ -5958,7 +6354,7 @@ export const patchProjectsLocationsNetworkPoliciesExternalAccessRules: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
   output: PatchProjectsLocationsNetworkPoliciesExternalAccessRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest {
@@ -5992,7 +6388,9 @@ export const ListProjectsLocationsNetworkPoliciesExternalAccessRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExternalAccessRulesResponse;
 
 export type ListProjectsLocationsNetworkPoliciesExternalAccessRulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `ExternalAccessRule` resources in the specified network policy. */
 export const listProjectsLocationsNetworkPoliciesExternalAccessRules: API.PaginatedOperationMethod<
@@ -6003,7 +6401,7 @@ export const listProjectsLocationsNetworkPoliciesExternalAccessRules: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
   output: ListProjectsLocationsNetworkPoliciesExternalAccessRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6029,7 +6427,9 @@ export const GetProjectsLocationsNetworkPoliciesExternalAccessRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExternalAccessRule;
 
 export type GetProjectsLocationsNetworkPoliciesExternalAccessRulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single external access rule. */
 export const getProjectsLocationsNetworkPoliciesExternalAccessRules: API.OperationMethod<
@@ -6040,7 +6440,7 @@ export const getProjectsLocationsNetworkPoliciesExternalAccessRules: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNetworkPoliciesExternalAccessRulesRequest,
   output: GetProjectsLocationsNetworkPoliciesExternalAccessRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsNodeTypesRequest {
@@ -6069,7 +6469,10 @@ export type ListProjectsLocationsNodeTypesResponse = ListNodeTypesResponse;
 export const ListProjectsLocationsNodeTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNodeTypesResponse;
 
-export type ListProjectsLocationsNodeTypesError = DefaultErrors;
+export type ListProjectsLocationsNodeTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists node types */
 export const listProjectsLocationsNodeTypes: API.PaginatedOperationMethod<
@@ -6080,7 +6483,7 @@ export const listProjectsLocationsNodeTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNodeTypesRequest,
   output: ListProjectsLocationsNodeTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6104,7 +6507,10 @@ export type GetProjectsLocationsNodeTypesResponse = NodeType;
 export const GetProjectsLocationsNodeTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeType;
 
-export type GetProjectsLocationsNodeTypesError = DefaultErrors;
+export type GetProjectsLocationsNodeTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single `NodeType`. */
 export const getProjectsLocationsNodeTypes: API.OperationMethod<
@@ -6115,5 +6521,5 @@ export const getProjectsLocationsNodeTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNodeTypesRequest,
   output: GetProjectsLocationsNodeTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

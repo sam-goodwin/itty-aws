@@ -124,6 +124,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -156,7 +202,10 @@ export type ListPlaceActionTypeMetadataResponse_Op =
 export const ListPlaceActionTypeMetadataResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListPlaceActionTypeMetadataResponse;
 
-export type ListPlaceActionTypeMetadataError = DefaultErrors;
+export type ListPlaceActionTypeMetadataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of available place action types for a location or country. */
 export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
@@ -167,7 +216,7 @@ export const listPlaceActionTypeMetadata: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlaceActionTypeMetadataRequest,
   output: ListPlaceActionTypeMetadataResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -201,7 +250,10 @@ export type ListLocationsPlaceActionLinksResponse =
 export const ListLocationsPlaceActionLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPlaceActionLinksResponse;
 
-export type ListLocationsPlaceActionLinksError = DefaultErrors;
+export type ListLocationsPlaceActionLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the place action links for the specified location. */
 export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
@@ -212,7 +264,7 @@ export const listLocationsPlaceActionLinks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsPlaceActionLinksRequest,
   output: ListLocationsPlaceActionLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -243,7 +295,12 @@ export type CreateLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const CreateLocationsPlaceActionLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
 
-export type CreateLocationsPlaceActionLinksError = DefaultErrors;
+export type CreateLocationsPlaceActionLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a place action link associated with the specified location, and returns it. The request is considered duplicate if the `parent`, `place_action_link.uri` and `place_action_link.place_action_type` are the same as a previous request. */
 export const createLocationsPlaceActionLinks: API.OperationMethod<
@@ -254,7 +311,7 @@ export const createLocationsPlaceActionLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsPlaceActionLinksRequest,
   output: CreateLocationsPlaceActionLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsPlaceActionLinksRequest {
@@ -280,7 +337,12 @@ export type PatchLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const PatchLocationsPlaceActionLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
 
-export type PatchLocationsPlaceActionLinksError = DefaultErrors;
+export type PatchLocationsPlaceActionLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified place action link and returns it. */
 export const patchLocationsPlaceActionLinks: API.OperationMethod<
@@ -291,7 +353,7 @@ export const patchLocationsPlaceActionLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsPlaceActionLinksRequest,
   output: PatchLocationsPlaceActionLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsPlaceActionLinksRequest {
@@ -311,7 +373,10 @@ export type GetLocationsPlaceActionLinksResponse = PlaceActionLink;
 export const GetLocationsPlaceActionLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaceActionLink;
 
-export type GetLocationsPlaceActionLinksError = DefaultErrors;
+export type GetLocationsPlaceActionLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified place action link. */
 export const getLocationsPlaceActionLinks: API.OperationMethod<
@@ -322,7 +387,7 @@ export const getLocationsPlaceActionLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsPlaceActionLinksRequest,
   output: GetLocationsPlaceActionLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteLocationsPlaceActionLinksRequest {
@@ -342,7 +407,12 @@ export type DeleteLocationsPlaceActionLinksResponse = Empty;
 export const DeleteLocationsPlaceActionLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLocationsPlaceActionLinksError = DefaultErrors;
+export type DeleteLocationsPlaceActionLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a place action link from the specified location. */
 export const deleteLocationsPlaceActionLinks: API.OperationMethod<
@@ -353,5 +423,5 @@ export const deleteLocationsPlaceActionLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsPlaceActionLinksRequest,
   output: DeleteLocationsPlaceActionLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

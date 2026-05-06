@@ -76,6 +76,31 @@ export const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -106,7 +131,10 @@ export type QueryProjectsLocationsActivityTypesActivitiesResponse =
 export const QueryProjectsLocationsActivityTypesActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
 
-export type QueryProjectsLocationsActivityTypesActivitiesError = DefaultErrors;
+export type QueryProjectsLocationsActivityTypesActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Queries policy activities on GCP resources. */
 export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperationMethod<
@@ -117,7 +145,7 @@ export const queryProjectsLocationsActivityTypesActivities: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryProjectsLocationsActivityTypesActivitiesRequest,
   output: QueryProjectsLocationsActivityTypesActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -152,7 +180,9 @@ export const QueryOrganizationsLocationsActivityTypesActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
 
 export type QueryOrganizationsLocationsActivityTypesActivitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Queries policy activities on GCP resources. */
 export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOperationMethod<
@@ -163,7 +193,7 @@ export const queryOrganizationsLocationsActivityTypesActivities: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryOrganizationsLocationsActivityTypesActivitiesRequest,
   output: QueryOrganizationsLocationsActivityTypesActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -197,7 +227,10 @@ export type QueryFoldersLocationsActivityTypesActivitiesResponse =
 export const QueryFoldersLocationsActivityTypesActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse;
 
-export type QueryFoldersLocationsActivityTypesActivitiesError = DefaultErrors;
+export type QueryFoldersLocationsActivityTypesActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Queries policy activities on GCP resources. */
 export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperationMethod<
@@ -208,7 +241,7 @@ export const queryFoldersLocationsActivityTypesActivities: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryFoldersLocationsActivityTypesActivitiesRequest,
   output: QueryFoldersLocationsActivityTypesActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

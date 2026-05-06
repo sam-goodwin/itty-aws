@@ -67,6 +67,31 @@ export const ViolatingSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ViolatingSitesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -82,7 +107,7 @@ export type ListViolatingSitesResponse = ViolatingSitesResponse;
 export const ListViolatingSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ViolatingSitesResponse;
 
-export type ListViolatingSitesError = DefaultErrors;
+export type ListViolatingSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists sites that are failing in the Abusive Experience Report. */
 export const listViolatingSites: API.OperationMethod<
@@ -93,7 +118,7 @@ export const listViolatingSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListViolatingSitesRequest,
   output: ListViolatingSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSitesRequest {
@@ -111,7 +136,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSitesResponse = SiteSummaryResponse;
 export const GetSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SiteSummaryResponse;
 
-export type GetSitesError = DefaultErrors;
+export type GetSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a site's Abusive Experience Report summary. */
 export const getSites: API.OperationMethod<
@@ -122,5 +147,5 @@ export const getSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesRequest,
   output: GetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

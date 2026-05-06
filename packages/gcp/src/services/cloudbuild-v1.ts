@@ -2383,6 +2383,52 @@ export const BatchCreateGitLabConnectedRepositoriesResponse =
   }).annotate({ identifier: "BatchCreateGitLabConnectedRepositoriesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2407,7 +2453,10 @@ export type ListProjectsGithubEnterpriseConfigsResponse =
 export const ListProjectsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGithubEnterpriseConfigsResponse;
 
-export type ListProjectsGithubEnterpriseConfigsError = DefaultErrors;
+export type ListProjectsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all GitHubEnterpriseConfigs for a given project. */
 export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
@@ -2418,7 +2467,7 @@ export const listProjectsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsGithubEnterpriseConfigsRequest,
   output: ListProjectsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsGithubEnterpriseConfigsRequest {
@@ -2444,7 +2493,12 @@ export type PatchProjectsGithubEnterpriseConfigsResponse = Operation;
 export const PatchProjectsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsGithubEnterpriseConfigsError = DefaultErrors;
+export type PatchProjectsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an association between a GCP project and a GitHub Enterprise server. */
 export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
@@ -2455,7 +2509,7 @@ export const patchProjectsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsGithubEnterpriseConfigsRequest,
   output: PatchProjectsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsGithubEnterpriseConfigsRequest {
@@ -2481,7 +2535,12 @@ export type DeleteProjectsGithubEnterpriseConfigsResponse = Operation;
 export const DeleteProjectsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsGithubEnterpriseConfigsError = DefaultErrors;
+export type DeleteProjectsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an association between a GCP project and a GitHub Enterprise server. */
 export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
@@ -2492,7 +2551,7 @@ export const deleteProjectsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsGithubEnterpriseConfigsRequest,
   output: DeleteProjectsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsGithubEnterpriseConfigsRequest {
@@ -2527,7 +2586,12 @@ export type CreateProjectsGithubEnterpriseConfigsResponse = Operation;
 export const CreateProjectsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsGithubEnterpriseConfigsError = DefaultErrors;
+export type CreateProjectsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an association between a GCP project and a GitHub Enterprise server. */
 export const createProjectsGithubEnterpriseConfigs: API.OperationMethod<
@@ -2538,7 +2602,7 @@ export const createProjectsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsGithubEnterpriseConfigsRequest,
   output: CreateProjectsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsGithubEnterpriseConfigsRequest {
@@ -2564,7 +2628,10 @@ export type GetProjectsGithubEnterpriseConfigsResponse = GitHubEnterpriseConfig;
 export const GetProjectsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GitHubEnterpriseConfig;
 
-export type GetProjectsGithubEnterpriseConfigsError = DefaultErrors;
+export type GetProjectsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve a GitHubEnterpriseConfig. */
 export const getProjectsGithubEnterpriseConfigs: API.OperationMethod<
@@ -2575,7 +2642,7 @@ export const getProjectsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsGithubEnterpriseConfigsRequest,
   output: GetProjectsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsTriggersRequest {
@@ -2608,7 +2675,12 @@ export type PatchProjectsTriggersResponse = BuildTrigger;
 export const PatchProjectsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
 
-export type PatchProjectsTriggersError = DefaultErrors;
+export type PatchProjectsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `BuildTrigger` by its project ID and trigger ID. */
 export const patchProjectsTriggers: API.OperationMethod<
@@ -2619,7 +2691,7 @@ export const patchProjectsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTriggersRequest,
   output: PatchProjectsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunProjectsTriggersRequest {
@@ -2652,7 +2724,12 @@ export type RunProjectsTriggersResponse = Operation;
 export const RunProjectsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunProjectsTriggersError = DefaultErrors;
+export type RunProjectsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
 export const runProjectsTriggers: API.OperationMethod<
@@ -2663,7 +2740,7 @@ export const runProjectsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunProjectsTriggersRequest,
   output: RunProjectsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTriggersRequest {
@@ -2692,7 +2769,7 @@ export type ListProjectsTriggersResponse = ListBuildTriggersResponse;
 export const ListProjectsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBuildTriggersResponse;
 
-export type ListProjectsTriggersError = DefaultErrors;
+export type ListProjectsTriggersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists existing `BuildTrigger`s. */
 export const listProjectsTriggers: API.PaginatedOperationMethod<
@@ -2703,7 +2780,7 @@ export const listProjectsTriggers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTriggersRequest,
   output: ListProjectsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2737,7 +2814,12 @@ export type CreateProjectsTriggersResponse = BuildTrigger;
 export const CreateProjectsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
 
-export type CreateProjectsTriggersError = DefaultErrors;
+export type CreateProjectsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `BuildTrigger`. */
 export const createProjectsTriggers: API.OperationMethod<
@@ -2748,7 +2830,7 @@ export const createProjectsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTriggersRequest,
   output: CreateProjectsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTriggersRequest {
@@ -2777,7 +2859,7 @@ export type GetProjectsTriggersResponse = BuildTrigger;
 export const GetProjectsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
 
-export type GetProjectsTriggersError = DefaultErrors;
+export type GetProjectsTriggersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns information about a `BuildTrigger`. */
 export const getProjectsTriggers: API.OperationMethod<
@@ -2788,7 +2870,7 @@ export const getProjectsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTriggersRequest,
   output: GetProjectsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WebhookProjectsTriggersRequest {
@@ -2824,7 +2906,12 @@ export type WebhookProjectsTriggersResponse = ReceiveTriggerWebhookResponse;
 export const WebhookProjectsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReceiveTriggerWebhookResponse;
 
-export type WebhookProjectsTriggersError = DefaultErrors;
+export type WebhookProjectsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a specific trigger. */
 export const webhookProjectsTriggers: API.OperationMethod<
@@ -2835,7 +2922,7 @@ export const webhookProjectsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WebhookProjectsTriggersRequest,
   output: WebhookProjectsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsTriggersRequest {
@@ -2863,7 +2950,12 @@ export const DeleteProjectsTriggersRequest =
 export type DeleteProjectsTriggersResponse = Empty;
 export const DeleteProjectsTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTriggersError = DefaultErrors;
+export type DeleteProjectsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `BuildTrigger` by its project ID and trigger ID. */
 export const deleteProjectsTriggers: API.OperationMethod<
@@ -2874,7 +2966,7 @@ export const deleteProjectsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTriggersRequest,
   output: DeleteProjectsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDefaultServiceAccountProjectsLocationsRequest {
@@ -2895,7 +2987,10 @@ export type GetDefaultServiceAccountProjectsLocationsResponse =
 export const GetDefaultServiceAccountProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DefaultServiceAccount;
 
-export type GetDefaultServiceAccountProjectsLocationsError = DefaultErrors;
+export type GetDefaultServiceAccountProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the `DefaultServiceAccount` used by the project. */
 export const getDefaultServiceAccountProjectsLocations: API.OperationMethod<
@@ -2906,7 +3001,7 @@ export const getDefaultServiceAccountProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDefaultServiceAccountProjectsLocationsRequest,
   output: GetDefaultServiceAccountProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsGithubEnterpriseConfigsRequest {
@@ -2932,7 +3027,12 @@ export type DeleteProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
 export const DeleteProjectsLocationsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an association between a GCP project and a GitHub Enterprise server. */
 export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
@@ -2943,7 +3043,7 @@ export const deleteProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGithubEnterpriseConfigsRequest,
   output: DeleteProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGithubEnterpriseConfigsRequest {
@@ -2978,7 +3078,12 @@ export type CreateProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
 export const CreateProjectsLocationsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
+export type CreateProjectsLocationsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an association between a GCP project and a GitHub Enterprise server. */
 export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
@@ -2989,7 +3094,7 @@ export const createProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGithubEnterpriseConfigsRequest,
   output: CreateProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsGithubEnterpriseConfigsRequest {
@@ -3016,7 +3121,10 @@ export type GetProjectsLocationsGithubEnterpriseConfigsResponse =
 export const GetProjectsLocationsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GitHubEnterpriseConfig;
 
-export type GetProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
+export type GetProjectsLocationsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve a GitHubEnterpriseConfig. */
 export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
@@ -3027,7 +3135,7 @@ export const getProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGithubEnterpriseConfigsRequest,
   output: GetProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsGithubEnterpriseConfigsRequest {
@@ -3051,7 +3159,10 @@ export type ListProjectsLocationsGithubEnterpriseConfigsResponse =
 export const ListProjectsLocationsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGithubEnterpriseConfigsResponse;
 
-export type ListProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
+export type ListProjectsLocationsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all GitHubEnterpriseConfigs for a given project. */
 export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
@@ -3062,7 +3173,7 @@ export const listProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsGithubEnterpriseConfigsRequest,
   output: ListProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsGithubEnterpriseConfigsRequest {
@@ -3088,7 +3199,12 @@ export type PatchProjectsLocationsGithubEnterpriseConfigsResponse = Operation;
 export const PatchProjectsLocationsGithubEnterpriseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsGithubEnterpriseConfigsError = DefaultErrors;
+export type PatchProjectsLocationsGithubEnterpriseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an association between a GCP project and a GitHub Enterprise server. */
 export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
@@ -3099,7 +3215,7 @@ export const patchProjectsLocationsGithubEnterpriseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGithubEnterpriseConfigsRequest,
   output: PatchProjectsLocationsGithubEnterpriseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsTriggersRequest {
@@ -3131,7 +3247,12 @@ export type PatchProjectsLocationsTriggersResponse = BuildTrigger;
 export const PatchProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
 
-export type PatchProjectsLocationsTriggersError = DefaultErrors;
+export type PatchProjectsLocationsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `BuildTrigger` by its project ID and trigger ID. */
 export const patchProjectsLocationsTriggers: API.OperationMethod<
@@ -3142,7 +3263,7 @@ export const patchProjectsLocationsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsTriggersRequest,
   output: PatchProjectsLocationsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsTriggersRequest {
@@ -3171,7 +3292,10 @@ export type ListProjectsLocationsTriggersResponse = ListBuildTriggersResponse;
 export const ListProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBuildTriggersResponse;
 
-export type ListProjectsLocationsTriggersError = DefaultErrors;
+export type ListProjectsLocationsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists existing `BuildTrigger`s. */
 export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
@@ -3182,7 +3306,7 @@ export const listProjectsLocationsTriggers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTriggersRequest,
   output: ListProjectsLocationsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3209,7 +3333,12 @@ export type RunProjectsLocationsTriggersResponse = Operation;
 export const RunProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunProjectsLocationsTriggersError = DefaultErrors;
+export type RunProjectsLocationsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs a `BuildTrigger` at a particular source revision. To run a regional or global trigger, use the POST request that includes the location endpoint in the path (ex. v1/projects/{projectId}/locations/{region}/triggers/{triggerId}:run). The POST request that does not include the location endpoint in the path can only be used when running global triggers. */
 export const runProjectsLocationsTriggers: API.OperationMethod<
@@ -3220,7 +3349,7 @@ export const runProjectsLocationsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunProjectsLocationsTriggersRequest,
   output: RunProjectsLocationsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsTriggersRequest {
@@ -3246,7 +3375,12 @@ export type CreateProjectsLocationsTriggersResponse = BuildTrigger;
 export const CreateProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
 
-export type CreateProjectsLocationsTriggersError = DefaultErrors;
+export type CreateProjectsLocationsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `BuildTrigger`. */
 export const createProjectsLocationsTriggers: API.OperationMethod<
@@ -3257,7 +3391,7 @@ export const createProjectsLocationsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTriggersRequest,
   output: CreateProjectsLocationsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsTriggersRequest {
@@ -3283,7 +3417,10 @@ export type GetProjectsLocationsTriggersResponse = BuildTrigger;
 export const GetProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BuildTrigger;
 
-export type GetProjectsLocationsTriggersError = DefaultErrors;
+export type GetProjectsLocationsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about a `BuildTrigger`. */
 export const getProjectsLocationsTriggers: API.OperationMethod<
@@ -3294,7 +3431,7 @@ export const getProjectsLocationsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTriggersRequest,
   output: GetProjectsLocationsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WebhookProjectsLocationsTriggersRequest {
@@ -3327,7 +3464,12 @@ export type WebhookProjectsLocationsTriggersResponse =
 export const WebhookProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReceiveTriggerWebhookResponse;
 
-export type WebhookProjectsLocationsTriggersError = DefaultErrors;
+export type WebhookProjectsLocationsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook request targeted at a specific trigger. */
 export const webhookProjectsLocationsTriggers: API.OperationMethod<
@@ -3338,7 +3480,7 @@ export const webhookProjectsLocationsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WebhookProjectsLocationsTriggersRequest,
   output: WebhookProjectsLocationsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsTriggersRequest {
@@ -3364,7 +3506,12 @@ export type DeleteProjectsLocationsTriggersResponse = Empty;
 export const DeleteProjectsLocationsTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsTriggersError = DefaultErrors;
+export type DeleteProjectsLocationsTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `BuildTrigger` by its project ID and trigger ID. */
 export const deleteProjectsLocationsTriggers: API.OperationMethod<
@@ -3375,7 +3522,7 @@ export const deleteProjectsLocationsTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTriggersRequest,
   output: DeleteProjectsLocationsTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGitLabConfigsRequest {
@@ -3407,7 +3554,12 @@ export type CreateProjectsLocationsGitLabConfigsResponse = Operation;
 export const CreateProjectsLocationsGitLabConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGitLabConfigsError = DefaultErrors;
+export type CreateProjectsLocationsGitLabConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `GitLabConfig`. This API is experimental */
 export const createProjectsLocationsGitLabConfigs: API.OperationMethod<
@@ -3418,7 +3570,7 @@ export const createProjectsLocationsGitLabConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGitLabConfigsRequest,
   output: CreateProjectsLocationsGitLabConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsGitLabConfigsRequest {
@@ -3438,7 +3590,10 @@ export type GetProjectsLocationsGitLabConfigsResponse = GitLabConfig;
 export const GetProjectsLocationsGitLabConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GitLabConfig;
 
-export type GetProjectsLocationsGitLabConfigsError = DefaultErrors;
+export type GetProjectsLocationsGitLabConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a `GitLabConfig`. This API is experimental */
 export const getProjectsLocationsGitLabConfigs: API.OperationMethod<
@@ -3449,7 +3604,7 @@ export const getProjectsLocationsGitLabConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGitLabConfigsRequest,
   output: GetProjectsLocationsGitLabConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsGitLabConfigsRequest {
@@ -3469,7 +3624,12 @@ export type DeleteProjectsLocationsGitLabConfigsResponse = Operation;
 export const DeleteProjectsLocationsGitLabConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGitLabConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsGitLabConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a `GitLabConfig`. This API is experimental */
 export const deleteProjectsLocationsGitLabConfigs: API.OperationMethod<
@@ -3480,7 +3640,7 @@ export const deleteProjectsLocationsGitLabConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGitLabConfigsRequest,
   output: DeleteProjectsLocationsGitLabConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest {
@@ -3511,7 +3671,11 @@ export const RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove a GitLab repository from a given GitLabConfig's connected repositories. This API is experimental. */
 export const removeGitLabConnectedRepositoryProjectsLocationsGitLabConfigs: API.OperationMethod<
@@ -3522,7 +3686,7 @@ export const removeGitLabConnectedRepositoryProjectsLocationsGitLabConfigs: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsRequest,
   output: RemoveGitLabConnectedRepositoryProjectsLocationsGitLabConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsGitLabConfigsRequest {
@@ -3548,7 +3712,12 @@ export type PatchProjectsLocationsGitLabConfigsResponse = Operation;
 export const PatchProjectsLocationsGitLabConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsGitLabConfigsError = DefaultErrors;
+export type PatchProjectsLocationsGitLabConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing `GitLabConfig`. This API is experimental */
 export const patchProjectsLocationsGitLabConfigs: API.OperationMethod<
@@ -3559,7 +3728,7 @@ export const patchProjectsLocationsGitLabConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGitLabConfigsRequest,
   output: PatchProjectsLocationsGitLabConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGitLabConfigsRequest {
@@ -3586,7 +3755,10 @@ export type ListProjectsLocationsGitLabConfigsResponse =
 export const ListProjectsLocationsGitLabConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGitLabConfigsResponse;
 
-export type ListProjectsLocationsGitLabConfigsError = DefaultErrors;
+export type ListProjectsLocationsGitLabConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all `GitLabConfigs` for a given project. This API is experimental */
 export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
@@ -3597,7 +3769,7 @@ export const listProjectsLocationsGitLabConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGitLabConfigsRequest,
   output: ListProjectsLocationsGitLabConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3632,7 +3804,11 @@ export const BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRespo
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch connecting GitLab repositories to Cloud Build. This API is experimental. */
 export const batchCreateProjectsLocationsGitLabConfigsConnectedRepositories: API.OperationMethod<
@@ -3644,7 +3820,7 @@ export const batchCreateProjectsLocationsGitLabConfigsConnectedRepositories: API
   input: BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesRequest,
   output:
     BatchCreateProjectsLocationsGitLabConfigsConnectedRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGitLabConfigsReposRequest {
@@ -3671,7 +3847,10 @@ export type ListProjectsLocationsGitLabConfigsReposResponse =
 export const ListProjectsLocationsGitLabConfigsReposResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGitLabRepositoriesResponse;
 
-export type ListProjectsLocationsGitLabConfigsReposError = DefaultErrors;
+export type ListProjectsLocationsGitLabConfigsReposError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all repositories for a given `GitLabConfig`. This API is experimental */
 export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMethod<
@@ -3682,7 +3861,7 @@ export const listProjectsLocationsGitLabConfigsRepos: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGitLabConfigsReposRequest,
   output: ListProjectsLocationsGitLabConfigsReposResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3718,7 +3897,10 @@ export type ListProjectsLocationsBuildsResponse = ListBuildsResponse;
 export const ListProjectsLocationsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBuildsResponse;
 
-export type ListProjectsLocationsBuildsError = DefaultErrors;
+export type ListProjectsLocationsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists previously requested builds. Previously requested builds may still be in-progress, or may have finished successfully or unsuccessfully. */
 export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
@@ -3729,7 +3911,7 @@ export const listProjectsLocationsBuilds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBuildsRequest,
   output: ListProjectsLocationsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3756,7 +3938,12 @@ export type CancelProjectsLocationsBuildsResponse = Build;
 export const CancelProjectsLocationsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Build;
 
-export type CancelProjectsLocationsBuildsError = DefaultErrors;
+export type CancelProjectsLocationsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a build in progress. */
 export const cancelProjectsLocationsBuilds: API.OperationMethod<
@@ -3767,7 +3954,7 @@ export const cancelProjectsLocationsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsBuildsRequest,
   output: CancelProjectsLocationsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApproveProjectsLocationsBuildsRequest {
@@ -3790,7 +3977,12 @@ export type ApproveProjectsLocationsBuildsResponse = Operation;
 export const ApproveProjectsLocationsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ApproveProjectsLocationsBuildsError = DefaultErrors;
+export type ApproveProjectsLocationsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
 export const approveProjectsLocationsBuilds: API.OperationMethod<
@@ -3801,7 +3993,7 @@ export const approveProjectsLocationsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveProjectsLocationsBuildsRequest,
   output: ApproveProjectsLocationsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetryProjectsLocationsBuildsRequest {
@@ -3824,7 +4016,12 @@ export type RetryProjectsLocationsBuildsResponse = Operation;
 export const RetryProjectsLocationsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RetryProjectsLocationsBuildsError = DefaultErrors;
+export type RetryProjectsLocationsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new build based on the specified build. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
 export const retryProjectsLocationsBuilds: API.OperationMethod<
@@ -3835,7 +4032,7 @@ export const retryProjectsLocationsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetryProjectsLocationsBuildsRequest,
   output: RetryProjectsLocationsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBuildsRequest {
@@ -3861,7 +4058,12 @@ export type CreateProjectsLocationsBuildsResponse = Operation;
 export const CreateProjectsLocationsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsBuildsError = DefaultErrors;
+export type CreateProjectsLocationsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). */
 export const createProjectsLocationsBuilds: API.OperationMethod<
@@ -3872,7 +4074,7 @@ export const createProjectsLocationsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBuildsRequest,
   output: CreateProjectsLocationsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBuildsRequest {
@@ -3898,7 +4100,10 @@ export type GetProjectsLocationsBuildsResponse = Build;
 export const GetProjectsLocationsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Build;
 
-export type GetProjectsLocationsBuildsError = DefaultErrors;
+export type GetProjectsLocationsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. */
 export const getProjectsLocationsBuilds: API.OperationMethod<
@@ -3909,7 +4114,7 @@ export const getProjectsLocationsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBuildsRequest,
   output: GetProjectsLocationsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -3929,7 +4134,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -3940,7 +4148,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -3963,7 +4171,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -3974,7 +4187,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBitbucketServerConfigsRequest {
@@ -4006,7 +4219,12 @@ export type CreateProjectsLocationsBitbucketServerConfigsResponse = Operation;
 export const CreateProjectsLocationsBitbucketServerConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
+export type CreateProjectsLocationsBitbucketServerConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `BitbucketServerConfig`. This API is experimental. */
 export const createProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
@@ -4017,7 +4235,7 @@ export const createProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBitbucketServerConfigsRequest,
   output: CreateProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBitbucketServerConfigsRequest {
@@ -4038,7 +4256,10 @@ export type GetProjectsLocationsBitbucketServerConfigsResponse =
 export const GetProjectsLocationsBitbucketServerConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BitbucketServerConfig;
 
-export type GetProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
+export type GetProjectsLocationsBitbucketServerConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve a `BitbucketServerConfig`. This API is experimental. */
 export const getProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
@@ -4049,7 +4270,7 @@ export const getProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBitbucketServerConfigsRequest,
   output: GetProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsBitbucketServerConfigsRequest {
@@ -4069,7 +4290,12 @@ export type DeleteProjectsLocationsBitbucketServerConfigsResponse = Operation;
 export const DeleteProjectsLocationsBitbucketServerConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsBitbucketServerConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a `BitbucketServerConfig`. This API is experimental. */
 export const deleteProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
@@ -4080,7 +4306,7 @@ export const deleteProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBitbucketServerConfigsRequest,
   output: DeleteProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest {
@@ -4111,7 +4337,11 @@ export const RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove a Bitbucket Server repository from a given BitbucketServerConfig's connected repositories. This API is experimental. */
 export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
@@ -4124,7 +4354,7 @@ export const removeBitbucketServerConnectedRepositoryProjectsLocationsBitbucketS
     RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsRequest,
   output:
     RemoveBitbucketServerConnectedRepositoryProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsBitbucketServerConfigsRequest {
@@ -4150,7 +4380,12 @@ export type PatchProjectsLocationsBitbucketServerConfigsResponse = Operation;
 export const PatchProjectsLocationsBitbucketServerConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
+export type PatchProjectsLocationsBitbucketServerConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing `BitbucketServerConfig`. This API is experimental. */
 export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
@@ -4161,7 +4396,7 @@ export const patchProjectsLocationsBitbucketServerConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBitbucketServerConfigsRequest,
   output: PatchProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBitbucketServerConfigsRequest {
@@ -4188,7 +4423,10 @@ export type ListProjectsLocationsBitbucketServerConfigsResponse =
 export const ListProjectsLocationsBitbucketServerConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBitbucketServerConfigsResponse;
 
-export type ListProjectsLocationsBitbucketServerConfigsError = DefaultErrors;
+export type ListProjectsLocationsBitbucketServerConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all `BitbucketServerConfigs` for a given project. This API is experimental. */
 export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperationMethod<
@@ -4199,7 +4437,7 @@ export const listProjectsLocationsBitbucketServerConfigs: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBitbucketServerConfigsRequest,
   output: ListProjectsLocationsBitbucketServerConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4234,7 +4472,11 @@ export const BatchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch connecting Bitbucket Server repositories to Cloud Build. */
 export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositories: API.OperationMethod<
@@ -4247,7 +4489,7 @@ export const batchCreateProjectsLocationsBitbucketServerConfigsConnectedReposito
     BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest,
   output:
     BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBitbucketServerConfigsReposRequest {
@@ -4275,7 +4517,9 @@ export const ListProjectsLocationsBitbucketServerConfigsReposResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBitbucketServerRepositoriesResponse;
 
 export type ListProjectsLocationsBitbucketServerConfigsReposError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all repositories for a given `BitbucketServerConfig`. This API is experimental. */
 export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOperationMethod<
@@ -4286,7 +4530,7 @@ export const listProjectsLocationsBitbucketServerConfigsRepos: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBitbucketServerConfigsReposRequest,
   output: ListProjectsLocationsBitbucketServerConfigsReposResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4321,7 +4565,12 @@ export type PatchProjectsLocationsWorkerPoolsResponse = Operation;
 export const PatchProjectsLocationsWorkerPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsWorkerPoolsError = DefaultErrors;
+export type PatchProjectsLocationsWorkerPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `WorkerPool`. */
 export const patchProjectsLocationsWorkerPools: API.OperationMethod<
@@ -4332,7 +4581,7 @@ export const patchProjectsLocationsWorkerPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsWorkerPoolsRequest,
   output: PatchProjectsLocationsWorkerPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkerPoolsRequest {
@@ -4358,7 +4607,10 @@ export type ListProjectsLocationsWorkerPoolsResponse = ListWorkerPoolsResponse;
 export const ListProjectsLocationsWorkerPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkerPoolsResponse;
 
-export type ListProjectsLocationsWorkerPoolsError = DefaultErrors;
+export type ListProjectsLocationsWorkerPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists `WorkerPool`s. */
 export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
@@ -4369,7 +4621,7 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkerPoolsRequest,
   output: ListProjectsLocationsWorkerPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4406,7 +4658,12 @@ export type CreateProjectsLocationsWorkerPoolsResponse = Operation;
 export const CreateProjectsLocationsWorkerPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsWorkerPoolsError = DefaultErrors;
+export type CreateProjectsLocationsWorkerPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a `WorkerPool`. */
 export const createProjectsLocationsWorkerPools: API.OperationMethod<
@@ -4417,7 +4674,7 @@ export const createProjectsLocationsWorkerPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkerPoolsRequest,
   output: CreateProjectsLocationsWorkerPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkerPoolsRequest {
@@ -4437,7 +4694,10 @@ export type GetProjectsLocationsWorkerPoolsResponse = WorkerPool;
 export const GetProjectsLocationsWorkerPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkerPool;
 
-export type GetProjectsLocationsWorkerPoolsError = DefaultErrors;
+export type GetProjectsLocationsWorkerPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns details of a `WorkerPool`. */
 export const getProjectsLocationsWorkerPools: API.OperationMethod<
@@ -4448,7 +4708,7 @@ export const getProjectsLocationsWorkerPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkerPoolsRequest,
   output: GetProjectsLocationsWorkerPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsWorkerPoolsRequest {
@@ -4481,7 +4741,12 @@ export type DeleteProjectsLocationsWorkerPoolsResponse = Operation;
 export const DeleteProjectsLocationsWorkerPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsWorkerPoolsError = DefaultErrors;
+export type DeleteProjectsLocationsWorkerPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `WorkerPool`. */
 export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
@@ -4492,7 +4757,7 @@ export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkerPoolsRequest,
   output: DeleteProjectsLocationsWorkerPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetryProjectsBuildsRequest {
@@ -4522,7 +4787,12 @@ export type RetryProjectsBuildsResponse = Operation;
 export const RetryProjectsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RetryProjectsBuildsError = DefaultErrors;
+export type RetryProjectsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new build based on the specified build. This method creates a new build using the original build request, which may or may not result in an identical build. For triggered builds: * Triggered builds resolve to a precise revision; therefore a retry of a triggered build will result in a build that uses the same revision. For non-triggered builds that specify `RepoSource`: * If the original build built from the tip of a branch, the retried build will build from the tip of that branch, which may not be the same revision as the original build. * If the original build specified a commit sha or revision ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the generation of the object, the new build will use the current object, which may be different from the original build source. * If the original build pulled source from Cloud Storage and specified the generation of the object, the new build will attempt to use the same object, which may or may not be available depending on the bucket's lifecycle management settings. */
 export const retryProjectsBuilds: API.OperationMethod<
@@ -4533,7 +4803,7 @@ export const retryProjectsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetryProjectsBuildsRequest,
   output: RetryProjectsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsBuildsRequest {
@@ -4563,7 +4833,12 @@ export type CreateProjectsBuildsResponse = Operation;
 export const CreateProjectsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsBuildsError = DefaultErrors;
+export type CreateProjectsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`). */
 export const createProjectsBuilds: API.OperationMethod<
@@ -4574,7 +4849,7 @@ export const createProjectsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsBuildsRequest,
   output: CreateProjectsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsBuildsRequest {
@@ -4599,7 +4874,7 @@ export const GetProjectsBuildsRequest =
 export type GetProjectsBuildsResponse = Build;
 export const GetProjectsBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Build;
 
-export type GetProjectsBuildsError = DefaultErrors;
+export type GetProjectsBuildsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns information about a previously requested build. The `Build` that is returned includes its status (such as `SUCCESS`, `FAILURE`, or `WORKING`), and timing information. */
 export const getProjectsBuilds: API.OperationMethod<
@@ -4610,7 +4885,7 @@ export const getProjectsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsBuildsRequest,
   output: GetProjectsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsBuildsRequest {
@@ -4642,7 +4917,7 @@ export type ListProjectsBuildsResponse = ListBuildsResponse;
 export const ListProjectsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBuildsResponse;
 
-export type ListProjectsBuildsError = DefaultErrors;
+export type ListProjectsBuildsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists previously requested builds. Previously requested builds may still be in-progress, or may have finished successfully or unsuccessfully. */
 export const listProjectsBuilds: API.PaginatedOperationMethod<
@@ -4653,7 +4928,7 @@ export const listProjectsBuilds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBuildsRequest,
   output: ListProjectsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4686,7 +4961,12 @@ export const CancelProjectsBuildsRequest =
 export type CancelProjectsBuildsResponse = Build;
 export const CancelProjectsBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Build;
 
-export type CancelProjectsBuildsError = DefaultErrors;
+export type CancelProjectsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a build in progress. */
 export const cancelProjectsBuilds: API.OperationMethod<
@@ -4697,7 +4977,7 @@ export const cancelProjectsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsBuildsRequest,
   output: CancelProjectsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApproveProjectsBuildsRequest {
@@ -4720,7 +5000,12 @@ export type ApproveProjectsBuildsResponse = Operation;
 export const ApproveProjectsBuildsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ApproveProjectsBuildsError = DefaultErrors;
+export type ApproveProjectsBuildsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done. */
 export const approveProjectsBuilds: API.OperationMethod<
@@ -4731,7 +5016,7 @@ export const approveProjectsBuilds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveProjectsBuildsRequest,
   output: ApproveProjectsBuildsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RegionalWebhookLocationsRequest {
@@ -4761,7 +5046,12 @@ export type RegionalWebhookLocationsResponse = Empty;
 export const RegionalWebhookLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RegionalWebhookLocationsError = DefaultErrors;
+export type RegionalWebhookLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ReceiveRegionalWebhook is called when the API receives a regional GitHub webhook. */
 export const regionalWebhookLocations: API.OperationMethod<
@@ -4772,7 +5062,7 @@ export const regionalWebhookLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegionalWebhookLocationsRequest,
   output: RegionalWebhookLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -4790,7 +5080,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -4801,7 +5091,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelOperationsRequest {
@@ -4823,7 +5113,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -4834,7 +5129,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReceiveGithubDotComWebhookRequest {
@@ -4861,7 +5156,12 @@ export type ReceiveGithubDotComWebhookResponse = Empty;
 export const ReceiveGithubDotComWebhookResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ReceiveGithubDotComWebhookError = DefaultErrors;
+export type ReceiveGithubDotComWebhookError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook. */
 export const receiveGithubDotComWebhook: API.OperationMethod<
@@ -4872,7 +5172,7 @@ export const receiveGithubDotComWebhook: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReceiveGithubDotComWebhookRequest,
   output: ReceiveGithubDotComWebhookResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WebhookV1Request {
@@ -4893,7 +5193,12 @@ export const WebhookV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WebhookV1Response = Empty;
 export const WebhookV1Response = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type WebhookV1Error = DefaultErrors;
+export type WebhookV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ReceiveWebhook is called when the API receives a GitHub webhook. */
 export const webhookV1: API.OperationMethod<
@@ -4904,5 +5209,5 @@ export const webhookV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WebhookV1Request,
   output: WebhookV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

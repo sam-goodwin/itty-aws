@@ -1621,6 +1621,52 @@ export const GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembership
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1647,7 +1693,12 @@ export type CreateProjectsAssessmentsResponse =
 export const CreateProjectsAssessmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1Assessment;
 
-export type CreateProjectsAssessmentsError = DefaultErrors;
+export type CreateProjectsAssessmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Assessment of the likelihood an event is legitimate. */
 export const createProjectsAssessments: API.OperationMethod<
@@ -1658,7 +1709,7 @@ export const createProjectsAssessments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAssessmentsRequest,
   output: CreateProjectsAssessmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsAssessmentsRequest {
@@ -1684,7 +1735,12 @@ export type AnnotateProjectsAssessmentsResponse =
 export const AnnotateProjectsAssessmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentResponse;
 
-export type AnnotateProjectsAssessmentsError = DefaultErrors;
+export type AnnotateProjectsAssessmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Annotates a previously created Assessment to provide additional information on whether the event turned out to be authentic or fraudulent. */
 export const annotateProjectsAssessments: API.OperationMethod<
@@ -1695,7 +1751,7 @@ export const annotateProjectsAssessments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsAssessmentsRequest,
   output: AnnotateProjectsAssessmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsRelatedaccountgroupmembershipsRequest {
@@ -1725,7 +1781,12 @@ export type SearchProjectsRelatedaccountgroupmembershipsResponse =
 export const SearchProjectsRelatedaccountgroupmembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1SearchRelatedAccountGroupMembershipsResponse;
 
-export type SearchProjectsRelatedaccountgroupmembershipsError = DefaultErrors;
+export type SearchProjectsRelatedaccountgroupmembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Search group memberships related to a given account. */
 export const searchProjectsRelatedaccountgroupmemberships: API.OperationMethod<
@@ -1736,7 +1797,7 @@ export const searchProjectsRelatedaccountgroupmemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsRelatedaccountgroupmembershipsRequest,
   output: SearchProjectsRelatedaccountgroupmembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsFirewallpoliciesRequest {
@@ -1763,7 +1824,10 @@ export type ListProjectsFirewallpoliciesResponse =
 export const ListProjectsFirewallpoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse;
 
-export type ListProjectsFirewallpoliciesError = DefaultErrors;
+export type ListProjectsFirewallpoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of all firewall policies that belong to a project. */
 export const listProjectsFirewallpolicies: API.PaginatedOperationMethod<
@@ -1774,7 +1838,7 @@ export const listProjectsFirewallpolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsFirewallpoliciesRequest,
   output: ListProjectsFirewallpoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1799,7 +1863,10 @@ export type GetProjectsFirewallpoliciesResponse =
 export const GetProjectsFirewallpoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
 
-export type GetProjectsFirewallpoliciesError = DefaultErrors;
+export type GetProjectsFirewallpoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified firewall policy. */
 export const getProjectsFirewallpolicies: API.OperationMethod<
@@ -1810,7 +1877,7 @@ export const getProjectsFirewallpolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsFirewallpoliciesRequest,
   output: GetProjectsFirewallpoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsFirewallpoliciesRequest {
@@ -1830,7 +1897,12 @@ export type DeleteProjectsFirewallpoliciesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsFirewallpoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsFirewallpoliciesError = DefaultErrors;
+export type DeleteProjectsFirewallpoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified firewall policy. */
 export const deleteProjectsFirewallpolicies: API.OperationMethod<
@@ -1841,7 +1913,7 @@ export const deleteProjectsFirewallpolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsFirewallpoliciesRequest,
   output: DeleteProjectsFirewallpoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReorderProjectsFirewallpoliciesRequest {
@@ -1871,7 +1943,12 @@ export type ReorderProjectsFirewallpoliciesResponse =
 export const ReorderProjectsFirewallpoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse;
 
-export type ReorderProjectsFirewallpoliciesError = DefaultErrors;
+export type ReorderProjectsFirewallpoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reorders all firewall policies. */
 export const reorderProjectsFirewallpolicies: API.OperationMethod<
@@ -1882,7 +1959,7 @@ export const reorderProjectsFirewallpolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReorderProjectsFirewallpoliciesRequest,
   output: ReorderProjectsFirewallpoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsFirewallpoliciesRequest {
@@ -1912,7 +1989,12 @@ export type CreateProjectsFirewallpoliciesResponse =
 export const CreateProjectsFirewallpoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
 
-export type CreateProjectsFirewallpoliciesError = DefaultErrors;
+export type CreateProjectsFirewallpoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA Enterprise actions can be executed. A project may have a maximum of 1000 policies. */
 export const createProjectsFirewallpolicies: API.OperationMethod<
@@ -1923,7 +2005,7 @@ export const createProjectsFirewallpolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsFirewallpoliciesRequest,
   output: CreateProjectsFirewallpoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsFirewallpoliciesRequest {
@@ -1952,7 +2034,12 @@ export type PatchProjectsFirewallpoliciesResponse =
 export const PatchProjectsFirewallpoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1FirewallPolicy;
 
-export type PatchProjectsFirewallpoliciesError = DefaultErrors;
+export type PatchProjectsFirewallpoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified firewall policy. */
 export const patchProjectsFirewallpolicies: API.OperationMethod<
@@ -1963,7 +2050,7 @@ export const patchProjectsFirewallpolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsFirewallpoliciesRequest,
   output: PatchProjectsFirewallpoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsRelatedaccountgroupsRequest {
@@ -1990,7 +2077,10 @@ export type ListProjectsRelatedaccountgroupsResponse =
 export const ListProjectsRelatedaccountgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupsResponse;
 
-export type ListProjectsRelatedaccountgroupsError = DefaultErrors;
+export type ListProjectsRelatedaccountgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List groups of related accounts. */
 export const listProjectsRelatedaccountgroups: API.PaginatedOperationMethod<
@@ -2001,7 +2091,7 @@ export const listProjectsRelatedaccountgroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRelatedaccountgroupsRequest,
   output: ListProjectsRelatedaccountgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2032,7 +2122,10 @@ export type ListProjectsRelatedaccountgroupsMembershipsResponse =
 export const ListProjectsRelatedaccountgroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1ListRelatedAccountGroupMembershipsResponse;
 
-export type ListProjectsRelatedaccountgroupsMembershipsError = DefaultErrors;
+export type ListProjectsRelatedaccountgroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get memberships in a group of related accounts. */
 export const listProjectsRelatedaccountgroupsMemberships: API.PaginatedOperationMethod<
@@ -2043,7 +2136,7 @@ export const listProjectsRelatedaccountgroupsMemberships: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRelatedaccountgroupsMembershipsRequest,
   output: ListProjectsRelatedaccountgroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2075,7 +2168,12 @@ export type PatchProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const PatchProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1Key;
 
-export type PatchProjectsKeysError = DefaultErrors;
+export type PatchProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified key. */
 export const patchProjectsKeys: API.OperationMethod<
@@ -2086,7 +2184,7 @@ export const patchProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsKeysRequest,
   output: PatchProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListIpOverridesProjectsKeysRequest {
@@ -2113,7 +2211,10 @@ export type ListIpOverridesProjectsKeysResponse =
 export const ListIpOverridesProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1ListIpOverridesResponse;
 
-export type ListIpOverridesProjectsKeysError = DefaultErrors;
+export type ListIpOverridesProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all IP overrides for a key. */
 export const listIpOverridesProjectsKeys: API.PaginatedOperationMethod<
@@ -2124,7 +2225,7 @@ export const listIpOverridesProjectsKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIpOverridesProjectsKeysRequest,
   output: ListIpOverridesProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2155,7 +2256,7 @@ export type ListProjectsKeysResponse =
 export const ListProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1ListKeysResponse;
 
-export type ListProjectsKeysError = DefaultErrors;
+export type ListProjectsKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the list of all keys that belong to a project. */
 export const listProjectsKeys: API.PaginatedOperationMethod<
@@ -2166,7 +2267,7 @@ export const listProjectsKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsKeysRequest,
   output: ListProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2186,7 +2287,10 @@ export type RetrieveLegacySecretKeyProjectsKeysResponse =
 export const RetrieveLegacySecretKeyProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1RetrieveLegacySecretKeyResponse;
 
-export type RetrieveLegacySecretKeyProjectsKeysError = DefaultErrors;
+export type RetrieveLegacySecretKeyProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the secret key related to the specified public key. You must use the legacy secret key only in a 3rd party integration with legacy reCAPTCHA. */
 export const retrieveLegacySecretKeyProjectsKeys: API.OperationMethod<
@@ -2197,7 +2301,7 @@ export const retrieveLegacySecretKeyProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveLegacySecretKeyProjectsKeysRequest,
   output: RetrieveLegacySecretKeyProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface MigrateProjectsKeysRequest {
@@ -2222,7 +2326,12 @@ export type MigrateProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const MigrateProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1Key;
 
-export type MigrateProjectsKeysError = DefaultErrors;
+export type MigrateProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is migrated, it can be used from either product. SiteVerify requests are billed as CreateAssessment calls. You must be authenticated as one of the current owners of the reCAPTCHA Key, and your user must have the reCAPTCHA Enterprise Admin IAM role in the destination project. */
 export const migrateProjectsKeys: API.OperationMethod<
@@ -2233,7 +2342,7 @@ export const migrateProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MigrateProjectsKeysRequest,
   output: MigrateProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveIpOverrideProjectsKeysRequest {
@@ -2263,7 +2372,12 @@ export type RemoveIpOverrideProjectsKeysResponse =
 export const RemoveIpOverrideProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1RemoveIpOverrideResponse;
 
-export type RemoveIpOverrideProjectsKeysError = DefaultErrors;
+export type RemoveIpOverrideProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an IP override from a key. The following restrictions hold: * If the IP isn't found in an existing IP override, a `NOT_FOUND` error is returned. * If the IP is found in an existing IP override, but the override type does not match, a `NOT_FOUND` error is returned. */
 export const removeIpOverrideProjectsKeys: API.OperationMethod<
@@ -2274,7 +2388,7 @@ export const removeIpOverrideProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveIpOverrideProjectsKeysRequest,
   output: RemoveIpOverrideProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMetricsProjectsKeysRequest {
@@ -2295,7 +2409,7 @@ export type GetMetricsProjectsKeysResponse =
 export const GetMetricsProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1Metrics;
 
-export type GetMetricsProjectsKeysError = DefaultErrors;
+export type GetMetricsProjectsKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Get some aggregated metrics for a Key. This data can be used to build dashboards. */
 export const getMetricsProjectsKeys: API.OperationMethod<
@@ -2306,7 +2420,7 @@ export const getMetricsProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetricsProjectsKeysRequest,
   output: GetMetricsProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsKeysRequest {
@@ -2331,7 +2445,12 @@ export type CreateProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const CreateProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1Key;
 
-export type CreateProjectsKeysError = DefaultErrors;
+export type CreateProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new reCAPTCHA Enterprise key. */
 export const createProjectsKeys: API.OperationMethod<
@@ -2342,7 +2461,7 @@ export const createProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsKeysRequest,
   output: CreateProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsKeysRequest {
@@ -2362,7 +2481,12 @@ export type DeleteProjectsKeysResponse = GoogleProtobufEmpty;
 export const DeleteProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsKeysError = DefaultErrors;
+export type DeleteProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified key. */
 export const deleteProjectsKeys: API.OperationMethod<
@@ -2373,7 +2497,7 @@ export const deleteProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsKeysRequest,
   output: DeleteProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsKeysRequest {
@@ -2394,7 +2518,7 @@ export type GetProjectsKeysResponse = GoogleCloudRecaptchaenterpriseV1Key;
 export const GetProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1Key;
 
-export type GetProjectsKeysError = DefaultErrors;
+export type GetProjectsKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified key. */
 export const getProjectsKeys: API.OperationMethod<
@@ -2405,7 +2529,7 @@ export const getProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsKeysRequest,
   output: GetProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddIpOverrideProjectsKeysRequest {
@@ -2431,7 +2555,12 @@ export type AddIpOverrideProjectsKeysResponse =
 export const AddIpOverrideProjectsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse;
 
-export type AddIpOverrideProjectsKeysError = DefaultErrors;
+export type AddIpOverrideProjectsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an IP override to a key. The following restrictions hold: * The maximum number of IP overrides per key is 1000. * For any conflict (such as IP already exists or IP part of an existing IP range), an error is returned. */
 export const addIpOverrideProjectsKeys: API.OperationMethod<
@@ -2442,5 +2571,5 @@ export const addIpOverrideProjectsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddIpOverrideProjectsKeysRequest,
   output: AddIpOverrideProjectsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -1185,6 +1185,52 @@ export const PoliciesUpdateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "PoliciesUpdateResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1208,7 +1254,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetProjectsError = DefaultErrors;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing Project. */
 export const getProjects: API.OperationMethod<
@@ -1219,7 +1265,7 @@ export const getProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListChangesRequest {
@@ -1256,7 +1302,7 @@ export type ListChangesResponse = ChangesListResponse;
 export const ListChangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChangesListResponse;
 
-export type ListChangesError = DefaultErrors;
+export type ListChangesError = DefaultErrors | NotFound | Forbidden;
 
 /** Enumerates Changes to a ResourceRecordSet collection. */
 export const listChanges: API.PaginatedOperationMethod<
@@ -1267,7 +1313,7 @@ export const listChanges: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChangesRequest,
   output: ListChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1304,7 +1350,12 @@ export const CreateChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateChangesResponse = Change;
 export const CreateChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
 
-export type CreateChangesError = DefaultErrors;
+export type CreateChangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Atomically updates the ResourceRecordSet collection. */
 export const createChanges: API.OperationMethod<
@@ -1315,7 +1366,7 @@ export const createChanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateChangesRequest,
   output: CreateChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetChangesRequest {
@@ -1347,7 +1398,7 @@ export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetChangesResponse = Change;
 export const GetChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
 
-export type GetChangesError = DefaultErrors;
+export type GetChangesError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing Change. */
 export const getChanges: API.OperationMethod<
@@ -1358,7 +1409,7 @@ export const getChanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChangesRequest,
   output: GetChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDnsKeysRequest {
@@ -1393,7 +1444,7 @@ export const GetDnsKeysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDnsKeysResponse = DnsKey;
 export const GetDnsKeysResponse = /*@__PURE__*/ /*#__PURE__*/ DnsKey;
 
-export type GetDnsKeysError = DefaultErrors;
+export type GetDnsKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing DnsKey. */
 export const getDnsKeys: API.OperationMethod<
@@ -1404,7 +1455,7 @@ export const getDnsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDnsKeysRequest,
   output: GetDnsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDnsKeysRequest {
@@ -1438,7 +1489,7 @@ export type ListDnsKeysResponse = DnsKeysListResponse;
 export const ListDnsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ DnsKeysListResponse;
 
-export type ListDnsKeysError = DefaultErrors;
+export type ListDnsKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Enumerates DnsKeys to a ResourceRecordSet collection. */
 export const listDnsKeys: API.PaginatedOperationMethod<
@@ -1449,7 +1500,7 @@ export const listDnsKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDnsKeysRequest,
   output: ListDnsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1488,7 +1539,12 @@ export type CreateResponsePolicyRulesResponse = ResponsePolicyRule;
 export const CreateResponsePolicyRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRule;
 
-export type CreateResponsePolicyRulesError = DefaultErrors;
+export type CreateResponsePolicyRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Response Policy Rule. */
 export const createResponsePolicyRules: API.OperationMethod<
@@ -1499,7 +1555,7 @@ export const createResponsePolicyRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResponsePolicyRulesRequest,
   output: CreateResponsePolicyRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchResponsePolicyRulesRequest {
@@ -1537,7 +1593,12 @@ export type PatchResponsePolicyRulesResponse = ResponsePolicyRulesPatchResponse;
 export const PatchResponsePolicyRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesPatchResponse;
 
-export type PatchResponsePolicyRulesError = DefaultErrors;
+export type PatchResponsePolicyRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies a partial update to an existing Response Policy Rule. */
 export const patchResponsePolicyRules: API.OperationMethod<
@@ -1548,7 +1609,7 @@ export const patchResponsePolicyRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchResponsePolicyRulesRequest,
   output: PatchResponsePolicyRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateResponsePolicyRulesRequest {
@@ -1587,7 +1648,12 @@ export type UpdateResponsePolicyRulesResponse =
 export const UpdateResponsePolicyRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesUpdateResponse;
 
-export type UpdateResponsePolicyRulesError = DefaultErrors;
+export type UpdateResponsePolicyRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Response Policy Rule. */
 export const updateResponsePolicyRules: API.OperationMethod<
@@ -1598,7 +1664,7 @@ export const updateResponsePolicyRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResponsePolicyRulesRequest,
   output: UpdateResponsePolicyRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteResponsePolicyRulesRequest {
@@ -1634,7 +1700,12 @@ export const DeleteResponsePolicyRulesResponse: Schema.Schema<DeleteResponsePoli
     {},
   ) as any as Schema.Schema<DeleteResponsePolicyRulesResponse>;
 
-export type DeleteResponsePolicyRulesError = DefaultErrors;
+export type DeleteResponsePolicyRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a previously created Response Policy Rule. */
 export const deleteResponsePolicyRules: API.OperationMethod<
@@ -1645,7 +1716,7 @@ export const deleteResponsePolicyRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResponsePolicyRulesRequest,
   output: DeleteResponsePolicyRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetResponsePolicyRulesRequest {
@@ -1679,7 +1750,7 @@ export type GetResponsePolicyRulesResponse = ResponsePolicyRule;
 export const GetResponsePolicyRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRule;
 
-export type GetResponsePolicyRulesError = DefaultErrors;
+export type GetResponsePolicyRulesError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing Response Policy Rule. */
 export const getResponsePolicyRules: API.OperationMethod<
@@ -1690,7 +1761,7 @@ export const getResponsePolicyRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResponsePolicyRulesRequest,
   output: GetResponsePolicyRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListResponsePolicyRulesRequest {
@@ -1722,7 +1793,7 @@ export type ListResponsePolicyRulesResponse = ResponsePolicyRulesListResponse;
 export const ListResponsePolicyRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePolicyRulesListResponse;
 
-export type ListResponsePolicyRulesError = DefaultErrors;
+export type ListResponsePolicyRulesError = DefaultErrors | NotFound | Forbidden;
 
 /** Enumerates all Response Policy Rules associated with a project. */
 export const listResponsePolicyRules: API.PaginatedOperationMethod<
@@ -1733,7 +1804,7 @@ export const listResponsePolicyRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePolicyRulesRequest,
   output: ListResponsePolicyRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1767,7 +1838,12 @@ export const CreatePoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreatePoliciesResponse = Policy;
 export const CreatePoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type CreatePoliciesError = DefaultErrors;
+export type CreatePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy. */
 export const createPolicies: API.OperationMethod<
@@ -1778,7 +1854,7 @@ export const createPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePoliciesRequest,
   output: CreatePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPoliciesRequest {
@@ -1812,7 +1888,12 @@ export type PatchPoliciesResponse = PoliciesPatchResponse;
 export const PatchPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PoliciesPatchResponse;
 
-export type PatchPoliciesError = DefaultErrors;
+export type PatchPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies a partial update to an existing policy. */
 export const patchPolicies: API.OperationMethod<
@@ -1823,7 +1904,7 @@ export const patchPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPoliciesRequest,
   output: PatchPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePoliciesRequest {
@@ -1857,7 +1938,12 @@ export type UpdatePoliciesResponse = PoliciesUpdateResponse;
 export const UpdatePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PoliciesUpdateResponse;
 
-export type UpdatePoliciesError = DefaultErrors;
+export type UpdatePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing policy. */
 export const updatePolicies: API.OperationMethod<
@@ -1868,7 +1954,7 @@ export const updatePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePoliciesRequest,
   output: UpdatePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePoliciesRequest {
@@ -1900,7 +1986,12 @@ export const DeletePoliciesResponse: Schema.Schema<DeletePoliciesResponse> =
     {},
   ) as any as Schema.Schema<DeletePoliciesResponse>;
 
-export type DeletePoliciesError = DefaultErrors;
+export type DeletePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a previously created policy. Fails if the policy is still being referenced by a network. */
 export const deletePolicies: API.OperationMethod<
@@ -1911,7 +2002,7 @@ export const deletePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePoliciesRequest,
   output: DeletePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPoliciesRequest {
@@ -1940,7 +2031,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPoliciesResponse = Policy;
 export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetPoliciesError = DefaultErrors;
+export type GetPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing policy. */
 export const getPolicies: API.OperationMethod<
@@ -1951,7 +2042,7 @@ export const getPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPoliciesRequest,
   output: GetPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPoliciesRequest {
@@ -1976,7 +2067,7 @@ export type ListPoliciesResponse = PoliciesListResponse;
 export const ListPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PoliciesListResponse;
 
-export type ListPoliciesError = DefaultErrors;
+export type ListPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Enumerates all policies associated with a project. */
 export const listPolicies: API.PaginatedOperationMethod<
@@ -1987,7 +2078,7 @@ export const listPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2025,7 +2116,10 @@ export type GetManagedZoneOperationsResponse = Operation;
 export const GetManagedZoneOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetManagedZoneOperationsError = DefaultErrors;
+export type GetManagedZoneOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetches the representation of an existing Operation. */
 export const getManagedZoneOperations: API.OperationMethod<
@@ -2036,7 +2130,7 @@ export const getManagedZoneOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedZoneOperationsRequest,
   output: GetManagedZoneOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListManagedZoneOperationsRequest {
@@ -2072,7 +2166,10 @@ export type ListManagedZoneOperationsResponse =
 export const ListManagedZoneOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedZoneOperationsListResponse;
 
-export type ListManagedZoneOperationsError = DefaultErrors;
+export type ListManagedZoneOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Enumerates Operations for the given ManagedZone. */
 export const listManagedZoneOperations: API.PaginatedOperationMethod<
@@ -2083,7 +2180,7 @@ export const listManagedZoneOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedZoneOperationsRequest,
   output: ListManagedZoneOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2128,7 +2225,7 @@ export type ListResourceRecordSetsResponse = ResourceRecordSetsListResponse;
 export const ListResourceRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSetsListResponse;
 
-export type ListResourceRecordSetsError = DefaultErrors;
+export type ListResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Enumerates ResourceRecordSets that you have created but not yet deleted. */
 export const listResourceRecordSets: API.PaginatedOperationMethod<
@@ -2139,7 +2236,7 @@ export const listResourceRecordSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourceRecordSetsRequest,
   output: ListResourceRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2180,7 +2277,7 @@ export type GetResourceRecordSetsResponse = ResourceRecordSet;
 export const GetResourceRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
 
-export type GetResourceRecordSetsError = DefaultErrors;
+export type GetResourceRecordSetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing ResourceRecordSet. */
 export const getResourceRecordSets: API.OperationMethod<
@@ -2191,7 +2288,7 @@ export const getResourceRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourceRecordSetsRequest,
   output: GetResourceRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteResourceRecordSetsRequest {
@@ -2230,7 +2327,12 @@ export const DeleteResourceRecordSetsResponse: Schema.Schema<DeleteResourceRecor
     {},
   ) as any as Schema.Schema<DeleteResourceRecordSetsResponse>;
 
-export type DeleteResourceRecordSetsError = DefaultErrors;
+export type DeleteResourceRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a previously created ResourceRecordSet. */
 export const deleteResourceRecordSets: API.OperationMethod<
@@ -2241,7 +2343,7 @@ export const deleteResourceRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourceRecordSetsRequest,
   output: DeleteResourceRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateResourceRecordSetsRequest {
@@ -2276,7 +2378,12 @@ export type CreateResourceRecordSetsResponse = ResourceRecordSet;
 export const CreateResourceRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
 
-export type CreateResourceRecordSetsError = DefaultErrors;
+export type CreateResourceRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ResourceRecordSet. */
 export const createResourceRecordSets: API.OperationMethod<
@@ -2287,7 +2394,7 @@ export const createResourceRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResourceRecordSetsRequest,
   output: CreateResourceRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchResourceRecordSetsRequest {
@@ -2328,7 +2435,12 @@ export type PatchResourceRecordSetsResponse = ResourceRecordSet;
 export const PatchResourceRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourceRecordSet;
 
-export type PatchResourceRecordSetsError = DefaultErrors;
+export type PatchResourceRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies a partial update to an existing ResourceRecordSet. */
 export const patchResourceRecordSets: API.OperationMethod<
@@ -2339,7 +2451,7 @@ export const patchResourceRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchResourceRecordSetsRequest,
   output: PatchResourceRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagedZonesRequest {
@@ -2371,7 +2483,7 @@ export type ListManagedZonesResponse = ManagedZonesListResponse;
 export const ListManagedZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedZonesListResponse;
 
-export type ListManagedZonesError = DefaultErrors;
+export type ListManagedZonesError = DefaultErrors | NotFound | Forbidden;
 
 /** Enumerates ManagedZones that have been created but not yet deleted. */
 export const listManagedZones: API.PaginatedOperationMethod<
@@ -2382,7 +2494,7 @@ export const listManagedZones: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedZonesRequest,
   output: ListManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2417,7 +2529,7 @@ export const GetManagedZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetManagedZonesResponse = ManagedZone;
 export const GetManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
 
-export type GetManagedZonesError = DefaultErrors;
+export type GetManagedZonesError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing ManagedZone. */
 export const getManagedZones: API.OperationMethod<
@@ -2428,7 +2540,7 @@ export const getManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedZonesRequest,
   output: GetManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateManagedZonesRequest {
@@ -2460,7 +2572,12 @@ export type CreateManagedZonesResponse = ManagedZone;
 export const CreateManagedZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedZone;
 
-export type CreateManagedZonesError = DefaultErrors;
+export type CreateManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ManagedZone. */
 export const createManagedZones: API.OperationMethod<
@@ -2471,7 +2588,7 @@ export const createManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateManagedZonesRequest,
   output: CreateManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchManagedZonesRequest {
@@ -2505,7 +2622,12 @@ export const PatchManagedZonesRequest =
 export type PatchManagedZonesResponse = Operation;
 export const PatchManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchManagedZonesError = DefaultErrors;
+export type PatchManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies a partial update to an existing ManagedZone. */
 export const patchManagedZones: API.OperationMethod<
@@ -2516,7 +2638,7 @@ export const patchManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchManagedZonesRequest,
   output: PatchManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagedZonesRequest {
@@ -2550,7 +2672,12 @@ export const UpdateManagedZonesRequest =
 export type UpdateManagedZonesResponse = Operation;
 export const UpdateManagedZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateManagedZonesError = DefaultErrors;
+export type UpdateManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing ManagedZone. */
 export const updateManagedZones: API.OperationMethod<
@@ -2561,7 +2688,7 @@ export const updateManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagedZonesRequest,
   output: UpdateManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyManagedZonesRequest {
@@ -2588,7 +2715,12 @@ export type GetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
 export const GetIamPolicyManagedZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyManagedZonesError = DefaultErrors;
+export type GetIamPolicyManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyManagedZones: API.OperationMethod<
@@ -2599,7 +2731,7 @@ export const getIamPolicyManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyManagedZonesRequest,
   output: GetIamPolicyManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsManagedZonesRequest {
@@ -2629,7 +2761,12 @@ export type TestIamPermissionsManagedZonesResponse =
 export const TestIamPermissionsManagedZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
-export type TestIamPermissionsManagedZonesError = DefaultErrors;
+export type TestIamPermissionsManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this returns an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsManagedZones: API.OperationMethod<
@@ -2640,7 +2777,7 @@ export const testIamPermissionsManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsManagedZonesRequest,
   output: TestIamPermissionsManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteManagedZonesRequest {
@@ -2673,7 +2810,12 @@ export const DeleteManagedZonesResponse: Schema.Schema<DeleteManagedZonesRespons
     {},
   ) as any as Schema.Schema<DeleteManagedZonesResponse>;
 
-export type DeleteManagedZonesError = DefaultErrors;
+export type DeleteManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a previously created ManagedZone. */
 export const deleteManagedZones: API.OperationMethod<
@@ -2684,7 +2826,7 @@ export const deleteManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagedZonesRequest,
   output: DeleteManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyManagedZonesRequest {
@@ -2711,7 +2853,12 @@ export type SetIamPolicyManagedZonesResponse = GoogleIamV1Policy;
 export const SetIamPolicyManagedZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyManagedZonesError = DefaultErrors;
+export type SetIamPolicyManagedZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyManagedZones: API.OperationMethod<
@@ -2722,7 +2869,7 @@ export const setIamPolicyManagedZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyManagedZonesRequest,
   output: SetIamPolicyManagedZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateResponsePoliciesRequest {
@@ -2754,7 +2901,12 @@ export type CreateResponsePoliciesResponse = ResponsePolicy;
 export const CreateResponsePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
 
-export type CreateResponsePoliciesError = DefaultErrors;
+export type CreateResponsePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Response Policy */
 export const createResponsePolicies: API.OperationMethod<
@@ -2765,7 +2917,7 @@ export const createResponsePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateResponsePoliciesRequest,
   output: CreateResponsePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchResponsePoliciesRequest {
@@ -2800,7 +2952,12 @@ export type PatchResponsePoliciesResponse = ResponsePoliciesPatchResponse;
 export const PatchResponsePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesPatchResponse;
 
-export type PatchResponsePoliciesError = DefaultErrors;
+export type PatchResponsePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies a partial update to an existing Response Policy. */
 export const patchResponsePolicies: API.OperationMethod<
@@ -2811,7 +2968,7 @@ export const patchResponsePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchResponsePoliciesRequest,
   output: PatchResponsePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateResponsePoliciesRequest {
@@ -2846,7 +3003,12 @@ export type UpdateResponsePoliciesResponse = ResponsePoliciesUpdateResponse;
 export const UpdateResponsePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesUpdateResponse;
 
-export type UpdateResponsePoliciesError = DefaultErrors;
+export type UpdateResponsePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Response Policy. */
 export const updateResponsePolicies: API.OperationMethod<
@@ -2857,7 +3019,7 @@ export const updateResponsePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResponsePoliciesRequest,
   output: UpdateResponsePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteResponsePoliciesRequest {
@@ -2890,7 +3052,12 @@ export const DeleteResponsePoliciesResponse: Schema.Schema<DeleteResponsePolicie
     {},
   ) as any as Schema.Schema<DeleteResponsePoliciesResponse>;
 
-export type DeleteResponsePoliciesError = DefaultErrors;
+export type DeleteResponsePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a previously created Response Policy. Fails if the response policy is non-empty or still being referenced by a network. */
 export const deleteResponsePolicies: API.OperationMethod<
@@ -2901,7 +3068,7 @@ export const deleteResponsePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResponsePoliciesRequest,
   output: DeleteResponsePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetResponsePoliciesRequest {
@@ -2932,7 +3099,7 @@ export type GetResponsePoliciesResponse = ResponsePolicy;
 export const GetResponsePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePolicy;
 
-export type GetResponsePoliciesError = DefaultErrors;
+export type GetResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches the representation of an existing Response Policy. */
 export const getResponsePolicies: API.OperationMethod<
@@ -2943,7 +3110,7 @@ export const getResponsePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResponsePoliciesRequest,
   output: GetResponsePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListResponsePoliciesRequest {
@@ -2972,7 +3139,7 @@ export type ListResponsePoliciesResponse = ResponsePoliciesListResponse;
 export const ListResponsePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResponsePoliciesListResponse;
 
-export type ListResponsePoliciesError = DefaultErrors;
+export type ListResponsePoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Enumerates all Response Policies associated with a project. */
 export const listResponsePolicies: API.PaginatedOperationMethod<
@@ -2983,7 +3150,7 @@ export const listResponsePolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResponsePoliciesRequest,
   output: ListResponsePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

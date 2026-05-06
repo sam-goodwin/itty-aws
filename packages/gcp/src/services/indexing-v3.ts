@@ -68,6 +68,52 @@ export const PublishUrlNotificationResponse =
   }).annotate({ identifier: "PublishUrlNotificationResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -92,7 +138,12 @@ export type PublishUrlNotificationsResponse = PublishUrlNotificationResponse;
 export const PublishUrlNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublishUrlNotificationResponse;
 
-export type PublishUrlNotificationsError = DefaultErrors;
+export type PublishUrlNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Notifies that a URL has been updated or deleted. */
 export const publishUrlNotifications: API.OperationMethod<
@@ -103,7 +154,7 @@ export const publishUrlNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishUrlNotificationsRequest,
   output: PublishUrlNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMetadataUrlNotificationsRequest {
@@ -123,7 +174,10 @@ export type GetMetadataUrlNotificationsResponse = UrlNotificationMetadata;
 export const GetMetadataUrlNotificationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UrlNotificationMetadata;
 
-export type GetMetadataUrlNotificationsError = DefaultErrors;
+export type GetMetadataUrlNotificationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API. */
 export const getMetadataUrlNotifications: API.OperationMethod<
@@ -134,5 +188,5 @@ export const getMetadataUrlNotifications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetadataUrlNotificationsRequest,
   output: GetMetadataUrlNotificationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

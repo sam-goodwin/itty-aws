@@ -1435,6 +1435,52 @@ export const BatchDeleteAlertsRequest =
   }).annotate({ identifier: "BatchDeleteAlertsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1466,7 +1512,7 @@ export type ListAlertsResponse_Op = ListAlertsResponse;
 export const ListAlertsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAlertsResponse;
 
-export type ListAlertsError = DefaultErrors;
+export type ListAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the alerts. */
 export const listAlerts: API.PaginatedOperationMethod<
@@ -1477,7 +1523,7 @@ export const listAlerts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAlertsRequest,
   output: ListAlertsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1504,7 +1550,7 @@ export type GetMetadataAlertsResponse = AlertMetadata;
 export const GetMetadataAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AlertMetadata;
 
-export type GetMetadataAlertsError = DefaultErrors;
+export type GetMetadataAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns `NOT_FOUND` error. */
 export const getMetadataAlerts: API.OperationMethod<
@@ -1515,7 +1561,7 @@ export const getMetadataAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetadataAlertsRequest,
   output: GetMetadataAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchDeleteAlertsRequest_Op {
@@ -1539,7 +1585,12 @@ export type BatchDeleteAlertsResponse_Op = BatchDeleteAlertsResponse;
 export const BatchDeleteAlertsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchDeleteAlertsResponse;
 
-export type BatchDeleteAlertsError = DefaultErrors;
+export type BatchDeleteAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs batch delete operation on alerts. */
 export const batchDeleteAlerts: API.OperationMethod<
@@ -1550,7 +1601,7 @@ export const batchDeleteAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteAlertsRequest_Op,
   output: BatchDeleteAlertsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAlertsRequest {
@@ -1571,7 +1622,7 @@ export const GetAlertsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAlertsResponse = Alert;
 export const GetAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type GetAlertsError = DefaultErrors;
+export type GetAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified alert. Attempting to get a nonexistent alert returns `NOT_FOUND` error. */
 export const getAlerts: API.OperationMethod<
@@ -1582,7 +1633,7 @@ export const getAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAlertsRequest,
   output: GetAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAlertsRequest {
@@ -1603,7 +1654,12 @@ export const DeleteAlertsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteAlertsResponse = Empty;
 export const DeleteAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAlertsError = DefaultErrors;
+export type DeleteAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks the specified alert for deletion. An alert that has been marked for deletion is removed from Alert Center after 30 days. Marking an alert for deletion has no effect on an alert which has already been marked for deletion. Attempting to mark a nonexistent alert for deletion results in a `NOT_FOUND` error. */
 export const deleteAlerts: API.OperationMethod<
@@ -1614,7 +1670,7 @@ export const deleteAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAlertsRequest,
   output: DeleteAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteAlertsRequest {
@@ -1639,7 +1695,12 @@ export const UndeleteAlertsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UndeleteAlertsResponse = Alert;
 export const UndeleteAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type UndeleteAlertsError = DefaultErrors;
+export type UndeleteAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores, or "undeletes", an alert that was marked for deletion within the past 30 days. Attempting to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which has not been marked for deletion has no effect. */
 export const undeleteAlerts: API.OperationMethod<
@@ -1650,7 +1711,7 @@ export const undeleteAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteAlertsRequest,
   output: UndeleteAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUndeleteAlertsRequest_Op {
@@ -1674,7 +1735,12 @@ export type BatchUndeleteAlertsResponse_Op = BatchUndeleteAlertsResponse;
 export const BatchUndeleteAlertsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchUndeleteAlertsResponse;
 
-export type BatchUndeleteAlertsError = DefaultErrors;
+export type BatchUndeleteAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs batch undelete operation on alerts. */
 export const batchUndeleteAlerts: API.OperationMethod<
@@ -1685,7 +1751,7 @@ export const batchUndeleteAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUndeleteAlertsRequest_Op,
   output: BatchUndeleteAlertsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAlertsFeedbackRequest {
@@ -1715,7 +1781,12 @@ export type CreateAlertsFeedbackResponse = AlertFeedback;
 export const CreateAlertsFeedbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ AlertFeedback;
 
-export type CreateAlertsFeedbackError = DefaultErrors;
+export type CreateAlertsFeedbackError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion returns `FAILED_PRECONDITION' error. */
 export const createAlertsFeedback: API.OperationMethod<
@@ -1726,7 +1797,7 @@ export const createAlertsFeedback: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAlertsFeedbackRequest,
   output: CreateAlertsFeedbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAlertsFeedbackRequest {
@@ -1752,7 +1823,7 @@ export type ListAlertsFeedbackResponse = ListAlertFeedbackResponse;
 export const ListAlertsFeedbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAlertFeedbackResponse;
 
-export type ListAlertsFeedbackError = DefaultErrors;
+export type ListAlertsFeedbackError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert returns `NOT_FOUND` error. */
 export const listAlertsFeedback: API.OperationMethod<
@@ -1763,7 +1834,7 @@ export const listAlertsFeedback: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAlertsFeedbackRequest,
   output: ListAlertsFeedbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSettingsV1beta1Request {
@@ -1782,7 +1853,7 @@ export const GetSettingsV1beta1Request =
 export type GetSettingsV1beta1Response = Settings;
 export const GetSettingsV1beta1Response = /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type GetSettingsV1beta1Error = DefaultErrors;
+export type GetSettingsV1beta1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Returns customer-level settings. */
 export const getSettingsV1beta1: API.OperationMethod<
@@ -1793,7 +1864,7 @@ export const getSettingsV1beta1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSettingsV1beta1Request,
   output: GetSettingsV1beta1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSettingsV1beta1Request {
@@ -1816,7 +1887,12 @@ export type UpdateSettingsV1beta1Response = Settings;
 export const UpdateSettingsV1beta1Response =
   /*@__PURE__*/ /*#__PURE__*/ Settings;
 
-export type UpdateSettingsV1beta1Error = DefaultErrors;
+export type UpdateSettingsV1beta1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the customer-level settings. */
 export const updateSettingsV1beta1: API.OperationMethod<
@@ -1827,5 +1903,5 @@ export const updateSettingsV1beta1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSettingsV1beta1Request,
   output: UpdateSettingsV1beta1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

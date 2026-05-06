@@ -1968,6 +1968,52 @@ export const CleanupConnectionMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1986,7 +2032,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1997,7 +2043,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConnectionsServicesRequest {
@@ -2032,7 +2078,12 @@ export type UpdateConnectionsServicesResponse = Operation;
 export const UpdateConnectionsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateConnectionsServicesError = DefaultErrors;
+export type UpdateConnectionsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the allocated ranges that are assigned to a connection. The response from the `get` operation will be of type `Connection` if the operation successfully completes. */
 export const updateConnectionsServices: API.OperationMethod<
@@ -2043,7 +2094,7 @@ export const updateConnectionsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConnectionsServicesRequest,
   output: UpdateConnectionsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddSubnetworkServicesRequest {
@@ -2070,7 +2121,12 @@ export type AddSubnetworkServicesResponse = Operation;
 export const AddSubnetworkServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddSubnetworkServicesError = DefaultErrors;
+export type AddSubnetworkServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** For service producers, provisions a new subnet in a peered service's shared VPC network in the requested region and with the requested size that's expressed as a CIDR range (number of leading bits of ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and prefix length. This method will make producer's tenant project to be a shared VPC service project as needed. The response from the `get` operation will be of type `Subnetwork` if the operation successfully completes. */
 export const addSubnetworkServices: API.OperationMethod<
@@ -2081,7 +2137,7 @@ export const addSubnetworkServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddSubnetworkServicesRequest,
   output: AddSubnetworkServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchRangeServicesRequest {
@@ -2108,7 +2164,12 @@ export type SearchRangeServicesResponse = Operation;
 export const SearchRangeServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SearchRangeServicesError = DefaultErrors;
+export type SearchRangeServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to find a currently unused range within consumer allocated ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation). Operation */
 export const searchRangeServices: API.OperationMethod<
@@ -2119,7 +2180,7 @@ export const searchRangeServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchRangeServicesRequest,
   output: SearchRangeServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConnectionsRequest {
@@ -2142,7 +2203,7 @@ export type ListServicesConnectionsResponse = ListConnectionsResponse;
 export const ListServicesConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectionsResponse;
 
-export type ListServicesConnectionsError = DefaultErrors;
+export type ListServicesConnectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the private connections that are configured in a service consumer's VPC network. */
 export const listServicesConnections: API.OperationMethod<
@@ -2153,7 +2214,7 @@ export const listServicesConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServicesConnectionsRequest,
   output: ListServicesConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesConnectionsRequest {
@@ -2182,7 +2243,12 @@ export type CreateServicesConnectionsResponse = Operation;
 export const CreateServicesConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateServicesConnectionsError = DefaultErrors;
+export type CreateServicesConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. The response from the `get` operation will be of type `Connection` if the operation successfully completes. */
 export const createServicesConnections: API.OperationMethod<
@@ -2193,5 +2259,5 @@ export const createServicesConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesConnectionsRequest,
   output: CreateServicesConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

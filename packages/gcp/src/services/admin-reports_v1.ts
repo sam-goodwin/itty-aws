@@ -616,6 +616,52 @@ export const Activities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Activities" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -665,7 +711,7 @@ export type GetUserUsageReportResponse = UsageReports;
 export const GetUserUsageReportResponse =
   /*@__PURE__*/ /*#__PURE__*/ UsageReports;
 
-export type GetUserUsageReportError = DefaultErrors;
+export type GetUserUsageReportError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a report which is a collection of properties and statistics for a set of users with the account. For more information, see the User Usage Report guide. For more information about the user report's parameters, see the Users Usage parameters reference guides. */
 export const getUserUsageReport: API.PaginatedOperationMethod<
@@ -676,7 +722,7 @@ export const getUserUsageReport: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetUserUsageReportRequest,
   output: GetUserUsageReportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -802,7 +848,7 @@ export const ListActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListActivitiesResponse = Activities;
 export const ListActivitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Activities;
 
-export type ListActivitiesError = DefaultErrors;
+export type ListActivitiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of activities for a specific customer's account and application such as the Admin console application or the Google Drive application. For more information, see the guides for administrator and Google Drive activity reports. For more information about the activity report's parameters, see the activity parameters reference guides. */
 export const listActivities: API.PaginatedOperationMethod<
@@ -813,7 +859,7 @@ export const listActivities: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesRequest,
   output: ListActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -905,7 +951,12 @@ export const WatchActivitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type WatchActivitiesResponse = Channel;
 export const WatchActivitiesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchActivitiesError = DefaultErrors;
+export type WatchActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Start receiving notifications for account activities. For more information, see Receiving Push Notifications. */
 export const watchActivities: API.OperationMethod<
@@ -916,7 +967,7 @@ export const watchActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchActivitiesRequest,
   output: WatchActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopChannelsRequest {
@@ -941,7 +992,12 @@ export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
     {},
   ) as any as Schema.Schema<StopChannelsResponse>;
 
-export type StopChannelsError = DefaultErrors;
+export type StopChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stop watching resources through this channel. */
 export const stopChannels: API.OperationMethod<
@@ -952,7 +1008,7 @@ export const stopChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEntityUsageReportsRequest {
@@ -996,7 +1052,7 @@ export type GetEntityUsageReportsResponse = UsageReports;
 export const GetEntityUsageReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UsageReports;
 
-export type GetEntityUsageReportsError = DefaultErrors;
+export type GetEntityUsageReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a report which is a collection of properties and statistics for entities used by users within the account. For more information, see the Entities Usage Report guide. For more information about the entities report's parameters, see the Entities Usage parameters reference guides. */
 export const getEntityUsageReports: API.PaginatedOperationMethod<
@@ -1007,7 +1063,7 @@ export const getEntityUsageReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetEntityUsageReportsRequest,
   output: GetEntityUsageReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1040,7 +1096,7 @@ export type GetCustomerUsageReportsResponse = UsageReports;
 export const GetCustomerUsageReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UsageReports;
 
-export type GetCustomerUsageReportsError = DefaultErrors;
+export type GetCustomerUsageReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a report which is a collection of properties and statistics for a specific customer's account. For more information, see the Customers Usage Report guide. For more information about the customer report's parameters, see the Customers Usage parameters reference guides. */
 export const getCustomerUsageReports: API.PaginatedOperationMethod<
@@ -1051,7 +1107,7 @@ export const getCustomerUsageReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetCustomerUsageReportsRequest,
   output: GetCustomerUsageReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

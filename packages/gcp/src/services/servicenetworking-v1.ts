@@ -2315,6 +2315,52 @@ export const CleanupConnectionMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2348,7 +2394,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -2359,7 +2405,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2381,7 +2427,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2392,7 +2438,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOperationsRequest {
@@ -2411,7 +2457,12 @@ export const DeleteOperationsRequest =
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -2422,7 +2473,7 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOperationsRequest {
@@ -2444,7 +2495,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -2455,7 +2511,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableVpcServiceControlsServicesRequest {
@@ -2482,7 +2538,12 @@ export type DisableVpcServiceControlsServicesResponse = Operation;
 export const DisableVpcServiceControlsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DisableVpcServiceControlsServicesError = DefaultErrors;
+export type DisableVpcServiceControlsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables VPC service controls for a connection. */
 export const disableVpcServiceControlsServices: API.OperationMethod<
@@ -2493,7 +2554,7 @@ export const disableVpcServiceControlsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableVpcServiceControlsServicesRequest,
   output: DisableVpcServiceControlsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableVpcServiceControlsServicesRequest {
@@ -2520,7 +2581,12 @@ export type EnableVpcServiceControlsServicesResponse = Operation;
 export const EnableVpcServiceControlsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnableVpcServiceControlsServicesError = DefaultErrors;
+export type EnableVpcServiceControlsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables VPC service controls for a connection. */
 export const enableVpcServiceControlsServices: API.OperationMethod<
@@ -2531,7 +2597,7 @@ export const enableVpcServiceControlsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableVpcServiceControlsServicesRequest,
   output: EnableVpcServiceControlsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddSubnetworkServicesRequest {
@@ -2558,7 +2624,12 @@ export type AddSubnetworkServicesResponse = Operation;
 export const AddSubnetworkServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddSubnetworkServicesError = DefaultErrors;
+export type AddSubnetworkServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** For service producers, provisions a new subnet in a peered service's shared VPC network in the requested region and with the requested size that's expressed as a CIDR range (number of leading bits of ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and prefix length. This method will make producer's tenant project to be a shared VPC service project as needed. */
 export const addSubnetworkServices: API.OperationMethod<
@@ -2569,7 +2640,7 @@ export const addSubnetworkServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddSubnetworkServicesRequest,
   output: AddSubnetworkServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchRangeServicesRequest {
@@ -2592,7 +2663,12 @@ export type SearchRangeServicesResponse = Operation;
 export const SearchRangeServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SearchRangeServicesError = DefaultErrors;
+export type SearchRangeServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to find a currently unused range within consumer allocated ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation). */
 export const searchRangeServices: API.OperationMethod<
@@ -2603,7 +2679,7 @@ export const searchRangeServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchRangeServicesRequest,
   output: SearchRangeServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateServicesRequest {
@@ -2626,7 +2702,12 @@ export type ValidateServicesResponse = ValidateConsumerConfigResponse;
 export const ValidateServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValidateConsumerConfigResponse;
 
-export type ValidateServicesError = DefaultErrors;
+export type ValidateServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers use this method to validate if the consumer provided network, project and requested range are valid. This allows them to use a fail-fast mechanism for consumer requests, and not have to wait for AddSubnetwork operation completion to determine if user request is invalid. */
 export const validateServices: API.OperationMethod<
@@ -2637,7 +2718,7 @@ export const validateServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateServicesRequest,
   output: ValidateServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConnectionsRequest {
@@ -2660,7 +2741,7 @@ export type ListServicesConnectionsResponse = ListConnectionsResponse;
 export const ListServicesConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectionsResponse;
 
-export type ListServicesConnectionsError = DefaultErrors;
+export type ListServicesConnectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the private connections that are configured in a service consumer's VPC network. */
 export const listServicesConnections: API.OperationMethod<
@@ -2671,7 +2752,7 @@ export const listServicesConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServicesConnectionsRequest,
   output: ListServicesConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesConnectionsRequest {
@@ -2694,7 +2775,12 @@ export type CreateServicesConnectionsResponse = Operation;
 export const CreateServicesConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateServicesConnectionsError = DefaultErrors;
+export type CreateServicesConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. */
 export const createServicesConnections: API.OperationMethod<
@@ -2705,7 +2791,7 @@ export const createServicesConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesConnectionsRequest,
   output: CreateServicesConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteConnectionServicesConnectionsRequest {
@@ -2728,7 +2814,12 @@ export type DeleteConnectionServicesConnectionsResponse = Operation;
 export const DeleteConnectionServicesConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteConnectionServicesConnectionsError = DefaultErrors;
+export type DeleteConnectionServicesConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a private service access connection. */
 export const deleteConnectionServicesConnections: API.OperationMethod<
@@ -2739,7 +2830,7 @@ export const deleteConnectionServicesConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteConnectionServicesConnectionsRequest,
   output: DeleteConnectionServicesConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServicesConnectionsRequest {
@@ -2768,7 +2859,12 @@ export type PatchServicesConnectionsResponse = Operation;
 export const PatchServicesConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchServicesConnectionsError = DefaultErrors;
+export type PatchServicesConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the allocated ranges that are assigned to a connection. */
 export const patchServicesConnections: API.OperationMethod<
@@ -2779,7 +2875,7 @@ export const patchServicesConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServicesConnectionsRequest,
   output: PatchServicesConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVpcServiceControlsServicesProjectsGlobalNetworksRequest {
@@ -2801,7 +2897,9 @@ export const GetVpcServiceControlsServicesProjectsGlobalNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ VpcServiceControls;
 
 export type GetVpcServiceControlsServicesProjectsGlobalNetworksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Consumers use this method to find out the state of VPC Service Controls. The controls could be enabled or disabled for a connection. */
 export const getVpcServiceControlsServicesProjectsGlobalNetworks: API.OperationMethod<
@@ -2812,7 +2910,7 @@ export const getVpcServiceControlsServicesProjectsGlobalNetworks: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVpcServiceControlsServicesProjectsGlobalNetworksRequest,
   output: GetVpcServiceControlsServicesProjectsGlobalNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateConsumerConfigServicesProjectsGlobalNetworksRequest {
@@ -2841,7 +2939,11 @@ export const UpdateConsumerConfigServicesProjectsGlobalNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UpdateConsumerConfigServicesProjectsGlobalNetworksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers use this method to update the configuration of their connection including the import/export of custom routes and subnetwork routes with public IP. */
 export const updateConsumerConfigServicesProjectsGlobalNetworks: API.OperationMethod<
@@ -2852,7 +2954,7 @@ export const updateConsumerConfigServicesProjectsGlobalNetworks: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConsumerConfigServicesProjectsGlobalNetworksRequest,
   output: UpdateConsumerConfigServicesProjectsGlobalNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServicesProjectsGlobalNetworksRequest {
@@ -2877,7 +2979,10 @@ export type GetServicesProjectsGlobalNetworksResponse = ConsumerConfig;
 export const GetServicesProjectsGlobalNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConsumerConfig;
 
-export type GetServicesProjectsGlobalNetworksError = DefaultErrors;
+export type GetServicesProjectsGlobalNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Service producers use this method to get the configuration of their connection including the import/export of custom routes and subnetwork routes with public IP. */
 export const getServicesProjectsGlobalNetworks: API.OperationMethod<
@@ -2888,7 +2993,7 @@ export const getServicesProjectsGlobalNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesProjectsGlobalNetworksRequest,
   output: GetServicesProjectsGlobalNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListServicesProjectsGlobalNetworksDnsZonesRequest {
@@ -2909,7 +3014,10 @@ export type ListServicesProjectsGlobalNetworksDnsZonesResponse =
 export const ListServicesProjectsGlobalNetworksDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDnsZonesResponse;
 
-export type ListServicesProjectsGlobalNetworksDnsZonesError = DefaultErrors;
+export type ListServicesProjectsGlobalNetworksDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** * Service producers can use this method to retrieve a list of available DNS zones in the shared producer host project and the matching peering zones in the consumer project. * */
 export const listServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
@@ -2920,7 +3028,7 @@ export const listServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServicesProjectsGlobalNetworksDnsZonesRequest,
   output: ListServicesProjectsGlobalNetworksDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetServicesProjectsGlobalNetworksDnsZonesRequest {
@@ -2941,7 +3049,10 @@ export type GetServicesProjectsGlobalNetworksDnsZonesResponse =
 export const GetServicesProjectsGlobalNetworksDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetDnsZoneResponse;
 
-export type GetServicesProjectsGlobalNetworksDnsZonesError = DefaultErrors;
+export type GetServicesProjectsGlobalNetworksDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Service producers can use this method to retrieve a DNS zone in the shared producer host project and the matching peering zones in consumer project */
 export const getServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
@@ -2952,7 +3063,7 @@ export const getServicesProjectsGlobalNetworksDnsZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesProjectsGlobalNetworksDnsZonesRequest,
   output: GetServicesProjectsGlobalNetworksDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest {
@@ -2981,7 +3092,11 @@ export const CreateServicesProjectsGlobalNetworksPeeredDnsDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateServicesProjectsGlobalNetworksPeeredDnsDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a peered DNS domain which sends requests for records in given namespace originating in the service producer VPC network to the consumer VPC network to be resolved. */
 export const createServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMethod<
@@ -2992,7 +3107,7 @@ export const createServicesProjectsGlobalNetworksPeeredDnsDomains: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesProjectsGlobalNetworksPeeredDnsDomainsRequest,
   output: CreateServicesProjectsGlobalNetworksPeeredDnsDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest {
@@ -3014,7 +3129,11 @@ export const DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a peered DNS domain. */
 export const deleteServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMethod<
@@ -3025,7 +3144,7 @@ export const deleteServicesProjectsGlobalNetworksPeeredDnsDomains: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsRequest,
   output: DeleteServicesProjectsGlobalNetworksPeeredDnsDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest {
@@ -3047,7 +3166,9 @@ export const ListServicesProjectsGlobalNetworksPeeredDnsDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPeeredDnsDomainsResponse;
 
 export type ListServicesProjectsGlobalNetworksPeeredDnsDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists peered DNS domains for a connection. */
 export const listServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMethod<
@@ -3058,7 +3179,7 @@ export const listServicesProjectsGlobalNetworksPeeredDnsDomains: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServicesProjectsGlobalNetworksPeeredDnsDomainsRequest,
   output: ListServicesProjectsGlobalNetworksPeeredDnsDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddServicesRolesRequest {
@@ -3080,7 +3201,12 @@ export const AddServicesRolesRequest =
 export type AddServicesRolesResponse = Operation;
 export const AddServicesRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddServicesRolesError = DefaultErrors;
+export type AddServicesRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to add roles in the shared VPC host project. Each role is bound to the provided member. Each role must be selected from within an allowlisted set of roles. Each role is applied at only the granularity specified in the allowlist. */
 export const addServicesRoles: API.OperationMethod<
@@ -3091,7 +3217,7 @@ export const addServicesRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddServicesRolesRequest,
   output: AddServicesRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddServicesDnsZonesRequest {
@@ -3114,7 +3240,12 @@ export type AddServicesDnsZonesResponse = Operation;
 export const AddServicesDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddServicesDnsZonesError = DefaultErrors;
+export type AddServicesDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to add private DNS zones in the shared producer host project and matching peering zones in the consumer project. */
 export const addServicesDnsZones: API.OperationMethod<
@@ -3125,7 +3256,7 @@ export const addServicesDnsZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddServicesDnsZonesRequest,
   output: AddServicesDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveServicesDnsZonesRequest {
@@ -3152,7 +3283,12 @@ export type RemoveServicesDnsZonesResponse = Operation;
 export const RemoveServicesDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveServicesDnsZonesError = DefaultErrors;
+export type RemoveServicesDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to remove private DNS zones in the shared producer host project and matching peering zones in the consumer project. */
 export const removeServicesDnsZones: API.OperationMethod<
@@ -3163,7 +3299,7 @@ export const removeServicesDnsZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveServicesDnsZonesRequest,
   output: RemoveServicesDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddServicesDnsRecordSetsRequest {
@@ -3190,7 +3326,12 @@ export type AddServicesDnsRecordSetsResponse = Operation;
 export const AddServicesDnsRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddServicesDnsRecordSetsError = DefaultErrors;
+export type AddServicesDnsRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to add DNS record sets to private DNS zones in the shared producer host project. */
 export const addServicesDnsRecordSets: API.OperationMethod<
@@ -3201,7 +3342,7 @@ export const addServicesDnsRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddServicesDnsRecordSetsRequest,
   output: AddServicesDnsRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveServicesDnsRecordSetsRequest {
@@ -3228,7 +3369,12 @@ export type RemoveServicesDnsRecordSetsResponse = Operation;
 export const RemoveServicesDnsRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveServicesDnsRecordSetsError = DefaultErrors;
+export type RemoveServicesDnsRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to remove DNS record sets from private DNS zones in the shared producer host project. */
 export const removeServicesDnsRecordSets: API.OperationMethod<
@@ -3239,7 +3385,7 @@ export const removeServicesDnsRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveServicesDnsRecordSetsRequest,
   output: RemoveServicesDnsRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateServicesDnsRecordSetsRequest {
@@ -3266,7 +3412,12 @@ export type UpdateServicesDnsRecordSetsResponse = Operation;
 export const UpdateServicesDnsRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateServicesDnsRecordSetsError = DefaultErrors;
+export type UpdateServicesDnsRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service producers can use this method to update DNS record sets from private DNS zones in the shared producer host project. */
 export const updateServicesDnsRecordSets: API.OperationMethod<
@@ -3277,7 +3428,7 @@ export const updateServicesDnsRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateServicesDnsRecordSetsRequest,
   output: UpdateServicesDnsRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServicesDnsRecordSetsRequest {
@@ -3311,7 +3462,10 @@ export type GetServicesDnsRecordSetsResponse = DnsRecordSet;
 export const GetServicesDnsRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DnsRecordSet;
 
-export type GetServicesDnsRecordSetsError = DefaultErrors;
+export type GetServicesDnsRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Producers can use this method to retrieve information about the DNS record set added to the private zone inside the shared tenant host project associated with a consumer network. */
 export const getServicesDnsRecordSets: API.OperationMethod<
@@ -3322,7 +3476,7 @@ export const getServicesDnsRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesDnsRecordSetsRequest,
   output: GetServicesDnsRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListServicesDnsRecordSetsRequest {
@@ -3350,7 +3504,10 @@ export type ListServicesDnsRecordSetsResponse = ListDnsRecordSetsResponse;
 export const ListServicesDnsRecordSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDnsRecordSetsResponse;
 
-export type ListServicesDnsRecordSetsError = DefaultErrors;
+export type ListServicesDnsRecordSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Producers can use this method to retrieve a list of available DNS RecordSets available inside the private zone on the tenant host project accessible from their network. */
 export const listServicesDnsRecordSets: API.OperationMethod<
@@ -3361,5 +3518,5 @@ export const listServicesDnsRecordSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServicesDnsRecordSetsRequest,
   output: ListServicesDnsRecordSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -3719,6 +3719,52 @@ export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3747,7 +3793,12 @@ export const DeleteBackupRunsRequest =
 export type DeleteBackupRunsResponse = Operation;
 export const DeleteBackupRunsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteBackupRunsError = DefaultErrors;
+export type DeleteBackupRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the backup taken by a backup run. */
 export const deleteBackupRuns: API.OperationMethod<
@@ -3758,7 +3809,7 @@ export const deleteBackupRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackupRunsRequest,
   output: DeleteBackupRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBackupRunsRequest {
@@ -3785,7 +3836,7 @@ export const GetBackupRunsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetBackupRunsResponse = BackupRun;
 export const GetBackupRunsResponse = /*@__PURE__*/ /*#__PURE__*/ BackupRun;
 
-export type GetBackupRunsError = DefaultErrors;
+export type GetBackupRunsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a resource containing information about a backup run. */
 export const getBackupRuns: API.OperationMethod<
@@ -3796,7 +3847,7 @@ export const getBackupRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackupRunsRequest,
   output: GetBackupRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertBackupRunsRequest {
@@ -3825,7 +3876,12 @@ export const InsertBackupRunsRequest =
 export type InsertBackupRunsResponse = Operation;
 export const InsertBackupRunsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertBackupRunsError = DefaultErrors;
+export type InsertBackupRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new backup run on demand. */
 export const insertBackupRuns: API.OperationMethod<
@@ -3836,7 +3892,7 @@ export const insertBackupRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertBackupRunsRequest,
   output: InsertBackupRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBackupRunsRequest {
@@ -3867,7 +3923,7 @@ export type ListBackupRunsResponse = BackupRunsListResponse;
 export const ListBackupRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackupRunsListResponse;
 
-export type ListBackupRunsError = DefaultErrors;
+export type ListBackupRunsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all backup runs associated with the project or a given instance and configuration in the reverse chronological order of the backup initiation time. */
 export const listBackupRuns: API.PaginatedOperationMethod<
@@ -3878,7 +3934,7 @@ export const listBackupRuns: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBackupRunsRequest,
   output: ListBackupRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3912,7 +3968,12 @@ export const DeleteDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteDatabasesResponse = Operation;
 export const DeleteDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteDatabasesError = DefaultErrors;
+export type DeleteDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a database from a Cloud SQL instance. */
 export const deleteDatabases: API.OperationMethod<
@@ -3923,7 +3984,7 @@ export const deleteDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatabasesRequest,
   output: DeleteDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDatabasesRequest {
@@ -3950,7 +4011,7 @@ export const GetDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDatabasesResponse = Database;
 export const GetDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Database;
 
-export type GetDatabasesError = DefaultErrors;
+export type GetDatabasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a resource containing information about a database inside a Cloud SQL instance. */
 export const getDatabases: API.OperationMethod<
@@ -3961,7 +4022,7 @@ export const getDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDatabasesRequest,
   output: GetDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertDatabasesRequest {
@@ -3991,7 +4052,12 @@ export const InsertDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertDatabasesResponse = Operation;
 export const InsertDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertDatabasesError = DefaultErrors;
+export type InsertDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't modify the default character set and collation. */
 export const insertDatabases: API.OperationMethod<
@@ -4002,7 +4068,7 @@ export const insertDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDatabasesRequest,
   output: InsertDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDatabasesRequest {
@@ -4027,7 +4093,7 @@ export type ListDatabasesResponse = DatabasesListResponse;
 export const ListDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatabasesListResponse;
 
-export type ListDatabasesError = DefaultErrors;
+export type ListDatabasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists databases in the specified Cloud SQL instance. */
 export const listDatabases: API.OperationMethod<
@@ -4038,7 +4104,7 @@ export const listDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDatabasesRequest,
   output: ListDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchDatabasesRequest {
@@ -4069,7 +4135,12 @@ export const PatchDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchDatabasesResponse = Operation;
 export const PatchDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchDatabasesError = DefaultErrors;
+export type PatchDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Partially updates a resource containing information about a database inside a Cloud SQL instance. This method supports patch semantics. */
 export const patchDatabases: API.OperationMethod<
@@ -4080,7 +4151,7 @@ export const patchDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDatabasesRequest,
   output: PatchDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDatabasesRequest {
@@ -4113,7 +4184,12 @@ export const UpdateDatabasesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateDatabasesResponse = Operation;
 export const UpdateDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateDatabasesError = DefaultErrors;
+export type UpdateDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a resource containing information about a database inside a Cloud SQL instance. */
 export const updateDatabases: API.OperationMethod<
@@ -4124,7 +4200,7 @@ export const updateDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDatabasesRequest,
   output: UpdateDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFlagsRequest {
@@ -4151,7 +4227,7 @@ export const ListFlagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListFlagsResponse = FlagsListResponse;
 export const ListFlagsResponse = /*@__PURE__*/ /*#__PURE__*/ FlagsListResponse;
 
-export type ListFlagsError = DefaultErrors;
+export type ListFlagsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all available database flags for Cloud SQL instances. */
 export const listFlags: API.OperationMethod<
@@ -4162,7 +4238,7 @@ export const listFlags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFlagsRequest,
   output: ListFlagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddServerCaInstancesRequest {
@@ -4189,7 +4265,12 @@ export type AddServerCaInstancesResponse = Operation;
 export const AddServerCaInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddServerCaInstancesError = DefaultErrors;
+export type AddServerCaInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a certificate rotation. If a CA version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one CA version waiting to be rotated in. For instances that have enabled Certificate Authority Service (CAS) based server CA, use AddServerCertificate to add a new server certificate. */
 export const addServerCaInstances: API.OperationMethod<
@@ -4200,7 +4281,7 @@ export const addServerCaInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddServerCaInstancesRequest,
   output: AddServerCaInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddServerCertificateInstancesRequest {
@@ -4227,7 +4308,12 @@ export type AddServerCertificateInstancesResponse = Operation;
 export const AddServerCertificateInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddServerCertificateInstancesError = DefaultErrors;
+export type AddServerCertificateInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add a new trusted server certificate version for the specified instance using Certificate Authority Service (CAS) server CA. Required to prepare for a certificate rotation. If a server certificate version was previously added but never used in a certificate rotation, this operation replaces that version. There cannot be more than one certificate version waiting to be rotated in. For instances not using CAS server CA, use AddServerCa instead. */
 export const addServerCertificateInstances: API.OperationMethod<
@@ -4238,7 +4324,7 @@ export const addServerCertificateInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddServerCertificateInstancesRequest,
   output: AddServerCertificateInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddEntraIdCertificateInstancesRequest {
@@ -4265,7 +4351,12 @@ export type AddEntraIdCertificateInstancesResponse = Operation;
 export const AddEntraIdCertificateInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddEntraIdCertificateInstancesError = DefaultErrors;
+export type AddEntraIdCertificateInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a new Entra ID certificate for the specified instance. If an Entra ID certificate was previously added but never used in a certificate rotation, this operation replaces that version. */
 export const addEntraIdCertificateInstances: API.OperationMethod<
@@ -4276,7 +4367,7 @@ export const addEntraIdCertificateInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddEntraIdCertificateInstancesRequest,
   output: AddEntraIdCertificateInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CloneInstancesRequest {
@@ -4304,7 +4395,12 @@ export const CloneInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CloneInstancesResponse = Operation;
 export const CloneInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloneInstancesError = DefaultErrors;
+export type CloneInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Cloud SQL instance as a clone of the source instance. Using this operation might cause your instance to restart. */
 export const cloneInstances: API.OperationMethod<
@@ -4315,7 +4411,7 @@ export const cloneInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloneInstancesRequest,
   output: CloneInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstancesRequest {
@@ -4361,7 +4457,12 @@ export const DeleteInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteInstancesResponse = Operation;
 export const DeleteInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstancesError = DefaultErrors;
+export type DeleteInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Cloud SQL instance. */
 export const deleteInstances: API.OperationMethod<
@@ -4372,7 +4473,7 @@ export const deleteInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstancesRequest,
   output: DeleteInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DemoteMasterInstancesRequest {
@@ -4402,7 +4503,12 @@ export type DemoteMasterInstancesResponse = Operation;
 export const DemoteMasterInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DemoteMasterInstancesError = DefaultErrors;
+export type DemoteMasterInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Demotes the stand-alone instance to be a Cloud SQL read replica for an external database server. */
 export const demoteMasterInstances: API.OperationMethod<
@@ -4413,7 +4519,7 @@ export const demoteMasterInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DemoteMasterInstancesRequest,
   output: DemoteMasterInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DemoteInstancesRequest {
@@ -4443,7 +4549,12 @@ export const DemoteInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DemoteInstancesResponse = Operation;
 export const DemoteInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DemoteInstancesError = DefaultErrors;
+export type DemoteInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Demotes an existing standalone instance to be a Cloud SQL read replica for an external database server. */
 export const demoteInstances: API.OperationMethod<
@@ -4454,7 +4565,7 @@ export const demoteInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DemoteInstancesRequest,
   output: DemoteInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportInstancesRequest {
@@ -4484,7 +4595,12 @@ export const ExportInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ExportInstancesResponse = Operation;
 export const ExportInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportInstancesError = DefaultErrors;
+export type ExportInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump or CSV file. */
 export const exportInstances: API.OperationMethod<
@@ -4495,7 +4611,7 @@ export const exportInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportInstancesRequest,
   output: ExportInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FailoverInstancesRequest {
@@ -4524,7 +4640,12 @@ export const FailoverInstancesRequest =
 export type FailoverInstancesResponse = Operation;
 export const FailoverInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type FailoverInstancesError = DefaultErrors;
+export type FailoverInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a manual failover of a high availability (HA) primary instance to a standby instance, which becomes the primary instance. Users are then rerouted to the new primary. For more information, see the [Overview of high availability](https://cloud.google.com/sql/docs/mysql/high-availability) page in the Cloud SQL documentation. If using Legacy HA (MySQL only), this causes the instance to failover to its failover replica instance. */
 export const failoverInstances: API.OperationMethod<
@@ -4535,7 +4656,7 @@ export const failoverInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FailoverInstancesRequest,
   output: FailoverInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReencryptInstancesRequest {
@@ -4564,7 +4685,12 @@ export const ReencryptInstancesRequest =
 export type ReencryptInstancesResponse = Operation;
 export const ReencryptInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ReencryptInstancesError = DefaultErrors;
+export type ReencryptInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reencrypt CMEK instance with latest key version. */
 export const reencryptInstances: API.OperationMethod<
@@ -4575,7 +4701,7 @@ export const reencryptInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReencryptInstancesRequest,
   output: ReencryptInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInstancesRequest {
@@ -4600,7 +4726,7 @@ export type GetInstancesResponse = DatabaseInstance;
 export const GetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DatabaseInstance;
 
-export type GetInstancesError = DefaultErrors;
+export type GetInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a resource containing information about a Cloud SQL instance. */
 export const getInstances: API.OperationMethod<
@@ -4611,7 +4737,7 @@ export const getInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstancesRequest,
   output: GetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportInstancesRequest {
@@ -4641,7 +4767,12 @@ export const ImportInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ImportInstancesResponse = Operation;
 export const ImportInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportInstancesError = DefaultErrors;
+export type ImportInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Storage. */
 export const importInstances: API.OperationMethod<
@@ -4652,7 +4783,7 @@ export const importInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportInstancesRequest,
   output: ImportInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertInstancesRequest {
@@ -4679,7 +4810,12 @@ export const InsertInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertInstancesResponse = Operation;
 export const InsertInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstancesError = DefaultErrors;
+export type InsertInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Cloud SQL instance. */
 export const insertInstances: API.OperationMethod<
@@ -4690,7 +4826,7 @@ export const insertInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstancesRequest,
   output: InsertInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstancesRequest {
@@ -4718,7 +4854,7 @@ export type ListInstancesResponse = InstancesListResponse;
 export const ListInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstancesListResponse;
 
-export type ListInstancesError = DefaultErrors;
+export type ListInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists instances under a given project. */
 export const listInstances: API.PaginatedOperationMethod<
@@ -4729,7 +4865,7 @@ export const listInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4760,7 +4896,7 @@ export type ListServerCasInstancesResponse = InstancesListServerCasResponse;
 export const ListServerCasInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstancesListServerCasResponse;
 
-export type ListServerCasInstancesError = DefaultErrors;
+export type ListServerCasInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously rotated out. */
 export const listServerCasInstances: API.OperationMethod<
@@ -4771,7 +4907,7 @@ export const listServerCasInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServerCasInstancesRequest,
   output: ListServerCasInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListServerCertificatesInstancesRequest {
@@ -4798,7 +4934,10 @@ export type ListServerCertificatesInstancesResponse =
 export const ListServerCertificatesInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstancesListServerCertificatesResponse;
 
-export type ListServerCertificatesInstancesError = DefaultErrors;
+export type ListServerCertificatesInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all versions of server certificates and certificate authorities (CAs) for the specified instance. There can be up to three sets of certs listed: the certificate that is currently in use, a future that has been added but not yet used to sign a certificate, and a certificate that has been rotated out. For instances not using Certificate Authority Service (CAS) server CA, use ListServerCas instead. */
 export const ListServerCertificatesInstances: API.OperationMethod<
@@ -4809,7 +4948,7 @@ export const ListServerCertificatesInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServerCertificatesInstancesRequest,
   output: ListServerCertificatesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEntraIdCertificatesInstancesRequest {
@@ -4836,7 +4975,10 @@ export type ListEntraIdCertificatesInstancesResponse =
 export const ListEntraIdCertificatesInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstancesListEntraIdCertificatesResponse;
 
-export type ListEntraIdCertificatesInstancesError = DefaultErrors;
+export type ListEntraIdCertificatesInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all versions of EntraID certificates for the specified instance. There can be up to three sets of certificates listed: the certificate that is currently in use, a future that has been added but not yet used to sign a certificate, and a certificate that has been rotated out. */
 export const ListEntraIdCertificatesInstances: API.OperationMethod<
@@ -4847,7 +4989,7 @@ export const ListEntraIdCertificatesInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEntraIdCertificatesInstancesRequest,
   output: ListEntraIdCertificatesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchInstancesRequest {
@@ -4875,7 +5017,12 @@ export const PatchInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchInstancesResponse = Operation;
 export const PatchInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInstancesError = DefaultErrors;
+export type PatchInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Partially updates settings of a Cloud SQL instance by merging the request with the current configuration. This method supports patch semantics. */
 export const patchInstances: API.OperationMethod<
@@ -4886,7 +5033,7 @@ export const patchInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInstancesRequest,
   output: PatchInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PromoteReplicaInstancesRequest {
@@ -4916,7 +5063,12 @@ export type PromoteReplicaInstancesResponse = Operation;
 export const PromoteReplicaInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PromoteReplicaInstancesError = DefaultErrors;
+export type PromoteReplicaInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Promotes the read replica instance to be an independent Cloud SQL primary instance. Using this operation might cause your instance to restart. */
 export const promoteReplicaInstances: API.OperationMethod<
@@ -4927,7 +5079,7 @@ export const promoteReplicaInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PromoteReplicaInstancesRequest,
   output: PromoteReplicaInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SwitchoverInstancesRequest {
@@ -4957,7 +5109,12 @@ export type SwitchoverInstancesResponse = Operation;
 export const SwitchoverInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SwitchoverInstancesError = DefaultErrors;
+export type SwitchoverInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Switches over from the primary instance to the DR replica instance. */
 export const switchoverInstances: API.OperationMethod<
@@ -4968,7 +5125,7 @@ export const switchoverInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchoverInstancesRequest,
   output: SwitchoverInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetSslConfigInstancesRequest {
@@ -5002,7 +5159,12 @@ export type ResetSslConfigInstancesResponse = Operation;
 export const ResetSslConfigInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResetSslConfigInstancesError = DefaultErrors;
+export type ResetSslConfigInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all client certificates and generates a new server SSL certificate for the instance. */
 export const resetSslConfigInstances: API.OperationMethod<
@@ -5013,7 +5175,7 @@ export const resetSslConfigInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetSslConfigInstancesRequest,
   output: ResetSslConfigInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestartInstancesRequest {
@@ -5039,7 +5201,12 @@ export const RestartInstancesRequest =
 export type RestartInstancesResponse = Operation;
 export const RestartInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestartInstancesError = DefaultErrors;
+export type RestartInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restarts a Cloud SQL instance. */
 export const restartInstances: API.OperationMethod<
@@ -5050,7 +5217,7 @@ export const restartInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestartInstancesRequest,
   output: RestartInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreBackupInstancesRequest {
@@ -5080,7 +5247,12 @@ export type RestoreBackupInstancesResponse = Operation;
 export const RestoreBackupInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestoreBackupInstancesError = DefaultErrors;
+export type RestoreBackupInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a backup of a Cloud SQL instance. Using this operation might cause your instance to restart. */
 export const restoreBackupInstances: API.OperationMethod<
@@ -5091,7 +5263,7 @@ export const restoreBackupInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreBackupInstancesRequest,
   output: RestoreBackupInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RotateServerCaInstancesRequest {
@@ -5121,7 +5293,12 @@ export type RotateServerCaInstancesResponse = Operation;
 export const RotateServerCaInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RotateServerCaInstancesError = DefaultErrors;
+export type RotateServerCaInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with the addServerCA method. For instances that have enabled Certificate Authority Service (CAS) based server CA, use RotateServerCertificate to rotate the server certificate. */
 export const rotateServerCaInstances: API.OperationMethod<
@@ -5132,7 +5309,7 @@ export const rotateServerCaInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RotateServerCaInstancesRequest,
   output: RotateServerCaInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RotateServerCertificateInstancesRequest {
@@ -5164,7 +5341,12 @@ export type RotateServerCertificateInstancesResponse = Operation;
 export const RotateServerCertificateInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RotateServerCertificateInstancesError = DefaultErrors;
+export type RotateServerCertificateInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rotates the server certificate version to one previously added with the addServerCertificate method. For instances not using Certificate Authority Service (CAS) server CA, use RotateServerCa instead. */
 export const RotateServerCertificateInstances: API.OperationMethod<
@@ -5175,7 +5357,7 @@ export const RotateServerCertificateInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RotateServerCertificateInstancesRequest,
   output: RotateServerCertificateInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RotateEntraIdCertificateInstancesRequest {
@@ -5207,7 +5389,12 @@ export type RotateEntraIdCertificateInstancesResponse = Operation;
 export const RotateEntraIdCertificateInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RotateEntraIdCertificateInstancesError = DefaultErrors;
+export type RotateEntraIdCertificateInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rotates the Entra Id certificate version to one previously added with the addEntraIdCertificate method. */
 export const RotateEntraIdCertificateInstances: API.OperationMethod<
@@ -5218,7 +5405,7 @@ export const RotateEntraIdCertificateInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RotateEntraIdCertificateInstancesRequest,
   output: RotateEntraIdCertificateInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartReplicaInstancesRequest {
@@ -5245,7 +5432,12 @@ export type StartReplicaInstancesResponse = Operation;
 export const StartReplicaInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartReplicaInstancesError = DefaultErrors;
+export type StartReplicaInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts the replication in the read replica instance. */
 export const startReplicaInstances: API.OperationMethod<
@@ -5256,7 +5448,7 @@ export const startReplicaInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartReplicaInstancesRequest,
   output: StartReplicaInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopReplicaInstancesRequest {
@@ -5283,7 +5475,12 @@ export type StopReplicaInstancesResponse = Operation;
 export const StopReplicaInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopReplicaInstancesError = DefaultErrors;
+export type StopReplicaInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops the replication in the read replica instance. */
 export const stopReplicaInstances: API.OperationMethod<
@@ -5294,7 +5491,7 @@ export const stopReplicaInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopReplicaInstancesRequest,
   output: StopReplicaInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TruncateLogInstancesRequest {
@@ -5324,7 +5521,12 @@ export type TruncateLogInstancesResponse = Operation;
 export const TruncateLogInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type TruncateLogInstancesError = DefaultErrors;
+export type TruncateLogInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Truncate MySQL general and slow query log tables MySQL only. */
 export const truncateLogInstances: API.OperationMethod<
@@ -5335,7 +5537,7 @@ export const truncateLogInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TruncateLogInstancesRequest,
   output: TruncateLogInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateInstancesRequest {
@@ -5365,7 +5567,12 @@ export const UpdateInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateInstancesResponse = Operation;
 export const UpdateInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateInstancesError = DefaultErrors;
+export type UpdateInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates settings of a Cloud SQL instance. Using this operation might cause your instance to restart. */
 export const updateInstances: API.OperationMethod<
@@ -5376,7 +5583,7 @@ export const updateInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInstancesRequest,
   output: UpdateInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteSqlInstancesRequest {
@@ -5406,7 +5613,12 @@ export type ExecuteSqlInstancesResponse = SqlInstancesExecuteSqlResponse;
 export const ExecuteSqlInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SqlInstancesExecuteSqlResponse;
 
-export type ExecuteSqlInstancesError = DefaultErrors;
+export type ExecuteSqlInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute SQL statements. */
 export const executeSqlInstances: API.OperationMethod<
@@ -5417,7 +5629,7 @@ export const executeSqlInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteSqlInstancesRequest,
   output: ExecuteSqlInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcquireSsrsLeaseInstancesRequest {
@@ -5448,7 +5660,12 @@ export type AcquireSsrsLeaseInstancesResponse =
 export const AcquireSsrsLeaseInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SqlInstancesAcquireSsrsLeaseResponse;
 
-export type AcquireSsrsLeaseInstancesError = DefaultErrors;
+export type AcquireSsrsLeaseInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acquire a lease for the setup of SQL Server Reporting Services (SSRS). */
 export const acquireSsrsLeaseInstances: API.OperationMethod<
@@ -5459,7 +5676,7 @@ export const acquireSsrsLeaseInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcquireSsrsLeaseInstancesRequest,
   output: AcquireSsrsLeaseInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReleaseSsrsLeaseInstancesRequest {
@@ -5487,7 +5704,12 @@ export type ReleaseSsrsLeaseInstancesResponse =
 export const ReleaseSsrsLeaseInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SqlInstancesReleaseSsrsLeaseResponse;
 
-export type ReleaseSsrsLeaseInstancesError = DefaultErrors;
+export type ReleaseSsrsLeaseInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Release a lease for the setup of SQL Server Reporting Services (SSRS). */
 export const releaseSsrsLeaseInstances: API.OperationMethod<
@@ -5498,7 +5720,7 @@ export const releaseSsrsLeaseInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReleaseSsrsLeaseInstancesRequest,
   output: ReleaseSsrsLeaseInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PreCheckMajorVersionUpgradeInstancesRequest {
@@ -5530,7 +5752,12 @@ export type PreCheckMajorVersionUpgradeInstancesResponse = Operation;
 export const PreCheckMajorVersionUpgradeInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PreCheckMajorVersionUpgradeInstancesError = DefaultErrors;
+export type PreCheckMajorVersionUpgradeInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute MVU Pre-checks */
 export const preCheckMajorVersionUpgradeInstances: API.OperationMethod<
@@ -5541,7 +5768,7 @@ export const preCheckMajorVersionUpgradeInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PreCheckMajorVersionUpgradeInstancesRequest,
   output: PreCheckMajorVersionUpgradeInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PointInTimeRestoreInstancesRequest {
@@ -5568,7 +5795,12 @@ export type PointInTimeRestoreInstancesResponse = Operation;
 export const PointInTimeRestoreInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PointInTimeRestoreInstancesError = DefaultErrors;
+export type PointInTimeRestoreInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery. */
 export const pointInTimeRestoreInstances: API.OperationMethod<
@@ -5579,7 +5811,7 @@ export const pointInTimeRestoreInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PointInTimeRestoreInstancesRequest,
   output: PointInTimeRestoreInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateEphemeralSslCertsRequest {
@@ -5609,7 +5841,12 @@ export type CreateEphemeralSslCertsResponse = SslCert;
 export const CreateEphemeralSslCertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCert;
 
-export type CreateEphemeralSslCertsError = DefaultErrors;
+export type CreateEphemeralSslCertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database. */
 export const createEphemeralSslCerts: API.OperationMethod<
@@ -5620,7 +5857,7 @@ export const createEphemeralSslCerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEphemeralSslCertsRequest,
   output: CreateEphemeralSslCertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSslCertsRequest {
@@ -5647,7 +5884,12 @@ export const DeleteSslCertsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteSslCertsResponse = Operation;
 export const DeleteSslCertsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSslCertsError = DefaultErrors;
+export type DeleteSslCertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the SSL certificate. For First Generation instances, the certificate remains valid until the instance is restarted. */
 export const deleteSslCerts: API.OperationMethod<
@@ -5658,7 +5900,7 @@ export const deleteSslCerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSslCertsRequest,
   output: DeleteSslCertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSslCertsRequest {
@@ -5685,7 +5927,7 @@ export const GetSslCertsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSslCertsResponse = SslCert;
 export const GetSslCertsResponse = /*@__PURE__*/ /*#__PURE__*/ SslCert;
 
-export type GetSslCertsError = DefaultErrors;
+export type GetSslCertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation. */
 export const getSslCerts: API.OperationMethod<
@@ -5696,7 +5938,7 @@ export const getSslCerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSslCertsRequest,
   output: GetSslCertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSslCertsRequest {
@@ -5725,7 +5967,12 @@ export type InsertSslCertsResponse = SslCertsInsertResponse;
 export const InsertSslCertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCertsInsertResponse;
 
-export type InsertSslCertsError = DefaultErrors;
+export type InsertSslCertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted. */
 export const insertSslCerts: API.OperationMethod<
@@ -5736,7 +5983,7 @@ export const insertSslCerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSslCertsRequest,
   output: InsertSslCertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSslCertsRequest {
@@ -5761,7 +6008,7 @@ export type ListSslCertsResponse = SslCertsListResponse;
 export const ListSslCertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCertsListResponse;
 
-export type ListSslCertsError = DefaultErrors;
+export type ListSslCertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all of the current SSL certificates for the instance. */
 export const listSslCerts: API.OperationMethod<
@@ -5772,7 +6019,7 @@ export const listSslCerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSslCertsRequest,
   output: ListSslCertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RescheduleMaintenanceProjectsInstancesRequest {
@@ -5804,7 +6051,12 @@ export type RescheduleMaintenanceProjectsInstancesResponse = Operation;
 export const RescheduleMaintenanceProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RescheduleMaintenanceProjectsInstancesError = DefaultErrors;
+export type RescheduleMaintenanceProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reschedules the maintenance on the given instance. */
 export const rescheduleMaintenanceProjectsInstances: API.OperationMethod<
@@ -5815,7 +6067,7 @@ export const rescheduleMaintenanceProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RescheduleMaintenanceProjectsInstancesRequest,
   output: RescheduleMaintenanceProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyExternalSyncSettingsProjectsInstancesRequest {
@@ -5848,7 +6100,12 @@ export type VerifyExternalSyncSettingsProjectsInstancesResponse =
 export const VerifyExternalSyncSettingsProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SqlInstancesVerifyExternalSyncSettingsResponse;
 
-export type VerifyExternalSyncSettingsProjectsInstancesError = DefaultErrors;
+export type VerifyExternalSyncSettingsProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verify External primary instance external sync settings. */
 export const verifyExternalSyncSettingsProjectsInstances: API.OperationMethod<
@@ -5859,7 +6116,7 @@ export const verifyExternalSyncSettingsProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyExternalSyncSettingsProjectsInstancesRequest,
   output: VerifyExternalSyncSettingsProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartExternalSyncProjectsInstancesRequest {
@@ -5891,7 +6148,12 @@ export type StartExternalSyncProjectsInstancesResponse = Operation;
 export const StartExternalSyncProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartExternalSyncProjectsInstancesError = DefaultErrors;
+export type StartExternalSyncProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Start External primary instance migration. */
 export const startExternalSyncProjectsInstances: API.OperationMethod<
@@ -5902,7 +6164,7 @@ export const startExternalSyncProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartExternalSyncProjectsInstancesRequest,
   output: StartExternalSyncProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PerformDiskShrinkProjectsInstancesRequest {
@@ -5932,7 +6194,12 @@ export type PerformDiskShrinkProjectsInstancesResponse = Operation;
 export const PerformDiskShrinkProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PerformDiskShrinkProjectsInstancesError = DefaultErrors;
+export type PerformDiskShrinkProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform Disk Shrink on primary instance. */
 export const performDiskShrinkProjectsInstances: API.OperationMethod<
@@ -5943,7 +6210,7 @@ export const performDiskShrinkProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PerformDiskShrinkProjectsInstancesRequest,
   output: PerformDiskShrinkProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDiskShrinkConfigProjectsInstancesRequest {
@@ -5970,7 +6237,10 @@ export type GetDiskShrinkConfigProjectsInstancesResponse =
 export const GetDiskShrinkConfigProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SqlInstancesGetDiskShrinkConfigResponse;
 
-export type GetDiskShrinkConfigProjectsInstancesError = DefaultErrors;
+export type GetDiskShrinkConfigProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get Disk Shrink Config for a given instance. */
 export const getDiskShrinkConfigProjectsInstances: API.OperationMethod<
@@ -5981,7 +6251,7 @@ export const getDiskShrinkConfigProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDiskShrinkConfigProjectsInstancesRequest,
   output: GetDiskShrinkConfigProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResetReplicaSizeProjectsInstancesRequest {
@@ -6013,7 +6283,12 @@ export type ResetReplicaSizeProjectsInstancesResponse = Operation;
 export const ResetReplicaSizeProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResetReplicaSizeProjectsInstancesError = DefaultErrors;
+export type ResetReplicaSizeProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reset Replica Size to primary instance disk size. */
 export const resetReplicaSizeProjectsInstances: API.OperationMethod<
@@ -6024,7 +6299,7 @@ export const resetReplicaSizeProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetReplicaSizeProjectsInstancesRequest,
   output: ResetReplicaSizeProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLatestRecoveryTimeProjectsInstancesRequest {
@@ -6056,7 +6331,10 @@ export type GetLatestRecoveryTimeProjectsInstancesResponse =
 export const GetLatestRecoveryTimeProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SqlInstancesGetLatestRecoveryTimeResponse;
 
-export type GetLatestRecoveryTimeProjectsInstancesError = DefaultErrors;
+export type GetLatestRecoveryTimeProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get Latest Recovery Time for a given instance. */
 export const getLatestRecoveryTimeProjectsInstances: API.OperationMethod<
@@ -6067,7 +6345,7 @@ export const getLatestRecoveryTimeProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLatestRecoveryTimeProjectsInstancesRequest,
   output: GetLatestRecoveryTimeProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOperationsRequest {
@@ -6091,7 +6369,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an instance operation that has been performed on an instance. */
 export const getOperations: API.OperationMethod<
@@ -6102,7 +6380,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOperationsRequest {
@@ -6130,7 +6408,7 @@ export type ListOperationsResponse = OperationsListResponse;
 export const ListOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperationsListResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all instance operations that have been performed on the given Cloud SQL instance in the reverse chronological order of the start time. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -6141,7 +6419,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6172,7 +6450,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels an instance operation that has been performed on an instance. Ordinarily, this method name should be `CancelSqlOperation`. */
 export const cancelOperations: API.OperationMethod<
@@ -6183,7 +6466,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBackupBackupsRequest {
@@ -6210,7 +6493,12 @@ export type CreateBackupBackupsResponse = Operation;
 export const CreateBackupBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateBackupBackupsError = DefaultErrors;
+export type CreateBackupBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a backup for a Cloud SQL instance. This API can be used only to create on-demand backups. */
 export const createBackupBackups: API.OperationMethod<
@@ -6221,7 +6509,7 @@ export const createBackupBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBackupBackupsRequest,
   output: CreateBackupBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBackupBackupsRequest {
@@ -6240,7 +6528,7 @@ export const GetBackupBackupsRequest =
 export type GetBackupBackupsResponse = Backup;
 export const GetBackupBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type GetBackupBackupsError = DefaultErrors;
+export type GetBackupBackupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a resource containing information about a backup. */
 export const getBackupBackups: API.OperationMethod<
@@ -6251,7 +6539,7 @@ export const getBackupBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackupBackupsRequest,
   output: GetBackupBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBackupsBackupsRequest {
@@ -6280,7 +6568,7 @@ export type ListBackupsBackupsResponse = ListBackupsResponse;
 export const ListBackupsBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
 
-export type ListBackupsBackupsError = DefaultErrors;
+export type ListBackupsBackupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all backups associated with the project. */
 export const listBackupsBackups: API.PaginatedOperationMethod<
@@ -6291,7 +6579,7 @@ export const listBackupsBackups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBackupsBackupsRequest,
   output: ListBackupsBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6321,7 +6609,12 @@ export type UpdateBackupBackupsResponse = Operation;
 export const UpdateBackupBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateBackupBackupsError = DefaultErrors;
+export type UpdateBackupBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the retention period and the description of the backup. You can use this API to update final backups only. */
 export const updateBackupBackups: API.OperationMethod<
@@ -6332,7 +6625,7 @@ export const updateBackupBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackupBackupsRequest,
   output: UpdateBackupBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBackupBackupsRequest {
@@ -6352,7 +6645,12 @@ export type DeleteBackupBackupsResponse = Operation;
 export const DeleteBackupBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteBackupBackupsError = DefaultErrors;
+export type DeleteBackupBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the backup. */
 export const deleteBackupBackups: API.OperationMethod<
@@ -6363,7 +6661,7 @@ export const deleteBackupBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackupBackupsRequest,
   output: DeleteBackupBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConnectRequest {
@@ -6390,7 +6688,7 @@ export const GetConnectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetConnectResponse = ConnectSettings;
 export const GetConnectResponse = /*@__PURE__*/ /*#__PURE__*/ ConnectSettings;
 
-export type GetConnectError = DefaultErrors;
+export type GetConnectError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves connect settings about a Cloud SQL instance. */
 export const getConnect: API.OperationMethod<
@@ -6401,7 +6699,7 @@ export const getConnect: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectRequest,
   output: GetConnectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateEphemeralCertConnectRequest {
@@ -6432,7 +6730,12 @@ export type GenerateEphemeralCertConnectResponse =
 export const GenerateEphemeralCertConnectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateEphemeralCertResponse;
 
-export type GenerateEphemeralCertConnectError = DefaultErrors;
+export type GenerateEphemeralCertConnectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a short-lived X509 certificate containing the provided public key and signed by a private key specific to the target instance. Users may use the certificate to authenticate as themselves when connecting to the database. */
 export const generateEphemeralCertConnect: API.OperationMethod<
@@ -6443,7 +6746,7 @@ export const generateEphemeralCertConnect: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateEphemeralCertConnectRequest,
   output: GenerateEphemeralCertConnectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTiersRequest {
@@ -6461,7 +6764,7 @@ export const ListTiersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTiersResponse = TiersListResponse;
 export const ListTiersResponse = /*@__PURE__*/ /*#__PURE__*/ TiersListResponse;
 
-export type ListTiersError = DefaultErrors;
+export type ListTiersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all available machine types (tiers) for Cloud SQL, for example, `db-custom-1-3840`. For related information, see [Pricing](/sql/pricing). */
 export const listTiers: API.OperationMethod<
@@ -6472,7 +6775,7 @@ export const listTiers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTiersRequest,
   output: ListTiersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersRequest {
@@ -6502,7 +6805,12 @@ export const DeleteUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteUsersResponse = Operation;
 export const DeleteUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteUsersError = DefaultErrors;
+export type DeleteUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user from a Cloud SQL instance. */
 export const deleteUsers: API.OperationMethod<
@@ -6513,7 +6821,7 @@ export const deleteUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersRequest,
   output: DeleteUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersRequest {
@@ -6543,7 +6851,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type GetUsersError = DefaultErrors;
+export type GetUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a resource containing information about a user. */
 export const getUsers: API.OperationMethod<
@@ -6554,7 +6862,7 @@ export const getUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersRequest,
   output: GetUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertUsersRequest {
@@ -6582,7 +6890,12 @@ export const InsertUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertUsersResponse = Operation;
 export const InsertUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertUsersError = DefaultErrors;
+export type InsertUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new user in a Cloud SQL instance. */
 export const insertUsers: API.OperationMethod<
@@ -6593,7 +6906,7 @@ export const insertUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUsersRequest,
   output: InsertUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersRequest {
@@ -6617,7 +6930,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListUsersResponse = UsersListResponse;
 export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ UsersListResponse;
 
-export type ListUsersError = DefaultErrors;
+export type ListUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists users in the specified Cloud SQL instance. */
 export const listUsers: API.OperationMethod<
@@ -6628,7 +6941,7 @@ export const listUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateUsersRequest {
@@ -6672,7 +6985,12 @@ export const UpdateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateUsersResponse = Operation;
 export const UpdateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateUsersError = DefaultErrors;
+export type UpdateUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing user in a Cloud SQL instance. */
 export const updateUsers: API.OperationMethod<
@@ -6683,5 +7001,5 @@ export const updateUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersRequest,
   output: UpdateUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

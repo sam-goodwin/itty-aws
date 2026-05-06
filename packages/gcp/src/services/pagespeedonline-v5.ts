@@ -603,6 +603,31 @@ export const PagespeedApiPagespeedResponseV5 =
   }).annotate({ identifier: "PagespeedApiPagespeedResponseV5" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -654,7 +679,10 @@ export type RunpagespeedPagespeedapiResponse = PagespeedApiPagespeedResponseV5;
 export const RunpagespeedPagespeedapiResponse =
   /*@__PURE__*/ /*#__PURE__*/ PagespeedApiPagespeedResponseV5;
 
-export type RunpagespeedPagespeedapiError = DefaultErrors;
+export type RunpagespeedPagespeedapiError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information. */
 export const runpagespeedPagespeedapi: API.OperationMethod<
@@ -665,5 +693,5 @@ export const runpagespeedPagespeedapi: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunpagespeedPagespeedapiRequest,
   output: RunpagespeedPagespeedapiResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

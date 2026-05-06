@@ -3914,6 +3914,52 @@ export const GoogleCloudContentwarehouseV1SetAclResponse =
   }).annotate({ identifier: "GoogleCloudContentwarehouseV1SetAclResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3940,7 +3986,12 @@ export type FetchAclProjectsResponse =
 export const FetchAclProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1FetchAclResponse;
 
-export type FetchAclProjectsError = DefaultErrors;
+export type FetchAclProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns NOT_FOUND error if the resource does not exist. Returns an empty policy if the resource exists but does not have a policy set. */
 export const fetchAclProjects: API.OperationMethod<
@@ -3951,7 +4002,7 @@ export const fetchAclProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchAclProjectsRequest,
   output: FetchAclProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetAclProjectsRequest {
@@ -3976,7 +4027,12 @@ export type SetAclProjectsResponse =
 export const SetAclProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1SetAclResponse;
 
-export type SetAclProjectsError = DefaultErrors;
+export type SetAclProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy for a resource. Replaces any existing policy. */
 export const setAclProjects: API.OperationMethod<
@@ -3987,7 +4043,7 @@ export const setAclProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAclProjectsRequest,
   output: SetAclProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunPipelineProjectsLocationsRequest {
@@ -4012,7 +4068,12 @@ export type RunPipelineProjectsLocationsResponse = GoogleLongrunningOperation;
 export const RunPipelineProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type RunPipelineProjectsLocationsError = DefaultErrors;
+export type RunPipelineProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run a predefined pipeline. */
 export const runPipelineProjectsLocations: API.OperationMethod<
@@ -4023,7 +4084,7 @@ export const runPipelineProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunPipelineProjectsLocationsRequest,
   output: RunPipelineProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStatusProjectsLocationsRequest {
@@ -4044,7 +4105,10 @@ export type GetStatusProjectsLocationsResponse =
 export const GetStatusProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1ProjectStatus;
 
-export type GetStatusProjectsLocationsError = DefaultErrors;
+export type GetStatusProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the project status. */
 export const getStatusProjectsLocations: API.OperationMethod<
@@ -4055,7 +4119,7 @@ export const getStatusProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStatusProjectsLocationsRequest,
   output: GetStatusProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InitializeProjectsLocationsRequest {
@@ -4080,7 +4144,12 @@ export type InitializeProjectsLocationsResponse = GoogleLongrunningOperation;
 export const InitializeProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type InitializeProjectsLocationsError = DefaultErrors;
+export type InitializeProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provisions resources for given tenant project. Returns a long running operation. */
 export const initializeProjectsLocations: API.OperationMethod<
@@ -4091,7 +4160,7 @@ export const initializeProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitializeProjectsLocationsRequest,
   output: InitializeProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDocumentSchemasRequest {
@@ -4112,7 +4181,10 @@ export type GetProjectsLocationsDocumentSchemasResponse =
 export const GetProjectsLocationsDocumentSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1DocumentSchema;
 
-export type GetProjectsLocationsDocumentSchemasError = DefaultErrors;
+export type GetProjectsLocationsDocumentSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a document schema. Returns NOT_FOUND if the document schema does not exist. */
 export const getProjectsLocationsDocumentSchemas: API.OperationMethod<
@@ -4123,7 +4195,7 @@ export const getProjectsLocationsDocumentSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDocumentSchemasRequest,
   output: GetProjectsLocationsDocumentSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsDocumentSchemasRequest {
@@ -4149,7 +4221,12 @@ export type PatchProjectsLocationsDocumentSchemasResponse =
 export const PatchProjectsLocationsDocumentSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1DocumentSchema;
 
-export type PatchProjectsLocationsDocumentSchemasError = DefaultErrors;
+export type PatchProjectsLocationsDocumentSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Document Schema. Returns INVALID_ARGUMENT if the name of the Document Schema is non-empty and does not equal the existing name. Supports only appending new properties, adding new ENUM possible values, and updating the EnumTypeOptions.validation_check_disabled flag for ENUM possible values. Updating existing properties will result into INVALID_ARGUMENT. */
 export const patchProjectsLocationsDocumentSchemas: API.OperationMethod<
@@ -4160,7 +4237,7 @@ export const patchProjectsLocationsDocumentSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDocumentSchemasRequest,
   output: PatchProjectsLocationsDocumentSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDocumentSchemasRequest {
@@ -4181,7 +4258,12 @@ export type DeleteProjectsLocationsDocumentSchemasResponse =
 export const DeleteProjectsLocationsDocumentSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDocumentSchemasError = DefaultErrors;
+export type DeleteProjectsLocationsDocumentSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a document schema. Returns NOT_FOUND if the document schema does not exist. Returns BAD_REQUEST if the document schema has documents depending on it. */
 export const deleteProjectsLocationsDocumentSchemas: API.OperationMethod<
@@ -4192,7 +4274,7 @@ export const deleteProjectsLocationsDocumentSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDocumentSchemasRequest,
   output: DeleteProjectsLocationsDocumentSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDocumentSchemasRequest {
@@ -4222,7 +4304,12 @@ export type CreateProjectsLocationsDocumentSchemasResponse =
 export const CreateProjectsLocationsDocumentSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1DocumentSchema;
 
-export type CreateProjectsLocationsDocumentSchemasError = DefaultErrors;
+export type CreateProjectsLocationsDocumentSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a document schema. */
 export const createProjectsLocationsDocumentSchemas: API.OperationMethod<
@@ -4233,7 +4320,7 @@ export const createProjectsLocationsDocumentSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDocumentSchemasRequest,
   output: CreateProjectsLocationsDocumentSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDocumentSchemasRequest {
@@ -4260,7 +4347,10 @@ export type ListProjectsLocationsDocumentSchemasResponse =
 export const ListProjectsLocationsDocumentSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1ListDocumentSchemasResponse;
 
-export type ListProjectsLocationsDocumentSchemasError = DefaultErrors;
+export type ListProjectsLocationsDocumentSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists document schemas. */
 export const listProjectsLocationsDocumentSchemas: API.PaginatedOperationMethod<
@@ -4271,7 +4361,7 @@ export const listProjectsLocationsDocumentSchemas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDocumentSchemasRequest,
   output: ListProjectsLocationsDocumentSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4296,7 +4386,10 @@ export type GetProjectsLocationsSynonymSetsResponse =
 export const GetProjectsLocationsSynonymSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1SynonymSet;
 
-export type GetProjectsLocationsSynonymSetsError = DefaultErrors;
+export type GetProjectsLocationsSynonymSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a SynonymSet for a particular context. Throws a NOT_FOUND exception if the Synonymset does not exist */
 export const getProjectsLocationsSynonymSets: API.OperationMethod<
@@ -4307,7 +4400,7 @@ export const getProjectsLocationsSynonymSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSynonymSetsRequest,
   output: GetProjectsLocationsSynonymSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsSynonymSetsRequest {
@@ -4333,7 +4426,12 @@ export type PatchProjectsLocationsSynonymSetsResponse =
 export const PatchProjectsLocationsSynonymSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1SynonymSet;
 
-export type PatchProjectsLocationsSynonymSetsError = DefaultErrors;
+export type PatchProjectsLocationsSynonymSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove the existing SynonymSet for the context and replaces it with a new one. Throws a NOT_FOUND exception if the SynonymSet is not found. */
 export const patchProjectsLocationsSynonymSets: API.OperationMethod<
@@ -4344,7 +4442,7 @@ export const patchProjectsLocationsSynonymSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSynonymSetsRequest,
   output: PatchProjectsLocationsSynonymSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSynonymSetsRequest {
@@ -4371,7 +4469,10 @@ export type ListProjectsLocationsSynonymSetsResponse =
 export const ListProjectsLocationsSynonymSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1ListSynonymSetsResponse;
 
-export type ListProjectsLocationsSynonymSetsError = DefaultErrors;
+export type ListProjectsLocationsSynonymSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all SynonymSets (for all contexts) for the specified location. */
 export const listProjectsLocationsSynonymSets: API.PaginatedOperationMethod<
@@ -4382,7 +4483,7 @@ export const listProjectsLocationsSynonymSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSynonymSetsRequest,
   output: ListProjectsLocationsSynonymSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4406,7 +4507,12 @@ export type DeleteProjectsLocationsSynonymSetsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsSynonymSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsSynonymSetsError = DefaultErrors;
+export type DeleteProjectsLocationsSynonymSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a SynonymSet for a given context. Throws a NOT_FOUND exception if the SynonymSet is not found. */
 export const deleteProjectsLocationsSynonymSets: API.OperationMethod<
@@ -4417,7 +4523,7 @@ export const deleteProjectsLocationsSynonymSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSynonymSetsRequest,
   output: DeleteProjectsLocationsSynonymSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsSynonymSetsRequest {
@@ -4443,7 +4549,12 @@ export type CreateProjectsLocationsSynonymSetsResponse =
 export const CreateProjectsLocationsSynonymSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1SynonymSet;
 
-export type CreateProjectsLocationsSynonymSetsError = DefaultErrors;
+export type CreateProjectsLocationsSynonymSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a SynonymSet for a single context. Throws an ALREADY_EXISTS exception if a synonymset already exists for the context. */
 export const createProjectsLocationsSynonymSets: API.OperationMethod<
@@ -4454,7 +4565,7 @@ export const createProjectsLocationsSynonymSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSynonymSetsRequest,
   output: CreateProjectsLocationsSynonymSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -4474,7 +4585,10 @@ export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -4485,7 +4599,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LinkedTargetsProjectsLocationsDocumentsRequest {
@@ -4515,7 +4629,12 @@ export type LinkedTargetsProjectsLocationsDocumentsResponse =
 export const LinkedTargetsProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1ListLinkedTargetsResponse;
 
-export type LinkedTargetsProjectsLocationsDocumentsError = DefaultErrors;
+export type LinkedTargetsProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Return all target document-links from the document. */
 export const linkedTargetsProjectsLocationsDocuments: API.OperationMethod<
@@ -4526,7 +4645,7 @@ export const linkedTargetsProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkedTargetsProjectsLocationsDocumentsRequest,
   output: LinkedTargetsProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetAclProjectsLocationsDocumentsRequest {
@@ -4552,7 +4671,12 @@ export type SetAclProjectsLocationsDocumentsResponse =
 export const SetAclProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1SetAclResponse;
 
-export type SetAclProjectsLocationsDocumentsError = DefaultErrors;
+export type SetAclProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy for a resource. Replaces any existing policy. */
 export const setAclProjectsLocationsDocuments: API.OperationMethod<
@@ -4563,7 +4687,7 @@ export const setAclProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAclProjectsLocationsDocumentsRequest,
   output: SetAclProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDocumentsRequest {
@@ -4589,7 +4713,12 @@ export type CreateProjectsLocationsDocumentsResponse =
 export const CreateProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1CreateDocumentResponse;
 
-export type CreateProjectsLocationsDocumentsError = DefaultErrors;
+export type CreateProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a document. */
 export const createProjectsLocationsDocuments: API.OperationMethod<
@@ -4600,7 +4729,7 @@ export const createProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDocumentsRequest,
   output: CreateProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LinkedSourcesProjectsLocationsDocumentsRequest {
@@ -4630,7 +4759,12 @@ export type LinkedSourcesProjectsLocationsDocumentsResponse =
 export const LinkedSourcesProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1ListLinkedSourcesResponse;
 
-export type LinkedSourcesProjectsLocationsDocumentsError = DefaultErrors;
+export type LinkedSourcesProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Return all source document-links from the document. */
 export const linkedSourcesProjectsLocationsDocuments: API.OperationMethod<
@@ -4641,7 +4775,7 @@ export const linkedSourcesProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkedSourcesProjectsLocationsDocumentsRequest,
   output: LinkedSourcesProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchAclProjectsLocationsDocumentsRequest {
@@ -4667,7 +4801,12 @@ export type FetchAclProjectsLocationsDocumentsResponse =
 export const FetchAclProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1FetchAclResponse;
 
-export type FetchAclProjectsLocationsDocumentsError = DefaultErrors;
+export type FetchAclProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns NOT_FOUND error if the resource does not exist. Returns an empty policy if the resource exists but does not have a policy set. */
 export const fetchAclProjectsLocationsDocuments: API.OperationMethod<
@@ -4678,7 +4817,7 @@ export const fetchAclProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchAclProjectsLocationsDocumentsRequest,
   output: FetchAclProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDocumentsRequest {
@@ -4704,7 +4843,12 @@ export type PatchProjectsLocationsDocumentsResponse =
 export const PatchProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1UpdateDocumentResponse;
 
-export type PatchProjectsLocationsDocumentsError = DefaultErrors;
+export type PatchProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a document. Returns INVALID_ARGUMENT if the name of the document is non-empty and does not equal the existing name. */
 export const patchProjectsLocationsDocuments: API.OperationMethod<
@@ -4715,7 +4859,7 @@ export const patchProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDocumentsRequest,
   output: PatchProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsLocationsDocumentsRequest {
@@ -4745,7 +4889,12 @@ export type SearchProjectsLocationsDocumentsResponse =
 export const SearchProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1SearchDocumentsResponse;
 
-export type SearchProjectsLocationsDocumentsError = DefaultErrors;
+export type SearchProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches for documents using provided SearchDocumentsRequest. This call only returns documents that the caller has permission to search against. */
 export const searchProjectsLocationsDocuments: API.OperationMethod<
@@ -4756,7 +4905,7 @@ export const searchProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsLocationsDocumentsRequest,
   output: SearchProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDocumentsRequest {
@@ -4782,7 +4931,12 @@ export type GetProjectsLocationsDocumentsResponse =
 export const GetProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1Document;
 
-export type GetProjectsLocationsDocumentsError = DefaultErrors;
+export type GetProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a document. Returns NOT_FOUND if the document does not exist. */
 export const getProjectsLocationsDocuments: API.OperationMethod<
@@ -4793,7 +4947,7 @@ export const getProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDocumentsRequest,
   output: GetProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDocumentsRequest {
@@ -4818,7 +4972,12 @@ export type DeleteProjectsLocationsDocumentsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDocumentsError = DefaultErrors;
+export type DeleteProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a document. Returns NOT_FOUND if the document does not exist. */
 export const deleteProjectsLocationsDocuments: API.OperationMethod<
@@ -4829,7 +4988,7 @@ export const deleteProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDocumentsRequest,
   output: DeleteProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LockProjectsLocationsDocumentsRequest {
@@ -4855,7 +5014,12 @@ export type LockProjectsLocationsDocumentsResponse =
 export const LockProjectsLocationsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1Document;
 
-export type LockProjectsLocationsDocumentsError = DefaultErrors;
+export type LockProjectsLocationsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lock the document so the document cannot be updated by other users. */
 export const lockProjectsLocationsDocuments: API.OperationMethod<
@@ -4866,7 +5030,7 @@ export const lockProjectsLocationsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LockProjectsLocationsDocumentsRequest,
   output: LockProjectsLocationsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDocumentsReferenceIdRequest {
@@ -4892,7 +5056,12 @@ export type PatchProjectsLocationsDocumentsReferenceIdResponse =
 export const PatchProjectsLocationsDocumentsReferenceIdResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1UpdateDocumentResponse;
 
-export type PatchProjectsLocationsDocumentsReferenceIdError = DefaultErrors;
+export type PatchProjectsLocationsDocumentsReferenceIdError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a document. Returns INVALID_ARGUMENT if the name of the document is non-empty and does not equal the existing name. */
 export const patchProjectsLocationsDocumentsReferenceId: API.OperationMethod<
@@ -4903,7 +5072,7 @@ export const patchProjectsLocationsDocumentsReferenceId: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDocumentsReferenceIdRequest,
   output: PatchProjectsLocationsDocumentsReferenceIdResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDocumentsReferenceIdRequest {
@@ -4929,7 +5098,12 @@ export type DeleteProjectsLocationsDocumentsReferenceIdResponse =
 export const DeleteProjectsLocationsDocumentsReferenceIdResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDocumentsReferenceIdError = DefaultErrors;
+export type DeleteProjectsLocationsDocumentsReferenceIdError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a document. Returns NOT_FOUND if the document does not exist. */
 export const deleteProjectsLocationsDocumentsReferenceId: API.OperationMethod<
@@ -4940,7 +5114,7 @@ export const deleteProjectsLocationsDocumentsReferenceId: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDocumentsReferenceIdRequest,
   output: DeleteProjectsLocationsDocumentsReferenceIdResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDocumentsReferenceIdRequest {
@@ -4966,7 +5140,12 @@ export type GetProjectsLocationsDocumentsReferenceIdResponse =
 export const GetProjectsLocationsDocumentsReferenceIdResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1Document;
 
-export type GetProjectsLocationsDocumentsReferenceIdError = DefaultErrors;
+export type GetProjectsLocationsDocumentsReferenceIdError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a document. Returns NOT_FOUND if the document does not exist. */
 export const getProjectsLocationsDocumentsReferenceId: API.OperationMethod<
@@ -4977,7 +5156,7 @@ export const getProjectsLocationsDocumentsReferenceId: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDocumentsReferenceIdRequest,
   output: GetProjectsLocationsDocumentsReferenceIdResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDocumentsDocumentLinksRequest {
@@ -5003,7 +5182,12 @@ export type DeleteProjectsLocationsDocumentsDocumentLinksResponse =
 export const DeleteProjectsLocationsDocumentsDocumentLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDocumentsDocumentLinksError = DefaultErrors;
+export type DeleteProjectsLocationsDocumentsDocumentLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove the link between the source and target documents. */
 export const deleteProjectsLocationsDocumentsDocumentLinks: API.OperationMethod<
@@ -5014,7 +5198,7 @@ export const deleteProjectsLocationsDocumentsDocumentLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDocumentsDocumentLinksRequest,
   output: DeleteProjectsLocationsDocumentsDocumentLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDocumentsDocumentLinksRequest {
@@ -5044,7 +5228,12 @@ export type CreateProjectsLocationsDocumentsDocumentLinksResponse =
 export const CreateProjectsLocationsDocumentsDocumentLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1DocumentLink;
 
-export type CreateProjectsLocationsDocumentsDocumentLinksError = DefaultErrors;
+export type CreateProjectsLocationsDocumentsDocumentLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a link between a source document and a target document. */
 export const createProjectsLocationsDocumentsDocumentLinks: API.OperationMethod<
@@ -5055,7 +5244,7 @@ export const createProjectsLocationsDocumentsDocumentLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDocumentsDocumentLinksRequest,
   output: CreateProjectsLocationsDocumentsDocumentLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsRuleSetsRequest {
@@ -5081,7 +5270,12 @@ export type CreateProjectsLocationsRuleSetsResponse =
 export const CreateProjectsLocationsRuleSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1RuleSet;
 
-export type CreateProjectsLocationsRuleSetsError = DefaultErrors;
+export type CreateProjectsLocationsRuleSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ruleset. */
 export const createProjectsLocationsRuleSets: API.OperationMethod<
@@ -5092,7 +5286,7 @@ export const createProjectsLocationsRuleSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRuleSetsRequest,
   output: CreateProjectsLocationsRuleSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsRuleSetsRequest {
@@ -5118,7 +5312,12 @@ export type PatchProjectsLocationsRuleSetsResponse =
 export const PatchProjectsLocationsRuleSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1RuleSet;
 
-export type PatchProjectsLocationsRuleSetsError = DefaultErrors;
+export type PatchProjectsLocationsRuleSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a ruleset. Returns INVALID_ARGUMENT if the name of the ruleset is non-empty and does not equal the existing name. */
 export const patchProjectsLocationsRuleSets: API.OperationMethod<
@@ -5129,7 +5328,7 @@ export const patchProjectsLocationsRuleSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRuleSetsRequest,
   output: PatchProjectsLocationsRuleSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRuleSetsRequest {
@@ -5156,7 +5355,10 @@ export type ListProjectsLocationsRuleSetsResponse =
 export const ListProjectsLocationsRuleSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1ListRuleSetsResponse;
 
-export type ListProjectsLocationsRuleSetsError = DefaultErrors;
+export type ListProjectsLocationsRuleSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists rulesets. */
 export const listProjectsLocationsRuleSets: API.PaginatedOperationMethod<
@@ -5167,7 +5369,7 @@ export const listProjectsLocationsRuleSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRuleSetsRequest,
   output: ListProjectsLocationsRuleSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5192,7 +5394,10 @@ export type GetProjectsLocationsRuleSetsResponse =
 export const GetProjectsLocationsRuleSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudContentwarehouseV1RuleSet;
 
-export type GetProjectsLocationsRuleSetsError = DefaultErrors;
+export type GetProjectsLocationsRuleSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ruleset. Returns NOT_FOUND if the ruleset does not exist. */
 export const getProjectsLocationsRuleSets: API.OperationMethod<
@@ -5203,7 +5408,7 @@ export const getProjectsLocationsRuleSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRuleSetsRequest,
   output: GetProjectsLocationsRuleSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsRuleSetsRequest {
@@ -5223,7 +5428,12 @@ export type DeleteProjectsLocationsRuleSetsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsRuleSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsRuleSetsError = DefaultErrors;
+export type DeleteProjectsLocationsRuleSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a ruleset. Returns NOT_FOUND if the document does not exist. */
 export const deleteProjectsLocationsRuleSets: API.OperationMethod<
@@ -5234,5 +5444,5 @@ export const deleteProjectsLocationsRuleSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRuleSetsRequest,
   output: DeleteProjectsLocationsRuleSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

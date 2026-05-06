@@ -5521,6 +5521,52 @@ export const BatchDeleteConversationsResponse =
   }).annotate({ identifier: "BatchDeleteConversationsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5541,7 +5587,10 @@ export type GetSecuritySettingsProjectsLocationsResponse = SecuritySettings;
 export const GetSecuritySettingsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecuritySettings;
 
-export type GetSecuritySettingsProjectsLocationsError = DefaultErrors;
+export type GetSecuritySettingsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the security settings for the project and location. */
 export const getSecuritySettingsProjectsLocations: API.OperationMethod<
@@ -5552,7 +5601,7 @@ export const getSecuritySettingsProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecuritySettingsProjectsLocationsRequest,
   output: GetSecuritySettingsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSecuritySettingsProjectsLocationsRequest {
@@ -5578,7 +5627,12 @@ export type UpdateSecuritySettingsProjectsLocationsResponse = SecuritySettings;
 export const UpdateSecuritySettingsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecuritySettings;
 
-export type UpdateSecuritySettingsProjectsLocationsError = DefaultErrors;
+export type UpdateSecuritySettingsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the security settings for the project and location. */
 export const updateSecuritySettingsProjectsLocations: API.OperationMethod<
@@ -5589,7 +5643,7 @@ export const updateSecuritySettingsProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecuritySettingsProjectsLocationsRequest,
   output: UpdateSecuritySettingsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -5623,7 +5677,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -5634,7 +5688,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5658,7 +5712,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -5669,7 +5723,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -5703,7 +5757,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -5714,7 +5771,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5738,7 +5795,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -5749,7 +5809,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -5769,7 +5829,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -5780,7 +5845,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -5803,7 +5868,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -5814,7 +5884,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsRequest {
@@ -5846,7 +5916,10 @@ export type ListProjectsLocationsAppsResponse = ListAppsResponse;
 export const ListProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAppsResponse;
 
-export type ListProjectsLocationsAppsError = DefaultErrors;
+export type ListProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists apps in the given project and location. */
 export const listProjectsLocationsApps: API.PaginatedOperationMethod<
@@ -5857,7 +5930,7 @@ export const listProjectsLocationsApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsRequest,
   output: ListProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5880,7 +5953,10 @@ export const GetProjectsLocationsAppsRequest =
 export type GetProjectsLocationsAppsResponse = App;
 export const GetProjectsLocationsAppsResponse = /*@__PURE__*/ /*#__PURE__*/ App;
 
-export type GetProjectsLocationsAppsError = DefaultErrors;
+export type GetProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified app. */
 export const getProjectsLocationsApps: API.OperationMethod<
@@ -5891,7 +5967,7 @@ export const getProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsRequest,
   output: GetProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsRequest {
@@ -5917,7 +5993,12 @@ export type CreateProjectsLocationsAppsResponse = Operation;
 export const CreateProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsAppsError = DefaultErrors;
+export type CreateProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new app in the given project and location. */
 export const createProjectsLocationsApps: API.OperationMethod<
@@ -5928,7 +6009,7 @@ export const createProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsRequest,
   output: CreateProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsRequest {
@@ -5954,7 +6035,12 @@ export type PatchProjectsLocationsAppsResponse = App;
 export const PatchProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ App;
 
-export type PatchProjectsLocationsAppsError = DefaultErrors;
+export type PatchProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified app. */
 export const patchProjectsLocationsApps: API.OperationMethod<
@@ -5965,7 +6051,7 @@ export const patchProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsRequest,
   output: PatchProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsRequest {
@@ -5988,7 +6074,12 @@ export type DeleteProjectsLocationsAppsResponse = Operation;
 export const DeleteProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsAppsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified app. */
 export const deleteProjectsLocationsApps: API.OperationMethod<
@@ -5999,7 +6090,7 @@ export const deleteProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsRequest,
   output: DeleteProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportAppProjectsLocationsAppsRequest {
@@ -6022,7 +6113,12 @@ export type ExportAppProjectsLocationsAppsResponse = Operation;
 export const ExportAppProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportAppProjectsLocationsAppsError = DefaultErrors;
+export type ExportAppProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports the specified app. */
 export const exportAppProjectsLocationsApps: API.OperationMethod<
@@ -6033,7 +6129,7 @@ export const exportAppProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportAppProjectsLocationsAppsRequest,
   output: ExportAppProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportAppProjectsLocationsAppsRequest {
@@ -6060,7 +6156,12 @@ export type ImportAppProjectsLocationsAppsResponse = Operation;
 export const ImportAppProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportAppProjectsLocationsAppsError = DefaultErrors;
+export type ImportAppProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports the specified app. */
 export const importAppProjectsLocationsApps: API.OperationMethod<
@@ -6071,7 +6172,7 @@ export const importAppProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportAppProjectsLocationsAppsRequest,
   output: ImportAppProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateAppResourceProjectsLocationsAppsRequest {
@@ -6098,7 +6199,12 @@ export type GenerateAppResourceProjectsLocationsAppsResponse = Operation;
 export const GenerateAppResourceProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GenerateAppResourceProjectsLocationsAppsError = DefaultErrors;
+export type GenerateAppResourceProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates specific resources (e.g. agent) in the app using LLM assistant. */
 export const generateAppResourceProjectsLocationsApps: API.OperationMethod<
@@ -6109,7 +6215,7 @@ export const generateAppResourceProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAppResourceProjectsLocationsAppsRequest,
   output: GenerateAppResourceProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunEvaluationProjectsLocationsAppsRequest {
@@ -6136,7 +6242,12 @@ export type RunEvaluationProjectsLocationsAppsResponse = Operation;
 export const RunEvaluationProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunEvaluationProjectsLocationsAppsError = DefaultErrors;
+export type RunEvaluationProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs an evaluation of the app. */
 export const runEvaluationProjectsLocationsApps: API.OperationMethod<
@@ -6147,7 +6258,7 @@ export const runEvaluationProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunEvaluationProjectsLocationsAppsRequest,
   output: RunEvaluationProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportEvaluationsProjectsLocationsAppsRequest {
@@ -6174,7 +6285,12 @@ export type ImportEvaluationsProjectsLocationsAppsResponse = Operation;
 export const ImportEvaluationsProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportEvaluationsProjectsLocationsAppsError = DefaultErrors;
+export type ImportEvaluationsProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports evaluations into the app. */
 export const importEvaluationsProjectsLocationsApps: API.OperationMethod<
@@ -6185,7 +6301,7 @@ export const importEvaluationsProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportEvaluationsProjectsLocationsAppsRequest,
   output: ImportEvaluationsProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestPersonaVoiceProjectsLocationsAppsRequest {
@@ -6213,7 +6329,12 @@ export type TestPersonaVoiceProjectsLocationsAppsResponse =
 export const TestPersonaVoiceProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPersonaVoiceResponse;
 
-export type TestPersonaVoiceProjectsLocationsAppsError = DefaultErrors;
+export type TestPersonaVoiceProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests the voice of a persona. Also accepts a default persona. */
 export const testPersonaVoiceProjectsLocationsApps: API.OperationMethod<
@@ -6224,7 +6345,7 @@ export const testPersonaVoiceProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestPersonaVoiceProjectsLocationsAppsRequest,
   output: TestPersonaVoiceProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteToolProjectsLocationsAppsRequest {
@@ -6251,7 +6372,12 @@ export type ExecuteToolProjectsLocationsAppsResponse = ExecuteToolResponse;
 export const ExecuteToolProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteToolResponse;
 
-export type ExecuteToolProjectsLocationsAppsError = DefaultErrors;
+export type ExecuteToolProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes the given tool with the given arguments. */
 export const executeToolProjectsLocationsApps: API.OperationMethod<
@@ -6262,7 +6388,7 @@ export const executeToolProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteToolProjectsLocationsAppsRequest,
   output: ExecuteToolProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveToolSchemaProjectsLocationsAppsRequest {
@@ -6290,7 +6416,12 @@ export type RetrieveToolSchemaProjectsLocationsAppsResponse =
 export const RetrieveToolSchemaProjectsLocationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveToolSchemaResponse;
 
-export type RetrieveToolSchemaProjectsLocationsAppsError = DefaultErrors;
+export type RetrieveToolSchemaProjectsLocationsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieve the schema of the given tool. The schema is computed on the fly for the given instance of the tool. */
 export const retrieveToolSchemaProjectsLocationsApps: API.OperationMethod<
@@ -6301,7 +6432,7 @@ export const retrieveToolSchemaProjectsLocationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveToolSchemaProjectsLocationsAppsRequest,
   output: RetrieveToolSchemaProjectsLocationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunSessionProjectsLocationsAppsSessionsRequest {
@@ -6329,7 +6460,12 @@ export type RunSessionProjectsLocationsAppsSessionsResponse =
 export const RunSessionProjectsLocationsAppsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunSessionResponse;
 
-export type RunSessionProjectsLocationsAppsSessionsError = DefaultErrors;
+export type RunSessionProjectsLocationsAppsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a single-turn interaction with the CES agent within a session. */
 export const runSessionProjectsLocationsAppsSessions: API.OperationMethod<
@@ -6340,7 +6476,7 @@ export const runSessionProjectsLocationsAppsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunSessionProjectsLocationsAppsSessionsRequest,
   output: RunSessionProjectsLocationsAppsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamRunSessionProjectsLocationsAppsSessionsRequest {
@@ -6368,7 +6504,12 @@ export type StreamRunSessionProjectsLocationsAppsSessionsResponse =
 export const StreamRunSessionProjectsLocationsAppsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunSessionResponse;
 
-export type StreamRunSessionProjectsLocationsAppsSessionsError = DefaultErrors;
+export type StreamRunSessionProjectsLocationsAppsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a single-turn interaction with the CES agent. Uses server-side streaming to deliver incremental results and partial responses as they are generated. By default, complete responses (e.g., messages from callbacks or full LLM responses) are sent to the client as soon as they are available. To enable streaming individual text chunks directly from the model, set enable_text_streaming to true. */
 export const streamRunSessionProjectsLocationsAppsSessions: API.OperationMethod<
@@ -6379,7 +6520,7 @@ export const streamRunSessionProjectsLocationsAppsSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StreamRunSessionProjectsLocationsAppsSessionsRequest,
   output: StreamRunSessionProjectsLocationsAppsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateChatTokenProjectsLocationsAppsSessionsRequest {
@@ -6407,7 +6548,12 @@ export type GenerateChatTokenProjectsLocationsAppsSessionsResponse =
 export const GenerateChatTokenProjectsLocationsAppsSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateChatTokenResponse;
 
-export type GenerateChatTokenProjectsLocationsAppsSessionsError = DefaultErrors;
+export type GenerateChatTokenProjectsLocationsAppsSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a session scoped token for chat widget to authenticate with Session APIs. */
 export const generateChatTokenProjectsLocationsAppsSessions: API.OperationMethod<
@@ -6418,7 +6564,7 @@ export const generateChatTokenProjectsLocationsAppsSessions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateChatTokenProjectsLocationsAppsSessionsRequest,
   output: GenerateChatTokenProjectsLocationsAppsSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsAgentsRequest {
@@ -6450,7 +6596,10 @@ export type ListProjectsLocationsAppsAgentsResponse = ListAgentsResponse;
 export const ListProjectsLocationsAppsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAgentsResponse;
 
-export type ListProjectsLocationsAppsAgentsError = DefaultErrors;
+export type ListProjectsLocationsAppsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists agents in the given app. */
 export const listProjectsLocationsAppsAgents: API.PaginatedOperationMethod<
@@ -6461,7 +6610,7 @@ export const listProjectsLocationsAppsAgents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsAgentsRequest,
   output: ListProjectsLocationsAppsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6485,7 +6634,10 @@ export type GetProjectsLocationsAppsAgentsResponse = Agent;
 export const GetProjectsLocationsAppsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Agent;
 
-export type GetProjectsLocationsAppsAgentsError = DefaultErrors;
+export type GetProjectsLocationsAppsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified agent. */
 export const getProjectsLocationsAppsAgents: API.OperationMethod<
@@ -6496,7 +6648,7 @@ export const getProjectsLocationsAppsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsAgentsRequest,
   output: GetProjectsLocationsAppsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsAgentsRequest {
@@ -6522,7 +6674,12 @@ export type CreateProjectsLocationsAppsAgentsResponse = Agent;
 export const CreateProjectsLocationsAppsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Agent;
 
-export type CreateProjectsLocationsAppsAgentsError = DefaultErrors;
+export type CreateProjectsLocationsAppsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new agent in the given app. */
 export const createProjectsLocationsAppsAgents: API.OperationMethod<
@@ -6533,7 +6690,7 @@ export const createProjectsLocationsAppsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsAgentsRequest,
   output: CreateProjectsLocationsAppsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsAgentsRequest {
@@ -6559,7 +6716,12 @@ export type PatchProjectsLocationsAppsAgentsResponse = Agent;
 export const PatchProjectsLocationsAppsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Agent;
 
-export type PatchProjectsLocationsAppsAgentsError = DefaultErrors;
+export type PatchProjectsLocationsAppsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified agent. */
 export const patchProjectsLocationsAppsAgents: API.OperationMethod<
@@ -6570,7 +6732,7 @@ export const patchProjectsLocationsAppsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsAgentsRequest,
   output: PatchProjectsLocationsAppsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsAgentsRequest {
@@ -6596,7 +6758,12 @@ export type DeleteProjectsLocationsAppsAgentsResponse = Empty;
 export const DeleteProjectsLocationsAppsAgentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsAgentsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsAgentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified agent. */
 export const deleteProjectsLocationsAppsAgents: API.OperationMethod<
@@ -6607,7 +6774,7 @@ export const deleteProjectsLocationsAppsAgents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsAgentsRequest,
   output: DeleteProjectsLocationsAppsAgentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsExamplesRequest {
@@ -6639,7 +6806,10 @@ export type ListProjectsLocationsAppsExamplesResponse = ListExamplesResponse;
 export const ListProjectsLocationsAppsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExamplesResponse;
 
-export type ListProjectsLocationsAppsExamplesError = DefaultErrors;
+export type ListProjectsLocationsAppsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists examples in the given app. */
 export const listProjectsLocationsAppsExamples: API.PaginatedOperationMethod<
@@ -6650,7 +6820,7 @@ export const listProjectsLocationsAppsExamples: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsExamplesRequest,
   output: ListProjectsLocationsAppsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6674,7 +6844,10 @@ export type GetProjectsLocationsAppsExamplesResponse = Example;
 export const GetProjectsLocationsAppsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Example;
 
-export type GetProjectsLocationsAppsExamplesError = DefaultErrors;
+export type GetProjectsLocationsAppsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified example. */
 export const getProjectsLocationsAppsExamples: API.OperationMethod<
@@ -6685,7 +6858,7 @@ export const getProjectsLocationsAppsExamples: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsExamplesRequest,
   output: GetProjectsLocationsAppsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsExamplesRequest {
@@ -6711,7 +6884,12 @@ export type CreateProjectsLocationsAppsExamplesResponse = Example;
 export const CreateProjectsLocationsAppsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Example;
 
-export type CreateProjectsLocationsAppsExamplesError = DefaultErrors;
+export type CreateProjectsLocationsAppsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new example in the given app. */
 export const createProjectsLocationsAppsExamples: API.OperationMethod<
@@ -6722,7 +6900,7 @@ export const createProjectsLocationsAppsExamples: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsExamplesRequest,
   output: CreateProjectsLocationsAppsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsExamplesRequest {
@@ -6748,7 +6926,12 @@ export type PatchProjectsLocationsAppsExamplesResponse = Example;
 export const PatchProjectsLocationsAppsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Example;
 
-export type PatchProjectsLocationsAppsExamplesError = DefaultErrors;
+export type PatchProjectsLocationsAppsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified example. */
 export const patchProjectsLocationsAppsExamples: API.OperationMethod<
@@ -6759,7 +6942,7 @@ export const patchProjectsLocationsAppsExamples: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsExamplesRequest,
   output: PatchProjectsLocationsAppsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsExamplesRequest {
@@ -6782,7 +6965,12 @@ export type DeleteProjectsLocationsAppsExamplesResponse = Empty;
 export const DeleteProjectsLocationsAppsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsExamplesError = DefaultErrors;
+export type DeleteProjectsLocationsAppsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified example. */
 export const deleteProjectsLocationsAppsExamples: API.OperationMethod<
@@ -6793,7 +6981,7 @@ export const deleteProjectsLocationsAppsExamples: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsExamplesRequest,
   output: DeleteProjectsLocationsAppsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsToolsRequest {
@@ -6825,7 +7013,10 @@ export type ListProjectsLocationsAppsToolsResponse = ListToolsResponse;
 export const ListProjectsLocationsAppsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListToolsResponse;
 
-export type ListProjectsLocationsAppsToolsError = DefaultErrors;
+export type ListProjectsLocationsAppsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists tools in the given app. */
 export const listProjectsLocationsAppsTools: API.PaginatedOperationMethod<
@@ -6836,7 +7027,7 @@ export const listProjectsLocationsAppsTools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsToolsRequest,
   output: ListProjectsLocationsAppsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6860,7 +7051,10 @@ export type GetProjectsLocationsAppsToolsResponse = Tool;
 export const GetProjectsLocationsAppsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tool;
 
-export type GetProjectsLocationsAppsToolsError = DefaultErrors;
+export type GetProjectsLocationsAppsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified tool. */
 export const getProjectsLocationsAppsTools: API.OperationMethod<
@@ -6871,7 +7065,7 @@ export const getProjectsLocationsAppsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsToolsRequest,
   output: GetProjectsLocationsAppsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsToolsRequest {
@@ -6897,7 +7091,12 @@ export type CreateProjectsLocationsAppsToolsResponse = Tool;
 export const CreateProjectsLocationsAppsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tool;
 
-export type CreateProjectsLocationsAppsToolsError = DefaultErrors;
+export type CreateProjectsLocationsAppsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new tool in the given app. */
 export const createProjectsLocationsAppsTools: API.OperationMethod<
@@ -6908,7 +7107,7 @@ export const createProjectsLocationsAppsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsToolsRequest,
   output: CreateProjectsLocationsAppsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsToolsRequest {
@@ -6934,7 +7133,12 @@ export type PatchProjectsLocationsAppsToolsResponse = Tool;
 export const PatchProjectsLocationsAppsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tool;
 
-export type PatchProjectsLocationsAppsToolsError = DefaultErrors;
+export type PatchProjectsLocationsAppsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified tool. */
 export const patchProjectsLocationsAppsTools: API.OperationMethod<
@@ -6945,7 +7149,7 @@ export const patchProjectsLocationsAppsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsToolsRequest,
   output: PatchProjectsLocationsAppsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsToolsRequest {
@@ -6971,7 +7175,12 @@ export type DeleteProjectsLocationsAppsToolsResponse = Empty;
 export const DeleteProjectsLocationsAppsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsToolsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified tool. */
 export const deleteProjectsLocationsAppsTools: API.OperationMethod<
@@ -6982,7 +7191,7 @@ export const deleteProjectsLocationsAppsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsToolsRequest,
   output: DeleteProjectsLocationsAppsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsConversationsRequest {
@@ -7032,7 +7241,10 @@ export type ListProjectsLocationsAppsConversationsResponse =
 export const ListProjectsLocationsAppsConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConversationsResponse;
 
-export type ListProjectsLocationsAppsConversationsError = DefaultErrors;
+export type ListProjectsLocationsAppsConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists conversations in the given app. */
 export const listProjectsLocationsAppsConversations: API.PaginatedOperationMethod<
@@ -7043,7 +7255,7 @@ export const listProjectsLocationsAppsConversations: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsConversationsRequest,
   output: ListProjectsLocationsAppsConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7076,7 +7288,10 @@ export type GetProjectsLocationsAppsConversationsResponse = Conversation;
 export const GetProjectsLocationsAppsConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Conversation;
 
-export type GetProjectsLocationsAppsConversationsError = DefaultErrors;
+export type GetProjectsLocationsAppsConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified conversation. */
 export const getProjectsLocationsAppsConversations: API.OperationMethod<
@@ -7087,7 +7302,7 @@ export const getProjectsLocationsAppsConversations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsConversationsRequest,
   output: GetProjectsLocationsAppsConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsAppsConversationsRequest {
@@ -7116,7 +7331,12 @@ export type DeleteProjectsLocationsAppsConversationsResponse = Empty;
 export const DeleteProjectsLocationsAppsConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsConversationsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified conversation. */
 export const deleteProjectsLocationsAppsConversations: API.OperationMethod<
@@ -7127,7 +7347,7 @@ export const deleteProjectsLocationsAppsConversations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsConversationsRequest,
   output: DeleteProjectsLocationsAppsConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteProjectsLocationsAppsConversationsRequest {
@@ -7154,7 +7374,12 @@ export type BatchDeleteProjectsLocationsAppsConversationsResponse = Operation;
 export const BatchDeleteProjectsLocationsAppsConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchDeleteProjectsLocationsAppsConversationsError = DefaultErrors;
+export type BatchDeleteProjectsLocationsAppsConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch deletes the specified conversations. */
 export const batchDeleteProjectsLocationsAppsConversations: API.OperationMethod<
@@ -7165,7 +7390,7 @@ export const batchDeleteProjectsLocationsAppsConversations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsLocationsAppsConversationsRequest,
   output: BatchDeleteProjectsLocationsAppsConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateEvaluationProjectsLocationsAppsConversationsRequest {
@@ -7194,7 +7419,11 @@ export const GenerateEvaluationProjectsLocationsAppsConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GenerateEvaluationProjectsLocationsAppsConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a golden evaluation from a conversation. */
 export const generateEvaluationProjectsLocationsAppsConversations: API.OperationMethod<
@@ -7205,7 +7434,7 @@ export const generateEvaluationProjectsLocationsAppsConversations: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateEvaluationProjectsLocationsAppsConversationsRequest,
   output: GenerateEvaluationProjectsLocationsAppsConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsGuardrailsRequest {
@@ -7238,7 +7467,10 @@ export type ListProjectsLocationsAppsGuardrailsResponse =
 export const ListProjectsLocationsAppsGuardrailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGuardrailsResponse;
 
-export type ListProjectsLocationsAppsGuardrailsError = DefaultErrors;
+export type ListProjectsLocationsAppsGuardrailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists guardrails in the given app. */
 export const listProjectsLocationsAppsGuardrails: API.PaginatedOperationMethod<
@@ -7249,7 +7481,7 @@ export const listProjectsLocationsAppsGuardrails: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsGuardrailsRequest,
   output: ListProjectsLocationsAppsGuardrailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7273,7 +7505,10 @@ export type GetProjectsLocationsAppsGuardrailsResponse = Guardrail;
 export const GetProjectsLocationsAppsGuardrailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Guardrail;
 
-export type GetProjectsLocationsAppsGuardrailsError = DefaultErrors;
+export type GetProjectsLocationsAppsGuardrailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified guardrail. */
 export const getProjectsLocationsAppsGuardrails: API.OperationMethod<
@@ -7284,7 +7519,7 @@ export const getProjectsLocationsAppsGuardrails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsGuardrailsRequest,
   output: GetProjectsLocationsAppsGuardrailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsGuardrailsRequest {
@@ -7316,7 +7551,12 @@ export type CreateProjectsLocationsAppsGuardrailsResponse = Guardrail;
 export const CreateProjectsLocationsAppsGuardrailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Guardrail;
 
-export type CreateProjectsLocationsAppsGuardrailsError = DefaultErrors;
+export type CreateProjectsLocationsAppsGuardrailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new guardrail in the given app. */
 export const createProjectsLocationsAppsGuardrails: API.OperationMethod<
@@ -7327,7 +7567,7 @@ export const createProjectsLocationsAppsGuardrails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsGuardrailsRequest,
   output: CreateProjectsLocationsAppsGuardrailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsGuardrailsRequest {
@@ -7353,7 +7593,12 @@ export type PatchProjectsLocationsAppsGuardrailsResponse = Guardrail;
 export const PatchProjectsLocationsAppsGuardrailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Guardrail;
 
-export type PatchProjectsLocationsAppsGuardrailsError = DefaultErrors;
+export type PatchProjectsLocationsAppsGuardrailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified guardrail. */
 export const patchProjectsLocationsAppsGuardrails: API.OperationMethod<
@@ -7364,7 +7609,7 @@ export const patchProjectsLocationsAppsGuardrails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsGuardrailsRequest,
   output: PatchProjectsLocationsAppsGuardrailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsGuardrailsRequest {
@@ -7390,7 +7635,12 @@ export type DeleteProjectsLocationsAppsGuardrailsResponse = Empty;
 export const DeleteProjectsLocationsAppsGuardrailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsGuardrailsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsGuardrailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified guardrail. */
 export const deleteProjectsLocationsAppsGuardrails: API.OperationMethod<
@@ -7401,7 +7651,7 @@ export const deleteProjectsLocationsAppsGuardrails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsGuardrailsRequest,
   output: DeleteProjectsLocationsAppsGuardrailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsDeploymentsRequest {
@@ -7431,7 +7681,10 @@ export type ListProjectsLocationsAppsDeploymentsResponse =
 export const ListProjectsLocationsAppsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDeploymentsResponse;
 
-export type ListProjectsLocationsAppsDeploymentsError = DefaultErrors;
+export type ListProjectsLocationsAppsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists deployments in the given app. */
 export const listProjectsLocationsAppsDeployments: API.PaginatedOperationMethod<
@@ -7442,7 +7695,7 @@ export const listProjectsLocationsAppsDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsDeploymentsRequest,
   output: ListProjectsLocationsAppsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7466,7 +7719,10 @@ export type GetProjectsLocationsAppsDeploymentsResponse = Deployment;
 export const GetProjectsLocationsAppsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Deployment;
 
-export type GetProjectsLocationsAppsDeploymentsError = DefaultErrors;
+export type GetProjectsLocationsAppsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified deployment. */
 export const getProjectsLocationsAppsDeployments: API.OperationMethod<
@@ -7477,7 +7733,7 @@ export const getProjectsLocationsAppsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsDeploymentsRequest,
   output: GetProjectsLocationsAppsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsDeploymentsRequest {
@@ -7509,7 +7765,12 @@ export type CreateProjectsLocationsAppsDeploymentsResponse = Deployment;
 export const CreateProjectsLocationsAppsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Deployment;
 
-export type CreateProjectsLocationsAppsDeploymentsError = DefaultErrors;
+export type CreateProjectsLocationsAppsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new deployment in the given app. */
 export const createProjectsLocationsAppsDeployments: API.OperationMethod<
@@ -7520,7 +7781,7 @@ export const createProjectsLocationsAppsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsDeploymentsRequest,
   output: CreateProjectsLocationsAppsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsDeploymentsRequest {
@@ -7546,7 +7807,12 @@ export type PatchProjectsLocationsAppsDeploymentsResponse = Deployment;
 export const PatchProjectsLocationsAppsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Deployment;
 
-export type PatchProjectsLocationsAppsDeploymentsError = DefaultErrors;
+export type PatchProjectsLocationsAppsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified deployment. */
 export const patchProjectsLocationsAppsDeployments: API.OperationMethod<
@@ -7557,7 +7823,7 @@ export const patchProjectsLocationsAppsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsDeploymentsRequest,
   output: PatchProjectsLocationsAppsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsDeploymentsRequest {
@@ -7580,7 +7846,12 @@ export type DeleteProjectsLocationsAppsDeploymentsResponse = Empty;
 export const DeleteProjectsLocationsAppsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsDeploymentsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified deployment. */
 export const deleteProjectsLocationsAppsDeployments: API.OperationMethod<
@@ -7591,7 +7862,7 @@ export const deleteProjectsLocationsAppsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsDeploymentsRequest,
   output: DeleteProjectsLocationsAppsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsToolsetsRequest {
@@ -7623,7 +7894,10 @@ export type ListProjectsLocationsAppsToolsetsResponse = ListToolsetsResponse;
 export const ListProjectsLocationsAppsToolsetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListToolsetsResponse;
 
-export type ListProjectsLocationsAppsToolsetsError = DefaultErrors;
+export type ListProjectsLocationsAppsToolsetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists toolsets in the given app. */
 export const listProjectsLocationsAppsToolsets: API.PaginatedOperationMethod<
@@ -7634,7 +7908,7 @@ export const listProjectsLocationsAppsToolsets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsToolsetsRequest,
   output: ListProjectsLocationsAppsToolsetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7658,7 +7932,10 @@ export type GetProjectsLocationsAppsToolsetsResponse = Toolset;
 export const GetProjectsLocationsAppsToolsetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Toolset;
 
-export type GetProjectsLocationsAppsToolsetsError = DefaultErrors;
+export type GetProjectsLocationsAppsToolsetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified toolset. */
 export const getProjectsLocationsAppsToolsets: API.OperationMethod<
@@ -7669,7 +7946,7 @@ export const getProjectsLocationsAppsToolsets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsToolsetsRequest,
   output: GetProjectsLocationsAppsToolsetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsToolsetsRequest {
@@ -7695,7 +7972,12 @@ export type CreateProjectsLocationsAppsToolsetsResponse = Toolset;
 export const CreateProjectsLocationsAppsToolsetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Toolset;
 
-export type CreateProjectsLocationsAppsToolsetsError = DefaultErrors;
+export type CreateProjectsLocationsAppsToolsetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new toolset in the given app. */
 export const createProjectsLocationsAppsToolsets: API.OperationMethod<
@@ -7706,7 +7988,7 @@ export const createProjectsLocationsAppsToolsets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsToolsetsRequest,
   output: CreateProjectsLocationsAppsToolsetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsToolsetsRequest {
@@ -7732,7 +8014,12 @@ export type PatchProjectsLocationsAppsToolsetsResponse = Toolset;
 export const PatchProjectsLocationsAppsToolsetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Toolset;
 
-export type PatchProjectsLocationsAppsToolsetsError = DefaultErrors;
+export type PatchProjectsLocationsAppsToolsetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified toolset. */
 export const patchProjectsLocationsAppsToolsets: API.OperationMethod<
@@ -7743,7 +8030,7 @@ export const patchProjectsLocationsAppsToolsets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsToolsetsRequest,
   output: PatchProjectsLocationsAppsToolsetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsToolsetsRequest {
@@ -7769,7 +8056,12 @@ export type DeleteProjectsLocationsAppsToolsetsResponse = Empty;
 export const DeleteProjectsLocationsAppsToolsetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsToolsetsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsToolsetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified toolset. */
 export const deleteProjectsLocationsAppsToolsets: API.OperationMethod<
@@ -7780,7 +8072,7 @@ export const deleteProjectsLocationsAppsToolsets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsToolsetsRequest,
   output: DeleteProjectsLocationsAppsToolsetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveToolsProjectsLocationsAppsToolsetsRequest {
@@ -7808,7 +8100,12 @@ export type RetrieveToolsProjectsLocationsAppsToolsetsResponse =
 export const RetrieveToolsProjectsLocationsAppsToolsetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveToolsResponse;
 
-export type RetrieveToolsProjectsLocationsAppsToolsetsError = DefaultErrors;
+export type RetrieveToolsProjectsLocationsAppsToolsetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieve the list of tools included in the specified toolset. */
 export const retrieveToolsProjectsLocationsAppsToolsets: API.OperationMethod<
@@ -7819,7 +8116,7 @@ export const retrieveToolsProjectsLocationsAppsToolsets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveToolsProjectsLocationsAppsToolsetsRequest,
   output: RetrieveToolsProjectsLocationsAppsToolsetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsVersionsRequest {
@@ -7851,7 +8148,10 @@ export type ListProjectsLocationsAppsVersionsResponse = ListAppVersionsResponse;
 export const ListProjectsLocationsAppsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAppVersionsResponse;
 
-export type ListProjectsLocationsAppsVersionsError = DefaultErrors;
+export type ListProjectsLocationsAppsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all app versions in the given app. */
 export const listProjectsLocationsAppsVersions: API.PaginatedOperationMethod<
@@ -7862,7 +8162,7 @@ export const listProjectsLocationsAppsVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsVersionsRequest,
   output: ListProjectsLocationsAppsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7886,7 +8186,10 @@ export type GetProjectsLocationsAppsVersionsResponse = AppVersion;
 export const GetProjectsLocationsAppsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppVersion;
 
-export type GetProjectsLocationsAppsVersionsError = DefaultErrors;
+export type GetProjectsLocationsAppsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified app version. */
 export const getProjectsLocationsAppsVersions: API.OperationMethod<
@@ -7897,7 +8200,7 @@ export const getProjectsLocationsAppsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsVersionsRequest,
   output: GetProjectsLocationsAppsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsVersionsRequest {
@@ -7925,7 +8228,12 @@ export type CreateProjectsLocationsAppsVersionsResponse = AppVersion;
 export const CreateProjectsLocationsAppsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppVersion;
 
-export type CreateProjectsLocationsAppsVersionsError = DefaultErrors;
+export type CreateProjectsLocationsAppsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new app version in the given app. */
 export const createProjectsLocationsAppsVersions: API.OperationMethod<
@@ -7936,7 +8244,7 @@ export const createProjectsLocationsAppsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsVersionsRequest,
   output: CreateProjectsLocationsAppsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsVersionsRequest {
@@ -7959,7 +8267,12 @@ export type DeleteProjectsLocationsAppsVersionsResponse = Empty;
 export const DeleteProjectsLocationsAppsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified app version. */
 export const deleteProjectsLocationsAppsVersions: API.OperationMethod<
@@ -7970,7 +8283,7 @@ export const deleteProjectsLocationsAppsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsVersionsRequest,
   output: DeleteProjectsLocationsAppsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsLocationsAppsVersionsRequest {
@@ -7993,7 +8306,12 @@ export type RestoreProjectsLocationsAppsVersionsResponse = Operation;
 export const RestoreProjectsLocationsAppsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestoreProjectsLocationsAppsVersionsError = DefaultErrors;
+export type RestoreProjectsLocationsAppsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores the specified app version. This will create a new app version from the current draft app and overwrite the current draft with the specified app version. */
 export const restoreProjectsLocationsAppsVersions: API.OperationMethod<
@@ -8004,7 +8322,7 @@ export const restoreProjectsLocationsAppsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsAppsVersionsRequest,
   output: RestoreProjectsLocationsAppsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAppsChangelogsRequest {
@@ -8037,7 +8355,10 @@ export type ListProjectsLocationsAppsChangelogsResponse =
 export const ListProjectsLocationsAppsChangelogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChangelogsResponse;
 
-export type ListProjectsLocationsAppsChangelogsError = DefaultErrors;
+export type ListProjectsLocationsAppsChangelogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the changelogs of the specified app. */
 export const listProjectsLocationsAppsChangelogs: API.PaginatedOperationMethod<
@@ -8048,7 +8369,7 @@ export const listProjectsLocationsAppsChangelogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsChangelogsRequest,
   output: ListProjectsLocationsAppsChangelogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8072,7 +8393,10 @@ export type GetProjectsLocationsAppsChangelogsResponse = Changelog;
 export const GetProjectsLocationsAppsChangelogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Changelog;
 
-export type GetProjectsLocationsAppsChangelogsError = DefaultErrors;
+export type GetProjectsLocationsAppsChangelogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified changelog. */
 export const getProjectsLocationsAppsChangelogs: API.OperationMethod<
@@ -8083,7 +8407,7 @@ export const getProjectsLocationsAppsChangelogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsChangelogsRequest,
   output: GetProjectsLocationsAppsChangelogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest {
@@ -8112,7 +8436,11 @@ export const UploadEvaluationAudioProjectsLocationsAppsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UploadEvaluationAudioResponse;
 
 export type UploadEvaluationAudioProjectsLocationsAppsEvaluationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads audio for use in Golden Evaluations. Stores the audio in the Cloud Storage bucket defined in 'App.logging_settings.evaluation_audio_recording_config.gcs_bucket' and returns a transcript. */
 export const uploadEvaluationAudioProjectsLocationsAppsEvaluations: API.OperationMethod<
@@ -8123,7 +8451,7 @@ export const uploadEvaluationAudioProjectsLocationsAppsEvaluations: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadEvaluationAudioProjectsLocationsAppsEvaluationsRequest,
   output: UploadEvaluationAudioProjectsLocationsAppsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAppsEvaluationsRequest {
@@ -8155,7 +8483,12 @@ export type CreateProjectsLocationsAppsEvaluationsResponse = Evaluation;
 export const CreateProjectsLocationsAppsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Evaluation;
 
-export type CreateProjectsLocationsAppsEvaluationsError = DefaultErrors;
+export type CreateProjectsLocationsAppsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an evaluation. */
 export const createProjectsLocationsAppsEvaluations: API.OperationMethod<
@@ -8166,7 +8499,7 @@ export const createProjectsLocationsAppsEvaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsEvaluationsRequest,
   output: CreateProjectsLocationsAppsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsEvaluationsRequest {
@@ -8192,7 +8525,12 @@ export type PatchProjectsLocationsAppsEvaluationsResponse = Evaluation;
 export const PatchProjectsLocationsAppsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Evaluation;
 
-export type PatchProjectsLocationsAppsEvaluationsError = DefaultErrors;
+export type PatchProjectsLocationsAppsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an evaluation. */
 export const patchProjectsLocationsAppsEvaluations: API.OperationMethod<
@@ -8203,7 +8541,7 @@ export const patchProjectsLocationsAppsEvaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsEvaluationsRequest,
   output: PatchProjectsLocationsAppsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsEvaluationsRequest {
@@ -8229,7 +8567,12 @@ export type DeleteProjectsLocationsAppsEvaluationsResponse = Empty;
 export const DeleteProjectsLocationsAppsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsEvaluationsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an evaluation. */
 export const deleteProjectsLocationsAppsEvaluations: API.OperationMethod<
@@ -8240,7 +8583,7 @@ export const deleteProjectsLocationsAppsEvaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsEvaluationsRequest,
   output: DeleteProjectsLocationsAppsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppsEvaluationsRequest {
@@ -8260,7 +8603,10 @@ export type GetProjectsLocationsAppsEvaluationsResponse = Evaluation;
 export const GetProjectsLocationsAppsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Evaluation;
 
-export type GetProjectsLocationsAppsEvaluationsError = DefaultErrors;
+export type GetProjectsLocationsAppsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified evaluation. */
 export const getProjectsLocationsAppsEvaluations: API.OperationMethod<
@@ -8271,7 +8617,7 @@ export const getProjectsLocationsAppsEvaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsEvaluationsRequest,
   output: GetProjectsLocationsAppsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAppsEvaluationsRequest {
@@ -8319,7 +8665,10 @@ export type ListProjectsLocationsAppsEvaluationsResponse =
 export const ListProjectsLocationsAppsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEvaluationsResponse;
 
-export type ListProjectsLocationsAppsEvaluationsError = DefaultErrors;
+export type ListProjectsLocationsAppsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all evaluations in the given app. */
 export const listProjectsLocationsAppsEvaluations: API.PaginatedOperationMethod<
@@ -8330,7 +8679,7 @@ export const listProjectsLocationsAppsEvaluations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsEvaluationsRequest,
   output: ListProjectsLocationsAppsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8361,7 +8710,12 @@ export type ExportProjectsLocationsAppsEvaluationsResponse = Operation;
 export const ExportProjectsLocationsAppsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportProjectsLocationsAppsEvaluationsError = DefaultErrors;
+export type ExportProjectsLocationsAppsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports evaluations. */
 export const exportProjectsLocationsAppsEvaluations: API.OperationMethod<
@@ -8372,7 +8726,7 @@ export const exportProjectsLocationsAppsEvaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsAppsEvaluationsRequest,
   output: ExportProjectsLocationsAppsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsEvaluationsResultsRequest {
@@ -8392,7 +8746,12 @@ export type DeleteProjectsLocationsAppsEvaluationsResultsResponse = Empty;
 export const DeleteProjectsLocationsAppsEvaluationsResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsEvaluationsResultsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsEvaluationsResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an evaluation result. */
 export const deleteProjectsLocationsAppsEvaluationsResults: API.OperationMethod<
@@ -8403,7 +8762,7 @@ export const deleteProjectsLocationsAppsEvaluationsResults: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsEvaluationsResultsRequest,
   output: DeleteProjectsLocationsAppsEvaluationsResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppsEvaluationsResultsRequest {
@@ -8424,7 +8783,10 @@ export type GetProjectsLocationsAppsEvaluationsResultsResponse =
 export const GetProjectsLocationsAppsEvaluationsResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationResult;
 
-export type GetProjectsLocationsAppsEvaluationsResultsError = DefaultErrors;
+export type GetProjectsLocationsAppsEvaluationsResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified evaluation result. */
 export const getProjectsLocationsAppsEvaluationsResults: API.OperationMethod<
@@ -8435,7 +8797,7 @@ export const getProjectsLocationsAppsEvaluationsResults: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsEvaluationsResultsRequest,
   output: GetProjectsLocationsAppsEvaluationsResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAppsEvaluationsResultsRequest {
@@ -8468,7 +8830,10 @@ export type ListProjectsLocationsAppsEvaluationsResultsResponse =
 export const ListProjectsLocationsAppsEvaluationsResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEvaluationResultsResponse;
 
-export type ListProjectsLocationsAppsEvaluationsResultsError = DefaultErrors;
+export type ListProjectsLocationsAppsEvaluationsResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all evaluation results for a given evaluation. */
 export const listProjectsLocationsAppsEvaluationsResults: API.PaginatedOperationMethod<
@@ -8479,7 +8844,7 @@ export const listProjectsLocationsAppsEvaluationsResults: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsEvaluationsResultsRequest,
   output: ListProjectsLocationsAppsEvaluationsResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8516,7 +8881,12 @@ export type CreateProjectsLocationsAppsEvaluationDatasetsResponse =
 export const CreateProjectsLocationsAppsEvaluationDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationDataset;
 
-export type CreateProjectsLocationsAppsEvaluationDatasetsError = DefaultErrors;
+export type CreateProjectsLocationsAppsEvaluationDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an evaluation dataset. */
 export const createProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
@@ -8527,7 +8897,7 @@ export const createProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsEvaluationDatasetsRequest,
   output: CreateProjectsLocationsAppsEvaluationDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsEvaluationDatasetsRequest {
@@ -8554,7 +8924,12 @@ export type PatchProjectsLocationsAppsEvaluationDatasetsResponse =
 export const PatchProjectsLocationsAppsEvaluationDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationDataset;
 
-export type PatchProjectsLocationsAppsEvaluationDatasetsError = DefaultErrors;
+export type PatchProjectsLocationsAppsEvaluationDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an evaluation dataset. */
 export const patchProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
@@ -8565,7 +8940,7 @@ export const patchProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsEvaluationDatasetsRequest,
   output: PatchProjectsLocationsAppsEvaluationDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsEvaluationDatasetsRequest {
@@ -8588,7 +8963,12 @@ export type DeleteProjectsLocationsAppsEvaluationDatasetsResponse = Empty;
 export const DeleteProjectsLocationsAppsEvaluationDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAppsEvaluationDatasetsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsEvaluationDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an evaluation dataset. */
 export const deleteProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
@@ -8599,7 +8979,7 @@ export const deleteProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsEvaluationDatasetsRequest,
   output: DeleteProjectsLocationsAppsEvaluationDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppsEvaluationDatasetsRequest {
@@ -8620,7 +9000,10 @@ export type GetProjectsLocationsAppsEvaluationDatasetsResponse =
 export const GetProjectsLocationsAppsEvaluationDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationDataset;
 
-export type GetProjectsLocationsAppsEvaluationDatasetsError = DefaultErrors;
+export type GetProjectsLocationsAppsEvaluationDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified evaluation dataset. */
 export const getProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
@@ -8631,7 +9014,7 @@ export const getProjectsLocationsAppsEvaluationDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsEvaluationDatasetsRequest,
   output: GetProjectsLocationsAppsEvaluationDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAppsEvaluationDatasetsRequest {
@@ -8664,7 +9047,10 @@ export type ListProjectsLocationsAppsEvaluationDatasetsResponse =
 export const ListProjectsLocationsAppsEvaluationDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEvaluationDatasetsResponse;
 
-export type ListProjectsLocationsAppsEvaluationDatasetsError = DefaultErrors;
+export type ListProjectsLocationsAppsEvaluationDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all evaluation datasets in the given app. */
 export const listProjectsLocationsAppsEvaluationDatasets: API.PaginatedOperationMethod<
@@ -8675,7 +9061,7 @@ export const listProjectsLocationsAppsEvaluationDatasets: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsEvaluationDatasetsRequest,
   output: ListProjectsLocationsAppsEvaluationDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8699,7 +9085,12 @@ export type DeleteProjectsLocationsAppsEvaluationRunsResponse = Operation;
 export const DeleteProjectsLocationsAppsEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsAppsEvaluationRunsError = DefaultErrors;
+export type DeleteProjectsLocationsAppsEvaluationRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an evaluation run. */
 export const deleteProjectsLocationsAppsEvaluationRuns: API.OperationMethod<
@@ -8710,7 +9101,7 @@ export const deleteProjectsLocationsAppsEvaluationRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsEvaluationRunsRequest,
   output: DeleteProjectsLocationsAppsEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppsEvaluationRunsRequest {
@@ -8730,7 +9121,10 @@ export type GetProjectsLocationsAppsEvaluationRunsResponse = EvaluationRun;
 export const GetProjectsLocationsAppsEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationRun;
 
-export type GetProjectsLocationsAppsEvaluationRunsError = DefaultErrors;
+export type GetProjectsLocationsAppsEvaluationRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified evaluation run. */
 export const getProjectsLocationsAppsEvaluationRuns: API.OperationMethod<
@@ -8741,7 +9135,7 @@ export const getProjectsLocationsAppsEvaluationRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsEvaluationRunsRequest,
   output: GetProjectsLocationsAppsEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAppsEvaluationRunsRequest {
@@ -8774,7 +9168,10 @@ export type ListProjectsLocationsAppsEvaluationRunsResponse =
 export const ListProjectsLocationsAppsEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEvaluationRunsResponse;
 
-export type ListProjectsLocationsAppsEvaluationRunsError = DefaultErrors;
+export type ListProjectsLocationsAppsEvaluationRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all evaluation runs in the given app. */
 export const listProjectsLocationsAppsEvaluationRuns: API.PaginatedOperationMethod<
@@ -8785,7 +9182,7 @@ export const listProjectsLocationsAppsEvaluationRuns: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsEvaluationRunsRequest,
   output: ListProjectsLocationsAppsEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8823,7 +9220,9 @@ export const ListProjectsLocationsAppsEvaluationExpectationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEvaluationExpectationsResponse;
 
 export type ListProjectsLocationsAppsEvaluationExpectationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all evaluation expectations in the given app. */
 export const listProjectsLocationsAppsEvaluationExpectations: API.PaginatedOperationMethod<
@@ -8834,7 +9233,7 @@ export const listProjectsLocationsAppsEvaluationExpectations: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsEvaluationExpectationsRequest,
   output: ListProjectsLocationsAppsEvaluationExpectationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8859,7 +9258,10 @@ export type GetProjectsLocationsAppsEvaluationExpectationsResponse =
 export const GetProjectsLocationsAppsEvaluationExpectationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationExpectation;
 
-export type GetProjectsLocationsAppsEvaluationExpectationsError = DefaultErrors;
+export type GetProjectsLocationsAppsEvaluationExpectationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified evaluation expectation. */
 export const getProjectsLocationsAppsEvaluationExpectations: API.OperationMethod<
@@ -8870,7 +9272,7 @@ export const getProjectsLocationsAppsEvaluationExpectations: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsEvaluationExpectationsRequest,
   output: GetProjectsLocationsAppsEvaluationExpectationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAppsEvaluationExpectationsRequest {
@@ -8904,7 +9306,11 @@ export const CreateProjectsLocationsAppsEvaluationExpectationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationExpectation;
 
 export type CreateProjectsLocationsAppsEvaluationExpectationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an evaluation expectation. */
 export const createProjectsLocationsAppsEvaluationExpectations: API.OperationMethod<
@@ -8915,7 +9321,7 @@ export const createProjectsLocationsAppsEvaluationExpectations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsEvaluationExpectationsRequest,
   output: CreateProjectsLocationsAppsEvaluationExpectationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAppsEvaluationExpectationsRequest {
@@ -8943,7 +9349,11 @@ export const PatchProjectsLocationsAppsEvaluationExpectationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EvaluationExpectation;
 
 export type PatchProjectsLocationsAppsEvaluationExpectationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an evaluation expectation. */
 export const patchProjectsLocationsAppsEvaluationExpectations: API.OperationMethod<
@@ -8954,7 +9364,7 @@ export const patchProjectsLocationsAppsEvaluationExpectations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsEvaluationExpectationsRequest,
   output: PatchProjectsLocationsAppsEvaluationExpectationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsEvaluationExpectationsRequest {
@@ -8978,7 +9388,11 @@ export const DeleteProjectsLocationsAppsEvaluationExpectationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsAppsEvaluationExpectationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an evaluation expectation. */
 export const deleteProjectsLocationsAppsEvaluationExpectations: API.OperationMethod<
@@ -8989,7 +9403,7 @@ export const deleteProjectsLocationsAppsEvaluationExpectations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsEvaluationExpectationsRequest,
   output: DeleteProjectsLocationsAppsEvaluationExpectationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAppsScheduledEvaluationRunsRequest {
@@ -9023,7 +9437,11 @@ export const CreateProjectsLocationsAppsScheduledEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScheduledEvaluationRun;
 
 export type CreateProjectsLocationsAppsScheduledEvaluationRunsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a scheduled evaluation run. */
 export const createProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMethod<
@@ -9034,7 +9452,7 @@ export const createProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsScheduledEvaluationRunsRequest,
   output: CreateProjectsLocationsAppsScheduledEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAppsScheduledEvaluationRunsRequest {
@@ -9056,7 +9474,9 @@ export const GetProjectsLocationsAppsScheduledEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScheduledEvaluationRun;
 
 export type GetProjectsLocationsAppsScheduledEvaluationRunsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of the specified scheduled evaluation run. */
 export const getProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMethod<
@@ -9067,7 +9487,7 @@ export const getProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAppsScheduledEvaluationRunsRequest,
   output: GetProjectsLocationsAppsScheduledEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAppsScheduledEvaluationRunsRequest {
@@ -9101,7 +9521,9 @@ export const ListProjectsLocationsAppsScheduledEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListScheduledEvaluationRunsResponse;
 
 export type ListProjectsLocationsAppsScheduledEvaluationRunsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all scheduled evaluation runs in the given app. */
 export const listProjectsLocationsAppsScheduledEvaluationRuns: API.PaginatedOperationMethod<
@@ -9112,7 +9534,7 @@ export const listProjectsLocationsAppsScheduledEvaluationRuns: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAppsScheduledEvaluationRunsRequest,
   output: ListProjectsLocationsAppsScheduledEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9144,7 +9566,11 @@ export const PatchProjectsLocationsAppsScheduledEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScheduledEvaluationRun;
 
 export type PatchProjectsLocationsAppsScheduledEvaluationRunsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a scheduled evaluation run. */
 export const patchProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMethod<
@@ -9155,7 +9581,7 @@ export const patchProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAppsScheduledEvaluationRunsRequest,
   output: PatchProjectsLocationsAppsScheduledEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest {
@@ -9179,7 +9605,11 @@ export const DeleteProjectsLocationsAppsScheduledEvaluationRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsAppsScheduledEvaluationRunsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a scheduled evaluation run. */
 export const deleteProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMethod<
@@ -9190,5 +9620,5 @@ export const deleteProjectsLocationsAppsScheduledEvaluationRuns: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAppsScheduledEvaluationRunsRequest,
   output: DeleteProjectsLocationsAppsScheduledEvaluationRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

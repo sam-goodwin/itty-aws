@@ -764,6 +764,52 @@ export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest =
   }).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchJoinGroupRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -791,7 +837,7 @@ export type ListProjectsGroupsResponse =
 export const ListProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1ListGroupsResponse;
 
-export type ListProjectsGroupsError = DefaultErrors;
+export type ListProjectsGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** List groups. */
 export const listProjectsGroups: API.PaginatedOperationMethod<
@@ -802,7 +848,7 @@ export const listProjectsGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGroupsRequest,
   output: ListProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -831,7 +877,12 @@ export type BatchLeaveProjectsGroupsResponse = GoogleProtobufEmpty;
 export const BatchLeaveProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchLeaveProjectsGroupsError = DefaultErrors;
+export type BatchLeaveProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch removed members from a group. The testers will lose access to all releases that the groups have access to. */
 export const batchLeaveProjectsGroups: API.OperationMethod<
@@ -842,7 +893,7 @@ export const batchLeaveProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchLeaveProjectsGroupsRequest,
   output: BatchLeaveProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsGroupsRequest {
@@ -862,7 +913,12 @@ export type DeleteProjectsGroupsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsGroupsError = DefaultErrors;
+export type DeleteProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a group. */
 export const deleteProjectsGroups: API.OperationMethod<
@@ -873,7 +929,7 @@ export const deleteProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsGroupsRequest,
   output: DeleteProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsGroupsRequest {
@@ -893,7 +949,7 @@ export type GetProjectsGroupsResponse = GoogleFirebaseAppdistroV1Group;
 export const GetProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1Group;
 
-export type GetProjectsGroupsError = DefaultErrors;
+export type GetProjectsGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a group. */
 export const getProjectsGroups: API.OperationMethod<
@@ -904,7 +960,7 @@ export const getProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsGroupsRequest,
   output: GetProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsGroupsRequest {
@@ -930,7 +986,12 @@ export type CreateProjectsGroupsResponse = GoogleFirebaseAppdistroV1Group;
 export const CreateProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1Group;
 
-export type CreateProjectsGroupsError = DefaultErrors;
+export type CreateProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a group. */
 export const createProjectsGroups: API.OperationMethod<
@@ -941,7 +1002,7 @@ export const createProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsGroupsRequest,
   output: CreateProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsGroupsRequest {
@@ -967,7 +1028,12 @@ export type PatchProjectsGroupsResponse = GoogleFirebaseAppdistroV1Group;
 export const PatchProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1Group;
 
-export type PatchProjectsGroupsError = DefaultErrors;
+export type PatchProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a group. */
 export const patchProjectsGroups: API.OperationMethod<
@@ -978,7 +1044,7 @@ export const patchProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsGroupsRequest,
   output: PatchProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchJoinProjectsGroupsRequest {
@@ -1003,7 +1069,12 @@ export type BatchJoinProjectsGroupsResponse = GoogleProtobufEmpty;
 export const BatchJoinProjectsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchJoinProjectsGroupsError = DefaultErrors;
+export type BatchJoinProjectsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch adds members to a group. The testers will gain access to all releases that the groups have access to. */
 export const batchJoinProjectsGroups: API.OperationMethod<
@@ -1014,7 +1085,7 @@ export const batchJoinProjectsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchJoinProjectsGroupsRequest,
   output: BatchJoinProjectsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTestersRequest {
@@ -1044,7 +1115,7 @@ export type ListProjectsTestersResponse =
 export const ListProjectsTestersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1ListTestersResponse;
 
-export type ListProjectsTestersError = DefaultErrors;
+export type ListProjectsTestersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists testers and their resource ids. */
 export const listProjectsTesters: API.PaginatedOperationMethod<
@@ -1055,7 +1126,7 @@ export const listProjectsTesters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTestersRequest,
   output: ListProjectsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1089,7 +1160,12 @@ export type BatchRemoveProjectsTestersResponse =
 export const BatchRemoveProjectsTestersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1BatchRemoveTestersResponse;
 
-export type BatchRemoveProjectsTestersError = DefaultErrors;
+export type BatchRemoveProjectsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch removes testers. If found, this call deletes testers for the specified emails. Returns all deleted testers. */
 export const batchRemoveProjectsTesters: API.OperationMethod<
@@ -1100,7 +1176,7 @@ export const batchRemoveProjectsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchRemoveProjectsTestersRequest,
   output: BatchRemoveProjectsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTestersRequest {
@@ -1126,7 +1202,12 @@ export type PatchProjectsTestersResponse = GoogleFirebaseAppdistroV1Tester;
 export const PatchProjectsTestersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1Tester;
 
-export type PatchProjectsTestersError = DefaultErrors;
+export type PatchProjectsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a tester. If the testers joins a group they gain access to all releases that the group has access to. */
 export const patchProjectsTesters: API.OperationMethod<
@@ -1137,7 +1218,7 @@ export const patchProjectsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTestersRequest,
   output: PatchProjectsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchAddProjectsTestersRequest {
@@ -1167,7 +1248,12 @@ export type BatchAddProjectsTestersResponse =
 export const BatchAddProjectsTestersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1BatchAddTestersResponse;
 
-export type BatchAddProjectsTestersError = DefaultErrors;
+export type BatchAddProjectsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch adds testers. This call adds testers for the specified emails if they don't already exist. Returns all testers specified in the request, including newly created and previously existing testers. This action is idempotent. */
 export const batchAddProjectsTesters: API.OperationMethod<
@@ -1178,7 +1264,7 @@ export const batchAddProjectsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchAddProjectsTestersRequest,
   output: BatchAddProjectsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAabInfoProjectsAppsRequest {
@@ -1198,7 +1284,7 @@ export type GetAabInfoProjectsAppsResponse = GoogleFirebaseAppdistroV1AabInfo;
 export const GetAabInfoProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1AabInfo;
 
-export type GetAabInfoProjectsAppsError = DefaultErrors;
+export type GetAabInfoProjectsAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets Android App Bundle (AAB) information for a Firebase app. */
 export const getAabInfoProjectsApps: API.OperationMethod<
@@ -1209,7 +1295,7 @@ export const getAabInfoProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAabInfoProjectsAppsRequest,
   output: GetAabInfoProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsAppsReleasesRequest {
@@ -1229,7 +1315,7 @@ export type GetProjectsAppsReleasesResponse = GoogleFirebaseAppdistroV1Release;
 export const GetProjectsAppsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1Release;
 
-export type GetProjectsAppsReleasesError = DefaultErrors;
+export type GetProjectsAppsReleasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a release. */
 export const getProjectsAppsReleases: API.OperationMethod<
@@ -1240,7 +1326,7 @@ export const getProjectsAppsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsReleasesRequest,
   output: GetProjectsAppsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchDeleteProjectsAppsReleasesRequest {
@@ -1269,7 +1355,12 @@ export type BatchDeleteProjectsAppsReleasesResponse = GoogleProtobufEmpty;
 export const BatchDeleteProjectsAppsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchDeleteProjectsAppsReleasesError = DefaultErrors;
+export type BatchDeleteProjectsAppsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes releases. A maximum of 100 releases can be deleted per request. */
 export const batchDeleteProjectsAppsReleases: API.OperationMethod<
@@ -1280,7 +1371,7 @@ export const batchDeleteProjectsAppsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsAppsReleasesRequest,
   output: BatchDeleteProjectsAppsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsAppsReleasesRequest {
@@ -1313,7 +1404,10 @@ export type ListProjectsAppsReleasesResponse =
 export const ListProjectsAppsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1ListReleasesResponse;
 
-export type ListProjectsAppsReleasesError = DefaultErrors;
+export type ListProjectsAppsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists releases. By default, sorts by `createTime` in descending order. */
 export const listProjectsAppsReleases: API.PaginatedOperationMethod<
@@ -1324,7 +1418,7 @@ export const listProjectsAppsReleases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesRequest,
   output: ListProjectsAppsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1355,7 +1449,12 @@ export type PatchProjectsAppsReleasesResponse =
 export const PatchProjectsAppsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1Release;
 
-export type PatchProjectsAppsReleasesError = DefaultErrors;
+export type PatchProjectsAppsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a release. */
 export const patchProjectsAppsReleases: API.OperationMethod<
@@ -1366,7 +1465,7 @@ export const patchProjectsAppsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsReleasesRequest,
   output: PatchProjectsAppsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DistributeProjectsAppsReleasesRequest {
@@ -1392,7 +1491,12 @@ export type DistributeProjectsAppsReleasesResponse =
 export const DistributeProjectsAppsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1DistributeReleaseResponse;
 
-export type DistributeProjectsAppsReleasesError = DefaultErrors;
+export type DistributeProjectsAppsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Distributes a release to testers. This call does the following: 1. Creates testers for the specified emails, if none exist. 2. Adds the testers and groups to the release. 3. Sends new testers an invitation email. 4. Sends existing testers a new release email. The request will fail with a `INVALID_ARGUMENT` if it contains a group that doesn't exist. */
 export const distributeProjectsAppsReleases: API.OperationMethod<
@@ -1403,7 +1507,7 @@ export const distributeProjectsAppsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DistributeProjectsAppsReleasesRequest,
   output: DistributeProjectsAppsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WaitProjectsAppsReleasesOperationsRequest {
@@ -1429,7 +1533,12 @@ export type WaitProjectsAppsReleasesOperationsResponse =
 export const WaitProjectsAppsReleasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type WaitProjectsAppsReleasesOperationsError = DefaultErrors;
+export type WaitProjectsAppsReleasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsAppsReleasesOperations: API.OperationMethod<
@@ -1440,7 +1549,7 @@ export const waitProjectsAppsReleasesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WaitProjectsAppsReleasesOperationsRequest,
   output: WaitProjectsAppsReleasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsAppsReleasesOperationsRequest {
@@ -1465,7 +1574,12 @@ export type CancelProjectsAppsReleasesOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsAppsReleasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsAppsReleasesOperationsError = DefaultErrors;
+export type CancelProjectsAppsReleasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsAppsReleasesOperations: API.OperationMethod<
@@ -1476,7 +1590,7 @@ export const cancelProjectsAppsReleasesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsAppsReleasesOperationsRequest,
   output: CancelProjectsAppsReleasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsAppsReleasesOperationsRequest {
@@ -1496,7 +1610,12 @@ export type DeleteProjectsAppsReleasesOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsAppsReleasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsAppsReleasesOperationsError = DefaultErrors;
+export type DeleteProjectsAppsReleasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsAppsReleasesOperations: API.OperationMethod<
@@ -1507,7 +1626,7 @@ export const deleteProjectsAppsReleasesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAppsReleasesOperationsRequest,
   output: DeleteProjectsAppsReleasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAppsReleasesOperationsRequest {
@@ -1528,7 +1647,10 @@ export type GetProjectsAppsReleasesOperationsResponse =
 export const GetProjectsAppsReleasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsAppsReleasesOperationsError = DefaultErrors;
+export type GetProjectsAppsReleasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsAppsReleasesOperations: API.OperationMethod<
@@ -1539,7 +1661,7 @@ export const getProjectsAppsReleasesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsReleasesOperationsRequest,
   output: GetProjectsAppsReleasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAppsReleasesOperationsRequest {
@@ -1574,7 +1696,10 @@ export type ListProjectsAppsReleasesOperationsResponse =
 export const ListProjectsAppsReleasesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsAppsReleasesOperationsError = DefaultErrors;
+export type ListProjectsAppsReleasesOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsAppsReleasesOperations: API.PaginatedOperationMethod<
@@ -1585,7 +1710,7 @@ export const listProjectsAppsReleasesOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesOperationsRequest,
   output: ListProjectsAppsReleasesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1616,7 +1741,10 @@ export type ListProjectsAppsReleasesFeedbackReportsResponse =
 export const ListProjectsAppsReleasesFeedbackReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1ListFeedbackReportsResponse;
 
-export type ListProjectsAppsReleasesFeedbackReportsError = DefaultErrors;
+export type ListProjectsAppsReleasesFeedbackReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists feedback reports. By default, sorts by `createTime` in descending order. */
 export const listProjectsAppsReleasesFeedbackReports: API.PaginatedOperationMethod<
@@ -1627,7 +1755,7 @@ export const listProjectsAppsReleasesFeedbackReports: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesFeedbackReportsRequest,
   output: ListProjectsAppsReleasesFeedbackReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1652,7 +1780,10 @@ export type GetProjectsAppsReleasesFeedbackReportsResponse =
 export const GetProjectsAppsReleasesFeedbackReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1FeedbackReport;
 
-export type GetProjectsAppsReleasesFeedbackReportsError = DefaultErrors;
+export type GetProjectsAppsReleasesFeedbackReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a feedback report. */
 export const getProjectsAppsReleasesFeedbackReports: API.OperationMethod<
@@ -1663,7 +1794,7 @@ export const getProjectsAppsReleasesFeedbackReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsReleasesFeedbackReportsRequest,
   output: GetProjectsAppsReleasesFeedbackReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsAppsReleasesFeedbackReportsRequest {
@@ -1684,7 +1815,12 @@ export type DeleteProjectsAppsReleasesFeedbackReportsResponse =
 export const DeleteProjectsAppsReleasesFeedbackReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsAppsReleasesFeedbackReportsError = DefaultErrors;
+export type DeleteProjectsAppsReleasesFeedbackReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a feedback report. */
 export const deleteProjectsAppsReleasesFeedbackReports: API.OperationMethod<
@@ -1695,7 +1831,7 @@ export const deleteProjectsAppsReleasesFeedbackReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAppsReleasesFeedbackReportsRequest,
   output: DeleteProjectsAppsReleasesFeedbackReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadMediaRequest {
@@ -1719,7 +1855,12 @@ export type UploadMediaResponse = GoogleLongrunningOperation;
 export const UploadMediaResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type UploadMediaError = DefaultErrors;
+export type UploadMediaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a binary. Uploading a binary can result in a new release being created, an update to an existing release, or a no-op if a release with the same binary already exists. */
 export const uploadMedia: API.OperationMethod<
@@ -1730,5 +1871,5 @@ export const uploadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

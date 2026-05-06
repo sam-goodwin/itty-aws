@@ -2254,6 +2254,52 @@ export const GoogleCloudDatacatalogV1DumpItem =
   }).annotate({ identifier: "GoogleCloudDatacatalogV1DumpItem" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2280,7 +2326,12 @@ export type SetConfigProjectsLocationsResponse =
 export const SetConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1MigrationConfig;
 
-export type SetConfigProjectsLocationsError = DefaultErrors;
+export type SetConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or project. */
 export const setConfigProjectsLocations: API.OperationMethod<
@@ -2291,7 +2342,7 @@ export const setConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetConfigProjectsLocationsRequest,
   output: SetConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveEffectiveConfigProjectsLocationsRequest {
@@ -2312,7 +2363,10 @@ export type RetrieveEffectiveConfigProjectsLocationsResponse =
 export const RetrieveEffectiveConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1MigrationConfig;
 
-export type RetrieveEffectiveConfigProjectsLocationsError = DefaultErrors;
+export type RetrieveEffectiveConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization or project. If there is no specific configuration set for the resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource itself. */
 export const retrieveEffectiveConfigProjectsLocations: API.OperationMethod<
@@ -2323,7 +2377,7 @@ export const retrieveEffectiveConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveEffectiveConfigProjectsLocationsRequest,
   output: RetrieveEffectiveConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -2357,7 +2411,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -2368,7 +2425,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2392,7 +2449,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -2403,7 +2463,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -2423,7 +2483,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -2434,7 +2499,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -2454,7 +2519,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -2465,7 +2535,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsEntryGroupsRequest {
@@ -2496,7 +2566,12 @@ export type CreateProjectsLocationsEntryGroupsResponse =
 export const CreateProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1EntryGroup;
 
-export type CreateProjectsLocationsEntryGroupsError = DefaultErrors;
+export type CreateProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an entry group. An entry group contains logically related entries together with [Cloud Identity and Access Management](/data-catalog/docs/concepts/iam) policies. These policies specify users who can create, edit, and view entries within entry groups. Data Catalog automatically creates entry groups with names that start with the `@` symbol for the following resources: * BigQuery entries (`@bigquery`) * Pub/Sub topics (`@pubsub`) * Dataproc Metastore services (`@dataproc_metastore_{SERVICE_NAME_HASH}`) You can create your own entry groups for Cloud Storage fileset entries and custom entries together with the corresponding IAM policies. User-created entry groups can't contain the `@` symbol, it is reserved for automatically created groups. Entry groups, like entries, can be searched. A maximum of 10,000 entry groups may be created per organization across all locations. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const createProjectsLocationsEntryGroups: API.OperationMethod<
@@ -2507,7 +2582,7 @@ export const createProjectsLocationsEntryGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEntryGroupsRequest,
   output: CreateProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsEntryGroupsRequest {
@@ -2531,7 +2606,10 @@ export type GetProjectsLocationsEntryGroupsResponse =
 export const GetProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1EntryGroup;
 
-export type GetProjectsLocationsEntryGroupsError = DefaultErrors;
+export type GetProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an entry group. */
 export const getProjectsLocationsEntryGroups: API.OperationMethod<
@@ -2542,7 +2620,7 @@ export const getProjectsLocationsEntryGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsEntryGroupsRequest,
   output: GetProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsEntryGroupsRequest {
@@ -2571,7 +2649,12 @@ export type PatchProjectsLocationsEntryGroupsResponse =
 export const PatchProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1EntryGroup;
 
-export type PatchProjectsLocationsEntryGroupsError = DefaultErrors;
+export type PatchProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an entry group. You must enable the Data Catalog API in the project identified by the `entry_group.name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const patchProjectsLocationsEntryGroups: API.OperationMethod<
@@ -2582,7 +2665,7 @@ export const patchProjectsLocationsEntryGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsEntryGroupsRequest,
   output: PatchProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEntryGroupsRequest {
@@ -2605,7 +2688,12 @@ export type DeleteProjectsLocationsEntryGroupsResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsEntryGroupsError = DefaultErrors;
+export type DeleteProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an entry group. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const deleteProjectsLocationsEntryGroups: API.OperationMethod<
@@ -2616,7 +2704,7 @@ export const deleteProjectsLocationsEntryGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEntryGroupsRequest,
   output: DeleteProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsEntryGroupsRequest {
@@ -2643,7 +2731,10 @@ export type ListProjectsLocationsEntryGroupsResponse =
 export const ListProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ListEntryGroupsResponse;
 
-export type ListProjectsLocationsEntryGroupsError = DefaultErrors;
+export type ListProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists entry groups. */
 export const listProjectsLocationsEntryGroups: API.PaginatedOperationMethod<
@@ -2654,7 +2745,7 @@ export const listProjectsLocationsEntryGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsRequest,
   output: ListProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2685,7 +2776,12 @@ export type SetIamPolicyProjectsLocationsEntryGroupsResponse = Policy;
 export const SetIamPolicyProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsEntryGroupsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates - Entry groups Note: This method sets policies only within Data Catalog and can't be used to manage policies in BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources synced with the Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups. */
 export const setIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
@@ -2696,7 +2792,7 @@ export const setIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsEntryGroupsRequest,
   output: SetIamPolicyProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsEntryGroupsRequest {
@@ -2723,7 +2819,12 @@ export type GetIamPolicyProjectsLocationsEntryGroupsResponse = Policy;
 export const GetIamPolicyProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsEntryGroupsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups. */
 export const getIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
@@ -2734,7 +2835,7 @@ export const getIamPolicyProjectsLocationsEntryGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsEntryGroupsRequest,
   output: GetIamPolicyProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsEntryGroupsRequest {
@@ -2762,7 +2863,12 @@ export type TestIamPermissionsProjectsLocationsEntryGroupsResponse =
 export const TestIamPermissionsProjectsLocationsEntryGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsEntryGroupsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsEntryGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Tag templates - Entry groups Note: This method gets policies only within Data Catalog and can't be used to get policies from BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources ingested into Data Catalog. No Google IAM permissions are required to call this method. */
 export const testIamPermissionsProjectsLocationsEntryGroups: API.OperationMethod<
@@ -2773,7 +2879,7 @@ export const testIamPermissionsProjectsLocationsEntryGroups: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsEntryGroupsRequest,
   output: TestIamPermissionsProjectsLocationsEntryGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsEntryGroupsEntriesRequest {
@@ -2800,7 +2906,12 @@ export type CreateProjectsLocationsEntryGroupsEntriesResponse =
 export const CreateProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Entry;
 
-export type CreateProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type CreateProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an entry. You can create entries only with 'FILESET', 'CLUSTER', 'DATA_STREAM', or custom types. Data Catalog automatically creates entries with other types during metadata ingestion from integrated systems. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). An entry group can have a maximum of 100,000 entries. */
 export const createProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -2811,7 +2922,7 @@ export const createProjectsLocationsEntryGroupsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEntryGroupsEntriesRequest,
   output: CreateProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsEntryGroupsEntriesRequest {
@@ -2838,7 +2949,12 @@ export type PatchProjectsLocationsEntryGroupsEntriesResponse =
 export const PatchProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Entry;
 
-export type PatchProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type PatchProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing entry. You must enable the Data Catalog API in the project identified by the `entry.name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const patchProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -2849,7 +2965,7 @@ export const patchProjectsLocationsEntryGroupsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsEntryGroupsEntriesRequest,
   output: PatchProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEntryGroupsEntriesRequest {
@@ -2869,7 +2985,12 @@ export type DeleteProjectsLocationsEntryGroupsEntriesResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type DeleteProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing entry. You can delete only the entries created by the CreateEntry method. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const deleteProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -2880,7 +3001,7 @@ export const deleteProjectsLocationsEntryGroupsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEntryGroupsEntriesRequest,
   output: DeleteProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsEntryGroupsEntriesRequest {
@@ -2901,7 +3022,10 @@ export type GetProjectsLocationsEntryGroupsEntriesResponse =
 export const GetProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Entry;
 
-export type GetProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type GetProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an entry. */
 export const getProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -2912,7 +3036,7 @@ export const getProjectsLocationsEntryGroupsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsEntryGroupsEntriesRequest,
   output: GetProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsEntryGroupsEntriesRequest {
@@ -2942,7 +3066,10 @@ export type ListProjectsLocationsEntryGroupsEntriesResponse =
 export const ListProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ListEntriesResponse;
 
-export type ListProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type ListProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists entries. Note: Currently, this method can list only custom entries. To get a list of both custom and automatically created entries, use SearchCatalog. */
 export const listProjectsLocationsEntryGroupsEntries: API.PaginatedOperationMethod<
@@ -2953,7 +3080,7 @@ export const listProjectsLocationsEntryGroupsEntries: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsEntriesRequest,
   output: ListProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2988,7 +3115,11 @@ export const ModifyEntryOverviewProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1EntryOverview;
 
 export type ModifyEntryOverviewProjectsLocationsEntryGroupsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies entry overview, part of the business context of an Entry. To call this method, you must have the `datacatalog.entries.updateOverview` IAM permission on the corresponding project. */
 export const modifyEntryOverviewProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -2999,7 +3130,7 @@ export const modifyEntryOverviewProjectsLocationsEntryGroupsEntries: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyEntryOverviewProjectsLocationsEntryGroupsEntriesRequest,
   output: ModifyEntryOverviewProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyEntryContactsProjectsLocationsEntryGroupsEntriesRequest {
@@ -3030,7 +3161,11 @@ export const ModifyEntryContactsProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Contacts;
 
 export type ModifyEntryContactsProjectsLocationsEntryGroupsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies contacts, part of the business context of an Entry. To call this method, you must have the `datacatalog.entries.updateContacts` IAM permission on the corresponding project. */
 export const modifyEntryContactsProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -3041,7 +3176,7 @@ export const modifyEntryContactsProjectsLocationsEntryGroupsEntries: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyEntryContactsProjectsLocationsEntryGroupsEntriesRequest,
   output: ModifyEntryContactsProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StarProjectsLocationsEntryGroupsEntriesRequest {
@@ -3067,7 +3202,12 @@ export type StarProjectsLocationsEntryGroupsEntriesResponse =
 export const StarProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1StarEntryResponse;
 
-export type StarProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type StarProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an Entry as starred by the current user. Starring information is private to each user. */
 export const starProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -3078,7 +3218,7 @@ export const starProjectsLocationsEntryGroupsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StarProjectsLocationsEntryGroupsEntriesRequest,
   output: StarProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnstarProjectsLocationsEntryGroupsEntriesRequest {
@@ -3104,7 +3244,12 @@ export type UnstarProjectsLocationsEntryGroupsEntriesResponse =
 export const UnstarProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1UnstarEntryResponse;
 
-export type UnstarProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type UnstarProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an Entry as NOT starred by the current user. Starring information is private to each user. */
 export const unstarProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -3115,7 +3260,7 @@ export const unstarProjectsLocationsEntryGroupsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnstarProjectsLocationsEntryGroupsEntriesRequest,
   output: UnstarProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest {
@@ -3143,7 +3288,11 @@ export const GetIamPolicyProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsEntryGroupsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups. */
 export const getIamPolicyProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -3154,7 +3303,7 @@ export const getIamPolicyProjectsLocationsEntryGroupsEntries: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsEntryGroupsEntriesRequest,
   output: GetIamPolicyProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest {
@@ -3183,7 +3332,11 @@ export const TestIamPermissionsProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsEntryGroupsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Tag templates - Entry groups Note: This method gets policies only within Data Catalog and can't be used to get policies from BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources ingested into Data Catalog. No Google IAM permissions are required to call this method. */
 export const testIamPermissionsProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -3194,7 +3347,7 @@ export const testIamPermissionsProjectsLocationsEntryGroupsEntries: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsEntryGroupsEntriesRequest,
   output: TestIamPermissionsProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsEntryGroupsEntriesRequest {
@@ -3223,7 +3376,12 @@ export type ImportProjectsLocationsEntryGroupsEntriesResponse = Operation;
 export const ImportProjectsLocationsEntryGroupsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsEntryGroupsEntriesError = DefaultErrors;
+export type ImportProjectsLocationsEntryGroupsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports entries from a source, such as data previously dumped into a Cloud Storage bucket, into Data Catalog. Import of entries is a sync operation that reconciles the state of the third-party system with the Data Catalog. `ImportEntries` accepts source data snapshots of a third-party system. Snapshot should be delivered as a .wire or base65-encoded .txt file containing a sequence of Protocol Buffer messages of DumpItem type. `ImportEntries` returns a long-running operation resource that can be queried with Operations.GetOperation to return ImportEntriesMetadata and an ImportEntriesResponse message. */
 export const importProjectsLocationsEntryGroupsEntries: API.OperationMethod<
@@ -3234,7 +3392,7 @@ export const importProjectsLocationsEntryGroupsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsEntryGroupsEntriesRequest,
   output: ImportProjectsLocationsEntryGroupsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsEntryGroupsEntriesTagsRequest {
@@ -3258,7 +3416,12 @@ export type CreateProjectsLocationsEntryGroupsEntriesTagsResponse =
 export const CreateProjectsLocationsEntryGroupsEntriesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Tag;
 
-export type CreateProjectsLocationsEntryGroupsEntriesTagsError = DefaultErrors;
+export type CreateProjectsLocationsEntryGroupsEntriesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a tag and assigns it to: * An Entry if the method name is `projects.locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name is `projects.locations.entryGroups.tags.create`. Note: The project identified by the `parent` parameter for the [tag] (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters) and the [tag template] (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#path-parameters) used to create the tag must be in the same organization. */
 export const createProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
@@ -3269,7 +3432,7 @@ export const createProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEntryGroupsEntriesTagsRequest,
   output: CreateProjectsLocationsEntryGroupsEntriesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsEntryGroupsEntriesTagsRequest {
@@ -3296,7 +3459,12 @@ export type PatchProjectsLocationsEntryGroupsEntriesTagsResponse =
 export const PatchProjectsLocationsEntryGroupsEntriesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Tag;
 
-export type PatchProjectsLocationsEntryGroupsEntriesTagsError = DefaultErrors;
+export type PatchProjectsLocationsEntryGroupsEntriesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing tag. */
 export const patchProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
@@ -3307,7 +3475,7 @@ export const patchProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsEntryGroupsEntriesTagsRequest,
   output: PatchProjectsLocationsEntryGroupsEntriesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEntryGroupsEntriesTagsRequest {
@@ -3327,7 +3495,12 @@ export type DeleteProjectsLocationsEntryGroupsEntriesTagsResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsEntriesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsEntryGroupsEntriesTagsError = DefaultErrors;
+export type DeleteProjectsLocationsEntryGroupsEntriesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a tag. */
 export const deleteProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
@@ -3338,7 +3511,7 @@ export const deleteProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEntryGroupsEntriesTagsRequest,
   output: DeleteProjectsLocationsEntryGroupsEntriesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsEntryGroupsEntriesTagsRequest {
@@ -3365,7 +3538,10 @@ export type ListProjectsLocationsEntryGroupsEntriesTagsResponse =
 export const ListProjectsLocationsEntryGroupsEntriesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ListTagsResponse;
 
-export type ListProjectsLocationsEntryGroupsEntriesTagsError = DefaultErrors;
+export type ListProjectsLocationsEntryGroupsEntriesTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists tags assigned to an Entry. The columns in the response are lowercased. */
 export const listProjectsLocationsEntryGroupsEntriesTags: API.PaginatedOperationMethod<
@@ -3376,7 +3552,7 @@ export const listProjectsLocationsEntryGroupsEntriesTags: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsEntriesTagsRequest,
   output: ListProjectsLocationsEntryGroupsEntriesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3411,7 +3587,11 @@ export const ReconcileProjectsLocationsEntryGroupsEntriesTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ReconcileProjectsLocationsEntryGroupsEntriesTagsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** `ReconcileTags` creates or updates a list of tags on the entry. If the ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not included in the input tag list. `ReconcileTags` returns a long-running operation resource that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a ReconcileTagsResponse message. Note: SearchCatalog might return stale search results for up to 24 hours after the `ReconcileTags` operation completes. */
 export const reconcileProjectsLocationsEntryGroupsEntriesTags: API.OperationMethod<
@@ -3422,7 +3602,7 @@ export const reconcileProjectsLocationsEntryGroupsEntriesTags: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReconcileProjectsLocationsEntryGroupsEntriesTagsRequest,
   output: ReconcileProjectsLocationsEntryGroupsEntriesTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsEntryGroupsTagsRequest {
@@ -3446,7 +3626,12 @@ export type CreateProjectsLocationsEntryGroupsTagsResponse =
 export const CreateProjectsLocationsEntryGroupsTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Tag;
 
-export type CreateProjectsLocationsEntryGroupsTagsError = DefaultErrors;
+export type CreateProjectsLocationsEntryGroupsTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a tag and assigns it to: * An Entry if the method name is `projects.locations.entryGroups.entries.tags.create`. * Or EntryGroupif the method name is `projects.locations.entryGroups.tags.create`. Note: The project identified by the `parent` parameter for the [tag] (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.entryGroups.entries.tags/create#path-parameters) and the [tag template] (https://cloud.google.com/data-catalog/docs/reference/rest/v1/projects.locations.tagTemplates/create#path-parameters) used to create the tag must be in the same organization. */
 export const createProjectsLocationsEntryGroupsTags: API.OperationMethod<
@@ -3457,7 +3642,7 @@ export const createProjectsLocationsEntryGroupsTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEntryGroupsTagsRequest,
   output: CreateProjectsLocationsEntryGroupsTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsEntryGroupsTagsRequest {
@@ -3484,7 +3669,12 @@ export type PatchProjectsLocationsEntryGroupsTagsResponse =
 export const PatchProjectsLocationsEntryGroupsTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Tag;
 
-export type PatchProjectsLocationsEntryGroupsTagsError = DefaultErrors;
+export type PatchProjectsLocationsEntryGroupsTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing tag. */
 export const patchProjectsLocationsEntryGroupsTags: API.OperationMethod<
@@ -3495,7 +3685,7 @@ export const patchProjectsLocationsEntryGroupsTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsEntryGroupsTagsRequest,
   output: PatchProjectsLocationsEntryGroupsTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEntryGroupsTagsRequest {
@@ -3515,7 +3705,12 @@ export type DeleteProjectsLocationsEntryGroupsTagsResponse = Empty;
 export const DeleteProjectsLocationsEntryGroupsTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsEntryGroupsTagsError = DefaultErrors;
+export type DeleteProjectsLocationsEntryGroupsTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a tag. */
 export const deleteProjectsLocationsEntryGroupsTags: API.OperationMethod<
@@ -3526,7 +3721,7 @@ export const deleteProjectsLocationsEntryGroupsTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEntryGroupsTagsRequest,
   output: DeleteProjectsLocationsEntryGroupsTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsEntryGroupsTagsRequest {
@@ -3553,7 +3748,10 @@ export type ListProjectsLocationsEntryGroupsTagsResponse =
 export const ListProjectsLocationsEntryGroupsTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ListTagsResponse;
 
-export type ListProjectsLocationsEntryGroupsTagsError = DefaultErrors;
+export type ListProjectsLocationsEntryGroupsTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists tags assigned to an Entry. The columns in the response are lowercased. */
 export const listProjectsLocationsEntryGroupsTags: API.PaginatedOperationMethod<
@@ -3564,7 +3762,7 @@ export const listProjectsLocationsEntryGroupsTags: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEntryGroupsTagsRequest,
   output: ListProjectsLocationsEntryGroupsTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3599,7 +3797,12 @@ export type CreateProjectsLocationsTagTemplatesResponse =
 export const CreateProjectsLocationsTagTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1TagTemplate;
 
-export type CreateProjectsLocationsTagTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsTagTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a tag template. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const createProjectsLocationsTagTemplates: API.OperationMethod<
@@ -3610,7 +3813,7 @@ export const createProjectsLocationsTagTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTagTemplatesRequest,
   output: CreateProjectsLocationsTagTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsTagTemplatesRequest {
@@ -3631,7 +3834,10 @@ export type GetProjectsLocationsTagTemplatesResponse =
 export const GetProjectsLocationsTagTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1TagTemplate;
 
-export type GetProjectsLocationsTagTemplatesError = DefaultErrors;
+export type GetProjectsLocationsTagTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a tag template. */
 export const getProjectsLocationsTagTemplates: API.OperationMethod<
@@ -3642,7 +3848,7 @@ export const getProjectsLocationsTagTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTagTemplatesRequest,
   output: GetProjectsLocationsTagTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsTagTemplatesRequest {
@@ -3671,7 +3877,12 @@ export type PatchProjectsLocationsTagTemplatesResponse =
 export const PatchProjectsLocationsTagTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1TagTemplate;
 
-export type PatchProjectsLocationsTagTemplatesError = DefaultErrors;
+export type PatchProjectsLocationsTagTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a tag template. You can't update template fields with this method. These fields are separate resources with their own create, update, and delete methods. You must enable the Data Catalog API in the project identified by the `tag_template.name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const patchProjectsLocationsTagTemplates: API.OperationMethod<
@@ -3682,7 +3893,7 @@ export const patchProjectsLocationsTagTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsTagTemplatesRequest,
   output: PatchProjectsLocationsTagTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsTagTemplatesRequest {
@@ -3705,7 +3916,12 @@ export type DeleteProjectsLocationsTagTemplatesResponse = Empty;
 export const DeleteProjectsLocationsTagTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsTagTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsTagTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a tag template and all tags that use it. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const deleteProjectsLocationsTagTemplates: API.OperationMethod<
@@ -3716,7 +3932,7 @@ export const deleteProjectsLocationsTagTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTagTemplatesRequest,
   output: DeleteProjectsLocationsTagTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsTagTemplatesRequest {
@@ -3743,7 +3959,12 @@ export type SetIamPolicyProjectsLocationsTagTemplatesResponse = Policy;
 export const SetIamPolicyProjectsLocationsTagTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsTagTemplatesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsTagTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets an access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates - Entry groups Note: This method sets policies only within Data Catalog and can't be used to manage policies in BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources synced with the Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups. */
 export const setIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
@@ -3754,7 +3975,7 @@ export const setIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsTagTemplatesRequest,
   output: SetIamPolicyProjectsLocationsTagTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsTagTemplatesRequest {
@@ -3781,7 +4002,12 @@ export type GetIamPolicyProjectsLocationsTagTemplatesResponse = Policy;
 export const GetIamPolicyProjectsLocationsTagTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsTagTemplatesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsTagTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. May return: * A`NOT_FOUND` error if the resource doesn't exist or you don't have the permission to view it. * An empty policy if the resource exists but doesn't have a set policy. Supported resources are: - Tag templates - Entry groups Note: This method doesn't get policies from Google Cloud Platform resources ingested into Data Catalog. To call this method, you must have the following Google IAM permissions: - `datacatalog.tagTemplates.getIamPolicy` to get policies on tag templates. - `datacatalog.entryGroups.getIamPolicy` to get policies on entry groups. */
 export const getIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
@@ -3792,7 +4018,7 @@ export const getIamPolicyProjectsLocationsTagTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsTagTemplatesRequest,
   output: GetIamPolicyProjectsLocationsTagTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsTagTemplatesRequest {
@@ -3821,7 +4047,11 @@ export const TestIamPermissionsProjectsLocationsTagTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsTagTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Tag templates - Entry groups Note: This method gets policies only within Data Catalog and can't be used to get policies from BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources ingested into Data Catalog. No Google IAM permissions are required to call this method. */
 export const testIamPermissionsProjectsLocationsTagTemplates: API.OperationMethod<
@@ -3832,7 +4062,7 @@ export const testIamPermissionsProjectsLocationsTagTemplates: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsTagTemplatesRequest,
   output: TestIamPermissionsProjectsLocationsTagTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsTagTemplatesFieldsRequest {
@@ -3863,7 +4093,12 @@ export type CreateProjectsLocationsTagTemplatesFieldsResponse =
 export const CreateProjectsLocationsTagTemplatesFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1TagTemplateField;
 
-export type CreateProjectsLocationsTagTemplatesFieldsError = DefaultErrors;
+export type CreateProjectsLocationsTagTemplatesFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a field in a tag template. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const createProjectsLocationsTagTemplatesFields: API.OperationMethod<
@@ -3874,7 +4109,7 @@ export const createProjectsLocationsTagTemplatesFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTagTemplatesFieldsRequest,
   output: CreateProjectsLocationsTagTemplatesFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsTagTemplatesFieldsRequest {
@@ -3903,7 +4138,12 @@ export type PatchProjectsLocationsTagTemplatesFieldsResponse =
 export const PatchProjectsLocationsTagTemplatesFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1TagTemplateField;
 
-export type PatchProjectsLocationsTagTemplatesFieldsError = DefaultErrors;
+export type PatchProjectsLocationsTagTemplatesFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a field in a tag template. You can't update the field type with this method. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const patchProjectsLocationsTagTemplatesFields: API.OperationMethod<
@@ -3914,7 +4154,7 @@ export const patchProjectsLocationsTagTemplatesFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsTagTemplatesFieldsRequest,
   output: PatchProjectsLocationsTagTemplatesFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenameProjectsLocationsTagTemplatesFieldsRequest {
@@ -3940,7 +4180,12 @@ export type RenameProjectsLocationsTagTemplatesFieldsResponse =
 export const RenameProjectsLocationsTagTemplatesFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1TagTemplateField;
 
-export type RenameProjectsLocationsTagTemplatesFieldsError = DefaultErrors;
+export type RenameProjectsLocationsTagTemplatesFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renames a field in a tag template. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const renameProjectsLocationsTagTemplatesFields: API.OperationMethod<
@@ -3951,7 +4196,7 @@ export const renameProjectsLocationsTagTemplatesFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenameProjectsLocationsTagTemplatesFieldsRequest,
   output: RenameProjectsLocationsTagTemplatesFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsTagTemplatesFieldsRequest {
@@ -3974,7 +4219,12 @@ export type DeleteProjectsLocationsTagTemplatesFieldsResponse = Empty;
 export const DeleteProjectsLocationsTagTemplatesFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsTagTemplatesFieldsError = DefaultErrors;
+export type DeleteProjectsLocationsTagTemplatesFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a field in a tag template and all uses of this field from the tags based on this template. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). */
 export const deleteProjectsLocationsTagTemplatesFields: API.OperationMethod<
@@ -3985,7 +4235,7 @@ export const deleteProjectsLocationsTagTemplatesFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTagTemplatesFieldsRequest,
   output: DeleteProjectsLocationsTagTemplatesFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest {
@@ -4012,7 +4262,11 @@ export const RenameProjectsLocationsTagTemplatesFieldsEnumValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1TagTemplateField;
 
 export type RenameProjectsLocationsTagTemplatesFieldsEnumValuesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renames an enum value in a tag template. Within a single enum field, enum values must be unique. */
 export const renameProjectsLocationsTagTemplatesFieldsEnumValues: API.OperationMethod<
@@ -4023,7 +4277,7 @@ export const renameProjectsLocationsTagTemplatesFieldsEnumValues: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenameProjectsLocationsTagTemplatesFieldsEnumValuesRequest,
   output: RenameProjectsLocationsTagTemplatesFieldsEnumValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsTaxonomiesRequest {
@@ -4047,7 +4301,12 @@ export type CreateProjectsLocationsTaxonomiesResponse =
 export const CreateProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Taxonomy;
 
-export type CreateProjectsLocationsTaxonomiesError = DefaultErrors;
+export type CreateProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags. */
 export const createProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4058,7 +4317,7 @@ export const createProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTaxonomiesRequest,
   output: CreateProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsTaxonomiesRequest {
@@ -4078,7 +4337,12 @@ export type DeleteProjectsLocationsTaxonomiesResponse = Empty;
 export const DeleteProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsTaxonomiesError = DefaultErrors;
+export type DeleteProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a taxonomy, including all policy tags in this taxonomy, their associated policies, and the policy tags references from BigQuery columns. */
 export const deleteProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4089,7 +4353,7 @@ export const deleteProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTaxonomiesRequest,
   output: DeleteProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsTaxonomiesRequest {
@@ -4116,7 +4380,12 @@ export type PatchProjectsLocationsTaxonomiesResponse =
 export const PatchProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Taxonomy;
 
-export type PatchProjectsLocationsTaxonomiesError = DefaultErrors;
+export type PatchProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a taxonomy, including its display name, description, and activated policy types. */
 export const patchProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4127,7 +4396,7 @@ export const patchProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsTaxonomiesRequest,
   output: PatchProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsTaxonomiesRequest {
@@ -4157,7 +4426,10 @@ export type ListProjectsLocationsTaxonomiesResponse =
 export const ListProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ListTaxonomiesResponse;
 
-export type ListProjectsLocationsTaxonomiesError = DefaultErrors;
+export type ListProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all taxonomies in a project in a particular location that you have a permission to view. */
 export const listProjectsLocationsTaxonomies: API.PaginatedOperationMethod<
@@ -4168,7 +4440,7 @@ export const listProjectsLocationsTaxonomies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTaxonomiesRequest,
   output: ListProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4193,7 +4465,10 @@ export type GetProjectsLocationsTaxonomiesResponse =
 export const GetProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Taxonomy;
 
-export type GetProjectsLocationsTaxonomiesError = DefaultErrors;
+export type GetProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a taxonomy. */
 export const getProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4204,7 +4479,7 @@ export const getProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTaxonomiesRequest,
   output: GetProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsTaxonomiesRequest {
@@ -4231,7 +4506,12 @@ export type GetIamPolicyProjectsLocationsTaxonomiesResponse = Policy;
 export const GetIamPolicyProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsTaxonomiesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy for a policy tag or a taxonomy. */
 export const getIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4242,7 +4522,7 @@ export const getIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsTaxonomiesRequest,
   output: GetIamPolicyProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsTaxonomiesRequest {
@@ -4269,7 +4549,12 @@ export type SetIamPolicyProjectsLocationsTaxonomiesResponse = Policy;
 export const SetIamPolicyProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsTaxonomiesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy for a policy tag or a taxonomy. */
 export const setIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4280,7 +4565,7 @@ export const setIamPolicyProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsTaxonomiesRequest,
   output: SetIamPolicyProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsTaxonomiesRequest {
@@ -4308,7 +4593,12 @@ export type TestIamPermissionsProjectsLocationsTaxonomiesResponse =
 export const TestIamPermissionsProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsTaxonomiesError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns your permissions on a specified policy tag or taxonomy. */
 export const testIamPermissionsProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4319,7 +4609,7 @@ export const testIamPermissionsProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsTaxonomiesRequest,
   output: TestIamPermissionsProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplaceProjectsLocationsTaxonomiesRequest {
@@ -4345,7 +4635,12 @@ export type ReplaceProjectsLocationsTaxonomiesResponse =
 export const ReplaceProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Taxonomy;
 
-export type ReplaceProjectsLocationsTaxonomiesError = DefaultErrors;
+export type ReplaceProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces (updates) a taxonomy and all its policy tags. The taxonomy and its entire hierarchy of policy tags must be represented literally by `SerializedTaxonomy` and the nested `SerializedPolicyTag` messages. This operation automatically does the following: - Deletes the existing policy tags that are missing from the `SerializedPolicyTag`. - Creates policy tags that don't have resource names. They are considered new. - Updates policy tags with valid resources names accordingly. */
 export const replaceProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4356,7 +4651,7 @@ export const replaceProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceProjectsLocationsTaxonomiesRequest,
   output: ReplaceProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsTaxonomiesRequest {
@@ -4386,7 +4681,12 @@ export type ImportProjectsLocationsTaxonomiesResponse =
 export const ImportProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ImportTaxonomiesResponse;
 
-export type ImportProjectsLocationsTaxonomiesError = DefaultErrors;
+export type ImportProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new taxonomies (including their policy tags) in a given project by importing from inlined or cross-regional sources. For a cross-regional source, new taxonomies are created by copying from a source in another region. For an inlined source, taxonomies and policy tags are created in bulk using nested protocol buffer structures. */
 export const importProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4397,7 +4697,7 @@ export const importProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsTaxonomiesRequest,
   output: ImportProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsTaxonomiesRequest {
@@ -4428,7 +4728,10 @@ export type ExportProjectsLocationsTaxonomiesResponse =
 export const ExportProjectsLocationsTaxonomiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ExportTaxonomiesResponse;
 
-export type ExportProjectsLocationsTaxonomiesError = DefaultErrors;
+export type ExportProjectsLocationsTaxonomiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Exports taxonomies in the requested type and returns them, including their policy tags. The requested taxonomies must belong to the same project. This method generates `SerializedTaxonomy` protocol buffers with nested policy tags that can be used as input for `ImportTaxonomies` calls. */
 export const exportProjectsLocationsTaxonomies: API.OperationMethod<
@@ -4439,7 +4742,7 @@ export const exportProjectsLocationsTaxonomies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsTaxonomiesRequest,
   output: ExportProjectsLocationsTaxonomiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsTaxonomiesPolicyTagsRequest {
@@ -4463,7 +4766,12 @@ export type CreateProjectsLocationsTaxonomiesPolicyTagsResponse =
 export const CreateProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1PolicyTag;
 
-export type CreateProjectsLocationsTaxonomiesPolicyTagsError = DefaultErrors;
+export type CreateProjectsLocationsTaxonomiesPolicyTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a policy tag in a taxonomy. */
 export const createProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
@@ -4474,7 +4782,7 @@ export const createProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: CreateProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsTaxonomiesPolicyTagsRequest {
@@ -4494,7 +4802,12 @@ export type DeleteProjectsLocationsTaxonomiesPolicyTagsResponse = Empty;
 export const DeleteProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsTaxonomiesPolicyTagsError = DefaultErrors;
+export type DeleteProjectsLocationsTaxonomiesPolicyTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a policy tag together with the following: * All of its descendant policy tags, if any * Policies associated with the policy tag and its descendants * References from BigQuery table schema of the policy tag and its descendants */
 export const deleteProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
@@ -4505,7 +4818,7 @@ export const deleteProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: DeleteProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsTaxonomiesPolicyTagsRequest {
@@ -4532,7 +4845,12 @@ export type PatchProjectsLocationsTaxonomiesPolicyTagsResponse =
 export const PatchProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1PolicyTag;
 
-export type PatchProjectsLocationsTaxonomiesPolicyTagsError = DefaultErrors;
+export type PatchProjectsLocationsTaxonomiesPolicyTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a policy tag, including its display name, description, and parent policy tag. */
 export const patchProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
@@ -4543,7 +4861,7 @@ export const patchProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: PatchProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsTaxonomiesPolicyTagsRequest {
@@ -4570,7 +4888,10 @@ export type ListProjectsLocationsTaxonomiesPolicyTagsResponse =
 export const ListProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1ListPolicyTagsResponse;
 
-export type ListProjectsLocationsTaxonomiesPolicyTagsError = DefaultErrors;
+export type ListProjectsLocationsTaxonomiesPolicyTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all policy tags in a taxonomy. */
 export const listProjectsLocationsTaxonomiesPolicyTags: API.PaginatedOperationMethod<
@@ -4581,7 +4902,7 @@ export const listProjectsLocationsTaxonomiesPolicyTags: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: ListProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4606,7 +4927,10 @@ export type GetProjectsLocationsTaxonomiesPolicyTagsResponse =
 export const GetProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1PolicyTag;
 
-export type GetProjectsLocationsTaxonomiesPolicyTagsError = DefaultErrors;
+export type GetProjectsLocationsTaxonomiesPolicyTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a policy tag. */
 export const getProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
@@ -4617,7 +4941,7 @@ export const getProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: GetProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest {
@@ -4645,7 +4969,11 @@ export const GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy for a policy tag or a taxonomy. */
 export const getIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
@@ -4656,7 +4984,7 @@ export const getIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: GetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest {
@@ -4684,7 +5012,11 @@ export const SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy for a policy tag or a taxonomy. */
 export const setIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
@@ -4695,7 +5027,7 @@ export const setIamPolicyProjectsLocationsTaxonomiesPolicyTags: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: SetIamPolicyProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest {
@@ -4724,7 +5056,11 @@ export const TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns your permissions on a specified policy tag or taxonomy. */
 export const testIamPermissionsProjectsLocationsTaxonomiesPolicyTags: API.OperationMethod<
@@ -4735,7 +5071,7 @@ export const testIamPermissionsProjectsLocationsTaxonomiesPolicyTags: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsRequest,
   output: TestIamPermissionsProjectsLocationsTaxonomiesPolicyTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchCatalogRequest {
@@ -4757,7 +5093,12 @@ export type SearchCatalogResponse =
 export const SearchCatalogResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1SearchCatalogResponse;
 
-export type SearchCatalogError = DefaultErrors;
+export type SearchCatalogError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches Data Catalog for multiple resources like entries and tags that match a query. This is a [Custom Method] (https://cloud.google.com/apis/design/custom_methods) that doesn't return all information on a resource, only its ID and high level fields. To get more information, you can subsequently call specific get methods. Note: Data Catalog search queries don't guarantee full recall. Results that match your query might not be returned, even in subsequent result pages. Additionally, returned (and not returned) results can vary if you repeat search queries. For more information, see [Data Catalog search syntax] (https://cloud.google.com/data-catalog/docs/how-to/search-reference). */
 export const searchCatalog: API.OperationMethod<
@@ -4768,7 +5109,7 @@ export const searchCatalog: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchCatalogRequest,
   output: SearchCatalogResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupEntriesRequest {
@@ -4803,7 +5144,7 @@ export type LookupEntriesResponse = GoogleCloudDatacatalogV1Entry;
 export const LookupEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1Entry;
 
-export type LookupEntriesError = DefaultErrors;
+export type LookupEntriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an entry by its target resource name. The resource name comes from the source Google Cloud Platform service. */
 export const lookupEntries: API.OperationMethod<
@@ -4814,7 +5155,7 @@ export const lookupEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupEntriesRequest,
   output: LookupEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetConfigOrganizationsLocationsRequest {
@@ -4840,7 +5181,12 @@ export type SetConfigOrganizationsLocationsResponse =
 export const SetConfigOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1MigrationConfig;
 
-export type SetConfigOrganizationsLocationsError = DefaultErrors;
+export type SetConfigOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or project. */
 export const setConfigOrganizationsLocations: API.OperationMethod<
@@ -4851,7 +5197,7 @@ export const setConfigOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetConfigOrganizationsLocationsRequest,
   output: SetConfigOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveConfigOrganizationsLocationsRequest {
@@ -4872,7 +5218,10 @@ export type RetrieveConfigOrganizationsLocationsResponse =
 export const RetrieveConfigOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1OrganizationConfig;
 
-export type RetrieveConfigOrganizationsLocationsError = DefaultErrors;
+export type RetrieveConfigOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization, including all the projects under it which have a separate configuration set. */
 export const retrieveConfigOrganizationsLocations: API.OperationMethod<
@@ -4883,7 +5232,7 @@ export const retrieveConfigOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveConfigOrganizationsLocationsRequest,
   output: RetrieveConfigOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveEffectiveConfigOrganizationsLocationsRequest {
@@ -4904,7 +5253,10 @@ export type RetrieveEffectiveConfigOrganizationsLocationsResponse =
 export const RetrieveEffectiveConfigOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatacatalogV1MigrationConfig;
 
-export type RetrieveEffectiveConfigOrganizationsLocationsError = DefaultErrors;
+export type RetrieveEffectiveConfigOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization or project. If there is no specific configuration set for the resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource itself. */
 export const retrieveEffectiveConfigOrganizationsLocations: API.OperationMethod<
@@ -4915,5 +5267,5 @@ export const retrieveEffectiveConfigOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveEffectiveConfigOrganizationsLocationsRequest,
   output: RetrieveEffectiveConfigOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

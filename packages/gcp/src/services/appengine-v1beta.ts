@@ -1817,6 +1817,52 @@ export const ListDomainMappingsResponse =
   }).annotate({ identifier: "ListDomainMappingsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1843,7 +1889,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1854,7 +1900,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -1888,7 +1934,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1899,7 +1945,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1943,7 +1989,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1954,7 +2003,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1987,7 +2036,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1998,7 +2050,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsApplicationsRequest {
@@ -2034,7 +2086,12 @@ export type PatchProjectsLocationsApplicationsResponse = Operation;
 export const PatchProjectsLocationsApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsApplicationsError = DefaultErrors;
+export type PatchProjectsLocationsApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Application resource. You can update the following fields: auth_domain - Google authentication domain for controlling user access to the application. default_cookie_expiration - Cookie expiration policy for the application. iap - Identity-Aware Proxy properties for the application. */
 export const patchProjectsLocationsApplications: API.OperationMethod<
@@ -2045,7 +2102,7 @@ export const patchProjectsLocationsApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApplicationsRequest,
   output: PatchProjectsLocationsApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsApplicationsServicesRequest {
@@ -2089,7 +2146,12 @@ export type PatchProjectsLocationsApplicationsServicesResponse = Operation;
 export const PatchProjectsLocationsApplicationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsApplicationsServicesError = DefaultErrors;
+export type PatchProjectsLocationsApplicationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the configuration of the specified service. */
 export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
@@ -2100,7 +2162,7 @@ export const patchProjectsLocationsApplicationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApplicationsServicesRequest,
   output: PatchProjectsLocationsApplicationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApplicationsServicesRequest {
@@ -2132,7 +2194,12 @@ export type DeleteProjectsLocationsApplicationsServicesResponse = Operation;
 export const DeleteProjectsLocationsApplicationsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsApplicationsServicesError = DefaultErrors;
+export type DeleteProjectsLocationsApplicationsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified service and all enclosed versions. */
 export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
@@ -2143,7 +2210,7 @@ export const deleteProjectsLocationsApplicationsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApplicationsServicesRequest,
   output: DeleteProjectsLocationsApplicationsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsApplicationsServicesVersionsRequest {
@@ -2187,7 +2254,11 @@ export const PatchProjectsLocationsApplicationsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsApplicationsServicesVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling) */
 export const patchProjectsLocationsApplicationsServicesVersions: API.OperationMethod<
@@ -2198,7 +2269,7 @@ export const patchProjectsLocationsApplicationsServicesVersions: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApplicationsServicesVersionsRequest,
   output: PatchProjectsLocationsApplicationsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApplicationsServicesVersionsRequest {
@@ -2235,7 +2306,11 @@ export const DeleteProjectsLocationsApplicationsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsApplicationsServicesVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing Version resource. */
 export const deleteProjectsLocationsApplicationsServicesVersions: API.OperationMethod<
@@ -2246,7 +2321,7 @@ export const deleteProjectsLocationsApplicationsServicesVersions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApplicationsServicesVersionsRequest,
   output: DeleteProjectsLocationsApplicationsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest {
@@ -2287,7 +2362,11 @@ export const ExportAppImageProjectsLocationsApplicationsServicesVersionsResponse
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ExportAppImageProjectsLocationsApplicationsServicesVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports a user image to Artifact Registry. */
 export const exportAppImageProjectsLocationsApplicationsServicesVersions: API.OperationMethod<
@@ -2298,7 +2377,7 @@ export const exportAppImageProjectsLocationsApplicationsServicesVersions: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportAppImageProjectsLocationsApplicationsServicesVersionsRequest,
   output: ExportAppImageProjectsLocationsApplicationsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest {
@@ -2338,7 +2417,11 @@ export const DeleteProjectsLocationsApplicationsServicesVersionsInstancesRespons
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsApplicationsServicesVersionsInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method. */
 export const deleteProjectsLocationsApplicationsServicesVersionsInstances: API.OperationMethod<
@@ -2349,7 +2432,7 @@ export const deleteProjectsLocationsApplicationsServicesVersionsInstances: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApplicationsServicesVersionsInstancesRequest,
   output: DeleteProjectsLocationsApplicationsServicesVersionsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest {
@@ -2393,7 +2476,11 @@ export const DebugProjectsLocationsApplicationsServicesVersionsInstancesResponse
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DebugProjectsLocationsApplicationsServicesVersionsInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment. */
 export const debugProjectsLocationsApplicationsServicesVersionsInstances: API.OperationMethod<
@@ -2404,7 +2491,7 @@ export const debugProjectsLocationsApplicationsServicesVersionsInstances: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DebugProjectsLocationsApplicationsServicesVersionsInstancesRequest,
   output: DebugProjectsLocationsApplicationsServicesVersionsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest {
@@ -2447,7 +2534,11 @@ export const PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
 
 export type PatchProjectsLocationsApplicationsAuthorizedCertificatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
 export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
@@ -2458,7 +2549,7 @@ export const patchProjectsLocationsApplicationsAuthorizedCertificates: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApplicationsAuthorizedCertificatesRequest,
   output: PatchProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest {
@@ -2494,7 +2585,11 @@ export const DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsApplicationsAuthorizedCertificatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SSL certificate. */
 export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
@@ -2505,7 +2600,7 @@ export const deleteProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApplicationsAuthorizedCertificatesRequest,
   output: DeleteProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsApplicationsAuthorizedCertificatesRequest {
@@ -2545,7 +2640,9 @@ export const ListProjectsLocationsApplicationsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedCertificatesResponse;
 
 export type ListProjectsLocationsApplicationsAuthorizedCertificatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all SSL certificates the user is authorized to administer. */
 export const listProjectsLocationsApplicationsAuthorizedCertificates: API.PaginatedOperationMethod<
@@ -2556,7 +2653,7 @@ export const listProjectsLocationsApplicationsAuthorizedCertificates: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApplicationsAuthorizedCertificatesRequest,
   output: ListProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2599,7 +2696,9 @@ export const GetProjectsLocationsApplicationsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
 
 export type GetProjectsLocationsApplicationsAuthorizedCertificatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified SSL certificate. */
 export const getProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
@@ -2610,7 +2709,7 @@ export const getProjectsLocationsApplicationsAuthorizedCertificates: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApplicationsAuthorizedCertificatesRequest,
   output: GetProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest {
@@ -2645,7 +2744,11 @@ export const CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
 
 export type CreateProjectsLocationsApplicationsAuthorizedCertificatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads the specified SSL certificate. */
 export const createProjectsLocationsApplicationsAuthorizedCertificates: API.OperationMethod<
@@ -2656,7 +2759,7 @@ export const createProjectsLocationsApplicationsAuthorizedCertificates: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApplicationsAuthorizedCertificatesRequest,
   output: CreateProjectsLocationsApplicationsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsApplicationsDomainMappingsRequest {
@@ -2693,7 +2796,9 @@ export const ListProjectsLocationsApplicationsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDomainMappingsResponse;
 
 export type ListProjectsLocationsApplicationsDomainMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the domain mappings on an application. */
 export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOperationMethod<
@@ -2704,7 +2809,7 @@ export const listProjectsLocationsApplicationsDomainMappings: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApplicationsDomainMappingsRequest,
   output: ListProjectsLocationsApplicationsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2741,7 +2846,10 @@ export type GetProjectsLocationsApplicationsDomainMappingsResponse =
 export const GetProjectsLocationsApplicationsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DomainMapping;
 
-export type GetProjectsLocationsApplicationsDomainMappingsError = DefaultErrors;
+export type GetProjectsLocationsApplicationsDomainMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified domain mapping. */
 export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
@@ -2752,7 +2860,7 @@ export const getProjectsLocationsApplicationsDomainMappings: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApplicationsDomainMappingsRequest,
   output: GetProjectsLocationsApplicationsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsApplicationsDomainMappingsRequest {
@@ -2796,7 +2904,11 @@ export const CreateProjectsLocationsApplicationsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsApplicationsDomainMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains. */
 export const createProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
@@ -2807,7 +2919,7 @@ export const createProjectsLocationsApplicationsDomainMappings: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApplicationsDomainMappingsRequest,
   output: CreateProjectsLocationsApplicationsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsApplicationsDomainMappingsRequest {
@@ -2848,7 +2960,11 @@ export const PatchProjectsLocationsApplicationsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsApplicationsDomainMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
 export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
@@ -2859,7 +2975,7 @@ export const patchProjectsLocationsApplicationsDomainMappings: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApplicationsDomainMappingsRequest,
   output: PatchProjectsLocationsApplicationsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApplicationsDomainMappingsRequest {
@@ -2893,7 +3009,11 @@ export const DeleteProjectsLocationsApplicationsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsApplicationsDomainMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
 export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMethod<
@@ -2904,7 +3024,7 @@ export const deleteProjectsLocationsApplicationsDomainMappings: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApplicationsDomainMappingsRequest,
   output: DeleteProjectsLocationsApplicationsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsApplicationsAuthorizedDomainsRequest {
@@ -2941,7 +3061,9 @@ export const ListProjectsLocationsApplicationsAuthorizedDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedDomainsResponse;
 
 export type ListProjectsLocationsApplicationsAuthorizedDomainsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all domains the user is authorized to administer. */
 export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOperationMethod<
@@ -2952,7 +3074,7 @@ export const listProjectsLocationsApplicationsAuthorizedDomains: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApplicationsAuthorizedDomainsRequest,
   output: ListProjectsLocationsApplicationsAuthorizedDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2983,7 +3105,7 @@ export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAppsResponse = Application;
 export const GetAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Application;
 
-export type GetAppsError = DefaultErrors;
+export type GetAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about an application. */
 export const getApps: API.OperationMethod<
@@ -2994,7 +3116,7 @@ export const getApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsRequest,
   output: GetAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAppsRequest {
@@ -3012,7 +3134,12 @@ export const CreateAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateAppsResponse = Operation;
 export const CreateAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAppsError = DefaultErrors;
+export type CreateAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/). */
 export const createApps: API.OperationMethod<
@@ -3023,7 +3150,7 @@ export const createApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppsRequest,
   output: CreateAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RepairAppsRequest {
@@ -3048,7 +3175,12 @@ export const RepairAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RepairAppsResponse = Operation;
 export const RepairAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RepairAppsError = DefaultErrors;
+export type RepairAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example, Error retrieving the App Engine service account. If you have deleted your App Engine service account, this will not be able to recreate it. Instead, you should attempt to use the IAM undelete API if possible at https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log. */
 export const repairApps: API.OperationMethod<
@@ -3059,7 +3191,7 @@ export const repairApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RepairAppsRequest,
   output: RepairAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAppsRequest {
@@ -3083,7 +3215,12 @@ export const PatchAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchAppsResponse = Operation;
 export const PatchAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAppsError = DefaultErrors;
+export type PatchAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Application resource. You can update the following fields: auth_domain - Google authentication domain for controlling user access to the application. default_cookie_expiration - Cookie expiration policy for the application. iap - Identity-Aware Proxy properties for the application. */
 export const patchApps: API.OperationMethod<
@@ -3094,7 +3231,7 @@ export const patchApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAppsRequest,
   output: PatchAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRuntimesAppsRequest {
@@ -3123,7 +3260,7 @@ export type ListRuntimesAppsResponse = ListRuntimesResponse;
 export const ListRuntimesAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRuntimesResponse;
 
-export type ListRuntimesAppsError = DefaultErrors;
+export type ListRuntimesAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the available runtimes for the application. */
 export const listRuntimesApps: API.OperationMethod<
@@ -3134,7 +3271,7 @@ export const listRuntimesApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRuntimesAppsRequest,
   output: ListRuntimesAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAppsAuthorizedCertificatesRequest {
@@ -3167,7 +3304,10 @@ export type ListAppsAuthorizedCertificatesResponse =
 export const ListAppsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedCertificatesResponse;
 
-export type ListAppsAuthorizedCertificatesError = DefaultErrors;
+export type ListAppsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all SSL certificates the user is authorized to administer. */
 export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
@@ -3178,7 +3318,7 @@ export const listAppsAuthorizedCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsAuthorizedCertificatesRequest,
   output: ListAppsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3213,7 +3353,10 @@ export type GetAppsAuthorizedCertificatesResponse = AuthorizedCertificate;
 export const GetAppsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
 
-export type GetAppsAuthorizedCertificatesError = DefaultErrors;
+export type GetAppsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified SSL certificate. */
 export const getAppsAuthorizedCertificates: API.OperationMethod<
@@ -3224,7 +3367,7 @@ export const getAppsAuthorizedCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsAuthorizedCertificatesRequest,
   output: GetAppsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAppsAuthorizedCertificatesRequest {
@@ -3251,7 +3394,12 @@ export type CreateAppsAuthorizedCertificatesResponse = AuthorizedCertificate;
 export const CreateAppsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
 
-export type CreateAppsAuthorizedCertificatesError = DefaultErrors;
+export type CreateAppsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads the specified SSL certificate. */
 export const createAppsAuthorizedCertificates: API.OperationMethod<
@@ -3262,7 +3410,7 @@ export const createAppsAuthorizedCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppsAuthorizedCertificatesRequest,
   output: CreateAppsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAppsAuthorizedCertificatesRequest {
@@ -3297,7 +3445,12 @@ export type PatchAppsAuthorizedCertificatesResponse = AuthorizedCertificate;
 export const PatchAppsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedCertificate;
 
-export type PatchAppsAuthorizedCertificatesError = DefaultErrors;
+export type PatchAppsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated. */
 export const patchAppsAuthorizedCertificates: API.OperationMethod<
@@ -3308,7 +3461,7 @@ export const patchAppsAuthorizedCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAppsAuthorizedCertificatesRequest,
   output: PatchAppsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAppsAuthorizedCertificatesRequest {
@@ -3336,7 +3489,12 @@ export type DeleteAppsAuthorizedCertificatesResponse = Empty;
 export const DeleteAppsAuthorizedCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAppsAuthorizedCertificatesError = DefaultErrors;
+export type DeleteAppsAuthorizedCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SSL certificate. */
 export const deleteAppsAuthorizedCertificates: API.OperationMethod<
@@ -3347,7 +3505,7 @@ export const deleteAppsAuthorizedCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppsAuthorizedCertificatesRequest,
   output: DeleteAppsAuthorizedCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAppsFirewallIngressRulesRequest {
@@ -3381,7 +3539,10 @@ export type ListAppsFirewallIngressRulesResponse = ListIngressRulesResponse;
 export const ListAppsFirewallIngressRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListIngressRulesResponse;
 
-export type ListAppsFirewallIngressRulesError = DefaultErrors;
+export type ListAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the firewall rules of an application. */
 export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
@@ -3392,7 +3553,7 @@ export const listAppsFirewallIngressRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsFirewallIngressRulesRequest,
   output: ListAppsFirewallIngressRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3423,7 +3584,12 @@ export type CreateAppsFirewallIngressRulesResponse = FirewallRule;
 export const CreateAppsFirewallIngressRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
 
-export type CreateAppsFirewallIngressRulesError = DefaultErrors;
+export type CreateAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a firewall rule for the application. */
 export const createAppsFirewallIngressRules: API.OperationMethod<
@@ -3434,7 +3600,7 @@ export const createAppsFirewallIngressRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppsFirewallIngressRulesRequest,
   output: CreateAppsFirewallIngressRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAppsFirewallIngressRulesRequest {
@@ -3460,7 +3626,10 @@ export type GetAppsFirewallIngressRulesResponse = FirewallRule;
 export const GetAppsFirewallIngressRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
 
-export type GetAppsFirewallIngressRulesError = DefaultErrors;
+export type GetAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified firewall rule. */
 export const getAppsFirewallIngressRules: API.OperationMethod<
@@ -3471,7 +3640,7 @@ export const getAppsFirewallIngressRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsFirewallIngressRulesRequest,
   output: GetAppsFirewallIngressRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAppsFirewallIngressRulesRequest {
@@ -3504,7 +3673,12 @@ export type PatchAppsFirewallIngressRulesResponse = FirewallRule;
 export const PatchAppsFirewallIngressRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallRule;
 
-export type PatchAppsFirewallIngressRulesError = DefaultErrors;
+export type PatchAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified firewall rule. */
 export const patchAppsFirewallIngressRules: API.OperationMethod<
@@ -3515,7 +3689,7 @@ export const patchAppsFirewallIngressRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAppsFirewallIngressRulesRequest,
   output: PatchAppsFirewallIngressRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAppsFirewallIngressRulesRequest {
@@ -3541,7 +3715,12 @@ export type DeleteAppsFirewallIngressRulesResponse = Empty;
 export const DeleteAppsFirewallIngressRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAppsFirewallIngressRulesError = DefaultErrors;
+export type DeleteAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified firewall rule. */
 export const deleteAppsFirewallIngressRules: API.OperationMethod<
@@ -3552,7 +3731,7 @@ export const deleteAppsFirewallIngressRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppsFirewallIngressRulesRequest,
   output: DeleteAppsFirewallIngressRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateAppsFirewallIngressRulesRequest {
@@ -3580,7 +3759,12 @@ export type BatchUpdateAppsFirewallIngressRulesResponse =
 export const BatchUpdateAppsFirewallIngressRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateIngressRulesResponse;
 
-export type BatchUpdateAppsFirewallIngressRulesError = DefaultErrors;
+export type BatchUpdateAppsFirewallIngressRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list. */
 export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
@@ -3591,7 +3775,7 @@ export const batchUpdateAppsFirewallIngressRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateAppsFirewallIngressRulesRequest,
   output: BatchUpdateAppsFirewallIngressRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAppsDomainMappingsRequest {
@@ -3624,7 +3808,12 @@ export type PatchAppsDomainMappingsResponse = Operation;
 export const PatchAppsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAppsDomainMappingsError = DefaultErrors;
+export type PatchAppsDomainMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource. */
 export const patchAppsDomainMappings: API.OperationMethod<
@@ -3635,7 +3824,7 @@ export const patchAppsDomainMappings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAppsDomainMappingsRequest,
   output: PatchAppsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAppsDomainMappingsRequest {
@@ -3661,7 +3850,12 @@ export type DeleteAppsDomainMappingsResponse = Operation;
 export const DeleteAppsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAppsDomainMappingsError = DefaultErrors;
+export type DeleteAppsDomainMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource. */
 export const deleteAppsDomainMappings: API.OperationMethod<
@@ -3672,7 +3866,7 @@ export const deleteAppsDomainMappings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppsDomainMappingsRequest,
   output: DeleteAppsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAppsDomainMappingsRequest {
@@ -3698,7 +3892,7 @@ export type GetAppsDomainMappingsResponse = DomainMapping;
 export const GetAppsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DomainMapping;
 
-export type GetAppsDomainMappingsError = DefaultErrors;
+export type GetAppsDomainMappingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified domain mapping. */
 export const getAppsDomainMappings: API.OperationMethod<
@@ -3709,7 +3903,7 @@ export const getAppsDomainMappings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsDomainMappingsRequest,
   output: GetAppsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAppsDomainMappingsRequest {
@@ -3745,7 +3939,12 @@ export type CreateAppsDomainMappingsResponse = Operation;
 export const CreateAppsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAppsDomainMappingsError = DefaultErrors;
+export type CreateAppsDomainMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains. */
 export const createAppsDomainMappings: API.OperationMethod<
@@ -3756,7 +3955,7 @@ export const createAppsDomainMappings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppsDomainMappingsRequest,
   output: CreateAppsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAppsDomainMappingsRequest {
@@ -3782,7 +3981,7 @@ export type ListAppsDomainMappingsResponse = ListDomainMappingsResponse;
 export const ListAppsDomainMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDomainMappingsResponse;
 
-export type ListAppsDomainMappingsError = DefaultErrors;
+export type ListAppsDomainMappingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the domain mappings on an application. */
 export const listAppsDomainMappings: API.PaginatedOperationMethod<
@@ -3793,7 +3992,7 @@ export const listAppsDomainMappings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsDomainMappingsRequest,
   output: ListAppsDomainMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3823,7 +4022,10 @@ export type ListAppsAuthorizedDomainsResponse = ListAuthorizedDomainsResponse;
 export const ListAppsAuthorizedDomainsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedDomainsResponse;
 
-export type ListAppsAuthorizedDomainsError = DefaultErrors;
+export type ListAppsAuthorizedDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all domains the user is authorized to administer. */
 export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
@@ -3834,7 +4036,7 @@ export const listAppsAuthorizedDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsAuthorizedDomainsRequest,
   output: ListAppsAuthorizedDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3872,7 +4074,7 @@ export type ListAppsOperationsResponse = ListOperationsResponse;
 export const ListAppsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListAppsOperationsError = DefaultErrors;
+export type ListAppsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED. */
 export const listAppsOperations: API.PaginatedOperationMethod<
@@ -3883,7 +4085,7 @@ export const listAppsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsOperationsRequest,
   output: ListAppsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3912,7 +4114,7 @@ export const GetAppsOperationsRequest =
 export type GetAppsOperationsResponse = Operation;
 export const GetAppsOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetAppsOperationsError = DefaultErrors;
+export type GetAppsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getAppsOperations: API.OperationMethod<
@@ -3923,7 +4125,7 @@ export const getAppsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsOperationsRequest,
   output: GetAppsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAppsServicesRequest {
@@ -3960,7 +4162,12 @@ export const PatchAppsServicesRequest =
 export type PatchAppsServicesResponse = Operation;
 export const PatchAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAppsServicesError = DefaultErrors;
+export type PatchAppsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the configuration of the specified service. */
 export const patchAppsServices: API.OperationMethod<
@@ -3971,7 +4178,7 @@ export const patchAppsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAppsServicesRequest,
   output: PatchAppsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAppsServicesRequest {
@@ -3996,7 +4203,12 @@ export const DeleteAppsServicesRequest =
 export type DeleteAppsServicesResponse = Operation;
 export const DeleteAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAppsServicesError = DefaultErrors;
+export type DeleteAppsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified service and all enclosed versions. */
 export const deleteAppsServices: API.OperationMethod<
@@ -4007,7 +4219,7 @@ export const deleteAppsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppsServicesRequest,
   output: DeleteAppsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAppsServicesRequest {
@@ -4033,7 +4245,7 @@ export type ListAppsServicesResponse = ListServicesResponse;
 export const ListAppsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListAppsServicesError = DefaultErrors;
+export type ListAppsServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the services in the application. */
 export const listAppsServices: API.PaginatedOperationMethod<
@@ -4044,7 +4256,7 @@ export const listAppsServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsServicesRequest,
   output: ListAppsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4080,7 +4292,7 @@ export const GetAppsServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetAppsServicesResponse = Service;
 export const GetAppsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type GetAppsServicesError = DefaultErrors;
+export type GetAppsServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the current configuration of the specified service. */
 export const getAppsServices: API.OperationMethod<
@@ -4091,7 +4303,7 @@ export const getAppsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsServicesRequest,
   output: GetAppsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAppsServicesVersionsRequest {
@@ -4126,7 +4338,10 @@ export type ListAppsServicesVersionsResponse = ListVersionsResponse;
 export const ListAppsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
 
-export type ListAppsServicesVersionsError = DefaultErrors;
+export type ListAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the versions of a service. */
 export const listAppsServicesVersions: API.PaginatedOperationMethod<
@@ -4137,7 +4352,7 @@ export const listAppsServicesVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsServicesVersionsRequest,
   output: ListAppsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4182,7 +4397,7 @@ export type GetAppsServicesVersionsResponse = Version;
 export const GetAppsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type GetAppsServicesVersionsError = DefaultErrors;
+export type GetAppsServicesVersionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource. */
 export const getAppsServicesVersions: API.OperationMethod<
@@ -4193,7 +4408,7 @@ export const getAppsServicesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsServicesVersionsRequest,
   output: GetAppsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAppsServicesVersionsRequest {
@@ -4223,7 +4438,12 @@ export type CreateAppsServicesVersionsResponse = Operation;
 export const CreateAppsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAppsServicesVersionsError = DefaultErrors;
+export type CreateAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deploys code and resource files to a new version. */
 export const createAppsServicesVersions: API.OperationMethod<
@@ -4234,7 +4454,7 @@ export const createAppsServicesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppsServicesVersionsRequest,
   output: CreateAppsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportAppImageAppsServicesVersionsRequest {
@@ -4267,7 +4487,12 @@ export type ExportAppImageAppsServicesVersionsResponse = Operation;
 export const ExportAppImageAppsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportAppImageAppsServicesVersionsError = DefaultErrors;
+export type ExportAppImageAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports a user image to Artifact Registry. */
 export const exportAppImageAppsServicesVersions: API.OperationMethod<
@@ -4278,7 +4503,7 @@ export const exportAppImageAppsServicesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportAppImageAppsServicesVersionsRequest,
   output: ExportAppImageAppsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAppsServicesVersionsRequest {
@@ -4314,7 +4539,12 @@ export type PatchAppsServicesVersionsResponse = Operation;
 export const PatchAppsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAppsServicesVersionsError = DefaultErrors;
+export type PatchAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#manualscaling) */
 export const patchAppsServicesVersions: API.OperationMethod<
@@ -4325,7 +4555,7 @@ export const patchAppsServicesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAppsServicesVersionsRequest,
   output: PatchAppsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAppsServicesVersionsRequest {
@@ -4354,7 +4584,12 @@ export type DeleteAppsServicesVersionsResponse = Operation;
 export const DeleteAppsServicesVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAppsServicesVersionsError = DefaultErrors;
+export type DeleteAppsServicesVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing Version resource. */
 export const deleteAppsServicesVersions: API.OperationMethod<
@@ -4365,7 +4600,7 @@ export const deleteAppsServicesVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppsServicesVersionsRequest,
   output: DeleteAppsServicesVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAppsServicesVersionsInstancesRequest {
@@ -4400,7 +4635,10 @@ export type ListAppsServicesVersionsInstancesResponse = ListInstancesResponse;
 export const ListAppsServicesVersionsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
 
-export type ListAppsServicesVersionsInstancesError = DefaultErrors;
+export type ListAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). */
 export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
@@ -4411,7 +4649,7 @@ export const listAppsServicesVersionsInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsServicesVersionsInstancesRequest,
   output: ListAppsServicesVersionsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4447,7 +4685,10 @@ export type GetAppsServicesVersionsInstancesResponse = Instance;
 export const GetAppsServicesVersionsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type GetAppsServicesVersionsInstancesError = DefaultErrors;
+export type GetAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets instance information. */
 export const getAppsServicesVersionsInstances: API.OperationMethod<
@@ -4458,7 +4699,7 @@ export const getAppsServicesVersionsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsServicesVersionsInstancesRequest,
   output: GetAppsServicesVersionsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAppsServicesVersionsInstancesRequest {
@@ -4490,7 +4731,12 @@ export type DeleteAppsServicesVersionsInstancesResponse = Operation;
 export const DeleteAppsServicesVersionsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAppsServicesVersionsInstancesError = DefaultErrors;
+export type DeleteAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method. */
 export const deleteAppsServicesVersionsInstances: API.OperationMethod<
@@ -4501,7 +4747,7 @@ export const deleteAppsServicesVersionsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAppsServicesVersionsInstancesRequest,
   output: DeleteAppsServicesVersionsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DebugAppsServicesVersionsInstancesRequest {
@@ -4537,7 +4783,12 @@ export type DebugAppsServicesVersionsInstancesResponse = Operation;
 export const DebugAppsServicesVersionsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DebugAppsServicesVersionsInstancesError = DefaultErrors;
+export type DebugAppsServicesVersionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment. */
 export const debugAppsServicesVersionsInstances: API.OperationMethod<
@@ -4548,7 +4799,7 @@ export const debugAppsServicesVersionsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DebugAppsServicesVersionsInstancesRequest,
   output: DebugAppsServicesVersionsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAppsLocationsRequest {
@@ -4582,7 +4833,7 @@ export type ListAppsLocationsResponse = ListLocationsResponse;
 export const ListAppsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListAppsLocationsError = DefaultErrors;
+export type ListAppsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listAppsLocations: API.PaginatedOperationMethod<
@@ -4593,7 +4844,7 @@ export const listAppsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAppsLocationsRequest,
   output: ListAppsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4622,7 +4873,7 @@ export const GetAppsLocationsRequest =
 export type GetAppsLocationsResponse = Location;
 export const GetAppsLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetAppsLocationsError = DefaultErrors;
+export type GetAppsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getAppsLocations: API.OperationMethod<
@@ -4633,5 +4884,5 @@ export const getAppsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsLocationsRequest,
   output: GetAppsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

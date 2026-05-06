@@ -256,6 +256,52 @@ export const ReportPropertyUsageResponse =
   }).annotate({ identifier: "ReportPropertyUsageResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -276,7 +322,7 @@ export type GetOrganizationsResponse = Organization;
 export const GetOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Organization;
 
-export type GetOrganizationsError = DefaultErrors;
+export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up a single organization. */
 export const getOrganizations: API.OperationMethod<
@@ -287,7 +333,7 @@ export const getOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsRequest,
   output: GetOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsRequest {
@@ -310,7 +356,7 @@ export type ListOrganizationsResponse_Op = ListOrganizationsResponse;
 export const ListOrganizationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOrganizationsResponse;
 
-export type ListOrganizationsError = DefaultErrors;
+export type ListOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of organizations that the user has access to. */
 export const listOrganizations: API.PaginatedOperationMethod<
@@ -321,7 +367,7 @@ export const listOrganizations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -353,7 +399,12 @@ export type ReportPropertyUsageOrganizationsResponse =
 export const ReportPropertyUsageOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReportPropertyUsageResponse;
 
-export type ReportPropertyUsageOrganizationsError = DefaultErrors;
+export type ReportPropertyUsageOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the usage and billing data for properties within the organization for the specified month. Per direct client org, user needs to be OrgAdmin/BillingAdmin on the organization in order to view the billing and usage data. Per sales partner client org, user needs to be OrgAdmin/BillingAdmin on the sales partner org in order to view the billing and usage data, or OrgAdmin/BillingAdmin on the sales partner client org in order to view the usage data only. */
 export const reportPropertyUsageOrganizations: API.OperationMethod<
@@ -364,7 +415,7 @@ export const reportPropertyUsageOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportPropertyUsageOrganizationsRequest,
   output: ReportPropertyUsageOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FindSalesPartnerManagedClientsOrganizationsRequest {
@@ -394,7 +445,12 @@ export type FindSalesPartnerManagedClientsOrganizationsResponse =
 export const FindSalesPartnerManagedClientsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FindSalesPartnerManagedClientsResponse;
 
-export type FindSalesPartnerManagedClientsOrganizationsError = DefaultErrors;
+export type FindSalesPartnerManagedClientsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a list of clients managed by the sales partner organization. User needs to be an OrgAdmin/BillingAdmin on the sales partner organization in order to view the end clients. */
 export const findSalesPartnerManagedClientsOrganizations: API.OperationMethod<
@@ -405,7 +461,7 @@ export const findSalesPartnerManagedClientsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindSalesPartnerManagedClientsOrganizationsRequest,
   output: FindSalesPartnerManagedClientsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsAnalyticsAccountLinksRequest {
@@ -425,7 +481,12 @@ export type DeleteOrganizationsAnalyticsAccountLinksResponse = Empty;
 export const DeleteOrganizationsAnalyticsAccountLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsAnalyticsAccountLinksError = DefaultErrors;
+export type DeleteOrganizationsAnalyticsAccountLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the AnalyticsAccountLink, which detaches the Analytics account from the Google Marketing Platform organization. User needs to be an org user, and admin on the Analytics account in order to delete the link. */
 export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
@@ -436,7 +497,7 @@ export const deleteOrganizationsAnalyticsAccountLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAnalyticsAccountLinksRequest,
   output: DeleteOrganizationsAnalyticsAccountLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsAnalyticsAccountLinksRequest {
@@ -463,7 +524,10 @@ export type ListOrganizationsAnalyticsAccountLinksResponse =
 export const ListOrganizationsAnalyticsAccountLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAnalyticsAccountLinksResponse;
 
-export type ListOrganizationsAnalyticsAccountLinksError = DefaultErrors;
+export type ListOrganizationsAnalyticsAccountLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Google Analytics accounts link to the specified Google Marketing Platform organization. */
 export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMethod<
@@ -474,7 +538,7 @@ export const listOrganizationsAnalyticsAccountLinks: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAnalyticsAccountLinksRequest,
   output: ListOrganizationsAnalyticsAccountLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -506,7 +570,12 @@ export type CreateOrganizationsAnalyticsAccountLinksResponse =
 export const CreateOrganizationsAnalyticsAccountLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyticsAccountLink;
 
-export type CreateOrganizationsAnalyticsAccountLinksError = DefaultErrors;
+export type CreateOrganizationsAnalyticsAccountLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the link between the Analytics account and the Google Marketing Platform organization. User needs to be an org user, and admin on the Analytics account to create the link. If the account is already linked to an organization, user needs to unlink the account from the current organization, then try link again. */
 export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
@@ -517,7 +586,7 @@ export const createOrganizationsAnalyticsAccountLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAnalyticsAccountLinksRequest,
   output: CreateOrganizationsAnalyticsAccountLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest {
@@ -548,7 +617,11 @@ export const SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ SetPropertyServiceLevelResponse;
 
 export type SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the service level for an Analytics property. */
 export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.OperationMethod<
@@ -559,5 +632,5 @@ export const setPropertyServiceLevelOrganizationsAnalyticsAccountLinks: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksRequest,
   output: SetPropertyServiceLevelOrganizationsAnalyticsAccountLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

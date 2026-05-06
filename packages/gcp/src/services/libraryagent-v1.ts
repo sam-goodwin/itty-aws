@@ -81,6 +81,52 @@ export const GoogleExampleLibraryagentV1ListShelvesResponse =
   }).annotate({ identifier: "GoogleExampleLibraryagentV1ListShelvesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -104,7 +150,7 @@ export type ListShelvesResponse =
 export const ListShelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1ListShelvesResponse;
 
-export type ListShelvesError = DefaultErrors;
+export type ListShelvesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be added to the end of this list. */
 export const listShelves: API.PaginatedOperationMethod<
@@ -115,7 +161,7 @@ export const listShelves: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListShelvesRequest,
   output: ListShelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -138,7 +184,7 @@ export type GetShelvesResponse = GoogleExampleLibraryagentV1Shelf;
 export const GetShelvesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Shelf;
 
-export type GetShelvesError = DefaultErrors;
+export type GetShelvesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a shelf. Returns NOT_FOUND if the shelf does not exist. */
 export const getShelves: API.OperationMethod<
@@ -149,7 +195,7 @@ export const getShelves: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShelvesRequest,
   output: GetShelvesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetShelvesBooksRequest {
@@ -170,7 +216,7 @@ export type GetShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
 export const GetShelvesBooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Book;
 
-export type GetShelvesBooksError = DefaultErrors;
+export type GetShelvesBooksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a book. Returns NOT_FOUND if the book does not exist. */
 export const getShelvesBooks: API.OperationMethod<
@@ -181,7 +227,7 @@ export const getShelvesBooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShelvesBooksRequest,
   output: GetShelvesBooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListShelvesBooksRequest {
@@ -208,7 +254,7 @@ export type ListShelvesBooksResponse =
 export const ListShelvesBooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1ListBooksResponse;
 
-export type ListShelvesBooksError = DefaultErrors;
+export type ListShelvesBooksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist. */
 export const listShelvesBooks: API.PaginatedOperationMethod<
@@ -219,7 +265,7 @@ export const listShelvesBooks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListShelvesBooksRequest,
   output: ListShelvesBooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -243,7 +289,12 @@ export type BorrowShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
 export const BorrowShelvesBooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Book;
 
-export type BorrowShelvesBooksError = DefaultErrors;
+export type BorrowShelvesBooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions. */
 export const borrowShelvesBooks: API.OperationMethod<
@@ -254,7 +305,7 @@ export const borrowShelvesBooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BorrowShelvesBooksRequest,
   output: BorrowShelvesBooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReturnShelvesBooksRequest {
@@ -274,7 +325,12 @@ export type ReturnShelvesBooksResponse = GoogleExampleLibraryagentV1Book;
 export const ReturnShelvesBooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleExampleLibraryagentV1Book;
 
-export type ReturnShelvesBooksError = DefaultErrors;
+export type ReturnShelvesBooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Return a book to the library. Returns the book if it is returned to the library successfully. Returns error if the book does not belong to the library or the users didn't borrow before. */
 export const returnShelvesBooks: API.OperationMethod<
@@ -285,5 +341,5 @@ export const returnShelvesBooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReturnShelvesBooksRequest,
   output: ReturnShelvesBooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

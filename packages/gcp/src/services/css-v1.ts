@@ -612,6 +612,52 @@ export const ListCssProductsResponse =
   }).annotate({ identifier: "ListCssProductsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -644,7 +690,10 @@ export type ListChildAccountsAccountsResponse = ListChildAccountsResponse;
 export const ListChildAccountsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListChildAccountsResponse;
 
-export type ListChildAccountsAccountsError = DefaultErrors;
+export type ListChildAccountsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the accounts under the specified CSS account ID, and optionally filters by label ID and account name. */
 export const listChildAccountsAccounts: API.PaginatedOperationMethod<
@@ -655,7 +704,7 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChildAccountsAccountsRequest,
   output: ListChildAccountsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -680,7 +729,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a single CSS/MC account by ID. */
 export const getAccounts: API.OperationMethod<
@@ -691,7 +740,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateLabelsAccountsRequest {
@@ -713,7 +762,12 @@ export const UpdateLabelsAccountsRequest =
 export type UpdateLabelsAccountsResponse = Account;
 export const UpdateLabelsAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type UpdateLabelsAccountsError = DefaultErrors;
+export type UpdateLabelsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates labels assigned to CSS/MC accounts by a CSS domain. */
 export const updateLabelsAccounts: API.OperationMethod<
@@ -724,7 +778,7 @@ export const updateLabelsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLabelsAccountsRequest,
   output: UpdateLabelsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsLabelsRequest {
@@ -750,7 +804,7 @@ export type ListAccountsLabelsResponse = ListAccountLabelsResponse;
 export const ListAccountsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountLabelsResponse;
 
-export type ListAccountsLabelsError = DefaultErrors;
+export type ListAccountsLabelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the labels owned by an account. */
 export const listAccountsLabels: API.PaginatedOperationMethod<
@@ -761,7 +815,7 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLabelsRequest,
   output: ListAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -788,7 +842,12 @@ export type PatchAccountsLabelsResponse = AccountLabel;
 export const PatchAccountsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountLabel;
 
-export type PatchAccountsLabelsError = DefaultErrors;
+export type PatchAccountsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a label. */
 export const patchAccountsLabels: API.OperationMethod<
@@ -799,7 +858,7 @@ export const patchAccountsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsLabelsRequest,
   output: PatchAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsLabelsRequest {
@@ -818,7 +877,12 @@ export const DeleteAccountsLabelsRequest =
 export type DeleteAccountsLabelsResponse = Empty;
 export const DeleteAccountsLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsLabelsError = DefaultErrors;
+export type DeleteAccountsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a label and removes it from all accounts to which it was assigned. */
 export const deleteAccountsLabels: API.OperationMethod<
@@ -829,7 +893,7 @@ export const deleteAccountsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsLabelsRequest,
   output: DeleteAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsLabelsRequest {
@@ -852,7 +916,12 @@ export type CreateAccountsLabelsResponse = AccountLabel;
 export const CreateAccountsLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountLabel;
 
-export type CreateAccountsLabelsError = DefaultErrors;
+export type CreateAccountsLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new label, not assigned to any account. */
 export const createAccountsLabels: API.OperationMethod<
@@ -863,7 +932,7 @@ export const createAccountsLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsLabelsRequest,
   output: CreateAccountsLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAccountsCssProductInputsRequest {
@@ -893,7 +962,12 @@ export type InsertAccountsCssProductInputsResponse = CssProductInput;
 export const InsertAccountsCssProductInputsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CssProductInput;
 
-export type InsertAccountsCssProductInputsError = DefaultErrors;
+export type InsertAccountsCssProductInputsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a CssProductInput to your CSS Center account. If an input with the same contentLanguage, identity, feedLabel and feedId already exists, this method replaces that entry. After inserting, updating, or deleting a CSS Product input, it may take several minutes before the processed CSS Product can be retrieved. */
 export const insertAccountsCssProductInputs: API.OperationMethod<
@@ -904,7 +978,7 @@ export const insertAccountsCssProductInputs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsCssProductInputsRequest,
   output: InsertAccountsCssProductInputsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountsCssProductInputsRequest {
@@ -930,7 +1004,12 @@ export type PatchAccountsCssProductInputsResponse = CssProductInput;
 export const PatchAccountsCssProductInputsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CssProductInput;
 
-export type PatchAccountsCssProductInputsError = DefaultErrors;
+export type PatchAccountsCssProductInputsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the existing Css Product input in your CSS Center account. After inserting, updating, or deleting a CSS Product input, it may take several minutes before the processed Css Product can be retrieved. */
 export const patchAccountsCssProductInputs: API.OperationMethod<
@@ -941,7 +1020,7 @@ export const patchAccountsCssProductInputs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsCssProductInputsRequest,
   output: PatchAccountsCssProductInputsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsCssProductInputsRequest {
@@ -966,7 +1045,12 @@ export type DeleteAccountsCssProductInputsResponse = Empty;
 export const DeleteAccountsCssProductInputsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsCssProductInputsError = DefaultErrors;
+export type DeleteAccountsCssProductInputsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a CSS Product input from your CSS Center account. After a delete it may take several minutes until the input is no longer available. */
 export const deleteAccountsCssProductInputs: API.OperationMethod<
@@ -977,7 +1061,7 @@ export const deleteAccountsCssProductInputs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsCssProductInputsRequest,
   output: DeleteAccountsCssProductInputsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsQuotasRequest {
@@ -1003,7 +1087,7 @@ export type ListAccountsQuotasResponse = ListQuotaGroupsResponse;
 export const ListAccountsQuotasResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListQuotaGroupsResponse;
 
-export type ListAccountsQuotasError = DefaultErrors;
+export type ListAccountsQuotasError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the daily call quota and usage per group for your CSS Center account. */
 export const listAccountsQuotas: API.PaginatedOperationMethod<
@@ -1014,7 +1098,7 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsQuotasRequest,
   output: ListAccountsQuotasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1038,7 +1122,7 @@ export type GetAccountsCssProductsResponse = CssProduct;
 export const GetAccountsCssProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CssProduct;
 
-export type GetAccountsCssProductsError = DefaultErrors;
+export type GetAccountsCssProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the processed CSS Product from your CSS Center account. After inserting, updating, or deleting a product input, it may take several minutes before the updated final product can be retrieved. */
 export const getAccountsCssProducts: API.OperationMethod<
@@ -1049,7 +1133,7 @@ export const getAccountsCssProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsCssProductsRequest,
   output: GetAccountsCssProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsCssProductsRequest {
@@ -1075,7 +1159,7 @@ export type ListAccountsCssProductsResponse = ListCssProductsResponse;
 export const ListAccountsCssProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCssProductsResponse;
 
-export type ListAccountsCssProductsError = DefaultErrors;
+export type ListAccountsCssProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the processed CSS Products in your CSS Center account. The response might contain fewer items than specified by pageSize. Rely on pageToken to determine if there are more items to be requested. After inserting, updating, or deleting a CSS product input, it may take several minutes before the updated processed CSS product can be retrieved. */
 export const listAccountsCssProducts: API.PaginatedOperationMethod<
@@ -1086,7 +1170,7 @@ export const listAccountsCssProducts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsCssProductsRequest,
   output: ListAccountsCssProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

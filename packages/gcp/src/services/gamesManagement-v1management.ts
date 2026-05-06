@@ -243,6 +243,52 @@ export const ScoresResetMultipleForAllRequest =
   }).annotate({ identifier: "ScoresResetMultipleForAllRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -267,7 +313,12 @@ export type ResetAchievementsResponse = AchievementResetResponse;
 export const ResetAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementResetResponse;
 
-export type ResetAchievementsError = DefaultErrors;
+export type ResetAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAchievements: API.OperationMethod<
@@ -278,7 +329,7 @@ export const resetAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAchievementsRequest,
   output: ResetAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetAllAchievementsRequest {}
@@ -297,7 +348,12 @@ export type ResetAllAchievementsResponse = AchievementResetAllResponse;
 export const ResetAllAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementResetAllResponse;
 
-export type ResetAllAchievementsError = DefaultErrors;
+export type ResetAllAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAllAchievements: API.OperationMethod<
@@ -308,7 +364,7 @@ export const resetAllAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAllAchievementsRequest,
   output: ResetAllAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetAllForAllPlayersAchievementsRequest {}
@@ -329,7 +385,12 @@ export const ResetAllForAllPlayersAchievementsResponse: Schema.Schema<ResetAllFo
     {},
   ) as any as Schema.Schema<ResetAllForAllPlayersAchievementsResponse>;
 
-export type ResetAllForAllPlayersAchievementsError = DefaultErrors;
+export type ResetAllForAllPlayersAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets all draft achievements for all players. This method is only available to user accounts for your developer console. */
 export const resetAllForAllPlayersAchievements: API.OperationMethod<
@@ -340,7 +401,7 @@ export const resetAllForAllPlayersAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAllForAllPlayersAchievementsRequest,
   output: ResetAllForAllPlayersAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetForAllPlayersAchievementsRequest {
@@ -366,7 +427,12 @@ export const ResetForAllPlayersAchievementsResponse: Schema.Schema<ResetForAllPl
     {},
   ) as any as Schema.Schema<ResetForAllPlayersAchievementsResponse>;
 
-export type ResetForAllPlayersAchievementsError = DefaultErrors;
+export type ResetForAllPlayersAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset. */
 export const resetForAllPlayersAchievements: API.OperationMethod<
@@ -377,7 +443,7 @@ export const resetForAllPlayersAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetForAllPlayersAchievementsRequest,
   output: ResetForAllPlayersAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetMultipleForAllPlayersAchievementsRequest {
@@ -405,7 +471,12 @@ export const ResetMultipleForAllPlayersAchievementsResponse: Schema.Schema<Reset
     {},
   ) as any as Schema.Schema<ResetMultipleForAllPlayersAchievementsResponse>;
 
-export type ResetMultipleForAllPlayersAchievementsError = DefaultErrors;
+export type ResetMultipleForAllPlayersAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets achievements with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft achievements may be reset. */
 export const resetMultipleForAllPlayersAchievements: API.OperationMethod<
@@ -416,7 +487,7 @@ export const resetMultipleForAllPlayersAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetMultipleForAllPlayersAchievementsRequest,
   output: ResetMultipleForAllPlayersAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetEventsRequest {
@@ -441,7 +512,12 @@ export const ResetEventsResponse: Schema.Schema<ResetEventsResponse> =
     {},
   ) as any as Schema.Schema<ResetEventsResponse>;
 
-export type ResetEventsError = DefaultErrors;
+export type ResetEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetEvents: API.OperationMethod<
@@ -452,7 +528,7 @@ export const resetEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetEventsRequest,
   output: ResetEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetAllEventsRequest {}
@@ -474,7 +550,12 @@ export const ResetAllEventsResponse: Schema.Schema<ResetAllEventsResponse> =
     {},
   ) as any as Schema.Schema<ResetAllEventsResponse>;
 
-export type ResetAllEventsError = DefaultErrors;
+export type ResetAllEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAllEvents: API.OperationMethod<
@@ -485,7 +566,7 @@ export const resetAllEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAllEventsRequest,
   output: ResetAllEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetAllForAllPlayersEventsRequest {}
@@ -506,7 +587,12 @@ export const ResetAllForAllPlayersEventsResponse: Schema.Schema<ResetAllForAllPl
     {},
   ) as any as Schema.Schema<ResetAllForAllPlayersEventsResponse>;
 
-export type ResetAllForAllPlayersEventsError = DefaultErrors;
+export type ResetAllForAllPlayersEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets all draft events for all players. This method is only available to user accounts for your developer console. */
 export const resetAllForAllPlayersEvents: API.OperationMethod<
@@ -517,7 +603,7 @@ export const resetAllForAllPlayersEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAllForAllPlayersEventsRequest,
   output: ResetAllForAllPlayersEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetForAllPlayersEventsRequest {
@@ -543,7 +629,12 @@ export const ResetForAllPlayersEventsResponse: Schema.Schema<ResetForAllPlayersE
     {},
   ) as any as Schema.Schema<ResetForAllPlayersEventsResponse>;
 
-export type ResetForAllPlayersEventsError = DefaultErrors;
+export type ResetForAllPlayersEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset. */
 export const resetForAllPlayersEvents: API.OperationMethod<
@@ -554,7 +645,7 @@ export const resetForAllPlayersEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetForAllPlayersEventsRequest,
   output: ResetForAllPlayersEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetMultipleForAllPlayersEventsRequest {
@@ -580,7 +671,12 @@ export const ResetMultipleForAllPlayersEventsResponse: Schema.Schema<ResetMultip
     {},
   ) as any as Schema.Schema<ResetMultipleForAllPlayersEventsResponse>;
 
-export type ResetMultipleForAllPlayersEventsError = DefaultErrors;
+export type ResetMultipleForAllPlayersEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset. */
 export const resetMultipleForAllPlayersEvents: API.OperationMethod<
@@ -591,7 +687,7 @@ export const resetMultipleForAllPlayersEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetMultipleForAllPlayersEventsRequest,
   output: ResetMultipleForAllPlayersEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface HidePlayersRequest {
@@ -619,7 +715,12 @@ export const HidePlayersResponse: Schema.Schema<HidePlayersResponse> =
     {},
   ) as any as Schema.Schema<HidePlayersResponse>;
 
-export type HidePlayersError = DefaultErrors;
+export type HidePlayersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console. */
 export const hidePlayers: API.OperationMethod<
@@ -630,7 +731,7 @@ export const hidePlayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HidePlayersRequest,
   output: HidePlayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnhidePlayersRequest {
@@ -657,7 +758,12 @@ export const UnhidePlayersResponse: Schema.Schema<UnhidePlayersResponse> =
     {},
   ) as any as Schema.Schema<UnhidePlayersResponse>;
 
-export type UnhidePlayersError = DefaultErrors;
+export type UnhidePlayersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unhide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console. */
 export const unhidePlayers: API.OperationMethod<
@@ -668,7 +774,7 @@ export const unhidePlayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnhidePlayersRequest,
   output: UnhidePlayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListHiddenApplicationsRequest {
@@ -697,7 +803,7 @@ export type ListHiddenApplicationsResponse = HiddenPlayerList;
 export const ListHiddenApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ HiddenPlayerList;
 
-export type ListHiddenApplicationsError = DefaultErrors;
+export type ListHiddenApplicationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the list of players hidden from the given application. This method is only available to user accounts for your developer console. */
 export const listHiddenApplications: API.PaginatedOperationMethod<
@@ -708,7 +814,7 @@ export const listHiddenApplications: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHiddenApplicationsRequest,
   output: ListHiddenApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -736,7 +842,12 @@ export type ResetScoresResponse = PlayerScoreResetResponse;
 export const ResetScoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerScoreResetResponse;
 
-export type ResetScoresError = DefaultErrors;
+export type ResetScoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetScores: API.OperationMethod<
@@ -747,7 +858,7 @@ export const resetScores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetScoresRequest,
   output: ResetScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetAllScoresRequest {}
@@ -767,7 +878,12 @@ export type ResetAllScoresResponse = PlayerScoreResetAllResponse;
 export const ResetAllScoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerScoreResetAllResponse;
 
-export type ResetAllScoresError = DefaultErrors;
+export type ResetAllScoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your application. */
 export const resetAllScores: API.OperationMethod<
@@ -778,7 +894,7 @@ export const resetAllScores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAllScoresRequest,
   output: ResetAllScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetAllForAllPlayersScoresRequest {}
@@ -799,7 +915,12 @@ export const ResetAllForAllPlayersScoresResponse: Schema.Schema<ResetAllForAllPl
     {},
   ) as any as Schema.Schema<ResetAllForAllPlayersScoresResponse>;
 
-export type ResetAllForAllPlayersScoresError = DefaultErrors;
+export type ResetAllForAllPlayersScoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console. */
 export const resetAllForAllPlayersScores: API.OperationMethod<
@@ -810,7 +931,7 @@ export const resetAllForAllPlayersScores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAllForAllPlayersScoresRequest,
   output: ResetAllForAllPlayersScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetForAllPlayersScoresRequest {
@@ -836,7 +957,12 @@ export const ResetForAllPlayersScoresResponse: Schema.Schema<ResetForAllPlayersS
     {},
   ) as any as Schema.Schema<ResetForAllPlayersScoresResponse>;
 
-export type ResetForAllPlayersScoresError = DefaultErrors;
+export type ResetForAllPlayersScoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset. */
 export const resetForAllPlayersScores: API.OperationMethod<
@@ -847,7 +973,7 @@ export const resetForAllPlayersScores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetForAllPlayersScoresRequest,
   output: ResetForAllPlayersScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetMultipleForAllPlayersScoresRequest {
@@ -873,7 +999,12 @@ export const ResetMultipleForAllPlayersScoresResponse: Schema.Schema<ResetMultip
     {},
   ) as any as Schema.Schema<ResetMultipleForAllPlayersScoresResponse>;
 
-export type ResetMultipleForAllPlayersScoresError = DefaultErrors;
+export type ResetMultipleForAllPlayersScoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset. */
 export const resetMultipleForAllPlayersScores: API.OperationMethod<
@@ -884,5 +1015,5 @@ export const resetMultipleForAllPlayersScores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetMultipleForAllPlayersScoresRequest,
   output: ResetMultipleForAllPlayersScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

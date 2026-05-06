@@ -652,6 +652,52 @@ export const CreatePhraseSetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "CreatePhraseSetRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -673,7 +719,12 @@ export type RecognizeSpeechResponse = RecognizeResponse;
 export const RecognizeSpeechResponse =
   /*@__PURE__*/ /*#__PURE__*/ RecognizeResponse;
 
-export type RecognizeSpeechError = DefaultErrors;
+export type RecognizeSpeechError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs synchronous speech recognition: receive results after all audio has been sent and processed. */
 export const recognizeSpeech: API.OperationMethod<
@@ -684,7 +735,7 @@ export const recognizeSpeech: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecognizeSpeechRequest,
   output: RecognizeSpeechResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LongrunningrecognizeSpeechRequest {
@@ -708,7 +759,12 @@ export type LongrunningrecognizeSpeechResponse = Operation;
 export const LongrunningrecognizeSpeechResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type LongrunningrecognizeSpeechError = DefaultErrors;
+export type LongrunningrecognizeSpeechError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs asynchronous speech recognition: receive results via the google.longrunning.Operations interface. Returns either an `Operation.error` or an `Operation.response` which contains a `LongRunningRecognizeResponse` message. For more information on asynchronous speech recognition, see the [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize). */
 export const longrunningrecognizeSpeech: API.OperationMethod<
@@ -719,7 +775,7 @@ export const longrunningrecognizeSpeech: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LongrunningrecognizeSpeechRequest,
   output: LongrunningrecognizeSpeechResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPhraseSetsRequest {
@@ -739,7 +795,12 @@ export type DeleteProjectsLocationsPhraseSetsResponse = Empty;
 export const DeleteProjectsLocationsPhraseSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsPhraseSetsError = DefaultErrors;
+export type DeleteProjectsLocationsPhraseSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a phrase set. */
 export const deleteProjectsLocationsPhraseSets: API.OperationMethod<
@@ -750,7 +811,7 @@ export const deleteProjectsLocationsPhraseSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPhraseSetsRequest,
   output: DeleteProjectsLocationsPhraseSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsPhraseSetsRequest {
@@ -776,7 +837,12 @@ export type PatchProjectsLocationsPhraseSetsResponse = PhraseSet;
 export const PatchProjectsLocationsPhraseSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PhraseSet;
 
-export type PatchProjectsLocationsPhraseSetsError = DefaultErrors;
+export type PatchProjectsLocationsPhraseSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a phrase set. */
 export const patchProjectsLocationsPhraseSets: API.OperationMethod<
@@ -787,7 +853,7 @@ export const patchProjectsLocationsPhraseSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPhraseSetsRequest,
   output: PatchProjectsLocationsPhraseSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPhraseSetsRequest {
@@ -810,7 +876,12 @@ export type CreateProjectsLocationsPhraseSetsResponse = PhraseSet;
 export const CreateProjectsLocationsPhraseSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PhraseSet;
 
-export type CreateProjectsLocationsPhraseSetsError = DefaultErrors;
+export type CreateProjectsLocationsPhraseSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a set of phrase hints. Each item in the set can be a single word or a multi-word phrase. The items in the PhraseSet are favored by the recognition model when you send a call that includes the PhraseSet. */
 export const createProjectsLocationsPhraseSets: API.OperationMethod<
@@ -821,7 +892,7 @@ export const createProjectsLocationsPhraseSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPhraseSetsRequest,
   output: CreateProjectsLocationsPhraseSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPhraseSetsRequest {
@@ -841,7 +912,10 @@ export type GetProjectsLocationsPhraseSetsResponse = PhraseSet;
 export const GetProjectsLocationsPhraseSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PhraseSet;
 
-export type GetProjectsLocationsPhraseSetsError = DefaultErrors;
+export type GetProjectsLocationsPhraseSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a phrase set. */
 export const getProjectsLocationsPhraseSets: API.OperationMethod<
@@ -852,7 +926,7 @@ export const getProjectsLocationsPhraseSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPhraseSetsRequest,
   output: GetProjectsLocationsPhraseSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPhraseSetsRequest {
@@ -878,7 +952,10 @@ export type ListProjectsLocationsPhraseSetsResponse = ListPhraseSetResponse;
 export const ListProjectsLocationsPhraseSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPhraseSetResponse;
 
-export type ListProjectsLocationsPhraseSetsError = DefaultErrors;
+export type ListProjectsLocationsPhraseSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List phrase sets. */
 export const listProjectsLocationsPhraseSets: API.PaginatedOperationMethod<
@@ -889,7 +966,7 @@ export const listProjectsLocationsPhraseSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPhraseSetsRequest,
   output: ListProjectsLocationsPhraseSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -913,7 +990,12 @@ export type DeleteProjectsLocationsCustomClassesResponse = Empty;
 export const DeleteProjectsLocationsCustomClassesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsCustomClassesError = DefaultErrors;
+export type DeleteProjectsLocationsCustomClassesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a custom class. */
 export const deleteProjectsLocationsCustomClasses: API.OperationMethod<
@@ -924,7 +1006,7 @@ export const deleteProjectsLocationsCustomClasses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCustomClassesRequest,
   output: DeleteProjectsLocationsCustomClassesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCustomClassesRequest {
@@ -950,7 +1032,12 @@ export type PatchProjectsLocationsCustomClassesResponse = CustomClass;
 export const PatchProjectsLocationsCustomClassesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomClass;
 
-export type PatchProjectsLocationsCustomClassesError = DefaultErrors;
+export type PatchProjectsLocationsCustomClassesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a custom class. */
 export const patchProjectsLocationsCustomClasses: API.OperationMethod<
@@ -961,7 +1048,7 @@ export const patchProjectsLocationsCustomClasses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCustomClassesRequest,
   output: PatchProjectsLocationsCustomClassesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCustomClassesRequest {
@@ -988,7 +1075,12 @@ export type CreateProjectsLocationsCustomClassesResponse = CustomClass;
 export const CreateProjectsLocationsCustomClassesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomClass;
 
-export type CreateProjectsLocationsCustomClassesError = DefaultErrors;
+export type CreateProjectsLocationsCustomClassesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a custom class. */
 export const createProjectsLocationsCustomClasses: API.OperationMethod<
@@ -999,7 +1091,7 @@ export const createProjectsLocationsCustomClasses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCustomClassesRequest,
   output: CreateProjectsLocationsCustomClassesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCustomClassesRequest {
@@ -1019,7 +1111,10 @@ export type GetProjectsLocationsCustomClassesResponse = CustomClass;
 export const GetProjectsLocationsCustomClassesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomClass;
 
-export type GetProjectsLocationsCustomClassesError = DefaultErrors;
+export type GetProjectsLocationsCustomClassesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a custom class. */
 export const getProjectsLocationsCustomClasses: API.OperationMethod<
@@ -1030,7 +1125,7 @@ export const getProjectsLocationsCustomClasses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCustomClassesRequest,
   output: GetProjectsLocationsCustomClassesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCustomClassesRequest {
@@ -1057,7 +1152,10 @@ export type ListProjectsLocationsCustomClassesResponse =
 export const ListProjectsLocationsCustomClassesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomClassesResponse;
 
-export type ListProjectsLocationsCustomClassesError = DefaultErrors;
+export type ListProjectsLocationsCustomClassesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List custom classes. */
 export const listProjectsLocationsCustomClasses: API.PaginatedOperationMethod<
@@ -1068,7 +1166,7 @@ export const listProjectsLocationsCustomClasses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCustomClassesRequest,
   output: ListProjectsLocationsCustomClassesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1105,7 +1203,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -1116,7 +1214,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1138,7 +1236,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1149,5 +1247,5 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

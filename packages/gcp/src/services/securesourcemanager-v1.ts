@@ -1038,6 +1038,52 @@ export const UnresolvePullRequestCommentsResponse =
   }).annotate({ identifier: "UnresolvePullRequestCommentsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1072,7 +1118,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1083,7 +1129,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1107,7 +1153,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1118,7 +1164,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
@@ -1145,7 +1191,12 @@ export type SetIamPolicyProjectsLocationsInstancesResponse = Policy;
 export const SetIamPolicyProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsInstancesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
@@ -1156,7 +1207,7 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsInstancesRequest,
   output: SetIamPolicyProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
@@ -1181,7 +1232,10 @@ export type GetIamPolicyProjectsLocationsInstancesResponse = Policy;
 export const GetIamPolicyProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsInstancesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
@@ -1192,7 +1246,7 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsInstancesRequest,
   output: GetIamPolicyProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
@@ -1220,7 +1274,12 @@ export type TestIamPermissionsProjectsLocationsInstancesResponse =
 export const TestIamPermissionsProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsInstancesError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
@@ -1231,7 +1290,7 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsInstancesRequest,
   output: TestIamPermissionsProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsInstancesRequest {
@@ -1263,7 +1322,10 @@ export type ListProjectsLocationsInstancesResponse = ListInstancesResponse;
 export const ListProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
 
-export type ListProjectsLocationsInstancesError = DefaultErrors;
+export type ListProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Instances in a given project and location. */
 export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
@@ -1274,7 +1336,7 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInstancesRequest,
   output: ListProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1298,7 +1360,10 @@ export type GetProjectsLocationsInstancesResponse = Instance;
 export const GetProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type GetProjectsLocationsInstancesError = DefaultErrors;
+export type GetProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single instance. */
 export const getProjectsLocationsInstances: API.OperationMethod<
@@ -1309,7 +1374,7 @@ export const getProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInstancesRequest,
   output: GetProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsInstancesRequest {
@@ -1338,7 +1403,12 @@ export type CreateProjectsLocationsInstancesResponse = Operation;
 export const CreateProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsInstancesError = DefaultErrors;
+export type CreateProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new instance in a given project and location. */
 export const createProjectsLocationsInstances: API.OperationMethod<
@@ -1349,7 +1419,7 @@ export const createProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsInstancesRequest,
   output: CreateProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsInstancesRequest {
@@ -1375,7 +1445,12 @@ export type DeleteProjectsLocationsInstancesResponse = Operation;
 export const DeleteProjectsLocationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsInstancesError = DefaultErrors;
+export type DeleteProjectsLocationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single instance. */
 export const deleteProjectsLocationsInstances: API.OperationMethod<
@@ -1386,7 +1461,7 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsInstancesRequest,
   output: DeleteProjectsLocationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -1420,7 +1495,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1431,7 +1509,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1455,7 +1533,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1466,7 +1547,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -1486,7 +1567,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -1497,7 +1583,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -1520,7 +1606,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -1531,7 +1622,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRepositoriesRequest {
@@ -1564,7 +1655,10 @@ export type ListProjectsLocationsRepositoriesResponse =
 export const ListProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRepositoriesResponse;
 
-export type ListProjectsLocationsRepositoriesError = DefaultErrors;
+export type ListProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Repositories in a given project and location. The instance field is required in the query parameter for requests using the securesourcemanager.googleapis.com endpoint. */
 export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
@@ -1575,7 +1669,7 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesRequest,
   output: ListProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1599,7 +1693,10 @@ export type GetProjectsLocationsRepositoriesResponse = Repository;
 export const GetProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Repository;
 
-export type GetProjectsLocationsRepositoriesError = DefaultErrors;
+export type GetProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata of a repository. */
 export const getProjectsLocationsRepositories: API.OperationMethod<
@@ -1610,7 +1707,7 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRepositoriesRequest,
   output: GetProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsRepositoriesRequest {
@@ -1638,7 +1735,12 @@ export type CreateProjectsLocationsRepositoriesResponse = Operation;
 export const CreateProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsRepositoriesError = DefaultErrors;
+export type CreateProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new repository in a given project and location. The Repository.Instance field is required in the request body for requests using the securesourcemanager.googleapis.com endpoint. */
 export const createProjectsLocationsRepositories: API.OperationMethod<
@@ -1649,7 +1751,7 @@ export const createProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRepositoriesRequest,
   output: CreateProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsRepositoriesRequest {
@@ -1680,7 +1782,12 @@ export type PatchProjectsLocationsRepositoriesResponse = Operation;
 export const PatchProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsRepositoriesError = DefaultErrors;
+export type PatchProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata of a repository. */
 export const patchProjectsLocationsRepositories: API.OperationMethod<
@@ -1691,7 +1798,7 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRepositoriesRequest,
   output: PatchProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsRepositoriesRequest {
@@ -1716,7 +1823,12 @@ export type DeleteProjectsLocationsRepositoriesResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsRepositoriesError = DefaultErrors;
+export type DeleteProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Repository. */
 export const deleteProjectsLocationsRepositories: API.OperationMethod<
@@ -1727,7 +1839,7 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRepositoriesRequest,
   output: DeleteProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
@@ -1752,7 +1864,10 @@ export type GetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
 export const GetIamPolicyProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsRepositoriesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get IAM policy for a repository. */
 export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
@@ -1763,7 +1878,7 @@ export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsRepositoriesRequest,
   output: GetIamPolicyProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
@@ -1790,7 +1905,12 @@ export type SetIamPolicyProjectsLocationsRepositoriesResponse = Policy;
 export const SetIamPolicyProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsRepositoriesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set IAM policy on a repository. */
 export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
@@ -1801,7 +1921,7 @@ export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsRepositoriesRequest,
   output: SetIamPolicyProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
@@ -1830,7 +1950,11 @@ export const TestIamPermissionsProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsRepositoriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Test IAM permissions on a repository. IAM permission checks are not required on this method. */
 export const testIamPermissionsProjectsLocationsRepositories: API.OperationMethod<
@@ -1841,7 +1965,7 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsRepositoriesRequest,
   output: TestIamPermissionsProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchTreeProjectsLocationsRepositoriesRequest {
@@ -1873,7 +1997,10 @@ export type FetchTreeProjectsLocationsRepositoriesResponse = FetchTreeResponse;
 export const FetchTreeProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchTreeResponse;
 
-export type FetchTreeProjectsLocationsRepositoriesError = DefaultErrors;
+export type FetchTreeProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetches a tree from a repository. */
 export const fetchTreeProjectsLocationsRepositories: API.PaginatedOperationMethod<
@@ -1884,7 +2011,7 @@ export const fetchTreeProjectsLocationsRepositories: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FetchTreeProjectsLocationsRepositoriesRequest,
   output: FetchTreeProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1911,7 +2038,10 @@ export type FetchBlobProjectsLocationsRepositoriesResponse = FetchBlobResponse;
 export const FetchBlobProjectsLocationsRepositoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchBlobResponse;
 
-export type FetchBlobProjectsLocationsRepositoriesError = DefaultErrors;
+export type FetchBlobProjectsLocationsRepositoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetches a blob from a repository. */
 export const fetchBlobProjectsLocationsRepositories: API.OperationMethod<
@@ -1922,7 +2052,7 @@ export const fetchBlobProjectsLocationsRepositories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchBlobProjectsLocationsRepositoriesRequest,
   output: FetchBlobProjectsLocationsRepositoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRepositoriesHooksRequest {
@@ -1948,7 +2078,10 @@ export type ListProjectsLocationsRepositoriesHooksResponse = ListHooksResponse;
 export const ListProjectsLocationsRepositoriesHooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHooksResponse;
 
-export type ListProjectsLocationsRepositoriesHooksError = DefaultErrors;
+export type ListProjectsLocationsRepositoriesHooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists hooks in a given repository. */
 export const listProjectsLocationsRepositoriesHooks: API.PaginatedOperationMethod<
@@ -1959,7 +2092,7 @@ export const listProjectsLocationsRepositoriesHooks: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesHooksRequest,
   output: ListProjectsLocationsRepositoriesHooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1983,7 +2116,10 @@ export type GetProjectsLocationsRepositoriesHooksResponse = Hook;
 export const GetProjectsLocationsRepositoriesHooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Hook;
 
-export type GetProjectsLocationsRepositoriesHooksError = DefaultErrors;
+export type GetProjectsLocationsRepositoriesHooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata of a hook. */
 export const getProjectsLocationsRepositoriesHooks: API.OperationMethod<
@@ -1994,7 +2130,7 @@ export const getProjectsLocationsRepositoriesHooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRepositoriesHooksRequest,
   output: GetProjectsLocationsRepositoriesHooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsRepositoriesHooksRequest {
@@ -2020,7 +2156,12 @@ export type CreateProjectsLocationsRepositoriesHooksResponse = Operation;
 export const CreateProjectsLocationsRepositoriesHooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsRepositoriesHooksError = DefaultErrors;
+export type CreateProjectsLocationsRepositoriesHooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new hook in a given repository. */
 export const createProjectsLocationsRepositoriesHooks: API.OperationMethod<
@@ -2031,7 +2172,7 @@ export const createProjectsLocationsRepositoriesHooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRepositoriesHooksRequest,
   output: CreateProjectsLocationsRepositoriesHooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsRepositoriesHooksRequest {
@@ -2057,7 +2198,12 @@ export type PatchProjectsLocationsRepositoriesHooksResponse = Operation;
 export const PatchProjectsLocationsRepositoriesHooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsRepositoriesHooksError = DefaultErrors;
+export type PatchProjectsLocationsRepositoriesHooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata of a hook. */
 export const patchProjectsLocationsRepositoriesHooks: API.OperationMethod<
@@ -2068,7 +2214,7 @@ export const patchProjectsLocationsRepositoriesHooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRepositoriesHooksRequest,
   output: PatchProjectsLocationsRepositoriesHooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsRepositoriesHooksRequest {
@@ -2088,7 +2234,12 @@ export type DeleteProjectsLocationsRepositoriesHooksResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesHooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsRepositoriesHooksError = DefaultErrors;
+export type DeleteProjectsLocationsRepositoriesHooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Hook. */
 export const deleteProjectsLocationsRepositoriesHooks: API.OperationMethod<
@@ -2099,7 +2250,7 @@ export const deleteProjectsLocationsRepositoriesHooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRepositoriesHooksRequest,
   output: DeleteProjectsLocationsRepositoriesHooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsRepositoriesBranchRulesRequest {
@@ -2125,7 +2276,12 @@ export type CreateProjectsLocationsRepositoriesBranchRulesResponse = Operation;
 export const CreateProjectsLocationsRepositoriesBranchRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsRepositoriesBranchRulesError = DefaultErrors;
+export type CreateProjectsLocationsRepositoriesBranchRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateBranchRule creates a branch rule in a given repository. */
 export const createProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
@@ -2136,7 +2292,7 @@ export const createProjectsLocationsRepositoriesBranchRules: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRepositoriesBranchRulesRequest,
   output: CreateProjectsLocationsRepositoriesBranchRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRepositoriesBranchRulesRequest {
@@ -2162,7 +2318,10 @@ export type ListProjectsLocationsRepositoriesBranchRulesResponse =
 export const ListProjectsLocationsRepositoriesBranchRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBranchRulesResponse;
 
-export type ListProjectsLocationsRepositoriesBranchRulesError = DefaultErrors;
+export type ListProjectsLocationsRepositoriesBranchRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListBranchRules lists branch rules in a given repository. */
 export const listProjectsLocationsRepositoriesBranchRules: API.PaginatedOperationMethod<
@@ -2173,7 +2332,7 @@ export const listProjectsLocationsRepositoriesBranchRules: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesBranchRulesRequest,
   output: ListProjectsLocationsRepositoriesBranchRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2197,7 +2356,10 @@ export type GetProjectsLocationsRepositoriesBranchRulesResponse = BranchRule;
 export const GetProjectsLocationsRepositoriesBranchRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BranchRule;
 
-export type GetProjectsLocationsRepositoriesBranchRulesError = DefaultErrors;
+export type GetProjectsLocationsRepositoriesBranchRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetBranchRule gets a branch rule. */
 export const getProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
@@ -2208,7 +2370,7 @@ export const getProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRepositoriesBranchRulesRequest,
   output: GetProjectsLocationsRepositoriesBranchRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsRepositoriesBranchRulesRequest {
@@ -2239,7 +2401,12 @@ export type PatchProjectsLocationsRepositoriesBranchRulesResponse = Operation;
 export const PatchProjectsLocationsRepositoriesBranchRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsRepositoriesBranchRulesError = DefaultErrors;
+export type PatchProjectsLocationsRepositoriesBranchRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** UpdateBranchRule updates a branch rule. */
 export const patchProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
@@ -2250,7 +2417,7 @@ export const patchProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRepositoriesBranchRulesRequest,
   output: PatchProjectsLocationsRepositoriesBranchRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsRepositoriesBranchRulesRequest {
@@ -2274,7 +2441,12 @@ export type DeleteProjectsLocationsRepositoriesBranchRulesResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesBranchRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsRepositoriesBranchRulesError = DefaultErrors;
+export type DeleteProjectsLocationsRepositoriesBranchRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteBranchRule deletes a branch rule. */
 export const deleteProjectsLocationsRepositoriesBranchRules: API.OperationMethod<
@@ -2285,7 +2457,7 @@ export const deleteProjectsLocationsRepositoriesBranchRules: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRepositoriesBranchRulesRequest,
   output: DeleteProjectsLocationsRepositoriesBranchRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsRepositoriesPullRequestsRequest {
@@ -2309,7 +2481,11 @@ export const CreateProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsRepositoriesPullRequestsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pull request. */
 export const createProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
@@ -2320,7 +2496,7 @@ export const createProjectsLocationsRepositoriesPullRequests: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRepositoriesPullRequestsRequest,
   output: CreateProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRepositoriesPullRequestsRequest {
@@ -2340,7 +2516,10 @@ export type GetProjectsLocationsRepositoriesPullRequestsResponse = PullRequest;
 export const GetProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PullRequest;
 
-export type GetProjectsLocationsRepositoriesPullRequestsError = DefaultErrors;
+export type GetProjectsLocationsRepositoriesPullRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a pull request. */
 export const getProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
@@ -2351,7 +2530,7 @@ export const getProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRepositoriesPullRequestsRequest,
   output: GetProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRepositoriesPullRequestsRequest {
@@ -2378,7 +2557,10 @@ export type ListProjectsLocationsRepositoriesPullRequestsResponse =
 export const ListProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPullRequestsResponse;
 
-export type ListProjectsLocationsRepositoriesPullRequestsError = DefaultErrors;
+export type ListProjectsLocationsRepositoriesPullRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists pull requests in a repository. */
 export const listProjectsLocationsRepositoriesPullRequests: API.PaginatedOperationMethod<
@@ -2389,7 +2571,7 @@ export const listProjectsLocationsRepositoriesPullRequests: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesPullRequestsRequest,
   output: ListProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2419,7 +2601,12 @@ export type PatchProjectsLocationsRepositoriesPullRequestsResponse = Operation;
 export const PatchProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsRepositoriesPullRequestsError = DefaultErrors;
+export type PatchProjectsLocationsRepositoriesPullRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a pull request. */
 export const patchProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
@@ -2430,7 +2617,7 @@ export const patchProjectsLocationsRepositoriesPullRequests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRepositoriesPullRequestsRequest,
   output: PatchProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MergeProjectsLocationsRepositoriesPullRequestsRequest {
@@ -2453,7 +2640,12 @@ export type MergeProjectsLocationsRepositoriesPullRequestsResponse = Operation;
 export const MergeProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MergeProjectsLocationsRepositoriesPullRequestsError = DefaultErrors;
+export type MergeProjectsLocationsRepositoriesPullRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Merges a pull request. */
 export const mergeProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
@@ -2464,7 +2656,7 @@ export const mergeProjectsLocationsRepositoriesPullRequests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MergeProjectsLocationsRepositoriesPullRequestsRequest,
   output: MergeProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface OpenProjectsLocationsRepositoriesPullRequestsRequest {
@@ -2487,7 +2679,12 @@ export type OpenProjectsLocationsRepositoriesPullRequestsResponse = Operation;
 export const OpenProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type OpenProjectsLocationsRepositoriesPullRequestsError = DefaultErrors;
+export type OpenProjectsLocationsRepositoriesPullRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Opens a pull request. */
 export const openProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
@@ -2498,7 +2695,7 @@ export const openProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: OpenProjectsLocationsRepositoriesPullRequestsRequest,
   output: OpenProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CloseProjectsLocationsRepositoriesPullRequestsRequest {
@@ -2521,7 +2718,12 @@ export type CloseProjectsLocationsRepositoriesPullRequestsResponse = Operation;
 export const CloseProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloseProjectsLocationsRepositoriesPullRequestsError = DefaultErrors;
+export type CloseProjectsLocationsRepositoriesPullRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Closes a pull request without merging. */
 export const closeProjectsLocationsRepositoriesPullRequests: API.OperationMethod<
@@ -2532,7 +2734,7 @@ export const closeProjectsLocationsRepositoriesPullRequests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseProjectsLocationsRepositoriesPullRequestsRequest,
   output: CloseProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest {
@@ -2560,7 +2762,9 @@ export const ListFileDiffsProjectsLocationsRepositoriesPullRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPullRequestFileDiffsResponse;
 
 export type ListFileDiffsProjectsLocationsRepositoriesPullRequestsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists a pull request's file diffs. */
 export const listFileDiffsProjectsLocationsRepositoriesPullRequests: API.PaginatedOperationMethod<
@@ -2571,7 +2775,7 @@ export const listFileDiffsProjectsLocationsRepositoriesPullRequests: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFileDiffsProjectsLocationsRepositoriesPullRequestsRequest,
   output: ListFileDiffsProjectsLocationsRepositoriesPullRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2597,7 +2801,9 @@ export const GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResp
   /*@__PURE__*/ /*#__PURE__*/ PullRequestComment;
 
 export type GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a pull request comment. */
 export const getProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2609,7 +2815,7 @@ export const getProjectsLocationsRepositoriesPullRequestsPullRequestComments: AP
   input: GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     GetProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
@@ -2637,7 +2843,9 @@ export const ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRes
   /*@__PURE__*/ /*#__PURE__*/ ListPullRequestCommentsResponse;
 
 export type ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists pull request comments. */
 export const listProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.PaginatedOperationMethod<
@@ -2650,7 +2858,7 @@ export const listProjectsLocationsRepositoriesPullRequestsPullRequestComments: A
     ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     ListProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2683,7 +2891,11 @@ export const CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsR
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pull request comment. This function is used to create a single PullRequestComment of type Comment, or a single PullRequestComment of type Code that's replying to another PullRequestComment of type Code. Use BatchCreatePullRequestComments to create multiple PullRequestComments for code reviews. */
 export const createProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2696,7 +2908,7 @@ export const createProjectsLocationsRepositoriesPullRequestsPullRequestComments:
     CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     CreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
@@ -2724,7 +2936,11 @@ export const PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRe
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a pull request comment. */
 export const patchProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2737,7 +2953,7 @@ export const patchProjectsLocationsRepositoriesPullRequestsPullRequestComments: 
     PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     PatchProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
@@ -2759,7 +2975,11 @@ export const DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsR
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a pull request comment. */
 export const deleteProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2772,7 +2992,7 @@ export const deleteProjectsLocationsRepositoriesPullRequestsPullRequestComments:
     DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     DeleteProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
@@ -2803,7 +3023,11 @@ export const BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComm
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch creates pull request comments. This function is used to create multiple PullRequestComments for code review. There needs to be exactly one PullRequestComment of type Review, and at most 100 PullRequestComments of type Code per request. The Position of the code comments must be unique within the request. */
 export const batchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2816,7 +3040,7 @@ export const batchCreateProjectsLocationsRepositoriesPullRequestsPullRequestComm
     BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     BatchCreateProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
@@ -2845,7 +3069,11 @@ export const ResolveProjectsLocationsRepositoriesPullRequestsPullRequestComments
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be resolved. */
 export const resolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2858,7 +3086,7 @@ export const resolveProjectsLocationsRepositoriesPullRequestsPullRequestComments
     ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     ResolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest {
@@ -2889,7 +3117,11 @@ export const UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommen
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unresolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be unresolved. */
 export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestComments: API.OperationMethod<
@@ -2902,7 +3134,7 @@ export const unresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommen
     UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsRequest,
   output:
     UnresolveProjectsLocationsRepositoriesPullRequestsPullRequestCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsRepositoriesIssuesRequest {
@@ -2925,7 +3157,12 @@ export type CreateProjectsLocationsRepositoriesIssuesResponse = Operation;
 export const CreateProjectsLocationsRepositoriesIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsRepositoriesIssuesError = DefaultErrors;
+export type CreateProjectsLocationsRepositoriesIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an issue. */
 export const createProjectsLocationsRepositoriesIssues: API.OperationMethod<
@@ -2936,7 +3173,7 @@ export const createProjectsLocationsRepositoriesIssues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRepositoriesIssuesRequest,
   output: CreateProjectsLocationsRepositoriesIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRepositoriesIssuesRequest {
@@ -2956,7 +3193,10 @@ export type GetProjectsLocationsRepositoriesIssuesResponse = Issue;
 export const GetProjectsLocationsRepositoriesIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Issue;
 
-export type GetProjectsLocationsRepositoriesIssuesError = DefaultErrors;
+export type GetProjectsLocationsRepositoriesIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an issue. */
 export const getProjectsLocationsRepositoriesIssues: API.OperationMethod<
@@ -2967,7 +3207,7 @@ export const getProjectsLocationsRepositoriesIssues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRepositoriesIssuesRequest,
   output: GetProjectsLocationsRepositoriesIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRepositoriesIssuesRequest {
@@ -2997,7 +3237,10 @@ export type ListProjectsLocationsRepositoriesIssuesResponse =
 export const ListProjectsLocationsRepositoriesIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListIssuesResponse;
 
-export type ListProjectsLocationsRepositoriesIssuesError = DefaultErrors;
+export type ListProjectsLocationsRepositoriesIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists issues in a repository. */
 export const listProjectsLocationsRepositoriesIssues: API.PaginatedOperationMethod<
@@ -3008,7 +3251,7 @@ export const listProjectsLocationsRepositoriesIssues: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesIssuesRequest,
   output: ListProjectsLocationsRepositoriesIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3038,7 +3281,12 @@ export type PatchProjectsLocationsRepositoriesIssuesResponse = Operation;
 export const PatchProjectsLocationsRepositoriesIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsRepositoriesIssuesError = DefaultErrors;
+export type PatchProjectsLocationsRepositoriesIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a issue. */
 export const patchProjectsLocationsRepositoriesIssues: API.OperationMethod<
@@ -3049,7 +3297,7 @@ export const patchProjectsLocationsRepositoriesIssues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRepositoriesIssuesRequest,
   output: PatchProjectsLocationsRepositoriesIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsRepositoriesIssuesRequest {
@@ -3072,7 +3320,12 @@ export type DeleteProjectsLocationsRepositoriesIssuesResponse = Operation;
 export const DeleteProjectsLocationsRepositoriesIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsRepositoriesIssuesError = DefaultErrors;
+export type DeleteProjectsLocationsRepositoriesIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an issue. */
 export const deleteProjectsLocationsRepositoriesIssues: API.OperationMethod<
@@ -3083,7 +3336,7 @@ export const deleteProjectsLocationsRepositoriesIssues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRepositoriesIssuesRequest,
   output: DeleteProjectsLocationsRepositoriesIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface OpenProjectsLocationsRepositoriesIssuesRequest {
@@ -3106,7 +3359,12 @@ export type OpenProjectsLocationsRepositoriesIssuesResponse = Operation;
 export const OpenProjectsLocationsRepositoriesIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type OpenProjectsLocationsRepositoriesIssuesError = DefaultErrors;
+export type OpenProjectsLocationsRepositoriesIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Opens an issue. */
 export const openProjectsLocationsRepositoriesIssues: API.OperationMethod<
@@ -3117,7 +3375,7 @@ export const openProjectsLocationsRepositoriesIssues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: OpenProjectsLocationsRepositoriesIssuesRequest,
   output: OpenProjectsLocationsRepositoriesIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CloseProjectsLocationsRepositoriesIssuesRequest {
@@ -3140,7 +3398,12 @@ export type CloseProjectsLocationsRepositoriesIssuesResponse = Operation;
 export const CloseProjectsLocationsRepositoriesIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloseProjectsLocationsRepositoriesIssuesError = DefaultErrors;
+export type CloseProjectsLocationsRepositoriesIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Closes an issue. */
 export const closeProjectsLocationsRepositoriesIssues: API.OperationMethod<
@@ -3151,7 +3414,7 @@ export const closeProjectsLocationsRepositoriesIssues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseProjectsLocationsRepositoriesIssuesRequest,
   output: CloseProjectsLocationsRepositoriesIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
@@ -3180,7 +3443,11 @@ export const CreateProjectsLocationsRepositoriesIssuesIssueCommentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an issue comment. */
 export const createProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
@@ -3191,7 +3458,7 @@ export const createProjectsLocationsRepositoriesIssuesIssueComments: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
   output: CreateProjectsLocationsRepositoriesIssuesIssueCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
@@ -3213,7 +3480,9 @@ export const GetProjectsLocationsRepositoriesIssuesIssueCommentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IssueComment;
 
 export type GetProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an issue comment. */
 export const getProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
@@ -3224,7 +3493,7 @@ export const getProjectsLocationsRepositoriesIssuesIssueComments: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
   output: GetProjectsLocationsRepositoriesIssuesIssueCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
@@ -3252,7 +3521,9 @@ export const ListProjectsLocationsRepositoriesIssuesIssueCommentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListIssueCommentsResponse;
 
 export type ListProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists comments in an issue. */
 export const listProjectsLocationsRepositoriesIssuesIssueComments: API.PaginatedOperationMethod<
@@ -3263,7 +3534,7 @@ export const listProjectsLocationsRepositoriesIssuesIssueComments: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
   output: ListProjectsLocationsRepositoriesIssuesIssueCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3295,7 +3566,11 @@ export const PatchProjectsLocationsRepositoriesIssuesIssueCommentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an issue comment. */
 export const patchProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
@@ -3306,7 +3581,7 @@ export const patchProjectsLocationsRepositoriesIssuesIssueComments: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
   output: PatchProjectsLocationsRepositoriesIssuesIssueCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest {
@@ -3328,7 +3603,11 @@ export const DeleteProjectsLocationsRepositoriesIssuesIssueCommentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsRepositoriesIssuesIssueCommentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an issue comment. */
 export const deleteProjectsLocationsRepositoriesIssuesIssueComments: API.OperationMethod<
@@ -3339,5 +3618,5 @@ export const deleteProjectsLocationsRepositoriesIssuesIssueComments: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRepositoriesIssuesIssueCommentsRequest,
   output: DeleteProjectsLocationsRepositoriesIssuesIssueCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

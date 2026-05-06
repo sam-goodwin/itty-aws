@@ -292,6 +292,52 @@ export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -326,7 +372,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -337,7 +383,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -361,7 +407,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -372,7 +418,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsNamespacesRequest {
@@ -392,7 +438,10 @@ export type GetProjectsLocationsNamespacesResponse = Namespace;
 export const GetProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Namespace;
 
-export type GetProjectsLocationsNamespacesError = DefaultErrors;
+export type GetProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a namespace. */
 export const getProjectsLocationsNamespaces: API.OperationMethod<
@@ -403,7 +452,7 @@ export const getProjectsLocationsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNamespacesRequest,
   output: GetProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsNamespacesRequest {
@@ -435,7 +484,12 @@ export type CreateProjectsLocationsNamespacesResponse = Namespace;
 export const CreateProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Namespace;
 
-export type CreateProjectsLocationsNamespacesError = DefaultErrors;
+export type CreateProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a namespace, and returns the new namespace. */
 export const createProjectsLocationsNamespaces: API.OperationMethod<
@@ -446,7 +500,7 @@ export const createProjectsLocationsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsNamespacesRequest,
   output: CreateProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsNamespacesRequest {
@@ -472,7 +526,12 @@ export type PatchProjectsLocationsNamespacesResponse = Namespace;
 export const PatchProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Namespace;
 
-export type PatchProjectsLocationsNamespacesError = DefaultErrors;
+export type PatchProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a namespace. */
 export const patchProjectsLocationsNamespaces: API.OperationMethod<
@@ -483,7 +542,7 @@ export const patchProjectsLocationsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsNamespacesRequest,
   output: PatchProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsNamespacesRequest {
@@ -510,7 +569,12 @@ export type SetIamPolicyProjectsLocationsNamespacesResponse = Policy;
 export const SetIamPolicyProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsNamespacesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM Policy for a resource */
 export const setIamPolicyProjectsLocationsNamespaces: API.OperationMethod<
@@ -521,7 +585,7 @@ export const setIamPolicyProjectsLocationsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsNamespacesRequest,
   output: SetIamPolicyProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNamespacesRequest {
@@ -553,7 +617,10 @@ export type ListProjectsLocationsNamespacesResponse = ListNamespacesResponse;
 export const ListProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNamespacesResponse;
 
-export type ListProjectsLocationsNamespacesError = DefaultErrors;
+export type ListProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all namespaces. */
 export const listProjectsLocationsNamespaces: API.PaginatedOperationMethod<
@@ -564,7 +631,7 @@ export const listProjectsLocationsNamespaces: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNamespacesRequest,
   output: ListProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -588,7 +655,12 @@ export type DeleteProjectsLocationsNamespacesResponse = Empty;
 export const DeleteProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsNamespacesError = DefaultErrors;
+export type DeleteProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a namespace. This also deletes all services and endpoints in the namespace. */
 export const deleteProjectsLocationsNamespaces: API.OperationMethod<
@@ -599,7 +671,7 @@ export const deleteProjectsLocationsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsNamespacesRequest,
   output: DeleteProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsNamespacesRequest {
@@ -627,7 +699,12 @@ export type TestIamPermissionsProjectsLocationsNamespacesResponse =
 export const TestIamPermissionsProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsNamespacesError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests IAM permissions for a resource (namespace, service or service workload only). */
 export const testIamPermissionsProjectsLocationsNamespaces: API.OperationMethod<
@@ -638,7 +715,7 @@ export const testIamPermissionsProjectsLocationsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsNamespacesRequest,
   output: TestIamPermissionsProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsNamespacesRequest {
@@ -665,7 +742,12 @@ export type GetIamPolicyProjectsLocationsNamespacesResponse = Policy;
 export const GetIamPolicyProjectsLocationsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsNamespacesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM Policy for a resource */
 export const getIamPolicyProjectsLocationsNamespaces: API.OperationMethod<
@@ -676,7 +758,7 @@ export const getIamPolicyProjectsLocationsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsNamespacesRequest,
   output: GetIamPolicyProjectsLocationsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsNamespacesWorkloadsRequest {
@@ -704,7 +786,11 @@ export const GetIamPolicyProjectsLocationsNamespacesWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsNamespacesWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM Policy for a resource */
 export const getIamPolicyProjectsLocationsNamespacesWorkloads: API.OperationMethod<
@@ -715,7 +801,7 @@ export const getIamPolicyProjectsLocationsNamespacesWorkloads: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsNamespacesWorkloadsRequest,
   output: GetIamPolicyProjectsLocationsNamespacesWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsNamespacesWorkloadsRequest {
@@ -744,7 +830,11 @@ export const TestIamPermissionsProjectsLocationsNamespacesWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsNamespacesWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests IAM permissions for a resource (namespace, service or service workload only). */
 export const testIamPermissionsProjectsLocationsNamespacesWorkloads: API.OperationMethod<
@@ -755,7 +845,7 @@ export const testIamPermissionsProjectsLocationsNamespacesWorkloads: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsNamespacesWorkloadsRequest,
   output: TestIamPermissionsProjectsLocationsNamespacesWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsNamespacesWorkloadsRequest {
@@ -783,7 +873,11 @@ export const SetIamPolicyProjectsLocationsNamespacesWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsNamespacesWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM Policy for a resource */
 export const setIamPolicyProjectsLocationsNamespacesWorkloads: API.OperationMethod<
@@ -794,7 +888,7 @@ export const setIamPolicyProjectsLocationsNamespacesWorkloads: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsNamespacesWorkloadsRequest,
   output: SetIamPolicyProjectsLocationsNamespacesWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsNamespacesServicesRequest {
@@ -814,7 +908,12 @@ export type DeleteProjectsLocationsNamespacesServicesResponse = Empty;
 export const DeleteProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsNamespacesServicesError = DefaultErrors;
+export type DeleteProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a service. This also deletes all endpoints associated with the service. */
 export const deleteProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -825,7 +924,7 @@ export const deleteProjectsLocationsNamespacesServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsNamespacesServicesRequest,
   output: DeleteProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsNamespacesServicesRequest {
@@ -854,7 +953,11 @@ export const TestIamPermissionsProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsNamespacesServicesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests IAM permissions for a resource (namespace, service or service workload only). */
 export const testIamPermissionsProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -865,7 +968,7 @@ export const testIamPermissionsProjectsLocationsNamespacesServices: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsNamespacesServicesRequest,
   output: TestIamPermissionsProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsNamespacesServicesRequest {
@@ -893,7 +996,11 @@ export const SetIamPolicyProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsNamespacesServicesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM Policy for a resource */
 export const setIamPolicyProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -904,7 +1011,7 @@ export const setIamPolicyProjectsLocationsNamespacesServices: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsNamespacesServicesRequest,
   output: SetIamPolicyProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResolveProjectsLocationsNamespacesServicesRequest {
@@ -928,7 +1035,12 @@ export type ResolveProjectsLocationsNamespacesServicesResponse =
 export const ResolveProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResolveServiceResponse;
 
-export type ResolveProjectsLocationsNamespacesServicesError = DefaultErrors;
+export type ResolveProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a service and its associated endpoints. Resolving a service is not considered an active developer method. */
 export const resolveProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -939,7 +1051,7 @@ export const resolveProjectsLocationsNamespacesServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveProjectsLocationsNamespacesServicesRequest,
   output: ResolveProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsNamespacesServicesRequest {
@@ -967,7 +1079,11 @@ export const GetIamPolicyProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsNamespacesServicesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM Policy for a resource */
 export const getIamPolicyProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -978,7 +1094,7 @@ export const getIamPolicyProjectsLocationsNamespacesServices: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsNamespacesServicesRequest,
   output: GetIamPolicyProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNamespacesServicesRequest {
@@ -1011,7 +1127,10 @@ export type ListProjectsLocationsNamespacesServicesResponse =
 export const ListProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListProjectsLocationsNamespacesServicesError = DefaultErrors;
+export type ListProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all services belonging to a namespace. */
 export const listProjectsLocationsNamespacesServices: API.PaginatedOperationMethod<
@@ -1022,7 +1141,7 @@ export const listProjectsLocationsNamespacesServices: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNamespacesServicesRequest,
   output: ListProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1052,7 +1171,12 @@ export type PatchProjectsLocationsNamespacesServicesResponse = Service;
 export const PatchProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type PatchProjectsLocationsNamespacesServicesError = DefaultErrors;
+export type PatchProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a service. */
 export const patchProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -1063,7 +1187,7 @@ export const patchProjectsLocationsNamespacesServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsNamespacesServicesRequest,
   output: PatchProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsNamespacesServicesRequest {
@@ -1093,7 +1217,12 @@ export type CreateProjectsLocationsNamespacesServicesResponse = Service;
 export const CreateProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type CreateProjectsLocationsNamespacesServicesError = DefaultErrors;
+export type CreateProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a service, and returns the new service. */
 export const createProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -1104,7 +1233,7 @@ export const createProjectsLocationsNamespacesServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsNamespacesServicesRequest,
   output: CreateProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsNamespacesServicesRequest {
@@ -1124,7 +1253,10 @@ export type GetProjectsLocationsNamespacesServicesResponse = Service;
 export const GetProjectsLocationsNamespacesServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type GetProjectsLocationsNamespacesServicesError = DefaultErrors;
+export type GetProjectsLocationsNamespacesServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a service. */
 export const getProjectsLocationsNamespacesServices: API.OperationMethod<
@@ -1135,7 +1267,7 @@ export const getProjectsLocationsNamespacesServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNamespacesServicesRequest,
   output: GetProjectsLocationsNamespacesServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsNamespacesServicesEndpointsRequest {
@@ -1156,7 +1288,9 @@ export const GetProjectsLocationsNamespacesServicesEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Endpoint;
 
 export type GetProjectsLocationsNamespacesServicesEndpointsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an endpoint. */
 export const getProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
@@ -1167,7 +1301,7 @@ export const getProjectsLocationsNamespacesServicesEndpoints: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNamespacesServicesEndpointsRequest,
   output: GetProjectsLocationsNamespacesServicesEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsNamespacesServicesEndpointsRequest {
@@ -1199,7 +1333,11 @@ export const CreateProjectsLocationsNamespacesServicesEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Endpoint;
 
 export type CreateProjectsLocationsNamespacesServicesEndpointsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an endpoint, and returns the new endpoint. */
 export const createProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
@@ -1210,7 +1348,7 @@ export const createProjectsLocationsNamespacesServicesEndpoints: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsNamespacesServicesEndpointsRequest,
   output: CreateProjectsLocationsNamespacesServicesEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsNamespacesServicesEndpointsRequest {
@@ -1238,7 +1376,11 @@ export const PatchProjectsLocationsNamespacesServicesEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Endpoint;
 
 export type PatchProjectsLocationsNamespacesServicesEndpointsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an endpoint. */
 export const patchProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
@@ -1249,7 +1391,7 @@ export const patchProjectsLocationsNamespacesServicesEndpoints: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsNamespacesServicesEndpointsRequest,
   output: PatchProjectsLocationsNamespacesServicesEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNamespacesServicesEndpointsRequest {
@@ -1283,7 +1425,9 @@ export const ListProjectsLocationsNamespacesServicesEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEndpointsResponse;
 
 export type ListProjectsLocationsNamespacesServicesEndpointsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all endpoints. */
 export const listProjectsLocationsNamespacesServicesEndpoints: API.PaginatedOperationMethod<
@@ -1294,7 +1438,7 @@ export const listProjectsLocationsNamespacesServicesEndpoints: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNamespacesServicesEndpointsRequest,
   output: ListProjectsLocationsNamespacesServicesEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1319,7 +1463,11 @@ export const DeleteProjectsLocationsNamespacesServicesEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsNamespacesServicesEndpointsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an endpoint. */
 export const deleteProjectsLocationsNamespacesServicesEndpoints: API.OperationMethod<
@@ -1330,5 +1478,5 @@ export const deleteProjectsLocationsNamespacesServicesEndpoints: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsNamespacesServicesEndpointsRequest,
   output: DeleteProjectsLocationsNamespacesServicesEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

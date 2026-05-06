@@ -1625,6 +1625,52 @@ export const WriteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "WriteResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1655,7 +1701,12 @@ export type ImportDocumentsProjectsDatabasesResponse =
 export const ImportDocumentsProjectsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportDocumentsProjectsDatabasesError = DefaultErrors;
+export type ImportDocumentsProjectsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore. */
 export const importDocumentsProjectsDatabases: API.OperationMethod<
@@ -1666,7 +1717,7 @@ export const importDocumentsProjectsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportDocumentsProjectsDatabasesRequest,
   output: ImportDocumentsProjectsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportDocumentsProjectsDatabasesRequest {
@@ -1696,7 +1747,12 @@ export type ExportDocumentsProjectsDatabasesResponse =
 export const ExportDocumentsProjectsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportDocumentsProjectsDatabasesError = DefaultErrors;
+export type ExportDocumentsProjectsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. */
 export const exportDocumentsProjectsDatabases: API.OperationMethod<
@@ -1707,7 +1763,7 @@ export const exportDocumentsProjectsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportDocumentsProjectsDatabasesRequest,
   output: ExportDocumentsProjectsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsDatabasesDocumentsRequest {
@@ -1737,7 +1793,12 @@ export type DeleteProjectsDatabasesDocumentsResponse = Empty;
 export const DeleteProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsDatabasesDocumentsError = DefaultErrors;
+export type DeleteProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a document. */
 export const deleteProjectsDatabasesDocuments: API.OperationMethod<
@@ -1748,7 +1809,7 @@ export const deleteProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatabasesDocumentsRequest,
   output: DeleteProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RollbackProjectsDatabasesDocumentsRequest {
@@ -1775,7 +1836,12 @@ export type RollbackProjectsDatabasesDocumentsResponse = Empty;
 export const RollbackProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RollbackProjectsDatabasesDocumentsError = DefaultErrors;
+export type RollbackProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rolls back a transaction. */
 export const rollbackProjectsDatabasesDocuments: API.OperationMethod<
@@ -1786,7 +1852,7 @@ export const rollbackProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackProjectsDatabasesDocumentsRequest,
   output: RollbackProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WriteProjectsDatabasesDocumentsRequest {
@@ -1813,7 +1879,12 @@ export type WriteProjectsDatabasesDocumentsResponse = WriteResponse;
 export const WriteProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WriteResponse;
 
-export type WriteProjectsDatabasesDocumentsError = DefaultErrors;
+export type WriteProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Streams batches of document updates and deletes, in order. This method is only available via gRPC or WebChannel (not REST). */
 export const writeProjectsDatabasesDocuments: API.OperationMethod<
@@ -1824,7 +1895,7 @@ export const writeProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteProjectsDatabasesDocumentsRequest,
   output: WriteProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BeginTransactionProjectsDatabasesDocumentsRequest {
@@ -1852,7 +1923,12 @@ export type BeginTransactionProjectsDatabasesDocumentsResponse =
 export const BeginTransactionProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BeginTransactionResponse;
 
-export type BeginTransactionProjectsDatabasesDocumentsError = DefaultErrors;
+export type BeginTransactionProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a new transaction. */
 export const beginTransactionProjectsDatabasesDocuments: API.OperationMethod<
@@ -1863,7 +1939,7 @@ export const beginTransactionProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BeginTransactionProjectsDatabasesDocumentsRequest,
   output: BeginTransactionProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatabasesDocumentsRequest {
@@ -1896,7 +1972,10 @@ export type GetProjectsDatabasesDocumentsResponse = Document;
 export const GetProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Document;
 
-export type GetProjectsDatabasesDocumentsError = DefaultErrors;
+export type GetProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single document. */
 export const getProjectsDatabasesDocuments: API.OperationMethod<
@@ -1907,7 +1986,7 @@ export const getProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatabasesDocumentsRequest,
   output: GetProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CommitProjectsDatabasesDocumentsRequest {
@@ -1934,7 +2013,12 @@ export type CommitProjectsDatabasesDocumentsResponse = CommitResponse;
 export const CommitProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommitResponse;
 
-export type CommitProjectsDatabasesDocumentsError = DefaultErrors;
+export type CommitProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits a transaction, while optionally updating documents. */
 export const commitProjectsDatabasesDocuments: API.OperationMethod<
@@ -1945,7 +2029,7 @@ export const commitProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitProjectsDatabasesDocumentsRequest,
   output: CommitProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunAggregationQueryProjectsDatabasesDocumentsRequest {
@@ -1973,7 +2057,12 @@ export type RunAggregationQueryProjectsDatabasesDocumentsResponse =
 export const RunAggregationQueryProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunAggregationQueryResponse;
 
-export type RunAggregationQueryProjectsDatabasesDocumentsError = DefaultErrors;
+export type RunAggregationQueryProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API allows running an aggregation to produce a series of AggregationResult server-side. High-Level Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM ( SELECT * FROM k where a = true ); ``` */
 export const runAggregationQueryProjectsDatabasesDocuments: API.OperationMethod<
@@ -1984,7 +2073,7 @@ export const runAggregationQueryProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunAggregationQueryProjectsDatabasesDocumentsRequest,
   output: RunAggregationQueryProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PartitionQueryProjectsDatabasesDocumentsRequest {
@@ -2012,7 +2101,12 @@ export type PartitionQueryProjectsDatabasesDocumentsResponse =
 export const PartitionQueryProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PartitionQueryResponse;
 
-export type PartitionQueryProjectsDatabasesDocumentsError = DefaultErrors;
+export type PartitionQueryProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results. */
 export const partitionQueryProjectsDatabasesDocuments: API.OperationMethod<
@@ -2023,7 +2117,7 @@ export const partitionQueryProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PartitionQueryProjectsDatabasesDocumentsRequest,
   output: PartitionQueryProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchWriteProjectsDatabasesDocumentsRequest {
@@ -2050,7 +2144,12 @@ export type BatchWriteProjectsDatabasesDocumentsResponse = BatchWriteResponse;
 export const BatchWriteProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchWriteResponse;
 
-export type BatchWriteProjectsDatabasesDocumentsError = DefaultErrors;
+export type BatchWriteProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead. */
 export const batchWriteProjectsDatabasesDocuments: API.OperationMethod<
@@ -2061,7 +2160,7 @@ export const batchWriteProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchWriteProjectsDatabasesDocumentsRequest,
   output: BatchWriteProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateDocumentProjectsDatabasesDocumentsRequest {
@@ -2099,7 +2198,12 @@ export type CreateDocumentProjectsDatabasesDocumentsResponse = Document;
 export const CreateDocumentProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Document;
 
-export type CreateDocumentProjectsDatabasesDocumentsError = DefaultErrors;
+export type CreateDocumentProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new document. */
 export const createDocumentProjectsDatabasesDocuments: API.OperationMethod<
@@ -2110,7 +2214,7 @@ export const createDocumentProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDocumentProjectsDatabasesDocumentsRequest,
   output: CreateDocumentProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsDatabasesDocumentsRequest {
@@ -2153,7 +2257,12 @@ export type PatchProjectsDatabasesDocumentsResponse = Document;
 export const PatchProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Document;
 
-export type PatchProjectsDatabasesDocumentsError = DefaultErrors;
+export type PatchProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or inserts a document. */
 export const patchProjectsDatabasesDocuments: API.OperationMethod<
@@ -2164,7 +2273,7 @@ export const patchProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsDatabasesDocumentsRequest,
   output: PatchProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecutePipelineProjectsDatabasesDocumentsRequest {
@@ -2192,7 +2301,12 @@ export type ExecutePipelineProjectsDatabasesDocumentsResponse =
 export const ExecutePipelineProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecutePipelineResponse;
 
-export type ExecutePipelineProjectsDatabasesDocumentsError = DefaultErrors;
+export type ExecutePipelineProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a pipeline query. */
 export const executePipelineProjectsDatabasesDocuments: API.OperationMethod<
@@ -2203,7 +2317,7 @@ export const executePipelineProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecutePipelineProjectsDatabasesDocumentsRequest,
   output: ExecutePipelineProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCollectionIdsProjectsDatabasesDocumentsRequest {
@@ -2231,7 +2345,12 @@ export type ListCollectionIdsProjectsDatabasesDocumentsResponse =
 export const ListCollectionIdsProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCollectionIdsResponse;
 
-export type ListCollectionIdsProjectsDatabasesDocumentsError = DefaultErrors;
+export type ListCollectionIdsProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all the collection IDs underneath a document. */
 export const listCollectionIdsProjectsDatabasesDocuments: API.OperationMethod<
@@ -2242,7 +2361,7 @@ export const listCollectionIdsProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCollectionIdsProjectsDatabasesDocumentsRequest,
   output: ListCollectionIdsProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDatabasesDocumentsRequest {
@@ -2292,7 +2411,10 @@ export type ListProjectsDatabasesDocumentsResponse = ListDocumentsResponse;
 export const ListProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDocumentsResponse;
 
-export type ListProjectsDatabasesDocumentsError = DefaultErrors;
+export type ListProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists documents. */
 export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
@@ -2303,7 +2425,7 @@ export const listProjectsDatabasesDocuments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesDocumentsRequest,
   output: ListProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2335,7 +2457,12 @@ export type BatchGetProjectsDatabasesDocumentsResponse =
 export const BatchGetProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetDocumentsResponse;
 
-export type BatchGetProjectsDatabasesDocumentsError = DefaultErrors;
+export type BatchGetProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested. */
 export const batchGetProjectsDatabasesDocuments: API.OperationMethod<
@@ -2346,7 +2473,7 @@ export const batchGetProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsDatabasesDocumentsRequest,
   output: BatchGetProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDocumentsProjectsDatabasesDocumentsRequest {
@@ -2397,7 +2524,10 @@ export type ListDocumentsProjectsDatabasesDocumentsResponse =
 export const ListDocumentsProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDocumentsResponse;
 
-export type ListDocumentsProjectsDatabasesDocumentsError = DefaultErrors;
+export type ListDocumentsProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists documents. */
 export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMethod<
@@ -2408,7 +2538,7 @@ export const listDocumentsProjectsDatabasesDocuments: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDocumentsProjectsDatabasesDocumentsRequest,
   output: ListDocumentsProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2439,7 +2569,12 @@ export type RunQueryProjectsDatabasesDocumentsResponse = RunQueryResponse;
 export const RunQueryProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunQueryResponse;
 
-export type RunQueryProjectsDatabasesDocumentsError = DefaultErrors;
+export type RunQueryProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs a query. */
 export const runQueryProjectsDatabasesDocuments: API.OperationMethod<
@@ -2450,7 +2585,7 @@ export const runQueryProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunQueryProjectsDatabasesDocumentsRequest,
   output: RunQueryProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListenProjectsDatabasesDocumentsRequest {
@@ -2477,7 +2612,12 @@ export type ListenProjectsDatabasesDocumentsResponse = ListenResponse;
 export const ListenProjectsDatabasesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListenResponse;
 
-export type ListenProjectsDatabasesDocumentsError = DefaultErrors;
+export type ListenProjectsDatabasesDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Listens to changes. This method is only available via gRPC or WebChannel (not REST). */
 export const listenProjectsDatabasesDocuments: API.OperationMethod<
@@ -2488,7 +2628,7 @@ export const listenProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListenProjectsDatabasesDocumentsRequest,
   output: ListenProjectsDatabasesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDatabasesIndexesRequest {
@@ -2517,7 +2657,10 @@ export type ListProjectsDatabasesIndexesResponse =
 export const ListProjectsDatabasesIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta1ListIndexesResponse;
 
-export type ListProjectsDatabasesIndexesError = DefaultErrors;
+export type ListProjectsDatabasesIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the indexes that match the specified filters. */
 export const listProjectsDatabasesIndexes: API.PaginatedOperationMethod<
@@ -2528,7 +2671,7 @@ export const listProjectsDatabasesIndexes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatabasesIndexesRequest,
   output: ListProjectsDatabasesIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2555,7 +2698,12 @@ export type CreateProjectsDatabasesIndexesResponse = GoogleLongrunningOperation;
 export const CreateProjectsDatabasesIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsDatabasesIndexesError = DefaultErrors;
+export type CreateProjectsDatabasesIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created. */
 export const createProjectsDatabasesIndexes: API.OperationMethod<
@@ -2566,7 +2714,7 @@ export const createProjectsDatabasesIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDatabasesIndexesRequest,
   output: CreateProjectsDatabasesIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatabasesIndexesRequest {
@@ -2587,7 +2735,10 @@ export type GetProjectsDatabasesIndexesResponse =
 export const GetProjectsDatabasesIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirestoreAdminV1beta1Index;
 
-export type GetProjectsDatabasesIndexesError = DefaultErrors;
+export type GetProjectsDatabasesIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an index. */
 export const getProjectsDatabasesIndexes: API.OperationMethod<
@@ -2598,7 +2749,7 @@ export const getProjectsDatabasesIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatabasesIndexesRequest,
   output: GetProjectsDatabasesIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsDatabasesIndexesRequest {
@@ -2618,7 +2769,12 @@ export type DeleteProjectsDatabasesIndexesResponse = Empty;
 export const DeleteProjectsDatabasesIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsDatabasesIndexesError = DefaultErrors;
+export type DeleteProjectsDatabasesIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an index. */
 export const deleteProjectsDatabasesIndexes: API.OperationMethod<
@@ -2629,5 +2785,5 @@ export const deleteProjectsDatabasesIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatabasesIndexesRequest,
   output: DeleteProjectsDatabasesIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

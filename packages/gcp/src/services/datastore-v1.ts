@@ -1470,6 +1470,52 @@ export const ReserveIdsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ReserveIdsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1497,7 +1543,12 @@ export type AllocateIdsProjectsResponse = AllocateIdsResponse;
 export const AllocateIdsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AllocateIdsResponse;
 
-export type AllocateIdsProjectsError = DefaultErrors;
+export type AllocateIdsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted. */
 export const allocateIdsProjects: API.OperationMethod<
@@ -1508,7 +1559,7 @@ export const allocateIdsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AllocateIdsProjectsRequest,
   output: AllocateIdsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupProjectsRequest {
@@ -1534,7 +1585,12 @@ export type LookupProjectsResponse = LookupResponse;
 export const LookupProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LookupResponse;
 
-export type LookupProjectsError = DefaultErrors;
+export type LookupProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Looks up entities by key. */
 export const lookupProjects: API.OperationMethod<
@@ -1545,7 +1601,7 @@ export const lookupProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupProjectsRequest,
   output: LookupProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsRequest {
@@ -1573,7 +1629,12 @@ export type ExportProjectsResponse = GoogleLongrunningOperation;
 export const ExportProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportProjectsError = DefaultErrors;
+export type ExportProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. */
 export const exportProjects: API.OperationMethod<
@@ -1584,7 +1645,7 @@ export const exportProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsRequest,
   output: ExportProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReserveIdsProjectsRequest {
@@ -1611,7 +1672,12 @@ export type ReserveIdsProjectsResponse = ReserveIdsResponse;
 export const ReserveIdsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReserveIdsResponse;
 
-export type ReserveIdsProjectsError = DefaultErrors;
+export type ReserveIdsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. */
 export const reserveIdsProjects: API.OperationMethod<
@@ -1622,7 +1688,7 @@ export const reserveIdsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReserveIdsProjectsRequest,
   output: ReserveIdsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CommitProjectsRequest {
@@ -1648,7 +1714,12 @@ export type CommitProjectsResponse = CommitResponse;
 export const CommitProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommitResponse;
 
-export type CommitProjectsError = DefaultErrors;
+export type CommitProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits a transaction, optionally creating, deleting or modifying some entities. */
 export const commitProjects: API.OperationMethod<
@@ -1659,7 +1730,7 @@ export const commitProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitProjectsRequest,
   output: CommitProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsRequest {
@@ -1687,7 +1758,12 @@ export type ImportProjectsResponse = GoogleLongrunningOperation;
 export const ImportProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsError = DefaultErrors;
+export type ImportProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore. */
 export const importProjects: API.OperationMethod<
@@ -1698,7 +1774,7 @@ export const importProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsRequest,
   output: ImportProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunAggregationQueryProjectsRequest {
@@ -1725,7 +1801,12 @@ export type RunAggregationQueryProjectsResponse = RunAggregationQueryResponse;
 export const RunAggregationQueryProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunAggregationQueryResponse;
 
-export type RunAggregationQueryProjectsError = DefaultErrors;
+export type RunAggregationQueryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs an aggregation query. */
 export const runAggregationQueryProjects: API.OperationMethod<
@@ -1736,7 +1817,7 @@ export const runAggregationQueryProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunAggregationQueryProjectsRequest,
   output: RunAggregationQueryProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BeginTransactionProjectsRequest {
@@ -1763,7 +1844,12 @@ export type BeginTransactionProjectsResponse = BeginTransactionResponse;
 export const BeginTransactionProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BeginTransactionResponse;
 
-export type BeginTransactionProjectsError = DefaultErrors;
+export type BeginTransactionProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Begins a new transaction. */
 export const beginTransactionProjects: API.OperationMethod<
@@ -1774,7 +1860,7 @@ export const beginTransactionProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BeginTransactionProjectsRequest,
   output: BeginTransactionProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RollbackProjectsRequest {
@@ -1801,7 +1887,12 @@ export type RollbackProjectsResponse = RollbackResponse;
 export const RollbackProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RollbackResponse;
 
-export type RollbackProjectsError = DefaultErrors;
+export type RollbackProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rolls back a transaction. */
 export const rollbackProjects: API.OperationMethod<
@@ -1812,7 +1903,7 @@ export const rollbackProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackProjectsRequest,
   output: RollbackProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunQueryProjectsRequest {
@@ -1839,7 +1930,12 @@ export type RunQueryProjectsResponse = RunQueryResponse;
 export const RunQueryProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunQueryResponse;
 
-export type RunQueryProjectsError = DefaultErrors;
+export type RunQueryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries for entities. */
 export const runQueryProjects: API.OperationMethod<
@@ -1850,7 +1946,7 @@ export const runQueryProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunQueryProjectsRequest,
   output: RunQueryProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsOperationsRequest {
@@ -1870,7 +1966,12 @@ export type DeleteProjectsOperationsResponse = Empty;
 export const DeleteProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsOperationsError = DefaultErrors;
+export type DeleteProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsOperations: API.OperationMethod<
@@ -1881,7 +1982,7 @@ export const deleteProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsOperationsRequest,
   output: DeleteProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsOperationsRequest {
@@ -1916,7 +2017,7 @@ export type ListProjectsOperationsResponse =
 export const ListProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsOperationsError = DefaultErrors;
+export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsOperations: API.PaginatedOperationMethod<
@@ -1927,7 +2028,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1951,7 +2052,7 @@ export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -1962,7 +2063,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsOperationsRequest {
@@ -1982,7 +2083,12 @@ export type CancelProjectsOperationsResponse = Empty;
 export const CancelProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsOperationsError = DefaultErrors;
+export type CancelProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsOperations: API.OperationMethod<
@@ -1993,7 +2099,7 @@ export const cancelProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsIndexesRequest {
@@ -2020,7 +2126,12 @@ export type CreateProjectsIndexesResponse = GoogleLongrunningOperation;
 export const CreateProjectsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsIndexesError = DefaultErrors;
+export type CreateProjectsIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During index creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single property cannot be created. */
 export const createProjectsIndexes: API.OperationMethod<
@@ -2031,7 +2142,7 @@ export const createProjectsIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsIndexesRequest,
   output: CreateProjectsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsIndexesRequest {
@@ -2057,7 +2168,7 @@ export type GetProjectsIndexesResponse = GoogleDatastoreAdminV1Index;
 export const GetProjectsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleDatastoreAdminV1Index;
 
-export type GetProjectsIndexesError = DefaultErrors;
+export type GetProjectsIndexesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an index. */
 export const getProjectsIndexes: API.OperationMethod<
@@ -2068,7 +2179,7 @@ export const getProjectsIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsIndexesRequest,
   output: GetProjectsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsIndexesRequest {
@@ -2097,7 +2208,7 @@ export type ListProjectsIndexesResponse =
 export const ListProjectsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleDatastoreAdminV1ListIndexesResponse;
 
-export type ListProjectsIndexesError = DefaultErrors;
+export type ListProjectsIndexesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the indexes that match the specified filters. Datastore uses an eventually consistent query to fetch the list of indexes and may occasionally return stale results. */
 export const listProjectsIndexes: API.PaginatedOperationMethod<
@@ -2108,7 +2219,7 @@ export const listProjectsIndexes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsIndexesRequest,
   output: ListProjectsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2138,7 +2249,12 @@ export type DeleteProjectsIndexesResponse = GoogleLongrunningOperation;
 export const DeleteProjectsIndexesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsIndexesError = DefaultErrors;
+export type DeleteProjectsIndexesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing index. An index can only be deleted if it is in a `READY` or `ERROR` state. On successful execution of the request, the index will be in a `DELETING` state. And on completion of the returned google.longrunning.Operation, the index will be removed. During index deletion, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, followed by calling delete again. */
 export const deleteProjectsIndexes: API.OperationMethod<
@@ -2149,5 +2265,5 @@ export const deleteProjectsIndexes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsIndexesRequest,
   output: DeleteProjectsIndexesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

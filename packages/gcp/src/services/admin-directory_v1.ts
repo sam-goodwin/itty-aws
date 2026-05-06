@@ -2783,6 +2783,52 @@ export const Domains2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Domains2" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2807,7 +2853,7 @@ export const GetAspsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAspsResponse = Asp;
 export const GetAspsResponse = /*@__PURE__*/ /*#__PURE__*/ Asp;
 
-export type GetAspsError = DefaultErrors;
+export type GetAspsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about an ASP issued by a user. */
 export const getAsps: API.OperationMethod<
@@ -2818,7 +2864,7 @@ export const getAsps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAspsRequest,
   output: GetAspsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAspsRequest {
@@ -2845,7 +2891,12 @@ export const DeleteAspsResponse: Schema.Schema<DeleteAspsResponse> =
     {},
   ) as any as Schema.Schema<DeleteAspsResponse>;
 
-export type DeleteAspsError = DefaultErrors;
+export type DeleteAspsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an ASP issued by a user. */
 export const deleteAsps: API.OperationMethod<
@@ -2856,7 +2907,7 @@ export const deleteAsps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAspsRequest,
   output: DeleteAspsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAspsRequest {
@@ -2874,7 +2925,7 @@ export const ListAspsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAspsResponse = Asps;
 export const ListAspsResponse = /*@__PURE__*/ /*#__PURE__*/ Asps;
 
-export type ListAspsError = DefaultErrors;
+export type ListAspsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the ASPs issued by a user. */
 export const listAsps: API.OperationMethod<
@@ -2885,7 +2936,7 @@ export const listAsps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAspsRequest,
   output: ListAspsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountChromeOsDevicesCustomerDevicesChromeosRequest {
@@ -2922,7 +2973,10 @@ export type CountChromeOsDevicesCustomerDevicesChromeosResponse =
 export const CountChromeOsDevicesCustomerDevicesChromeosResponse =
   /*@__PURE__*/ /*#__PURE__*/ CountChromeOsDevicesResponse;
 
-export type CountChromeOsDevicesCustomerDevicesChromeosError = DefaultErrors;
+export type CountChromeOsDevicesCustomerDevicesChromeosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Counts ChromeOS devices matching the request. */
 export const countChromeOsDevicesCustomerDevicesChromeos: API.OperationMethod<
@@ -2933,7 +2987,7 @@ export const countChromeOsDevicesCustomerDevicesChromeos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountChromeOsDevicesCustomerDevicesChromeosRequest,
   output: CountChromeOsDevicesCustomerDevicesChromeosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface IssueCommandCustomerDevicesChromeosRequest {
@@ -2966,7 +3020,12 @@ export type IssueCommandCustomerDevicesChromeosResponse =
 export const IssueCommandCustomerDevicesChromeosResponse =
   /*@__PURE__*/ /*#__PURE__*/ DirectoryChromeosdevicesIssueCommandResponse;
 
-export type IssueCommandCustomerDevicesChromeosError = DefaultErrors;
+export type IssueCommandCustomerDevicesChromeosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Issues a command for the device to execute. */
 export const issueCommandCustomerDevicesChromeos: API.OperationMethod<
@@ -2977,7 +3036,7 @@ export const issueCommandCustomerDevicesChromeos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IssueCommandCustomerDevicesChromeosRequest,
   output: IssueCommandCustomerDevicesChromeosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchChangeStatusCustomerDevicesChromeosRequest {
@@ -3007,7 +3066,12 @@ export type BatchChangeStatusCustomerDevicesChromeosResponse =
 export const BatchChangeStatusCustomerDevicesChromeosResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchChangeChromeOsDeviceStatusResponse;
 
-export type BatchChangeStatusCustomerDevicesChromeosError = DefaultErrors;
+export type BatchChangeStatusCustomerDevicesChromeosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the status of a batch of ChromeOS devices. For more information about changing a ChromeOS device state [Repair, repurpose, or retire ChromeOS devices](https://support.google.com/chrome/a/answer/3523633). */
 export const batchChangeStatusCustomerDevicesChromeos: API.OperationMethod<
@@ -3018,7 +3082,7 @@ export const batchChangeStatusCustomerDevicesChromeos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchChangeStatusCustomerDevicesChromeosRequest,
   output: BatchChangeStatusCustomerDevicesChromeosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomerDevicesChromeosCommandsRequest {
@@ -3048,7 +3112,10 @@ export type GetCustomerDevicesChromeosCommandsResponse =
 export const GetCustomerDevicesChromeosCommandsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DirectoryChromeosdevicesCommand;
 
-export type GetCustomerDevicesChromeosCommandsError = DefaultErrors;
+export type GetCustomerDevicesChromeosCommandsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets command data a specific command issued to the device. */
 export const getCustomerDevicesChromeosCommands: API.OperationMethod<
@@ -3059,7 +3126,7 @@ export const getCustomerDevicesChromeosCommands: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomerDevicesChromeosCommandsRequest,
   output: GetCustomerDevicesChromeosCommandsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListResourcesBuildingsRequest {
@@ -3088,7 +3155,7 @@ export type ListResourcesBuildingsResponse = Buildings;
 export const ListResourcesBuildingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Buildings;
 
-export type ListResourcesBuildingsError = DefaultErrors;
+export type ListResourcesBuildingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of buildings for an account. */
 export const listResourcesBuildings: API.PaginatedOperationMethod<
@@ -3099,7 +3166,7 @@ export const listResourcesBuildings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesBuildingsRequest,
   output: ListResourcesBuildingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3129,7 +3196,7 @@ export type GetResourcesBuildingsResponse = Building;
 export const GetResourcesBuildingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Building;
 
-export type GetResourcesBuildingsError = DefaultErrors;
+export type GetResourcesBuildingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a building. */
 export const getResourcesBuildings: API.OperationMethod<
@@ -3140,7 +3207,7 @@ export const getResourcesBuildings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcesBuildingsRequest,
   output: GetResourcesBuildingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertResourcesBuildingsRequest {
@@ -3176,7 +3243,12 @@ export type InsertResourcesBuildingsResponse = Building;
 export const InsertResourcesBuildingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Building;
 
-export type InsertResourcesBuildingsError = DefaultErrors;
+export type InsertResourcesBuildingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a building. */
 export const insertResourcesBuildings: API.OperationMethod<
@@ -3187,7 +3259,7 @@ export const insertResourcesBuildings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertResourcesBuildingsRequest,
   output: InsertResourcesBuildingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateResourcesBuildingsRequest {
@@ -3226,7 +3298,12 @@ export type UpdateResourcesBuildingsResponse = Building;
 export const UpdateResourcesBuildingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Building;
 
-export type UpdateResourcesBuildingsError = DefaultErrors;
+export type UpdateResourcesBuildingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a building. */
 export const updateResourcesBuildings: API.OperationMethod<
@@ -3237,7 +3314,7 @@ export const updateResourcesBuildings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourcesBuildingsRequest,
   output: UpdateResourcesBuildingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchResourcesBuildingsRequest {
@@ -3276,7 +3353,12 @@ export type PatchResourcesBuildingsResponse = Building;
 export const PatchResourcesBuildingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Building;
 
-export type PatchResourcesBuildingsError = DefaultErrors;
+export type PatchResourcesBuildingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a building. */
 export const patchResourcesBuildings: API.OperationMethod<
@@ -3287,7 +3369,7 @@ export const patchResourcesBuildings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchResourcesBuildingsRequest,
   output: PatchResourcesBuildingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteResourcesBuildingsRequest {
@@ -3315,7 +3397,12 @@ export const DeleteResourcesBuildingsResponse: Schema.Schema<DeleteResourcesBuil
     {},
   ) as any as Schema.Schema<DeleteResourcesBuildingsResponse>;
 
-export type DeleteResourcesBuildingsError = DefaultErrors;
+export type DeleteResourcesBuildingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a building. */
 export const deleteResourcesBuildings: API.OperationMethod<
@@ -3326,7 +3413,7 @@ export const deleteResourcesBuildings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcesBuildingsRequest,
   output: DeleteResourcesBuildingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListResourcesCalendarsRequest {
@@ -3361,7 +3448,7 @@ export type ListResourcesCalendarsResponse = CalendarResources;
 export const ListResourcesCalendarsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarResources;
 
-export type ListResourcesCalendarsError = DefaultErrors;
+export type ListResourcesCalendarsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of calendar resources for an account. */
 export const listResourcesCalendars: API.PaginatedOperationMethod<
@@ -3372,7 +3459,7 @@ export const listResourcesCalendars: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesCalendarsRequest,
   output: ListResourcesCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3404,7 +3491,12 @@ export type InsertResourcesCalendarsResponse = CalendarResource;
 export const InsertResourcesCalendarsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarResource;
 
-export type InsertResourcesCalendarsError = DefaultErrors;
+export type InsertResourcesCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a calendar resource. */
 export const insertResourcesCalendars: API.OperationMethod<
@@ -3415,7 +3507,7 @@ export const insertResourcesCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertResourcesCalendarsRequest,
   output: InsertResourcesCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateResourcesCalendarsRequest {
@@ -3445,7 +3537,12 @@ export type UpdateResourcesCalendarsResponse = CalendarResource;
 export const UpdateResourcesCalendarsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarResource;
 
-export type UpdateResourcesCalendarsError = DefaultErrors;
+export type UpdateResourcesCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a calendar resource. This method supports patch semantics, meaning you only need to include the fields you wish to update. Fields that are not present in the request will be preserved. */
 export const updateResourcesCalendars: API.OperationMethod<
@@ -3456,7 +3553,7 @@ export const updateResourcesCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourcesCalendarsRequest,
   output: UpdateResourcesCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetResourcesCalendarsRequest {
@@ -3482,7 +3579,7 @@ export type GetResourcesCalendarsResponse = CalendarResource;
 export const GetResourcesCalendarsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarResource;
 
-export type GetResourcesCalendarsError = DefaultErrors;
+export type GetResourcesCalendarsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a calendar resource. */
 export const getResourcesCalendars: API.OperationMethod<
@@ -3493,7 +3590,7 @@ export const getResourcesCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcesCalendarsRequest,
   output: GetResourcesCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchResourcesCalendarsRequest {
@@ -3523,7 +3620,12 @@ export type PatchResourcesCalendarsResponse = CalendarResource;
 export const PatchResourcesCalendarsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CalendarResource;
 
-export type PatchResourcesCalendarsError = DefaultErrors;
+export type PatchResourcesCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a calendar resource. */
 export const patchResourcesCalendars: API.OperationMethod<
@@ -3534,7 +3636,7 @@ export const patchResourcesCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchResourcesCalendarsRequest,
   output: PatchResourcesCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteResourcesCalendarsRequest {
@@ -3562,7 +3664,12 @@ export const DeleteResourcesCalendarsResponse: Schema.Schema<DeleteResourcesCale
     {},
   ) as any as Schema.Schema<DeleteResourcesCalendarsResponse>;
 
-export type DeleteResourcesCalendarsError = DefaultErrors;
+export type DeleteResourcesCalendarsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a calendar resource. */
 export const deleteResourcesCalendars: API.OperationMethod<
@@ -3573,7 +3680,7 @@ export const deleteResourcesCalendars: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcesCalendarsRequest,
   output: DeleteResourcesCalendarsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchResourcesFeaturesRequest {
@@ -3603,7 +3710,12 @@ export type PatchResourcesFeaturesResponse = Feature;
 export const PatchResourcesFeaturesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Feature;
 
-export type PatchResourcesFeaturesError = DefaultErrors;
+export type PatchResourcesFeaturesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a feature. */
 export const patchResourcesFeatures: API.OperationMethod<
@@ -3614,7 +3726,7 @@ export const patchResourcesFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchResourcesFeaturesRequest,
   output: PatchResourcesFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteResourcesFeaturesRequest {
@@ -3642,7 +3754,12 @@ export const DeleteResourcesFeaturesResponse: Schema.Schema<DeleteResourcesFeatu
     {},
   ) as any as Schema.Schema<DeleteResourcesFeaturesResponse>;
 
-export type DeleteResourcesFeaturesError = DefaultErrors;
+export type DeleteResourcesFeaturesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a feature. */
 export const deleteResourcesFeatures: API.OperationMethod<
@@ -3653,7 +3770,7 @@ export const deleteResourcesFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcesFeaturesRequest,
   output: DeleteResourcesFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListResourcesFeaturesRequest {
@@ -3682,7 +3799,7 @@ export type ListResourcesFeaturesResponse = Features;
 export const ListResourcesFeaturesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Features;
 
-export type ListResourcesFeaturesError = DefaultErrors;
+export type ListResourcesFeaturesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of features for an account. */
 export const listResourcesFeatures: API.PaginatedOperationMethod<
@@ -3693,7 +3810,7 @@ export const listResourcesFeatures: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcesFeaturesRequest,
   output: ListResourcesFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3729,7 +3846,12 @@ export const RenameResourcesFeaturesResponse: Schema.Schema<RenameResourcesFeatu
     {},
   ) as any as Schema.Schema<RenameResourcesFeaturesResponse>;
 
-export type RenameResourcesFeaturesError = DefaultErrors;
+export type RenameResourcesFeaturesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renames a feature. */
 export const renameResourcesFeatures: API.OperationMethod<
@@ -3740,7 +3862,7 @@ export const renameResourcesFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenameResourcesFeaturesRequest,
   output: RenameResourcesFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetResourcesFeaturesRequest {
@@ -3765,7 +3887,7 @@ export const GetResourcesFeaturesRequest =
 export type GetResourcesFeaturesResponse = Feature;
 export const GetResourcesFeaturesResponse = /*@__PURE__*/ /*#__PURE__*/ Feature;
 
-export type GetResourcesFeaturesError = DefaultErrors;
+export type GetResourcesFeaturesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a feature. */
 export const getResourcesFeatures: API.OperationMethod<
@@ -3776,7 +3898,7 @@ export const getResourcesFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcesFeaturesRequest,
   output: GetResourcesFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertResourcesFeaturesRequest {
@@ -3803,7 +3925,12 @@ export type InsertResourcesFeaturesResponse = Feature;
 export const InsertResourcesFeaturesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Feature;
 
-export type InsertResourcesFeaturesError = DefaultErrors;
+export type InsertResourcesFeaturesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a feature. */
 export const insertResourcesFeatures: API.OperationMethod<
@@ -3814,7 +3941,7 @@ export const insertResourcesFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertResourcesFeaturesRequest,
   output: InsertResourcesFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateResourcesFeaturesRequest {
@@ -3844,7 +3971,12 @@ export type UpdateResourcesFeaturesResponse = Feature;
 export const UpdateResourcesFeaturesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Feature;
 
-export type UpdateResourcesFeaturesError = DefaultErrors;
+export type UpdateResourcesFeaturesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a feature. */
 export const updateResourcesFeatures: API.OperationMethod<
@@ -3855,7 +3987,7 @@ export const updateResourcesFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateResourcesFeaturesRequest,
   output: UpdateResourcesFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveDevicesToOuChromeosdevicesRequest {
@@ -3887,7 +4019,12 @@ export const MoveDevicesToOuChromeosdevicesResponse: Schema.Schema<MoveDevicesTo
     {},
   ) as any as Schema.Schema<MoveDevicesToOuChromeosdevicesResponse>;
 
-export type MoveDevicesToOuChromeosdevicesError = DefaultErrors;
+export type MoveDevicesToOuChromeosdevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves or inserts multiple Chrome OS devices to an organizational unit. You can move up to 50 devices at once. */
 export const moveDevicesToOuChromeosdevices: API.OperationMethod<
@@ -3898,7 +4035,7 @@ export const moveDevicesToOuChromeosdevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveDevicesToOuChromeosdevicesRequest,
   output: MoveDevicesToOuChromeosdevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateChromeosdevicesRequest {
@@ -3931,7 +4068,12 @@ export type UpdateChromeosdevicesResponse = ChromeOsDevice;
 export const UpdateChromeosdevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChromeOsDevice;
 
-export type UpdateChromeosdevicesError = DefaultErrors;
+export type UpdateChromeosdevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a device's updatable properties, such as `annotatedUser`, `annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`. */
 export const updateChromeosdevices: API.OperationMethod<
@@ -3942,7 +4084,7 @@ export const updateChromeosdevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChromeosdevicesRequest,
   output: UpdateChromeosdevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetChromeosdevicesRequest {
@@ -3971,7 +4113,7 @@ export type GetChromeosdevicesResponse = ChromeOsDevice;
 export const GetChromeosdevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChromeOsDevice;
 
-export type GetChromeosdevicesError = DefaultErrors;
+export type GetChromeosdevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a Chrome OS device's properties. */
 export const getChromeosdevices: API.OperationMethod<
@@ -3982,7 +4124,7 @@ export const getChromeosdevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChromeosdevicesRequest,
   output: GetChromeosdevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListChromeosdevicesRequest {
@@ -4040,7 +4182,7 @@ export type ListChromeosdevicesResponse = ChromeOsDevices;
 export const ListChromeosdevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChromeOsDevices;
 
-export type ListChromeosdevicesError = DefaultErrors;
+export type ListChromeosdevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a paginated list of Chrome OS devices within an account. */
 export const listChromeosdevices: API.PaginatedOperationMethod<
@@ -4051,7 +4193,7 @@ export const listChromeosdevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChromeosdevicesRequest,
   output: ListChromeosdevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4087,7 +4229,12 @@ export const ActionChromeosdevicesResponse: Schema.Schema<ActionChromeosdevicesR
     {},
   ) as any as Schema.Schema<ActionChromeosdevicesResponse>;
 
-export type ActionChromeosdevicesError = DefaultErrors;
+export type ActionChromeosdevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customer.devices.chromeos/batchChangeStatus) instead. Takes an action that affects a Chrome OS Device. This includes deprovisioning, disabling, and re-enabling devices. *Warning:* * Deprovisioning a device will stop device policy syncing and remove device-level printers. After a device is deprovisioned, it must be wiped before it can be re-enrolled. * Lost or stolen devices should use the disable action. * Re-enabling a disabled device will consume a device license. If you do not have sufficient licenses available when completing the re-enable action, you will receive an error. For more information about deprovisioning and disabling devices, visit the [help center](https://support.google.com/chrome/a/answer/3523633). */
 export const actionChromeosdevices: API.OperationMethod<
@@ -4098,7 +4245,7 @@ export const actionChromeosdevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActionChromeosdevicesRequest,
   output: ActionChromeosdevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchChromeosdevicesRequest {
@@ -4131,7 +4278,12 @@ export type PatchChromeosdevicesResponse = ChromeOsDevice;
 export const PatchChromeosdevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChromeOsDevice;
 
-export type PatchChromeosdevicesError = DefaultErrors;
+export type PatchChromeosdevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a device's updatable properties, such as `annotatedUser`, `annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchChromeosdevices: API.OperationMethod<
@@ -4142,7 +4294,7 @@ export const patchChromeosdevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchChromeosdevicesRequest,
   output: PatchChromeosdevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRoleAssignmentsRequest {
@@ -4170,7 +4322,12 @@ export const DeleteRoleAssignmentsResponse: Schema.Schema<DeleteRoleAssignmentsR
     {},
   ) as any as Schema.Schema<DeleteRoleAssignmentsResponse>;
 
-export type DeleteRoleAssignmentsError = DefaultErrors;
+export type DeleteRoleAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a role assignment. */
 export const deleteRoleAssignments: API.OperationMethod<
@@ -4181,7 +4338,7 @@ export const deleteRoleAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRoleAssignmentsRequest,
   output: DeleteRoleAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertRoleAssignmentsRequest {
@@ -4208,7 +4365,12 @@ export type InsertRoleAssignmentsResponse = RoleAssignment;
 export const InsertRoleAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RoleAssignment;
 
-export type InsertRoleAssignmentsError = DefaultErrors;
+export type InsertRoleAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a role assignment. */
 export const insertRoleAssignments: API.OperationMethod<
@@ -4219,7 +4381,7 @@ export const insertRoleAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRoleAssignmentsRequest,
   output: InsertRoleAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRoleAssignmentsRequest {
@@ -4245,7 +4407,7 @@ export type GetRoleAssignmentsResponse = RoleAssignment;
 export const GetRoleAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RoleAssignment;
 
-export type GetRoleAssignmentsError = DefaultErrors;
+export type GetRoleAssignmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a role assignment. */
 export const getRoleAssignments: API.OperationMethod<
@@ -4256,7 +4418,7 @@ export const getRoleAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRoleAssignmentsRequest,
   output: GetRoleAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRoleAssignmentsRequest {
@@ -4296,7 +4458,7 @@ export type ListRoleAssignmentsResponse = RoleAssignments;
 export const ListRoleAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RoleAssignments;
 
-export type ListRoleAssignmentsError = DefaultErrors;
+export type ListRoleAssignmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a paginated list of all roleAssignments. */
 export const listRoleAssignments: API.PaginatedOperationMethod<
@@ -4307,7 +4469,7 @@ export const listRoleAssignments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoleAssignmentsRequest,
   output: ListRoleAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4330,7 +4492,7 @@ export const ListTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTokensResponse = Tokens;
 export const ListTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Tokens;
 
-export type ListTokensError = DefaultErrors;
+export type ListTokensError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the set of tokens specified user has issued to 3rd party applications. */
 export const listTokens: API.OperationMethod<
@@ -4341,7 +4503,7 @@ export const listTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTokensRequest,
   output: ListTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteTokensRequest {
@@ -4368,7 +4530,12 @@ export const DeleteTokensResponse: Schema.Schema<DeleteTokensResponse> =
     {},
   ) as any as Schema.Schema<DeleteTokensResponse>;
 
-export type DeleteTokensError = DefaultErrors;
+export type DeleteTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all access tokens issued by a user for an application. */
 export const deleteTokens: API.OperationMethod<
@@ -4379,7 +4546,7 @@ export const deleteTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTokensRequest,
   output: DeleteTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTokensRequest {
@@ -4403,7 +4570,7 @@ export const GetTokensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTokensResponse = Token;
 export const GetTokensResponse = /*@__PURE__*/ /*#__PURE__*/ Token;
 
-export type GetTokensError = DefaultErrors;
+export type GetTokensError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about an access token issued by a user. */
 export const getTokens: API.OperationMethod<
@@ -4414,7 +4581,7 @@ export const getTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTokensRequest,
   output: GetTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDomainsRequest {
@@ -4438,7 +4605,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDomainsResponse = Domains;
 export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domains;
 
-export type GetDomainsError = DefaultErrors;
+export type GetDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a domain of the customer. */
 export const getDomains: API.OperationMethod<
@@ -4449,7 +4616,7 @@ export const getDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainsRequest,
   output: GetDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteDomainsRequest {
@@ -4476,7 +4643,12 @@ export const DeleteDomainsResponse: Schema.Schema<DeleteDomainsResponse> =
     {},
   ) as any as Schema.Schema<DeleteDomainsResponse>;
 
-export type DeleteDomainsError = DefaultErrors;
+export type DeleteDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a domain of the customer. */
 export const deleteDomains: API.OperationMethod<
@@ -4487,7 +4659,7 @@ export const deleteDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainsRequest,
   output: DeleteDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertDomainsRequest {
@@ -4512,7 +4684,12 @@ export const InsertDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertDomainsResponse = Domains;
 export const InsertDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domains;
 
-export type InsertDomainsError = DefaultErrors;
+export type InsertDomainsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a domain of the customer. */
 export const insertDomains: API.OperationMethod<
@@ -4523,7 +4700,7 @@ export const insertDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDomainsRequest,
   output: InsertDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDomainsRequest {
@@ -4544,7 +4721,7 @@ export const ListDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDomainsResponse = Domains2;
 export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domains2;
 
-export type ListDomainsError = DefaultErrors;
+export type ListDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the domains of the customer. */
 export const listDomains: API.OperationMethod<
@@ -4555,7 +4732,7 @@ export const listDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchGroupsRequest {
@@ -4580,7 +4757,12 @@ export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchGroupsResponse = Group;
 export const PatchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type PatchGroupsError = DefaultErrors;
+export type PatchGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a group's properties. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchGroups: API.OperationMethod<
@@ -4591,7 +4773,7 @@ export const patchGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGroupsRequest,
   output: PatchGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGroupsRequest {
@@ -4612,7 +4794,12 @@ export const DeleteGroupsResponse: Schema.Schema<DeleteGroupsResponse> =
     {},
   ) as any as Schema.Schema<DeleteGroupsResponse>;
 
-export type DeleteGroupsError = DefaultErrors;
+export type DeleteGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a group. */
 export const deleteGroups: API.OperationMethod<
@@ -4623,7 +4810,7 @@ export const deleteGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupsRequest,
   output: DeleteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGroupsRequest {
@@ -4662,7 +4849,7 @@ export const ListGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListGroupsResponse = Groups;
 export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Groups;
 
-export type ListGroupsError = DefaultErrors;
+export type ListGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves all groups of a domain or of a user given a userKey (paginated). */
 export const listGroups: API.PaginatedOperationMethod<
@@ -4673,7 +4860,7 @@ export const listGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4695,7 +4882,12 @@ export const InsertGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertGroupsResponse = Group;
 export const InsertGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type InsertGroupsError = DefaultErrors;
+export type InsertGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a group. */
 export const insertGroups: API.OperationMethod<
@@ -4706,7 +4898,7 @@ export const insertGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGroupsRequest,
   output: InsertGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateGroupsRequest {
@@ -4731,7 +4923,12 @@ export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateGroupsResponse = Group;
 export const UpdateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type UpdateGroupsError = DefaultErrors;
+export type UpdateGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a group's properties. */
 export const updateGroups: API.OperationMethod<
@@ -4742,7 +4939,7 @@ export const updateGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupsRequest,
   output: UpdateGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGroupsRequest {
@@ -4760,7 +4957,7 @@ export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupsResponse = Group;
 export const GetGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type GetGroupsError = DefaultErrors;
+export type GetGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a group's properties. */
 export const getGroups: API.OperationMethod<
@@ -4771,7 +4968,7 @@ export const getGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupsRequest,
   output: GetGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteGroupsAliasesRequest {
@@ -4799,7 +4996,12 @@ export const DeleteGroupsAliasesResponse: Schema.Schema<DeleteGroupsAliasesRespo
     {},
   ) as any as Schema.Schema<DeleteGroupsAliasesResponse>;
 
-export type DeleteGroupsAliasesError = DefaultErrors;
+export type DeleteGroupsAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an alias. */
 export const deleteGroupsAliases: API.OperationMethod<
@@ -4810,7 +5012,7 @@ export const deleteGroupsAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupsAliasesRequest,
   output: DeleteGroupsAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertGroupsAliasesRequest {
@@ -4836,7 +5038,12 @@ export const InsertGroupsAliasesRequest =
 export type InsertGroupsAliasesResponse = Alias;
 export const InsertGroupsAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Alias;
 
-export type InsertGroupsAliasesError = DefaultErrors;
+export type InsertGroupsAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an alias for the group. */
 export const insertGroupsAliases: API.OperationMethod<
@@ -4847,7 +5054,7 @@ export const insertGroupsAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGroupsAliasesRequest,
   output: InsertGroupsAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGroupsAliasesRequest {
@@ -4869,7 +5076,7 @@ export const ListGroupsAliasesRequest =
 export type ListGroupsAliasesResponse = Aliases;
 export const ListGroupsAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Aliases;
 
-export type ListGroupsAliasesError = DefaultErrors;
+export type ListGroupsAliasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all aliases for a group. */
 export const listGroupsAliases: API.OperationMethod<
@@ -4880,7 +5087,7 @@ export const listGroupsAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGroupsAliasesRequest,
   output: ListGroupsAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StopChannelsRequest {
@@ -4905,7 +5112,12 @@ export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
     {},
   ) as any as Schema.Schema<StopChannelsResponse>;
 
-export type StopChannelsError = DefaultErrors;
+export type StopChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops watching resources through this channel. */
 export const stopChannels: API.OperationMethod<
@@ -4916,7 +5128,7 @@ export const stopChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDomainAliasesRequest {
@@ -4944,7 +5156,7 @@ export type ListDomainAliasesResponse = DomainAliases;
 export const ListDomainAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DomainAliases;
 
-export type ListDomainAliasesError = DefaultErrors;
+export type ListDomainAliasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the domain aliases of the customer. */
 export const listDomainAliases: API.OperationMethod<
@@ -4955,7 +5167,7 @@ export const listDomainAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDomainAliasesRequest,
   output: ListDomainAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteDomainAliasesRequest {
@@ -4983,7 +5195,12 @@ export const DeleteDomainAliasesResponse: Schema.Schema<DeleteDomainAliasesRespo
     {},
   ) as any as Schema.Schema<DeleteDomainAliasesResponse>;
 
-export type DeleteDomainAliasesError = DefaultErrors;
+export type DeleteDomainAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a domain Alias of the customer. */
 export const deleteDomainAliases: API.OperationMethod<
@@ -4994,7 +5211,7 @@ export const deleteDomainAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDomainAliasesRequest,
   output: DeleteDomainAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertDomainAliasesRequest {
@@ -5021,7 +5238,12 @@ export type InsertDomainAliasesResponse = DomainAlias;
 export const InsertDomainAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DomainAlias;
 
-export type InsertDomainAliasesError = DefaultErrors;
+export type InsertDomainAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a domain alias of the customer. */
 export const insertDomainAliases: API.OperationMethod<
@@ -5032,7 +5254,7 @@ export const insertDomainAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDomainAliasesRequest,
   output: InsertDomainAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDomainAliasesRequest {
@@ -5057,7 +5279,7 @@ export const GetDomainAliasesRequest =
 export type GetDomainAliasesResponse = DomainAlias;
 export const GetDomainAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ DomainAlias;
 
-export type GetDomainAliasesError = DefaultErrors;
+export type GetDomainAliasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a domain alias of the customer. */
 export const getDomainAliases: API.OperationMethod<
@@ -5068,7 +5290,7 @@ export const getDomainAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainAliasesRequest,
   output: GetDomainAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPrivilegesRequest {
@@ -5089,7 +5311,7 @@ export const ListPrivilegesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListPrivilegesResponse = Privileges;
 export const ListPrivilegesResponse = /*@__PURE__*/ /*#__PURE__*/ Privileges;
 
-export type ListPrivilegesError = DefaultErrors;
+export type ListPrivilegesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a paginated list of all privileges for a customer. */
 export const listPrivileges: API.OperationMethod<
@@ -5100,7 +5322,7 @@ export const listPrivileges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPrivilegesRequest,
   output: ListPrivilegesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetRolesRequest {
@@ -5124,7 +5346,7 @@ export const GetRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRolesResponse = Role;
 export const GetRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type GetRolesError = DefaultErrors;
+export type GetRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a role. */
 export const getRoles: API.OperationMethod<
@@ -5135,7 +5357,7 @@ export const getRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRolesRequest,
   output: GetRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRolesRequest {
@@ -5160,7 +5382,12 @@ export const InsertRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertRolesResponse = Role;
 export const InsertRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type InsertRolesError = DefaultErrors;
+export type InsertRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a role. */
 export const insertRoles: API.OperationMethod<
@@ -5171,7 +5398,7 @@ export const insertRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRolesRequest,
   output: InsertRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRolesRequest {
@@ -5199,7 +5426,12 @@ export const UpdateRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateRolesResponse = Role;
 export const UpdateRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type UpdateRolesError = DefaultErrors;
+export type UpdateRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a role. */
 export const updateRoles: API.OperationMethod<
@@ -5210,7 +5442,7 @@ export const updateRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRolesRequest,
   output: UpdateRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRolesRequest {
@@ -5237,7 +5469,7 @@ export const ListRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRolesResponse = Roles;
 export const ListRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Roles;
 
-export type ListRolesError = DefaultErrors;
+export type ListRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a paginated list of all the roles in a domain. */
 export const listRoles: API.PaginatedOperationMethod<
@@ -5248,7 +5480,7 @@ export const listRoles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRolesRequest,
   output: ListRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5280,7 +5512,12 @@ export const DeleteRolesResponse: Schema.Schema<DeleteRolesResponse> =
     {},
   ) as any as Schema.Schema<DeleteRolesResponse>;
 
-export type DeleteRolesError = DefaultErrors;
+export type DeleteRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a role. */
 export const deleteRoles: API.OperationMethod<
@@ -5291,7 +5528,7 @@ export const deleteRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRolesRequest,
   output: DeleteRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRolesRequest {
@@ -5319,7 +5556,12 @@ export const PatchRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchRolesResponse = Role;
 export const PatchRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type PatchRolesError = DefaultErrors;
+export type PatchRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a role. */
 export const patchRoles: API.OperationMethod<
@@ -5330,7 +5572,7 @@ export const patchRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRolesRequest,
   output: PatchRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMembersRequest {
@@ -5365,7 +5607,7 @@ export const ListMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListMembersResponse = Members;
 export const ListMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Members;
 
-export type ListMembersError = DefaultErrors;
+export type ListMembersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a paginated list of all members in a group. This method times out after 60 minutes. For more information, see [Troubleshoot error codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes). */
 export const listMembers: API.PaginatedOperationMethod<
@@ -5376,7 +5618,7 @@ export const listMembers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5405,7 +5647,12 @@ export const InsertMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertMembersResponse = Member;
 export const InsertMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
 
-export type InsertMembersError = DefaultErrors;
+export type InsertMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a user to the specified group. */
 export const insertMembers: API.OperationMethod<
@@ -5416,7 +5663,7 @@ export const insertMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertMembersRequest,
   output: InsertMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateMembersRequest {
@@ -5444,7 +5691,12 @@ export const UpdateMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateMembersResponse = Member;
 export const UpdateMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
 
-export type UpdateMembersError = DefaultErrors;
+export type UpdateMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the membership of a user in the specified group. */
 export const updateMembers: API.OperationMethod<
@@ -5455,7 +5707,7 @@ export const updateMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMembersRequest,
   output: UpdateMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMembersRequest {
@@ -5479,7 +5731,7 @@ export const GetMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetMembersResponse = Member;
 export const GetMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
 
-export type GetMembersError = DefaultErrors;
+export type GetMembersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a group member's properties. */
 export const getMembers: API.OperationMethod<
@@ -5490,7 +5742,7 @@ export const getMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMembersRequest,
   output: GetMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface HasMemberMembersRequest {
@@ -5516,7 +5768,7 @@ export type HasMemberMembersResponse = MembersHasMember;
 export const HasMemberMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ MembersHasMember;
 
-export type HasMemberMembersError = DefaultErrors;
+export type HasMemberMembersError = DefaultErrors | NotFound | Forbidden;
 
 /** Checks whether the given user is a member of the group. Membership can be direct or nested, but if nested, the `memberKey` and `groupKey` must be entities in the same domain or an `Invalid input` error is returned. To check for nested memberships that include entities outside of the group's domain, use the [`checkTransitiveMembership()`](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships/checkTransitiveMembership) method in the Cloud Identity Groups API. */
 export const hasMemberMembers: API.OperationMethod<
@@ -5527,7 +5779,7 @@ export const hasMemberMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HasMemberMembersRequest,
   output: HasMemberMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchMembersRequest {
@@ -5555,7 +5807,12 @@ export const PatchMembersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchMembersResponse = Member;
 export const PatchMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Member;
 
-export type PatchMembersError = DefaultErrors;
+export type PatchMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the membership properties of a user in the specified group. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchMembers: API.OperationMethod<
@@ -5566,7 +5823,7 @@ export const patchMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchMembersRequest,
   output: PatchMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMembersRequest {
@@ -5593,7 +5850,12 @@ export const DeleteMembersResponse: Schema.Schema<DeleteMembersResponse> =
     {},
   ) as any as Schema.Schema<DeleteMembersResponse>;
 
-export type DeleteMembersError = DefaultErrors;
+export type DeleteMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a member from a group. */
 export const deleteMembers: API.OperationMethod<
@@ -5604,7 +5866,7 @@ export const deleteMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMembersRequest,
   output: DeleteMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActionMobiledevicesRequest {
@@ -5636,7 +5898,12 @@ export const ActionMobiledevicesResponse: Schema.Schema<ActionMobiledevicesRespo
     {},
   ) as any as Schema.Schema<ActionMobiledevicesResponse>;
 
-export type ActionMobiledevicesError = DefaultErrors;
+export type ActionMobiledevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Takes an action that affects a mobile device. For example, remotely wiping a device. */
 export const actionMobiledevices: API.OperationMethod<
@@ -5647,7 +5914,7 @@ export const actionMobiledevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActionMobiledevicesRequest,
   output: ActionMobiledevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMobiledevicesRequest {
@@ -5697,7 +5964,7 @@ export type ListMobiledevicesResponse = MobileDevices;
 export const ListMobiledevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ MobileDevices;
 
-export type ListMobiledevicesError = DefaultErrors;
+export type ListMobiledevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a paginated list of all user-owned mobile devices for an account. To retrieve a list that includes company-owned devices, use the Cloud Identity [Devices API](https://cloud.google.com/identity/docs/concepts/overview-devices) instead. This method times out after 60 minutes. For more information, see [Troubleshoot error codes](https://developers.google.com/workspace/admin/directory/v1/guides/troubleshoot-error-codes). */
 export const listMobiledevices: API.PaginatedOperationMethod<
@@ -5708,7 +5975,7 @@ export const listMobiledevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMobiledevicesRequest,
   output: ListMobiledevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5741,7 +6008,7 @@ export type GetMobiledevicesResponse = MobileDevice;
 export const GetMobiledevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ MobileDevice;
 
-export type GetMobiledevicesError = DefaultErrors;
+export type GetMobiledevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a mobile device's properties. */
 export const getMobiledevices: API.OperationMethod<
@@ -5752,7 +6019,7 @@ export const getMobiledevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMobiledevicesRequest,
   output: GetMobiledevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteMobiledevicesRequest {
@@ -5780,7 +6047,12 @@ export const DeleteMobiledevicesResponse: Schema.Schema<DeleteMobiledevicesRespo
     {},
   ) as any as Schema.Schema<DeleteMobiledevicesResponse>;
 
-export type DeleteMobiledevicesError = DefaultErrors;
+export type DeleteMobiledevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a mobile device. */
 export const deleteMobiledevices: API.OperationMethod<
@@ -5791,7 +6063,7 @@ export const deleteMobiledevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMobiledevicesRequest,
   output: DeleteMobiledevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertUsersRequest {
@@ -5814,7 +6086,12 @@ export const InsertUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertUsersResponse = User;
 export const InsertUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type InsertUsersError = DefaultErrors;
+export type InsertUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a user. Mutate calls immediately following user creation might sometimes fail as the user isn't fully created due to propagation delay in our backends. Check the error details for the "User creation is not complete" message to see if this is the case. Retrying the calls after some time can help in this case. If `resolveConflictAccount` is set to `true`, a `202` response code means that a conflicting unmanaged account exists and was invited to join the organization. A `409` response code means that a conflicting account exists so the user wasn't created based on the [handling unmanaged user accounts](https://support.google.com/a/answer/11112794) option selected. */
 export const insertUsers: API.OperationMethod<
@@ -5825,7 +6102,7 @@ export const insertUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUsersRequest,
   output: InsertUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateGuestUsersRequest {
@@ -5848,7 +6125,12 @@ export const CreateGuestUsersRequest =
 export type CreateGuestUsersResponse = User;
 export const CreateGuestUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type CreateGuestUsersError = DefaultErrors;
+export type CreateGuestUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a guest user with access to a [subset of Workspace capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Alpha. Please reach out to support if you are interested in trying this feature. */
 export const createGuestUsers: API.OperationMethod<
@@ -5859,7 +6141,7 @@ export const createGuestUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGuestUsersRequest,
   output: CreateGuestUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersRequest {
@@ -5888,7 +6170,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type GetUsersError = DefaultErrors;
+export type GetUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a user. */
 export const getUsers: API.OperationMethod<
@@ -5899,7 +6181,7 @@ export const getUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersRequest,
   output: GetUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersRequest {
@@ -5920,7 +6202,12 @@ export const DeleteUsersResponse: Schema.Schema<DeleteUsersResponse> =
     {},
   ) as any as Schema.Schema<DeleteUsersResponse>;
 
-export type DeleteUsersError = DefaultErrors;
+export type DeleteUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user. */
 export const deleteUsers: API.OperationMethod<
@@ -5931,7 +6218,7 @@ export const deleteUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersRequest,
   output: DeleteUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchUsersRequest {
@@ -5956,7 +6243,12 @@ export const PatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchUsersResponse = User;
 export const PatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type PatchUsersError = DefaultErrors;
+export type PatchUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user using patch semantics. The update method should be used instead, because it also supports patch semantics and has better performance. If you're mapping an external identity to a Google identity, use the [`update`](https://developers.google.com/workspace/admin/directory/v1/reference/users/update) method instead of the `patch` method. This method is unable to clear fields that contain repeated objects (`addresses`, `phones`, etc). Use the update method instead. */
 export const patchUsers: API.OperationMethod<
@@ -5967,7 +6259,7 @@ export const patchUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersRequest,
   output: PatchUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignOutUsersRequest {
@@ -5992,7 +6284,12 @@ export const SignOutUsersResponse: Schema.Schema<SignOutUsersResponse> =
     {},
   ) as any as Schema.Schema<SignOutUsersResponse>;
 
-export type SignOutUsersError = DefaultErrors;
+export type SignOutUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a user out of all web and device sessions and reset their sign-in cookies. User will have to sign in by authenticating again. */
 export const signOutUsers: API.OperationMethod<
@@ -6003,7 +6300,7 @@ export const signOutUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignOutUsersRequest,
   output: SignOutUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateUsersRequest {
@@ -6028,7 +6325,12 @@ export const UpdateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateUsersResponse = User;
 export const UpdateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type UpdateUsersError = DefaultErrors;
+export type UpdateUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user. This method supports patch semantics, meaning that you only need to include the fields you wish to update. Fields that are not present in the request will be preserved, and fields set to `null` will be cleared. For repeating fields that contain arrays, individual items in the array can't be patched piecemeal; they must be supplied in the request body with the desired values for all items. See the [user accounts guide](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#update_user) for more information. */
 export const updateUsers: API.OperationMethod<
@@ -6039,7 +6341,7 @@ export const updateUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersRequest,
   output: UpdateUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersRequest {
@@ -6098,7 +6400,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListUsersResponse = Users;
 export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Users;
 
-export type ListUsersError = DefaultErrors;
+export type ListUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a paginated list of either deleted users or all users in a domain. */
 export const listUsers: API.PaginatedOperationMethod<
@@ -6109,7 +6411,7 @@ export const listUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6141,7 +6443,12 @@ export const MakeAdminUsersResponse: Schema.Schema<MakeAdminUsersResponse> =
     {},
   ) as any as Schema.Schema<MakeAdminUsersResponse>;
 
-export type MakeAdminUsersError = DefaultErrors;
+export type MakeAdminUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes a user a super administrator. */
 export const makeAdminUsers: API.OperationMethod<
@@ -6152,7 +6459,7 @@ export const makeAdminUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MakeAdminUsersRequest,
   output: MakeAdminUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WatchUsersRequest {
@@ -6218,7 +6525,12 @@ export const WatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchUsersResponse = Channel;
 export const WatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchUsersError = DefaultErrors;
+export type WatchUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watches for changes in users list. */
 export const watchUsers: API.OperationMethod<
@@ -6229,7 +6541,7 @@ export const watchUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchUsersRequest,
   output: WatchUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteUsersRequest {
@@ -6257,7 +6569,12 @@ export const UndeleteUsersResponse: Schema.Schema<UndeleteUsersResponse> =
     {},
   ) as any as Schema.Schema<UndeleteUsersResponse>;
 
-export type UndeleteUsersError = DefaultErrors;
+export type UndeleteUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a deleted user. */
 export const undeleteUsers: API.OperationMethod<
@@ -6268,7 +6585,7 @@ export const undeleteUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteUsersRequest,
   output: UndeleteUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersPhotosRequest {
@@ -6289,7 +6606,7 @@ export const GetUsersPhotosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUsersPhotosResponse = UserPhoto;
 export const GetUsersPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ UserPhoto;
 
-export type GetUsersPhotosError = DefaultErrors;
+export type GetUsersPhotosError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the user's photo. */
 export const getUsersPhotos: API.OperationMethod<
@@ -6300,7 +6617,7 @@ export const getUsersPhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersPhotosRequest,
   output: GetUsersPhotosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersPhotosRequest {
@@ -6325,7 +6642,12 @@ export const DeleteUsersPhotosResponse: Schema.Schema<DeleteUsersPhotosResponse>
     {},
   ) as any as Schema.Schema<DeleteUsersPhotosResponse>;
 
-export type DeleteUsersPhotosError = DefaultErrors;
+export type DeleteUsersPhotosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the user's photo. */
 export const deleteUsersPhotos: API.OperationMethod<
@@ -6336,7 +6658,7 @@ export const deleteUsersPhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersPhotosRequest,
   output: DeleteUsersPhotosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateUsersPhotosRequest {
@@ -6362,7 +6684,12 @@ export const UpdateUsersPhotosRequest =
 export type UpdateUsersPhotosResponse = UserPhoto;
 export const UpdateUsersPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ UserPhoto;
 
-export type UpdateUsersPhotosError = DefaultErrors;
+export type UpdateUsersPhotosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a photo for the user. */
 export const updateUsersPhotos: API.OperationMethod<
@@ -6373,7 +6700,7 @@ export const updateUsersPhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersPhotosRequest,
   output: UpdateUsersPhotosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchUsersPhotosRequest {
@@ -6399,7 +6726,12 @@ export const PatchUsersPhotosRequest =
 export type PatchUsersPhotosResponse = UserPhoto;
 export const PatchUsersPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ UserPhoto;
 
-export type PatchUsersPhotosError = DefaultErrors;
+export type PatchUsersPhotosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a photo for the user. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch). */
 export const patchUsersPhotos: API.OperationMethod<
@@ -6410,7 +6742,7 @@ export const patchUsersPhotos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersPhotosRequest,
   output: PatchUsersPhotosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersAliasesRequest {
@@ -6438,7 +6770,12 @@ export const DeleteUsersAliasesResponse: Schema.Schema<DeleteUsersAliasesRespons
     {},
   ) as any as Schema.Schema<DeleteUsersAliasesResponse>;
 
-export type DeleteUsersAliasesError = DefaultErrors;
+export type DeleteUsersAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an alias. */
 export const deleteUsersAliases: API.OperationMethod<
@@ -6449,7 +6786,7 @@ export const deleteUsersAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersAliasesRequest,
   output: DeleteUsersAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertUsersAliasesRequest {
@@ -6475,7 +6812,12 @@ export const InsertUsersAliasesRequest =
 export type InsertUsersAliasesResponse = Alias;
 export const InsertUsersAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Alias;
 
-export type InsertUsersAliasesError = DefaultErrors;
+export type InsertUsersAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an alias. */
 export const insertUsersAliases: API.OperationMethod<
@@ -6486,7 +6828,7 @@ export const insertUsersAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUsersAliasesRequest,
   output: InsertUsersAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersAliasesRequest {
@@ -6511,7 +6853,7 @@ export const ListUsersAliasesRequest =
 export type ListUsersAliasesResponse = Aliases;
 export const ListUsersAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Aliases;
 
-export type ListUsersAliasesError = DefaultErrors;
+export type ListUsersAliasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all aliases for a user. */
 export const listUsersAliases: API.OperationMethod<
@@ -6522,7 +6864,7 @@ export const listUsersAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersAliasesRequest,
   output: ListUsersAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WatchUsersAliasesRequest {
@@ -6551,7 +6893,12 @@ export const WatchUsersAliasesRequest =
 export type WatchUsersAliasesResponse = Channel;
 export const WatchUsersAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchUsersAliasesError = DefaultErrors;
+export type WatchUsersAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watches for changes in users list. */
 export const watchUsersAliases: API.OperationMethod<
@@ -6562,7 +6909,7 @@ export const watchUsersAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchUsersAliasesRequest,
   output: WatchUsersAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateVerificationCodesRequest {
@@ -6588,7 +6935,12 @@ export const GenerateVerificationCodesResponse: Schema.Schema<GenerateVerificati
     {},
   ) as any as Schema.Schema<GenerateVerificationCodesResponse>;
 
-export type GenerateVerificationCodesError = DefaultErrors;
+export type GenerateVerificationCodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates new backup verification codes for the user. */
 export const generateVerificationCodes: API.OperationMethod<
@@ -6599,7 +6951,7 @@ export const generateVerificationCodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateVerificationCodesRequest,
   output: GenerateVerificationCodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InvalidateVerificationCodesRequest {
@@ -6625,7 +6977,12 @@ export const InvalidateVerificationCodesResponse: Schema.Schema<InvalidateVerifi
     {},
   ) as any as Schema.Schema<InvalidateVerificationCodesResponse>;
 
-export type InvalidateVerificationCodesError = DefaultErrors;
+export type InvalidateVerificationCodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Invalidates the current backup verification codes for the user. */
 export const invalidateVerificationCodes: API.OperationMethod<
@@ -6636,7 +6993,7 @@ export const invalidateVerificationCodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvalidateVerificationCodesRequest,
   output: InvalidateVerificationCodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListVerificationCodesRequest {
@@ -6659,7 +7016,7 @@ export type ListVerificationCodesResponse = VerificationCodes;
 export const ListVerificationCodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerificationCodes;
 
-export type ListVerificationCodesError = DefaultErrors;
+export type ListVerificationCodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the current set of valid backup verification codes for the specified user. */
 export const listVerificationCodes: API.OperationMethod<
@@ -6670,7 +7027,7 @@ export const listVerificationCodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVerificationCodesRequest,
   output: ListVerificationCodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TurnOffTwoStepVerificationRequest {
@@ -6696,7 +7053,12 @@ export const TurnOffTwoStepVerificationResponse: Schema.Schema<TurnOffTwoStepVer
     {},
   ) as any as Schema.Schema<TurnOffTwoStepVerificationResponse>;
 
-export type TurnOffTwoStepVerificationError = DefaultErrors;
+export type TurnOffTwoStepVerificationError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Turns off 2-Step Verification for user. */
 export const turnOffTwoStepVerification: API.OperationMethod<
@@ -6707,7 +7069,7 @@ export const turnOffTwoStepVerification: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TurnOffTwoStepVerificationRequest,
   output: TurnOffTwoStepVerificationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCustomersRequest {
@@ -6732,7 +7094,12 @@ export const PatchCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchCustomersResponse = Customer;
 export const PatchCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type PatchCustomersError = DefaultErrors;
+export type PatchCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a customer. */
 export const patchCustomers: API.OperationMethod<
@@ -6743,7 +7110,7 @@ export const patchCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersRequest,
   output: PatchCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCustomersRequest {
@@ -6770,7 +7137,12 @@ export const UpdateCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateCustomersResponse = Customer;
 export const UpdateCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type UpdateCustomersError = DefaultErrors;
+export type UpdateCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a customer. */
 export const updateCustomers: API.OperationMethod<
@@ -6781,7 +7153,7 @@ export const updateCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCustomersRequest,
   output: UpdateCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersRequest {
@@ -6799,7 +7171,7 @@ export const GetCustomersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCustomersResponse = Customer;
 export const GetCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type GetCustomersError = DefaultErrors;
+export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a customer. */
 export const getCustomers: API.OperationMethod<
@@ -6810,7 +7182,7 @@ export const getCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersRequest,
   output: GetCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchCreatePrintServersCustomersChromePrintServersRequest {
@@ -6839,7 +7211,11 @@ export const BatchCreatePrintServersCustomersChromePrintServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreatePrintServersResponse;
 
 export type BatchCreatePrintServersCustomersChromePrintServersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates multiple print servers. */
 export const batchCreatePrintServersCustomersChromePrintServers: API.OperationMethod<
@@ -6850,7 +7226,7 @@ export const batchCreatePrintServersCustomersChromePrintServers: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreatePrintServersCustomersChromePrintServersRequest,
   output: BatchCreatePrintServersCustomersChromePrintServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersChromePrintServersRequest {
@@ -6888,7 +7264,10 @@ export type ListCustomersChromePrintServersResponse = ListPrintServersResponse;
 export const ListCustomersChromePrintServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPrintServersResponse;
 
-export type ListCustomersChromePrintServersError = DefaultErrors;
+export type ListCustomersChromePrintServersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists print server configurations. */
 export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
@@ -6899,7 +7278,7 @@ export const listCustomersChromePrintServers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersChromePrintServersRequest,
   output: ListCustomersChromePrintServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6923,7 +7302,10 @@ export type GetCustomersChromePrintServersResponse = PrintServer;
 export const GetCustomersChromePrintServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ PrintServer;
 
-export type GetCustomersChromePrintServersError = DefaultErrors;
+export type GetCustomersChromePrintServersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a print server's configuration. */
 export const getCustomersChromePrintServers: API.OperationMethod<
@@ -6934,7 +7316,7 @@ export const getCustomersChromePrintServers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersChromePrintServersRequest,
   output: GetCustomersChromePrintServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchCustomersChromePrintServersRequest {
@@ -6964,7 +7346,12 @@ export type PatchCustomersChromePrintServersResponse = PrintServer;
 export const PatchCustomersChromePrintServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ PrintServer;
 
-export type PatchCustomersChromePrintServersError = DefaultErrors;
+export type PatchCustomersChromePrintServersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a print server's configuration. */
 export const patchCustomersChromePrintServers: API.OperationMethod<
@@ -6975,7 +7362,7 @@ export const patchCustomersChromePrintServers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersChromePrintServersRequest,
   output: PatchCustomersChromePrintServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCustomersChromePrintServersRequest {
@@ -7002,7 +7389,12 @@ export type CreateCustomersChromePrintServersResponse = PrintServer;
 export const CreateCustomersChromePrintServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ PrintServer;
 
-export type CreateCustomersChromePrintServersError = DefaultErrors;
+export type CreateCustomersChromePrintServersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a print server. */
 export const createCustomersChromePrintServers: API.OperationMethod<
@@ -7013,7 +7405,7 @@ export const createCustomersChromePrintServers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersChromePrintServersRequest,
   output: CreateCustomersChromePrintServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeletePrintServersCustomersChromePrintServersRequest {
@@ -7042,7 +7434,11 @@ export const BatchDeletePrintServersCustomersChromePrintServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchDeletePrintServersResponse;
 
 export type BatchDeletePrintServersCustomersChromePrintServersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes multiple print servers. */
 export const batchDeletePrintServersCustomersChromePrintServers: API.OperationMethod<
@@ -7053,7 +7449,7 @@ export const batchDeletePrintServersCustomersChromePrintServers: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeletePrintServersCustomersChromePrintServersRequest,
   output: BatchDeletePrintServersCustomersChromePrintServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCustomersChromePrintServersRequest {
@@ -7073,7 +7469,12 @@ export type DeleteCustomersChromePrintServersResponse = Empty;
 export const DeleteCustomersChromePrintServersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCustomersChromePrintServersError = DefaultErrors;
+export type DeleteCustomersChromePrintServersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a print server. */
 export const deleteCustomersChromePrintServers: API.OperationMethod<
@@ -7084,7 +7485,7 @@ export const deleteCustomersChromePrintServers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersChromePrintServersRequest,
   output: DeleteCustomersChromePrintServersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCustomersChromePrintersRequest {
@@ -7104,7 +7505,12 @@ export type DeleteCustomersChromePrintersResponse = Empty;
 export const DeleteCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCustomersChromePrintersError = DefaultErrors;
+export type DeleteCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Printer`. */
 export const deleteCustomersChromePrinters: API.OperationMethod<
@@ -7115,7 +7521,7 @@ export const deleteCustomersChromePrinters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersChromePrintersRequest,
   output: DeleteCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCustomersChromePrintersRequest {
@@ -7142,7 +7548,12 @@ export type CreateCustomersChromePrintersResponse = Printer;
 export const CreateCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Printer;
 
-export type CreateCustomersChromePrintersError = DefaultErrors;
+export type CreateCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a printer under given Organization Unit. */
 export const createCustomersChromePrinters: API.OperationMethod<
@@ -7153,7 +7564,7 @@ export const createCustomersChromePrinters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersChromePrintersRequest,
   output: CreateCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPrinterModelsCustomersChromePrintersRequest {
@@ -7186,7 +7597,10 @@ export type ListPrinterModelsCustomersChromePrintersResponse =
 export const ListPrinterModelsCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPrinterModelsResponse;
 
-export type ListPrinterModelsCustomersChromePrintersError = DefaultErrors;
+export type ListPrinterModelsCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the supported printer models. */
 export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMethod<
@@ -7197,7 +7611,7 @@ export const listPrinterModelsCustomersChromePrinters: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPrinterModelsCustomersChromePrintersRequest,
   output: ListPrinterModelsCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7234,7 +7648,12 @@ export type PatchCustomersChromePrintersResponse = Printer;
 export const PatchCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Printer;
 
-export type PatchCustomersChromePrintersError = DefaultErrors;
+export type PatchCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `Printer` resource. */
 export const patchCustomersChromePrinters: API.OperationMethod<
@@ -7245,7 +7664,7 @@ export const patchCustomersChromePrinters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersChromePrintersRequest,
   output: PatchCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeletePrintersCustomersChromePrintersRequest {
@@ -7273,7 +7692,12 @@ export type BatchDeletePrintersCustomersChromePrintersResponse =
 export const BatchDeletePrintersCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchDeletePrintersResponse;
 
-export type BatchDeletePrintersCustomersChromePrintersError = DefaultErrors;
+export type BatchDeletePrintersCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes printers in batch. */
 export const batchDeletePrintersCustomersChromePrinters: API.OperationMethod<
@@ -7284,7 +7708,7 @@ export const batchDeletePrintersCustomersChromePrinters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeletePrintersCustomersChromePrintersRequest,
   output: BatchDeletePrintersCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersChromePrintersRequest {
@@ -7304,7 +7728,10 @@ export type GetCustomersChromePrintersResponse = Printer;
 export const GetCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Printer;
 
-export type GetCustomersChromePrintersError = DefaultErrors;
+export type GetCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a `Printer` resource (printer's config). */
 export const getCustomersChromePrinters: API.OperationMethod<
@@ -7315,7 +7742,7 @@ export const getCustomersChromePrinters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersChromePrintersRequest,
   output: GetCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchCreatePrintersCustomersChromePrintersRequest {
@@ -7343,7 +7770,12 @@ export type BatchCreatePrintersCustomersChromePrintersResponse =
 export const BatchCreatePrintersCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreatePrintersResponse;
 
-export type BatchCreatePrintersCustomersChromePrintersError = DefaultErrors;
+export type BatchCreatePrintersCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates printers under given Organization Unit. */
 export const batchCreatePrintersCustomersChromePrinters: API.OperationMethod<
@@ -7354,7 +7786,7 @@ export const batchCreatePrintersCustomersChromePrinters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreatePrintersCustomersChromePrintersRequest,
   output: BatchCreatePrintersCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersChromePrintersRequest {
@@ -7392,7 +7824,10 @@ export type ListCustomersChromePrintersResponse = ListPrintersResponse;
 export const ListCustomersChromePrintersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPrintersResponse;
 
-export type ListCustomersChromePrintersError = DefaultErrors;
+export type ListCustomersChromePrintersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List printers configs. */
 export const listCustomersChromePrinters: API.PaginatedOperationMethod<
@@ -7403,7 +7838,7 @@ export const listCustomersChromePrinters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersChromePrintersRequest,
   output: ListCustomersChromePrintersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7434,7 +7869,12 @@ export const DeleteOrgunitsResponse: Schema.Schema<DeleteOrgunitsResponse> =
     {},
   ) as any as Schema.Schema<DeleteOrgunitsResponse>;
 
-export type DeleteOrgunitsError = DefaultErrors;
+export type DeleteOrgunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an organizational unit. */
 export const deleteOrgunits: API.OperationMethod<
@@ -7445,7 +7885,7 @@ export const deleteOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrgunitsRequest,
   output: DeleteOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrgunitsRequest {
@@ -7473,7 +7913,12 @@ export const PatchOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchOrgunitsResponse = OrgUnit;
 export const PatchOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
 
-export type PatchOrgunitsError = DefaultErrors;
+export type PatchOrgunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an organizational unit. This method supports [patch semantics](https://developers.google.com/workspace/admin/directory/v1/guides/performance#patch) */
 export const patchOrgunits: API.OperationMethod<
@@ -7484,7 +7929,7 @@ export const patchOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrgunitsRequest,
   output: PatchOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrgunitsRequest {
@@ -7508,7 +7953,7 @@ export const GetOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrgunitsResponse = OrgUnit;
 export const GetOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
 
-export type GetOrgunitsError = DefaultErrors;
+export type GetOrgunitsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an organizational unit. */
 export const getOrgunits: API.OperationMethod<
@@ -7519,7 +7964,7 @@ export const getOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrgunitsRequest,
   output: GetOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertOrgunitsRequest {
@@ -7544,7 +7989,12 @@ export const InsertOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertOrgunitsResponse = OrgUnit;
 export const InsertOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
 
-export type InsertOrgunitsError = DefaultErrors;
+export type InsertOrgunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an organizational unit. */
 export const insertOrgunits: API.OperationMethod<
@@ -7555,7 +8005,7 @@ export const insertOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertOrgunitsRequest,
   output: InsertOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrgunitsRequest {
@@ -7583,7 +8033,12 @@ export const UpdateOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateOrgunitsResponse = OrgUnit;
 export const UpdateOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnit;
 
-export type UpdateOrgunitsError = DefaultErrors;
+export type UpdateOrgunitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an organizational unit. */
 export const updateOrgunits: API.OperationMethod<
@@ -7594,7 +8049,7 @@ export const updateOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrgunitsRequest,
   output: UpdateOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrgunitsRequest {
@@ -7621,7 +8076,7 @@ export const ListOrgunitsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListOrgunitsResponse = OrgUnits;
 export const ListOrgunitsResponse = /*@__PURE__*/ /*#__PURE__*/ OrgUnits;
 
-export type ListOrgunitsError = DefaultErrors;
+export type ListOrgunitsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of all organizational units for an account. */
 export const listOrgunits: API.OperationMethod<
@@ -7632,7 +8087,7 @@ export const listOrgunits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrgunitsRequest,
   output: ListOrgunitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSchemasRequest {
@@ -7653,7 +8108,7 @@ export const ListSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListSchemasResponse = Schemas;
 export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schemas;
 
-export type ListSchemasError = DefaultErrors;
+export type ListSchemasError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves all schemas for a customer. */
 export const listSchemas: API.OperationMethod<
@@ -7664,7 +8119,7 @@ export const listSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSchemasRequest,
   output: ListSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSchemasRequest {
@@ -7688,7 +8143,7 @@ export const GetSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSchemasResponse = Admin_Schema;
 export const GetSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
 
-export type GetSchemasError = DefaultErrors;
+export type GetSchemasError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a schema. */
 export const getSchemas: API.OperationMethod<
@@ -7699,7 +8154,7 @@ export const getSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemasRequest,
   output: GetSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSchemasRequest {
@@ -7724,7 +8179,12 @@ export const InsertSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertSchemasResponse = Admin_Schema;
 export const InsertSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
 
-export type InsertSchemasError = DefaultErrors;
+export type InsertSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a schema. */
 export const insertSchemas: API.OperationMethod<
@@ -7735,7 +8195,7 @@ export const insertSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSchemasRequest,
   output: InsertSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSchemasRequest {
@@ -7763,7 +8223,12 @@ export const UpdateSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateSchemasResponse = Admin_Schema;
 export const UpdateSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
 
-export type UpdateSchemasError = DefaultErrors;
+export type UpdateSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a schema. */
 export const updateSchemas: API.OperationMethod<
@@ -7774,7 +8239,7 @@ export const updateSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSchemasRequest,
   output: UpdateSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchSchemasRequest {
@@ -7802,7 +8267,12 @@ export const PatchSchemasRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchSchemasResponse = Admin_Schema;
 export const PatchSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Admin_Schema;
 
-export type PatchSchemasError = DefaultErrors;
+export type PatchSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a schema. */
 export const patchSchemas: API.OperationMethod<
@@ -7813,7 +8283,7 @@ export const patchSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSchemasRequest,
   output: PatchSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSchemasRequest {
@@ -7840,7 +8310,12 @@ export const DeleteSchemasResponse: Schema.Schema<DeleteSchemasResponse> =
     {},
   ) as any as Schema.Schema<DeleteSchemasResponse>;
 
-export type DeleteSchemasError = DefaultErrors;
+export type DeleteSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a schema. */
 export const deleteSchemas: API.OperationMethod<
@@ -7851,5 +8326,5 @@ export const deleteSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSchemasRequest,
   output: DeleteSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

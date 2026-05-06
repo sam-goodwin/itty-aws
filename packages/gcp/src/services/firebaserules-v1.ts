@@ -396,6 +396,52 @@ export const GetReleaseExecutableResponse =
   }).annotate({ identifier: "GetReleaseExecutableResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -418,7 +464,12 @@ export type TestProjectsResponse = TestRulesetResponse;
 export const TestProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestRulesetResponse;
 
-export type TestProjectsError = DefaultErrors;
+export type TestProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Test `Source` for syntactic and semantic correctness. Issues present, if any, will be returned to the caller with a description, severity, and source location. The test method may be executed with `Source` or a `Ruleset` name. Passing `Source` is useful for unit testing new rules. Passing a `Ruleset` name is useful for regression testing an existing rule. The following is an example of `Source` that permits users to upload images to a bucket bearing their user id and matching the correct metadata: _*Example*_ // Users are allowed to subscribe and unsubscribe to the blog. service firebase.storage { match /users/{userId}/images/{imageName} { allow write: if userId == request.auth.uid && (imageName.matches('*.png$') || imageName.matches('*.jpg$')) && resource.mimeType.matches('^image/') } } */
 export const testProjects: API.OperationMethod<
@@ -429,7 +480,7 @@ export const testProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestProjectsRequest,
   output: TestProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsRulesetsRequest {
@@ -452,7 +503,12 @@ export type CreateProjectsRulesetsResponse = Ruleset;
 export const CreateProjectsRulesetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Ruleset;
 
-export type CreateProjectsRulesetsError = DefaultErrors;
+export type CreateProjectsRulesetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset. */
 export const createProjectsRulesets: API.OperationMethod<
@@ -463,7 +519,7 @@ export const createProjectsRulesets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRulesetsRequest,
   output: CreateProjectsRulesetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRulesetsRequest {
@@ -482,7 +538,7 @@ export const GetProjectsRulesetsRequest =
 export type GetProjectsRulesetsResponse = Ruleset;
 export const GetProjectsRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Ruleset;
 
-export type GetProjectsRulesetsError = DefaultErrors;
+export type GetProjectsRulesetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a `Ruleset` by name including the full `Source` contents. */
 export const getProjectsRulesets: API.OperationMethod<
@@ -493,7 +549,7 @@ export const getProjectsRulesets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRulesetsRequest,
   output: GetProjectsRulesetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsRulesetsRequest {
@@ -522,7 +578,7 @@ export type ListProjectsRulesetsResponse = ListRulesetsResponse;
 export const ListProjectsRulesetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRulesetsResponse;
 
-export type ListProjectsRulesetsError = DefaultErrors;
+export type ListProjectsRulesetsError = DefaultErrors | NotFound | Forbidden;
 
 /** List `Ruleset` metadata only and optionally filter the results by `Ruleset` name. The full `Source` contents of a `Ruleset` may be retrieved with GetRuleset. */
 export const listProjectsRulesets: API.PaginatedOperationMethod<
@@ -533,7 +589,7 @@ export const listProjectsRulesets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRulesetsRequest,
   output: ListProjectsRulesetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -556,7 +612,12 @@ export const DeleteProjectsRulesetsRequest =
 export type DeleteProjectsRulesetsResponse = Empty;
 export const DeleteProjectsRulesetsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsRulesetsError = DefaultErrors;
+export type DeleteProjectsRulesetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Release` the operation will fail. */
 export const deleteProjectsRulesets: API.OperationMethod<
@@ -567,7 +628,7 @@ export const deleteProjectsRulesets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRulesetsRequest,
   output: DeleteProjectsRulesetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsReleasesRequest {
@@ -590,7 +651,12 @@ export type CreateProjectsReleasesResponse = Release;
 export const CreateProjectsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type CreateProjectsReleasesError = DefaultErrors;
+export type CreateProjectsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a `Release`. Release names should reflect the developer's deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name -> Ruleset Name * projects/foo/releases/prod -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/beta -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 -> projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method. */
 export const createProjectsReleases: API.OperationMethod<
@@ -601,7 +667,7 @@ export const createProjectsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsReleasesRequest,
   output: CreateProjectsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsReleasesRequest {
@@ -624,7 +690,12 @@ export type PatchProjectsReleasesResponse = Release;
 export const PatchProjectsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type PatchProjectsReleasesError = DefaultErrors;
+export type PatchProjectsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `Release` rename is not supported. To create a `Release` use the CreateRelease method. */
 export const patchProjectsReleases: API.OperationMethod<
@@ -635,7 +706,7 @@ export const patchProjectsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsReleasesRequest,
   output: PatchProjectsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsReleasesRequest {
@@ -654,7 +725,7 @@ export const GetProjectsReleasesRequest =
 export type GetProjectsReleasesResponse = Release;
 export const GetProjectsReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Release;
 
-export type GetProjectsReleasesError = DefaultErrors;
+export type GetProjectsReleasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a `Release` by name. */
 export const getProjectsReleases: API.OperationMethod<
@@ -665,7 +736,7 @@ export const getProjectsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsReleasesRequest,
   output: GetProjectsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsReleasesRequest {
@@ -694,7 +765,7 @@ export type ListProjectsReleasesResponse = ListReleasesResponse;
 export const ListProjectsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReleasesResponse;
 
-export type ListProjectsReleasesError = DefaultErrors;
+export type ListProjectsReleasesError = DefaultErrors | NotFound | Forbidden;
 
 /** List the `Release` values for a project. This list may optionally be filtered by `Release` name, `Ruleset` name, `TestSuite` name, or any combination thereof. */
 export const listProjectsReleases: API.PaginatedOperationMethod<
@@ -705,7 +776,7 @@ export const listProjectsReleases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsReleasesRequest,
   output: ListProjectsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -728,7 +799,12 @@ export const DeleteProjectsReleasesRequest =
 export type DeleteProjectsReleasesResponse = Empty;
 export const DeleteProjectsReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsReleasesError = DefaultErrors;
+export type DeleteProjectsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a `Release` by resource name. */
 export const deleteProjectsReleases: API.OperationMethod<
@@ -739,7 +815,7 @@ export const deleteProjectsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsReleasesRequest,
   output: DeleteProjectsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetExecutableProjectsReleasesRequest {
@@ -769,7 +845,10 @@ export type GetExecutableProjectsReleasesResponse =
 export const GetExecutableProjectsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetReleaseExecutableResponse;
 
-export type GetExecutableProjectsReleasesError = DefaultErrors;
+export type GetExecutableProjectsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the `Release` executable to use when enforcing rules. */
 export const getExecutableProjectsReleases: API.OperationMethod<
@@ -780,5 +859,5 @@ export const getExecutableProjectsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetExecutableProjectsReleasesRequest,
   output: GetExecutableProjectsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

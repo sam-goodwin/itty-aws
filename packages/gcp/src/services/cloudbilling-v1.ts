@@ -416,6 +416,52 @@ export const ListSkusResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListSkusResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -436,7 +482,7 @@ export type GetBillingAccountsResponse = BillingAccount;
 export const GetBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
-export type GetBillingAccountsError = DefaultErrors;
+export type GetBillingAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const getBillingAccounts: API.OperationMethod<
@@ -447,7 +493,7 @@ export const getBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsRequest,
   output: GetBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsRequest {
@@ -476,7 +522,7 @@ export type ListBillingAccountsResponse_Op = ListBillingAccountsResponse;
 export const ListBillingAccountsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
 
-export type ListBillingAccountsError = DefaultErrors;
+export type ListBillingAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const listBillingAccounts: API.PaginatedOperationMethod<
@@ -487,7 +533,7 @@ export const listBillingAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsRequest,
   output: ListBillingAccountsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -517,7 +563,12 @@ export type PatchBillingAccountsResponse = BillingAccount;
 export const PatchBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
-export type PatchBillingAccountsError = DefaultErrors;
+export type PatchBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a billing account's fields. Currently the only field that can be edited is `display_name`. The current authenticated user must have the `billing.accounts.update` IAM permission, which is typically given to the [administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of the billing account. */
 export const patchBillingAccounts: API.OperationMethod<
@@ -528,7 +579,7 @@ export const patchBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsRequest,
   output: PatchBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBillingAccountsRequest {
@@ -551,7 +602,12 @@ export type CreateBillingAccountsResponse = BillingAccount;
 export const CreateBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
-export type CreateBillingAccountsError = DefaultErrors;
+export type CreateBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
 export const createBillingAccounts: API.OperationMethod<
@@ -562,7 +618,7 @@ export const createBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsRequest,
   output: CreateBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyBillingAccountsRequest {
@@ -587,7 +643,10 @@ export type GetIamPolicyBillingAccountsResponse = Policy;
 export const GetIamPolicyBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyBillingAccountsError = DefaultErrors;
+export type GetIamPolicyBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const getIamPolicyBillingAccounts: API.OperationMethod<
@@ -598,7 +657,7 @@ export const getIamPolicyBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyBillingAccountsRequest,
   output: GetIamPolicyBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyBillingAccountsRequest {
@@ -625,7 +684,12 @@ export type SetIamPolicyBillingAccountsResponse = Policy;
 export const SetIamPolicyBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyBillingAccountsError = DefaultErrors;
+export type SetIamPolicyBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy for a billing account. Replaces any existing policy. The caller must have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const setIamPolicyBillingAccounts: API.OperationMethod<
@@ -636,7 +700,7 @@ export const setIamPolicyBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyBillingAccountsRequest,
   output: SetIamPolicyBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsBillingAccountsRequest {
@@ -664,7 +728,12 @@ export type TestIamPermissionsBillingAccountsResponse =
 export const TestIamPermissionsBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsBillingAccountsError = DefaultErrors;
+export type TestIamPermissionsBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests the access control policy for a billing account. This method takes the resource and a set of permissions as input and returns the subset of the input permissions that the caller is allowed for that resource. */
 export const testIamPermissionsBillingAccounts: API.OperationMethod<
@@ -675,7 +744,7 @@ export const testIamPermissionsBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBillingAccountsRequest,
   output: TestIamPermissionsBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveBillingAccountsRequest {
@@ -698,7 +767,12 @@ export type MoveBillingAccountsResponse = BillingAccount;
 export const MoveBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
-export type MoveBillingAccountsError = DefaultErrors;
+export type MoveBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes which parent organization a billing account belongs to. */
 export const moveBillingAccounts: API.OperationMethod<
@@ -709,7 +783,7 @@ export const moveBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveBillingAccountsRequest,
   output: MoveBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsSubAccountsRequest {
@@ -739,7 +813,10 @@ export type ListBillingAccountsSubAccountsResponse =
 export const ListBillingAccountsSubAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
 
-export type ListBillingAccountsSubAccountsError = DefaultErrors;
+export type ListBillingAccountsSubAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
@@ -750,7 +827,7 @@ export const listBillingAccountsSubAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsSubAccountsRequest,
   output: ListBillingAccountsSubAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -777,7 +854,12 @@ export type CreateBillingAccountsSubAccountsResponse = BillingAccount;
 export const CreateBillingAccountsSubAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
-export type CreateBillingAccountsSubAccountsError = DefaultErrors;
+export type CreateBillingAccountsSubAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
 export const createBillingAccountsSubAccounts: API.OperationMethod<
@@ -788,7 +870,7 @@ export const createBillingAccountsSubAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsSubAccountsRequest,
   output: CreateBillingAccountsSubAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAccountsProjectsRequest {
@@ -815,7 +897,10 @@ export type ListBillingAccountsProjectsResponse =
 export const ListBillingAccountsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProjectBillingInfoResponse;
 
-export type ListBillingAccountsProjectsError = DefaultErrors;
+export type ListBillingAccountsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the projects associated with a billing account. The current authenticated user must have the `billing.resourceAssociations.list` IAM permission, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const listBillingAccountsProjects: API.PaginatedOperationMethod<
@@ -826,7 +911,7 @@ export const listBillingAccountsProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsProjectsRequest,
   output: ListBillingAccountsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -860,7 +945,10 @@ export type ListOrganizationsBillingAccountsResponse =
 export const ListOrganizationsBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBillingAccountsResponse;
 
-export type ListOrganizationsBillingAccountsError = DefaultErrors;
+export type ListOrganizationsBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the billing accounts that the current authenticated user has permission to [view](https://cloud.google.com/billing/docs/how-to/billing-access). */
 export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
@@ -871,7 +959,7 @@ export const listOrganizationsBillingAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsBillingAccountsRequest,
   output: ListOrganizationsBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -902,7 +990,12 @@ export type CreateOrganizationsBillingAccountsResponse = BillingAccount;
 export const CreateOrganizationsBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
-export type CreateOrganizationsBillingAccountsError = DefaultErrors;
+export type CreateOrganizationsBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned for subaccounts. */
 export const createOrganizationsBillingAccounts: API.OperationMethod<
@@ -913,7 +1006,7 @@ export const createOrganizationsBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsBillingAccountsRequest,
   output: CreateOrganizationsBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveOrganizationsBillingAccountsRequest {
@@ -936,7 +1029,10 @@ export type MoveOrganizationsBillingAccountsResponse = BillingAccount;
 export const MoveOrganizationsBillingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAccount;
 
-export type MoveOrganizationsBillingAccountsError = DefaultErrors;
+export type MoveOrganizationsBillingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Changes which parent organization a billing account belongs to. */
 export const moveOrganizationsBillingAccounts: API.OperationMethod<
@@ -947,7 +1043,7 @@ export const moveOrganizationsBillingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveOrganizationsBillingAccountsRequest,
   output: MoveOrganizationsBillingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetBillingInfoProjectsRequest {
@@ -967,7 +1063,7 @@ export type GetBillingInfoProjectsResponse = ProjectBillingInfo;
 export const GetBillingInfoProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
 
-export type GetBillingInfoProjectsError = DefaultErrors;
+export type GetBillingInfoProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the billing information for a project. The current authenticated user must have the `resourcemanager.projects.get` permission for the project, which can be granted by assigning the [Project Viewer](https://cloud.google.com/iam/docs/understanding-roles#predefined_roles) role. */
 export const getBillingInfoProjects: API.OperationMethod<
@@ -978,7 +1074,7 @@ export const getBillingInfoProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingInfoProjectsRequest,
   output: GetBillingInfoProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateBillingInfoProjectsRequest {
@@ -1001,7 +1097,12 @@ export type UpdateBillingInfoProjectsResponse = ProjectBillingInfo;
 export const UpdateBillingInfoProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectBillingInfo;
 
-export type UpdateBillingInfoProjectsError = DefaultErrors;
+export type UpdateBillingInfoProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets or updates the billing account associated with a project. You specify the new billing account by setting the `billing_account_name` in the `ProjectBillingInfo` resource to the resource name of a billing account. Associating a project with an open billing account enables billing on the project and allows charges for resource usage. If the project already had a billing account, this method changes the billing account used for resource usage charges. *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud Console might be billed to the new billing account, even if the charge occurred before the new billing account was assigned to the project. The current authenticated user must have ownership privileges for both the [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing account](https://cloud.google.com/billing/docs/how-to/billing-access). You can disable billing on the project by setting the `billing_account_name` field to empty. This action disassociates the current billing account from the project. Any billable activity of your in-use services will stop, and your application could stop functioning as expected. Any unbilled charges to date will be billed to the previously associated account. The current authenticated user must be either an owner of the project or an owner of the billing account for the project. Note that associating a project with a *closed* billing account will have much the same effect as disabling billing on the project: any paid resources used by the project will be shut down. Thus, unless you wish to disable billing, you should always call this method with the name of an *open* billing account. */
 export const updateBillingInfoProjects: API.OperationMethod<
@@ -1012,7 +1113,7 @@ export const updateBillingInfoProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBillingInfoProjectsRequest,
   output: UpdateBillingInfoProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesRequest {
@@ -1034,7 +1135,7 @@ export type ListServicesResponse_Op = ListServicesResponse;
 export const ListServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListServicesError = DefaultErrors;
+export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all public cloud services. */
 export const listServices: API.PaginatedOperationMethod<
@@ -1045,7 +1146,7 @@ export const listServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1086,7 +1187,7 @@ export type ListServicesSkusResponse = ListSkusResponse;
 export const ListServicesSkusResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSkusResponse;
 
-export type ListServicesSkusError = DefaultErrors;
+export type ListServicesSkusError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all publicly available SKUs for a given cloud service. */
 export const listServicesSkus: API.PaginatedOperationMethod<
@@ -1097,7 +1198,7 @@ export const listServicesSkus: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesSkusRequest,
   output: ListServicesSkusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

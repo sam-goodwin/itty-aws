@@ -430,6 +430,52 @@ export const SavedColumnList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SavedColumnList" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -452,7 +498,12 @@ export const RequestReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RequestReportsResponse = Report;
 export const RequestReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type RequestReportsError = DefaultErrors;
+export type RequestReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a report request into the reporting system. */
 export const requestReports: API.OperationMethod<
@@ -463,7 +514,7 @@ export const requestReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestReportsRequest,
   output: RequestReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReportsRequest {
@@ -481,7 +532,7 @@ export const GetReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetReportsResponse = Report;
 export const GetReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type GetReportsError = DefaultErrors;
+export type GetReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Polls for the status of a report request. */
 export const getReports: API.OperationMethod<
@@ -492,7 +543,7 @@ export const getReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReportsRequest,
   output: GetReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFileReportsRequest {
@@ -519,7 +570,7 @@ export const GetFileReportsResponse: Schema.Schema<GetFileReportsResponse> =
     {},
   ) as any as Schema.Schema<GetFileReportsResponse>;
 
-export type GetFileReportsError = DefaultErrors;
+export type GetFileReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Downloads a report file encoded in UTF-8. */
 export const getFileReports: API.OperationMethod<
@@ -530,7 +581,7 @@ export const getFileReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFileReportsRequest,
   output: GetFileReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateReportsRequest {
@@ -554,7 +605,12 @@ export const GenerateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GenerateReportsResponse = Report;
 export const GenerateReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type GenerateReportsError = DefaultErrors;
+export type GenerateReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates and returns a report immediately. */
 export const generateReports: API.OperationMethod<
@@ -565,7 +621,7 @@ export const generateReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateReportsRequest,
   output: GenerateReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIdMappingFileReportsRequest {
@@ -591,7 +647,7 @@ export type GetIdMappingFileReportsResponse = IdMappingFile;
 export const GetIdMappingFileReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdMappingFile;
 
-export type GetIdMappingFileReportsError = DefaultErrors;
+export type GetIdMappingFileReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Downloads a csv file(encoded in UTF-8) that contains ID mappings between legacy SA360 and new SA360. The file includes all children entities of the given advertiser(e.g. engine accounts, campaigns, ad groups, etc.) that exist in both legacy SA360 and new SA360. */
 export const getIdMappingFileReports: API.OperationMethod<
@@ -602,7 +658,7 @@ export const getIdMappingFileReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdMappingFileReportsRequest,
   output: GetIdMappingFileReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertConversionRequest {
@@ -626,7 +682,12 @@ export type InsertConversionResponse = ConversionList;
 export const InsertConversionResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionList;
 
-export type InsertConversionError = DefaultErrors;
+export type InsertConversionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a batch of new conversions into DoubleClick Search. */
 export const insertConversion: API.OperationMethod<
@@ -637,7 +698,7 @@ export const insertConversion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertConversionRequest,
   output: InsertConversionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateConversionRequest {
@@ -661,7 +722,12 @@ export type UpdateConversionResponse = ConversionList;
 export const UpdateConversionResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionList;
 
-export type UpdateConversionError = DefaultErrors;
+export type UpdateConversionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a batch of conversions in DoubleClick Search. */
 export const updateConversion: API.OperationMethod<
@@ -672,7 +738,7 @@ export const updateConversion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateConversionRequest,
   output: UpdateConversionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConversionRequest {
@@ -726,7 +792,7 @@ export const GetConversionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetConversionResponse = ConversionList;
 export const GetConversionResponse = /*@__PURE__*/ /*#__PURE__*/ ConversionList;
 
-export type GetConversionError = DefaultErrors;
+export type GetConversionError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of conversions from a DoubleClick Search engine account. */
 export const getConversion: API.OperationMethod<
@@ -737,7 +803,7 @@ export const getConversion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConversionRequest,
   output: GetConversionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetByCustomerIdConversionRequest {
@@ -799,7 +865,10 @@ export type GetByCustomerIdConversionResponse = ConversionList;
 export const GetByCustomerIdConversionResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionList;
 
-export type GetByCustomerIdConversionError = DefaultErrors;
+export type GetByCustomerIdConversionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of conversions from a DoubleClick Search engine account. */
 export const getByCustomerIdConversion: API.OperationMethod<
@@ -810,7 +879,7 @@ export const getByCustomerIdConversion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetByCustomerIdConversionRequest,
   output: GetByCustomerIdConversionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAvailabilityConversionRequest {
@@ -834,7 +903,12 @@ export type UpdateAvailabilityConversionResponse = UpdateAvailabilityResponse;
 export const UpdateAvailabilityConversionResponse =
   /*@__PURE__*/ /*#__PURE__*/ UpdateAvailabilityResponse;
 
-export type UpdateAvailabilityConversionError = DefaultErrors;
+export type UpdateAvailabilityConversionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the availabilities of a batch of floodlight activities in DoubleClick Search. */
 export const updateAvailabilityConversion: API.OperationMethod<
@@ -845,7 +919,7 @@ export const updateAvailabilityConversion: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAvailabilityConversionRequest,
   output: UpdateAvailabilityConversionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSavedColumnsRequest {
@@ -871,7 +945,7 @@ export type ListSavedColumnsResponse = SavedColumnList;
 export const ListSavedColumnsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedColumnList;
 
-export type ListSavedColumnsError = DefaultErrors;
+export type ListSavedColumnsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve the list of saved columns for a specified advertiser. */
 export const listSavedColumns: API.OperationMethod<
@@ -882,5 +956,5 @@ export const listSavedColumns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSavedColumnsRequest,
   output: ListSavedColumnsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -142,6 +142,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -170,7 +216,12 @@ export type CreateAccountsNotificationsubscriptionsResponse =
 export const CreateAccountsNotificationsubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationSubscription;
 
-export type CreateAccountsNotificationsubscriptionsError = DefaultErrors;
+export type CreateAccountsNotificationsubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For MCAs, the business can create a subscription for all managed accounts or for a specific subaccount. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account. */
 export const createAccountsNotificationsubscriptions: API.OperationMethod<
@@ -181,7 +232,7 @@ export const createAccountsNotificationsubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsNotificationsubscriptionsRequest,
   output: CreateAccountsNotificationsubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsNotificationsubscriptionsRequest {
@@ -202,7 +253,10 @@ export type GetAccountsNotificationsubscriptionsResponse =
 export const GetAccountsNotificationsubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationSubscription;
 
-export type GetAccountsNotificationsubscriptionsError = DefaultErrors;
+export type GetAccountsNotificationsubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets notification subscriptions for an account. */
 export const getAccountsNotificationsubscriptions: API.OperationMethod<
@@ -213,7 +267,7 @@ export const getAccountsNotificationsubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsNotificationsubscriptionsRequest,
   output: GetAccountsNotificationsubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsNotificationsubscriptionsRequest {
@@ -233,7 +287,12 @@ export type DeleteAccountsNotificationsubscriptionsResponse = Empty;
 export const DeleteAccountsNotificationsubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsNotificationsubscriptionsError = DefaultErrors;
+export type DeleteAccountsNotificationsubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a notification subscription for a merchant. */
 export const deleteAccountsNotificationsubscriptions: API.OperationMethod<
@@ -244,7 +303,7 @@ export const deleteAccountsNotificationsubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsNotificationsubscriptionsRequest,
   output: DeleteAccountsNotificationsubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsNotificationsubscriptionsRequest {
@@ -274,7 +333,10 @@ export type ListAccountsNotificationsubscriptionsResponse =
 export const ListAccountsNotificationsubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotificationSubscriptionsResponse;
 
-export type ListAccountsNotificationsubscriptionsError = DefaultErrors;
+export type ListAccountsNotificationsubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets all the notification subscriptions for a merchant. */
 export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod<
@@ -285,7 +347,7 @@ export const listAccountsNotificationsubscriptions: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsNotificationsubscriptionsRequest,
   output: ListAccountsNotificationsubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -316,7 +378,12 @@ export type PatchAccountsNotificationsubscriptionsResponse =
 export const PatchAccountsNotificationsubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationSubscription;
 
-export type PatchAccountsNotificationsubscriptionsError = DefaultErrors;
+export type PatchAccountsNotificationsubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing notification subscription for a merchant. */
 export const patchAccountsNotificationsubscriptions: API.OperationMethod<
@@ -327,5 +394,5 @@ export const patchAccountsNotificationsubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsNotificationsubscriptionsRequest,
   output: PatchAccountsNotificationsubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

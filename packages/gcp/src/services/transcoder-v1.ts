@@ -1127,6 +1127,52 @@ export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListJobsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1160,7 +1206,10 @@ export type ListProjectsLocationsJobTemplatesResponse =
 export const ListProjectsLocationsJobTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobTemplatesResponse;
 
-export type ListProjectsLocationsJobTemplatesError = DefaultErrors;
+export type ListProjectsLocationsJobTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists job templates in the specified region. */
 export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
@@ -1171,7 +1220,7 @@ export const listProjectsLocationsJobTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobTemplatesRequest,
   output: ListProjectsLocationsJobTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1203,7 +1252,12 @@ export type CreateProjectsLocationsJobTemplatesResponse = JobTemplate;
 export const CreateProjectsLocationsJobTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ JobTemplate;
 
-export type CreateProjectsLocationsJobTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsJobTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a job template in the specified region. */
 export const createProjectsLocationsJobTemplates: API.OperationMethod<
@@ -1214,7 +1268,7 @@ export const createProjectsLocationsJobTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsJobTemplatesRequest,
   output: CreateProjectsLocationsJobTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsJobTemplatesRequest {
@@ -1234,7 +1288,10 @@ export type GetProjectsLocationsJobTemplatesResponse = JobTemplate;
 export const GetProjectsLocationsJobTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ JobTemplate;
 
-export type GetProjectsLocationsJobTemplatesError = DefaultErrors;
+export type GetProjectsLocationsJobTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the job template data. */
 export const getProjectsLocationsJobTemplates: API.OperationMethod<
@@ -1245,7 +1302,7 @@ export const getProjectsLocationsJobTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsJobTemplatesRequest,
   output: GetProjectsLocationsJobTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsJobTemplatesRequest {
@@ -1270,7 +1327,12 @@ export type DeleteProjectsLocationsJobTemplatesResponse = Empty;
 export const DeleteProjectsLocationsJobTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsJobTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsJobTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a job template. */
 export const deleteProjectsLocationsJobTemplates: API.OperationMethod<
@@ -1281,7 +1343,7 @@ export const deleteProjectsLocationsJobTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsJobTemplatesRequest,
   output: DeleteProjectsLocationsJobTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsJobsRequest {
@@ -1306,7 +1368,12 @@ export type DeleteProjectsLocationsJobsResponse = Empty;
 export const DeleteProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsJobsError = DefaultErrors;
+export type DeleteProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a job. */
 export const deleteProjectsLocationsJobs: API.OperationMethod<
@@ -1317,7 +1384,7 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsJobsRequest,
   output: DeleteProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsJobsRequest {
@@ -1340,7 +1407,12 @@ export type CreateProjectsLocationsJobsResponse = Job;
 export const CreateProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CreateProjectsLocationsJobsError = DefaultErrors;
+export type CreateProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a job in the specified region. */
 export const createProjectsLocationsJobs: API.OperationMethod<
@@ -1351,7 +1423,7 @@ export const createProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsJobsRequest,
   output: CreateProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsJobsRequest {
@@ -1370,7 +1442,10 @@ export const GetProjectsLocationsJobsRequest =
 export type GetProjectsLocationsJobsResponse = Job;
 export const GetProjectsLocationsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type GetProjectsLocationsJobsError = DefaultErrors;
+export type GetProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the job data. */
 export const getProjectsLocationsJobs: API.OperationMethod<
@@ -1381,7 +1456,7 @@ export const getProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsJobsRequest,
   output: GetProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsJobsRequest {
@@ -1413,7 +1488,10 @@ export type ListProjectsLocationsJobsResponse = ListJobsResponse;
 export const ListProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
 
-export type ListProjectsLocationsJobsError = DefaultErrors;
+export type ListProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists jobs in the specified region. */
 export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
@@ -1424,7 +1502,7 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsRequest,
   output: ListProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

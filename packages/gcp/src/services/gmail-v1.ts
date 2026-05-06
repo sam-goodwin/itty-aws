@@ -932,6 +932,52 @@ export const ImapSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ImapSettings" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -952,7 +998,7 @@ export const GetProfileUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetProfileUsersResponse = Profile;
 export const GetProfileUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type GetProfileUsersError = DefaultErrors;
+export type GetProfileUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the current user's Gmail profile. */
 export const getProfileUsers: API.OperationMethod<
@@ -963,7 +1009,7 @@ export const getProfileUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProfileUsersRequest,
   output: GetProfileUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WatchUsersRequest {
@@ -988,7 +1034,12 @@ export const WatchUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchUsersResponse = WatchResponse;
 export const WatchUsersResponse = /*@__PURE__*/ /*#__PURE__*/ WatchResponse;
 
-export type WatchUsersError = DefaultErrors;
+export type WatchUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set up or update a push notification watch on the given user mailbox. */
 export const watchUsers: API.OperationMethod<
@@ -999,7 +1050,7 @@ export const watchUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchUsersRequest,
   output: WatchUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopUsersRequest {
@@ -1024,7 +1075,12 @@ export const StopUsersResponse: Schema.Schema<StopUsersResponse> =
     {},
   ) as any as Schema.Schema<StopUsersResponse>;
 
-export type StopUsersError = DefaultErrors;
+export type StopUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stop receiving push notifications for the given user mailbox. */
 export const stopUsers: API.OperationMethod<
@@ -1035,7 +1091,7 @@ export const stopUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopUsersRequest,
   output: StopUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TrashUsersMessagesRequest {
@@ -1061,7 +1117,12 @@ export const TrashUsersMessagesRequest =
 export type TrashUsersMessagesResponse = Message;
 export const TrashUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type TrashUsersMessagesError = DefaultErrors;
+export type TrashUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the specified message to the trash. */
 export const trashUsersMessages: API.OperationMethod<
@@ -1072,7 +1133,7 @@ export const trashUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TrashUsersMessagesRequest,
   output: TrashUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UntrashUsersMessagesRequest {
@@ -1098,7 +1159,12 @@ export const UntrashUsersMessagesRequest =
 export type UntrashUsersMessagesResponse = Message;
 export const UntrashUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type UntrashUsersMessagesError = DefaultErrors;
+export type UntrashUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified message from the trash. */
 export const untrashUsersMessages: API.OperationMethod<
@@ -1109,7 +1175,7 @@ export const untrashUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntrashUsersMessagesRequest,
   output: UntrashUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersMessagesRequest {
@@ -1139,7 +1205,7 @@ export const GetUsersMessagesRequest =
 export type GetUsersMessagesResponse = Message;
 export const GetUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type GetUsersMessagesError = DefaultErrors;
+export type GetUsersMessagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified message. */
 export const getUsersMessages: API.OperationMethod<
@@ -1150,7 +1216,7 @@ export const getUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersMessagesRequest,
   output: GetUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SendUsersMessagesRequest {
@@ -1176,7 +1242,12 @@ export const SendUsersMessagesRequest =
 export type SendUsersMessagesResponse = Message;
 export const SendUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type SendUsersMessagesError = DefaultErrors;
+export type SendUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage, see [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending). */
 export const sendUsersMessages: API.OperationMethod<
@@ -1187,7 +1258,7 @@ export const sendUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendUsersMessagesRequest,
   output: SendUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyUsersMessagesRequest {
@@ -1216,7 +1287,12 @@ export const ModifyUsersMessagesRequest =
 export type ModifyUsersMessagesResponse = Message;
 export const ModifyUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type ModifyUsersMessagesError = DefaultErrors;
+export type ModifyUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the labels on the specified message. */
 export const modifyUsersMessages: API.OperationMethod<
@@ -1227,7 +1303,7 @@ export const modifyUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyUsersMessagesRequest,
   output: ModifyUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchModifyUsersMessagesRequest {
@@ -1256,7 +1332,12 @@ export const BatchModifyUsersMessagesResponse: Schema.Schema<BatchModifyUsersMes
     {},
   ) as any as Schema.Schema<BatchModifyUsersMessagesResponse>;
 
-export type BatchModifyUsersMessagesError = DefaultErrors;
+export type BatchModifyUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the labels on the specified messages. */
 export const batchModifyUsersMessages: API.OperationMethod<
@@ -1267,7 +1348,7 @@ export const batchModifyUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchModifyUsersMessagesRequest,
   output: BatchModifyUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersMessagesRequest {
@@ -1306,7 +1387,7 @@ export type ListUsersMessagesResponse = ListMessagesResponse;
 export const ListUsersMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMessagesResponse;
 
-export type ListUsersMessagesError = DefaultErrors;
+export type ListUsersMessagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the messages in the user's mailbox. For example usage, see [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages). */
 export const listUsersMessages: API.PaginatedOperationMethod<
@@ -1317,7 +1398,7 @@ export const listUsersMessages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersMessagesRequest,
   output: ListUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1355,7 +1436,12 @@ export const InsertUsersMessagesRequest =
 export type InsertUsersMessagesResponse = Message;
 export const InsertUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type InsertUsersMessagesError = DefaultErrors;
+export type InsertUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most scanning and classification. Does not send a message. */
 export const insertUsersMessages: API.OperationMethod<
@@ -1366,7 +1452,7 @@ export const insertUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUsersMessagesRequest,
   output: InsertUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersMessagesRequest {
@@ -1391,7 +1477,12 @@ export const DeleteUsersMessagesResponse: Schema.Schema<DeleteUsersMessagesRespo
     {},
   ) as any as Schema.Schema<DeleteUsersMessagesResponse>;
 
-export type DeleteUsersMessagesError = DefaultErrors;
+export type DeleteUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer `messages.trash` instead. */
 export const deleteUsersMessages: API.OperationMethod<
@@ -1402,7 +1493,7 @@ export const deleteUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersMessagesRequest,
   output: DeleteUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteUsersMessagesRequest {
@@ -1431,7 +1522,12 @@ export const BatchDeleteUsersMessagesResponse: Schema.Schema<BatchDeleteUsersMes
     {},
   ) as any as Schema.Schema<BatchDeleteUsersMessagesResponse>;
 
-export type BatchDeleteUsersMessagesError = DefaultErrors;
+export type BatchDeleteUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all. */
 export const batchDeleteUsersMessages: API.OperationMethod<
@@ -1442,7 +1538,7 @@ export const batchDeleteUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteUsersMessagesRequest,
   output: BatchDeleteUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportUsersMessagesRequest {
@@ -1486,7 +1582,12 @@ export const ImportUsersMessagesRequest =
 export type ImportUsersMessagesResponse = Message;
 export const ImportUsersMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type ImportUsersMessagesError = DefaultErrors;
+export type ImportUsersMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not work for some spam messages, such as those attempting to perform domain spoofing. This method does not send a message. Note that the maximum size of the message is 150MB. */
 export const importUsersMessages: API.OperationMethod<
@@ -1497,7 +1598,7 @@ export const importUsersMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportUsersMessagesRequest,
   output: ImportUsersMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersMessagesAttachmentsRequest {
@@ -1526,7 +1627,10 @@ export type GetUsersMessagesAttachmentsResponse = MessagePartBody;
 export const GetUsersMessagesAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MessagePartBody;
 
-export type GetUsersMessagesAttachmentsError = DefaultErrors;
+export type GetUsersMessagesAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified message attachment. */
 export const getUsersMessagesAttachments: API.OperationMethod<
@@ -1537,7 +1641,7 @@ export const getUsersMessagesAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersMessagesAttachmentsRequest,
   output: GetUsersMessagesAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersDraftsRequest {
@@ -1562,7 +1666,12 @@ export const DeleteUsersDraftsResponse: Schema.Schema<DeleteUsersDraftsResponse>
     {},
   ) as any as Schema.Schema<DeleteUsersDraftsResponse>;
 
-export type DeleteUsersDraftsError = DefaultErrors;
+export type DeleteUsersDraftsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Immediately and permanently deletes the specified draft. Does not simply trash it. */
 export const deleteUsersDrafts: API.OperationMethod<
@@ -1573,7 +1682,7 @@ export const deleteUsersDrafts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersDraftsRequest,
   output: DeleteUsersDraftsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendUsersDraftsRequest {
@@ -1600,7 +1709,12 @@ export const SendUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SendUsersDraftsResponse = Message;
 export const SendUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type SendUsersDraftsError = DefaultErrors;
+export type SendUsersDraftsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers. */
 export const sendUsersDrafts: API.OperationMethod<
@@ -1611,7 +1725,7 @@ export const sendUsersDrafts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendUsersDraftsRequest,
   output: SendUsersDraftsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersDraftsRequest {
@@ -1646,7 +1760,7 @@ export type ListUsersDraftsResponse = ListDraftsResponse;
 export const ListUsersDraftsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDraftsResponse;
 
-export type ListUsersDraftsError = DefaultErrors;
+export type ListUsersDraftsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the drafts in the user's mailbox. */
 export const listUsersDrafts: API.PaginatedOperationMethod<
@@ -1657,7 +1771,7 @@ export const listUsersDrafts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDraftsRequest,
   output: ListUsersDraftsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1690,7 +1804,12 @@ export const UpdateUsersDraftsRequest =
 export type UpdateUsersDraftsResponse = Draft;
 export const UpdateUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
 
-export type UpdateUsersDraftsError = DefaultErrors;
+export type UpdateUsersDraftsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces a draft's content. */
 export const updateUsersDrafts: API.OperationMethod<
@@ -1701,7 +1820,7 @@ export const updateUsersDrafts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersDraftsRequest,
   output: UpdateUsersDraftsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateUsersDraftsRequest {
@@ -1727,7 +1846,12 @@ export const CreateUsersDraftsRequest =
 export type CreateUsersDraftsResponse = Draft;
 export const CreateUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
 
-export type CreateUsersDraftsError = DefaultErrors;
+export type CreateUsersDraftsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new draft with the `DRAFT` label. */
 export const createUsersDrafts: API.OperationMethod<
@@ -1738,7 +1862,7 @@ export const createUsersDrafts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersDraftsRequest,
   output: CreateUsersDraftsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersDraftsRequest {
@@ -1762,7 +1886,7 @@ export const GetUsersDraftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUsersDraftsResponse = Draft;
 export const GetUsersDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Draft;
 
-export type GetUsersDraftsError = DefaultErrors;
+export type GetUsersDraftsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified draft. */
 export const getUsersDrafts: API.OperationMethod<
@@ -1773,7 +1897,7 @@ export const getUsersDrafts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersDraftsRequest,
   output: GetUsersDraftsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersLabelsRequest {
@@ -1799,7 +1923,12 @@ export const CreateUsersLabelsRequest =
 export type CreateUsersLabelsResponse = Label;
 export const CreateUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
 
-export type CreateUsersLabelsError = DefaultErrors;
+export type CreateUsersLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new label. */
 export const createUsersLabels: API.OperationMethod<
@@ -1810,7 +1939,7 @@ export const createUsersLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersLabelsRequest,
   output: CreateUsersLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersLabelsRequest {
@@ -1831,7 +1960,7 @@ export const GetUsersLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUsersLabelsResponse = Label;
 export const GetUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
 
-export type GetUsersLabelsError = DefaultErrors;
+export type GetUsersLabelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified label. */
 export const getUsersLabels: API.OperationMethod<
@@ -1842,7 +1971,7 @@ export const getUsersLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersLabelsRequest,
   output: GetUsersLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateUsersLabelsRequest {
@@ -1871,7 +2000,12 @@ export const UpdateUsersLabelsRequest =
 export type UpdateUsersLabelsResponse = Label;
 export const UpdateUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
 
-export type UpdateUsersLabelsError = DefaultErrors;
+export type UpdateUsersLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified label. */
 export const updateUsersLabels: API.OperationMethod<
@@ -1882,7 +2016,7 @@ export const updateUsersLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersLabelsRequest,
   output: UpdateUsersLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersLabelsRequest {
@@ -1903,7 +2037,7 @@ export type ListUsersLabelsResponse = ListLabelsResponse;
 export const ListUsersLabelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLabelsResponse;
 
-export type ListUsersLabelsError = DefaultErrors;
+export type ListUsersLabelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all labels in the user's mailbox. */
 export const listUsersLabels: API.OperationMethod<
@@ -1914,7 +2048,7 @@ export const listUsersLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersLabelsRequest,
   output: ListUsersLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchUsersLabelsRequest {
@@ -1943,7 +2077,12 @@ export const PatchUsersLabelsRequest =
 export type PatchUsersLabelsResponse = Label;
 export const PatchUsersLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Label;
 
-export type PatchUsersLabelsError = DefaultErrors;
+export type PatchUsersLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch the specified label. */
 export const patchUsersLabels: API.OperationMethod<
@@ -1954,7 +2093,7 @@ export const patchUsersLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersLabelsRequest,
   output: PatchUsersLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersLabelsRequest {
@@ -1979,7 +2118,12 @@ export const DeleteUsersLabelsResponse: Schema.Schema<DeleteUsersLabelsResponse>
     {},
   ) as any as Schema.Schema<DeleteUsersLabelsResponse>;
 
-export type DeleteUsersLabelsError = DefaultErrors;
+export type DeleteUsersLabelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to. */
 export const deleteUsersLabels: API.OperationMethod<
@@ -1990,7 +2134,7 @@ export const deleteUsersLabels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersLabelsRequest,
   output: DeleteUsersLabelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersHistoryRequest {
@@ -2034,7 +2178,7 @@ export type ListUsersHistoryResponse = ListHistoryResponse;
 export const ListUsersHistoryResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHistoryResponse;
 
-export type ListUsersHistoryError = DefaultErrors;
+export type ListUsersHistoryError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing `historyId`). */
 export const listUsersHistory: API.PaginatedOperationMethod<
@@ -2045,7 +2189,7 @@ export const listUsersHistory: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersHistoryRequest,
   output: ListUsersHistoryResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2076,7 +2220,12 @@ export type UpdatePopUsersSettingsResponse = PopSettings;
 export const UpdatePopUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PopSettings;
 
-export type UpdatePopUsersSettingsError = DefaultErrors;
+export type UpdatePopUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates POP settings. */
 export const updatePopUsersSettings: API.OperationMethod<
@@ -2087,7 +2236,7 @@ export const updatePopUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePopUsersSettingsRequest,
   output: UpdatePopUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLanguageUsersSettingsRequest {
@@ -2114,7 +2263,12 @@ export type UpdateLanguageUsersSettingsResponse = LanguageSettings;
 export const UpdateLanguageUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LanguageSettings;
 
-export type UpdateLanguageUsersSettingsError = DefaultErrors;
+export type UpdateLanguageUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates language settings. If successful, the return object contains the `displayLanguage` that was saved for the user, which may differ from the value passed into the request. This is because the requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead. */
 export const updateLanguageUsersSettings: API.OperationMethod<
@@ -2125,7 +2279,7 @@ export const updateLanguageUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLanguageUsersSettingsRequest,
   output: UpdateLanguageUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVacationUsersSettingsRequest {
@@ -2148,7 +2302,10 @@ export type GetVacationUsersSettingsResponse = VacationSettings;
 export const GetVacationUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VacationSettings;
 
-export type GetVacationUsersSettingsError = DefaultErrors;
+export type GetVacationUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets vacation responder settings. */
 export const getVacationUsersSettings: API.OperationMethod<
@@ -2159,7 +2316,7 @@ export const getVacationUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVacationUsersSettingsRequest,
   output: GetVacationUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAutoForwardingUsersSettingsRequest {
@@ -2186,7 +2343,12 @@ export type UpdateAutoForwardingUsersSettingsResponse = AutoForwarding;
 export const UpdateAutoForwardingUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoForwarding;
 
-export type UpdateAutoForwardingUsersSettingsError = DefaultErrors;
+export type UpdateAutoForwardingUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const updateAutoForwardingUsersSettings: API.OperationMethod<
@@ -2197,7 +2359,7 @@ export const updateAutoForwardingUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutoForwardingUsersSettingsRequest,
   output: UpdateAutoForwardingUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateImapUsersSettingsRequest {
@@ -2224,7 +2386,12 @@ export type UpdateImapUsersSettingsResponse = ImapSettings;
 export const UpdateImapUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImapSettings;
 
-export type UpdateImapUsersSettingsError = DefaultErrors;
+export type UpdateImapUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates IMAP settings. */
 export const updateImapUsersSettings: API.OperationMethod<
@@ -2235,7 +2402,7 @@ export const updateImapUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateImapUsersSettingsRequest,
   output: UpdateImapUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPopUsersSettingsRequest {
@@ -2255,7 +2422,7 @@ export type GetPopUsersSettingsResponse = PopSettings;
 export const GetPopUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PopSettings;
 
-export type GetPopUsersSettingsError = DefaultErrors;
+export type GetPopUsersSettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets POP settings. */
 export const getPopUsersSettings: API.OperationMethod<
@@ -2266,7 +2433,7 @@ export const getPopUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPopUsersSettingsRequest,
   output: GetPopUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAutoForwardingUsersSettingsRequest {
@@ -2289,7 +2456,10 @@ export type GetAutoForwardingUsersSettingsResponse = AutoForwarding;
 export const GetAutoForwardingUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoForwarding;
 
-export type GetAutoForwardingUsersSettingsError = DefaultErrors;
+export type GetAutoForwardingUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the auto-forwarding setting for the specified account. */
 export const getAutoForwardingUsersSettings: API.OperationMethod<
@@ -2300,7 +2470,7 @@ export const getAutoForwardingUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutoForwardingUsersSettingsRequest,
   output: GetAutoForwardingUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateVacationUsersSettingsRequest {
@@ -2327,7 +2497,12 @@ export type UpdateVacationUsersSettingsResponse = VacationSettings;
 export const UpdateVacationUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VacationSettings;
 
-export type UpdateVacationUsersSettingsError = DefaultErrors;
+export type UpdateVacationUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates vacation responder settings. */
 export const updateVacationUsersSettings: API.OperationMethod<
@@ -2338,7 +2513,7 @@ export const updateVacationUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVacationUsersSettingsRequest,
   output: UpdateVacationUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLanguageUsersSettingsRequest {
@@ -2361,7 +2536,10 @@ export type GetLanguageUsersSettingsResponse = LanguageSettings;
 export const GetLanguageUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LanguageSettings;
 
-export type GetLanguageUsersSettingsError = DefaultErrors;
+export type GetLanguageUsersSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets language settings. */
 export const getLanguageUsersSettings: API.OperationMethod<
@@ -2372,7 +2550,7 @@ export const getLanguageUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLanguageUsersSettingsRequest,
   output: GetLanguageUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetImapUsersSettingsRequest {
@@ -2392,7 +2570,7 @@ export type GetImapUsersSettingsResponse = ImapSettings;
 export const GetImapUsersSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImapSettings;
 
-export type GetImapUsersSettingsError = DefaultErrors;
+export type GetImapUsersSettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets IMAP settings. */
 export const getImapUsersSettings: API.OperationMethod<
@@ -2403,7 +2581,7 @@ export const getImapUsersSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetImapUsersSettingsRequest,
   output: GetImapUsersSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersSettingsDelegatesRequest {
@@ -2431,7 +2609,12 @@ export const DeleteUsersSettingsDelegatesResponse: Schema.Schema<DeleteUsersSett
     {},
   ) as any as Schema.Schema<DeleteUsersSettingsDelegatesResponse>;
 
-export type DeleteUsersSettingsDelegatesError = DefaultErrors;
+export type DeleteUsersSettingsDelegatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified delegate (which can be of any verification status), and revokes any verification that may have been required for using it. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const deleteUsersSettingsDelegates: API.OperationMethod<
@@ -2442,7 +2625,7 @@ export const deleteUsersSettingsDelegates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsDelegatesRequest,
   output: DeleteUsersSettingsDelegatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSettingsDelegatesRequest {
@@ -2465,7 +2648,10 @@ export type ListUsersSettingsDelegatesResponse = ListDelegatesResponse;
 export const ListUsersSettingsDelegatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDelegatesResponse;
 
-export type ListUsersSettingsDelegatesError = DefaultErrors;
+export type ListUsersSettingsDelegatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the delegates for the specified account. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const listUsersSettingsDelegates: API.OperationMethod<
@@ -2476,7 +2662,7 @@ export const listUsersSettingsDelegates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersSettingsDelegatesRequest,
   output: ListUsersSettingsDelegatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUsersSettingsDelegatesRequest {
@@ -2502,7 +2688,10 @@ export type GetUsersSettingsDelegatesResponse = Delegate;
 export const GetUsersSettingsDelegatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Delegate;
 
-export type GetUsersSettingsDelegatesError = DefaultErrors;
+export type GetUsersSettingsDelegatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified delegate. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const getUsersSettingsDelegates: API.OperationMethod<
@@ -2513,7 +2702,7 @@ export const getUsersSettingsDelegates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSettingsDelegatesRequest,
   output: GetUsersSettingsDelegatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersSettingsDelegatesRequest {
@@ -2540,7 +2729,12 @@ export type CreateUsersSettingsDelegatesResponse = Delegate;
 export const CreateUsersSettingsDelegatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Delegate;
 
-export type CreateUsersSettingsDelegatesError = DefaultErrors;
+export type CreateUsersSettingsDelegatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a delegate with its verification status set directly to `accepted`, without sending any verification email. The delegate user must be a member of the same Google Workspace organization as the delegator user. Gmail imposes limitations on the number of delegates and delegators each user in a Google Workspace organization can have. These limits depend on your organization, but in general each user can have up to 25 delegates and up to 10 delegators. Note that a delegate user must be referred to by their primary email address, and not an email alias. Also note that when a new delegate is created, there may be up to a one minute delay before the new delegate is available for use. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const createUsersSettingsDelegates: API.OperationMethod<
@@ -2551,7 +2745,7 @@ export const createUsersSettingsDelegates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsDelegatesRequest,
   output: CreateUsersSettingsDelegatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersSettingsSendAsRequest {
@@ -2577,7 +2771,7 @@ export type GetUsersSettingsSendAsResponse = SendAs;
 export const GetUsersSettingsSendAsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendAs;
 
-export type GetUsersSettingsSendAsError = DefaultErrors;
+export type GetUsersSettingsSendAsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is not a member of the collection. */
 export const getUsersSettingsSendAs: API.OperationMethod<
@@ -2588,7 +2782,7 @@ export const getUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSettingsSendAsRequest,
   output: GetUsersSettingsSendAsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersSettingsSendAsRequest {
@@ -2615,7 +2809,12 @@ export type CreateUsersSettingsSendAsResponse = SendAs;
 export const CreateUsersSettingsSendAsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendAs;
 
-export type CreateUsersSettingsSendAsError = DefaultErrors;
+export type CreateUsersSettingsSendAsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const createUsersSettingsSendAs: API.OperationMethod<
@@ -2626,7 +2825,7 @@ export const createUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsSendAsRequest,
   output: CreateUsersSettingsSendAsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateUsersSettingsSendAsRequest {
@@ -2656,7 +2855,12 @@ export type UpdateUsersSettingsSendAsResponse = SendAs;
 export const UpdateUsersSettingsSendAsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendAs;
 
-export type UpdateUsersSettingsSendAsError = DefaultErrors;
+export type UpdateUsersSettingsSendAsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. Addresses other than the primary address for the account can only be updated by service account clients that have been delegated domain-wide authority. */
 export const updateUsersSettingsSendAs: API.OperationMethod<
@@ -2667,7 +2871,7 @@ export const updateUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersSettingsSendAsRequest,
   output: UpdateUsersSettingsSendAsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSettingsSendAsRequest {
@@ -2687,7 +2891,7 @@ export type ListUsersSettingsSendAsResponse = ListSendAsResponse;
 export const ListUsersSettingsSendAsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSendAsResponse;
 
-export type ListUsersSettingsSendAsError = DefaultErrors;
+export type ListUsersSettingsSendAsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the send-as aliases for the specified account. The result includes the primary send-as address associated with the account as well as any custom "from" aliases. */
 export const listUsersSettingsSendAs: API.OperationMethod<
@@ -2698,7 +2902,7 @@ export const listUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersSettingsSendAsRequest,
   output: ListUsersSettingsSendAsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchUsersSettingsSendAsRequest {
@@ -2728,7 +2932,12 @@ export type PatchUsersSettingsSendAsResponse = SendAs;
 export const PatchUsersSettingsSendAsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendAs;
 
-export type PatchUsersSettingsSendAsError = DefaultErrors;
+export type PatchUsersSettingsSendAsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch the specified send-as alias. */
 export const patchUsersSettingsSendAs: API.OperationMethod<
@@ -2739,7 +2948,7 @@ export const patchUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersSettingsSendAsRequest,
   output: PatchUsersSettingsSendAsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyUsersSettingsSendAsRequest {
@@ -2768,7 +2977,12 @@ export const VerifyUsersSettingsSendAsResponse: Schema.Schema<VerifyUsersSetting
     {},
   ) as any as Schema.Schema<VerifyUsersSettingsSendAsResponse>;
 
-export type VerifyUsersSettingsSendAsError = DefaultErrors;
+export type VerifyUsersSettingsSendAsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends a verification email to the specified send-as alias address. The verification status must be `pending`. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const verifyUsersSettingsSendAs: API.OperationMethod<
@@ -2779,7 +2993,7 @@ export const verifyUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyUsersSettingsSendAsRequest,
   output: VerifyUsersSettingsSendAsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersSettingsSendAsRequest {
@@ -2807,7 +3021,12 @@ export const DeleteUsersSettingsSendAsResponse: Schema.Schema<DeleteUsersSetting
     {},
   ) as any as Schema.Schema<DeleteUsersSettingsSendAsResponse>;
 
-export type DeleteUsersSettingsSendAsError = DefaultErrors;
+export type DeleteUsersSettingsSendAsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified send-as alias. Revokes any verification that may have been required for using it. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const deleteUsersSettingsSendAs: API.OperationMethod<
@@ -2818,7 +3037,7 @@ export const deleteUsersSettingsSendAs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsSendAsRequest,
   output: DeleteUsersSettingsSendAsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersSettingsSendAsSmimeInfoRequest {
@@ -2849,7 +3068,12 @@ export const DeleteUsersSettingsSendAsSmimeInfoResponse: Schema.Schema<DeleteUse
     {},
   ) as any as Schema.Schema<DeleteUsersSettingsSendAsSmimeInfoResponse>;
 
-export type DeleteUsersSettingsSendAsSmimeInfoError = DefaultErrors;
+export type DeleteUsersSettingsSendAsSmimeInfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified S/MIME config for the specified send-as alias. */
 export const deleteUsersSettingsSendAsSmimeInfo: API.OperationMethod<
@@ -2860,7 +3084,7 @@ export const deleteUsersSettingsSendAsSmimeInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsSendAsSmimeInfoRequest,
   output: DeleteUsersSettingsSendAsSmimeInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertUsersSettingsSendAsSmimeInfoRequest {
@@ -2890,7 +3114,12 @@ export type InsertUsersSettingsSendAsSmimeInfoResponse = SmimeInfo;
 export const InsertUsersSettingsSendAsSmimeInfoResponse =
   /*@__PURE__*/ /*#__PURE__*/ SmimeInfo;
 
-export type InsertUsersSettingsSendAsSmimeInfoError = DefaultErrors;
+export type InsertUsersSettingsSendAsSmimeInfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key. */
 export const insertUsersSettingsSendAsSmimeInfo: API.OperationMethod<
@@ -2901,7 +3130,7 @@ export const insertUsersSettingsSendAsSmimeInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUsersSettingsSendAsSmimeInfoRequest,
   output: InsertUsersSettingsSendAsSmimeInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSettingsSendAsSmimeInfoRequest {
@@ -2927,7 +3156,10 @@ export type ListUsersSettingsSendAsSmimeInfoResponse = ListSmimeInfoResponse;
 export const ListUsersSettingsSendAsSmimeInfoResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSmimeInfoResponse;
 
-export type ListUsersSettingsSendAsSmimeInfoError = DefaultErrors;
+export type ListUsersSettingsSendAsSmimeInfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists S/MIME configs for the specified send-as alias. */
 export const listUsersSettingsSendAsSmimeInfo: API.OperationMethod<
@@ -2938,7 +3170,7 @@ export const listUsersSettingsSendAsSmimeInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersSettingsSendAsSmimeInfoRequest,
   output: ListUsersSettingsSendAsSmimeInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetDefaultUsersSettingsSendAsSmimeInfoRequest {
@@ -2970,7 +3202,12 @@ export const SetDefaultUsersSettingsSendAsSmimeInfoResponse: Schema.Schema<SetDe
     {},
   ) as any as Schema.Schema<SetDefaultUsersSettingsSendAsSmimeInfoResponse>;
 
-export type SetDefaultUsersSettingsSendAsSmimeInfoError = DefaultErrors;
+export type SetDefaultUsersSettingsSendAsSmimeInfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the default S/MIME config for the specified send-as alias. */
 export const setDefaultUsersSettingsSendAsSmimeInfo: API.OperationMethod<
@@ -2981,7 +3218,7 @@ export const setDefaultUsersSettingsSendAsSmimeInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDefaultUsersSettingsSendAsSmimeInfoRequest,
   output: SetDefaultUsersSettingsSendAsSmimeInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersSettingsSendAsSmimeInfoRequest {
@@ -3010,7 +3247,10 @@ export type GetUsersSettingsSendAsSmimeInfoResponse = SmimeInfo;
 export const GetUsersSettingsSendAsSmimeInfoResponse =
   /*@__PURE__*/ /*#__PURE__*/ SmimeInfo;
 
-export type GetUsersSettingsSendAsSmimeInfoError = DefaultErrors;
+export type GetUsersSettingsSendAsSmimeInfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified S/MIME config for the specified send-as alias. */
 export const getUsersSettingsSendAsSmimeInfo: API.OperationMethod<
@@ -3021,7 +3261,7 @@ export const getUsersSettingsSendAsSmimeInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSettingsSendAsSmimeInfoRequest,
   output: GetUsersSettingsSendAsSmimeInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersSettingsCseIdentitiesRequest {
@@ -3048,7 +3288,12 @@ export type CreateUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const CreateUsersSettingsCseIdentitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CseIdentity;
 
-export type CreateUsersSettingsCseIdentitiesError = DefaultErrors;
+export type CreateUsersSettingsCseIdentitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and configures a client-side encryption identity that's authorized to send mail from the user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that people within a Google Workspace organization can encrypt and send mail to the identity. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const createUsersSettingsCseIdentities: API.OperationMethod<
@@ -3059,7 +3304,7 @@ export const createUsersSettingsCseIdentities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsCseIdentitiesRequest,
   output: CreateUsersSettingsCseIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersSettingsCseIdentitiesRequest {
@@ -3085,7 +3330,10 @@ export type GetUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const GetUsersSettingsCseIdentitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CseIdentity;
 
-export type GetUsersSettingsCseIdentitiesError = DefaultErrors;
+export type GetUsersSettingsCseIdentitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a client-side encryption identity configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const getUsersSettingsCseIdentities: API.OperationMethod<
@@ -3096,7 +3344,7 @@ export const getUsersSettingsCseIdentities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSettingsCseIdentitiesRequest,
   output: GetUsersSettingsCseIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersSettingsCseIdentitiesRequest {
@@ -3124,7 +3372,12 @@ export const DeleteUsersSettingsCseIdentitiesResponse: Schema.Schema<DeleteUsers
     {},
   ) as any as Schema.Schema<DeleteUsersSettingsCseIdentitiesResponse>;
 
-export type DeleteUsersSettingsCseIdentitiesError = DefaultErrors;
+export type DeleteUsersSettingsCseIdentitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a client-side encryption identity. The authenticated user can no longer use the identity to send encrypted messages. You cannot restore the identity after you delete it. Instead, use the CreateCseIdentity method to create another identity with the same configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const deleteUsersSettingsCseIdentities: API.OperationMethod<
@@ -3135,7 +3388,7 @@ export const deleteUsersSettingsCseIdentities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsCseIdentitiesRequest,
   output: DeleteUsersSettingsCseIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSettingsCseIdentitiesRequest {
@@ -3164,7 +3417,10 @@ export type ListUsersSettingsCseIdentitiesResponse = ListCseIdentitiesResponse;
 export const ListUsersSettingsCseIdentitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCseIdentitiesResponse;
 
-export type ListUsersSettingsCseIdentitiesError = DefaultErrors;
+export type ListUsersSettingsCseIdentitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the client-side encrypted identities for an authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const listUsersSettingsCseIdentities: API.PaginatedOperationMethod<
@@ -3175,7 +3431,7 @@ export const listUsersSettingsCseIdentities: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSettingsCseIdentitiesRequest,
   output: ListUsersSettingsCseIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3209,7 +3465,12 @@ export type PatchUsersSettingsCseIdentitiesResponse = CseIdentity;
 export const PatchUsersSettingsCseIdentitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CseIdentity;
 
-export type PatchUsersSettingsCseIdentitiesError = DefaultErrors;
+export type PatchUsersSettingsCseIdentitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Associates a different key pair with an existing client-side encryption identity. The updated key pair must validate against Google's [S/MIME certificate profiles](https://support.google.com/a/answer/7300887). For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const patchUsersSettingsCseIdentities: API.OperationMethod<
@@ -3220,7 +3481,7 @@ export const patchUsersSettingsCseIdentities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersSettingsCseIdentitiesRequest,
   output: PatchUsersSettingsCseIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableUsersSettingsCseKeypairsRequest {
@@ -3250,7 +3511,12 @@ export type DisableUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const DisableUsersSettingsCseKeypairsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
 
-export type DisableUsersSettingsCseKeypairsError = DefaultErrors;
+export type DisableUsersSettingsCseKeypairsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Turns off a client-side encryption key pair. The authenticated user can no longer use the key pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair by using the ObliterateCseKeyPair method. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const disableUsersSettingsCseKeypairs: API.OperationMethod<
@@ -3261,7 +3527,7 @@ export const disableUsersSettingsCseKeypairs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableUsersSettingsCseKeypairsRequest,
   output: DisableUsersSettingsCseKeypairsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateUsersSettingsCseKeypairsRequest {
@@ -3288,7 +3554,12 @@ export type CreateUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const CreateUsersSettingsCseKeypairsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
 
-export type CreateUsersSettingsCseKeypairsError = DefaultErrors;
+export type CreateUsersSettingsCseKeypairsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and uploads a client-side encryption S/MIME public key certificate chain and private key metadata for the authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const createUsersSettingsCseKeypairs: API.OperationMethod<
@@ -3299,7 +3570,7 @@ export const createUsersSettingsCseKeypairs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsCseKeypairsRequest,
   output: CreateUsersSettingsCseKeypairsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersSettingsCseKeypairsRequest {
@@ -3325,7 +3596,10 @@ export type GetUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const GetUsersSettingsCseKeypairsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
 
-export type GetUsersSettingsCseKeypairsError = DefaultErrors;
+export type GetUsersSettingsCseKeypairsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an existing client-side encryption key pair. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const getUsersSettingsCseKeypairs: API.OperationMethod<
@@ -3336,7 +3610,7 @@ export const getUsersSettingsCseKeypairs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSettingsCseKeypairsRequest,
   output: GetUsersSettingsCseKeypairsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ObliterateUsersSettingsCseKeypairsRequest {
@@ -3368,7 +3642,12 @@ export const ObliterateUsersSettingsCseKeypairsResponse: Schema.Schema<Obliterat
     {},
   ) as any as Schema.Schema<ObliterateUsersSettingsCseKeypairsResponse>;
 
-export type ObliterateUsersSettingsCseKeypairsError = DefaultErrors;
+export type ObliterateUsersSettingsCseKeypairsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a client-side encryption key pair permanently and immediately. You can only permanently delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by an obliterated key. Authenticated users and Google Workspace administrators lose access to reading the encrypted messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const obliterateUsersSettingsCseKeypairs: API.OperationMethod<
@@ -3379,7 +3658,7 @@ export const obliterateUsersSettingsCseKeypairs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ObliterateUsersSettingsCseKeypairsRequest,
   output: ObliterateUsersSettingsCseKeypairsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableUsersSettingsCseKeypairsRequest {
@@ -3409,7 +3688,12 @@ export type EnableUsersSettingsCseKeypairsResponse = CseKeyPair;
 export const EnableUsersSettingsCseKeypairsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CseKeyPair;
 
-export type EnableUsersSettingsCseKeypairsError = DefaultErrors;
+export type EnableUsersSettingsCseKeypairsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Turns on a client-side encryption key pair that was turned off. The key pair becomes active again for any associated client-side encryption identities. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const enableUsersSettingsCseKeypairs: API.OperationMethod<
@@ -3420,7 +3704,7 @@ export const enableUsersSettingsCseKeypairs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableUsersSettingsCseKeypairsRequest,
   output: EnableUsersSettingsCseKeypairsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSettingsCseKeypairsRequest {
@@ -3449,7 +3733,10 @@ export type ListUsersSettingsCseKeypairsResponse = ListCseKeyPairsResponse;
 export const ListUsersSettingsCseKeypairsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCseKeyPairsResponse;
 
-export type ListUsersSettingsCseKeypairsError = DefaultErrors;
+export type ListUsersSettingsCseKeypairsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists client-side encryption key pairs for an authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured. */
 export const listUsersSettingsCseKeypairs: API.PaginatedOperationMethod<
@@ -3460,7 +3747,7 @@ export const listUsersSettingsCseKeypairs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSettingsCseKeypairsRequest,
   output: ListUsersSettingsCseKeypairsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3490,7 +3777,10 @@ export type GetUsersSettingsForwardingAddressesResponse = ForwardingAddress;
 export const GetUsersSettingsForwardingAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ForwardingAddress;
 
-export type GetUsersSettingsForwardingAddressesError = DefaultErrors;
+export type GetUsersSettingsForwardingAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified forwarding address. */
 export const getUsersSettingsForwardingAddresses: API.OperationMethod<
@@ -3501,7 +3791,7 @@ export const getUsersSettingsForwardingAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSettingsForwardingAddressesRequest,
   output: GetUsersSettingsForwardingAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersSettingsForwardingAddressesRequest {
@@ -3528,7 +3818,12 @@ export type CreateUsersSettingsForwardingAddressesResponse = ForwardingAddress;
 export const CreateUsersSettingsForwardingAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ForwardingAddress;
 
-export type CreateUsersSettingsForwardingAddressesError = DefaultErrors;
+export type CreateUsersSettingsForwardingAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const createUsersSettingsForwardingAddresses: API.OperationMethod<
@@ -3539,7 +3834,7 @@ export const createUsersSettingsForwardingAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsForwardingAddressesRequest,
   output: CreateUsersSettingsForwardingAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSettingsForwardingAddressesRequest {
@@ -3563,7 +3858,10 @@ export type ListUsersSettingsForwardingAddressesResponse =
 export const ListUsersSettingsForwardingAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListForwardingAddressesResponse;
 
-export type ListUsersSettingsForwardingAddressesError = DefaultErrors;
+export type ListUsersSettingsForwardingAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the forwarding addresses for the specified account. */
 export const listUsersSettingsForwardingAddresses: API.OperationMethod<
@@ -3574,7 +3872,7 @@ export const listUsersSettingsForwardingAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersSettingsForwardingAddressesRequest,
   output: ListUsersSettingsForwardingAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersSettingsForwardingAddressesRequest {
@@ -3602,7 +3900,12 @@ export const DeleteUsersSettingsForwardingAddressesResponse: Schema.Schema<Delet
     {},
   ) as any as Schema.Schema<DeleteUsersSettingsForwardingAddressesResponse>;
 
-export type DeleteUsersSettingsForwardingAddressesError = DefaultErrors;
+export type DeleteUsersSettingsForwardingAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified forwarding address and revokes any verification that may have been required. This method is only available to service account clients that have been delegated domain-wide authority. */
 export const deleteUsersSettingsForwardingAddresses: API.OperationMethod<
@@ -3613,7 +3916,7 @@ export const deleteUsersSettingsForwardingAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsForwardingAddressesRequest,
   output: DeleteUsersSettingsForwardingAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSettingsFiltersRequest {
@@ -3633,7 +3936,10 @@ export type ListUsersSettingsFiltersResponse = ListFiltersResponse;
 export const ListUsersSettingsFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFiltersResponse;
 
-export type ListUsersSettingsFiltersError = DefaultErrors;
+export type ListUsersSettingsFiltersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the message filters of a Gmail user. */
 export const listUsersSettingsFilters: API.OperationMethod<
@@ -3644,7 +3950,7 @@ export const listUsersSettingsFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersSettingsFiltersRequest,
   output: ListUsersSettingsFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUsersSettingsFiltersRequest {
@@ -3670,7 +3976,7 @@ export type GetUsersSettingsFiltersResponse = Filter;
 export const GetUsersSettingsFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Filter;
 
-export type GetUsersSettingsFiltersError = DefaultErrors;
+export type GetUsersSettingsFiltersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a filter. */
 export const getUsersSettingsFilters: API.OperationMethod<
@@ -3681,7 +3987,7 @@ export const getUsersSettingsFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSettingsFiltersRequest,
   output: GetUsersSettingsFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersSettingsFiltersRequest {
@@ -3708,7 +4014,12 @@ export type CreateUsersSettingsFiltersResponse = Filter;
 export const CreateUsersSettingsFiltersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Filter;
 
-export type CreateUsersSettingsFiltersError = DefaultErrors;
+export type CreateUsersSettingsFiltersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a filter. Note: you can only create a maximum of 1,000 filters. */
 export const createUsersSettingsFilters: API.OperationMethod<
@@ -3719,7 +4030,7 @@ export const createUsersSettingsFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSettingsFiltersRequest,
   output: CreateUsersSettingsFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersSettingsFiltersRequest {
@@ -3747,7 +4058,12 @@ export const DeleteUsersSettingsFiltersResponse: Schema.Schema<DeleteUsersSettin
     {},
   ) as any as Schema.Schema<DeleteUsersSettingsFiltersResponse>;
 
-export type DeleteUsersSettingsFiltersError = DefaultErrors;
+export type DeleteUsersSettingsFiltersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Immediately and permanently deletes the specified filter. */
 export const deleteUsersSettingsFilters: API.OperationMethod<
@@ -3758,7 +4074,7 @@ export const deleteUsersSettingsFilters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSettingsFiltersRequest,
   output: DeleteUsersSettingsFiltersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TrashUsersThreadsRequest {
@@ -3784,7 +4100,12 @@ export const TrashUsersThreadsRequest =
 export type TrashUsersThreadsResponse = Thread;
 export const TrashUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
 
-export type TrashUsersThreadsError = DefaultErrors;
+export type TrashUsersThreadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the trash. */
 export const trashUsersThreads: API.OperationMethod<
@@ -3795,7 +4116,7 @@ export const trashUsersThreads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TrashUsersThreadsRequest,
   output: TrashUsersThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UntrashUsersThreadsRequest {
@@ -3821,7 +4142,12 @@ export const UntrashUsersThreadsRequest =
 export type UntrashUsersThreadsResponse = Thread;
 export const UntrashUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
 
-export type UntrashUsersThreadsError = DefaultErrors;
+export type UntrashUsersThreadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified thread from the trash. Any messages that belong to the thread are also removed from the trash. */
 export const untrashUsersThreads: API.OperationMethod<
@@ -3832,7 +4158,7 @@ export const untrashUsersThreads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntrashUsersThreadsRequest,
   output: UntrashUsersThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersThreadsRequest {
@@ -3863,7 +4189,7 @@ export const GetUsersThreadsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetUsersThreadsResponse = Thread;
 export const GetUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
 
-export type GetUsersThreadsError = DefaultErrors;
+export type GetUsersThreadsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified thread. */
 export const getUsersThreads: API.OperationMethod<
@@ -3874,7 +4200,7 @@ export const getUsersThreads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersThreadsRequest,
   output: GetUsersThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUsersThreadsRequest {
@@ -3899,7 +4225,12 @@ export const DeleteUsersThreadsResponse: Schema.Schema<DeleteUsersThreadsRespons
     {},
   ) as any as Schema.Schema<DeleteUsersThreadsResponse>;
 
-export type DeleteUsersThreadsError = DefaultErrors;
+export type DeleteUsersThreadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Immediately and permanently deletes the specified thread. Any messages that belong to the thread are also deleted. This operation cannot be undone. Prefer `threads.trash` instead. */
 export const deleteUsersThreads: API.OperationMethod<
@@ -3910,7 +4241,7 @@ export const deleteUsersThreads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersThreadsRequest,
   output: DeleteUsersThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersThreadsRequest {
@@ -3949,7 +4280,7 @@ export type ListUsersThreadsResponse = ListThreadsResponse;
 export const ListUsersThreadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListThreadsResponse;
 
-export type ListUsersThreadsError = DefaultErrors;
+export type ListUsersThreadsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the threads in the user's mailbox. */
 export const listUsersThreads: API.PaginatedOperationMethod<
@@ -3960,7 +4291,7 @@ export const listUsersThreads: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersThreadsRequest,
   output: ListUsersThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3993,7 +4324,12 @@ export const ModifyUsersThreadsRequest =
 export type ModifyUsersThreadsResponse = Thread;
 export const ModifyUsersThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Thread;
 
-export type ModifyUsersThreadsError = DefaultErrors;
+export type ModifyUsersThreadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the labels applied to the thread. This applies to all messages in the thread. */
 export const modifyUsersThreads: API.OperationMethod<
@@ -4004,5 +4340,5 @@ export const modifyUsersThreads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyUsersThreadsRequest,
   output: ModifyUsersThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

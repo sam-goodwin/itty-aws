@@ -1871,6 +1871,52 @@ export const ListMembershipsResponse =
   }).annotate({ identifier: "ListMembershipsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1897,7 +1943,12 @@ export type UpdateSecuritySettingsGroupsResponse = Operation;
 export const UpdateSecuritySettingsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateSecuritySettingsGroupsError = DefaultErrors;
+export type UpdateSecuritySettingsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update Security Settings */
 export const updateSecuritySettingsGroups: API.OperationMethod<
@@ -1908,7 +1959,7 @@ export const updateSecuritySettingsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecuritySettingsGroupsRequest,
   output: UpdateSecuritySettingsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGroupsRequest {
@@ -1936,7 +1987,7 @@ export type ListGroupsResponse_Op = ListGroupsResponse;
 export const ListGroupsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListGroupsResponse;
 
-export type ListGroupsError = DefaultErrors;
+export type ListGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the `Group` resources under a customer or namespace. */
 export const listGroups: API.PaginatedOperationMethod<
@@ -1947,7 +1998,7 @@ export const listGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1975,7 +2026,12 @@ export const PatchGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchGroupsResponse = Operation;
 export const PatchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchGroupsError = DefaultErrors;
+export type PatchGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a `Group`. */
 export const patchGroups: API.OperationMethod<
@@ -1986,7 +2042,7 @@ export const patchGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGroupsRequest,
   output: PatchGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchGroupsRequest {
@@ -2014,7 +2070,7 @@ export type SearchGroupsResponse_Op = SearchGroupsResponse;
 export const SearchGroupsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchGroupsResponse;
 
-export type SearchGroupsError = DefaultErrors;
+export type SearchGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches for `Group` resources matching a specified query. */
 export const searchGroups: API.PaginatedOperationMethod<
@@ -2025,7 +2081,7 @@ export const searchGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchGroupsRequest,
   output: SearchGroupsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2047,7 +2103,12 @@ export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteGroupsResponse = Operation;
 export const DeleteGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteGroupsError = DefaultErrors;
+export type DeleteGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Group`. */
 export const deleteGroups: API.OperationMethod<
@@ -2058,7 +2119,7 @@ export const deleteGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupsRequest,
   output: DeleteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGroupsRequest {
@@ -2076,7 +2137,7 @@ export const GetGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGroupsResponse = Group;
 export const GetGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type GetGroupsError = DefaultErrors;
+export type GetGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a `Group`. */
 export const getGroups: API.OperationMethod<
@@ -2087,7 +2148,7 @@ export const getGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupsRequest,
   output: GetGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSecuritySettingsGroupsRequest {
@@ -2110,7 +2171,10 @@ export type GetSecuritySettingsGroupsResponse = SecuritySettings;
 export const GetSecuritySettingsGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecuritySettings;
 
-export type GetSecuritySettingsGroupsError = DefaultErrors;
+export type GetSecuritySettingsGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get Security Settings */
 export const getSecuritySettingsGroups: API.OperationMethod<
@@ -2121,7 +2185,7 @@ export const getSecuritySettingsGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecuritySettingsGroupsRequest,
   output: GetSecuritySettingsGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LookupGroupsRequest {
@@ -2147,7 +2211,7 @@ export type LookupGroupsResponse = LookupGroupNameResponse;
 export const LookupGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LookupGroupNameResponse;
 
-export type LookupGroupsError = DefaultErrors;
+export type LookupGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Group` by its `EntityKey`. */
 export const lookupGroups: API.OperationMethod<
@@ -2158,7 +2222,7 @@ export const lookupGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupGroupsRequest,
   output: LookupGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateGroupsRequest {
@@ -2185,7 +2249,12 @@ export const CreateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateGroupsResponse = Operation;
 export const CreateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateGroupsError = DefaultErrors;
+export type CreateGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Group. */
 export const createGroups: API.OperationMethod<
@@ -2196,7 +2265,7 @@ export const createGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupsRequest,
   output: CreateGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupGroupsMembershipsRequest {
@@ -2226,7 +2295,7 @@ export type LookupGroupsMembershipsResponse = LookupMembershipNameResponse;
 export const LookupGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LookupMembershipNameResponse;
 
-export type LookupGroupsMembershipsError = DefaultErrors;
+export type LookupGroupsMembershipsError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up the [resource name](https://cloud.google.com/apis/design/resource_names) of a `Membership` by its `EntityKey`. */
 export const lookupGroupsMemberships: API.OperationMethod<
@@ -2237,7 +2306,7 @@ export const lookupGroupsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupGroupsMembershipsRequest,
   output: LookupGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetMembershipGraphGroupsMembershipsRequest {
@@ -2263,7 +2332,10 @@ export type GetMembershipGraphGroupsMembershipsResponse = Operation;
 export const GetMembershipGraphGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetMembershipGraphGroupsMembershipsError = DefaultErrors;
+export type GetMembershipGraphGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a membership graph of just a member or both a member and a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the member is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. Given a member, the response will contain all membership paths from the member. Given both a group and a member, the response will contain all membership paths between the group and the member. */
 export const getMembershipGraphGroupsMemberships: API.OperationMethod<
@@ -2274,7 +2346,7 @@ export const getMembershipGraphGroupsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMembershipGraphGroupsMembershipsRequest,
   output: GetMembershipGraphGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateGroupsMembershipsRequest {
@@ -2297,7 +2369,12 @@ export type CreateGroupsMembershipsResponse = Operation;
 export const CreateGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateGroupsMembershipsError = DefaultErrors;
+export type CreateGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a `Membership`. */
 export const createGroupsMemberships: API.OperationMethod<
@@ -2308,7 +2385,7 @@ export const createGroupsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateGroupsMembershipsRequest,
   output: CreateGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGroupsMembershipsRequest {
@@ -2328,7 +2405,7 @@ export type GetGroupsMembershipsResponse = Membership;
 export const GetGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Membership;
 
-export type GetGroupsMembershipsError = DefaultErrors;
+export type GetGroupsMembershipsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a `Membership`. */
 export const getGroupsMemberships: API.OperationMethod<
@@ -2339,7 +2416,7 @@ export const getGroupsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGroupsMembershipsRequest,
   output: GetGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchDirectGroupsGroupsMembershipsRequest {
@@ -2375,7 +2452,10 @@ export type SearchDirectGroupsGroupsMembershipsResponse =
 export const SearchDirectGroupsGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchDirectGroupsResponse;
 
-export type SearchDirectGroupsGroupsMembershipsError = DefaultErrors;
+export type SearchDirectGroupsGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches direct groups of a member. */
 export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
@@ -2386,7 +2466,7 @@ export const searchDirectGroupsGroupsMemberships: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchDirectGroupsGroupsMembershipsRequest,
   output: SearchDirectGroupsGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2420,7 +2500,10 @@ export type SearchTransitiveMembershipsGroupsMembershipsResponse =
 export const SearchTransitiveMembershipsGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchTransitiveMembershipsResponse;
 
-export type SearchTransitiveMembershipsGroupsMembershipsError = DefaultErrors;
+export type SearchTransitiveMembershipsGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Search transitive memberships of a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the group is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A transitive membership is any direct or indirect membership of a group. Actor must have view permissions to all transitive memberships. */
 export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperationMethod<
@@ -2431,7 +2514,7 @@ export const searchTransitiveMembershipsGroupsMemberships: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitiveMembershipsGroupsMembershipsRequest,
   output: SearchTransitiveMembershipsGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2455,7 +2538,12 @@ export type DeleteGroupsMembershipsResponse = Operation;
 export const DeleteGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteGroupsMembershipsError = DefaultErrors;
+export type DeleteGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Membership`. */
 export const deleteGroupsMemberships: API.OperationMethod<
@@ -2466,7 +2554,7 @@ export const deleteGroupsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupsMembershipsRequest,
   output: DeleteGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CheckTransitiveMembershipGroupsMembershipsRequest {
@@ -2493,7 +2581,10 @@ export type CheckTransitiveMembershipGroupsMembershipsResponse =
 export const CheckTransitiveMembershipGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckTransitiveMembershipResponse;
 
-export type CheckTransitiveMembershipGroupsMembershipsError = DefaultErrors;
+export type CheckTransitiveMembershipGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Check a potential member for membership in a group. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the member is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A member has membership to a group as long as there is a single viewable transitive membership between the group and the member. The actor must have view permissions to at least one transitive membership between the member and group. */
 export const checkTransitiveMembershipGroupsMemberships: API.OperationMethod<
@@ -2504,7 +2595,7 @@ export const checkTransitiveMembershipGroupsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckTransitiveMembershipGroupsMembershipsRequest,
   output: CheckTransitiveMembershipGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListGroupsMembershipsRequest {
@@ -2533,7 +2624,7 @@ export type ListGroupsMembershipsResponse = ListMembershipsResponse;
 export const ListGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMembershipsResponse;
 
-export type ListGroupsMembershipsError = DefaultErrors;
+export type ListGroupsMembershipsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the `Membership`s within a `Group`. */
 export const listGroupsMemberships: API.PaginatedOperationMethod<
@@ -2544,7 +2635,7 @@ export const listGroupsMemberships: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsMembershipsRequest,
   output: ListGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2581,7 +2672,10 @@ export type SearchTransitiveGroupsGroupsMembershipsResponse =
 export const SearchTransitiveGroupsGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchTransitiveGroupsResponse;
 
-export type SearchTransitiveGroupsGroupsMembershipsError = DefaultErrors;
+export type SearchTransitiveGroupsGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Search transitive groups of a member. **Note:** This feature is only available to Google Workspace Enterprise Standard, Enterprise Plus, and Enterprise for Education; and Cloud Identity Premium accounts. If the account of the member is not one of these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A transitive group is any group that has a direct or indirect membership to the member. Actor must have view permissions all transitive groups. */
 export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMethod<
@@ -2592,7 +2686,7 @@ export const searchTransitiveGroupsGroupsMemberships: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchTransitiveGroupsGroupsMembershipsRequest,
   output: SearchTransitiveGroupsGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2624,7 +2718,12 @@ export type ModifyMembershipRolesGroupsMembershipsResponse =
 export const ModifyMembershipRolesGroupsMembershipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ModifyMembershipRolesResponse;
 
-export type ModifyMembershipRolesGroupsMembershipsError = DefaultErrors;
+export type ModifyMembershipRolesGroupsMembershipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the `MembershipRole`s of a `Membership`. */
 export const modifyMembershipRolesGroupsMemberships: API.OperationMethod<
@@ -2635,7 +2734,7 @@ export const modifyMembershipRolesGroupsMemberships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyMembershipRolesGroupsMembershipsRequest,
   output: ModifyMembershipRolesGroupsMembershipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelCustomersUserinvitationsRequest {
@@ -2658,7 +2757,12 @@ export type CancelCustomersUserinvitationsResponse = Operation;
 export const CancelCustomersUserinvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelCustomersUserinvitationsError = DefaultErrors;
+export type CancelCustomersUserinvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a UserInvitation that was already sent. */
 export const cancelCustomersUserinvitations: API.OperationMethod<
@@ -2669,7 +2773,7 @@ export const cancelCustomersUserinvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelCustomersUserinvitationsRequest,
   output: CancelCustomersUserinvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersUserinvitationsRequest {
@@ -2689,7 +2793,10 @@ export type GetCustomersUserinvitationsResponse = UserInvitation;
 export const GetCustomersUserinvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserInvitation;
 
-export type GetCustomersUserinvitationsError = DefaultErrors;
+export type GetCustomersUserinvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a UserInvitation resource. **Note:** New consumer accounts with the customer's verified domain created within the previous 48 hours will not appear in the result. This delay also applies to newly-verified domains. */
 export const getCustomersUserinvitations: API.OperationMethod<
@@ -2700,7 +2807,7 @@ export const getCustomersUserinvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersUserinvitationsRequest,
   output: GetCustomersUserinvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersUserinvitationsRequest {
@@ -2732,7 +2839,10 @@ export type ListCustomersUserinvitationsResponse = ListUserInvitationsResponse;
 export const ListCustomersUserinvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserInvitationsResponse;
 
-export type ListCustomersUserinvitationsError = DefaultErrors;
+export type ListCustomersUserinvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of UserInvitation resources. **Note:** New consumer accounts with the customer's verified domain created within the previous 48 hours will not appear in the result. This delay also applies to newly-verified domains. */
 export const listCustomersUserinvitations: API.PaginatedOperationMethod<
@@ -2743,7 +2853,7 @@ export const listCustomersUserinvitations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersUserinvitationsRequest,
   output: ListCustomersUserinvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2768,7 +2878,10 @@ export type IsInvitableUserCustomersUserinvitationsResponse =
 export const IsInvitableUserCustomersUserinvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IsInvitableUserResponse;
 
-export type IsInvitableUserCustomersUserinvitationsError = DefaultErrors;
+export type IsInvitableUserCustomersUserinvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Verifies whether a user account is eligible to receive a UserInvitation (is an unmanaged account). Eligibility is based on the following criteria: * the email address is a consumer account and it's the primary email address of the account, and * the domain of the email address matches an existing verified Google Workspace or Cloud Identity domain If both conditions are met, the user is eligible. **Note:** This method is not supported for Workspace Essentials customers. */
 export const isInvitableUserCustomersUserinvitations: API.OperationMethod<
@@ -2779,7 +2892,7 @@ export const isInvitableUserCustomersUserinvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IsInvitableUserCustomersUserinvitationsRequest,
   output: IsInvitableUserCustomersUserinvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SendCustomersUserinvitationsRequest {
@@ -2802,7 +2915,12 @@ export type SendCustomersUserinvitationsResponse = Operation;
 export const SendCustomersUserinvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SendCustomersUserinvitationsError = DefaultErrors;
+export type SendCustomersUserinvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends a UserInvitation to email. If the `UserInvitation` does not exist for this request and it is a valid request, the request creates a `UserInvitation`. **Note:** The `get` and `list` methods have a 48-hour delay where newly-created consumer accounts will not appear in the results. You can still send a `UserInvitation` to those accounts if you know the unmanaged email address and IsInvitableUser==True. */
 export const sendCustomersUserinvitations: API.OperationMethod<
@@ -2813,7 +2931,7 @@ export const sendCustomersUserinvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendCustomersUserinvitationsRequest,
   output: SendCustomersUserinvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInboundSamlSsoProfilesRequest {
@@ -2839,7 +2957,12 @@ export type PatchInboundSamlSsoProfilesResponse = Operation;
 export const PatchInboundSamlSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInboundSamlSsoProfilesError = DefaultErrors;
+export type PatchInboundSamlSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an InboundSamlSsoProfile. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const patchInboundSamlSsoProfiles: API.OperationMethod<
@@ -2850,7 +2973,7 @@ export const patchInboundSamlSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInboundSamlSsoProfilesRequest,
   output: PatchInboundSamlSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInboundSamlSsoProfilesRequest {
@@ -2870,7 +2993,10 @@ export type GetInboundSamlSsoProfilesResponse = InboundSamlSsoProfile;
 export const GetInboundSamlSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InboundSamlSsoProfile;
 
-export type GetInboundSamlSsoProfilesError = DefaultErrors;
+export type GetInboundSamlSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an InboundSamlSsoProfile. */
 export const getInboundSamlSsoProfiles: API.OperationMethod<
@@ -2881,7 +3007,7 @@ export const getInboundSamlSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInboundSamlSsoProfilesRequest,
   output: GetInboundSamlSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInboundSamlSsoProfilesRequest {
@@ -2908,7 +3034,10 @@ export type ListInboundSamlSsoProfilesResponse_Op =
 export const ListInboundSamlSsoProfilesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListInboundSamlSsoProfilesResponse;
 
-export type ListInboundSamlSsoProfilesError = DefaultErrors;
+export type ListInboundSamlSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists InboundSamlSsoProfiles for a customer. */
 export const listInboundSamlSsoProfiles: API.PaginatedOperationMethod<
@@ -2919,7 +3048,7 @@ export const listInboundSamlSsoProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInboundSamlSsoProfilesRequest,
   output: ListInboundSamlSsoProfilesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2947,7 +3076,12 @@ export type CreateInboundSamlSsoProfilesResponse = Operation;
 export const CreateInboundSamlSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateInboundSamlSsoProfilesError = DefaultErrors;
+export type CreateInboundSamlSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InboundSamlSsoProfile for a customer. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const createInboundSamlSsoProfiles: API.OperationMethod<
@@ -2958,7 +3092,7 @@ export const createInboundSamlSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInboundSamlSsoProfilesRequest,
   output: CreateInboundSamlSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInboundSamlSsoProfilesRequest {
@@ -2978,7 +3112,12 @@ export type DeleteInboundSamlSsoProfilesResponse = Operation;
 export const DeleteInboundSamlSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInboundSamlSsoProfilesError = DefaultErrors;
+export type DeleteInboundSamlSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an InboundSamlSsoProfile. */
 export const deleteInboundSamlSsoProfiles: API.OperationMethod<
@@ -2989,7 +3128,7 @@ export const deleteInboundSamlSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInboundSamlSsoProfilesRequest,
   output: DeleteInboundSamlSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInboundSamlSsoProfilesIdpCredentialsRequest {
@@ -3009,7 +3148,12 @@ export type DeleteInboundSamlSsoProfilesIdpCredentialsResponse = Operation;
 export const DeleteInboundSamlSsoProfilesIdpCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInboundSamlSsoProfilesIdpCredentialsError = DefaultErrors;
+export type DeleteInboundSamlSsoProfilesIdpCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an IdpCredential. */
 export const deleteInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
@@ -3020,7 +3164,7 @@ export const deleteInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInboundSamlSsoProfilesIdpCredentialsRequest,
   output: DeleteInboundSamlSsoProfilesIdpCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddInboundSamlSsoProfilesIdpCredentialsRequest {
@@ -3047,7 +3191,12 @@ export type AddInboundSamlSsoProfilesIdpCredentialsResponse = Operation;
 export const AddInboundSamlSsoProfilesIdpCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddInboundSamlSsoProfilesIdpCredentialsError = DefaultErrors;
+export type AddInboundSamlSsoProfilesIdpCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an IdpCredential. Up to 2 credentials are allowed. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const addInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
@@ -3058,7 +3207,7 @@ export const addInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddInboundSamlSsoProfilesIdpCredentialsRequest,
   output: AddInboundSamlSsoProfilesIdpCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInboundSamlSsoProfilesIdpCredentialsRequest {
@@ -3078,7 +3227,10 @@ export type GetInboundSamlSsoProfilesIdpCredentialsResponse = IdpCredential;
 export const GetInboundSamlSsoProfilesIdpCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ IdpCredential;
 
-export type GetInboundSamlSsoProfilesIdpCredentialsError = DefaultErrors;
+export type GetInboundSamlSsoProfilesIdpCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an IdpCredential. */
 export const getInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
@@ -3089,7 +3241,7 @@ export const getInboundSamlSsoProfilesIdpCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInboundSamlSsoProfilesIdpCredentialsRequest,
   output: GetInboundSamlSsoProfilesIdpCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInboundSamlSsoProfilesIdpCredentialsRequest {
@@ -3116,7 +3268,10 @@ export type ListInboundSamlSsoProfilesIdpCredentialsResponse =
 export const ListInboundSamlSsoProfilesIdpCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListIdpCredentialsResponse;
 
-export type ListInboundSamlSsoProfilesIdpCredentialsError = DefaultErrors;
+export type ListInboundSamlSsoProfilesIdpCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of IdpCredentials in an InboundSamlSsoProfile. */
 export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMethod<
@@ -3127,7 +3282,7 @@ export const listInboundSamlSsoProfilesIdpCredentials: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInboundSamlSsoProfilesIdpCredentialsRequest,
   output: ListInboundSamlSsoProfilesIdpCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3151,7 +3306,12 @@ export type DeleteInboundSsoAssignmentsResponse = Operation;
 export const DeleteInboundSsoAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInboundSsoAssignmentsError = DefaultErrors;
+export type DeleteInboundSsoAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an InboundSsoAssignment. To disable SSO, Create (or Update) an assignment that has `sso_mode` == `SSO_OFF`. */
 export const deleteInboundSsoAssignments: API.OperationMethod<
@@ -3162,7 +3322,7 @@ export const deleteInboundSsoAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInboundSsoAssignmentsRequest,
   output: DeleteInboundSsoAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateInboundSsoAssignmentsRequest {
@@ -3182,7 +3342,12 @@ export type CreateInboundSsoAssignmentsResponse = Operation;
 export const CreateInboundSsoAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateInboundSsoAssignmentsError = DefaultErrors;
+export type CreateInboundSsoAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InboundSsoAssignment for users and devices in a `Customer` under a given `Group` or `OrgUnit`. */
 export const createInboundSsoAssignments: API.OperationMethod<
@@ -3193,7 +3358,7 @@ export const createInboundSsoAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInboundSsoAssignmentsRequest,
   output: CreateInboundSsoAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInboundSsoAssignmentsRequest {
@@ -3213,7 +3378,10 @@ export type GetInboundSsoAssignmentsResponse = InboundSsoAssignment;
 export const GetInboundSsoAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InboundSsoAssignment;
 
-export type GetInboundSsoAssignmentsError = DefaultErrors;
+export type GetInboundSsoAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an InboundSsoAssignment. */
 export const getInboundSsoAssignments: API.OperationMethod<
@@ -3224,7 +3392,7 @@ export const getInboundSsoAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInboundSsoAssignmentsRequest,
   output: GetInboundSsoAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInboundSsoAssignmentsRequest {
@@ -3251,7 +3419,10 @@ export type ListInboundSsoAssignmentsResponse_Op =
 export const ListInboundSsoAssignmentsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListInboundSsoAssignmentsResponse;
 
-export type ListInboundSsoAssignmentsError = DefaultErrors;
+export type ListInboundSsoAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the InboundSsoAssignments for a `Customer`. */
 export const listInboundSsoAssignments: API.PaginatedOperationMethod<
@@ -3262,7 +3433,7 @@ export const listInboundSsoAssignments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInboundSsoAssignmentsRequest,
   output: ListInboundSsoAssignmentsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3292,7 +3463,12 @@ export type PatchInboundSsoAssignmentsResponse = Operation;
 export const PatchInboundSsoAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInboundSsoAssignmentsError = DefaultErrors;
+export type PatchInboundSsoAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an InboundSsoAssignment. The body of this request is the `inbound_sso_assignment` field and the `update_mask` is relative to that. For example: a PATCH to `/v1/inboundSsoAssignments/0abcdefg1234567&update_mask=rank` with a body of `{ "rank": 1 }` moves that (presumably group-targeted) SSO assignment to the highest priority and shifts any other group-targeted assignments down in priority. */
 export const patchInboundSsoAssignments: API.OperationMethod<
@@ -3303,7 +3479,7 @@ export const patchInboundSsoAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInboundSsoAssignmentsRequest,
   output: PatchInboundSsoAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateInboundOidcSsoProfilesRequest {
@@ -3327,7 +3503,12 @@ export type CreateInboundOidcSsoProfilesResponse = Operation;
 export const CreateInboundOidcSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateInboundOidcSsoProfilesError = DefaultErrors;
+export type CreateInboundOidcSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InboundOidcSsoProfile for a customer. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const createInboundOidcSsoProfiles: API.OperationMethod<
@@ -3338,7 +3519,7 @@ export const createInboundOidcSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInboundOidcSsoProfilesRequest,
   output: CreateInboundOidcSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInboundOidcSsoProfilesRequest {
@@ -3358,7 +3539,12 @@ export type DeleteInboundOidcSsoProfilesResponse = Operation;
 export const DeleteInboundOidcSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInboundOidcSsoProfilesError = DefaultErrors;
+export type DeleteInboundOidcSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an InboundOidcSsoProfile. */
 export const deleteInboundOidcSsoProfiles: API.OperationMethod<
@@ -3369,7 +3555,7 @@ export const deleteInboundOidcSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInboundOidcSsoProfilesRequest,
   output: DeleteInboundOidcSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInboundOidcSsoProfilesRequest {
@@ -3395,7 +3581,12 @@ export type PatchInboundOidcSsoProfilesResponse = Operation;
 export const PatchInboundOidcSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInboundOidcSsoProfilesError = DefaultErrors;
+export type PatchInboundOidcSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`. */
 export const patchInboundOidcSsoProfiles: API.OperationMethod<
@@ -3406,7 +3597,7 @@ export const patchInboundOidcSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInboundOidcSsoProfilesRequest,
   output: PatchInboundOidcSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInboundOidcSsoProfilesRequest {
@@ -3426,7 +3617,10 @@ export type GetInboundOidcSsoProfilesResponse = InboundOidcSsoProfile;
 export const GetInboundOidcSsoProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InboundOidcSsoProfile;
 
-export type GetInboundOidcSsoProfilesError = DefaultErrors;
+export type GetInboundOidcSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an InboundOidcSsoProfile. */
 export const getInboundOidcSsoProfiles: API.OperationMethod<
@@ -3437,7 +3631,7 @@ export const getInboundOidcSsoProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInboundOidcSsoProfilesRequest,
   output: GetInboundOidcSsoProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInboundOidcSsoProfilesRequest {
@@ -3464,7 +3658,10 @@ export type ListInboundOidcSsoProfilesResponse_Op =
 export const ListInboundOidcSsoProfilesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListInboundOidcSsoProfilesResponse;
 
-export type ListInboundOidcSsoProfilesError = DefaultErrors;
+export type ListInboundOidcSsoProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists InboundOidcSsoProfile objects for a Google enterprise customer. */
 export const listInboundOidcSsoProfiles: API.PaginatedOperationMethod<
@@ -3475,7 +3672,7 @@ export const listInboundOidcSsoProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInboundOidcSsoProfilesRequest,
   output: ListInboundOidcSsoProfilesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3502,7 +3699,12 @@ export const CreateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateDevicesResponse = Operation;
 export const CreateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateDevicesError = DefaultErrors;
+export type CreateDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium */
 export const createDevices: API.OperationMethod<
@@ -3513,7 +3715,7 @@ export const createDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDevicesRequest,
   output: CreateDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDevicesRequest {
@@ -3534,7 +3736,12 @@ export const DeleteDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteDevicesResponse = Operation;
 export const DeleteDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteDevicesError = DefaultErrors;
+export type DeleteDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified device. */
 export const deleteDevices: API.OperationMethod<
@@ -3545,7 +3752,7 @@ export const deleteDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDevicesRequest,
   output: DeleteDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelWipeDevicesRequest {
@@ -3569,7 +3776,12 @@ export const CancelWipeDevicesRequest =
 export type CancelWipeDevicesResponse = Operation;
 export const CancelWipeDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelWipeDevicesError = DefaultErrors;
+export type CancelWipeDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels an unfinished device wipe. This operation can be used to cancel device wipe in the gap between the wipe operation returning success and the device being wiped. This operation is possible when the device is in a "pending wipe" state. The device enters the "pending wipe" state when a wipe device command is issued, but has not yet been sent to the device. The cancel wipe will fail if the wipe command has already been issued to the device. */
 export const cancelWipeDevices: API.OperationMethod<
@@ -3580,7 +3792,7 @@ export const cancelWipeDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelWipeDevicesRequest,
   output: CancelWipeDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDevicesRequest {
@@ -3602,7 +3814,7 @@ export type GetDevicesResponse = GoogleAppsCloudidentityDevicesV1Device;
 export const GetDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsCloudidentityDevicesV1Device;
 
-export type GetDevicesError = DefaultErrors;
+export type GetDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified device. */
 export const getDevices: API.OperationMethod<
@@ -3613,7 +3825,7 @@ export const getDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicesRequest,
   output: GetDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDevicesRequest {
@@ -3652,7 +3864,7 @@ export type ListDevicesResponse =
 export const ListDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsCloudidentityDevicesV1ListDevicesResponse;
 
-export type ListDevicesError = DefaultErrors;
+export type ListDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists/Searches devices. */
 export const listDevices: API.PaginatedOperationMethod<
@@ -3663,7 +3875,7 @@ export const listDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3690,7 +3902,12 @@ export const WipeDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WipeDevicesResponse = Operation;
 export const WipeDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WipeDevicesError = DefaultErrors;
+export type WipeDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Wipes all data on the specified device. */
 export const wipeDevices: API.OperationMethod<
@@ -3701,7 +3918,7 @@ export const wipeDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WipeDevicesRequest,
   output: WipeDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelWipeDevicesDeviceUsersRequest {
@@ -3726,7 +3943,12 @@ export type CancelWipeDevicesDeviceUsersResponse = Operation;
 export const CancelWipeDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelWipeDevicesDeviceUsersError = DefaultErrors;
+export type CancelWipeDevicesDeviceUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels an unfinished user account wipe. This operation can be used to cancel device wipe in the gap between the wipe operation returning success and the device being wiped. */
 export const cancelWipeDevicesDeviceUsers: API.OperationMethod<
@@ -3737,7 +3959,7 @@ export const cancelWipeDevicesDeviceUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelWipeDevicesDeviceUsersRequest,
   output: CancelWipeDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDevicesDeviceUsersRequest {
@@ -3761,7 +3983,7 @@ export type GetDevicesDeviceUsersResponse =
 export const GetDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsCloudidentityDevicesV1DeviceUser;
 
-export type GetDevicesDeviceUsersError = DefaultErrors;
+export type GetDevicesDeviceUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified DeviceUser */
 export const getDevicesDeviceUsers: API.OperationMethod<
@@ -3772,7 +3994,7 @@ export const getDevicesDeviceUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicesDeviceUsersRequest,
   output: GetDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDevicesDeviceUsersRequest {
@@ -3808,7 +4030,7 @@ export type ListDevicesDeviceUsersResponse =
 export const ListDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse;
 
-export type ListDevicesDeviceUsersError = DefaultErrors;
+export type ListDevicesDeviceUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists/Searches DeviceUsers. */
 export const listDevicesDeviceUsers: API.PaginatedOperationMethod<
@@ -3819,7 +4041,7 @@ export const listDevicesDeviceUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesDeviceUsersRequest,
   output: ListDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3848,7 +4070,12 @@ export type ApproveDevicesDeviceUsersResponse = Operation;
 export const ApproveDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ApproveDevicesDeviceUsersError = DefaultErrors;
+export type ApproveDevicesDeviceUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves device to access user data. */
 export const approveDevicesDeviceUsers: API.OperationMethod<
@@ -3859,7 +4086,7 @@ export const approveDevicesDeviceUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveDevicesDeviceUsersRequest,
   output: ApproveDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WipeDevicesDeviceUsersRequest {
@@ -3884,7 +4111,12 @@ export type WipeDevicesDeviceUsersResponse = Operation;
 export const WipeDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WipeDevicesDeviceUsersError = DefaultErrors;
+export type WipeDevicesDeviceUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Wipes the user's account on a device. Other data on the device that is not associated with the user's work account is not affected. For example, if a Gmail app is installed on a device that is used for personal and work purposes, and the user is logged in to the Gmail app with their personal account as well as their work account, wiping the "deviceUser" by their work administrator will not affect their personal account within Gmail or other apps such as Photos. */
 export const wipeDevicesDeviceUsers: API.OperationMethod<
@@ -3895,7 +4127,7 @@ export const wipeDevicesDeviceUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WipeDevicesDeviceUsersRequest,
   output: WipeDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDevicesDeviceUsersRequest {
@@ -3918,7 +4150,12 @@ export type DeleteDevicesDeviceUsersResponse = Operation;
 export const DeleteDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteDevicesDeviceUsersError = DefaultErrors;
+export type DeleteDevicesDeviceUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified DeviceUser. This also revokes the user's access to device data. */
 export const deleteDevicesDeviceUsers: API.OperationMethod<
@@ -3929,7 +4166,7 @@ export const deleteDevicesDeviceUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDevicesDeviceUsersRequest,
   output: DeleteDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupDevicesDeviceUsersRequest {
@@ -3975,7 +4212,10 @@ export type LookupDevicesDeviceUsersResponse =
 export const LookupDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse;
 
-export type LookupDevicesDeviceUsersError = DefaultErrors;
+export type LookupDevicesDeviceUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as the properties provided in the request. This method must be called with end-user credentials with the scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an AND. Different platforms require different amounts of information from the caller to ensure that the DeviceUser is uniquely identified. - iOS: If either the `partner` or `ios_device_id` field is provided, then both fields are required. - Android: Specifying the `android_id` field is required. - Desktop: Specifying the `raw_resource_id` field is required. */
 export const lookupDevicesDeviceUsers: API.PaginatedOperationMethod<
@@ -3986,7 +4226,7 @@ export const lookupDevicesDeviceUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: LookupDevicesDeviceUsersRequest,
   output: LookupDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4015,7 +4255,12 @@ export type BlockDevicesDeviceUsersResponse = Operation;
 export const BlockDevicesDeviceUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BlockDevicesDeviceUsersError = DefaultErrors;
+export type BlockDevicesDeviceUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Blocks device from accessing user data */
 export const blockDevicesDeviceUsers: API.OperationMethod<
@@ -4026,7 +4271,7 @@ export const blockDevicesDeviceUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BlockDevicesDeviceUsersRequest,
   output: BlockDevicesDeviceUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchDevicesDeviceUsersClientStatesRequest {
@@ -4057,7 +4302,12 @@ export type PatchDevicesDeviceUsersClientStatesResponse = Operation;
 export const PatchDevicesDeviceUsersClientStatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchDevicesDeviceUsersClientStatesError = DefaultErrors;
+export type PatchDevicesDeviceUsersClientStatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the client state for the device user **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium */
 export const patchDevicesDeviceUsersClientStates: API.OperationMethod<
@@ -4068,7 +4318,7 @@ export const patchDevicesDeviceUsersClientStates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDevicesDeviceUsersClientStatesRequest,
   output: PatchDevicesDeviceUsersClientStatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDevicesDeviceUsersClientStatesRequest {
@@ -4092,7 +4342,10 @@ export type GetDevicesDeviceUsersClientStatesResponse =
 export const GetDevicesDeviceUsersClientStatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsCloudidentityDevicesV1ClientState;
 
-export type GetDevicesDeviceUsersClientStatesError = DefaultErrors;
+export type GetDevicesDeviceUsersClientStatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the client state for the device user */
 export const getDevicesDeviceUsersClientStates: API.OperationMethod<
@@ -4103,7 +4356,7 @@ export const getDevicesDeviceUsersClientStates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicesDeviceUsersClientStatesRequest,
   output: GetDevicesDeviceUsersClientStatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDevicesDeviceUsersClientStatesRequest {
@@ -4136,7 +4389,10 @@ export type ListDevicesDeviceUsersClientStatesResponse =
 export const ListDevicesDeviceUsersClientStatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAppsCloudidentityDevicesV1ListClientStatesResponse;
 
-export type ListDevicesDeviceUsersClientStatesError = DefaultErrors;
+export type ListDevicesDeviceUsersClientStatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the client states for the given search query. */
 export const listDevicesDeviceUsersClientStates: API.PaginatedOperationMethod<
@@ -4147,7 +4403,7 @@ export const listDevicesDeviceUsersClientStates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDevicesDeviceUsersClientStatesRequest,
   output: ListDevicesDeviceUsersClientStatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4169,7 +4425,7 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPoliciesResponse = Policy;
 export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetPoliciesError = DefaultErrors;
+export type GetPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a policy. */
 export const getPolicies: API.OperationMethod<
@@ -4180,7 +4436,7 @@ export const getPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPoliciesRequest,
   output: GetPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPoliciesRequest {
@@ -4205,7 +4461,7 @@ export type ListPoliciesResponse_Op = ListPoliciesResponse;
 export const ListPoliciesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListPoliciesResponse;
 
-export type ListPoliciesError = DefaultErrors;
+export type ListPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** List policies. */
 export const listPolicies: API.PaginatedOperationMethod<
@@ -4216,7 +4472,7 @@ export const listPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesRequest,
   output: ListPoliciesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

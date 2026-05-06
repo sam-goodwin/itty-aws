@@ -7717,6 +7717,52 @@ export const EnterpriseCrmEventbusProtoConnectorsGenericConnectorTaskConfig =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -7738,7 +7784,10 @@ export type GetClientmetadataProjectsResponse =
 export const GetClientmetadataProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaGetClientMetadataResponse;
 
-export type GetClientmetadataProjectsError = DefaultErrors;
+export type GetClientmetadataProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the metadata info for the requested client */
 export const getClientmetadataProjects: API.OperationMethod<
@@ -7749,7 +7798,7 @@ export const getClientmetadataProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClientmetadataProjectsRequest,
   output: GetClientmetadataProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetClientsProjectsLocationsRequest {
@@ -7770,7 +7819,10 @@ export type GetClientsProjectsLocationsResponse =
 export const GetClientsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaGetClientResponse;
 
-export type GetClientsProjectsLocationsError = DefaultErrors;
+export type GetClientsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the client configuration for the given project and location resource name */
 export const getClientsProjectsLocations: API.OperationMethod<
@@ -7781,7 +7833,7 @@ export const getClientsProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetClientsProjectsLocationsRequest,
   output: GetClientsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateOpenApiSpecProjectsLocationsRequest {
@@ -7811,7 +7863,12 @@ export type GenerateOpenApiSpecProjectsLocationsResponse =
 export const GenerateOpenApiSpecProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaGenerateOpenApiSpecResponse;
 
-export type GenerateOpenApiSpecProjectsLocationsError = DefaultErrors;
+export type GenerateOpenApiSpecProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generate OpenAPI spec for the requested integrations and api triggers */
 export const generateOpenApiSpecProjectsLocations: API.OperationMethod<
@@ -7822,7 +7879,7 @@ export const generateOpenApiSpecProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateOpenApiSpecProjectsLocationsRequest,
   output: GenerateOpenApiSpecProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LinkProjectsLocationsAppsScriptProjectsRequest {
@@ -7852,7 +7909,12 @@ export type LinkProjectsLocationsAppsScriptProjectsResponse =
 export const LinkProjectsLocationsAppsScriptProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaLinkAppsScriptProjectResponse;
 
-export type LinkProjectsLocationsAppsScriptProjectsError = DefaultErrors;
+export type LinkProjectsLocationsAppsScriptProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Links a existing Apps Script project. */
 export const linkProjectsLocationsAppsScriptProjects: API.OperationMethod<
@@ -7863,7 +7925,7 @@ export const linkProjectsLocationsAppsScriptProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkProjectsLocationsAppsScriptProjectsRequest,
   output: LinkProjectsLocationsAppsScriptProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAppsScriptProjectsRequest {
@@ -7893,7 +7955,12 @@ export type CreateProjectsLocationsAppsScriptProjectsResponse =
 export const CreateProjectsLocationsAppsScriptProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCreateAppsScriptProjectResponse;
 
-export type CreateProjectsLocationsAppsScriptProjectsError = DefaultErrors;
+export type CreateProjectsLocationsAppsScriptProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Apps Script project. */
 export const createProjectsLocationsAppsScriptProjects: API.OperationMethod<
@@ -7904,7 +7971,7 @@ export const createProjectsLocationsAppsScriptProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsScriptProjectsRequest,
   output: CreateProjectsLocationsAppsScriptProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvisionProjectsLocationsClientsRequest {
@@ -7933,7 +8000,12 @@ export type ProvisionProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const ProvisionProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type ProvisionProjectsLocationsClientsError = DefaultErrors;
+export type ProvisionProjectsLocationsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform the provisioning steps to enable a user GCP project to use IP. If GCP project already registered on IP end via Apigee Integration, provisioning will fail. */
 export const provisionProjectsLocationsClients: API.OperationMethod<
@@ -7944,7 +8016,7 @@ export const provisionProjectsLocationsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionProjectsLocationsClientsRequest,
   output: ProvisionProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvisionClientPostProcessorProjectsLocationsClientsRequest {
@@ -7975,7 +8047,11 @@ export const ProvisionClientPostProcessorProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaProvisionClientPostProcessorResponse;
 
 export type ProvisionClientPostProcessorProjectsLocationsClientsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform post provisioning steps after client is provisioned. */
 export const provisionClientPostProcessorProjectsLocationsClients: API.OperationMethod<
@@ -7986,7 +8062,7 @@ export const provisionClientPostProcessorProjectsLocationsClients: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionClientPostProcessorProjectsLocationsClientsRequest,
   output: ProvisionClientPostProcessorProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeprovisionProjectsLocationsClientsRequest {
@@ -8015,7 +8091,12 @@ export type DeprovisionProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const DeprovisionProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeprovisionProjectsLocationsClientsError = DefaultErrors;
+export type DeprovisionProjectsLocationsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform the deprovisioning steps to disable a user GCP project to use IP and purge all related data in a wipeout-compliant way. */
 export const deprovisionProjectsLocationsClients: API.OperationMethod<
@@ -8026,7 +8107,7 @@ export const deprovisionProjectsLocationsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeprovisionProjectsLocationsClientsRequest,
   output: DeprovisionProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ChangeConfigProjectsLocationsClientsRequest {
@@ -8056,7 +8137,12 @@ export type ChangeConfigProjectsLocationsClientsResponse =
 export const ChangeConfigProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaChangeCustomerConfigResponse;
 
-export type ChangeConfigProjectsLocationsClientsError = DefaultErrors;
+export type ChangeConfigProjectsLocationsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the client customer configuration for the given project and location resource name */
 export const changeConfigProjectsLocationsClients: API.OperationMethod<
@@ -8067,7 +8153,7 @@ export const changeConfigProjectsLocationsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ChangeConfigProjectsLocationsClientsRequest,
   output: ChangeConfigProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SwitchProjectsLocationsClientsRequest {
@@ -8096,7 +8182,12 @@ export type SwitchProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const SwitchProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type SwitchProjectsLocationsClientsError = DefaultErrors;
+export type SwitchProjectsLocationsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update client from GMEK to CMEK */
 export const switchProjectsLocationsClients: API.OperationMethod<
@@ -8107,7 +8198,7 @@ export const switchProjectsLocationsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchProjectsLocationsClientsRequest,
   output: SwitchProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplaceProjectsLocationsClientsRequest {
@@ -8136,7 +8227,12 @@ export type ReplaceProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const ReplaceProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type ReplaceProjectsLocationsClientsError = DefaultErrors;
+export type ReplaceProjectsLocationsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update run-as service account for provisioned client */
 export const replaceProjectsLocationsClients: API.OperationMethod<
@@ -8147,7 +8243,7 @@ export const replaceProjectsLocationsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceProjectsLocationsClientsRequest,
   output: ReplaceProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SwitchVariableMaskingProjectsLocationsClientsRequest {
@@ -8177,7 +8273,12 @@ export type SwitchVariableMaskingProjectsLocationsClientsResponse =
 export const SwitchVariableMaskingProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type SwitchVariableMaskingProjectsLocationsClientsError = DefaultErrors;
+export type SwitchVariableMaskingProjectsLocationsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update variable masking for provisioned client */
 export const switchVariableMaskingProjectsLocationsClients: API.OperationMethod<
@@ -8188,7 +8289,7 @@ export const switchVariableMaskingProjectsLocationsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchVariableMaskingProjectsLocationsClientsRequest,
   output: SwitchVariableMaskingProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ToggleHttpProjectsLocationsClientsRequest {
@@ -8217,7 +8318,12 @@ export type ToggleHttpProjectsLocationsClientsResponse = GoogleProtobufEmpty;
 export const ToggleHttpProjectsLocationsClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type ToggleHttpProjectsLocationsClientsError = DefaultErrors;
+export type ToggleHttpProjectsLocationsClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable/Disable http call for provisioned client */
 export const toggleHttpProjectsLocationsClients: API.OperationMethod<
@@ -8228,7 +8334,7 @@ export const toggleHttpProjectsLocationsClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ToggleHttpProjectsLocationsClientsRequest,
   output: ToggleHttpProjectsLocationsClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsProductsCloudFunctionsRequest {
@@ -8258,7 +8364,12 @@ export type CreateProjectsLocationsProductsCloudFunctionsResponse =
 export const CreateProjectsLocationsProductsCloudFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse;
 
-export type CreateProjectsLocationsProductsCloudFunctionsError = DefaultErrors;
+export type CreateProjectsLocationsProductsCloudFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a cloud function project. */
 export const createProjectsLocationsProductsCloudFunctions: API.OperationMethod<
@@ -8269,7 +8380,7 @@ export const createProjectsLocationsProductsCloudFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsCloudFunctionsRequest,
   output: CreateProjectsLocationsProductsCloudFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductsCertificatesRequest {
@@ -8302,7 +8413,10 @@ export type ListProjectsLocationsProductsCertificatesResponse =
 export const ListProjectsLocationsProductsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListCertificatesResponse;
 
-export type ListProjectsLocationsProductsCertificatesError = DefaultErrors;
+export type ListProjectsLocationsProductsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all the certificates that match the filter. Restrict to certificate of current client only. */
 export const listProjectsLocationsProductsCertificates: API.PaginatedOperationMethod<
@@ -8313,7 +8427,7 @@ export const listProjectsLocationsProductsCertificates: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsCertificatesRequest,
   output: ListProjectsLocationsProductsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8338,7 +8452,10 @@ export type GetProjectsLocationsProductsCertificatesResponse =
 export const GetProjectsLocationsProductsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCertificate;
 
-export type GetProjectsLocationsProductsCertificatesError = DefaultErrors;
+export type GetProjectsLocationsProductsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a certificates in the specified project. */
 export const getProjectsLocationsProductsCertificates: API.OperationMethod<
@@ -8349,7 +8466,7 @@ export const getProjectsLocationsProductsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsCertificatesRequest,
   output: GetProjectsLocationsProductsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsProductsCertificatesRequest {
@@ -8375,7 +8492,12 @@ export type CreateProjectsLocationsProductsCertificatesResponse =
 export const CreateProjectsLocationsProductsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCertificate;
 
-export type CreateProjectsLocationsProductsCertificatesError = DefaultErrors;
+export type CreateProjectsLocationsProductsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new certificate. The certificate will be registered to the trawler service and will be encrypted using cloud KMS and stored in Spanner Returns the certificate. */
 export const createProjectsLocationsProductsCertificates: API.OperationMethod<
@@ -8386,7 +8508,7 @@ export const createProjectsLocationsProductsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsCertificatesRequest,
   output: CreateProjectsLocationsProductsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsProductsCertificatesRequest {
@@ -8415,7 +8537,12 @@ export type PatchProjectsLocationsProductsCertificatesResponse =
 export const PatchProjectsLocationsProductsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCertificate;
 
-export type PatchProjectsLocationsProductsCertificatesError = DefaultErrors;
+export type PatchProjectsLocationsProductsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the certificate by id. If new certificate file is updated, it will register with the trawler service, re-encrypt with cloud KMS and update the Spanner record. Other fields will directly update the Spanner record. Returns the Certificate. */
 export const patchProjectsLocationsProductsCertificates: API.OperationMethod<
@@ -8426,7 +8553,7 @@ export const patchProjectsLocationsProductsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductsCertificatesRequest,
   output: PatchProjectsLocationsProductsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductsCertificatesRequest {
@@ -8447,7 +8574,12 @@ export type DeleteProjectsLocationsProductsCertificatesResponse =
 export const DeleteProjectsLocationsProductsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsProductsCertificatesError = DefaultErrors;
+export type DeleteProjectsLocationsProductsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a certificate */
 export const deleteProjectsLocationsProductsCertificates: API.OperationMethod<
@@ -8458,7 +8590,7 @@ export const deleteProjectsLocationsProductsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsCertificatesRequest,
   output: DeleteProjectsLocationsProductsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsProductsAuthConfigsRequest {
@@ -8499,7 +8631,12 @@ export type CreateProjectsLocationsProductsAuthConfigsResponse =
 export const CreateProjectsLocationsProductsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaAuthConfig;
 
-export type CreateProjectsLocationsProductsAuthConfigsError = DefaultErrors;
+export type CreateProjectsLocationsProductsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an auth config record. Fetch corresponding credentials for specific auth types, e.g. access token for OAuth 2.0, JWT token for JWT. Encrypt the auth config with Cloud KMS and store the encrypted credentials in Spanner. Returns the encrypted auth config. */
 export const createProjectsLocationsProductsAuthConfigs: API.OperationMethod<
@@ -8510,7 +8647,7 @@ export const createProjectsLocationsProductsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsAuthConfigsRequest,
   output: CreateProjectsLocationsProductsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsProductsAuthConfigsRequest {
@@ -8554,7 +8691,12 @@ export type PatchProjectsLocationsProductsAuthConfigsResponse =
 export const PatchProjectsLocationsProductsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaAuthConfig;
 
-export type PatchProjectsLocationsProductsAuthConfigsError = DefaultErrors;
+export type PatchProjectsLocationsProductsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an auth config. If credential is updated, fetch the encrypted auth config from Spanner, decrypt with Cloud KMS key, update the credential fields, re-encrypt with Cloud KMS key and update the Spanner record. For other fields, directly update the Spanner record. Returns the encrypted auth config. */
 export const patchProjectsLocationsProductsAuthConfigs: API.OperationMethod<
@@ -8565,7 +8707,7 @@ export const patchProjectsLocationsProductsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductsAuthConfigsRequest,
   output: PatchProjectsLocationsProductsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductsAuthConfigsRequest {
@@ -8586,7 +8728,12 @@ export type DeleteProjectsLocationsProductsAuthConfigsResponse =
 export const DeleteProjectsLocationsProductsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsProductsAuthConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsProductsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an auth config. */
 export const deleteProjectsLocationsProductsAuthConfigs: API.OperationMethod<
@@ -8597,7 +8744,7 @@ export const deleteProjectsLocationsProductsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsAuthConfigsRequest,
   output: DeleteProjectsLocationsProductsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProductsAuthConfigsRequest {
@@ -8618,7 +8765,10 @@ export type GetProjectsLocationsProductsAuthConfigsResponse =
 export const GetProjectsLocationsProductsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaAuthConfig;
 
-export type GetProjectsLocationsProductsAuthConfigsError = DefaultErrors;
+export type GetProjectsLocationsProductsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a complete auth config. If the auth config doesn't exist, Code.NOT_FOUND exception will be thrown. Returns the decrypted auth config. */
 export const getProjectsLocationsProductsAuthConfigs: API.OperationMethod<
@@ -8629,7 +8779,7 @@ export const getProjectsLocationsProductsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsAuthConfigsRequest,
   output: GetProjectsLocationsProductsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsProductsAuthConfigsRequest {
@@ -8662,7 +8812,10 @@ export type ListProjectsLocationsProductsAuthConfigsResponse =
 export const ListProjectsLocationsProductsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListAuthConfigsResponse;
 
-export type ListProjectsLocationsProductsAuthConfigsError = DefaultErrors;
+export type ListProjectsLocationsProductsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all auth configs that match the filter. Restrict to auth configs belong to the current client only. */
 export const listProjectsLocationsProductsAuthConfigs: API.PaginatedOperationMethod<
@@ -8673,7 +8826,7 @@ export const listProjectsLocationsProductsAuthConfigs: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsAuthConfigsRequest,
   output: ListProjectsLocationsProductsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8703,7 +8856,12 @@ export type ExecuteProjectsLocationsProductsIntegrationsResponse =
 export const ExecuteProjectsLocationsProductsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse;
 
-export type ExecuteProjectsLocationsProductsIntegrationsError = DefaultErrors;
+export type ExecuteProjectsLocationsProductsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes integrations synchronously by passing the trigger id in the request body. The request is not returned until the requested executions are either fulfilled or experienced an error. If the integration name is not specified (passing `-`), all of the associated integration under the given trigger_id will be executed. Otherwise only the specified integration for the given `trigger_id` is executed. This is helpful for execution the integration from UI. */
 export const executeProjectsLocationsProductsIntegrations: API.OperationMethod<
@@ -8714,7 +8872,7 @@ export const executeProjectsLocationsProductsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsLocationsProductsIntegrationsRequest,
   output: ExecuteProjectsLocationsProductsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ScheduleProjectsLocationsProductsIntegrationsRequest {
@@ -8740,7 +8898,12 @@ export type ScheduleProjectsLocationsProductsIntegrationsResponse =
 export const ScheduleProjectsLocationsProductsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse;
 
-export type ScheduleProjectsLocationsProductsIntegrationsError = DefaultErrors;
+export type ScheduleProjectsLocationsProductsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Schedules an integration for execution by passing the trigger id and the scheduled time in the request body. */
 export const scheduleProjectsLocationsProductsIntegrations: API.OperationMethod<
@@ -8751,7 +8914,7 @@ export const scheduleProjectsLocationsProductsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScheduleProjectsLocationsProductsIntegrationsRequest,
   output: ScheduleProjectsLocationsProductsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestProjectsLocationsProductsIntegrationsRequest {
@@ -8777,7 +8940,12 @@ export type TestProjectsLocationsProductsIntegrationsResponse =
 export const TestProjectsLocationsProductsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestIntegrationsResponse;
 
-export type TestProjectsLocationsProductsIntegrationsError = DefaultErrors;
+export type TestProjectsLocationsProductsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute the integration in draft state */
 export const testProjectsLocationsProductsIntegrations: API.OperationMethod<
@@ -8788,7 +8956,7 @@ export const testProjectsLocationsProductsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestProjectsLocationsProductsIntegrationsRequest,
   output: TestProjectsLocationsProductsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductsIntegrationsRequest {
@@ -8821,7 +8989,10 @@ export type ListProjectsLocationsProductsIntegrationsResponse =
 export const ListProjectsLocationsProductsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListIntegrationsResponse;
 
-export type ListProjectsLocationsProductsIntegrationsError = DefaultErrors;
+export type ListProjectsLocationsProductsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of all integrations in the specified project. */
 export const listProjectsLocationsProductsIntegrations: API.PaginatedOperationMethod<
@@ -8832,7 +9003,7 @@ export const listProjectsLocationsProductsIntegrations: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsIntegrationsRequest,
   output: ListProjectsLocationsProductsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8873,7 +9044,9 @@ export const ListProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse;
 
 export type ListProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of all integration versions in the specified project. */
 export const listProjectsLocationsProductsIntegrationsVersions: API.PaginatedOperationMethod<
@@ -8884,7 +9057,7 @@ export const listProjectsLocationsProductsIntegrationsVersions: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsIntegrationsVersionsRequest,
   output: ListProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8925,7 +9098,11 @@ export const CreateProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaIntegrationVersion;
 
 export type CreateProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a integration with a draft version in the specified project. */
 export const createProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -8936,7 +9113,7 @@ export const createProjectsLocationsProductsIntegrationsVersions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsIntegrationsVersionsRequest,
   output: CreateProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -8966,7 +9143,11 @@ export const PatchProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaIntegrationVersion;
 
 export type PatchProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a integration with a draft version in the specified project. */
 export const patchProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -8977,7 +9158,7 @@ export const patchProjectsLocationsProductsIntegrationsVersions: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductsIntegrationsVersionsRequest,
   output: PatchProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -8999,7 +9180,9 @@ export const GetProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaIntegrationVersion;
 
 export type GetProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a integration in the specified project. */
 export const getProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9010,7 +9193,7 @@ export const getProjectsLocationsProductsIntegrationsVersions: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsIntegrationsVersionsRequest,
   output: GetProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PublishProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -9037,7 +9220,11 @@ export const PublishProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse;
 
 export type PublishProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This RPC throws an exception if the integration is in ARCHIVED or ACTIVE state. This RPC throws an exception if the version being published is DRAFT, and if the `locked_by` user is not the same as the user performing the Publish. Audit fields updated include last_published_timestamp, last_published_by, last_modified_timestamp, last_modified_by. Any existing lock is on this integration is released. */
 export const publishProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9048,7 +9235,7 @@ export const publishProjectsLocationsProductsIntegrationsVersions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishProjectsLocationsProductsIntegrationsVersionsRequest,
   output: PublishProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -9070,7 +9257,11 @@ export const DeleteProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and set to the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed too. This RPC throws an exception if the version being deleted is DRAFT, and if the `locked_by` user is not the same as the user performing the Delete. Audit fields updated include last_modified_timestamp, last_modified_by. Any existing lock is released when Deleting a integration. Currently, there is no undelete mechanism. */
 export const deleteProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9081,7 +9272,7 @@ export const deleteProjectsLocationsProductsIntegrationsVersions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsIntegrationsVersionsRequest,
   output: DeleteProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -9112,7 +9303,11 @@ export const UploadProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse;
 
 export type UploadProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an integration. The content can be a previously downloaded integration. Performs the same function as CreateDraftIntegrationVersion, but accepts input in a string format, which holds the complete representation of the IntegrationVersion content. */
 export const uploadProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9123,7 +9318,7 @@ export const uploadProjectsLocationsProductsIntegrationsVersions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadProjectsLocationsProductsIntegrationsVersionsRequest,
   output: UploadProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -9157,7 +9352,9 @@ export const DownloadProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse;
 
 export type DownloadProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads an integration. Retrieves the `IntegrationVersion` for a given `integration_id` and returns the response as a string. */
 export const downloadProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9168,7 +9365,7 @@ export const downloadProjectsLocationsProductsIntegrationsVersions: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadProjectsLocationsProductsIntegrationsVersionsRequest,
   output: DownloadProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -9199,7 +9396,11 @@ export const TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTakeoverEditLockResponse;
 
 export type TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears the `locked_by` and `locked_at_timestamp`in the DRAFT version of this integration. It then performs the same action as the CreateDraftIntegrationVersion (i.e., copies the DRAFT version of the integration as a SNAPSHOT and then creates a new DRAFT version with the `locked_by` set to the `user_taking_over` and the `locked_at_timestamp` set to the current timestamp). Both the `locked_by` and `user_taking_over` are notified via email about the takeover. This RPC throws an exception if the integration is not in DRAFT status or if the `locked_by` and `locked_at_timestamp` fields are not set.The TakeoverEdit lock is treated the same as an edit of the integration, and hence shares ACLs with edit. Audit fields updated include last_modified_timestamp, last_modified_by. */
 export const takeoverEditLockProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9210,7 +9411,7 @@ export const takeoverEditLockProjectsLocationsProductsIntegrationsVersions: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsRequest,
   output: TakeoverEditLockProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnpublishProjectsLocationsProductsIntegrationsVersionsRequest {
@@ -9237,7 +9438,11 @@ export const UnpublishProjectsLocationsProductsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UnpublishProjectsLocationsProductsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED" after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws an exception if the version being snapshot is not ACTIVE. Audit fields added include action, action_by, action_timestamp. */
 export const unpublishProjectsLocationsProductsIntegrationsVersions: API.OperationMethod<
@@ -9248,7 +9453,7 @@ export const unpublishProjectsLocationsProductsIntegrationsVersions: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnpublishProjectsLocationsProductsIntegrationsVersionsRequest,
   output: UnpublishProjectsLocationsProductsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductsIntegrationsExecutionsRequest {
@@ -9358,7 +9563,9 @@ export const ListProjectsLocationsProductsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListExecutionsResponse;
 
 export type ListProjectsLocationsProductsIntegrationsExecutionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the results of all the integration executions. The response includes the same information as the [execution log](https://cloud.google.com/application-integration/docs/viewing-logs) in the Integration UI. */
 export const listProjectsLocationsProductsIntegrationsExecutions: API.PaginatedOperationMethod<
@@ -9369,7 +9576,7 @@ export const listProjectsLocationsProductsIntegrationsExecutions: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsIntegrationsExecutionsRequest,
   output: ListProjectsLocationsProductsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9395,7 +9602,9 @@ export const GetProjectsLocationsProductsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaExecution;
 
 export type GetProjectsLocationsProductsIntegrationsExecutionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an execution in the specified project. */
 export const getProjectsLocationsProductsIntegrationsExecutions: API.OperationMethod<
@@ -9406,7 +9615,7 @@ export const getProjectsLocationsProductsIntegrationsExecutions: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsIntegrationsExecutionsRequest,
   output: GetProjectsLocationsProductsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DownloadProjectsLocationsProductsIntegrationsExecutionsRequest {
@@ -9428,7 +9637,9 @@ export const DownloadProjectsLocationsProductsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaDownloadExecutionResponse;
 
 export type DownloadProjectsLocationsProductsIntegrationsExecutionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Download the execution. */
 export const downloadProjectsLocationsProductsIntegrationsExecutions: API.OperationMethod<
@@ -9439,7 +9650,7 @@ export const downloadProjectsLocationsProductsIntegrationsExecutions: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadProjectsLocationsProductsIntegrationsExecutionsRequest,
   output: DownloadProjectsLocationsProductsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest {
@@ -9466,7 +9677,11 @@ export const ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaResolveSuspensionResponse;
 
 export type ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** * Resolves (lifts/rejects) any number of suspensions. If the integration is already running, only the status of the suspension is updated. Otherwise, the suspended integration will begin execution again. */
 export const resolveProjectsLocationsProductsIntegrationsExecutionsSuspensions: API.OperationMethod<
@@ -9479,7 +9694,7 @@ export const resolveProjectsLocationsProductsIntegrationsExecutionsSuspensions: 
     ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest,
   output:
     ResolveProjectsLocationsProductsIntegrationsExecutionsSuspensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest {
@@ -9513,7 +9728,9 @@ export const ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListSuspensionsResponse;
 
 export type ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** * Lists suspensions associated with a specific execution. Only those with permissions to resolve the relevant suspensions will be able to view them. */
 export const listProjectsLocationsProductsIntegrationsExecutionsSuspensions: API.PaginatedOperationMethod<
@@ -9525,7 +9742,7 @@ export const listProjectsLocationsProductsIntegrationsExecutionsSuspensions: API
   input: ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest,
   output:
     ListProjectsLocationsProductsIntegrationsExecutionsSuspensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9556,7 +9773,11 @@ export const LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaLiftSuspensionResponse;
 
 export type LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** * Lifts suspension for the Suspension task. Fetch corresponding suspension with provided suspension Id, resolve suspension, and set up suspension result for the Suspension Task. */
 export const liftProjectsLocationsProductsIntegrationsExecutionsSuspensions: API.OperationMethod<
@@ -9568,7 +9789,7 @@ export const liftProjectsLocationsProductsIntegrationsExecutionsSuspensions: API
   input: LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsRequest,
   output:
     LiftProjectsLocationsProductsIntegrationsExecutionsSuspensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsProductsSfdcInstancesRequest {
@@ -9598,7 +9819,12 @@ export type CreateProjectsLocationsProductsSfdcInstancesResponse =
 export const CreateProjectsLocationsProductsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcInstance;
 
-export type CreateProjectsLocationsProductsSfdcInstancesError = DefaultErrors;
+export type CreateProjectsLocationsProductsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an sfdc instance record. Store the sfdc instance in Spanner. Returns the sfdc instance. */
 export const createProjectsLocationsProductsSfdcInstances: API.OperationMethod<
@@ -9609,7 +9835,7 @@ export const createProjectsLocationsProductsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsSfdcInstancesRequest,
   output: CreateProjectsLocationsProductsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsProductsSfdcInstancesRequest {
@@ -9638,7 +9864,12 @@ export type PatchProjectsLocationsProductsSfdcInstancesResponse =
 export const PatchProjectsLocationsProductsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcInstance;
 
-export type PatchProjectsLocationsProductsSfdcInstancesError = DefaultErrors;
+export type PatchProjectsLocationsProductsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an sfdc instance. Updates the sfdc instance in spanner. Returns the sfdc instance. */
 export const patchProjectsLocationsProductsSfdcInstances: API.OperationMethod<
@@ -9649,7 +9880,7 @@ export const patchProjectsLocationsProductsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductsSfdcInstancesRequest,
   output: PatchProjectsLocationsProductsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductsSfdcInstancesRequest {
@@ -9670,7 +9901,12 @@ export type DeleteProjectsLocationsProductsSfdcInstancesResponse =
 export const DeleteProjectsLocationsProductsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsProductsSfdcInstancesError = DefaultErrors;
+export type DeleteProjectsLocationsProductsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an sfdc instance. */
 export const deleteProjectsLocationsProductsSfdcInstances: API.OperationMethod<
@@ -9681,7 +9917,7 @@ export const deleteProjectsLocationsProductsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsSfdcInstancesRequest,
   output: DeleteProjectsLocationsProductsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProductsSfdcInstancesRequest {
@@ -9702,7 +9938,10 @@ export type GetProjectsLocationsProductsSfdcInstancesResponse =
 export const GetProjectsLocationsProductsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcInstance;
 
-export type GetProjectsLocationsProductsSfdcInstancesError = DefaultErrors;
+export type GetProjectsLocationsProductsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an sfdc instance. If the instance doesn't exist, Code.NOT_FOUND exception will be thrown. */
 export const getProjectsLocationsProductsSfdcInstances: API.OperationMethod<
@@ -9713,7 +9952,7 @@ export const getProjectsLocationsProductsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsSfdcInstancesRequest,
   output: GetProjectsLocationsProductsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsProductsSfdcInstancesRequest {
@@ -9746,7 +9985,10 @@ export type ListProjectsLocationsProductsSfdcInstancesResponse =
 export const ListProjectsLocationsProductsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse;
 
-export type ListProjectsLocationsProductsSfdcInstancesError = DefaultErrors;
+export type ListProjectsLocationsProductsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all sfdc instances that match the filter. Restrict to sfdc instances belonging to the current client only. */
 export const listProjectsLocationsProductsSfdcInstances: API.PaginatedOperationMethod<
@@ -9757,7 +9999,7 @@ export const listProjectsLocationsProductsSfdcInstances: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsSfdcInstancesRequest,
   output: ListProjectsLocationsProductsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9788,7 +10030,11 @@ export const CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcChannel;
 
 export type CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an sfdc channel record. Store the sfdc channel in Spanner. Returns the sfdc channel. */
 export const createProjectsLocationsProductsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -9799,7 +10045,7 @@ export const createProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest,
   output: CreateProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest {
@@ -9829,7 +10075,11 @@ export const PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcChannel;
 
 export type PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an sfdc channel. Updates the sfdc channel in spanner. Returns the sfdc channel. */
 export const patchProjectsLocationsProductsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -9840,7 +10090,7 @@ export const patchProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest,
   output: PatchProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest {
@@ -9862,7 +10112,11 @@ export const DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an sfdc channel. */
 export const deleteProjectsLocationsProductsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -9873,7 +10127,7 @@ export const deleteProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest,
   output: DeleteProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest {
@@ -9895,7 +10149,9 @@ export const GetProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcChannel;
 
 export type GetProjectsLocationsProductsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an sfdc channel. If the channel doesn't exist, Code.NOT_FOUND exception will be thrown. */
 export const getProjectsLocationsProductsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -9906,7 +10162,7 @@ export const getProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest,
   output: GetProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest {
@@ -9940,7 +10196,9 @@ export const ListProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse;
 
 export type ListProjectsLocationsProductsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all sfdc channels that match the filter. Restrict to sfdc channels belonging to the current client only. */
 export const listProjectsLocationsProductsSfdcInstancesSfdcChannels: API.PaginatedOperationMethod<
@@ -9951,7 +10209,7 @@ export const listProjectsLocationsProductsSfdcInstancesSfdcChannels: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsSfdcInstancesSfdcChannelsRequest,
   output: ListProjectsLocationsProductsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9985,7 +10243,12 @@ export type CreateProjectsLocationsCloudFunctionsResponse =
 export const CreateProjectsLocationsCloudFunctionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCreateCloudFunctionResponse;
 
-export type CreateProjectsLocationsCloudFunctionsError = DefaultErrors;
+export type CreateProjectsLocationsCloudFunctionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a cloud function project. */
 export const createProjectsLocationsCloudFunctions: API.OperationMethod<
@@ -9996,7 +10259,7 @@ export const createProjectsLocationsCloudFunctions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCloudFunctionsRequest,
   output: CreateProjectsLocationsCloudFunctionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCertificatesRequest {
@@ -10029,7 +10292,10 @@ export type ListProjectsLocationsCertificatesResponse =
 export const ListProjectsLocationsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListCertificatesResponse;
 
-export type ListProjectsLocationsCertificatesError = DefaultErrors;
+export type ListProjectsLocationsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all the certificates that match the filter. Restrict to certificate of current client only. */
 export const listProjectsLocationsCertificates: API.PaginatedOperationMethod<
@@ -10040,7 +10306,7 @@ export const listProjectsLocationsCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCertificatesRequest,
   output: ListProjectsLocationsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10065,7 +10331,10 @@ export type GetProjectsLocationsCertificatesResponse =
 export const GetProjectsLocationsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCertificate;
 
-export type GetProjectsLocationsCertificatesError = DefaultErrors;
+export type GetProjectsLocationsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a certificates in the specified project. */
 export const getProjectsLocationsCertificates: API.OperationMethod<
@@ -10076,7 +10345,7 @@ export const getProjectsLocationsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCertificatesRequest,
   output: GetProjectsLocationsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCertificatesRequest {
@@ -10102,7 +10371,12 @@ export type CreateProjectsLocationsCertificatesResponse =
 export const CreateProjectsLocationsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCertificate;
 
-export type CreateProjectsLocationsCertificatesError = DefaultErrors;
+export type CreateProjectsLocationsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new certificate. The certificate will be registered to the trawler service and will be encrypted using cloud KMS and stored in Spanner Returns the certificate. */
 export const createProjectsLocationsCertificates: API.OperationMethod<
@@ -10113,7 +10387,7 @@ export const createProjectsLocationsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCertificatesRequest,
   output: CreateProjectsLocationsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCertificatesRequest {
@@ -10142,7 +10416,12 @@ export type PatchProjectsLocationsCertificatesResponse =
 export const PatchProjectsLocationsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCertificate;
 
-export type PatchProjectsLocationsCertificatesError = DefaultErrors;
+export type PatchProjectsLocationsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the certificate by id. If new certificate file is updated, it will register with the trawler service, re-encrypt with cloud KMS and update the Spanner record. Other fields will directly update the Spanner record. Returns the Certificate. */
 export const patchProjectsLocationsCertificates: API.OperationMethod<
@@ -10153,7 +10432,7 @@ export const patchProjectsLocationsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCertificatesRequest,
   output: PatchProjectsLocationsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCertificatesRequest {
@@ -10173,7 +10452,12 @@ export type DeleteProjectsLocationsCertificatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsCertificatesError = DefaultErrors;
+export type DeleteProjectsLocationsCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a certificate */
 export const deleteProjectsLocationsCertificates: API.OperationMethod<
@@ -10184,7 +10468,7 @@ export const deleteProjectsLocationsCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCertificatesRequest,
   output: DeleteProjectsLocationsCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAuthConfigsRequest {
@@ -10225,7 +10509,12 @@ export type CreateProjectsLocationsAuthConfigsResponse =
 export const CreateProjectsLocationsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaAuthConfig;
 
-export type CreateProjectsLocationsAuthConfigsError = DefaultErrors;
+export type CreateProjectsLocationsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an auth config record. Fetch corresponding credentials for specific auth types, e.g. access token for OAuth 2.0, JWT token for JWT. Encrypt the auth config with Cloud KMS and store the encrypted credentials in Spanner. Returns the encrypted auth config. */
 export const createProjectsLocationsAuthConfigs: API.OperationMethod<
@@ -10236,7 +10525,7 @@ export const createProjectsLocationsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAuthConfigsRequest,
   output: CreateProjectsLocationsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsAuthConfigsRequest {
@@ -10280,7 +10569,12 @@ export type PatchProjectsLocationsAuthConfigsResponse =
 export const PatchProjectsLocationsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaAuthConfig;
 
-export type PatchProjectsLocationsAuthConfigsError = DefaultErrors;
+export type PatchProjectsLocationsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an auth config. If credential is updated, fetch the encrypted auth config from Spanner, decrypt with Cloud KMS key, update the credential fields, re-encrypt with Cloud KMS key and update the Spanner record. For other fields, directly update the Spanner record. Returns the encrypted auth config. */
 export const patchProjectsLocationsAuthConfigs: API.OperationMethod<
@@ -10291,7 +10585,7 @@ export const patchProjectsLocationsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAuthConfigsRequest,
   output: PatchProjectsLocationsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAuthConfigsRequest {
@@ -10311,7 +10605,12 @@ export type DeleteProjectsLocationsAuthConfigsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsAuthConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an auth config. */
 export const deleteProjectsLocationsAuthConfigs: API.OperationMethod<
@@ -10322,7 +10621,7 @@ export const deleteProjectsLocationsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAuthConfigsRequest,
   output: DeleteProjectsLocationsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAuthConfigsRequest {
@@ -10343,7 +10642,10 @@ export type GetProjectsLocationsAuthConfigsResponse =
 export const GetProjectsLocationsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaAuthConfig;
 
-export type GetProjectsLocationsAuthConfigsError = DefaultErrors;
+export type GetProjectsLocationsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a complete auth config. If the auth config doesn't exist, Code.NOT_FOUND exception will be thrown. Returns the decrypted auth config. */
 export const getProjectsLocationsAuthConfigs: API.OperationMethod<
@@ -10354,7 +10656,7 @@ export const getProjectsLocationsAuthConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAuthConfigsRequest,
   output: GetProjectsLocationsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsAuthConfigsRequest {
@@ -10387,7 +10689,10 @@ export type ListProjectsLocationsAuthConfigsResponse =
 export const ListProjectsLocationsAuthConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListAuthConfigsResponse;
 
-export type ListProjectsLocationsAuthConfigsError = DefaultErrors;
+export type ListProjectsLocationsAuthConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all auth configs that match the filter. Restrict to auth configs belong to the current client only. */
 export const listProjectsLocationsAuthConfigs: API.PaginatedOperationMethod<
@@ -10398,7 +10703,7 @@ export const listProjectsLocationsAuthConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAuthConfigsRequest,
   output: ListProjectsLocationsAuthConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10435,7 +10740,10 @@ export type ListProjectsLocationsConnectionsResponse =
 export const ListProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListConnectionsResponse;
 
-export type ListProjectsLocationsConnectionsError = DefaultErrors;
+export type ListProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Connections in a given project and location. */
 export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
@@ -10446,7 +10754,7 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRequest,
   output: ListProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10472,7 +10780,9 @@ export const GetConnectionSchemaMetadataProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaConnectionSchemaMetadata;
 
 export type GetConnectionSchemaMetadataProjectsLocationsConnectionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the available entities and actions associated with a Connection. */
 export const getConnectionSchemaMetadataProjectsLocationsConnections: API.OperationMethod<
@@ -10483,7 +10793,7 @@ export const getConnectionSchemaMetadataProjectsLocationsConnections: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest,
   output: GetConnectionSchemaMetadataProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest {
@@ -10514,7 +10824,9 @@ export const ListProjectsLocationsConnectionsRuntimeEntitySchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListRuntimeEntitySchemasResponse;
 
 export type ListProjectsLocationsConnectionsRuntimeEntitySchemasError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the JSON schemas for the properties of runtime entities, filtered by entity name. */
 export const listProjectsLocationsConnectionsRuntimeEntitySchemas: API.PaginatedOperationMethod<
@@ -10525,7 +10837,7 @@ export const listProjectsLocationsConnectionsRuntimeEntitySchemas: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest,
   output: ListProjectsLocationsConnectionsRuntimeEntitySchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10560,7 +10872,9 @@ export const ListProjectsLocationsConnectionsRuntimeActionSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListRuntimeActionSchemasResponse;
 
 export type ListProjectsLocationsConnectionsRuntimeActionSchemasError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the JSON schemas for the inputs and outputs of actions, filtered by action name. */
 export const listProjectsLocationsConnectionsRuntimeActionSchemas: API.PaginatedOperationMethod<
@@ -10571,7 +10885,7 @@ export const listProjectsLocationsConnectionsRuntimeActionSchemas: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRuntimeActionSchemasRequest,
   output: ListProjectsLocationsConnectionsRuntimeActionSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10601,7 +10915,12 @@ export type ExecuteProjectsLocationsIntegrationsResponse =
 export const ExecuteProjectsLocationsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaExecuteIntegrationsResponse;
 
-export type ExecuteProjectsLocationsIntegrationsError = DefaultErrors;
+export type ExecuteProjectsLocationsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes integrations synchronously by passing the trigger id in the request body. The request is not returned until the requested executions are either fulfilled or experienced an error. If the integration name is not specified (passing `-`), all of the associated integration under the given trigger_id will be executed. Otherwise only the specified integration for the given `trigger_id` is executed. This is helpful for execution the integration from UI. */
 export const executeProjectsLocationsIntegrations: API.OperationMethod<
@@ -10612,7 +10931,7 @@ export const executeProjectsLocationsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsLocationsIntegrationsRequest,
   output: ExecuteProjectsLocationsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ScheduleProjectsLocationsIntegrationsRequest {
@@ -10638,7 +10957,12 @@ export type ScheduleProjectsLocationsIntegrationsResponse =
 export const ScheduleProjectsLocationsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaScheduleIntegrationsResponse;
 
-export type ScheduleProjectsLocationsIntegrationsError = DefaultErrors;
+export type ScheduleProjectsLocationsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Schedules an integration for execution by passing the trigger id and the scheduled time in the request body. */
 export const scheduleProjectsLocationsIntegrations: API.OperationMethod<
@@ -10649,7 +10973,7 @@ export const scheduleProjectsLocationsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScheduleProjectsLocationsIntegrationsRequest,
   output: ScheduleProjectsLocationsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteEventProjectsLocationsIntegrationsRequest {
@@ -10673,7 +10997,12 @@ export type ExecuteEventProjectsLocationsIntegrationsResponse =
 export const ExecuteEventProjectsLocationsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaExecuteEventResponse;
 
-export type ExecuteEventProjectsLocationsIntegrationsError = DefaultErrors;
+export type ExecuteEventProjectsLocationsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes an integration on receiving events from Integration Connector triggers, Eventarc or CPS Trigger. Input data to integration is received in body in json format */
 export const executeEventProjectsLocationsIntegrations: API.OperationMethod<
@@ -10684,7 +11013,7 @@ export const executeEventProjectsLocationsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteEventProjectsLocationsIntegrationsRequest,
   output: ExecuteEventProjectsLocationsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestProjectsLocationsIntegrationsRequest {
@@ -10710,7 +11039,12 @@ export type TestProjectsLocationsIntegrationsResponse =
 export const TestProjectsLocationsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestIntegrationsResponse;
 
-export type TestProjectsLocationsIntegrationsError = DefaultErrors;
+export type TestProjectsLocationsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute the integration in draft state */
 export const testProjectsLocationsIntegrations: API.OperationMethod<
@@ -10721,7 +11055,7 @@ export const testProjectsLocationsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestProjectsLocationsIntegrationsRequest,
   output: TestProjectsLocationsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsIntegrationsRequest {
@@ -10754,7 +11088,10 @@ export type ListProjectsLocationsIntegrationsResponse =
 export const ListProjectsLocationsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListIntegrationsResponse;
 
-export type ListProjectsLocationsIntegrationsError = DefaultErrors;
+export type ListProjectsLocationsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of all integrations in the specified project. */
 export const listProjectsLocationsIntegrations: API.PaginatedOperationMethod<
@@ -10765,7 +11102,7 @@ export const listProjectsLocationsIntegrations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsIntegrationsRequest,
   output: ListProjectsLocationsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10807,7 +11144,10 @@ export type SearchProjectsLocationsIntegrationsResponse =
 export const SearchProjectsLocationsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSearchIntegrationsResponse;
 
-export type SearchProjectsLocationsIntegrationsError = DefaultErrors;
+export type SearchProjectsLocationsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches and returns the list of integrations in the specified project. */
 export const searchProjectsLocationsIntegrations: API.PaginatedOperationMethod<
@@ -10818,7 +11158,7 @@ export const searchProjectsLocationsIntegrations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsIntegrationsRequest,
   output: SearchProjectsLocationsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10842,7 +11182,12 @@ export type DeleteProjectsLocationsIntegrationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsIntegrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsIntegrationsError = DefaultErrors;
+export type DeleteProjectsLocationsIntegrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete the selected integration and all versions inside */
 export const deleteProjectsLocationsIntegrations: API.OperationMethod<
@@ -10853,7 +11198,7 @@ export const deleteProjectsLocationsIntegrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsIntegrationsRequest,
   output: DeleteProjectsLocationsIntegrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsIntegrationsVersionsRequest {
@@ -10889,7 +11234,10 @@ export type ListProjectsLocationsIntegrationsVersionsResponse =
 export const ListProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListIntegrationVersionsResponse;
 
-export type ListProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type ListProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of all integration versions in the specified project. */
 export const listProjectsLocationsIntegrationsVersions: API.PaginatedOperationMethod<
@@ -10900,7 +11248,7 @@ export const listProjectsLocationsIntegrationsVersions: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsIntegrationsVersionsRequest,
   output: ListProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10940,7 +11288,12 @@ export type CreateProjectsLocationsIntegrationsVersionsResponse =
 export const CreateProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaIntegrationVersion;
 
-export type CreateProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type CreateProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a integration with a draft version in the specified project. */
 export const createProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -10951,7 +11304,7 @@ export const createProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsIntegrationsVersionsRequest,
   output: CreateProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsIntegrationsVersionsRequest {
@@ -10980,7 +11333,12 @@ export type PatchProjectsLocationsIntegrationsVersionsResponse =
 export const PatchProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaIntegrationVersion;
 
-export type PatchProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type PatchProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a integration with a draft version in the specified project. */
 export const patchProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -10991,7 +11349,7 @@ export const patchProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsIntegrationsVersionsRequest,
   output: PatchProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsIntegrationsVersionsRequest {
@@ -11012,7 +11370,10 @@ export type GetProjectsLocationsIntegrationsVersionsResponse =
 export const GetProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaIntegrationVersion;
 
-export type GetProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type GetProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a integration in the specified project. */
 export const getProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11023,7 +11384,7 @@ export const getProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsIntegrationsVersionsRequest,
   output: GetProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PublishProjectsLocationsIntegrationsVersionsRequest {
@@ -11049,7 +11410,12 @@ export type PublishProjectsLocationsIntegrationsVersionsResponse =
 export const PublishProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaPublishIntegrationVersionResponse;
 
-export type PublishProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type PublishProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This RPC throws an exception if the integration is in ARCHIVED or ACTIVE state. This RPC throws an exception if the version being published is DRAFT, and if the `locked_by` user is not the same as the user performing the Publish. Audit fields updated include last_published_timestamp, last_published_by, last_modified_timestamp, last_modified_by. Any existing lock is on this integration is released. */
 export const publishProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11060,7 +11426,7 @@ export const publishProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishProjectsLocationsIntegrationsVersionsRequest,
   output: PublishProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsIntegrationsVersionsRequest {
@@ -11081,7 +11447,12 @@ export type DeleteProjectsLocationsIntegrationsVersionsResponse =
 export const DeleteProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Soft-deletes the integration. Changes the status of the integration to ARCHIVED. If the integration being ARCHIVED is tagged as "HEAD", the tag is removed from this snapshot and set to the previous non-ARCHIVED snapshot. The PUBLISH_REQUESTED, DUE_FOR_DELETION tags are removed too. This RPC throws an exception if the version being deleted is DRAFT, and if the `locked_by` user is not the same as the user performing the Delete. Audit fields updated include last_modified_timestamp, last_modified_by. Any existing lock is released when Deleting a integration. Currently, there is no undelete mechanism. */
 export const deleteProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11092,7 +11463,7 @@ export const deleteProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsIntegrationsVersionsRequest,
   output: DeleteProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadProjectsLocationsIntegrationsVersionsRequest {
@@ -11122,7 +11493,12 @@ export type UploadProjectsLocationsIntegrationsVersionsResponse =
 export const UploadProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaUploadIntegrationVersionResponse;
 
-export type UploadProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type UploadProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an integration. The content can be a previously downloaded integration. Performs the same function as CreateDraftIntegrationVersion, but accepts input in a string format, which holds the complete representation of the IntegrationVersion content. */
 export const uploadProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11133,7 +11509,7 @@ export const uploadProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadProjectsLocationsIntegrationsVersionsRequest,
   output: UploadProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadProjectsLocationsIntegrationsVersionsRequest {
@@ -11166,7 +11542,10 @@ export type DownloadProjectsLocationsIntegrationsVersionsResponse =
 export const DownloadProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaDownloadIntegrationVersionResponse;
 
-export type DownloadProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type DownloadProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads an integration. Retrieves the `IntegrationVersion` for a given `integration_id` and returns the response as a string. */
 export const downloadProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11177,7 +11556,7 @@ export const downloadProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadProjectsLocationsIntegrationsVersionsRequest,
   output: DownloadProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest {
@@ -11208,7 +11587,9 @@ export const DownloadJsonPackageProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaDownloadJsonPackageResponse;
 
 export type DownloadJsonPackageProjectsLocationsIntegrationsVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads an Integration version package like IntegrationVersion,Integration Config etc. Retrieves the IntegrationVersion package for a given `integration_id` and returns the response as a JSON. */
 export const downloadJsonPackageProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11219,7 +11600,7 @@ export const downloadJsonPackageProjectsLocationsIntegrationsVersions: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadJsonPackageProjectsLocationsIntegrationsVersionsRequest,
   output: DownloadJsonPackageProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnpublishProjectsLocationsIntegrationsVersionsRequest {
@@ -11245,7 +11626,12 @@ export type UnpublishProjectsLocationsIntegrationsVersionsResponse =
 export const UnpublishProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type UnpublishProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type UnpublishProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY_PUBLISHED" after validating it. The "HEAD" and "PUBLISH_REQUESTED" tags do not change. This RPC throws an exception if the version being snapshot is not ACTIVE. Audit fields added include action, action_by, action_timestamp. */
 export const unpublishProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11256,7 +11642,7 @@ export const unpublishProjectsLocationsIntegrationsVersions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnpublishProjectsLocationsIntegrationsVersionsRequest,
   output: UnpublishProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestProjectsLocationsIntegrationsVersionsRequest {
@@ -11282,7 +11668,12 @@ export type TestProjectsLocationsIntegrationsVersionsResponse =
 export const TestProjectsLocationsIntegrationsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestIntegrationsResponse;
 
-export type TestProjectsLocationsIntegrationsVersionsError = DefaultErrors;
+export type TestProjectsLocationsIntegrationsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Execute the integration in draft state */
 export const testProjectsLocationsIntegrationsVersions: API.OperationMethod<
@@ -11293,7 +11684,7 @@ export const testProjectsLocationsIntegrationsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestProjectsLocationsIntegrationsVersionsRequest,
   output: TestProjectsLocationsIntegrationsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11323,7 +11714,11 @@ export const CreateProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestCase;
 
 export type CreateProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new test case */
 export const createProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11334,7 +11729,7 @@ export const createProjectsLocationsIntegrationsVersionsTestCases: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: CreateProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11356,7 +11751,9 @@ export const GetProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestCase;
 
 export type GetProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a test case */
 export const getProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11367,7 +11764,7 @@ export const getProjectsLocationsIntegrationsVersionsTestCases: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: GetProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11397,7 +11794,11 @@ export const PatchProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestCase;
 
 export type PatchProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a test case */
 export const patchProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11408,7 +11809,7 @@ export const patchProjectsLocationsIntegrationsVersionsTestCases: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: PatchProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11430,7 +11831,11 @@ export const DeleteProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a test case */
 export const deleteProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11441,7 +11846,7 @@ export const deleteProjectsLocationsIntegrationsVersionsTestCases: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: DeleteProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11478,7 +11883,9 @@ export const ListProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListTestCasesResponse;
 
 export type ListProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the test cases that satisfy the filters. */
 export const listProjectsLocationsIntegrationsVersionsTestCases: API.PaginatedOperationMethod<
@@ -11489,7 +11896,7 @@ export const listProjectsLocationsIntegrationsVersionsTestCases: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: ListProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11524,7 +11931,11 @@ export const ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaExecuteTestCaseResponse;
 
 export type ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes functional test */
 export const executeTestProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11535,7 +11946,7 @@ export const executeTestProjectsLocationsIntegrationsVersionsTestCases: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: ExecuteTestProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11566,7 +11977,11 @@ export const UploadProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaUploadTestCaseResponse;
 
 export type UploadProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a test case. The content can be a previously downloaded test case. Performs the same function as CreateTestCase, but accepts input in a string format, which holds the complete representation of the TestCase content. */
 export const uploadProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11577,7 +11992,7 @@ export const uploadProjectsLocationsIntegrationsVersionsTestCases: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: UploadProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11602,7 +12017,9 @@ export const DownloadProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaDownloadTestCaseResponse;
 
 export type DownloadProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads a test case. Retrieves the `TestCase` for a given `test_case_id` and returns the response as a string. */
 export const downloadProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11613,7 +12030,7 @@ export const downloadProjectsLocationsIntegrationsVersionsTestCases: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: DownloadProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11644,7 +12061,11 @@ export const TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTestCase;
 
 export type TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clear the lock fields and assign them to current user */
 export const takeoverEditLockProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11656,7 +12077,7 @@ export const takeoverEditLockProjectsLocationsIntegrationsVersionsTestCases: API
   input: TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output:
     TakeoverEditLockProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest {
@@ -11687,7 +12108,11 @@ export const ExecuteProjectsLocationsIntegrationsVersionsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaExecuteTestCasesResponse;
 
 export type ExecuteProjectsLocationsIntegrationsVersionsTestCasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes all test cases in an integration version. */
 export const executeProjectsLocationsIntegrationsVersionsTestCases: API.OperationMethod<
@@ -11698,7 +12123,7 @@ export const executeProjectsLocationsIntegrationsVersionsTestCases: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsLocationsIntegrationsVersionsTestCasesRequest,
   output: ExecuteProjectsLocationsIntegrationsVersionsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsIntegrationsExecutionsRequest {
@@ -11807,7 +12232,10 @@ export type ListProjectsLocationsIntegrationsExecutionsResponse =
 export const ListProjectsLocationsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListExecutionsResponse;
 
-export type ListProjectsLocationsIntegrationsExecutionsError = DefaultErrors;
+export type ListProjectsLocationsIntegrationsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the results of all the integration executions. The response includes the same information as the [execution log](https://cloud.google.com/application-integration/docs/viewing-logs) in the Integration UI. */
 export const listProjectsLocationsIntegrationsExecutions: API.PaginatedOperationMethod<
@@ -11818,7 +12246,7 @@ export const listProjectsLocationsIntegrationsExecutions: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsIntegrationsExecutionsRequest,
   output: ListProjectsLocationsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11843,7 +12271,10 @@ export type GetProjectsLocationsIntegrationsExecutionsResponse =
 export const GetProjectsLocationsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaExecution;
 
-export type GetProjectsLocationsIntegrationsExecutionsError = DefaultErrors;
+export type GetProjectsLocationsIntegrationsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an execution in the specified project. */
 export const getProjectsLocationsIntegrationsExecutions: API.OperationMethod<
@@ -11854,7 +12285,7 @@ export const getProjectsLocationsIntegrationsExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsIntegrationsExecutionsRequest,
   output: GetProjectsLocationsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsIntegrationsExecutionsRequest {
@@ -11880,7 +12311,12 @@ export type CancelProjectsLocationsIntegrationsExecutionsResponse =
 export const CancelProjectsLocationsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaCancelExecutionResponse;
 
-export type CancelProjectsLocationsIntegrationsExecutionsError = DefaultErrors;
+export type CancelProjectsLocationsIntegrationsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancellation of an execution and associated sub-executions. This will not cancel an IN_PROCESS or completed(SUCCESSFUL, FAILED or CANCELLED) executions. */
 export const cancelProjectsLocationsIntegrationsExecutions: API.OperationMethod<
@@ -11891,7 +12327,7 @@ export const cancelProjectsLocationsIntegrationsExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsIntegrationsExecutionsRequest,
   output: CancelProjectsLocationsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadProjectsLocationsIntegrationsExecutionsRequest {
@@ -11913,7 +12349,9 @@ export const DownloadProjectsLocationsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaDownloadExecutionResponse;
 
 export type DownloadProjectsLocationsIntegrationsExecutionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Download the execution. */
 export const downloadProjectsLocationsIntegrationsExecutions: API.OperationMethod<
@@ -11924,7 +12362,7 @@ export const downloadProjectsLocationsIntegrationsExecutions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadProjectsLocationsIntegrationsExecutionsRequest,
   output: DownloadProjectsLocationsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReplayProjectsLocationsIntegrationsExecutionsRequest {
@@ -11950,7 +12388,12 @@ export type ReplayProjectsLocationsIntegrationsExecutionsResponse =
 export const ReplayProjectsLocationsIntegrationsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaReplayExecutionResponse;
 
-export type ReplayProjectsLocationsIntegrationsExecutionsError = DefaultErrors;
+export type ReplayProjectsLocationsIntegrationsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Re-execute an existing execution, with same request parameters and execution strategy. */
 export const replayProjectsLocationsIntegrationsExecutions: API.OperationMethod<
@@ -11961,7 +12404,7 @@ export const replayProjectsLocationsIntegrationsExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplayProjectsLocationsIntegrationsExecutionsRequest,
   output: ReplayProjectsLocationsIntegrationsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest {
@@ -11988,7 +12431,11 @@ export const ResolveProjectsLocationsIntegrationsExecutionsSuspensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaResolveSuspensionResponse;
 
 export type ResolveProjectsLocationsIntegrationsExecutionsSuspensionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** * Resolves (lifts/rejects) any number of suspensions. If the integration is already running, only the status of the suspension is updated. Otherwise, the suspended integration will begin execution again. */
 export const resolveProjectsLocationsIntegrationsExecutionsSuspensions: API.OperationMethod<
@@ -11999,7 +12446,7 @@ export const resolveProjectsLocationsIntegrationsExecutionsSuspensions: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveProjectsLocationsIntegrationsExecutionsSuspensionsRequest,
   output: ResolveProjectsLocationsIntegrationsExecutionsSuspensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest {
@@ -12033,7 +12480,9 @@ export const ListProjectsLocationsIntegrationsExecutionsSuspensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListSuspensionsResponse;
 
 export type ListProjectsLocationsIntegrationsExecutionsSuspensionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** * Lists suspensions associated with a specific execution. Only those with permissions to resolve the relevant suspensions will be able to view them. */
 export const listProjectsLocationsIntegrationsExecutionsSuspensions: API.PaginatedOperationMethod<
@@ -12044,7 +12493,7 @@ export const listProjectsLocationsIntegrationsExecutionsSuspensions: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsIntegrationsExecutionsSuspensionsRequest,
   output: ListProjectsLocationsIntegrationsExecutionsSuspensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12075,7 +12524,11 @@ export const LiftProjectsLocationsIntegrationsExecutionsSuspensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaLiftSuspensionResponse;
 
 export type LiftProjectsLocationsIntegrationsExecutionsSuspensionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** * Lifts suspension for the Suspension task. Fetch corresponding suspension with provided suspension Id, resolve suspension, and set up suspension result for the Suspension Task. */
 export const liftProjectsLocationsIntegrationsExecutionsSuspensions: API.OperationMethod<
@@ -12086,7 +12539,7 @@ export const liftProjectsLocationsIntegrationsExecutionsSuspensions: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LiftProjectsLocationsIntegrationsExecutionsSuspensionsRequest,
   output: LiftProjectsLocationsIntegrationsExecutionsSuspensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsSfdcInstancesRequest {
@@ -12116,7 +12569,12 @@ export type CreateProjectsLocationsSfdcInstancesResponse =
 export const CreateProjectsLocationsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcInstance;
 
-export type CreateProjectsLocationsSfdcInstancesError = DefaultErrors;
+export type CreateProjectsLocationsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an sfdc instance record. Store the sfdc instance in Spanner. Returns the sfdc instance. */
 export const createProjectsLocationsSfdcInstances: API.OperationMethod<
@@ -12127,7 +12585,7 @@ export const createProjectsLocationsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSfdcInstancesRequest,
   output: CreateProjectsLocationsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsSfdcInstancesRequest {
@@ -12156,7 +12614,12 @@ export type PatchProjectsLocationsSfdcInstancesResponse =
 export const PatchProjectsLocationsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcInstance;
 
-export type PatchProjectsLocationsSfdcInstancesError = DefaultErrors;
+export type PatchProjectsLocationsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an sfdc instance. Updates the sfdc instance in spanner. Returns the sfdc instance. */
 export const patchProjectsLocationsSfdcInstances: API.OperationMethod<
@@ -12167,7 +12630,7 @@ export const patchProjectsLocationsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSfdcInstancesRequest,
   output: PatchProjectsLocationsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSfdcInstancesRequest {
@@ -12187,7 +12650,12 @@ export type DeleteProjectsLocationsSfdcInstancesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsSfdcInstancesError = DefaultErrors;
+export type DeleteProjectsLocationsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an sfdc instance. */
 export const deleteProjectsLocationsSfdcInstances: API.OperationMethod<
@@ -12198,7 +12666,7 @@ export const deleteProjectsLocationsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSfdcInstancesRequest,
   output: DeleteProjectsLocationsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSfdcInstancesRequest {
@@ -12219,7 +12687,10 @@ export type GetProjectsLocationsSfdcInstancesResponse =
 export const GetProjectsLocationsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcInstance;
 
-export type GetProjectsLocationsSfdcInstancesError = DefaultErrors;
+export type GetProjectsLocationsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an sfdc instance. If the instance doesn't exist, Code.NOT_FOUND exception will be thrown. */
 export const getProjectsLocationsSfdcInstances: API.OperationMethod<
@@ -12230,7 +12701,7 @@ export const getProjectsLocationsSfdcInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSfdcInstancesRequest,
   output: GetProjectsLocationsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSfdcInstancesRequest {
@@ -12263,7 +12734,10 @@ export type ListProjectsLocationsSfdcInstancesResponse =
 export const ListProjectsLocationsSfdcInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListSfdcInstancesResponse;
 
-export type ListProjectsLocationsSfdcInstancesError = DefaultErrors;
+export type ListProjectsLocationsSfdcInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all sfdc instances that match the filter. Restrict to sfdc instances belonging to the current client only. */
 export const listProjectsLocationsSfdcInstances: API.PaginatedOperationMethod<
@@ -12274,7 +12748,7 @@ export const listProjectsLocationsSfdcInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSfdcInstancesRequest,
   output: ListProjectsLocationsSfdcInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12305,7 +12779,11 @@ export const CreateProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcChannel;
 
 export type CreateProjectsLocationsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an sfdc channel record. Store the sfdc channel in Spanner. Returns the sfdc channel. */
 export const createProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -12316,7 +12794,7 @@ export const createProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSfdcInstancesSfdcChannelsRequest,
   output: CreateProjectsLocationsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest {
@@ -12346,7 +12824,11 @@ export const PatchProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcChannel;
 
 export type PatchProjectsLocationsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an sfdc channel. Updates the sfdc channel in spanner. Returns the sfdc channel. */
 export const patchProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -12357,7 +12839,7 @@ export const patchProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsSfdcInstancesSfdcChannelsRequest,
   output: PatchProjectsLocationsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest {
@@ -12379,7 +12861,11 @@ export const DeleteProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsSfdcInstancesSfdcChannelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an sfdc channel. */
 export const deleteProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -12390,7 +12876,7 @@ export const deleteProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSfdcInstancesSfdcChannelsRequest,
   output: DeleteProjectsLocationsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSfdcInstancesSfdcChannelsRequest {
@@ -12411,7 +12897,10 @@ export type GetProjectsLocationsSfdcInstancesSfdcChannelsResponse =
 export const GetProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSfdcChannel;
 
-export type GetProjectsLocationsSfdcInstancesSfdcChannelsError = DefaultErrors;
+export type GetProjectsLocationsSfdcInstancesSfdcChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an sfdc channel. If the channel doesn't exist, Code.NOT_FOUND exception will be thrown. */
 export const getProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMethod<
@@ -12422,7 +12911,7 @@ export const getProjectsLocationsSfdcInstancesSfdcChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSfdcInstancesSfdcChannelsRequest,
   output: GetProjectsLocationsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSfdcInstancesSfdcChannelsRequest {
@@ -12455,7 +12944,10 @@ export type ListProjectsLocationsSfdcInstancesSfdcChannelsResponse =
 export const ListProjectsLocationsSfdcInstancesSfdcChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListSfdcChannelsResponse;
 
-export type ListProjectsLocationsSfdcInstancesSfdcChannelsError = DefaultErrors;
+export type ListProjectsLocationsSfdcInstancesSfdcChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all sfdc channels that match the filter. Restrict to sfdc channels belonging to the current client only. */
 export const listProjectsLocationsSfdcInstancesSfdcChannels: API.PaginatedOperationMethod<
@@ -12466,7 +12958,7 @@ export const listProjectsLocationsSfdcInstancesSfdcChannels: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSfdcInstancesSfdcChannelsRequest,
   output: ListProjectsLocationsSfdcInstancesSfdcChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12506,7 +12998,10 @@ export type ListProjectsLocationsTemplatesResponse =
 export const ListProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaListTemplatesResponse;
 
-export type ListProjectsLocationsTemplatesError = DefaultErrors;
+export type ListProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all templates matching the filter. */
 export const listProjectsLocationsTemplates: API.PaginatedOperationMethod<
@@ -12517,7 +13012,7 @@ export const listProjectsLocationsTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTemplatesRequest,
   output: ListProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12542,7 +13037,10 @@ export type GetProjectsLocationsTemplatesResponse =
 export const GetProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTemplate;
 
-export type GetProjectsLocationsTemplatesError = DefaultErrors;
+export type GetProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a template in the specified project. */
 export const getProjectsLocationsTemplates: API.OperationMethod<
@@ -12553,7 +13051,7 @@ export const getProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTemplatesRequest,
   output: GetProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsTemplatesRequest {
@@ -12579,7 +13077,12 @@ export type CreateProjectsLocationsTemplatesResponse =
 export const CreateProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTemplate;
 
-export type CreateProjectsLocationsTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new template */
 export const createProjectsLocationsTemplates: API.OperationMethod<
@@ -12590,7 +13093,7 @@ export const createProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTemplatesRequest,
   output: CreateProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsTemplatesRequest {
@@ -12619,7 +13122,12 @@ export type PatchProjectsLocationsTemplatesResponse =
 export const PatchProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaTemplate;
 
-export type PatchProjectsLocationsTemplatesError = DefaultErrors;
+export type PatchProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the template by given id. */
 export const patchProjectsLocationsTemplates: API.OperationMethod<
@@ -12630,7 +13138,7 @@ export const patchProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsTemplatesRequest,
   output: PatchProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsTemplatesRequest {
@@ -12650,7 +13158,12 @@ export type DeleteProjectsLocationsTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a template */
 export const deleteProjectsLocationsTemplates: API.OperationMethod<
@@ -12661,7 +13174,7 @@ export const deleteProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTemplatesRequest,
   output: DeleteProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsLocationsTemplatesRequest {
@@ -12705,7 +13218,10 @@ export type SearchProjectsLocationsTemplatesResponse =
 export const SearchProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaSearchTemplatesResponse;
 
-export type SearchProjectsLocationsTemplatesError = DefaultErrors;
+export type SearchProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Search templates based on user query and filters. This api would query the templates and return a list of templates based on the user filter. */
 export const searchProjectsLocationsTemplates: API.PaginatedOperationMethod<
@@ -12716,7 +13232,7 @@ export const searchProjectsLocationsTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsTemplatesRequest,
   output: SearchProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12746,7 +13262,12 @@ export type UseProjectsLocationsTemplatesResponse =
 export const UseProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaUseTemplateResponse;
 
-export type UseProjectsLocationsTemplatesError = DefaultErrors;
+export type UseProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Use the template to create integration. This api would keep track of usage_count and last_used_time. PERMISSION_DENIED would be thrown if template is not accessible by client. */
 export const useProjectsLocationsTemplates: API.OperationMethod<
@@ -12757,7 +13278,7 @@ export const useProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UseProjectsLocationsTemplatesRequest,
   output: UseProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsTemplatesRequest {
@@ -12783,7 +13304,12 @@ export type ImportProjectsLocationsTemplatesResponse =
 export const ImportProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaImportTemplateResponse;
 
-export type ImportProjectsLocationsTemplatesError = DefaultErrors;
+export type ImportProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Import the template to an existing integration. This api would keep track of usage_count and last_used_time. PERMISSION_DENIED would be thrown if template is not accessible by client. */
 export const importProjectsLocationsTemplates: API.OperationMethod<
@@ -12794,7 +13320,7 @@ export const importProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsTemplatesRequest,
   output: ImportProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ShareProjectsLocationsTemplatesRequest {
@@ -12819,7 +13345,12 @@ export type ShareProjectsLocationsTemplatesResponse = GoogleProtobufEmpty;
 export const ShareProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type ShareProjectsLocationsTemplatesError = DefaultErrors;
+export type ShareProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Share a template with other clients. Only the template owner can share the templates with other projects. PERMISSION_DENIED would be thrown if the request is not from the owner. */
 export const shareProjectsLocationsTemplates: API.OperationMethod<
@@ -12830,7 +13361,7 @@ export const shareProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ShareProjectsLocationsTemplatesRequest,
   output: ShareProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnshareProjectsLocationsTemplatesRequest {
@@ -12855,7 +13386,12 @@ export type UnshareProjectsLocationsTemplatesResponse = GoogleProtobufEmpty;
 export const UnshareProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type UnshareProjectsLocationsTemplatesError = DefaultErrors;
+export type UnshareProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unshare a template from given clients. Owner of the template can unshare template with clients. Shared client can only unshare the template from itself. PERMISSION_DENIED would be thrown if request is not from owner or for unsharing itself. */
 export const unshareProjectsLocationsTemplates: API.OperationMethod<
@@ -12866,7 +13402,7 @@ export const unshareProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnshareProjectsLocationsTemplatesRequest,
   output: UnshareProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadProjectsLocationsTemplatesRequest {
@@ -12896,7 +13432,12 @@ export type UploadProjectsLocationsTemplatesResponse =
 export const UploadProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaUploadTemplateResponse;
 
-export type UploadProjectsLocationsTemplatesError = DefaultErrors;
+export type UploadProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a template. The content can be a previously downloaded template. Performs the same function as CreateTemplate, but accepts input in a string format, which holds the complete representation of the Template content. */
 export const uploadProjectsLocationsTemplates: API.OperationMethod<
@@ -12907,7 +13448,7 @@ export const uploadProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadProjectsLocationsTemplatesRequest,
   output: UploadProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadProjectsLocationsTemplatesRequest {
@@ -12931,7 +13472,10 @@ export type DownloadProjectsLocationsTemplatesResponse =
 export const DownloadProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaDownloadTemplateResponse;
 
-export type DownloadProjectsLocationsTemplatesError = DefaultErrors;
+export type DownloadProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Downloads a template. Retrieves the `Template` and returns the response as a string. */
 export const downloadProjectsLocationsTemplates: API.OperationMethod<
@@ -12942,7 +13486,7 @@ export const downloadProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadProjectsLocationsTemplatesRequest,
   output: DownloadProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnumerateConnectorPlatformRegionsRequest {}
@@ -12958,7 +13502,10 @@ export type EnumerateConnectorPlatformRegionsResponse =
 export const EnumerateConnectorPlatformRegionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaEnumerateConnectorPlatformRegionsResponse;
 
-export type EnumerateConnectorPlatformRegionsError = DefaultErrors;
+export type EnumerateConnectorPlatformRegionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Enumerates the regions for which Connector Platform is provisioned. */
 export const enumerateConnectorPlatformRegions: API.OperationMethod<
@@ -12969,7 +13516,7 @@ export const enumerateConnectorPlatformRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnumerateConnectorPlatformRegionsRequest,
   output: EnumerateConnectorPlatformRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateTokenCallbackRequest {
@@ -13011,7 +13558,7 @@ export type GenerateTokenCallbackResponse =
 export const GenerateTokenCallbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudIntegrationsV1alphaGenerateTokenResponse;
 
-export type GenerateTokenCallbackError = DefaultErrors;
+export type GenerateTokenCallbackError = DefaultErrors | NotFound | Forbidden;
 
 /** Receives the auth code and auth config id to combine that with the client id and secret to retrieve access tokens from the token endpoint. Returns either a success or error message when it's done. */
 export const generateTokenCallback: API.OperationMethod<
@@ -13022,5 +13569,5 @@ export const generateTokenCallback: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateTokenCallbackRequest,
   output: GenerateTokenCallbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -7117,6 +7117,52 @@ export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -7142,7 +7188,12 @@ export type SetAddonsOrganizationsResponse = GoogleLongrunningOperation;
 export const SetAddonsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type SetAddonsOrganizationsError = DefaultErrors;
+export type SetAddonsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Configures the add-ons for the Apigee organization. The existing add-on configuration will be fully replaced. */
 export const setAddonsOrganizations: API.OperationMethod<
@@ -7153,7 +7204,7 @@ export const setAddonsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAddonsOrganizationsRequest,
   output: SetAddonsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSyncAuthorizationOrganizationsRequest {
@@ -7183,7 +7234,12 @@ export type GetSyncAuthorizationOrganizationsResponse =
 export const GetSyncAuthorizationOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SyncAuthorization;
 
-export type GetSyncAuthorizationOrganizationsError = DefaultErrors;
+export type GetSyncAuthorizationOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the service accounts with the permissions required to allow the Synchronizer to download environment data from the control plane. An ETag is returned in the response to `getSyncAuthorization`. Pass that ETag when calling [setSyncAuthorization](setSyncAuthorization) to ensure that you are updating the correct version. If you don't pass the ETag in the call to `setSyncAuthorization`, then the existing authorization is overwritten indiscriminately. For more information, see [Configure the Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access). **Note**: Available to Apigee hybrid only. */
 export const getSyncAuthorizationOrganizations: API.OperationMethod<
@@ -7194,7 +7250,7 @@ export const getSyncAuthorizationOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSyncAuthorizationOrganizationsRequest,
   output: GetSyncAuthorizationOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRuntimeConfigOrganizationsRequest {
@@ -7215,7 +7271,10 @@ export type GetRuntimeConfigOrganizationsResponse =
 export const GetRuntimeConfigOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RuntimeConfig;
 
-export type GetRuntimeConfigOrganizationsError = DefaultErrors;
+export type GetRuntimeConfigOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get runtime config for an organization. */
 export const getRuntimeConfigOrganizations: API.OperationMethod<
@@ -7226,7 +7285,7 @@ export const getRuntimeConfigOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuntimeConfigOrganizationsRequest,
   output: GetRuntimeConfigOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsRequest {
@@ -7247,7 +7306,7 @@ export type ListOrganizationsResponse =
 export const ListOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListOrganizationsResponse;
 
-export type ListOrganizationsError = DefaultErrors;
+export type ListOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the Apigee organizations and associated Google Cloud projects that you have permission to access. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure). */
 export const listOrganizations: API.OperationMethod<
@@ -7258,7 +7317,7 @@ export const listOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsRequest,
   output: ListOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsRequest {
@@ -7281,7 +7340,12 @@ export type CreateOrganizationsResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsError = DefaultErrors;
+export type CreateOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org). */
 export const createOrganizations: API.OperationMethod<
@@ -7292,7 +7356,7 @@ export const createOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsRequest,
   output: CreateOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectMappingOrganizationsRequest {
@@ -7313,7 +7377,10 @@ export type GetProjectMappingOrganizationsResponse =
 export const GetProjectMappingOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1OrganizationProjectMapping;
 
-export type GetProjectMappingOrganizationsError = DefaultErrors;
+export type GetProjectMappingOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the project ID and region for an Apigee organization. */
 export const getProjectMappingOrganizations: API.OperationMethod<
@@ -7324,7 +7391,7 @@ export const getProjectMappingOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectMappingOrganizationsRequest,
   output: GetProjectMappingOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsRequest {
@@ -7347,7 +7414,12 @@ export type UpdateOrganizationsResponse = GoogleCloudApigeeV1Organization;
 export const UpdateOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Organization;
 
-export type UpdateOrganizationsError = DefaultErrors;
+export type UpdateOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the properties for an Apigee organization. No other fields in the organization profile will be updated. */
 export const updateOrganizations: API.OperationMethod<
@@ -7358,7 +7430,7 @@ export const updateOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsRequest,
   output: UpdateOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsRequest {
@@ -7381,7 +7453,12 @@ export type DeleteOrganizationsResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsError = DefaultErrors;
+export type DeleteOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an Apigee organization. For organizations with BillingType EVALUATION, an immediate deletion is performed. For paid organizations (Subscription or Pay-as-you-go), a soft-deletion is performed. The organization can be restored within the soft-deletion period, which is specified using the `retention` field in the request or by filing a support ticket with Apigee. During the data retention period specified in the request, the Apigee organization cannot be recreated in the same Google Cloud project. **IMPORTANT: The default data retention setting for this operation is 7 days. To permanently delete the organization in 24 hours, set the retention parameter to `MINIMUM`.** */
 export const deleteOrganizations: API.OperationMethod<
@@ -7392,7 +7469,7 @@ export const deleteOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsRequest,
   output: DeleteOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetControlPlaneAccessOrganizationsRequest {
@@ -7413,7 +7490,10 @@ export type GetControlPlaneAccessOrganizationsResponse =
 export const GetControlPlaneAccessOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ControlPlaneAccess;
 
-export type GetControlPlaneAccessOrganizationsError = DefaultErrors;
+export type GetControlPlaneAccessOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the service accounts allowed to access Apigee control plane directly for limited functionality. **Note**: Available to Apigee hybrid only. */
 export const getControlPlaneAccessOrganizations: API.OperationMethod<
@@ -7424,7 +7504,7 @@ export const getControlPlaneAccessOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetControlPlaneAccessOrganizationsRequest,
   output: GetControlPlaneAccessOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateControlPlaneAccessOrganizationsRequest {
@@ -7453,7 +7533,12 @@ export type UpdateControlPlaneAccessOrganizationsResponse =
 export const UpdateControlPlaneAccessOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type UpdateControlPlaneAccessOrganizationsError = DefaultErrors;
+export type UpdateControlPlaneAccessOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the permissions required to allow Apigee runtime-plane components access to the control plane. Currently, the permissions required are to: 1. Allow runtime components to publish analytics data to the control plane. **Note**: Available to Apigee hybrid only. */
 export const updateControlPlaneAccessOrganizations: API.OperationMethod<
@@ -7464,7 +7549,7 @@ export const updateControlPlaneAccessOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateControlPlaneAccessOrganizationsRequest,
   output: UpdateControlPlaneAccessOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsRequest {
@@ -7484,7 +7569,7 @@ export type GetOrganizationsResponse = GoogleCloudApigeeV1Organization;
 export const GetOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Organization;
 
-export type GetOrganizationsError = DefaultErrors;
+export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the profile for an Apigee organization. See [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure). */
 export const getOrganizations: API.OperationMethod<
@@ -7495,7 +7580,7 @@ export const getOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsRequest,
   output: GetOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetSyncAuthorizationOrganizationsRequest {
@@ -7525,7 +7610,12 @@ export type SetSyncAuthorizationOrganizationsResponse =
 export const SetSyncAuthorizationOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SyncAuthorization;
 
-export type SetSyncAuthorizationOrganizationsError = DefaultErrors;
+export type SetSyncAuthorizationOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the permissions required to allow the Synchronizer to download environment data from the control plane. You must call this API to enable proper functioning of hybrid. Pass the ETag when calling `setSyncAuthorization` to ensure that you are updating the correct version. To get an ETag, call [getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag in the call to `setSyncAuthorization`, then the existing authorization is overwritten indiscriminately. For more information, see [Configure the Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access). **Note**: Available to Apigee hybrid only. */
 export const setSyncAuthorizationOrganizations: API.OperationMethod<
@@ -7536,7 +7626,7 @@ export const setSyncAuthorizationOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSyncAuthorizationOrganizationsRequest,
   output: SetSyncAuthorizationOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDeployedIngressConfigOrganizationsRequest {
@@ -7560,7 +7650,10 @@ export type GetDeployedIngressConfigOrganizationsResponse =
 export const GetDeployedIngressConfigOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1IngressConfig;
 
-export type GetDeployedIngressConfigOrganizationsError = DefaultErrors;
+export type GetDeployedIngressConfigOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the deployed ingress configuration for an organization. */
 export const getDeployedIngressConfigOrganizations: API.OperationMethod<
@@ -7571,7 +7664,7 @@ export const getDeployedIngressConfigOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeployedIngressConfigOrganizationsRequest,
   output: GetDeployedIngressConfigOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSecuritySettingsOrganizationsRequest {
@@ -7592,7 +7685,10 @@ export type GetSecuritySettingsOrganizationsResponse =
 export const GetSecuritySettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecuritySettings;
 
-export type GetSecuritySettingsOrganizationsError = DefaultErrors;
+export type GetSecuritySettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetSecuritySettings gets the security settings for API Security. */
 export const getSecuritySettingsOrganizations: API.OperationMethod<
@@ -7603,7 +7699,7 @@ export const getSecuritySettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecuritySettingsOrganizationsRequest,
   output: GetSecuritySettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSecuritySettingsOrganizationsRequest {
@@ -7632,7 +7728,12 @@ export type UpdateSecuritySettingsOrganizationsResponse =
 export const UpdateSecuritySettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecuritySettings;
 
-export type UpdateSecuritySettingsOrganizationsError = DefaultErrors;
+export type UpdateSecuritySettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** UpdateSecuritySettings updates the current security settings for API Security. */
 export const updateSecuritySettingsOrganizations: API.OperationMethod<
@@ -7643,7 +7744,7 @@ export const updateSecuritySettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecuritySettingsOrganizationsRequest,
   output: UpdateSecuritySettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsDnsZonesRequest {
@@ -7669,7 +7770,12 @@ export type CreateOrganizationsDnsZonesResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsDnsZonesError = DefaultErrors;
+export type CreateOrganizationsDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new DNS zone. */
 export const createOrganizationsDnsZones: API.OperationMethod<
@@ -7680,7 +7786,7 @@ export const createOrganizationsDnsZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDnsZonesRequest,
   output: CreateOrganizationsDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsDnsZonesRequest {
@@ -7700,7 +7806,10 @@ export type GetOrganizationsDnsZonesResponse = GoogleCloudApigeeV1DnsZone;
 export const GetOrganizationsDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DnsZone;
 
-export type GetOrganizationsDnsZonesError = DefaultErrors;
+export type GetOrganizationsDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetches the representation of an existing DNS zone. */
 export const getOrganizationsDnsZones: API.OperationMethod<
@@ -7711,7 +7820,7 @@ export const getOrganizationsDnsZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDnsZonesRequest,
   output: GetOrganizationsDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsDnsZonesRequest {
@@ -7738,7 +7847,10 @@ export type ListOrganizationsDnsZonesResponse =
 export const ListOrganizationsDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDnsZonesResponse;
 
-export type ListOrganizationsDnsZonesError = DefaultErrors;
+export type ListOrganizationsDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Enumerates DNS zones that have been created but not yet deleted. */
 export const listOrganizationsDnsZones: API.PaginatedOperationMethod<
@@ -7749,7 +7861,7 @@ export const listOrganizationsDnsZones: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDnsZonesRequest,
   output: ListOrganizationsDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7773,7 +7885,12 @@ export type DeleteOrganizationsDnsZonesResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsDnsZonesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsDnsZonesError = DefaultErrors;
+export type DeleteOrganizationsDnsZonesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a previously created DNS zone. */
 export const deleteOrganizationsDnsZones: API.OperationMethod<
@@ -7784,7 +7901,7 @@ export const deleteOrganizationsDnsZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDnsZonesRequest,
   output: DeleteOrganizationsDnsZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSitesApicategoriesRequest {
@@ -7808,7 +7925,12 @@ export type PatchOrganizationsSitesApicategoriesResponse =
 export const PatchOrganizationsSitesApicategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
 
-export type PatchOrganizationsSitesApicategoriesError = DefaultErrors;
+export type PatchOrganizationsSitesApicategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an API category. */
 export const patchOrganizationsSitesApicategories: API.OperationMethod<
@@ -7819,7 +7941,7 @@ export const patchOrganizationsSitesApicategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSitesApicategoriesRequest,
   output: PatchOrganizationsSitesApicategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsSitesApicategoriesRequest {
@@ -7840,7 +7962,12 @@ export type DeleteOrganizationsSitesApicategoriesResponse =
 export const DeleteOrganizationsSitesApicategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeleteResponse;
 
-export type DeleteOrganizationsSitesApicategoriesError = DefaultErrors;
+export type DeleteOrganizationsSitesApicategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an API category. */
 export const deleteOrganizationsSitesApicategories: API.OperationMethod<
@@ -7851,7 +7978,7 @@ export const deleteOrganizationsSitesApicategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSitesApicategoriesRequest,
   output: DeleteOrganizationsSitesApicategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSitesApicategoriesRequest {
@@ -7879,7 +8006,12 @@ export type CreateOrganizationsSitesApicategoriesResponse =
 export const CreateOrganizationsSitesApicategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
 
-export type CreateOrganizationsSitesApicategoriesError = DefaultErrors;
+export type CreateOrganizationsSitesApicategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new API category. */
 export const createOrganizationsSitesApicategories: API.OperationMethod<
@@ -7890,7 +8022,7 @@ export const createOrganizationsSitesApicategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSitesApicategoriesRequest,
   output: CreateOrganizationsSitesApicategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSitesApicategoriesRequest {
@@ -7911,7 +8043,10 @@ export type GetOrganizationsSitesApicategoriesResponse =
 export const GetOrganizationsSitesApicategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiCategoryResponse;
 
-export type GetOrganizationsSitesApicategoriesError = DefaultErrors;
+export type GetOrganizationsSitesApicategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an API category. */
 export const getOrganizationsSitesApicategories: API.OperationMethod<
@@ -7922,7 +8057,7 @@ export const getOrganizationsSitesApicategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSitesApicategoriesRequest,
   output: GetOrganizationsSitesApicategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSitesApicategoriesRequest {
@@ -7943,7 +8078,10 @@ export type ListOrganizationsSitesApicategoriesResponse =
 export const ListOrganizationsSitesApicategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiCategoriesResponse;
 
-export type ListOrganizationsSitesApicategoriesError = DefaultErrors;
+export type ListOrganizationsSitesApicategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the API categories associated with a portal. */
 export const listOrganizationsSitesApicategories: API.OperationMethod<
@@ -7954,7 +8092,7 @@ export const listOrganizationsSitesApicategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsSitesApicategoriesRequest,
   output: ListOrganizationsSitesApicategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateDocumentationOrganizationsSitesApidocsRequest {
@@ -7980,7 +8118,12 @@ export type UpdateDocumentationOrganizationsSitesApidocsResponse =
 export const UpdateDocumentationOrganizationsSitesApidocsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocDocumentationResponse;
 
-export type UpdateDocumentationOrganizationsSitesApidocsError = DefaultErrors;
+export type UpdateDocumentationOrganizationsSitesApidocsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the documentation for the specified catalog item. Note that the documentation file contents will not be populated in the return message. */
 export const updateDocumentationOrganizationsSitesApidocs: API.OperationMethod<
@@ -7991,7 +8134,7 @@ export const updateDocumentationOrganizationsSitesApidocs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDocumentationOrganizationsSitesApidocsRequest,
   output: UpdateDocumentationOrganizationsSitesApidocsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsSitesApidocsRequest {
@@ -8015,7 +8158,12 @@ export type UpdateOrganizationsSitesApidocsResponse =
 export const UpdateOrganizationsSitesApidocsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
 
-export type UpdateOrganizationsSitesApidocsError = DefaultErrors;
+export type UpdateOrganizationsSitesApidocsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a catalog item. */
 export const updateOrganizationsSitesApidocs: API.OperationMethod<
@@ -8026,7 +8174,7 @@ export const updateOrganizationsSitesApidocs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsSitesApidocsRequest,
   output: UpdateOrganizationsSitesApidocsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsSitesApidocsRequest {
@@ -8047,7 +8195,12 @@ export type DeleteOrganizationsSitesApidocsResponse =
 export const DeleteOrganizationsSitesApidocsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeleteResponse;
 
-export type DeleteOrganizationsSitesApidocsError = DefaultErrors;
+export type DeleteOrganizationsSitesApidocsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a catalog item. */
 export const deleteOrganizationsSitesApidocs: API.OperationMethod<
@@ -8058,7 +8211,7 @@ export const deleteOrganizationsSitesApidocs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSitesApidocsRequest,
   output: DeleteOrganizationsSitesApidocsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDocumentationOrganizationsSitesApidocsRequest {
@@ -8079,7 +8232,10 @@ export type GetDocumentationOrganizationsSitesApidocsResponse =
 export const GetDocumentationOrganizationsSitesApidocsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocDocumentationResponse;
 
-export type GetDocumentationOrganizationsSitesApidocsError = DefaultErrors;
+export type GetDocumentationOrganizationsSitesApidocsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the documentation for the specified catalog item. */
 export const getDocumentationOrganizationsSitesApidocs: API.OperationMethod<
@@ -8090,7 +8246,7 @@ export const getDocumentationOrganizationsSitesApidocs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDocumentationOrganizationsSitesApidocsRequest,
   output: GetDocumentationOrganizationsSitesApidocsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsSitesApidocsRequest {
@@ -8111,7 +8267,10 @@ export type GetOrganizationsSitesApidocsResponse =
 export const GetOrganizationsSitesApidocsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
 
-export type GetOrganizationsSitesApidocsError = DefaultErrors;
+export type GetOrganizationsSitesApidocsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a catalog item. */
 export const getOrganizationsSitesApidocs: API.OperationMethod<
@@ -8122,7 +8281,7 @@ export const getOrganizationsSitesApidocs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSitesApidocsRequest,
   output: GetOrganizationsSitesApidocsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsSitesApidocsRequest {
@@ -8146,7 +8305,12 @@ export type CreateOrganizationsSitesApidocsResponse =
 export const CreateOrganizationsSitesApidocsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiDocResponse;
 
-export type CreateOrganizationsSitesApidocsError = DefaultErrors;
+export type CreateOrganizationsSitesApidocsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new catalog item. */
 export const createOrganizationsSitesApidocs: API.OperationMethod<
@@ -8157,7 +8321,7 @@ export const createOrganizationsSitesApidocs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSitesApidocsRequest,
   output: CreateOrganizationsSitesApidocsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSitesApidocsRequest {
@@ -8184,7 +8348,10 @@ export type ListOrganizationsSitesApidocsResponse =
 export const ListOrganizationsSitesApidocsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiDocsResponse;
 
-export type ListOrganizationsSitesApidocsError = DefaultErrors;
+export type ListOrganizationsSitesApidocsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the catalog items associated with a portal. */
 export const listOrganizationsSitesApidocs: API.PaginatedOperationMethod<
@@ -8195,7 +8362,7 @@ export const listOrganizationsSitesApidocs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSitesApidocsRequest,
   output: ListOrganizationsSitesApidocsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8265,7 +8432,10 @@ export type GetOrganizationsHostStatsResponse = GoogleCloudApigeeV1Stats;
 export const GetOrganizationsHostStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Stats;
 
-export type GetOrganizationsHostStatsError = DefaultErrors;
+export type GetOrganizationsHostStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve metrics grouped by dimensions in host level. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. You can optionally pass dimensions as path parameters to the `stats` API. If dimensions are not specified, the metrics are computed on the entire set of data for the given time range. */
 export const getOrganizationsHostStats: API.OperationMethod<
@@ -8276,7 +8446,7 @@ export const getOrganizationsHostStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsHostStatsRequest,
   output: GetOrganizationsHostStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetResultOrganizationsHostQueriesRequest {
@@ -8296,7 +8466,10 @@ export type GetResultOrganizationsHostQueriesResponse = GoogleApiHttpBody;
 export const GetResultOrganizationsHostQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type GetResultOrganizationsHostQueriesError = DefaultErrors;
+export type GetResultOrganizationsHostQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip` */
 export const getResultOrganizationsHostQueries: API.OperationMethod<
@@ -8307,7 +8480,7 @@ export const getResultOrganizationsHostQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsHostQueriesRequest,
   output: GetResultOrganizationsHostQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsHostQueriesRequest {
@@ -8331,7 +8504,12 @@ export type CreateOrganizationsHostQueriesResponse =
 export const CreateOrganizationsHostQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
-export type CreateOrganizationsHostQueriesError = DefaultErrors;
+export type CreateOrganizationsHostQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded. */
 export const createOrganizationsHostQueries: API.OperationMethod<
@@ -8342,7 +8520,7 @@ export const createOrganizationsHostQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsHostQueriesRequest,
   output: CreateOrganizationsHostQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsHostQueriesRequest {
@@ -8362,7 +8540,10 @@ export type GetOrganizationsHostQueriesResponse = GoogleCloudApigeeV1AsyncQuery;
 export const GetOrganizationsHostQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
-export type GetOrganizationsHostQueriesError = DefaultErrors;
+export type GetOrganizationsHostQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed" */
 export const getOrganizationsHostQueries: API.OperationMethod<
@@ -8373,7 +8554,7 @@ export const getOrganizationsHostQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsHostQueriesRequest,
   output: GetOrganizationsHostQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetResultViewOrganizationsHostQueriesRequest {
@@ -8394,7 +8575,10 @@ export type GetResultViewOrganizationsHostQueriesResponse =
 export const GetResultViewOrganizationsHostQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQueryResultView;
 
-export type GetResultViewOrganizationsHostQueriesError = DefaultErrors;
+export type GetResultViewOrganizationsHostQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 export const getResultViewOrganizationsHostQueries: API.OperationMethod<
   GetResultViewOrganizationsHostQueriesRequest,
@@ -8404,7 +8588,7 @@ export const getResultViewOrganizationsHostQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResultViewOrganizationsHostQueriesRequest,
   output: GetResultViewOrganizationsHostQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsHostQueriesRequest {
@@ -8452,7 +8636,10 @@ export type ListOrganizationsHostQueriesResponse =
 export const ListOrganizationsHostQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAsyncQueriesResponse;
 
-export type ListOrganizationsHostQueriesError = DefaultErrors;
+export type ListOrganizationsHostQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Return a list of Asynchronous Queries at host level. */
 export const listOrganizationsHostQueries: API.OperationMethod<
@@ -8463,7 +8650,7 @@ export const listOrganizationsHostQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsHostQueriesRequest,
   output: ListOrganizationsHostQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsKeyvaluemapsRequest {
@@ -8487,7 +8674,12 @@ export type CreateOrganizationsKeyvaluemapsResponse =
 export const CreateOrganizationsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type CreateOrganizationsKeyvaluemapsError = DefaultErrors;
+export type CreateOrganizationsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a key value map in an organization. */
 export const createOrganizationsKeyvaluemaps: API.OperationMethod<
@@ -8498,7 +8690,7 @@ export const createOrganizationsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsKeyvaluemapsRequest,
   output: CreateOrganizationsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsKeyvaluemapsRequest {
@@ -8519,7 +8711,12 @@ export type DeleteOrganizationsKeyvaluemapsResponse =
 export const DeleteOrganizationsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type DeleteOrganizationsKeyvaluemapsError = DefaultErrors;
+export type DeleteOrganizationsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key value map from an organization. */
 export const deleteOrganizationsKeyvaluemaps: API.OperationMethod<
@@ -8530,7 +8727,7 @@ export const deleteOrganizationsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsKeyvaluemapsRequest,
   output: DeleteOrganizationsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsKeyvaluemapsRequest {
@@ -8551,7 +8748,10 @@ export type GetOrganizationsKeyvaluemapsResponse =
 export const GetOrganizationsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type GetOrganizationsKeyvaluemapsError = DefaultErrors;
+export type GetOrganizationsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the key value map scoped to an organization, environment, or API proxy. */
 export const getOrganizationsKeyvaluemaps: API.OperationMethod<
@@ -8562,7 +8762,7 @@ export const getOrganizationsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsKeyvaluemapsRequest,
   output: GetOrganizationsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsKeyvaluemapsRequest {
@@ -8586,7 +8786,12 @@ export type UpdateOrganizationsKeyvaluemapsResponse =
 export const UpdateOrganizationsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type UpdateOrganizationsKeyvaluemapsError = DefaultErrors;
+export type UpdateOrganizationsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the key value map scoped to an organization, environment, or API proxy. */
 export const updateOrganizationsKeyvaluemaps: API.OperationMethod<
@@ -8597,7 +8802,7 @@ export const updateOrganizationsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsKeyvaluemapsRequest,
   output: UpdateOrganizationsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsKeyvaluemapsEntriesRequest {
@@ -8618,7 +8823,12 @@ export type DeleteOrganizationsKeyvaluemapsEntriesResponse =
 export const DeleteOrganizationsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type DeleteOrganizationsKeyvaluemapsEntriesError = DefaultErrors;
+export type DeleteOrganizationsKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:** * After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x and higher. */
 export const deleteOrganizationsKeyvaluemapsEntries: API.OperationMethod<
@@ -8629,7 +8839,7 @@ export const deleteOrganizationsKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsKeyvaluemapsEntriesRequest,
   output: DeleteOrganizationsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsKeyvaluemapsEntriesRequest {
@@ -8653,7 +8863,12 @@ export type UpdateOrganizationsKeyvaluemapsEntriesResponse =
 export const UpdateOrganizationsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type UpdateOrganizationsKeyvaluemapsEntriesError = DefaultErrors;
+export type UpdateOrganizationsKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update key value entry scoped to an organization, environment, or API proxy for an existing key. */
 export const updateOrganizationsKeyvaluemapsEntries: API.OperationMethod<
@@ -8664,7 +8879,7 @@ export const updateOrganizationsKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsKeyvaluemapsEntriesRequest,
   output: UpdateOrganizationsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsKeyvaluemapsEntriesRequest {
@@ -8685,7 +8900,10 @@ export type GetOrganizationsKeyvaluemapsEntriesResponse =
 export const GetOrganizationsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type GetOrganizationsKeyvaluemapsEntriesError = DefaultErrors;
+export type GetOrganizationsKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const getOrganizationsKeyvaluemapsEntries: API.OperationMethod<
@@ -8696,7 +8914,7 @@ export const getOrganizationsKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsKeyvaluemapsEntriesRequest,
   output: GetOrganizationsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsKeyvaluemapsEntriesRequest {
@@ -8720,7 +8938,12 @@ export type CreateOrganizationsKeyvaluemapsEntriesResponse =
 export const CreateOrganizationsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type CreateOrganizationsKeyvaluemapsEntriesError = DefaultErrors;
+export type CreateOrganizationsKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const createOrganizationsKeyvaluemapsEntries: API.OperationMethod<
@@ -8731,7 +8954,7 @@ export const createOrganizationsKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsKeyvaluemapsEntriesRequest,
   output: CreateOrganizationsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsKeyvaluemapsEntriesRequest {
@@ -8758,7 +8981,10 @@ export type ListOrganizationsKeyvaluemapsEntriesResponse =
 export const ListOrganizationsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 
-export type ListOrganizationsKeyvaluemapsEntriesError = DefaultErrors;
+export type ListOrganizationsKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const listOrganizationsKeyvaluemapsEntries: API.PaginatedOperationMethod<
@@ -8769,7 +8995,7 @@ export const listOrganizationsKeyvaluemapsEntries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsKeyvaluemapsEntriesRequest,
   output: ListOrganizationsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8804,7 +9030,11 @@ export const DeleteOrganizationsSecurityMonitoringConditionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSecurityMonitoringConditionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a security monitoring condition. */
 export const deleteOrganizationsSecurityMonitoringConditions: API.OperationMethod<
@@ -8815,7 +9045,7 @@ export const deleteOrganizationsSecurityMonitoringConditions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityMonitoringConditionsRequest,
   output: DeleteOrganizationsSecurityMonitoringConditionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSecurityMonitoringConditionsRequest {
@@ -8844,7 +9074,12 @@ export type PatchOrganizationsSecurityMonitoringConditionsResponse =
 export const PatchOrganizationsSecurityMonitoringConditionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
 
-export type PatchOrganizationsSecurityMonitoringConditionsError = DefaultErrors;
+export type PatchOrganizationsSecurityMonitoringConditionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a security monitoring condition. */
 export const patchOrganizationsSecurityMonitoringConditions: API.OperationMethod<
@@ -8855,7 +9090,7 @@ export const patchOrganizationsSecurityMonitoringConditions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityMonitoringConditionsRequest,
   output: PatchOrganizationsSecurityMonitoringConditionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSecurityMonitoringConditionsRequest {
@@ -8891,7 +9126,11 @@ export const CreateOrganizationsSecurityMonitoringConditionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
 
 export type CreateOrganizationsSecurityMonitoringConditionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a security monitoring condition. */
 export const createOrganizationsSecurityMonitoringConditions: API.OperationMethod<
@@ -8902,7 +9141,7 @@ export const createOrganizationsSecurityMonitoringConditions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityMonitoringConditionsRequest,
   output: CreateOrganizationsSecurityMonitoringConditionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSecurityMonitoringConditionsRequest {
@@ -8932,7 +9171,10 @@ export type GetOrganizationsSecurityMonitoringConditionsResponse =
 export const GetOrganizationsSecurityMonitoringConditionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityMonitoringCondition;
 
-export type GetOrganizationsSecurityMonitoringConditionsError = DefaultErrors;
+export type GetOrganizationsSecurityMonitoringConditionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a security monitoring condition. */
 export const getOrganizationsSecurityMonitoringConditions: API.OperationMethod<
@@ -8943,7 +9185,7 @@ export const getOrganizationsSecurityMonitoringConditions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityMonitoringConditionsRequest,
   output: GetOrganizationsSecurityMonitoringConditionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSecurityMonitoringConditionsRequest {
@@ -8982,7 +9224,10 @@ export type ListOrganizationsSecurityMonitoringConditionsResponse =
 export const ListOrganizationsSecurityMonitoringConditionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse;
 
-export type ListOrganizationsSecurityMonitoringConditionsError = DefaultErrors;
+export type ListOrganizationsSecurityMonitoringConditionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List security monitoring conditions. */
 export const listOrganizationsSecurityMonitoringConditions: API.PaginatedOperationMethod<
@@ -8993,7 +9238,7 @@ export const listOrganizationsSecurityMonitoringConditions: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityMonitoringConditionsRequest,
   output: ListOrganizationsSecurityMonitoringConditionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9023,7 +9268,12 @@ export type PatchOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const PatchOrganizationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
-export type PatchOrganizationsApisError = DefaultErrors;
+export type PatchOrganizationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing API proxy. */
 export const patchOrganizationsApis: API.OperationMethod<
@@ -9034,7 +9284,7 @@ export const patchOrganizationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsApisRequest,
   output: PatchOrganizationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveOrganizationsApisRequest {
@@ -9059,7 +9309,12 @@ export type MoveOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const MoveOrganizationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
-export type MoveOrganizationsApisError = DefaultErrors;
+export type MoveOrganizationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an API proxy to a different space. */
 export const moveOrganizationsApis: API.OperationMethod<
@@ -9070,7 +9325,7 @@ export const moveOrganizationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveOrganizationsApisRequest,
   output: MoveOrganizationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsApisRequest {
@@ -9090,7 +9345,12 @@ export type DeleteOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const DeleteOrganizationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
-export type DeleteOrganizationsApisError = DefaultErrors;
+export type DeleteOrganizationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an API proxy and all associated endpoints, policies, resources, and revisions. The API proxy must be undeployed before you can delete it. */
 export const deleteOrganizationsApis: API.OperationMethod<
@@ -9101,7 +9361,7 @@ export const deleteOrganizationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisRequest,
   output: DeleteOrganizationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsApisRequest {
@@ -9135,7 +9395,7 @@ export type ListOrganizationsApisResponse =
 export const ListOrganizationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiProxiesResponse;
 
-export type ListOrganizationsApisError = DefaultErrors;
+export type ListOrganizationsApisError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the names of all API proxies in an organization. The names returned correspond to the names defined in the configuration files for each API proxy. If the resource has the `space` attribute set, the response may not return all resources. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). */
 export const listOrganizationsApis: API.OperationMethod<
@@ -9146,7 +9406,7 @@ export const listOrganizationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsApisRequest,
   output: ListOrganizationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsApisRequest {
@@ -9166,7 +9426,7 @@ export type GetOrganizationsApisResponse = GoogleCloudApigeeV1ApiProxy;
 export const GetOrganizationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxy;
 
-export type GetOrganizationsApisError = DefaultErrors;
+export type GetOrganizationsApisError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an API proxy including a list of existing revisions. */
 export const getOrganizationsApis: API.OperationMethod<
@@ -9177,7 +9437,7 @@ export const getOrganizationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisRequest,
   output: GetOrganizationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsApisRequest {
@@ -9213,7 +9473,12 @@ export type CreateOrganizationsApisResponse =
 export const CreateOrganizationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
 
-export type CreateOrganizationsApisError = DefaultErrors;
+export type CreateOrganizationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following: * Set the `name` query parameter to the name of the API proxy. * Set the `action` query parameter to `import`. * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client. */
 export const createOrganizationsApis: API.OperationMethod<
@@ -9224,7 +9489,7 @@ export const createOrganizationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApisRequest,
   output: CreateOrganizationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsApisDebugsessionsRequest {
@@ -9251,7 +9516,10 @@ export type ListOrganizationsApisDebugsessionsResponse =
 export const ListOrganizationsApisDebugsessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiDebugSessionsResponse;
 
-export type ListOrganizationsApisDebugsessionsError = DefaultErrors;
+export type ListOrganizationsApisDebugsessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists debug sessions that are currently active in the given API Proxy. */
 export const listOrganizationsApisDebugsessions: API.PaginatedOperationMethod<
@@ -9262,7 +9530,7 @@ export const listOrganizationsApisDebugsessions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApisDebugsessionsRequest,
   output: ListOrganizationsApisDebugsessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9294,7 +9562,11 @@ export const UpdateApiProxyRevisionOrganizationsApisRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
 
 export type UpdateApiProxyRevisionOrganizationsApisRevisionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing API proxy revision by uploading the API proxy configuration bundle as a zip file from your local machine. You can update only API proxy revisions that have never been deployed. After deployment, an API proxy revision becomes immutable, even if it is undeployed. Set the `Content-Type` header to either `multipart/form-data` or `application/octet-stream`. */
 export const updateApiProxyRevisionOrganizationsApisRevisions: API.OperationMethod<
@@ -9305,7 +9577,7 @@ export const updateApiProxyRevisionOrganizationsApisRevisions: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApiProxyRevisionOrganizationsApisRevisionsRequest,
   output: UpdateApiProxyRevisionOrganizationsApisRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsApisRevisionsRequest {
@@ -9328,7 +9600,10 @@ export type GetOrganizationsApisRevisionsResponse = GoogleApiHttpBody;
 export const GetOrganizationsApisRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type GetOrganizationsApisRevisionsError = DefaultErrors;
+export type GetOrganizationsApisRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an API proxy revision. To download the API proxy configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the API proxy configuration locally and upload the updated API proxy configuration revision, as described in [updateApiProxyRevision](updateApiProxyRevision). */
 export const getOrganizationsApisRevisions: API.OperationMethod<
@@ -9339,7 +9614,7 @@ export const getOrganizationsApisRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisRevisionsRequest,
   output: GetOrganizationsApisRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsApisRevisionsRequest {
@@ -9360,7 +9635,12 @@ export type DeleteOrganizationsApisRevisionsResponse =
 export const DeleteOrganizationsApisRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProxyRevision;
 
-export type DeleteOrganizationsApisRevisionsError = DefaultErrors;
+export type DeleteOrganizationsApisRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an API proxy revision and all policies, resources, endpoints, and revisions associated with it. The API proxy revision must be undeployed before you can delete it. */
 export const deleteOrganizationsApisRevisions: API.OperationMethod<
@@ -9371,7 +9651,7 @@ export const deleteOrganizationsApisRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisRevisionsRequest,
   output: DeleteOrganizationsApisRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsApisRevisionsDeploymentsRequest {
@@ -9392,7 +9672,10 @@ export type ListOrganizationsApisRevisionsDeploymentsResponse =
 export const ListOrganizationsApisRevisionsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
-export type ListOrganizationsApisRevisionsDeploymentsError = DefaultErrors;
+export type ListOrganizationsApisRevisionsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of an API proxy revision. */
 export const listOrganizationsApisRevisionsDeployments: API.OperationMethod<
@@ -9403,7 +9686,7 @@ export const listOrganizationsApisRevisionsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsApisRevisionsDeploymentsRequest,
   output: ListOrganizationsApisRevisionsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsApisDeploymentsRequest {
@@ -9424,7 +9707,10 @@ export type ListOrganizationsApisDeploymentsResponse =
 export const ListOrganizationsApisDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
-export type ListOrganizationsApisDeploymentsError = DefaultErrors;
+export type ListOrganizationsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of an API proxy. */
 export const listOrganizationsApisDeployments: API.OperationMethod<
@@ -9435,7 +9721,7 @@ export const listOrganizationsApisDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsApisDeploymentsRequest,
   output: ListOrganizationsApisDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsApisKeyvaluemapsRequest {
@@ -9456,7 +9742,10 @@ export type GetOrganizationsApisKeyvaluemapsResponse =
 export const GetOrganizationsApisKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type GetOrganizationsApisKeyvaluemapsError = DefaultErrors;
+export type GetOrganizationsApisKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the key value map scoped to an organization, environment, or API proxy. */
 export const getOrganizationsApisKeyvaluemaps: API.OperationMethod<
@@ -9467,7 +9756,7 @@ export const getOrganizationsApisKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisKeyvaluemapsRequest,
   output: GetOrganizationsApisKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsApisKeyvaluemapsRequest {
@@ -9491,7 +9780,12 @@ export type UpdateOrganizationsApisKeyvaluemapsResponse =
 export const UpdateOrganizationsApisKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type UpdateOrganizationsApisKeyvaluemapsError = DefaultErrors;
+export type UpdateOrganizationsApisKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the key value map scoped to an organization, environment, or API proxy. */
 export const updateOrganizationsApisKeyvaluemaps: API.OperationMethod<
@@ -9502,7 +9796,7 @@ export const updateOrganizationsApisKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApisKeyvaluemapsRequest,
   output: UpdateOrganizationsApisKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsApisKeyvaluemapsRequest {
@@ -9526,7 +9820,12 @@ export type CreateOrganizationsApisKeyvaluemapsResponse =
 export const CreateOrganizationsApisKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type CreateOrganizationsApisKeyvaluemapsError = DefaultErrors;
+export type CreateOrganizationsApisKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a key value map in an API proxy. */
 export const createOrganizationsApisKeyvaluemaps: API.OperationMethod<
@@ -9537,7 +9836,7 @@ export const createOrganizationsApisKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApisKeyvaluemapsRequest,
   output: CreateOrganizationsApisKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsApisKeyvaluemapsRequest {
@@ -9558,7 +9857,12 @@ export type DeleteOrganizationsApisKeyvaluemapsResponse =
 export const DeleteOrganizationsApisKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type DeleteOrganizationsApisKeyvaluemapsError = DefaultErrors;
+export type DeleteOrganizationsApisKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key value map from an API proxy. */
 export const deleteOrganizationsApisKeyvaluemaps: API.OperationMethod<
@@ -9569,7 +9873,7 @@ export const deleteOrganizationsApisKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisKeyvaluemapsRequest,
   output: DeleteOrganizationsApisKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsApisKeyvaluemapsEntriesRequest {
@@ -9590,7 +9894,10 @@ export type GetOrganizationsApisKeyvaluemapsEntriesResponse =
 export const GetOrganizationsApisKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type GetOrganizationsApisKeyvaluemapsEntriesError = DefaultErrors;
+export type GetOrganizationsApisKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const getOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
@@ -9601,7 +9908,7 @@ export const getOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApisKeyvaluemapsEntriesRequest,
   output: GetOrganizationsApisKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsApisKeyvaluemapsEntriesRequest {
@@ -9625,7 +9932,12 @@ export type CreateOrganizationsApisKeyvaluemapsEntriesResponse =
 export const CreateOrganizationsApisKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type CreateOrganizationsApisKeyvaluemapsEntriesError = DefaultErrors;
+export type CreateOrganizationsApisKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const createOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
@@ -9636,7 +9948,7 @@ export const createOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApisKeyvaluemapsEntriesRequest,
   output: CreateOrganizationsApisKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsApisKeyvaluemapsEntriesRequest {
@@ -9663,7 +9975,10 @@ export type ListOrganizationsApisKeyvaluemapsEntriesResponse =
 export const ListOrganizationsApisKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 
-export type ListOrganizationsApisKeyvaluemapsEntriesError = DefaultErrors;
+export type ListOrganizationsApisKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const listOrganizationsApisKeyvaluemapsEntries: API.PaginatedOperationMethod<
@@ -9674,7 +9989,7 @@ export const listOrganizationsApisKeyvaluemapsEntries: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApisKeyvaluemapsEntriesRequest,
   output: ListOrganizationsApisKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9699,7 +10014,12 @@ export type DeleteOrganizationsApisKeyvaluemapsEntriesResponse =
 export const DeleteOrganizationsApisKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type DeleteOrganizationsApisKeyvaluemapsEntriesError = DefaultErrors;
+export type DeleteOrganizationsApisKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:** * After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x and higher. */
 export const deleteOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
@@ -9710,7 +10030,7 @@ export const deleteOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApisKeyvaluemapsEntriesRequest,
   output: DeleteOrganizationsApisKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsApisKeyvaluemapsEntriesRequest {
@@ -9734,7 +10054,12 @@ export type UpdateOrganizationsApisKeyvaluemapsEntriesResponse =
 export const UpdateOrganizationsApisKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
-export type UpdateOrganizationsApisKeyvaluemapsEntriesError = DefaultErrors;
+export type UpdateOrganizationsApisKeyvaluemapsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update key value entry scoped to an organization, environment, or API proxy for an existing key. */
 export const updateOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
@@ -9745,7 +10070,7 @@ export const updateOrganizationsApisKeyvaluemapsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApisKeyvaluemapsEntriesRequest,
   output: UpdateOrganizationsApisKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsAnalyticsDatastoresRequest {
@@ -9766,7 +10091,12 @@ export type DeleteOrganizationsAnalyticsDatastoresResponse =
 export const DeleteOrganizationsAnalyticsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsAnalyticsDatastoresError = DefaultErrors;
+export type DeleteOrganizationsAnalyticsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a Datastore from an org. */
 export const deleteOrganizationsAnalyticsDatastores: API.OperationMethod<
@@ -9777,7 +10107,7 @@ export const deleteOrganizationsAnalyticsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAnalyticsDatastoresRequest,
   output: DeleteOrganizationsAnalyticsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsAnalyticsDatastoresRequest {
@@ -9801,7 +10131,12 @@ export type UpdateOrganizationsAnalyticsDatastoresResponse =
 export const UpdateOrganizationsAnalyticsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Datastore;
 
-export type UpdateOrganizationsAnalyticsDatastoresError = DefaultErrors;
+export type UpdateOrganizationsAnalyticsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a Datastore */
 export const updateOrganizationsAnalyticsDatastores: API.OperationMethod<
@@ -9812,7 +10147,7 @@ export const updateOrganizationsAnalyticsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsAnalyticsDatastoresRequest,
   output: UpdateOrganizationsAnalyticsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestOrganizationsAnalyticsDatastoresRequest {
@@ -9840,7 +10175,12 @@ export type TestOrganizationsAnalyticsDatastoresResponse =
 export const TestOrganizationsAnalyticsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TestDatastoreResponse;
 
-export type TestOrganizationsAnalyticsDatastoresError = DefaultErrors;
+export type TestOrganizationsAnalyticsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Test if Datastore configuration is correct. This includes checking if credentials provided by customer have required permissions in target destination storage */
 export const testOrganizationsAnalyticsDatastores: API.OperationMethod<
@@ -9851,7 +10191,7 @@ export const testOrganizationsAnalyticsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestOrganizationsAnalyticsDatastoresRequest,
   output: TestOrganizationsAnalyticsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsAnalyticsDatastoresRequest {
@@ -9879,7 +10219,12 @@ export type CreateOrganizationsAnalyticsDatastoresResponse =
 export const CreateOrganizationsAnalyticsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Datastore;
 
-export type CreateOrganizationsAnalyticsDatastoresError = DefaultErrors;
+export type CreateOrganizationsAnalyticsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a Datastore for an org */
 export const createOrganizationsAnalyticsDatastores: API.OperationMethod<
@@ -9890,7 +10235,7 @@ export const createOrganizationsAnalyticsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAnalyticsDatastoresRequest,
   output: CreateOrganizationsAnalyticsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsAnalyticsDatastoresRequest {
@@ -9911,7 +10256,10 @@ export type GetOrganizationsAnalyticsDatastoresResponse =
 export const GetOrganizationsAnalyticsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Datastore;
 
-export type GetOrganizationsAnalyticsDatastoresError = DefaultErrors;
+export type GetOrganizationsAnalyticsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a Datastore */
 export const getOrganizationsAnalyticsDatastores: API.OperationMethod<
@@ -9922,7 +10270,7 @@ export const getOrganizationsAnalyticsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsAnalyticsDatastoresRequest,
   output: GetOrganizationsAnalyticsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsAnalyticsDatastoresRequest {
@@ -9946,7 +10294,10 @@ export type ListOrganizationsAnalyticsDatastoresResponse =
 export const ListOrganizationsAnalyticsDatastoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDatastoresResponse;
 
-export type ListOrganizationsAnalyticsDatastoresError = DefaultErrors;
+export type ListOrganizationsAnalyticsDatastoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List Datastores */
 export const listOrganizationsAnalyticsDatastores: API.OperationMethod<
@@ -9957,7 +10308,7 @@ export const listOrganizationsAnalyticsDatastores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsAnalyticsDatastoresRequest,
   output: ListOrganizationsAnalyticsDatastoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateMonetizationConfigOrganizationsDevelopersRequest {
@@ -9984,7 +10335,11 @@ export const UpdateMonetizationConfigOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperMonetizationConfig;
 
 export type UpdateMonetizationConfigOrganizationsDevelopersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the monetization configuration for the developer. */
 export const updateMonetizationConfigOrganizationsDevelopers: API.OperationMethod<
@@ -9995,7 +10350,7 @@ export const updateMonetizationConfigOrganizationsDevelopers: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMonetizationConfigOrganizationsDevelopersRequest,
   output: UpdateMonetizationConfigOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsDevelopersRequest {
@@ -10019,7 +10374,12 @@ export type CreateOrganizationsDevelopersResponse =
 export const CreateOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
 
-export type CreateOrganizationsDevelopersError = DefaultErrors;
+export type CreateOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API. */
 export const createOrganizationsDevelopers: API.OperationMethod<
@@ -10030,7 +10390,7 @@ export const createOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersRequest,
   output: CreateOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsDevelopersRequest {
@@ -10071,7 +10431,10 @@ export type ListOrganizationsDevelopersResponse =
 export const ListOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListOfDevelopersResponse;
 
-export type ListOrganizationsDevelopersError = DefaultErrors;
+export type ListOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all developers in an organization by email address. By default, the response does not include company developers. Set the `includeCompany` query parameter to `true` to include company developers. **Note**: A maximum of 1000 developers are returned in the response. You paginate the list of developers returned using the `startKey` and `count` query parameters. */
 export const listOrganizationsDevelopers: API.OperationMethod<
@@ -10082,7 +10445,7 @@ export const listOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersRequest,
   output: ListOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetDeveloperStatusOrganizationsDevelopersRequest {
@@ -10106,7 +10469,12 @@ export type SetDeveloperStatusOrganizationsDevelopersResponse =
 export const SetDeveloperStatusOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type SetDeveloperStatusOrganizationsDevelopersError = DefaultErrors;
+export type SetDeveloperStatusOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the status of a developer. A developer is `active` by default. If you set a developer's status to `inactive`, the API keys assigned to the developer apps are no longer valid even though the API keys are set to `approved`. Inactive developers can still sign in to the developer portal and create apps; however, any new API keys generated during app creation won't work. To set the status of a developer, set the `action` query parameter to `active` or `inactive`, and the `Content-Type` header to `application/octet-stream`. If successful, the API call returns the following HTTP status code: `204 No Content` */
 export const setDeveloperStatusOrganizationsDevelopers: API.OperationMethod<
@@ -10117,7 +10485,7 @@ export const setDeveloperStatusOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDeveloperStatusOrganizationsDevelopersRequest,
   output: SetDeveloperStatusOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBalanceOrganizationsDevelopersRequest {
@@ -10138,7 +10506,10 @@ export type GetBalanceOrganizationsDevelopersResponse =
 export const GetBalanceOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
 
-export type GetBalanceOrganizationsDevelopersError = DefaultErrors;
+export type GetBalanceOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the account balance for the developer. */
 export const getBalanceOrganizationsDevelopers: API.OperationMethod<
@@ -10149,7 +10520,7 @@ export const getBalanceOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBalanceOrganizationsDevelopersRequest,
   output: GetBalanceOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsDevelopersRequest {
@@ -10173,7 +10544,12 @@ export type UpdateOrganizationsDevelopersResponse =
 export const UpdateOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
 
-export type UpdateOrganizationsDevelopersError = DefaultErrors;
+export type UpdateOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a developer. This API replaces the existing developer details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. The custom attribute limit is 18. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const updateOrganizationsDevelopers: API.OperationMethod<
@@ -10184,7 +10560,7 @@ export const updateOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsDevelopersRequest,
   output: UpdateOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsDevelopersRequest {
@@ -10205,7 +10581,12 @@ export type DeleteOrganizationsDevelopersResponse =
 export const DeleteOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
 
-export type DeleteOrganizationsDevelopersError = DefaultErrors;
+export type DeleteOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a developer. All apps and API keys associated with the developer are also removed. **Warning**: This API will permanently delete the developer and related artifacts. To avoid permanently deleting developers and their artifacts, set the developer status to `inactive` using the SetDeveloperStatus API. **Note**: The delete operation is asynchronous. The developer is deleted immediately, but its associated resources, such as apps and API keys, may take anywhere from a few seconds to a few minutes to be deleted. */
 export const deleteOrganizationsDevelopers: API.OperationMethod<
@@ -10216,7 +10597,7 @@ export const deleteOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersRequest,
   output: DeleteOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttributesOrganizationsDevelopersRequest {
@@ -10240,7 +10621,12 @@ export type AttributesOrganizationsDevelopersResponse =
 export const AttributesOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
 
-export type AttributesOrganizationsDevelopersError = DefaultErrors;
+export type AttributesOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates developer attributes. This API replaces the existing attributes with those specified in the request. Add new attributes, and include or exclude any existing attributes that you want to retain or remove, respectively. The custom attribute limit is 18. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const attributesOrganizationsDevelopers: API.OperationMethod<
@@ -10251,7 +10637,7 @@ export const attributesOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttributesOrganizationsDevelopersRequest,
   output: AttributesOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsDevelopersRequest {
@@ -10274,7 +10660,10 @@ export type GetOrganizationsDevelopersResponse = GoogleCloudApigeeV1Developer;
 export const GetOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Developer;
 
-export type GetOrganizationsDevelopersError = DefaultErrors;
+export type GetOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the developer details, including the developer's name, email address, apps, and other information. **Note**: The response includes only the first 100 developer apps. */
 export const getOrganizationsDevelopers: API.OperationMethod<
@@ -10285,7 +10674,7 @@ export const getOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersRequest,
   output: GetOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetMonetizationConfigOrganizationsDevelopersRequest {
@@ -10306,7 +10695,10 @@ export type GetMonetizationConfigOrganizationsDevelopersResponse =
 export const GetMonetizationConfigOrganizationsDevelopersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperMonetizationConfig;
 
-export type GetMonetizationConfigOrganizationsDevelopersError = DefaultErrors;
+export type GetMonetizationConfigOrganizationsDevelopersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the monetization configuration for the developer. */
 export const getMonetizationConfigOrganizationsDevelopers: API.OperationMethod<
@@ -10317,7 +10709,7 @@ export const getMonetizationConfigOrganizationsDevelopers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonetizationConfigOrganizationsDevelopersRequest,
   output: GetMonetizationConfigOrganizationsDevelopersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsDevelopersAttributesRequest {
@@ -10338,7 +10730,10 @@ export type GetOrganizationsDevelopersAttributesResponse =
 export const GetOrganizationsDevelopersAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
-export type GetOrganizationsDevelopersAttributesError = DefaultErrors;
+export type GetOrganizationsDevelopersAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the value of the specified developer attribute. */
 export const getOrganizationsDevelopersAttributes: API.OperationMethod<
@@ -10349,7 +10744,7 @@ export const getOrganizationsDevelopersAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAttributesRequest,
   output: GetOrganizationsDevelopersAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsDevelopersAttributesRequest {
@@ -10370,7 +10765,12 @@ export type DeleteOrganizationsDevelopersAttributesResponse =
 export const DeleteOrganizationsDevelopersAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
-export type DeleteOrganizationsDevelopersAttributesError = DefaultErrors;
+export type DeleteOrganizationsDevelopersAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a developer attribute. */
 export const deleteOrganizationsDevelopersAttributes: API.OperationMethod<
@@ -10381,7 +10781,7 @@ export const deleteOrganizationsDevelopersAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAttributesRequest,
   output: DeleteOrganizationsDevelopersAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest {
@@ -10406,7 +10806,11 @@ export const UpdateDeveloperAttributeOrganizationsDevelopersAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateDeveloperAttributeOrganizationsDevelopersAttributesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a developer attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const updateDeveloperAttributeOrganizationsDevelopersAttributes: API.OperationMethod<
@@ -10417,7 +10821,7 @@ export const updateDeveloperAttributeOrganizationsDevelopersAttributes: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeveloperAttributeOrganizationsDevelopersAttributesRequest,
   output: UpdateDeveloperAttributeOrganizationsDevelopersAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsDevelopersAttributesRequest {
@@ -10438,7 +10842,10 @@ export type ListOrganizationsDevelopersAttributesResponse =
 export const ListOrganizationsDevelopersAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
 
-export type ListOrganizationsDevelopersAttributesError = DefaultErrors;
+export type ListOrganizationsDevelopersAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all developer attributes. */
 export const listOrganizationsDevelopersAttributes: API.OperationMethod<
@@ -10449,7 +10856,7 @@ export const listOrganizationsDevelopersAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersAttributesRequest,
   output: ListOrganizationsDevelopersAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AdjustOrganizationsDevelopersBalanceRequest {
@@ -10475,7 +10882,12 @@ export type AdjustOrganizationsDevelopersBalanceResponse =
 export const AdjustOrganizationsDevelopersBalanceResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
 
-export type AdjustOrganizationsDevelopersBalanceError = DefaultErrors;
+export type AdjustOrganizationsDevelopersBalanceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adjust the prepaid balance for the developer. This API will be used in scenarios where the developer has been under-charged or over-charged. */
 export const adjustOrganizationsDevelopersBalance: API.OperationMethod<
@@ -10486,7 +10898,7 @@ export const adjustOrganizationsDevelopersBalance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AdjustOrganizationsDevelopersBalanceRequest,
   output: AdjustOrganizationsDevelopersBalanceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreditOrganizationsDevelopersBalanceRequest {
@@ -10512,7 +10924,12 @@ export type CreditOrganizationsDevelopersBalanceResponse =
 export const CreditOrganizationsDevelopersBalanceResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperBalance;
 
-export type CreditOrganizationsDevelopersBalanceError = DefaultErrors;
+export type CreditOrganizationsDevelopersBalanceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Credits the account balance for the developer. */
 export const creditOrganizationsDevelopersBalance: API.OperationMethod<
@@ -10523,7 +10940,7 @@ export const creditOrganizationsDevelopersBalance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreditOrganizationsDevelopersBalanceRequest,
   output: CreditOrganizationsDevelopersBalanceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest {
@@ -10551,7 +10968,11 @@ export const GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
 export type GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Manages access to a developer app by enabling you to: * Approve or revoke a developer app * Generate a new consumer key and secret for a developer app To approve or revoke a developer app, set the `action` query parameter to `approve` or `revoke`, respectively, and the `Content-Type` header to `application/octet-stream`. If a developer app is revoked, none of its API keys are valid for API calls even though the keys are still approved. If successful, the API call returns the following HTTP status code: `204 No Content` To generate a new consumer key and secret for a developer app, pass the new key/secret details. Rather than replace an existing key, this API generates a new key. In this case, multiple key pairs may be associated with a single developer app. Each key pair has an independent status (`approve` or `revoke`) and expiration time. Any approved, non-expired key can be used in an API call. For example, if you're using API key rotation, you can generate new keys with expiration times that overlap keys that are going to expire. You might also generate a new consumer key/secret if the security of the original key/secret is compromised. The `keyExpiresIn` property defines the expiration time for the API key in milliseconds. If you don't set this property or set it to `-1`, the API key never expires. **Notes**: * When generating a new key/secret, this API replaces the existing attributes, notes, and callback URLs with those specified in the request. Include or exclude any existing information that you want to retain or delete, respectively. * To migrate existing consumer keys and secrets to hybrid from another system, see the CreateDeveloperAppKey API. */
 export const generateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApps: API.OperationMethod<
@@ -10564,7 +10985,7 @@ export const generateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersApp
     GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsRequest,
   output:
     GenerateKeyPairOrUpdateDeveloperAppStatusOrganizationsDevelopersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsDevelopersAppsRequest {
@@ -10588,7 +11009,12 @@ export type CreateOrganizationsDevelopersAppsResponse =
 export const CreateOrganizationsDevelopersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
-export type CreateOrganizationsDevelopersAppsError = DefaultErrors;
+export type CreateOrganizationsDevelopersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an app associated with a developer. This API associates the developer app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. The `DisplayName` (set as an attribute) appears in the UI. If you don't set the `DisplayName` attribute, the `name` appears in the UI. */
 export const createOrganizationsDevelopersApps: API.OperationMethod<
@@ -10599,7 +11025,7 @@ export const createOrganizationsDevelopersApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersAppsRequest,
   output: CreateOrganizationsDevelopersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsDevelopersAppsRequest {
@@ -10626,7 +11052,10 @@ export type GetOrganizationsDevelopersAppsResponse =
 export const GetOrganizationsDevelopersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
-export type GetOrganizationsDevelopersAppsError = DefaultErrors;
+export type GetOrganizationsDevelopersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the details for a developer app. */
 export const getOrganizationsDevelopersApps: API.OperationMethod<
@@ -10637,7 +11066,7 @@ export const getOrganizationsDevelopersApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAppsRequest,
   output: GetOrganizationsDevelopersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsDevelopersAppsRequest {
@@ -10672,7 +11101,10 @@ export type ListOrganizationsDevelopersAppsResponse =
 export const ListOrganizationsDevelopersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeveloperAppsResponse;
 
-export type ListOrganizationsDevelopersAppsError = DefaultErrors;
+export type ListOrganizationsDevelopersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all apps created by a developer in an Apigee organization. Optionally, you can request an expanded view of the developer apps. A maximum of 100 developer apps are returned per API call. You can paginate the list of deveoper apps returned using the `startKey` and `count` query parameters. */
 export const listOrganizationsDevelopersApps: API.OperationMethod<
@@ -10683,7 +11115,7 @@ export const listOrganizationsDevelopersApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersAppsRequest,
   output: ListOrganizationsDevelopersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AttributesOrganizationsDevelopersAppsRequest {
@@ -10707,7 +11139,12 @@ export type AttributesOrganizationsDevelopersAppsResponse =
 export const AttributesOrganizationsDevelopersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
 
-export type AttributesOrganizationsDevelopersAppsError = DefaultErrors;
+export type AttributesOrganizationsDevelopersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates attributes for a developer app. This API replaces the current attributes with those specified in the request. */
 export const attributesOrganizationsDevelopersApps: API.OperationMethod<
@@ -10718,7 +11155,7 @@ export const attributesOrganizationsDevelopersApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttributesOrganizationsDevelopersAppsRequest,
   output: AttributesOrganizationsDevelopersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsDevelopersAppsRequest {
@@ -10739,7 +11176,12 @@ export type DeleteOrganizationsDevelopersAppsResponse =
 export const DeleteOrganizationsDevelopersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
-export type DeleteOrganizationsDevelopersAppsError = DefaultErrors;
+export type DeleteOrganizationsDevelopersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a developer app. **Note**: The delete operation is asynchronous. The developer app is deleted immediately, but its associated resources, such as app keys or access tokens, may take anywhere from a few seconds to a few minutes to be deleted. */
 export const deleteOrganizationsDevelopersApps: API.OperationMethod<
@@ -10750,7 +11192,7 @@ export const deleteOrganizationsDevelopersApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsRequest,
   output: DeleteOrganizationsDevelopersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsDevelopersAppsRequest {
@@ -10774,7 +11216,12 @@ export type UpdateOrganizationsDevelopersAppsResponse =
 export const UpdateOrganizationsDevelopersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperApp;
 
-export type UpdateOrganizationsDevelopersAppsError = DefaultErrors;
+export type UpdateOrganizationsDevelopersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the details for a developer app. In addition, you can add an API product to a developer app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateDeveloperAppKey API. Using this API, you cannot update the following: * App name as it is the primary key used to identify the app and cannot be changed. * Scopes associated with the app. Instead, use the ReplaceDeveloperAppKey API. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. */
 export const updateOrganizationsDevelopersApps: API.OperationMethod<
@@ -10785,7 +11232,7 @@ export const updateOrganizationsDevelopersApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsDevelopersAppsRequest,
   output: UpdateOrganizationsDevelopersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsDevelopersAppsKeysRequest {
@@ -10811,7 +11258,12 @@ export type CreateOrganizationsDevelopersAppsKeysResponse =
 export const CreateOrganizationsDevelopersAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
-export type CreateOrganizationsDevelopersAppsKeysError = DefaultErrors;
+export type CreateOrganizationsDevelopersAppsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API. **Note**: All keys start out with status=approved, even if status=revoked is passed when the key is created. To revoke a key, use the UpdateDeveloperAppKey API. */
 export const createOrganizationsDevelopersAppsKeys: API.OperationMethod<
@@ -10822,7 +11274,7 @@ export const createOrganizationsDevelopersAppsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersAppsKeysRequest,
   output: CreateOrganizationsDevelopersAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsDevelopersAppsKeysRequest {
@@ -10843,7 +11295,10 @@ export type GetOrganizationsDevelopersAppsKeysResponse =
 export const GetOrganizationsDevelopersAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
-export type GetOrganizationsDevelopersAppsKeysError = DefaultErrors;
+export type GetOrganizationsDevelopersAppsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information. */
 export const getOrganizationsDevelopersAppsKeys: API.OperationMethod<
@@ -10854,7 +11309,7 @@ export const getOrganizationsDevelopersAppsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAppsKeysRequest,
   output: GetOrganizationsDevelopersAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest {
@@ -10884,7 +11339,11 @@ export const UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an API product to a developer app key, enabling the app that holds the key to access the API resources bundled in the API product. In addition, you can add attributes and scopes associated with the API product to the developer app key. The status of the key can be updated via "action" Query Parameter. None of the other fields can be updated via this API. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. None of the other fields can be updated. You can use the same key to access all API products associated with the app. */
 export const updateDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.OperationMethod<
@@ -10895,7 +11354,7 @@ export const updateDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest,
   output: UpdateDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest {
@@ -10922,7 +11381,11 @@ export const ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the scope of an app. This API replaces the existing scopes with those specified in the request. Include or exclude any existing scopes that you want to retain or delete, respectively. The specified scopes must already be defined for the API products associated with the app. This API sets the `scopes` element under the `apiProducts` element in the attributes of the app. */
 export const replaceDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.OperationMethod<
@@ -10933,7 +11396,7 @@ export const replaceDeveloperAppKeyOrganizationsDevelopersAppsKeys: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysRequest,
   output: ReplaceDeveloperAppKeyOrganizationsDevelopersAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsDevelopersAppsKeysRequest {
@@ -10954,7 +11417,12 @@ export type DeleteOrganizationsDevelopersAppsKeysResponse =
 export const DeleteOrganizationsDevelopersAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
-export type DeleteOrganizationsDevelopersAppsKeysError = DefaultErrors;
+export type DeleteOrganizationsDevelopersAppsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an app's consumer key and removes all API products associated with the app. After the consumer key is deleted, it cannot be used to access any APIs. **Note**: After you delete a consumer key, you may want to: 1. Create a new consumer key and secret for the developer app using the CreateDeveloperAppKey API, and subsequently add an API product to the key using the UpdateDeveloperAppKey API. 2. Delete the developer app, if it is no longer required. */
 export const deleteOrganizationsDevelopersAppsKeys: API.OperationMethod<
@@ -10965,7 +11433,7 @@ export const deleteOrganizationsDevelopersAppsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsKeysRequest,
   output: DeleteOrganizationsDevelopersAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsDevelopersAppsKeysApiproductsRequest {
@@ -10987,7 +11455,11 @@ export const DeleteOrganizationsDevelopersAppsKeysApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
 export type DeleteOrganizationsDevelopersAppsKeysApiproductsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an API product from an app's consumer key. After the API product is removed, the app cannot access the API resources defined in that API product. **Note**: The consumer key is not removed, only its association with the API product. */
 export const deleteOrganizationsDevelopersAppsKeysApiproducts: API.OperationMethod<
@@ -10998,7 +11470,7 @@ export const deleteOrganizationsDevelopersAppsKeysApiproducts: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsKeysApiproductsRequest,
   output: DeleteOrganizationsDevelopersAppsKeysApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest {
@@ -11023,7 +11495,11 @@ export const UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API. */
 export const updateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproducts: API.OperationMethod<
@@ -11036,7 +11512,7 @@ export const updateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApipr
     UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsRequest,
   output:
     UpdateDeveloperAppKeyApiProductOrganizationsDevelopersAppsKeysApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsDevelopersAppsKeysCreateRequest {
@@ -11062,7 +11538,12 @@ export type CreateOrganizationsDevelopersAppsKeysCreateResponse =
 export const CreateOrganizationsDevelopersAppsKeysCreateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperAppKey;
 
-export type CreateOrganizationsDevelopersAppsKeysCreateError = DefaultErrors;
+export type CreateOrganizationsDevelopersAppsKeysCreateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a custom consumer key and secret for a developer app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteDeveloperAppKey API. **Note**: All keys start out with status=approved, even if status=revoked is passed when the key is created. To revoke a key, use the UpdateDeveloperAppKey API. */
 export const createOrganizationsDevelopersAppsKeysCreate: API.OperationMethod<
@@ -11073,7 +11554,7 @@ export const createOrganizationsDevelopersAppsKeysCreate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersAppsKeysCreateRequest,
   output: CreateOrganizationsDevelopersAppsKeysCreateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest {
@@ -11098,7 +11579,11 @@ export const UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a developer app attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with these entities are cached for at least 180 seconds after the entity is accessed at runtime. Therefore, an `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const updateDeveloperAppAttributeOrganizationsDevelopersAppsAttributes: API.OperationMethod<
@@ -11111,7 +11596,7 @@ export const updateDeveloperAppAttributeOrganizationsDevelopersAppsAttributes: A
     UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesRequest,
   output:
     UpdateDeveloperAppAttributeOrganizationsDevelopersAppsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsDevelopersAppsAttributesRequest {
@@ -11132,7 +11617,10 @@ export type GetOrganizationsDevelopersAppsAttributesResponse =
 export const GetOrganizationsDevelopersAppsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
-export type GetOrganizationsDevelopersAppsAttributesError = DefaultErrors;
+export type GetOrganizationsDevelopersAppsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a developer app attribute. */
 export const getOrganizationsDevelopersAppsAttributes: API.OperationMethod<
@@ -11143,7 +11631,7 @@ export const getOrganizationsDevelopersAppsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersAppsAttributesRequest,
   output: GetOrganizationsDevelopersAppsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsDevelopersAppsAttributesRequest {
@@ -11164,7 +11652,12 @@ export type DeleteOrganizationsDevelopersAppsAttributesResponse =
 export const DeleteOrganizationsDevelopersAppsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
-export type DeleteOrganizationsDevelopersAppsAttributesError = DefaultErrors;
+export type DeleteOrganizationsDevelopersAppsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a developer app attribute. */
 export const deleteOrganizationsDevelopersAppsAttributes: API.OperationMethod<
@@ -11175,7 +11668,7 @@ export const deleteOrganizationsDevelopersAppsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDevelopersAppsAttributesRequest,
   output: DeleteOrganizationsDevelopersAppsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsDevelopersAppsAttributesRequest {
@@ -11196,7 +11689,10 @@ export type ListOrganizationsDevelopersAppsAttributesResponse =
 export const ListOrganizationsDevelopersAppsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
 
-export type ListOrganizationsDevelopersAppsAttributesError = DefaultErrors;
+export type ListOrganizationsDevelopersAppsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all developer app attributes. */
 export const listOrganizationsDevelopersAppsAttributes: API.OperationMethod<
@@ -11207,7 +11703,7 @@ export const listOrganizationsDevelopersAppsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersAppsAttributesRequest,
   output: ListOrganizationsDevelopersAppsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsDevelopersSubscriptionsRequest {
@@ -11237,7 +11733,12 @@ export type CreateOrganizationsDevelopersSubscriptionsResponse =
 export const CreateOrganizationsDevelopersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
 
-export type CreateOrganizationsDevelopersSubscriptionsError = DefaultErrors;
+export type CreateOrganizationsDevelopersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a subscription to an API product. */
 export const createOrganizationsDevelopersSubscriptions: API.OperationMethod<
@@ -11248,7 +11749,7 @@ export const createOrganizationsDevelopersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDevelopersSubscriptionsRequest,
   output: CreateOrganizationsDevelopersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsDevelopersSubscriptionsRequest {
@@ -11269,7 +11770,10 @@ export type GetOrganizationsDevelopersSubscriptionsResponse =
 export const GetOrganizationsDevelopersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
 
-export type GetOrganizationsDevelopersSubscriptionsError = DefaultErrors;
+export type GetOrganizationsDevelopersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details for an API product subscription. */
 export const getOrganizationsDevelopersSubscriptions: API.OperationMethod<
@@ -11280,7 +11784,7 @@ export const getOrganizationsDevelopersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDevelopersSubscriptionsRequest,
   output: GetOrganizationsDevelopersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsDevelopersSubscriptionsRequest {
@@ -11307,7 +11811,10 @@ export type ListOrganizationsDevelopersSubscriptionsResponse =
 export const ListOrganizationsDevelopersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse;
 
-export type ListOrganizationsDevelopersSubscriptionsError = DefaultErrors;
+export type ListOrganizationsDevelopersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all API product subscriptions for a developer. */
 export const listOrganizationsDevelopersSubscriptions: API.OperationMethod<
@@ -11318,7 +11825,7 @@ export const listOrganizationsDevelopersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsDevelopersSubscriptionsRequest,
   output: ListOrganizationsDevelopersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExpireOrganizationsDevelopersSubscriptionsRequest {
@@ -11344,7 +11851,12 @@ export type ExpireOrganizationsDevelopersSubscriptionsResponse =
 export const ExpireOrganizationsDevelopersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeveloperSubscription;
 
-export type ExpireOrganizationsDevelopersSubscriptionsError = DefaultErrors;
+export type ExpireOrganizationsDevelopersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Expires an API product subscription immediately. */
 export const expireOrganizationsDevelopersSubscriptions: API.OperationMethod<
@@ -11355,7 +11867,7 @@ export const expireOrganizationsDevelopersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExpireOrganizationsDevelopersSubscriptionsRequest,
   output: ExpireOrganizationsDevelopersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsSecurityProfilesV2Request {
@@ -11384,7 +11896,12 @@ export type DeleteOrganizationsSecurityProfilesV2Response = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityProfilesV2Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsSecurityProfilesV2Error = DefaultErrors;
+export type DeleteOrganizationsSecurityProfilesV2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a security profile v2. */
 export const deleteOrganizationsSecurityProfilesV2: API.OperationMethod<
@@ -11395,7 +11912,7 @@ export const deleteOrganizationsSecurityProfilesV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityProfilesV2Request,
   output: DeleteOrganizationsSecurityProfilesV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSecurityProfilesV2Request {
@@ -11424,7 +11941,12 @@ export type PatchOrganizationsSecurityProfilesV2Response =
 export const PatchOrganizationsSecurityProfilesV2Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
 
-export type PatchOrganizationsSecurityProfilesV2Error = DefaultErrors;
+export type PatchOrganizationsSecurityProfilesV2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a security profile V2. */
 export const patchOrganizationsSecurityProfilesV2: API.OperationMethod<
@@ -11435,7 +11957,7 @@ export const patchOrganizationsSecurityProfilesV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityProfilesV2Request,
   output: PatchOrganizationsSecurityProfilesV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSecurityProfilesV2Request {
@@ -11470,7 +11992,12 @@ export type CreateOrganizationsSecurityProfilesV2Response =
 export const CreateOrganizationsSecurityProfilesV2Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
 
-export type CreateOrganizationsSecurityProfilesV2Error = DefaultErrors;
+export type CreateOrganizationsSecurityProfilesV2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a security profile v2. */
 export const createOrganizationsSecurityProfilesV2: API.OperationMethod<
@@ -11481,7 +12008,7 @@ export const createOrganizationsSecurityProfilesV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityProfilesV2Request,
   output: CreateOrganizationsSecurityProfilesV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSecurityProfilesV2Request {
@@ -11511,7 +12038,10 @@ export type GetOrganizationsSecurityProfilesV2Response =
 export const GetOrganizationsSecurityProfilesV2Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileV2;
 
-export type GetOrganizationsSecurityProfilesV2Error = DefaultErrors;
+export type GetOrganizationsSecurityProfilesV2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a security profile v2. */
 export const getOrganizationsSecurityProfilesV2: API.OperationMethod<
@@ -11522,7 +12052,7 @@ export const getOrganizationsSecurityProfilesV2: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityProfilesV2Request,
   output: GetOrganizationsSecurityProfilesV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSecurityProfilesV2Request {
@@ -11558,7 +12088,10 @@ export type ListOrganizationsSecurityProfilesV2Response =
 export const ListOrganizationsSecurityProfilesV2Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityProfilesV2Response;
 
-export type ListOrganizationsSecurityProfilesV2Error = DefaultErrors;
+export type ListOrganizationsSecurityProfilesV2Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List security profiles v2. */
 export const listOrganizationsSecurityProfilesV2: API.PaginatedOperationMethod<
@@ -11569,7 +12102,7 @@ export const listOrganizationsSecurityProfilesV2: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityProfilesV2Request,
   output: ListOrganizationsSecurityProfilesV2Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11607,7 +12140,10 @@ export type ListOrganizationsSharedflowsResponse =
 export const ListOrganizationsSharedflowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSharedFlowsResponse;
 
-export type ListOrganizationsSharedflowsError = DefaultErrors;
+export type ListOrganizationsSharedflowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all shared flows in the organization. If the resource has the `space` attribute set, the response may not return all resources. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). */
 export const listOrganizationsSharedflows: API.OperationMethod<
@@ -11618,7 +12154,7 @@ export const listOrganizationsSharedflows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsSharedflowsRequest,
   output: ListOrganizationsSharedflowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsSharedflowsRequest {
@@ -11638,7 +12174,10 @@ export type GetOrganizationsSharedflowsResponse = GoogleCloudApigeeV1SharedFlow;
 export const GetOrganizationsSharedflowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlow;
 
-export type GetOrganizationsSharedflowsError = DefaultErrors;
+export type GetOrganizationsSharedflowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a shared flow by name, including a list of its revisions. */
 export const getOrganizationsSharedflows: API.OperationMethod<
@@ -11649,7 +12188,7 @@ export const getOrganizationsSharedflows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSharedflowsRequest,
   output: GetOrganizationsSharedflowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsSharedflowsRequest {
@@ -11682,7 +12221,12 @@ export type CreateOrganizationsSharedflowsResponse =
 export const CreateOrganizationsSharedflowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
 
-export type CreateOrganizationsSharedflowsError = DefaultErrors;
+export type CreateOrganizationsSharedflowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB. */
 export const createOrganizationsSharedflows: API.OperationMethod<
@@ -11693,7 +12237,7 @@ export const createOrganizationsSharedflows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSharedflowsRequest,
   output: CreateOrganizationsSharedflowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsSharedflowsRequest {
@@ -11714,7 +12258,12 @@ export type DeleteOrganizationsSharedflowsResponse =
 export const DeleteOrganizationsSharedflowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlow;
 
-export type DeleteOrganizationsSharedflowsError = DefaultErrors;
+export type DeleteOrganizationsSharedflowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a shared flow and all it's revisions. The shared flow must be undeployed before you can delete it. */
 export const deleteOrganizationsSharedflows: API.OperationMethod<
@@ -11725,7 +12274,7 @@ export const deleteOrganizationsSharedflows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSharedflowsRequest,
   output: DeleteOrganizationsSharedflowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveOrganizationsSharedflowsRequest {
@@ -11751,7 +12300,12 @@ export type MoveOrganizationsSharedflowsResponse =
 export const MoveOrganizationsSharedflowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlow;
 
-export type MoveOrganizationsSharedflowsError = DefaultErrors;
+export type MoveOrganizationsSharedflowsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an shared flow to a different space. */
 export const moveOrganizationsSharedflows: API.OperationMethod<
@@ -11762,7 +12316,7 @@ export const moveOrganizationsSharedflows: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveOrganizationsSharedflowsRequest,
   output: MoveOrganizationsSharedflowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSharedflowsDeploymentsRequest {
@@ -11783,7 +12337,10 @@ export type ListOrganizationsSharedflowsDeploymentsResponse =
 export const ListOrganizationsSharedflowsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
-export type ListOrganizationsSharedflowsDeploymentsError = DefaultErrors;
+export type ListOrganizationsSharedflowsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of a shared flow. */
 export const listOrganizationsSharedflowsDeployments: API.OperationMethod<
@@ -11794,7 +12351,7 @@ export const listOrganizationsSharedflowsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsSharedflowsDeploymentsRequest,
   output: ListOrganizationsSharedflowsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsSharedflowsRevisionsRequest {
@@ -11817,7 +12374,10 @@ export type GetOrganizationsSharedflowsRevisionsResponse = GoogleApiHttpBody;
 export const GetOrganizationsSharedflowsRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type GetOrganizationsSharedflowsRevisionsError = DefaultErrors;
+export type GetOrganizationsSharedflowsRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a revision of a shared flow. To download the shared flow configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the shared flow configuration locally and upload the updated sharedFlow configuration revision, as described in [updateSharedFlowRevision](updateSharedFlowRevision). */
 export const getOrganizationsSharedflowsRevisions: API.OperationMethod<
@@ -11828,7 +12388,7 @@ export const getOrganizationsSharedflowsRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSharedflowsRevisionsRequest,
   output: GetOrganizationsSharedflowsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsSharedflowsRevisionsRequest {
@@ -11849,7 +12409,12 @@ export type DeleteOrganizationsSharedflowsRevisionsResponse =
 export const DeleteOrganizationsSharedflowsRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
 
-export type DeleteOrganizationsSharedflowsRevisionsError = DefaultErrors;
+export type DeleteOrganizationsSharedflowsRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a shared flow and all associated policies, resources, and revisions. You must undeploy the shared flow before deleting it. */
 export const deleteOrganizationsSharedflowsRevisions: API.OperationMethod<
@@ -11860,7 +12425,7 @@ export const deleteOrganizationsSharedflowsRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSharedflowsRevisionsRequest,
   output: DeleteOrganizationsSharedflowsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest {
@@ -11888,7 +12453,11 @@ export const UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SharedFlowRevision;
 
 export type UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a shared flow revision. This operation is only allowed on revisions which have never been deployed. After deployment a revision becomes immutable, even if it becomes undeployed. The payload is a ZIP-formatted shared flow. Content type must be either multipart/form-data or application/octet-stream. */
 export const updateSharedFlowRevisionOrganizationsSharedflowsRevisions: API.OperationMethod<
@@ -11899,7 +12468,7 @@ export const updateSharedFlowRevisionOrganizationsSharedflowsRevisions: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsRequest,
   output: UpdateSharedFlowRevisionOrganizationsSharedflowsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSharedflowsRevisionsDeploymentsRequest {
@@ -11921,7 +12490,9 @@ export const ListOrganizationsSharedflowsRevisionsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsSharedflowsRevisionsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of a shared flow revision. */
 export const listOrganizationsSharedflowsRevisionsDeployments: API.OperationMethod<
@@ -11932,7 +12503,7 @@ export const listOrganizationsSharedflowsRevisionsDeployments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsSharedflowsRevisionsDeploymentsRequest,
   output: ListOrganizationsSharedflowsRevisionsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsSecurityProfilesRequest {
@@ -11952,7 +12523,12 @@ export type DeleteOrganizationsSecurityProfilesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsSecurityProfilesError = DefaultErrors;
+export type DeleteOrganizationsSecurityProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteSecurityProfile delete a profile with all its revisions. */
 export const deleteOrganizationsSecurityProfiles: API.OperationMethod<
@@ -11963,7 +12539,7 @@ export const deleteOrganizationsSecurityProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityProfilesRequest,
   output: DeleteOrganizationsSecurityProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSecurityProfilesRequest {
@@ -11992,7 +12568,12 @@ export type PatchOrganizationsSecurityProfilesResponse =
 export const PatchOrganizationsSecurityProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
 
-export type PatchOrganizationsSecurityProfilesError = DefaultErrors;
+export type PatchOrganizationsSecurityProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** UpdateSecurityProfile update the metadata of security profile. */
 export const patchOrganizationsSecurityProfiles: API.OperationMethod<
@@ -12003,7 +12584,7 @@ export const patchOrganizationsSecurityProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityProfilesRequest,
   output: PatchOrganizationsSecurityProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRevisionsOrganizationsSecurityProfilesRequest {
@@ -12030,7 +12611,10 @@ export type ListRevisionsOrganizationsSecurityProfilesResponse =
 export const ListRevisionsOrganizationsSecurityProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse;
 
-export type ListRevisionsOrganizationsSecurityProfilesError = DefaultErrors;
+export type ListRevisionsOrganizationsSecurityProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListSecurityProfileRevisions lists all the revisions of the security profile. */
 export const listRevisionsOrganizationsSecurityProfiles: API.PaginatedOperationMethod<
@@ -12041,7 +12625,7 @@ export const listRevisionsOrganizationsSecurityProfiles: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsOrganizationsSecurityProfilesRequest,
   output: ListRevisionsOrganizationsSecurityProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12080,7 +12664,12 @@ export type CreateOrganizationsSecurityProfilesResponse =
 export const CreateOrganizationsSecurityProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
 
-export type CreateOrganizationsSecurityProfilesError = DefaultErrors;
+export type CreateOrganizationsSecurityProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateSecurityProfile create a new custom security profile. */
 export const createOrganizationsSecurityProfiles: API.OperationMethod<
@@ -12091,7 +12680,7 @@ export const createOrganizationsSecurityProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityProfilesRequest,
   output: CreateOrganizationsSecurityProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSecurityProfilesRequest {
@@ -12112,7 +12701,10 @@ export type GetOrganizationsSecurityProfilesResponse =
 export const GetOrganizationsSecurityProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfile;
 
-export type GetOrganizationsSecurityProfilesError = DefaultErrors;
+export type GetOrganizationsSecurityProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetSecurityProfile gets the specified security profile. Returns NOT_FOUND if security profile is not present for the specified organization. */
 export const getOrganizationsSecurityProfiles: API.OperationMethod<
@@ -12123,7 +12715,7 @@ export const getOrganizationsSecurityProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityProfilesRequest,
   output: GetOrganizationsSecurityProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSecurityProfilesRequest {
@@ -12150,7 +12742,10 @@ export type ListOrganizationsSecurityProfilesResponse =
 export const ListOrganizationsSecurityProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityProfilesResponse;
 
-export type ListOrganizationsSecurityProfilesError = DefaultErrors;
+export type ListOrganizationsSecurityProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListSecurityProfiles lists all the security profiles associated with the org including attached and unattached profiles. */
 export const listOrganizationsSecurityProfiles: API.PaginatedOperationMethod<
@@ -12161,7 +12756,7 @@ export const listOrganizationsSecurityProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityProfilesRequest,
   output: ListOrganizationsSecurityProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12192,7 +12787,11 @@ export const CreateOrganizationsSecurityProfilesEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation;
 
 export type CreateOrganizationsSecurityProfilesEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateSecurityProfileEnvironmentAssociation creates profile environment association i.e. attaches environment to security profile. */
 export const createOrganizationsSecurityProfilesEnvironments: API.OperationMethod<
@@ -12203,7 +12802,7 @@ export const createOrganizationsSecurityProfilesEnvironments: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityProfilesEnvironmentsRequest,
   output: CreateOrganizationsSecurityProfilesEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsSecurityProfilesEnvironmentsRequest {
@@ -12225,7 +12824,11 @@ export const DeleteOrganizationsSecurityProfilesEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsSecurityProfilesEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteSecurityProfileEnvironmentAssociation removes profile environment association i.e. detaches environment from security profile. */
 export const deleteOrganizationsSecurityProfilesEnvironments: API.OperationMethod<
@@ -12236,7 +12839,7 @@ export const deleteOrganizationsSecurityProfilesEnvironments: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityProfilesEnvironmentsRequest,
   output: DeleteOrganizationsSecurityProfilesEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest {
@@ -12267,7 +12870,11 @@ export const ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ComputeEnvironmentScoresResponse;
 
 export type ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ComputeEnvironmentScores calculates scores for requested time range for the specified security profile and environment. */
 export const computeEnvironmentScoresOrganizationsSecurityProfilesEnvironments: API.OperationMethod<
@@ -12280,7 +12887,7 @@ export const computeEnvironmentScoresOrganizationsSecurityProfilesEnvironments: 
     ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsRequest,
   output:
     ComputeEnvironmentScoresOrganizationsSecurityProfilesEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsApimServiceExtensionsRequest {
@@ -12315,7 +12922,12 @@ export type CreateOrganizationsApimServiceExtensionsResponse =
 export const CreateOrganizationsApimServiceExtensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsApimServiceExtensionsError = DefaultErrors;
+export type CreateOrganizationsApimServiceExtensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an APIM ServiceExtension in an organization. */
 export const createOrganizationsApimServiceExtensions: API.OperationMethod<
@@ -12326,7 +12938,7 @@ export const createOrganizationsApimServiceExtensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApimServiceExtensionsRequest,
   output: CreateOrganizationsApimServiceExtensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsApimServiceExtensionsRequest {
@@ -12347,7 +12959,10 @@ export type GetOrganizationsApimServiceExtensionsResponse =
 export const GetOrganizationsApimServiceExtensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApimServiceExtension;
 
-export type GetOrganizationsApimServiceExtensionsError = DefaultErrors;
+export type GetOrganizationsApimServiceExtensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets APIM service extension details. */
 export const getOrganizationsApimServiceExtensions: API.OperationMethod<
@@ -12358,7 +12973,7 @@ export const getOrganizationsApimServiceExtensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApimServiceExtensionsRequest,
   output: GetOrganizationsApimServiceExtensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsApimServiceExtensionsRequest {
@@ -12385,7 +13000,10 @@ export type ListOrganizationsApimServiceExtensionsResponse =
 export const ListOrganizationsApimServiceExtensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApimServiceExtensionsResponse;
 
-export type ListOrganizationsApimServiceExtensionsError = DefaultErrors;
+export type ListOrganizationsApimServiceExtensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all APIM service extensions in an organization. */
 export const listOrganizationsApimServiceExtensions: API.PaginatedOperationMethod<
@@ -12396,7 +13014,7 @@ export const listOrganizationsApimServiceExtensions: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApimServiceExtensionsRequest,
   output: ListOrganizationsApimServiceExtensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12434,7 +13052,12 @@ export type PatchOrganizationsApimServiceExtensionsResponse =
 export const PatchOrganizationsApimServiceExtensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchOrganizationsApimServiceExtensionsError = DefaultErrors;
+export type PatchOrganizationsApimServiceExtensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an APIM service extension in an organization. */
 export const patchOrganizationsApimServiceExtensions: API.OperationMethod<
@@ -12445,7 +13068,7 @@ export const patchOrganizationsApimServiceExtensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsApimServiceExtensionsRequest,
   output: PatchOrganizationsApimServiceExtensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsApimServiceExtensionsRequest {
@@ -12466,7 +13089,12 @@ export type DeleteOrganizationsApimServiceExtensionsResponse =
 export const DeleteOrganizationsApimServiceExtensionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsApimServiceExtensionsError = DefaultErrors;
+export type DeleteOrganizationsApimServiceExtensionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes APIM service extension from an organization. */
 export const deleteOrganizationsApimServiceExtensions: API.OperationMethod<
@@ -12477,7 +13105,7 @@ export const deleteOrganizationsApimServiceExtensions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApimServiceExtensionsRequest,
   output: DeleteOrganizationsApimServiceExtensionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsHostSecurityReportsRequest {
@@ -12507,7 +13135,12 @@ export type CreateOrganizationsHostSecurityReportsResponse =
 export const CreateOrganizationsHostSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
-export type CreateOrganizationsHostSecurityReportsError = DefaultErrors;
+export type CreateOrganizationsHostSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded. */
 export const createOrganizationsHostSecurityReports: API.OperationMethod<
@@ -12518,7 +13151,7 @@ export const createOrganizationsHostSecurityReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsHostSecurityReportsRequest,
   output: CreateOrganizationsHostSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsHostSecurityReportsRequest {
@@ -12539,7 +13172,10 @@ export type GetOrganizationsHostSecurityReportsResponse =
 export const GetOrganizationsHostSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
-export type GetOrganizationsHostSecurityReportsError = DefaultErrors;
+export type GetOrganizationsHostSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed" */
 export const getOrganizationsHostSecurityReports: API.OperationMethod<
@@ -12550,7 +13186,7 @@ export const getOrganizationsHostSecurityReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsHostSecurityReportsRequest,
   output: GetOrganizationsHostSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetResultViewOrganizationsHostSecurityReportsRequest {
@@ -12571,7 +13207,10 @@ export type GetResultViewOrganizationsHostSecurityReportsResponse =
 export const GetResultViewOrganizationsHostSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReportResultView;
 
-export type GetResultViewOrganizationsHostSecurityReportsError = DefaultErrors;
+export type GetResultViewOrganizationsHostSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** After the query is completed, use this API to view the query result when result size is small. */
 export const getResultViewOrganizationsHostSecurityReports: API.OperationMethod<
@@ -12582,7 +13221,7 @@ export const getResultViewOrganizationsHostSecurityReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResultViewOrganizationsHostSecurityReportsRequest,
   output: GetResultViewOrganizationsHostSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsHostSecurityReportsRequest {
@@ -12631,7 +13270,10 @@ export type ListOrganizationsHostSecurityReportsResponse =
 export const ListOrganizationsHostSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityReportsResponse;
 
-export type ListOrganizationsHostSecurityReportsError = DefaultErrors;
+export type ListOrganizationsHostSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Return a list of Security Reports at host level. */
 export const listOrganizationsHostSecurityReports: API.PaginatedOperationMethod<
@@ -12642,7 +13284,7 @@ export const listOrganizationsHostSecurityReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsHostSecurityReportsRequest,
   output: ListOrganizationsHostSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12667,7 +13309,10 @@ export type GetResultOrganizationsHostSecurityReportsResponse =
 export const GetResultOrganizationsHostSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type GetResultOrganizationsHostSecurityReportsError = DefaultErrors;
+export type GetResultOrganizationsHostSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip` */
 export const getResultOrganizationsHostSecurityReports: API.OperationMethod<
@@ -12678,7 +13323,7 @@ export const getResultOrganizationsHostSecurityReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsHostSecurityReportsRequest,
   output: GetResultOrganizationsHostSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsReportsRequest {
@@ -12702,7 +13347,12 @@ export type UpdateOrganizationsReportsResponse =
 export const UpdateOrganizationsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CustomReport;
 
-export type UpdateOrganizationsReportsError = DefaultErrors;
+export type UpdateOrganizationsReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an existing custom report definition */
 export const updateOrganizationsReports: API.OperationMethod<
@@ -12713,7 +13363,7 @@ export const updateOrganizationsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsReportsRequest,
   output: UpdateOrganizationsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsReportsRequest {
@@ -12734,7 +13384,12 @@ export type DeleteOrganizationsReportsResponse =
 export const DeleteOrganizationsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeleteCustomReportResponse;
 
-export type DeleteOrganizationsReportsError = DefaultErrors;
+export type DeleteOrganizationsReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing custom report definition */
 export const deleteOrganizationsReports: API.OperationMethod<
@@ -12745,7 +13400,7 @@ export const deleteOrganizationsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsReportsRequest,
   output: DeleteOrganizationsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsReportsRequest {
@@ -12769,7 +13424,12 @@ export type CreateOrganizationsReportsResponse =
 export const CreateOrganizationsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CustomReport;
 
-export type CreateOrganizationsReportsError = DefaultErrors;
+export type CreateOrganizationsReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart. */
 export const createOrganizationsReports: API.OperationMethod<
@@ -12780,7 +13440,7 @@ export const createOrganizationsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsReportsRequest,
   output: CreateOrganizationsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsReportsRequest {
@@ -12800,7 +13460,7 @@ export type GetOrganizationsReportsResponse = GoogleCloudApigeeV1CustomReport;
 export const GetOrganizationsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CustomReport;
 
-export type GetOrganizationsReportsError = DefaultErrors;
+export type GetOrganizationsReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve a custom report definition. */
 export const getOrganizationsReports: API.OperationMethod<
@@ -12811,7 +13471,7 @@ export const getOrganizationsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsReportsRequest,
   output: GetOrganizationsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsReportsRequest {
@@ -12835,7 +13495,10 @@ export type ListOrganizationsReportsResponse =
 export const ListOrganizationsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListCustomReportsResponse;
 
-export type ListOrganizationsReportsError = DefaultErrors;
+export type ListOrganizationsReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Return a list of Custom Reports */
 export const listOrganizationsReports: API.OperationMethod<
@@ -12846,7 +13509,7 @@ export const listOrganizationsReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsReportsRequest,
   output: ListOrganizationsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEndpointAttachmentsRequest {
@@ -12881,7 +13544,12 @@ export type CreateOrganizationsEndpointAttachmentsResponse =
 export const CreateOrganizationsEndpointAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsEndpointAttachmentsError = DefaultErrors;
+export type CreateOrganizationsEndpointAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid. */
 export const createOrganizationsEndpointAttachments: API.OperationMethod<
@@ -12892,7 +13560,7 @@ export const createOrganizationsEndpointAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEndpointAttachmentsRequest,
   output: CreateOrganizationsEndpointAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEndpointAttachmentsRequest {
@@ -12913,7 +13581,10 @@ export type GetOrganizationsEndpointAttachmentsResponse =
 export const GetOrganizationsEndpointAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EndpointAttachment;
 
-export type GetOrganizationsEndpointAttachmentsError = DefaultErrors;
+export type GetOrganizationsEndpointAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the endpoint attachment. */
 export const getOrganizationsEndpointAttachments: API.OperationMethod<
@@ -12924,7 +13595,7 @@ export const getOrganizationsEndpointAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEndpointAttachmentsRequest,
   output: GetOrganizationsEndpointAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEndpointAttachmentsRequest {
@@ -12951,7 +13622,10 @@ export type ListOrganizationsEndpointAttachmentsResponse =
 export const ListOrganizationsEndpointAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEndpointAttachmentsResponse;
 
-export type ListOrganizationsEndpointAttachmentsError = DefaultErrors;
+export type ListOrganizationsEndpointAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the endpoint attachments in an organization. */
 export const listOrganizationsEndpointAttachments: API.PaginatedOperationMethod<
@@ -12962,7 +13636,7 @@ export const listOrganizationsEndpointAttachments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEndpointAttachmentsRequest,
   output: ListOrganizationsEndpointAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12987,7 +13661,12 @@ export type DeleteOrganizationsEndpointAttachmentsResponse =
 export const DeleteOrganizationsEndpointAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsEndpointAttachmentsError = DefaultErrors;
+export type DeleteOrganizationsEndpointAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an endpoint attachment. */
 export const deleteOrganizationsEndpointAttachments: API.OperationMethod<
@@ -12998,7 +13677,7 @@ export const deleteOrganizationsEndpointAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEndpointAttachmentsRequest,
   output: DeleteOrganizationsEndpointAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsSecurityFeedbackRequest {
@@ -13018,7 +13697,12 @@ export type DeleteOrganizationsSecurityFeedbackResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSecurityFeedbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsSecurityFeedbackError = DefaultErrors;
+export type DeleteOrganizationsSecurityFeedbackError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific feedback report. Used for "undo" of a feedback submission. */
 export const deleteOrganizationsSecurityFeedback: API.OperationMethod<
@@ -13029,7 +13713,7 @@ export const deleteOrganizationsSecurityFeedback: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSecurityFeedbackRequest,
   output: DeleteOrganizationsSecurityFeedbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSecurityFeedbackRequest {
@@ -13058,7 +13742,12 @@ export type PatchOrganizationsSecurityFeedbackResponse =
 export const PatchOrganizationsSecurityFeedbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
 
-export type PatchOrganizationsSecurityFeedbackError = DefaultErrors;
+export type PatchOrganizationsSecurityFeedbackError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a specific feedback report. */
 export const patchOrganizationsSecurityFeedback: API.OperationMethod<
@@ -13069,7 +13758,7 @@ export const patchOrganizationsSecurityFeedback: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSecurityFeedbackRequest,
   output: PatchOrganizationsSecurityFeedbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSecurityFeedbackRequest {
@@ -13104,7 +13793,12 @@ export type CreateOrganizationsSecurityFeedbackResponse =
 export const CreateOrganizationsSecurityFeedbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
 
-export type CreateOrganizationsSecurityFeedbackError = DefaultErrors;
+export type CreateOrganizationsSecurityFeedbackError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new report containing customer feedback. */
 export const createOrganizationsSecurityFeedback: API.OperationMethod<
@@ -13115,7 +13809,7 @@ export const createOrganizationsSecurityFeedback: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSecurityFeedbackRequest,
   output: CreateOrganizationsSecurityFeedbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSecurityFeedbackRequest {
@@ -13136,7 +13830,10 @@ export type GetOrganizationsSecurityFeedbackResponse =
 export const GetOrganizationsSecurityFeedbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityFeedback;
 
-export type GetOrganizationsSecurityFeedbackError = DefaultErrors;
+export type GetOrganizationsSecurityFeedbackError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a specific customer feedback report. */
 export const getOrganizationsSecurityFeedback: API.OperationMethod<
@@ -13147,7 +13844,7 @@ export const getOrganizationsSecurityFeedback: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityFeedbackRequest,
   output: GetOrganizationsSecurityFeedbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSecurityFeedbackRequest {
@@ -13174,7 +13871,10 @@ export type ListOrganizationsSecurityFeedbackResponse =
 export const ListOrganizationsSecurityFeedbackResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityFeedbackResponse;
 
-export type ListOrganizationsSecurityFeedbackError = DefaultErrors;
+export type ListOrganizationsSecurityFeedbackError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all feedback reports which have already been submitted. */
 export const listOrganizationsSecurityFeedback: API.PaginatedOperationMethod<
@@ -13185,7 +13885,7 @@ export const listOrganizationsSecurityFeedback: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityFeedbackRequest,
   output: ListOrganizationsSecurityFeedbackResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13256,7 +13956,10 @@ export type GetOrganizationsOptimizedHostStatsResponse =
 export const GetOrganizationsOptimizedHostStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1OptimizedStats;
 
-export type GetOrganizationsOptimizedHostStatsError = DefaultErrors;
+export type GetOrganizationsOptimizedHostStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Similar to GetHostStats except that the response is less verbose. */
 export const getOrganizationsOptimizedHostStats: API.OperationMethod<
@@ -13267,7 +13970,7 @@ export const getOrganizationsOptimizedHostStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsOptimizedHostStatsRequest,
   output: GetOrganizationsOptimizedHostStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchComputeOrganizationsSecurityAssessmentResultsRequest {
@@ -13294,7 +13997,11 @@ export const BatchComputeOrganizationsSecurityAssessmentResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse;
 
 export type BatchComputeOrganizationsSecurityAssessmentResultsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Compute RAV2 security scores for a set of resources. */
 export const batchComputeOrganizationsSecurityAssessmentResults: API.OperationMethod<
@@ -13305,7 +14012,7 @@ export const batchComputeOrganizationsSecurityAssessmentResults: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchComputeOrganizationsSecurityAssessmentResultsRequest,
   output: BatchComputeOrganizationsSecurityAssessmentResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsDatacollectorsRequest {
@@ -13338,7 +14045,12 @@ export type CreateOrganizationsDatacollectorsResponse =
 export const CreateOrganizationsDatacollectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DataCollector;
 
-export type CreateOrganizationsDatacollectorsError = DefaultErrors;
+export type CreateOrganizationsDatacollectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new data collector. */
 export const createOrganizationsDatacollectors: API.OperationMethod<
@@ -13349,7 +14061,7 @@ export const createOrganizationsDatacollectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDatacollectorsRequest,
   output: CreateOrganizationsDatacollectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsDatacollectorsRequest {
@@ -13376,7 +14088,10 @@ export type ListOrganizationsDatacollectorsResponse =
 export const ListOrganizationsDatacollectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDataCollectorsResponse;
 
-export type ListOrganizationsDatacollectorsError = DefaultErrors;
+export type ListOrganizationsDatacollectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all data collectors. */
 export const listOrganizationsDatacollectors: API.PaginatedOperationMethod<
@@ -13387,7 +14102,7 @@ export const listOrganizationsDatacollectors: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDatacollectorsRequest,
   output: ListOrganizationsDatacollectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13412,7 +14127,10 @@ export type GetOrganizationsDatacollectorsResponse =
 export const GetOrganizationsDatacollectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DataCollector;
 
-export type GetOrganizationsDatacollectorsError = DefaultErrors;
+export type GetOrganizationsDatacollectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a data collector. */
 export const getOrganizationsDatacollectors: API.OperationMethod<
@@ -13423,7 +14141,7 @@ export const getOrganizationsDatacollectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDatacollectorsRequest,
   output: GetOrganizationsDatacollectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsDatacollectorsRequest {
@@ -13443,7 +14161,12 @@ export type DeleteOrganizationsDatacollectorsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsDatacollectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsDatacollectorsError = DefaultErrors;
+export type DeleteOrganizationsDatacollectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a data collector. */
 export const deleteOrganizationsDatacollectors: API.OperationMethod<
@@ -13454,7 +14177,7 @@ export const deleteOrganizationsDatacollectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDatacollectorsRequest,
   output: DeleteOrganizationsDatacollectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsDatacollectorsRequest {
@@ -13481,7 +14204,12 @@ export type PatchOrganizationsDatacollectorsResponse =
 export const PatchOrganizationsDatacollectorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DataCollector;
 
-export type PatchOrganizationsDatacollectorsError = DefaultErrors;
+export type PatchOrganizationsDatacollectorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a data collector. */
 export const patchOrganizationsDatacollectors: API.OperationMethod<
@@ -13492,7 +14220,7 @@ export const patchOrganizationsDatacollectors: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsDatacollectorsRequest,
   output: PatchOrganizationsDatacollectorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsAppsRequest {
@@ -13512,7 +14240,7 @@ export type GetOrganizationsAppsResponse = GoogleCloudApigeeV1App;
 export const GetOrganizationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1App;
 
-export type GetOrganizationsAppsError = DefaultErrors;
+export type GetOrganizationsAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the app profile for the specified app ID. */
 export const getOrganizationsApps: API.OperationMethod<
@@ -13523,7 +14251,7 @@ export const getOrganizationsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppsRequest,
   output: GetOrganizationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsAppsRequest {
@@ -13581,7 +14309,7 @@ export type ListOrganizationsAppsResponse = GoogleCloudApigeeV1ListAppsResponse;
 export const ListOrganizationsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppsResponse;
 
-export type ListOrganizationsAppsError = DefaultErrors;
+export type ListOrganizationsAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists IDs of apps within an organization that have the specified app status (approved or revoked) or are of the specified app type (developer or company). */
 export const listOrganizationsApps: API.PaginatedOperationMethod<
@@ -13592,7 +14320,7 @@ export const listOrganizationsApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppsRequest,
   output: ListOrganizationsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13631,7 +14359,10 @@ export type ListOrganizationsOperationsResponse =
 export const ListOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListOrganizationsOperationsError = DefaultErrors;
+export type ListOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsOperations: API.PaginatedOperationMethod<
@@ -13642,7 +14373,7 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsOperationsRequest,
   output: ListOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13666,7 +14397,10 @@ export type GetOrganizationsOperationsResponse = GoogleLongrunningOperation;
 export const GetOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetOrganizationsOperationsError = DefaultErrors;
+export type GetOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsOperations: API.OperationMethod<
@@ -13677,7 +14411,7 @@ export const getOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsOperationsRequest,
   output: GetOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateDebugmaskOrganizationsEnvironmentsRequest {
@@ -13709,7 +14443,12 @@ export type UpdateDebugmaskOrganizationsEnvironmentsResponse =
 export const UpdateDebugmaskOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugMask;
 
-export type UpdateDebugmaskOrganizationsEnvironmentsError = DefaultErrors;
+export type UpdateDebugmaskOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the debug mask singleton resource for an environment. */
 export const updateDebugmaskOrganizationsEnvironments: API.OperationMethod<
@@ -13720,7 +14459,7 @@ export const updateDebugmaskOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDebugmaskOrganizationsEnvironmentsRequest,
   output: UpdateDebugmaskOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest {
@@ -13742,7 +14481,9 @@ export const GetApiSecurityRuntimeConfigOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiSecurityRuntimeConfig;
 
 export type GetApiSecurityRuntimeConfigOrganizationsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the API Security runtime configuration for an environment. This named ApiSecurityRuntimeConfig to prevent conflicts with ApiSecurityConfig from addon config. */
 export const getApiSecurityRuntimeConfigOrganizationsEnvironments: API.OperationMethod<
@@ -13753,7 +14494,7 @@ export const getApiSecurityRuntimeConfigOrganizationsEnvironments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApiSecurityRuntimeConfigOrganizationsEnvironmentsRequest,
   output: GetApiSecurityRuntimeConfigOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyOrganizationsEnvironmentsRequest {
@@ -13780,7 +14521,12 @@ export type SetIamPolicyOrganizationsEnvironmentsResponse = GoogleIamV1Policy;
 export const SetIamPolicyOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyOrganizationsEnvironmentsError = DefaultErrors;
+export type SetIamPolicyOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API. */
 export const setIamPolicyOrganizationsEnvironments: API.OperationMethod<
@@ -13791,7 +14537,7 @@ export const setIamPolicyOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsEnvironmentsRequest,
   output: SetIamPolicyOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubscribeOrganizationsEnvironmentsRequest {
@@ -13812,7 +14558,12 @@ export type SubscribeOrganizationsEnvironmentsResponse =
 export const SubscribeOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Subscription;
 
-export type SubscribeOrganizationsEnvironmentsError = DefaultErrors;
+export type SubscribeOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a subscription for the environment's Pub/Sub topic. The server will assign a random name for this subscription. The "name" and "push_config" must *not* be specified. */
 export const subscribeOrganizationsEnvironments: API.OperationMethod<
@@ -13823,7 +14574,7 @@ export const subscribeOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubscribeOrganizationsEnvironmentsRequest,
   output: SubscribeOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvironmentsRequest {
@@ -13850,7 +14601,12 @@ export type CreateOrganizationsEnvironmentsResponse =
 export const CreateOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsEnvironmentsError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an environment in an organization. */
 export const createOrganizationsEnvironments: API.OperationMethod<
@@ -13861,7 +14617,7 @@ export const createOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsRequest,
   output: CreateOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEnvironmentOrganizationsEnvironmentsRequest {
@@ -13885,7 +14641,12 @@ export type UpdateEnvironmentOrganizationsEnvironmentsResponse =
 export const UpdateEnvironmentOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Environment;
 
-export type UpdateEnvironmentOrganizationsEnvironmentsError = DefaultErrors;
+export type UpdateEnvironmentOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get). **Note**: Both `PUT` and `POST` methods are supported for updating an existing environment. */
 export const updateEnvironmentOrganizationsEnvironments: API.OperationMethod<
@@ -13896,7 +14657,7 @@ export const updateEnvironmentOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEnvironmentOrganizationsEnvironmentsRequest,
   output: UpdateEnvironmentOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsOrganizationsEnvironmentsRequest {
@@ -13926,7 +14687,12 @@ export type TestIamPermissionsOrganizationsEnvironmentsResponse =
 export const TestIamPermissionsOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
-export type TestIamPermissionsOrganizationsEnvironmentsError = DefaultErrors;
+export type TestIamPermissionsOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests the permissions of a user on an environment, and returns a subset of permissions that the user has on the environment. If the environment does not exist, an empty permission set is returned (a NOT_FOUND error is not returned). */
 export const testIamPermissionsOrganizationsEnvironments: API.OperationMethod<
@@ -13937,7 +14703,7 @@ export const testIamPermissionsOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsEnvironmentsRequest,
   output: TestIamPermissionsOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyEnvironmentOrganizationsEnvironmentsRequest {
@@ -13964,7 +14730,12 @@ export type ModifyEnvironmentOrganizationsEnvironmentsResponse =
 export const ModifyEnvironmentOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ModifyEnvironmentOrganizationsEnvironmentsError = DefaultErrors;
+export type ModifyEnvironmentOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates properties for an Apigee environment with patch semantics using a field mask. **Note:** Not supported for Apigee hybrid. */
 export const modifyEnvironmentOrganizationsEnvironments: API.OperationMethod<
@@ -13975,7 +14746,7 @@ export const modifyEnvironmentOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyEnvironmentOrganizationsEnvironmentsRequest,
   output: ModifyEnvironmentOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSecurityActionsConfigOrganizationsEnvironmentsRequest {
@@ -13997,7 +14768,9 @@ export const GetSecurityActionsConfigOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityActionsConfig;
 
 export type GetSecurityActionsConfigOrganizationsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetSecurityActionConfig returns the current SecurityActions configuration. */
 export const getSecurityActionsConfigOrganizationsEnvironments: API.OperationMethod<
@@ -14008,7 +14781,7 @@ export const getSecurityActionsConfigOrganizationsEnvironments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityActionsConfigOrganizationsEnvironmentsRequest,
   output: GetSecurityActionsConfigOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateTraceConfigOrganizationsEnvironmentsRequest {
@@ -14035,7 +14808,12 @@ export type UpdateTraceConfigOrganizationsEnvironmentsResponse =
 export const UpdateTraceConfigOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfig;
 
-export type UpdateTraceConfigOrganizationsEnvironmentsError = DefaultErrors;
+export type UpdateTraceConfigOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the trace configurations in an environment. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body. */
 export const updateTraceConfigOrganizationsEnvironments: API.OperationMethod<
@@ -14046,7 +14824,7 @@ export const updateTraceConfigOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTraceConfigOrganizationsEnvironmentsRequest,
   output: UpdateTraceConfigOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnsubscribeOrganizationsEnvironmentsRequest {
@@ -14069,7 +14847,12 @@ export type UnsubscribeOrganizationsEnvironmentsResponse = GoogleProtobufEmpty;
 export const UnsubscribeOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type UnsubscribeOrganizationsEnvironmentsError = DefaultErrors;
+export type UnsubscribeOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a subscription for the environment's Pub/Sub topic. */
 export const unsubscribeOrganizationsEnvironments: API.OperationMethod<
@@ -14080,7 +14863,7 @@ export const unsubscribeOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnsubscribeOrganizationsEnvironmentsRequest,
   output: UnsubscribeOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTraceConfigOrganizationsEnvironmentsRequest {
@@ -14101,7 +14884,10 @@ export type GetTraceConfigOrganizationsEnvironmentsResponse =
 export const GetTraceConfigOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfig;
 
-export type GetTraceConfigOrganizationsEnvironmentsError = DefaultErrors;
+export type GetTraceConfigOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get distributed trace configuration in an environment. */
 export const getTraceConfigOrganizationsEnvironments: API.OperationMethod<
@@ -14112,7 +14898,7 @@ export const getTraceConfigOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTraceConfigOrganizationsEnvironmentsRequest,
   output: GetTraceConfigOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyOrganizationsEnvironmentsRequest {
@@ -14137,7 +14923,10 @@ export type GetIamPolicyOrganizationsEnvironmentsResponse = GoogleIamV1Policy;
 export const GetIamPolicyOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyOrganizationsEnvironmentsError = DefaultErrors;
+export type GetIamPolicyOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API. */
 export const getIamPolicyOrganizationsEnvironments: API.OperationMethod<
@@ -14148,7 +14937,7 @@ export const getIamPolicyOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsEnvironmentsRequest,
   output: GetIamPolicyOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDeployedConfigOrganizationsEnvironmentsRequest {
@@ -14169,7 +14958,10 @@ export type GetDeployedConfigOrganizationsEnvironmentsResponse =
 export const GetDeployedConfigOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentConfig;
 
-export type GetDeployedConfigOrganizationsEnvironmentsError = DefaultErrors;
+export type GetDeployedConfigOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the deployed configuration for an environment. */
 export const getDeployedConfigOrganizationsEnvironments: API.OperationMethod<
@@ -14180,7 +14972,7 @@ export const getDeployedConfigOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeployedConfigOrganizationsEnvironmentsRequest,
   output: GetDeployedConfigOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest {
@@ -14210,7 +15002,11 @@ export const UpdateSecurityActionsConfigOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityActionsConfig;
 
 export type UpdateSecurityActionsConfigOrganizationsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** UpdateSecurityActionConfig updates the current SecurityActions configuration. This method is used to enable/disable the feature at the environment level. */
 export const updateSecurityActionsConfigOrganizationsEnvironments: API.OperationMethod<
@@ -14221,7 +15017,7 @@ export const updateSecurityActionsConfigOrganizationsEnvironments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityActionsConfigOrganizationsEnvironmentsRequest,
   output: UpdateSecurityActionsConfigOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDebugmaskOrganizationsEnvironmentsRequest {
@@ -14242,7 +15038,10 @@ export type GetDebugmaskOrganizationsEnvironmentsResponse =
 export const GetDebugmaskOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugMask;
 
-export type GetDebugmaskOrganizationsEnvironmentsError = DefaultErrors;
+export type GetDebugmaskOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the debug mask singleton resource for an environment. */
 export const getDebugmaskOrganizationsEnvironments: API.OperationMethod<
@@ -14253,7 +15052,7 @@ export const getDebugmaskOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDebugmaskOrganizationsEnvironmentsRequest,
   output: GetDebugmaskOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsEnvironmentsRequest {
@@ -14274,7 +15073,12 @@ export type DeleteOrganizationsEnvironmentsResponse =
 export const DeleteOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsEnvironmentsError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an environment from an organization. **Warning: You must delete all key value maps and key value entries before you delete an environment.** Otherwise, if you re-create the environment the key value map entry operations will encounter encryption/decryption discrepancies. */
 export const deleteOrganizationsEnvironments: API.OperationMethod<
@@ -14285,7 +15089,7 @@ export const deleteOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsRequest,
   output: DeleteOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsEnvironmentsRequest {
@@ -14309,7 +15113,12 @@ export type UpdateOrganizationsEnvironmentsResponse =
 export const UpdateOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Environment;
 
-export type UpdateOrganizationsEnvironmentsError = DefaultErrors;
+export type UpdateOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get). **Note**: Both `PUT` and `POST` methods are supported for updating an existing environment. */
 export const updateOrganizationsEnvironments: API.OperationMethod<
@@ -14320,7 +15129,7 @@ export const updateOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsRequest,
   output: UpdateOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAddonsConfigOrganizationsEnvironmentsRequest {
@@ -14341,7 +15150,10 @@ export type GetAddonsConfigOrganizationsEnvironmentsResponse =
 export const GetAddonsConfigOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AddonsConfig;
 
-export type GetAddonsConfigOrganizationsEnvironmentsError = DefaultErrors;
+export type GetAddonsConfigOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the add-ons config of an environment. */
 export const getAddonsConfigOrganizationsEnvironments: API.OperationMethod<
@@ -14352,7 +15164,7 @@ export const getAddonsConfigOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAddonsConfigOrganizationsEnvironmentsRequest,
   output: GetAddonsConfigOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsEnvironmentsRequest {
@@ -14373,7 +15185,10 @@ export type GetOrganizationsEnvironmentsResponse =
 export const GetOrganizationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Environment;
 
-export type GetOrganizationsEnvironmentsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets environment details. */
 export const getOrganizationsEnvironments: API.OperationMethod<
@@ -14384,7 +15199,7 @@ export const getOrganizationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsRequest,
   output: GetOrganizationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeployOrganizationsEnvironmentsApisRevisionsRequest {
@@ -14418,7 +15233,12 @@ export type DeployOrganizationsEnvironmentsApisRevisionsResponse =
 export const DeployOrganizationsEnvironmentsApisRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
 
-export type DeployOrganizationsEnvironmentsApisRevisionsError = DefaultErrors;
+export type DeployOrganizationsEnvironmentsApisRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deploys a revision of an API proxy. If another revision of the same API proxy revision is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot invoke an API proxy until it has been deployed to an environment. After you deploy an API proxy revision, you cannot edit it. To edit the API proxy, you must create and deploy a new revision. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` All successful API proxy deployments to Apigee are [zero-downtime deployments](https://cloud.google.com/apigee/docs/api-platform/deploy/ui-deploy-overview#zero-downtime-deployment). Apigee hybrid validates the dependencies between shared flows and API proxies at deployment time. For example, if the Flow Callout policy in an API proxy references a shared flow that either doesn't exist or isn't deployed, the API proxy deployment fails. */
 export const deployOrganizationsEnvironmentsApisRevisions: API.OperationMethod<
@@ -14429,7 +15249,7 @@ export const deployOrganizationsEnvironmentsApisRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeployOrganizationsEnvironmentsApisRevisionsRequest,
   output: DeployOrganizationsEnvironmentsApisRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest {
@@ -14451,7 +15271,9 @@ export const GetDeploymentsOrganizationsEnvironmentsApisRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type GetDeploymentsOrganizationsEnvironmentsApisRevisionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the deployment of an API proxy revision and actual state reported by runtime pods. */
 export const getDeploymentsOrganizationsEnvironmentsApisRevisions: API.OperationMethod<
@@ -14462,7 +15284,7 @@ export const getDeploymentsOrganizationsEnvironmentsApisRevisions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentsOrganizationsEnvironmentsApisRevisionsRequest,
   output: GetDeploymentsOrganizationsEnvironmentsApisRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UndeployOrganizationsEnvironmentsApisRevisionsRequest {
@@ -14488,7 +15310,12 @@ export type UndeployOrganizationsEnvironmentsApisRevisionsResponse =
 export const UndeployOrganizationsEnvironmentsApisRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type UndeployOrganizationsEnvironmentsApisRevisionsError = DefaultErrors;
+export type UndeployOrganizationsEnvironmentsApisRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeploys an API proxy revision from an environment. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` */
 export const undeployOrganizationsEnvironmentsApisRevisions: API.OperationMethod<
@@ -14499,7 +15326,7 @@ export const undeployOrganizationsEnvironmentsApisRevisions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeployOrganizationsEnvironmentsApisRevisionsRequest,
   output: UndeployOrganizationsEnvironmentsApisRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest {
@@ -14525,7 +15352,11 @@ export const GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a report for a dry run analysis of an UndeployApiProxy request without committing the undeploy. In addition to the standard validations performed when removing deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being removed. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run UndeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateUndeployChangeReport`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` */
 export const generateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeployments: API.OperationMethod<
@@ -14538,7 +15369,7 @@ export const generateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsD
     GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest,
   output:
     GenerateUndeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest {
@@ -14567,7 +15398,11 @@ export const GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DeploymentChangeReport;
 
 export type GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a report for a dry run analysis of a DeployApiProxy request without committing the deployment. In addition to the standard validations performed when adding deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being created. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run DeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateDeployChangeReport`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` */
 export const generateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeployments: API.OperationMethod<
@@ -14580,7 +15415,7 @@ export const generateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDep
     GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsRequest,
   output:
     GenerateDeployChangeReportOrganizationsEnvironmentsApisRevisionsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest {
@@ -14602,7 +15437,11 @@ export const DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the data from a debug session. This does not cancel the debug session or prevent further data from being collected if the session is still active in runtime pods. */
 export const deleteDataOrganizationsEnvironmentsApisRevisionsDebugsessions: API.OperationMethod<
@@ -14613,7 +15452,7 @@ export const deleteDataOrganizationsEnvironmentsApisRevisionsDebugsessions: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: DeleteDataOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest {
@@ -14645,7 +15484,11 @@ export const CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugSession;
 
 export type CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a debug session for a deployed API Proxy revision. */
 export const createOrganizationsEnvironmentsApisRevisionsDebugsessions: API.OperationMethod<
@@ -14656,7 +15499,7 @@ export const createOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: CreateOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest {
@@ -14678,7 +15521,9 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugSession;
 
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a debug session. */
 export const getOrganizationsEnvironmentsApisRevisionsDebugsessions: API.OperationMethod<
@@ -14689,7 +15534,7 @@ export const getOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest {
@@ -14717,7 +15562,9 @@ export const ListOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDebugSessionsResponse;
 
 export type ListOrganizationsEnvironmentsApisRevisionsDebugsessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists debug sessions that are currently active in the given API Proxy revision. */
 export const listOrganizationsEnvironmentsApisRevisionsDebugsessions: API.PaginatedOperationMethod<
@@ -14728,7 +15575,7 @@ export const listOrganizationsEnvironmentsApisRevisionsDebugsessions: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsApisRevisionsDebugsessionsRequest,
   output: ListOrganizationsEnvironmentsApisRevisionsDebugsessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14754,7 +15601,9 @@ export const GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1DebugSessionTransaction;
 
 export type GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the debug data from a transaction. */
 export const getOrganizationsEnvironmentsApisRevisionsDebugsessionsData: API.OperationMethod<
@@ -14765,7 +15614,7 @@ export const getOrganizationsEnvironmentsApisRevisionsDebugsessionsData: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataRequest,
   output: GetOrganizationsEnvironmentsApisRevisionsDebugsessionsDataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsApisDeploymentsRequest {
@@ -14786,7 +15635,10 @@ export type ListOrganizationsEnvironmentsApisDeploymentsResponse =
 export const ListOrganizationsEnvironmentsApisDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
-export type ListOrganizationsEnvironmentsApisDeploymentsError = DefaultErrors;
+export type ListOrganizationsEnvironmentsApisDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of an API proxy in an environment. */
 export const listOrganizationsEnvironmentsApisDeployments: API.OperationMethod<
@@ -14797,7 +15649,7 @@ export const listOrganizationsEnvironmentsApisDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsApisDeploymentsRequest,
   output: ListOrganizationsEnvironmentsApisDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEnvironmentsAnalyticsExportsRequest {
@@ -14826,7 +15678,11 @@ export const CreateOrganizationsEnvironmentsAnalyticsExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Export;
 
 export type CreateOrganizationsEnvironmentsAnalyticsExportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued". */
 export const createOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
@@ -14837,7 +15693,7 @@ export const createOrganizationsEnvironmentsAnalyticsExports: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsAnalyticsExportsRequest,
   output: CreateOrganizationsEnvironmentsAnalyticsExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsAnalyticsExportsRequest {
@@ -14858,7 +15714,10 @@ export type GetOrganizationsEnvironmentsAnalyticsExportsResponse =
 export const GetOrganizationsEnvironmentsAnalyticsExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Export;
 
-export type GetOrganizationsEnvironmentsAnalyticsExportsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsAnalyticsExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`. */
 export const getOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
@@ -14869,7 +15728,7 @@ export const getOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsAnalyticsExportsRequest,
   output: GetOrganizationsEnvironmentsAnalyticsExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsAnalyticsExportsRequest {
@@ -14890,7 +15749,10 @@ export type ListOrganizationsEnvironmentsAnalyticsExportsResponse =
 export const ListOrganizationsEnvironmentsAnalyticsExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListExportsResponse;
 
-export type ListOrganizationsEnvironmentsAnalyticsExportsError = DefaultErrors;
+export type ListOrganizationsEnvironmentsAnalyticsExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the details and status of all analytics export jobs belonging to the parent organization and environment. */
 export const listOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
@@ -14901,7 +15763,7 @@ export const listOrganizationsEnvironmentsAnalyticsExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsAnalyticsExportsRequest,
   output: ListOrganizationsEnvironmentsAnalyticsExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest {
@@ -14931,7 +15793,9 @@ export const GetSchemav2OrganizationsEnvironmentsAnalyticsAdminResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Schema;
 
 export type GetSchemav2OrganizationsEnvironmentsAnalyticsAdminError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of metrics and dimensions that can be used to create analytics queries and reports. Each schema element contains the name of the field, its associated type, and a flag indicating whether it is a standard or custom field. */
 export const getSchemav2OrganizationsEnvironmentsAnalyticsAdmin: API.OperationMethod<
@@ -14942,7 +15806,7 @@ export const getSchemav2OrganizationsEnvironmentsAnalyticsAdmin: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSchemav2OrganizationsEnvironmentsAnalyticsAdminRequest,
   output: GetSchemav2OrganizationsEnvironmentsAnalyticsAdminResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest {
@@ -14972,7 +15836,11 @@ export const DeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type DeployOrganizationsEnvironmentsSharedflowsRevisionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deploys a revision of a shared flow. If another revision of the same shared flow is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot use a shared flow until it has been deployed to an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}` * `apigee.sharedflowrevisions.deploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}` */
 export const deployOrganizationsEnvironmentsSharedflowsRevisions: API.OperationMethod<
@@ -14983,7 +15851,7 @@ export const deployOrganizationsEnvironmentsSharedflowsRevisions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeployOrganizationsEnvironmentsSharedflowsRevisionsRequest,
   output: DeployOrganizationsEnvironmentsSharedflowsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest {
@@ -15005,7 +15873,9 @@ export const GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
 
 export type GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the deployment of a shared flow revision and actual state reported by runtime pods. */
 export const getDeploymentsOrganizationsEnvironmentsSharedflowsRevisions: API.OperationMethod<
@@ -15016,7 +15886,7 @@ export const getDeploymentsOrganizationsEnvironmentsSharedflowsRevisions: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsRequest,
   output: GetDeploymentsOrganizationsEnvironmentsSharedflowsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest {
@@ -15038,7 +15908,11 @@ export const UndeployOrganizationsEnvironmentsSharedflowsRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UndeployOrganizationsEnvironmentsSharedflowsRevisionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeploys a shared flow revision from an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required: * `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}` * `apigee.sharedflowrevisions.undeploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}` */
 export const undeployOrganizationsEnvironmentsSharedflowsRevisions: API.OperationMethod<
@@ -15049,7 +15923,7 @@ export const undeployOrganizationsEnvironmentsSharedflowsRevisions: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeployOrganizationsEnvironmentsSharedflowsRevisionsRequest,
   output: UndeployOrganizationsEnvironmentsSharedflowsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest {
@@ -15071,7 +15945,9 @@ export const ListOrganizationsEnvironmentsSharedflowsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
 export type ListOrganizationsEnvironmentsSharedflowsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of a shared flow in an environment. */
 export const listOrganizationsEnvironmentsSharedflowsDeployments: API.OperationMethod<
@@ -15082,7 +15958,7 @@ export const listOrganizationsEnvironmentsSharedflowsDeployments: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsSharedflowsDeploymentsRequest,
   output: ListOrganizationsEnvironmentsSharedflowsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest {
@@ -15104,7 +15980,11 @@ export const DeleteOrganizationsEnvironmentsTraceConfigOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsEnvironmentsTraceConfigOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a distributed trace configuration override. */
 export const deleteOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMethod<
@@ -15115,7 +15995,7 @@ export const deleteOrganizationsEnvironmentsTraceConfigOverrides: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: DeleteOrganizationsEnvironmentsTraceConfigOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsEnvironmentsTraceConfigOverridesRequest {
@@ -15145,7 +16025,11 @@ export const PatchOrganizationsEnvironmentsTraceConfigOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
 
 export type PatchOrganizationsEnvironmentsTraceConfigOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a distributed trace configuration override. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body. */
 export const patchOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMethod<
@@ -15156,7 +16040,7 @@ export const patchOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: PatchOrganizationsEnvironmentsTraceConfigOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvironmentsTraceConfigOverridesRequest {
@@ -15183,7 +16067,11 @@ export const CreateOrganizationsEnvironmentsTraceConfigOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
 
 export type CreateOrganizationsEnvironmentsTraceConfigOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides. */
 export const createOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMethod<
@@ -15194,7 +16082,7 @@ export const createOrganizationsEnvironmentsTraceConfigOverrides: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: CreateOrganizationsEnvironmentsTraceConfigOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsEnvironmentsTraceConfigOverridesRequest {
@@ -15222,7 +16110,9 @@ export const ListOrganizationsEnvironmentsTraceConfigOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListTraceConfigOverridesResponse;
 
 export type ListOrganizationsEnvironmentsTraceConfigOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all of the distributed trace configuration overrides in an environment. */
 export const listOrganizationsEnvironmentsTraceConfigOverrides: API.PaginatedOperationMethod<
@@ -15233,7 +16123,7 @@ export const listOrganizationsEnvironmentsTraceConfigOverrides: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: ListOrganizationsEnvironmentsTraceConfigOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15259,7 +16149,9 @@ export const GetOrganizationsEnvironmentsTraceConfigOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TraceConfigOverride;
 
 export type GetOrganizationsEnvironmentsTraceConfigOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a trace configuration override. */
 export const getOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMethod<
@@ -15270,7 +16162,7 @@ export const getOrganizationsEnvironmentsTraceConfigOverrides: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsTraceConfigOverridesRequest,
   output: GetOrganizationsEnvironmentsTraceConfigOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsEnvironmentsArchiveDeploymentsRequest {
@@ -15300,7 +16192,11 @@ export const PatchOrganizationsEnvironmentsArchiveDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ArchiveDeployment;
 
 export type PatchOrganizationsEnvironmentsArchiveDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing ArchiveDeployment. Labels can modified but most of the other fields are not modifiable. */
 export const patchOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -15311,7 +16207,7 @@ export const patchOrganizationsEnvironmentsArchiveDeployments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: PatchOrganizationsEnvironmentsArchiveDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest {
@@ -15333,7 +16229,11 @@ export const DeleteOrganizationsEnvironmentsArchiveDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsEnvironmentsArchiveDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an archive deployment. */
 export const deleteOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -15344,7 +16244,7 @@ export const deleteOrganizationsEnvironmentsArchiveDeployments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: DeleteOrganizationsEnvironmentsArchiveDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsArchiveDeploymentsRequest {
@@ -15365,7 +16265,10 @@ export type GetOrganizationsEnvironmentsArchiveDeploymentsResponse =
 export const GetOrganizationsEnvironmentsArchiveDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ArchiveDeployment;
 
-export type GetOrganizationsEnvironmentsArchiveDeploymentsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsArchiveDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified ArchiveDeployment. */
 export const getOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -15376,7 +16279,7 @@ export const getOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: GetOrganizationsEnvironmentsArchiveDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsArchiveDeploymentsRequest {
@@ -15407,7 +16310,9 @@ export const ListOrganizationsEnvironmentsArchiveDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListArchiveDeploymentsResponse;
 
 export type ListOrganizationsEnvironmentsArchiveDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the ArchiveDeployments in the specified Environment. */
 export const listOrganizationsEnvironmentsArchiveDeployments: API.PaginatedOperationMethod<
@@ -15418,7 +16323,7 @@ export const listOrganizationsEnvironmentsArchiveDeployments: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: ListOrganizationsEnvironmentsArchiveDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15453,7 +16358,11 @@ export const CreateOrganizationsEnvironmentsArchiveDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsEnvironmentsArchiveDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new ArchiveDeployment. */
 export const createOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -15464,7 +16373,7 @@ export const createOrganizationsEnvironmentsArchiveDeployments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: CreateOrganizationsEnvironmentsArchiveDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest {
@@ -15495,7 +16404,11 @@ export const GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GenerateUploadUrlResponse;
 
 export type GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a signed URL for uploading an Archive zip file to Google Cloud Storage. Once the upload is complete, the signed URL should be passed to CreateArchiveDeployment. When uploading to the generated signed URL, please follow these restrictions: * Source file type should be a zip file. * Source file size should not exceed 1GB limit. * No credentials should be attached - the signed URLs provide access to the target bucket using internal service identity; if credentials were attached, the identity from the credentials would be used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT request, these two headers need to be specified: * `content-type: application/zip` * `x-goog-content-length-range: 0,1073741824` And this header SHOULD NOT be specified: * `Authorization: Bearer YOUR_TOKEN` */
 export const generateUploadUrlOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -15506,7 +16419,7 @@ export const generateUploadUrlOrganizationsEnvironmentsArchiveDeployments: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output: GenerateUploadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest {
@@ -15537,7 +16450,11 @@ export const GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GenerateDownloadUrlResponse;
 
 export type GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a signed URL for downloading the original zip file used to create an Archive Deployment. The URL is only valid for a limited period and should be used within minutes after generation. Each call returns a new upload URL. */
 export const generateDownloadUrlOrganizationsEnvironmentsArchiveDeployments: API.OperationMethod<
@@ -15549,7 +16466,7 @@ export const generateDownloadUrlOrganizationsEnvironmentsArchiveDeployments: API
   input: GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsRequest,
   output:
     GenerateDownloadUrlOrganizationsEnvironmentsArchiveDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvironmentsSecurityReportsRequest {
@@ -15579,7 +16496,12 @@ export type CreateOrganizationsEnvironmentsSecurityReportsResponse =
 export const CreateOrganizationsEnvironmentsSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
-export type CreateOrganizationsEnvironmentsSecurityReportsError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit a report request to be processed in the background. If the submission succeeds, the API returns a 200 status and an ID that refer to the report request. In addition to the HTTP status 200, the `state` of "enqueued" means that the request succeeded. */
 export const createOrganizationsEnvironmentsSecurityReports: API.OperationMethod<
@@ -15590,7 +16512,7 @@ export const createOrganizationsEnvironmentsSecurityReports: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsSecurityReportsRequest,
   output: CreateOrganizationsEnvironmentsSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsSecurityReportsRequest {
@@ -15611,7 +16533,10 @@ export type GetOrganizationsEnvironmentsSecurityReportsResponse =
 export const GetOrganizationsEnvironmentsSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReport;
 
-export type GetOrganizationsEnvironmentsSecurityReportsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed" */
 export const getOrganizationsEnvironmentsSecurityReports: API.OperationMethod<
@@ -15622,7 +16547,7 @@ export const getOrganizationsEnvironmentsSecurityReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsSecurityReportsRequest,
   output: GetOrganizationsEnvironmentsSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetResultViewOrganizationsEnvironmentsSecurityReportsRequest {
@@ -15644,7 +16569,9 @@ export const GetResultViewOrganizationsEnvironmentsSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityReportResultView;
 
 export type GetResultViewOrganizationsEnvironmentsSecurityReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** After the query is completed, use this API to view the query result when result size is small. */
 export const getResultViewOrganizationsEnvironmentsSecurityReports: API.OperationMethod<
@@ -15655,7 +16582,7 @@ export const getResultViewOrganizationsEnvironmentsSecurityReports: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResultViewOrganizationsEnvironmentsSecurityReportsRequest,
   output: GetResultViewOrganizationsEnvironmentsSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsSecurityReportsRequest {
@@ -15699,7 +16626,10 @@ export type ListOrganizationsEnvironmentsSecurityReportsResponse =
 export const ListOrganizationsEnvironmentsSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityReportsResponse;
 
-export type ListOrganizationsEnvironmentsSecurityReportsError = DefaultErrors;
+export type ListOrganizationsEnvironmentsSecurityReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Return a list of Security Reports */
 export const listOrganizationsEnvironmentsSecurityReports: API.PaginatedOperationMethod<
@@ -15710,7 +16640,7 @@ export const listOrganizationsEnvironmentsSecurityReports: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityReportsRequest,
   output: ListOrganizationsEnvironmentsSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15736,7 +16666,9 @@ export const GetResultOrganizationsEnvironmentsSecurityReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
 export type GetResultOrganizationsEnvironmentsSecurityReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** After the query is completed, use this API to retrieve the results as file. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip` */
 export const getResultOrganizationsEnvironmentsSecurityReports: API.OperationMethod<
@@ -15747,7 +16679,7 @@ export const getResultOrganizationsEnvironmentsSecurityReports: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsEnvironmentsSecurityReportsRequest,
   output: GetResultOrganizationsEnvironmentsSecurityReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEnvironmentsReferencesRequest {
@@ -15771,7 +16703,12 @@ export type CreateOrganizationsEnvironmentsReferencesResponse =
 export const CreateOrganizationsEnvironmentsReferencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
 
-export type CreateOrganizationsEnvironmentsReferencesError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsReferencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Reference in the specified environment. */
 export const createOrganizationsEnvironmentsReferences: API.OperationMethod<
@@ -15782,7 +16719,7 @@ export const createOrganizationsEnvironmentsReferences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsReferencesRequest,
   output: CreateOrganizationsEnvironmentsReferencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsReferencesRequest {
@@ -15803,7 +16740,12 @@ export type DeleteOrganizationsEnvironmentsReferencesResponse =
 export const DeleteOrganizationsEnvironmentsReferencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
 
-export type DeleteOrganizationsEnvironmentsReferencesError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsReferencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Reference from an environment. Returns the deleted Reference resource. */
 export const deleteOrganizationsEnvironmentsReferences: API.OperationMethod<
@@ -15814,7 +16756,7 @@ export const deleteOrganizationsEnvironmentsReferences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsReferencesRequest,
   output: DeleteOrganizationsEnvironmentsReferencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsReferencesRequest {
@@ -15835,7 +16777,10 @@ export type GetOrganizationsEnvironmentsReferencesResponse =
 export const GetOrganizationsEnvironmentsReferencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
 
-export type GetOrganizationsEnvironmentsReferencesError = DefaultErrors;
+export type GetOrganizationsEnvironmentsReferencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Reference resource. */
 export const getOrganizationsEnvironmentsReferences: API.OperationMethod<
@@ -15846,7 +16791,7 @@ export const getOrganizationsEnvironmentsReferences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsReferencesRequest,
   output: GetOrganizationsEnvironmentsReferencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsEnvironmentsReferencesRequest {
@@ -15870,7 +16815,12 @@ export type UpdateOrganizationsEnvironmentsReferencesResponse =
 export const UpdateOrganizationsEnvironmentsReferencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Reference;
 
-export type UpdateOrganizationsEnvironmentsReferencesError = DefaultErrors;
+export type UpdateOrganizationsEnvironmentsReferencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Reference. Note that this operation has PUT semantics; it will replace the entirety of the existing Reference with the resource in the request body. */
 export const updateOrganizationsEnvironmentsReferences: API.OperationMethod<
@@ -15881,7 +16831,7 @@ export const updateOrganizationsEnvironmentsReferences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsReferencesRequest,
   output: UpdateOrganizationsEnvironmentsReferencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest {
@@ -15908,7 +16858,9 @@ export const GetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyOrganizationsEnvironmentsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the IAM policy on a deployment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.deployments.getIamPolicy` permission to call this API. */
 export const getIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMethod<
@@ -15919,7 +16871,7 @@ export const getIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsEnvironmentsDeploymentsRequest,
   output: GetIamPolicyOrganizationsEnvironmentsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsDeploymentsRequest {
@@ -15945,7 +16897,10 @@ export type ListOrganizationsEnvironmentsDeploymentsResponse =
 export const ListOrganizationsEnvironmentsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
-export type ListOrganizationsEnvironmentsDeploymentsError = DefaultErrors;
+export type ListOrganizationsEnvironmentsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of API proxies or shared flows in an environment. */
 export const listOrganizationsEnvironmentsDeployments: API.OperationMethod<
@@ -15956,7 +16911,7 @@ export const listOrganizationsEnvironmentsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsDeploymentsRequest,
   output: ListOrganizationsEnvironmentsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsEnvironmentsDeploymentsRequest {
@@ -15977,7 +16932,10 @@ export type GetOrganizationsEnvironmentsDeploymentsResponse =
 export const GetOrganizationsEnvironmentsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Deployment;
 
-export type GetOrganizationsEnvironmentsDeploymentsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a particular deployment of Api proxy or a shared flow in an environment */
 export const getOrganizationsEnvironmentsDeployments: API.OperationMethod<
@@ -15988,7 +16946,7 @@ export const getOrganizationsEnvironmentsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsDeploymentsRequest,
   output: GetOrganizationsEnvironmentsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest {
@@ -16019,7 +16977,11 @@ export const TestIamPermissionsOrganizationsEnvironmentsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
 export type TestIamPermissionsOrganizationsEnvironmentsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests the permissions of a user on a deployment, and returns a subset of permissions that the user has on the deployment. If the deployment does not exist, an empty permission set is returned (a NOT_FOUND error is not returned). */
 export const testIamPermissionsOrganizationsEnvironmentsDeployments: API.OperationMethod<
@@ -16030,7 +16992,7 @@ export const testIamPermissionsOrganizationsEnvironmentsDeployments: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsEnvironmentsDeploymentsRequest,
   output: TestIamPermissionsOrganizationsEnvironmentsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest {
@@ -16059,7 +17021,11 @@ export const SetIamPolicyOrganizationsEnvironmentsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyOrganizationsEnvironmentsDeploymentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy on a deployment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.deployments.setIamPolicy` permission to call this API. */
 export const setIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMethod<
@@ -16070,7 +17036,7 @@ export const setIamPolicyOrganizationsEnvironmentsDeployments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsEnvironmentsDeploymentsRequest,
   output: SetIamPolicyOrganizationsEnvironmentsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvironmentsSecurityActionsRequest {
@@ -16103,7 +17069,12 @@ export type CreateOrganizationsEnvironmentsSecurityActionsResponse =
 export const CreateOrganizationsEnvironmentsSecurityActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
-export type CreateOrganizationsEnvironmentsSecurityActionsError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsSecurityActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateSecurityAction creates a SecurityAction. */
 export const createOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
@@ -16114,7 +17085,7 @@ export const createOrganizationsEnvironmentsSecurityActions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsSecurityActionsRequest,
   output: CreateOrganizationsEnvironmentsSecurityActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsSecurityActionsRequest {
@@ -16135,7 +17106,10 @@ export type GetOrganizationsEnvironmentsSecurityActionsResponse =
 export const GetOrganizationsEnvironmentsSecurityActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
-export type GetOrganizationsEnvironmentsSecurityActionsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsSecurityActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a SecurityAction by name. */
 export const getOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
@@ -16146,7 +17120,7 @@ export const getOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsSecurityActionsRequest,
   output: GetOrganizationsEnvironmentsSecurityActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsSecurityActionsRequest {
@@ -16176,7 +17150,10 @@ export type ListOrganizationsEnvironmentsSecurityActionsResponse =
 export const ListOrganizationsEnvironmentsSecurityActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityActionsResponse;
 
-export type ListOrganizationsEnvironmentsSecurityActionsError = DefaultErrors;
+export type ListOrganizationsEnvironmentsSecurityActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of SecurityActions. This returns both enabled and disabled actions. */
 export const listOrganizationsEnvironmentsSecurityActions: API.PaginatedOperationMethod<
@@ -16187,7 +17164,7 @@ export const listOrganizationsEnvironmentsSecurityActions: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityActionsRequest,
   output: ListOrganizationsEnvironmentsSecurityActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16218,7 +17195,12 @@ export type PatchOrganizationsEnvironmentsSecurityActionsResponse =
 export const PatchOrganizationsEnvironmentsSecurityActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
-export type PatchOrganizationsEnvironmentsSecurityActionsError = DefaultErrors;
+export type PatchOrganizationsEnvironmentsSecurityActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a SecurityAction. */
 export const patchOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
@@ -16229,7 +17211,7 @@ export const patchOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsSecurityActionsRequest,
   output: PatchOrganizationsEnvironmentsSecurityActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableOrganizationsEnvironmentsSecurityActionsRequest {
@@ -16255,7 +17237,12 @@ export type EnableOrganizationsEnvironmentsSecurityActionsResponse =
 export const EnableOrganizationsEnvironmentsSecurityActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
-export type EnableOrganizationsEnvironmentsSecurityActionsError = DefaultErrors;
+export type EnableOrganizationsEnvironmentsSecurityActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable a SecurityAction. The `state` of the SecurityAction after enabling is `ENABLED`. `EnableSecurityAction` can be called on SecurityActions in the state `DISABLED`; SecurityActions in a different state (including `ENABLED) return an error. */
 export const enableOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
@@ -16266,7 +17253,7 @@ export const enableOrganizationsEnvironmentsSecurityActions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableOrganizationsEnvironmentsSecurityActionsRequest,
   output: EnableOrganizationsEnvironmentsSecurityActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsSecurityActionsRequest {
@@ -16287,7 +17274,12 @@ export type DeleteOrganizationsEnvironmentsSecurityActionsResponse =
 export const DeleteOrganizationsEnvironmentsSecurityActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsEnvironmentsSecurityActionsError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsSecurityActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a SecurityAction. */
 export const deleteOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
@@ -16298,7 +17290,7 @@ export const deleteOrganizationsEnvironmentsSecurityActions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsSecurityActionsRequest,
   output: DeleteOrganizationsEnvironmentsSecurityActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableOrganizationsEnvironmentsSecurityActionsRequest {
@@ -16325,7 +17317,11 @@ export const DisableOrganizationsEnvironmentsSecurityActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityAction;
 
 export type DisableOrganizationsEnvironmentsSecurityActionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable a SecurityAction. The `state` of the SecurityAction after disabling is `DISABLED`. `DisableSecurityAction` can be called on SecurityActions in the state `ENABLED`; SecurityActions in a different state (including `DISABLED`) return an error. */
 export const disableOrganizationsEnvironmentsSecurityActions: API.OperationMethod<
@@ -16336,7 +17332,7 @@ export const disableOrganizationsEnvironmentsSecurityActions: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableOrganizationsEnvironmentsSecurityActionsRequest,
   output: DisableOrganizationsEnvironmentsSecurityActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsFlowhooksRequest {
@@ -16357,7 +17353,10 @@ export type GetOrganizationsEnvironmentsFlowhooksResponse =
 export const GetOrganizationsEnvironmentsFlowhooksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
-export type GetOrganizationsEnvironmentsFlowhooksError = DefaultErrors;
+export type GetOrganizationsEnvironmentsFlowhooksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the name of the shared flow attached to the specified flow hook. If there's no shared flow attached to the flow hook, the API does not return an error; it simply does not return a name in the response. */
 export const getOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
@@ -16368,7 +17367,7 @@ export const getOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsFlowhooksRequest,
   output: GetOrganizationsEnvironmentsFlowhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest {
@@ -16390,7 +17389,11 @@ export const DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
 export type DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detaches a shared flow from a flow hook. */
 export const detachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
@@ -16402,7 +17405,7 @@ export const detachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooks: API
   input: DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksRequest,
   output:
     DetachSharedFlowFromFlowHookOrganizationsEnvironmentsFlowhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest {
@@ -16427,7 +17430,11 @@ export const AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1FlowHook;
 
 export type AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attaches a shared flow to a flow hook. */
 export const attachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooks: API.OperationMethod<
@@ -16438,7 +17445,7 @@ export const attachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooks: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksRequest,
   output: AttachSharedFlowToFlowHookOrganizationsEnvironmentsFlowhooksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest {
@@ -16469,7 +17476,11 @@ export const SetAddonEnablementOrganizationsEnvironmentsAddonsConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type SetAddonEnablementOrganizationsEnvironmentsAddonsConfigError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an add-on enablement status of an environment. */
 export const setAddonEnablementOrganizationsEnvironmentsAddonsConfig: API.OperationMethod<
@@ -16480,7 +17491,7 @@ export const setAddonEnablementOrganizationsEnvironmentsAddonsConfig: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAddonEnablementOrganizationsEnvironmentsAddonsConfigRequest,
   output: SetAddonEnablementOrganizationsEnvironmentsAddonsConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsOptimizedStatsRequest {
@@ -16548,7 +17559,10 @@ export type GetOrganizationsEnvironmentsOptimizedStatsResponse =
 export const GetOrganizationsEnvironmentsOptimizedStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1OptimizedStats;
 
-export type GetOrganizationsEnvironmentsOptimizedStatsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsOptimizedStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Similar to GetStats except that the response is less verbose. */
 export const getOrganizationsEnvironmentsOptimizedStats: API.OperationMethod<
@@ -16559,7 +17573,7 @@ export const getOrganizationsEnvironmentsOptimizedStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsOptimizedStatsRequest,
   output: GetOrganizationsEnvironmentsOptimizedStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsEnvironmentsResourcefilesRequest {
@@ -16593,7 +17607,12 @@ export type UpdateOrganizationsEnvironmentsResourcefilesResponse =
 export const UpdateOrganizationsEnvironmentsResourcefilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ResourceFile;
 
-export type UpdateOrganizationsEnvironmentsResourcefilesError = DefaultErrors;
+export type UpdateOrganizationsEnvironmentsResourcefilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const updateOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -16604,7 +17623,7 @@ export const updateOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsResourcefilesRequest,
   output: UpdateOrganizationsEnvironmentsResourcefilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsResourcefilesRequest {
@@ -16634,7 +17653,12 @@ export type DeleteOrganizationsEnvironmentsResourcefilesResponse =
 export const DeleteOrganizationsEnvironmentsResourcefilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ResourceFile;
 
-export type DeleteOrganizationsEnvironmentsResourcefilesError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsResourcefilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const deleteOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -16645,7 +17669,7 @@ export const deleteOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsResourcefilesRequest,
   output: DeleteOrganizationsEnvironmentsResourcefilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvironmentsResourcefilesRequest {
@@ -16679,7 +17703,12 @@ export type CreateOrganizationsEnvironmentsResourcefilesResponse =
 export const CreateOrganizationsEnvironmentsResourcefilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ResourceFile;
 
-export type CreateOrganizationsEnvironmentsResourcefilesError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsResourcefilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const createOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -16690,7 +17719,7 @@ export const createOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsResourcefilesRequest,
   output: CreateOrganizationsEnvironmentsResourcefilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsResourcefilesRequest {
@@ -16717,7 +17746,10 @@ export type GetOrganizationsEnvironmentsResourcefilesResponse =
 export const GetOrganizationsEnvironmentsResourcefilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type GetOrganizationsEnvironmentsResourcefilesError = DefaultErrors;
+export type GetOrganizationsEnvironmentsResourcefilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const getOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -16728,7 +17760,7 @@ export const getOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsResourcefilesRequest,
   output: GetOrganizationsEnvironmentsResourcefilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsResourcefilesRequest {
@@ -16752,7 +17784,10 @@ export type ListOrganizationsEnvironmentsResourcefilesResponse =
 export const ListOrganizationsEnvironmentsResourcefilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 
-export type ListOrganizationsEnvironmentsResourcefilesError = DefaultErrors;
+export type ListOrganizationsEnvironmentsResourcefilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const listOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -16763,7 +17798,7 @@ export const listOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsResourcefilesRequest,
   output: ListOrganizationsEnvironmentsResourcefilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest {
@@ -16788,7 +17823,9 @@ export const ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentResourcesResponse;
 
 export type ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files). */
 export const listEnvironmentResourcesOrganizationsEnvironmentsResourcefiles: API.OperationMethod<
@@ -16800,7 +17837,7 @@ export const listEnvironmentResourcesOrganizationsEnvironmentsResourcefiles: API
   input: ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesRequest,
   output:
     ListEnvironmentResourcesOrganizationsEnvironmentsResourcefilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEnvironmentsKeystoresRequest {
@@ -16827,7 +17864,12 @@ export type CreateOrganizationsEnvironmentsKeystoresResponse =
 export const CreateOrganizationsEnvironmentsKeystoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Keystore;
 
-export type CreateOrganizationsEnvironmentsKeystoresError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsKeystoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA. */
 export const createOrganizationsEnvironmentsKeystores: API.OperationMethod<
@@ -16838,7 +17880,7 @@ export const createOrganizationsEnvironmentsKeystores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeystoresRequest,
   output: CreateOrganizationsEnvironmentsKeystoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsKeystoresRequest {
@@ -16859,7 +17901,12 @@ export type DeleteOrganizationsEnvironmentsKeystoresResponse =
 export const DeleteOrganizationsEnvironmentsKeystoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Keystore;
 
-export type DeleteOrganizationsEnvironmentsKeystoresError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsKeystoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a keystore or truststore. */
 export const deleteOrganizationsEnvironmentsKeystores: API.OperationMethod<
@@ -16870,7 +17917,7 @@ export const deleteOrganizationsEnvironmentsKeystores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeystoresRequest,
   output: DeleteOrganizationsEnvironmentsKeystoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsKeystoresRequest {
@@ -16891,7 +17938,10 @@ export type GetOrganizationsEnvironmentsKeystoresResponse =
 export const GetOrganizationsEnvironmentsKeystoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Keystore;
 
-export type GetOrganizationsEnvironmentsKeystoresError = DefaultErrors;
+export type GetOrganizationsEnvironmentsKeystoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a keystore or truststore. */
 export const getOrganizationsEnvironmentsKeystores: API.OperationMethod<
@@ -16902,7 +17952,7 @@ export const getOrganizationsEnvironmentsKeystores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeystoresRequest,
   output: GetOrganizationsEnvironmentsKeystoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEnvironmentsKeystoresAliasesRequest {
@@ -16946,7 +17996,11 @@ export const CreateOrganizationsEnvironmentsKeystoresAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
 
 export type CreateOrganizationsEnvironmentsKeystoresAliasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body. */
 export const createOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
@@ -16957,7 +18011,7 @@ export const createOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: CreateOrganizationsEnvironmentsKeystoresAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsKeystoresAliasesRequest {
@@ -16978,7 +18032,10 @@ export type GetOrganizationsEnvironmentsKeystoresAliasesResponse =
 export const GetOrganizationsEnvironmentsKeystoresAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
 
-export type GetOrganizationsEnvironmentsKeystoresAliasesError = DefaultErrors;
+export type GetOrganizationsEnvironmentsKeystoresAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an alias. */
 export const getOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
@@ -16989,7 +18046,7 @@ export const getOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: GetOrganizationsEnvironmentsKeystoresAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsEnvironmentsKeystoresAliasesRequest {
@@ -17011,7 +18068,11 @@ export const DeleteOrganizationsEnvironmentsKeystoresAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
 
 export type DeleteOrganizationsEnvironmentsKeystoresAliasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an alias. */
 export const deleteOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
@@ -17022,7 +18083,7 @@ export const deleteOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: DeleteOrganizationsEnvironmentsKeystoresAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsEnvironmentsKeystoresAliasesRequest {
@@ -17057,7 +18118,11 @@ export const UpdateOrganizationsEnvironmentsKeystoresAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Alias;
 
 export type UpdateOrganizationsEnvironmentsKeystoresAliasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the certificate in an alias. The updated certificate must be in PEM- or DER-encoded X.509 format. */
 export const updateOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
@@ -17068,7 +18133,7 @@ export const updateOrganizationsEnvironmentsKeystoresAliases: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: UpdateOrganizationsEnvironmentsKeystoresAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest {
@@ -17090,7 +18155,9 @@ export const GetCertificateOrganizationsEnvironmentsKeystoresAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
 export type GetCertificateOrganizationsEnvironmentsKeystoresAliasesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the certificate from an alias in PEM-encoded form. */
 export const getCertificateOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
@@ -17101,7 +18168,7 @@ export const getCertificateOrganizationsEnvironmentsKeystoresAliases: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCertificateOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: GetCertificateOrganizationsEnvironmentsKeystoresAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CsrOrganizationsEnvironmentsKeystoresAliasesRequest {
@@ -17122,7 +18189,10 @@ export type CsrOrganizationsEnvironmentsKeystoresAliasesResponse =
 export const CsrOrganizationsEnvironmentsKeystoresAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type CsrOrganizationsEnvironmentsKeystoresAliasesError = DefaultErrors;
+export type CsrOrganizationsEnvironmentsKeystoresAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates a PKCS #10 Certificate Signing Request for the private key in an alias. */
 export const csrOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
@@ -17133,7 +18203,7 @@ export const csrOrganizationsEnvironmentsKeystoresAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CsrOrganizationsEnvironmentsKeystoresAliasesRequest,
   output: CsrOrganizationsEnvironmentsKeystoresAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEnvironmentsKeyvaluemapsRequest {
@@ -17157,7 +18227,12 @@ export type CreateOrganizationsEnvironmentsKeyvaluemapsResponse =
 export const CreateOrganizationsEnvironmentsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type CreateOrganizationsEnvironmentsKeyvaluemapsError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a key value map in an environment. */
 export const createOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
@@ -17168,7 +18243,7 @@ export const createOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: CreateOrganizationsEnvironmentsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsKeyvaluemapsRequest {
@@ -17189,7 +18264,10 @@ export type GetOrganizationsEnvironmentsKeyvaluemapsResponse =
 export const GetOrganizationsEnvironmentsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type GetOrganizationsEnvironmentsKeyvaluemapsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the key value map scoped to an organization, environment, or API proxy. */
 export const getOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
@@ -17200,7 +18278,7 @@ export const getOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: GetOrganizationsEnvironmentsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsEnvironmentsKeyvaluemapsRequest {
@@ -17224,7 +18302,12 @@ export type UpdateOrganizationsEnvironmentsKeyvaluemapsResponse =
 export const UpdateOrganizationsEnvironmentsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type UpdateOrganizationsEnvironmentsKeyvaluemapsError = DefaultErrors;
+export type UpdateOrganizationsEnvironmentsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the key value map scoped to an organization, environment, or API proxy. */
 export const updateOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
@@ -17235,7 +18318,7 @@ export const updateOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: UpdateOrganizationsEnvironmentsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsKeyvaluemapsRequest {
@@ -17256,7 +18339,12 @@ export type DeleteOrganizationsEnvironmentsKeyvaluemapsResponse =
 export const DeleteOrganizationsEnvironmentsKeyvaluemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueMap;
 
-export type DeleteOrganizationsEnvironmentsKeyvaluemapsError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsKeyvaluemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key value map from an environment. */
 export const deleteOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
@@ -17267,7 +18355,7 @@ export const deleteOrganizationsEnvironmentsKeyvaluemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeyvaluemapsRequest,
   output: DeleteOrganizationsEnvironmentsKeyvaluemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
@@ -17289,7 +18377,9 @@ export const GetOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type GetOrganizationsEnvironmentsKeyvaluemapsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const getOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMethod<
@@ -17300,7 +18390,7 @@ export const getOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: GetOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
@@ -17325,7 +18415,11 @@ export const CreateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type CreateOrganizationsEnvironmentsKeyvaluemapsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const createOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMethod<
@@ -17336,7 +18430,7 @@ export const createOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: CreateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
@@ -17364,7 +18458,9 @@ export const ListOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListKeyValueEntriesResponse;
 
 export type ListOrganizationsEnvironmentsKeyvaluemapsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher. */
 export const listOrganizationsEnvironmentsKeyvaluemapsEntries: API.PaginatedOperationMethod<
@@ -17375,7 +18471,7 @@ export const listOrganizationsEnvironmentsKeyvaluemapsEntries: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: ListOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17401,7 +18497,11 @@ export const DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:** * After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior. * Supported for Apigee hybrid 1.8.x and higher. */
 export const deleteOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMethod<
@@ -17412,7 +18512,7 @@ export const deleteOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: DeleteOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest {
@@ -17437,7 +18537,11 @@ export const UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1KeyValueEntry;
 
 export type UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update key value entry scoped to an organization, environment, or API proxy for an existing key. */
 export const updateOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMethod<
@@ -17448,7 +18552,7 @@ export const updateOrganizationsEnvironmentsKeyvaluemapsEntries: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesRequest,
   output: UpdateOrganizationsEnvironmentsKeyvaluemapsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsCachesRequest {
@@ -17468,7 +18572,12 @@ export type DeleteOrganizationsEnvironmentsCachesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsEnvironmentsCachesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsEnvironmentsCachesError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsCachesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a cache. */
 export const deleteOrganizationsEnvironmentsCaches: API.OperationMethod<
@@ -17479,7 +18588,7 @@ export const deleteOrganizationsEnvironmentsCaches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsCachesRequest,
   output: DeleteOrganizationsEnvironmentsCachesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest {
@@ -17510,7 +18619,11 @@ export const QueryTabularStatsOrganizationsEnvironmentsSecurityStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1QueryTabularStatsResponse;
 
 export type QueryTabularStatsOrganizationsEnvironmentsSecurityStatsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieve security statistics as tabular rows. */
 export const queryTabularStatsOrganizationsEnvironmentsSecurityStats: API.OperationMethod<
@@ -17521,7 +18634,7 @@ export const queryTabularStatsOrganizationsEnvironmentsSecurityStats: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryTabularStatsOrganizationsEnvironmentsSecurityStatsRequest,
   output: QueryTabularStatsOrganizationsEnvironmentsSecurityStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest {
@@ -17552,7 +18665,11 @@ export const QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1QueryTimeSeriesStatsResponse;
 
 export type QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieve security statistics as a collection of time series. */
 export const queryTimeSeriesStatsOrganizationsEnvironmentsSecurityStats: API.OperationMethod<
@@ -17563,7 +18680,7 @@ export const queryTimeSeriesStatsOrganizationsEnvironmentsSecurityStats: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsRequest,
   output: QueryTimeSeriesStatsOrganizationsEnvironmentsSecurityStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsSecurityIncidentsRequest {
@@ -17584,7 +18701,10 @@ export type GetOrganizationsEnvironmentsSecurityIncidentsResponse =
 export const GetOrganizationsEnvironmentsSecurityIncidentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityIncident;
 
-export type GetOrganizationsEnvironmentsSecurityIncidentsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsSecurityIncidentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetSecurityIncident gets the specified security incident. Returns NOT_FOUND if security incident is not present for the specified organization and environment. */
 export const getOrganizationsEnvironmentsSecurityIncidents: API.OperationMethod<
@@ -17595,7 +18715,7 @@ export const getOrganizationsEnvironmentsSecurityIncidents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: GetOrganizationsEnvironmentsSecurityIncidentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsSecurityIncidentsRequest {
@@ -17625,7 +18745,10 @@ export type ListOrganizationsEnvironmentsSecurityIncidentsResponse =
 export const ListOrganizationsEnvironmentsSecurityIncidentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSecurityIncidentsResponse;
 
-export type ListOrganizationsEnvironmentsSecurityIncidentsError = DefaultErrors;
+export type ListOrganizationsEnvironmentsSecurityIncidentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListSecurityIncidents lists all the security incident associated with the environment. */
 export const listOrganizationsEnvironmentsSecurityIncidents: API.PaginatedOperationMethod<
@@ -17636,7 +18759,7 @@ export const listOrganizationsEnvironmentsSecurityIncidents: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: ListOrganizationsEnvironmentsSecurityIncidentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17670,7 +18793,11 @@ export const PatchOrganizationsEnvironmentsSecurityIncidentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1SecurityIncident;
 
 export type PatchOrganizationsEnvironmentsSecurityIncidentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** UpdateSecurityIncidents updates an existing security incident. */
 export const patchOrganizationsEnvironmentsSecurityIncidents: API.OperationMethod<
@@ -17681,7 +18808,7 @@ export const patchOrganizationsEnvironmentsSecurityIncidents: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: PatchOrganizationsEnvironmentsSecurityIncidentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest {
@@ -17712,7 +18839,11 @@ export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse;
 
 export type BatchUpdateOrganizationsEnvironmentsSecurityIncidentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** BatchUpdateSecurityIncident updates multiple existing security incidents. */
 export const batchUpdateOrganizationsEnvironmentsSecurityIncidents: API.OperationMethod<
@@ -17723,7 +18854,7 @@ export const batchUpdateOrganizationsEnvironmentsSecurityIncidents: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest,
   output: BatchUpdateOrganizationsEnvironmentsSecurityIncidentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvironmentsTargetserversRequest {
@@ -17754,7 +18885,12 @@ export type CreateOrganizationsEnvironmentsTargetserversResponse =
 export const CreateOrganizationsEnvironmentsTargetserversResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
-export type CreateOrganizationsEnvironmentsTargetserversError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsTargetserversError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetServer in the specified environment. */
 export const createOrganizationsEnvironmentsTargetservers: API.OperationMethod<
@@ -17765,7 +18901,7 @@ export const createOrganizationsEnvironmentsTargetservers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsTargetserversRequest,
   output: CreateOrganizationsEnvironmentsTargetserversResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsEnvironmentsTargetserversRequest {
@@ -17786,7 +18922,12 @@ export type DeleteOrganizationsEnvironmentsTargetserversResponse =
 export const DeleteOrganizationsEnvironmentsTargetserversResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
-export type DeleteOrganizationsEnvironmentsTargetserversError = DefaultErrors;
+export type DeleteOrganizationsEnvironmentsTargetserversError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TargetServer from an environment. Returns the deleted TargetServer resource. */
 export const deleteOrganizationsEnvironmentsTargetservers: API.OperationMethod<
@@ -17797,7 +18938,7 @@ export const deleteOrganizationsEnvironmentsTargetservers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvironmentsTargetserversRequest,
   output: DeleteOrganizationsEnvironmentsTargetserversResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsTargetserversRequest {
@@ -17818,7 +18959,10 @@ export type GetOrganizationsEnvironmentsTargetserversResponse =
 export const GetOrganizationsEnvironmentsTargetserversResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
-export type GetOrganizationsEnvironmentsTargetserversError = DefaultErrors;
+export type GetOrganizationsEnvironmentsTargetserversError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a TargetServer resource. */
 export const getOrganizationsEnvironmentsTargetservers: API.OperationMethod<
@@ -17829,7 +18973,7 @@ export const getOrganizationsEnvironmentsTargetservers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsTargetserversRequest,
   output: GetOrganizationsEnvironmentsTargetserversResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsEnvironmentsTargetserversRequest {
@@ -17853,7 +18997,12 @@ export type UpdateOrganizationsEnvironmentsTargetserversResponse =
 export const UpdateOrganizationsEnvironmentsTargetserversResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1TargetServer;
 
-export type UpdateOrganizationsEnvironmentsTargetserversError = DefaultErrors;
+export type UpdateOrganizationsEnvironmentsTargetserversError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing TargetServer. Note that this operation has PUT semantics; it will replace the entirety of the existing TargetServer with the resource in the request body. */
 export const updateOrganizationsEnvironmentsTargetservers: API.OperationMethod<
@@ -17864,7 +19013,7 @@ export const updateOrganizationsEnvironmentsTargetservers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsEnvironmentsTargetserversRequest,
   output: UpdateOrganizationsEnvironmentsTargetserversResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsStatsRequest {
@@ -17932,7 +19081,10 @@ export type GetOrganizationsEnvironmentsStatsResponse =
 export const GetOrganizationsEnvironmentsStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Stats;
 
-export type GetOrganizationsEnvironmentsStatsError = DefaultErrors;
+export type GetOrganizationsEnvironmentsStatsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve metrics grouped by dimensions. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. You can optionally pass dimensions as path parameters to the `stats` API. If dimensions are not specified, the metrics are computed on the entire set of data for the given time range. */
 export const getOrganizationsEnvironmentsStats: API.OperationMethod<
@@ -17943,7 +19095,7 @@ export const getOrganizationsEnvironmentsStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsStatsRequest,
   output: GetOrganizationsEnvironmentsStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsEnvironmentsQueriesRequest {
@@ -17967,7 +19119,12 @@ export type CreateOrganizationsEnvironmentsQueriesResponse =
 export const CreateOrganizationsEnvironmentsQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
-export type CreateOrganizationsEnvironmentsQueriesError = DefaultErrors;
+export type CreateOrganizationsEnvironmentsQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded. */
 export const createOrganizationsEnvironmentsQueries: API.OperationMethod<
@@ -17978,7 +19135,7 @@ export const createOrganizationsEnvironmentsQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvironmentsQueriesRequest,
   output: CreateOrganizationsEnvironmentsQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEnvironmentsQueriesRequest {
@@ -17999,7 +19156,10 @@ export type GetOrganizationsEnvironmentsQueriesResponse =
 export const GetOrganizationsEnvironmentsQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AsyncQuery;
 
-export type GetOrganizationsEnvironmentsQueriesError = DefaultErrors;
+export type GetOrganizationsEnvironmentsQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed" */
 export const getOrganizationsEnvironmentsQueries: API.OperationMethod<
@@ -18010,7 +19170,7 @@ export const getOrganizationsEnvironmentsQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvironmentsQueriesRequest,
   output: GetOrganizationsEnvironmentsQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEnvironmentsQueriesRequest {
@@ -18053,7 +19213,10 @@ export type ListOrganizationsEnvironmentsQueriesResponse =
 export const ListOrganizationsEnvironmentsQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAsyncQueriesResponse;
 
-export type ListOrganizationsEnvironmentsQueriesError = DefaultErrors;
+export type ListOrganizationsEnvironmentsQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Return a list of Asynchronous Queries */
 export const listOrganizationsEnvironmentsQueries: API.OperationMethod<
@@ -18064,7 +19227,7 @@ export const listOrganizationsEnvironmentsQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsEnvironmentsQueriesRequest,
   output: ListOrganizationsEnvironmentsQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetResulturlOrganizationsEnvironmentsQueriesRequest {
@@ -18085,7 +19248,10 @@ export type GetResulturlOrganizationsEnvironmentsQueriesResponse =
 export const GetResulturlOrganizationsEnvironmentsQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse;
 
-export type GetResulturlOrganizationsEnvironmentsQueriesError = DefaultErrors;
+export type GetResulturlOrganizationsEnvironmentsQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is sent to the client as a list of urls to JSON files. */
 export const getResulturlOrganizationsEnvironmentsQueries: API.OperationMethod<
@@ -18096,7 +19262,7 @@ export const getResulturlOrganizationsEnvironmentsQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResulturlOrganizationsEnvironmentsQueriesRequest,
   output: GetResulturlOrganizationsEnvironmentsQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetResultOrganizationsEnvironmentsQueriesRequest {
@@ -18117,7 +19283,10 @@ export type GetResultOrganizationsEnvironmentsQueriesResponse =
 export const GetResultOrganizationsEnvironmentsQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type GetResultOrganizationsEnvironmentsQueriesError = DefaultErrors;
+export type GetResultOrganizationsEnvironmentsQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip` */
 export const getResultOrganizationsEnvironmentsQueries: API.OperationMethod<
@@ -18128,7 +19297,7 @@ export const getResultOrganizationsEnvironmentsQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResultOrganizationsEnvironmentsQueriesRequest,
   output: GetResultOrganizationsEnvironmentsQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateMonetizationConfigOrganizationsAppgroupsRequest {
@@ -18154,7 +19323,12 @@ export type UpdateMonetizationConfigOrganizationsAppgroupsResponse =
 export const UpdateMonetizationConfigOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupMonetizationConfig;
 
-export type UpdateMonetizationConfigOrganizationsAppgroupsError = DefaultErrors;
+export type UpdateMonetizationConfigOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the monetization configuration for the AppGroup. */
 export const updateMonetizationConfigOrganizationsAppgroups: API.OperationMethod<
@@ -18165,7 +19339,7 @@ export const updateMonetizationConfigOrganizationsAppgroups: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMonetizationConfigOrganizationsAppgroupsRequest,
   output: UpdateMonetizationConfigOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsAppgroupsRequest {
@@ -18185,7 +19359,12 @@ export type DeleteOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const DeleteOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
-export type DeleteOrganizationsAppgroupsError = DefaultErrors;
+export type DeleteOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an AppGroup. All app and API keys associations with the AppGroup are also removed. **Warning**: This API will permanently delete the AppGroup and related artifacts. **Note**: The delete operation is asynchronous. The AppGroup is deleted immediately, but its associated resources, such as apps and API keys, may take anywhere from a few seconds to a few minutes to be deleted. */
 export const deleteOrganizationsAppgroups: API.OperationMethod<
@@ -18196,7 +19375,7 @@ export const deleteOrganizationsAppgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsRequest,
   output: DeleteOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsAppgroupsRequest {
@@ -18222,7 +19401,12 @@ export type UpdateOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const UpdateOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
-export type UpdateOrganizationsAppgroupsError = DefaultErrors;
+export type UpdateOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an AppGroup. This API replaces the existing AppGroup details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. Note that the state of the AppGroup should be updated using `action`, and not via AppGroup. */
 export const updateOrganizationsAppgroups: API.OperationMethod<
@@ -18233,7 +19417,7 @@ export const updateOrganizationsAppgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsAppgroupsRequest,
   output: UpdateOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMonetizationConfigOrganizationsAppgroupsRequest {
@@ -18254,7 +19438,10 @@ export type GetMonetizationConfigOrganizationsAppgroupsResponse =
 export const GetMonetizationConfigOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupMonetizationConfig;
 
-export type GetMonetizationConfigOrganizationsAppgroupsError = DefaultErrors;
+export type GetMonetizationConfigOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the monetization configuration for the AppGroup. */
 export const getMonetizationConfigOrganizationsAppgroups: API.OperationMethod<
@@ -18265,7 +19452,7 @@ export const getMonetizationConfigOrganizationsAppgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMonetizationConfigOrganizationsAppgroupsRequest,
   output: GetMonetizationConfigOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsAppgroupsRequest {
@@ -18288,7 +19475,12 @@ export type CreateOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const CreateOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
-export type CreateOrganizationsAppgroupsError = DefaultErrors;
+export type CreateOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an AppGroup. Once created, user can register apps under the AppGroup to obtain secret key and password. At creation time, the AppGroup's state is set as `active`. */
 export const createOrganizationsAppgroups: API.OperationMethod<
@@ -18299,7 +19491,7 @@ export const createOrganizationsAppgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsRequest,
   output: CreateOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsAppgroupsRequest {
@@ -18319,7 +19511,10 @@ export type GetOrganizationsAppgroupsResponse = GoogleCloudApigeeV1AppGroup;
 export const GetOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroup;
 
-export type GetOrganizationsAppgroupsError = DefaultErrors;
+export type GetOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the AppGroup details for the provided AppGroup name in the request URI. */
 export const getOrganizationsAppgroups: API.OperationMethod<
@@ -18330,7 +19525,7 @@ export const getOrganizationsAppgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsRequest,
   output: GetOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsAppgroupsRequest {
@@ -18360,7 +19555,10 @@ export type ListOrganizationsAppgroupsResponse =
 export const ListOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppGroupsResponse;
 
-export type ListOrganizationsAppgroupsError = DefaultErrors;
+export type ListOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all AppGroups in an organization. A maximum of 1000 AppGroups are returned in the response if PageSize is not specified, or if the PageSize is greater than 1000. */
 export const listOrganizationsAppgroups: API.PaginatedOperationMethod<
@@ -18371,7 +19569,7 @@ export const listOrganizationsAppgroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsRequest,
   output: ListOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -18396,7 +19594,10 @@ export type GetBalanceOrganizationsAppgroupsResponse =
 export const GetBalanceOrganizationsAppgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
 
-export type GetBalanceOrganizationsAppgroupsError = DefaultErrors;
+export type GetBalanceOrganizationsAppgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the account balance for the AppGroup. */
 export const getBalanceOrganizationsAppgroups: API.OperationMethod<
@@ -18407,7 +19608,7 @@ export const getBalanceOrganizationsAppgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBalanceOrganizationsAppgroupsRequest,
   output: GetBalanceOrganizationsAppgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsAppgroupsAppsRequest {
@@ -18431,7 +19632,12 @@ export type CreateOrganizationsAppgroupsAppsResponse =
 export const CreateOrganizationsAppgroupsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
-export type CreateOrganizationsAppgroupsAppsError = DefaultErrors;
+export type CreateOrganizationsAppgroupsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an app and associates it with an AppGroup. This API associates the AppGroup app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. */
 export const createOrganizationsAppgroupsApps: API.OperationMethod<
@@ -18442,7 +19648,7 @@ export const createOrganizationsAppgroupsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsAppsRequest,
   output: CreateOrganizationsAppgroupsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsAppgroupsAppsRequest {
@@ -18463,7 +19669,10 @@ export type GetOrganizationsAppgroupsAppsResponse =
 export const GetOrganizationsAppgroupsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
-export type GetOrganizationsAppgroupsAppsError = DefaultErrors;
+export type GetOrganizationsAppgroupsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the details for an AppGroup app. */
 export const getOrganizationsAppgroupsApps: API.OperationMethod<
@@ -18474,7 +19683,7 @@ export const getOrganizationsAppgroupsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsAppsRequest,
   output: GetOrganizationsAppgroupsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsAppgroupsAppsRequest {
@@ -18501,7 +19710,10 @@ export type ListOrganizationsAppgroupsAppsResponse =
 export const ListOrganizationsAppgroupsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppGroupAppsResponse;
 
-export type ListOrganizationsAppgroupsAppsError = DefaultErrors;
+export type ListOrganizationsAppgroupsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all apps created by an AppGroup in an Apigee organization. Optionally, you can request an expanded view of the AppGroup apps. Lists all AppGroupApps in an AppGroup. A maximum of 1000 AppGroup apps are returned in the response if PageSize is not specified, or if the PageSize is greater than 1000. */
 export const listOrganizationsAppgroupsApps: API.PaginatedOperationMethod<
@@ -18512,7 +19724,7 @@ export const listOrganizationsAppgroupsApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsAppsRequest,
   output: ListOrganizationsAppgroupsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -18537,7 +19749,12 @@ export type DeleteOrganizationsAppgroupsAppsResponse =
 export const DeleteOrganizationsAppgroupsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
-export type DeleteOrganizationsAppgroupsAppsError = DefaultErrors;
+export type DeleteOrganizationsAppgroupsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an AppGroup app. **Note**: The delete operation is asynchronous. The AppGroup app is deleted immediately, but its associated resources, such as app keys or access tokens, may take anywhere from a few seconds to a few minutes to be deleted. */
 export const deleteOrganizationsAppgroupsApps: API.OperationMethod<
@@ -18548,7 +19765,7 @@ export const deleteOrganizationsAppgroupsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsAppsRequest,
   output: DeleteOrganizationsAppgroupsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsAppgroupsAppsRequest {
@@ -18575,7 +19792,12 @@ export type UpdateOrganizationsAppgroupsAppsResponse =
 export const UpdateOrganizationsAppgroupsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupApp;
 
-export type UpdateOrganizationsAppgroupsAppsError = DefaultErrors;
+export type UpdateOrganizationsAppgroupsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the details for an AppGroup app. In addition, you can add an API product to an AppGroup app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateAppGroupAppKey API. Using this API, you cannot update the app name, as it is the primary key used to identify the app and cannot be changed. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. */
 export const updateOrganizationsAppgroupsApps: API.OperationMethod<
@@ -18586,7 +19808,7 @@ export const updateOrganizationsAppgroupsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsAppgroupsAppsRequest,
   output: UpdateOrganizationsAppgroupsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsAppgroupsAppsKeysRequest {
@@ -18610,7 +19832,12 @@ export type CreateOrganizationsAppgroupsAppsKeysResponse =
 export const CreateOrganizationsAppgroupsAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
-export type CreateOrganizationsAppgroupsAppsKeysError = DefaultErrors;
+export type CreateOrganizationsAppgroupsAppsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a custom consumer key and secret for a AppGroup app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateAppGroupAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteAppGroupAppKey API. */
 export const createOrganizationsAppgroupsAppsKeys: API.OperationMethod<
@@ -18621,7 +19848,7 @@ export const createOrganizationsAppgroupsAppsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsAppsKeysRequest,
   output: CreateOrganizationsAppgroupsAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsAppgroupsAppsKeysRequest {
@@ -18642,7 +19869,12 @@ export type DeleteOrganizationsAppgroupsAppsKeysResponse =
 export const DeleteOrganizationsAppgroupsAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
-export type DeleteOrganizationsAppgroupsAppsKeysError = DefaultErrors;
+export type DeleteOrganizationsAppgroupsAppsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an app's consumer key and removes all API products associated with the app. After the consumer key is deleted, it cannot be used to access any APIs. */
 export const deleteOrganizationsAppgroupsAppsKeys: API.OperationMethod<
@@ -18653,7 +19885,7 @@ export const deleteOrganizationsAppgroupsAppsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsAppsKeysRequest,
   output: DeleteOrganizationsAppgroupsAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsAppgroupsAppsKeysRequest {
@@ -18674,7 +19906,10 @@ export type GetOrganizationsAppgroupsAppsKeysResponse =
 export const GetOrganizationsAppgroupsAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
-export type GetOrganizationsAppgroupsAppsKeysError = DefaultErrors;
+export type GetOrganizationsAppgroupsAppsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details for a consumer key for a AppGroup app, including the key and secret value, associated API products, and other information. */
 export const getOrganizationsAppgroupsAppsKeys: API.OperationMethod<
@@ -18685,7 +19920,7 @@ export const getOrganizationsAppgroupsAppsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsAppsKeysRequest,
   output: GetOrganizationsAppgroupsAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest {
@@ -18712,7 +19947,11 @@ export const UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
 export type UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an API product to an AppGroupAppKey, enabling the app that holds the key to access the API resources bundled in the API product. In addition, you can add attributes and scopes to the AppGroupAppKey. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. You can use the same key to access all API products associated with the app. */
 export const updateAppGroupAppKeyOrganizationsAppgroupsAppsKeys: API.OperationMethod<
@@ -18723,7 +19962,7 @@ export const updateAppGroupAppKeyOrganizationsAppgroupsAppsKeys: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest,
   output: UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest {
@@ -18748,7 +19987,11 @@ export const UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API. */
 export const updateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproducts: API.OperationMethod<
@@ -18761,7 +20004,7 @@ export const updateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiprod
     UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsRequest,
   output:
     UpdateAppGroupAppKeyApiProductOrganizationsAppgroupsAppsKeysApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest {
@@ -18783,7 +20026,11 @@ export const DeleteOrganizationsAppgroupsAppsKeysApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupAppKey;
 
 export type DeleteOrganizationsAppgroupsAppsKeysApiproductsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an API product from an app's consumer key. After the API product is removed, the app cannot access the API resources defined in that API product. **Note**: The consumer key is not removed, only its association with the API product. */
 export const deleteOrganizationsAppgroupsAppsKeysApiproducts: API.OperationMethod<
@@ -18794,7 +20041,7 @@ export const deleteOrganizationsAppgroupsAppsKeysApiproducts: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsAppgroupsAppsKeysApiproductsRequest,
   output: DeleteOrganizationsAppgroupsAppsKeysApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExpireOrganizationsAppgroupsSubscriptionsRequest {
@@ -18820,7 +20067,12 @@ export type ExpireOrganizationsAppgroupsSubscriptionsResponse =
 export const ExpireOrganizationsAppgroupsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
 
-export type ExpireOrganizationsAppgroupsSubscriptionsError = DefaultErrors;
+export type ExpireOrganizationsAppgroupsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Expires an API product subscription immediately. */
 export const expireOrganizationsAppgroupsSubscriptions: API.OperationMethod<
@@ -18831,7 +20083,7 @@ export const expireOrganizationsAppgroupsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExpireOrganizationsAppgroupsSubscriptionsRequest,
   output: ExpireOrganizationsAppgroupsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsAppgroupsSubscriptionsRequest {
@@ -18861,7 +20113,12 @@ export type CreateOrganizationsAppgroupsSubscriptionsResponse =
 export const CreateOrganizationsAppgroupsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
 
-export type CreateOrganizationsAppgroupsSubscriptionsError = DefaultErrors;
+export type CreateOrganizationsAppgroupsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a subscription to an API product. */
 export const createOrganizationsAppgroupsSubscriptions: API.OperationMethod<
@@ -18872,7 +20129,7 @@ export const createOrganizationsAppgroupsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsAppgroupsSubscriptionsRequest,
   output: CreateOrganizationsAppgroupsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsAppgroupsSubscriptionsRequest {
@@ -18893,7 +20150,10 @@ export type GetOrganizationsAppgroupsSubscriptionsResponse =
 export const GetOrganizationsAppgroupsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupSubscription;
 
-export type GetOrganizationsAppgroupsSubscriptionsError = DefaultErrors;
+export type GetOrganizationsAppgroupsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an api product subscription for an appgroup. */
 export const getOrganizationsAppgroupsSubscriptions: API.OperationMethod<
@@ -18904,7 +20164,7 @@ export const getOrganizationsAppgroupsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsAppgroupsSubscriptionsRequest,
   output: GetOrganizationsAppgroupsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsAppgroupsSubscriptionsRequest {
@@ -18931,7 +20191,10 @@ export type ListOrganizationsAppgroupsSubscriptionsResponse =
 export const ListOrganizationsAppgroupsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse;
 
-export type ListOrganizationsAppgroupsSubscriptionsError = DefaultErrors;
+export type ListOrganizationsAppgroupsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all api product subscriptions for an appgroup. */
 export const listOrganizationsAppgroupsSubscriptions: API.PaginatedOperationMethod<
@@ -18942,7 +20205,7 @@ export const listOrganizationsAppgroupsSubscriptions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAppgroupsSubscriptionsRequest,
   output: ListOrganizationsAppgroupsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -18972,7 +20235,12 @@ export type AdjustOrganizationsAppgroupsBalanceResponse =
 export const AdjustOrganizationsAppgroupsBalanceResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
 
-export type AdjustOrganizationsAppgroupsBalanceError = DefaultErrors;
+export type AdjustOrganizationsAppgroupsBalanceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adjust the prepaid balance for the AppGroup. This API will be used in scenarios where the AppGroup has been under-charged or over-charged. */
 export const adjustOrganizationsAppgroupsBalance: API.OperationMethod<
@@ -18983,7 +20251,7 @@ export const adjustOrganizationsAppgroupsBalance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AdjustOrganizationsAppgroupsBalanceRequest,
   output: AdjustOrganizationsAppgroupsBalanceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreditOrganizationsAppgroupsBalanceRequest {
@@ -19009,7 +20277,12 @@ export type CreditOrganizationsAppgroupsBalanceResponse =
 export const CreditOrganizationsAppgroupsBalanceResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1AppGroupBalance;
 
-export type CreditOrganizationsAppgroupsBalanceError = DefaultErrors;
+export type CreditOrganizationsAppgroupsBalanceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Credits the account balance for the AppGroup. */
 export const creditOrganizationsAppgroupsBalance: API.OperationMethod<
@@ -19020,7 +20293,7 @@ export const creditOrganizationsAppgroupsBalance: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreditOrganizationsAppgroupsBalanceRequest,
   output: CreditOrganizationsAppgroupsBalanceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReportStatusOrganizationsInstancesRequest {
@@ -19050,7 +20323,12 @@ export type ReportStatusOrganizationsInstancesResponse =
 export const ReportStatusOrganizationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ReportInstanceStatusResponse;
 
-export type ReportStatusOrganizationsInstancesError = DefaultErrors;
+export type ReportStatusOrganizationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reports the latest status for a runtime instance. */
 export const reportStatusOrganizationsInstances: API.OperationMethod<
@@ -19061,7 +20339,7 @@ export const reportStatusOrganizationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportStatusOrganizationsInstancesRequest,
   output: ReportStatusOrganizationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsInstancesRequest {
@@ -19084,7 +20362,12 @@ export type CreateOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsInstancesError = DefaultErrors;
+export type CreateOrganizationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid. */
 export const createOrganizationsInstances: API.OperationMethod<
@@ -19095,7 +20378,7 @@ export const createOrganizationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesRequest,
   output: CreateOrganizationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsInstancesRequest {
@@ -19115,7 +20398,10 @@ export type GetOrganizationsInstancesResponse = GoogleCloudApigeeV1Instance;
 export const GetOrganizationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Instance;
 
-export type GetOrganizationsInstancesError = DefaultErrors;
+export type GetOrganizationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details for an Apigee runtime instance. **Note:** Not supported for Apigee hybrid. */
 export const getOrganizationsInstances: API.OperationMethod<
@@ -19126,7 +20412,7 @@ export const getOrganizationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesRequest,
   output: GetOrganizationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsInstancesRequest {
@@ -19153,7 +20439,10 @@ export type ListOrganizationsInstancesResponse =
 export const ListOrganizationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListInstancesResponse;
 
-export type ListOrganizationsInstancesError = DefaultErrors;
+export type ListOrganizationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Apigee runtime instances for the organization. **Note:** Not supported for Apigee hybrid. */
 export const listOrganizationsInstances: API.PaginatedOperationMethod<
@@ -19164,7 +20453,7 @@ export const listOrganizationsInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesRequest,
   output: ListOrganizationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -19194,7 +20483,12 @@ export type PatchOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const PatchOrganizationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchOrganizationsInstancesError = DefaultErrors;
+export type PatchOrganizationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an Apigee runtime instance. You can update the fields described in NodeConfig. No other fields will be updated. **Note:** Not supported for Apigee hybrid. */
 export const patchOrganizationsInstances: API.OperationMethod<
@@ -19205,7 +20499,7 @@ export const patchOrganizationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsInstancesRequest,
   output: PatchOrganizationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsInstancesRequest {
@@ -19225,7 +20519,12 @@ export type DeleteOrganizationsInstancesResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsInstancesError = DefaultErrors;
+export type DeleteOrganizationsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an Apigee runtime instance. The instance stops serving requests and the runtime data is deleted. **Note:** Not supported for Apigee hybrid. */
 export const deleteOrganizationsInstances: API.OperationMethod<
@@ -19236,7 +20535,7 @@ export const deleteOrganizationsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsInstancesRequest,
   output: DeleteOrganizationsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsInstancesNatAddressesRequest {
@@ -19263,7 +20562,10 @@ export type ListOrganizationsInstancesNatAddressesResponse =
 export const ListOrganizationsInstancesNatAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListNatAddressesResponse;
 
-export type ListOrganizationsInstancesNatAddressesError = DefaultErrors;
+export type ListOrganizationsInstancesNatAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the NAT addresses for an Apigee instance. **Note:** Not supported for Apigee hybrid. */
 export const listOrganizationsInstancesNatAddresses: API.PaginatedOperationMethod<
@@ -19274,7 +20576,7 @@ export const listOrganizationsInstancesNatAddresses: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesNatAddressesRequest,
   output: ListOrganizationsInstancesNatAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -19299,7 +20601,10 @@ export type GetOrganizationsInstancesNatAddressesResponse =
 export const GetOrganizationsInstancesNatAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1NatAddress;
 
-export type GetOrganizationsInstancesNatAddressesError = DefaultErrors;
+export type GetOrganizationsInstancesNatAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid. */
 export const getOrganizationsInstancesNatAddresses: API.OperationMethod<
@@ -19310,7 +20615,7 @@ export const getOrganizationsInstancesNatAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesNatAddressesRequest,
   output: GetOrganizationsInstancesNatAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsInstancesNatAddressesRequest {
@@ -19334,7 +20639,12 @@ export type CreateOrganizationsInstancesNatAddressesResponse =
 export const CreateOrganizationsInstancesNatAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsInstancesNatAddressesError = DefaultErrors;
+export type CreateOrganizationsInstancesNatAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid. */
 export const createOrganizationsInstancesNatAddresses: API.OperationMethod<
@@ -19345,7 +20655,7 @@ export const createOrganizationsInstancesNatAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesNatAddressesRequest,
   output: CreateOrganizationsInstancesNatAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateOrganizationsInstancesNatAddressesRequest {
@@ -19371,7 +20681,12 @@ export type ActivateOrganizationsInstancesNatAddressesResponse =
 export const ActivateOrganizationsInstancesNatAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ActivateOrganizationsInstancesNatAddressesError = DefaultErrors;
+export type ActivateOrganizationsInstancesNatAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates the NAT address. The Apigee instance can now use this for Internet egress traffic. **Note:** Not supported for Apigee hybrid. */
 export const activateOrganizationsInstancesNatAddresses: API.OperationMethod<
@@ -19382,7 +20697,7 @@ export const activateOrganizationsInstancesNatAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateOrganizationsInstancesNatAddressesRequest,
   output: ActivateOrganizationsInstancesNatAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsInstancesNatAddressesRequest {
@@ -19403,7 +20718,12 @@ export type DeleteOrganizationsInstancesNatAddressesResponse =
 export const DeleteOrganizationsInstancesNatAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsInstancesNatAddressesError = DefaultErrors;
+export type DeleteOrganizationsInstancesNatAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the NAT address. Connections that are actively using the address are drained before it is removed. **Note:** Not supported for Apigee hybrid. */
 export const deleteOrganizationsInstancesNatAddresses: API.OperationMethod<
@@ -19414,7 +20734,7 @@ export const deleteOrganizationsInstancesNatAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsInstancesNatAddressesRequest,
   output: DeleteOrganizationsInstancesNatAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsInstancesCanaryevaluationsRequest {
@@ -19444,7 +20764,12 @@ export type CreateOrganizationsInstancesCanaryevaluationsResponse =
 export const CreateOrganizationsInstancesCanaryevaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsInstancesCanaryevaluationsError = DefaultErrors;
+export type CreateOrganizationsInstancesCanaryevaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new canary evaluation for an organization. */
 export const createOrganizationsInstancesCanaryevaluations: API.OperationMethod<
@@ -19455,7 +20780,7 @@ export const createOrganizationsInstancesCanaryevaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesCanaryevaluationsRequest,
   output: CreateOrganizationsInstancesCanaryevaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsInstancesCanaryevaluationsRequest {
@@ -19476,7 +20801,10 @@ export type GetOrganizationsInstancesCanaryevaluationsResponse =
 export const GetOrganizationsInstancesCanaryevaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1CanaryEvaluation;
 
-export type GetOrganizationsInstancesCanaryevaluationsError = DefaultErrors;
+export type GetOrganizationsInstancesCanaryevaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a CanaryEvaluation for an organization. */
 export const getOrganizationsInstancesCanaryevaluations: API.OperationMethod<
@@ -19487,7 +20815,7 @@ export const getOrganizationsInstancesCanaryevaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesCanaryevaluationsRequest,
   output: GetOrganizationsInstancesCanaryevaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsInstancesAttachmentsRequest {
@@ -19513,7 +20841,12 @@ export type CreateOrganizationsInstancesAttachmentsResponse =
 export const CreateOrganizationsInstancesAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsInstancesAttachmentsError = DefaultErrors;
+export type CreateOrganizationsInstancesAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid. */
 export const createOrganizationsInstancesAttachments: API.OperationMethod<
@@ -19524,7 +20857,7 @@ export const createOrganizationsInstancesAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInstancesAttachmentsRequest,
   output: CreateOrganizationsInstancesAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsInstancesAttachmentsRequest {
@@ -19551,7 +20884,10 @@ export type ListOrganizationsInstancesAttachmentsResponse =
 export const ListOrganizationsInstancesAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListInstanceAttachmentsResponse;
 
-export type ListOrganizationsInstancesAttachmentsError = DefaultErrors;
+export type ListOrganizationsInstancesAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all attachments to an instance. **Note:** Not supported for Apigee hybrid. */
 export const listOrganizationsInstancesAttachments: API.PaginatedOperationMethod<
@@ -19562,7 +20898,7 @@ export const listOrganizationsInstancesAttachments: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInstancesAttachmentsRequest,
   output: ListOrganizationsInstancesAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -19587,7 +20923,10 @@ export type GetOrganizationsInstancesAttachmentsResponse =
 export const GetOrganizationsInstancesAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1InstanceAttachment;
 
-export type GetOrganizationsInstancesAttachmentsError = DefaultErrors;
+export type GetOrganizationsInstancesAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an attachment. **Note:** Not supported for Apigee hybrid. */
 export const getOrganizationsInstancesAttachments: API.OperationMethod<
@@ -19598,7 +20937,7 @@ export const getOrganizationsInstancesAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsInstancesAttachmentsRequest,
   output: GetOrganizationsInstancesAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsInstancesAttachmentsRequest {
@@ -19619,7 +20958,12 @@ export type DeleteOrganizationsInstancesAttachmentsResponse =
 export const DeleteOrganizationsInstancesAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsInstancesAttachmentsError = DefaultErrors;
+export type DeleteOrganizationsInstancesAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an attachment. **Note:** Not supported for Apigee hybrid. */
 export const deleteOrganizationsInstancesAttachments: API.OperationMethod<
@@ -19630,7 +20974,7 @@ export const deleteOrganizationsInstancesAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsInstancesAttachmentsRequest,
   output: DeleteOrganizationsInstancesAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvgroupsRequest {
@@ -19658,7 +21002,12 @@ export type CreateOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const CreateOrganizationsEnvgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsEnvgroupsError = DefaultErrors;
+export type CreateOrganizationsEnvgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new environment group. */
 export const createOrganizationsEnvgroups: API.OperationMethod<
@@ -19669,7 +21018,7 @@ export const createOrganizationsEnvgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvgroupsRequest,
   output: CreateOrganizationsEnvgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsEnvgroupsRequest {
@@ -19696,7 +21045,10 @@ export type ListOrganizationsEnvgroupsResponse =
 export const ListOrganizationsEnvgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentGroupsResponse;
 
-export type ListOrganizationsEnvgroupsError = DefaultErrors;
+export type ListOrganizationsEnvgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all environment groups. */
 export const listOrganizationsEnvgroups: API.PaginatedOperationMethod<
@@ -19707,7 +21059,7 @@ export const listOrganizationsEnvgroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvgroupsRequest,
   output: ListOrganizationsEnvgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -19732,7 +21084,10 @@ export type GetOrganizationsEnvgroupsResponse =
 export const GetOrganizationsEnvgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentGroup;
 
-export type GetOrganizationsEnvgroupsError = DefaultErrors;
+export type GetOrganizationsEnvgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an environment group. */
 export const getOrganizationsEnvgroups: API.OperationMethod<
@@ -19743,7 +21098,7 @@ export const getOrganizationsEnvgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvgroupsRequest,
   output: GetOrganizationsEnvgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsEnvgroupsRequest {
@@ -19771,7 +21126,12 @@ export type PatchOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const PatchOrganizationsEnvgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchOrganizationsEnvgroupsError = DefaultErrors;
+export type PatchOrganizationsEnvgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an environment group. */
 export const patchOrganizationsEnvgroups: API.OperationMethod<
@@ -19782,7 +21142,7 @@ export const patchOrganizationsEnvgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEnvgroupsRequest,
   output: PatchOrganizationsEnvgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDeployedIngressConfigOrganizationsEnvgroupsRequest {
@@ -19806,7 +21166,10 @@ export type GetDeployedIngressConfigOrganizationsEnvgroupsResponse =
 export const GetDeployedIngressConfigOrganizationsEnvgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentGroupConfig;
 
-export type GetDeployedIngressConfigOrganizationsEnvgroupsError = DefaultErrors;
+export type GetDeployedIngressConfigOrganizationsEnvgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the deployed ingress configuration for an environment group. */
 export const getDeployedIngressConfigOrganizationsEnvgroups: API.OperationMethod<
@@ -19817,7 +21180,7 @@ export const getDeployedIngressConfigOrganizationsEnvgroups: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeployedIngressConfigOrganizationsEnvgroupsRequest,
   output: GetDeployedIngressConfigOrganizationsEnvgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsEnvgroupsRequest {
@@ -19837,7 +21200,12 @@ export type DeleteOrganizationsEnvgroupsResponse = GoogleLongrunningOperation;
 export const DeleteOrganizationsEnvgroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsEnvgroupsError = DefaultErrors;
+export type DeleteOrganizationsEnvgroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an environment group. */
 export const deleteOrganizationsEnvgroups: API.OperationMethod<
@@ -19848,7 +21216,7 @@ export const deleteOrganizationsEnvgroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvgroupsRequest,
   output: DeleteOrganizationsEnvgroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEnvgroupsAttachmentsRequest {
@@ -19874,7 +21242,12 @@ export type CreateOrganizationsEnvgroupsAttachmentsResponse =
 export const CreateOrganizationsEnvgroupsAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsEnvgroupsAttachmentsError = DefaultErrors;
+export type CreateOrganizationsEnvgroupsAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new attachment of an environment to an environment group. */
 export const createOrganizationsEnvgroupsAttachments: API.OperationMethod<
@@ -19885,7 +21258,7 @@ export const createOrganizationsEnvgroupsAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEnvgroupsAttachmentsRequest,
   output: CreateOrganizationsEnvgroupsAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsEnvgroupsAttachmentsRequest {
@@ -19912,7 +21285,10 @@ export type ListOrganizationsEnvgroupsAttachmentsResponse =
 export const ListOrganizationsEnvgroupsAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse;
 
-export type ListOrganizationsEnvgroupsAttachmentsError = DefaultErrors;
+export type ListOrganizationsEnvgroupsAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all attachments of an environment group. */
 export const listOrganizationsEnvgroupsAttachments: API.PaginatedOperationMethod<
@@ -19923,7 +21299,7 @@ export const listOrganizationsEnvgroupsAttachments: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEnvgroupsAttachmentsRequest,
   output: ListOrganizationsEnvgroupsAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -19948,7 +21324,10 @@ export type GetOrganizationsEnvgroupsAttachmentsResponse =
 export const GetOrganizationsEnvgroupsAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1EnvironmentGroupAttachment;
 
-export type GetOrganizationsEnvgroupsAttachmentsError = DefaultErrors;
+export type GetOrganizationsEnvgroupsAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an environment group attachment. */
 export const getOrganizationsEnvgroupsAttachments: API.OperationMethod<
@@ -19959,7 +21338,7 @@ export const getOrganizationsEnvgroupsAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEnvgroupsAttachmentsRequest,
   output: GetOrganizationsEnvgroupsAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsEnvgroupsAttachmentsRequest {
@@ -19980,7 +21359,12 @@ export type DeleteOrganizationsEnvgroupsAttachmentsResponse =
 export const DeleteOrganizationsEnvgroupsAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteOrganizationsEnvgroupsAttachmentsError = DefaultErrors;
+export type DeleteOrganizationsEnvgroupsAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an environment group attachment. */
 export const deleteOrganizationsEnvgroupsAttachments: API.OperationMethod<
@@ -19991,7 +21375,7 @@ export const deleteOrganizationsEnvgroupsAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEnvgroupsAttachmentsRequest,
   output: DeleteOrganizationsEnvgroupsAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsDeploymentsRequest {
@@ -20017,7 +21401,10 @@ export type ListOrganizationsDeploymentsResponse =
 export const ListOrganizationsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListDeploymentsResponse;
 
-export type ListOrganizationsDeploymentsError = DefaultErrors;
+export type ListOrganizationsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deployments of API proxies or shared flows. */
 export const listOrganizationsDeployments: API.OperationMethod<
@@ -20028,7 +21415,7 @@ export const listOrganizationsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsDeploymentsRequest,
   output: ListOrganizationsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyOrganizationsSpacesRequest {
@@ -20053,7 +21440,10 @@ export type GetIamPolicyOrganizationsSpacesResponse = GoogleIamV1Policy;
 export const GetIamPolicyOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type GetIamPolicyOrganizationsSpacesError = DefaultErrors;
+export type GetIamPolicyOrganizationsSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Callers must have apigee.spaces.getIamPolicy. */
 export const getIamPolicyOrganizationsSpaces: API.OperationMethod<
@@ -20064,7 +21454,7 @@ export const getIamPolicyOrganizationsSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsSpacesRequest,
   output: GetIamPolicyOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsSpacesRequest {
@@ -20090,7 +21480,12 @@ export type CreateOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const CreateOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Space;
 
-export type CreateOrganizationsSpacesError = DefaultErrors;
+export type CreateOrganizationsSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a space under an organization. */
 export const createOrganizationsSpaces: API.OperationMethod<
@@ -20101,7 +21496,7 @@ export const createOrganizationsSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSpacesRequest,
   output: CreateOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSpacesRequest {
@@ -20121,7 +21516,7 @@ export type GetOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const GetOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Space;
 
-export type GetOrganizationsSpacesError = DefaultErrors;
+export type GetOrganizationsSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a space under an Organization. */
 export const getOrganizationsSpaces: API.OperationMethod<
@@ -20132,7 +21527,7 @@ export const getOrganizationsSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSpacesRequest,
   output: GetOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSpacesRequest {
@@ -20159,7 +21554,7 @@ export type ListOrganizationsSpacesResponse =
 export const ListOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListSpacesResponse;
 
-export type ListOrganizationsSpacesError = DefaultErrors;
+export type ListOrganizationsSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists spaces under an organization. */
 export const listOrganizationsSpaces: API.PaginatedOperationMethod<
@@ -20170,7 +21565,7 @@ export const listOrganizationsSpaces: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSpacesRequest,
   output: ListOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -20204,7 +21599,12 @@ export type TestIamPermissionsOrganizationsSpacesResponse =
 export const TestIamPermissionsOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1TestIamPermissionsResponse;
 
-export type TestIamPermissionsOrganizationsSpacesError = DefaultErrors;
+export type TestIamPermissionsOrganizationsSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Callers don't need any permissions. */
 export const testIamPermissionsOrganizationsSpaces: API.OperationMethod<
@@ -20215,7 +21615,7 @@ export const testIamPermissionsOrganizationsSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsSpacesRequest,
   output: TestIamPermissionsOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsSpacesRequest {
@@ -20235,7 +21635,12 @@ export type DeleteOrganizationsSpacesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsSpacesError = DefaultErrors;
+export type DeleteOrganizationsSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an organization space. */
 export const deleteOrganizationsSpaces: API.OperationMethod<
@@ -20246,7 +21651,7 @@ export const deleteOrganizationsSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsSpacesRequest,
   output: DeleteOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyOrganizationsSpacesRequest {
@@ -20273,7 +21678,12 @@ export type SetIamPolicyOrganizationsSpacesResponse = GoogleIamV1Policy;
 export const SetIamPolicyOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
-export type SetIamPolicyOrganizationsSpacesError = DefaultErrors;
+export type SetIamPolicyOrganizationsSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** IAM META APIs Callers must have apigee.spaces.setIamPolicy. */
 export const setIamPolicyOrganizationsSpaces: API.OperationMethod<
@@ -20284,7 +21694,7 @@ export const setIamPolicyOrganizationsSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsSpacesRequest,
   output: SetIamPolicyOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSpacesRequest {
@@ -20310,7 +21720,12 @@ export type PatchOrganizationsSpacesResponse = GoogleCloudApigeeV1Space;
 export const PatchOrganizationsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Space;
 
-export type PatchOrganizationsSpacesError = DefaultErrors;
+export type PatchOrganizationsSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a space. */
 export const patchOrganizationsSpaces: API.OperationMethod<
@@ -20321,7 +21736,7 @@ export const patchOrganizationsSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSpacesRequest,
   output: PatchOrganizationsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveOrganizationsApiproductsRequest {
@@ -20347,7 +21762,12 @@ export type MoveOrganizationsApiproductsResponse =
 export const MoveOrganizationsApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
-export type MoveOrganizationsApiproductsError = DefaultErrors;
+export type MoveOrganizationsApiproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an API product to a different space. */
 export const moveOrganizationsApiproducts: API.OperationMethod<
@@ -20358,7 +21778,7 @@ export const moveOrganizationsApiproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveOrganizationsApiproductsRequest,
   output: MoveOrganizationsApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsApiproductsRequest {
@@ -20379,7 +21799,12 @@ export type DeleteOrganizationsApiproductsResponse =
 export const DeleteOrganizationsApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
-export type DeleteOrganizationsApiproductsError = DefaultErrors;
+export type DeleteOrganizationsApiproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an API product from an organization. Deleting an API product causes app requests to the resource URIs defined in the API product to fail. Ensure that you create a new API product to serve existing apps, unless your intention is to disable access to the resources defined in the API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name. */
 export const deleteOrganizationsApiproducts: API.OperationMethod<
@@ -20390,7 +21815,7 @@ export const deleteOrganizationsApiproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApiproductsRequest,
   output: DeleteOrganizationsApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOrganizationsApiproductsRequest {
@@ -20414,7 +21839,12 @@ export type UpdateOrganizationsApiproductsResponse =
 export const UpdateOrganizationsApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
-export type UpdateOrganizationsApiproductsError = DefaultErrors;
+export type UpdateOrganizationsApiproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing API product. You must include all required values, whether or not you are updating them, as well as any optional values that you are updating. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via UI or API. View the list of API products to identify their internal names. */
 export const updateOrganizationsApiproducts: API.OperationMethod<
@@ -20425,7 +21855,7 @@ export const updateOrganizationsApiproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApiproductsRequest,
   output: UpdateOrganizationsApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttributesOrganizationsApiproductsRequest {
@@ -20449,7 +21879,12 @@ export type AttributesOrganizationsApiproductsResponse =
 export const AttributesOrganizationsApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
 
-export type AttributesOrganizationsApiproductsError = DefaultErrors;
+export type AttributesOrganizationsApiproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or creates API product attributes. This API **replaces** the current list of attributes with the attributes specified in the request body. In this way, you can update existing attributes, add new attributes, or delete existing attributes by omitting them from the request body. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with entities also get cached for at least 180 seconds after entity is accessed during runtime. In this case, the `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const attributesOrganizationsApiproducts: API.OperationMethod<
@@ -20460,7 +21895,7 @@ export const attributesOrganizationsApiproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttributesOrganizationsApiproductsRequest,
   output: AttributesOrganizationsApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsApiproductsRequest {
@@ -20484,7 +21919,12 @@ export type CreateOrganizationsApiproductsResponse =
 export const CreateOrganizationsApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
-export type CreateOrganizationsApiproductsError = DefaultErrors;
+export type CreateOrganizationsApiproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an API product in an organization. You create API products after you have proxied backend services using API proxies. An API product is a collection of API resources combined with quota settings and metadata that you can use to deliver customized and productized API bundles to your developer community. This metadata can include: - Scope - Environments - API proxies - Extensible profile API products enable you repackage APIs on the fly, without having to do any additional coding or configuration. Apigee recommends that you start with a simple API product including only required elements. You then provision credentials to apps to enable them to start testing your APIs. After you have authentication and authorization working against a simple API product, you can iterate to create finer-grained API products, defining different sets of API resources for each API product. **WARNING:** - If you don't specify an API proxy in the request body, *any* app associated with the product can make calls to *any* API in your entire organization. - If you don't specify an environment in the request body, the product allows access to all environments. For more information, see What is an API product? */
 export const createOrganizationsApiproducts: API.OperationMethod<
@@ -20495,7 +21935,7 @@ export const createOrganizationsApiproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApiproductsRequest,
   output: CreateOrganizationsApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsApiproductsRequest {
@@ -20515,7 +21955,10 @@ export type GetOrganizationsApiproductsResponse = GoogleCloudApigeeV1ApiProduct;
 export const GetOrganizationsApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ApiProduct;
 
-export type GetOrganizationsApiproductsError = DefaultErrors;
+export type GetOrganizationsApiproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets configuration details for an API product. The API product name required in the request URL is the internal name of the product, not the display name. While they may be the same, it depends on whether the API product was created via the UI or the API. View the list of API products to verify the internal name. */
 export const getOrganizationsApiproducts: API.OperationMethod<
@@ -20526,7 +21969,7 @@ export const getOrganizationsApiproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApiproductsRequest,
   output: GetOrganizationsApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsApiproductsRequest {
@@ -20569,7 +22012,10 @@ export type ListOrganizationsApiproductsResponse =
 export const ListOrganizationsApiproductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListApiProductsResponse;
 
-export type ListOrganizationsApiproductsError = DefaultErrors;
+export type ListOrganizationsApiproductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all API product names for an organization. Filter the list by passing an `attributename` and `attibutevalue`. The maximum number of API products returned is 1000. You can paginate the list of API products returned using the `startKey` and `count` query parameters. If the resource has the `space` attribute set, the response may not return all resources. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). */
 export const listOrganizationsApiproducts: API.OperationMethod<
@@ -20580,7 +22026,7 @@ export const listOrganizationsApiproducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsApiproductsRequest,
   output: ListOrganizationsApiproductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest {
@@ -20605,7 +22051,11 @@ export const UpdateApiProductAttributeOrganizationsApiproductsAttributesResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
 export type UpdateApiProductAttributeOrganizationsApiproductsAttributesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the value of an API product attribute. **Note**: OAuth access tokens and Key Management Service (KMS) entities (apps, developers, and API products) are cached for 180 seconds (current default). Any custom attributes associated with entities also get cached for at least 180 seconds after entity is accessed during runtime. In this case, the `ExpiresIn` element on the OAuthV2 policy won't be able to expire an access token in less than 180 seconds. */
 export const updateApiProductAttributeOrganizationsApiproductsAttributes: API.OperationMethod<
@@ -20616,7 +22066,7 @@ export const updateApiProductAttributeOrganizationsApiproductsAttributes: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateApiProductAttributeOrganizationsApiproductsAttributesRequest,
   output: UpdateApiProductAttributeOrganizationsApiproductsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsApiproductsAttributesRequest {
@@ -20637,7 +22087,10 @@ export type GetOrganizationsApiproductsAttributesResponse =
 export const GetOrganizationsApiproductsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
-export type GetOrganizationsApiproductsAttributesError = DefaultErrors;
+export type GetOrganizationsApiproductsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the value of an API product attribute. */
 export const getOrganizationsApiproductsAttributes: API.OperationMethod<
@@ -20648,7 +22101,7 @@ export const getOrganizationsApiproductsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApiproductsAttributesRequest,
   output: GetOrganizationsApiproductsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsApiproductsAttributesRequest {
@@ -20669,7 +22122,12 @@ export type DeleteOrganizationsApiproductsAttributesResponse =
 export const DeleteOrganizationsApiproductsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attribute;
 
-export type DeleteOrganizationsApiproductsAttributesError = DefaultErrors;
+export type DeleteOrganizationsApiproductsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an API product attribute. */
 export const deleteOrganizationsApiproductsAttributes: API.OperationMethod<
@@ -20680,7 +22138,7 @@ export const deleteOrganizationsApiproductsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApiproductsAttributesRequest,
   output: DeleteOrganizationsApiproductsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsApiproductsAttributesRequest {
@@ -20701,7 +22159,10 @@ export type ListOrganizationsApiproductsAttributesResponse =
 export const ListOrganizationsApiproductsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1Attributes;
 
-export type ListOrganizationsApiproductsAttributesError = DefaultErrors;
+export type ListOrganizationsApiproductsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all API product attributes. */
 export const listOrganizationsApiproductsAttributes: API.OperationMethod<
@@ -20712,7 +22173,7 @@ export const listOrganizationsApiproductsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsApiproductsAttributesRequest,
   output: ListOrganizationsApiproductsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsApiproductsRateplansRequest {
@@ -20736,7 +22197,12 @@ export type CreateOrganizationsApiproductsRateplansResponse =
 export const CreateOrganizationsApiproductsRateplansResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
-export type CreateOrganizationsApiproductsRateplansError = DefaultErrors;
+export type CreateOrganizationsApiproductsRateplansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a rate plan that is associated with an API product in an organization. Using rate plans, API product owners can monetize their API products by configuring one or more of the following: - Billing frequency - Initial setup fees for using an API product - Payment funding model (postpaid only) - Fixed recurring or consumption-based charges for using an API product - Revenue sharing with developer partners An API product can have multiple rate plans associated with it but *only one* rate plan can be active at any point of time. **Note: From the developer's perspective, they purchase API products not rate plans. */
 export const createOrganizationsApiproductsRateplans: API.OperationMethod<
@@ -20747,7 +22213,7 @@ export const createOrganizationsApiproductsRateplans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsApiproductsRateplansRequest,
   output: CreateOrganizationsApiproductsRateplansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsApiproductsRateplansRequest {
@@ -20768,7 +22234,10 @@ export type GetOrganizationsApiproductsRateplansResponse =
 export const GetOrganizationsApiproductsRateplansResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
-export type GetOrganizationsApiproductsRateplansError = DefaultErrors;
+export type GetOrganizationsApiproductsRateplansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a rate plan. */
 export const getOrganizationsApiproductsRateplans: API.OperationMethod<
@@ -20779,7 +22248,7 @@ export const getOrganizationsApiproductsRateplans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApiproductsRateplansRequest,
   output: GetOrganizationsApiproductsRateplansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsApiproductsRateplansRequest {
@@ -20815,7 +22284,10 @@ export type ListOrganizationsApiproductsRateplansResponse =
 export const ListOrganizationsApiproductsRateplansResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListRatePlansResponse;
 
-export type ListOrganizationsApiproductsRateplansError = DefaultErrors;
+export type ListOrganizationsApiproductsRateplansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the rate plans for an API product. */
 export const listOrganizationsApiproductsRateplans: API.OperationMethod<
@@ -20826,7 +22298,7 @@ export const listOrganizationsApiproductsRateplans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsApiproductsRateplansRequest,
   output: ListOrganizationsApiproductsRateplansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationsApiproductsRateplansRequest {
@@ -20850,7 +22322,12 @@ export type UpdateOrganizationsApiproductsRateplansResponse =
 export const UpdateOrganizationsApiproductsRateplansResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
-export type UpdateOrganizationsApiproductsRateplansError = DefaultErrors;
+export type UpdateOrganizationsApiproductsRateplansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing rate plan. */
 export const updateOrganizationsApiproductsRateplans: API.OperationMethod<
@@ -20861,7 +22338,7 @@ export const updateOrganizationsApiproductsRateplans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationsApiproductsRateplansRequest,
   output: UpdateOrganizationsApiproductsRateplansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsApiproductsRateplansRequest {
@@ -20882,7 +22359,12 @@ export type DeleteOrganizationsApiproductsRateplansResponse =
 export const DeleteOrganizationsApiproductsRateplansResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1RatePlan;
 
-export type DeleteOrganizationsApiproductsRateplansError = DefaultErrors;
+export type DeleteOrganizationsApiproductsRateplansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rate plan. */
 export const deleteOrganizationsApiproductsRateplans: API.OperationMethod<
@@ -20893,7 +22375,7 @@ export const deleteOrganizationsApiproductsRateplans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsApiproductsRateplansRequest,
   output: DeleteOrganizationsApiproductsRateplansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListHybridIssuersRequest {
@@ -20914,7 +22396,7 @@ export type ListHybridIssuersResponse =
 export const ListHybridIssuersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApigeeV1ListHybridIssuersResponse;
 
-export type ListHybridIssuersError = DefaultErrors;
+export type ListHybridIssuersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists hybrid services and its trusted issuers service account ids. This api is authenticated and unauthorized(allow all the users) and used by runtime authn-authz service to query control plane's issuer service account ids. */
 export const listHybridIssuers: API.OperationMethod<
@@ -20925,7 +22407,7 @@ export const listHybridIssuers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListHybridIssuersRequest,
   output: ListHybridIssuersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ProvisionOrganizationProjectsRequest {
@@ -20954,7 +22436,12 @@ export type ProvisionOrganizationProjectsResponse = GoogleLongrunningOperation;
 export const ProvisionOrganizationProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ProvisionOrganizationProjectsError = DefaultErrors;
+export type ProvisionOrganizationProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provisions a new Apigee organization with a functioning runtime. This is the standard way to create trial organizations for a free Apigee trial. */
 export const provisionOrganizationProjects: API.OperationMethod<
@@ -20965,5 +22452,5 @@ export const provisionOrganizationProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionOrganizationProjectsRequest,
   output: ProvisionOrganizationProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

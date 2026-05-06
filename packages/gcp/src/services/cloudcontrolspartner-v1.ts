@@ -529,6 +529,52 @@ export const ListViolationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ListViolationsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -549,7 +595,10 @@ export type GetPartnerOrganizationsLocationsResponse = Partner;
 export const GetPartnerOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Partner;
 
-export type GetPartnerOrganizationsLocationsError = DefaultErrors;
+export type GetPartnerOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details of a Partner. */
 export const getPartnerOrganizationsLocations: API.OperationMethod<
@@ -560,7 +609,7 @@ export const getPartnerOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnerOrganizationsLocationsRequest,
   output: GetPartnerOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsLocationsCustomersRequest {
@@ -586,7 +635,12 @@ export type PatchOrganizationsLocationsCustomersResponse = Customer;
 export const PatchOrganizationsLocationsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type PatchOrganizationsLocationsCustomersError = DefaultErrors;
+export type PatchOrganizationsLocationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update details of a single customer */
 export const patchOrganizationsLocationsCustomers: API.OperationMethod<
@@ -597,7 +651,7 @@ export const patchOrganizationsLocationsCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsCustomersRequest,
   output: PatchOrganizationsLocationsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsCustomersRequest {
@@ -617,7 +671,12 @@ export type DeleteOrganizationsLocationsCustomersResponse = Empty;
 export const DeleteOrganizationsLocationsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsCustomersError = DefaultErrors;
+export type DeleteOrganizationsLocationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete details of a single customer */
 export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
@@ -628,7 +687,7 @@ export const deleteOrganizationsLocationsCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsCustomersRequest,
   output: DeleteOrganizationsLocationsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsCustomersRequest {
@@ -648,7 +707,10 @@ export type GetOrganizationsLocationsCustomersResponse = Customer;
 export const GetOrganizationsLocationsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type GetOrganizationsLocationsCustomersError = DefaultErrors;
+export type GetOrganizationsLocationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single customer */
 export const getOrganizationsLocationsCustomers: API.OperationMethod<
@@ -659,7 +721,7 @@ export const getOrganizationsLocationsCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsCustomersRequest,
   output: GetOrganizationsLocationsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsCustomersRequest {
@@ -691,7 +753,10 @@ export type ListOrganizationsLocationsCustomersResponse = ListCustomersResponse;
 export const ListOrganizationsLocationsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomersResponse;
 
-export type ListOrganizationsLocationsCustomersError = DefaultErrors;
+export type ListOrganizationsLocationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists customers of a partner identified by its Google Cloud organization ID */
 export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
@@ -702,7 +767,7 @@ export const listOrganizationsLocationsCustomers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsCustomersRequest,
   output: ListOrganizationsLocationsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -732,7 +797,12 @@ export type CreateOrganizationsLocationsCustomersResponse = Customer;
 export const CreateOrganizationsLocationsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Customer;
 
-export type CreateOrganizationsLocationsCustomersError = DefaultErrors;
+export type CreateOrganizationsLocationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new customer. */
 export const createOrganizationsLocationsCustomers: API.OperationMethod<
@@ -743,7 +813,7 @@ export const createOrganizationsLocationsCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsCustomersRequest,
   output: CreateOrganizationsLocationsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsCustomersWorkloadsRequest {
@@ -776,7 +846,10 @@ export type ListOrganizationsLocationsCustomersWorkloadsResponse =
 export const ListOrganizationsLocationsCustomersWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadsResponse;
 
-export type ListOrganizationsLocationsCustomersWorkloadsError = DefaultErrors;
+export type ListOrganizationsLocationsCustomersWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists customer workloads for a given customer org id */
 export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperationMethod<
@@ -787,7 +860,7 @@ export const listOrganizationsLocationsCustomersWorkloads: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsCustomersWorkloadsRequest,
   output: ListOrganizationsLocationsCustomersWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -813,7 +886,9 @@ export const GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRespon
   /*@__PURE__*/ /*#__PURE__*/ PartnerPermissions;
 
 export type GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the partner permissions granted for a workload */
 export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
@@ -824,7 +899,7 @@ export const getPartnerPermissionsOrganizationsLocationsCustomersWorkloads: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsRequest,
   output: GetPartnerPermissionsOrganizationsLocationsCustomersWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsLocationsCustomersWorkloadsRequest {
@@ -844,7 +919,10 @@ export type GetOrganizationsLocationsCustomersWorkloadsResponse = Workload;
 export const GetOrganizationsLocationsCustomersWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Workload;
 
-export type GetOrganizationsLocationsCustomersWorkloadsError = DefaultErrors;
+export type GetOrganizationsLocationsCustomersWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single workload */
 export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
@@ -855,7 +933,7 @@ export const getOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsCustomersWorkloadsRequest,
   output: GetOrganizationsLocationsCustomersWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest {
@@ -877,7 +955,9 @@ export const GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EkmConnections;
 
 export type GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the EKM connections associated with a workload */
 export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.OperationMethod<
@@ -888,7 +968,7 @@ export const getEkmConnectionsOrganizationsLocationsCustomersWorkloads: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsRequest,
   output: GetEkmConnectionsOrganizationsLocationsCustomersWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest {
@@ -922,7 +1002,9 @@ export const ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsR
   /*@__PURE__*/ /*#__PURE__*/ ListAccessApprovalRequestsResponse;
 
 export type ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Deprecated: Only returns access approval requests directly associated with an assured workload folder. */
 export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests: API.PaginatedOperationMethod<
@@ -935,7 +1017,7 @@ export const listOrganizationsLocationsCustomersWorkloadsAccessApprovalRequests:
     ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsRequest,
   output:
     ListOrganizationsLocationsCustomersWorkloadsAccessApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -983,7 +1065,9 @@ export const ListOrganizationsLocationsCustomersWorkloadsViolationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListViolationsResponse;
 
 export type ListOrganizationsLocationsCustomersWorkloadsViolationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Violations for a workload Callers may also choose to read across multiple Customers or for a single customer as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of {customer} & {workload}. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` */
 export const listOrganizationsLocationsCustomersWorkloadsViolations: API.PaginatedOperationMethod<
@@ -994,7 +1078,7 @@ export const listOrganizationsLocationsCustomersWorkloadsViolations: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsCustomersWorkloadsViolationsRequest,
   output: ListOrganizationsLocationsCustomersWorkloadsViolationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1020,7 +1104,9 @@ export const GetOrganizationsLocationsCustomersWorkloadsViolationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Violation;
 
 export type GetOrganizationsLocationsCustomersWorkloadsViolationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single Violation. */
 export const getOrganizationsLocationsCustomersWorkloadsViolations: API.OperationMethod<
@@ -1031,5 +1117,5 @@ export const getOrganizationsLocationsCustomersWorkloadsViolations: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsCustomersWorkloadsViolationsRequest,
   output: GetOrganizationsLocationsCustomersWorkloadsViolationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

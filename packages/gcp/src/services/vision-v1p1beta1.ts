@@ -5757,6 +5757,52 @@ export const GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5779,7 +5825,12 @@ export type AnnotateImagesResponse =
 export const AnnotateImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse;
 
-export type AnnotateImagesError = DefaultErrors;
+export type AnnotateImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run image detection and annotation for a batch of images. */
 export const annotateImages: API.OperationMethod<
@@ -5790,7 +5841,7 @@ export const annotateImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateImagesRequest,
   output: AnnotateImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateImagesRequest {
@@ -5816,7 +5867,12 @@ export type AsyncBatchAnnotateImagesResponse_Op = Operation;
 export const AsyncBatchAnnotateImagesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateImagesError = DefaultErrors;
+export type AsyncBatchAnnotateImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateImages: API.OperationMethod<
@@ -5827,7 +5883,7 @@ export const asyncBatchAnnotateImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateImagesRequest,
   output: AsyncBatchAnnotateImagesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsLocationsImagesRequest {
@@ -5857,7 +5913,12 @@ export type AnnotateProjectsLocationsImagesResponse =
 export const AnnotateProjectsLocationsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse;
 
-export type AnnotateProjectsLocationsImagesError = DefaultErrors;
+export type AnnotateProjectsLocationsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run image detection and annotation for a batch of images. */
 export const annotateProjectsLocationsImages: API.OperationMethod<
@@ -5868,7 +5929,7 @@ export const annotateProjectsLocationsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsLocationsImagesRequest,
   output: AnnotateProjectsLocationsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsLocationsImagesRequest {
@@ -5897,7 +5958,12 @@ export type AsyncBatchAnnotateProjectsLocationsImagesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsLocationsImagesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsLocationsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
@@ -5908,7 +5974,7 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsLocationsImagesRequest,
   output: AsyncBatchAnnotateProjectsLocationsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsLocationsFilesRequest {
@@ -5938,7 +6004,12 @@ export type AnnotateProjectsLocationsFilesResponse =
 export const AnnotateProjectsLocationsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse;
 
-export type AnnotateProjectsLocationsFilesError = DefaultErrors;
+export type AnnotateProjectsLocationsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateProjectsLocationsFiles: API.OperationMethod<
@@ -5949,7 +6020,7 @@ export const annotateProjectsLocationsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsLocationsFilesRequest,
   output: AnnotateProjectsLocationsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsLocationsFilesRequest {
@@ -5978,7 +6049,12 @@ export type AsyncBatchAnnotateProjectsLocationsFilesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsLocationsFilesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsLocationsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
@@ -5989,7 +6065,7 @@ export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsLocationsFilesRequest,
   output: AsyncBatchAnnotateProjectsLocationsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsImagesRequest {
@@ -6019,7 +6095,12 @@ export type AnnotateProjectsImagesResponse =
 export const AnnotateProjectsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudVisionV1p1beta1BatchAnnotateImagesResponse;
 
-export type AnnotateProjectsImagesError = DefaultErrors;
+export type AnnotateProjectsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run image detection and annotation for a batch of images. */
 export const annotateProjectsImages: API.OperationMethod<
@@ -6030,7 +6111,7 @@ export const annotateProjectsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsImagesRequest,
   output: AnnotateProjectsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsImagesRequest {
@@ -6059,7 +6140,12 @@ export type AsyncBatchAnnotateProjectsImagesResponse = Operation;
 export const AsyncBatchAnnotateProjectsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsImagesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
@@ -6070,7 +6156,7 @@ export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsImagesRequest,
   output: AsyncBatchAnnotateProjectsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsFilesRequest {
@@ -6100,7 +6186,12 @@ export type AnnotateProjectsFilesResponse =
 export const AnnotateProjectsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse;
 
-export type AnnotateProjectsFilesError = DefaultErrors;
+export type AnnotateProjectsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateProjectsFiles: API.OperationMethod<
@@ -6111,7 +6202,7 @@ export const annotateProjectsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsFilesRequest,
   output: AnnotateProjectsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsFilesRequest {
@@ -6140,7 +6231,12 @@ export type AsyncBatchAnnotateProjectsFilesResponse = Operation;
 export const AsyncBatchAnnotateProjectsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsFilesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
@@ -6151,7 +6247,7 @@ export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsFilesRequest,
   output: AsyncBatchAnnotateProjectsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateFilesRequest {
@@ -6173,7 +6269,12 @@ export type AnnotateFilesResponse =
 export const AnnotateFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudVisionV1p1beta1BatchAnnotateFilesResponse;
 
-export type AnnotateFilesError = DefaultErrors;
+export type AnnotateFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateFiles: API.OperationMethod<
@@ -6184,7 +6285,7 @@ export const annotateFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateFilesRequest,
   output: AnnotateFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateFilesRequest {
@@ -6210,7 +6311,12 @@ export type AsyncBatchAnnotateFilesResponse_Op = Operation;
 export const AsyncBatchAnnotateFilesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateFilesError = DefaultErrors;
+export type AsyncBatchAnnotateFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateFiles: API.OperationMethod<
@@ -6221,5 +6327,5 @@ export const asyncBatchAnnotateFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateFilesRequest,
   output: AsyncBatchAnnotateFilesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

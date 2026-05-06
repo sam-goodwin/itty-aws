@@ -294,6 +294,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -316,7 +362,12 @@ export const DeleteAgentUsersRequest =
 export type DeleteAgentUsersResponse = Empty;
 export const DeleteAgentUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAgentUsersError = DefaultErrors;
+export type DeleteAgentUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unlinks the given third-party user from your smart home Action. All data related to this user will be deleted. For more details on how users link their accounts, see [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment). The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const deleteAgentUsers: API.OperationMethod<
@@ -327,7 +378,7 @@ export const deleteAgentUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAgentUsersRequest,
   output: DeleteAgentUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RequestSyncDevicesRequest_Op {
@@ -347,7 +398,12 @@ export type RequestSyncDevicesResponse_Op = RequestSyncDevicesResponse;
 export const RequestSyncDevicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ RequestSyncDevicesResponse;
 
-export type RequestSyncDevicesError = DefaultErrors;
+export type RequestSyncDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests Google to send an `action.devices.SYNC` [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync) to your smart home Action to update device metadata for the given user. The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const requestSyncDevices: API.OperationMethod<
@@ -358,7 +414,7 @@ export const requestSyncDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestSyncDevicesRequest_Op,
   output: RequestSyncDevicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReportStateAndNotificationDevicesRequest {
@@ -383,7 +439,12 @@ export type ReportStateAndNotificationDevicesResponse =
 export const ReportStateAndNotificationDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReportStateAndNotificationResponse;
 
-export type ReportStateAndNotificationDevicesError = DefaultErrors;
+export type ReportStateAndNotificationDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reports device state and optionally sends device notifications. Called by your smart home Action when the state of a third-party device changes or you need to send a notification about the device. See [Implement Report State](https://developers.home.google.com/cloud-to-cloud/integration/report-state) for more information. This method updates the device state according to its declared [traits](https://developers.home.google.com/cloud-to-cloud/primer/device-types-and-traits). Publishing a new state value outside of these traits will result in an `INVALID_ARGUMENT` error response. The third-party user's identity is passed in via the `agent_user_id` (see ReportStateAndNotificationRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const reportStateAndNotificationDevices: API.OperationMethod<
@@ -394,7 +455,7 @@ export const reportStateAndNotificationDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportStateAndNotificationDevicesRequest,
   output: ReportStateAndNotificationDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryDevicesRequest {
@@ -412,7 +473,12 @@ export const QueryDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryDevicesResponse = QueryResponse;
 export const QueryDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;
 
-export type QueryDevicesError = DefaultErrors;
+export type QueryDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the current states in Home Graph for the given set of the third-party user's devices. The third-party user's identity is passed in via the `agent_user_id` (see QueryRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const queryDevices: API.OperationMethod<
@@ -423,7 +489,7 @@ export const queryDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryDevicesRequest,
   output: QueryDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SyncDevicesRequest {
@@ -441,7 +507,12 @@ export const SyncDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SyncDevicesResponse = SyncResponse;
 export const SyncDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ SyncResponse;
 
-export type SyncDevicesError = DefaultErrors;
+export type SyncDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets all the devices associated with the given third-party user. The third-party user's identity is passed in via the `agent_user_id` (see SyncRequest). This request must be authorized using service account credentials from your Actions console project. */
 export const syncDevices: API.OperationMethod<
@@ -452,5 +523,5 @@ export const syncDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SyncDevicesRequest,
   output: SyncDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

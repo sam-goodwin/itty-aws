@@ -5853,6 +5853,52 @@ export const UndeleteDatasetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "UndeleteDatasetRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5885,7 +5931,12 @@ export const DeleteDatasetsResponse: Schema.Schema<DeleteDatasetsResponse> =
     {},
   ) as any as Schema.Schema<DeleteDatasetsResponse>;
 
-export type DeleteDatasetsError = DefaultErrors;
+export type DeleteDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create another dataset with the same name. */
 export const deleteDatasets: API.OperationMethod<
@@ -5896,7 +5947,7 @@ export const deleteDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDatasetsRequest,
   output: DeleteDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDatasetsRequest {
@@ -5930,7 +5981,7 @@ export const GetDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDatasetsResponse = Dataset;
 export const GetDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type GetDatasetsError = DefaultErrors;
+export type GetDatasetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the dataset specified by datasetID. */
 export const getDatasets: API.OperationMethod<
@@ -5941,7 +5992,7 @@ export const getDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDatasetsRequest,
   output: GetDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertDatasetsRequest {
@@ -5971,7 +6022,12 @@ export const InsertDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertDatasetsResponse = Dataset;
 export const InsertDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type InsertDatasetsError = DefaultErrors;
+export type InsertDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new empty dataset. */
 export const insertDatasets: API.OperationMethod<
@@ -5982,7 +6038,7 @@ export const insertDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDatasetsRequest,
   output: InsertDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDatasetsRequest {
@@ -6012,7 +6068,7 @@ export const ListDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDatasetsResponse = DatasetList;
 export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ DatasetList;
 
-export type ListDatasetsError = DefaultErrors;
+export type ListDatasetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all datasets in the specified project to which the user has been granted the READER dataset role. */
 export const listDatasets: API.PaginatedOperationMethod<
@@ -6023,7 +6079,7 @@ export const listDatasets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDatasetsRequest,
   output: ListDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6068,7 +6124,12 @@ export const PatchDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchDatasetsResponse = Dataset;
 export const PatchDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type PatchDatasetsError = DefaultErrors;
+export type PatchDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource. This method supports RFC5789 patch semantics. */
 export const patchDatasets: API.OperationMethod<
@@ -6079,7 +6140,7 @@ export const patchDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDatasetsRequest,
   output: PatchDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteDatasetsRequest {
@@ -6108,7 +6169,12 @@ export const UndeleteDatasetsRequest =
 export type UndeleteDatasetsResponse = Dataset;
 export const UndeleteDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type UndeleteDatasetsError = DefaultErrors;
+export type UndeleteDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a dataset which is within time travel window based on datasetId. If a time is specified, the dataset version deleted at that time is undeleted, else the last live version is undeleted. */
 export const undeleteDatasets: API.OperationMethod<
@@ -6119,7 +6185,7 @@ export const undeleteDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteDatasetsRequest,
   output: UndeleteDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDatasetsRequest {
@@ -6160,7 +6226,12 @@ export const UpdateDatasetsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDatasetsResponse = Dataset;
 export const UpdateDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type UpdateDatasetsError = DefaultErrors;
+export type UpdateDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource. */
 export const updateDatasets: API.OperationMethod<
@@ -6171,7 +6242,7 @@ export const updateDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDatasetsRequest,
   output: UpdateDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelJobsRequest {
@@ -6199,7 +6270,12 @@ export const CancelJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CancelJobsResponse = JobCancelResponse;
 export const CancelJobsResponse = /*@__PURE__*/ /*#__PURE__*/ JobCancelResponse;
 
-export type CancelJobsError = DefaultErrors;
+export type CancelJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs. */
 export const cancelJobs: API.OperationMethod<
@@ -6210,7 +6286,7 @@ export const cancelJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelJobsRequest,
   output: CancelJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteJobsRequest {
@@ -6240,7 +6316,12 @@ export const DeleteJobsResponse: Schema.Schema<DeleteJobsResponse> =
     {},
   ) as any as Schema.Schema<DeleteJobsResponse>;
 
-export type DeleteJobsError = DefaultErrors;
+export type DeleteJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted. */
 export const deleteJobs: API.OperationMethod<
@@ -6251,7 +6332,7 @@ export const deleteJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteJobsRequest,
   output: DeleteJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetJobsRequest {
@@ -6275,7 +6356,7 @@ export const GetJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetJobsResponse = Job;
 export const GetJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type GetJobsError = DefaultErrors;
+export type GetJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role. */
 export const getJobs: API.OperationMethod<
@@ -6286,7 +6367,7 @@ export const getJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJobsRequest,
   output: GetJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetQueryResultsJobsRequest {
@@ -6339,7 +6420,7 @@ export type GetQueryResultsJobsResponse = GetQueryResultsResponse;
 export const GetQueryResultsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetQueryResultsResponse;
 
-export type GetQueryResultsJobsError = DefaultErrors;
+export type GetQueryResultsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** RPC to get the results of a query job. */
 export const getQueryResultsJobs: API.OperationMethod<
@@ -6350,7 +6431,7 @@ export const getQueryResultsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueryResultsJobsRequest,
   output: GetQueryResultsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertJobsRequest {
@@ -6371,7 +6452,12 @@ export const InsertJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertJobsResponse = Job;
 export const InsertJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type InsertJobsError = DefaultErrors;
+export type InsertJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts. */
 export const insertJobs: API.OperationMethod<
@@ -6382,7 +6468,7 @@ export const insertJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertJobsRequest,
   output: InsertJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListJobsRequest {
@@ -6430,7 +6516,7 @@ export const ListJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListJobsResponse = JobList;
 export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ JobList;
 
-export type ListJobsError = DefaultErrors;
+export type ListJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property. */
 export const listJobs: API.PaginatedOperationMethod<
@@ -6441,7 +6527,7 @@ export const listJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListJobsRequest,
   output: ListJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6470,7 +6556,12 @@ export const QueryJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryJobsResponse = QueryResponse;
 export const QueryJobsResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;
 
-export type QueryJobsError = DefaultErrors;
+export type QueryJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout. */
 export const queryJobs: API.OperationMethod<
@@ -6481,7 +6572,7 @@ export const queryJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryJobsRequest,
   output: QueryJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteModelsRequest {
@@ -6511,7 +6602,12 @@ export const DeleteModelsResponse: Schema.Schema<DeleteModelsResponse> =
     {},
   ) as any as Schema.Schema<DeleteModelsResponse>;
 
-export type DeleteModelsError = DefaultErrors;
+export type DeleteModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the model specified by modelId from the dataset. */
 export const deleteModels: API.OperationMethod<
@@ -6522,7 +6618,7 @@ export const deleteModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteModelsRequest,
   output: DeleteModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetModelsRequest {
@@ -6549,7 +6645,7 @@ export const GetModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetModelsResponse = Model;
 export const GetModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Model;
 
-export type GetModelsError = DefaultErrors;
+export type GetModelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified model resource by model ID. */
 export const getModels: API.OperationMethod<
@@ -6560,7 +6656,7 @@ export const getModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetModelsRequest,
   output: GetModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListModelsRequest {
@@ -6591,7 +6687,7 @@ export type ListModelsResponse_Op = ListModelsResponse;
 export const ListModelsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListModelsResponse;
 
-export type ListModelsError = DefaultErrors;
+export type ListModelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of models, you can get information about a particular model by calling the models.get method. */
 export const listModels: API.PaginatedOperationMethod<
@@ -6602,7 +6698,7 @@ export const listModels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListModelsRequest,
   output: ListModelsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6637,7 +6733,12 @@ export const PatchModelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchModelsResponse = Model;
 export const PatchModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Model;
 
-export type PatchModelsError = DefaultErrors;
+export type PatchModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch specific fields in the specified model. */
 export const patchModels: API.OperationMethod<
@@ -6648,7 +6749,7 @@ export const patchModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchModelsRequest,
   output: PatchModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServiceAccountProjectsRequest {
@@ -6668,7 +6769,10 @@ export type GetServiceAccountProjectsResponse = GetServiceAccountResponse;
 export const GetServiceAccountProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetServiceAccountResponse;
 
-export type GetServiceAccountProjectsError = DefaultErrors;
+export type GetServiceAccountProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RPC to get the service account for a project used for interactions with Google Cloud KMS */
 export const getServiceAccountProjects: API.OperationMethod<
@@ -6679,7 +6783,7 @@ export const getServiceAccountProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceAccountProjectsRequest,
   output: GetServiceAccountProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsRequest {
@@ -6700,7 +6804,7 @@ export const ListProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListProjectsResponse = ProjectList;
 export const ListProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ ProjectList;
 
-export type ListProjectsError = DefaultErrors;
+export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** RPC to list projects to which the user has been granted any project role. Users of this method are encouraged to consider the [Resource Manager](https://cloud.google.com/resource-manager/docs/) API, which provides the underlying data for this method and has more capabilities. */
 export const listProjects: API.PaginatedOperationMethod<
@@ -6711,7 +6815,7 @@ export const listProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6745,7 +6849,12 @@ export const DeleteRoutinesResponse: Schema.Schema<DeleteRoutinesResponse> =
     {},
   ) as any as Schema.Schema<DeleteRoutinesResponse>;
 
-export type DeleteRoutinesError = DefaultErrors;
+export type DeleteRoutinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the routine specified by routineId from the dataset. */
 export const deleteRoutines: API.OperationMethod<
@@ -6756,7 +6865,7 @@ export const deleteRoutines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRoutinesRequest,
   output: DeleteRoutinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRoutinesRequest {
@@ -6786,7 +6895,7 @@ export const GetRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRoutinesResponse = Routine;
 export const GetRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Routine;
 
-export type GetRoutinesError = DefaultErrors;
+export type GetRoutinesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified routine resource by routine ID. */
 export const getRoutines: API.OperationMethod<
@@ -6797,7 +6906,7 @@ export const getRoutines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRoutinesRequest,
   output: GetRoutinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyRoutinesRequest {
@@ -6819,7 +6928,12 @@ export const GetIamPolicyRoutinesRequest =
 export type GetIamPolicyRoutinesResponse = Policy;
 export const GetIamPolicyRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRoutinesError = DefaultErrors;
+export type GetIamPolicyRoutinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyRoutines: API.OperationMethod<
@@ -6830,7 +6944,7 @@ export const getIamPolicyRoutines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRoutinesRequest,
   output: GetIamPolicyRoutinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertRoutinesRequest {
@@ -6858,7 +6972,12 @@ export const InsertRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertRoutinesResponse = Routine;
 export const InsertRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Routine;
 
-export type InsertRoutinesError = DefaultErrors;
+export type InsertRoutinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new routine in the dataset. */
 export const insertRoutines: API.OperationMethod<
@@ -6869,7 +6988,7 @@ export const insertRoutines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRoutinesRequest,
   output: InsertRoutinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRoutinesRequest {
@@ -6906,7 +7025,7 @@ export type ListRoutinesResponse_Op = ListRoutinesResponse;
 export const ListRoutinesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListRoutinesResponse;
 
-export type ListRoutinesError = DefaultErrors;
+export type ListRoutinesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all routines in the specified dataset. Requires the READER dataset role. */
 export const listRoutines: API.PaginatedOperationMethod<
@@ -6917,7 +7036,7 @@ export const listRoutines: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoutinesRequest,
   output: ListRoutinesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6943,7 +7062,12 @@ export const SetIamPolicyRoutinesRequest =
 export type SetIamPolicyRoutinesResponse = Policy;
 export const SetIamPolicyRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRoutinesError = DefaultErrors;
+export type SetIamPolicyRoutinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyRoutines: API.OperationMethod<
@@ -6954,7 +7078,7 @@ export const setIamPolicyRoutines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRoutinesRequest,
   output: SetIamPolicyRoutinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRoutinesRequest {
@@ -6981,7 +7105,12 @@ export type TestIamPermissionsRoutinesResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsRoutinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsRoutinesError = DefaultErrors;
+export type TestIamPermissionsRoutinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsRoutines: API.OperationMethod<
@@ -6992,7 +7121,7 @@ export const testIamPermissionsRoutines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRoutinesRequest,
   output: TestIamPermissionsRoutinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRoutinesRequest {
@@ -7023,7 +7152,12 @@ export const UpdateRoutinesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateRoutinesResponse = Routine;
 export const UpdateRoutinesResponse = /*@__PURE__*/ /*#__PURE__*/ Routine;
 
-export type UpdateRoutinesError = DefaultErrors;
+export type UpdateRoutinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information in an existing routine. The update method replaces the entire Routine resource. */
 export const updateRoutines: API.OperationMethod<
@@ -7034,7 +7168,7 @@ export const updateRoutines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRoutinesRequest,
   output: UpdateRoutinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteRowAccessPoliciesRequest_Op {
@@ -7071,7 +7205,12 @@ export const BatchDeleteRowAccessPoliciesResponse: Schema.Schema<BatchDeleteRowA
     {},
   ) as any as Schema.Schema<BatchDeleteRowAccessPoliciesResponse>;
 
-export type BatchDeleteRowAccessPoliciesError = DefaultErrors;
+export type BatchDeleteRowAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes provided row access policies. */
 export const batchDeleteRowAccessPolicies: API.OperationMethod<
@@ -7082,7 +7221,7 @@ export const batchDeleteRowAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteRowAccessPoliciesRequest_Op,
   output: BatchDeleteRowAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRowAccessPoliciesRequest {
@@ -7119,7 +7258,12 @@ export const DeleteRowAccessPoliciesResponse: Schema.Schema<DeleteRowAccessPolic
     {},
   ) as any as Schema.Schema<DeleteRowAccessPoliciesResponse>;
 
-export type DeleteRowAccessPoliciesError = DefaultErrors;
+export type DeleteRowAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a row access policy. */
 export const deleteRowAccessPolicies: API.OperationMethod<
@@ -7130,7 +7274,7 @@ export const deleteRowAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRowAccessPoliciesRequest,
   output: DeleteRowAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRowAccessPoliciesRequest {
@@ -7162,7 +7306,7 @@ export type GetRowAccessPoliciesResponse = RowAccessPolicy;
 export const GetRowAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RowAccessPolicy;
 
-export type GetRowAccessPoliciesError = DefaultErrors;
+export type GetRowAccessPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified row access policy by policy ID. */
 export const getRowAccessPolicies: API.OperationMethod<
@@ -7173,7 +7317,7 @@ export const getRowAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRowAccessPoliciesRequest,
   output: GetRowAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyRowAccessPoliciesRequest {
@@ -7196,7 +7340,12 @@ export type GetIamPolicyRowAccessPoliciesResponse = Policy;
 export const GetIamPolicyRowAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRowAccessPoliciesError = DefaultErrors;
+export type GetIamPolicyRowAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyRowAccessPolicies: API.OperationMethod<
@@ -7207,7 +7356,7 @@ export const getIamPolicyRowAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRowAccessPoliciesRequest,
   output: GetIamPolicyRowAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertRowAccessPoliciesRequest {
@@ -7240,7 +7389,12 @@ export type InsertRowAccessPoliciesResponse = RowAccessPolicy;
 export const InsertRowAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RowAccessPolicy;
 
-export type InsertRowAccessPoliciesError = DefaultErrors;
+export type InsertRowAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a row access policy. */
 export const insertRowAccessPolicies: API.OperationMethod<
@@ -7251,7 +7405,7 @@ export const insertRowAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRowAccessPoliciesRequest,
   output: InsertRowAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRowAccessPoliciesRequest {
@@ -7286,7 +7440,7 @@ export type ListRowAccessPoliciesResponse_Op = ListRowAccessPoliciesResponse;
 export const ListRowAccessPoliciesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListRowAccessPoliciesResponse;
 
-export type ListRowAccessPoliciesError = DefaultErrors;
+export type ListRowAccessPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all row access policies on the specified table. */
 export const listRowAccessPolicies: API.PaginatedOperationMethod<
@@ -7297,7 +7451,7 @@ export const listRowAccessPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRowAccessPoliciesRequest,
   output: ListRowAccessPoliciesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7329,7 +7483,12 @@ export type TestIamPermissionsRowAccessPoliciesResponse =
 export const TestIamPermissionsRowAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsRowAccessPoliciesError = DefaultErrors;
+export type TestIamPermissionsRowAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsRowAccessPolicies: API.OperationMethod<
@@ -7340,7 +7499,7 @@ export const testIamPermissionsRowAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRowAccessPoliciesRequest,
   output: TestIamPermissionsRowAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRowAccessPoliciesRequest {
@@ -7376,7 +7535,12 @@ export type UpdateRowAccessPoliciesResponse = RowAccessPolicy;
 export const UpdateRowAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RowAccessPolicy;
 
-export type UpdateRowAccessPoliciesError = DefaultErrors;
+export type UpdateRowAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a row access policy. */
 export const updateRowAccessPolicies: API.OperationMethod<
@@ -7387,7 +7551,7 @@ export const updateRowAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRowAccessPoliciesRequest,
   output: UpdateRowAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAllTabledataRequest {
@@ -7420,7 +7584,12 @@ export type InsertAllTabledataResponse = TableDataInsertAllResponse;
 export const InsertAllTabledataResponse =
   /*@__PURE__*/ /*#__PURE__*/ TableDataInsertAllResponse;
 
-export type InsertAllTabledataError = DefaultErrors;
+export type InsertAllTabledataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Streams data into BigQuery one record at a time without needing to run a load job. */
 export const insertAllTabledata: API.OperationMethod<
@@ -7431,7 +7600,7 @@ export const insertAllTabledata: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAllTabledataRequest,
   output: InsertAllTabledataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTabledataRequest {
@@ -7487,7 +7656,7 @@ export const ListTabledataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTabledataResponse = TableDataList;
 export const ListTabledataResponse = /*@__PURE__*/ /*#__PURE__*/ TableDataList;
 
-export type ListTabledataError = DefaultErrors;
+export type ListTabledataError = DefaultErrors | NotFound | Forbidden;
 
 /** List the content of a table in rows. */
 export const listTabledata: API.OperationMethod<
@@ -7498,7 +7667,7 @@ export const listTabledata: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTabledataRequest,
   output: ListTabledataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteTablesRequest {
@@ -7528,7 +7697,12 @@ export const DeleteTablesResponse: Schema.Schema<DeleteTablesResponse> =
     {},
   ) as any as Schema.Schema<DeleteTablesResponse>;
 
-export type DeleteTablesError = DefaultErrors;
+export type DeleteTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted. */
 export const deleteTables: API.OperationMethod<
@@ -7539,7 +7713,7 @@ export const deleteTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTablesRequest,
   output: DeleteTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTablesRequest {
@@ -7579,7 +7753,7 @@ export const GetTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTablesResponse = Table;
 export const GetTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type GetTablesError = DefaultErrors;
+export type GetTablesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table. */
 export const getTables: API.OperationMethod<
@@ -7590,7 +7764,7 @@ export const getTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTablesRequest,
   output: GetTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyTablesRequest {
@@ -7612,7 +7786,12 @@ export const GetIamPolicyTablesRequest =
 export type GetIamPolicyTablesResponse = Policy;
 export const GetIamPolicyTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyTablesError = DefaultErrors;
+export type GetIamPolicyTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyTables: API.OperationMethod<
@@ -7623,7 +7802,7 @@ export const getIamPolicyTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyTablesRequest,
   output: GetIamPolicyTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertTablesRequest {
@@ -7651,7 +7830,12 @@ export const InsertTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertTablesResponse = Table;
 export const InsertTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type InsertTablesError = DefaultErrors;
+export type InsertTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new, empty table in the dataset. */
 export const insertTables: API.OperationMethod<
@@ -7662,7 +7846,7 @@ export const insertTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTablesRequest,
   output: InsertTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTablesRequest {
@@ -7692,7 +7876,7 @@ export const ListTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTablesResponse = TableList;
 export const ListTablesResponse = /*@__PURE__*/ /*#__PURE__*/ TableList;
 
-export type ListTablesError = DefaultErrors;
+export type ListTablesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all tables in the specified dataset. Requires the READER dataset role. */
 export const listTables: API.PaginatedOperationMethod<
@@ -7703,7 +7887,7 @@ export const listTables: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTablesRequest,
   output: ListTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7743,7 +7927,12 @@ export const PatchTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchTablesResponse = Table;
 export const PatchTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type PatchTablesError = DefaultErrors;
+export type PatchTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource. This method supports RFC5789 patch semantics. */
 export const patchTables: API.OperationMethod<
@@ -7754,7 +7943,7 @@ export const patchTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTablesRequest,
   output: PatchTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyTablesRequest {
@@ -7776,7 +7965,12 @@ export const SetIamPolicyTablesRequest =
 export type SetIamPolicyTablesResponse = Policy;
 export const SetIamPolicyTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyTablesError = DefaultErrors;
+export type SetIamPolicyTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyTables: API.OperationMethod<
@@ -7787,7 +7981,7 @@ export const setIamPolicyTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyTablesRequest,
   output: SetIamPolicyTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsTablesRequest {
@@ -7814,7 +8008,12 @@ export type TestIamPermissionsTablesResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsTablesError = DefaultErrors;
+export type TestIamPermissionsTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsTables: API.OperationMethod<
@@ -7825,7 +8024,7 @@ export const testIamPermissionsTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsTablesRequest,
   output: TestIamPermissionsTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateTablesRequest {
@@ -7861,7 +8060,12 @@ export const UpdateTablesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateTablesResponse = Table;
 export const UpdateTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type UpdateTablesError = DefaultErrors;
+export type UpdateTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates information in an existing table. The update method replaces the entire Table resource, whereas the patch method only replaces fields that are provided in the submitted Table resource. */
 export const updateTables: API.OperationMethod<
@@ -7872,5 +8076,5 @@ export const updateTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTablesRequest,
   output: UpdateTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

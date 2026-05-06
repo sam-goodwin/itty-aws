@@ -862,6 +862,52 @@ export const GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse 
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -881,7 +927,7 @@ export type GetJwksResponse = GoogleFirebaseAppcheckV1betaPublicJwkSet;
 export const GetJwksResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaPublicJwkSet;
 
-export type GetJwksError = DefaultErrors;
+export type GetJwksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a public JWK set as specified by [RFC 7517](https://tools.ietf.org/html/rfc7517) that can be used to verify App Check tokens. Exactly one of the public keys in the returned set will successfully validate any App Check token that is currently valid. */
 export const getJwks: API.OperationMethod<
@@ -892,7 +938,7 @@ export const getJwks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJwksRequest,
   output: GetJwksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExchangeDebugTokenOauthClientsRequest {
@@ -922,7 +968,12 @@ export type ExchangeDebugTokenOauthClientsResponse =
 export const ExchangeDebugTokenOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeDebugTokenOauthClientsError = DefaultErrors;
+export type ExchangeDebugTokenOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a debug token secret that you have previously created using CreateDebugToken. If valid, returns an AppCheckToken. Note that a restrictive quota is enforced on this method to prevent accidental exposure of the app to abuse. */
 export const exchangeDebugTokenOauthClients: API.OperationMethod<
@@ -933,7 +984,7 @@ export const exchangeDebugTokenOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeDebugTokenOauthClientsRequest,
   output: ExchangeDebugTokenOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeAppAttestAttestationOauthClientsRequest {
@@ -963,7 +1014,12 @@ export type ExchangeAppAttestAttestationOauthClientsResponse =
 export const ExchangeAppAttestAttestationOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse;
 
-export type ExchangeAppAttestAttestationOauthClientsError = DefaultErrors;
+export type ExchangeAppAttestAttestationOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an AppCheckToken using ExchangeAppAttestAssertion. For convenience and performance, this method's response object will also contain an AppCheckToken (if the verification is successful). */
 export const exchangeAppAttestAttestationOauthClients: API.OperationMethod<
@@ -974,7 +1030,7 @@ export const exchangeAppAttestAttestationOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeAppAttestAttestationOauthClientsRequest,
   output: ExchangeAppAttestAttestationOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateAppAttestChallengeOauthClientsRequest {
@@ -1004,7 +1060,12 @@ export type GenerateAppAttestChallengeOauthClientsResponse =
 export const GenerateAppAttestChallengeOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse;
 
-export type GenerateAppAttestChallengeOauthClientsError = DefaultErrors;
+export type GenerateAppAttestChallengeOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a challenge that protects the integrity of an immediately following call to ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A challenge should not be reused for multiple calls. */
 export const generateAppAttestChallengeOauthClients: API.OperationMethod<
@@ -1015,7 +1076,7 @@ export const generateAppAttestChallengeOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAppAttestChallengeOauthClientsRequest,
   output: GenerateAppAttestChallengeOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeAppAttestAssertionOauthClientsRequest {
@@ -1045,7 +1106,12 @@ export type ExchangeAppAttestAssertionOauthClientsResponse =
 export const ExchangeAppAttestAssertionOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeAppAttestAssertionOauthClientsError = DefaultErrors;
+export type ExchangeAppAttestAssertionOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts an App Attest assertion and an artifact previously obtained from ExchangeAppAttestAttestation and verifies those with Apple. If valid, returns an AppCheckToken. */
 export const exchangeAppAttestAssertionOauthClients: API.OperationMethod<
@@ -1056,7 +1122,7 @@ export const exchangeAppAttestAssertionOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeAppAttestAssertionOauthClientsRequest,
   output: ExchangeAppAttestAssertionOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyAppCheckTokenProjectsRequest {
@@ -1086,7 +1152,12 @@ export type VerifyAppCheckTokenProjectsResponse =
 export const VerifyAppCheckTokenProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse;
 
-export type VerifyAppCheckTokenProjectsError = DefaultErrors;
+export type VerifyAppCheckTokenProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies the given App Check token and returns token usage signals that callers may act upon. This method currently only supports App Check tokens exchanged from the following attestation providers: * Play Integrity API * App Attest * DeviceCheck (`DCDevice` tokens) * reCAPTCHA Enterprise * reCAPTCHA v3 * Custom providers App Check tokens exchanged from debug secrets are also supported. Calling this method on an otherwise valid App Check token with an unsupported provider will cause an HTTP 400 error to be returned. Returns whether this token was already consumed before this call. If this is the first time this method has seen the given App Check token, the field `already_consumed` in the response will be absent. The given token will then be marked as `already_consumed` (set to `true`) for all future invocations of this method for that token. Note that if the given App Check token is invalid, an HTTP 403 error is returned instead of a response object, regardless whether the token was already consumed. Currently, when evaluating whether an App Check token was already consumed, only calls to this exact method are counted. Use of the App Check token elsewhere will not mark the token as being already consumed. The caller must have the [`firebaseappcheck.appCheckTokens.verify`](https://firebase.google.com/docs/projects/iam/permissions#app-check) permission to call this method. This permission is part of the [Firebase App Check Token Verifier role](https://firebase.google.com/docs/projects/iam/roles-predefined-product#app-check). */
 export const verifyAppCheckTokenProjects: API.OperationMethod<
@@ -1097,7 +1168,7 @@ export const verifyAppCheckTokenProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyAppCheckTokenProjectsRequest,
   output: VerifyAppCheckTokenProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateProjectsServicesRequest {
@@ -1127,7 +1198,12 @@ export type BatchUpdateProjectsServicesResponse =
 export const BatchUpdateProjectsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse;
 
-export type BatchUpdateProjectsServicesError = DefaultErrors;
+export type BatchUpdateProjectsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Atomically updates the specified Service configurations. */
 export const batchUpdateProjectsServices: API.OperationMethod<
@@ -1138,7 +1214,7 @@ export const batchUpdateProjectsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateProjectsServicesRequest,
   output: BatchUpdateProjectsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsServicesRequest {
@@ -1165,7 +1241,7 @@ export type ListProjectsServicesResponse =
 export const ListProjectsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaListServicesResponse;
 
-export type ListProjectsServicesError = DefaultErrors;
+export type ListProjectsServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all Service configurations for the specified project. Only Services which were explicitly configured using UpdateService or BatchUpdateServices will be returned. */
 export const listProjectsServices: API.PaginatedOperationMethod<
@@ -1176,7 +1252,7 @@ export const listProjectsServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsServicesRequest,
   output: ListProjectsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1208,7 +1284,12 @@ export type PatchProjectsServicesResponse = GoogleFirebaseAppcheckV1betaService;
 export const PatchProjectsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaService;
 
-export type PatchProjectsServicesError = DefaultErrors;
+export type PatchProjectsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Service configuration. */
 export const patchProjectsServices: API.OperationMethod<
@@ -1219,7 +1300,7 @@ export const patchProjectsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsServicesRequest,
   output: PatchProjectsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsServicesRequest {
@@ -1239,7 +1320,7 @@ export type GetProjectsServicesResponse = GoogleFirebaseAppcheckV1betaService;
 export const GetProjectsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaService;
 
-export type GetProjectsServicesError = DefaultErrors;
+export type GetProjectsServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the Service configuration for the specified service name. */
 export const getProjectsServices: API.OperationMethod<
@@ -1250,7 +1331,7 @@ export const getProjectsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsServicesRequest,
   output: GetProjectsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsServicesResourcePoliciesRequest {
@@ -1274,7 +1355,12 @@ export type DeleteProjectsServicesResourcePoliciesResponse =
 export const DeleteProjectsServicesResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsServicesResourcePoliciesError = DefaultErrors;
+export type DeleteProjectsServicesResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified ResourcePolicy configuration. */
 export const deleteProjectsServicesResourcePolicies: API.OperationMethod<
@@ -1285,7 +1371,7 @@ export const deleteProjectsServicesResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsServicesResourcePoliciesRequest,
   output: DeleteProjectsServicesResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateProjectsServicesResourcePoliciesRequest {
@@ -1315,7 +1401,12 @@ export type BatchUpdateProjectsServicesResourcePoliciesResponse =
 export const BatchUpdateProjectsServicesResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse;
 
-export type BatchUpdateProjectsServicesResourcePoliciesError = DefaultErrors;
+export type BatchUpdateProjectsServicesResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Atomically updates the specified ResourcePolicy configurations. */
 export const batchUpdateProjectsServicesResourcePolicies: API.OperationMethod<
@@ -1326,7 +1417,7 @@ export const batchUpdateProjectsServicesResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateProjectsServicesResourcePoliciesRequest,
   output: BatchUpdateProjectsServicesResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsServicesResourcePoliciesRequest {
@@ -1347,7 +1438,10 @@ export type GetProjectsServicesResourcePoliciesResponse =
 export const GetProjectsServicesResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaResourcePolicy;
 
-export type GetProjectsServicesResourcePoliciesError = DefaultErrors;
+export type GetProjectsServicesResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested ResourcePolicy configuration. */
 export const getProjectsServicesResourcePolicies: API.OperationMethod<
@@ -1358,7 +1452,7 @@ export const getProjectsServicesResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsServicesResourcePoliciesRequest,
   output: GetProjectsServicesResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsServicesResourcePoliciesRequest {
@@ -1388,7 +1482,12 @@ export type CreateProjectsServicesResourcePoliciesResponse =
 export const CreateProjectsServicesResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaResourcePolicy;
 
-export type CreateProjectsServicesResourcePoliciesError = DefaultErrors;
+export type CreateProjectsServicesResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the specified ResourcePolicy configuration. */
 export const createProjectsServicesResourcePolicies: API.OperationMethod<
@@ -1399,7 +1498,7 @@ export const createProjectsServicesResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsServicesResourcePoliciesRequest,
   output: CreateProjectsServicesResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsServicesResourcePoliciesRequest {
@@ -1429,7 +1528,10 @@ export type ListProjectsServicesResourcePoliciesResponse =
 export const ListProjectsServicesResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse;
 
-export type ListProjectsServicesResourcePoliciesError = DefaultErrors;
+export type ListProjectsServicesResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all ResourcePolicy configurations for the specified project and service. */
 export const listProjectsServicesResourcePolicies: API.PaginatedOperationMethod<
@@ -1440,7 +1542,7 @@ export const listProjectsServicesResourcePolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsServicesResourcePoliciesRequest,
   output: ListProjectsServicesResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1473,7 +1575,12 @@ export type PatchProjectsServicesResourcePoliciesResponse =
 export const PatchProjectsServicesResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaResourcePolicy;
 
-export type PatchProjectsServicesResourcePoliciesError = DefaultErrors;
+export type PatchProjectsServicesResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified ResourcePolicy configuration. */
 export const patchProjectsServicesResourcePolicies: API.OperationMethod<
@@ -1484,7 +1591,7 @@ export const patchProjectsServicesResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsServicesResourcePoliciesRequest,
   output: PatchProjectsServicesResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeRecaptchaV3TokenProjectsAppsRequest {
@@ -1514,7 +1621,12 @@ export type ExchangeRecaptchaV3TokenProjectsAppsResponse =
 export const ExchangeRecaptchaV3TokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeRecaptchaV3TokenProjectsAppsError = DefaultErrors;
+export type ExchangeRecaptchaV3TokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid, returns an AppCheckToken. */
 export const exchangeRecaptchaV3TokenProjectsApps: API.OperationMethod<
@@ -1525,7 +1637,7 @@ export const exchangeRecaptchaV3TokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeRecaptchaV3TokenProjectsAppsRequest,
   output: ExchangeRecaptchaV3TokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeDebugTokenProjectsAppsRequest {
@@ -1555,7 +1667,12 @@ export type ExchangeDebugTokenProjectsAppsResponse =
 export const ExchangeDebugTokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeDebugTokenProjectsAppsError = DefaultErrors;
+export type ExchangeDebugTokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a debug token secret that you have previously created using CreateDebugToken. If valid, returns an AppCheckToken. Note that a restrictive quota is enforced on this method to prevent accidental exposure of the app to abuse. */
 export const exchangeDebugTokenProjectsApps: API.OperationMethod<
@@ -1566,7 +1683,7 @@ export const exchangeDebugTokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeDebugTokenProjectsAppsRequest,
   output: ExchangeDebugTokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangePlayIntegrityTokenProjectsAppsRequest {
@@ -1596,7 +1713,12 @@ export type ExchangePlayIntegrityTokenProjectsAppsResponse =
 export const ExchangePlayIntegrityTokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangePlayIntegrityTokenProjectsAppsError = DefaultErrors;
+export type ExchangePlayIntegrityTokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates an [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify). If valid, returns an AppCheckToken. */
 export const exchangePlayIntegrityTokenProjectsApps: API.OperationMethod<
@@ -1607,7 +1729,7 @@ export const exchangePlayIntegrityTokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangePlayIntegrityTokenProjectsAppsRequest,
   output: ExchangePlayIntegrityTokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeRecaptchaEnterpriseTokenProjectsAppsRequest {
@@ -1637,7 +1759,12 @@ export type ExchangeRecaptchaEnterpriseTokenProjectsAppsResponse =
 export const ExchangeRecaptchaEnterpriseTokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeRecaptchaEnterpriseTokenProjectsAppsError = DefaultErrors;
+export type ExchangeRecaptchaEnterpriseTokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a [reCAPTCHA Enterprise response token](https://cloud.google.com/recaptcha-enterprise/docs/create-assessment#retrieve_token). If valid, returns an App Check token AppCheckToken. */
 export const exchangeRecaptchaEnterpriseTokenProjectsApps: API.OperationMethod<
@@ -1648,7 +1775,7 @@ export const exchangeRecaptchaEnterpriseTokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeRecaptchaEnterpriseTokenProjectsAppsRequest,
   output: ExchangeRecaptchaEnterpriseTokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeAppAttestAttestationProjectsAppsRequest {
@@ -1678,7 +1805,12 @@ export type ExchangeAppAttestAttestationProjectsAppsResponse =
 export const ExchangeAppAttestAttestationProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse;
 
-export type ExchangeAppAttestAttestationProjectsAppsError = DefaultErrors;
+export type ExchangeAppAttestAttestationProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and bundle IDs. If valid, returns an attestation artifact that can later be exchanged for an AppCheckToken using ExchangeAppAttestAssertion. For convenience and performance, this method's response object will also contain an AppCheckToken (if the verification is successful). */
 export const exchangeAppAttestAttestationProjectsApps: API.OperationMethod<
@@ -1689,7 +1821,7 @@ export const exchangeAppAttestAttestationProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeAppAttestAttestationProjectsAppsRequest,
   output: ExchangeAppAttestAttestationProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeCustomTokenProjectsAppsRequest {
@@ -1719,7 +1851,12 @@ export type ExchangeCustomTokenProjectsAppsResponse =
 export const ExchangeCustomTokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeCustomTokenProjectsAppsError = DefaultErrors;
+export type ExchangeCustomTokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a custom token signed using your project's Admin SDK service account credentials. If valid, returns an AppCheckToken. */
 export const exchangeCustomTokenProjectsApps: API.OperationMethod<
@@ -1730,7 +1867,7 @@ export const exchangeCustomTokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeCustomTokenProjectsAppsRequest,
   output: ExchangeCustomTokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeRecaptchaTokenProjectsAppsRequest {
@@ -1760,7 +1897,12 @@ export type ExchangeRecaptchaTokenProjectsAppsResponse =
 export const ExchangeRecaptchaTokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeRecaptchaTokenProjectsAppsError = DefaultErrors;
+export type ExchangeRecaptchaTokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptcha/docs/v3). If valid, returns an AppCheckToken. */
 export const exchangeRecaptchaTokenProjectsApps: API.OperationMethod<
@@ -1771,7 +1913,7 @@ export const exchangeRecaptchaTokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeRecaptchaTokenProjectsAppsRequest,
   output: ExchangeRecaptchaTokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GeneratePlayIntegrityChallengeProjectsAppsRequest {
@@ -1801,7 +1943,12 @@ export type GeneratePlayIntegrityChallengeProjectsAppsResponse =
 export const GeneratePlayIntegrityChallengeProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse;
 
-export type GeneratePlayIntegrityChallengeProjectsAppsError = DefaultErrors;
+export type GeneratePlayIntegrityChallengeProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a challenge that protects the integrity of an immediately following integrity verdict request to the Play Integrity API. The next call to ExchangePlayIntegrityToken using the resulting integrity token will verify the presence and validity of the challenge. A challenge should not be reused for multiple calls. */
 export const generatePlayIntegrityChallengeProjectsApps: API.OperationMethod<
@@ -1812,7 +1959,7 @@ export const generatePlayIntegrityChallengeProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GeneratePlayIntegrityChallengeProjectsAppsRequest,
   output: GeneratePlayIntegrityChallengeProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeDeviceCheckTokenProjectsAppsRequest {
@@ -1842,7 +1989,12 @@ export type ExchangeDeviceCheckTokenProjectsAppsResponse =
 export const ExchangeDeviceCheckTokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeDeviceCheckTokenProjectsAppsError = DefaultErrors;
+export type ExchangeDeviceCheckTokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts a [`device_token`](https://developer.apple.com/documentation/devicecheck/dcdevice) issued by DeviceCheck, and attempts to validate it with Apple. If valid, returns an AppCheckToken. */
 export const exchangeDeviceCheckTokenProjectsApps: API.OperationMethod<
@@ -1853,7 +2005,7 @@ export const exchangeDeviceCheckTokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeDeviceCheckTokenProjectsAppsRequest,
   output: ExchangeDeviceCheckTokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateAppAttestChallengeProjectsAppsRequest {
@@ -1883,7 +2035,12 @@ export type GenerateAppAttestChallengeProjectsAppsResponse =
 export const GenerateAppAttestChallengeProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse;
 
-export type GenerateAppAttestChallengeProjectsAppsError = DefaultErrors;
+export type GenerateAppAttestChallengeProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a challenge that protects the integrity of an immediately following call to ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A challenge should not be reused for multiple calls. */
 export const generateAppAttestChallengeProjectsApps: API.OperationMethod<
@@ -1894,7 +2051,7 @@ export const generateAppAttestChallengeProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAppAttestChallengeProjectsAppsRequest,
   output: GenerateAppAttestChallengeProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeAppAttestAssertionProjectsAppsRequest {
@@ -1924,7 +2081,12 @@ export type ExchangeAppAttestAssertionProjectsAppsResponse =
 export const ExchangeAppAttestAssertionProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeAppAttestAssertionProjectsAppsError = DefaultErrors;
+export type ExchangeAppAttestAssertionProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts an App Attest assertion and an artifact previously obtained from ExchangeAppAttestAttestation and verifies those with Apple. If valid, returns an AppCheckToken. */
 export const exchangeAppAttestAssertionProjectsApps: API.OperationMethod<
@@ -1935,7 +2097,7 @@ export const exchangeAppAttestAssertionProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeAppAttestAssertionProjectsAppsRequest,
   output: ExchangeAppAttestAssertionProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExchangeSafetyNetTokenProjectsAppsRequest {
@@ -1965,7 +2127,12 @@ export type ExchangeSafetyNetTokenProjectsAppsResponse =
 export const ExchangeSafetyNetTokenProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppCheckToken;
 
-export type ExchangeSafetyNetTokenProjectsAppsError = DefaultErrors;
+export type ExchangeSafetyNetTokenProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates a [SafetyNet token](https://developer.android.com/training/safetynet/attestation#request-attestation-step). If valid, returns an AppCheckToken. */
 export const exchangeSafetyNetTokenProjectsApps: API.OperationMethod<
@@ -1976,7 +2143,7 @@ export const exchangeSafetyNetTokenProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeSafetyNetTokenProjectsAppsRequest,
   output: ExchangeSafetyNetTokenProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsAppsDeviceCheckConfigRequest {
@@ -2005,7 +2172,12 @@ export type PatchProjectsAppsDeviceCheckConfigResponse =
 export const PatchProjectsAppsDeviceCheckConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaDeviceCheckConfig;
 
-export type PatchProjectsAppsDeviceCheckConfigError = DefaultErrors;
+export type PatchProjectsAppsDeviceCheckConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the DeviceCheckConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange DeviceCheck tokens for App Check tokens. For security reasons, the `private_key` field is never populated in the response. */
 export const patchProjectsAppsDeviceCheckConfig: API.OperationMethod<
@@ -2016,7 +2188,7 @@ export const patchProjectsAppsDeviceCheckConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsDeviceCheckConfigRequest,
   output: PatchProjectsAppsDeviceCheckConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsAppsDeviceCheckConfigRequest {
@@ -2045,7 +2217,10 @@ export type BatchGetProjectsAppsDeviceCheckConfigResponse =
 export const BatchGetProjectsAppsDeviceCheckConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse;
 
-export type BatchGetProjectsAppsDeviceCheckConfigError = DefaultErrors;
+export type BatchGetProjectsAppsDeviceCheckConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Atomically gets the DeviceCheckConfigs for the specified list of apps. For security reasons, the `private_key` field is never populated in the response. */
 export const batchGetProjectsAppsDeviceCheckConfig: API.OperationMethod<
@@ -2056,7 +2231,7 @@ export const batchGetProjectsAppsDeviceCheckConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAppsDeviceCheckConfigRequest,
   output: BatchGetProjectsAppsDeviceCheckConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsAppsDeviceCheckConfigRequest {
@@ -2077,7 +2252,10 @@ export type GetProjectsAppsDeviceCheckConfigResponse =
 export const GetProjectsAppsDeviceCheckConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaDeviceCheckConfig;
 
-export type GetProjectsAppsDeviceCheckConfigError = DefaultErrors;
+export type GetProjectsAppsDeviceCheckConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the DeviceCheckConfig for the specified app. For security reasons, the `private_key` field is never populated in the response. */
 export const getProjectsAppsDeviceCheckConfig: API.OperationMethod<
@@ -2088,7 +2266,7 @@ export const getProjectsAppsDeviceCheckConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsDeviceCheckConfigRequest,
   output: GetProjectsAppsDeviceCheckConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest {
@@ -2117,7 +2295,10 @@ export type BatchGetProjectsAppsRecaptchaEnterpriseConfigResponse =
 export const BatchGetProjectsAppsRecaptchaEnterpriseConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse;
 
-export type BatchGetProjectsAppsRecaptchaEnterpriseConfigError = DefaultErrors;
+export type BatchGetProjectsAppsRecaptchaEnterpriseConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Atomically gets the RecaptchaEnterpriseConfigs for the specified list of apps. */
 export const batchGetProjectsAppsRecaptchaEnterpriseConfig: API.OperationMethod<
@@ -2128,7 +2309,7 @@ export const batchGetProjectsAppsRecaptchaEnterpriseConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAppsRecaptchaEnterpriseConfigRequest,
   output: BatchGetProjectsAppsRecaptchaEnterpriseConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsAppsRecaptchaEnterpriseConfigRequest {
@@ -2157,7 +2338,12 @@ export type PatchProjectsAppsRecaptchaEnterpriseConfigResponse =
 export const PatchProjectsAppsRecaptchaEnterpriseConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig;
 
-export type PatchProjectsAppsRecaptchaEnterpriseConfigError = DefaultErrors;
+export type PatchProjectsAppsRecaptchaEnterpriseConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the RecaptchaEnterpriseConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange reCAPTCHA Enterprise tokens for App Check tokens. */
 export const patchProjectsAppsRecaptchaEnterpriseConfig: API.OperationMethod<
@@ -2168,7 +2354,7 @@ export const patchProjectsAppsRecaptchaEnterpriseConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsRecaptchaEnterpriseConfigRequest,
   output: PatchProjectsAppsRecaptchaEnterpriseConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAppsRecaptchaEnterpriseConfigRequest {
@@ -2189,7 +2375,10 @@ export type GetProjectsAppsRecaptchaEnterpriseConfigResponse =
 export const GetProjectsAppsRecaptchaEnterpriseConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig;
 
-export type GetProjectsAppsRecaptchaEnterpriseConfigError = DefaultErrors;
+export type GetProjectsAppsRecaptchaEnterpriseConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the RecaptchaEnterpriseConfig for the specified app. */
 export const getProjectsAppsRecaptchaEnterpriseConfig: API.OperationMethod<
@@ -2200,7 +2389,7 @@ export const getProjectsAppsRecaptchaEnterpriseConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsRecaptchaEnterpriseConfigRequest,
   output: GetProjectsAppsRecaptchaEnterpriseConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAppsDebugTokensRequest {
@@ -2227,7 +2416,10 @@ export type ListProjectsAppsDebugTokensResponse =
 export const ListProjectsAppsDebugTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaListDebugTokensResponse;
 
-export type ListProjectsAppsDebugTokensError = DefaultErrors;
+export type ListProjectsAppsDebugTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all DebugTokens for the specified app. For security reasons, the `token` field is never populated in the response. */
 export const listProjectsAppsDebugTokens: API.PaginatedOperationMethod<
@@ -2238,7 +2430,7 @@ export const listProjectsAppsDebugTokens: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsDebugTokensRequest,
   output: ListProjectsAppsDebugTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2271,7 +2463,12 @@ export type PatchProjectsAppsDebugTokensResponse =
 export const PatchProjectsAppsDebugTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaDebugToken;
 
-export type PatchProjectsAppsDebugTokensError = DefaultErrors;
+export type PatchProjectsAppsDebugTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified DebugToken. For security reasons, the `token` field cannot be updated, nor will it be populated in the response, but you can revoke the debug token using DeleteDebugToken. */
 export const patchProjectsAppsDebugTokens: API.OperationMethod<
@@ -2282,7 +2479,7 @@ export const patchProjectsAppsDebugTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsDebugTokensRequest,
   output: PatchProjectsAppsDebugTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAppsDebugTokensRequest {
@@ -2303,7 +2500,10 @@ export type GetProjectsAppsDebugTokensResponse =
 export const GetProjectsAppsDebugTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaDebugToken;
 
-export type GetProjectsAppsDebugTokensError = DefaultErrors;
+export type GetProjectsAppsDebugTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response. */
 export const getProjectsAppsDebugTokens: API.OperationMethod<
@@ -2314,7 +2514,7 @@ export const getProjectsAppsDebugTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsDebugTokensRequest,
   output: GetProjectsAppsDebugTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsAppsDebugTokensRequest {
@@ -2344,7 +2544,12 @@ export type CreateProjectsAppsDebugTokensResponse =
 export const CreateProjectsAppsDebugTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaDebugToken;
 
-export type CreateProjectsAppsDebugTokensError = DefaultErrors;
+export type CreateProjectsAppsDebugTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new DebugToken for the specified app. For security reasons, after the creation operation completes, the `token` field cannot be updated or retrieved, but you can revoke the debug token using DeleteDebugToken. Each app can have a maximum of 20 debug tokens. */
 export const createProjectsAppsDebugTokens: API.OperationMethod<
@@ -2355,7 +2560,7 @@ export const createProjectsAppsDebugTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAppsDebugTokensRequest,
   output: CreateProjectsAppsDebugTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsAppsDebugTokensRequest {
@@ -2378,7 +2583,12 @@ export type DeleteProjectsAppsDebugTokensResponse = GoogleProtobufEmpty;
 export const DeleteProjectsAppsDebugTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsAppsDebugTokensError = DefaultErrors;
+export type DeleteProjectsAppsDebugTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified DebugToken. A deleted debug token cannot be used to exchange for an App Check token. Use this method when you suspect the secret `token` has been compromised or when you no longer need the debug token. */
 export const deleteProjectsAppsDebugTokens: API.OperationMethod<
@@ -2389,7 +2599,7 @@ export const deleteProjectsAppsDebugTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAppsDebugTokensRequest,
   output: DeleteProjectsAppsDebugTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsAppsAppAttestConfigRequest {
@@ -2418,7 +2628,10 @@ export type BatchGetProjectsAppsAppAttestConfigResponse =
 export const BatchGetProjectsAppsAppAttestConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse;
 
-export type BatchGetProjectsAppsAppAttestConfigError = DefaultErrors;
+export type BatchGetProjectsAppsAppAttestConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Atomically gets the AppAttestConfigs for the specified list of apps. */
 export const batchGetProjectsAppsAppAttestConfig: API.OperationMethod<
@@ -2429,7 +2642,7 @@ export const batchGetProjectsAppsAppAttestConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAppsAppAttestConfigRequest,
   output: BatchGetProjectsAppsAppAttestConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsAppsAppAttestConfigRequest {
@@ -2458,7 +2671,12 @@ export type PatchProjectsAppsAppAttestConfigResponse =
 export const PatchProjectsAppsAppAttestConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppAttestConfig;
 
-export type PatchProjectsAppsAppAttestConfigError = DefaultErrors;
+export type PatchProjectsAppsAppAttestConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the AppAttestConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange AppAttest tokens for App Check tokens. */
 export const patchProjectsAppsAppAttestConfig: API.OperationMethod<
@@ -2469,7 +2687,7 @@ export const patchProjectsAppsAppAttestConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsAppAttestConfigRequest,
   output: PatchProjectsAppsAppAttestConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAppsAppAttestConfigRequest {
@@ -2490,7 +2708,10 @@ export type GetProjectsAppsAppAttestConfigResponse =
 export const GetProjectsAppsAppAttestConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaAppAttestConfig;
 
-export type GetProjectsAppsAppAttestConfigError = DefaultErrors;
+export type GetProjectsAppsAppAttestConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the AppAttestConfig for the specified app. */
 export const getProjectsAppsAppAttestConfig: API.OperationMethod<
@@ -2501,7 +2722,7 @@ export const getProjectsAppsAppAttestConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsAppAttestConfigRequest,
   output: GetProjectsAppsAppAttestConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsAppsRecaptchaConfigRequest {
@@ -2522,7 +2743,10 @@ export type GetProjectsAppsRecaptchaConfigResponse =
 export const GetProjectsAppsRecaptchaConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaRecaptchaConfig;
 
-export type GetProjectsAppsRecaptchaConfigError = DefaultErrors;
+export type GetProjectsAppsRecaptchaConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the RecaptchaConfig for the specified app. For security reasons, the `site_secret` field is never populated in the response. */
 export const getProjectsAppsRecaptchaConfig: API.OperationMethod<
@@ -2533,7 +2757,7 @@ export const getProjectsAppsRecaptchaConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsRecaptchaConfigRequest,
   output: GetProjectsAppsRecaptchaConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsAppsRecaptchaConfigRequest {
@@ -2562,7 +2786,12 @@ export type PatchProjectsAppsRecaptchaConfigResponse =
 export const PatchProjectsAppsRecaptchaConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaRecaptchaConfig;
 
-export type PatchProjectsAppsRecaptchaConfigError = DefaultErrors;
+export type PatchProjectsAppsRecaptchaConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the RecaptchaConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange reCAPTCHA tokens for App Check tokens. For security reasons, the `site_secret` field is never populated in the response. */
 export const patchProjectsAppsRecaptchaConfig: API.OperationMethod<
@@ -2573,7 +2802,7 @@ export const patchProjectsAppsRecaptchaConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsRecaptchaConfigRequest,
   output: PatchProjectsAppsRecaptchaConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsAppsRecaptchaConfigRequest {
@@ -2602,7 +2831,10 @@ export type BatchGetProjectsAppsRecaptchaConfigResponse =
 export const BatchGetProjectsAppsRecaptchaConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse;
 
-export type BatchGetProjectsAppsRecaptchaConfigError = DefaultErrors;
+export type BatchGetProjectsAppsRecaptchaConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Atomically gets the RecaptchaConfigs for the specified list of apps. For security reasons, the `site_secret` field is never populated in the response. */
 export const batchGetProjectsAppsRecaptchaConfig: API.OperationMethod<
@@ -2613,7 +2845,7 @@ export const batchGetProjectsAppsRecaptchaConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAppsRecaptchaConfigRequest,
   output: BatchGetProjectsAppsRecaptchaConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsAppsRecaptchaV3ConfigRequest {
@@ -2642,7 +2874,12 @@ export type PatchProjectsAppsRecaptchaV3ConfigResponse =
 export const PatchProjectsAppsRecaptchaV3ConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaRecaptchaV3Config;
 
-export type PatchProjectsAppsRecaptchaV3ConfigError = DefaultErrors;
+export type PatchProjectsAppsRecaptchaV3ConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the RecaptchaV3Config for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange reCAPTCHA V3 tokens for App Check tokens. For security reasons, the `site_secret` field is never populated in the response. */
 export const patchProjectsAppsRecaptchaV3Config: API.OperationMethod<
@@ -2653,7 +2890,7 @@ export const patchProjectsAppsRecaptchaV3Config: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsRecaptchaV3ConfigRequest,
   output: PatchProjectsAppsRecaptchaV3ConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsAppsRecaptchaV3ConfigRequest {
@@ -2682,7 +2919,10 @@ export type BatchGetProjectsAppsRecaptchaV3ConfigResponse =
 export const BatchGetProjectsAppsRecaptchaV3ConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse;
 
-export type BatchGetProjectsAppsRecaptchaV3ConfigError = DefaultErrors;
+export type BatchGetProjectsAppsRecaptchaV3ConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Atomically gets the RecaptchaV3Configs for the specified list of apps. For security reasons, the `site_secret` field is never populated in the response. */
 export const batchGetProjectsAppsRecaptchaV3Config: API.OperationMethod<
@@ -2693,7 +2933,7 @@ export const batchGetProjectsAppsRecaptchaV3Config: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAppsRecaptchaV3ConfigRequest,
   output: BatchGetProjectsAppsRecaptchaV3ConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsAppsRecaptchaV3ConfigRequest {
@@ -2714,7 +2954,10 @@ export type GetProjectsAppsRecaptchaV3ConfigResponse =
 export const GetProjectsAppsRecaptchaV3ConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaRecaptchaV3Config;
 
-export type GetProjectsAppsRecaptchaV3ConfigError = DefaultErrors;
+export type GetProjectsAppsRecaptchaV3ConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the RecaptchaV3Config for the specified app. For security reasons, the `site_secret` field is never populated in the response. */
 export const getProjectsAppsRecaptchaV3Config: API.OperationMethod<
@@ -2725,7 +2968,7 @@ export const getProjectsAppsRecaptchaV3Config: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsRecaptchaV3ConfigRequest,
   output: GetProjectsAppsRecaptchaV3ConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsAppsSafetyNetConfigRequest {
@@ -2754,7 +2997,12 @@ export type PatchProjectsAppsSafetyNetConfigResponse =
 export const PatchProjectsAppsSafetyNetConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaSafetyNetConfig;
 
-export type PatchProjectsAppsSafetyNetConfigError = DefaultErrors;
+export type PatchProjectsAppsSafetyNetConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the SafetyNetConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange SafetyNet tokens for App Check tokens. */
 export const patchProjectsAppsSafetyNetConfig: API.OperationMethod<
@@ -2765,7 +3013,7 @@ export const patchProjectsAppsSafetyNetConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsSafetyNetConfigRequest,
   output: PatchProjectsAppsSafetyNetConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsAppsSafetyNetConfigRequest {
@@ -2794,7 +3042,10 @@ export type BatchGetProjectsAppsSafetyNetConfigResponse =
 export const BatchGetProjectsAppsSafetyNetConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse;
 
-export type BatchGetProjectsAppsSafetyNetConfigError = DefaultErrors;
+export type BatchGetProjectsAppsSafetyNetConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Atomically gets the SafetyNetConfigs for the specified list of apps. */
 export const batchGetProjectsAppsSafetyNetConfig: API.OperationMethod<
@@ -2805,7 +3056,7 @@ export const batchGetProjectsAppsSafetyNetConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAppsSafetyNetConfigRequest,
   output: BatchGetProjectsAppsSafetyNetConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsAppsSafetyNetConfigRequest {
@@ -2826,7 +3077,10 @@ export type GetProjectsAppsSafetyNetConfigResponse =
 export const GetProjectsAppsSafetyNetConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaSafetyNetConfig;
 
-export type GetProjectsAppsSafetyNetConfigError = DefaultErrors;
+export type GetProjectsAppsSafetyNetConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the SafetyNetConfig for the specified app. */
 export const getProjectsAppsSafetyNetConfig: API.OperationMethod<
@@ -2837,7 +3091,7 @@ export const getProjectsAppsSafetyNetConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsSafetyNetConfigRequest,
   output: GetProjectsAppsSafetyNetConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsAppsPlayIntegrityConfigRequest {
@@ -2858,7 +3112,10 @@ export type GetProjectsAppsPlayIntegrityConfigResponse =
 export const GetProjectsAppsPlayIntegrityConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaPlayIntegrityConfig;
 
-export type GetProjectsAppsPlayIntegrityConfigError = DefaultErrors;
+export type GetProjectsAppsPlayIntegrityConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the PlayIntegrityConfig for the specified app. */
 export const getProjectsAppsPlayIntegrityConfig: API.OperationMethod<
@@ -2869,7 +3126,7 @@ export const getProjectsAppsPlayIntegrityConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsPlayIntegrityConfigRequest,
   output: GetProjectsAppsPlayIntegrityConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsAppsPlayIntegrityConfigRequest {
@@ -2898,7 +3155,12 @@ export type PatchProjectsAppsPlayIntegrityConfigResponse =
 export const PatchProjectsAppsPlayIntegrityConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaPlayIntegrityConfig;
 
-export type PatchProjectsAppsPlayIntegrityConfigError = DefaultErrors;
+export type PatchProjectsAppsPlayIntegrityConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the PlayIntegrityConfig for the specified app. While this configuration is incomplete or invalid, the app will be unable to exchange Play Integrity tokens for App Check tokens. */
 export const patchProjectsAppsPlayIntegrityConfig: API.OperationMethod<
@@ -2909,7 +3171,7 @@ export const patchProjectsAppsPlayIntegrityConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsPlayIntegrityConfigRequest,
   output: PatchProjectsAppsPlayIntegrityConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetProjectsAppsPlayIntegrityConfigRequest {
@@ -2938,7 +3200,10 @@ export type BatchGetProjectsAppsPlayIntegrityConfigResponse =
 export const BatchGetProjectsAppsPlayIntegrityConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse;
 
-export type BatchGetProjectsAppsPlayIntegrityConfigError = DefaultErrors;
+export type BatchGetProjectsAppsPlayIntegrityConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Atomically gets the PlayIntegrityConfigs for the specified list of apps. */
 export const batchGetProjectsAppsPlayIntegrityConfig: API.OperationMethod<
@@ -2949,5 +3214,5 @@ export const batchGetProjectsAppsPlayIntegrityConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetProjectsAppsPlayIntegrityConfigRequest,
   output: BatchGetProjectsAppsPlayIntegrityConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

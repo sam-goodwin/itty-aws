@@ -1755,6 +1755,52 @@ export const GoogleCloudMlV1__SetDefaultVersionRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1779,7 +1825,12 @@ export type ExplainProjectsResponse = GoogleApi__HttpBody;
 export const ExplainProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApi__HttpBody;
 
-export type ExplainProjectsError = DefaultErrors;
+export type ExplainProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs explanation on the data in the request. {% dynamic include "/ai-platform/includes/___explain-request" %} */
 export const explainProjects: API.OperationMethod<
@@ -1790,7 +1841,7 @@ export const explainProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExplainProjectsRequest,
   output: ExplainProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigProjectsRequest {
@@ -1810,7 +1861,7 @@ export type GetConfigProjectsResponse = GoogleCloudMlV1__GetConfigResponse;
 export const GetConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__GetConfigResponse;
 
-export type GetConfigProjectsError = DefaultErrors;
+export type GetConfigProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the service account information associated with your project. You need this information in order to grant the service account permissions for the Google Cloud Storage location where you put your model training code for training the model with Google Cloud Machine Learning. */
 export const getConfigProjects: API.OperationMethod<
@@ -1821,7 +1872,7 @@ export const getConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsRequest,
   output: GetConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PredictProjectsRequest {
@@ -1845,7 +1896,12 @@ export type PredictProjectsResponse = GoogleApi__HttpBody;
 export const PredictProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApi__HttpBody;
 
-export type PredictProjectsError = DefaultErrors;
+export type PredictProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs online prediction on the data in the request. {% dynamic include "/ai-platform/includes/___predict-request" %} */
 export const predictProjects: API.OperationMethod<
@@ -1856,7 +1912,7 @@ export const predictProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PredictProjectsRequest,
   output: PredictProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsJobsRequest {
@@ -1885,7 +1941,7 @@ export type ListProjectsJobsResponse = GoogleCloudMlV1__ListJobsResponse;
 export const ListProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__ListJobsResponse;
 
-export type ListProjectsJobsError = DefaultErrors;
+export type ListProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the jobs in the project. If there are no jobs that match the request parameters, the list request returns an empty response body: {}. */
 export const listProjectsJobs: API.PaginatedOperationMethod<
@@ -1896,7 +1952,7 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsRequest,
   output: ListProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1921,7 +1977,7 @@ export type GetProjectsJobsResponse = GoogleCloudMlV1__Job;
 export const GetProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Job;
 
-export type GetProjectsJobsError = DefaultErrors;
+export type GetProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Describes a job. */
 export const getProjectsJobs: API.OperationMethod<
@@ -1932,7 +1988,7 @@ export const getProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsJobsRequest,
   output: GetProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsJobsRequest {
@@ -1962,7 +2018,12 @@ export type TestIamPermissionsProjectsJobsResponse =
 export const TestIamPermissionsProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1__TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsJobsError = DefaultErrors;
+export type TestIamPermissionsProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsJobs: API.OperationMethod<
@@ -1973,7 +2034,7 @@ export const testIamPermissionsProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsJobsRequest,
   output: TestIamPermissionsProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsJobsRequest {
@@ -1999,7 +2060,12 @@ export type PatchProjectsJobsResponse = GoogleCloudMlV1__Job;
 export const PatchProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Job;
 
-export type PatchProjectsJobsError = DefaultErrors;
+export type PatchProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a specific job resource. Currently the only supported fields to update are `labels`. */
 export const patchProjectsJobs: API.OperationMethod<
@@ -2010,7 +2076,7 @@ export const patchProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsJobsRequest,
   output: PatchProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsJobsRequest {
@@ -2035,7 +2101,10 @@ export type GetIamPolicyProjectsJobsResponse = GoogleIamV1__Policy;
 export const GetIamPolicyProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1__Policy;
 
-export type GetIamPolicyProjectsJobsError = DefaultErrors;
+export type GetIamPolicyProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsJobs: API.OperationMethod<
@@ -2046,7 +2115,7 @@ export const getIamPolicyProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsJobsRequest,
   output: GetIamPolicyProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsJobsRequest {
@@ -2073,7 +2142,12 @@ export type SetIamPolicyProjectsJobsResponse = GoogleIamV1__Policy;
 export const SetIamPolicyProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1__Policy;
 
-export type SetIamPolicyProjectsJobsError = DefaultErrors;
+export type SetIamPolicyProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsJobs: API.OperationMethod<
@@ -2084,7 +2158,7 @@ export const setIamPolicyProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsJobsRequest,
   output: SetIamPolicyProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsJobsRequest {
@@ -2107,7 +2181,12 @@ export type CreateProjectsJobsResponse = GoogleCloudMlV1__Job;
 export const CreateProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Job;
 
-export type CreateProjectsJobsError = DefaultErrors;
+export type CreateProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a training or a batch prediction job. */
 export const createProjectsJobs: API.OperationMethod<
@@ -2118,7 +2197,7 @@ export const createProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsJobsRequest,
   output: CreateProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsJobsRequest {
@@ -2141,7 +2220,12 @@ export type CancelProjectsJobsResponse = GoogleProtobuf__Empty;
 export const CancelProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
 
-export type CancelProjectsJobsError = DefaultErrors;
+export type CancelProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a running job. */
 export const cancelProjectsJobs: API.OperationMethod<
@@ -2152,7 +2236,7 @@ export const cancelProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsJobsRequest,
   output: CancelProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsOperationsRequest {
@@ -2172,7 +2256,7 @@ export type GetProjectsOperationsResponse = GoogleLongrunning__Operation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -2183,7 +2267,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsOperationsRequest {
@@ -2203,7 +2287,12 @@ export type CancelProjectsOperationsResponse = GoogleProtobuf__Empty;
 export const CancelProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
 
-export type CancelProjectsOperationsError = DefaultErrors;
+export type CancelProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsOperations: API.OperationMethod<
@@ -2214,7 +2303,7 @@ export const cancelProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsOperationsRequest {
@@ -2249,7 +2338,7 @@ export type ListProjectsOperationsResponse =
 export const ListProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__ListOperationsResponse;
 
-export type ListProjectsOperationsError = DefaultErrors;
+export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsOperations: API.PaginatedOperationMethod<
@@ -2260,7 +2349,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2287,7 +2376,12 @@ export type CreateProjectsModelsResponse = GoogleCloudMlV1__Model;
 export const CreateProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Model;
 
-export type CreateProjectsModelsError = DefaultErrors;
+export type CreateProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a model which will later contain one or more versions. You must add at least one version before you can request predictions from the model. Add versions by calling projects.models.versions.create. */
 export const createProjectsModels: API.OperationMethod<
@@ -2298,7 +2392,7 @@ export const createProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsModelsRequest,
   output: CreateProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsModelsRequest {
@@ -2328,7 +2422,12 @@ export type TestIamPermissionsProjectsModelsResponse =
 export const TestIamPermissionsProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1__TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsModelsError = DefaultErrors;
+export type TestIamPermissionsProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsModels: API.OperationMethod<
@@ -2339,7 +2438,7 @@ export const testIamPermissionsProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsModelsRequest,
   output: TestIamPermissionsProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsModelsRequest {
@@ -2366,7 +2465,12 @@ export type SetIamPolicyProjectsModelsResponse = GoogleIamV1__Policy;
 export const SetIamPolicyProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1__Policy;
 
-export type SetIamPolicyProjectsModelsError = DefaultErrors;
+export type SetIamPolicyProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsModels: API.OperationMethod<
@@ -2377,7 +2481,7 @@ export const setIamPolicyProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsModelsRequest,
   output: SetIamPolicyProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsModelsRequest {
@@ -2406,7 +2510,7 @@ export type ListProjectsModelsResponse = GoogleCloudMlV1__ListModelsResponse;
 export const ListProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__ListModelsResponse;
 
-export type ListProjectsModelsError = DefaultErrors;
+export type ListProjectsModelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the models in a project. Each project can contain multiple models, and each model can have multiple versions. If there are no models that match the request parameters, the list request returns an empty response body: {}. */
 export const listProjectsModels: API.PaginatedOperationMethod<
@@ -2417,7 +2521,7 @@ export const listProjectsModels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsModelsRequest,
   output: ListProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2446,7 +2550,10 @@ export type GetIamPolicyProjectsModelsResponse = GoogleIamV1__Policy;
 export const GetIamPolicyProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1__Policy;
 
-export type GetIamPolicyProjectsModelsError = DefaultErrors;
+export type GetIamPolicyProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsModels: API.OperationMethod<
@@ -2457,7 +2564,7 @@ export const getIamPolicyProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsModelsRequest,
   output: GetIamPolicyProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsModelsRequest {
@@ -2477,7 +2584,12 @@ export type DeleteProjectsModelsResponse = GoogleLongrunning__Operation;
 export const DeleteProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type DeleteProjectsModelsError = DefaultErrors;
+export type DeleteProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a model. You can only delete a model if there are no versions in it. You can delete versions by calling projects.models.versions.delete. */
 export const deleteProjectsModels: API.OperationMethod<
@@ -2488,7 +2600,7 @@ export const deleteProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsModelsRequest,
   output: DeleteProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsModelsRequest {
@@ -2508,7 +2620,7 @@ export type GetProjectsModelsResponse = GoogleCloudMlV1__Model;
 export const GetProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Model;
 
-export type GetProjectsModelsError = DefaultErrors;
+export type GetProjectsModelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed). */
 export const getProjectsModels: API.OperationMethod<
@@ -2519,7 +2631,7 @@ export const getProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsModelsRequest,
   output: GetProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsModelsRequest {
@@ -2545,7 +2657,12 @@ export type PatchProjectsModelsResponse = GoogleLongrunning__Operation;
 export const PatchProjectsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type PatchProjectsModelsError = DefaultErrors;
+export type PatchProjectsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a specific model resource. Currently the only supported fields to update are `description` and `default_version.name`. */
 export const patchProjectsModels: API.OperationMethod<
@@ -2556,7 +2673,7 @@ export const patchProjectsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsModelsRequest,
   output: PatchProjectsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsModelsVersionsRequest {
@@ -2582,7 +2699,12 @@ export type PatchProjectsModelsVersionsResponse = GoogleLongrunning__Operation;
 export const PatchProjectsModelsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type PatchProjectsModelsVersionsError = DefaultErrors;
+export type PatchProjectsModelsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Version resource. Currently the only update-able fields are `description`, `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`. */
 export const patchProjectsModelsVersions: API.OperationMethod<
@@ -2593,7 +2715,7 @@ export const patchProjectsModelsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsModelsVersionsRequest,
   output: PatchProjectsModelsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsModelsVersionsRequest {
@@ -2613,7 +2735,10 @@ export type GetProjectsModelsVersionsResponse = GoogleCloudMlV1__Version;
 export const GetProjectsModelsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Version;
 
-export type GetProjectsModelsVersionsError = DefaultErrors;
+export type GetProjectsModelsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model. */
 export const getProjectsModelsVersions: API.OperationMethod<
@@ -2624,7 +2749,7 @@ export const getProjectsModelsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsModelsVersionsRequest,
   output: GetProjectsModelsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsModelsVersionsRequest {
@@ -2647,7 +2772,12 @@ export type CreateProjectsModelsVersionsResponse = GoogleLongrunning__Operation;
 export const CreateProjectsModelsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type CreateProjectsModelsVersionsError = DefaultErrors;
+export type CreateProjectsModelsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault. */
 export const createProjectsModelsVersions: API.OperationMethod<
@@ -2658,7 +2788,7 @@ export const createProjectsModelsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsModelsVersionsRequest,
   output: CreateProjectsModelsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsModelsVersionsRequest {
@@ -2678,7 +2808,12 @@ export type DeleteProjectsModelsVersionsResponse = GoogleLongrunning__Operation;
 export const DeleteProjectsModelsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type DeleteProjectsModelsVersionsError = DefaultErrors;
+export type DeleteProjectsModelsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a model version. Each model can have multiple versions deployed and in use at any given time. Use this method to remove a single version. Note: You cannot delete the version that is set as the default version of the model unless it is the only remaining version. */
 export const deleteProjectsModelsVersions: API.OperationMethod<
@@ -2689,7 +2824,7 @@ export const deleteProjectsModelsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsModelsVersionsRequest,
   output: DeleteProjectsModelsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsModelsVersionsRequest {
@@ -2719,7 +2854,10 @@ export type ListProjectsModelsVersionsResponse =
 export const ListProjectsModelsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__ListVersionsResponse;
 
-export type ListProjectsModelsVersionsError = DefaultErrors;
+export type ListProjectsModelsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets basic information about all the versions of a model. If you expect that a model has many versions, or if you need to handle only a limited number of results at a time, you can request that the list be retrieved in batches (called pages). If there are no versions that match the request parameters, the list request returns an empty response body: {}. */
 export const listProjectsModelsVersions: API.PaginatedOperationMethod<
@@ -2730,7 +2868,7 @@ export const listProjectsModelsVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsModelsVersionsRequest,
   output: ListProjectsModelsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2759,7 +2897,12 @@ export type SetDefaultProjectsModelsVersionsResponse = GoogleCloudMlV1__Version;
 export const SetDefaultProjectsModelsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Version;
 
-export type SetDefaultProjectsModelsVersionsError = DefaultErrors;
+export type SetDefaultProjectsModelsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Designates a version to be the default for the model. The default version is used for prediction requests made against the model that don't specify a version. The first version to be created for a model is automatically set as the default. You must make any subsequent changes to the default version setting manually using this method. */
 export const setDefaultProjectsModelsVersions: API.OperationMethod<
@@ -2770,7 +2913,7 @@ export const setDefaultProjectsModelsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDefaultProjectsModelsVersionsRequest,
   output: SetDefaultProjectsModelsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -2797,7 +2940,7 @@ export type ListProjectsLocationsResponse =
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** List all locations that provides at least one type of CMLE capability. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2808,7 +2951,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2832,7 +2975,7 @@ export type GetProjectsLocationsResponse = GoogleCloudMlV1__Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the complete list of CMLE capabilities in a location, along with their location-specific properties. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2843,7 +2986,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsStudiesRequest {
@@ -2863,7 +3006,12 @@ export type DeleteProjectsLocationsStudiesResponse = GoogleProtobuf__Empty;
 export const DeleteProjectsLocationsStudiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
 
-export type DeleteProjectsLocationsStudiesError = DefaultErrors;
+export type DeleteProjectsLocationsStudiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a study. */
 export const deleteProjectsLocationsStudies: API.OperationMethod<
@@ -2874,7 +3022,7 @@ export const deleteProjectsLocationsStudies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsStudiesRequest,
   output: DeleteProjectsLocationsStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsStudiesRequest {
@@ -2895,7 +3043,10 @@ export type ListProjectsLocationsStudiesResponse =
 export const ListProjectsLocationsStudiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__ListStudiesResponse;
 
-export type ListProjectsLocationsStudiesError = DefaultErrors;
+export type ListProjectsLocationsStudiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the studies in a region for an associated project. */
 export const listProjectsLocationsStudies: API.OperationMethod<
@@ -2906,7 +3057,7 @@ export const listProjectsLocationsStudies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsStudiesRequest,
   output: ListProjectsLocationsStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsStudiesRequest {
@@ -2926,7 +3077,10 @@ export type GetProjectsLocationsStudiesResponse = GoogleCloudMlV1__Study;
 export const GetProjectsLocationsStudiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Study;
 
-export type GetProjectsLocationsStudiesError = DefaultErrors;
+export type GetProjectsLocationsStudiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a study. */
 export const getProjectsLocationsStudies: API.OperationMethod<
@@ -2937,7 +3091,7 @@ export const getProjectsLocationsStudies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsStudiesRequest,
   output: GetProjectsLocationsStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsStudiesRequest {
@@ -2963,7 +3117,12 @@ export type CreateProjectsLocationsStudiesResponse = GoogleCloudMlV1__Study;
 export const CreateProjectsLocationsStudiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Study;
 
-export type CreateProjectsLocationsStudiesError = DefaultErrors;
+export type CreateProjectsLocationsStudiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a study. */
 export const createProjectsLocationsStudies: API.OperationMethod<
@@ -2974,7 +3133,7 @@ export const createProjectsLocationsStudies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsStudiesRequest,
   output: CreateProjectsLocationsStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsStudiesTrialsRequest {
@@ -2995,7 +3154,10 @@ export type ListProjectsLocationsStudiesTrialsResponse =
 export const ListProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__ListTrialsResponse;
 
-export type ListProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type ListProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the trials associated with a study. */
 export const listProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3006,7 +3168,7 @@ export const listProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsStudiesTrialsRequest,
   output: ListProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsStudiesTrialsRequest {
@@ -3027,7 +3189,12 @@ export type DeleteProjectsLocationsStudiesTrialsResponse =
 export const DeleteProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
 
-export type DeleteProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type DeleteProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a trial. */
 export const deleteProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3038,7 +3205,7 @@ export const deleteProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsStudiesTrialsRequest,
   output: DeleteProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SuggestProjectsLocationsStudiesTrialsRequest {
@@ -3068,7 +3235,12 @@ export type SuggestProjectsLocationsStudiesTrialsResponse =
 export const SuggestProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type SuggestProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type SuggestProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds one or more trials to a study, with parameter values suggested by AI Platform Vizier. Returns a long-running operation associated with the generation of trial suggestions. When this long-running operation succeeds, it will contain a SuggestTrialsResponse. */
 export const suggestProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3079,7 +3251,7 @@ export const suggestProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuggestProjectsLocationsStudiesTrialsRequest,
   output: SuggestProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddMeasurementProjectsLocationsStudiesTrialsRequest {
@@ -3105,7 +3277,12 @@ export type AddMeasurementProjectsLocationsStudiesTrialsResponse =
 export const AddMeasurementProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Trial;
 
-export type AddMeasurementProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type AddMeasurementProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a measurement of the objective metrics to a trial. This measurement is assumed to have been taken before the trial is complete. */
 export const addMeasurementProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3116,7 +3293,7 @@ export const addMeasurementProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddMeasurementProjectsLocationsStudiesTrialsRequest,
   output: AddMeasurementProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteProjectsLocationsStudiesTrialsRequest {
@@ -3142,7 +3319,12 @@ export type CompleteProjectsLocationsStudiesTrialsResponse =
 export const CompleteProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Trial;
 
-export type CompleteProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type CompleteProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks a trial as complete. */
 export const completeProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3153,7 +3335,7 @@ export const completeProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteProjectsLocationsStudiesTrialsRequest,
   output: CompleteProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOptimalTrialsProjectsLocationsStudiesTrialsRequest {
@@ -3184,7 +3366,11 @@ export const ListOptimalTrialsProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__ListOptimalTrialsResponse;
 
 export type ListOptimalTrialsProjectsLocationsStudiesTrialsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the pareto-optimal trials for multi-objective study or the optimal trials for single-objective study. The definition of pareto-optimal can be checked in wiki page. https://en.wikipedia.org/wiki/Pareto_efficiency */
 export const listOptimalTrialsProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3195,7 +3381,7 @@ export const listOptimalTrialsProjectsLocationsStudiesTrials: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOptimalTrialsProjectsLocationsStudiesTrialsRequest,
   output: ListOptimalTrialsProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsStudiesTrialsRequest {
@@ -3215,7 +3401,10 @@ export type GetProjectsLocationsStudiesTrialsResponse = GoogleCloudMlV1__Trial;
 export const GetProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Trial;
 
-export type GetProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type GetProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a trial. */
 export const getProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3226,7 +3415,7 @@ export const getProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsStudiesTrialsRequest,
   output: GetProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest {
@@ -3257,7 +3446,11 @@ export const CheckEarlyStoppingStateProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
 export type CheckEarlyStoppingStateProjectsLocationsStudiesTrialsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Checks whether a trial should stop or not. Returns a long-running operation. When the operation is successful, it will contain a CheckTrialEarlyStoppingStateResponse. */
 export const checkEarlyStoppingStateProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3268,7 +3461,7 @@ export const checkEarlyStoppingStateProjectsLocationsStudiesTrials: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckEarlyStoppingStateProjectsLocationsStudiesTrialsRequest,
   output: CheckEarlyStoppingStateProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopProjectsLocationsStudiesTrialsRequest {
@@ -3291,7 +3484,12 @@ export type StopProjectsLocationsStudiesTrialsResponse = GoogleCloudMlV1__Trial;
 export const StopProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Trial;
 
-export type StopProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type StopProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops a trial. */
 export const stopProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3302,7 +3500,7 @@ export const stopProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopProjectsLocationsStudiesTrialsRequest,
   output: StopProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsStudiesTrialsRequest {
@@ -3326,7 +3524,12 @@ export type CreateProjectsLocationsStudiesTrialsResponse =
 export const CreateProjectsLocationsStudiesTrialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudMlV1__Trial;
 
-export type CreateProjectsLocationsStudiesTrialsError = DefaultErrors;
+export type CreateProjectsLocationsStudiesTrialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a user provided trial to a study. */
 export const createProjectsLocationsStudiesTrials: API.OperationMethod<
@@ -3337,7 +3540,7 @@ export const createProjectsLocationsStudiesTrials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsStudiesTrialsRequest,
   output: CreateProjectsLocationsStudiesTrialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -3358,7 +3561,10 @@ export type GetProjectsLocationsOperationsResponse =
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunning__Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -3369,7 +3575,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -3389,7 +3595,12 @@ export type CancelProjectsLocationsOperationsResponse = GoogleProtobuf__Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobuf__Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -3400,5 +3611,5 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

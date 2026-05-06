@@ -412,6 +412,31 @@ export const DirectoryList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "DirectoryList" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -433,7 +458,7 @@ export const GetRestApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRestApisResponse = RestDescription;
 export const GetRestApisResponse = /*@__PURE__*/ /*#__PURE__*/ RestDescription;
 
-export type GetRestApisError = DefaultErrors;
+export type GetRestApisError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve the description of a particular version of an api. */
 export const getRestApis: API.OperationMethod<
@@ -444,7 +469,7 @@ export const getRestApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRestApisRequest,
   output: GetRestApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListApisRequest {
@@ -465,7 +490,7 @@ export const ListApisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListApisResponse = DirectoryList;
 export const ListApisResponse = /*@__PURE__*/ /*#__PURE__*/ DirectoryList;
 
-export type ListApisError = DefaultErrors;
+export type ListApisError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve the list of APIs supported at this endpoint. */
 export const listApis: API.OperationMethod<
@@ -476,5 +501,5 @@ export const listApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListApisRequest,
   output: ListApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

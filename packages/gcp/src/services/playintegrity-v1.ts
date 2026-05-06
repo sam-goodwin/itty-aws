@@ -403,6 +403,52 @@ export const WriteDeviceRecallResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -430,7 +476,12 @@ export type DecodeIntegrityTokenV1Response = DecodeIntegrityTokenResponse;
 export const DecodeIntegrityTokenV1Response =
   /*@__PURE__*/ /*#__PURE__*/ DecodeIntegrityTokenResponse;
 
-export type DecodeIntegrityTokenV1Error = DefaultErrors;
+export type DecodeIntegrityTokenV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decodes the integrity token and returns the token payload. */
 export const decodeIntegrityTokenV1: API.OperationMethod<
@@ -441,7 +492,7 @@ export const decodeIntegrityTokenV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecodeIntegrityTokenV1Request,
   output: DecodeIntegrityTokenV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DecodePcIntegrityTokenV1Request {
@@ -468,7 +519,12 @@ export type DecodePcIntegrityTokenV1Response = DecodePcIntegrityTokenResponse;
 export const DecodePcIntegrityTokenV1Response =
   /*@__PURE__*/ /*#__PURE__*/ DecodePcIntegrityTokenResponse;
 
-export type DecodePcIntegrityTokenV1Error = DefaultErrors;
+export type DecodePcIntegrityTokenV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decodes the PC integrity token and returns the PC token payload. */
 export const decodePcIntegrityTokenV1: API.OperationMethod<
@@ -479,7 +535,7 @@ export const decodePcIntegrityTokenV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecodePcIntegrityTokenV1Request,
   output: DecodePcIntegrityTokenV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WriteDeviceRecallRequest_Op {
@@ -506,7 +562,12 @@ export type WriteDeviceRecallResponse_Op = WriteDeviceRecallResponse;
 export const WriteDeviceRecallResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ WriteDeviceRecallResponse;
 
-export type WriteDeviceRecallError = DefaultErrors;
+export type WriteDeviceRecallError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to select Play partners in an early access program (EAP). */
 export const writeDeviceRecall: API.OperationMethod<
@@ -517,5 +578,5 @@ export const writeDeviceRecall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteDeviceRecallRequest_Op,
   output: WriteDeviceRecallResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

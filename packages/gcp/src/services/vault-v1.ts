@@ -1143,6 +1143,52 @@ export const CountArtifactsMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "CountArtifactsMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1176,7 +1222,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -1187,7 +1233,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1209,7 +1255,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1220,7 +1266,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOperationsRequest {
@@ -1239,7 +1285,12 @@ export const DeleteOperationsRequest =
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -1250,7 +1301,7 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOperationsRequest {
@@ -1272,7 +1323,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -1283,7 +1339,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateMattersRequest {
@@ -1301,7 +1357,12 @@ export const CreateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateMattersResponse = Matter;
 export const CreateMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
 
-export type CreateMattersError = DefaultErrors;
+export type CreateMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a matter with the given name and description. The initial state is open, and the owner is the method caller. Returns the created matter with default view. */
 export const createMatters: API.OperationMethod<
@@ -1312,7 +1373,7 @@ export const createMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMattersRequest,
   output: CreateMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateMattersRequest {
@@ -1333,7 +1394,12 @@ export const UpdateMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateMattersResponse = Matter;
 export const UpdateMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
 
-export type UpdateMattersError = DefaultErrors;
+export type UpdateMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified matter. This updates only the name and description of the matter, identified by matter ID. Changes to any other fields are ignored. Returns the default view of the matter. */
 export const updateMatters: API.OperationMethod<
@@ -1344,7 +1410,7 @@ export const updateMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMattersRequest,
   output: UpdateMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CloseMattersRequest {
@@ -1370,7 +1436,12 @@ export type CloseMattersResponse = CloseMatterResponse;
 export const CloseMattersResponse =
   /*@__PURE__*/ /*#__PURE__*/ CloseMatterResponse;
 
-export type CloseMattersError = DefaultErrors;
+export type CloseMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Closes the specified matter. Returns the matter with updated state. */
 export const closeMatters: API.OperationMethod<
@@ -1381,7 +1452,7 @@ export const closeMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseMattersRequest,
   output: CloseMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReopenMattersRequest {
@@ -1407,7 +1478,12 @@ export type ReopenMattersResponse = ReopenMatterResponse;
 export const ReopenMattersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReopenMatterResponse;
 
-export type ReopenMattersError = DefaultErrors;
+export type ReopenMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reopens the specified matter. Returns the matter with updated state. */
 export const reopenMatters: API.OperationMethod<
@@ -1418,7 +1494,7 @@ export const reopenMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReopenMattersRequest,
   output: ReopenMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMattersRequest {
@@ -1436,7 +1512,12 @@ export const DeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteMattersResponse = Matter;
 export const DeleteMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
 
-export type DeleteMattersError = DefaultErrors;
+export type DeleteMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified matter. Returns the matter with updated state. */
 export const deleteMatters: API.OperationMethod<
@@ -1447,7 +1528,7 @@ export const deleteMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMattersRequest,
   output: DeleteMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteMattersRequest {
@@ -1474,7 +1555,12 @@ export const UndeleteMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UndeleteMattersResponse = Matter;
 export const UndeleteMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
 
-export type UndeleteMattersError = DefaultErrors;
+export type UndeleteMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes the specified matter. Returns the matter with updated state. */
 export const undeleteMatters: API.OperationMethod<
@@ -1485,7 +1571,7 @@ export const undeleteMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteMattersRequest,
   output: UndeleteMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMattersRequest {
@@ -1506,7 +1592,7 @@ export const GetMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetMattersResponse = Matter;
 export const GetMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Matter;
 
-export type GetMattersError = DefaultErrors;
+export type GetMattersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified matter. */
 export const getMatters: API.OperationMethod<
@@ -1517,7 +1603,7 @@ export const getMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMattersRequest,
   output: GetMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMattersRequest {
@@ -1545,7 +1631,7 @@ export type ListMattersResponse_Op = ListMattersResponse;
 export const ListMattersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListMattersResponse;
 
-export type ListMattersError = DefaultErrors;
+export type ListMattersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists matters the requestor has access to. */
 export const listMatters: API.PaginatedOperationMethod<
@@ -1556,7 +1642,7 @@ export const listMatters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMattersRequest,
   output: ListMattersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1587,7 +1673,12 @@ export type AddPermissionsMattersResponse = MatterPermission;
 export const AddPermissionsMattersResponse =
   /*@__PURE__*/ /*#__PURE__*/ MatterPermission;
 
-export type AddPermissionsMattersError = DefaultErrors;
+export type AddPermissionsMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an account as a matter collaborator. */
 export const addPermissionsMatters: API.OperationMethod<
@@ -1598,7 +1689,7 @@ export const addPermissionsMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddPermissionsMattersRequest,
   output: AddPermissionsMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemovePermissionsMattersRequest {
@@ -1625,7 +1716,12 @@ export type RemovePermissionsMattersResponse = Empty;
 export const RemovePermissionsMattersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RemovePermissionsMattersError = DefaultErrors;
+export type RemovePermissionsMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an account as a matter collaborator. */
 export const removePermissionsMatters: API.OperationMethod<
@@ -1636,7 +1732,7 @@ export const removePermissionsMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemovePermissionsMattersRequest,
   output: RemovePermissionsMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CountMattersRequest {
@@ -1661,7 +1757,12 @@ export const CountMattersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CountMattersResponse = Operation;
 export const CountMattersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CountMattersError = DefaultErrors;
+export type CountMattersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Counts the accounts processed by the specified query. */
 export const countMatters: API.OperationMethod<
@@ -1672,7 +1773,7 @@ export const countMatters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountMattersRequest,
   output: CountMattersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateMattersExportsRequest {
@@ -1698,7 +1799,12 @@ export const CreateMattersExportsRequest =
 export type CreateMattersExportsResponse = Export;
 export const CreateMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Export;
 
-export type CreateMattersExportsError = DefaultErrors;
+export type CreateMattersExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an export. */
 export const createMattersExports: API.OperationMethod<
@@ -1709,7 +1815,7 @@ export const createMattersExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMattersExportsRequest,
   output: CreateMattersExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMattersExportsRequest {
@@ -1734,7 +1840,12 @@ export const DeleteMattersExportsRequest =
 export type DeleteMattersExportsResponse = Empty;
 export const DeleteMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteMattersExportsError = DefaultErrors;
+export type DeleteMattersExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an export. */
 export const deleteMattersExports: API.OperationMethod<
@@ -1745,7 +1856,7 @@ export const deleteMattersExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMattersExportsRequest,
   output: DeleteMattersExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMattersExportsRequest {
@@ -1767,7 +1878,7 @@ export const GetMattersExportsRequest =
 export type GetMattersExportsResponse = Export;
 export const GetMattersExportsResponse = /*@__PURE__*/ /*#__PURE__*/ Export;
 
-export type GetMattersExportsError = DefaultErrors;
+export type GetMattersExportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an export. */
 export const getMattersExports: API.OperationMethod<
@@ -1778,7 +1889,7 @@ export const getMattersExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMattersExportsRequest,
   output: GetMattersExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMattersExportsRequest {
@@ -1804,7 +1915,7 @@ export type ListMattersExportsResponse = ListExportsResponse;
 export const ListMattersExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExportsResponse;
 
-export type ListMattersExportsError = DefaultErrors;
+export type ListMattersExportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists details about the exports in the specified matter. */
 export const listMattersExports: API.PaginatedOperationMethod<
@@ -1815,7 +1926,7 @@ export const listMattersExports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMattersExportsRequest,
   output: ListMattersExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1845,7 +1956,12 @@ export const CreateMattersHoldsRequest =
 export type CreateMattersHoldsResponse = Hold;
 export const CreateMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
 
-export type CreateMattersHoldsError = DefaultErrors;
+export type CreateMattersHoldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a hold in the specified matter. */
 export const createMattersHolds: API.OperationMethod<
@@ -1856,7 +1972,7 @@ export const createMattersHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMattersHoldsRequest,
   output: CreateMattersHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateMattersHoldsRequest {
@@ -1885,7 +2001,12 @@ export const UpdateMattersHoldsRequest =
 export type UpdateMattersHoldsResponse = Hold;
 export const UpdateMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
 
-export type UpdateMattersHoldsError = DefaultErrors;
+export type UpdateMattersHoldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the scope (organizational unit or accounts) and query parameters of a hold. You cannot add accounts to a hold that covers an organizational unit, nor can you add organizational units to a hold that covers individual accounts. If you try, the unsupported values are ignored. */
 export const updateMattersHolds: API.OperationMethod<
@@ -1896,7 +2017,7 @@ export const updateMattersHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMattersHoldsRequest,
   output: UpdateMattersHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMattersHoldsRequest {
@@ -1918,7 +2039,12 @@ export const DeleteMattersHoldsRequest =
 export type DeleteMattersHoldsResponse = Empty;
 export const DeleteMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteMattersHoldsError = DefaultErrors;
+export type DeleteMattersHoldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified hold and releases the accounts or organizational unit covered by the hold. If the data is not preserved by another hold or retention rule, it might be purged. */
 export const deleteMattersHolds: API.OperationMethod<
@@ -1929,7 +2055,7 @@ export const deleteMattersHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMattersHoldsRequest,
   output: DeleteMattersHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMattersHoldsRequest {
@@ -1955,7 +2081,7 @@ export const GetMattersHoldsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetMattersHoldsResponse = Hold;
 export const GetMattersHoldsResponse = /*@__PURE__*/ /*#__PURE__*/ Hold;
 
-export type GetMattersHoldsError = DefaultErrors;
+export type GetMattersHoldsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified hold. */
 export const getMattersHolds: API.OperationMethod<
@@ -1966,7 +2092,7 @@ export const getMattersHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMattersHoldsRequest,
   output: GetMattersHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMattersHoldsRequest {
@@ -1995,7 +2121,7 @@ export type ListMattersHoldsResponse = ListHoldsResponse;
 export const ListMattersHoldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHoldsResponse;
 
-export type ListMattersHoldsError = DefaultErrors;
+export type ListMattersHoldsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the holds in a matter. */
 export const listMattersHolds: API.PaginatedOperationMethod<
@@ -2006,7 +2132,7 @@ export const listMattersHolds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMattersHoldsRequest,
   output: ListMattersHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2040,7 +2166,12 @@ export type AddHeldAccountsMattersHoldsResponse = AddHeldAccountsResponse;
 export const AddHeldAccountsMattersHoldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddHeldAccountsResponse;
 
-export type AddHeldAccountsMattersHoldsError = DefaultErrors;
+export type AddHeldAccountsMattersHoldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds accounts to a hold. Returns a list of accounts that have been successfully added. Accounts can be added only to an existing account-based hold. */
 export const addHeldAccountsMattersHolds: API.OperationMethod<
@@ -2051,7 +2182,7 @@ export const addHeldAccountsMattersHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddHeldAccountsMattersHoldsRequest,
   output: AddHeldAccountsMattersHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveHeldAccountsMattersHoldsRequest {
@@ -2081,7 +2212,12 @@ export type RemoveHeldAccountsMattersHoldsResponse = RemoveHeldAccountsResponse;
 export const RemoveHeldAccountsMattersHoldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemoveHeldAccountsResponse;
 
-export type RemoveHeldAccountsMattersHoldsError = DefaultErrors;
+export type RemoveHeldAccountsMattersHoldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified accounts from a hold. Returns a list of statuses in the same order as the request. */
 export const removeHeldAccountsMattersHolds: API.OperationMethod<
@@ -2092,7 +2228,7 @@ export const removeHeldAccountsMattersHolds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveHeldAccountsMattersHoldsRequest,
   output: RemoveHeldAccountsMattersHoldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateMattersHoldsAccountsRequest {
@@ -2122,7 +2258,12 @@ export type CreateMattersHoldsAccountsResponse = HeldAccount;
 export const CreateMattersHoldsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ HeldAccount;
 
-export type CreateMattersHoldsAccountsError = DefaultErrors;
+export type CreateMattersHoldsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an account to a hold. Accounts can be added only to a hold that does not have an organizational unit set. If you try to add an account to an organizational unit-based hold, an error is returned. */
 export const createMattersHoldsAccounts: API.OperationMethod<
@@ -2133,7 +2274,7 @@ export const createMattersHoldsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMattersHoldsAccountsRequest,
   output: CreateMattersHoldsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMattersHoldsAccountsRequest {
@@ -2162,7 +2303,12 @@ export type DeleteMattersHoldsAccountsResponse = Empty;
 export const DeleteMattersHoldsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteMattersHoldsAccountsError = DefaultErrors;
+export type DeleteMattersHoldsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an account from a hold. */
 export const deleteMattersHoldsAccounts: API.OperationMethod<
@@ -2173,7 +2319,7 @@ export const deleteMattersHoldsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMattersHoldsAccountsRequest,
   output: DeleteMattersHoldsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMattersHoldsAccountsRequest {
@@ -2199,7 +2345,10 @@ export type ListMattersHoldsAccountsResponse = ListHeldAccountsResponse;
 export const ListMattersHoldsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHeldAccountsResponse;
 
-export type ListMattersHoldsAccountsError = DefaultErrors;
+export type ListMattersHoldsAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the accounts covered by a hold. This can list only individually-specified accounts covered by the hold. If the hold covers an organizational unit, use the [Admin SDK](https://developers.google.com/admin-sdk/). to list the members of the organizational unit on hold. */
 export const listMattersHoldsAccounts: API.OperationMethod<
@@ -2210,7 +2359,7 @@ export const listMattersHoldsAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMattersHoldsAccountsRequest,
   output: ListMattersHoldsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateMattersSavedQueriesRequest {
@@ -2237,7 +2386,12 @@ export type CreateMattersSavedQueriesResponse = SavedQuery;
 export const CreateMattersSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type CreateMattersSavedQueriesError = DefaultErrors;
+export type CreateMattersSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a saved query. */
 export const createMattersSavedQueries: API.OperationMethod<
@@ -2248,7 +2402,7 @@ export const createMattersSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMattersSavedQueriesRequest,
   output: CreateMattersSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMattersSavedQueriesRequest {
@@ -2274,7 +2428,12 @@ export type DeleteMattersSavedQueriesResponse = Empty;
 export const DeleteMattersSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteMattersSavedQueriesError = DefaultErrors;
+export type DeleteMattersSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified saved query. */
 export const deleteMattersSavedQueries: API.OperationMethod<
@@ -2285,7 +2444,7 @@ export const deleteMattersSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMattersSavedQueriesRequest,
   output: DeleteMattersSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMattersSavedQueriesRequest {
@@ -2311,7 +2470,7 @@ export type GetMattersSavedQueriesResponse = SavedQuery;
 export const GetMattersSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type GetMattersSavedQueriesError = DefaultErrors;
+export type GetMattersSavedQueriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified saved query. */
 export const getMattersSavedQueries: API.OperationMethod<
@@ -2322,7 +2481,7 @@ export const getMattersSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMattersSavedQueriesRequest,
   output: GetMattersSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMattersSavedQueriesRequest {
@@ -2348,7 +2507,7 @@ export type ListMattersSavedQueriesResponse = ListSavedQueriesResponse;
 export const ListMattersSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSavedQueriesResponse;
 
-export type ListMattersSavedQueriesError = DefaultErrors;
+export type ListMattersSavedQueriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the saved queries in a matter. */
 export const listMattersSavedQueries: API.PaginatedOperationMethod<
@@ -2359,7 +2518,7 @@ export const listMattersSavedQueries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMattersSavedQueriesRequest,
   output: ListMattersSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

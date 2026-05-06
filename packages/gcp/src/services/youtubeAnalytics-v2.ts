@@ -241,6 +241,52 @@ export const ListGroupItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ListGroupItemsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -266,7 +312,12 @@ export type DeleteGroupItemsResponse = EmptyResponse;
 export const DeleteGroupItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EmptyResponse;
 
-export type DeleteGroupItemsError = DefaultErrors;
+export type DeleteGroupItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an item from a group. */
 export const deleteGroupItems: API.OperationMethod<
@@ -277,7 +328,7 @@ export const deleteGroupItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupItemsRequest,
   output: DeleteGroupItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGroupItemsRequest {
@@ -301,7 +352,7 @@ export type ListGroupItemsResponse_Op = ListGroupItemsResponse;
 export const ListGroupItemsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListGroupItemsResponse;
 
-export type ListGroupItemsError = DefaultErrors;
+export type ListGroupItemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a collection of group items that match the API request parameters. */
 export const listGroupItems: API.OperationMethod<
@@ -312,7 +363,7 @@ export const listGroupItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGroupItemsRequest,
   output: ListGroupItemsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertGroupItemsRequest {
@@ -336,7 +387,12 @@ export const InsertGroupItemsRequest =
 export type InsertGroupItemsResponse = GroupItem;
 export const InsertGroupItemsResponse = /*@__PURE__*/ /*#__PURE__*/ GroupItem;
 
-export type InsertGroupItemsError = DefaultErrors;
+export type InsertGroupItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a group item. */
 export const insertGroupItems: API.OperationMethod<
@@ -347,7 +403,7 @@ export const insertGroupItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGroupItemsRequest,
   output: InsertGroupItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGroupsRequest {
@@ -377,7 +433,7 @@ export type ListGroupsResponse_Op = ListGroupsResponse;
 export const ListGroupsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListGroupsResponse;
 
-export type ListGroupsError = DefaultErrors;
+export type ListGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a collection of groups that match the API request parameters. For example, you can retrieve all groups that the authenticated user owns, or you can retrieve one or more groups by their unique IDs. */
 export const listGroups: API.PaginatedOperationMethod<
@@ -388,7 +444,7 @@ export const listGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGroupsRequest,
   output: ListGroupsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -416,7 +472,12 @@ export const InsertGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertGroupsResponse = Group;
 export const InsertGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type InsertGroupsError = DefaultErrors;
+export type InsertGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a group. */
 export const insertGroups: API.OperationMethod<
@@ -427,7 +488,7 @@ export const insertGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGroupsRequest,
   output: InsertGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateGroupsRequest {
@@ -450,7 +511,12 @@ export const UpdateGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateGroupsResponse = Group;
 export const UpdateGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Group;
 
-export type UpdateGroupsError = DefaultErrors;
+export type UpdateGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a group. For example, you could change a group's title. */
 export const updateGroups: API.OperationMethod<
@@ -461,7 +527,7 @@ export const updateGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGroupsRequest,
   output: UpdateGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGroupsRequest {
@@ -484,7 +550,12 @@ export const DeleteGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteGroupsResponse = EmptyResponse;
 export const DeleteGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ EmptyResponse;
 
-export type DeleteGroupsError = DefaultErrors;
+export type DeleteGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a group. */
 export const deleteGroups: API.OperationMethod<
@@ -495,7 +566,7 @@ export const deleteGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGroupsRequest,
   output: DeleteGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryReportsRequest {
@@ -545,7 +616,7 @@ export const QueryReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type QueryReportsResponse = QueryResponse;
 export const QueryReportsResponse = /*@__PURE__*/ /*#__PURE__*/ QueryResponse;
 
-export type QueryReportsError = DefaultErrors;
+export type QueryReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve your YouTube Analytics reports. */
 export const queryReports: API.OperationMethod<
@@ -556,5 +627,5 @@ export const queryReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryReportsRequest,
   output: QueryReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

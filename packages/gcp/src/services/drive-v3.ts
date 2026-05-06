@@ -1761,6 +1761,52 @@ export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Channel" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1779,7 +1825,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1790,7 +1836,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateFilesRequest {
@@ -1857,7 +1903,12 @@ export const UpdateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateFilesResponse = File;
 export const UpdateFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type UpdateFilesError = DefaultErrors;
+export type UpdateFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a file's metadata, content, or both. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might be changed automatically, such as `modifiedDate`. This method supports patch semantics. This method supports an * /upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:* `* /*` (Specify a valid MIME type, rather than the literal `* /*` value. The literal `* /*` is only used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).) For more information on uploading files, see [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads). */
 export const updateFiles: API.OperationMethod<
@@ -1868,7 +1919,7 @@ export const updateFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFilesRequest,
   output: UpdateFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EmptyTrashFilesRequest {
@@ -1896,7 +1947,12 @@ export const EmptyTrashFilesResponse: Schema.Schema<EmptyTrashFilesResponse> =
     {},
   ) as any as Schema.Schema<EmptyTrashFilesResponse>;
 
-export type EmptyTrashFilesError = DefaultErrors;
+export type EmptyTrashFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all of the user's trashed files. For more information, see [Trash or delete files and folders](https://developers.google.com/workspace/drive/api/guides/delete). */
 export const emptyTrashFiles: API.OperationMethod<
@@ -1907,7 +1963,7 @@ export const emptyTrashFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EmptyTrashFilesRequest,
   output: EmptyTrashFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportFilesRequest {
@@ -1931,7 +1987,7 @@ export const ExportFilesResponse: Schema.Schema<ExportFilesResponse> =
     {},
   ) as any as Schema.Schema<ExportFilesResponse>;
 
-export type ExportFilesError = DefaultErrors;
+export type ExportFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Exports a Google Workspace document to the requested MIME type and returns exported byte content. For more information, see [Download and export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). Note that the exported content is limited to 10 MB. */
 export const exportFiles: API.OperationMethod<
@@ -1942,7 +1998,7 @@ export const exportFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportFilesRequest,
   output: ExportFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ModifyLabelsFilesRequest {
@@ -1969,7 +2025,12 @@ export type ModifyLabelsFilesResponse = ModifyLabelsResponse;
 export const ModifyLabelsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ModifyLabelsResponse;
 
-export type ModifyLabelsFilesError = DefaultErrors;
+export type ModifyLabelsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the set of labels applied to a file. For more information, see [Set a label field on a file](https://developers.google.com/workspace/drive/api/guides/set-label). Returns a list of the labels that were added or modified. */
 export const modifyLabelsFiles: API.OperationMethod<
@@ -1980,7 +2041,7 @@ export const modifyLabelsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyLabelsFilesRequest,
   output: ModifyLabelsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFilesRequest {
@@ -2023,7 +2084,7 @@ export const GetFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFilesResponse = File;
 export const GetFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type GetFilesError = DefaultErrors;
+export type GetFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a file's metadata or content by ID. For more information, see [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files). If you provide the URL parameter `alt=media`, then the response includes the file contents in the response body. Downloading content with `alt=media` only works if the file is stored in Drive. To download Google Docs, Sheets, and Slides use [`files.export`](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/export) instead. For more information, see [Download and export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). */
 export const getFiles: API.OperationMethod<
@@ -2034,7 +2095,7 @@ export const getFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFilesRequest,
   output: GetFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WatchFilesRequest {
@@ -2080,7 +2141,12 @@ export const WatchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchFilesResponse = Channel;
 export const WatchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchFilesError = DefaultErrors;
+export type WatchFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Subscribes to changes to a file. For more information, see [Notifications for resource changes](https://developers.google.com/workspace/drive/api/guides/push). */
 export const watchFiles: API.OperationMethod<
@@ -2091,7 +2157,7 @@ export const watchFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchFilesRequest,
   output: WatchFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFilesRequest {
@@ -2163,7 +2229,7 @@ export const ListFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListFilesResponse = FileList;
 export const ListFilesResponse = /*@__PURE__*/ /*#__PURE__*/ FileList;
 
-export type ListFilesError = DefaultErrors;
+export type ListFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the user's files. For more information, see [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search query combining one or more search terms. This method returns *all* files by default, including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to remove trashed files from the results. */
 export const listFiles: API.PaginatedOperationMethod<
@@ -2174,7 +2240,7 @@ export const listFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFilesRequest,
   output: ListFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2204,7 +2270,7 @@ export const ListLabelsFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ListLabelsFilesResponse = LabelList;
 export const ListLabelsFilesResponse = /*@__PURE__*/ /*#__PURE__*/ LabelList;
 
-export type ListLabelsFilesError = DefaultErrors;
+export type ListLabelsFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the labels on a file. For more information, see [List labels on a file](https://developers.google.com/workspace/drive/api/guides/list-labels). */
 export const listLabelsFiles: API.PaginatedOperationMethod<
@@ -2215,7 +2281,7 @@ export const listLabelsFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsFilesRequest,
   output: ListLabelsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2280,7 +2346,12 @@ export const CreateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateFilesResponse = File;
 export const CreateFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type CreateFilesError = DefaultErrors;
+export type CreateFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a file. For more information, see [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file). This method supports an * /upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:* `* /*` (Specify a valid MIME type, rather than the literal `* /*` value. The literal `* /*` is only used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).) For more information on uploading files, see [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with the `create` method must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `name` property when inserting files with the API. For example, an operation to insert a JPEG file should specify something like `"name": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension` property populated with the extension originally specified in the `name` property. When a Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive builds a full filename (with extension) based on the name. In cases where the extension is missing, Drive attempts to determine the extension based on the file's MIME type. */
 export const createFiles: API.OperationMethod<
@@ -2291,7 +2362,7 @@ export const createFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFilesRequest,
   output: CreateFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadFilesRequest {
@@ -2315,7 +2386,12 @@ export const DownloadFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DownloadFilesResponse = Operation;
 export const DownloadFilesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DownloadFilesError = DefaultErrors;
+export type DownloadFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Downloads the content of a file. For more information, see [Download and export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). Operations are valid for 24 hours from the time of creation. */
 export const downloadFiles: API.OperationMethod<
@@ -2326,7 +2402,7 @@ export const downloadFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadFilesRequest,
   output: DownloadFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CopyFilesRequest {
@@ -2385,7 +2461,12 @@ export const CopyFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CopyFilesResponse = File;
 export const CopyFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type CopyFilesError = DefaultErrors;
+export type CopyFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a copy of a file and applies any requested updates with patch semantics. For more information, see [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file). */
 export const copyFiles: API.OperationMethod<
@@ -2396,7 +2477,7 @@ export const copyFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyFilesRequest,
   output: CopyFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFilesRequest {
@@ -2432,7 +2513,12 @@ export const DeleteFilesResponse: Schema.Schema<DeleteFilesResponse> =
     {},
   ) as any as Schema.Schema<DeleteFilesResponse>;
 
-export type DeleteFilesError = DefaultErrors;
+export type DeleteFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a file owned by the user without moving it to the trash. For more information, see [Trash or delete files and folders](https://developers.google.com/workspace/drive/api/guides/delete). If the file belongs to a shared drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants owned by the user are also deleted. */
 export const deleteFiles: API.OperationMethod<
@@ -2443,7 +2529,7 @@ export const deleteFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFilesRequest,
   output: DeleteFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateCseTokenFilesRequest {
@@ -2466,7 +2552,7 @@ export type GenerateCseTokenFilesResponse = GenerateCseTokenResponse;
 export const GenerateCseTokenFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateCseTokenResponse;
 
-export type GenerateCseTokenFilesError = DefaultErrors;
+export type GenerateCseTokenFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Generates a CSE token which can be used to create or update CSE files. */
 export const generateCseTokenFiles: API.OperationMethod<
@@ -2477,7 +2563,7 @@ export const generateCseTokenFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateCseTokenFilesRequest,
   output: GenerateCseTokenFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateIdsFilesRequest {
@@ -2503,7 +2589,7 @@ export type GenerateIdsFilesResponse = GeneratedIds;
 export const GenerateIdsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GeneratedIds;
 
-export type GenerateIdsFilesError = DefaultErrors;
+export type GenerateIdsFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Generates a set of file IDs which can be provided in create or copy requests. For more information, see [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file). */
 export const generateIdsFiles: API.OperationMethod<
@@ -2514,7 +2600,7 @@ export const generateIdsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateIdsFilesRequest,
   output: GenerateIdsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateTeamdrivesRequest {
@@ -2545,7 +2631,12 @@ export const UpdateTeamdrivesRequest =
 export type UpdateTeamdrivesResponse = TeamDrive;
 export const UpdateTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
 
-export type UpdateTeamdrivesError = DefaultErrors;
+export type UpdateTeamdrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `drives.update` instead. */
 export const updateTeamdrives: API.OperationMethod<
@@ -2556,7 +2647,7 @@ export const updateTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTeamdrivesRequest,
   output: UpdateTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateTeamdrivesRequest {
@@ -2578,7 +2669,12 @@ export const CreateTeamdrivesRequest =
 export type CreateTeamdrivesResponse = TeamDrive;
 export const CreateTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
 
-export type CreateTeamdrivesError = DefaultErrors;
+export type CreateTeamdrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `drives.create` instead. */
 export const createTeamdrives: API.OperationMethod<
@@ -2589,7 +2685,7 @@ export const createTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTeamdrivesRequest,
   output: CreateTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTeamdrivesRequest {
@@ -2618,7 +2714,7 @@ export const ListTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTeamdrivesResponse = TeamDriveList;
 export const ListTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDriveList;
 
-export type ListTeamdrivesError = DefaultErrors;
+export type ListTeamdrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Deprecated: Use `drives.list` instead. */
 export const listTeamdrives: API.PaginatedOperationMethod<
@@ -2629,7 +2725,7 @@ export const listTeamdrives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTeamdrivesRequest,
   output: ListTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2655,7 +2751,12 @@ export const DeleteTeamdrivesResponse: Schema.Schema<DeleteTeamdrivesResponse> =
     {},
   ) as any as Schema.Schema<DeleteTeamdrivesResponse>;
 
-export type DeleteTeamdrivesError = DefaultErrors;
+export type DeleteTeamdrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `drives.delete` instead. */
 export const deleteTeamdrives: API.OperationMethod<
@@ -2666,7 +2767,7 @@ export const deleteTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTeamdrivesRequest,
   output: DeleteTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTeamdrivesRequest {
@@ -2689,7 +2790,7 @@ export const GetTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTeamdrivesResponse = TeamDrive;
 export const GetTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
 
-export type GetTeamdrivesError = DefaultErrors;
+export type GetTeamdrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Deprecated: Use `drives.get` instead. */
 export const getTeamdrives: API.OperationMethod<
@@ -2700,7 +2801,7 @@ export const getTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTeamdrivesRequest,
   output: GetTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCommentsRequest {
@@ -2724,7 +2825,12 @@ export const DeleteCommentsResponse: Schema.Schema<DeleteCommentsResponse> =
     {},
   ) as any as Schema.Schema<DeleteCommentsResponse>;
 
-export type DeleteCommentsError = DefaultErrors;
+export type DeleteCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a comment. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). */
 export const deleteComments: API.OperationMethod<
@@ -2735,7 +2841,7 @@ export const deleteComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCommentsRequest,
   output: DeleteCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCommentsRequest {
@@ -2761,7 +2867,7 @@ export const GetCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCommentsResponse = Comment;
 export const GetCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type GetCommentsError = DefaultErrors;
+export type GetCommentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a comment by ID. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields` parameter must be set. To return the exact fields you need, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). */
 export const getComments: API.OperationMethod<
@@ -2772,7 +2878,7 @@ export const getComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCommentsRequest,
   output: GetCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCommentsRequest {
@@ -2793,7 +2899,12 @@ export const CreateCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateCommentsResponse = Comment;
 export const CreateCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type CreateCommentsError = DefaultErrors;
+export type CreateCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a comment on a file. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields` parameter must be set. To return the exact fields you need, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). */
 export const createComments: API.OperationMethod<
@@ -2804,7 +2915,7 @@ export const createComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCommentsRequest,
   output: CreateCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCommentsRequest {
@@ -2838,7 +2949,7 @@ export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListCommentsResponse = CommentList;
 export const ListCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ CommentList;
 
-export type ListCommentsError = DefaultErrors;
+export type ListCommentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's comments. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields` parameter must be set. To return the exact fields you need, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). */
 export const listComments: API.PaginatedOperationMethod<
@@ -2849,7 +2960,7 @@ export const listComments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: ListCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2881,7 +2992,12 @@ export const UpdateCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateCommentsResponse = Comment;
 export const UpdateCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type UpdateCommentsError = DefaultErrors;
+export type UpdateCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a comment with patch semantics. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). Required: The `fields` parameter must be set. To return the exact fields you need, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). */
 export const updateComments: API.OperationMethod<
@@ -2892,7 +3008,7 @@ export const updateComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCommentsRequest,
   output: UpdateCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRepliesRequest {
@@ -2922,7 +3038,12 @@ export const DeleteRepliesResponse: Schema.Schema<DeleteRepliesResponse> =
     {},
   ) as any as Schema.Schema<DeleteRepliesResponse>;
 
-export type DeleteRepliesError = DefaultErrors;
+export type DeleteRepliesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a reply. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). */
 export const deleteReplies: API.OperationMethod<
@@ -2933,7 +3054,7 @@ export const deleteReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRepliesRequest,
   output: DeleteRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRepliesRequest {
@@ -2965,7 +3086,7 @@ export const GetRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRepliesResponse = Reply;
 export const GetRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ Reply;
 
-export type GetRepliesError = DefaultErrors;
+export type GetRepliesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a reply by ID. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). */
 export const getReplies: API.OperationMethod<
@@ -2976,7 +3097,7 @@ export const getReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRepliesRequest,
   output: GetRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateRepliesRequest {
@@ -3004,7 +3125,12 @@ export const CreateRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateRepliesResponse = Reply;
 export const CreateRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ Reply;
 
-export type CreateRepliesError = DefaultErrors;
+export type CreateRepliesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a reply to a comment. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). */
 export const createReplies: API.OperationMethod<
@@ -3015,7 +3141,7 @@ export const createReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRepliesRequest,
   output: CreateRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRepliesRequest {
@@ -3050,7 +3176,7 @@ export const ListRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRepliesResponse = ReplyList;
 export const ListRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ ReplyList;
 
-export type ListRepliesError = DefaultErrors;
+export type ListRepliesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a comment's replies. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). */
 export const listReplies: API.PaginatedOperationMethod<
@@ -3061,7 +3187,7 @@ export const listReplies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRepliesRequest,
   output: ListRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3096,7 +3222,12 @@ export const UpdateRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateRepliesResponse = Reply;
 export const UpdateRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ Reply;
 
-export type UpdateRepliesError = DefaultErrors;
+export type UpdateRepliesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a reply with patch semantics. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments). */
 export const updateReplies: API.OperationMethod<
@@ -3107,7 +3238,7 @@ export const updateReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRepliesRequest,
   output: UpdateRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStartPageTokenChangesRequest {
@@ -3142,7 +3273,10 @@ export type GetStartPageTokenChangesResponse = StartPageToken;
 export const GetStartPageTokenChangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StartPageToken;
 
-export type GetStartPageTokenChangesError = DefaultErrors;
+export type GetStartPageTokenChangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the starting pageToken for listing future changes. For more information, see [Retrieve changes](https://developers.google.com/workspace/drive/api/guides/manage-changes). */
 export const getStartPageTokenChanges: API.OperationMethod<
@@ -3153,7 +3287,7 @@ export const getStartPageTokenChanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStartPageTokenChangesRequest,
   output: GetStartPageTokenChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WatchChangesRequest {
@@ -3231,7 +3365,12 @@ export const WatchChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchChangesResponse = Channel;
 export const WatchChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchChangesError = DefaultErrors;
+export type WatchChangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Subscribes to changes for a user. For more information, see [Notifications for resource changes](https://developers.google.com/workspace/drive/api/guides/push). */
 export const watchChanges: API.OperationMethod<
@@ -3242,7 +3381,7 @@ export const watchChanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchChangesRequest,
   output: WatchChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListChangesRequest {
@@ -3317,7 +3456,7 @@ export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListChangesResponse = ChangeList;
 export const ListChangesResponse = /*@__PURE__*/ /*#__PURE__*/ ChangeList;
 
-export type ListChangesError = DefaultErrors;
+export type ListChangesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the changes for a user or shared drive. For more information, see [Retrieve changes](https://developers.google.com/workspace/drive/api/guides/manage-changes). */
 export const listChanges: API.PaginatedOperationMethod<
@@ -3328,7 +3467,7 @@ export const listChanges: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChangesRequest,
   output: ListChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3380,7 +3519,12 @@ export const DeletePermissionsResponse: Schema.Schema<DeletePermissionsResponse>
     {},
   ) as any as Schema.Schema<DeletePermissionsResponse>;
 
-export type DeletePermissionsError = DefaultErrors;
+export type DeletePermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a permission. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied. */
 export const deletePermissions: API.OperationMethod<
@@ -3391,7 +3535,7 @@ export const deletePermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePermissionsRequest,
   output: DeletePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPermissionsRequest {
@@ -3427,7 +3571,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPermissionsResponse = Permission;
 export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type GetPermissionsError = DefaultErrors;
+export type GetPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a permission by ID. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). */
 export const getPermissions: API.OperationMethod<
@@ -3438,7 +3582,7 @@ export const getPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPermissionsRequest,
   output: GetPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePermissionsRequest {
@@ -3509,7 +3653,12 @@ export const CreatePermissionsRequest =
 export type CreatePermissionsResponse = Permission;
 export const CreatePermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type CreatePermissionsError = DefaultErrors;
+export type CreatePermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a permission for a file or shared drive. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied. */
 export const createPermissions: API.OperationMethod<
@@ -3520,7 +3669,7 @@ export const createPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePermissionsRequest,
   output: CreatePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPermissionsRequest {
@@ -3567,7 +3716,7 @@ export type ListPermissionsResponse = PermissionList;
 export const ListPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PermissionList;
 
-export type ListPermissionsError = DefaultErrors;
+export type ListPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's or shared drive's permissions. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). */
 export const listPermissions: API.PaginatedOperationMethod<
@@ -3578,7 +3727,7 @@ export const listPermissions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3641,7 +3790,12 @@ export const UpdatePermissionsRequest =
 export type UpdatePermissionsResponse = Permission;
 export const UpdatePermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type UpdatePermissionsError = DefaultErrors;
+export type UpdatePermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a permission with patch semantics. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied. */
 export const updatePermissions: API.OperationMethod<
@@ -3652,7 +3806,7 @@ export const updatePermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePermissionsRequest,
   output: UpdatePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRevisionsRequest {
@@ -3682,7 +3836,12 @@ export const UpdateRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateRevisionsResponse = Revision;
 export const UpdateRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
 
-export type UpdateRevisionsError = DefaultErrors;
+export type UpdateRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a revision with patch semantics. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions). */
 export const updateRevisions: API.OperationMethod<
@@ -3693,7 +3852,7 @@ export const updateRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRevisionsRequest,
   output: UpdateRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRevisionsRequest {
@@ -3719,7 +3878,12 @@ export const DeleteRevisionsResponse: Schema.Schema<DeleteRevisionsResponse> =
     {},
   ) as any as Schema.Schema<DeleteRevisionsResponse>;
 
-export type DeleteRevisionsError = DefaultErrors;
+export type DeleteRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a file version. You can only delete revisions for files with binary content in Google Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted. For more information, see [Manage file revisions](https://developers.google.com/drive/api/guides/manage-revisions). */
 export const deleteRevisions: API.OperationMethod<
@@ -3730,7 +3894,7 @@ export const deleteRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRevisionsRequest,
   output: DeleteRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRevisionsRequest {
@@ -3756,7 +3920,7 @@ export const GetRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRevisionsResponse = Revision;
 export const GetRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
 
-export type GetRevisionsError = DefaultErrors;
+export type GetRevisionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a revision's metadata or content by ID. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions). */
 export const getRevisions: API.OperationMethod<
@@ -3767,7 +3931,7 @@ export const getRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRevisionsRequest,
   output: GetRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRevisionsRequest {
@@ -3791,7 +3955,7 @@ export const ListRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRevisionsResponse = RevisionList;
 export const ListRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ RevisionList;
 
-export type ListRevisionsError = DefaultErrors;
+export type ListRevisionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's revisions. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions). **Important:** The list of revisions returned by this method might be incomplete for files with a large revision history, including frequently edited Google Docs, Sheets, and Slides. Older revisions might be omitted from the response, meaning the first revision returned may not be the oldest existing revision. The revision history visible in the Workspace editor user interface might be more complete than the list returned by the API. */
 export const listRevisions: API.PaginatedOperationMethod<
@@ -3802,7 +3966,7 @@ export const listRevisions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsRequest,
   output: ListRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3824,7 +3988,7 @@ export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAppsResponse = App;
 export const GetAppsResponse = /*@__PURE__*/ /*#__PURE__*/ App;
 
-export type GetAppsError = DefaultErrors;
+export type GetAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a specific app. For more information, see [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). */
 export const getApps: API.OperationMethod<
@@ -3835,7 +3999,7 @@ export const getApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsRequest,
   output: GetAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAppsRequest {
@@ -3865,7 +4029,7 @@ export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAppsResponse = AppList;
 export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ AppList;
 
-export type ListAppsError = DefaultErrors;
+export type ListAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a user's installed apps. For more information, see [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). */
 export const listApps: API.OperationMethod<
@@ -3876,7 +4040,7 @@ export const listApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StopChannelsRequest {
@@ -3897,7 +4061,12 @@ export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
     {},
   ) as any as Schema.Schema<StopChannelsResponse>;
 
-export type StopChannelsError = DefaultErrors;
+export type StopChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops watching resources through this channel. For more information, see [Notifications for resource changes](https://developers.google.com/workspace/drive/api/guides/push). */
 export const stopChannels: API.OperationMethod<
@@ -3908,7 +4077,7 @@ export const stopChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAboutRequest {}
@@ -3923,7 +4092,7 @@ export const GetAboutRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetAboutResponse = About;
 export const GetAboutResponse = /*@__PURE__*/ /*#__PURE__*/ About;
 
-export type GetAboutError = DefaultErrors;
+export type GetAboutError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about the user, the user's Drive, and system capabilities. For more information, see [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). Required: The `fields` parameter must be set. To return the exact fields you need, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). */
 export const getAbout: API.OperationMethod<
@@ -3934,7 +4103,7 @@ export const getAbout: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAboutRequest,
   output: GetAboutResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetApprovalsRequest {
@@ -3955,7 +4124,7 @@ export const GetApprovalsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetApprovalsResponse = Approval;
 export const GetApprovalsResponse = /*@__PURE__*/ /*#__PURE__*/ Approval;
 
-export type GetApprovalsError = DefaultErrors;
+export type GetApprovalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an Approval by ID. */
 export const getApprovals: API.OperationMethod<
@@ -3966,7 +4135,7 @@ export const getApprovals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApprovalsRequest,
   output: GetApprovalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListApprovalsRequest {
@@ -3990,7 +4159,7 @@ export const ListApprovalsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListApprovalsResponse = ApprovalList;
 export const ListApprovalsResponse = /*@__PURE__*/ /*#__PURE__*/ ApprovalList;
 
-export type ListApprovalsError = DefaultErrors;
+export type ListApprovalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the Approvals on a file. */
 export const listApprovals: API.PaginatedOperationMethod<
@@ -4001,7 +4170,7 @@ export const listApprovals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListApprovalsRequest,
   output: ListApprovalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4038,7 +4207,12 @@ export const ResolveAccessproposalsResponse: Schema.Schema<ResolveAccessproposal
     {},
   ) as any as Schema.Schema<ResolveAccessproposalsResponse>;
 
-export type ResolveAccessproposalsError = DefaultErrors;
+export type ResolveAccessproposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves or denies an access proposal. For more information, see [Manage pending access proposals](https://developers.google.com/workspace/drive/api/guides/pending-access). */
 export const resolveAccessproposals: API.OperationMethod<
@@ -4049,7 +4223,7 @@ export const resolveAccessproposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveAccessproposalsRequest,
   output: ResolveAccessproposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccessproposalsRequest {
@@ -4075,7 +4249,7 @@ export type GetAccessproposalsResponse = AccessProposal;
 export const GetAccessproposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessProposal;
 
-export type GetAccessproposalsError = DefaultErrors;
+export type GetAccessproposalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an access proposal by ID. For more information, see [Manage pending access proposals](https://developers.google.com/workspace/drive/api/guides/pending-access). */
 export const getAccessproposals: API.OperationMethod<
@@ -4086,7 +4260,7 @@ export const getAccessproposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessproposalsRequest,
   output: GetAccessproposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccessproposalsRequest {
@@ -4112,7 +4286,7 @@ export type ListAccessproposalsResponse = ListAccessProposalsResponse;
 export const ListAccessproposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccessProposalsResponse;
 
-export type ListAccessproposalsError = DefaultErrors;
+export type ListAccessproposalsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the access proposals on a file. For more information, see [Manage pending access proposals](https://developers.google.com/workspace/drive/api/guides/pending-access). Note: Only approvers are able to list access proposals on a file. If the user isn't an approver, a 403 error is returned. */
 export const listAccessproposals: API.PaginatedOperationMethod<
@@ -4123,7 +4297,7 @@ export const listAccessproposals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessproposalsRequest,
   output: ListAccessproposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4145,7 +4319,12 @@ export const HideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HideDrivesResponse = Drive;
 export const HideDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type HideDrivesError = DefaultErrors;
+export type HideDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Hides a shared drive from the default view. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives). */
 export const hideDrives: API.OperationMethod<
@@ -4156,7 +4335,7 @@ export const hideDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HideDrivesRequest,
   output: HideDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDrivesRequest {
@@ -4187,7 +4366,12 @@ export const DeleteDrivesResponse: Schema.Schema<DeleteDrivesResponse> =
     {},
   ) as any as Schema.Schema<DeleteDrivesResponse>;
 
-export type DeleteDrivesError = DefaultErrors;
+export type DeleteDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives). */
 export const deleteDrives: API.OperationMethod<
@@ -4198,7 +4382,7 @@ export const deleteDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDrivesRequest,
   output: DeleteDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDrivesRequest {
@@ -4221,7 +4405,7 @@ export const GetDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDrivesResponse = Drive;
 export const GetDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type GetDrivesError = DefaultErrors;
+export type GetDrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a shared drive's metadata by ID. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives). */
 export const getDrives: API.OperationMethod<
@@ -4232,7 +4416,7 @@ export const getDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDrivesRequest,
   output: GetDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnhideDrivesRequest {
@@ -4250,7 +4434,12 @@ export const UnhideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UnhideDrivesResponse = Drive;
 export const UnhideDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type UnhideDrivesError = DefaultErrors;
+export type UnhideDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a shared drive to the default view. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives). */
 export const unhideDrives: API.OperationMethod<
@@ -4261,7 +4450,7 @@ export const unhideDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnhideDrivesRequest,
   output: UnhideDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDrivesRequest {
@@ -4287,7 +4476,12 @@ export const UpdateDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDrivesResponse = Drive;
 export const UpdateDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type UpdateDrivesError = DefaultErrors;
+export type UpdateDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata for a shared drive. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives). */
 export const updateDrives: API.OperationMethod<
@@ -4298,7 +4492,7 @@ export const updateDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDrivesRequest,
   output: UpdateDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateDrivesRequest {
@@ -4319,7 +4513,12 @@ export const CreateDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateDrivesResponse = Drive;
 export const CreateDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type CreateDrivesError = DefaultErrors;
+export type CreateDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a shared drive. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives). */
 export const createDrives: API.OperationMethod<
@@ -4330,7 +4529,7 @@ export const createDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateDrivesRequest,
   output: CreateDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDrivesRequest {
@@ -4359,7 +4558,7 @@ export const ListDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDrivesResponse = DriveList;
 export const ListDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ DriveList;
 
-export type ListDrivesError = DefaultErrors;
+export type ListDrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining one or more search terms. For more information, see the [Search for shared drives](https://developers.google.com/workspace/drive/api/guides/search-shareddrives) guide. */
 export const listDrives: API.PaginatedOperationMethod<
@@ -4370,7 +4569,7 @@ export const listDrives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDrivesRequest,
   output: ListDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

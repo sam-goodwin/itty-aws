@@ -123,6 +123,52 @@ export const TranslationsListResponse =
   }).annotate({ identifier: "TranslationsListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -150,7 +196,7 @@ export type ListDetectionsResponse = DetectionsListResponse;
 export const ListDetectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DetectionsListResponse;
 
-export type ListDetectionsError = DefaultErrors;
+export type ListDetectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Detects the language of text within a request. */
 export const listDetections: API.OperationMethod<
@@ -161,7 +207,7 @@ export const listDetections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDetectionsRequest,
   output: ListDetectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DetectDetectionsRequest {
@@ -189,7 +235,12 @@ export type DetectDetectionsResponse = DetectionsListResponse;
 export const DetectDetectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DetectionsListResponse;
 
-export type DetectDetectionsError = DefaultErrors;
+export type DetectDetectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detects the language of text within a request. */
 export const detectDetections: API.OperationMethod<
@@ -200,7 +251,7 @@ export const detectDetections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetectDetectionsRequest,
   output: DetectDetectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLanguagesRequest {
@@ -230,7 +281,7 @@ export type ListLanguagesResponse = LanguagesListResponse;
 export const ListLanguagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LanguagesListResponse;
 
-export type ListLanguagesError = DefaultErrors;
+export type ListLanguagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of supported languages for translation. */
 export const listLanguages: API.OperationMethod<
@@ -241,7 +292,7 @@ export const listLanguages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLanguagesRequest,
   output: ListLanguagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TranslateTranslationsRequest {
@@ -269,7 +320,12 @@ export type TranslateTranslationsResponse = TranslationsListResponse;
 export const TranslateTranslationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslationsListResponse;
 
-export type TranslateTranslationsError = DefaultErrors;
+export type TranslateTranslationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates input text, returning translated text. */
 export const translateTranslations: API.OperationMethod<
@@ -280,7 +336,7 @@ export const translateTranslations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateTranslationsRequest,
   output: TranslateTranslationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTranslationsRequest {
@@ -323,7 +379,7 @@ export type ListTranslationsResponse = TranslationsListResponse;
 export const ListTranslationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslationsListResponse;
 
-export type ListTranslationsError = DefaultErrors;
+export type ListTranslationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Translates input text, returning translated text. */
 export const listTranslations: API.OperationMethod<
@@ -334,5 +390,5 @@ export const listTranslations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTranslationsRequest,
   output: ListTranslationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

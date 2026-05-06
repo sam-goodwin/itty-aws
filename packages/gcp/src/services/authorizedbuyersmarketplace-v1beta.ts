@@ -500,6 +500,52 @@ export const ActivateCuratedPackageRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -527,7 +573,12 @@ export type CreateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const CreateCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type CreateCuratorsCuratedPackagesError = DefaultErrors;
+export type CreateCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new curated package. */
 export const createCuratorsCuratedPackages: API.OperationMethod<
@@ -538,7 +589,7 @@ export const createCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCuratorsCuratedPackagesRequest,
   output: CreateCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCuratorsCuratedPackagesRequest {
@@ -564,7 +615,12 @@ export type PatchCuratorsCuratedPackagesResponse = CuratedPackage;
 export const PatchCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type PatchCuratorsCuratedPackagesError = DefaultErrors;
+export type PatchCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing curated package. */
 export const patchCuratorsCuratedPackages: API.OperationMethod<
@@ -575,7 +631,7 @@ export const patchCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCuratorsCuratedPackagesRequest,
   output: PatchCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCuratorsCuratedPackagesRequest {
@@ -595,7 +651,10 @@ export type GetCuratorsCuratedPackagesResponse = CuratedPackage;
 export const GetCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type GetCuratorsCuratedPackagesError = DefaultErrors;
+export type GetCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a curated package given its resource name. */
 export const getCuratorsCuratedPackages: API.OperationMethod<
@@ -606,7 +665,7 @@ export const getCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCuratorsCuratedPackagesRequest,
   output: GetCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCuratorsCuratedPackagesRequest {
@@ -635,7 +694,10 @@ export type ListCuratorsCuratedPackagesResponse = ListCuratedPackagesResponse;
 export const ListCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCuratedPackagesResponse;
 
-export type ListCuratorsCuratedPackagesError = DefaultErrors;
+export type ListCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists curated packages owned by the specified curator. */
 export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
@@ -646,7 +708,7 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCuratorsCuratedPackagesRequest,
   output: ListCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -673,7 +735,12 @@ export type DeactivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const DeactivateCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type DeactivateCuratorsCuratedPackagesError = DefaultErrors;
+export type DeactivateCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates an existing curated package. */
 export const deactivateCuratorsCuratedPackages: API.OperationMethod<
@@ -684,7 +751,7 @@ export const deactivateCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateCuratorsCuratedPackagesRequest,
   output: DeactivateCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateCuratorsCuratedPackagesRequest {
@@ -707,7 +774,12 @@ export type ActivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const ActivateCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type ActivateCuratorsCuratedPackagesError = DefaultErrors;
+export type ActivateCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates an existing curated package. */
 export const activateCuratorsCuratedPackages: API.OperationMethod<
@@ -718,7 +790,7 @@ export const activateCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateCuratorsCuratedPackagesRequest,
   output: ActivateCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCuratorsDataSegmentsRequest {
@@ -744,7 +816,10 @@ export type ListCuratorsDataSegmentsResponse = ListDataSegmentsResponse;
 export const ListCuratorsDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataSegmentsResponse;
 
-export type ListCuratorsDataSegmentsError = DefaultErrors;
+export type ListCuratorsDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the data segments owned by a curator. */
 export const listCuratorsDataSegments: API.PaginatedOperationMethod<
@@ -755,7 +830,7 @@ export const listCuratorsDataSegments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCuratorsDataSegmentsRequest,
   output: ListCuratorsDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -782,7 +857,12 @@ export type DeactivateCuratorsDataSegmentsResponse = DataSegment;
 export const DeactivateCuratorsDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type DeactivateCuratorsDataSegmentsError = DefaultErrors;
+export type DeactivateCuratorsDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates a data segment. */
 export const deactivateCuratorsDataSegments: API.OperationMethod<
@@ -793,7 +873,7 @@ export const deactivateCuratorsDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateCuratorsDataSegmentsRequest,
   output: DeactivateCuratorsDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateCuratorsDataSegmentsRequest {
@@ -816,7 +896,12 @@ export type ActivateCuratorsDataSegmentsResponse = DataSegment;
 export const ActivateCuratorsDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type ActivateCuratorsDataSegmentsError = DefaultErrors;
+export type ActivateCuratorsDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates a data segment. */
 export const activateCuratorsDataSegments: API.OperationMethod<
@@ -827,7 +912,7 @@ export const activateCuratorsDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateCuratorsDataSegmentsRequest,
   output: ActivateCuratorsDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCuratorsDataSegmentsRequest {
@@ -854,7 +939,12 @@ export type CreateCuratorsDataSegmentsResponse = DataSegment;
 export const CreateCuratorsDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type CreateCuratorsDataSegmentsError = DefaultErrors;
+export type CreateCuratorsDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a data segment owned by the listed curator. The data segment will be created in the `ACTIVE` state, meaning it will be immediately available for buyers to use in preferred deals, private auction deals, and auction packages. */
 export const createCuratorsDataSegments: API.OperationMethod<
@@ -865,7 +955,7 @@ export const createCuratorsDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCuratorsDataSegmentsRequest,
   output: CreateCuratorsDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCuratorsDataSegmentsRequest {
@@ -891,7 +981,12 @@ export type PatchCuratorsDataSegmentsResponse = DataSegment;
 export const PatchCuratorsDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type PatchCuratorsDataSegmentsError = DefaultErrors;
+export type PatchCuratorsDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a data segment. */
 export const patchCuratorsDataSegments: API.OperationMethod<
@@ -902,7 +997,7 @@ export const patchCuratorsDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCuratorsDataSegmentsRequest,
   output: PatchCuratorsDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCuratorsDataSegmentsRequest {
@@ -922,7 +1017,7 @@ export type GetCuratorsDataSegmentsResponse = DataSegment;
 export const GetCuratorsDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type GetCuratorsDataSegmentsError = DefaultErrors;
+export type GetCuratorsDataSegmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a data segment given its name. */
 export const getCuratorsDataSegments: API.OperationMethod<
@@ -933,7 +1028,7 @@ export const getCuratorsDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCuratorsDataSegmentsRequest,
   output: GetCuratorsDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMediaPlannersRequest {
@@ -959,7 +1054,7 @@ export type ListMediaPlannersResponse_Op = ListMediaPlannersResponse;
 export const ListMediaPlannersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListMediaPlannersResponse;
 
-export type ListMediaPlannersError = DefaultErrors;
+export type ListMediaPlannersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all media planner accounts that the caller has access to. For curators, this will return all media planners that have accepted curator terms. For other accounts, attempting to list media planners will return an error. */
 export const listMediaPlanners: API.PaginatedOperationMethod<
@@ -970,7 +1065,7 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPlannersRequest,
   output: ListMediaPlannersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

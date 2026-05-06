@@ -1047,6 +1047,52 @@ export const StatusProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "StatusProto" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1081,7 +1127,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1092,7 +1141,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1116,7 +1165,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1127,7 +1179,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -1147,7 +1199,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -1158,7 +1215,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -1181,7 +1238,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -1192,7 +1254,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGlobalPolicyOrchestratorsRequest {
@@ -1231,7 +1293,11 @@ export const CreateProjectsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy orchestrator under the given project resource. `name` field of the given orchestrator are ignored and instead replaced by a product of `parent` and `policy_orchestrator_id`. Orchestrator state field might be only set to `ACTIVE`, `STOPPED` or omitted (in which case, the created resource will be in `ACTIVE` state anyway). */
 export const createProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1242,7 +1308,7 @@ export const createProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: CreateProjectsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlobalPolicyOrchestratorsRequest {
@@ -1275,7 +1341,10 @@ export type ListProjectsLocationsGlobalPolicyOrchestratorsResponse =
 export const ListProjectsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 
-export type ListProjectsLocationsGlobalPolicyOrchestratorsError = DefaultErrors;
+export type ListProjectsLocationsGlobalPolicyOrchestratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the policy orchestrators under the given parent project resource. */
 export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperationMethod<
@@ -1286,7 +1355,7 @@ export const listProjectsLocationsGlobalPolicyOrchestrators: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: ListProjectsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1311,7 +1380,10 @@ export type GetProjectsLocationsGlobalPolicyOrchestratorsResponse =
 export const GetProjectsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 
-export type GetProjectsLocationsGlobalPolicyOrchestratorsError = DefaultErrors;
+export type GetProjectsLocationsGlobalPolicyOrchestratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an existing policy orchestrator, parented by a project. */
 export const getProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1322,7 +1394,7 @@ export const getProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: GetProjectsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsGlobalPolicyOrchestratorsRequest {
@@ -1351,7 +1423,11 @@ export const PatchProjectsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing policy orchestrator, parented by a project. */
 export const patchProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1362,7 +1438,7 @@ export const patchProjectsLocationsGlobalPolicyOrchestrators: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: PatchProjectsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest {
@@ -1390,7 +1466,11 @@ export const DeleteProjectsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing policy orchestrator resource, parented by a project. */
 export const deleteProjectsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1401,7 +1481,7 @@ export const deleteProjectsLocationsGlobalPolicyOrchestrators: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalPolicyOrchestratorsRequest,
   output: DeleteProjectsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLocationsOperationsRequest {
@@ -1435,7 +1515,10 @@ export type ListFoldersLocationsOperationsResponse = ListOperationsResponse;
 export const ListFoldersLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListFoldersLocationsOperationsError = DefaultErrors;
+export type ListFoldersLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
@@ -1446,7 +1529,7 @@ export const listFoldersLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsOperationsRequest,
   output: ListFoldersLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1470,7 +1553,10 @@ export type GetFoldersLocationsOperationsResponse = Operation;
 export const GetFoldersLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetFoldersLocationsOperationsError = DefaultErrors;
+export type GetFoldersLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsOperations: API.OperationMethod<
@@ -1481,7 +1567,7 @@ export const getFoldersLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsOperationsRequest,
   output: GetFoldersLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFoldersLocationsOperationsRequest {
@@ -1501,7 +1587,12 @@ export type DeleteFoldersLocationsOperationsResponse = Empty;
 export const DeleteFoldersLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersLocationsOperationsError = DefaultErrors;
+export type DeleteFoldersLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteFoldersLocationsOperations: API.OperationMethod<
@@ -1512,7 +1603,7 @@ export const deleteFoldersLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsOperationsRequest,
   output: DeleteFoldersLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelFoldersLocationsOperationsRequest {
@@ -1535,7 +1626,12 @@ export type CancelFoldersLocationsOperationsResponse = Empty;
 export const CancelFoldersLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelFoldersLocationsOperationsError = DefaultErrors;
+export type CancelFoldersLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelFoldersLocationsOperations: API.OperationMethod<
@@ -1546,7 +1642,7 @@ export const cancelFoldersLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelFoldersLocationsOperationsRequest,
   output: CancelFoldersLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersLocationsGlobalPolicyOrchestratorsRequest {
@@ -1584,7 +1680,11 @@ export const CreateFoldersLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateFoldersLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy orchestrator under the given folder resource. `name` field of the given orchestrator are ignored and instead replaced by a product of `parent` and `policy_orchestrator_id`. Orchestrator state field might be only set to `ACTIVE`, `STOPPED` or omitted (in which case, the created resource will be in `ACTIVE` state anyway). */
 export const createFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1595,7 +1695,7 @@ export const createFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: CreateFoldersLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersLocationsGlobalPolicyOrchestratorsRequest {
@@ -1628,7 +1728,10 @@ export type ListFoldersLocationsGlobalPolicyOrchestratorsResponse =
 export const ListFoldersLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 
-export type ListFoldersLocationsGlobalPolicyOrchestratorsError = DefaultErrors;
+export type ListFoldersLocationsGlobalPolicyOrchestratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the policy orchestrators under the given parent folder resource. */
 export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperationMethod<
@@ -1639,7 +1742,7 @@ export const listFoldersLocationsGlobalPolicyOrchestrators: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: ListFoldersLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1664,7 +1767,10 @@ export type GetFoldersLocationsGlobalPolicyOrchestratorsResponse =
 export const GetFoldersLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 
-export type GetFoldersLocationsGlobalPolicyOrchestratorsError = DefaultErrors;
+export type GetFoldersLocationsGlobalPolicyOrchestratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an existing policy orchestrator, parented by a folder. */
 export const getFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1675,7 +1781,7 @@ export const getFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: GetFoldersLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFoldersLocationsGlobalPolicyOrchestratorsRequest {
@@ -1703,7 +1809,12 @@ export type PatchFoldersLocationsGlobalPolicyOrchestratorsResponse = Operation;
 export const PatchFoldersLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchFoldersLocationsGlobalPolicyOrchestratorsError = DefaultErrors;
+export type PatchFoldersLocationsGlobalPolicyOrchestratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing policy orchestrator, parented by a folder. */
 export const patchFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1714,7 +1825,7 @@ export const patchFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: PatchFoldersLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest {
@@ -1741,7 +1852,11 @@ export const DeleteFoldersLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteFoldersLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing policy orchestrator resource, parented by a folder. */
 export const deleteFoldersLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1752,7 +1867,7 @@ export const deleteFoldersLocationsGlobalPolicyOrchestrators: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsGlobalPolicyOrchestratorsRequest,
   output: DeleteFoldersLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsOperationsRequest {
@@ -1787,7 +1902,10 @@ export type ListOrganizationsLocationsOperationsResponse =
 export const ListOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOrganizationsLocationsOperationsError = DefaultErrors;
+export type ListOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
@@ -1798,7 +1916,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1822,7 +1940,10 @@ export type GetOrganizationsLocationsOperationsResponse = Operation;
 export const GetOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOrganizationsLocationsOperationsError = DefaultErrors;
+export type GetOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOperations: API.OperationMethod<
@@ -1833,7 +1954,7 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOperationsRequest,
   output: GetOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsLocationsOperationsRequest {
@@ -1853,7 +1974,12 @@ export type DeleteOrganizationsLocationsOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsOperationsError = DefaultErrors;
+export type DeleteOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsLocationsOperations: API.OperationMethod<
@@ -1864,7 +1990,7 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsOperationsRequest,
   output: DeleteOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOrganizationsLocationsOperationsRequest {
@@ -1887,7 +2013,12 @@ export type CancelOrganizationsLocationsOperationsResponse = Empty;
 export const CancelOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOrganizationsLocationsOperationsError = DefaultErrors;
+export type CancelOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsLocationsOperations: API.OperationMethod<
@@ -1898,7 +2029,7 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsOperationsRequest,
   output: CancelOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
@@ -1937,7 +2068,11 @@ export const CreateOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateOrganizationsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy orchestrator under the given organizations resource. `name` field of the given orchestrator are ignored and instead replaced by a product of `parent` and `policy_orchestrator_id`. Orchestrator state field might be only set to `ACTIVE`, `STOPPED` or omitted (in which case, the created resource will be in `ACTIVE` state anyway). */
 export const createOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -1948,7 +2083,7 @@ export const createOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: CreateOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
@@ -1982,7 +2117,9 @@ export const ListOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__ListPolicyOrchestratorsResponse;
 
 export type ListOrganizationsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the policy orchestrators under the given parent organization resource. */
 export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedOperationMethod<
@@ -1993,7 +2130,7 @@ export const listOrganizationsLocationsGlobalPolicyOrchestrators: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: ListOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2019,7 +2156,9 @@ export const GetOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOsconfigV2beta__PolicyOrchestrator;
 
 export type GetOrganizationsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an existing policy orchestrator, parented by an organization. */
 export const getOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -2030,7 +2169,7 @@ export const getOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: GetOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
@@ -2060,7 +2199,11 @@ export const PatchOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchOrganizationsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing policy orchestrator, parented by an organization. */
 export const patchOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -2071,7 +2214,7 @@ export const patchOrganizationsLocationsGlobalPolicyOrchestrators: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: PatchOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest {
@@ -2099,7 +2242,11 @@ export const DeleteOrganizationsLocationsGlobalPolicyOrchestratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteOrganizationsLocationsGlobalPolicyOrchestratorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing policy orchestrator resource, parented by an organization. */
 export const deleteOrganizationsLocationsGlobalPolicyOrchestrators: API.OperationMethod<
@@ -2110,5 +2257,5 @@ export const deleteOrganizationsLocationsGlobalPolicyOrchestrators: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsGlobalPolicyOrchestratorsRequest,
   output: DeleteOrganizationsLocationsGlobalPolicyOrchestratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -663,6 +663,52 @@ export const TriggerActionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "TriggerActionResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -696,7 +742,10 @@ export type ListAccountsAggregateProductStatusesResponse =
 export const ListAccountsAggregateProductStatusesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAggregateProductStatusesResponse;
 
-export type ListAccountsAggregateProductStatusesError = DefaultErrors;
+export type ListAccountsAggregateProductStatusesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results. */
 export const listAccountsAggregateProductStatuses: API.PaginatedOperationMethod<
@@ -707,7 +756,7 @@ export const listAccountsAggregateProductStatuses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAggregateProductStatusesRequest,
   output: ListAccountsAggregateProductStatusesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -747,7 +796,12 @@ export type RenderaccountissuesIssueresolutionResponse =
 export const RenderaccountissuesIssueresolutionResponse =
   /*@__PURE__*/ /*#__PURE__*/ RenderAccountIssuesResponse;
 
-export type RenderaccountissuesIssueresolutionError = DefaultErrors;
+export type RenderaccountissuesIssueresolutionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provide a list of business's account issues with an issue resolution content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderaccountissuesIssueresolution: API.OperationMethod<
@@ -758,7 +812,7 @@ export const renderaccountissuesIssueresolution: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenderaccountissuesIssueresolutionRequest,
   output: RenderaccountissuesIssueresolutionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TriggeractionIssueresolutionRequest {
@@ -790,7 +844,12 @@ export type TriggeractionIssueresolutionResponse = TriggerActionResponse;
 export const TriggeractionIssueresolutionResponse =
   /*@__PURE__*/ /*#__PURE__*/ TriggerActionResponse;
 
-export type TriggeractionIssueresolutionError = DefaultErrors;
+export type TriggeractionIssueresolutionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Start an action. The action can be requested by a business in third-party application. Before the business can request the action, the third-party application needs to show them action specific content and display a user input form. Access to the `triggeraction` method is restricted to an allowlist. You can request access using [Trigger action allowlist form](https://docs.google.com/forms/d/e/1FAIpQLSfeV_sBW9MBQv9BMTV6JZ1g11PGHLdHsrefca-9h0LmpU7CUg/viewform?usp=sharing). The action can be successfully started only once all `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain Ids for all problematic field together with translated, human readable error messages that can be shown to the user. */
 export const triggeractionIssueresolution: API.OperationMethod<
@@ -801,7 +860,7 @@ export const triggeractionIssueresolution: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TriggeractionIssueresolutionRequest,
   output: TriggeractionIssueresolutionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenderproductissuesIssueresolutionRequest {
@@ -837,7 +896,12 @@ export type RenderproductissuesIssueresolutionResponse =
 export const RenderproductissuesIssueresolutionResponse =
   /*@__PURE__*/ /*#__PURE__*/ RenderProductIssuesResponse;
 
-export type RenderproductissuesIssueresolutionError = DefaultErrors;
+export type RenderproductissuesIssueresolutionError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provide a list of issues for business's product with an issue resolution content and available actions. This content and actions are meant to be rendered and shown in third-party applications. */
 export const renderproductissuesIssueresolution: API.OperationMethod<
@@ -848,5 +912,5 @@ export const renderproductissuesIssueresolution: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenderproductissuesIssueresolutionRequest,
   output: RenderproductissuesIssueresolutionResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

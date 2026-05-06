@@ -111,6 +111,52 @@ export const ListProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListProfilesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -134,7 +180,12 @@ export type CreateProjectsProfilesResponse = Profile;
 export const CreateProjectsProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type CreateProjectsProfilesError = DefaultErrors;
+export type CreateProjectsProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateProfile creates a new profile resource in the online mode. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ The server ensures that the new profiles are created at a constant rate per deployment, so the creation request may hang for some time until the next profile session is available. The request may fail with ABORTED error if the creation is not available within ~1m, the response will indicate the duration of the backoff the client should take before attempting creating a profile again. The backoff duration is returned in google.rpc.RetryInfo extension on the response status. To a gRPC client, the extension will be return as a binary-serialized proto in the trailing metadata item named "google.rpc.retryinfo-bin". */
 export const createProjectsProfiles: API.OperationMethod<
@@ -145,7 +196,7 @@ export const createProjectsProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsProfilesRequest,
   output: CreateProjectsProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOfflineProjectsProfilesRequest {
@@ -172,7 +223,12 @@ export type CreateOfflineProjectsProfilesResponse = Profile;
 export const CreateOfflineProjectsProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type CreateOfflineProjectsProfilesError = DefaultErrors;
+export type CreateOfflineProjectsProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateOfflineProfile creates a new profile resource in the offline mode. The client provides the profile to create along with the profile bytes, the server records it. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ */
 export const createOfflineProjectsProfiles: API.OperationMethod<
@@ -183,7 +239,7 @@ export const createOfflineProjectsProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOfflineProjectsProfilesRequest,
   output: CreateOfflineProjectsProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsProfilesRequest {
@@ -209,7 +265,12 @@ export type PatchProjectsProfilesResponse = Profile;
 export const PatchProjectsProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Profile;
 
-export type PatchProjectsProfilesError = DefaultErrors;
+export type PatchProjectsProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode. Updating the bytes for profiles created in the offline mode is currently not supported: the profile content must be provided at the time of the profile creation. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._ */
 export const patchProjectsProfiles: API.OperationMethod<
@@ -220,7 +281,7 @@ export const patchProjectsProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsProfilesRequest,
   output: PatchProjectsProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsProfilesRequest {
@@ -246,7 +307,7 @@ export type ListProjectsProfilesResponse = ListProfilesResponse;
 export const ListProjectsProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProfilesResponse;
 
-export type ListProjectsProfilesError = DefaultErrors;
+export type ListProjectsProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists profiles which have been collected so far and for which the caller has permission to view. */
 export const listProjectsProfiles: API.PaginatedOperationMethod<
@@ -257,7 +318,7 @@ export const listProjectsProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsProfilesRequest,
   output: ListProjectsProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

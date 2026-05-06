@@ -1656,6 +1656,52 @@ export const BatchUpdateDealsRequest =
   }).annotate({ identifier: "BatchUpdateDealsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1683,7 +1729,12 @@ export type CreateBuyersDataSegmentsResponse = DataSegment;
 export const CreateBuyersDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type CreateBuyersDataSegmentsError = DefaultErrors;
+export type CreateBuyersDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a data segment owned by the listed curator. The data segment will be created in the `ACTIVE` state, meaning it will be immediately available for buyers to use in preferred deals, private auction deals, and auction packages. */
 export const createBuyersDataSegments: API.OperationMethod<
@@ -1694,7 +1745,7 @@ export const createBuyersDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBuyersDataSegmentsRequest,
   output: CreateBuyersDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersDataSegmentsRequest {
@@ -1714,7 +1765,7 @@ export type GetBuyersDataSegmentsResponse = DataSegment;
 export const GetBuyersDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type GetBuyersDataSegmentsError = DefaultErrors;
+export type GetBuyersDataSegmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a data segment given its name. */
 export const getBuyersDataSegments: API.OperationMethod<
@@ -1725,7 +1776,7 @@ export const getBuyersDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersDataSegmentsRequest,
   output: GetBuyersDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchBuyersDataSegmentsRequest {
@@ -1751,7 +1802,12 @@ export type PatchBuyersDataSegmentsResponse = DataSegment;
 export const PatchBuyersDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type PatchBuyersDataSegmentsError = DefaultErrors;
+export type PatchBuyersDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a data segment. */
 export const patchBuyersDataSegments: API.OperationMethod<
@@ -1762,7 +1818,7 @@ export const patchBuyersDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBuyersDataSegmentsRequest,
   output: PatchBuyersDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersDataSegmentsRequest {
@@ -1788,7 +1844,7 @@ export type ListBuyersDataSegmentsResponse = ListDataSegmentsResponse;
 export const ListBuyersDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataSegmentsResponse;
 
-export type ListBuyersDataSegmentsError = DefaultErrors;
+export type ListBuyersDataSegmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the data segments owned by a curator. */
 export const listBuyersDataSegments: API.PaginatedOperationMethod<
@@ -1799,7 +1855,7 @@ export const listBuyersDataSegments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersDataSegmentsRequest,
   output: ListBuyersDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1826,7 +1882,12 @@ export type ActivateBuyersDataSegmentsResponse = DataSegment;
 export const ActivateBuyersDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type ActivateBuyersDataSegmentsError = DefaultErrors;
+export type ActivateBuyersDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates a data segment. */
 export const activateBuyersDataSegments: API.OperationMethod<
@@ -1837,7 +1898,7 @@ export const activateBuyersDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateBuyersDataSegmentsRequest,
   output: ActivateBuyersDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeactivateBuyersDataSegmentsRequest {
@@ -1864,7 +1925,12 @@ export type DeactivateBuyersDataSegmentsResponse = DataSegment;
 export const DeactivateBuyersDataSegmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSegment;
 
-export type DeactivateBuyersDataSegmentsError = DefaultErrors;
+export type DeactivateBuyersDataSegmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates a data segment. */
 export const deactivateBuyersDataSegments: API.OperationMethod<
@@ -1875,7 +1941,7 @@ export const deactivateBuyersDataSegments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateBuyersDataSegmentsRequest,
   output: DeactivateBuyersDataSegmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersProposalsRequest {
@@ -1894,7 +1960,7 @@ export const GetBuyersProposalsRequest =
 export type GetBuyersProposalsResponse = Proposal;
 export const GetBuyersProposalsResponse = /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type GetBuyersProposalsError = DefaultErrors;
+export type GetBuyersProposalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a proposal using its resource name. The proposal is returned at the latest revision. */
 export const getBuyersProposals: API.OperationMethod<
@@ -1905,7 +1971,7 @@ export const getBuyersProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersProposalsRequest,
   output: GetBuyersProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddNoteBuyersProposalsRequest {
@@ -1932,7 +1998,12 @@ export type AddNoteBuyersProposalsResponse = Proposal;
 export const AddNoteBuyersProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type AddNoteBuyersProposalsError = DefaultErrors;
+export type AddNoteBuyersProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a note for this proposal and sends to the seller. This method is not supported for proposals with DealType set to 'PRIVATE_AUCTION'. */
 export const addNoteBuyersProposals: API.OperationMethod<
@@ -1943,7 +2014,7 @@ export const addNoteBuyersProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddNoteBuyersProposalsRequest,
   output: AddNoteBuyersProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendRfpBuyersProposalsRequest {
@@ -1970,7 +2041,12 @@ export type SendRfpBuyersProposalsResponse = Proposal;
 export const SendRfpBuyersProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type SendRfpBuyersProposalsError = DefaultErrors;
+export type SendRfpBuyersProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends a request for proposal (RFP) to a publisher to initiate the negotiation regarding certain inventory. In the RFP, buyers can specify the deal type, deal terms, start and end dates, targeting, and a message to the publisher. Once the RFP is sent, a proposal in `SELLER_REVIEW_REQUESTED` state will be created and returned in the response. The publisher may review your request and respond with detailed deals in the proposal. */
 export const sendRfpBuyersProposals: API.OperationMethod<
@@ -1981,7 +2057,7 @@ export const sendRfpBuyersProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendRfpBuyersProposalsRequest,
   output: SendRfpBuyersProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBuyersProposalsRequest {
@@ -2007,7 +2083,12 @@ export type PatchBuyersProposalsResponse = Proposal;
 export const PatchBuyersProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type PatchBuyersProposalsError = DefaultErrors;
+export type PatchBuyersProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the proposal at the given revision number. If the revision number in the request is behind the latest one kept in the server, an error message will be returned. See FieldMask for how to use FieldMask. Only fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted as 'Immutable' or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored and left unchanged. Updating a private auction proposal is only allowed for buyer private data, all other fields are immutable. */
 export const patchBuyersProposals: API.OperationMethod<
@@ -2018,7 +2099,7 @@ export const patchBuyersProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBuyersProposalsRequest,
   output: PatchBuyersProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcceptBuyersProposalsRequest {
@@ -2041,7 +2122,12 @@ export type AcceptBuyersProposalsResponse = Proposal;
 export const AcceptBuyersProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type AcceptBuyersProposalsError = DefaultErrors;
+export type AcceptBuyersProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts the proposal at the given revision number. If the revision number in the request is behind the latest from the server, an error message will be returned. This call updates the Proposal.state from `BUYER_ACCEPTANCE_REQUESTED` to `FINALIZED`; it has no side effect if the Proposal.state is already `FINALIZED` and throws exception if the Proposal.state is not either `BUYER_ACCEPTANCE_REQUESTED` or `FINALIZED`. Accepting a proposal means the buyer understands and accepts the Proposal.terms_and_conditions proposed by the seller. */
 export const acceptBuyersProposals: API.OperationMethod<
@@ -2052,7 +2138,7 @@ export const acceptBuyersProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptBuyersProposalsRequest,
   output: AcceptBuyersProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelNegotiationBuyersProposalsRequest {
@@ -2079,7 +2165,12 @@ export type CancelNegotiationBuyersProposalsResponse = Proposal;
 export const CancelNegotiationBuyersProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Proposal;
 
-export type CancelNegotiationBuyersProposalsError = DefaultErrors;
+export type CancelNegotiationBuyersProposalsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized. If the proposal has not been finalized before, calling this method will set the Proposal.state to `TERMINATED` and increment the Proposal.proposal_revision. If the proposal has been finalized before and is under renegotiation now, calling this method will reset the Proposal.state to `FINALIZED` and increment the Proposal.proposal_revision. This method does not support private auction proposals whose Proposal.deal_type is 'PRIVATE_AUCTION'. */
 export const cancelNegotiationBuyersProposals: API.OperationMethod<
@@ -2090,7 +2181,7 @@ export const cancelNegotiationBuyersProposals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelNegotiationBuyersProposalsRequest,
   output: CancelNegotiationBuyersProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersProposalsRequest {
@@ -2119,7 +2210,7 @@ export type ListBuyersProposalsResponse = ListProposalsResponse;
 export const ListBuyersProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProposalsResponse;
 
-export type ListBuyersProposalsError = DefaultErrors;
+export type ListBuyersProposalsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists proposals. A filter expression using [Cloud API list filtering syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) may be specified to filter the results. */
 export const listBuyersProposals: API.PaginatedOperationMethod<
@@ -2130,7 +2221,7 @@ export const listBuyersProposals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersProposalsRequest,
   output: ListBuyersProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2160,7 +2251,12 @@ export type PatchBuyersProposalsDealsResponse = Deal;
 export const PatchBuyersProposalsDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Deal;
 
-export type PatchBuyersProposalsDealsError = DefaultErrors;
+export type PatchBuyersProposalsDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the given deal at the buyer known revision number. If the server revision has advanced since the passed-in proposal.proposal_revision an ABORTED error message will be returned. The revision number is incremented by the server whenever the proposal or its constituent deals are updated. Note: The revision number is kept at a proposal level. The buyer of the API is expected to keep track of the revision number after the last update operation and send it in as part of the next update request. This way, if there are further changes on the server (for example, seller making new updates), then the server can detect conflicts and reject the proposed changes. */
 export const patchBuyersProposalsDeals: API.OperationMethod<
@@ -2171,7 +2267,7 @@ export const patchBuyersProposalsDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBuyersProposalsDealsRequest,
   output: PatchBuyersProposalsDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersProposalsDealsRequest {
@@ -2190,7 +2286,7 @@ export const GetBuyersProposalsDealsRequest =
 export type GetBuyersProposalsDealsResponse = Deal;
 export const GetBuyersProposalsDealsResponse = /*@__PURE__*/ /*#__PURE__*/ Deal;
 
-export type GetBuyersProposalsDealsError = DefaultErrors;
+export type GetBuyersProposalsDealsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a deal given its name. The deal is returned at its head revision. */
 export const getBuyersProposalsDeals: API.OperationMethod<
@@ -2201,7 +2297,7 @@ export const getBuyersProposalsDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersProposalsDealsRequest,
   output: GetBuyersProposalsDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBuyersProposalsDealsRequest {
@@ -2227,7 +2323,10 @@ export type ListBuyersProposalsDealsResponse = ListDealsResponse;
 export const ListBuyersProposalsDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDealsResponse;
 
-export type ListBuyersProposalsDealsError = DefaultErrors;
+export type ListBuyersProposalsDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all deals in a proposal. To retrieve only the finalized revision deals regardless if a deal is being renegotiated, see the FinalizedDeals resource. */
 export const listBuyersProposalsDeals: API.PaginatedOperationMethod<
@@ -2238,7 +2337,7 @@ export const listBuyersProposalsDeals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersProposalsDealsRequest,
   output: ListBuyersProposalsDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2269,7 +2368,12 @@ export type BatchUpdateBuyersProposalsDealsResponse = BatchUpdateDealsResponse;
 export const BatchUpdateBuyersProposalsDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateDealsResponse;
 
-export type BatchUpdateBuyersProposalsDealsError = DefaultErrors;
+export type BatchUpdateBuyersProposalsDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch updates multiple deals in the same proposal. */
 export const batchUpdateBuyersProposalsDeals: API.OperationMethod<
@@ -2280,7 +2384,7 @@ export const batchUpdateBuyersProposalsDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateBuyersProposalsDealsRequest,
   output: BatchUpdateBuyersProposalsDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBuyersClientsRequest {
@@ -2305,7 +2409,12 @@ export const PatchBuyersClientsRequest =
 export type PatchBuyersClientsResponse = Client;
 export const PatchBuyersClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type PatchBuyersClientsError = DefaultErrors;
+export type PatchBuyersClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing client. */
 export const patchBuyersClients: API.OperationMethod<
@@ -2316,7 +2425,7 @@ export const patchBuyersClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBuyersClientsRequest,
   output: PatchBuyersClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersClientsRequest {
@@ -2335,7 +2444,7 @@ export const GetBuyersClientsRequest =
 export type GetBuyersClientsResponse = Client;
 export const GetBuyersClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type GetBuyersClientsError = DefaultErrors;
+export type GetBuyersClientsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a client with a given resource name. */
 export const getBuyersClients: API.OperationMethod<
@@ -2346,7 +2455,7 @@ export const getBuyersClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersClientsRequest,
   output: GetBuyersClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateBuyersClientsRequest {
@@ -2368,7 +2477,12 @@ export const CreateBuyersClientsRequest =
 export type CreateBuyersClientsResponse = Client;
 export const CreateBuyersClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type CreateBuyersClientsError = DefaultErrors;
+export type CreateBuyersClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new client. */
 export const createBuyersClients: API.OperationMethod<
@@ -2379,7 +2493,7 @@ export const createBuyersClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBuyersClientsRequest,
   output: CreateBuyersClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeactivateBuyersClientsRequest {
@@ -2406,7 +2520,12 @@ export type DeactivateBuyersClientsResponse = Client;
 export const DeactivateBuyersClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type DeactivateBuyersClientsError = DefaultErrors;
+export type DeactivateBuyersClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates an existing client. The state of the client will be updated to "INACTIVE". This method has no effect if the client is already in "INACTIVE" state. */
 export const deactivateBuyersClients: API.OperationMethod<
@@ -2417,7 +2536,7 @@ export const deactivateBuyersClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateBuyersClientsRequest,
   output: DeactivateBuyersClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateBuyersClientsRequest {
@@ -2439,7 +2558,12 @@ export const ActivateBuyersClientsRequest =
 export type ActivateBuyersClientsResponse = Client;
 export const ActivateBuyersClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Client;
 
-export type ActivateBuyersClientsError = DefaultErrors;
+export type ActivateBuyersClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates an existing client. The state of the client will be updated to "ACTIVE". This method has no effect if the client is already in "ACTIVE" state. */
 export const activateBuyersClients: API.OperationMethod<
@@ -2450,7 +2574,7 @@ export const activateBuyersClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateBuyersClientsRequest,
   output: ActivateBuyersClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersClientsRequest {
@@ -2479,7 +2603,7 @@ export type ListBuyersClientsResponse = ListClientsResponse;
 export const ListBuyersClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClientsResponse;
 
-export type ListBuyersClientsError = DefaultErrors;
+export type ListBuyersClientsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the clients for the current buyer. */
 export const listBuyersClients: API.PaginatedOperationMethod<
@@ -2490,7 +2614,7 @@ export const listBuyersClients: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersClientsRequest,
   output: ListBuyersClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2517,7 +2641,12 @@ export type CreateBuyersClientsUsersResponse = ClientUser;
 export const CreateBuyersClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUser;
 
-export type CreateBuyersClientsUsersError = DefaultErrors;
+export type CreateBuyersClientsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new client user in "INVITED" state. An email invitation will be sent to the new user, once accepted the user will become active. */
 export const createBuyersClientsUsers: API.OperationMethod<
@@ -2528,7 +2657,7 @@ export const createBuyersClientsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBuyersClientsUsersRequest,
   output: CreateBuyersClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersClientsUsersRequest {
@@ -2548,7 +2677,7 @@ export type GetBuyersClientsUsersResponse = ClientUser;
 export const GetBuyersClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUser;
 
-export type GetBuyersClientsUsersError = DefaultErrors;
+export type GetBuyersClientsUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an existing client user. */
 export const getBuyersClientsUsers: API.OperationMethod<
@@ -2559,7 +2688,7 @@ export const getBuyersClientsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersClientsUsersRequest,
   output: GetBuyersClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBuyersClientsUsersRequest {
@@ -2585,7 +2714,7 @@ export type ListBuyersClientsUsersResponse = ListClientUsersResponse;
 export const ListBuyersClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClientUsersResponse;
 
-export type ListBuyersClientsUsersError = DefaultErrors;
+export type ListBuyersClientsUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all client users for a specified client. */
 export const listBuyersClientsUsers: API.PaginatedOperationMethod<
@@ -2596,7 +2725,7 @@ export const listBuyersClientsUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersClientsUsersRequest,
   output: ListBuyersClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2623,7 +2752,12 @@ export type ActivateBuyersClientsUsersResponse = ClientUser;
 export const ActivateBuyersClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUser;
 
-export type ActivateBuyersClientsUsersError = DefaultErrors;
+export type ActivateBuyersClientsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates an existing client user. The state of the client user will be updated from "INACTIVE" to "ACTIVE". This method has no effect if the client user is already in "ACTIVE" state. An error will be returned if the client user to activate is still in "INVITED" state. */
 export const activateBuyersClientsUsers: API.OperationMethod<
@@ -2634,7 +2768,7 @@ export const activateBuyersClientsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateBuyersClientsUsersRequest,
   output: ActivateBuyersClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBuyersClientsUsersRequest {
@@ -2654,7 +2788,12 @@ export type DeleteBuyersClientsUsersResponse = Empty;
 export const DeleteBuyersClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBuyersClientsUsersError = DefaultErrors;
+export type DeleteBuyersClientsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing client user. The client user will lose access to the Authorized Buyers UI. Note that if a client user is deleted, the user's access to the UI can't be restored unless a new client user is created and activated. */
 export const deleteBuyersClientsUsers: API.OperationMethod<
@@ -2665,7 +2804,7 @@ export const deleteBuyersClientsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBuyersClientsUsersRequest,
   output: DeleteBuyersClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeactivateBuyersClientsUsersRequest {
@@ -2692,7 +2831,12 @@ export type DeactivateBuyersClientsUsersResponse = ClientUser;
 export const DeactivateBuyersClientsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ClientUser;
 
-export type DeactivateBuyersClientsUsersError = DefaultErrors;
+export type DeactivateBuyersClientsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates an existing client user. The state of the client user will be updated from "ACTIVE" to "INACTIVE". This method has no effect if the client user is already in "INACTIVE" state. An error will be returned if the client user to deactivate is still in "INVITED" state. */
 export const deactivateBuyersClientsUsers: API.OperationMethod<
@@ -2703,7 +2847,7 @@ export const deactivateBuyersClientsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateBuyersClientsUsersRequest,
   output: DeactivateBuyersClientsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseBuyersFinalizedDealsRequest {
@@ -2726,7 +2870,12 @@ export type PauseBuyersFinalizedDealsResponse = FinalizedDeal;
 export const PauseBuyersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FinalizedDeal;
 
-export type PauseBuyersFinalizedDealsError = DefaultErrors;
+export type PauseBuyersFinalizedDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pauses serving of the given finalized deal. This call only pauses the serving status, and does not affect other fields of the finalized deal. Calling this method for an already paused deal has no effect. This method only applies to programmatic guaranteed deals and preferred deals. */
 export const pauseBuyersFinalizedDeals: API.OperationMethod<
@@ -2737,7 +2886,7 @@ export const pauseBuyersFinalizedDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseBuyersFinalizedDealsRequest,
   output: PauseBuyersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersFinalizedDealsRequest {
@@ -2757,7 +2906,7 @@ export type GetBuyersFinalizedDealsResponse = FinalizedDeal;
 export const GetBuyersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FinalizedDeal;
 
-export type GetBuyersFinalizedDealsError = DefaultErrors;
+export type GetBuyersFinalizedDealsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a finalized deal given its name. */
 export const getBuyersFinalizedDeals: API.OperationMethod<
@@ -2768,7 +2917,7 @@ export const getBuyersFinalizedDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersFinalizedDealsRequest,
   output: GetBuyersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddCreativeBuyersFinalizedDealsRequest {
@@ -2795,7 +2944,12 @@ export type AddCreativeBuyersFinalizedDealsResponse = FinalizedDeal;
 export const AddCreativeBuyersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FinalizedDeal;
 
-export type AddCreativeBuyersFinalizedDealsError = DefaultErrors;
+export type AddCreativeBuyersFinalizedDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add creative to be used in the bidding process for a finalized deal. For programmatic guaranteed deals, it's recommended that you associate at least one approved creative with the deal before calling SetReadyToServe, to help reduce the number of bid responses filtered because they don't contain approved creatives. Creatives successfully added to a deal can be found in the Realtime-bidding Creatives API creative.deal_ids. This method only applies to programmatic guaranteed deals. Maximum number of 1000 creatives can be added to a finalized deal. */
 export const addCreativeBuyersFinalizedDeals: API.OperationMethod<
@@ -2806,7 +2960,7 @@ export const addCreativeBuyersFinalizedDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddCreativeBuyersFinalizedDealsRequest,
   output: AddCreativeBuyersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetReadyToServeBuyersFinalizedDealsRequest {
@@ -2833,7 +2987,12 @@ export type SetReadyToServeBuyersFinalizedDealsResponse = FinalizedDeal;
 export const SetReadyToServeBuyersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FinalizedDeal;
 
-export type SetReadyToServeBuyersFinalizedDealsError = DefaultErrors;
+export type SetReadyToServeBuyersFinalizedDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the given finalized deal as ready to serve. By default, deals are set as ready to serve as soon as they're finalized. If you want to opt out of the default behavior, and manually indicate that deals are ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use this method, finalized deals belonging to the bidder and its child seats don't start serving until after you call `setReadyToServe`, and after the deals become active. For example, you can use this method to delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path "/v1alpha/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong to itself, its child seats and all their clients. This method only applies to programmatic guaranteed deals. */
 export const setReadyToServeBuyersFinalizedDeals: API.OperationMethod<
@@ -2844,7 +3003,7 @@ export const setReadyToServeBuyersFinalizedDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetReadyToServeBuyersFinalizedDealsRequest,
   output: SetReadyToServeBuyersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersFinalizedDealsRequest {
@@ -2876,7 +3035,10 @@ export type ListBuyersFinalizedDealsResponse = ListFinalizedDealsResponse;
 export const ListBuyersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFinalizedDealsResponse;
 
-export type ListBuyersFinalizedDealsError = DefaultErrors;
+export type ListBuyersFinalizedDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists finalized deals. Use the URL path "/v1alpha/buyers/{accountId}/finalizedDeals" to list finalized deals for the current buyer and its clients. Bidders can use the URL path "/v1alpha/bidders/{accountId}/finalizedDeals" to list finalized deals for the bidder, its buyers and all their clients. */
 export const listBuyersFinalizedDeals: API.PaginatedOperationMethod<
@@ -2887,7 +3049,7 @@ export const listBuyersFinalizedDeals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersFinalizedDealsRequest,
   output: ListBuyersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2914,7 +3076,12 @@ export type ResumeBuyersFinalizedDealsResponse = FinalizedDeal;
 export const ResumeBuyersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FinalizedDeal;
 
-export type ResumeBuyersFinalizedDealsError = DefaultErrors;
+export type ResumeBuyersFinalizedDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resumes serving of the given finalized deal. Calling this method for an running deal has no effect. If a deal is initially paused by the seller, calling this method will not resume serving of the deal until the seller also resumes the deal. This method only applies to programmatic guaranteed deals and preferred deals. */
 export const resumeBuyersFinalizedDeals: API.OperationMethod<
@@ -2925,7 +3092,7 @@ export const resumeBuyersFinalizedDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeBuyersFinalizedDealsRequest,
   output: ResumeBuyersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersPublisherProfilesRequest {
@@ -2954,7 +3121,10 @@ export type ListBuyersPublisherProfilesResponse = ListPublisherProfilesResponse;
 export const ListBuyersPublisherProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPublisherProfilesResponse;
 
-export type ListBuyersPublisherProfilesError = DefaultErrors;
+export type ListBuyersPublisherProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists publisher profiles. The returned publisher profiles aren't in any defined order. The order of the results might change. A new publisher profile can appear in any place in the list of returned results. */
 export const listBuyersPublisherProfiles: API.PaginatedOperationMethod<
@@ -2965,7 +3135,7 @@ export const listBuyersPublisherProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersPublisherProfilesRequest,
   output: ListBuyersPublisherProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2989,7 +3159,10 @@ export type GetBuyersPublisherProfilesResponse = PublisherProfile;
 export const GetBuyersPublisherProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublisherProfile;
 
-export type GetBuyersPublisherProfilesError = DefaultErrors;
+export type GetBuyersPublisherProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the requested publisher profile by name. */
 export const getBuyersPublisherProfiles: API.OperationMethod<
@@ -3000,7 +3173,7 @@ export const getBuyersPublisherProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersPublisherProfilesRequest,
   output: GetBuyersPublisherProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetBuyersAuctionPackagesRequest {
@@ -3020,7 +3193,10 @@ export type GetBuyersAuctionPackagesResponse = AuctionPackage;
 export const GetBuyersAuctionPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuctionPackage;
 
-export type GetBuyersAuctionPackagesError = DefaultErrors;
+export type GetBuyersAuctionPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an auction package given its name. */
 export const getBuyersAuctionPackages: API.OperationMethod<
@@ -3031,7 +3207,7 @@ export const getBuyersAuctionPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersAuctionPackagesRequest,
   output: GetBuyersAuctionPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SubscribeBuyersAuctionPackagesRequest {
@@ -3054,7 +3230,12 @@ export type SubscribeBuyersAuctionPackagesResponse = AuctionPackage;
 export const SubscribeBuyersAuctionPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuctionPackage;
 
-export type SubscribeBuyersAuctionPackagesError = DefaultErrors;
+export type SubscribeBuyersAuctionPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Subscribe to the auction package for the specified buyer. Once subscribed, the bidder will receive a call out for inventory matching the auction package targeting criteria with the auction package deal ID and the specified buyer. */
 export const subscribeBuyersAuctionPackages: API.OperationMethod<
@@ -3065,7 +3246,7 @@ export const subscribeBuyersAuctionPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubscribeBuyersAuctionPackagesRequest,
   output: SubscribeBuyersAuctionPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubscribeClientsBuyersAuctionPackagesRequest {
@@ -3092,7 +3273,12 @@ export type SubscribeClientsBuyersAuctionPackagesResponse = AuctionPackage;
 export const SubscribeClientsBuyersAuctionPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuctionPackage;
 
-export type SubscribeClientsBuyersAuctionPackagesError = DefaultErrors;
+export type SubscribeClientsBuyersAuctionPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Subscribe the specified clients of the buyer to the auction package. If a client in the list does not belong to the buyer, an error response will be returned, and all of the following clients in the list will not be subscribed. Subscribing an already subscribed client will have no effect. */
 export const subscribeClientsBuyersAuctionPackages: API.OperationMethod<
@@ -3103,7 +3289,7 @@ export const subscribeClientsBuyersAuctionPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubscribeClientsBuyersAuctionPackagesRequest,
   output: SubscribeClientsBuyersAuctionPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBuyersAuctionPackagesRequest {
@@ -3135,7 +3321,10 @@ export type ListBuyersAuctionPackagesResponse = ListAuctionPackagesResponse;
 export const ListBuyersAuctionPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuctionPackagesResponse;
 
-export type ListBuyersAuctionPackagesError = DefaultErrors;
+export type ListBuyersAuctionPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the auction packages. Buyers can use the URL path "/v1alpha/buyers/{accountId}/auctionPackages" to list auction packages for the current buyer and its clients. Bidders can use the URL path "/v1alpha/bidders/{accountId}/auctionPackages" to list auction packages for the bidder, its media planners, its buyers, and all their clients. */
 export const listBuyersAuctionPackages: API.PaginatedOperationMethod<
@@ -3146,7 +3335,7 @@ export const listBuyersAuctionPackages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersAuctionPackagesRequest,
   output: ListBuyersAuctionPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3177,7 +3366,12 @@ export type UnsubscribeBuyersAuctionPackagesResponse = AuctionPackage;
 export const UnsubscribeBuyersAuctionPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuctionPackage;
 
-export type UnsubscribeBuyersAuctionPackagesError = DefaultErrors;
+export type UnsubscribeBuyersAuctionPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unsubscribe from the auction package for the specified buyer. Once unsubscribed, the bidder will no longer receive a call out for the auction package deal ID and the specified buyer. */
 export const unsubscribeBuyersAuctionPackages: API.OperationMethod<
@@ -3188,7 +3382,7 @@ export const unsubscribeBuyersAuctionPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnsubscribeBuyersAuctionPackagesRequest,
   output: UnsubscribeBuyersAuctionPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnsubscribeClientsBuyersAuctionPackagesRequest {
@@ -3215,7 +3409,12 @@ export type UnsubscribeClientsBuyersAuctionPackagesResponse = AuctionPackage;
 export const UnsubscribeClientsBuyersAuctionPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuctionPackage;
 
-export type UnsubscribeClientsBuyersAuctionPackagesError = DefaultErrors;
+export type UnsubscribeClientsBuyersAuctionPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unsubscribe from the auction package for the specified clients of the buyer. Unsubscribing a client that is not subscribed will have no effect. */
 export const unsubscribeClientsBuyersAuctionPackages: API.OperationMethod<
@@ -3226,7 +3425,7 @@ export const unsubscribeClientsBuyersAuctionPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnsubscribeClientsBuyersAuctionPackagesRequest,
   output: UnsubscribeClientsBuyersAuctionPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCuratorsCuratedPackagesRequest {
@@ -3255,7 +3454,10 @@ export type ListCuratorsCuratedPackagesResponse = ListCuratedPackagesResponse;
 export const ListCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCuratedPackagesResponse;
 
-export type ListCuratorsCuratedPackagesError = DefaultErrors;
+export type ListCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists curated packages owned by the specified curator. */
 export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
@@ -3266,7 +3468,7 @@ export const listCuratorsCuratedPackages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCuratorsCuratedPackagesRequest,
   output: ListCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3297,7 +3499,12 @@ export type DeactivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const DeactivateCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type DeactivateCuratorsCuratedPackagesError = DefaultErrors;
+export type DeactivateCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deactivates an existing curated package. */
 export const deactivateCuratorsCuratedPackages: API.OperationMethod<
@@ -3308,7 +3515,7 @@ export const deactivateCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeactivateCuratorsCuratedPackagesRequest,
   output: DeactivateCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateCuratorsCuratedPackagesRequest {
@@ -3331,7 +3538,12 @@ export type ActivateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const ActivateCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type ActivateCuratorsCuratedPackagesError = DefaultErrors;
+export type ActivateCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates an existing curated package. */
 export const activateCuratorsCuratedPackages: API.OperationMethod<
@@ -3342,7 +3554,7 @@ export const activateCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateCuratorsCuratedPackagesRequest,
   output: ActivateCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCuratorsCuratedPackagesRequest {
@@ -3369,7 +3581,12 @@ export type CreateCuratorsCuratedPackagesResponse = CuratedPackage;
 export const CreateCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type CreateCuratorsCuratedPackagesError = DefaultErrors;
+export type CreateCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new curated package. */
 export const createCuratorsCuratedPackages: API.OperationMethod<
@@ -3380,7 +3597,7 @@ export const createCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCuratorsCuratedPackagesRequest,
   output: CreateCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCuratorsCuratedPackagesRequest {
@@ -3406,7 +3623,12 @@ export type PatchCuratorsCuratedPackagesResponse = CuratedPackage;
 export const PatchCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type PatchCuratorsCuratedPackagesError = DefaultErrors;
+export type PatchCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing curated package. */
 export const patchCuratorsCuratedPackages: API.OperationMethod<
@@ -3417,7 +3639,7 @@ export const patchCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCuratorsCuratedPackagesRequest,
   output: PatchCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCuratorsCuratedPackagesRequest {
@@ -3437,7 +3659,10 @@ export type GetCuratorsCuratedPackagesResponse = CuratedPackage;
 export const GetCuratorsCuratedPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CuratedPackage;
 
-export type GetCuratorsCuratedPackagesError = DefaultErrors;
+export type GetCuratorsCuratedPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a curated package given its resource name. */
 export const getCuratorsCuratedPackages: API.OperationMethod<
@@ -3448,7 +3673,7 @@ export const getCuratorsCuratedPackages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCuratorsCuratedPackagesRequest,
   output: GetCuratorsCuratedPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBiddersAuctionPackagesRequest {
@@ -3480,7 +3705,10 @@ export type ListBiddersAuctionPackagesResponse = ListAuctionPackagesResponse;
 export const ListBiddersAuctionPackagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuctionPackagesResponse;
 
-export type ListBiddersAuctionPackagesError = DefaultErrors;
+export type ListBiddersAuctionPackagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the auction packages. Buyers can use the URL path "/v1alpha/buyers/{accountId}/auctionPackages" to list auction packages for the current buyer and its clients. Bidders can use the URL path "/v1alpha/bidders/{accountId}/auctionPackages" to list auction packages for the bidder, its media planners, its buyers, and all their clients. */
 export const listBiddersAuctionPackages: API.PaginatedOperationMethod<
@@ -3491,7 +3719,7 @@ export const listBiddersAuctionPackages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersAuctionPackagesRequest,
   output: ListBiddersAuctionPackagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3522,7 +3750,12 @@ export type SetReadyToServeBiddersFinalizedDealsResponse = FinalizedDeal;
 export const SetReadyToServeBiddersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FinalizedDeal;
 
-export type SetReadyToServeBiddersFinalizedDealsError = DefaultErrors;
+export type SetReadyToServeBiddersFinalizedDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the given finalized deal as ready to serve. By default, deals are set as ready to serve as soon as they're finalized. If you want to opt out of the default behavior, and manually indicate that deals are ready to serve, ask your Technical Account Manager to add you to the allowlist. If you choose to use this method, finalized deals belonging to the bidder and its child seats don't start serving until after you call `setReadyToServe`, and after the deals become active. For example, you can use this method to delay receiving bid requests until your creative is ready. In addition, bidders can use the URL path "/v1alpha/bidders/{accountId}/finalizedDeals/{dealId}" to set ready to serve for the finalized deals belong to itself, its child seats and all their clients. This method only applies to programmatic guaranteed deals. */
 export const setReadyToServeBiddersFinalizedDeals: API.OperationMethod<
@@ -3533,7 +3766,7 @@ export const setReadyToServeBiddersFinalizedDeals: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetReadyToServeBiddersFinalizedDealsRequest,
   output: SetReadyToServeBiddersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBiddersFinalizedDealsRequest {
@@ -3565,7 +3798,10 @@ export type ListBiddersFinalizedDealsResponse = ListFinalizedDealsResponse;
 export const ListBiddersFinalizedDealsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFinalizedDealsResponse;
 
-export type ListBiddersFinalizedDealsError = DefaultErrors;
+export type ListBiddersFinalizedDealsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists finalized deals. Use the URL path "/v1alpha/buyers/{accountId}/finalizedDeals" to list finalized deals for the current buyer and its clients. Bidders can use the URL path "/v1alpha/bidders/{accountId}/finalizedDeals" to list finalized deals for the bidder, its buyers and all their clients. */
 export const listBiddersFinalizedDeals: API.PaginatedOperationMethod<
@@ -3576,7 +3812,7 @@ export const listBiddersFinalizedDeals: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersFinalizedDealsRequest,
   output: ListBiddersFinalizedDealsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3606,7 +3842,7 @@ export type ListMediaPlannersResponse_Op = ListMediaPlannersResponse;
 export const ListMediaPlannersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListMediaPlannersResponse;
 
-export type ListMediaPlannersError = DefaultErrors;
+export type ListMediaPlannersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all media planner accounts that the caller has access to. For curators, this will return all media planners that have accepted curator terms. For other accounts, attempting to list media planners will return an error. */
 export const listMediaPlanners: API.PaginatedOperationMethod<
@@ -3617,7 +3853,7 @@ export const listMediaPlanners: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMediaPlannersRequest,
   output: ListMediaPlannersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

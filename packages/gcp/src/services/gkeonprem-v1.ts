@@ -2827,6 +2827,52 @@ export const ListVmwareClustersResponse =
   }).annotate({ identifier: "ListVmwareClustersResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2861,7 +2907,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2872,7 +2918,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2896,7 +2942,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2907,7 +2953,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -2927,7 +2973,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -2938,7 +2989,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -2961,7 +3012,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -2972,7 +3028,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -3006,7 +3062,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -3017,7 +3076,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3041,7 +3100,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -3052,7 +3114,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnenrollProjectsLocationsVmwareAdminClustersRequest {
@@ -3090,7 +3152,12 @@ export type UnenrollProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const UnenrollProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UnenrollProjectsLocationsVmwareAdminClustersError = DefaultErrors;
+export type UnenrollProjectsLocationsVmwareAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenrolls an existing VMware admin cluster from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or its clients. */
 export const unenrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3101,7 +3168,7 @@ export const unenrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsVmwareAdminClustersRequest,
   output: UnenrollProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsVmwareAdminClustersRequest {
@@ -3137,7 +3204,12 @@ export type PatchProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const PatchProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsVmwareAdminClustersError = DefaultErrors;
+export type PatchProjectsLocationsVmwareAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single VMware admin cluster. */
 export const patchProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3148,7 +3220,7 @@ export const patchProjectsLocationsVmwareAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVmwareAdminClustersRequest,
   output: PatchProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsVmwareAdminClustersRequest {
@@ -3177,7 +3249,10 @@ export type GetProjectsLocationsVmwareAdminClustersResponse =
 export const GetProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ VmwareAdminCluster;
 
-export type GetProjectsLocationsVmwareAdminClustersError = DefaultErrors;
+export type GetProjectsLocationsVmwareAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single VMware admin cluster. */
 export const getProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3188,7 +3263,7 @@ export const getProjectsLocationsVmwareAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareAdminClustersRequest,
   output: GetProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnrollProjectsLocationsVmwareAdminClustersRequest {
@@ -3215,7 +3290,12 @@ export type EnrollProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const EnrollProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnrollProjectsLocationsVmwareAdminClustersError = DefaultErrors;
+export type EnrollProjectsLocationsVmwareAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls an existing VMware admin cluster to the Anthos On-Prem API within a given project and location. Through enrollment, an existing admin cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster will be expected to be performed through the API. */
 export const enrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3226,7 +3306,7 @@ export const enrollProjectsLocationsVmwareAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsVmwareAdminClustersRequest,
   output: EnrollProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsVmwareAdminClustersRequest {
@@ -3261,7 +3341,10 @@ export type ListProjectsLocationsVmwareAdminClustersResponse =
 export const ListProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVmwareAdminClustersResponse;
 
-export type ListProjectsLocationsVmwareAdminClustersError = DefaultErrors;
+export type ListProjectsLocationsVmwareAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists VMware admin clusters in a given project and location. */
 export const listProjectsLocationsVmwareAdminClusters: API.PaginatedOperationMethod<
@@ -3272,7 +3355,7 @@ export const listProjectsLocationsVmwareAdminClusters: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareAdminClustersRequest,
   output: ListProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3304,7 +3387,11 @@ export const SetIamPolicyProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsVmwareAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3315,7 +3402,7 @@ export const setIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsVmwareAdminClustersRequest,
   output: SetIamPolicyProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsVmwareAdminClustersRequest {
@@ -3362,7 +3449,12 @@ export type CreateProjectsLocationsVmwareAdminClustersResponse = Operation;
 export const CreateProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsVmwareAdminClustersError = DefaultErrors;
+export type CreateProjectsLocationsVmwareAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new VMware admin cluster in a given project and location. The API needs to be combined with creating a bootstrap cluster to work. */
 export const createProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3373,7 +3465,7 @@ export const createProjectsLocationsVmwareAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVmwareAdminClustersRequest,
   output: CreateProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsVmwareAdminClustersRequest {
@@ -3399,7 +3491,9 @@ export const GetIamPolicyProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsVmwareAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3410,7 +3504,7 @@ export const getIamPolicyProjectsLocationsVmwareAdminClusters: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsVmwareAdminClustersRequest,
   output: GetIamPolicyProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest {
@@ -3439,7 +3533,11 @@ export const TestIamPermissionsProjectsLocationsVmwareAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsVmwareAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsVmwareAdminClusters: API.OperationMethod<
@@ -3450,7 +3548,7 @@ export const testIamPermissionsProjectsLocationsVmwareAdminClusters: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsVmwareAdminClustersRequest,
   output: TestIamPermissionsProjectsLocationsVmwareAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsVmwareAdminClustersOperationsRequest {
@@ -3486,7 +3584,9 @@ export const ListProjectsLocationsVmwareAdminClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsVmwareAdminClustersOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsVmwareAdminClustersOperations: API.PaginatedOperationMethod<
@@ -3497,7 +3597,7 @@ export const listProjectsLocationsVmwareAdminClustersOperations: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareAdminClustersOperationsRequest,
   output: ListProjectsLocationsVmwareAdminClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3523,7 +3623,9 @@ export const GetProjectsLocationsVmwareAdminClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsVmwareAdminClustersOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsVmwareAdminClustersOperations: API.OperationMethod<
@@ -3534,7 +3636,7 @@ export const getProjectsLocationsVmwareAdminClustersOperations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareAdminClustersOperationsRequest,
   output: GetProjectsLocationsVmwareAdminClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsBareMetalClustersRequest {
@@ -3576,7 +3678,12 @@ export type CreateProjectsLocationsBareMetalClustersResponse = Operation;
 export const CreateProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type CreateProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new bare metal cluster in a given project and location. */
 export const createProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3587,7 +3694,7 @@ export const createProjectsLocationsBareMetalClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBareMetalClustersRequest,
   output: CreateProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsBareMetalClustersRequest {
@@ -3628,7 +3735,12 @@ export type DeleteProjectsLocationsBareMetalClustersResponse = Operation;
 export const DeleteProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type DeleteProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single bare metal Cluster. */
 export const deleteProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3639,7 +3751,7 @@ export const deleteProjectsLocationsBareMetalClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBareMetalClustersRequest,
   output: DeleteProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsBareMetalClustersRequest {
@@ -3664,7 +3776,10 @@ export type GetIamPolicyProjectsLocationsBareMetalClustersResponse = Policy;
 export const GetIamPolicyProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3675,7 +3790,7 @@ export const getIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsBareMetalClustersRequest,
   output: GetIamPolicyProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsBareMetalClustersRequest {
@@ -3704,7 +3819,11 @@ export const TestIamPermissionsProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBareMetalClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3715,7 +3834,7 @@ export const testIamPermissionsProjectsLocationsBareMetalClusters: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsBareMetalClustersRequest,
   output: TestIamPermissionsProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBareMetalClustersRequest {
@@ -3753,7 +3872,10 @@ export type ListProjectsLocationsBareMetalClustersResponse =
 export const ListProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBareMetalClustersResponse;
 
-export type ListProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type ListProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists bare metal clusters in a given project and location. */
 export const listProjectsLocationsBareMetalClusters: API.PaginatedOperationMethod<
@@ -3764,7 +3886,7 @@ export const listProjectsLocationsBareMetalClusters: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalClustersRequest,
   output: ListProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3809,7 +3931,11 @@ export const QueryVersionConfigProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryBareMetalVersionConfigResponse;
 
 export type QueryVersionConfigProjectsLocationsBareMetalClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the bare metal user cluster version config. */
 export const queryVersionConfigProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3820,7 +3946,7 @@ export const queryVersionConfigProjectsLocationsBareMetalClusters: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVersionConfigProjectsLocationsBareMetalClustersRequest,
   output: QueryVersionConfigProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsBareMetalClustersRequest {
@@ -3847,7 +3973,12 @@ export type SetIamPolicyProjectsLocationsBareMetalClustersResponse = Policy;
 export const SetIamPolicyProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3858,7 +3989,7 @@ export const setIamPolicyProjectsLocationsBareMetalClusters: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsBareMetalClustersRequest,
   output: SetIamPolicyProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnrollProjectsLocationsBareMetalClustersRequest {
@@ -3885,7 +4016,12 @@ export type EnrollProjectsLocationsBareMetalClustersResponse = Operation;
 export const EnrollProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnrollProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type EnrollProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls an existing bare metal user cluster and its node pools to the Anthos On-Prem API within a given project and location. Through enrollment, an existing cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster and/or its node pools will be expected to be performed through the API. */
 export const enrollProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3896,7 +4032,7 @@ export const enrollProjectsLocationsBareMetalClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsBareMetalClustersRequest,
   output: EnrollProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnenrollProjectsLocationsBareMetalClustersRequest {
@@ -3932,7 +4068,12 @@ export type UnenrollProjectsLocationsBareMetalClustersResponse = Operation;
 export const UnenrollProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UnenrollProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type UnenrollProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenrolls an existing bare metal user cluster and its node pools from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters and node pools will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or its clients. */
 export const unenrollProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3943,7 +4084,7 @@ export const unenrollProjectsLocationsBareMetalClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsBareMetalClustersRequest,
   output: UnenrollProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsBareMetalClustersRequest {
@@ -3979,7 +4120,12 @@ export type PatchProjectsLocationsBareMetalClustersResponse = Operation;
 export const PatchProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type PatchProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single bare metal Cluster. */
 export const patchProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -3990,7 +4136,7 @@ export const patchProjectsLocationsBareMetalClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBareMetalClustersRequest,
   output: PatchProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBareMetalClustersRequest {
@@ -4018,7 +4164,10 @@ export type GetProjectsLocationsBareMetalClustersResponse = BareMetalCluster;
 export const GetProjectsLocationsBareMetalClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BareMetalCluster;
 
-export type GetProjectsLocationsBareMetalClustersError = DefaultErrors;
+export type GetProjectsLocationsBareMetalClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single bare metal Cluster. */
 export const getProjectsLocationsBareMetalClusters: API.OperationMethod<
@@ -4029,7 +4178,7 @@ export const getProjectsLocationsBareMetalClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalClustersRequest,
   output: GetProjectsLocationsBareMetalClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4058,7 +4207,11 @@ export const EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls an existing bare metal node pool to the Anthos On-Prem API within a given project and location. Through enrollment, an existing node pool will become Anthos On-Prem API managed. The corresponding GCP resources will be created. */
 export const enrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4069,7 +4222,7 @@ export const enrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: EnrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4104,7 +4257,11 @@ export const UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRespons
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenrolls a bare metal node pool from Anthos On-Prem API. */
 export const unenrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4115,7 +4272,7 @@ export const unenrollProjectsLocationsBareMetalClustersBareMetalNodePools: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: UnenrollProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4140,7 +4297,9 @@ export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BareMetalNodePool;
 
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single bare metal node pool. */
 export const getProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4151,7 +4310,7 @@ export const getProjectsLocationsBareMetalClustersBareMetalNodePools: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: GetProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4189,7 +4348,11 @@ export const PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single bare metal node pool. */
 export const patchProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4200,7 +4363,7 @@ export const patchProjectsLocationsBareMetalClustersBareMetalNodePools: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: PatchProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4239,7 +4402,11 @@ export const CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new bare metal node pool in a given project, location and Bare Metal cluster. */
 export const createProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4250,7 +4417,7 @@ export const createProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: CreateProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4290,7 +4457,11 @@ export const DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single bare metal node pool. */
 export const deleteProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4301,7 +4472,7 @@ export const deleteProjectsLocationsBareMetalClustersBareMetalNodePools: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: DeleteProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4328,7 +4499,9 @@ export const GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRes
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4341,7 +4514,7 @@ export const getIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: A
     GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output:
     GetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4370,7 +4543,11 @@ export const TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePo
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4383,7 +4560,7 @@ export const testIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePo
     TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output:
     TestIamPermissionsProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest {
@@ -4414,7 +4591,9 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBareMetalNodePoolsResponse;
 
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists bare metal node pools in a given project, location and bare metal cluster. */
 export const listProjectsLocationsBareMetalClustersBareMetalNodePools: API.PaginatedOperationMethod<
@@ -4425,7 +4604,7 @@ export const listProjectsLocationsBareMetalClustersBareMetalNodePools: API.Pagin
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output: ListProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4458,7 +4637,11 @@ export const SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRes
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: API.OperationMethod<
@@ -4471,7 +4654,7 @@ export const setIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePools: A
     SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsRequest,
   output:
     SetIamPolicyProjectsLocationsBareMetalClustersBareMetalNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest {
@@ -4507,7 +4690,9 @@ export const ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsR
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: API.PaginatedOperationMethod<
@@ -4520,7 +4705,7 @@ export const listProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations:
     ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
   output:
     ListProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4546,7 +4731,9 @@ export const GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRe
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: API.OperationMethod<
@@ -4559,7 +4746,7 @@ export const getProjectsLocationsBareMetalClustersBareMetalNodePoolsOperations: 
     GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsRequest,
   output:
     GetProjectsLocationsBareMetalClustersBareMetalNodePoolsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsBareMetalClustersOperationsRequest {
@@ -4595,7 +4782,9 @@ export const ListProjectsLocationsBareMetalClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsBareMetalClustersOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsBareMetalClustersOperations: API.PaginatedOperationMethod<
@@ -4606,7 +4795,7 @@ export const listProjectsLocationsBareMetalClustersOperations: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalClustersOperationsRequest,
   output: ListProjectsLocationsBareMetalClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4631,7 +4820,9 @@ export const GetProjectsLocationsBareMetalClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsBareMetalClustersOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsBareMetalClustersOperations: API.OperationMethod<
@@ -4642,7 +4833,7 @@ export const getProjectsLocationsBareMetalClustersOperations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalClustersOperationsRequest,
   output: GetProjectsLocationsBareMetalClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsVmwareClustersRequest {
@@ -4667,7 +4858,10 @@ export type GetIamPolicyProjectsLocationsVmwareClustersResponse = Policy;
 export const GetIamPolicyProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsVmwareClustersError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -4678,7 +4872,7 @@ export const getIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsVmwareClustersRequest,
   output: GetIamPolicyProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsVmwareClustersRequest {
@@ -4707,7 +4901,11 @@ export const TestIamPermissionsProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsVmwareClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -4718,7 +4916,7 @@ export const testIamPermissionsProjectsLocationsVmwareClusters: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsVmwareClustersRequest,
   output: TestIamPermissionsProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsVmwareClustersRequest {
@@ -4765,7 +4963,12 @@ export type CreateProjectsLocationsVmwareClustersResponse = Operation;
 export const CreateProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsVmwareClustersError = DefaultErrors;
+export type CreateProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new VMware user cluster in a given project and location. */
 export const createProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -4776,7 +4979,7 @@ export const createProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVmwareClustersRequest,
   output: CreateProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsVmwareClustersRequest {
@@ -4817,7 +5020,12 @@ export type DeleteProjectsLocationsVmwareClustersResponse = Operation;
 export const DeleteProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsVmwareClustersError = DefaultErrors;
+export type DeleteProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single VMware Cluster. */
 export const deleteProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -4828,7 +5036,7 @@ export const deleteProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsVmwareClustersRequest,
   output: DeleteProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsVmwareClustersRequest {
@@ -4855,7 +5063,12 @@ export type SetIamPolicyProjectsLocationsVmwareClustersResponse = Policy;
 export const SetIamPolicyProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsVmwareClustersError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -4866,7 +5079,7 @@ export const setIamPolicyProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsVmwareClustersRequest,
   output: SetIamPolicyProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsVmwareClustersRequest {
@@ -4904,7 +5117,10 @@ export type ListProjectsLocationsVmwareClustersResponse =
 export const ListProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVmwareClustersResponse;
 
-export type ListProjectsLocationsVmwareClustersError = DefaultErrors;
+export type ListProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists VMware Clusters in a given project and location. */
 export const listProjectsLocationsVmwareClusters: API.PaginatedOperationMethod<
@@ -4915,7 +5131,7 @@ export const listProjectsLocationsVmwareClusters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersRequest,
   output: ListProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4960,7 +5176,11 @@ export const QueryVersionConfigProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryVmwareVersionConfigResponse;
 
 export type QueryVersionConfigProjectsLocationsVmwareClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the VMware user cluster version config. */
 export const queryVersionConfigProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -4971,7 +5191,7 @@ export const queryVersionConfigProjectsLocationsVmwareClusters: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVersionConfigProjectsLocationsVmwareClustersRequest,
   output: QueryVersionConfigProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnrollProjectsLocationsVmwareClustersRequest {
@@ -4998,7 +5218,12 @@ export type EnrollProjectsLocationsVmwareClustersResponse = Operation;
 export const EnrollProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnrollProjectsLocationsVmwareClustersError = DefaultErrors;
+export type EnrollProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls an existing VMware user cluster and its node pools to the Anthos On-Prem API within a given project and location. Through enrollment, an existing cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster and/or its node pools will be expected to be performed through the API. */
 export const enrollProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -5009,7 +5234,7 @@ export const enrollProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsVmwareClustersRequest,
   output: EnrollProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsVmwareClustersRequest {
@@ -5044,7 +5269,12 @@ export type PatchProjectsLocationsVmwareClustersResponse = Operation;
 export const PatchProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsVmwareClustersError = DefaultErrors;
+export type PatchProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single VMware cluster. */
 export const patchProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -5055,7 +5285,7 @@ export const patchProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVmwareClustersRequest,
   output: PatchProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsVmwareClustersRequest {
@@ -5083,7 +5313,10 @@ export type GetProjectsLocationsVmwareClustersResponse = VmwareCluster;
 export const GetProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ VmwareCluster;
 
-export type GetProjectsLocationsVmwareClustersError = DefaultErrors;
+export type GetProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single VMware Cluster. */
 export const getProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -5094,7 +5327,7 @@ export const getProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersRequest,
   output: GetProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnenrollProjectsLocationsVmwareClustersRequest {
@@ -5130,7 +5363,12 @@ export type UnenrollProjectsLocationsVmwareClustersResponse = Operation;
 export const UnenrollProjectsLocationsVmwareClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UnenrollProjectsLocationsVmwareClustersError = DefaultErrors;
+export type UnenrollProjectsLocationsVmwareClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenrolls an existing VMware user cluster and its node pools from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters and node pools will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or UI. */
 export const unenrollProjectsLocationsVmwareClusters: API.OperationMethod<
@@ -5141,7 +5379,7 @@ export const unenrollProjectsLocationsVmwareClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsVmwareClustersRequest,
   output: UnenrollProjectsLocationsVmwareClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsVmwareClustersOperationsRequest {
@@ -5176,7 +5414,10 @@ export type ListProjectsLocationsVmwareClustersOperationsResponse =
 export const ListProjectsLocationsVmwareClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsVmwareClustersOperationsError = DefaultErrors;
+export type ListProjectsLocationsVmwareClustersOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsVmwareClustersOperations: API.PaginatedOperationMethod<
@@ -5187,7 +5428,7 @@ export const listProjectsLocationsVmwareClustersOperations: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersOperationsRequest,
   output: ListProjectsLocationsVmwareClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5211,7 +5452,10 @@ export type GetProjectsLocationsVmwareClustersOperationsResponse = Operation;
 export const GetProjectsLocationsVmwareClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsVmwareClustersOperationsError = DefaultErrors;
+export type GetProjectsLocationsVmwareClustersOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsVmwareClustersOperations: API.OperationMethod<
@@ -5222,7 +5466,7 @@ export const getProjectsLocationsVmwareClustersOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersOperationsRequest,
   output: GetProjectsLocationsVmwareClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5251,7 +5495,11 @@ export const EnrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type EnrollProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls a VMware node pool to Anthos On-Prem API */
 export const enrollProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5262,7 +5510,7 @@ export const enrollProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: EnrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5287,7 +5535,9 @@ export const GetProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VmwareNodePool;
 
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single VMware node pool. */
 export const getProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5298,7 +5548,7 @@ export const getProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: GetProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5331,7 +5581,11 @@ export const PatchProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single VMware node pool. */
 export const patchProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5342,7 +5596,7 @@ export const patchProjectsLocationsVmwareClustersVmwareNodePools: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: PatchProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5377,7 +5631,11 @@ export const UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenrolls a VMware node pool to Anthos On-Prem API */
 export const unenrollProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5388,7 +5646,7 @@ export const unenrollProjectsLocationsVmwareClustersVmwareNodePools: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: UnenrollProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5415,7 +5673,9 @@ export const GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5426,7 +5686,7 @@ export const getIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: GetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5455,7 +5715,11 @@ export const TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRes
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5468,7 +5732,7 @@ export const testIamPermissionsProjectsLocationsVmwareClustersVmwareNodePools: A
     TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output:
     TestIamPermissionsProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5507,7 +5771,11 @@ export const CreateProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new VMware node pool in a given project, location and VMWare cluster. */
 export const createProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5518,7 +5786,7 @@ export const createProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: CreateProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5558,7 +5826,11 @@ export const DeleteProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single VMware node pool. */
 export const deleteProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5569,7 +5841,7 @@ export const deleteProjectsLocationsVmwareClustersVmwareNodePools: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: DeleteProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5598,7 +5870,11 @@ export const SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.OperationMethod<
@@ -5609,7 +5885,7 @@ export const setIamPolicyProjectsLocationsVmwareClustersVmwareNodePools: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: SetIamPolicyProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest {
@@ -5640,7 +5916,9 @@ export const ListProjectsLocationsVmwareClustersVmwareNodePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVmwareNodePoolsResponse;
 
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists VMware node pools in a given project, location and VMWare cluster. */
 export const listProjectsLocationsVmwareClustersVmwareNodePools: API.PaginatedOperationMethod<
@@ -5651,7 +5929,7 @@ export const listProjectsLocationsVmwareClustersVmwareNodePools: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersVmwareNodePoolsRequest,
   output: ListProjectsLocationsVmwareClustersVmwareNodePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5691,7 +5969,9 @@ export const ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRespons
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.PaginatedOperationMethod<
@@ -5702,7 +5982,7 @@ export const listProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.P
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest,
   output: ListProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5728,7 +6008,9 @@ export const GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.OperationMethod<
@@ -5739,7 +6021,7 @@ export const getProjectsLocationsVmwareClustersVmwareNodePoolsOperations: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsRequest,
   output: GetProjectsLocationsVmwareClustersVmwareNodePoolsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsBareMetalAdminClustersRequest {
@@ -5774,7 +6056,10 @@ export type ListProjectsLocationsBareMetalAdminClustersResponse =
 export const ListProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBareMetalAdminClustersResponse;
 
-export type ListProjectsLocationsBareMetalAdminClustersError = DefaultErrors;
+export type ListProjectsLocationsBareMetalAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists bare metal admin clusters in a given project and location. */
 export const listProjectsLocationsBareMetalAdminClusters: API.PaginatedOperationMethod<
@@ -5785,7 +6070,7 @@ export const listProjectsLocationsBareMetalAdminClusters: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalAdminClustersRequest,
   output: ListProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5820,7 +6105,11 @@ export const QueryVersionConfigProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryBareMetalAdminVersionConfigResponse;
 
 export type QueryVersionConfigProjectsLocationsBareMetalAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the bare metal admin cluster version config. */
 export const queryVersionConfigProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -5831,7 +6120,7 @@ export const queryVersionConfigProjectsLocationsBareMetalAdminClusters: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVersionConfigProjectsLocationsBareMetalAdminClustersRequest,
   output: QueryVersionConfigProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
@@ -5860,7 +6149,11 @@ export const SetIamPolicyProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsBareMetalAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -5871,7 +6164,7 @@ export const setIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsBareMetalAdminClustersRequest,
   output: SetIamPolicyProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsBareMetalAdminClustersRequest {
@@ -5913,7 +6206,12 @@ export type CreateProjectsLocationsBareMetalAdminClustersResponse = Operation;
 export const CreateProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsBareMetalAdminClustersError = DefaultErrors;
+export type CreateProjectsLocationsBareMetalAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new bare metal admin cluster in a given project and location. The API needs to be combined with creating a bootstrap cluster to work. See: https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/installing/creating-clusters/create-admin-cluster-api#prepare_bootstrap_environment */
 export const createProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -5924,7 +6222,7 @@ export const createProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsBareMetalAdminClustersRequest,
   output: CreateProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest {
@@ -5951,7 +6249,9 @@ export const GetIamPolicyProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsBareMetalAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -5962,7 +6262,7 @@ export const getIamPolicyProjectsLocationsBareMetalAdminClusters: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsBareMetalAdminClustersRequest,
   output: GetIamPolicyProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest {
@@ -5991,7 +6291,11 @@ export const TestIamPermissionsProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsBareMetalAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -6002,7 +6306,7 @@ export const testIamPermissionsProjectsLocationsBareMetalAdminClusters: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsBareMetalAdminClustersRequest,
   output: TestIamPermissionsProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnenrollProjectsLocationsBareMetalAdminClustersRequest {
@@ -6041,7 +6345,11 @@ export const UnenrollProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UnenrollProjectsLocationsBareMetalAdminClustersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenrolls an existing bare metal admin cluster from the Anthos On-Prem API within a given project and location. Unenrollment removes the Cloud reference to the cluster without modifying the underlying OnPrem Resources. Clusters will continue to run; however, they will no longer be accessible through the Anthos On-Prem API or its clients. */
 export const unenrollProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -6052,7 +6360,7 @@ export const unenrollProjectsLocationsBareMetalAdminClusters: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollProjectsLocationsBareMetalAdminClustersRequest,
   output: UnenrollProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsBareMetalAdminClustersRequest {
@@ -6081,7 +6389,10 @@ export type GetProjectsLocationsBareMetalAdminClustersResponse =
 export const GetProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BareMetalAdminCluster;
 
-export type GetProjectsLocationsBareMetalAdminClustersError = DefaultErrors;
+export type GetProjectsLocationsBareMetalAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single bare metal admin cluster. */
 export const getProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -6092,7 +6403,7 @@ export const getProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalAdminClustersRequest,
   output: GetProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsBareMetalAdminClustersRequest {
@@ -6123,7 +6434,12 @@ export type PatchProjectsLocationsBareMetalAdminClustersResponse = Operation;
 export const PatchProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsBareMetalAdminClustersError = DefaultErrors;
+export type PatchProjectsLocationsBareMetalAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the parameters of a single bare metal admin cluster. */
 export const patchProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -6134,7 +6450,7 @@ export const patchProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsBareMetalAdminClustersRequest,
   output: PatchProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnrollProjectsLocationsBareMetalAdminClustersRequest {
@@ -6163,7 +6479,12 @@ export type EnrollProjectsLocationsBareMetalAdminClustersResponse = Operation;
 export const EnrollProjectsLocationsBareMetalAdminClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnrollProjectsLocationsBareMetalAdminClustersError = DefaultErrors;
+export type EnrollProjectsLocationsBareMetalAdminClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls an existing bare metal admin cluster to the Anthos On-Prem API within a given project and location. Through enrollment, an existing admin cluster will become Anthos On-Prem API managed. The corresponding GCP resources will be created and all future modifications to the cluster will be expected to be performed through the API. */
 export const enrollProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
@@ -6174,7 +6495,7 @@ export const enrollProjectsLocationsBareMetalAdminClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollProjectsLocationsBareMetalAdminClustersRequest,
   output: EnrollProjectsLocationsBareMetalAdminClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsBareMetalAdminClustersOperationsRequest {
@@ -6210,7 +6531,9 @@ export const ListProjectsLocationsBareMetalAdminClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
 export type ListProjectsLocationsBareMetalAdminClustersOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsBareMetalAdminClustersOperations: API.PaginatedOperationMethod<
@@ -6221,7 +6544,7 @@ export const listProjectsLocationsBareMetalAdminClustersOperations: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsBareMetalAdminClustersOperationsRequest,
   output: ListProjectsLocationsBareMetalAdminClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6247,7 +6570,9 @@ export const GetProjectsLocationsBareMetalAdminClustersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsBareMetalAdminClustersOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsBareMetalAdminClustersOperations: API.OperationMethod<
@@ -6258,5 +6583,5 @@ export const getProjectsLocationsBareMetalAdminClustersOperations: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsBareMetalAdminClustersOperationsRequest,
   output: GetProjectsLocationsBareMetalAdminClustersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -2027,6 +2027,52 @@ export const OperationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "OperationInfo" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2060,7 +2106,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists service operations that match the specified filter in the request. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -2071,7 +2117,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2093,7 +2139,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2104,7 +2150,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListServicesRequest {
@@ -2134,7 +2180,7 @@ export type ListServicesResponse_Op = ListServicesResponse;
 export const ListServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListServicesError = DefaultErrors;
+export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists managed services. Returns all public services. For authenticated users, also returns all services the calling user has "servicemanagement.services.get" permission for. */
 export const listServices: API.PaginatedOperationMethod<
@@ -2145,7 +2191,7 @@ export const listServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2167,7 +2213,7 @@ export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetServicesResponse = ManagedService;
 export const GetServicesResponse = /*@__PURE__*/ /*#__PURE__*/ ManagedService;
 
-export type GetServicesError = DefaultErrors;
+export type GetServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a managed service. Authentication is required unless the service is public. */
 export const getServices: API.OperationMethod<
@@ -2178,7 +2224,7 @@ export const getServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesRequest,
   output: GetServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesRequest {
@@ -2196,7 +2242,12 @@ export const CreateServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateServicesResponse = Operation;
 export const CreateServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateServicesError = DefaultErrors;
+export type CreateServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project can own no more than 500 services. For security and reliability purposes, a production service should be hosted in a dedicated producer project. Operation */
 export const createServices: API.OperationMethod<
@@ -2207,7 +2258,7 @@ export const createServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesRequest,
   output: CreateServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteServicesRequest {
@@ -2225,7 +2276,12 @@ export const DeleteServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteServicesResponse = Operation;
 export const DeleteServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteServicesError = DefaultErrors;
+export type DeleteServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a managed service. This method will change the service to the `Soft-Delete` state for 30 days. Within this period, service producers may call UndeleteService to restore the service. After 30 days, the service will be permanently deleted. Operation */
 export const deleteServices: API.OperationMethod<
@@ -2236,7 +2292,7 @@ export const deleteServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesRequest,
   output: DeleteServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteServicesRequest {
@@ -2259,7 +2315,12 @@ export const UndeleteServicesRequest =
 export type UndeleteServicesResponse = Operation;
 export const UndeleteServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteServicesError = DefaultErrors;
+export type UndeleteServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revives a previously deleted managed service. The method restores the service using the configuration at the time the service was deleted. The target service must exist and must have been deleted within the last 30 days. Operation */
 export const undeleteServices: API.OperationMethod<
@@ -2270,7 +2331,7 @@ export const undeleteServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteServicesRequest,
   output: UndeleteServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigServicesRequest {
@@ -2295,7 +2356,7 @@ export const GetConfigServicesRequest =
 export type GetConfigServicesResponse = Service;
 export const GetConfigServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type GetConfigServicesError = DefaultErrors;
+export type GetConfigServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a service configuration (version) for a managed service. */
 export const getConfigServices: API.OperationMethod<
@@ -2306,7 +2367,7 @@ export const getConfigServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigServicesRequest,
   output: GetConfigServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateConfigReportServicesRequest {
@@ -2330,7 +2391,12 @@ export type GenerateConfigReportServicesResponse = GenerateConfigReportResponse;
 export const GenerateConfigReportServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateConfigReportResponse;
 
-export type GenerateConfigReportServicesError = DefaultErrors;
+export type GenerateConfigReportServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates and returns a report (errors, warnings and changes from existing configurations) associated with GenerateConfigReportRequest.new_value If GenerateConfigReportRequest.old_value is specified, GenerateConfigReportRequest will contain a single ChangeReport based on the comparison between GenerateConfigReportRequest.new_value and GenerateConfigReportRequest.old_value. If GenerateConfigReportRequest.old_value is not specified, this method will compare GenerateConfigReportRequest.new_value with the last pushed service configuration. */
 export const generateConfigReportServices: API.OperationMethod<
@@ -2341,7 +2407,7 @@ export const generateConfigReportServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateConfigReportServicesRequest,
   output: GenerateConfigReportServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyServicesRequest {
@@ -2367,7 +2433,12 @@ export const SetIamPolicyServicesRequest =
 export type SetIamPolicyServicesResponse = Policy;
 export const SetIamPolicyServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyServicesError = DefaultErrors;
+export type SetIamPolicyServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyServices: API.OperationMethod<
@@ -2378,7 +2449,7 @@ export const setIamPolicyServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyServicesRequest,
   output: SetIamPolicyServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyServicesRequest {
@@ -2404,7 +2475,12 @@ export const GetIamPolicyServicesRequest =
 export type GetIamPolicyServicesResponse = Policy;
 export const GetIamPolicyServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyServicesError = DefaultErrors;
+export type GetIamPolicyServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyServices: API.OperationMethod<
@@ -2415,7 +2491,7 @@ export const getIamPolicyServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyServicesRequest,
   output: GetIamPolicyServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsServicesRequest {
@@ -2442,7 +2518,12 @@ export type TestIamPermissionsServicesResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsServicesError = DefaultErrors;
+export type TestIamPermissionsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsServices: API.OperationMethod<
@@ -2453,7 +2534,7 @@ export const testIamPermissionsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsServicesRequest,
   output: TestIamPermissionsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConfigsRequest {
@@ -2479,7 +2560,7 @@ export type ListServicesConfigsResponse = ListServiceConfigsResponse;
 export const ListServicesConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServiceConfigsResponse;
 
-export type ListServicesConfigsError = DefaultErrors;
+export type ListServicesConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the history of the service configuration for a managed service, from the newest to the oldest. */
 export const listServicesConfigs: API.PaginatedOperationMethod<
@@ -2490,7 +2571,7 @@ export const listServicesConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConfigsRequest,
   output: ListServicesConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2522,7 +2603,7 @@ export const GetServicesConfigsRequest =
 export type GetServicesConfigsResponse = Service;
 export const GetServicesConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type GetServicesConfigsError = DefaultErrors;
+export type GetServicesConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a service configuration (version) for a managed service. */
 export const getServicesConfigs: API.OperationMethod<
@@ -2533,7 +2614,7 @@ export const getServicesConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesConfigsRequest,
   output: GetServicesConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesConfigsRequest {
@@ -2560,7 +2641,12 @@ export type CreateServicesConfigsResponse = Service;
 export const CreateServicesConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type CreateServicesConfigsError = DefaultErrors;
+export type CreateServicesConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually. */
 export const createServicesConfigs: API.OperationMethod<
@@ -2571,7 +2657,7 @@ export const createServicesConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesConfigsRequest,
   output: CreateServicesConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubmitServicesConfigsRequest {
@@ -2598,7 +2684,12 @@ export type SubmitServicesConfigsResponse = Operation;
 export const SubmitServicesConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SubmitServicesConfigsError = DefaultErrors;
+export type SubmitServicesConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new service configuration (version) for a managed service based on user-supplied configuration source files (for example: OpenAPI Specification). This method stores the source configurations as well as the generated service configuration. To rollout the service configuration to other services, please call CreateServiceRollout. Only the 100 most recent configuration sources and ones referenced by existing service configurtions are kept for each service. The rest will be deleted eventually. Operation */
 export const submitServicesConfigs: API.OperationMethod<
@@ -2609,7 +2700,7 @@ export const submitServicesConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitServicesConfigsRequest,
   output: SubmitServicesConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesRolloutsRequest {
@@ -2638,7 +2729,7 @@ export type ListServicesRolloutsResponse = ListServiceRolloutsResponse;
 export const ListServicesRolloutsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServiceRolloutsResponse;
 
-export type ListServicesRolloutsError = DefaultErrors;
+export type ListServicesRolloutsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the history of the service configuration rollouts for a managed service, from the newest to the oldest. */
 export const listServicesRollouts: API.PaginatedOperationMethod<
@@ -2649,7 +2740,7 @@ export const listServicesRollouts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRolloutsRequest,
   output: ListServicesRolloutsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2678,7 +2769,7 @@ export const GetServicesRolloutsRequest =
 export type GetServicesRolloutsResponse = Rollout;
 export const GetServicesRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Rollout;
 
-export type GetServicesRolloutsError = DefaultErrors;
+export type GetServicesRolloutsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a service configuration rollout. */
 export const getServicesRollouts: API.OperationMethod<
@@ -2689,7 +2780,7 @@ export const getServicesRollouts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesRolloutsRequest,
   output: GetServicesRolloutsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesRolloutsRequest {
@@ -2716,7 +2807,12 @@ export type CreateServicesRolloutsResponse = Operation;
 export const CreateServicesRolloutsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateServicesRolloutsError = DefaultErrors;
+export type CreateServicesRolloutsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new service configuration rollout. Based on rollout, the Google Service Management will roll out the service configurations to different backend services. For example, the logging configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be deleted eventually. Operation */
 export const createServicesRollouts: API.OperationMethod<
@@ -2727,7 +2823,7 @@ export const createServicesRollouts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesRolloutsRequest,
   output: CreateServicesRolloutsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyServicesConsumersRequest {
@@ -2754,7 +2850,12 @@ export type SetIamPolicyServicesConsumersResponse = Policy;
 export const SetIamPolicyServicesConsumersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyServicesConsumersError = DefaultErrors;
+export type SetIamPolicyServicesConsumersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyServicesConsumers: API.OperationMethod<
@@ -2765,7 +2866,7 @@ export const setIamPolicyServicesConsumers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyServicesConsumersRequest,
   output: SetIamPolicyServicesConsumersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyServicesConsumersRequest {
@@ -2792,7 +2893,12 @@ export type GetIamPolicyServicesConsumersResponse = Policy;
 export const GetIamPolicyServicesConsumersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyServicesConsumersError = DefaultErrors;
+export type GetIamPolicyServicesConsumersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyServicesConsumers: API.OperationMethod<
@@ -2803,7 +2909,7 @@ export const getIamPolicyServicesConsumers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyServicesConsumersRequest,
   output: GetIamPolicyServicesConsumersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsServicesConsumersRequest {
@@ -2831,7 +2937,12 @@ export type TestIamPermissionsServicesConsumersResponse =
 export const TestIamPermissionsServicesConsumersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsServicesConsumersError = DefaultErrors;
+export type TestIamPermissionsServicesConsumersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsServicesConsumers: API.OperationMethod<
@@ -2842,5 +2953,5 @@ export const testIamPermissionsServicesConsumers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsServicesConsumersRequest,
   output: TestIamPermissionsServicesConsumersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

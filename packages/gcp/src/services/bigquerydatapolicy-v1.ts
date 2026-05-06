@@ -229,6 +229,52 @@ export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SetIamPolicyRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -252,7 +298,12 @@ export type CreateProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const CreateProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataPolicy;
 
-export type CreateProjectsLocationsDataPoliciesError = DefaultErrors;
+export type CreateProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new data policy under a project with the given `dataPolicyId` (used as the display name), policy tag, and data policy type. */
 export const createProjectsLocationsDataPolicies: API.OperationMethod<
@@ -263,7 +314,7 @@ export const createProjectsLocationsDataPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataPoliciesRequest,
   output: CreateProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDataPoliciesRequest {
@@ -292,7 +343,11 @@ export const TestIamPermissionsProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDataPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the caller's permission on the specified data policy resource. */
 export const testIamPermissionsProjectsLocationsDataPolicies: API.OperationMethod<
@@ -303,7 +358,7 @@ export const testIamPermissionsProjectsLocationsDataPolicies: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDataPoliciesRequest,
   output: TestIamPermissionsProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataPoliciesRequest {
@@ -333,7 +388,10 @@ export type ListProjectsLocationsDataPoliciesResponse =
 export const ListProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataPoliciesResponse;
 
-export type ListProjectsLocationsDataPoliciesError = DefaultErrors;
+export type ListProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all of the data policies in the specified parent project. */
 export const listProjectsLocationsDataPolicies: API.PaginatedOperationMethod<
@@ -344,7 +402,7 @@ export const listProjectsLocationsDataPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataPoliciesRequest,
   output: ListProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -368,7 +426,10 @@ export type GetProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const GetProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataPolicy;
 
-export type GetProjectsLocationsDataPoliciesError = DefaultErrors;
+export type GetProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the data policy specified by its resource name. */
 export const getProjectsLocationsDataPolicies: API.OperationMethod<
@@ -379,7 +440,7 @@ export const getProjectsLocationsDataPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataPoliciesRequest,
   output: GetProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDataPoliciesRequest {
@@ -402,7 +463,12 @@ export type DeleteProjectsLocationsDataPoliciesResponse = Empty;
 export const DeleteProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDataPoliciesError = DefaultErrors;
+export type DeleteProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the data policy specified by its resource name. */
 export const deleteProjectsLocationsDataPolicies: API.OperationMethod<
@@ -413,7 +479,7 @@ export const deleteProjectsLocationsDataPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataPoliciesRequest,
   output: DeleteProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDataPoliciesRequest {
@@ -440,7 +506,12 @@ export type GetIamPolicyProjectsLocationsDataPoliciesResponse = Policy;
 export const GetIamPolicyProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsDataPoliciesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy for the specified data policy. */
 export const getIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
@@ -451,7 +522,7 @@ export const getIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDataPoliciesRequest,
   output: GetIamPolicyProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDataPoliciesRequest {
@@ -482,7 +553,12 @@ export type PatchProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const PatchProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataPolicy;
 
-export type PatchProjectsLocationsDataPoliciesError = DefaultErrors;
+export type PatchProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata for an existing data policy. The target data policy can be specified by the resource name. */
 export const patchProjectsLocationsDataPolicies: API.OperationMethod<
@@ -493,7 +569,7 @@ export const patchProjectsLocationsDataPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataPoliciesRequest,
   output: PatchProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenameProjectsLocationsDataPoliciesRequest {
@@ -516,7 +592,12 @@ export type RenameProjectsLocationsDataPoliciesResponse = DataPolicy;
 export const RenameProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataPolicy;
 
-export type RenameProjectsLocationsDataPoliciesError = DefaultErrors;
+export type RenameProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renames the id (display name) of the specified data policy. */
 export const renameProjectsLocationsDataPolicies: API.OperationMethod<
@@ -527,7 +608,7 @@ export const renameProjectsLocationsDataPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenameProjectsLocationsDataPoliciesRequest,
   output: RenameProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsDataPoliciesRequest {
@@ -554,7 +635,12 @@ export type SetIamPolicyProjectsLocationsDataPoliciesResponse = Policy;
 export const SetIamPolicyProjectsLocationsDataPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsDataPoliciesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsDataPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy for the specified data policy. */
 export const setIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
@@ -565,5 +651,5 @@ export const setIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDataPoliciesRequest,
   output: SetIamPolicyProjectsLocationsDataPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

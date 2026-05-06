@@ -4051,6 +4051,52 @@ export const LeaseWorkItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "LeaseWorkItemResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -4077,7 +4123,12 @@ export type DeleteSnapshotsProjectsResponse = DeleteSnapshotResponse;
 export const DeleteSnapshotsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeleteSnapshotResponse;
 
-export type DeleteSnapshotsProjectsError = DefaultErrors;
+export type DeleteSnapshotsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a snapshot. */
 export const deleteSnapshotsProjects: API.OperationMethod<
@@ -4088,7 +4139,7 @@ export const deleteSnapshotsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSnapshotsProjectsRequest,
   output: DeleteSnapshotsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WorkerMessagesProjectsRequest {
@@ -4115,7 +4166,12 @@ export type WorkerMessagesProjectsResponse = SendWorkerMessagesResponse;
 export const WorkerMessagesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendWorkerMessagesResponse;
 
-export type WorkerMessagesProjectsError = DefaultErrors;
+export type WorkerMessagesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Send a worker_message to the service. */
 export const workerMessagesProjects: API.OperationMethod<
@@ -4126,7 +4182,7 @@ export const workerMessagesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WorkerMessagesProjectsRequest,
   output: WorkerMessagesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSnapshotsRequest {
@@ -4155,7 +4211,7 @@ export type GetProjectsSnapshotsResponse = Snapshot;
 export const GetProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type GetProjectsSnapshotsError = DefaultErrors;
+export type GetProjectsSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a snapshot. */
 export const getProjectsSnapshots: API.OperationMethod<
@@ -4166,7 +4222,7 @@ export const getProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSnapshotsRequest,
   output: GetProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsSnapshotsRequest {
@@ -4192,7 +4248,7 @@ export type ListProjectsSnapshotsResponse = ListSnapshotsResponse;
 export const ListProjectsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
 
-export type ListProjectsSnapshotsError = DefaultErrors;
+export type ListProjectsSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists snapshots. */
 export const listProjectsSnapshots: API.OperationMethod<
@@ -4203,7 +4259,7 @@ export const listProjectsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsSnapshotsRequest,
   output: ListProjectsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WorkerMessagesProjectsLocationsRequest {
@@ -4234,7 +4290,12 @@ export type WorkerMessagesProjectsLocationsResponse =
 export const WorkerMessagesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendWorkerMessagesResponse;
 
-export type WorkerMessagesProjectsLocationsError = DefaultErrors;
+export type WorkerMessagesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Send a worker_message to the service. */
 export const workerMessagesProjectsLocations: API.OperationMethod<
@@ -4245,7 +4306,7 @@ export const workerMessagesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WorkerMessagesProjectsLocationsRequest,
   output: WorkerMessagesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsTemplatesRequest {
@@ -4275,7 +4336,12 @@ export type CreateProjectsLocationsTemplatesResponse = Job;
 export const CreateProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CreateProjectsLocationsTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply string values using the API. To create a job, we recommend using `projects.locations.templates.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.create` is not recommended, because your job will always start in `us-central1`. */
 export const createProjectsLocationsTemplates: API.OperationMethod<
@@ -4286,7 +4352,7 @@ export const createProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTemplatesRequest,
   output: CreateProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LaunchProjectsLocationsTemplatesRequest {
@@ -4334,7 +4400,12 @@ export type LaunchProjectsLocationsTemplatesResponse = LaunchTemplateResponse;
 export const LaunchProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LaunchTemplateResponse;
 
-export type LaunchProjectsLocationsTemplatesError = DefaultErrors;
+export type LaunchProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Launches a template. To launch a template, we recommend using `projects.locations.templates.launch` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.launch` is not recommended, because jobs launched from the template will always start in `us-central1`. */
 export const launchProjectsLocationsTemplates: API.OperationMethod<
@@ -4345,7 +4416,7 @@ export const launchProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LaunchProjectsLocationsTemplatesRequest,
   output: LaunchProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsTemplatesRequest {
@@ -4377,7 +4448,10 @@ export type GetProjectsLocationsTemplatesResponse = GetTemplateResponse;
 export const GetProjectsLocationsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetTemplateResponse;
 
-export type GetProjectsLocationsTemplatesError = DefaultErrors;
+export type GetProjectsLocationsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the template associated with a template. To get the template, we recommend using `projects.locations.templates.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get` is not recommended, because only templates that are running in `us-central1` are retrieved. */
 export const getProjectsLocationsTemplates: API.OperationMethod<
@@ -4388,7 +4462,7 @@ export const getProjectsLocationsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTemplatesRequest,
   output: GetProjectsLocationsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsJobsRequest {
@@ -4431,7 +4505,12 @@ export type CreateProjectsLocationsJobsResponse = Job;
 export const CreateProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CreateProjectsLocationsJobsError = DefaultErrors;
+export type CreateProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API. */
 export const createProjectsLocationsJobs: API.OperationMethod<
@@ -4442,7 +4521,7 @@ export const createProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsJobsRequest,
   output: CreateProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsJobsRequest {
@@ -4488,7 +4567,10 @@ export type ListProjectsLocationsJobsResponse = ListJobsResponse;
 export const ListProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
 
-export type ListProjectsLocationsJobsError = DefaultErrors;
+export type ListProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because you can only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list` and `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't supported by `projects.jobs.aggregated`. */
 export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
@@ -4499,7 +4581,7 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsRequest,
   output: ListProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4539,7 +4621,12 @@ export type UpdateProjectsLocationsJobsResponse = Job;
 export const UpdateProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type UpdateProjectsLocationsJobsError = DefaultErrors;
+export type UpdateProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`. */
 export const updateProjectsLocationsJobs: API.OperationMethod<
@@ -4550,7 +4637,7 @@ export const updateProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsJobsRequest,
   output: UpdateProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMetricsProjectsLocationsJobsRequest {
@@ -4582,7 +4669,10 @@ export type GetMetricsProjectsLocationsJobsResponse = JobMetrics;
 export const GetMetricsProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ JobMetrics;
 
-export type GetMetricsProjectsLocationsJobsError = DefaultErrors;
+export type GetMetricsProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`. */
 export const getMetricsProjectsLocationsJobs: API.OperationMethod<
@@ -4593,7 +4683,7 @@ export const getMetricsProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetricsProjectsLocationsJobsRequest,
   output: GetMetricsProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsJobsRequest {
@@ -4629,7 +4719,10 @@ export const GetProjectsLocationsJobsRequest =
 export type GetProjectsLocationsJobsResponse = Job;
 export const GetProjectsLocationsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type GetProjectsLocationsJobsError = DefaultErrors;
+export type GetProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`. */
 export const getProjectsLocationsJobs: API.OperationMethod<
@@ -4640,7 +4733,7 @@ export const getProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsJobsRequest,
   output: GetProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SnapshotProjectsLocationsJobsRequest {
@@ -4673,7 +4766,12 @@ export type SnapshotProjectsLocationsJobsResponse = Snapshot;
 export const SnapshotProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type SnapshotProjectsLocationsJobsError = DefaultErrors;
+export type SnapshotProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Snapshot the state of a streaming job. */
 export const snapshotProjectsLocationsJobs: API.OperationMethod<
@@ -4684,7 +4782,7 @@ export const snapshotProjectsLocationsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SnapshotProjectsLocationsJobsRequest,
   output: SnapshotProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetExecutionDetailsProjectsLocationsJobsRequest {
@@ -4720,7 +4818,10 @@ export type GetExecutionDetailsProjectsLocationsJobsResponse =
 export const GetExecutionDetailsProjectsLocationsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ JobExecutionDetails;
 
-export type GetExecutionDetailsProjectsLocationsJobsError = DefaultErrors;
+export type GetExecutionDetailsProjectsLocationsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Request detailed information about the execution status of the job. EXPERIMENTAL. This API is subject to change or removal without notice. */
 export const getExecutionDetailsProjectsLocationsJobs: API.PaginatedOperationMethod<
@@ -4731,7 +4832,7 @@ export const getExecutionDetailsProjectsLocationsJobs: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionDetailsProjectsLocationsJobsRequest,
   output: GetExecutionDetailsProjectsLocationsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4769,7 +4870,12 @@ export type SendCaptureProjectsLocationsJobsDebugResponse =
 export const SendCaptureProjectsLocationsJobsDebugResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendDebugCaptureResponse;
 
-export type SendCaptureProjectsLocationsJobsDebugError = DefaultErrors;
+export type SendCaptureProjectsLocationsJobsDebugError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Send encoded debug capture data for component. */
 export const sendCaptureProjectsLocationsJobsDebug: API.OperationMethod<
@@ -4780,7 +4886,7 @@ export const sendCaptureProjectsLocationsJobsDebug: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendCaptureProjectsLocationsJobsDebugRequest,
   output: SendCaptureProjectsLocationsJobsDebugResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigProjectsLocationsJobsDebugRequest {
@@ -4814,7 +4920,12 @@ export type GetConfigProjectsLocationsJobsDebugResponse =
 export const GetConfigProjectsLocationsJobsDebugResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetDebugConfigResponse;
 
-export type GetConfigProjectsLocationsJobsDebugError = DefaultErrors;
+export type GetConfigProjectsLocationsJobsDebugError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Get encoded debug configuration for component. Not cacheable. */
 export const getConfigProjectsLocationsJobsDebug: API.OperationMethod<
@@ -4825,7 +4936,7 @@ export const getConfigProjectsLocationsJobsDebug: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsLocationsJobsDebugRequest,
   output: GetConfigProjectsLocationsJobsDebugResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetWorkerStacktracesProjectsLocationsJobsDebugRequest {
@@ -4859,7 +4970,12 @@ export type GetWorkerStacktracesProjectsLocationsJobsDebugResponse =
 export const GetWorkerStacktracesProjectsLocationsJobsDebugResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetWorkerStacktracesResponse;
 
-export type GetWorkerStacktracesProjectsLocationsJobsDebugError = DefaultErrors;
+export type GetWorkerStacktracesProjectsLocationsJobsDebugError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Get worker stacktraces from debug capture. */
 export const getWorkerStacktracesProjectsLocationsJobsDebug: API.OperationMethod<
@@ -4870,7 +4986,7 @@ export const getWorkerStacktracesProjectsLocationsJobsDebug: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWorkerStacktracesProjectsLocationsJobsDebugRequest,
   output: GetWorkerStacktracesProjectsLocationsJobsDebugResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsJobsSnapshotsRequest {
@@ -4899,7 +5015,10 @@ export type ListProjectsLocationsJobsSnapshotsResponse = ListSnapshotsResponse;
 export const ListProjectsLocationsJobsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
 
-export type ListProjectsLocationsJobsSnapshotsError = DefaultErrors;
+export type ListProjectsLocationsJobsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists snapshots. */
 export const listProjectsLocationsJobsSnapshots: API.OperationMethod<
@@ -4910,7 +5029,7 @@ export const listProjectsLocationsJobsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsJobsSnapshotsRequest,
   output: ListProjectsLocationsJobsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetExecutionDetailsProjectsLocationsJobsStagesRequest {
@@ -4955,7 +5074,10 @@ export type GetExecutionDetailsProjectsLocationsJobsStagesResponse =
 export const GetExecutionDetailsProjectsLocationsJobsStagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StageExecutionDetails;
 
-export type GetExecutionDetailsProjectsLocationsJobsStagesError = DefaultErrors;
+export type GetExecutionDetailsProjectsLocationsJobsStagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Request detailed information about the execution status of a stage of the job. EXPERIMENTAL. This API is subject to change or removal without notice. */
 export const getExecutionDetailsProjectsLocationsJobsStages: API.PaginatedOperationMethod<
@@ -4966,7 +5088,7 @@ export const getExecutionDetailsProjectsLocationsJobsStages: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetExecutionDetailsProjectsLocationsJobsStagesRequest,
   output: GetExecutionDetailsProjectsLocationsJobsStagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5023,7 +5145,10 @@ export type ListProjectsLocationsJobsMessagesResponse = ListJobMessagesResponse;
 export const ListProjectsLocationsJobsMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobMessagesResponse;
 
-export type ListProjectsLocationsJobsMessagesError = DefaultErrors;
+export type ListProjectsLocationsJobsMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`. */
 export const listProjectsLocationsJobsMessages: API.PaginatedOperationMethod<
@@ -5034,7 +5159,7 @@ export const listProjectsLocationsJobsMessages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobsMessagesRequest,
   output: ListProjectsLocationsJobsMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5072,7 +5197,12 @@ export type ReportStatusProjectsLocationsJobsWorkItemsResponse =
 export const ReportStatusProjectsLocationsJobsWorkItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReportWorkItemStatusResponse;
 
-export type ReportStatusProjectsLocationsJobsWorkItemsError = DefaultErrors;
+export type ReportStatusProjectsLocationsJobsWorkItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reports the status of dataflow WorkItems leased by a worker. */
 export const reportStatusProjectsLocationsJobsWorkItems: API.OperationMethod<
@@ -5083,7 +5213,7 @@ export const reportStatusProjectsLocationsJobsWorkItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportStatusProjectsLocationsJobsWorkItemsRequest,
   output: ReportStatusProjectsLocationsJobsWorkItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LeaseProjectsLocationsJobsWorkItemsRequest {
@@ -5116,7 +5246,12 @@ export type LeaseProjectsLocationsJobsWorkItemsResponse = LeaseWorkItemResponse;
 export const LeaseProjectsLocationsJobsWorkItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaseWorkItemResponse;
 
-export type LeaseProjectsLocationsJobsWorkItemsError = DefaultErrors;
+export type LeaseProjectsLocationsJobsWorkItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Leases a dataflow WorkItem to run. */
 export const leaseProjectsLocationsJobsWorkItems: API.OperationMethod<
@@ -5127,7 +5262,7 @@ export const leaseProjectsLocationsJobsWorkItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LeaseProjectsLocationsJobsWorkItemsRequest,
   output: LeaseProjectsLocationsJobsWorkItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsSnapshotsRequest {
@@ -5156,7 +5291,12 @@ export type DeleteProjectsLocationsSnapshotsResponse = DeleteSnapshotResponse;
 export const DeleteProjectsLocationsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeleteSnapshotResponse;
 
-export type DeleteProjectsLocationsSnapshotsError = DefaultErrors;
+export type DeleteProjectsLocationsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a snapshot. */
 export const deleteProjectsLocationsSnapshots: API.OperationMethod<
@@ -5167,7 +5307,7 @@ export const deleteProjectsLocationsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSnapshotsRequest,
   output: DeleteProjectsLocationsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSnapshotsRequest {
@@ -5196,7 +5336,10 @@ export type GetProjectsLocationsSnapshotsResponse = Snapshot;
 export const GetProjectsLocationsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type GetProjectsLocationsSnapshotsError = DefaultErrors;
+export type GetProjectsLocationsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a snapshot. */
 export const getProjectsLocationsSnapshots: API.OperationMethod<
@@ -5207,7 +5350,7 @@ export const getProjectsLocationsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSnapshotsRequest,
   output: GetProjectsLocationsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSnapshotsRequest {
@@ -5236,7 +5379,10 @@ export type ListProjectsLocationsSnapshotsResponse = ListSnapshotsResponse;
 export const ListProjectsLocationsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSnapshotsResponse;
 
-export type ListProjectsLocationsSnapshotsError = DefaultErrors;
+export type ListProjectsLocationsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists snapshots. */
 export const listProjectsLocationsSnapshots: API.OperationMethod<
@@ -5247,7 +5393,7 @@ export const listProjectsLocationsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsSnapshotsRequest,
   output: ListProjectsLocationsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LaunchProjectsLocationsFlexTemplatesRequest {
@@ -5278,7 +5424,12 @@ export type LaunchProjectsLocationsFlexTemplatesResponse =
 export const LaunchProjectsLocationsFlexTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LaunchFlexTemplateResponse;
 
-export type LaunchProjectsLocationsFlexTemplatesError = DefaultErrors;
+export type LaunchProjectsLocationsFlexTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Launch a job with a FlexTemplate. */
 export const launchProjectsLocationsFlexTemplates: API.OperationMethod<
@@ -5289,7 +5440,7 @@ export const launchProjectsLocationsFlexTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LaunchProjectsLocationsFlexTemplatesRequest,
   output: LaunchProjectsLocationsFlexTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SnapshotProjectsJobsRequest {
@@ -5319,7 +5470,12 @@ export type SnapshotProjectsJobsResponse = Snapshot;
 export const SnapshotProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type SnapshotProjectsJobsError = DefaultErrors;
+export type SnapshotProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Snapshot the state of a streaming job. */
 export const snapshotProjectsJobs: API.OperationMethod<
@@ -5330,7 +5486,7 @@ export const snapshotProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SnapshotProjectsJobsRequest,
   output: SnapshotProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsJobsRequest {
@@ -5364,7 +5520,7 @@ export const GetProjectsJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetProjectsJobsResponse = Job;
 export const GetProjectsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type GetProjectsJobsError = DefaultErrors;
+export type GetProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the state of the specified Cloud Dataflow job. To get the state of a job, we recommend using `projects.locations.jobs.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.get` is not recommended, as you can only get the state of jobs that are running in `us-central1`. */
 export const getProjectsJobs: API.OperationMethod<
@@ -5375,7 +5531,7 @@ export const getProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsJobsRequest,
   output: GetProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AggregatedProjectsJobsRequest {
@@ -5421,7 +5577,7 @@ export type AggregatedProjectsJobsResponse = ListJobsResponse;
 export const AggregatedProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
 
-export type AggregatedProjectsJobsError = DefaultErrors;
+export type AggregatedProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the jobs of a project across all regions. **Note:** This method doesn't support filtering the list of jobs by name. */
 export const aggregatedProjectsJobs: API.PaginatedOperationMethod<
@@ -5432,7 +5588,7 @@ export const aggregatedProjectsJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedProjectsJobsRequest,
   output: AggregatedProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5468,7 +5624,7 @@ export type GetMetricsProjectsJobsResponse = JobMetrics;
 export const GetMetricsProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ JobMetrics;
 
-export type GetMetricsProjectsJobsError = DefaultErrors;
+export type GetMetricsProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.getMetrics` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.getMetrics` is not recommended, as you can only request the status of jobs that are running in `us-central1`. */
 export const getMetricsProjectsJobs: API.OperationMethod<
@@ -5479,7 +5635,7 @@ export const getMetricsProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetricsProjectsJobsRequest,
   output: GetMetricsProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsJobsRequest {
@@ -5521,7 +5677,12 @@ export const CreateProjectsJobsRequest =
 export type CreateProjectsJobsResponse = Job;
 export const CreateProjectsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CreateProjectsJobsError = DefaultErrors;
+export type CreateProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API. */
 export const createProjectsJobs: API.OperationMethod<
@@ -5532,7 +5693,7 @@ export const createProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsJobsRequest,
   output: CreateProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsJobsRequest {
@@ -5575,7 +5736,7 @@ export type ListProjectsJobsResponse = ListJobsResponse;
 export const ListProjectsJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobsResponse;
 
-export type ListProjectsJobsError = DefaultErrors;
+export type ListProjectsJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the jobs of a project. To list the jobs of a project in a region, we recommend using `projects.locations.jobs.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because you can only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list` and `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't supported by `projects.jobs.aggregated`. */
 export const listProjectsJobs: API.PaginatedOperationMethod<
@@ -5586,7 +5747,7 @@ export const listProjectsJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsRequest,
   output: ListProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5625,7 +5786,12 @@ export const UpdateProjectsJobsRequest =
 export type UpdateProjectsJobsResponse = Job;
 export const UpdateProjectsJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type UpdateProjectsJobsError = DefaultErrors;
+export type UpdateProjectsJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the state of an existing Cloud Dataflow job. To update the state of an existing job, we recommend using `projects.locations.jobs.update` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.update` is not recommended, as you can only update the state of jobs that are running in `us-central1`. */
 export const updateProjectsJobs: API.OperationMethod<
@@ -5636,7 +5802,7 @@ export const updateProjectsJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsJobsRequest,
   output: UpdateProjectsJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsJobsMessagesRequest {
@@ -5689,7 +5855,10 @@ export type ListProjectsJobsMessagesResponse = ListJobMessagesResponse;
 export const ListProjectsJobsMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListJobMessagesResponse;
 
-export type ListProjectsJobsMessagesError = DefaultErrors;
+export type ListProjectsJobsMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Request the job status. To request the status of a job, we recommend using `projects.locations.jobs.messages.list` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.messages.list` is not recommended, as you can only request the status of jobs that are running in `us-central1`. */
 export const listProjectsJobsMessages: API.PaginatedOperationMethod<
@@ -5700,7 +5869,7 @@ export const listProjectsJobsMessages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobsMessagesRequest,
   output: ListProjectsJobsMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5734,7 +5903,12 @@ export type SendCaptureProjectsJobsDebugResponse = SendDebugCaptureResponse;
 export const SendCaptureProjectsJobsDebugResponse =
   /*@__PURE__*/ /*#__PURE__*/ SendDebugCaptureResponse;
 
-export type SendCaptureProjectsJobsDebugError = DefaultErrors;
+export type SendCaptureProjectsJobsDebugError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Send encoded debug capture data for component. */
 export const sendCaptureProjectsJobsDebug: API.OperationMethod<
@@ -5745,7 +5919,7 @@ export const sendCaptureProjectsJobsDebug: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendCaptureProjectsJobsDebugRequest,
   output: SendCaptureProjectsJobsDebugResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConfigProjectsJobsDebugRequest {
@@ -5775,7 +5949,12 @@ export type GetConfigProjectsJobsDebugResponse = GetDebugConfigResponse;
 export const GetConfigProjectsJobsDebugResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetDebugConfigResponse;
 
-export type GetConfigProjectsJobsDebugError = DefaultErrors;
+export type GetConfigProjectsJobsDebugError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Get encoded debug configuration for component. Not cacheable. */
 export const getConfigProjectsJobsDebug: API.OperationMethod<
@@ -5786,7 +5965,7 @@ export const getConfigProjectsJobsDebug: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConfigProjectsJobsDebugRequest,
   output: GetConfigProjectsJobsDebugResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReportStatusProjectsJobsWorkItemsRequest {
@@ -5817,7 +5996,12 @@ export type ReportStatusProjectsJobsWorkItemsResponse =
 export const ReportStatusProjectsJobsWorkItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReportWorkItemStatusResponse;
 
-export type ReportStatusProjectsJobsWorkItemsError = DefaultErrors;
+export type ReportStatusProjectsJobsWorkItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reports the status of dataflow WorkItems leased by a worker. */
 export const reportStatusProjectsJobsWorkItems: API.OperationMethod<
@@ -5828,7 +6012,7 @@ export const reportStatusProjectsJobsWorkItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportStatusProjectsJobsWorkItemsRequest,
   output: ReportStatusProjectsJobsWorkItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LeaseProjectsJobsWorkItemsRequest {
@@ -5858,7 +6042,12 @@ export type LeaseProjectsJobsWorkItemsResponse = LeaseWorkItemResponse;
 export const LeaseProjectsJobsWorkItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaseWorkItemResponse;
 
-export type LeaseProjectsJobsWorkItemsError = DefaultErrors;
+export type LeaseProjectsJobsWorkItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Leases a dataflow WorkItem to run. */
 export const leaseProjectsJobsWorkItems: API.OperationMethod<
@@ -5869,7 +6058,7 @@ export const leaseProjectsJobsWorkItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LeaseProjectsJobsWorkItemsRequest,
   output: LeaseProjectsJobsWorkItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsTemplatesRequest {
@@ -5895,7 +6084,12 @@ export const CreateProjectsTemplatesRequest =
 export type CreateProjectsTemplatesResponse = Job;
 export const CreateProjectsTemplatesResponse = /*@__PURE__*/ /*#__PURE__*/ Job;
 
-export type CreateProjectsTemplatesError = DefaultErrors;
+export type CreateProjectsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Cloud Dataflow job from a template. Do not enter confidential information when you supply string values using the API. To create a job, we recommend using `projects.locations.templates.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.create` is not recommended, because your job will always start in `us-central1`. */
 export const createProjectsTemplates: API.OperationMethod<
@@ -5906,7 +6100,7 @@ export const createProjectsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTemplatesRequest,
   output: CreateProjectsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LaunchProjectsTemplatesRequest {
@@ -5954,7 +6148,12 @@ export type LaunchProjectsTemplatesResponse = LaunchTemplateResponse;
 export const LaunchProjectsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LaunchTemplateResponse;
 
-export type LaunchProjectsTemplatesError = DefaultErrors;
+export type LaunchProjectsTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Launches a template. To launch a template, we recommend using `projects.locations.templates.launch` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.launch` is not recommended, because jobs launched from the template will always start in `us-central1`. */
 export const launchProjectsTemplates: API.OperationMethod<
@@ -5965,7 +6164,7 @@ export const launchProjectsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LaunchProjectsTemplatesRequest,
   output: LaunchProjectsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTemplatesRequest {
@@ -5994,7 +6193,7 @@ export type GetProjectsTemplatesResponse = GetTemplateResponse;
 export const GetProjectsTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetTemplateResponse;
 
-export type GetProjectsTemplatesError = DefaultErrors;
+export type GetProjectsTemplatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the template associated with a template. To get the template, we recommend using `projects.locations.templates.get` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.templates.get` is not recommended, because only templates that are running in `us-central1` are retrieved. */
 export const getProjectsTemplates: API.OperationMethod<
@@ -6005,5 +6204,5 @@ export const getProjectsTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTemplatesRequest,
   output: GetProjectsTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

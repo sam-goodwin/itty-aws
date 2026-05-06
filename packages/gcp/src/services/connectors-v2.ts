@@ -1422,6 +1422,52 @@ export const GenerateCustomToolspecRequest =
   }).annotate({ identifier: "GenerateCustomToolspecRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1444,7 +1490,9 @@ export const ListCustomToolNamesProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomToolNamesResponse;
 
 export type ListCustomToolNamesProjectsLocationsConnectionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists custom tool names. */
 export const listCustomToolNamesProjectsLocationsConnections: API.OperationMethod<
@@ -1455,7 +1503,7 @@ export const listCustomToolNamesProjectsLocationsConnections: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCustomToolNamesProjectsLocationsConnectionsRequest,
   output: ListCustomToolNamesProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RefreshAccessTokenProjectsLocationsConnectionsRequest {
@@ -1482,7 +1530,12 @@ export type RefreshAccessTokenProjectsLocationsConnectionsResponse =
 export const RefreshAccessTokenProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RefreshAccessTokenResponse;
 
-export type RefreshAccessTokenProjectsLocationsConnectionsError = DefaultErrors;
+export type RefreshAccessTokenProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access token (and new associated credentials). */
 export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod<
@@ -1493,7 +1546,7 @@ export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefreshAccessTokenProjectsLocationsConnectionsRequest,
   output: RefreshAccessTokenProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CheckStatusProjectsLocationsConnectionsRequest {
@@ -1518,7 +1571,10 @@ export type CheckStatusProjectsLocationsConnectionsResponse =
 export const CheckStatusProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckStatusResponse;
 
-export type CheckStatusProjectsLocationsConnectionsError = DefaultErrors;
+export type CheckStatusProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reports the status of the connection. Note that when the connection is in a state that is not ACTIVE, the implementation of this RPC method must return a Status with the corresponding State instead of returning a gRPC status code that is not "OK", which indicates that ConnectionStatus itself, not the connection, failed. */
 export const checkStatusProjectsLocationsConnections: API.OperationMethod<
@@ -1529,7 +1585,7 @@ export const checkStatusProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckStatusProjectsLocationsConnectionsRequest,
   output: CheckStatusProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest {
@@ -1558,7 +1614,11 @@ export const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRespo
   /*@__PURE__*/ /*#__PURE__*/ GenerateCustomToolspecResponse;
 
 export type GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generate toolspec override for the given list of toolNames. */
 export const generateConnectionToolspecOverrideProjectsLocationsConnections: API.OperationMethod<
@@ -1570,7 +1630,7 @@ export const generateConnectionToolspecOverrideProjectsLocationsConnections: API
   input: GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest,
   output:
     GenerateConnectionToolspecOverrideProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteSqlQueryProjectsLocationsConnectionsRequest {
@@ -1598,7 +1658,12 @@ export type ExecuteSqlQueryProjectsLocationsConnectionsResponse =
 export const ExecuteSqlQueryProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteSqlQueryResponse;
 
-export type ExecuteSqlQueryProjectsLocationsConnectionsError = DefaultErrors;
+export type ExecuteSqlQueryProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a SQL statement specified in the body of the request. An example of this SQL statement in the case of Salesforce connector would be 'select * from Account a, Order o where a.Id = o.AccountId'. */
 export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
@@ -1609,7 +1674,7 @@ export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteSqlQueryProjectsLocationsConnectionsRequest,
   output: ExecuteSqlQueryProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CheckReadinessProjectsLocationsConnectionsRequest {
@@ -1629,7 +1694,10 @@ export type CheckReadinessProjectsLocationsConnectionsResponse =
 export const CheckReadinessProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckReadinessResponse;
 
-export type CheckReadinessProjectsLocationsConnectionsError = DefaultErrors;
+export type CheckReadinessProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Reports readiness status of the connector. Similar logic to GetStatus but modified for kubernetes health check to understand. */
 export const checkReadinessProjectsLocationsConnections: API.OperationMethod<
@@ -1640,7 +1708,7 @@ export const checkReadinessProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckReadinessProjectsLocationsConnectionsRequest,
   output: CheckReadinessProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExchangeAuthCodeProjectsLocationsConnectionsRequest {
@@ -1667,7 +1735,12 @@ export type ExchangeAuthCodeProjectsLocationsConnectionsResponse =
 export const ExchangeAuthCodeProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExchangeAuthCodeResponse;
 
-export type ExchangeAuthCodeProjectsLocationsConnectionsError = DefaultErrors;
+export type ExchangeAuthCodeProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ExchangeAuthCode exchanges the OAuth authorization code (and other necessary data) for an access token (and associated credentials). */
 export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
@@ -1678,7 +1751,7 @@ export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExchangeAuthCodeProjectsLocationsConnectionsRequest,
   output: ExchangeAuthCodeProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ToolsProjectsLocationsConnectionsRequest {
@@ -1701,7 +1774,12 @@ export type ToolsProjectsLocationsConnectionsResponse = ListToolsResponse;
 export const ToolsProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListToolsResponse;
 
-export type ToolsProjectsLocationsConnectionsError = DefaultErrors;
+export type ToolsProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all available tools with POST. */
 export const toolsProjectsLocationsConnections: API.OperationMethod<
@@ -1712,7 +1790,7 @@ export const toolsProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ToolsProjectsLocationsConnectionsRequest,
   output: ToolsProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsConnectionsActionsRequest {
@@ -1751,7 +1829,10 @@ export type ListProjectsLocationsConnectionsActionsResponse =
 export const ListProjectsLocationsConnectionsActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListActionsResponse;
 
-export type ListProjectsLocationsConnectionsActionsError = DefaultErrors;
+export type ListProjectsLocationsConnectionsActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the schema of all the actions supported by the connector. */
 export const listProjectsLocationsConnectionsActions: API.PaginatedOperationMethod<
@@ -1762,7 +1843,7 @@ export const listProjectsLocationsConnectionsActions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsActionsRequest,
   output: ListProjectsLocationsConnectionsActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1798,7 +1879,10 @@ export type GetProjectsLocationsConnectionsActionsResponse = Action;
 export const GetProjectsLocationsConnectionsActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Action;
 
-export type GetProjectsLocationsConnectionsActionsError = DefaultErrors;
+export type GetProjectsLocationsConnectionsActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the schema of the given action. */
 export const getProjectsLocationsConnectionsActions: API.OperationMethod<
@@ -1809,7 +1893,7 @@ export const getProjectsLocationsConnectionsActions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionsActionsRequest,
   output: GetProjectsLocationsConnectionsActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExecuteProjectsLocationsConnectionsActionsRequest {
@@ -1833,7 +1917,12 @@ export type ExecuteProjectsLocationsConnectionsActionsResponse =
 export const ExecuteProjectsLocationsConnectionsActionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteActionResponse;
 
-export type ExecuteProjectsLocationsConnectionsActionsError = DefaultErrors;
+export type ExecuteProjectsLocationsConnectionsActionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes an action with the name specified in the request. The input parameters for executing the action are passed through the body of the ExecuteAction request. */
 export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
@@ -1844,7 +1933,7 @@ export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsLocationsConnectionsActionsRequest,
   output: ExecuteProjectsLocationsConnectionsActionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsConnectionsToolsRequest {
@@ -1875,7 +1964,10 @@ export type ListProjectsLocationsConnectionsToolsResponse = ListToolsResponse;
 export const ListProjectsLocationsConnectionsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListToolsResponse;
 
-export type ListProjectsLocationsConnectionsToolsError = DefaultErrors;
+export type ListProjectsLocationsConnectionsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all available tools. */
 export const listProjectsLocationsConnectionsTools: API.PaginatedOperationMethod<
@@ -1886,7 +1978,7 @@ export const listProjectsLocationsConnectionsTools: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsToolsRequest,
   output: ListProjectsLocationsConnectionsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1914,7 +2006,12 @@ export type ExecuteProjectsLocationsConnectionsToolsResponse =
 export const ExecuteProjectsLocationsConnectionsToolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteToolResponse;
 
-export type ExecuteProjectsLocationsConnectionsToolsError = DefaultErrors;
+export type ExecuteProjectsLocationsConnectionsToolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a specific tool. */
 export const executeProjectsLocationsConnectionsTools: API.OperationMethod<
@@ -1925,7 +2022,7 @@ export const executeProjectsLocationsConnectionsTools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsLocationsConnectionsToolsRequest,
   output: ExecuteProjectsLocationsConnectionsToolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetResourcePostProjectsLocationsConnectionsResourcesRequest {
@@ -1950,7 +2047,11 @@ export const GetResourcePostProjectsLocationsConnectionsResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetResourceResponse;
 
 export type GetResourcePostProjectsLocationsConnectionsResourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a specific resource with POST. */
 export const getResourcePostProjectsLocationsConnectionsResources: API.OperationMethod<
@@ -1961,7 +2062,7 @@ export const getResourcePostProjectsLocationsConnectionsResources: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcePostProjectsLocationsConnectionsResourcesRequest,
   output: GetResourcePostProjectsLocationsConnectionsResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsConnectionsResourcesRequest {
@@ -1993,7 +2094,10 @@ export type ListProjectsLocationsConnectionsResourcesResponse =
 export const ListProjectsLocationsConnectionsResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListResourcesResponse;
 
-export type ListProjectsLocationsConnectionsResourcesError = DefaultErrors;
+export type ListProjectsLocationsConnectionsResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all available resources. */
 export const listProjectsLocationsConnectionsResources: API.PaginatedOperationMethod<
@@ -2004,7 +2108,7 @@ export const listProjectsLocationsConnectionsResources: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsResourcesRequest,
   output: ListProjectsLocationsConnectionsResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2034,7 +2138,10 @@ export type GetProjectsLocationsConnectionsResourcesResponse =
 export const GetProjectsLocationsConnectionsResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetResourceResponse;
 
-export type GetProjectsLocationsConnectionsResourcesError = DefaultErrors;
+export type GetProjectsLocationsConnectionsResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a specific resource. */
 export const getProjectsLocationsConnectionsResources: API.OperationMethod<
@@ -2045,7 +2152,7 @@ export const getProjectsLocationsConnectionsResources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionsResourcesRequest,
   output: GetProjectsLocationsConnectionsResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsConnectionsEntityTypesRequest {
@@ -2082,7 +2189,10 @@ export type GetProjectsLocationsConnectionsEntityTypesResponse = EntityType;
 export const GetProjectsLocationsConnectionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntityType;
 
-export type GetProjectsLocationsConnectionsEntityTypesError = DefaultErrors;
+export type GetProjectsLocationsConnectionsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata of given entity type */
 export const getProjectsLocationsConnectionsEntityTypes: API.OperationMethod<
@@ -2093,7 +2203,7 @@ export const getProjectsLocationsConnectionsEntityTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionsEntityTypesRequest,
   output: GetProjectsLocationsConnectionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsConnectionsEntityTypesRequest {
@@ -2132,7 +2242,10 @@ export type ListProjectsLocationsConnectionsEntityTypesResponse =
 export const ListProjectsLocationsConnectionsEntityTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEntityTypesResponse;
 
-export type ListProjectsLocationsConnectionsEntityTypesError = DefaultErrors;
+export type ListProjectsLocationsConnectionsEntityTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists metadata related to all entity types present in the external system. */
 export const listProjectsLocationsConnectionsEntityTypes: API.PaginatedOperationMethod<
@@ -2143,7 +2256,7 @@ export const listProjectsLocationsConnectionsEntityTypes: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsEntityTypesRequest,
   output: ListProjectsLocationsConnectionsEntityTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2184,7 +2297,11 @@ export const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   /*@__PURE__*/ /*#__PURE__*/ UpdateEntitiesWithConditionsResponse;
 
 export type UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates entities based on conditions specified in the request and not on entity id. */
 export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
@@ -2197,7 +2314,7 @@ export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
     UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output:
     UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -2224,7 +2341,11 @@ export const DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing entity row matching the entity type and entity id specified in the request. */
 export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
@@ -2235,7 +2356,7 @@ export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: DeleteProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -2261,7 +2382,9 @@ export const GetProjectsLocationsConnectionsEntityTypesEntitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Entity;
 
 export type GetProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single entity row matching the entity type and entity id specified in the request. */
 export const getProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
@@ -2272,7 +2395,7 @@ export const getProjectsLocationsConnectionsEntityTypesEntities: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: GetProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -2306,7 +2429,11 @@ export const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes entities based on conditions specified in the request and not on entity id. */
 export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
@@ -2319,7 +2446,7 @@ export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
     DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output:
     DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -2365,7 +2492,9 @@ export const ListProjectsLocationsConnectionsEntityTypesEntitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEntitiesResponse;
 
 export type ListProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists entity rows of a particular entity type contained in the request. Note: 1. Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is provided, the primary key of the table is used. If zero or more than one primary key is available, we default to the unpaginated list entities logic which only returns the first page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise undefined behaviors may be observed during pagination. 4. Since transactions are not supported, any updates, inserts or deletes during pagination can lead to stale data being returned or other unexpected behaviors. */
 export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedOperationMethod<
@@ -2376,7 +2505,7 @@ export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: ListProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2410,7 +2539,11 @@ export const CreateProjectsLocationsConnectionsEntityTypesEntitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Entity;
 
 export type CreateProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new entity row of the specified entity type in the external system. The field values for creating the row are contained in the body of the request. The response message contains a `Entity` message object returned as a response by the external system. */
 export const createProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
@@ -2421,7 +2554,7 @@ export const createProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: CreateProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest {
@@ -2451,7 +2584,11 @@ export const PatchProjectsLocationsConnectionsEntityTypesEntitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Entity;
 
 export type PatchProjectsLocationsConnectionsEntityTypesEntitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing entity row matching the entity type and entity id specified in the request. The fields in the entity row that need to be modified are contained in the body of the request. All unspecified fields are left unchanged. The response message contains a `Entity` message object returned as a response by the external system. */
 export const patchProjectsLocationsConnectionsEntityTypesEntities: API.OperationMethod<
@@ -2462,5 +2599,5 @@ export const patchProjectsLocationsConnectionsEntityTypesEntities: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest,
   output: PatchProjectsLocationsConnectionsEntityTypesEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

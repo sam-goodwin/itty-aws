@@ -842,6 +842,52 @@ export const ListVariablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListVariablesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -858,7 +904,7 @@ export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all GTM Accounts that a user has access to. */
 export const listAccounts: API.OperationMethod<
@@ -869,7 +915,7 @@ export const listAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsRequest {
@@ -897,7 +943,12 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAccountsResponse = Account;
 export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type UpdateAccountsError = DefaultErrors;
+export type UpdateAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Account. */
 export const updateAccounts: API.OperationMethod<
@@ -908,7 +959,7 @@ export const updateAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsRequest,
   output: UpdateAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsRequest {
@@ -926,7 +977,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a GTM Account. */
 export const getAccounts: API.OperationMethod<
@@ -937,7 +988,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsPermissionsRequest {
@@ -960,7 +1011,7 @@ export type ListAccountsPermissionsResponse = ListAccountUsersResponse;
 export const ListAccountsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountUsersResponse;
 
-export type ListAccountsPermissionsError = DefaultErrors;
+export type ListAccountsPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** List all users that have access to the account along with Account and Container Permissions granted to each of them. */
 export const listAccountsPermissions: API.OperationMethod<
@@ -971,7 +1022,7 @@ export const listAccountsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsPermissionsRequest,
   output: ListAccountsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsPermissionsRequest {
@@ -999,7 +1050,12 @@ export const DeleteAccountsPermissionsResponse: Schema.Schema<DeleteAccountsPerm
     {},
   ) as any as Schema.Schema<DeleteAccountsPermissionsResponse>;
 
-export type DeleteAccountsPermissionsError = DefaultErrors;
+export type DeleteAccountsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a user from the account, revoking access to it and all of its containers. */
 export const deleteAccountsPermissions: API.OperationMethod<
@@ -1010,7 +1066,7 @@ export const deleteAccountsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsPermissionsRequest,
   output: DeleteAccountsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsPermissionsRequest {
@@ -1040,7 +1096,12 @@ export type UpdateAccountsPermissionsResponse = UserAccess;
 export const UpdateAccountsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserAccess;
 
-export type UpdateAccountsPermissionsError = DefaultErrors;
+export type UpdateAccountsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user's Account & Container Permissions. */
 export const updateAccountsPermissions: API.OperationMethod<
@@ -1051,7 +1112,7 @@ export const updateAccountsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsPermissionsRequest,
   output: UpdateAccountsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsPermissionsRequest {
@@ -1078,7 +1139,12 @@ export type CreateAccountsPermissionsResponse = UserAccess;
 export const CreateAccountsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserAccess;
 
-export type CreateAccountsPermissionsError = DefaultErrors;
+export type CreateAccountsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a user's Account & Container Permissions. */
 export const createAccountsPermissions: API.OperationMethod<
@@ -1089,7 +1155,7 @@ export const createAccountsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsPermissionsRequest,
   output: CreateAccountsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsPermissionsRequest {
@@ -1115,7 +1181,7 @@ export type GetAccountsPermissionsResponse = UserAccess;
 export const GetAccountsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserAccess;
 
-export type GetAccountsPermissionsError = DefaultErrors;
+export type GetAccountsPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a user's Account & Container Permissions. */
 export const getAccountsPermissions: API.OperationMethod<
@@ -1126,7 +1192,7 @@ export const getAccountsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsPermissionsRequest,
   output: GetAccountsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersRequest {
@@ -1154,7 +1220,12 @@ export const DeleteAccountsContainersResponse: Schema.Schema<DeleteAccountsConta
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersResponse>;
 
-export type DeleteAccountsContainersError = DefaultErrors;
+export type DeleteAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Container. */
 export const deleteAccountsContainers: API.OperationMethod<
@@ -1165,7 +1236,7 @@ export const deleteAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersRequest,
   output: DeleteAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersRequest {
@@ -1200,7 +1271,12 @@ export type UpdateAccountsContainersResponse = Container;
 export const UpdateAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type UpdateAccountsContainersError = DefaultErrors;
+export type UpdateAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Container. */
 export const updateAccountsContainers: API.OperationMethod<
@@ -1211,7 +1287,7 @@ export const updateAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersRequest,
   output: UpdateAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersRequest {
@@ -1238,7 +1314,12 @@ export type CreateAccountsContainersResponse = Container;
 export const CreateAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type CreateAccountsContainersError = DefaultErrors;
+export type CreateAccountsContainersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Container. */
 export const createAccountsContainers: API.OperationMethod<
@@ -1249,7 +1330,7 @@ export const createAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersRequest,
   output: CreateAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersRequest {
@@ -1275,7 +1356,7 @@ export type GetAccountsContainersResponse = Container;
 export const GetAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Container;
 
-export type GetAccountsContainersError = DefaultErrors;
+export type GetAccountsContainersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a Container. */
 export const getAccountsContainers: API.OperationMethod<
@@ -1286,7 +1367,7 @@ export const getAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersRequest,
   output: GetAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsContainersRequest {
@@ -1309,7 +1390,7 @@ export type ListAccountsContainersResponse = ListContainersResponse;
 export const ListAccountsContainersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListContainersResponse;
 
-export type ListAccountsContainersError = DefaultErrors;
+export type ListAccountsContainersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all Containers that belongs to a GTM Account. */
 export const listAccountsContainers: API.OperationMethod<
@@ -1320,7 +1401,7 @@ export const listAccountsContainers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersRequest,
   output: ListAccountsContainersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PublishAccountsContainersVersionsRequest {
@@ -1356,7 +1437,12 @@ export type PublishAccountsContainersVersionsResponse =
 export const PublishAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublishContainerVersionResponse;
 
-export type PublishAccountsContainersVersionsError = DefaultErrors;
+export type PublishAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publishes a Container Version. */
 export const publishAccountsContainersVersions: API.OperationMethod<
@@ -1367,7 +1453,7 @@ export const publishAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishAccountsContainersVersionsRequest,
   output: PublishAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteAccountsContainersVersionsRequest {
@@ -1397,7 +1483,12 @@ export type UndeleteAccountsContainersVersionsResponse = ContainerVersion;
 export const UndeleteAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type UndeleteAccountsContainersVersionsError = DefaultErrors;
+export type UndeleteAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a Container Version. */
 export const undeleteAccountsContainersVersions: API.OperationMethod<
@@ -1408,7 +1499,7 @@ export const undeleteAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteAccountsContainersVersionsRequest,
   output: UndeleteAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersVersionsRequest {
@@ -1443,7 +1534,10 @@ export type ListAccountsContainersVersionsResponse =
 export const ListAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListContainerVersionsResponse;
 
-export type ListAccountsContainersVersionsError = DefaultErrors;
+export type ListAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Container Versions of a GTM Container. */
 export const listAccountsContainersVersions: API.OperationMethod<
@@ -1454,7 +1548,7 @@ export const listAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersVersionsRequest,
   output: ListAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsContainersVersionsRequest {
@@ -1487,7 +1581,12 @@ export type CreateAccountsContainersVersionsResponse =
 export const CreateAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreateContainerVersionResponse;
 
-export type CreateAccountsContainersVersionsError = DefaultErrors;
+export type CreateAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Container Version. */
 export const createAccountsContainersVersions: API.OperationMethod<
@@ -1498,7 +1597,7 @@ export const createAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersVersionsRequest,
   output: CreateAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersVersionsRequest {
@@ -1527,7 +1626,10 @@ export type GetAccountsContainersVersionsResponse = ContainerVersion;
 export const GetAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type GetAccountsContainersVersionsError = DefaultErrors;
+export type GetAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Container Version. */
 export const getAccountsContainersVersions: API.OperationMethod<
@@ -1538,7 +1640,7 @@ export const getAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersVersionsRequest,
   output: GetAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RestoreAccountsContainersVersionsRequest {
@@ -1568,7 +1670,12 @@ export type RestoreAccountsContainersVersionsResponse = ContainerVersion;
 export const RestoreAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type RestoreAccountsContainersVersionsError = DefaultErrors;
+export type RestoreAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a Container Version. This will overwrite the container's current configuration (including its variables, triggers and tags). The operation will not have any effect on the version that is being served (i.e. the published version). */
 export const restoreAccountsContainersVersions: API.OperationMethod<
@@ -1579,7 +1686,7 @@ export const restoreAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreAccountsContainersVersionsRequest,
   output: RestoreAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsContainersVersionsRequest {
@@ -1610,7 +1717,12 @@ export const DeleteAccountsContainersVersionsResponse: Schema.Schema<DeleteAccou
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersVersionsResponse>;
 
-export type DeleteAccountsContainersVersionsError = DefaultErrors;
+export type DeleteAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Container Version. */
 export const deleteAccountsContainersVersions: API.OperationMethod<
@@ -1621,7 +1733,7 @@ export const deleteAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersVersionsRequest,
   output: DeleteAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersVersionsRequest {
@@ -1659,7 +1771,12 @@ export type UpdateAccountsContainersVersionsResponse = ContainerVersion;
 export const UpdateAccountsContainersVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContainerVersion;
 
-export type UpdateAccountsContainersVersionsError = DefaultErrors;
+export type UpdateAccountsContainersVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Container Version. */
 export const updateAccountsContainersVersions: API.OperationMethod<
@@ -1670,7 +1787,7 @@ export const updateAccountsContainersVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersVersionsRequest,
   output: UpdateAccountsContainersVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersReauthorize_environmentsRequest {
@@ -1705,7 +1822,11 @@ export const UpdateAccountsContainersReauthorize_environmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
 export type UpdateAccountsContainersReauthorize_environmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Re-generates the authorization code for a GTM Environment. */
 export const updateAccountsContainersReauthorize_environments: API.OperationMethod<
@@ -1716,7 +1837,7 @@ export const updateAccountsContainersReauthorize_environments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersReauthorize_environmentsRequest,
   output: UpdateAccountsContainersReauthorize_environmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersFoldersRequest {
@@ -1742,7 +1863,10 @@ export type ListAccountsContainersFoldersResponse = ListFoldersResponse;
 export const ListAccountsContainersFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFoldersResponse;
 
-export type ListAccountsContainersFoldersError = DefaultErrors;
+export type ListAccountsContainersFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Folders of a Container. */
 export const listAccountsContainersFolders: API.OperationMethod<
@@ -1753,7 +1877,7 @@ export const listAccountsContainersFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersFoldersRequest,
   output: ListAccountsContainersFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsContainersFoldersRequest {
@@ -1791,7 +1915,12 @@ export type UpdateAccountsContainersFoldersResponse = Folder;
 export const UpdateAccountsContainersFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type UpdateAccountsContainersFoldersError = DefaultErrors;
+export type UpdateAccountsContainersFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Folder. */
 export const updateAccountsContainersFolders: API.OperationMethod<
@@ -1802,7 +1931,7 @@ export const updateAccountsContainersFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersFoldersRequest,
   output: UpdateAccountsContainersFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsContainersFoldersRequest {
@@ -1833,7 +1962,12 @@ export const DeleteAccountsContainersFoldersResponse: Schema.Schema<DeleteAccoun
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersFoldersResponse>;
 
-export type DeleteAccountsContainersFoldersError = DefaultErrors;
+export type DeleteAccountsContainersFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Folder. */
 export const deleteAccountsContainersFolders: API.OperationMethod<
@@ -1844,7 +1978,7 @@ export const deleteAccountsContainersFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersFoldersRequest,
   output: DeleteAccountsContainersFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersFoldersRequest {
@@ -1874,7 +2008,12 @@ export type CreateAccountsContainersFoldersResponse = Folder;
 export const CreateAccountsContainersFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type CreateAccountsContainersFoldersError = DefaultErrors;
+export type CreateAccountsContainersFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Folder. */
 export const createAccountsContainersFolders: API.OperationMethod<
@@ -1885,7 +2024,7 @@ export const createAccountsContainersFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersFoldersRequest,
   output: CreateAccountsContainersFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersFoldersRequest {
@@ -1914,7 +2053,10 @@ export type GetAccountsContainersFoldersResponse = Folder;
 export const GetAccountsContainersFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Folder;
 
-export type GetAccountsContainersFoldersError = DefaultErrors;
+export type GetAccountsContainersFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Folder. */
 export const getAccountsContainersFolders: API.OperationMethod<
@@ -1925,7 +2067,7 @@ export const getAccountsContainersFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersFoldersRequest,
   output: GetAccountsContainersFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsContainersFoldersEntitiesRequest {
@@ -1954,7 +2096,10 @@ export type ListAccountsContainersFoldersEntitiesResponse = FolderEntities;
 export const ListAccountsContainersFoldersEntitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FolderEntities;
 
-export type ListAccountsContainersFoldersEntitiesError = DefaultErrors;
+export type ListAccountsContainersFoldersEntitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all entities in a GTM Folder. */
 export const listAccountsContainersFoldersEntities: API.OperationMethod<
@@ -1965,7 +2110,7 @@ export const listAccountsContainersFoldersEntities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersFoldersEntitiesRequest,
   output: ListAccountsContainersFoldersEntitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsContainersVariablesRequest {
@@ -1991,7 +2136,10 @@ export type ListAccountsContainersVariablesResponse = ListVariablesResponse;
 export const ListAccountsContainersVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVariablesResponse;
 
-export type ListAccountsContainersVariablesError = DefaultErrors;
+export type ListAccountsContainersVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Variables of a Container. */
 export const listAccountsContainersVariables: API.OperationMethod<
@@ -2002,7 +2150,7 @@ export const listAccountsContainersVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersVariablesRequest,
   output: ListAccountsContainersVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsContainersVariablesRequest {
@@ -2032,7 +2180,12 @@ export type CreateAccountsContainersVariablesResponse = Variable;
 export const CreateAccountsContainersVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type CreateAccountsContainersVariablesError = DefaultErrors;
+export type CreateAccountsContainersVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Variable. */
 export const createAccountsContainersVariables: API.OperationMethod<
@@ -2043,7 +2196,7 @@ export const createAccountsContainersVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersVariablesRequest,
   output: CreateAccountsContainersVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersVariablesRequest {
@@ -2072,7 +2225,10 @@ export type GetAccountsContainersVariablesResponse = Variable;
 export const GetAccountsContainersVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type GetAccountsContainersVariablesError = DefaultErrors;
+export type GetAccountsContainersVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Variable. */
 export const getAccountsContainersVariables: API.OperationMethod<
@@ -2083,7 +2239,7 @@ export const getAccountsContainersVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersVariablesRequest,
   output: GetAccountsContainersVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccountsContainersVariablesRequest {
@@ -2114,7 +2270,12 @@ export const DeleteAccountsContainersVariablesResponse: Schema.Schema<DeleteAcco
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersVariablesResponse>;
 
-export type DeleteAccountsContainersVariablesError = DefaultErrors;
+export type DeleteAccountsContainersVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Variable. */
 export const deleteAccountsContainersVariables: API.OperationMethod<
@@ -2125,7 +2286,7 @@ export const deleteAccountsContainersVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersVariablesRequest,
   output: DeleteAccountsContainersVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersVariablesRequest {
@@ -2163,7 +2324,12 @@ export type UpdateAccountsContainersVariablesResponse = Variable;
 export const UpdateAccountsContainersVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type UpdateAccountsContainersVariablesError = DefaultErrors;
+export type UpdateAccountsContainersVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Variable. */
 export const updateAccountsContainersVariables: API.OperationMethod<
@@ -2174,7 +2340,7 @@ export const updateAccountsContainersVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersVariablesRequest,
   output: UpdateAccountsContainersVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsContainersEnvironmentsRequest {
@@ -2205,7 +2371,12 @@ export const DeleteAccountsContainersEnvironmentsResponse: Schema.Schema<DeleteA
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersEnvironmentsResponse>;
 
-export type DeleteAccountsContainersEnvironmentsError = DefaultErrors;
+export type DeleteAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Environment. */
 export const deleteAccountsContainersEnvironments: API.OperationMethod<
@@ -2216,7 +2387,7 @@ export const deleteAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersEnvironmentsRequest,
   output: DeleteAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccountsContainersEnvironmentsRequest {
@@ -2254,7 +2425,12 @@ export type UpdateAccountsContainersEnvironmentsResponse = Environment;
 export const UpdateAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type UpdateAccountsContainersEnvironmentsError = DefaultErrors;
+export type UpdateAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Environment. */
 export const updateAccountsContainersEnvironments: API.OperationMethod<
@@ -2265,7 +2441,7 @@ export const updateAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersEnvironmentsRequest,
   output: UpdateAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersEnvironmentsRequest {
@@ -2295,7 +2471,12 @@ export type CreateAccountsContainersEnvironmentsResponse = Environment;
 export const CreateAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type CreateAccountsContainersEnvironmentsError = DefaultErrors;
+export type CreateAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Environment. */
 export const createAccountsContainersEnvironments: API.OperationMethod<
@@ -2306,7 +2487,7 @@ export const createAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersEnvironmentsRequest,
   output: CreateAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersEnvironmentsRequest {
@@ -2335,7 +2516,10 @@ export type GetAccountsContainersEnvironmentsResponse = Environment;
 export const GetAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type GetAccountsContainersEnvironmentsError = DefaultErrors;
+export type GetAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Environment. */
 export const getAccountsContainersEnvironments: API.OperationMethod<
@@ -2346,7 +2530,7 @@ export const getAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersEnvironmentsRequest,
   output: GetAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsContainersEnvironmentsRequest {
@@ -2373,7 +2557,10 @@ export type ListAccountsContainersEnvironmentsResponse =
 export const ListAccountsContainersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEnvironmentsResponse;
 
-export type ListAccountsContainersEnvironmentsError = DefaultErrors;
+export type ListAccountsContainersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Environments of a GTM Container. */
 export const listAccountsContainersEnvironments: API.OperationMethod<
@@ -2384,7 +2571,7 @@ export const listAccountsContainersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersEnvironmentsRequest,
   output: ListAccountsContainersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsContainersTriggersRequest {
@@ -2410,7 +2597,10 @@ export type ListAccountsContainersTriggersResponse = ListTriggersResponse;
 export const ListAccountsContainersTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTriggersResponse;
 
-export type ListAccountsContainersTriggersError = DefaultErrors;
+export type ListAccountsContainersTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Triggers of a Container. */
 export const listAccountsContainersTriggers: API.OperationMethod<
@@ -2421,7 +2611,7 @@ export const listAccountsContainersTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersTriggersRequest,
   output: ListAccountsContainersTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsContainersTriggersRequest {
@@ -2459,7 +2649,12 @@ export type UpdateAccountsContainersTriggersResponse = Trigger;
 export const UpdateAccountsContainersTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Trigger;
 
-export type UpdateAccountsContainersTriggersError = DefaultErrors;
+export type UpdateAccountsContainersTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Trigger. */
 export const updateAccountsContainersTriggers: API.OperationMethod<
@@ -2470,7 +2665,7 @@ export const updateAccountsContainersTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersTriggersRequest,
   output: UpdateAccountsContainersTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsContainersTriggersRequest {
@@ -2501,7 +2696,12 @@ export const DeleteAccountsContainersTriggersResponse: Schema.Schema<DeleteAccou
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersTriggersResponse>;
 
-export type DeleteAccountsContainersTriggersError = DefaultErrors;
+export type DeleteAccountsContainersTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Trigger. */
 export const deleteAccountsContainersTriggers: API.OperationMethod<
@@ -2512,7 +2712,7 @@ export const deleteAccountsContainersTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersTriggersRequest,
   output: DeleteAccountsContainersTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersTriggersRequest {
@@ -2542,7 +2742,12 @@ export type CreateAccountsContainersTriggersResponse = Trigger;
 export const CreateAccountsContainersTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Trigger;
 
-export type CreateAccountsContainersTriggersError = DefaultErrors;
+export type CreateAccountsContainersTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Trigger. */
 export const createAccountsContainersTriggers: API.OperationMethod<
@@ -2553,7 +2758,7 @@ export const createAccountsContainersTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersTriggersRequest,
   output: CreateAccountsContainersTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersTriggersRequest {
@@ -2582,7 +2787,10 @@ export type GetAccountsContainersTriggersResponse = Trigger;
 export const GetAccountsContainersTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Trigger;
 
-export type GetAccountsContainersTriggersError = DefaultErrors;
+export type GetAccountsContainersTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Trigger. */
 export const getAccountsContainersTriggers: API.OperationMethod<
@@ -2593,7 +2801,7 @@ export const getAccountsContainersTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersTriggersRequest,
   output: GetAccountsContainersTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsContainersMove_foldersRequest {
@@ -2643,7 +2851,12 @@ export const UpdateAccountsContainersMove_foldersResponse: Schema.Schema<UpdateA
     {},
   ) as any as Schema.Schema<UpdateAccountsContainersMove_foldersResponse>;
 
-export type UpdateAccountsContainersMove_foldersError = DefaultErrors;
+export type UpdateAccountsContainersMove_foldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves entities to a GTM Folder. */
 export const updateAccountsContainersMove_folders: API.OperationMethod<
@@ -2654,7 +2867,7 @@ export const updateAccountsContainersMove_folders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersMove_foldersRequest,
   output: UpdateAccountsContainersMove_foldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsContainersTagsRequest {
@@ -2684,7 +2897,12 @@ export type CreateAccountsContainersTagsResponse = Tag;
 export const CreateAccountsContainersTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tag;
 
-export type CreateAccountsContainersTagsError = DefaultErrors;
+export type CreateAccountsContainersTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GTM Tag. */
 export const createAccountsContainersTags: API.OperationMethod<
@@ -2695,7 +2913,7 @@ export const createAccountsContainersTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsContainersTagsRequest,
   output: CreateAccountsContainersTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsContainersTagsRequest {
@@ -2724,7 +2942,10 @@ export type GetAccountsContainersTagsResponse = Tag;
 export const GetAccountsContainersTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tag;
 
-export type GetAccountsContainersTagsError = DefaultErrors;
+export type GetAccountsContainersTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a GTM Tag. */
 export const getAccountsContainersTags: API.OperationMethod<
@@ -2735,7 +2956,7 @@ export const getAccountsContainersTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsContainersTagsRequest,
   output: GetAccountsContainersTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAccountsContainersTagsRequest {
@@ -2773,7 +2994,12 @@ export type UpdateAccountsContainersTagsResponse = Tag;
 export const UpdateAccountsContainersTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Tag;
 
-export type UpdateAccountsContainersTagsError = DefaultErrors;
+export type UpdateAccountsContainersTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GTM Tag. */
 export const updateAccountsContainersTags: API.OperationMethod<
@@ -2784,7 +3010,7 @@ export const updateAccountsContainersTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsContainersTagsRequest,
   output: UpdateAccountsContainersTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsContainersTagsRequest {
@@ -2815,7 +3041,12 @@ export const DeleteAccountsContainersTagsResponse: Schema.Schema<DeleteAccountsC
     {},
   ) as any as Schema.Schema<DeleteAccountsContainersTagsResponse>;
 
-export type DeleteAccountsContainersTagsError = DefaultErrors;
+export type DeleteAccountsContainersTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GTM Tag. */
 export const deleteAccountsContainersTags: API.OperationMethod<
@@ -2826,7 +3057,7 @@ export const deleteAccountsContainersTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsContainersTagsRequest,
   output: DeleteAccountsContainersTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsContainersTagsRequest {
@@ -2852,7 +3083,10 @@ export type ListAccountsContainersTagsResponse = ListTagsResponse;
 export const ListAccountsContainersTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTagsResponse;
 
-export type ListAccountsContainersTagsError = DefaultErrors;
+export type ListAccountsContainersTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GTM Tags of a Container. */
 export const listAccountsContainersTags: API.OperationMethod<
@@ -2863,5 +3097,5 @@ export const listAccountsContainersTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountsContainersTagsRequest,
   output: ListAccountsContainersTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

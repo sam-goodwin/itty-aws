@@ -312,6 +312,52 @@ export const ListTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListTablesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -337,7 +383,10 @@ export type GetIamPolicyProjectsCatalogsResponse = Policy;
 export const GetIamPolicyProjectsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsCatalogsError = DefaultErrors;
+export type GetIamPolicyProjectsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the IAM policy for the specified Catalog. */
 export const getIamPolicyProjectsCatalogs: API.OperationMethod<
@@ -348,7 +397,7 @@ export const getIamPolicyProjectsCatalogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsCatalogsRequest,
   output: GetIamPolicyProjectsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsCatalogsRequest {
@@ -375,7 +424,12 @@ export type SetIamPolicyProjectsCatalogsResponse = Policy;
 export const SetIamPolicyProjectsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsCatalogsError = DefaultErrors;
+export type SetIamPolicyProjectsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy for the specified catalog. */
 export const setIamPolicyProjectsCatalogs: API.OperationMethod<
@@ -386,7 +440,7 @@ export const setIamPolicyProjectsCatalogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsCatalogsRequest,
   output: SetIamPolicyProjectsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsCatalogsRequest {
@@ -414,7 +468,12 @@ export type TestIamPermissionsProjectsCatalogsResponse =
 export const TestIamPermissionsProjectsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsCatalogsError = DefaultErrors;
+export type TestIamPermissionsProjectsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests the IAM permissions for the specified catalog. */
 export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
@@ -425,7 +484,7 @@ export const testIamPermissionsProjectsCatalogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsCatalogsRequest,
   output: TestIamPermissionsProjectsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsCatalogsNamespacesRequest {
@@ -450,7 +509,10 @@ export type GetIamPolicyProjectsCatalogsNamespacesResponse = Policy;
 export const GetIamPolicyProjectsCatalogsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsCatalogsNamespacesError = DefaultErrors;
+export type GetIamPolicyProjectsCatalogsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the IAM policy for the specified Catalog. */
 export const getIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
@@ -461,7 +523,7 @@ export const getIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsCatalogsNamespacesRequest,
   output: GetIamPolicyProjectsCatalogsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsCatalogsNamespacesRequest {
@@ -488,7 +550,12 @@ export type SetIamPolicyProjectsCatalogsNamespacesResponse = Policy;
 export const SetIamPolicyProjectsCatalogsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsCatalogsNamespacesError = DefaultErrors;
+export type SetIamPolicyProjectsCatalogsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy for the specified catalog. */
 export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
@@ -499,7 +566,7 @@ export const setIamPolicyProjectsCatalogsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsCatalogsNamespacesRequest,
   output: SetIamPolicyProjectsCatalogsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsCatalogsNamespacesRequest {
@@ -527,7 +594,12 @@ export type TestIamPermissionsProjectsCatalogsNamespacesResponse =
 export const TestIamPermissionsProjectsCatalogsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsCatalogsNamespacesError = DefaultErrors;
+export type TestIamPermissionsProjectsCatalogsNamespacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests the IAM permissions for the specified namespace. */
 export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
@@ -538,7 +610,7 @@ export const testIamPermissionsProjectsCatalogsNamespaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsCatalogsNamespacesRequest,
   output: TestIamPermissionsProjectsCatalogsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsCatalogsNamespacesTablesRequest {
@@ -563,7 +635,10 @@ export type GetIamPolicyProjectsCatalogsNamespacesTablesResponse = Policy;
 export const GetIamPolicyProjectsCatalogsNamespacesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsCatalogsNamespacesTablesError = DefaultErrors;
+export type GetIamPolicyProjectsCatalogsNamespacesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the IAM policy for the specified Catalog. */
 export const getIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
@@ -574,7 +649,7 @@ export const getIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsCatalogsNamespacesTablesRequest,
   output: GetIamPolicyProjectsCatalogsNamespacesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsCatalogsNamespacesTablesRequest {
@@ -601,7 +676,12 @@ export type SetIamPolicyProjectsCatalogsNamespacesTablesResponse = Policy;
 export const SetIamPolicyProjectsCatalogsNamespacesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsCatalogsNamespacesTablesError = DefaultErrors;
+export type SetIamPolicyProjectsCatalogsNamespacesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy for the specified catalog. */
 export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
@@ -612,7 +692,7 @@ export const setIamPolicyProjectsCatalogsNamespacesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsCatalogsNamespacesTablesRequest,
   output: SetIamPolicyProjectsCatalogsNamespacesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsCatalogsNamespacesTablesRequest {
@@ -641,7 +721,11 @@ export const TestIamPermissionsProjectsCatalogsNamespacesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsCatalogsNamespacesTablesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests the IAM permissions for the specified table. */
 export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMethod<
@@ -652,7 +736,7 @@ export const testIamPermissionsProjectsCatalogsNamespacesTables: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsCatalogsNamespacesTablesRequest,
   output: TestIamPermissionsProjectsCatalogsNamespacesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCatalogsRequest {
@@ -678,7 +762,12 @@ export type CreateProjectsLocationsCatalogsResponse = Catalog;
 export const CreateProjectsLocationsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Catalog;
 
-export type CreateProjectsLocationsCatalogsError = DefaultErrors;
+export type CreateProjectsLocationsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new catalog. */
 export const createProjectsLocationsCatalogs: API.OperationMethod<
@@ -689,7 +778,7 @@ export const createProjectsLocationsCatalogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCatalogsRequest,
   output: CreateProjectsLocationsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCatalogsRequest {
@@ -709,7 +798,12 @@ export type DeleteProjectsLocationsCatalogsResponse = Catalog;
 export const DeleteProjectsLocationsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Catalog;
 
-export type DeleteProjectsLocationsCatalogsError = DefaultErrors;
+export type DeleteProjectsLocationsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing catalog specified by the catalog ID. */
 export const deleteProjectsLocationsCatalogs: API.OperationMethod<
@@ -720,7 +814,7 @@ export const deleteProjectsLocationsCatalogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCatalogsRequest,
   output: DeleteProjectsLocationsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCatalogsRequest {
@@ -740,7 +834,10 @@ export type GetProjectsLocationsCatalogsResponse = Catalog;
 export const GetProjectsLocationsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Catalog;
 
-export type GetProjectsLocationsCatalogsError = DefaultErrors;
+export type GetProjectsLocationsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the catalog specified by the resource name. */
 export const getProjectsLocationsCatalogs: API.OperationMethod<
@@ -751,7 +848,7 @@ export const getProjectsLocationsCatalogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsRequest,
   output: GetProjectsLocationsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCatalogsRequest {
@@ -777,7 +874,10 @@ export type ListProjectsLocationsCatalogsResponse = ListCatalogsResponse;
 export const ListProjectsLocationsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCatalogsResponse;
 
-export type ListProjectsLocationsCatalogsError = DefaultErrors;
+export type ListProjectsLocationsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all catalogs in a specified project. */
 export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
@@ -788,7 +888,7 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsRequest,
   output: ListProjectsLocationsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -818,7 +918,12 @@ export type CreateProjectsLocationsCatalogsDatabasesResponse = Database;
 export const CreateProjectsLocationsCatalogsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Database;
 
-export type CreateProjectsLocationsCatalogsDatabasesError = DefaultErrors;
+export type CreateProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new database. */
 export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
@@ -829,7 +934,7 @@ export const createProjectsLocationsCatalogsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCatalogsDatabasesRequest,
   output: CreateProjectsLocationsCatalogsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCatalogsDatabasesRequest {
@@ -849,7 +954,12 @@ export type DeleteProjectsLocationsCatalogsDatabasesResponse = Database;
 export const DeleteProjectsLocationsCatalogsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Database;
 
-export type DeleteProjectsLocationsCatalogsDatabasesError = DefaultErrors;
+export type DeleteProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing database specified by the database ID. */
 export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
@@ -860,7 +970,7 @@ export const deleteProjectsLocationsCatalogsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCatalogsDatabasesRequest,
   output: DeleteProjectsLocationsCatalogsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCatalogsDatabasesRequest {
@@ -886,7 +996,12 @@ export type PatchProjectsLocationsCatalogsDatabasesResponse = Database;
 export const PatchProjectsLocationsCatalogsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Database;
 
-export type PatchProjectsLocationsCatalogsDatabasesError = DefaultErrors;
+export type PatchProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing database specified by the database ID. */
 export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
@@ -897,7 +1012,7 @@ export const patchProjectsLocationsCatalogsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCatalogsDatabasesRequest,
   output: PatchProjectsLocationsCatalogsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCatalogsDatabasesRequest {
@@ -917,7 +1032,10 @@ export type GetProjectsLocationsCatalogsDatabasesResponse = Database;
 export const GetProjectsLocationsCatalogsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Database;
 
-export type GetProjectsLocationsCatalogsDatabasesError = DefaultErrors;
+export type GetProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the database specified by the resource name. */
 export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
@@ -928,7 +1046,7 @@ export const getProjectsLocationsCatalogsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsDatabasesRequest,
   output: GetProjectsLocationsCatalogsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCatalogsDatabasesRequest {
@@ -955,7 +1073,10 @@ export type ListProjectsLocationsCatalogsDatabasesResponse =
 export const ListProjectsLocationsCatalogsDatabasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDatabasesResponse;
 
-export type ListProjectsLocationsCatalogsDatabasesError = DefaultErrors;
+export type ListProjectsLocationsCatalogsDatabasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all databases in a specified catalog. */
 export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMethod<
@@ -966,7 +1087,7 @@ export const listProjectsLocationsCatalogsDatabases: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsDatabasesRequest,
   output: ListProjectsLocationsCatalogsDatabasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -996,7 +1117,12 @@ export type CreateProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const CreateProjectsLocationsCatalogsDatabasesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type CreateProjectsLocationsCatalogsDatabasesTablesError = DefaultErrors;
+export type CreateProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new table. */
 export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
@@ -1007,7 +1133,7 @@ export const createProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCatalogsDatabasesTablesRequest,
   output: CreateProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCatalogsDatabasesTablesRequest {
@@ -1027,7 +1153,12 @@ export type DeleteProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const DeleteProjectsLocationsCatalogsDatabasesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type DeleteProjectsLocationsCatalogsDatabasesTablesError = DefaultErrors;
+export type DeleteProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing table specified by the table ID. */
 export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
@@ -1038,7 +1169,7 @@ export const deleteProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCatalogsDatabasesTablesRequest,
   output: DeleteProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCatalogsDatabasesTablesRequest {
@@ -1064,7 +1195,12 @@ export type PatchProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const PatchProjectsLocationsCatalogsDatabasesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type PatchProjectsLocationsCatalogsDatabasesTablesError = DefaultErrors;
+export type PatchProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing table specified by the table ID. */
 export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
@@ -1075,7 +1211,7 @@ export const patchProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCatalogsDatabasesTablesRequest,
   output: PatchProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RenameProjectsLocationsCatalogsDatabasesTablesRequest {
@@ -1098,7 +1234,12 @@ export type RenameProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const RenameProjectsLocationsCatalogsDatabasesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type RenameProjectsLocationsCatalogsDatabasesTablesError = DefaultErrors;
+export type RenameProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renames an existing table specified by the table ID. */
 export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
@@ -1109,7 +1250,7 @@ export const renameProjectsLocationsCatalogsDatabasesTables: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenameProjectsLocationsCatalogsDatabasesTablesRequest,
   output: RenameProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCatalogsDatabasesTablesRequest {
@@ -1129,7 +1270,10 @@ export type GetProjectsLocationsCatalogsDatabasesTablesResponse = Table;
 export const GetProjectsLocationsCatalogsDatabasesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type GetProjectsLocationsCatalogsDatabasesTablesError = DefaultErrors;
+export type GetProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the table specified by the resource name. */
 export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
@@ -1140,7 +1284,7 @@ export const getProjectsLocationsCatalogsDatabasesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsDatabasesTablesRequest,
   output: GetProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCatalogsDatabasesTablesRequest {
@@ -1170,7 +1314,10 @@ export type ListProjectsLocationsCatalogsDatabasesTablesResponse =
 export const ListProjectsLocationsCatalogsDatabasesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTablesResponse;
 
-export type ListProjectsLocationsCatalogsDatabasesTablesError = DefaultErrors;
+export type ListProjectsLocationsCatalogsDatabasesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all tables in a specified database. */
 export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperationMethod<
@@ -1181,7 +1328,7 @@ export const listProjectsLocationsCatalogsDatabasesTables: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsDatabasesTablesRequest,
   output: ListProjectsLocationsCatalogsDatabasesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

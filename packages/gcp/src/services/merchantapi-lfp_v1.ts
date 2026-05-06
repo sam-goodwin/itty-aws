@@ -364,6 +364,52 @@ export const ProductStatusChangeMessage =
   }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -391,7 +437,12 @@ export type InsertAccountsLfpInventoriesResponse = LfpInventory;
 export const InsertAccountsLfpInventoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LfpInventory;
 
-export type InsertAccountsLfpInventoriesError = DefaultErrors;
+export type InsertAccountsLfpInventoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a `LfpInventory` resource for the given target merchant account. If the resource already exists, it will be replaced. The inventory automatically expires after 30 days. */
 export const insertAccountsLfpInventories: API.OperationMethod<
@@ -402,7 +453,7 @@ export const insertAccountsLfpInventories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsLfpInventoriesRequest,
   output: InsertAccountsLfpInventoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsLfpMerchantStatesRequest {
@@ -422,7 +473,10 @@ export type GetAccountsLfpMerchantStatesResponse = LfpMerchantState;
 export const GetAccountsLfpMerchantStatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LfpMerchantState;
 
-export type GetAccountsLfpMerchantStatesError = DefaultErrors;
+export type GetAccountsLfpMerchantStatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the LFP state of a merchant */
 export const getAccountsLfpMerchantStates: API.OperationMethod<
@@ -433,7 +487,7 @@ export const getAccountsLfpMerchantStates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsLfpMerchantStatesRequest,
   output: GetAccountsLfpMerchantStatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsLfpStoresRequest {
@@ -453,7 +507,7 @@ export type GetAccountsLfpStoresResponse = LfpStore;
 export const GetAccountsLfpStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ LfpStore;
 
-export type GetAccountsLfpStoresError = DefaultErrors;
+export type GetAccountsLfpStoresError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about a store. */
 export const getAccountsLfpStores: API.OperationMethod<
@@ -464,7 +518,7 @@ export const getAccountsLfpStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsLfpStoresRequest,
   output: GetAccountsLfpStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsLfpStoresRequest {
@@ -495,7 +549,7 @@ export type ListAccountsLfpStoresResponse = ListLfpStoresResponse;
 export const ListAccountsLfpStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLfpStoresResponse;
 
-export type ListAccountsLfpStoresError = DefaultErrors;
+export type ListAccountsLfpStoresError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`. */
 export const listAccountsLfpStores: API.PaginatedOperationMethod<
@@ -506,7 +560,7 @@ export const listAccountsLfpStores: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLfpStoresRequest,
   output: ListAccountsLfpStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -537,7 +591,12 @@ export type InsertAccountsLfpStoresResponse = LfpStore;
 export const InsertAccountsLfpStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ LfpStore;
 
-export type InsertAccountsLfpStoresError = DefaultErrors;
+export type InsertAccountsLfpStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced. */
 export const insertAccountsLfpStores: API.OperationMethod<
@@ -548,7 +607,7 @@ export const insertAccountsLfpStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsLfpStoresRequest,
   output: InsertAccountsLfpStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsLfpStoresRequest {
@@ -568,7 +627,12 @@ export type DeleteAccountsLfpStoresResponse = Empty;
 export const DeleteAccountsLfpStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsLfpStoresError = DefaultErrors;
+export type DeleteAccountsLfpStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a store for a target merchant. */
 export const deleteAccountsLfpStores: API.OperationMethod<
@@ -579,7 +643,7 @@ export const deleteAccountsLfpStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsLfpStoresRequest,
   output: DeleteAccountsLfpStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAccountsLfpSalesRequest {
@@ -606,7 +670,12 @@ export type InsertAccountsLfpSalesResponse = LfpSale;
 export const InsertAccountsLfpSalesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LfpSale;
 
-export type InsertAccountsLfpSalesError = DefaultErrors;
+export type InsertAccountsLfpSalesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a `LfpSale` for the given merchant. */
 export const insertAccountsLfpSales: API.OperationMethod<
@@ -617,5 +686,5 @@ export const insertAccountsLfpSales: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsLfpSalesRequest,
   output: InsertAccountsLfpSalesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

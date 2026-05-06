@@ -984,6 +984,52 @@ export const GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1009,7 +1055,12 @@ export type CreateProjectsLocationsReplaysResponse = GoogleLongrunningOperation;
 export const CreateProjectsLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsReplaysError = DefaultErrors;
+export type CreateProjectsLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and starts a Replay using the given ReplayConfig. */
 export const createProjectsLocationsReplays: API.OperationMethod<
@@ -1020,7 +1071,7 @@ export const createProjectsLocationsReplays: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsReplaysRequest,
   output: CreateProjectsLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsReplaysRequest {
@@ -1041,7 +1092,10 @@ export type GetProjectsLocationsReplaysResponse =
 export const GetProjectsLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
 
-export type GetProjectsLocationsReplaysError = DefaultErrors;
+export type GetProjectsLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified Replay. Each `Replay` is available for at least 7 days. */
 export const getProjectsLocationsReplays: API.OperationMethod<
@@ -1052,7 +1106,7 @@ export const getProjectsLocationsReplays: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsReplaysRequest,
   output: GetProjectsLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsReplaysRequest {
@@ -1079,7 +1133,10 @@ export type ListProjectsLocationsReplaysResponse =
 export const ListProjectsLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 
-export type ListProjectsLocationsReplaysError = DefaultErrors;
+export type ListProjectsLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists each Replay in a project, folder, or organization. Each `Replay` is available for at least 7 days. */
 export const listProjectsLocationsReplays: API.PaginatedOperationMethod<
@@ -1090,7 +1147,7 @@ export const listProjectsLocationsReplays: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysRequest,
   output: ListProjectsLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1121,7 +1178,10 @@ export type ListProjectsLocationsReplaysResultsResponse =
 export const ListProjectsLocationsReplaysResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 
-export type ListProjectsLocationsReplaysResultsError = DefaultErrors;
+export type ListProjectsLocationsReplaysResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the results of running a Replay. */
 export const listProjectsLocationsReplaysResults: API.PaginatedOperationMethod<
@@ -1132,7 +1192,7 @@ export const listProjectsLocationsReplaysResults: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysResultsRequest,
   output: ListProjectsLocationsReplaysResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1171,7 +1231,10 @@ export type ListProjectsLocationsReplaysOperationsResponse =
 export const ListProjectsLocationsReplaysOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsReplaysOperationsError = DefaultErrors;
+export type ListProjectsLocationsReplaysOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMethod<
@@ -1182,7 +1245,7 @@ export const listProjectsLocationsReplaysOperations: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsReplaysOperationsRequest,
   output: ListProjectsLocationsReplaysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1207,7 +1270,10 @@ export type GetProjectsLocationsReplaysOperationsResponse =
 export const GetProjectsLocationsReplaysOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsReplaysOperationsError = DefaultErrors;
+export type GetProjectsLocationsReplaysOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsReplaysOperations: API.OperationMethod<
@@ -1218,7 +1284,7 @@ export const getProjectsLocationsReplaysOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsReplaysOperationsRequest,
   output: GetProjectsLocationsReplaysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest {
@@ -1240,7 +1306,9 @@ export const GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
@@ -1251,7 +1319,7 @@ export const getProjectsLocationsOrgPolicyViolationsPreviewsOperations: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
   output: GetProjectsLocationsOrgPolicyViolationsPreviewsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsAccessPolicySimulationsOperationsRequest {
@@ -1273,7 +1341,9 @@ export const GetProjectsLocationsAccessPolicySimulationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsAccessPolicySimulationsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsAccessPolicySimulationsOperations: API.OperationMethod<
@@ -1284,7 +1354,7 @@ export const getProjectsLocationsAccessPolicySimulationsOperations: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAccessPolicySimulationsOperationsRequest,
   output: GetProjectsLocationsAccessPolicySimulationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest {
@@ -1306,7 +1376,9 @@ export const GetOrganizationsLocationsAccessPolicySimulationsOperationsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsAccessPolicySimulationsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsAccessPolicySimulationsOperations: API.OperationMethod<
@@ -1317,7 +1389,7 @@ export const getOrganizationsLocationsAccessPolicySimulationsOperations: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsAccessPolicySimulationsOperationsRequest,
   output: GetOrganizationsLocationsAccessPolicySimulationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
@@ -1348,7 +1420,11 @@ export const GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** GenerateOrgPolicyViolationsPreview generates an OrgPolicyViolationsPreview for the proposed changes in the provided OrgPolicyViolationsPreview.OrgPolicyOverlay. The changes to OrgPolicy are specified by this `OrgPolicyOverlay`. The resources to scan are inferred from these specified changes. */
 export const generateOrganizationsLocationsOrgPolicyViolationsPreviews: API.OperationMethod<
@@ -1359,7 +1435,7 @@ export const generateOrganizationsLocationsOrgPolicyViolationsPreviews: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: GenerateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
@@ -1395,7 +1471,11 @@ export const CreateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** CreateOrgPolicyViolationsPreview creates an OrgPolicyViolationsPreview for the proposed changes in the provided OrgPolicyViolationsPreview.OrgPolicyOverlay. The changes to OrgPolicy are specified by this `OrgPolicyOverlay`. The resources to scan are inferred from these specified changes. */
 export const createOrganizationsLocationsOrgPolicyViolationsPreviews: API.OperationMethod<
@@ -1406,7 +1486,7 @@ export const createOrganizationsLocationsOrgPolicyViolationsPreviews: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: CreateOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
@@ -1428,7 +1508,9 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetOrgPolicyViolationsPreview gets the specified OrgPolicyViolationsPreview. Each OrgPolicyViolationsPreview is available for at least 7 days. */
 export const getOrganizationsLocationsOrgPolicyViolationsPreviews: API.OperationMethod<
@@ -1439,7 +1521,7 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviews: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: GetOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest {
@@ -1470,7 +1552,9 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsPreviewsResponse;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListOrgPolicyViolationsPreviews lists each OrgPolicyViolationsPreview in an organization. Each OrgPolicyViolationsPreview is available for at least 7 days. */
 export const listOrganizationsLocationsOrgPolicyViolationsPreviews: API.PaginatedOperationMethod<
@@ -1481,7 +1565,7 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviews: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOrgPolicyViolationsPreviewsRequest,
   output: ListOrganizationsLocationsOrgPolicyViolationsPreviewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1507,7 +1591,9 @@ export const GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
@@ -1519,7 +1605,7 @@ export const getOrganizationsLocationsOrgPolicyViolationsPreviewsOperations: API
   input: GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsRequest,
   output:
     GetOrganizationsLocationsOrgPolicyViolationsPreviewsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest {
@@ -1547,7 +1633,9 @@ export const ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListOrgPolicyViolationsResponse;
 
 export type ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ListOrgPolicyViolations lists the OrgPolicyViolations that are present in an OrgPolicyViolationsPreview. */
 export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolations: API.PaginatedOperationMethod<
@@ -1560,7 +1648,7 @@ export const listOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViola
     ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsRequest,
   output:
     ListOrganizationsLocationsOrgPolicyViolationsPreviewsOrgPolicyViolationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1590,7 +1678,12 @@ export type CreateOrganizationsLocationsReplaysResponse =
 export const CreateOrganizationsLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsLocationsReplaysError = DefaultErrors;
+export type CreateOrganizationsLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and starts a Replay using the given ReplayConfig. */
 export const createOrganizationsLocationsReplays: API.OperationMethod<
@@ -1601,7 +1694,7 @@ export const createOrganizationsLocationsReplays: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsReplaysRequest,
   output: CreateOrganizationsLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsReplaysRequest {
@@ -1622,7 +1715,10 @@ export type GetOrganizationsLocationsReplaysResponse =
 export const GetOrganizationsLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
 
-export type GetOrganizationsLocationsReplaysError = DefaultErrors;
+export type GetOrganizationsLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified Replay. Each `Replay` is available for at least 7 days. */
 export const getOrganizationsLocationsReplays: API.OperationMethod<
@@ -1633,7 +1729,7 @@ export const getOrganizationsLocationsReplays: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsReplaysRequest,
   output: GetOrganizationsLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsReplaysRequest {
@@ -1660,7 +1756,10 @@ export type ListOrganizationsLocationsReplaysResponse =
 export const ListOrganizationsLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 
-export type ListOrganizationsLocationsReplaysError = DefaultErrors;
+export type ListOrganizationsLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists each Replay in a project, folder, or organization. Each `Replay` is available for at least 7 days. */
 export const listOrganizationsLocationsReplays: API.PaginatedOperationMethod<
@@ -1671,7 +1770,7 @@ export const listOrganizationsLocationsReplays: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysRequest,
   output: ListOrganizationsLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1710,7 +1809,10 @@ export type ListOrganizationsLocationsReplaysOperationsResponse =
 export const ListOrganizationsLocationsReplaysOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListOrganizationsLocationsReplaysOperationsError = DefaultErrors;
+export type ListOrganizationsLocationsReplaysOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperationMethod<
@@ -1721,7 +1823,7 @@ export const listOrganizationsLocationsReplaysOperations: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysOperationsRequest,
   output: ListOrganizationsLocationsReplaysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1746,7 +1848,10 @@ export type GetOrganizationsLocationsReplaysOperationsResponse =
 export const GetOrganizationsLocationsReplaysOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetOrganizationsLocationsReplaysOperationsError = DefaultErrors;
+export type GetOrganizationsLocationsReplaysOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsReplaysOperations: API.OperationMethod<
@@ -1757,7 +1862,7 @@ export const getOrganizationsLocationsReplaysOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsReplaysOperationsRequest,
   output: GetOrganizationsLocationsReplaysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsReplaysResultsRequest {
@@ -1784,7 +1889,10 @@ export type ListOrganizationsLocationsReplaysResultsResponse =
 export const ListOrganizationsLocationsReplaysResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 
-export type ListOrganizationsLocationsReplaysResultsError = DefaultErrors;
+export type ListOrganizationsLocationsReplaysResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the results of running a Replay. */
 export const listOrganizationsLocationsReplaysResults: API.PaginatedOperationMethod<
@@ -1795,7 +1903,7 @@ export const listOrganizationsLocationsReplaysResults: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsReplaysResultsRequest,
   output: ListOrganizationsLocationsReplaysResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1832,7 +1940,7 @@ export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -1843,7 +1951,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1866,7 +1974,7 @@ export type GetOperationsResponse = GoogleLongrunningOperation;
 export const GetOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1877,7 +1985,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFoldersLocationsAccessPolicySimulationsOperationsRequest {
@@ -1899,7 +2007,9 @@ export const GetFoldersLocationsAccessPolicySimulationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetFoldersLocationsAccessPolicySimulationsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsAccessPolicySimulationsOperations: API.OperationMethod<
@@ -1910,7 +2020,7 @@ export const getFoldersLocationsAccessPolicySimulationsOperations: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsAccessPolicySimulationsOperationsRequest,
   output: GetFoldersLocationsAccessPolicySimulationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest {
@@ -1932,7 +2042,9 @@ export const GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsOrgPolicyViolationsPreviewsOperations: API.OperationMethod<
@@ -1943,7 +2055,7 @@ export const getFoldersLocationsOrgPolicyViolationsPreviewsOperations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsRequest,
   output: GetFoldersLocationsOrgPolicyViolationsPreviewsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateFoldersLocationsReplaysRequest {
@@ -1968,7 +2080,12 @@ export type CreateFoldersLocationsReplaysResponse = GoogleLongrunningOperation;
 export const CreateFoldersLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateFoldersLocationsReplaysError = DefaultErrors;
+export type CreateFoldersLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and starts a Replay using the given ReplayConfig. */
 export const createFoldersLocationsReplays: API.OperationMethod<
@@ -1979,7 +2096,7 @@ export const createFoldersLocationsReplays: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersLocationsReplaysRequest,
   output: CreateFoldersLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersLocationsReplaysRequest {
@@ -2000,7 +2117,10 @@ export type GetFoldersLocationsReplaysResponse =
 export const GetFoldersLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaReplay;
 
-export type GetFoldersLocationsReplaysError = DefaultErrors;
+export type GetFoldersLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified Replay. Each `Replay` is available for at least 7 days. */
 export const getFoldersLocationsReplays: API.OperationMethod<
@@ -2011,7 +2131,7 @@ export const getFoldersLocationsReplays: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsReplaysRequest,
   output: GetFoldersLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersLocationsReplaysRequest {
@@ -2038,7 +2158,10 @@ export type ListFoldersLocationsReplaysResponse =
 export const ListFoldersLocationsReplaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplaysResponse;
 
-export type ListFoldersLocationsReplaysError = DefaultErrors;
+export type ListFoldersLocationsReplaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists each Replay in a project, folder, or organization. Each `Replay` is available for at least 7 days. */
 export const listFoldersLocationsReplays: API.PaginatedOperationMethod<
@@ -2049,7 +2172,7 @@ export const listFoldersLocationsReplays: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysRequest,
   output: ListFoldersLocationsReplaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2080,7 +2203,10 @@ export type ListFoldersLocationsReplaysResultsResponse =
 export const ListFoldersLocationsReplaysResultsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudPolicysimulatorV1betaListReplayResultsResponse;
 
-export type ListFoldersLocationsReplaysResultsError = DefaultErrors;
+export type ListFoldersLocationsReplaysResultsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the results of running a Replay. */
 export const listFoldersLocationsReplaysResults: API.PaginatedOperationMethod<
@@ -2091,7 +2217,7 @@ export const listFoldersLocationsReplaysResults: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysResultsRequest,
   output: ListFoldersLocationsReplaysResultsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2130,7 +2256,10 @@ export type ListFoldersLocationsReplaysOperationsResponse =
 export const ListFoldersLocationsReplaysOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListFoldersLocationsReplaysOperationsError = DefaultErrors;
+export type ListFoldersLocationsReplaysOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod<
@@ -2141,7 +2270,7 @@ export const listFoldersLocationsReplaysOperations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersLocationsReplaysOperationsRequest,
   output: ListFoldersLocationsReplaysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2166,7 +2295,10 @@ export type GetFoldersLocationsReplaysOperationsResponse =
 export const GetFoldersLocationsReplaysOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetFoldersLocationsReplaysOperationsError = DefaultErrors;
+export type GetFoldersLocationsReplaysOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getFoldersLocationsReplaysOperations: API.OperationMethod<
@@ -2177,5 +2309,5 @@ export const getFoldersLocationsReplaysOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsReplaysOperationsRequest,
   output: GetFoldersLocationsReplaysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

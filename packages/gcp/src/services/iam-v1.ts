@@ -1824,6 +1824,52 @@ export const QueryGrantableRolesResponse =
   }).annotate({ identifier: "QueryGrantableRolesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1848,7 +1894,12 @@ export type UndeleteProjectsServiceAccountsResponse =
 export const UndeleteProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UndeleteServiceAccountResponse;
 
-export type UndeleteProjectsServiceAccountsError = DefaultErrors;
+export type UndeleteProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a deleted ServiceAccount. **Important:** It is not always possible to restore a deleted service account. Use this method only as a last resort. After you delete a service account, IAM permanently removes the service account 30 days later. There is no way to restore a deleted service account that has been permanently removed. */
 export const undeleteProjectsServiceAccounts: API.OperationMethod<
@@ -1859,7 +1910,7 @@ export const undeleteProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsServiceAccountsRequest,
   output: UndeleteProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignJwtProjectsServiceAccountsRequest {
@@ -1882,7 +1933,12 @@ export type SignJwtProjectsServiceAccountsResponse = SignJwtResponse;
 export const SignJwtProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SignJwtResponse;
 
-export type SignJwtProjectsServiceAccountsError = DefaultErrors;
+export type SignJwtProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a JSON Web Token (JWT) using the system-managed private key for a ServiceAccount. */
 export const signJwtProjectsServiceAccounts: API.OperationMethod<
@@ -1893,7 +1949,7 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignJwtProjectsServiceAccountsRequest,
   output: SignJwtProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsServiceAccountsRequest {
@@ -1916,7 +1972,12 @@ export type PatchProjectsServiceAccountsResponse = ServiceAccount;
 export const PatchProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccount;
 
-export type PatchProjectsServiceAccountsError = DefaultErrors;
+export type PatchProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a ServiceAccount. */
 export const patchProjectsServiceAccounts: API.OperationMethod<
@@ -1927,7 +1988,7 @@ export const patchProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsServiceAccountsRequest,
   output: PatchProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsServiceAccountsRequest {
@@ -1953,7 +2014,10 @@ export type ListProjectsServiceAccountsResponse = ListServiceAccountsResponse;
 export const ListProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServiceAccountsResponse;
 
-export type ListProjectsServiceAccountsError = DefaultErrors;
+export type ListProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists every ServiceAccount that belongs to a specific project. */
 export const listProjectsServiceAccounts: API.PaginatedOperationMethod<
@@ -1964,7 +2028,7 @@ export const listProjectsServiceAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsServiceAccountsRequest,
   output: ListProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1995,7 +2059,12 @@ export type CreateProjectsServiceAccountsResponse = ServiceAccount;
 export const CreateProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccount;
 
-export type CreateProjectsServiceAccountsError = DefaultErrors;
+export type CreateProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ServiceAccount. */
 export const createProjectsServiceAccounts: API.OperationMethod<
@@ -2006,7 +2075,7 @@ export const createProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsServiceAccountsRequest,
   output: CreateProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsServiceAccountsRequest {
@@ -2035,7 +2104,12 @@ export type GetIamPolicyProjectsServiceAccountsResponse = Policy;
 export const GetIamPolicyProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsServiceAccountsError = DefaultErrors;
+export type GetIamPolicyProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy that is attached to a ServiceAccount. This IAM policy specifies which principals have access to the service account. This method does not tell you whether the service account has been granted any roles on other resources. To check whether a service account has role grants on a resource, use the `getIamPolicy` method for that resource. For example, to view the role grants for a project, call the Resource Manager API's [projects.getIamPolicy](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getIamPolicy) method. */
 export const getIamPolicyProjectsServiceAccounts: API.OperationMethod<
@@ -2046,7 +2120,7 @@ export const getIamPolicyProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsServiceAccountsRequest,
   output: GetIamPolicyProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsServiceAccountsRequest {
@@ -2066,7 +2140,12 @@ export type DeleteProjectsServiceAccountsResponse = Empty;
 export const DeleteProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsServiceAccountsError = DefaultErrors;
+export type DeleteProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a ServiceAccount. **Warning:** After you delete a service account, you might not be able to undelete it. If you know that you need to re-enable the service account in the future, use DisableServiceAccount instead. If you delete a service account, IAM permanently removes the service account 30 days later. Google Cloud cannot recover the service account after it is permanently removed, even if you file a support request. To help avoid unplanned outages, we recommend that you disable the service account before you delete it. Use DisableServiceAccount to disable the service account, then wait at least 24 hours and watch for unintended consequences. If there are no unintended consequences, you can delete the service account. */
 export const deleteProjectsServiceAccounts: API.OperationMethod<
@@ -2077,7 +2156,7 @@ export const deleteProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsServiceAccountsRequest,
   output: DeleteProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsServiceAccountsRequest {
@@ -2097,7 +2176,10 @@ export type GetProjectsServiceAccountsResponse = ServiceAccount;
 export const GetProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccount;
 
-export type GetProjectsServiceAccountsError = DefaultErrors;
+export type GetProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ServiceAccount. */
 export const getProjectsServiceAccounts: API.OperationMethod<
@@ -2108,7 +2190,7 @@ export const getProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsServiceAccountsRequest,
   output: GetProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateProjectsServiceAccountsRequest {
@@ -2131,7 +2213,12 @@ export type UpdateProjectsServiceAccountsResponse = ServiceAccount;
 export const UpdateProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccount;
 
-export type UpdateProjectsServiceAccountsError = DefaultErrors;
+export type UpdateProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** **Note:** We are in the process of deprecating this method. Use PatchServiceAccount instead. Updates a ServiceAccount. You can update only the `display_name` field. */
 export const updateProjectsServiceAccounts: API.OperationMethod<
@@ -2142,7 +2229,7 @@ export const updateProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsServiceAccountsRequest,
   output: UpdateProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsServiceAccountsRequest {
@@ -2170,7 +2257,12 @@ export type TestIamPermissionsProjectsServiceAccountsResponse =
 export const TestIamPermissionsProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsServiceAccountsError = DefaultErrors;
+export type TestIamPermissionsProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Tests whether the caller has the specified permissions on a ServiceAccount. */
 export const testIamPermissionsProjectsServiceAccounts: API.OperationMethod<
@@ -2181,7 +2273,7 @@ export const testIamPermissionsProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsServiceAccountsRequest,
   output: TestIamPermissionsProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableProjectsServiceAccountsRequest {
@@ -2204,7 +2296,12 @@ export type EnableProjectsServiceAccountsResponse = Empty;
 export const EnableProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type EnableProjectsServiceAccountsError = DefaultErrors;
+export type EnableProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables a ServiceAccount that was disabled by DisableServiceAccount. If the service account is already enabled, then this method has no effect. If the service account was disabled by other means—for example, if Google disabled the service account because it was compromised—you cannot use this method to enable the service account. */
 export const enableProjectsServiceAccounts: API.OperationMethod<
@@ -2215,7 +2312,7 @@ export const enableProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableProjectsServiceAccountsRequest,
   output: EnableProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsServiceAccountsRequest {
@@ -2242,7 +2339,12 @@ export type SetIamPolicyProjectsServiceAccountsResponse = Policy;
 export const SetIamPolicyProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsServiceAccountsError = DefaultErrors;
+export type SetIamPolicyProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy that is attached to a ServiceAccount. Use this method to grant or revoke access to the service account. For example, you could grant a principal the ability to impersonate the service account. This method does not enable the service account to access other resources. To grant roles to a service account on a resource, follow these steps: 1. Call the resource's `getIamPolicy` method to get its current IAM policy. 2. Edit the policy so that it binds the service account to an IAM role for the resource. 3. Call the resource's `setIamPolicy` method to update its IAM policy. For detailed instructions, see [Manage access to project, folders, and organizations](https://cloud.google.com/iam/help/service-accounts/granting-access-to-service-accounts) or [Manage access to other resources](https://cloud.google.com/iam/help/access/manage-other-resources). */
 export const setIamPolicyProjectsServiceAccounts: API.OperationMethod<
@@ -2253,7 +2355,7 @@ export const setIamPolicyProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsServiceAccountsRequest,
   output: SetIamPolicyProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableProjectsServiceAccountsRequest {
@@ -2276,7 +2378,12 @@ export type DisableProjectsServiceAccountsResponse = Empty;
 export const DisableProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DisableProjectsServiceAccountsError = DefaultErrors;
+export type DisableProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables a ServiceAccount immediately. If an application uses the service account to authenticate, that application can no longer call Google APIs or access Google Cloud resources. Existing access tokens for the service account are rejected, and requests for new access tokens will fail. To re-enable the service account, use EnableServiceAccount. After you re-enable the service account, its existing access tokens will be accepted, and you can request new access tokens. To help avoid unplanned outages, we recommend that you disable the service account before you delete it. Use this method to disable the service account, then wait at least 24 hours and watch for unintended consequences. If there are no unintended consequences, you can delete the service account with DeleteServiceAccount. */
 export const disableProjectsServiceAccounts: API.OperationMethod<
@@ -2287,7 +2394,7 @@ export const disableProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableProjectsServiceAccountsRequest,
   output: DisableProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignBlobProjectsServiceAccountsRequest {
@@ -2310,7 +2417,12 @@ export type SignBlobProjectsServiceAccountsResponse = SignBlobResponse;
 export const SignBlobProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SignBlobResponse;
 
-export type SignBlobProjectsServiceAccountsError = DefaultErrors;
+export type SignBlobProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a blob using the system-managed private key for a ServiceAccount. */
 export const signBlobProjectsServiceAccounts: API.OperationMethod<
@@ -2321,7 +2433,7 @@ export const signBlobProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignBlobProjectsServiceAccountsRequest,
   output: SignBlobProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsServiceAccountsKeysRequest {
@@ -2350,7 +2462,10 @@ export type GetProjectsServiceAccountsKeysResponse = ServiceAccountKey;
 export const GetProjectsServiceAccountsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccountKey;
 
-export type GetProjectsServiceAccountsKeysError = DefaultErrors;
+export type GetProjectsServiceAccountsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ServiceAccountKey. */
 export const getProjectsServiceAccountsKeys: API.OperationMethod<
@@ -2361,7 +2476,7 @@ export const getProjectsServiceAccountsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsServiceAccountsKeysRequest,
   output: GetProjectsServiceAccountsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsServiceAccountsKeysRequest {
@@ -2384,7 +2499,12 @@ export type CreateProjectsServiceAccountsKeysResponse = ServiceAccountKey;
 export const CreateProjectsServiceAccountsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccountKey;
 
-export type CreateProjectsServiceAccountsKeysError = DefaultErrors;
+export type CreateProjectsServiceAccountsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ServiceAccountKey. */
 export const createProjectsServiceAccountsKeys: API.OperationMethod<
@@ -2395,7 +2515,7 @@ export const createProjectsServiceAccountsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsServiceAccountsKeysRequest,
   output: CreateProjectsServiceAccountsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableProjectsServiceAccountsKeysRequest {
@@ -2418,7 +2538,12 @@ export type EnableProjectsServiceAccountsKeysResponse = Empty;
 export const EnableProjectsServiceAccountsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type EnableProjectsServiceAccountsKeysError = DefaultErrors;
+export type EnableProjectsServiceAccountsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable a ServiceAccountKey. */
 export const enableProjectsServiceAccountsKeys: API.OperationMethod<
@@ -2429,7 +2554,7 @@ export const enableProjectsServiceAccountsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableProjectsServiceAccountsKeysRequest,
   output: EnableProjectsServiceAccountsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsServiceAccountsKeysRequest {
@@ -2459,7 +2584,10 @@ export type ListProjectsServiceAccountsKeysResponse =
 export const ListProjectsServiceAccountsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServiceAccountKeysResponse;
 
-export type ListProjectsServiceAccountsKeysError = DefaultErrors;
+export type ListProjectsServiceAccountsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists every ServiceAccountKey for a service account. */
 export const listProjectsServiceAccountsKeys: API.OperationMethod<
@@ -2470,7 +2598,7 @@ export const listProjectsServiceAccountsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsServiceAccountsKeysRequest,
   output: ListProjectsServiceAccountsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsServiceAccountsKeysRequest {
@@ -2490,7 +2618,12 @@ export type DeleteProjectsServiceAccountsKeysResponse = Empty;
 export const DeleteProjectsServiceAccountsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsServiceAccountsKeysError = DefaultErrors;
+export type DeleteProjectsServiceAccountsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a ServiceAccountKey. Deleting a service account key does not revoke short-lived credentials that have been issued based on the service account key. */
 export const deleteProjectsServiceAccountsKeys: API.OperationMethod<
@@ -2501,7 +2634,7 @@ export const deleteProjectsServiceAccountsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsServiceAccountsKeysRequest,
   output: DeleteProjectsServiceAccountsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadProjectsServiceAccountsKeysRequest {
@@ -2524,7 +2657,12 @@ export type UploadProjectsServiceAccountsKeysResponse = ServiceAccountKey;
 export const UploadProjectsServiceAccountsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccountKey;
 
-export type UploadProjectsServiceAccountsKeysError = DefaultErrors;
+export type UploadProjectsServiceAccountsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads the public key portion of a key pair that you manage, and associates the public key with a ServiceAccount. After you upload the public key, you can use the private key from the key pair as a service account key. */
 export const uploadProjectsServiceAccountsKeys: API.OperationMethod<
@@ -2535,7 +2673,7 @@ export const uploadProjectsServiceAccountsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadProjectsServiceAccountsKeysRequest,
   output: UploadProjectsServiceAccountsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableProjectsServiceAccountsKeysRequest {
@@ -2558,7 +2696,12 @@ export type DisableProjectsServiceAccountsKeysResponse = Empty;
 export const DisableProjectsServiceAccountsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DisableProjectsServiceAccountsKeysError = DefaultErrors;
+export type DisableProjectsServiceAccountsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable a ServiceAccountKey. A disabled service account key can be re-enabled with EnableServiceAccountKey. */
 export const disableProjectsServiceAccountsKeys: API.OperationMethod<
@@ -2569,7 +2712,7 @@ export const disableProjectsServiceAccountsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableProjectsServiceAccountsKeysRequest,
   output: DisableProjectsServiceAccountsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2594,7 +2737,12 @@ export type UndeleteProjectsLocationsWorkloadIdentityPoolsResponse = Operation;
 export const UndeleteProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsLocationsWorkloadIdentityPoolsError = DefaultErrors;
+export type UndeleteProjectsLocationsWorkloadIdentityPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkloadIdentityPool, as long as it was deleted fewer than 30 days ago. */
 export const undeleteProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2605,7 +2753,7 @@ export const undeleteProjectsLocationsWorkloadIdentityPools: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsWorkloadIdentityPoolsRequest,
   output: UndeleteProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2631,7 +2779,12 @@ export type PatchProjectsLocationsWorkloadIdentityPoolsResponse = Operation;
 export const PatchProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsWorkloadIdentityPoolsError = DefaultErrors;
+export type PatchProjectsLocationsWorkloadIdentityPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing WorkloadIdentityPool. */
 export const patchProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2642,7 +2795,7 @@ export const patchProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsWorkloadIdentityPoolsRequest,
   output: PatchProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2670,7 +2823,11 @@ export const GetIamPolicyProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy of a WorkloadIdentityPool. */
 export const getIamPolicyProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2681,7 +2838,7 @@ export const getIamPolicyProjectsLocationsWorkloadIdentityPools: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest,
   output: GetIamPolicyProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2713,7 +2870,10 @@ export type ListProjectsLocationsWorkloadIdentityPoolsResponse =
 export const ListProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadIdentityPoolsResponse;
 
-export type ListProjectsLocationsWorkloadIdentityPoolsError = DefaultErrors;
+export type ListProjectsLocationsWorkloadIdentityPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkloadIdentityPools in a project. If `show_deleted` is set to `true`, then deleted pools are also listed. */
 export const listProjectsLocationsWorkloadIdentityPools: API.PaginatedOperationMethod<
@@ -2724,7 +2884,7 @@ export const listProjectsLocationsWorkloadIdentityPools: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsRequest,
   output: ListProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2757,7 +2917,11 @@ export const RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsResponse
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity. */
 export const removeAttestationRuleProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2768,7 +2932,7 @@ export const removeAttestationRuleProjectsLocationsWorkloadIdentityPools: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest,
   output: RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2797,7 +2961,11 @@ export const SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of 50 AttestationRules can be set. */
 export const setAttestationRulesProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2808,7 +2976,7 @@ export const setAttestationRulesProjectsLocationsWorkloadIdentityPools: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest,
   output: SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2840,7 +3008,12 @@ export type CreateProjectsLocationsWorkloadIdentityPoolsResponse = Operation;
 export const CreateProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsWorkloadIdentityPoolsError = DefaultErrors;
+export type CreateProjectsLocationsWorkloadIdentityPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion. */
 export const createProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2851,7 +3024,7 @@ export const createProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkloadIdentityPoolsRequest,
   output: CreateProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2880,7 +3053,11 @@ export const AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total attestation rules after addition must not exceed 50. */
 export const addAttestationRuleProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2891,7 +3068,7 @@ export const addAttestationRuleProjectsLocationsWorkloadIdentityPools: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsRequest,
   output: AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2911,7 +3088,12 @@ export type DeleteProjectsLocationsWorkloadIdentityPoolsResponse = Operation;
 export const DeleteProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsWorkloadIdentityPoolsError = DefaultErrors;
+export type DeleteProjectsLocationsWorkloadIdentityPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkloadIdentityPool. You cannot use a deleted pool to exchange external credentials for Google Cloud credentials. However, deletion does not revoke credentials that have already been issued. Credentials issued for a deleted pool do not grant access to resources. If the pool is undeleted, and the credentials are not expired, they grant access again. You can undelete a pool for 30 days. After 30 days, deletion is permanent. You cannot update deleted pools. However, you can view and list them. */
 export const deleteProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2922,7 +3104,7 @@ export const deleteProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkloadIdentityPoolsRequest,
   output: DeleteProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2943,7 +3125,10 @@ export type GetProjectsLocationsWorkloadIdentityPoolsResponse =
 export const GetProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPool;
 
-export type GetProjectsLocationsWorkloadIdentityPoolsError = DefaultErrors;
+export type GetProjectsLocationsWorkloadIdentityPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual WorkloadIdentityPool. */
 export const getProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -2954,7 +3139,7 @@ export const getProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkloadIdentityPoolsRequest,
   output: GetProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -2985,7 +3170,9 @@ export const ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsResponse 
   /*@__PURE__*/ /*#__PURE__*/ ListAttestationRulesResponse;
 
 export type ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all AttestationRule on a WorkloadIdentityPoolManagedIdentity. */
 export const listAttestationRulesProjectsLocationsWorkloadIdentityPools: API.PaginatedOperationMethod<
@@ -2996,7 +3183,7 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPools: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsRequest,
   output: ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3029,7 +3216,11 @@ export const TestIamPermissionsProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the caller's permissions on a WorkloadIdentityPool */
 export const testIamPermissionsProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -3040,7 +3231,7 @@ export const testIamPermissionsProjectsLocationsWorkloadIdentityPools: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsWorkloadIdentityPoolsRequest,
   output: TestIamPermissionsProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest {
@@ -3068,7 +3259,11 @@ export const SetIamPolicyProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policies on a WorkloadIdentityPool */
 export const setIamPolicyProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -3079,7 +3274,7 @@ export const setIamPolicyProjectsLocationsWorkloadIdentityPools: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsWorkloadIdentityPoolsRequest,
   output: SetIamPolicyProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsOperationsRequest {
@@ -3101,7 +3296,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsOperations: API.OperationMethod<
@@ -3112,7 +3309,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsOperations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkloadIdentityPoolsOperationsRequest,
   output: GetProjectsLocationsWorkloadIdentityPoolsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest {
@@ -3145,7 +3342,9 @@ export const ListProjectsLocationsWorkloadIdentityPoolsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadIdentityPoolNamespacesResponse;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsNamespacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkloadIdentityPoolNamespaces in a workload identity pool. If `show_deleted` is set to `true`, then deleted namespaces are also listed. */
 export const listProjectsLocationsWorkloadIdentityPoolsNamespaces: API.PaginatedOperationMethod<
@@ -3156,7 +3355,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   output: ListProjectsLocationsWorkloadIdentityPoolsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3182,7 +3381,11 @@ export const DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkloadIdentityPoolNamespace. You can undelete a namespace for 30 days. After 30 days, deletion is permanent. */
 export const deleteProjectsLocationsWorkloadIdentityPoolsNamespaces: API.OperationMethod<
@@ -3193,7 +3396,7 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   output: DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsNamespacesRequest {
@@ -3215,7 +3418,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPoolNamespace;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual WorkloadIdentityPoolNamespace. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespaces: API.OperationMethod<
@@ -3226,7 +3431,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespaces: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   output: GetProjectsLocationsWorkloadIdentityPoolsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsWorkloadIdentityPoolsNamespacesRequest {
@@ -3256,7 +3461,11 @@ export const CreateProjectsLocationsWorkloadIdentityPoolsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsWorkloadIdentityPoolsNamespacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new WorkloadIdentityPoolNamespace in a WorkloadIdentityPool. */
 export const createProjectsLocationsWorkloadIdentityPoolsNamespaces: API.OperationMethod<
@@ -3267,7 +3476,7 @@ export const createProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   output: CreateProjectsLocationsWorkloadIdentityPoolsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest {
@@ -3294,7 +3503,11 @@ export const UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkloadIdentityPoolNamespace, as long as it was deleted fewer than 30 days ago. */
 export const undeleteProjectsLocationsWorkloadIdentityPoolsNamespaces: API.OperationMethod<
@@ -3305,7 +3518,7 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   output: UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsWorkloadIdentityPoolsNamespacesRequest {
@@ -3333,7 +3546,11 @@ export const PatchProjectsLocationsWorkloadIdentityPoolsNamespacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsWorkloadIdentityPoolsNamespacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing WorkloadIdentityPoolNamespace in a WorkloadIdentityPool. */
 export const patchProjectsLocationsWorkloadIdentityPoolsNamespaces: API.OperationMethod<
@@ -3344,7 +3561,7 @@ export const patchProjectsLocationsWorkloadIdentityPoolsNamespaces: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsWorkloadIdentityPoolsNamespacesRequest,
   output: PatchProjectsLocationsWorkloadIdentityPoolsNamespacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3366,7 +3583,11 @@ export const DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkloadIdentityPoolManagedIdentity. You can undelete a managed identity for 30 days. After 30 days, deletion is permanent. */
 export const deleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3379,7 +3600,7 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
     DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     DeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3401,7 +3622,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPoolManagedIdentity;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual WorkloadIdentityPoolManagedIdentity. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3414,7 +3637,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
     GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3445,7 +3668,9 @@ export const ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespace
   /*@__PURE__*/ /*#__PURE__*/ ListAttestationRulesResponse;
 
 export type ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all AttestationRule on a WorkloadIdentityPoolManagedIdentity. */
 export const listAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.PaginatedOperationMethod<
@@ -3458,7 +3683,7 @@ export const listAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespace
     ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     ListAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3489,7 +3714,11 @@ export const UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIden
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkloadIdentityPoolManagedIdentity, as long as it was deleted fewer than 30 days ago. */
 export const undeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3502,7 +3731,7 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIden
     UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     UndeleteProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3532,7 +3761,11 @@ export const PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentit
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace. */
 export const patchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3545,7 +3778,7 @@ export const patchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentit
     PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     PatchProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3578,7 +3811,9 @@ export const ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentiti
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadIdentityPoolManagedIdentitiesResponse;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkloadIdentityPoolManagedIdentitys in a namespace. If `show_deleted` is set to `true`, then deleted managed identities are also listed. */
 export const listProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.PaginatedOperationMethod<
@@ -3591,7 +3826,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentiti
     ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     ListProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3624,7 +3859,11 @@ export const RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespac
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity. */
 export const removeAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3637,7 +3876,7 @@ export const removeAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespac
     RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     RemoveAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3666,7 +3905,11 @@ export const SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespaces
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of 50 AttestationRules can be set. */
 export const setAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3679,7 +3922,7 @@ export const setAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespaces
     SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     SetAttestationRulesProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3715,7 +3958,11 @@ export const CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace. */
 export const createProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3728,7 +3975,7 @@ export const createProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdenti
     CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     CreateProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest {
@@ -3757,7 +4004,11 @@ export const AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesM
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total attestation rules after addition must not exceed 50. */
 export const addAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentities: API.OperationMethod<
@@ -3770,7 +4021,7 @@ export const addAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesM
     AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesRequest,
   output:
     AddAttestationRuleProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsRequest {
@@ -3792,7 +4043,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperations: API.OperationMethod<
@@ -3805,7 +4058,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
     GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsRequest,
   output:
     GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsRequest {
@@ -3827,7 +4080,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperations: API.OperationMethod<
@@ -3840,7 +4095,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitie
     GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsRequest,
   output:
     GetProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesWorkloadSourcesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsRequest {
@@ -3862,7 +4117,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsRespon
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsNamespacesOperations: API.OperationMethod<
@@ -3873,7 +4130,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsNamespacesOperations: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsRequest,
   output: GetProjectsLocationsWorkloadIdentityPoolsNamespacesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsProvidersRequest {
@@ -3895,7 +4152,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPoolProvider;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsProvidersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual WorkloadIdentityPoolProvider. */
 export const getProjectsLocationsWorkloadIdentityPoolsProviders: API.OperationMethod<
@@ -3906,7 +4165,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsProviders: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   output: GetProjectsLocationsWorkloadIdentityPoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsWorkloadIdentityPoolsProvidersRequest {
@@ -3936,7 +4195,11 @@ export const CreateProjectsLocationsWorkloadIdentityPoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsWorkloadIdentityPoolsProvidersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new WorkloadIdentityPoolProvider in a WorkloadIdentityPool. You cannot reuse the name of a deleted provider until 30 days after deletion. */
 export const createProjectsLocationsWorkloadIdentityPoolsProviders: API.OperationMethod<
@@ -3947,7 +4210,7 @@ export const createProjectsLocationsWorkloadIdentityPoolsProviders: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   output: CreateProjectsLocationsWorkloadIdentityPoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest {
@@ -3980,7 +4243,9 @@ export const ListProjectsLocationsWorkloadIdentityPoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadIdentityPoolProvidersResponse;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsProvidersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkloadIdentityPoolProviders in a WorkloadIdentityPool. If `show_deleted` is set to `true`, then deleted providers are also listed. */
 export const listProjectsLocationsWorkloadIdentityPoolsProviders: API.PaginatedOperationMethod<
@@ -3991,7 +4256,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsProviders: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   output: ListProjectsLocationsWorkloadIdentityPoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4017,7 +4282,11 @@ export const DeleteProjectsLocationsWorkloadIdentityPoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsWorkloadIdentityPoolsProvidersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkloadIdentityPoolProvider. Deleting a provider does not revoke credentials that have already been issued; they continue to grant access. You can undelete a provider for 30 days. After 30 days, deletion is permanent. You cannot update deleted providers. However, you can view and list them. */
 export const deleteProjectsLocationsWorkloadIdentityPoolsProviders: API.OperationMethod<
@@ -4028,7 +4297,7 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsProviders: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   output: DeleteProjectsLocationsWorkloadIdentityPoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsWorkloadIdentityPoolsProvidersRequest {
@@ -4056,7 +4325,11 @@ export const PatchProjectsLocationsWorkloadIdentityPoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchProjectsLocationsWorkloadIdentityPoolsProvidersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing WorkloadIdentityPoolProvider. */
 export const patchProjectsLocationsWorkloadIdentityPoolsProviders: API.OperationMethod<
@@ -4067,7 +4340,7 @@ export const patchProjectsLocationsWorkloadIdentityPoolsProviders: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   output: PatchProjectsLocationsWorkloadIdentityPoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest {
@@ -4094,7 +4367,11 @@ export const UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkloadIdentityPoolProvider, as long as it was deleted fewer than 30 days ago. */
 export const undeleteProjectsLocationsWorkloadIdentityPoolsProviders: API.OperationMethod<
@@ -4105,7 +4382,7 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsProviders: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersRequest,
   output: UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest {
@@ -4132,7 +4409,11 @@ export const UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes an WorkloadIdentityPoolProviderKey, as long as it was deleted fewer than 30 days ago. */
 export const undeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.OperationMethod<
@@ -4143,7 +4424,7 @@ export const undeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest,
   output: UndeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest {
@@ -4165,7 +4446,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPoolProviderKey;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual WorkloadIdentityPoolProviderKey. */
 export const getProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.OperationMethod<
@@ -4176,7 +4459,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest,
   output: GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest {
@@ -4206,7 +4489,11 @@ export const CreateProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsWorkloadIdentityPoolsProvidersKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new WorkloadIdentityPoolProviderKey in a WorkloadIdentityPoolProvider. */
 export const createProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.OperationMethod<
@@ -4217,7 +4504,7 @@ export const createProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest,
   output: CreateProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest {
@@ -4250,7 +4537,9 @@ export const ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadIdentityPoolProviderKeysResponse;
 
 export type ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkloadIdentityPoolProviderKeys in a project. If show_deleted is set to `true`, then deleted pools are also listed. */
 export const listProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.PaginatedOperationMethod<
@@ -4261,7 +4550,7 @@ export const listProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest,
   output: ListProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4287,7 +4576,11 @@ export const DeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an WorkloadIdentityPoolProviderKey. You can undelete a key for 30 days. After 30 days, deletion is permanent. */
 export const deleteProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.OperationMethod<
@@ -4298,7 +4591,7 @@ export const deleteProjectsLocationsWorkloadIdentityPoolsProvidersKeys: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysRequest,
   output: DeleteProjectsLocationsWorkloadIdentityPoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsRequest {
@@ -4320,7 +4613,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperations: API.OperationMethod<
@@ -4333,7 +4628,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperations: A
     GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsRequest,
   output:
     GetProjectsLocationsWorkloadIdentityPoolsProvidersKeysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsWorkloadIdentityPoolsProvidersOperationsRequest {
@@ -4355,7 +4650,9 @@ export const GetProjectsLocationsWorkloadIdentityPoolsProvidersOperationsRespons
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetProjectsLocationsWorkloadIdentityPoolsProvidersOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsWorkloadIdentityPoolsProvidersOperations: API.OperationMethod<
@@ -4366,7 +4663,7 @@ export const getProjectsLocationsWorkloadIdentityPoolsProvidersOperations: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkloadIdentityPoolsProvidersOperationsRequest,
   output: GetProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UndeleteProjectsLocationsOauthClientsRequest {
@@ -4389,7 +4686,12 @@ export type UndeleteProjectsLocationsOauthClientsResponse = OauthClient;
 export const UndeleteProjectsLocationsOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClient;
 
-export type UndeleteProjectsLocationsOauthClientsError = DefaultErrors;
+export type UndeleteProjectsLocationsOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes an OauthClient, as long as it was deleted fewer than 30 days ago. */
 export const undeleteProjectsLocationsOauthClients: API.OperationMethod<
@@ -4400,7 +4702,7 @@ export const undeleteProjectsLocationsOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsOauthClientsRequest,
   output: UndeleteProjectsLocationsOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsOauthClientsRequest {
@@ -4426,7 +4728,12 @@ export type PatchProjectsLocationsOauthClientsResponse = OauthClient;
 export const PatchProjectsLocationsOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClient;
 
-export type PatchProjectsLocationsOauthClientsError = DefaultErrors;
+export type PatchProjectsLocationsOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing OauthClient. */
 export const patchProjectsLocationsOauthClients: API.OperationMethod<
@@ -4437,7 +4744,7 @@ export const patchProjectsLocationsOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsOauthClientsRequest,
   output: PatchProjectsLocationsOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOauthClientsRequest {
@@ -4469,7 +4776,10 @@ export type ListProjectsLocationsOauthClientsResponse =
 export const ListProjectsLocationsOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOauthClientsResponse;
 
-export type ListProjectsLocationsOauthClientsError = DefaultErrors;
+export type ListProjectsLocationsOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted OauthClients in a project. If `show_deleted` is set to `true`, then deleted OauthClients are also listed. */
 export const listProjectsLocationsOauthClients: API.PaginatedOperationMethod<
@@ -4480,7 +4790,7 @@ export const listProjectsLocationsOauthClients: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOauthClientsRequest,
   output: ListProjectsLocationsOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4504,7 +4814,12 @@ export type DeleteProjectsLocationsOauthClientsResponse = OauthClient;
 export const DeleteProjectsLocationsOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClient;
 
-export type DeleteProjectsLocationsOauthClientsError = DefaultErrors;
+export type DeleteProjectsLocationsOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an OauthClient. You cannot use a deleted OauthClient. However, deletion does not revoke access tokens that have already been issued. They continue to grant access. Deletion does revoke refresh tokens that have already been issued. They cannot be used to renew an access token. If the OauthClient is undeleted, and the refresh tokens are not expired, they are valid for token exchange again. You can undelete an OauthClient for 30 days. After 30 days, deletion is permanent. You cannot update deleted OauthClients. However, you can view and list them. */
 export const deleteProjectsLocationsOauthClients: API.OperationMethod<
@@ -4515,7 +4830,7 @@ export const deleteProjectsLocationsOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOauthClientsRequest,
   output: DeleteProjectsLocationsOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsOauthClientsRequest {
@@ -4543,7 +4858,12 @@ export type CreateProjectsLocationsOauthClientsResponse = OauthClient;
 export const CreateProjectsLocationsOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClient;
 
-export type CreateProjectsLocationsOauthClientsError = DefaultErrors;
+export type CreateProjectsLocationsOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new OauthClient. You cannot reuse the name of a deleted OauthClient until 30 days after deletion. */
 export const createProjectsLocationsOauthClients: API.OperationMethod<
@@ -4554,7 +4874,7 @@ export const createProjectsLocationsOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsOauthClientsRequest,
   output: CreateProjectsLocationsOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOauthClientsRequest {
@@ -4574,7 +4894,10 @@ export type GetProjectsLocationsOauthClientsResponse = OauthClient;
 export const GetProjectsLocationsOauthClientsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClient;
 
-export type GetProjectsLocationsOauthClientsError = DefaultErrors;
+export type GetProjectsLocationsOauthClientsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual OauthClient. */
 export const getProjectsLocationsOauthClients: API.OperationMethod<
@@ -4585,7 +4908,7 @@ export const getProjectsLocationsOauthClients: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOauthClientsRequest,
   output: GetProjectsLocationsOauthClientsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsOauthClientsCredentialsRequest {
@@ -4612,7 +4935,12 @@ export type PatchProjectsLocationsOauthClientsCredentialsResponse =
 export const PatchProjectsLocationsOauthClientsCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClientCredential;
 
-export type PatchProjectsLocationsOauthClientsCredentialsError = DefaultErrors;
+export type PatchProjectsLocationsOauthClientsCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing OauthClientCredential. */
 export const patchProjectsLocationsOauthClientsCredentials: API.OperationMethod<
@@ -4623,7 +4951,7 @@ export const patchProjectsLocationsOauthClientsCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsOauthClientsCredentialsRequest,
   output: PatchProjectsLocationsOauthClientsCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOauthClientsCredentialsRequest {
@@ -4644,7 +4972,10 @@ export type ListProjectsLocationsOauthClientsCredentialsResponse =
 export const ListProjectsLocationsOauthClientsCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOauthClientCredentialsResponse;
 
-export type ListProjectsLocationsOauthClientsCredentialsError = DefaultErrors;
+export type ListProjectsLocationsOauthClientsCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all OauthClientCredentials in an OauthClient. */
 export const listProjectsLocationsOauthClientsCredentials: API.OperationMethod<
@@ -4655,7 +4986,7 @@ export const listProjectsLocationsOauthClientsCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsOauthClientsCredentialsRequest,
   output: ListProjectsLocationsOauthClientsCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOauthClientsCredentialsRequest {
@@ -4675,7 +5006,12 @@ export type DeleteProjectsLocationsOauthClientsCredentialsResponse = Empty;
 export const DeleteProjectsLocationsOauthClientsCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOauthClientsCredentialsError = DefaultErrors;
+export type DeleteProjectsLocationsOauthClientsCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an OauthClientCredential. Before deleting an OauthClientCredential, it should first be disabled. */
 export const deleteProjectsLocationsOauthClientsCredentials: API.OperationMethod<
@@ -4686,7 +5022,7 @@ export const deleteProjectsLocationsOauthClientsCredentials: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOauthClientsCredentialsRequest,
   output: DeleteProjectsLocationsOauthClientsCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOauthClientsCredentialsRequest {
@@ -4707,7 +5043,10 @@ export type GetProjectsLocationsOauthClientsCredentialsResponse =
 export const GetProjectsLocationsOauthClientsCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClientCredential;
 
-export type GetProjectsLocationsOauthClientsCredentialsError = DefaultErrors;
+export type GetProjectsLocationsOauthClientsCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual OauthClientCredential. */
 export const getProjectsLocationsOauthClientsCredentials: API.OperationMethod<
@@ -4718,7 +5057,7 @@ export const getProjectsLocationsOauthClientsCredentials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOauthClientsCredentialsRequest,
   output: GetProjectsLocationsOauthClientsCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsOauthClientsCredentialsRequest {
@@ -4747,7 +5086,12 @@ export type CreateProjectsLocationsOauthClientsCredentialsResponse =
 export const CreateProjectsLocationsOauthClientsCredentialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OauthClientCredential;
 
-export type CreateProjectsLocationsOauthClientsCredentialsError = DefaultErrors;
+export type CreateProjectsLocationsOauthClientsCredentialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new OauthClientCredential. */
 export const createProjectsLocationsOauthClientsCredentials: API.OperationMethod<
@@ -4758,7 +5102,7 @@ export const createProjectsLocationsOauthClientsCredentials: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsOauthClientsCredentialsRequest,
   output: CreateProjectsLocationsOauthClientsCredentialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsRolesRequest {
@@ -4780,7 +5124,12 @@ export const UndeleteProjectsRolesRequest =
 export type UndeleteProjectsRolesResponse = Role;
 export const UndeleteProjectsRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type UndeleteProjectsRolesError = DefaultErrors;
+export type UndeleteProjectsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a custom Role. */
 export const undeleteProjectsRoles: API.OperationMethod<
@@ -4791,7 +5140,7 @@ export const undeleteProjectsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsRolesRequest,
   output: UndeleteProjectsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsRolesRequest {
@@ -4816,7 +5165,12 @@ export const PatchProjectsRolesRequest =
 export type PatchProjectsRolesResponse = Role;
 export const PatchProjectsRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type PatchProjectsRolesError = DefaultErrors;
+export type PatchProjectsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the definition of a custom Role. */
 export const patchProjectsRoles: API.OperationMethod<
@@ -4827,7 +5181,7 @@ export const patchProjectsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsRolesRequest,
   output: PatchProjectsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsRolesRequest {
@@ -4861,7 +5215,7 @@ export type ListProjectsRolesResponse = ListRolesResponse;
 export const ListProjectsRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRolesResponse;
 
-export type ListProjectsRolesError = DefaultErrors;
+export type ListProjectsRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists every predefined Role that IAM supports, or every custom role that is defined for an organization or project. */
 export const listProjectsRoles: API.PaginatedOperationMethod<
@@ -4872,7 +5226,7 @@ export const listProjectsRoles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRolesRequest,
   output: ListProjectsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4898,7 +5252,12 @@ export const DeleteProjectsRolesRequest =
 export type DeleteProjectsRolesResponse = Role;
 export const DeleteProjectsRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type DeleteProjectsRolesError = DefaultErrors;
+export type DeleteProjectsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are not changed, but they have no effect. * By default, the response from ListRoles does not include the custom role. A deleted custom role still counts toward the [custom role limit](https://cloud.google.com/iam/help/limits) until it is permanently deleted. You have 7 days to undelete the custom role. After 7 days, the following changes occur: * The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to the custom role, the binding is permanently removed. * The custom role no longer counts toward your custom role limit. */
 export const deleteProjectsRoles: API.OperationMethod<
@@ -4909,7 +5268,7 @@ export const deleteProjectsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRolesRequest,
   output: DeleteProjectsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRolesRequest {
@@ -4928,7 +5287,7 @@ export const GetProjectsRolesRequest =
 export type GetProjectsRolesResponse = Role;
 export const GetProjectsRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type GetProjectsRolesError = DefaultErrors;
+export type GetProjectsRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the definition of a Role. */
 export const getProjectsRoles: API.OperationMethod<
@@ -4939,7 +5298,7 @@ export const getProjectsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRolesRequest,
   output: GetProjectsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsRolesRequest {
@@ -4961,7 +5320,12 @@ export const CreateProjectsRolesRequest =
 export type CreateProjectsRolesResponse = Role;
 export const CreateProjectsRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type CreateProjectsRolesError = DefaultErrors;
+export type CreateProjectsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new custom Role. */
 export const createProjectsRoles: API.OperationMethod<
@@ -4972,7 +5336,7 @@ export const createProjectsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRolesRequest,
   output: CreateProjectsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsWorkforcePoolsRequest {
@@ -4992,7 +5356,12 @@ export type DeleteLocationsWorkforcePoolsResponse = Operation;
 export const DeleteLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteLocationsWorkforcePoolsError = DefaultErrors;
+export type DeleteLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkforcePool. You cannot use a deleted WorkforcePool to exchange external credentials for Google Cloud credentials. However, deletion does not revoke credentials that have already been issued. Credentials issued for a deleted pool do not grant access to resources. If the pool is undeleted, and the credentials are not expired, they grant access again. You can undelete a pool for 30 days. After 30 days, deletion is permanent. You cannot update deleted pools. However, you can view and list them. */
 export const deleteLocationsWorkforcePools: API.OperationMethod<
@@ -5003,7 +5372,7 @@ export const deleteLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsWorkforcePoolsRequest,
   output: DeleteLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsRequest {
@@ -5023,7 +5392,10 @@ export type GetLocationsWorkforcePoolsResponse = WorkforcePool;
 export const GetLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePool;
 
-export type GetLocationsWorkforcePoolsError = DefaultErrors;
+export type GetLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual WorkforcePool. */
 export const getLocationsWorkforcePools: API.OperationMethod<
@@ -5034,7 +5406,7 @@ export const getLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsRequest,
   output: GetLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UndeleteLocationsWorkforcePoolsRequest {
@@ -5057,7 +5429,12 @@ export type UndeleteLocationsWorkforcePoolsResponse = Operation;
 export const UndeleteLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteLocationsWorkforcePoolsError = DefaultErrors;
+export type UndeleteLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkforcePool, as long as it was deleted fewer than 30 days ago. */
 export const undeleteLocationsWorkforcePools: API.OperationMethod<
@@ -5068,7 +5445,7 @@ export const undeleteLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteLocationsWorkforcePoolsRequest,
   output: UndeleteLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsWorkforcePoolsRequest {
@@ -5094,7 +5471,12 @@ export type PatchLocationsWorkforcePoolsResponse = Operation;
 export const PatchLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchLocationsWorkforcePoolsError = DefaultErrors;
+export type PatchLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing WorkforcePool. */
 export const patchLocationsWorkforcePools: API.OperationMethod<
@@ -5105,7 +5487,7 @@ export const patchLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsWorkforcePoolsRequest,
   output: PatchLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsLocationsWorkforcePoolsRequest {
@@ -5133,7 +5515,12 @@ export type TestIamPermissionsLocationsWorkforcePoolsResponse =
 export const TestIamPermissionsLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsLocationsWorkforcePoolsError = DefaultErrors;
+export type TestIamPermissionsLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the caller's permissions on the WorkforcePool. If the pool doesn't exist, this call returns an empty set of permissions. It doesn't return a `NOT_FOUND` error. */
 export const testIamPermissionsLocationsWorkforcePools: API.OperationMethod<
@@ -5144,7 +5531,7 @@ export const testIamPermissionsLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsLocationsWorkforcePoolsRequest,
   output: TestIamPermissionsLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLocationsWorkforcePoolsRequest {
@@ -5178,7 +5565,10 @@ export type ListLocationsWorkforcePoolsResponse = ListWorkforcePoolsResponse;
 export const ListLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkforcePoolsResponse;
 
-export type ListLocationsWorkforcePoolsError = DefaultErrors;
+export type ListLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkforcePools under the specified parent. If `show_deleted` is set to `true`, then deleted pools are also listed. */
 export const listLocationsWorkforcePools: API.PaginatedOperationMethod<
@@ -5189,7 +5579,7 @@ export const listLocationsWorkforcePools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsRequest,
   output: ListLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5225,7 +5615,12 @@ export type CreateLocationsWorkforcePoolsResponse = Operation;
 export const CreateLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateLocationsWorkforcePoolsError = DefaultErrors;
+export type CreateLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new WorkforcePool. You cannot reuse the name of a deleted pool until 30 days after deletion. */
 export const createLocationsWorkforcePools: API.OperationMethod<
@@ -5236,7 +5631,7 @@ export const createLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsWorkforcePoolsRequest,
   output: CreateLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyLocationsWorkforcePoolsRequest {
@@ -5263,7 +5658,12 @@ export type SetIamPolicyLocationsWorkforcePoolsResponse = Policy;
 export const SetIamPolicyLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyLocationsWorkforcePoolsError = DefaultErrors;
+export type SetIamPolicyLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets IAM policies on a WorkforcePool. */
 export const setIamPolicyLocationsWorkforcePools: API.OperationMethod<
@@ -5274,7 +5674,7 @@ export const setIamPolicyLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyLocationsWorkforcePoolsRequest,
   output: SetIamPolicyLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyLocationsWorkforcePoolsRequest {
@@ -5301,7 +5701,12 @@ export type GetIamPolicyLocationsWorkforcePoolsResponse = Policy;
 export const GetIamPolicyLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyLocationsWorkforcePoolsError = DefaultErrors;
+export type GetIamPolicyLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets IAM policies on a WorkforcePool. */
 export const getIamPolicyLocationsWorkforcePools: API.OperationMethod<
@@ -5312,7 +5717,7 @@ export const getIamPolicyLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyLocationsWorkforcePoolsRequest,
   output: GetIamPolicyLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsOperationsRequest {
@@ -5332,7 +5737,10 @@ export type GetLocationsWorkforcePoolsOperationsResponse = Operation;
 export const GetLocationsWorkforcePoolsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetLocationsWorkforcePoolsOperationsError = DefaultErrors;
+export type GetLocationsWorkforcePoolsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getLocationsWorkforcePoolsOperations: API.OperationMethod<
@@ -5343,7 +5751,7 @@ export const getLocationsWorkforcePoolsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsOperationsRequest,
   output: GetLocationsWorkforcePoolsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchLocationsWorkforcePoolsProvidersRequest {
@@ -5369,7 +5777,12 @@ export type PatchLocationsWorkforcePoolsProvidersResponse = Operation;
 export const PatchLocationsWorkforcePoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchLocationsWorkforcePoolsProvidersError = DefaultErrors;
+export type PatchLocationsWorkforcePoolsProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing WorkforcePoolProvider. */
 export const patchLocationsWorkforcePoolsProviders: API.OperationMethod<
@@ -5380,7 +5793,7 @@ export const patchLocationsWorkforcePoolsProviders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsWorkforcePoolsProvidersRequest,
   output: PatchLocationsWorkforcePoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteLocationsWorkforcePoolsProvidersRequest {
@@ -5405,7 +5818,12 @@ export type UndeleteLocationsWorkforcePoolsProvidersResponse = Operation;
 export const UndeleteLocationsWorkforcePoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteLocationsWorkforcePoolsProvidersError = DefaultErrors;
+export type UndeleteLocationsWorkforcePoolsProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkforcePoolProvider, as long as it was deleted fewer than 30 days ago. */
 export const undeleteLocationsWorkforcePoolsProviders: API.OperationMethod<
@@ -5416,7 +5834,7 @@ export const undeleteLocationsWorkforcePoolsProviders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteLocationsWorkforcePoolsProvidersRequest,
   output: UndeleteLocationsWorkforcePoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateLocationsWorkforcePoolsProvidersRequest {
@@ -5444,7 +5862,12 @@ export type CreateLocationsWorkforcePoolsProvidersResponse = Operation;
 export const CreateLocationsWorkforcePoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateLocationsWorkforcePoolsProvidersError = DefaultErrors;
+export type CreateLocationsWorkforcePoolsProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new WorkforcePoolProvider in a WorkforcePool. You cannot reuse the name of a deleted provider until 30 days after deletion. */
 export const createLocationsWorkforcePoolsProviders: API.OperationMethod<
@@ -5455,7 +5878,7 @@ export const createLocationsWorkforcePoolsProviders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsWorkforcePoolsProvidersRequest,
   output: CreateLocationsWorkforcePoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsProvidersRequest {
@@ -5475,7 +5898,10 @@ export type GetLocationsWorkforcePoolsProvidersResponse = WorkforcePoolProvider;
 export const GetLocationsWorkforcePoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProvider;
 
-export type GetLocationsWorkforcePoolsProvidersError = DefaultErrors;
+export type GetLocationsWorkforcePoolsProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an individual WorkforcePoolProvider. */
 export const getLocationsWorkforcePoolsProviders: API.OperationMethod<
@@ -5486,7 +5912,7 @@ export const getLocationsWorkforcePoolsProviders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsProvidersRequest,
   output: GetLocationsWorkforcePoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLocationsWorkforcePoolsProvidersRequest {
@@ -5518,7 +5944,10 @@ export type ListLocationsWorkforcePoolsProvidersResponse =
 export const ListLocationsWorkforcePoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkforcePoolProvidersResponse;
 
-export type ListLocationsWorkforcePoolsProvidersError = DefaultErrors;
+export type ListLocationsWorkforcePoolsProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkforcePoolProviders in a WorkforcePool. If `show_deleted` is set to `true`, then deleted providers are also listed. */
 export const listLocationsWorkforcePoolsProviders: API.PaginatedOperationMethod<
@@ -5529,7 +5958,7 @@ export const listLocationsWorkforcePoolsProviders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersRequest,
   output: ListLocationsWorkforcePoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5553,7 +5982,12 @@ export type DeleteLocationsWorkforcePoolsProvidersResponse = Operation;
 export const DeleteLocationsWorkforcePoolsProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteLocationsWorkforcePoolsProvidersError = DefaultErrors;
+export type DeleteLocationsWorkforcePoolsProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkforcePoolProvider. Deleting a provider does not revoke credentials that have already been issued; they continue to grant access. You can undelete a provider for 30 days. After 30 days, deletion is permanent. You cannot update deleted providers. However, you can view and list them. */
 export const deleteLocationsWorkforcePoolsProviders: API.OperationMethod<
@@ -5564,7 +5998,7 @@ export const deleteLocationsWorkforcePoolsProviders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsWorkforcePoolsProvidersRequest,
   output: DeleteLocationsWorkforcePoolsProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteLocationsWorkforcePoolsProvidersKeysRequest {
@@ -5589,7 +6023,12 @@ export type UndeleteLocationsWorkforcePoolsProvidersKeysResponse = Operation;
 export const UndeleteLocationsWorkforcePoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteLocationsWorkforcePoolsProvidersKeysError = DefaultErrors;
+export type UndeleteLocationsWorkforcePoolsProvidersKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkforcePoolProviderKey, as long as it was deleted fewer than 30 days ago. */
 export const undeleteLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
@@ -5600,7 +6039,7 @@ export const undeleteLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteLocationsWorkforcePoolsProvidersKeysRequest,
   output: UndeleteLocationsWorkforcePoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLocationsWorkforcePoolsProvidersKeysRequest {
@@ -5632,7 +6071,10 @@ export type ListLocationsWorkforcePoolsProvidersKeysResponse =
 export const ListLocationsWorkforcePoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkforcePoolProviderKeysResponse;
 
-export type ListLocationsWorkforcePoolsProvidersKeysError = DefaultErrors;
+export type ListLocationsWorkforcePoolsProvidersKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all non-deleted WorkforcePoolProviderKeys in a WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted keys are also listed. */
 export const listLocationsWorkforcePoolsProvidersKeys: API.PaginatedOperationMethod<
@@ -5643,7 +6085,7 @@ export const listLocationsWorkforcePoolsProvidersKeys: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersKeysRequest,
   output: ListLocationsWorkforcePoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5667,7 +6109,12 @@ export type DeleteLocationsWorkforcePoolsProvidersKeysResponse = Operation;
 export const DeleteLocationsWorkforcePoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteLocationsWorkforcePoolsProvidersKeysError = DefaultErrors;
+export type DeleteLocationsWorkforcePoolsProvidersKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkforcePoolProviderKey. You can undelete a key for 30 days. After 30 days, deletion is permanent. */
 export const deleteLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
@@ -5678,7 +6125,7 @@ export const deleteLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsWorkforcePoolsProvidersKeysRequest,
   output: DeleteLocationsWorkforcePoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsProvidersKeysRequest {
@@ -5699,7 +6146,10 @@ export type GetLocationsWorkforcePoolsProvidersKeysResponse =
 export const GetLocationsWorkforcePoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderKey;
 
-export type GetLocationsWorkforcePoolsProvidersKeysError = DefaultErrors;
+export type GetLocationsWorkforcePoolsProvidersKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a WorkforcePoolProviderKey. */
 export const getLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
@@ -5710,7 +6160,7 @@ export const getLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsProvidersKeysRequest,
   output: GetLocationsWorkforcePoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateLocationsWorkforcePoolsProvidersKeysRequest {
@@ -5738,7 +6188,12 @@ export type CreateLocationsWorkforcePoolsProvidersKeysResponse = Operation;
 export const CreateLocationsWorkforcePoolsProvidersKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateLocationsWorkforcePoolsProvidersKeysError = DefaultErrors;
+export type CreateLocationsWorkforcePoolsProvidersKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new WorkforcePoolProviderKey in a WorkforcePoolProvider. */
 export const createLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
@@ -5749,7 +6204,7 @@ export const createLocationsWorkforcePoolsProvidersKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsWorkforcePoolsProvidersKeysRequest,
   output: CreateLocationsWorkforcePoolsProvidersKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsProvidersKeysOperationsRequest {
@@ -5771,7 +6226,9 @@ export const GetLocationsWorkforcePoolsProvidersKeysOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type GetLocationsWorkforcePoolsProvidersKeysOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getLocationsWorkforcePoolsProvidersKeysOperations: API.OperationMethod<
@@ -5782,7 +6239,7 @@ export const getLocationsWorkforcePoolsProvidersKeysOperations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsProvidersKeysOperationsRequest,
   output: GetLocationsWorkforcePoolsProvidersKeysOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetLocationsWorkforcePoolsProvidersOperationsRequest {
@@ -5802,7 +6259,10 @@ export type GetLocationsWorkforcePoolsProvidersOperationsResponse = Operation;
 export const GetLocationsWorkforcePoolsProvidersOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetLocationsWorkforcePoolsProvidersOperationsError = DefaultErrors;
+export type GetLocationsWorkforcePoolsProvidersOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getLocationsWorkforcePoolsProvidersOperations: API.OperationMethod<
@@ -5813,7 +6273,7 @@ export const getLocationsWorkforcePoolsProvidersOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsProvidersOperationsRequest,
   output: GetLocationsWorkforcePoolsProvidersOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateLocationsWorkforcePoolsProvidersScimTenantsRequest {
@@ -5843,7 +6303,11 @@ export const CreateLocationsWorkforcePoolsProvidersScimTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimTenant;
 
 export type CreateLocationsWorkforcePoolsProvidersScimTenantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gemini Enterprise only. Creates a new WorkforcePoolProviderScimTenant in a WorkforcePoolProvider. You cannot reuse the name of a deleted SCIM tenant until 30 days after deletion. */
 export const createLocationsWorkforcePoolsProvidersScimTenants: API.OperationMethod<
@@ -5854,7 +6318,7 @@ export const createLocationsWorkforcePoolsProvidersScimTenants: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsWorkforcePoolsProvidersScimTenantsRequest,
   output: CreateLocationsWorkforcePoolsProvidersScimTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsProvidersScimTenantsRequest {
@@ -5875,7 +6339,10 @@ export type GetLocationsWorkforcePoolsProvidersScimTenantsResponse =
 export const GetLocationsWorkforcePoolsProvidersScimTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimTenant;
 
-export type GetLocationsWorkforcePoolsProvidersScimTenantsError = DefaultErrors;
+export type GetLocationsWorkforcePoolsProvidersScimTenantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gemini Enterprise only. Gets an individual WorkforcePoolProviderScimTenant. */
 export const getLocationsWorkforcePoolsProvidersScimTenants: API.OperationMethod<
@@ -5886,7 +6353,7 @@ export const getLocationsWorkforcePoolsProvidersScimTenants: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsProvidersScimTenantsRequest,
   output: GetLocationsWorkforcePoolsProvidersScimTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLocationsWorkforcePoolsProvidersScimTenantsRequest {
@@ -5919,7 +6386,9 @@ export const ListLocationsWorkforcePoolsProvidersScimTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkforcePoolProviderScimTenantsResponse;
 
 export type ListLocationsWorkforcePoolsProvidersScimTenantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gemini Enterprise only. Lists all non-deleted WorkforcePoolProviderScimTenants in a WorkforcePoolProvider. If `show_deleted` is set to `true`, then deleted SCIM tenants are also listed. */
 export const listLocationsWorkforcePoolsProvidersScimTenants: API.PaginatedOperationMethod<
@@ -5930,7 +6399,7 @@ export const listLocationsWorkforcePoolsProvidersScimTenants: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersScimTenantsRequest,
   output: ListLocationsWorkforcePoolsProvidersScimTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5959,7 +6428,11 @@ export const DeleteLocationsWorkforcePoolsProvidersScimTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimTenant;
 
 export type DeleteLocationsWorkforcePoolsProvidersScimTenantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gemini Enterprise only. Deletes a WorkforcePoolProviderScimTenant. You can undelete a SCIM tenant for 30 days. After 30 days, deletion is permanent. You cannot update deleted SCIM tenants. However, you can view and list them. */
 export const deleteLocationsWorkforcePoolsProvidersScimTenants: API.OperationMethod<
@@ -5970,7 +6443,7 @@ export const deleteLocationsWorkforcePoolsProvidersScimTenants: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsWorkforcePoolsProvidersScimTenantsRequest,
   output: DeleteLocationsWorkforcePoolsProvidersScimTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsWorkforcePoolsProvidersScimTenantsRequest {
@@ -5998,7 +6471,11 @@ export const PatchLocationsWorkforcePoolsProvidersScimTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimTenant;
 
 export type PatchLocationsWorkforcePoolsProvidersScimTenantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gemini Enterprise only. Updates an existing WorkforcePoolProviderScimTenant. */
 export const patchLocationsWorkforcePoolsProvidersScimTenants: API.OperationMethod<
@@ -6009,7 +6486,7 @@ export const patchLocationsWorkforcePoolsProvidersScimTenants: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsWorkforcePoolsProvidersScimTenantsRequest,
   output: PatchLocationsWorkforcePoolsProvidersScimTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteLocationsWorkforcePoolsProvidersScimTenantsRequest {
@@ -6036,7 +6513,11 @@ export const UndeleteLocationsWorkforcePoolsProvidersScimTenantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimTenant;
 
 export type UndeleteLocationsWorkforcePoolsProvidersScimTenantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gemini Enterprise only. Undeletes a WorkforcePoolProviderScimTenant, that was deleted fewer than 30 days ago. */
 export const undeleteLocationsWorkforcePoolsProvidersScimTenants: API.OperationMethod<
@@ -6047,7 +6528,7 @@ export const undeleteLocationsWorkforcePoolsProvidersScimTenants: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteLocationsWorkforcePoolsProvidersScimTenantsRequest,
   output: UndeleteLocationsWorkforcePoolsProvidersScimTenantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsProvidersScimTenantsTokensRequest {
@@ -6069,7 +6550,9 @@ export const GetLocationsWorkforcePoolsProvidersScimTenantsTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimToken;
 
 export type GetLocationsWorkforcePoolsProvidersScimTenantsTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gemini Enterprise only. Gets an individual WorkforcePoolProviderScimToken. */
 export const getLocationsWorkforcePoolsProvidersScimTenantsTokens: API.OperationMethod<
@@ -6080,7 +6563,7 @@ export const getLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsProvidersScimTenantsTokensRequest,
   output: GetLocationsWorkforcePoolsProvidersScimTenantsTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateLocationsWorkforcePoolsProvidersScimTenantsTokensRequest {
@@ -6110,7 +6593,11 @@ export const CreateLocationsWorkforcePoolsProvidersScimTenantsTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimToken;
 
 export type CreateLocationsWorkforcePoolsProvidersScimTenantsTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gemini Enterprise only. Creates a new WorkforcePoolProviderScimToken in a WorkforcePoolProviderScimTenant. You cannot reuse the name of a deleted SCIM token until 30 days after deletion. */
 export const createLocationsWorkforcePoolsProvidersScimTenantsTokens: API.OperationMethod<
@@ -6121,7 +6608,7 @@ export const createLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsWorkforcePoolsProvidersScimTenantsTokensRequest,
   output: CreateLocationsWorkforcePoolsProvidersScimTenantsTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest {
@@ -6154,7 +6641,9 @@ export const ListLocationsWorkforcePoolsProvidersScimTenantsTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkforcePoolProviderScimTokensResponse;
 
 export type ListLocationsWorkforcePoolsProvidersScimTenantsTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gemini Enterprise only. Lists all non-deleted WorkforcePoolProviderScimTokenss in a WorkforcePoolProviderScimTenant. If `show_deleted` is set to `true`, then deleted SCIM tokens are also listed. */
 export const listLocationsWorkforcePoolsProvidersScimTenantsTokens: API.PaginatedOperationMethod<
@@ -6165,7 +6654,7 @@ export const listLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLocationsWorkforcePoolsProvidersScimTenantsTokensRequest,
   output: ListLocationsWorkforcePoolsProvidersScimTenantsTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6191,7 +6680,11 @@ export const DeleteLocationsWorkforcePoolsProvidersScimTenantsTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimToken;
 
 export type DeleteLocationsWorkforcePoolsProvidersScimTenantsTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gemini Enterprise only. Deletes a WorkforcePoolProviderScimToken. You can undelete a SCIM token for 30 days. After 30 days, the SCIM token is permanently deleted. You cannot update deleted SCIM tokens, however, you can view and list them. */
 export const deleteLocationsWorkforcePoolsProvidersScimTenantsTokens: API.OperationMethod<
@@ -6202,7 +6695,7 @@ export const deleteLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsWorkforcePoolsProvidersScimTenantsTokensRequest,
   output: DeleteLocationsWorkforcePoolsProvidersScimTenantsTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsWorkforcePoolsProvidersScimTenantsTokensRequest {
@@ -6230,7 +6723,11 @@ export const PatchLocationsWorkforcePoolsProvidersScimTenantsTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolProviderScimToken;
 
 export type PatchLocationsWorkforcePoolsProvidersScimTenantsTokensError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gemini Enterprise only. Updates an existing WorkforcePoolProviderScimToken. */
 export const patchLocationsWorkforcePoolsProvidersScimTenantsTokens: API.OperationMethod<
@@ -6241,7 +6738,7 @@ export const patchLocationsWorkforcePoolsProvidersScimTenantsTokens: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsWorkforcePoolsProvidersScimTenantsTokensRequest,
   output: PatchLocationsWorkforcePoolsProvidersScimTenantsTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteLocationsWorkforcePoolsSubjectsRequest {
@@ -6266,7 +6763,12 @@ export type UndeleteLocationsWorkforcePoolsSubjectsResponse = Operation;
 export const UndeleteLocationsWorkforcePoolsSubjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteLocationsWorkforcePoolsSubjectsError = DefaultErrors;
+export type UndeleteLocationsWorkforcePoolsSubjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a WorkforcePoolSubject, as long as it was deleted fewer than 30 days ago. */
 export const undeleteLocationsWorkforcePoolsSubjects: API.OperationMethod<
@@ -6277,7 +6779,7 @@ export const undeleteLocationsWorkforcePoolsSubjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteLocationsWorkforcePoolsSubjectsRequest,
   output: UndeleteLocationsWorkforcePoolsSubjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsWorkforcePoolsSubjectsRequest {
@@ -6297,7 +6799,12 @@ export type DeleteLocationsWorkforcePoolsSubjectsResponse = Operation;
 export const DeleteLocationsWorkforcePoolsSubjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteLocationsWorkforcePoolsSubjectsError = DefaultErrors;
+export type DeleteLocationsWorkforcePoolsSubjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a WorkforcePoolSubject. Subject must not already be in a deleted state. A WorkforcePoolSubject is automatically created the first time an external credential is exchanged for a Google Cloud credential using a mapped `google.subject` attribute. There is no endpoint to manually create a WorkforcePoolSubject. For 30 days after a WorkforcePoolSubject is deleted, using the same `google.subject` attribute in token exchanges with Google Cloud STS fails. Call UndeleteWorkforcePoolSubject to undelete a WorkforcePoolSubject that has been deleted, within within 30 days of deleting it. After 30 days, the WorkforcePoolSubject is permanently deleted. At this point, a token exchange with Google Cloud STS that uses the same mapped `google.subject` attribute automatically creates a new WorkforcePoolSubject that is unrelated to the previously deleted WorkforcePoolSubject but has the same `google.subject` value. */
 export const deleteLocationsWorkforcePoolsSubjects: API.OperationMethod<
@@ -6308,7 +6815,7 @@ export const deleteLocationsWorkforcePoolsSubjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsWorkforcePoolsSubjectsRequest,
   output: DeleteLocationsWorkforcePoolsSubjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsWorkforcePoolsSubjectsOperationsRequest {
@@ -6328,7 +6835,10 @@ export type GetLocationsWorkforcePoolsSubjectsOperationsResponse = Operation;
 export const GetLocationsWorkforcePoolsSubjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetLocationsWorkforcePoolsSubjectsOperationsError = DefaultErrors;
+export type GetLocationsWorkforcePoolsSubjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getLocationsWorkforcePoolsSubjectsOperations: API.OperationMethod<
@@ -6339,7 +6849,7 @@ export const getLocationsWorkforcePoolsSubjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsWorkforcePoolsSubjectsOperationsRequest,
   output: GetLocationsWorkforcePoolsSubjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryTestablePermissionsPermissionsRequest {
@@ -6364,7 +6874,12 @@ export type QueryTestablePermissionsPermissionsResponse =
 export const QueryTestablePermissionsPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryTestablePermissionsResponse;
 
-export type QueryTestablePermissionsPermissionsError = DefaultErrors;
+export type QueryTestablePermissionsPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists every permission that you can test on a resource. A permission is testable if you can check whether a principal has that permission on the resource. */
 export const queryTestablePermissionsPermissions: API.OperationMethod<
@@ -6375,7 +6890,7 @@ export const queryTestablePermissionsPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryTestablePermissionsPermissionsRequest,
   output: QueryTestablePermissionsPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRolesRequest {
@@ -6406,7 +6921,7 @@ export type ListRolesResponse_Op = ListRolesResponse;
 export const ListRolesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListRolesResponse;
 
-export type ListRolesError = DefaultErrors;
+export type ListRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists every predefined Role that IAM supports, or every custom role that is defined for an organization or project. */
 export const listRoles: API.PaginatedOperationMethod<
@@ -6417,7 +6932,7 @@ export const listRoles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRolesRequest,
   output: ListRolesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6445,7 +6960,12 @@ export type QueryGrantableRolesRolesResponse = QueryGrantableRolesResponse;
 export const QueryGrantableRolesRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryGrantableRolesResponse;
 
-export type QueryGrantableRolesRolesError = DefaultErrors;
+export type QueryGrantableRolesRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists roles that can be granted on a Google Cloud resource. A role is grantable if the IAM policy for the resource can contain bindings to the role. */
 export const queryGrantableRolesRoles: API.OperationMethod<
@@ -6456,7 +6976,7 @@ export const queryGrantableRolesRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryGrantableRolesRolesRequest,
   output: QueryGrantableRolesRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRolesRequest {
@@ -6474,7 +6994,7 @@ export const GetRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRolesResponse = Role;
 export const GetRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type GetRolesError = DefaultErrors;
+export type GetRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the definition of a Role. */
 export const getRoles: API.OperationMethod<
@@ -6485,7 +7005,7 @@ export const getRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRolesRequest,
   output: GetRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsRolesRequest {
@@ -6508,7 +7028,12 @@ export type CreateOrganizationsRolesResponse = Role;
 export const CreateOrganizationsRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type CreateOrganizationsRolesError = DefaultErrors;
+export type CreateOrganizationsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new custom Role. */
 export const createOrganizationsRoles: API.OperationMethod<
@@ -6519,7 +7044,7 @@ export const createOrganizationsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsRolesRequest,
   output: CreateOrganizationsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsRolesRequest {
@@ -6538,7 +7063,7 @@ export const GetOrganizationsRolesRequest =
 export type GetOrganizationsRolesResponse = Role;
 export const GetOrganizationsRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type GetOrganizationsRolesError = DefaultErrors;
+export type GetOrganizationsRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the definition of a Role. */
 export const getOrganizationsRoles: API.OperationMethod<
@@ -6549,7 +7074,7 @@ export const getOrganizationsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsRolesRequest,
   output: GetOrganizationsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsRolesRequest {
@@ -6583,7 +7108,7 @@ export type ListOrganizationsRolesResponse = ListRolesResponse;
 export const ListOrganizationsRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRolesResponse;
 
-export type ListOrganizationsRolesError = DefaultErrors;
+export type ListOrganizationsRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists every predefined Role that IAM supports, or every custom role that is defined for an organization or project. */
 export const listOrganizationsRoles: API.PaginatedOperationMethod<
@@ -6594,7 +7119,7 @@ export const listOrganizationsRoles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsRolesRequest,
   output: ListOrganizationsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6621,7 +7146,12 @@ export type DeleteOrganizationsRolesResponse = Role;
 export const DeleteOrganizationsRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type DeleteOrganizationsRolesError = DefaultErrors;
+export type DeleteOrganizationsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are not changed, but they have no effect. * By default, the response from ListRoles does not include the custom role. A deleted custom role still counts toward the [custom role limit](https://cloud.google.com/iam/help/limits) until it is permanently deleted. You have 7 days to undelete the custom role. After 7 days, the following changes occur: * The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to the custom role, the binding is permanently removed. * The custom role no longer counts toward your custom role limit. */
 export const deleteOrganizationsRoles: API.OperationMethod<
@@ -6632,7 +7162,7 @@ export const deleteOrganizationsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsRolesRequest,
   output: DeleteOrganizationsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsRolesRequest {
@@ -6657,7 +7187,12 @@ export const PatchOrganizationsRolesRequest =
 export type PatchOrganizationsRolesResponse = Role;
 export const PatchOrganizationsRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type PatchOrganizationsRolesError = DefaultErrors;
+export type PatchOrganizationsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the definition of a custom Role. */
 export const patchOrganizationsRoles: API.OperationMethod<
@@ -6668,7 +7203,7 @@ export const patchOrganizationsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsRolesRequest,
   output: PatchOrganizationsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteOrganizationsRolesRequest {
@@ -6691,7 +7226,12 @@ export type UndeleteOrganizationsRolesResponse = Role;
 export const UndeleteOrganizationsRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Role;
 
-export type UndeleteOrganizationsRolesError = DefaultErrors;
+export type UndeleteOrganizationsRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes a custom Role. */
 export const undeleteOrganizationsRoles: API.OperationMethod<
@@ -6702,7 +7242,7 @@ export const undeleteOrganizationsRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteOrganizationsRolesRequest,
   output: UndeleteOrganizationsRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryAuditableServicesIamPoliciesRequest {
@@ -6727,7 +7267,12 @@ export type QueryAuditableServicesIamPoliciesResponse =
 export const QueryAuditableServicesIamPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ QueryAuditableServicesResponse;
 
-export type QueryAuditableServicesIamPoliciesError = DefaultErrors;
+export type QueryAuditableServicesIamPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a list of services that allow you to opt into audit logs that are not generated by default. To learn more about audit logs, see the [Logging documentation](https://cloud.google.com/logging/docs/audit). */
 export const queryAuditableServicesIamPolicies: API.OperationMethod<
@@ -6738,7 +7283,7 @@ export const queryAuditableServicesIamPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryAuditableServicesIamPoliciesRequest,
   output: QueryAuditableServicesIamPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LintPolicyIamPoliciesRequest {
@@ -6762,7 +7307,12 @@ export type LintPolicyIamPoliciesResponse = LintPolicyResponse;
 export const LintPolicyIamPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LintPolicyResponse;
 
-export type LintPolicyIamPoliciesError = DefaultErrors;
+export type LintPolicyIamPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lints, or validates, an IAM policy. Currently checks the google.iam.v1.Binding.condition field, which contains a condition expression for a role binding. Successful calls to this method always return an HTTP `200 OK` status code, even if the linter detects an issue in the IAM policy. */
 export const lintPolicyIamPolicies: API.OperationMethod<
@@ -6773,5 +7323,5 @@ export const lintPolicyIamPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LintPolicyIamPoliciesRequest,
   output: LintPolicyIamPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

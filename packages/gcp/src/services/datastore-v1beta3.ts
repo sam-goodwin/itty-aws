@@ -1271,6 +1271,52 @@ export const LookupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "LookupResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1297,7 +1343,12 @@ export type LookupProjectsResponse = LookupResponse;
 export const LookupProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LookupResponse;
 
-export type LookupProjectsError = DefaultErrors;
+export type LookupProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Looks up entities by key. */
 export const lookupProjects: API.OperationMethod<
@@ -1308,7 +1359,7 @@ export const lookupProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupProjectsRequest,
   output: LookupProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReserveIdsProjectsRequest {
@@ -1335,7 +1386,12 @@ export type ReserveIdsProjectsResponse = ReserveIdsResponse;
 export const ReserveIdsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReserveIdsResponse;
 
-export type ReserveIdsProjectsError = DefaultErrors;
+export type ReserveIdsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore. */
 export const reserveIdsProjects: API.OperationMethod<
@@ -1346,7 +1402,7 @@ export const reserveIdsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReserveIdsProjectsRequest,
   output: ReserveIdsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunQueryProjectsRequest {
@@ -1373,7 +1429,12 @@ export type RunQueryProjectsResponse = RunQueryResponse;
 export const RunQueryProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunQueryResponse;
 
-export type RunQueryProjectsError = DefaultErrors;
+export type RunQueryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries for entities. */
 export const runQueryProjects: API.OperationMethod<
@@ -1384,7 +1445,7 @@ export const runQueryProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunQueryProjectsRequest,
   output: RunQueryProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunAggregationQueryProjectsRequest {
@@ -1411,7 +1472,12 @@ export type RunAggregationQueryProjectsResponse = RunAggregationQueryResponse;
 export const RunAggregationQueryProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunAggregationQueryResponse;
 
-export type RunAggregationQueryProjectsError = DefaultErrors;
+export type RunAggregationQueryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs an aggregation query. */
 export const runAggregationQueryProjects: API.OperationMethod<
@@ -1422,7 +1488,7 @@ export const runAggregationQueryProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunAggregationQueryProjectsRequest,
   output: RunAggregationQueryProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BeginTransactionProjectsRequest {
@@ -1449,7 +1515,12 @@ export type BeginTransactionProjectsResponse = BeginTransactionResponse;
 export const BeginTransactionProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BeginTransactionResponse;
 
-export type BeginTransactionProjectsError = DefaultErrors;
+export type BeginTransactionProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Begins a new transaction. */
 export const beginTransactionProjects: API.OperationMethod<
@@ -1460,7 +1531,7 @@ export const beginTransactionProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BeginTransactionProjectsRequest,
   output: BeginTransactionProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CommitProjectsRequest {
@@ -1486,7 +1557,12 @@ export type CommitProjectsResponse = CommitResponse;
 export const CommitProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommitResponse;
 
-export type CommitProjectsError = DefaultErrors;
+export type CommitProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits a transaction, optionally creating, deleting or modifying some entities. */
 export const commitProjects: API.OperationMethod<
@@ -1497,7 +1573,7 @@ export const commitProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitProjectsRequest,
   output: CommitProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RollbackProjectsRequest {
@@ -1524,7 +1600,12 @@ export type RollbackProjectsResponse = RollbackResponse;
 export const RollbackProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RollbackResponse;
 
-export type RollbackProjectsError = DefaultErrors;
+export type RollbackProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rolls back a transaction. */
 export const rollbackProjects: API.OperationMethod<
@@ -1535,7 +1616,7 @@ export const rollbackProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackProjectsRequest,
   output: RollbackProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AllocateIdsProjectsRequest {
@@ -1562,7 +1643,12 @@ export type AllocateIdsProjectsResponse = AllocateIdsResponse;
 export const AllocateIdsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AllocateIdsResponse;
 
-export type AllocateIdsProjectsError = DefaultErrors;
+export type AllocateIdsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted. */
 export const allocateIdsProjects: API.OperationMethod<
@@ -1573,5 +1659,5 @@ export const allocateIdsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AllocateIdsProjectsRequest,
   output: AllocateIdsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

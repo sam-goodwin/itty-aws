@@ -147,6 +147,52 @@ export const ResetAuthorizationRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -172,7 +218,12 @@ export type InitiatePortabilityArchiveResponse_Op =
 export const InitiatePortabilityArchiveResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ InitiatePortabilityArchiveResponse;
 
-export type InitiatePortabilityArchiveError = DefaultErrors;
+export type InitiatePortabilityArchiveError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a new Archive job for the Portability API. */
 export const initiatePortabilityArchive: API.OperationMethod<
@@ -183,7 +234,7 @@ export const initiatePortabilityArchive: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InitiatePortabilityArchiveRequest_Op,
   output: InitiatePortabilityArchiveResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelArchiveJobsRequest {
@@ -206,7 +257,12 @@ export type CancelArchiveJobsResponse = CancelPortabilityArchiveResponse;
 export const CancelArchiveJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CancelPortabilityArchiveResponse;
 
-export type CancelArchiveJobsError = DefaultErrors;
+export type CancelArchiveJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a Portability Archive job. */
 export const cancelArchiveJobs: API.OperationMethod<
@@ -217,7 +273,7 @@ export const cancelArchiveJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelArchiveJobsRequest,
   output: CancelArchiveJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetryArchiveJobsRequest {
@@ -240,7 +296,12 @@ export type RetryArchiveJobsResponse = RetryPortabilityArchiveResponse;
 export const RetryArchiveJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetryPortabilityArchiveResponse;
 
-export type RetryArchiveJobsError = DefaultErrors;
+export type RetryArchiveJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retries a failed Portability Archive job. */
 export const retryArchiveJobs: API.OperationMethod<
@@ -251,7 +312,7 @@ export const retryArchiveJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetryArchiveJobsRequest,
   output: RetryArchiveJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPortabilityArchiveStateArchiveJobsRequest {
@@ -272,7 +333,10 @@ export type GetPortabilityArchiveStateArchiveJobsResponse =
 export const GetPortabilityArchiveStateArchiveJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PortabilityArchiveState;
 
-export type GetPortabilityArchiveStateArchiveJobsError = DefaultErrors;
+export type GetPortabilityArchiveStateArchiveJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the state of an Archive job for the Portability API. */
 export const getPortabilityArchiveStateArchiveJobs: API.OperationMethod<
@@ -283,7 +347,7 @@ export const getPortabilityArchiveStateArchiveJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPortabilityArchiveStateArchiveJobsRequest,
   output: GetPortabilityArchiveStateArchiveJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResetAuthorizationRequest_Op {
@@ -302,7 +366,12 @@ export const ResetAuthorizationRequest_Op =
 export type ResetAuthorizationResponse = Empty;
 export const ResetAuthorizationResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ResetAuthorizationError = DefaultErrors;
+export type ResetAuthorizationError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job. */
 export const resetAuthorization: API.OperationMethod<
@@ -313,7 +382,7 @@ export const resetAuthorization: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetAuthorizationRequest_Op,
   output: ResetAuthorizationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CheckAccessTypeRequest_Op {
@@ -333,7 +402,12 @@ export type CheckAccessTypeResponse_Op = CheckAccessTypeResponse;
 export const CheckAccessTypeResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ CheckAccessTypeResponse;
 
-export type CheckAccessTypeError = DefaultErrors;
+export type CheckAccessTypeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access type of the token. */
 export const checkAccessType: API.OperationMethod<
@@ -344,5 +418,5 @@ export const checkAccessType: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckAccessTypeRequest_Op,
   output: CheckAccessTypeResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

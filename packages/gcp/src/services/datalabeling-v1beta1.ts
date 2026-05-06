@@ -3848,6 +3848,52 @@ export const GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3878,7 +3924,7 @@ export type ListProjectsOperationsResponse =
 export const ListProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsOperationsError = DefaultErrors;
+export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsOperations: API.PaginatedOperationMethod<
@@ -3889,7 +3935,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3913,7 +3959,7 @@ export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -3924,7 +3970,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsOperationsRequest {
@@ -3944,7 +3990,12 @@ export type DeleteProjectsOperationsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsOperationsError = DefaultErrors;
+export type DeleteProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsOperations: API.OperationMethod<
@@ -3955,7 +4006,7 @@ export const deleteProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsOperationsRequest,
   output: DeleteProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsOperationsRequest {
@@ -3975,7 +4026,10 @@ export type CancelProjectsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsOperationsError = DefaultErrors;
+export type CancelProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsOperations: API.OperationMethod<
@@ -3986,7 +4040,7 @@ export const cancelProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsDatasetsRequest {
@@ -4016,7 +4070,12 @@ export type CreateProjectsDatasetsResponse =
 export const CreateProjectsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1Dataset;
 
-export type CreateProjectsDatasetsError = DefaultErrors;
+export type CreateProjectsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates dataset. If success return a Dataset resource. */
 export const createProjectsDatasets: API.OperationMethod<
@@ -4027,7 +4086,7 @@ export const createProjectsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDatasetsRequest,
   output: CreateProjectsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatasetsRequest {
@@ -4047,7 +4106,7 @@ export type GetProjectsDatasetsResponse = GoogleCloudDatalabelingV1beta1Dataset;
 export const GetProjectsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1Dataset;
 
-export type GetProjectsDatasetsError = DefaultErrors;
+export type GetProjectsDatasetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets dataset by resource name. */
 export const getProjectsDatasets: API.OperationMethod<
@@ -4058,7 +4117,7 @@ export const getProjectsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatasetsRequest,
   output: GetProjectsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDatasetsRequest {
@@ -4088,7 +4147,7 @@ export type ListProjectsDatasetsResponse =
 export const ListProjectsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListDatasetsResponse;
 
-export type ListProjectsDatasetsError = DefaultErrors;
+export type ListProjectsDatasetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists datasets under a project. Pagination is supported. */
 export const listProjectsDatasets: API.PaginatedOperationMethod<
@@ -4099,7 +4158,7 @@ export const listProjectsDatasets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsRequest,
   output: ListProjectsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4123,7 +4182,12 @@ export type DeleteProjectsDatasetsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsDatasetsError = DefaultErrors;
+export type DeleteProjectsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a dataset by resource name. */
 export const deleteProjectsDatasets: API.OperationMethod<
@@ -4134,7 +4198,7 @@ export const deleteProjectsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatasetsRequest,
   output: DeleteProjectsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportDataProjectsDatasetsRequest {
@@ -4163,7 +4227,12 @@ export type ImportDataProjectsDatasetsResponse = GoogleLongrunningOperation;
 export const ImportDataProjectsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportDataProjectsDatasetsError = DefaultErrors;
+export type ImportDataProjectsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports data into dataset based on source locations defined in request. It can be called multiple times for the same dataset. Each dataset can only have one long running operation running on it. For example, no labeling task (also long running operation) can be started while importing is still ongoing. Vice versa. */
 export const importDataProjectsDatasets: API.OperationMethod<
@@ -4174,7 +4243,7 @@ export const importDataProjectsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportDataProjectsDatasetsRequest,
   output: ImportDataProjectsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportDataProjectsDatasetsRequest {
@@ -4203,7 +4272,12 @@ export type ExportDataProjectsDatasetsResponse = GoogleLongrunningOperation;
 export const ExportDataProjectsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExportDataProjectsDatasetsError = DefaultErrors;
+export type ExportDataProjectsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports data and annotations from dataset. */
 export const exportDataProjectsDatasets: API.OperationMethod<
@@ -4214,7 +4288,7 @@ export const exportDataProjectsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportDataProjectsDatasetsRequest,
   output: ExportDataProjectsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatasetsDataItemsRequest {
@@ -4235,7 +4309,10 @@ export type GetProjectsDatasetsDataItemsResponse =
 export const GetProjectsDatasetsDataItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1DataItem;
 
-export type GetProjectsDatasetsDataItemsError = DefaultErrors;
+export type GetProjectsDatasetsDataItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a data item in a dataset by resource name. This API can be called after data are imported into dataset. */
 export const getProjectsDatasetsDataItems: API.OperationMethod<
@@ -4246,7 +4323,7 @@ export const getProjectsDatasetsDataItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatasetsDataItemsRequest,
   output: GetProjectsDatasetsDataItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDatasetsDataItemsRequest {
@@ -4276,7 +4353,10 @@ export type ListProjectsDatasetsDataItemsResponse =
 export const ListProjectsDatasetsDataItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListDataItemsResponse;
 
-export type ListProjectsDatasetsDataItemsError = DefaultErrors;
+export type ListProjectsDatasetsDataItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists data items in a dataset. This API can be called after data are imported into dataset. Pagination is supported. */
 export const listProjectsDatasetsDataItems: API.PaginatedOperationMethod<
@@ -4287,7 +4367,7 @@ export const listProjectsDatasetsDataItems: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsDataItemsRequest,
   output: ListProjectsDatasetsDataItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4312,7 +4392,10 @@ export type GetProjectsDatasetsAnnotatedDatasetsResponse =
 export const GetProjectsDatasetsAnnotatedDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1AnnotatedDataset;
 
-export type GetProjectsDatasetsAnnotatedDatasetsError = DefaultErrors;
+export type GetProjectsDatasetsAnnotatedDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an annotated dataset by resource name. */
 export const getProjectsDatasetsAnnotatedDatasets: API.OperationMethod<
@@ -4323,7 +4406,7 @@ export const getProjectsDatasetsAnnotatedDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatasetsAnnotatedDatasetsRequest,
   output: GetProjectsDatasetsAnnotatedDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDatasetsAnnotatedDatasetsRequest {
@@ -4353,7 +4436,10 @@ export type ListProjectsDatasetsAnnotatedDatasetsResponse =
 export const ListProjectsDatasetsAnnotatedDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse;
 
-export type ListProjectsDatasetsAnnotatedDatasetsError = DefaultErrors;
+export type ListProjectsDatasetsAnnotatedDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists annotated datasets for a dataset. Pagination is supported. */
 export const listProjectsDatasetsAnnotatedDatasets: API.PaginatedOperationMethod<
@@ -4364,7 +4450,7 @@ export const listProjectsDatasetsAnnotatedDatasets: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsRequest,
   output: ListProjectsDatasetsAnnotatedDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4389,7 +4475,12 @@ export type DeleteProjectsDatasetsAnnotatedDatasetsResponse =
 export const DeleteProjectsDatasetsAnnotatedDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsDatasetsAnnotatedDatasetsError = DefaultErrors;
+export type DeleteProjectsDatasetsAnnotatedDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an annotated dataset by resource name. */
 export const deleteProjectsDatasetsAnnotatedDatasets: API.OperationMethod<
@@ -4400,7 +4491,7 @@ export const deleteProjectsDatasetsAnnotatedDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatasetsAnnotatedDatasetsRequest,
   output: DeleteProjectsDatasetsAnnotatedDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest {
@@ -4421,7 +4512,10 @@ export type GetProjectsDatasetsAnnotatedDatasetsDataItemsResponse =
 export const GetProjectsDatasetsAnnotatedDatasetsDataItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1DataItem;
 
-export type GetProjectsDatasetsAnnotatedDatasetsDataItemsError = DefaultErrors;
+export type GetProjectsDatasetsAnnotatedDatasetsDataItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a data item in a dataset by resource name. This API can be called after data are imported into dataset. */
 export const getProjectsDatasetsAnnotatedDatasetsDataItems: API.OperationMethod<
@@ -4432,7 +4526,7 @@ export const getProjectsDatasetsAnnotatedDatasetsDataItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatasetsAnnotatedDatasetsDataItemsRequest,
   output: GetProjectsDatasetsAnnotatedDatasetsDataItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest {
@@ -4462,7 +4556,10 @@ export type ListProjectsDatasetsAnnotatedDatasetsDataItemsResponse =
 export const ListProjectsDatasetsAnnotatedDatasetsDataItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListDataItemsResponse;
 
-export type ListProjectsDatasetsAnnotatedDatasetsDataItemsError = DefaultErrors;
+export type ListProjectsDatasetsAnnotatedDatasetsDataItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists data items in a dataset. This API can be called after data are imported into dataset. Pagination is supported. */
 export const listProjectsDatasetsAnnotatedDatasetsDataItems: API.PaginatedOperationMethod<
@@ -4473,7 +4570,7 @@ export const listProjectsDatasetsAnnotatedDatasetsDataItems: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsDataItemsRequest,
   output: ListProjectsDatasetsAnnotatedDatasetsDataItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4501,7 +4598,10 @@ export type GetProjectsDatasetsAnnotatedDatasetsExamplesResponse =
 export const GetProjectsDatasetsAnnotatedDatasetsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1Example;
 
-export type GetProjectsDatasetsAnnotatedDatasetsExamplesError = DefaultErrors;
+export type GetProjectsDatasetsAnnotatedDatasetsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an example by resource name, including both data and annotation. */
 export const getProjectsDatasetsAnnotatedDatasetsExamples: API.OperationMethod<
@@ -4512,7 +4612,7 @@ export const getProjectsDatasetsAnnotatedDatasetsExamples: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatasetsAnnotatedDatasetsExamplesRequest,
   output: GetProjectsDatasetsAnnotatedDatasetsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDatasetsAnnotatedDatasetsExamplesRequest {
@@ -4542,7 +4642,10 @@ export type ListProjectsDatasetsAnnotatedDatasetsExamplesResponse =
 export const ListProjectsDatasetsAnnotatedDatasetsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListExamplesResponse;
 
-export type ListProjectsDatasetsAnnotatedDatasetsExamplesError = DefaultErrors;
+export type ListProjectsDatasetsAnnotatedDatasetsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists examples in an annotated dataset. Pagination is supported. */
 export const listProjectsDatasetsAnnotatedDatasetsExamples: API.PaginatedOperationMethod<
@@ -4553,7 +4656,7 @@ export const listProjectsDatasetsAnnotatedDatasetsExamples: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsExamplesRequest,
   output: ListProjectsDatasetsAnnotatedDatasetsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4579,7 +4682,9 @@ export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1FeedbackThread;
 
 export type GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a FeedbackThread object. */
 export const getProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.OperationMethod<
@@ -4590,7 +4695,7 @@ export const getProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
   output: GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest {
@@ -4618,7 +4723,9 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse;
 
 export type ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List FeedbackThreads with pagination. */
 export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.PaginatedOperationMethod<
@@ -4629,7 +4736,7 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
   output: ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4655,7 +4762,11 @@ export const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a FeedbackThread. */
 export const deleteProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.OperationMethod<
@@ -4666,7 +4777,7 @@ export const deleteProjectsDatasetsAnnotatedDatasetsFeedbackThreads: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsRequest,
   output: DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
@@ -4697,7 +4808,11 @@ export const CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a FeedbackMessage object. */
 export const createProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.OperationMethod<
@@ -4710,7 +4825,7 @@ export const createProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
     CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
   output:
     CreateProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
@@ -4732,7 +4847,9 @@ export const GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1FeedbackMessage;
 
 export type GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a FeedbackMessage object. */
 export const getProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.OperationMethod<
@@ -4745,7 +4862,7 @@ export const getProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages
     GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
   output:
     GetProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest {
@@ -4773,7 +4890,9 @@ export const ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse;
 
 export type ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List FeedbackMessages with pagination. */
 export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.PaginatedOperationMethod<
@@ -4786,7 +4905,7 @@ export const listProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessage
     ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
   output:
     ListProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4812,7 +4931,11 @@ export const DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a FeedbackMessage. */
 export const deleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessages: API.OperationMethod<
@@ -4825,7 +4948,7 @@ export const deleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessa
     DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesRequest,
   output:
     DeleteProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LabelProjectsDatasetsImageRequest {
@@ -4854,7 +4977,12 @@ export type LabelProjectsDatasetsImageResponse = GoogleLongrunningOperation;
 export const LabelProjectsDatasetsImageResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type LabelProjectsDatasetsImageError = DefaultErrors;
+export type LabelProjectsDatasetsImageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a labeling task for image. The type of image labeling task is configured by feature in the request. */
 export const labelProjectsDatasetsImage: API.OperationMethod<
@@ -4865,7 +4993,7 @@ export const labelProjectsDatasetsImage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LabelProjectsDatasetsImageRequest,
   output: LabelProjectsDatasetsImageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LabelProjectsDatasetsVideoRequest {
@@ -4894,7 +5022,12 @@ export type LabelProjectsDatasetsVideoResponse = GoogleLongrunningOperation;
 export const LabelProjectsDatasetsVideoResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type LabelProjectsDatasetsVideoError = DefaultErrors;
+export type LabelProjectsDatasetsVideoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a labeling task for video. The type of video labeling task is configured by feature in the request. */
 export const labelProjectsDatasetsVideo: API.OperationMethod<
@@ -4905,7 +5038,7 @@ export const labelProjectsDatasetsVideo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LabelProjectsDatasetsVideoRequest,
   output: LabelProjectsDatasetsVideoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LabelProjectsDatasetsTextRequest {
@@ -4934,7 +5067,12 @@ export type LabelProjectsDatasetsTextResponse = GoogleLongrunningOperation;
 export const LabelProjectsDatasetsTextResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type LabelProjectsDatasetsTextError = DefaultErrors;
+export type LabelProjectsDatasetsTextError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a labeling task for text. The type of text labeling task is configured by feature in the request. */
 export const labelProjectsDatasetsText: API.OperationMethod<
@@ -4945,7 +5083,7 @@ export const labelProjectsDatasetsText: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LabelProjectsDatasetsTextRequest,
   output: LabelProjectsDatasetsTextResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDatasetsEvaluationsRequest {
@@ -4966,7 +5104,10 @@ export type GetProjectsDatasetsEvaluationsResponse =
 export const GetProjectsDatasetsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1Evaluation;
 
-export type GetProjectsDatasetsEvaluationsError = DefaultErrors;
+export type GetProjectsDatasetsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an evaluation by resource name (to search, use projects.evaluations.search). */
 export const getProjectsDatasetsEvaluations: API.OperationMethod<
@@ -4977,7 +5118,7 @@ export const getProjectsDatasetsEvaluations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDatasetsEvaluationsRequest,
   output: GetProjectsDatasetsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchProjectsDatasetsEvaluationsExampleComparisonsRequest {
@@ -5008,7 +5149,11 @@ export const SearchProjectsDatasetsEvaluationsExampleComparisonsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse;
 
 export type SearchProjectsDatasetsEvaluationsExampleComparisonsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches example comparisons from an evaluation. The return format is a list of example comparisons that show ground truth and prediction(s) for a single input. Search by providing an evaluation ID. */
 export const searchProjectsDatasetsEvaluationsExampleComparisons: API.OperationMethod<
@@ -5019,7 +5164,7 @@ export const searchProjectsDatasetsEvaluationsExampleComparisons: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsDatasetsEvaluationsExampleComparisonsRequest,
   output: SearchProjectsDatasetsEvaluationsExampleComparisonsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsAnnotationSpecSetsRequest {
@@ -5049,7 +5194,12 @@ export type CreateProjectsAnnotationSpecSetsResponse =
 export const CreateProjectsAnnotationSpecSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1AnnotationSpecSet;
 
-export type CreateProjectsAnnotationSpecSetsError = DefaultErrors;
+export type CreateProjectsAnnotationSpecSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an annotation spec set by providing a set of labels. */
 export const createProjectsAnnotationSpecSets: API.OperationMethod<
@@ -5060,7 +5210,7 @@ export const createProjectsAnnotationSpecSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAnnotationSpecSetsRequest,
   output: CreateProjectsAnnotationSpecSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAnnotationSpecSetsRequest {
@@ -5081,7 +5231,10 @@ export type GetProjectsAnnotationSpecSetsResponse =
 export const GetProjectsAnnotationSpecSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1AnnotationSpecSet;
 
-export type GetProjectsAnnotationSpecSetsError = DefaultErrors;
+export type GetProjectsAnnotationSpecSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an annotation spec set by resource name. */
 export const getProjectsAnnotationSpecSets: API.OperationMethod<
@@ -5092,7 +5245,7 @@ export const getProjectsAnnotationSpecSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAnnotationSpecSetsRequest,
   output: GetProjectsAnnotationSpecSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAnnotationSpecSetsRequest {
@@ -5122,7 +5275,10 @@ export type ListProjectsAnnotationSpecSetsResponse =
 export const ListProjectsAnnotationSpecSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse;
 
-export type ListProjectsAnnotationSpecSetsError = DefaultErrors;
+export type ListProjectsAnnotationSpecSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists annotation spec sets for a project. Pagination is supported. */
 export const listProjectsAnnotationSpecSets: API.PaginatedOperationMethod<
@@ -5133,7 +5289,7 @@ export const listProjectsAnnotationSpecSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAnnotationSpecSetsRequest,
   output: ListProjectsAnnotationSpecSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5157,7 +5313,12 @@ export type DeleteProjectsAnnotationSpecSetsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsAnnotationSpecSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsAnnotationSpecSetsError = DefaultErrors;
+export type DeleteProjectsAnnotationSpecSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an annotation spec set by resource name. */
 export const deleteProjectsAnnotationSpecSets: API.OperationMethod<
@@ -5168,7 +5329,7 @@ export const deleteProjectsAnnotationSpecSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAnnotationSpecSetsRequest,
   output: DeleteProjectsAnnotationSpecSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstructionsRequest {
@@ -5197,7 +5358,12 @@ export type CreateProjectsInstructionsResponse = GoogleLongrunningOperation;
 export const CreateProjectsInstructionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsInstructionsError = DefaultErrors;
+export type CreateProjectsInstructionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instruction for how data should be labeled. */
 export const createProjectsInstructions: API.OperationMethod<
@@ -5208,7 +5374,7 @@ export const createProjectsInstructions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstructionsRequest,
   output: CreateProjectsInstructionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstructionsRequest {
@@ -5229,7 +5395,7 @@ export type GetProjectsInstructionsResponse =
 export const GetProjectsInstructionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1Instruction;
 
-export type GetProjectsInstructionsError = DefaultErrors;
+export type GetProjectsInstructionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an instruction by resource name. */
 export const getProjectsInstructions: API.OperationMethod<
@@ -5240,7 +5406,7 @@ export const getProjectsInstructions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstructionsRequest,
   output: GetProjectsInstructionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstructionsRequest {
@@ -5270,7 +5436,10 @@ export type ListProjectsInstructionsResponse =
 export const ListProjectsInstructionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListInstructionsResponse;
 
-export type ListProjectsInstructionsError = DefaultErrors;
+export type ListProjectsInstructionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists instructions for a project. Pagination is supported. */
 export const listProjectsInstructions: API.PaginatedOperationMethod<
@@ -5281,7 +5450,7 @@ export const listProjectsInstructions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstructionsRequest,
   output: ListProjectsInstructionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5305,7 +5474,12 @@ export type DeleteProjectsInstructionsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsInstructionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsInstructionsError = DefaultErrors;
+export type DeleteProjectsInstructionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an instruction object by resource name. */
 export const deleteProjectsInstructions: API.OperationMethod<
@@ -5316,7 +5490,7 @@ export const deleteProjectsInstructions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstructionsRequest,
   output: DeleteProjectsInstructionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsEvaluationsRequest {
@@ -5346,7 +5520,10 @@ export type SearchProjectsEvaluationsResponse =
 export const SearchProjectsEvaluationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse;
 
-export type SearchProjectsEvaluationsError = DefaultErrors;
+export type SearchProjectsEvaluationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches evaluations within a project. */
 export const searchProjectsEvaluations: API.PaginatedOperationMethod<
@@ -5357,7 +5534,7 @@ export const searchProjectsEvaluations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsEvaluationsRequest,
   output: SearchProjectsEvaluationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5391,7 +5568,12 @@ export type CreateProjectsEvaluationJobsResponse =
 export const CreateProjectsEvaluationJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1EvaluationJob;
 
-export type CreateProjectsEvaluationJobsError = DefaultErrors;
+export type CreateProjectsEvaluationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an evaluation job. */
 export const createProjectsEvaluationJobs: API.OperationMethod<
@@ -5402,7 +5584,7 @@ export const createProjectsEvaluationJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsEvaluationJobsRequest,
   output: CreateProjectsEvaluationJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsEvaluationJobsRequest {
@@ -5431,7 +5613,12 @@ export type PatchProjectsEvaluationJobsResponse =
 export const PatchProjectsEvaluationJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1EvaluationJob;
 
-export type PatchProjectsEvaluationJobsError = DefaultErrors;
+export type PatchProjectsEvaluationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an evaluation job. You can only update certain fields of the job's EvaluationJobConfig: `humanAnnotationConfig.instruction`, `exampleCount`, and `exampleSamplePercentage`. If you want to change any other aspect of the evaluation job, you must delete the job and create a new one. */
 export const patchProjectsEvaluationJobs: API.OperationMethod<
@@ -5442,7 +5629,7 @@ export const patchProjectsEvaluationJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsEvaluationJobsRequest,
   output: PatchProjectsEvaluationJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsEvaluationJobsRequest {
@@ -5463,7 +5650,10 @@ export type GetProjectsEvaluationJobsResponse =
 export const GetProjectsEvaluationJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1EvaluationJob;
 
-export type GetProjectsEvaluationJobsError = DefaultErrors;
+export type GetProjectsEvaluationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an evaluation job by resource name. */
 export const getProjectsEvaluationJobs: API.OperationMethod<
@@ -5474,7 +5664,7 @@ export const getProjectsEvaluationJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsEvaluationJobsRequest,
   output: GetProjectsEvaluationJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PauseProjectsEvaluationJobsRequest {
@@ -5499,7 +5689,12 @@ export type PauseProjectsEvaluationJobsResponse = GoogleProtobufEmpty;
 export const PauseProjectsEvaluationJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type PauseProjectsEvaluationJobsError = DefaultErrors;
+export type PauseProjectsEvaluationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pauses an evaluation job. Pausing an evaluation job that is already in a `PAUSED` state is a no-op. */
 export const pauseProjectsEvaluationJobs: API.OperationMethod<
@@ -5510,7 +5705,7 @@ export const pauseProjectsEvaluationJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseProjectsEvaluationJobsRequest,
   output: PauseProjectsEvaluationJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeProjectsEvaluationJobsRequest {
@@ -5535,7 +5730,12 @@ export type ResumeProjectsEvaluationJobsResponse = GoogleProtobufEmpty;
 export const ResumeProjectsEvaluationJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type ResumeProjectsEvaluationJobsError = DefaultErrors;
+export type ResumeProjectsEvaluationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resumes a paused evaluation job. A deleted evaluation job can't be resumed. Resuming a running or scheduled evaluation job is a no-op. */
 export const resumeProjectsEvaluationJobs: API.OperationMethod<
@@ -5546,7 +5746,7 @@ export const resumeProjectsEvaluationJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeProjectsEvaluationJobsRequest,
   output: ResumeProjectsEvaluationJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsEvaluationJobsRequest {
@@ -5566,7 +5766,12 @@ export type DeleteProjectsEvaluationJobsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsEvaluationJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsEvaluationJobsError = DefaultErrors;
+export type DeleteProjectsEvaluationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops and deletes an evaluation job. */
 export const deleteProjectsEvaluationJobs: API.OperationMethod<
@@ -5577,7 +5782,7 @@ export const deleteProjectsEvaluationJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsEvaluationJobsRequest,
   output: DeleteProjectsEvaluationJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsEvaluationJobsRequest {
@@ -5607,7 +5812,10 @@ export type ListProjectsEvaluationJobsResponse =
 export const ListProjectsEvaluationJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse;
 
-export type ListProjectsEvaluationJobsError = DefaultErrors;
+export type ListProjectsEvaluationJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all evaluation jobs within a project with possible filters. Pagination is supported. */
 export const listProjectsEvaluationJobs: API.PaginatedOperationMethod<
@@ -5618,7 +5826,7 @@ export const listProjectsEvaluationJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsEvaluationJobsRequest,
   output: ListProjectsEvaluationJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

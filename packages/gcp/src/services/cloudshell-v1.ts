@@ -271,6 +271,52 @@ export const StartEnvironmentResponse =
   }).annotate({ identifier: "StartEnvironmentResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -304,7 +350,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -315,7 +361,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -337,7 +383,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -348,7 +394,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOperationsRequest {
@@ -367,7 +413,12 @@ export const DeleteOperationsRequest =
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -378,7 +429,7 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOperationsRequest {
@@ -400,7 +451,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -411,7 +467,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateAccessTokenUsersEnvironmentsRequest {
@@ -438,7 +494,10 @@ export type GenerateAccessTokenUsersEnvironmentsResponse =
 export const GenerateAccessTokenUsersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateAccessTokenResponse;
 
-export type GenerateAccessTokenUsersEnvironmentsError = DefaultErrors;
+export type GenerateAccessTokenUsersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates an access token for the user's environment. */
 export const generateAccessTokenUsersEnvironments: API.OperationMethod<
@@ -449,7 +508,7 @@ export const generateAccessTokenUsersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccessTokenUsersEnvironmentsRequest,
   output: GenerateAccessTokenUsersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUsersEnvironmentsRequest {
@@ -469,7 +528,7 @@ export type GetUsersEnvironmentsResponse = Environment;
 export const GetUsersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type GetUsersEnvironmentsError = DefaultErrors;
+export type GetUsersEnvironmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an environment. Returns NOT_FOUND if the environment does not exist. */
 export const getUsersEnvironments: API.OperationMethod<
@@ -480,7 +539,7 @@ export const getUsersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersEnvironmentsRequest,
   output: GetUsersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StartUsersEnvironmentsRequest {
@@ -503,7 +562,12 @@ export type StartUsersEnvironmentsResponse = Operation;
 export const StartUsersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartUsersEnvironmentsError = DefaultErrors;
+export type StartUsersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field. */
 export const startUsersEnvironments: API.OperationMethod<
@@ -514,7 +578,7 @@ export const startUsersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartUsersEnvironmentsRequest,
   output: StartUsersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AuthorizeUsersEnvironmentsRequest {
@@ -537,7 +601,12 @@ export type AuthorizeUsersEnvironmentsResponse = Operation;
 export const AuthorizeUsersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AuthorizeUsersEnvironmentsError = DefaultErrors;
+export type AuthorizeUsersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate. */
 export const authorizeUsersEnvironments: API.OperationMethod<
@@ -548,7 +617,7 @@ export const authorizeUsersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AuthorizeUsersEnvironmentsRequest,
   output: AuthorizeUsersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddPublicKeyUsersEnvironmentsRequest {
@@ -575,7 +644,12 @@ export type AddPublicKeyUsersEnvironmentsResponse = Operation;
 export const AddPublicKeyUsersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddPublicKeyUsersEnvironmentsError = DefaultErrors;
+export type AddPublicKeyUsersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a public SSH key to an environment, allowing clients with the corresponding private key to connect to that environment via SSH. If a key with the same content already exists, this will error with ALREADY_EXISTS. */
 export const addPublicKeyUsersEnvironments: API.OperationMethod<
@@ -586,7 +660,7 @@ export const addPublicKeyUsersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddPublicKeyUsersEnvironmentsRequest,
   output: AddPublicKeyUsersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemovePublicKeyUsersEnvironmentsRequest {
@@ -613,7 +687,12 @@ export type RemovePublicKeyUsersEnvironmentsResponse = Operation;
 export const RemovePublicKeyUsersEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemovePublicKeyUsersEnvironmentsError = DefaultErrors;
+export type RemovePublicKeyUsersEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND. */
 export const removePublicKeyUsersEnvironments: API.OperationMethod<
@@ -624,5 +703,5 @@ export const removePublicKeyUsersEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemovePublicKeyUsersEnvironmentsRequest,
   output: RemovePublicKeyUsersEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

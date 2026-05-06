@@ -2901,6 +2901,52 @@ export const GoogleCloudApihubV1OperationMetadata =
   }).annotate({ identifier: "GoogleCloudApihubV1OperationMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2931,7 +2977,12 @@ export type SearchResourcesProjectsLocationsResponse =
 export const SearchResourcesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1SearchResourcesResponse;
 
-export type SearchResourcesProjectsLocationsError = DefaultErrors;
+export type SearchResourcesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Search across API-Hub resources. */
 export const searchResourcesProjectsLocations: API.OperationMethod<
@@ -2942,7 +2993,7 @@ export const searchResourcesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchResourcesProjectsLocationsRequest,
   output: SearchResourcesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveApiViewsProjectsLocationsRequest {
@@ -2979,7 +3030,10 @@ export type RetrieveApiViewsProjectsLocationsResponse =
 export const RetrieveApiViewsProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1RetrieveApiViewsResponse;
 
-export type RetrieveApiViewsProjectsLocationsError = DefaultErrors;
+export type RetrieveApiViewsProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve API views. */
 export const retrieveApiViewsProjectsLocations: API.PaginatedOperationMethod<
@@ -2990,7 +3044,7 @@ export const retrieveApiViewsProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: RetrieveApiViewsProjectsLocationsRequest,
   output: RetrieveApiViewsProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3024,7 +3078,12 @@ export type CollectApiDataProjectsLocationsResponse =
 export const CollectApiDataProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CollectApiDataProjectsLocationsError = DefaultErrors;
+export type CollectApiDataProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Collect API data from a source and push it to Hub's collect layer. */
 export const collectApiDataProjectsLocations: API.OperationMethod<
@@ -3035,7 +3094,7 @@ export const collectApiDataProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CollectApiDataProjectsLocationsRequest,
   output: CollectApiDataProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupRuntimeProjectAttachmentProjectsLocationsRequest {
@@ -3057,7 +3116,9 @@ export const LookupRuntimeProjectAttachmentProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse;
 
 export type LookupRuntimeProjectAttachmentProjectsLocationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Look up a runtime project attachment. This API can be called in the context of any project. */
 export const lookupRuntimeProjectAttachmentProjectsLocations: API.OperationMethod<
@@ -3068,7 +3129,7 @@ export const lookupRuntimeProjectAttachmentProjectsLocations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupRuntimeProjectAttachmentProjectsLocationsRequest,
   output: LookupRuntimeProjectAttachmentProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -3103,7 +3164,7 @@ export type ListProjectsLocationsResponse =
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -3114,7 +3175,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3138,7 +3199,7 @@ export type GetProjectsLocationsResponse = GoogleCloudLocationLocation;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudLocationLocation;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -3149,7 +3210,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -3184,7 +3245,10 @@ export type ListProjectsLocationsOperationsResponse =
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -3195,7 +3259,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3219,7 +3283,10 @@ export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -3230,7 +3297,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -3250,7 +3317,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -3261,7 +3333,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -3286,7 +3358,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -3297,7 +3374,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAddonsRequest {
@@ -3317,7 +3394,10 @@ export type GetProjectsLocationsAddonsResponse = GoogleCloudApihubV1Addon;
 export const GetProjectsLocationsAddonsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Addon;
 
-export type GetProjectsLocationsAddonsError = DefaultErrors;
+export type GetProjectsLocationsAddonsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an addon. */
 export const getProjectsLocationsAddons: API.OperationMethod<
@@ -3328,7 +3408,7 @@ export const getProjectsLocationsAddons: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAddonsRequest,
   output: GetProjectsLocationsAddonsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ManageConfigProjectsLocationsAddonsRequest {
@@ -3354,7 +3434,12 @@ export type ManageConfigProjectsLocationsAddonsResponse =
 export const ManageConfigProjectsLocationsAddonsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ManageConfigProjectsLocationsAddonsError = DefaultErrors;
+export type ManageConfigProjectsLocationsAddonsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Manage addon config. This RPC is used for managing the config of the addon. Calling this RPC moves the addon into an updating state until the long-running operation succeeds. */
 export const manageConfigProjectsLocationsAddons: API.OperationMethod<
@@ -3365,7 +3450,7 @@ export const manageConfigProjectsLocationsAddons: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ManageConfigProjectsLocationsAddonsRequest,
   output: ManageConfigProjectsLocationsAddonsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAddonsRequest {
@@ -3395,7 +3480,10 @@ export type ListProjectsLocationsAddonsResponse =
 export const ListProjectsLocationsAddonsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListAddonsResponse;
 
-export type ListProjectsLocationsAddonsError = DefaultErrors;
+export type ListProjectsLocationsAddonsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List addons. */
 export const listProjectsLocationsAddons: API.PaginatedOperationMethod<
@@ -3406,7 +3494,7 @@ export const listProjectsLocationsAddons: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAddonsRequest,
   output: ListProjectsLocationsAddonsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3430,7 +3518,10 @@ export type GetProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const GetProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Plugin;
 
-export type GetProjectsLocationsPluginsError = DefaultErrors;
+export type GetProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an API Hub plugin. */
 export const getProjectsLocationsPlugins: API.OperationMethod<
@@ -3441,7 +3532,7 @@ export const getProjectsLocationsPlugins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPluginsRequest,
   output: GetProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnableProjectsLocationsPluginsRequest {
@@ -3466,7 +3557,12 @@ export type EnableProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const EnableProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Plugin;
 
-export type EnableProjectsLocationsPluginsError = DefaultErrors;
+export type EnableProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables a plugin. The `state` of the plugin after enabling is `ENABLED` */
 export const enableProjectsLocationsPlugins: API.OperationMethod<
@@ -3477,7 +3573,7 @@ export const enableProjectsLocationsPlugins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableProjectsLocationsPluginsRequest,
   output: EnableProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableProjectsLocationsPluginsRequest {
@@ -3502,7 +3598,12 @@ export type DisableProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const DisableProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Plugin;
 
-export type DisableProjectsLocationsPluginsError = DefaultErrors;
+export type DisableProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables a plugin. The `state` of the plugin after disabling is `DISABLED` */
 export const disableProjectsLocationsPlugins: API.OperationMethod<
@@ -3513,7 +3614,7 @@ export const disableProjectsLocationsPlugins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableProjectsLocationsPluginsRequest,
   output: DisableProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPluginsRequest {
@@ -3539,7 +3640,12 @@ export type CreateProjectsLocationsPluginsResponse = GoogleCloudApihubV1Plugin;
 export const CreateProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Plugin;
 
-export type CreateProjectsLocationsPluginsError = DefaultErrors;
+export type CreateProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an API Hub plugin resource in the API hub. Once a plugin is created, it can be used to create plugin instances. */
 export const createProjectsLocationsPlugins: API.OperationMethod<
@@ -3550,7 +3656,7 @@ export const createProjectsLocationsPlugins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPluginsRequest,
   output: CreateProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPluginsRequest {
@@ -3580,7 +3686,10 @@ export type ListProjectsLocationsPluginsResponse =
 export const ListProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListPluginsResponse;
 
-export type ListProjectsLocationsPluginsError = DefaultErrors;
+export type ListProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all the plugins in a given project and location. */
 export const listProjectsLocationsPlugins: API.PaginatedOperationMethod<
@@ -3591,7 +3700,7 @@ export const listProjectsLocationsPlugins: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPluginsRequest,
   output: ListProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3615,7 +3724,12 @@ export type DeleteProjectsLocationsPluginsResponse = GoogleLongrunningOperation;
 export const DeleteProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsPluginsError = DefaultErrors;
+export type DeleteProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a Plugin in API hub. Note, only user owned plugins can be deleted via this method. */
 export const deleteProjectsLocationsPlugins: API.OperationMethod<
@@ -3626,7 +3740,7 @@ export const deleteProjectsLocationsPlugins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPluginsRequest,
   output: DeleteProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStyleGuideProjectsLocationsPluginsRequest {
@@ -3647,7 +3761,10 @@ export type GetStyleGuideProjectsLocationsPluginsResponse =
 export const GetStyleGuideProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1StyleGuide;
 
-export type GetStyleGuideProjectsLocationsPluginsError = DefaultErrors;
+export type GetStyleGuideProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the style guide being used for linting. */
 export const getStyleGuideProjectsLocationsPlugins: API.OperationMethod<
@@ -3658,7 +3775,7 @@ export const getStyleGuideProjectsLocationsPlugins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStyleGuideProjectsLocationsPluginsRequest,
   output: GetStyleGuideProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateStyleGuideProjectsLocationsPluginsRequest {
@@ -3685,7 +3802,12 @@ export type UpdateStyleGuideProjectsLocationsPluginsResponse =
 export const UpdateStyleGuideProjectsLocationsPluginsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1StyleGuide;
 
-export type UpdateStyleGuideProjectsLocationsPluginsError = DefaultErrors;
+export type UpdateStyleGuideProjectsLocationsPluginsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the styleGuide to be used for liniting in by API hub. */
 export const updateStyleGuideProjectsLocationsPlugins: API.OperationMethod<
@@ -3696,7 +3818,7 @@ export const updateStyleGuideProjectsLocationsPlugins: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStyleGuideProjectsLocationsPluginsRequest,
   output: UpdateStyleGuideProjectsLocationsPluginsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsPluginsInstancesRequest {
@@ -3725,7 +3847,12 @@ export type CreateProjectsLocationsPluginsInstancesResponse =
 export const CreateProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type CreateProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Plugin instance in the API hub. */
 export const createProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -3736,7 +3863,7 @@ export const createProjectsLocationsPluginsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPluginsInstancesRequest,
   output: CreateProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteActionProjectsLocationsPluginsInstancesRequest {
@@ -3762,7 +3889,12 @@ export type ExecuteActionProjectsLocationsPluginsInstancesResponse =
 export const ExecuteActionProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ExecuteActionProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type ExecuteActionProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a plugin instance in the API hub. */
 export const executeActionProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -3773,7 +3905,7 @@ export const executeActionProjectsLocationsPluginsInstances: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteActionProjectsLocationsPluginsInstancesRequest,
   output: ExecuteActionProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPluginsInstancesRequest {
@@ -3794,7 +3926,10 @@ export type GetProjectsLocationsPluginsInstancesResponse =
 export const GetProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1PluginInstance;
 
-export type GetProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type GetProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an API Hub plugin instance. */
 export const getProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -3805,7 +3940,7 @@ export const getProjectsLocationsPluginsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPluginsInstancesRequest,
   output: GetProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsPluginsInstancesRequest {
@@ -3835,7 +3970,10 @@ export type ListProjectsLocationsPluginsInstancesResponse =
 export const ListProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListPluginInstancesResponse;
 
-export type ListProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type ListProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all the plugins in a given project and location. `-` can be used as wildcard value for {plugin_id} */
 export const listProjectsLocationsPluginsInstances: API.PaginatedOperationMethod<
@@ -3846,7 +3984,7 @@ export const listProjectsLocationsPluginsInstances: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPluginsInstancesRequest,
   output: ListProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3876,7 +4014,12 @@ export type EnableActionProjectsLocationsPluginsInstancesResponse =
 export const EnableActionProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type EnableActionProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type EnableActionProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables a plugin instance in the API hub. */
 export const enableActionProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -3887,7 +4030,7 @@ export const enableActionProjectsLocationsPluginsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableActionProjectsLocationsPluginsInstancesRequest,
   output: EnableActionProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableActionProjectsLocationsPluginsInstancesRequest {
@@ -3913,7 +4056,12 @@ export type DisableActionProjectsLocationsPluginsInstancesResponse =
 export const DisableActionProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DisableActionProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type DisableActionProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables a plugin instance in the API hub. */
 export const disableActionProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -3924,7 +4072,7 @@ export const disableActionProjectsLocationsPluginsInstances: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableActionProjectsLocationsPluginsInstancesRequest,
   output: DisableActionProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsPluginsInstancesRequest {
@@ -3951,7 +4099,12 @@ export type PatchProjectsLocationsPluginsInstancesResponse =
 export const PatchProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1PluginInstance;
 
-export type PatchProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type PatchProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a plugin instance in the API hub. The following fields in the plugin_instance can be updated currently: * display_name * schedule_cron_expression The update_mask should be used to specify the fields being updated. To update the auth_config and additional_config of the plugin instance, use the ApplyPluginInstanceConfig method. */
 export const patchProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -3962,7 +4115,7 @@ export const patchProjectsLocationsPluginsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPluginsInstancesRequest,
   output: PatchProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPluginsInstancesRequest {
@@ -3983,7 +4136,12 @@ export type DeleteProjectsLocationsPluginsInstancesResponse =
 export const DeleteProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsPluginsInstancesError = DefaultErrors;
+export type DeleteProjectsLocationsPluginsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a plugin instance in the API hub. */
 export const deleteProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -3994,7 +4152,7 @@ export const deleteProjectsLocationsPluginsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPluginsInstancesRequest,
   output: DeleteProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ManageSourceDataProjectsLocationsPluginsInstancesRequest {
@@ -4025,7 +4183,11 @@ export const ManageSourceDataProjectsLocationsPluginsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse;
 
 export type ManageSourceDataProjectsLocationsPluginsInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Manages data for a given plugin instance. */
 export const manageSourceDataProjectsLocationsPluginsInstances: API.OperationMethod<
@@ -4036,7 +4198,7 @@ export const manageSourceDataProjectsLocationsPluginsInstances: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ManageSourceDataProjectsLocationsPluginsInstancesRequest,
   output: ManageSourceDataProjectsLocationsPluginsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetContentsProjectsLocationsPluginsStyleGuideRequest {
@@ -4057,7 +4219,10 @@ export type GetContentsProjectsLocationsPluginsStyleGuideResponse =
 export const GetContentsProjectsLocationsPluginsStyleGuideResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1StyleGuideContents;
 
-export type GetContentsProjectsLocationsPluginsStyleGuideError = DefaultErrors;
+export type GetContentsProjectsLocationsPluginsStyleGuideError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the contents of the style guide. */
 export const getContentsProjectsLocationsPluginsStyleGuide: API.OperationMethod<
@@ -4068,7 +4233,7 @@ export const getContentsProjectsLocationsPluginsStyleGuide: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsPluginsStyleGuideRequest,
   output: GetContentsProjectsLocationsPluginsStyleGuideResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsApisRequest {
@@ -4094,7 +4259,12 @@ export type CreateProjectsLocationsApisResponse = GoogleCloudApihubV1Api;
 export const CreateProjectsLocationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Api;
 
-export type CreateProjectsLocationsApisError = DefaultErrors;
+export type CreateProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an API resource in the API hub. Once an API resource is created, versions can be added to it. */
 export const createProjectsLocationsApis: API.OperationMethod<
@@ -4105,7 +4275,7 @@ export const createProjectsLocationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisRequest,
   output: CreateProjectsLocationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsApisRequest {
@@ -4125,7 +4295,10 @@ export type GetProjectsLocationsApisResponse = GoogleCloudApihubV1Api;
 export const GetProjectsLocationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Api;
 
-export type GetProjectsLocationsApisError = DefaultErrors;
+export type GetProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get API resource details including the API versions contained in it. */
 export const getProjectsLocationsApis: API.OperationMethod<
@@ -4136,7 +4309,7 @@ export const getProjectsLocationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisRequest,
   output: GetProjectsLocationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsApisRequest {
@@ -4166,7 +4339,10 @@ export type ListProjectsLocationsApisResponse =
 export const ListProjectsLocationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListApisResponse;
 
-export type ListProjectsLocationsApisError = DefaultErrors;
+export type ListProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List API resources in the API hub. */
 export const listProjectsLocationsApis: API.PaginatedOperationMethod<
@@ -4177,7 +4353,7 @@ export const listProjectsLocationsApis: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisRequest,
   output: ListProjectsLocationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4207,7 +4383,12 @@ export type PatchProjectsLocationsApisResponse = GoogleCloudApihubV1Api;
 export const PatchProjectsLocationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Api;
 
-export type PatchProjectsLocationsApisError = DefaultErrors;
+export type PatchProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an API resource in the API hub. The following fields in the API can be updated: * display_name * description * owner * documentation * target_user * team * business_unit * maturity_level * api_style * attributes * fingerprint The update_mask should be used to specify the fields being updated. Updating the owner field requires complete owner message and updates both owner and email fields. */
 export const patchProjectsLocationsApis: API.OperationMethod<
@@ -4218,7 +4399,7 @@ export const patchProjectsLocationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisRequest,
   output: PatchProjectsLocationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApisRequest {
@@ -4241,7 +4422,12 @@ export type DeleteProjectsLocationsApisResponse = Empty;
 export const DeleteProjectsLocationsApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsApisError = DefaultErrors;
+export type DeleteProjectsLocationsApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an API resource in the API hub. API can only be deleted if all underlying versions are deleted. */
 export const deleteProjectsLocationsApis: API.OperationMethod<
@@ -4252,7 +4438,7 @@ export const deleteProjectsLocationsApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisRequest,
   output: DeleteProjectsLocationsApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsApisVersionsRequest {
@@ -4279,7 +4465,12 @@ export type CreateProjectsLocationsApisVersionsResponse =
 export const CreateProjectsLocationsApisVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Version;
 
-export type CreateProjectsLocationsApisVersionsError = DefaultErrors;
+export type CreateProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an API version for an API resource in the API hub. */
 export const createProjectsLocationsApisVersions: API.OperationMethod<
@@ -4290,7 +4481,7 @@ export const createProjectsLocationsApisVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisVersionsRequest,
   output: CreateProjectsLocationsApisVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsApisVersionsRequest {
@@ -4311,7 +4502,10 @@ export type GetProjectsLocationsApisVersionsResponse =
 export const GetProjectsLocationsApisVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Version;
 
-export type GetProjectsLocationsApisVersionsError = DefaultErrors;
+export type GetProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about the API version of an API resource. This will include information about the specs and operations present in the API version as well as the deployments linked to it. */
 export const getProjectsLocationsApisVersions: API.OperationMethod<
@@ -4322,7 +4516,7 @@ export const getProjectsLocationsApisVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsRequest,
   output: GetProjectsLocationsApisVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsApisVersionsRequest {
@@ -4352,7 +4546,10 @@ export type ListProjectsLocationsApisVersionsResponse =
 export const ListProjectsLocationsApisVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListVersionsResponse;
 
-export type ListProjectsLocationsApisVersionsError = DefaultErrors;
+export type ListProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List API versions of an API resource in the API hub. */
 export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
@@ -4363,7 +4560,7 @@ export const listProjectsLocationsApisVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsRequest,
   output: ListProjectsLocationsApisVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4394,7 +4591,12 @@ export type PatchProjectsLocationsApisVersionsResponse =
 export const PatchProjectsLocationsApisVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Version;
 
-export type PatchProjectsLocationsApisVersionsError = DefaultErrors;
+export type PatchProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update API version. The following fields in the version can be updated currently: * display_name * description * documentation * deployments * lifecycle * compliance * accreditation * attributes The update_mask should be used to specify the fields being updated. */
 export const patchProjectsLocationsApisVersions: API.OperationMethod<
@@ -4405,7 +4607,7 @@ export const patchProjectsLocationsApisVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisVersionsRequest,
   output: PatchProjectsLocationsApisVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApisVersionsRequest {
@@ -4428,7 +4630,12 @@ export type DeleteProjectsLocationsApisVersionsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsApisVersionsError = DefaultErrors;
+export type DeleteProjectsLocationsApisVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an API version. Version can only be deleted if all underlying specs, operations, definitions and linked deployments are deleted. */
 export const deleteProjectsLocationsApisVersions: API.OperationMethod<
@@ -4439,7 +4646,7 @@ export const deleteProjectsLocationsApisVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisVersionsRequest,
   output: DeleteProjectsLocationsApisVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsApisVersionsSpecsRequest {
@@ -4466,7 +4673,12 @@ export type CreateProjectsLocationsApisVersionsSpecsResponse =
 export const CreateProjectsLocationsApisVersionsSpecsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Spec;
 
-export type CreateProjectsLocationsApisVersionsSpecsError = DefaultErrors;
+export type CreateProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add a spec to an API version in the API hub. Multiple specs can be added to an API version. Note, while adding a spec, at least one of `contents` or `source_uri` must be provided. If `contents` is provided, then `spec_type` must also be provided. On adding a spec with contents to the version, the operations present in it will be added to the version.Note that the file contents in the spec should be of the same type as defined in the `projects/{project}/locations/{location}/attributes/system-spec-type` attribute associated with spec resource. Note that specs of various types can be uploaded, however parsing of details is supported for OpenAPI spec currently. In order to access the information parsed from the spec, use the GetSpec method. In order to access the raw contents for a particular spec, use the GetSpecContents method. In order to access the operations parsed from the spec, use the ListAPIOperations method. */
 export const createProjectsLocationsApisVersionsSpecs: API.OperationMethod<
@@ -4477,7 +4689,7 @@ export const createProjectsLocationsApisVersionsSpecs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisVersionsSpecsRequest,
   output: CreateProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsApisVersionsSpecsRequest {
@@ -4498,7 +4710,10 @@ export type GetProjectsLocationsApisVersionsSpecsResponse =
 export const GetProjectsLocationsApisVersionsSpecsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Spec;
 
-export type GetProjectsLocationsApisVersionsSpecsError = DefaultErrors;
+export type GetProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about the information parsed from a spec. Note that this method does not return the raw spec contents. Use GetSpecContents method to retrieve the same. */
 export const getProjectsLocationsApisVersionsSpecs: API.OperationMethod<
@@ -4509,7 +4724,7 @@ export const getProjectsLocationsApisVersionsSpecs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsSpecsRequest,
   output: GetProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetContentsProjectsLocationsApisVersionsSpecsRequest {
@@ -4530,7 +4745,10 @@ export type GetContentsProjectsLocationsApisVersionsSpecsResponse =
 export const GetContentsProjectsLocationsApisVersionsSpecsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1SpecContents;
 
-export type GetContentsProjectsLocationsApisVersionsSpecsError = DefaultErrors;
+export type GetContentsProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get spec contents. */
 export const getContentsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
@@ -4541,7 +4759,7 @@ export const getContentsProjectsLocationsApisVersionsSpecs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContentsProjectsLocationsApisVersionsSpecsRequest,
   output: GetContentsProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest {
@@ -4572,7 +4790,9 @@ export const FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1FetchAdditionalSpecContentResponse;
 
 export type FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetch additional spec content. */
 export const fetchAdditionalSpecContentProjectsLocationsApisVersionsSpecs: API.OperationMethod<
@@ -4583,7 +4803,7 @@ export const fetchAdditionalSpecContentProjectsLocationsApisVersionsSpecs: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsRequest,
   output: FetchAdditionalSpecContentProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsApisVersionsSpecsRequest {
@@ -4613,7 +4833,10 @@ export type ListProjectsLocationsApisVersionsSpecsResponse =
 export const ListProjectsLocationsApisVersionsSpecsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListSpecsResponse;
 
-export type ListProjectsLocationsApisVersionsSpecsError = DefaultErrors;
+export type ListProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List specs corresponding to a particular API resource. */
 export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMethod<
@@ -4624,7 +4847,7 @@ export const listProjectsLocationsApisVersionsSpecs: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsSpecsRequest,
   output: ListProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4655,7 +4878,12 @@ export type PatchProjectsLocationsApisVersionsSpecsResponse =
 export const PatchProjectsLocationsApisVersionsSpecsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Spec;
 
-export type PatchProjectsLocationsApisVersionsSpecsError = DefaultErrors;
+export type PatchProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update spec. The following fields in the spec can be updated: * display_name * source_uri * lint_response * attributes * contents * spec_type In case of an OAS spec, updating spec contents can lead to: 1. Creation, deletion and update of operations. 2. Creation, deletion and update of definitions. 3. Update of other info parsed out from the new spec. In case of contents or source_uri being present in update mask, spec_type must also be present. Also, spec_type can not be present in update mask if contents or source_uri is not present. The update_mask should be used to specify the fields being updated. */
 export const patchProjectsLocationsApisVersionsSpecs: API.OperationMethod<
@@ -4666,7 +4894,7 @@ export const patchProjectsLocationsApisVersionsSpecs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisVersionsSpecsRequest,
   output: PatchProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApisVersionsSpecsRequest {
@@ -4686,7 +4914,12 @@ export type DeleteProjectsLocationsApisVersionsSpecsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsSpecsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsApisVersionsSpecsError = DefaultErrors;
+export type DeleteProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a spec. Deleting a spec will also delete the associated operations from the version. */
 export const deleteProjectsLocationsApisVersionsSpecs: API.OperationMethod<
@@ -4697,7 +4930,7 @@ export const deleteProjectsLocationsApisVersionsSpecs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisVersionsSpecsRequest,
   output: DeleteProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LintProjectsLocationsApisVersionsSpecsRequest {
@@ -4722,7 +4955,12 @@ export type LintProjectsLocationsApisVersionsSpecsResponse = Empty;
 export const LintProjectsLocationsApisVersionsSpecsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type LintProjectsLocationsApisVersionsSpecsError = DefaultErrors;
+export type LintProjectsLocationsApisVersionsSpecsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lints the requested spec and updates the corresponding API Spec with the lint response. This lint response will be available in all subsequent Get and List Spec calls to Core service. */
 export const lintProjectsLocationsApisVersionsSpecs: API.OperationMethod<
@@ -4733,7 +4971,7 @@ export const lintProjectsLocationsApisVersionsSpecs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LintProjectsLocationsApisVersionsSpecsRequest,
   output: LintProjectsLocationsApisVersionsSpecsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsApisVersionsOperationsRequest {
@@ -4762,7 +5000,12 @@ export type CreateProjectsLocationsApisVersionsOperationsResponse =
 export const CreateProjectsLocationsApisVersionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ApiOperation;
 
-export type CreateProjectsLocationsApisVersionsOperationsError = DefaultErrors;
+export type CreateProjectsLocationsApisVersionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an apiOperation in an API version. An apiOperation can be created only if the version has no apiOperations which were created by parsing a spec. */
 export const createProjectsLocationsApisVersionsOperations: API.OperationMethod<
@@ -4773,7 +5016,7 @@ export const createProjectsLocationsApisVersionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApisVersionsOperationsRequest,
   output: CreateProjectsLocationsApisVersionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsApisVersionsOperationsRequest {
@@ -4794,7 +5037,10 @@ export type GetProjectsLocationsApisVersionsOperationsResponse =
 export const GetProjectsLocationsApisVersionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ApiOperation;
 
-export type GetProjectsLocationsApisVersionsOperationsError = DefaultErrors;
+export type GetProjectsLocationsApisVersionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about a particular operation in API version. */
 export const getProjectsLocationsApisVersionsOperations: API.OperationMethod<
@@ -4805,7 +5051,7 @@ export const getProjectsLocationsApisVersionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsOperationsRequest,
   output: GetProjectsLocationsApisVersionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsApisVersionsOperationsRequest {
@@ -4835,7 +5081,10 @@ export type ListProjectsLocationsApisVersionsOperationsResponse =
 export const ListProjectsLocationsApisVersionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListApiOperationsResponse;
 
-export type ListProjectsLocationsApisVersionsOperationsError = DefaultErrors;
+export type ListProjectsLocationsApisVersionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List operations in an API version. */
 export const listProjectsLocationsApisVersionsOperations: API.PaginatedOperationMethod<
@@ -4846,7 +5095,7 @@ export const listProjectsLocationsApisVersionsOperations: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsApisVersionsOperationsRequest,
   output: ListProjectsLocationsApisVersionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4877,7 +5126,12 @@ export type PatchProjectsLocationsApisVersionsOperationsResponse =
 export const PatchProjectsLocationsApisVersionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ApiOperation;
 
-export type PatchProjectsLocationsApisVersionsOperationsError = DefaultErrors;
+export type PatchProjectsLocationsApisVersionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an operation in an API version. The following fields in the ApiOperation resource can be updated: * details.description * details.documentation * details.http_operation.path * details.http_operation.method * details.deprecated * attributes * details.mcp_tool.title * details.mcp_tool.description * details.mcp_tool.input_schema * details.mcp_tool.output_schema * details.input_schema * details.output_schema * details.mcp_tool.annotations.title * details.mcp_tool.annotations.read_only_hint * details.mcp_tool.annotations.destructive_hint * details.mcp_tool.annotations.idempotent_hint * details.mcp_tool.annotations.open_world_hint * details.mcp_tool.annotations.additional_hints The update_mask should be used to specify the fields being updated. An operation can be updated only if the operation was created via CreateApiOperation API. If the operation was created by parsing the spec, then it can be edited by updating the spec. */
 export const patchProjectsLocationsApisVersionsOperations: API.OperationMethod<
@@ -4888,7 +5142,7 @@ export const patchProjectsLocationsApisVersionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApisVersionsOperationsRequest,
   output: PatchProjectsLocationsApisVersionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApisVersionsOperationsRequest {
@@ -4908,7 +5162,12 @@ export type DeleteProjectsLocationsApisVersionsOperationsResponse = Empty;
 export const DeleteProjectsLocationsApisVersionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsApisVersionsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsApisVersionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an operation in an API version and we can delete only the operations created via create API. If the operation was created by parsing the spec, then it can be deleted by editing or deleting the spec. */
 export const deleteProjectsLocationsApisVersionsOperations: API.OperationMethod<
@@ -4919,7 +5178,7 @@ export const deleteProjectsLocationsApisVersionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApisVersionsOperationsRequest,
   output: DeleteProjectsLocationsApisVersionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsApisVersionsDefinitionsRequest {
@@ -4940,7 +5199,10 @@ export type GetProjectsLocationsApisVersionsDefinitionsResponse =
 export const GetProjectsLocationsApisVersionsDefinitionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Definition;
 
-export type GetProjectsLocationsApisVersionsDefinitionsError = DefaultErrors;
+export type GetProjectsLocationsApisVersionsDefinitionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about a definition in an API version. */
 export const getProjectsLocationsApisVersionsDefinitions: API.OperationMethod<
@@ -4951,7 +5213,7 @@ export const getProjectsLocationsApisVersionsDefinitions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApisVersionsDefinitionsRequest,
   output: GetProjectsLocationsApisVersionsDefinitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsDeploymentsRequest {
@@ -4980,7 +5242,12 @@ export type CreateProjectsLocationsDeploymentsResponse =
 export const CreateProjectsLocationsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Deployment;
 
-export type CreateProjectsLocationsDeploymentsError = DefaultErrors;
+export type CreateProjectsLocationsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a deployment resource in the API hub. Once a deployment resource is created, it can be associated with API versions. */
 export const createProjectsLocationsDeployments: API.OperationMethod<
@@ -4991,7 +5258,7 @@ export const createProjectsLocationsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDeploymentsRequest,
   output: CreateProjectsLocationsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDeploymentsRequest {
@@ -5012,7 +5279,10 @@ export type GetProjectsLocationsDeploymentsResponse =
 export const GetProjectsLocationsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Deployment;
 
-export type GetProjectsLocationsDeploymentsError = DefaultErrors;
+export type GetProjectsLocationsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about a deployment and the API versions linked to it. */
 export const getProjectsLocationsDeployments: API.OperationMethod<
@@ -5023,7 +5293,7 @@ export const getProjectsLocationsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDeploymentsRequest,
   output: GetProjectsLocationsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsDeploymentsRequest {
@@ -5053,7 +5323,10 @@ export type ListProjectsLocationsDeploymentsResponse =
 export const ListProjectsLocationsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListDeploymentsResponse;
 
-export type ListProjectsLocationsDeploymentsError = DefaultErrors;
+export type ListProjectsLocationsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List deployment resources in the API hub. */
 export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
@@ -5064,7 +5337,7 @@ export const listProjectsLocationsDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDeploymentsRequest,
   output: ListProjectsLocationsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5095,7 +5368,12 @@ export type PatchProjectsLocationsDeploymentsResponse =
 export const PatchProjectsLocationsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Deployment;
 
-export type PatchProjectsLocationsDeploymentsError = DefaultErrors;
+export type PatchProjectsLocationsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a deployment resource in the API hub. The following fields in the deployment resource can be updated: * display_name * description * documentation * deployment_type * resource_uri * endpoints * slo * environment * attributes * source_project * source_environment * management_url * source_uri The update_mask should be used to specify the fields being updated. */
 export const patchProjectsLocationsDeployments: API.OperationMethod<
@@ -5106,7 +5384,7 @@ export const patchProjectsLocationsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDeploymentsRequest,
   output: PatchProjectsLocationsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDeploymentsRequest {
@@ -5126,7 +5404,12 @@ export type DeleteProjectsLocationsDeploymentsResponse = Empty;
 export const DeleteProjectsLocationsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDeploymentsError = DefaultErrors;
+export type DeleteProjectsLocationsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a deployment resource in the API hub. */
 export const deleteProjectsLocationsDeployments: API.OperationMethod<
@@ -5137,7 +5420,7 @@ export const deleteProjectsLocationsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDeploymentsRequest,
   output: DeleteProjectsLocationsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsAttributesRequest {
@@ -5166,7 +5449,12 @@ export type CreateProjectsLocationsAttributesResponse =
 export const CreateProjectsLocationsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Attribute;
 
-export type CreateProjectsLocationsAttributesError = DefaultErrors;
+export type CreateProjectsLocationsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a user defined attribute. Certain pre defined attributes are already created by the API hub. These attributes will have type as `SYSTEM_DEFINED` and can be listed via ListAttributes method. Allowed values for the same can be updated via UpdateAttribute method. */
 export const createProjectsLocationsAttributes: API.OperationMethod<
@@ -5177,7 +5465,7 @@ export const createProjectsLocationsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAttributesRequest,
   output: CreateProjectsLocationsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAttributesRequest {
@@ -5198,7 +5486,10 @@ export type GetProjectsLocationsAttributesResponse =
 export const GetProjectsLocationsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Attribute;
 
-export type GetProjectsLocationsAttributesError = DefaultErrors;
+export type GetProjectsLocationsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about the attribute. */
 export const getProjectsLocationsAttributes: API.OperationMethod<
@@ -5209,7 +5500,7 @@ export const getProjectsLocationsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAttributesRequest,
   output: GetProjectsLocationsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsAttributesRequest {
@@ -5236,7 +5527,12 @@ export type PatchProjectsLocationsAttributesResponse =
 export const PatchProjectsLocationsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Attribute;
 
-export type PatchProjectsLocationsAttributesError = DefaultErrors;
+export type PatchProjectsLocationsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the attribute. The following fields in the Attribute resource can be updated: * display_name The display name can be updated for user defined attributes only. * description The description can be updated for user defined attributes only. * allowed_values To update the list of allowed values, clients need to use the fetched list of allowed values and add or remove values to or from the same list. The mutable allowed values can be updated for both user defined and System defined attributes. The immutable allowed values cannot be updated or deleted. The updated list of allowed values cannot be empty. If an allowed value that is already used by some resource's attribute is deleted, then the association between the resource and the attribute value will also be deleted. * cardinality The cardinality can be updated for user defined attributes only. Cardinality can only be increased during an update. The update_mask should be used to specify the fields being updated. */
 export const patchProjectsLocationsAttributes: API.OperationMethod<
@@ -5247,7 +5543,7 @@ export const patchProjectsLocationsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsAttributesRequest,
   output: PatchProjectsLocationsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAttributesRequest {
@@ -5267,7 +5563,12 @@ export type DeleteProjectsLocationsAttributesResponse = Empty;
 export const DeleteProjectsLocationsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAttributesError = DefaultErrors;
+export type DeleteProjectsLocationsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an attribute. Note: System defined attributes cannot be deleted. All associations of the attribute being deleted with any API hub resource will also get deleted. */
 export const deleteProjectsLocationsAttributes: API.OperationMethod<
@@ -5278,7 +5579,7 @@ export const deleteProjectsLocationsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAttributesRequest,
   output: DeleteProjectsLocationsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAttributesRequest {
@@ -5308,7 +5609,10 @@ export type ListProjectsLocationsAttributesResponse =
 export const ListProjectsLocationsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListAttributesResponse;
 
-export type ListProjectsLocationsAttributesError = DefaultErrors;
+export type ListProjectsLocationsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all attributes. */
 export const listProjectsLocationsAttributes: API.PaginatedOperationMethod<
@@ -5319,7 +5623,7 @@ export const listProjectsLocationsAttributes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAttributesRequest,
   output: ListProjectsLocationsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5352,7 +5656,12 @@ export type CreateProjectsLocationsExternalApisResponse =
 export const CreateProjectsLocationsExternalApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ExternalApi;
 
-export type CreateProjectsLocationsExternalApisError = DefaultErrors;
+export type CreateProjectsLocationsExternalApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an External API resource in the API hub. */
 export const createProjectsLocationsExternalApis: API.OperationMethod<
@@ -5363,7 +5672,7 @@ export const createProjectsLocationsExternalApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsExternalApisRequest,
   output: CreateProjectsLocationsExternalApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsExternalApisRequest {
@@ -5384,7 +5693,10 @@ export type GetProjectsLocationsExternalApisResponse =
 export const GetProjectsLocationsExternalApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ExternalApi;
 
-export type GetProjectsLocationsExternalApisError = DefaultErrors;
+export type GetProjectsLocationsExternalApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about an External API resource in the API hub. */
 export const getProjectsLocationsExternalApis: API.OperationMethod<
@@ -5395,7 +5707,7 @@ export const getProjectsLocationsExternalApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsExternalApisRequest,
   output: GetProjectsLocationsExternalApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsExternalApisRequest {
@@ -5422,7 +5734,12 @@ export type PatchProjectsLocationsExternalApisResponse =
 export const PatchProjectsLocationsExternalApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ExternalApi;
 
-export type PatchProjectsLocationsExternalApisError = DefaultErrors;
+export type PatchProjectsLocationsExternalApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an External API resource in the API hub. The following fields can be updated: * display_name * description * documentation * endpoints * paths The update_mask should be used to specify the fields being updated. */
 export const patchProjectsLocationsExternalApis: API.OperationMethod<
@@ -5433,7 +5750,7 @@ export const patchProjectsLocationsExternalApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsExternalApisRequest,
   output: PatchProjectsLocationsExternalApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsExternalApisRequest {
@@ -5453,7 +5770,12 @@ export type DeleteProjectsLocationsExternalApisResponse = Empty;
 export const DeleteProjectsLocationsExternalApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsExternalApisError = DefaultErrors;
+export type DeleteProjectsLocationsExternalApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an External API resource in the API hub. */
 export const deleteProjectsLocationsExternalApis: API.OperationMethod<
@@ -5464,7 +5786,7 @@ export const deleteProjectsLocationsExternalApis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsExternalApisRequest,
   output: DeleteProjectsLocationsExternalApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsExternalApisRequest {
@@ -5491,7 +5813,10 @@ export type ListProjectsLocationsExternalApisResponse =
 export const ListProjectsLocationsExternalApisResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListExternalApisResponse;
 
-export type ListProjectsLocationsExternalApisError = DefaultErrors;
+export type ListProjectsLocationsExternalApisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List External API resources in the API hub. */
 export const listProjectsLocationsExternalApis: API.PaginatedOperationMethod<
@@ -5502,7 +5827,7 @@ export const listProjectsLocationsExternalApis: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsExternalApisRequest,
   output: ListProjectsLocationsExternalApisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5535,7 +5860,12 @@ export type CreateProjectsLocationsDependenciesResponse =
 export const CreateProjectsLocationsDependenciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Dependency;
 
-export type CreateProjectsLocationsDependenciesError = DefaultErrors;
+export type CreateProjectsLocationsDependenciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a dependency between two entities in the API hub. */
 export const createProjectsLocationsDependencies: API.OperationMethod<
@@ -5546,7 +5876,7 @@ export const createProjectsLocationsDependencies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDependenciesRequest,
   output: CreateProjectsLocationsDependenciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDependenciesRequest {
@@ -5567,7 +5897,10 @@ export type GetProjectsLocationsDependenciesResponse =
 export const GetProjectsLocationsDependenciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Dependency;
 
-export type GetProjectsLocationsDependenciesError = DefaultErrors;
+export type GetProjectsLocationsDependenciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get details about a dependency resource in the API hub. */
 export const getProjectsLocationsDependencies: API.OperationMethod<
@@ -5578,7 +5911,7 @@ export const getProjectsLocationsDependencies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDependenciesRequest,
   output: GetProjectsLocationsDependenciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsDependenciesRequest {
@@ -5605,7 +5938,12 @@ export type PatchProjectsLocationsDependenciesResponse =
 export const PatchProjectsLocationsDependenciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Dependency;
 
-export type PatchProjectsLocationsDependenciesError = DefaultErrors;
+export type PatchProjectsLocationsDependenciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a dependency based on the update_mask provided in the request. The following fields in the dependency can be updated: * description */
 export const patchProjectsLocationsDependencies: API.OperationMethod<
@@ -5616,7 +5954,7 @@ export const patchProjectsLocationsDependencies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDependenciesRequest,
   output: PatchProjectsLocationsDependenciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDependenciesRequest {
@@ -5636,7 +5974,12 @@ export type DeleteProjectsLocationsDependenciesResponse = Empty;
 export const DeleteProjectsLocationsDependenciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDependenciesError = DefaultErrors;
+export type DeleteProjectsLocationsDependenciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete the dependency resource. */
 export const deleteProjectsLocationsDependencies: API.OperationMethod<
@@ -5647,7 +5990,7 @@ export const deleteProjectsLocationsDependencies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDependenciesRequest,
   output: DeleteProjectsLocationsDependenciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDependenciesRequest {
@@ -5677,7 +6020,10 @@ export type ListProjectsLocationsDependenciesResponse =
 export const ListProjectsLocationsDependenciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListDependenciesResponse;
 
-export type ListProjectsLocationsDependenciesError = DefaultErrors;
+export type ListProjectsLocationsDependenciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List dependencies based on the provided filter and pagination parameters. */
 export const listProjectsLocationsDependencies: API.PaginatedOperationMethod<
@@ -5688,7 +6034,7 @@ export const listProjectsLocationsDependencies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDependenciesRequest,
   output: ListProjectsLocationsDependenciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5719,7 +6065,12 @@ export type CreateProjectsLocationsCurationsResponse =
 export const CreateProjectsLocationsCurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Curation;
 
-export type CreateProjectsLocationsCurationsError = DefaultErrors;
+export type CreateProjectsLocationsCurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a curation resource in the API hub. Once a curation resource is created, plugin instances can start using it. */
 export const createProjectsLocationsCurations: API.OperationMethod<
@@ -5730,7 +6081,7 @@ export const createProjectsLocationsCurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCurationsRequest,
   output: CreateProjectsLocationsCurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCurationsRequest {
@@ -5750,7 +6101,10 @@ export type GetProjectsLocationsCurationsResponse = GoogleCloudApihubV1Curation;
 export const GetProjectsLocationsCurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Curation;
 
-export type GetProjectsLocationsCurationsError = DefaultErrors;
+export type GetProjectsLocationsCurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get curation resource details. */
 export const getProjectsLocationsCurations: API.OperationMethod<
@@ -5761,7 +6115,7 @@ export const getProjectsLocationsCurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCurationsRequest,
   output: GetProjectsLocationsCurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCurationsRequest {
@@ -5791,7 +6145,10 @@ export type ListProjectsLocationsCurationsResponse =
 export const ListProjectsLocationsCurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListCurationsResponse;
 
-export type ListProjectsLocationsCurationsError = DefaultErrors;
+export type ListProjectsLocationsCurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List curation resources in the API hub. */
 export const listProjectsLocationsCurations: API.PaginatedOperationMethod<
@@ -5802,7 +6159,7 @@ export const listProjectsLocationsCurations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCurationsRequest,
   output: ListProjectsLocationsCurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5833,7 +6190,12 @@ export type PatchProjectsLocationsCurationsResponse =
 export const PatchProjectsLocationsCurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1Curation;
 
-export type PatchProjectsLocationsCurationsError = DefaultErrors;
+export type PatchProjectsLocationsCurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a curation resource in the API hub. The following fields in the curation can be updated: * display_name * description The update_mask should be used to specify the fields being updated. */
 export const patchProjectsLocationsCurations: API.OperationMethod<
@@ -5844,7 +6206,7 @@ export const patchProjectsLocationsCurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCurationsRequest,
   output: PatchProjectsLocationsCurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCurationsRequest {
@@ -5864,7 +6226,12 @@ export type DeleteProjectsLocationsCurationsResponse = Empty;
 export const DeleteProjectsLocationsCurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsCurationsError = DefaultErrors;
+export type DeleteProjectsLocationsCurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a curation resource in the API hub. A curation can only be deleted if it's not being used by any plugin instance. */
 export const deleteProjectsLocationsCurations: API.OperationMethod<
@@ -5875,7 +6242,7 @@ export const deleteProjectsLocationsCurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCurationsRequest,
   output: DeleteProjectsLocationsCurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDiscoveredApiObservationsRequest {
@@ -5902,7 +6269,10 @@ export type ListProjectsLocationsDiscoveredApiObservationsResponse =
 export const ListProjectsLocationsDiscoveredApiObservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListDiscoveredApiObservationsResponse;
 
-export type ListProjectsLocationsDiscoveredApiObservationsError = DefaultErrors;
+export type ListProjectsLocationsDiscoveredApiObservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the DiscoveredAPIObservations in a given project and location. */
 export const listProjectsLocationsDiscoveredApiObservations: API.PaginatedOperationMethod<
@@ -5913,7 +6283,7 @@ export const listProjectsLocationsDiscoveredApiObservations: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDiscoveredApiObservationsRequest,
   output: ListProjectsLocationsDiscoveredApiObservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5938,7 +6308,10 @@ export type GetProjectsLocationsDiscoveredApiObservationsResponse =
 export const GetProjectsLocationsDiscoveredApiObservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1DiscoveredApiObservation;
 
-export type GetProjectsLocationsDiscoveredApiObservationsError = DefaultErrors;
+export type GetProjectsLocationsDiscoveredApiObservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DiscoveredAPIObservation in a given project, location and ApiObservation. */
 export const getProjectsLocationsDiscoveredApiObservations: API.OperationMethod<
@@ -5949,7 +6322,7 @@ export const getProjectsLocationsDiscoveredApiObservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDiscoveredApiObservationsRequest,
   output: GetProjectsLocationsDiscoveredApiObservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest {
@@ -5977,7 +6350,9 @@ export const ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListDiscoveredApiOperationsResponse;
 
 export type ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the DiscoveredAPIOperations in a given project, location and ApiObservation. */
 export const listProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperations: API.PaginatedOperationMethod<
@@ -5990,7 +6365,7 @@ export const listProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperatio
     ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest,
   output:
     ListProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6016,7 +6391,9 @@ export const GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1DiscoveredApiOperation;
 
 export type GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DiscoveredAPIOperation in a given project, location, ApiObservation and ApiOperation. */
 export const getProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperations: API.OperationMethod<
@@ -6029,7 +6406,7 @@ export const getProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperation
     GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsRequest,
   output:
     GetProjectsLocationsDiscoveredApiObservationsDiscoveredApiOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsHostProjectRegistrationsRequest {
@@ -6065,7 +6442,11 @@ export const CreateProjectsLocationsHostProjectRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1HostProjectRegistration;
 
 export type CreateProjectsLocationsHostProjectRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a host project registration. A Google cloud project can be registered as a host project if it is not attached as a runtime project to another host project. A project can be registered as a host project only once. Subsequent register calls for the same project will fail. */
 export const createProjectsLocationsHostProjectRegistrations: API.OperationMethod<
@@ -6076,7 +6457,7 @@ export const createProjectsLocationsHostProjectRegistrations: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsHostProjectRegistrationsRequest,
   output: CreateProjectsLocationsHostProjectRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsHostProjectRegistrationsRequest {
@@ -6097,7 +6478,10 @@ export type GetProjectsLocationsHostProjectRegistrationsResponse =
 export const GetProjectsLocationsHostProjectRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1HostProjectRegistration;
 
-export type GetProjectsLocationsHostProjectRegistrationsError = DefaultErrors;
+export type GetProjectsLocationsHostProjectRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a host project registration. */
 export const getProjectsLocationsHostProjectRegistrations: API.OperationMethod<
@@ -6108,7 +6492,7 @@ export const getProjectsLocationsHostProjectRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsHostProjectRegistrationsRequest,
   output: GetProjectsLocationsHostProjectRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsHostProjectRegistrationsRequest {
@@ -6141,7 +6525,10 @@ export type ListProjectsLocationsHostProjectRegistrationsResponse =
 export const ListProjectsLocationsHostProjectRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListHostProjectRegistrationsResponse;
 
-export type ListProjectsLocationsHostProjectRegistrationsError = DefaultErrors;
+export type ListProjectsLocationsHostProjectRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists host project registrations. */
 export const listProjectsLocationsHostProjectRegistrations: API.PaginatedOperationMethod<
@@ -6152,7 +6539,7 @@ export const listProjectsLocationsHostProjectRegistrations: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsHostProjectRegistrationsRequest,
   output: ListProjectsLocationsHostProjectRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6189,7 +6576,12 @@ export type CreateProjectsLocationsApiHubInstancesResponse =
 export const CreateProjectsLocationsApiHubInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsApiHubInstancesError = DefaultErrors;
+export type CreateProjectsLocationsApiHubInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provisions instance resources for the API Hub. */
 export const createProjectsLocationsApiHubInstances: API.OperationMethod<
@@ -6200,7 +6592,7 @@ export const createProjectsLocationsApiHubInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsApiHubInstancesRequest,
   output: CreateProjectsLocationsApiHubInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsApiHubInstancesRequest {
@@ -6221,7 +6613,12 @@ export type DeleteProjectsLocationsApiHubInstancesResponse =
 export const DeleteProjectsLocationsApiHubInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsApiHubInstancesError = DefaultErrors;
+export type DeleteProjectsLocationsApiHubInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the API hub instance. Deleting the API hub instance will also result in the removal of all associated runtime project attachments and the host project registration. */
 export const deleteProjectsLocationsApiHubInstances: API.OperationMethod<
@@ -6232,7 +6629,7 @@ export const deleteProjectsLocationsApiHubInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsApiHubInstancesRequest,
   output: DeleteProjectsLocationsApiHubInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsApiHubInstancesRequest {
@@ -6253,7 +6650,10 @@ export type GetProjectsLocationsApiHubInstancesResponse =
 export const GetProjectsLocationsApiHubInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ApiHubInstance;
 
-export type GetProjectsLocationsApiHubInstancesError = DefaultErrors;
+export type GetProjectsLocationsApiHubInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets details of a single API Hub instance. */
 export const getProjectsLocationsApiHubInstances: API.OperationMethod<
@@ -6264,7 +6664,7 @@ export const getProjectsLocationsApiHubInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsApiHubInstancesRequest,
   output: GetProjectsLocationsApiHubInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsApiHubInstancesRequest {
@@ -6291,7 +6691,12 @@ export type PatchProjectsLocationsApiHubInstancesResponse =
 export const PatchProjectsLocationsApiHubInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsApiHubInstancesError = DefaultErrors;
+export type PatchProjectsLocationsApiHubInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an Api Hub instance. The following fields in the ApiHubInstance can be updated: * disable_search * vertex_location * agent_registry_sync_config The update_mask should be used to specify the fields being updated. */
 export const patchProjectsLocationsApiHubInstances: API.OperationMethod<
@@ -6302,7 +6707,7 @@ export const patchProjectsLocationsApiHubInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsApiHubInstancesRequest,
   output: PatchProjectsLocationsApiHubInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupProjectsLocationsApiHubInstancesRequest {
@@ -6323,7 +6728,10 @@ export type LookupProjectsLocationsApiHubInstancesResponse =
 export const LookupProjectsLocationsApiHubInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1LookupApiHubInstanceResponse;
 
-export type LookupProjectsLocationsApiHubInstancesError = DefaultErrors;
+export type LookupProjectsLocationsApiHubInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Looks up an Api Hub instance in a given Google Cloud project. There will always be only one Api Hub instance for a Google Cloud project across all locations. */
 export const lookupProjectsLocationsApiHubInstances: API.OperationMethod<
@@ -6334,7 +6742,7 @@ export const lookupProjectsLocationsApiHubInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupProjectsLocationsApiHubInstancesRequest,
   output: LookupProjectsLocationsApiHubInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsRuntimeProjectAttachmentsRequest {
@@ -6370,7 +6778,11 @@ export const CreateProjectsLocationsRuntimeProjectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1RuntimeProjectAttachment;
 
 export type CreateProjectsLocationsRuntimeProjectAttachmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attaches a runtime project to the host project. */
 export const createProjectsLocationsRuntimeProjectAttachments: API.OperationMethod<
@@ -6381,7 +6793,7 @@ export const createProjectsLocationsRuntimeProjectAttachments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsRuntimeProjectAttachmentsRequest,
   output: CreateProjectsLocationsRuntimeProjectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRuntimeProjectAttachmentsRequest {
@@ -6402,7 +6814,10 @@ export type GetProjectsLocationsRuntimeProjectAttachmentsResponse =
 export const GetProjectsLocationsRuntimeProjectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1RuntimeProjectAttachment;
 
-export type GetProjectsLocationsRuntimeProjectAttachmentsError = DefaultErrors;
+export type GetProjectsLocationsRuntimeProjectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a runtime project attachment. */
 export const getProjectsLocationsRuntimeProjectAttachments: API.OperationMethod<
@@ -6413,7 +6828,7 @@ export const getProjectsLocationsRuntimeProjectAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRuntimeProjectAttachmentsRequest,
   output: GetProjectsLocationsRuntimeProjectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRuntimeProjectAttachmentsRequest {
@@ -6446,7 +6861,10 @@ export type ListProjectsLocationsRuntimeProjectAttachmentsResponse =
 export const ListProjectsLocationsRuntimeProjectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudApihubV1ListRuntimeProjectAttachmentsResponse;
 
-export type ListProjectsLocationsRuntimeProjectAttachmentsError = DefaultErrors;
+export type ListProjectsLocationsRuntimeProjectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List runtime projects attached to the host project. */
 export const listProjectsLocationsRuntimeProjectAttachments: API.PaginatedOperationMethod<
@@ -6457,7 +6875,7 @@ export const listProjectsLocationsRuntimeProjectAttachments: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRuntimeProjectAttachmentsRequest,
   output: ListProjectsLocationsRuntimeProjectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6482,7 +6900,11 @@ export const DeleteProjectsLocationsRuntimeProjectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsRuntimeProjectAttachmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a runtime project attachment in the API Hub. This call will detach the runtime project from the host project. */
 export const deleteProjectsLocationsRuntimeProjectAttachments: API.OperationMethod<
@@ -6493,5 +6915,5 @@ export const deleteProjectsLocationsRuntimeProjectAttachments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsRuntimeProjectAttachmentsRequest,
   output: DeleteProjectsLocationsRuntimeProjectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

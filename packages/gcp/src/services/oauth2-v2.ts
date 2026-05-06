@@ -89,6 +89,52 @@ export const Userinfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Userinfo" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -106,7 +152,12 @@ export const TokeninfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TokeninfoResponse = Tokeninfo;
 export const TokeninfoResponse = /*@__PURE__*/ /*#__PURE__*/ Tokeninfo;
 
-export type TokeninfoError = DefaultErrors;
+export type TokeninfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const tokeninfo: API.OperationMethod<
   TokeninfoRequest,
@@ -116,7 +167,7 @@ export const tokeninfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TokeninfoRequest,
   output: TokeninfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUserinfoRequest {}
@@ -131,7 +182,7 @@ export const GetUserinfoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetUserinfoResponse = Userinfo;
 export const GetUserinfoResponse = /*@__PURE__*/ /*#__PURE__*/ Userinfo;
 
-export type GetUserinfoError = DefaultErrors;
+export type GetUserinfoError = DefaultErrors | NotFound | Forbidden;
 
 export const getUserinfo: API.OperationMethod<
   GetUserinfoRequest,
@@ -141,7 +192,7 @@ export const getUserinfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserinfoRequest,
   output: GetUserinfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUserinfoV2MeRequest {}
@@ -156,7 +207,7 @@ export const GetUserinfoV2MeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetUserinfoV2MeResponse = Userinfo;
 export const GetUserinfoV2MeResponse = /*@__PURE__*/ /*#__PURE__*/ Userinfo;
 
-export type GetUserinfoV2MeError = DefaultErrors;
+export type GetUserinfoV2MeError = DefaultErrors | NotFound | Forbidden;
 
 export const getUserinfoV2Me: API.OperationMethod<
   GetUserinfoV2MeRequest,
@@ -166,5 +217,5 @@ export const getUserinfoV2Me: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserinfoV2MeRequest,
   output: GetUserinfoV2MeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

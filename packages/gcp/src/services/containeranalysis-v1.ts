@@ -3941,6 +3941,52 @@ export const ContaineranalysisGoogleDevtoolsCloudbuildV1Build =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3961,7 +4007,7 @@ export type GetProjectsOccurrencesResponse = Occurrence;
 export const GetProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Occurrence;
 
-export type GetProjectsOccurrencesError = DefaultErrors;
+export type GetProjectsOccurrencesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified occurrence. */
 export const getProjectsOccurrences: API.OperationMethod<
@@ -3972,7 +4018,7 @@ export const getProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOccurrencesRequest,
   output: GetProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsOccurrencesRequest {
@@ -4006,7 +4052,7 @@ export type ListProjectsOccurrencesResponse = ListOccurrencesResponse;
 export const ListProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOccurrencesResponse;
 
-export type ListProjectsOccurrencesError = DefaultErrors;
+export type ListProjectsOccurrencesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists occurrences for the specified project. */
 export const listProjectsOccurrences: API.PaginatedOperationMethod<
@@ -4017,7 +4063,7 @@ export const listProjectsOccurrences: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOccurrencesRequest,
   output: ListProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4041,7 +4087,12 @@ export type DeleteProjectsOccurrencesResponse = Empty;
 export const DeleteProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsOccurrencesError = DefaultErrors;
+export type DeleteProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource. */
 export const deleteProjectsOccurrences: API.OperationMethod<
@@ -4052,7 +4103,7 @@ export const deleteProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsOccurrencesRequest,
   output: DeleteProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsOccurrencesRequest {
@@ -4075,7 +4126,12 @@ export type CreateProjectsOccurrencesResponse = Occurrence;
 export const CreateProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Occurrence;
 
-export type CreateProjectsOccurrencesError = DefaultErrors;
+export type CreateProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new occurrence. */
 export const createProjectsOccurrences: API.OperationMethod<
@@ -4086,7 +4142,7 @@ export const createProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsOccurrencesRequest,
   output: CreateProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsOccurrencesRequest {
@@ -4114,7 +4170,12 @@ export type BatchCreateProjectsOccurrencesResponse =
 export const BatchCreateProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateOccurrencesResponse;
 
-export type BatchCreateProjectsOccurrencesError = DefaultErrors;
+export type BatchCreateProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new occurrences in batch. */
 export const batchCreateProjectsOccurrences: API.OperationMethod<
@@ -4125,7 +4186,7 @@ export const batchCreateProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsOccurrencesRequest,
   output: BatchCreateProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsOccurrencesRequest {
@@ -4151,7 +4212,12 @@ export type PatchProjectsOccurrencesResponse = Occurrence;
 export const PatchProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Occurrence;
 
-export type PatchProjectsOccurrencesError = DefaultErrors;
+export type PatchProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified occurrence. */
 export const patchProjectsOccurrences: API.OperationMethod<
@@ -4162,7 +4228,7 @@ export const patchProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsOccurrencesRequest,
   output: PatchProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNotesProjectsOccurrencesRequest {
@@ -4182,7 +4248,10 @@ export type GetNotesProjectsOccurrencesResponse = Note;
 export const GetNotesProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type GetNotesProjectsOccurrencesError = DefaultErrors;
+export type GetNotesProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project. */
 export const getNotesProjectsOccurrences: API.OperationMethod<
@@ -4193,7 +4262,7 @@ export const getNotesProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNotesProjectsOccurrencesRequest,
   output: GetNotesProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsOccurrencesRequest {
@@ -4220,7 +4289,12 @@ export type SetIamPolicyProjectsOccurrencesResponse = Policy;
 export const SetIamPolicyProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsOccurrencesError = DefaultErrors;
+export type SetIamPolicyProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const setIamPolicyProjectsOccurrences: API.OperationMethod<
@@ -4231,7 +4305,7 @@ export const setIamPolicyProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsOccurrencesRequest,
   output: SetIamPolicyProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsOccurrencesRequest {
@@ -4258,7 +4332,12 @@ export type GetIamPolicyProjectsOccurrencesResponse = Policy;
 export const GetIamPolicyProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsOccurrencesError = DefaultErrors;
+export type GetIamPolicyProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const getIamPolicyProjectsOccurrences: API.OperationMethod<
@@ -4269,7 +4348,7 @@ export const getIamPolicyProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsOccurrencesRequest,
   output: GetIamPolicyProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsOccurrencesRequest {
@@ -4297,7 +4376,12 @@ export type TestIamPermissionsProjectsOccurrencesResponse =
 export const TestIamPermissionsProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsOccurrencesError = DefaultErrors;
+export type TestIamPermissionsProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const testIamPermissionsProjectsOccurrences: API.OperationMethod<
@@ -4308,7 +4392,7 @@ export const testIamPermissionsProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsOccurrencesRequest,
   output: TestIamPermissionsProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVulnerabilitySummaryProjectsOccurrencesRequest {
@@ -4340,7 +4424,10 @@ export type GetVulnerabilitySummaryProjectsOccurrencesResponse =
 export const GetVulnerabilitySummaryProjectsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ VulnerabilityOccurrencesSummary;
 
-export type GetVulnerabilitySummaryProjectsOccurrencesError = DefaultErrors;
+export type GetVulnerabilitySummaryProjectsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a summary of the number and severity of occurrences. */
 export const getVulnerabilitySummaryProjectsOccurrences: API.OperationMethod<
@@ -4351,7 +4438,7 @@ export const getVulnerabilitySummaryProjectsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVulnerabilitySummaryProjectsOccurrencesRequest,
   output: GetVulnerabilitySummaryProjectsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOccurrencesRequest {
@@ -4371,7 +4458,10 @@ export type GetProjectsLocationsOccurrencesResponse = Occurrence;
 export const GetProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Occurrence;
 
-export type GetProjectsLocationsOccurrencesError = DefaultErrors;
+export type GetProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified occurrence. */
 export const getProjectsLocationsOccurrences: API.OperationMethod<
@@ -4382,7 +4472,7 @@ export const getProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOccurrencesRequest,
   output: GetProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOccurrencesRequest {
@@ -4416,7 +4506,10 @@ export type ListProjectsLocationsOccurrencesResponse = ListOccurrencesResponse;
 export const ListProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOccurrencesResponse;
 
-export type ListProjectsLocationsOccurrencesError = DefaultErrors;
+export type ListProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists occurrences for the specified project. */
 export const listProjectsLocationsOccurrences: API.PaginatedOperationMethod<
@@ -4427,7 +4520,7 @@ export const listProjectsLocationsOccurrences: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOccurrencesRequest,
   output: ListProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4451,7 +4544,12 @@ export type DeleteProjectsLocationsOccurrencesResponse = Empty;
 export const DeleteProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOccurrencesError = DefaultErrors;
+export type DeleteProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource. */
 export const deleteProjectsLocationsOccurrences: API.OperationMethod<
@@ -4462,7 +4560,7 @@ export const deleteProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOccurrencesRequest,
   output: DeleteProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsOccurrencesRequest {
@@ -4485,7 +4583,12 @@ export type CreateProjectsLocationsOccurrencesResponse = Occurrence;
 export const CreateProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Occurrence;
 
-export type CreateProjectsLocationsOccurrencesError = DefaultErrors;
+export type CreateProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new occurrence. */
 export const createProjectsLocationsOccurrences: API.OperationMethod<
@@ -4496,7 +4599,7 @@ export const createProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsOccurrencesRequest,
   output: CreateProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsLocationsOccurrencesRequest {
@@ -4524,7 +4627,12 @@ export type BatchCreateProjectsLocationsOccurrencesResponse =
 export const BatchCreateProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateOccurrencesResponse;
 
-export type BatchCreateProjectsLocationsOccurrencesError = DefaultErrors;
+export type BatchCreateProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new occurrences in batch. */
 export const batchCreateProjectsLocationsOccurrences: API.OperationMethod<
@@ -4535,7 +4643,7 @@ export const batchCreateProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsLocationsOccurrencesRequest,
   output: BatchCreateProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsOccurrencesRequest {
@@ -4561,7 +4669,12 @@ export type PatchProjectsLocationsOccurrencesResponse = Occurrence;
 export const PatchProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Occurrence;
 
-export type PatchProjectsLocationsOccurrencesError = DefaultErrors;
+export type PatchProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified occurrence. */
 export const patchProjectsLocationsOccurrences: API.OperationMethod<
@@ -4572,7 +4685,7 @@ export const patchProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsOccurrencesRequest,
   output: PatchProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNotesProjectsLocationsOccurrencesRequest {
@@ -4592,7 +4705,10 @@ export type GetNotesProjectsLocationsOccurrencesResponse = Note;
 export const GetNotesProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type GetNotesProjectsLocationsOccurrencesError = DefaultErrors;
+export type GetNotesProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project. */
 export const getNotesProjectsLocationsOccurrences: API.OperationMethod<
@@ -4603,7 +4719,7 @@ export const getNotesProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNotesProjectsLocationsOccurrencesRequest,
   output: GetNotesProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsOccurrencesRequest {
@@ -4630,7 +4746,12 @@ export type SetIamPolicyProjectsLocationsOccurrencesResponse = Policy;
 export const SetIamPolicyProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsOccurrencesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const setIamPolicyProjectsLocationsOccurrences: API.OperationMethod<
@@ -4641,7 +4762,7 @@ export const setIamPolicyProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsOccurrencesRequest,
   output: SetIamPolicyProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsOccurrencesRequest {
@@ -4668,7 +4789,12 @@ export type GetIamPolicyProjectsLocationsOccurrencesResponse = Policy;
 export const GetIamPolicyProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsOccurrencesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const getIamPolicyProjectsLocationsOccurrences: API.OperationMethod<
@@ -4679,7 +4805,7 @@ export const getIamPolicyProjectsLocationsOccurrences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsOccurrencesRequest,
   output: GetIamPolicyProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsOccurrencesRequest {
@@ -4707,7 +4833,12 @@ export type TestIamPermissionsProjectsLocationsOccurrencesResponse =
 export const TestIamPermissionsProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsOccurrencesError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const testIamPermissionsProjectsLocationsOccurrences: API.OperationMethod<
@@ -4718,7 +4849,7 @@ export const testIamPermissionsProjectsLocationsOccurrences: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsOccurrencesRequest,
   output: TestIamPermissionsProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVulnerabilitySummaryProjectsLocationsOccurrencesRequest {
@@ -4751,7 +4882,9 @@ export const GetVulnerabilitySummaryProjectsLocationsOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ VulnerabilityOccurrencesSummary;
 
 export type GetVulnerabilitySummaryProjectsLocationsOccurrencesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a summary of the number and severity of occurrences. */
 export const getVulnerabilitySummaryProjectsLocationsOccurrences: API.OperationMethod<
@@ -4762,7 +4895,7 @@ export const getVulnerabilitySummaryProjectsLocationsOccurrences: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVulnerabilitySummaryProjectsLocationsOccurrencesRequest,
   output: GetVulnerabilitySummaryProjectsLocationsOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsNotesRequest {
@@ -4782,7 +4915,10 @@ export type GetProjectsLocationsNotesResponse = Note;
 export const GetProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type GetProjectsLocationsNotesError = DefaultErrors;
+export type GetProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified note. */
 export const getProjectsLocationsNotes: API.OperationMethod<
@@ -4793,7 +4929,7 @@ export const getProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsNotesRequest,
   output: GetProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsNotesRequest {
@@ -4827,7 +4963,10 @@ export type ListProjectsLocationsNotesResponse = ListNotesResponse;
 export const ListProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotesResponse;
 
-export type ListProjectsLocationsNotesError = DefaultErrors;
+export type ListProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists notes for the specified project. */
 export const listProjectsLocationsNotes: API.PaginatedOperationMethod<
@@ -4838,7 +4977,7 @@ export const listProjectsLocationsNotes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNotesRequest,
   output: ListProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4862,7 +5001,12 @@ export type DeleteProjectsLocationsNotesResponse = Empty;
 export const DeleteProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsNotesError = DefaultErrors;
+export type DeleteProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified note. */
 export const deleteProjectsLocationsNotes: API.OperationMethod<
@@ -4873,7 +5017,7 @@ export const deleteProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsNotesRequest,
   output: DeleteProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsNotesRequest {
@@ -4899,7 +5043,12 @@ export type CreateProjectsLocationsNotesResponse = Note;
 export const CreateProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type CreateProjectsLocationsNotesError = DefaultErrors;
+export type CreateProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new note. */
 export const createProjectsLocationsNotes: API.OperationMethod<
@@ -4910,7 +5059,7 @@ export const createProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsNotesRequest,
   output: CreateProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsLocationsNotesRequest {
@@ -4938,7 +5087,12 @@ export type BatchCreateProjectsLocationsNotesResponse =
 export const BatchCreateProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateNotesResponse;
 
-export type BatchCreateProjectsLocationsNotesError = DefaultErrors;
+export type BatchCreateProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new notes in batch. */
 export const batchCreateProjectsLocationsNotes: API.OperationMethod<
@@ -4949,7 +5103,7 @@ export const batchCreateProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsLocationsNotesRequest,
   output: BatchCreateProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsNotesRequest {
@@ -4975,7 +5129,12 @@ export type PatchProjectsLocationsNotesResponse = Note;
 export const PatchProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type PatchProjectsLocationsNotesError = DefaultErrors;
+export type PatchProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified note. */
 export const patchProjectsLocationsNotes: API.OperationMethod<
@@ -4986,7 +5145,7 @@ export const patchProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsNotesRequest,
   output: PatchProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsNotesRequest {
@@ -5013,7 +5172,12 @@ export type SetIamPolicyProjectsLocationsNotesResponse = Policy;
 export const SetIamPolicyProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsNotesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const setIamPolicyProjectsLocationsNotes: API.OperationMethod<
@@ -5024,7 +5188,7 @@ export const setIamPolicyProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsNotesRequest,
   output: SetIamPolicyProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsNotesRequest {
@@ -5051,7 +5215,12 @@ export type GetIamPolicyProjectsLocationsNotesResponse = Policy;
 export const GetIamPolicyProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsNotesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const getIamPolicyProjectsLocationsNotes: API.OperationMethod<
@@ -5062,7 +5231,7 @@ export const getIamPolicyProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsNotesRequest,
   output: GetIamPolicyProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsNotesRequest {
@@ -5090,7 +5259,12 @@ export type TestIamPermissionsProjectsLocationsNotesResponse =
 export const TestIamPermissionsProjectsLocationsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsNotesError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const testIamPermissionsProjectsLocationsNotes: API.OperationMethod<
@@ -5101,7 +5275,7 @@ export const testIamPermissionsProjectsLocationsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsNotesRequest,
   output: TestIamPermissionsProjectsLocationsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsNotesOccurrencesRequest {
@@ -5131,7 +5305,10 @@ export type ListProjectsLocationsNotesOccurrencesResponse =
 export const ListProjectsLocationsNotesOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNoteOccurrencesResponse;
 
-export type ListProjectsLocationsNotesOccurrencesError = DefaultErrors;
+export type ListProjectsLocationsNotesOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note. */
 export const listProjectsLocationsNotesOccurrences: API.PaginatedOperationMethod<
@@ -5142,7 +5319,7 @@ export const listProjectsLocationsNotesOccurrences: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsNotesOccurrencesRequest,
   output: ListProjectsLocationsNotesOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5169,7 +5346,12 @@ export type ExportSBOMProjectsLocationsResourcesResponse = ExportSBOMResponse;
 export const ExportSBOMProjectsLocationsResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExportSBOMResponse;
 
-export type ExportSBOMProjectsLocationsResourcesError = DefaultErrors;
+export type ExportSBOMProjectsLocationsResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an SBOM for the given resource. */
 export const exportSBOMProjectsLocationsResources: API.OperationMethod<
@@ -5180,7 +5362,7 @@ export const exportSBOMProjectsLocationsResources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportSBOMProjectsLocationsResourcesRequest,
   output: ExportSBOMProjectsLocationsResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsNotesRequest {
@@ -5199,7 +5381,7 @@ export const GetProjectsNotesRequest =
 export type GetProjectsNotesResponse = Note;
 export const GetProjectsNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type GetProjectsNotesError = DefaultErrors;
+export type GetProjectsNotesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified note. */
 export const getProjectsNotes: API.OperationMethod<
@@ -5210,7 +5392,7 @@ export const getProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsNotesRequest,
   output: GetProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsNotesRequest {
@@ -5244,7 +5426,7 @@ export type ListProjectsNotesResponse = ListNotesResponse;
 export const ListProjectsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotesResponse;
 
-export type ListProjectsNotesError = DefaultErrors;
+export type ListProjectsNotesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists notes for the specified project. */
 export const listProjectsNotes: API.PaginatedOperationMethod<
@@ -5255,7 +5437,7 @@ export const listProjectsNotes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotesRequest,
   output: ListProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5278,7 +5460,12 @@ export const DeleteProjectsNotesRequest =
 export type DeleteProjectsNotesResponse = Empty;
 export const DeleteProjectsNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsNotesError = DefaultErrors;
+export type DeleteProjectsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified note. */
 export const deleteProjectsNotes: API.OperationMethod<
@@ -5289,7 +5476,7 @@ export const deleteProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsNotesRequest,
   output: DeleteProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsNotesRequest {
@@ -5314,7 +5501,12 @@ export const CreateProjectsNotesRequest =
 export type CreateProjectsNotesResponse = Note;
 export const CreateProjectsNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type CreateProjectsNotesError = DefaultErrors;
+export type CreateProjectsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new note. */
 export const createProjectsNotes: API.OperationMethod<
@@ -5325,7 +5517,7 @@ export const createProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsNotesRequest,
   output: CreateProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateProjectsNotesRequest {
@@ -5352,7 +5544,12 @@ export type BatchCreateProjectsNotesResponse = BatchCreateNotesResponse;
 export const BatchCreateProjectsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateNotesResponse;
 
-export type BatchCreateProjectsNotesError = DefaultErrors;
+export type BatchCreateProjectsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates new notes in batch. */
 export const batchCreateProjectsNotes: API.OperationMethod<
@@ -5363,7 +5560,7 @@ export const batchCreateProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateProjectsNotesRequest,
   output: BatchCreateProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsNotesRequest {
@@ -5388,7 +5585,12 @@ export const PatchProjectsNotesRequest =
 export type PatchProjectsNotesResponse = Note;
 export const PatchProjectsNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type PatchProjectsNotesError = DefaultErrors;
+export type PatchProjectsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified note. */
 export const patchProjectsNotes: API.OperationMethod<
@@ -5399,7 +5601,7 @@ export const patchProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsNotesRequest,
   output: PatchProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsNotesRequest {
@@ -5426,7 +5628,12 @@ export type SetIamPolicyProjectsNotesResponse = Policy;
 export const SetIamPolicyProjectsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsNotesError = DefaultErrors;
+export type SetIamPolicyProjectsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const setIamPolicyProjectsNotes: API.OperationMethod<
@@ -5437,7 +5644,7 @@ export const setIamPolicyProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsNotesRequest,
   output: SetIamPolicyProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsNotesRequest {
@@ -5464,7 +5671,12 @@ export type GetIamPolicyProjectsNotesResponse = Policy;
 export const GetIamPolicyProjectsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsNotesError = DefaultErrors;
+export type GetIamPolicyProjectsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const getIamPolicyProjectsNotes: API.OperationMethod<
@@ -5475,7 +5687,7 @@ export const getIamPolicyProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsNotesRequest,
   output: GetIamPolicyProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsNotesRequest {
@@ -5503,7 +5715,12 @@ export type TestIamPermissionsProjectsNotesResponse =
 export const TestIamPermissionsProjectsNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsNotesError = DefaultErrors;
+export type TestIamPermissionsProjectsNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences. */
 export const testIamPermissionsProjectsNotes: API.OperationMethod<
@@ -5514,7 +5731,7 @@ export const testIamPermissionsProjectsNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsNotesRequest,
   output: TestIamPermissionsProjectsNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsNotesOccurrencesRequest {
@@ -5543,7 +5760,10 @@ export type ListProjectsNotesOccurrencesResponse = ListNoteOccurrencesResponse;
 export const ListProjectsNotesOccurrencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNoteOccurrencesResponse;
 
-export type ListProjectsNotesOccurrencesError = DefaultErrors;
+export type ListProjectsNotesOccurrencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note. */
 export const listProjectsNotesOccurrences: API.PaginatedOperationMethod<
@@ -5554,7 +5774,7 @@ export const listProjectsNotesOccurrences: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotesOccurrencesRequest,
   output: ListProjectsNotesOccurrencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5581,7 +5801,12 @@ export type ExportSBOMProjectsResourcesResponse = ExportSBOMResponse;
 export const ExportSBOMProjectsResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExportSBOMResponse;
 
-export type ExportSBOMProjectsResourcesError = DefaultErrors;
+export type ExportSBOMProjectsResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an SBOM for the given resource. */
 export const exportSBOMProjectsResources: API.OperationMethod<
@@ -5592,5 +5817,5 @@ export const exportSBOMProjectsResources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportSBOMProjectsResourcesRequest,
   output: ExportSBOMProjectsResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

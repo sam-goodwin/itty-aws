@@ -899,6 +899,52 @@ export const UndoCancelSubscriptionRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -928,7 +974,7 @@ export type ListPartnersProductsResponse = ListProductsResponse;
 export const ListPartnersProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductsResponse;
 
-export type ListPartnersProductsError = DefaultErrors;
+export type ListPartnersProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Currently, it doesn't support **YouTube** products. Retrieves the products that can be resold by the partner. It should be authenticated with a service account. */
 export const listPartnersProducts: API.PaginatedOperationMethod<
@@ -939,7 +985,7 @@ export const listPartnersProducts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersProductsRequest,
   output: ListPartnersProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -971,7 +1017,12 @@ export type FindEligiblePartnersPromotionsResponse =
 export const FindEligiblePartnersPromotionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FindEligiblePromotionsResponse;
 
-export type FindEligiblePartnersPromotionsError = DefaultErrors;
+export type FindEligiblePartnersPromotionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will skip the consent screen. */
 export const findEligiblePartnersPromotions: API.OperationMethod<
@@ -982,7 +1033,7 @@ export const findEligiblePartnersPromotions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindEligiblePartnersPromotionsRequest,
   output: FindEligiblePartnersPromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPartnersPromotionsRequest {
@@ -1011,7 +1062,7 @@ export type ListPartnersPromotionsResponse = ListPromotionsResponse;
 export const ListPartnersPromotionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPromotionsResponse;
 
-export type ListPartnersPromotionsError = DefaultErrors;
+export type ListPartnersPromotionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be authenticated with a service account. */
 export const listPartnersPromotions: API.PaginatedOperationMethod<
@@ -1022,7 +1073,7 @@ export const listPartnersPromotions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPartnersPromotionsRequest,
   output: ListPartnersPromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1049,7 +1100,12 @@ export type ExtendPartnersSubscriptionsResponse = ExtendSubscriptionResponse;
 export const ExtendPartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExtendSubscriptionResponse;
 
-export type ExtendPartnersSubscriptionsError = DefaultErrors;
+export type ExtendPartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** [Opt-in only] Most partners should be on auto-extend by default. Extends a subscription service for their customers on an ongoing basis for the subscription to remain active and renewable. It should be called directly by the partner using service accounts. */
 export const extendPartnersSubscriptions: API.OperationMethod<
@@ -1060,7 +1116,7 @@ export const extendPartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExtendPartnersSubscriptionsRequest,
   output: ExtendPartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvisionPartnersSubscriptionsRequest {
@@ -1107,7 +1163,12 @@ export type ProvisionPartnersSubscriptionsResponse = Subscription;
 export const ProvisionPartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type ProvisionPartnersSubscriptionsError = DefaultErrors;
+export type ProvisionPartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Used by partners to provision a subscription for their customers. This creates a subscription without associating it with the end user account. EntitleSubscription must be called separately using OAuth in order for the end user account to be associated with the subscription. It should be called directly by the partner using service accounts. */
 export const provisionPartnersSubscriptions: API.OperationMethod<
@@ -1118,7 +1179,7 @@ export const provisionPartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionPartnersSubscriptionsRequest,
   output: ProvisionPartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EntitlePartnersSubscriptionsRequest {
@@ -1141,7 +1202,12 @@ export type EntitlePartnersSubscriptionsResponse = EntitleSubscriptionResponse;
 export const EntitlePartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntitleSubscriptionResponse;
 
-export type EntitlePartnersSubscriptionsError = DefaultErrors;
+export type EntitlePartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Entitles a previously provisioned subscription to the current end user. The end user identity is inferred from the authorized credential of the request. This API must be authorized by the end user using OAuth. */
 export const entitlePartnersSubscriptions: API.OperationMethod<
@@ -1152,7 +1218,7 @@ export const entitlePartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EntitlePartnersSubscriptionsRequest,
   output: EntitlePartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SuspendPartnersSubscriptionsRequest {
@@ -1175,7 +1241,12 @@ export type SuspendPartnersSubscriptionsResponse = SuspendSubscriptionResponse;
 export const SuspendPartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SuspendSubscriptionResponse;
 
-export type SuspendPartnersSubscriptionsError = DefaultErrors;
+export type SuspendPartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension. It should be called directly by the partner using service accounts. */
 export const suspendPartnersSubscriptions: API.OperationMethod<
@@ -1186,7 +1257,7 @@ export const suspendPartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuspendPartnersSubscriptionsRequest,
   output: SuspendPartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumePartnersSubscriptionsRequest {
@@ -1209,7 +1280,12 @@ export type ResumePartnersSubscriptionsResponse = ResumeSubscriptionResponse;
 export const ResumePartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResumeSubscriptionResponse;
 
-export type ResumePartnersSubscriptionsError = DefaultErrors;
+export type ResumePartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should be called directly by the partner using service accounts. */
 export const resumePartnersSubscriptions: API.OperationMethod<
@@ -1220,7 +1296,7 @@ export const resumePartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumePartnersSubscriptionsRequest,
   output: ResumePartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelPartnersSubscriptionsRequest {
@@ -1243,7 +1319,12 @@ export type CancelPartnersSubscriptionsResponse = CancelSubscriptionResponse;
 export const CancelPartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CancelSubscriptionResponse;
 
-export type CancelPartnersSubscriptionsError = DefaultErrors;
+export type CancelPartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a subscription service either immediately or by the end of the current billing cycle for their customers. It should be called directly by the partner using service accounts. */
 export const cancelPartnersSubscriptions: API.OperationMethod<
@@ -1254,7 +1335,7 @@ export const cancelPartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelPartnersSubscriptionsRequest,
   output: CancelPartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndoCancelPartnersSubscriptionsRequest {
@@ -1278,7 +1359,12 @@ export type UndoCancelPartnersSubscriptionsResponse =
 export const UndoCancelPartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UndoCancelSubscriptionResponse;
 
-export type UndoCancelPartnersSubscriptionsError = DefaultErrors;
+export type UndoCancelPartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Currently, it is used by **Google One, Play Pass** partners. Revokes the pending cancellation of a subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already cancelled, the request will fail. It should be called directly by the partner using service accounts. */
 export const undoCancelPartnersSubscriptions: API.OperationMethod<
@@ -1289,7 +1375,7 @@ export const undoCancelPartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndoCancelPartnersSubscriptionsRequest,
   output: UndoCancelPartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPartnersSubscriptionsRequest {
@@ -1309,7 +1395,10 @@ export type GetPartnersSubscriptionsResponse = Subscription;
 export const GetPartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetPartnersSubscriptionsError = DefaultErrors;
+export type GetPartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a subscription by id. It should be called directly by the partner using service accounts. */
 export const getPartnersSubscriptions: API.OperationMethod<
@@ -1320,7 +1409,7 @@ export const getPartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartnersSubscriptionsRequest,
   output: GetPartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePartnersSubscriptionsRequest {
@@ -1352,7 +1441,12 @@ export type CreatePartnersSubscriptionsResponse = Subscription;
 export const CreatePartnersSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type CreatePartnersSubscriptionsError = DefaultErrors;
+export type CreatePartnersSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Used by partners to create a subscription for their customers. The created subscription is associated with the end user inferred from the end user credentials. This API must be authorized by the end user using OAuth. */
 export const createPartnersSubscriptions: API.OperationMethod<
@@ -1363,7 +1457,7 @@ export const createPartnersSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePartnersSubscriptionsRequest,
   output: CreatePartnersSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPartnersSubscriptionsLineItemsRequest {
@@ -1389,7 +1483,12 @@ export type PatchPartnersSubscriptionsLineItemsResponse = SubscriptionLineItem;
 export const PatchPartnersSubscriptionsLineItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionLineItem;
 
-export type PatchPartnersSubscriptionsLineItemsError = DefaultErrors;
+export type PatchPartnersSubscriptionsLineItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a line item of a subscription. It should be authenticated with a service account. */
 export const patchPartnersSubscriptionsLineItems: API.OperationMethod<
@@ -1400,7 +1499,7 @@ export const patchPartnersSubscriptionsLineItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPartnersSubscriptionsLineItemsRequest,
   output: PatchPartnersSubscriptionsLineItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GeneratePartnersUserSessionsRequest {
@@ -1427,7 +1526,12 @@ export type GeneratePartnersUserSessionsResponse = GenerateUserSessionResponse;
 export const GeneratePartnersUserSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateUserSessionResponse;
 
-export type GeneratePartnersUserSessionsError = DefaultErrors;
+export type GeneratePartnersUserSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This API replaces user authorized OAuth consent based APIs (Create, Entitle). Issues a timed session token for the given user intent. You can use the session token to redirect the user to Google to finish the signup flow. You can re-generate new session token repeatedly for the same request if necessary, regardless of the previous tokens being expired or not. By default, the session token is valid for 1 hour. */
 export const generatePartnersUserSessions: API.OperationMethod<
@@ -1438,5 +1542,5 @@ export const generatePartnersUserSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GeneratePartnersUserSessionsRequest,
   output: GeneratePartnersUserSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

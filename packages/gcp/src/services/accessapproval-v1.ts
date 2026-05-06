@@ -362,6 +362,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -389,7 +435,12 @@ export type UpdateAccessApprovalSettingsFoldersResponse =
 export const UpdateAccessApprovalSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
 
-export type UpdateAccessApprovalSettingsFoldersError = DefaultErrors;
+export type UpdateAccessApprovalSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask. */
 export const updateAccessApprovalSettingsFolders: API.OperationMethod<
@@ -400,7 +451,7 @@ export const updateAccessApprovalSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessApprovalSettingsFoldersRequest,
   output: UpdateAccessApprovalSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServiceAccountFoldersRequest {
@@ -420,7 +471,10 @@ export type GetServiceAccountFoldersResponse = AccessApprovalServiceAccount;
 export const GetServiceAccountFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalServiceAccount;
 
-export type GetServiceAccountFoldersError = DefaultErrors;
+export type GetServiceAccountFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the service account that is used by Access Approval to access KMS keys for signing approved approval requests. */
 export const getServiceAccountFolders: API.OperationMethod<
@@ -431,7 +485,7 @@ export const getServiceAccountFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceAccountFoldersRequest,
   output: GetServiceAccountFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccessApprovalSettingsFoldersRequest {
@@ -451,7 +505,12 @@ export type DeleteAccessApprovalSettingsFoldersResponse = Empty;
 export const DeleteAccessApprovalSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccessApprovalSettingsFoldersError = DefaultErrors;
+export type DeleteAccessApprovalSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the resource. Access Approval may remain active based on parent resource settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is disabled. */
 export const deleteAccessApprovalSettingsFolders: API.OperationMethod<
@@ -462,7 +521,7 @@ export const deleteAccessApprovalSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessApprovalSettingsFoldersRequest,
   output: DeleteAccessApprovalSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccessApprovalSettingsFoldersRequest {
@@ -482,7 +541,10 @@ export type GetAccessApprovalSettingsFoldersResponse = AccessApprovalSettings;
 export const GetAccessApprovalSettingsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
 
-export type GetAccessApprovalSettingsFoldersError = DefaultErrors;
+export type GetAccessApprovalSettingsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Access Approval settings associated with a project, folder, or organization. */
 export const getAccessApprovalSettingsFolders: API.OperationMethod<
@@ -493,7 +555,7 @@ export const getAccessApprovalSettingsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessApprovalSettingsFoldersRequest,
   output: GetAccessApprovalSettingsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFoldersApprovalRequestsRequest {
@@ -513,7 +575,10 @@ export type GetFoldersApprovalRequestsResponse = ApprovalRequest;
 export const GetFoldersApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type GetFoldersApprovalRequestsError = DefaultErrors;
+export type GetFoldersApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an approval request. Returns NOT_FOUND if the request does not exist. */
 export const getFoldersApprovalRequests: API.OperationMethod<
@@ -524,7 +589,7 @@ export const getFoldersApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersApprovalRequestsRequest,
   output: GetFoldersApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DismissFoldersApprovalRequestsRequest {
@@ -547,7 +612,12 @@ export type DismissFoldersApprovalRequestsResponse = ApprovalRequest;
 export const DismissFoldersApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type DismissFoldersApprovalRequestsError = DefaultErrors;
+export type DismissFoldersApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is considered ignored. Dismissing a request does not prevent access granted by other Access Approval requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state. */
 export const dismissFoldersApprovalRequests: API.OperationMethod<
@@ -558,7 +628,7 @@ export const dismissFoldersApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DismissFoldersApprovalRequestsRequest,
   output: DismissFoldersApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApproveFoldersApprovalRequestsRequest {
@@ -581,7 +651,12 @@ export type ApproveFoldersApprovalRequestsResponse = ApprovalRequest;
 export const ApproveFoldersApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type ApproveFoldersApprovalRequestsError = DefaultErrors;
+export type ApproveFoldersApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state. */
 export const approveFoldersApprovalRequests: API.OperationMethod<
@@ -592,7 +667,7 @@ export const approveFoldersApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveFoldersApprovalRequestsRequest,
   output: ApproveFoldersApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InvalidateFoldersApprovalRequestsRequest {
@@ -615,7 +690,12 @@ export type InvalidateFoldersApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateFoldersApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type InvalidateFoldersApprovalRequestsError = DefaultErrors;
+export type InvalidateFoldersApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state. */
 export const invalidateFoldersApprovalRequests: API.OperationMethod<
@@ -626,7 +706,7 @@ export const invalidateFoldersApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvalidateFoldersApprovalRequestsRequest,
   output: InvalidateFoldersApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersApprovalRequestsRequest {
@@ -655,7 +735,10 @@ export type ListFoldersApprovalRequestsResponse = ListApprovalRequestsResponse;
 export const ListFoldersApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListApprovalRequestsResponse;
 
-export type ListFoldersApprovalRequestsError = DefaultErrors;
+export type ListFoldersApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological. */
 export const listFoldersApprovalRequests: API.PaginatedOperationMethod<
@@ -666,7 +749,7 @@ export const listFoldersApprovalRequests: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersApprovalRequestsRequest,
   output: ListFoldersApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -697,7 +780,12 @@ export type UpdateAccessApprovalSettingsProjectsResponse =
 export const UpdateAccessApprovalSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
 
-export type UpdateAccessApprovalSettingsProjectsError = DefaultErrors;
+export type UpdateAccessApprovalSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask. */
 export const updateAccessApprovalSettingsProjects: API.OperationMethod<
@@ -708,7 +796,7 @@ export const updateAccessApprovalSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessApprovalSettingsProjectsRequest,
   output: UpdateAccessApprovalSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServiceAccountProjectsRequest {
@@ -728,7 +816,10 @@ export type GetServiceAccountProjectsResponse = AccessApprovalServiceAccount;
 export const GetServiceAccountProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalServiceAccount;
 
-export type GetServiceAccountProjectsError = DefaultErrors;
+export type GetServiceAccountProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the service account that is used by Access Approval to access KMS keys for signing approved approval requests. */
 export const getServiceAccountProjects: API.OperationMethod<
@@ -739,7 +830,7 @@ export const getServiceAccountProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceAccountProjectsRequest,
   output: GetServiceAccountProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteAccessApprovalSettingsProjectsRequest {
@@ -759,7 +850,12 @@ export type DeleteAccessApprovalSettingsProjectsResponse = Empty;
 export const DeleteAccessApprovalSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccessApprovalSettingsProjectsError = DefaultErrors;
+export type DeleteAccessApprovalSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the resource. Access Approval may remain active based on parent resource settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is disabled. */
 export const deleteAccessApprovalSettingsProjects: API.OperationMethod<
@@ -770,7 +866,7 @@ export const deleteAccessApprovalSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessApprovalSettingsProjectsRequest,
   output: DeleteAccessApprovalSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccessApprovalSettingsProjectsRequest {
@@ -790,7 +886,10 @@ export type GetAccessApprovalSettingsProjectsResponse = AccessApprovalSettings;
 export const GetAccessApprovalSettingsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
 
-export type GetAccessApprovalSettingsProjectsError = DefaultErrors;
+export type GetAccessApprovalSettingsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Access Approval settings associated with a project, folder, or organization. */
 export const getAccessApprovalSettingsProjects: API.OperationMethod<
@@ -801,7 +900,7 @@ export const getAccessApprovalSettingsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessApprovalSettingsProjectsRequest,
   output: GetAccessApprovalSettingsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsApprovalRequestsRequest {
@@ -821,7 +920,10 @@ export type GetProjectsApprovalRequestsResponse = ApprovalRequest;
 export const GetProjectsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type GetProjectsApprovalRequestsError = DefaultErrors;
+export type GetProjectsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an approval request. Returns NOT_FOUND if the request does not exist. */
 export const getProjectsApprovalRequests: API.OperationMethod<
@@ -832,7 +934,7 @@ export const getProjectsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsApprovalRequestsRequest,
   output: GetProjectsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DismissProjectsApprovalRequestsRequest {
@@ -855,7 +957,12 @@ export type DismissProjectsApprovalRequestsResponse = ApprovalRequest;
 export const DismissProjectsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type DismissProjectsApprovalRequestsError = DefaultErrors;
+export type DismissProjectsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is considered ignored. Dismissing a request does not prevent access granted by other Access Approval requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state. */
 export const dismissProjectsApprovalRequests: API.OperationMethod<
@@ -866,7 +973,7 @@ export const dismissProjectsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DismissProjectsApprovalRequestsRequest,
   output: DismissProjectsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApproveProjectsApprovalRequestsRequest {
@@ -889,7 +996,12 @@ export type ApproveProjectsApprovalRequestsResponse = ApprovalRequest;
 export const ApproveProjectsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type ApproveProjectsApprovalRequestsError = DefaultErrors;
+export type ApproveProjectsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state. */
 export const approveProjectsApprovalRequests: API.OperationMethod<
@@ -900,7 +1012,7 @@ export const approveProjectsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveProjectsApprovalRequestsRequest,
   output: ApproveProjectsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InvalidateProjectsApprovalRequestsRequest {
@@ -923,7 +1035,12 @@ export type InvalidateProjectsApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateProjectsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type InvalidateProjectsApprovalRequestsError = DefaultErrors;
+export type InvalidateProjectsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state. */
 export const invalidateProjectsApprovalRequests: API.OperationMethod<
@@ -934,7 +1051,7 @@ export const invalidateProjectsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvalidateProjectsApprovalRequestsRequest,
   output: InvalidateProjectsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsApprovalRequestsRequest {
@@ -963,7 +1080,10 @@ export type ListProjectsApprovalRequestsResponse = ListApprovalRequestsResponse;
 export const ListProjectsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListApprovalRequestsResponse;
 
-export type ListProjectsApprovalRequestsError = DefaultErrors;
+export type ListProjectsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological. */
 export const listProjectsApprovalRequests: API.PaginatedOperationMethod<
@@ -974,7 +1094,7 @@ export const listProjectsApprovalRequests: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsApprovalRequestsRequest,
   output: ListProjectsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -998,7 +1118,12 @@ export type DeleteAccessApprovalSettingsOrganizationsResponse = Empty;
 export const DeleteAccessApprovalSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccessApprovalSettingsOrganizationsError = DefaultErrors;
+export type DeleteAccessApprovalSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the resource. Access Approval may remain active based on parent resource settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is disabled. */
 export const deleteAccessApprovalSettingsOrganizations: API.OperationMethod<
@@ -1009,7 +1134,7 @@ export const deleteAccessApprovalSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessApprovalSettingsOrganizationsRequest,
   output: DeleteAccessApprovalSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccessApprovalSettingsOrganizationsRequest {
@@ -1036,7 +1161,12 @@ export type UpdateAccessApprovalSettingsOrganizationsResponse =
 export const UpdateAccessApprovalSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
 
-export type UpdateAccessApprovalSettingsOrganizationsError = DefaultErrors;
+export type UpdateAccessApprovalSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask. */
 export const updateAccessApprovalSettingsOrganizations: API.OperationMethod<
@@ -1047,7 +1177,7 @@ export const updateAccessApprovalSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessApprovalSettingsOrganizationsRequest,
   output: UpdateAccessApprovalSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServiceAccountOrganizationsRequest {
@@ -1068,7 +1198,10 @@ export type GetServiceAccountOrganizationsResponse =
 export const GetServiceAccountOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalServiceAccount;
 
-export type GetServiceAccountOrganizationsError = DefaultErrors;
+export type GetServiceAccountOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the service account that is used by Access Approval to access KMS keys for signing approved approval requests. */
 export const getServiceAccountOrganizations: API.OperationMethod<
@@ -1079,7 +1212,7 @@ export const getServiceAccountOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceAccountOrganizationsRequest,
   output: GetServiceAccountOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccessApprovalSettingsOrganizationsRequest {
@@ -1100,7 +1233,10 @@ export type GetAccessApprovalSettingsOrganizationsResponse =
 export const GetAccessApprovalSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessApprovalSettings;
 
-export type GetAccessApprovalSettingsOrganizationsError = DefaultErrors;
+export type GetAccessApprovalSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Access Approval settings associated with a project, folder, or organization. */
 export const getAccessApprovalSettingsOrganizations: API.OperationMethod<
@@ -1111,7 +1247,7 @@ export const getAccessApprovalSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessApprovalSettingsOrganizationsRequest,
   output: GetAccessApprovalSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsApprovalRequestsRequest {
@@ -1131,7 +1267,10 @@ export type GetOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const GetOrganizationsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type GetOrganizationsApprovalRequestsError = DefaultErrors;
+export type GetOrganizationsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an approval request. Returns NOT_FOUND if the request does not exist. */
 export const getOrganizationsApprovalRequests: API.OperationMethod<
@@ -1142,7 +1281,7 @@ export const getOrganizationsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsApprovalRequestsRequest,
   output: GetOrganizationsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DismissOrganizationsApprovalRequestsRequest {
@@ -1165,7 +1304,12 @@ export type DismissOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const DismissOrganizationsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type DismissOrganizationsApprovalRequestsError = DefaultErrors;
+export type DismissOrganizationsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is considered ignored. Dismissing a request does not prevent access granted by other Access Approval requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state. */
 export const dismissOrganizationsApprovalRequests: API.OperationMethod<
@@ -1176,7 +1320,7 @@ export const dismissOrganizationsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DismissOrganizationsApprovalRequestsRequest,
   output: DismissOrganizationsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsApprovalRequestsRequest {
@@ -1206,7 +1350,10 @@ export type ListOrganizationsApprovalRequestsResponse =
 export const ListOrganizationsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListApprovalRequestsResponse;
 
-export type ListOrganizationsApprovalRequestsError = DefaultErrors;
+export type ListOrganizationsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological. */
 export const listOrganizationsApprovalRequests: API.PaginatedOperationMethod<
@@ -1217,7 +1364,7 @@ export const listOrganizationsApprovalRequests: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsApprovalRequestsRequest,
   output: ListOrganizationsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1244,7 +1391,12 @@ export type ApproveOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const ApproveOrganizationsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type ApproveOrganizationsApprovalRequestsError = DefaultErrors;
+export type ApproveOrganizationsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state. */
 export const approveOrganizationsApprovalRequests: API.OperationMethod<
@@ -1255,7 +1407,7 @@ export const approveOrganizationsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveOrganizationsApprovalRequestsRequest,
   output: ApproveOrganizationsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InvalidateOrganizationsApprovalRequestsRequest {
@@ -1278,7 +1430,12 @@ export type InvalidateOrganizationsApprovalRequestsResponse = ApprovalRequest;
 export const InvalidateOrganizationsApprovalRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApprovalRequest;
 
-export type InvalidateOrganizationsApprovalRequestsError = DefaultErrors;
+export type InvalidateOrganizationsApprovalRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state. */
 export const invalidateOrganizationsApprovalRequests: API.OperationMethod<
@@ -1289,5 +1446,5 @@ export const invalidateOrganizationsApprovalRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvalidateOrganizationsApprovalRequestsRequest,
   output: InvalidateOrganizationsApprovalRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

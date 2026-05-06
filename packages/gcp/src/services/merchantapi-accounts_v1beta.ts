@@ -2199,6 +2199,52 @@ export const DisableProgramRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "DisableProgramRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2229,7 +2275,12 @@ export type AcceptTermsOfServiceResponse_Op = AcceptTermsOfServiceResponse;
 export const AcceptTermsOfServiceResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ AcceptTermsOfServiceResponse;
 
-export type AcceptTermsOfServiceError = DefaultErrors;
+export type AcceptTermsOfServiceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts a `TermsOfService`. Executing this method requires admin access. */
 export const acceptTermsOfService: API.OperationMethod<
@@ -2240,7 +2291,7 @@ export const acceptTermsOfService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptTermsOfServiceRequest,
   output: AcceptTermsOfServiceResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveLatestTermsOfServiceRequest {
@@ -2269,7 +2320,10 @@ export type RetrieveLatestTermsOfServiceResponse = TermsOfService;
 export const RetrieveLatestTermsOfServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ TermsOfService;
 
-export type RetrieveLatestTermsOfServiceError = DefaultErrors;
+export type RetrieveLatestTermsOfServiceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the latest version of the `TermsOfService` for a given `kind` and `region_code`. */
 export const retrieveLatestTermsOfService: API.OperationMethod<
@@ -2280,7 +2334,7 @@ export const retrieveLatestTermsOfService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveLatestTermsOfServiceRequest,
   output: RetrieveLatestTermsOfServiceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetTermsOfServiceRequest {
@@ -2300,7 +2354,7 @@ export type GetTermsOfServiceResponse = TermsOfService;
 export const GetTermsOfServiceResponse =
   /*@__PURE__*/ /*#__PURE__*/ TermsOfService;
 
-export type GetTermsOfServiceError = DefaultErrors;
+export type GetTermsOfServiceError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the `TermsOfService` associated with the provided version. */
 export const getTermsOfService: API.OperationMethod<
@@ -2311,7 +2365,7 @@ export const getTermsOfService: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTermsOfServiceRequest,
   output: GetTermsOfServiceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsRequest {
@@ -2329,7 +2383,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an account from your Merchant Center account. After inserting, updating, or deleting an account, it may take several minutes before changes take effect. */
 export const getAccounts: API.OperationMethod<
@@ -2340,7 +2394,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsRequest {
@@ -2364,7 +2418,12 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchAccountsResponse = Account;
 export const PatchAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type PatchAccountsError = DefaultErrors;
+export type PatchAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an account regardless of its type: standalone, advanced account or sub-account. Executing this method requires admin access. */
 export const patchAccounts: API.OperationMethod<
@@ -2375,7 +2434,7 @@ export const patchAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsRequest,
   output: PatchAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSubaccountsAccountsRequest {
@@ -2404,7 +2463,7 @@ export type ListSubaccountsAccountsResponse = ListSubAccountsResponse;
 export const ListSubaccountsAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSubAccountsResponse;
 
-export type ListSubaccountsAccountsError = DefaultErrors;
+export type ListSubaccountsAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** List all sub-accounts for a given advanced account. This is a convenience wrapper for the more powerful `accounts.list` method. This method will produce the same results as calling `ListsAccounts` with the following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))` */
 export const listSubaccountsAccounts: API.PaginatedOperationMethod<
@@ -2415,7 +2474,7 @@ export const listSubaccountsAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubaccountsAccountsRequest,
   output: ListSubaccountsAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2443,7 +2502,12 @@ export type CreateAndConfigureAccountsResponse = Account;
 export const CreateAndConfigureAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type CreateAndConfigureAccountsError = DefaultErrors;
+export type CreateAndConfigureAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Merchant Center account with additional configuration. Adds the user that makes the request as an admin for the new account. */
 export const createAndConfigureAccounts: API.OperationMethod<
@@ -2454,7 +2518,7 @@ export const createAndConfigureAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAndConfigureAccountsRequest,
   output: CreateAndConfigureAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateTestAccountAccountsRequest {
@@ -2481,7 +2545,12 @@ export type CreateTestAccountAccountsResponse = Account;
 export const CreateTestAccountAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type CreateTestAccountAccountsError = DefaultErrors;
+export type CreateTestAccountAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Merchant Center test account. Test accounts are intended for development and testing purposes, such as validating API integrations or new feature behavior. Key characteristics and limitations of test accounts: - Immutable Type: A test account cannot be converted into a regular (live) Merchant Center account. Likewise, a regular account cannot be converted into a test account. - Non-Serving Products: Any products, offers, or data created within a test account will not be published or made visible to end-users on any Google surfaces. They are strictly for testing environments. - Separate Environment: Test accounts operate in a sandbox-like manner, isolated from live serving and real user traffic. */
 export const createTestAccountAccounts: API.OperationMethod<
@@ -2492,7 +2561,7 @@ export const createTestAccountAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTestAccountAccountsRequest,
   output: CreateTestAccountAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsRequest {
@@ -2517,7 +2586,7 @@ export type ListAccountsResponse_Op = ListAccountsResponse;
 export const ListAccountsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Note: For the `accounts.list` method, quota and limits usage are charged for each user, and not for the Merchant Center ID or the advanced account ID. To list several sub-accounts, you should use the `accounts.listSubaccounts` method, which is more suitable for advanced accounts use case. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -2528,7 +2597,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2553,7 +2622,12 @@ export const DeleteAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteAccountsResponse = Empty;
 export const DeleteAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsError = DefaultErrors;
+export type DeleteAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified account regardless of its type: standalone, advanced account or sub-account. Deleting an advanced account leads to the deletion of all of its sub-accounts. This also deletes the account's [developer registration entity](/merchant/api/reference/rest/accounts_v1beta/accounts.developerRegistration) and any associated GCP project to the account. Executing this method requires admin access. The deletion succeeds only if the account does not provide services to any other account and has no processed offers. You can use the `force` parameter to override this. */
 export const deleteAccounts: API.OperationMethod<
@@ -2564,7 +2638,7 @@ export const deleteAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsRequest,
   output: DeleteAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsUsersRequest {
@@ -2583,7 +2657,7 @@ export const GetAccountsUsersRequest =
 export type GetAccountsUsersResponse = User;
 export const GetAccountsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type GetAccountsUsersError = DefaultErrors;
+export type GetAccountsUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a Merchant Center account user. */
 export const getAccountsUsers: API.OperationMethod<
@@ -2594,7 +2668,7 @@ export const getAccountsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsUsersRequest,
   output: GetAccountsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsUsersRequest {
@@ -2619,7 +2693,12 @@ export const PatchAccountsUsersRequest =
 export type PatchAccountsUsersResponse = User;
 export const PatchAccountsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type PatchAccountsUsersError = DefaultErrors;
+export type PatchAccountsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Merchant Center account user. Executing this method requires admin access. */
 export const patchAccountsUsers: API.OperationMethod<
@@ -2630,7 +2709,7 @@ export const patchAccountsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsUsersRequest,
   output: PatchAccountsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsUsersRequest {
@@ -2659,7 +2738,12 @@ export const CreateAccountsUsersRequest =
 export type CreateAccountsUsersResponse = User;
 export const CreateAccountsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type CreateAccountsUsersError = DefaultErrors;
+export type CreateAccountsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Merchant Center account user. Executing this method requires admin access. */
 export const createAccountsUsers: API.OperationMethod<
@@ -2670,7 +2754,7 @@ export const createAccountsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsUsersRequest,
   output: CreateAccountsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsUsersRequest {
@@ -2689,7 +2773,12 @@ export const DeleteAccountsUsersRequest =
 export type DeleteAccountsUsersResponse = Empty;
 export const DeleteAccountsUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsUsersError = DefaultErrors;
+export type DeleteAccountsUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Merchant Center account user. Executing this method requires admin access. The user to be deleted can't be the last admin user of that account. */
 export const deleteAccountsUsers: API.OperationMethod<
@@ -2700,7 +2789,7 @@ export const deleteAccountsUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsUsersRequest,
   output: DeleteAccountsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsUsersRequest {
@@ -2726,7 +2815,7 @@ export type ListAccountsUsersResponse = ListUsersResponse;
 export const ListAccountsUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUsersResponse;
 
-export type ListAccountsUsersError = DefaultErrors;
+export type ListAccountsUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all users of a Merchant Center account. */
 export const listAccountsUsers: API.PaginatedOperationMethod<
@@ -2737,7 +2826,7 @@ export const listAccountsUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsUsersRequest,
   output: ListAccountsUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2768,7 +2857,12 @@ export type VerifySelfAccountsUsersMeResponse = User;
 export const VerifySelfAccountsUsersMeResponse =
   /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type VerifySelfAccountsUsersMeError = DefaultErrors;
+export type VerifySelfAccountsUsersMeError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the user that is represented by the caller from pending to verified. */
 export const verifySelfAccountsUsersMe: API.OperationMethod<
@@ -2779,7 +2873,7 @@ export const verifySelfAccountsUsersMe: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifySelfAccountsUsersMeRequest,
   output: VerifySelfAccountsUsersMeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableAccountsProgramsRequest {
@@ -2806,7 +2900,12 @@ export type DisableAccountsProgramsResponse = Program;
 export const DisableAccountsProgramsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Program;
 
-export type DisableAccountsProgramsError = DefaultErrors;
+export type DisableAccountsProgramsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable participation in the specified program for the account. */
 export const disableAccountsPrograms: API.OperationMethod<
@@ -2817,7 +2916,7 @@ export const disableAccountsPrograms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableAccountsProgramsRequest,
   output: DisableAccountsProgramsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsProgramsRequest {
@@ -2843,7 +2942,7 @@ export type ListAccountsProgramsResponse = ListProgramsResponse;
 export const ListAccountsProgramsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProgramsResponse;
 
-export type ListAccountsProgramsError = DefaultErrors;
+export type ListAccountsProgramsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves all programs for the account. */
 export const listAccountsPrograms: API.PaginatedOperationMethod<
@@ -2854,7 +2953,7 @@ export const listAccountsPrograms: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsProgramsRequest,
   output: ListAccountsProgramsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2877,7 +2976,7 @@ export const GetAccountsProgramsRequest =
 export type GetAccountsProgramsResponse = Program;
 export const GetAccountsProgramsResponse = /*@__PURE__*/ /*#__PURE__*/ Program;
 
-export type GetAccountsProgramsError = DefaultErrors;
+export type GetAccountsProgramsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified program for the account. */
 export const getAccountsPrograms: API.OperationMethod<
@@ -2888,7 +2987,7 @@ export const getAccountsPrograms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsProgramsRequest,
   output: GetAccountsProgramsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnableAccountsProgramsRequest {
@@ -2915,7 +3014,12 @@ export type EnableAccountsProgramsResponse = Program;
 export const EnableAccountsProgramsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Program;
 
-export type EnableAccountsProgramsError = DefaultErrors;
+export type EnableAccountsProgramsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable participation in the specified program for the account. */
 export const enableAccountsPrograms: API.OperationMethod<
@@ -2926,7 +3030,7 @@ export const enableAccountsPrograms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableAccountsProgramsRequest,
   output: EnableAccountsProgramsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsProgramsCheckoutSettingsRequest {
@@ -2953,7 +3057,12 @@ export type CreateAccountsProgramsCheckoutSettingsResponse = CheckoutSettings;
 export const CreateAccountsProgramsCheckoutSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckoutSettings;
 
-export type CreateAccountsProgramsCheckoutSettingsError = DefaultErrors;
+export type CreateAccountsProgramsCheckoutSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates `CheckoutSettings` for the given merchant. */
 export const createAccountsProgramsCheckoutSettings: API.OperationMethod<
@@ -2964,7 +3073,7 @@ export const createAccountsProgramsCheckoutSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsProgramsCheckoutSettingsRequest,
   output: CreateAccountsProgramsCheckoutSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
@@ -2992,7 +3101,11 @@ export const UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckoutSettings;
 
 export type UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates `CheckoutSettings` for the given merchant. */
 export const updateCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationMethod<
@@ -3003,7 +3116,7 @@ export const updateCheckoutSettingsAccountsProgramsCheckoutSettings: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsRequest,
   output: UpdateCheckoutSettingsAccountsProgramsCheckoutSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
@@ -3025,7 +3138,11 @@ export const DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes `CheckoutSettings` and unenrolls merchant from `Checkout` program. */
 export const deleteCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationMethod<
@@ -3036,7 +3153,7 @@ export const deleteCheckoutSettingsAccountsProgramsCheckoutSettings: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsRequest,
   output: DeleteCheckoutSettingsAccountsProgramsCheckoutSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest {
@@ -3058,7 +3175,9 @@ export const GetCheckoutSettingsAccountsProgramsCheckoutSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckoutSettings;
 
 export type GetCheckoutSettingsAccountsProgramsCheckoutSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets `CheckoutSettings` for the given merchant. This includes information about review state, enrollment state and URL settings. */
 export const getCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationMethod<
@@ -3069,7 +3188,7 @@ export const getCheckoutSettingsAccountsProgramsCheckoutSettings: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCheckoutSettingsAccountsProgramsCheckoutSettingsRequest,
   output: GetCheckoutSettingsAccountsProgramsCheckoutSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest {}
@@ -3089,7 +3208,9 @@ export const GetAccountForGcpRegistrationAccountsDeveloperRegistrationResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetAccountForGcpRegistrationResponse;
 
 export type GetAccountForGcpRegistrationAccountsDeveloperRegistrationError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the merchant account that the calling GCP is registered with. */
 export const getAccountForGcpRegistrationAccountsDeveloperRegistration: API.OperationMethod<
@@ -3100,7 +3221,7 @@ export const getAccountForGcpRegistrationAccountsDeveloperRegistration: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountForGcpRegistrationAccountsDeveloperRegistrationRequest,
   output: GetAccountForGcpRegistrationAccountsDeveloperRegistrationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RegisterGcpAccountsDeveloperRegistrationRequest {
@@ -3128,7 +3249,12 @@ export type RegisterGcpAccountsDeveloperRegistrationResponse =
 export const RegisterGcpAccountsDeveloperRegistrationResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeveloperRegistration;
 
-export type RegisterGcpAccountsDeveloperRegistrationError = DefaultErrors;
+export type RegisterGcpAccountsDeveloperRegistrationError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Registers the GCP used for the API call to the shopping account passed in the request. Will create a user with an "API developer" and add the "developer_email" as a contact with "API notifications" email preference on. */
 export const registerGcpAccountsDeveloperRegistration: API.OperationMethod<
@@ -3139,7 +3265,7 @@ export const registerGcpAccountsDeveloperRegistration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RegisterGcpAccountsDeveloperRegistrationRequest,
   output: RegisterGcpAccountsDeveloperRegistrationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDeveloperRegistrationAccountsDeveloperRegistrationRequest {
@@ -3161,7 +3287,9 @@ export const GetDeveloperRegistrationAccountsDeveloperRegistrationResponse =
   /*@__PURE__*/ /*#__PURE__*/ DeveloperRegistration;
 
 export type GetDeveloperRegistrationAccountsDeveloperRegistrationError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a developer registration for a merchant. */
 export const getDeveloperRegistrationAccountsDeveloperRegistration: API.OperationMethod<
@@ -3172,7 +3300,7 @@ export const getDeveloperRegistrationAccountsDeveloperRegistration: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeveloperRegistrationAccountsDeveloperRegistrationRequest,
   output: GetDeveloperRegistrationAccountsDeveloperRegistrationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnregisterGcpAccountsDeveloperRegistrationRequest {
@@ -3199,7 +3327,12 @@ export type UnregisterGcpAccountsDeveloperRegistrationResponse = Empty;
 export const UnregisterGcpAccountsDeveloperRegistrationResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UnregisterGcpAccountsDeveloperRegistrationError = DefaultErrors;
+export type UnregisterGcpAccountsDeveloperRegistrationError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unregister the calling GCP from the calling shopping account. Note that the GCP will still be able to access the API for at most 1 day from the unregister succussful call. */
 export const unregisterGcpAccountsDeveloperRegistration: API.OperationMethod<
@@ -3210,7 +3343,7 @@ export const unregisterGcpAccountsDeveloperRegistration: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnregisterGcpAccountsDeveloperRegistrationRequest,
   output: UnregisterGcpAccountsDeveloperRegistrationResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsGbpAccountsRequest {
@@ -3236,7 +3369,7 @@ export type ListAccountsGbpAccountsResponse = ListGbpAccountsResponse;
 export const ListAccountsGbpAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGbpAccountsResponse;
 
-export type ListAccountsGbpAccountsError = DefaultErrors;
+export type ListAccountsGbpAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the GBP accounts for a given merchant. */
 export const listAccountsGbpAccounts: API.PaginatedOperationMethod<
@@ -3247,7 +3380,7 @@ export const listAccountsGbpAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsGbpAccountsRequest,
   output: ListAccountsGbpAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3278,7 +3411,12 @@ export type LinkGbpAccountAccountsGbpAccountsResponse = LinkGbpAccountResponse;
 export const LinkGbpAccountAccountsGbpAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LinkGbpAccountResponse;
 
-export type LinkGbpAccountAccountsGbpAccountsError = DefaultErrors;
+export type LinkGbpAccountAccountsGbpAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Link the specified merchant to a GBP account for all countries. To run this method, you must have admin access to the Merchant Center account. If you don't have admin access, the request fails with the error message `User is not an administrator of account {ACCOUNT_ID}`. */
 export const linkGbpAccountAccountsGbpAccounts: API.OperationMethod<
@@ -3289,7 +3427,7 @@ export const linkGbpAccountAccountsGbpAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkGbpAccountAccountsGbpAccountsRequest,
   output: LinkGbpAccountAccountsGbpAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEmailPreferencesAccountsEmailPreferencesRequest {
@@ -3310,7 +3448,10 @@ export type GetEmailPreferencesAccountsEmailPreferencesResponse =
 export const GetEmailPreferencesAccountsEmailPreferencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EmailPreferences;
 
-export type GetEmailPreferencesAccountsEmailPreferencesError = DefaultErrors;
+export type GetEmailPreferencesAccountsEmailPreferencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the email preferences for a Merchant Center account user. This service only permits retrieving and updating email preferences for the authenticated user. Use the name=accounts/* /users/me/emailPreferences alias to get preferences for the authenticated user. */
 export const getEmailPreferencesAccountsEmailPreferences: API.OperationMethod<
@@ -3321,7 +3462,7 @@ export const getEmailPreferencesAccountsEmailPreferences: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEmailPreferencesAccountsEmailPreferencesRequest,
   output: GetEmailPreferencesAccountsEmailPreferencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEmailPreferencesAccountsEmailPreferencesRequest {
@@ -3348,7 +3489,12 @@ export type UpdateEmailPreferencesAccountsEmailPreferencesResponse =
 export const UpdateEmailPreferencesAccountsEmailPreferencesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EmailPreferences;
 
-export type UpdateEmailPreferencesAccountsEmailPreferencesError = DefaultErrors;
+export type UpdateEmailPreferencesAccountsEmailPreferencesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the email preferences for a Merchant Center account user. Advanced account users should specify the advanced account rather than a sub-account of the advanced account. Preferences which are not explicitly selected in the update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status value. Use the name=accounts/* /users/me/emailPreferences alias to update preferences for the authenticated user. */
 export const updateEmailPreferencesAccountsEmailPreferences: API.OperationMethod<
@@ -3359,7 +3505,7 @@ export const updateEmailPreferencesAccountsEmailPreferences: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEmailPreferencesAccountsEmailPreferencesRequest,
   output: UpdateEmailPreferencesAccountsEmailPreferencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsIssuesRequest {
@@ -3393,7 +3539,7 @@ export type ListAccountsIssuesResponse = ListAccountIssuesResponse;
 export const ListAccountsIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountIssuesResponse;
 
-export type ListAccountsIssuesError = DefaultErrors;
+export type ListAccountsIssuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all account issues of a Merchant Center account. When called on a multi-client account, this method only returns issues belonging to that account, not its sub-accounts. To retrieve issues for sub-accounts, you must first call the accounts.listSubaccounts method to obtain a list of sub-accounts, and then call `accounts.issues.list` for each sub-account individually. */
 export const listAccountsIssues: API.PaginatedOperationMethod<
@@ -3404,7 +3550,7 @@ export const listAccountsIssues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsIssuesRequest,
   output: ListAccountsIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3435,7 +3581,10 @@ export type ListAccountsRelationshipsResponse =
 export const ListAccountsRelationshipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountRelationshipsResponse;
 
-export type ListAccountsRelationshipsError = DefaultErrors;
+export type ListAccountsRelationshipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List account relationships for the specified account. */
 export const listAccountsRelationships: API.PaginatedOperationMethod<
@@ -3446,7 +3595,7 @@ export const listAccountsRelationships: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRelationshipsRequest,
   output: ListAccountsRelationshipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3470,7 +3619,10 @@ export type GetAccountsRelationshipsResponse = AccountRelationship;
 export const GetAccountsRelationshipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountRelationship;
 
-export type GetAccountsRelationshipsError = DefaultErrors;
+export type GetAccountsRelationshipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve an account relationship. */
 export const getAccountsRelationships: API.OperationMethod<
@@ -3481,7 +3633,7 @@ export const getAccountsRelationships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRelationshipsRequest,
   output: GetAccountsRelationshipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsRelationshipsRequest {
@@ -3507,7 +3659,12 @@ export type PatchAccountsRelationshipsResponse = AccountRelationship;
 export const PatchAccountsRelationshipsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountRelationship;
 
-export type PatchAccountsRelationshipsError = DefaultErrors;
+export type PatchAccountsRelationshipsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the account relationship. Executing this method requires admin access. */
 export const patchAccountsRelationships: API.OperationMethod<
@@ -3518,7 +3675,7 @@ export const patchAccountsRelationships: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsRelationshipsRequest,
   output: PatchAccountsRelationshipsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBusinessIdentityAccountsBusinessIdentityRequest {
@@ -3539,7 +3696,10 @@ export type GetBusinessIdentityAccountsBusinessIdentityResponse =
 export const GetBusinessIdentityAccountsBusinessIdentityResponse =
   /*@__PURE__*/ /*#__PURE__*/ BusinessIdentity;
 
-export type GetBusinessIdentityAccountsBusinessIdentityError = DefaultErrors;
+export type GetBusinessIdentityAccountsBusinessIdentityError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the business identity of an account. */
 export const getBusinessIdentityAccountsBusinessIdentity: API.OperationMethod<
@@ -3550,7 +3710,7 @@ export const getBusinessIdentityAccountsBusinessIdentity: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBusinessIdentityAccountsBusinessIdentityRequest,
   output: GetBusinessIdentityAccountsBusinessIdentityResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateBusinessIdentityAccountsBusinessIdentityRequest {
@@ -3577,7 +3737,12 @@ export type UpdateBusinessIdentityAccountsBusinessIdentityResponse =
 export const UpdateBusinessIdentityAccountsBusinessIdentityResponse =
   /*@__PURE__*/ /*#__PURE__*/ BusinessIdentity;
 
-export type UpdateBusinessIdentityAccountsBusinessIdentityError = DefaultErrors;
+export type UpdateBusinessIdentityAccountsBusinessIdentityError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the business identity of an account. Executing this method requires admin access. */
 export const updateBusinessIdentityAccountsBusinessIdentity: API.OperationMethod<
@@ -3588,7 +3753,7 @@ export const updateBusinessIdentityAccountsBusinessIdentity: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBusinessIdentityAccountsBusinessIdentityRequest,
   output: UpdateBusinessIdentityAccountsBusinessIdentityResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAccountsShippingSettingsRequest {
@@ -3615,7 +3780,12 @@ export type InsertAccountsShippingSettingsResponse = ShippingSettings;
 export const InsertAccountsShippingSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingSettings;
 
-export type InsertAccountsShippingSettingsError = DefaultErrors;
+export type InsertAccountsShippingSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replace the shipping setting of a business with the request shipping setting. Executing this method requires admin access. */
 export const insertAccountsShippingSettings: API.OperationMethod<
@@ -3626,7 +3796,7 @@ export const insertAccountsShippingSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsShippingSettingsRequest,
   output: InsertAccountsShippingSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetShippingSettingsAccountsShippingSettingsRequest {
@@ -3647,7 +3817,10 @@ export type GetShippingSettingsAccountsShippingSettingsResponse =
 export const GetShippingSettingsAccountsShippingSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShippingSettings;
 
-export type GetShippingSettingsAccountsShippingSettingsError = DefaultErrors;
+export type GetShippingSettingsAccountsShippingSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve shipping setting information. */
 export const getShippingSettingsAccountsShippingSettings: API.OperationMethod<
@@ -3658,7 +3831,7 @@ export const getShippingSettingsAccountsShippingSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShippingSettingsAccountsShippingSettingsRequest,
   output: GetShippingSettingsAccountsShippingSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest {
@@ -3683,7 +3856,9 @@ export const RetrieveForApplicationAccountsTermsOfServiceAgreementStatesResponse
   /*@__PURE__*/ /*#__PURE__*/ TermsOfServiceAgreementState;
 
 export type RetrieveForApplicationAccountsTermsOfServiceAgreementStatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the state of the agreement for the application terms of service. Application terms of service covers permissions related to the usage of data provided through Merchant Center, CSS Center, Manufacturer Center, and more. */
 export const retrieveForApplicationAccountsTermsOfServiceAgreementStates: API.OperationMethod<
@@ -3694,7 +3869,7 @@ export const retrieveForApplicationAccountsTermsOfServiceAgreementStates: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveForApplicationAccountsTermsOfServiceAgreementStatesRequest,
   output: RetrieveForApplicationAccountsTermsOfServiceAgreementStatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsTermsOfServiceAgreementStatesRequest {
@@ -3715,7 +3890,10 @@ export type GetAccountsTermsOfServiceAgreementStatesResponse =
 export const GetAccountsTermsOfServiceAgreementStatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TermsOfServiceAgreementState;
 
-export type GetAccountsTermsOfServiceAgreementStatesError = DefaultErrors;
+export type GetAccountsTermsOfServiceAgreementStatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the state of a terms of service agreement. */
 export const getAccountsTermsOfServiceAgreementStates: API.OperationMethod<
@@ -3726,7 +3904,7 @@ export const getAccountsTermsOfServiceAgreementStates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsTermsOfServiceAgreementStatesRequest,
   output: GetAccountsTermsOfServiceAgreementStatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAutofeedSettingsAccountsAutofeedSettingsRequest {
@@ -3753,7 +3931,12 @@ export type UpdateAutofeedSettingsAccountsAutofeedSettingsResponse =
 export const UpdateAutofeedSettingsAccountsAutofeedSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutofeedSettings;
 
-export type UpdateAutofeedSettingsAccountsAutofeedSettingsError = DefaultErrors;
+export type UpdateAutofeedSettingsAccountsAutofeedSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the autofeed settings of an account. */
 export const updateAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod<
@@ -3764,7 +3947,7 @@ export const updateAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutofeedSettingsAccountsAutofeedSettingsRequest,
   output: UpdateAutofeedSettingsAccountsAutofeedSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAutofeedSettingsAccountsAutofeedSettingsRequest {
@@ -3785,7 +3968,10 @@ export type GetAutofeedSettingsAccountsAutofeedSettingsResponse =
 export const GetAutofeedSettingsAccountsAutofeedSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutofeedSettings;
 
-export type GetAutofeedSettingsAccountsAutofeedSettingsError = DefaultErrors;
+export type GetAutofeedSettingsAccountsAutofeedSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the autofeed settings of an account. */
 export const getAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod<
@@ -3796,7 +3982,7 @@ export const getAutofeedSettingsAccountsAutofeedSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutofeedSettingsAccountsAutofeedSettingsRequest,
   output: GetAutofeedSettingsAccountsAutofeedSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetBusinessInfoAccountsBusinessInfoRequest {
@@ -3816,7 +4002,10 @@ export type GetBusinessInfoAccountsBusinessInfoResponse = BusinessInfo;
 export const GetBusinessInfoAccountsBusinessInfoResponse =
   /*@__PURE__*/ /*#__PURE__*/ BusinessInfo;
 
-export type GetBusinessInfoAccountsBusinessInfoError = DefaultErrors;
+export type GetBusinessInfoAccountsBusinessInfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the business info of an account. */
 export const getBusinessInfoAccountsBusinessInfo: API.OperationMethod<
@@ -3827,7 +4016,7 @@ export const getBusinessInfoAccountsBusinessInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBusinessInfoAccountsBusinessInfoRequest,
   output: GetBusinessInfoAccountsBusinessInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateBusinessInfoAccountsBusinessInfoRequest {
@@ -3853,7 +4042,12 @@ export type UpdateBusinessInfoAccountsBusinessInfoResponse = BusinessInfo;
 export const UpdateBusinessInfoAccountsBusinessInfoResponse =
   /*@__PURE__*/ /*#__PURE__*/ BusinessInfo;
 
-export type UpdateBusinessInfoAccountsBusinessInfoError = DefaultErrors;
+export type UpdateBusinessInfoAccountsBusinessInfoError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the business info of an account. Executing this method requires admin access. */
 export const updateBusinessInfoAccountsBusinessInfo: API.OperationMethod<
@@ -3864,7 +4058,7 @@ export const updateBusinessInfoAccountsBusinessInfo: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBusinessInfoAccountsBusinessInfoRequest,
   output: UpdateBusinessInfoAccountsBusinessInfoResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsServicesRequest {
@@ -3890,7 +4084,7 @@ export type ListAccountsServicesResponse = ListAccountServicesResponse;
 export const ListAccountsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountServicesResponse;
 
-export type ListAccountsServicesError = DefaultErrors;
+export type ListAccountsServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** List account services for the specified accounts. Supports filtering. */
 export const listAccountsServices: API.PaginatedOperationMethod<
@@ -3901,7 +4095,7 @@ export const listAccountsServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsServicesRequest,
   output: ListAccountsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3932,7 +4126,12 @@ export type ApproveAccountsServicesResponse = AccountService;
 export const ApproveAccountsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountService;
 
-export type ApproveAccountsServicesError = DefaultErrors;
+export type ApproveAccountsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approve an account service proposal. */
 export const approveAccountsServices: API.OperationMethod<
@@ -3943,7 +4142,7 @@ export const approveAccountsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveAccountsServicesRequest,
   output: ApproveAccountsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProposeAccountsServicesRequest {
@@ -3970,7 +4169,12 @@ export type ProposeAccountsServicesResponse = AccountService;
 export const ProposeAccountsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountService;
 
-export type ProposeAccountsServicesError = DefaultErrors;
+export type ProposeAccountsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Propose an account service. */
 export const proposeAccountsServices: API.OperationMethod<
@@ -3981,7 +4185,7 @@ export const proposeAccountsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProposeAccountsServicesRequest,
   output: ProposeAccountsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RejectAccountsServicesRequest {
@@ -4007,7 +4211,12 @@ export const RejectAccountsServicesRequest =
 export type RejectAccountsServicesResponse = Empty;
 export const RejectAccountsServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RejectAccountsServicesError = DefaultErrors;
+export type RejectAccountsServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reject an account service (both proposed and approve services can be rejected). */
 export const rejectAccountsServices: API.OperationMethod<
@@ -4018,7 +4227,7 @@ export const rejectAccountsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectAccountsServicesRequest,
   output: RejectAccountsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsServicesRequest {
@@ -4038,7 +4247,7 @@ export type GetAccountsServicesResponse = AccountService;
 export const GetAccountsServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountService;
 
-export type GetAccountsServicesError = DefaultErrors;
+export type GetAccountsServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve an account service. */
 export const getAccountsServices: API.OperationMethod<
@@ -4049,7 +4258,7 @@ export const getAccountsServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsServicesRequest,
   output: GetAccountsServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccountsRegionsRequest {
@@ -4078,7 +4287,12 @@ export const CreateAccountsRegionsRequest =
 export type CreateAccountsRegionsResponse = Region;
 export const CreateAccountsRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
 
-export type CreateAccountsRegionsError = DefaultErrors;
+export type CreateAccountsRegionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a region definition in your Merchant Center account. Executing this method requires admin access. */
 export const createAccountsRegions: API.OperationMethod<
@@ -4089,7 +4303,7 @@ export const createAccountsRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsRegionsRequest,
   output: CreateAccountsRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsRegionsRequest {
@@ -4108,7 +4322,7 @@ export const GetAccountsRegionsRequest =
 export type GetAccountsRegionsResponse = Region;
 export const GetAccountsRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
 
-export type GetAccountsRegionsError = DefaultErrors;
+export type GetAccountsRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a region defined in your Merchant Center account. */
 export const getAccountsRegions: API.OperationMethod<
@@ -4119,7 +4333,7 @@ export const getAccountsRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRegionsRequest,
   output: GetAccountsRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsRegionsRequest {
@@ -4144,7 +4358,12 @@ export const PatchAccountsRegionsRequest =
 export type PatchAccountsRegionsResponse = Region;
 export const PatchAccountsRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
 
-export type PatchAccountsRegionsError = DefaultErrors;
+export type PatchAccountsRegionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a region definition in your Merchant Center account. Executing this method requires admin access. */
 export const patchAccountsRegions: API.OperationMethod<
@@ -4155,7 +4374,7 @@ export const patchAccountsRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsRegionsRequest,
   output: PatchAccountsRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsRegionsRequest {
@@ -4181,7 +4400,7 @@ export type ListAccountsRegionsResponse = ListRegionsResponse;
 export const ListAccountsRegionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRegionsResponse;
 
-export type ListAccountsRegionsError = DefaultErrors;
+export type ListAccountsRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the regions in your Merchant Center account. */
 export const listAccountsRegions: API.PaginatedOperationMethod<
@@ -4192,7 +4411,7 @@ export const listAccountsRegions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRegionsRequest,
   output: ListAccountsRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4215,7 +4434,12 @@ export const DeleteAccountsRegionsRequest =
 export type DeleteAccountsRegionsResponse = Empty;
 export const DeleteAccountsRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsRegionsError = DefaultErrors;
+export type DeleteAccountsRegionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a region definition from your Merchant Center account. Executing this method requires admin access. */
 export const deleteAccountsRegions: API.OperationMethod<
@@ -4226,7 +4450,7 @@ export const deleteAccountsRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsRegionsRequest,
   output: DeleteAccountsRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsOnlineReturnPoliciesRequest {
@@ -4253,7 +4477,12 @@ export type CreateAccountsOnlineReturnPoliciesResponse = OnlineReturnPolicy;
 export const CreateAccountsOnlineReturnPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ OnlineReturnPolicy;
 
-export type CreateAccountsOnlineReturnPoliciesError = DefaultErrors;
+export type CreateAccountsOnlineReturnPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new return policy for a given business. */
 export const createAccountsOnlineReturnPolicies: API.OperationMethod<
@@ -4264,7 +4493,7 @@ export const createAccountsOnlineReturnPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsOnlineReturnPoliciesRequest,
   output: CreateAccountsOnlineReturnPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsOnlineReturnPoliciesRequest {
@@ -4284,7 +4513,10 @@ export type GetAccountsOnlineReturnPoliciesResponse = OnlineReturnPolicy;
 export const GetAccountsOnlineReturnPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ OnlineReturnPolicy;
 
-export type GetAccountsOnlineReturnPoliciesError = DefaultErrors;
+export type GetAccountsOnlineReturnPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an existing return policy for a given business. */
 export const getAccountsOnlineReturnPolicies: API.OperationMethod<
@@ -4295,7 +4527,7 @@ export const getAccountsOnlineReturnPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsOnlineReturnPoliciesRequest,
   output: GetAccountsOnlineReturnPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsOnlineReturnPoliciesRequest {
@@ -4321,7 +4553,12 @@ export type PatchAccountsOnlineReturnPoliciesResponse = OnlineReturnPolicy;
 export const PatchAccountsOnlineReturnPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ OnlineReturnPolicy;
 
-export type PatchAccountsOnlineReturnPoliciesError = DefaultErrors;
+export type PatchAccountsOnlineReturnPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing return policy for a given business. */
 export const patchAccountsOnlineReturnPolicies: API.OperationMethod<
@@ -4332,7 +4569,7 @@ export const patchAccountsOnlineReturnPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsOnlineReturnPoliciesRequest,
   output: PatchAccountsOnlineReturnPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsOnlineReturnPoliciesRequest {
@@ -4362,7 +4599,10 @@ export type ListAccountsOnlineReturnPoliciesResponse =
 export const ListAccountsOnlineReturnPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOnlineReturnPoliciesResponse;
 
-export type ListAccountsOnlineReturnPoliciesError = DefaultErrors;
+export type ListAccountsOnlineReturnPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all existing return policies for a given business. */
 export const listAccountsOnlineReturnPolicies: API.PaginatedOperationMethod<
@@ -4373,7 +4613,7 @@ export const listAccountsOnlineReturnPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsOnlineReturnPoliciesRequest,
   output: ListAccountsOnlineReturnPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4397,7 +4637,12 @@ export type DeleteAccountsOnlineReturnPoliciesResponse = Empty;
 export const DeleteAccountsOnlineReturnPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsOnlineReturnPoliciesError = DefaultErrors;
+export type DeleteAccountsOnlineReturnPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing return policy. */
 export const deleteAccountsOnlineReturnPolicies: API.OperationMethod<
@@ -4408,7 +4653,7 @@ export const deleteAccountsOnlineReturnPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsOnlineReturnPoliciesRequest,
   output: DeleteAccountsOnlineReturnPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnclaimAccountsHomepageRequest {
@@ -4435,7 +4680,12 @@ export type UnclaimAccountsHomepageResponse = Homepage;
 export const UnclaimAccountsHomepageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Homepage;
 
-export type UnclaimAccountsHomepageError = DefaultErrors;
+export type UnclaimAccountsHomepageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unclaims a store's homepage. Executing this method requires admin access. */
 export const unclaimAccountsHomepage: API.OperationMethod<
@@ -4446,7 +4696,7 @@ export const unclaimAccountsHomepage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnclaimAccountsHomepageRequest,
   output: UnclaimAccountsHomepageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetHomepageAccountsHomepageRequest {
@@ -4466,7 +4716,10 @@ export type GetHomepageAccountsHomepageResponse = Homepage;
 export const GetHomepageAccountsHomepageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Homepage;
 
-export type GetHomepageAccountsHomepageError = DefaultErrors;
+export type GetHomepageAccountsHomepageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a store's homepage. */
 export const getHomepageAccountsHomepage: API.OperationMethod<
@@ -4477,7 +4730,7 @@ export const getHomepageAccountsHomepage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHomepageAccountsHomepageRequest,
   output: GetHomepageAccountsHomepageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ClaimAccountsHomepageRequest {
@@ -4504,7 +4757,12 @@ export type ClaimAccountsHomepageResponse = Homepage;
 export const ClaimAccountsHomepageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Homepage;
 
-export type ClaimAccountsHomepageError = DefaultErrors;
+export type ClaimAccountsHomepageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Claims a store's homepage. Executing this method requires admin access. If the homepage is already claimed, this will recheck the verification (unless the business is exempted from claiming, which also exempts from verification) and return a successful response. If ownership can no longer be verified, it will return an error, but it won't clear the claim. In case of failure, a canonical error message is returned: * PERMISSION_DENIED: User doesn't have the necessary permissions on this Merchant Center account. * FAILED_PRECONDITION: - The account is not a Merchant Center account. - Merchant Center account doesn't have a homepage. - Claiming failed (in this case the error message contains more details). */
 export const claimAccountsHomepage: API.OperationMethod<
@@ -4515,7 +4773,7 @@ export const claimAccountsHomepage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClaimAccountsHomepageRequest,
   output: ClaimAccountsHomepageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateHomepageAccountsHomepageRequest {
@@ -4541,7 +4799,12 @@ export type UpdateHomepageAccountsHomepageResponse = Homepage;
 export const UpdateHomepageAccountsHomepageResponse =
   /*@__PURE__*/ /*#__PURE__*/ Homepage;
 
-export type UpdateHomepageAccountsHomepageError = DefaultErrors;
+export type UpdateHomepageAccountsHomepageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a store's homepage. Executing this method requires admin access. */
 export const updateHomepageAccountsHomepage: API.OperationMethod<
@@ -4552,7 +4815,7 @@ export const updateHomepageAccountsHomepage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHomepageAccountsHomepageRequest,
   output: UpdateHomepageAccountsHomepageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsOmnichannelSettingsRequest {
@@ -4582,7 +4845,10 @@ export type ListAccountsOmnichannelSettingsResponse =
 export const ListAccountsOmnichannelSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOmnichannelSettingsResponse;
 
-export type ListAccountsOmnichannelSettingsError = DefaultErrors;
+export type ListAccountsOmnichannelSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all the omnichannel settings for a given merchant. */
 export const listAccountsOmnichannelSettings: API.PaginatedOperationMethod<
@@ -4593,7 +4859,7 @@ export const listAccountsOmnichannelSettings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsOmnichannelSettingsRequest,
   output: ListAccountsOmnichannelSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4624,7 +4890,12 @@ export type CreateAccountsOmnichannelSettingsResponse = OmnichannelSetting;
 export const CreateAccountsOmnichannelSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OmnichannelSetting;
 
-export type CreateAccountsOmnichannelSettingsError = DefaultErrors;
+export type CreateAccountsOmnichannelSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create the omnichannel settings for a given merchant. */
 export const createAccountsOmnichannelSettings: API.OperationMethod<
@@ -4635,7 +4906,7 @@ export const createAccountsOmnichannelSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsOmnichannelSettingsRequest,
   output: CreateAccountsOmnichannelSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsOmnichannelSettingsRequest {
@@ -4655,7 +4926,10 @@ export type GetAccountsOmnichannelSettingsResponse = OmnichannelSetting;
 export const GetAccountsOmnichannelSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OmnichannelSetting;
 
-export type GetAccountsOmnichannelSettingsError = DefaultErrors;
+export type GetAccountsOmnichannelSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the omnichannel settings for a given merchant. */
 export const getAccountsOmnichannelSettings: API.OperationMethod<
@@ -4666,7 +4940,7 @@ export const getAccountsOmnichannelSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsOmnichannelSettingsRequest,
   output: GetAccountsOmnichannelSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsOmnichannelSettingsRequest {
@@ -4692,7 +4966,12 @@ export type PatchAccountsOmnichannelSettingsResponse = OmnichannelSetting;
 export const PatchAccountsOmnichannelSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OmnichannelSetting;
 
-export type PatchAccountsOmnichannelSettingsError = DefaultErrors;
+export type PatchAccountsOmnichannelSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the omnichannel setting for a given merchant in a given country. */
 export const patchAccountsOmnichannelSettings: API.OperationMethod<
@@ -4703,7 +4982,7 @@ export const patchAccountsOmnichannelSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsOmnichannelSettingsRequest,
   output: PatchAccountsOmnichannelSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RequestInventoryVerificationAccountsOmnichannelSettingsRequest {
@@ -4734,7 +5013,11 @@ export const RequestInventoryVerificationAccountsOmnichannelSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RequestInventoryVerificationResponse;
 
 export type RequestInventoryVerificationAccountsOmnichannelSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests inventory verification for a given merchant in a given country. */
 export const requestInventoryVerificationAccountsOmnichannelSettings: API.OperationMethod<
@@ -4745,7 +5028,7 @@ export const requestInventoryVerificationAccountsOmnichannelSettings: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestInventoryVerificationAccountsOmnichannelSettingsRequest,
   output: RequestInventoryVerificationAccountsOmnichannelSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FindAccountsOmnichannelSettingsLfpProvidersRequest {
@@ -4775,7 +5058,10 @@ export type FindAccountsOmnichannelSettingsLfpProvidersResponse =
 export const FindAccountsOmnichannelSettingsLfpProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ FindLfpProvidersResponse;
 
-export type FindAccountsOmnichannelSettingsLfpProvidersError = DefaultErrors;
+export type FindAccountsOmnichannelSettingsLfpProvidersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Find the LFP provider candidates in a given country. */
 export const findAccountsOmnichannelSettingsLfpProviders: API.PaginatedOperationMethod<
@@ -4786,7 +5072,7 @@ export const findAccountsOmnichannelSettingsLfpProviders: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FindAccountsOmnichannelSettingsLfpProvidersRequest,
   output: FindAccountsOmnichannelSettingsLfpProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4819,7 +5105,11 @@ export const LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersResponse =
   /*@__PURE__*/ /*#__PURE__*/ LinkLfpProviderResponse;
 
 export type LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Link the specified merchant to a LFP provider for the specified country. */
 export const linkLfpProviderAccountsOmnichannelSettingsLfpProviders: API.OperationMethod<
@@ -4830,7 +5120,7 @@ export const linkLfpProviderAccountsOmnichannelSettingsLfpProviders: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersRequest,
   output: LinkLfpProviderAccountsOmnichannelSettingsLfpProvidersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest {
@@ -4858,7 +5148,11 @@ export const UpdateAutomaticImprovementsAccountsAutomaticImprovementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutomaticImprovements;
 
 export type UpdateAutomaticImprovementsAccountsAutomaticImprovementsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the automatic improvements of an account. */
 export const updateAutomaticImprovementsAccountsAutomaticImprovements: API.OperationMethod<
@@ -4869,7 +5163,7 @@ export const updateAutomaticImprovementsAccountsAutomaticImprovements: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutomaticImprovementsAccountsAutomaticImprovementsRequest,
   output: UpdateAutomaticImprovementsAccountsAutomaticImprovementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAutomaticImprovementsAccountsAutomaticImprovementsRequest {
@@ -4891,7 +5185,9 @@ export const GetAutomaticImprovementsAccountsAutomaticImprovementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutomaticImprovements;
 
 export type GetAutomaticImprovementsAccountsAutomaticImprovementsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the automatic improvements of an account. */
 export const getAutomaticImprovementsAccountsAutomaticImprovements: API.OperationMethod<
@@ -4902,5 +5198,5 @@ export const getAutomaticImprovementsAccountsAutomaticImprovements: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutomaticImprovementsAccountsAutomaticImprovementsRequest,
   output: GetAutomaticImprovementsAccountsAutomaticImprovementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

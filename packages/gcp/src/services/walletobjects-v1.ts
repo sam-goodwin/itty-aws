@@ -4388,6 +4388,52 @@ export const LoyaltyClassListResponse =
   }).annotate({ identifier: "LoyaltyClassListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -4411,7 +4457,7 @@ export type GetLoyaltyobjectResponse = LoyaltyObject;
 export const GetLoyaltyobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
 
-export type GetLoyaltyobjectError = DefaultErrors;
+export type GetLoyaltyobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the loyalty object with the given object ID. */
 export const getLoyaltyobject: API.OperationMethod<
@@ -4422,7 +4468,7 @@ export const getLoyaltyobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoyaltyobjectRequest,
   output: GetLoyaltyobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchLoyaltyobjectRequest {
@@ -4449,7 +4495,12 @@ export type PatchLoyaltyobjectResponse = LoyaltyObject;
 export const PatchLoyaltyobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
 
-export type PatchLoyaltyobjectError = DefaultErrors;
+export type PatchLoyaltyobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the loyalty object referenced by the given object ID. This method supports patch semantics. */
 export const patchLoyaltyobject: API.OperationMethod<
@@ -4460,7 +4511,7 @@ export const patchLoyaltyobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLoyaltyobjectRequest,
   output: PatchLoyaltyobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageLoyaltyobjectRequest {
@@ -4487,7 +4538,12 @@ export type AddmessageLoyaltyobjectResponse = LoyaltyObjectAddMessageResponse;
 export const AddmessageLoyaltyobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyObjectAddMessageResponse;
 
-export type AddmessageLoyaltyobjectError = DefaultErrors;
+export type AddmessageLoyaltyobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the loyalty object referenced by the given object ID. */
 export const addmessageLoyaltyobject: API.OperationMethod<
@@ -4498,7 +4554,7 @@ export const addmessageLoyaltyobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageLoyaltyobjectRequest,
   output: AddmessageLoyaltyobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifylinkedofferobjectsLoyaltyobjectRequest {
@@ -4525,7 +4581,12 @@ export type ModifylinkedofferobjectsLoyaltyobjectResponse = LoyaltyObject;
 export const ModifylinkedofferobjectsLoyaltyobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
 
-export type ModifylinkedofferobjectsLoyaltyobjectError = DefaultErrors;
+export type ModifylinkedofferobjectsLoyaltyobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the loyalty object with the given ID. */
 export const modifylinkedofferobjectsLoyaltyobject: API.OperationMethod<
@@ -4536,7 +4597,7 @@ export const modifylinkedofferobjectsLoyaltyobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifylinkedofferobjectsLoyaltyobjectRequest,
   output: ModifylinkedofferobjectsLoyaltyobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLoyaltyobjectRequest {
@@ -4563,7 +4624,12 @@ export type UpdateLoyaltyobjectResponse = LoyaltyObject;
 export const UpdateLoyaltyobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
 
-export type UpdateLoyaltyobjectError = DefaultErrors;
+export type UpdateLoyaltyobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the loyalty object referenced by the given object ID. */
 export const updateLoyaltyobject: API.OperationMethod<
@@ -4574,7 +4640,7 @@ export const updateLoyaltyobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLoyaltyobjectRequest,
   output: UpdateLoyaltyobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLoyaltyobjectRequest {
@@ -4600,7 +4666,7 @@ export type ListLoyaltyobjectResponse = LoyaltyObjectListResponse;
 export const ListLoyaltyobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyObjectListResponse;
 
-export type ListLoyaltyobjectError = DefaultErrors;
+export type ListLoyaltyobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all loyalty objects for a given issuer ID. */
 export const listLoyaltyobject: API.OperationMethod<
@@ -4611,7 +4677,7 @@ export const listLoyaltyobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLoyaltyobjectRequest,
   output: ListLoyaltyobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertLoyaltyobjectRequest {
@@ -4635,7 +4701,12 @@ export type InsertLoyaltyobjectResponse = LoyaltyObject;
 export const InsertLoyaltyobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyObject;
 
-export type InsertLoyaltyobjectError = DefaultErrors;
+export type InsertLoyaltyobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an loyalty object with the given ID and properties. */
 export const insertLoyaltyobject: API.OperationMethod<
@@ -4646,7 +4717,7 @@ export const insertLoyaltyobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLoyaltyobjectRequest,
   output: InsertLoyaltyobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertEventticketobjectRequest {
@@ -4670,7 +4741,12 @@ export type InsertEventticketobjectResponse = EventTicketObject;
 export const InsertEventticketobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
 
-export type InsertEventticketobjectError = DefaultErrors;
+export type InsertEventticketobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an event ticket object with the given ID and properties. */
 export const insertEventticketobject: API.OperationMethod<
@@ -4681,7 +4757,7 @@ export const insertEventticketobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertEventticketobjectRequest,
   output: InsertEventticketobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEventticketobjectRequest {
@@ -4707,7 +4783,7 @@ export type ListEventticketobjectResponse = EventTicketObjectListResponse;
 export const ListEventticketobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketObjectListResponse;
 
-export type ListEventticketobjectError = DefaultErrors;
+export type ListEventticketobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all event ticket objects for a given issuer ID. */
 export const listEventticketobject: API.OperationMethod<
@@ -4718,7 +4794,7 @@ export const listEventticketobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEventticketobjectRequest,
   output: ListEventticketobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ModifylinkedofferobjectsEventticketobjectRequest {
@@ -4746,7 +4822,12 @@ export type ModifylinkedofferobjectsEventticketobjectResponse =
 export const ModifylinkedofferobjectsEventticketobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
 
-export type ModifylinkedofferobjectsEventticketobjectError = DefaultErrors;
+export type ModifylinkedofferobjectsEventticketobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use Auto Linked Passes instead. Modifies linked offer objects for the event ticket object with the given ID. */
 export const modifylinkedofferobjectsEventticketobject: API.OperationMethod<
@@ -4757,7 +4838,7 @@ export const modifylinkedofferobjectsEventticketobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifylinkedofferobjectsEventticketobjectRequest,
   output: ModifylinkedofferobjectsEventticketobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEventticketobjectRequest {
@@ -4784,7 +4865,12 @@ export type UpdateEventticketobjectResponse = EventTicketObject;
 export const UpdateEventticketobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
 
-export type UpdateEventticketobjectError = DefaultErrors;
+export type UpdateEventticketobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the event ticket object referenced by the given object ID. */
 export const updateEventticketobject: API.OperationMethod<
@@ -4795,7 +4881,7 @@ export const updateEventticketobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventticketobjectRequest,
   output: UpdateEventticketobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEventticketobjectRequest {
@@ -4818,7 +4904,7 @@ export type GetEventticketobjectResponse = EventTicketObject;
 export const GetEventticketobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
 
-export type GetEventticketobjectError = DefaultErrors;
+export type GetEventticketobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the event ticket object with the given object ID. */
 export const getEventticketobject: API.OperationMethod<
@@ -4829,7 +4915,7 @@ export const getEventticketobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventticketobjectRequest,
   output: GetEventticketobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchEventticketobjectRequest {
@@ -4856,7 +4942,12 @@ export type PatchEventticketobjectResponse = EventTicketObject;
 export const PatchEventticketobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketObject;
 
-export type PatchEventticketobjectError = DefaultErrors;
+export type PatchEventticketobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the event ticket object referenced by the given object ID. This method supports patch semantics. */
 export const patchEventticketobject: API.OperationMethod<
@@ -4867,7 +4958,7 @@ export const patchEventticketobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEventticketobjectRequest,
   output: PatchEventticketobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageEventticketobjectRequest {
@@ -4895,7 +4986,12 @@ export type AddmessageEventticketobjectResponse =
 export const AddmessageEventticketobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketObjectAddMessageResponse;
 
-export type AddmessageEventticketobjectError = DefaultErrors;
+export type AddmessageEventticketobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the event ticket object referenced by the given object ID. */
 export const addmessageEventticketobject: API.OperationMethod<
@@ -4906,7 +5002,7 @@ export const addmessageEventticketobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageEventticketobjectRequest,
   output: AddmessageEventticketobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateOfferclassRequest {
@@ -4932,7 +5028,12 @@ export const UpdateOfferclassRequest =
 export type UpdateOfferclassResponse = OfferClass;
 export const UpdateOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
 
-export type UpdateOfferclassError = DefaultErrors;
+export type UpdateOfferclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the offer class referenced by the given class ID. */
 export const updateOfferclass: API.OperationMethod<
@@ -4943,7 +5044,7 @@ export const updateOfferclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOfferclassRequest,
   output: UpdateOfferclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageOfferclassRequest {
@@ -4970,7 +5071,12 @@ export type AddmessageOfferclassResponse = OfferClassAddMessageResponse;
 export const AddmessageOfferclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ OfferClassAddMessageResponse;
 
-export type AddmessageOfferclassError = DefaultErrors;
+export type AddmessageOfferclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the offer class referenced by the given class ID. */
 export const addmessageOfferclass: API.OperationMethod<
@@ -4981,7 +5087,7 @@ export const addmessageOfferclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageOfferclassRequest,
   output: AddmessageOfferclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOfferclassRequest {
@@ -4999,7 +5105,7 @@ export const GetOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOfferclassResponse = OfferClass;
 export const GetOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
 
-export type GetOfferclassError = DefaultErrors;
+export type GetOfferclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the offer class with the given class ID. */
 export const getOfferclass: API.OperationMethod<
@@ -5010,7 +5116,7 @@ export const getOfferclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOfferclassRequest,
   output: GetOfferclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOfferclassRequest {
@@ -5037,7 +5143,12 @@ export const PatchOfferclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PatchOfferclassResponse = OfferClass;
 export const PatchOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
 
-export type PatchOfferclassError = DefaultErrors;
+export type PatchOfferclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the offer class referenced by the given class ID. This method supports patch semantics. */
 export const patchOfferclass: API.OperationMethod<
@@ -5048,7 +5159,7 @@ export const patchOfferclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOfferclassRequest,
   output: PatchOfferclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertOfferclassRequest {
@@ -5071,7 +5182,12 @@ export const InsertOfferclassRequest =
 export type InsertOfferclassResponse = OfferClass;
 export const InsertOfferclassResponse = /*@__PURE__*/ /*#__PURE__*/ OfferClass;
 
-export type InsertOfferclassError = DefaultErrors;
+export type InsertOfferclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an offer class with the given ID and properties. */
 export const insertOfferclass: API.OperationMethod<
@@ -5082,7 +5198,7 @@ export const insertOfferclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertOfferclassRequest,
   output: InsertOfferclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOfferclassRequest {
@@ -5107,7 +5223,7 @@ export type ListOfferclassResponse = OfferClassListResponse;
 export const ListOfferclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ OfferClassListResponse;
 
-export type ListOfferclassError = DefaultErrors;
+export type ListOfferclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all offer classes for a given issuer ID. */
 export const listOfferclass: API.OperationMethod<
@@ -5118,7 +5234,7 @@ export const listOfferclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOfferclassRequest,
   output: ListOfferclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateTransitclassRequest {
@@ -5145,7 +5261,12 @@ export type UpdateTransitclassResponse = TransitClass;
 export const UpdateTransitclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitClass;
 
-export type UpdateTransitclassError = DefaultErrors;
+export type UpdateTransitclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the transit class referenced by the given class ID. */
 export const updateTransitclass: API.OperationMethod<
@@ -5156,7 +5277,7 @@ export const updateTransitclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTransitclassRequest,
   output: UpdateTransitclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageTransitclassRequest {
@@ -5183,7 +5304,12 @@ export type AddmessageTransitclassResponse = TransitClassAddMessageResponse;
 export const AddmessageTransitclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitClassAddMessageResponse;
 
-export type AddmessageTransitclassError = DefaultErrors;
+export type AddmessageTransitclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the transit class referenced by the given class ID. */
 export const addmessageTransitclass: API.OperationMethod<
@@ -5194,7 +5320,7 @@ export const addmessageTransitclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageTransitclassRequest,
   output: AddmessageTransitclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTransitclassRequest {
@@ -5214,7 +5340,7 @@ export const GetTransitclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetTransitclassResponse = TransitClass;
 export const GetTransitclassResponse = /*@__PURE__*/ /*#__PURE__*/ TransitClass;
 
-export type GetTransitclassError = DefaultErrors;
+export type GetTransitclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the transit class with the given class ID. */
 export const getTransitclass: API.OperationMethod<
@@ -5225,7 +5351,7 @@ export const getTransitclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTransitclassRequest,
   output: GetTransitclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchTransitclassRequest {
@@ -5252,7 +5378,12 @@ export type PatchTransitclassResponse = TransitClass;
 export const PatchTransitclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitClass;
 
-export type PatchTransitclassError = DefaultErrors;
+export type PatchTransitclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the transit class referenced by the given class ID. This method supports patch semantics. */
 export const patchTransitclass: API.OperationMethod<
@@ -5263,7 +5394,7 @@ export const patchTransitclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTransitclassRequest,
   output: PatchTransitclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertTransitclassRequest {
@@ -5287,7 +5418,12 @@ export type InsertTransitclassResponse = TransitClass;
 export const InsertTransitclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitClass;
 
-export type InsertTransitclassError = DefaultErrors;
+export type InsertTransitclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a transit class with the given ID and properties. */
 export const insertTransitclass: API.OperationMethod<
@@ -5298,7 +5434,7 @@ export const insertTransitclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTransitclassRequest,
   output: InsertTransitclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTransitclassRequest {
@@ -5324,7 +5460,7 @@ export type ListTransitclassResponse = TransitClassListResponse;
 export const ListTransitclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitClassListResponse;
 
-export type ListTransitclassError = DefaultErrors;
+export type ListTransitclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all transit classes for a given issuer ID. */
 export const listTransitclass: API.OperationMethod<
@@ -5335,7 +5471,7 @@ export const listTransitclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTransitclassRequest,
   output: ListTransitclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSmarttapRequest {
@@ -5353,7 +5489,12 @@ export const InsertSmarttapRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertSmarttapResponse = SmartTap;
 export const InsertSmarttapResponse = /*@__PURE__*/ /*#__PURE__*/ SmartTap;
 
-export type InsertSmarttapError = DefaultErrors;
+export type InsertSmarttapError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts the smart tap. */
 export const insertSmarttap: API.OperationMethod<
@@ -5364,7 +5505,7 @@ export const insertSmarttap: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSmarttapRequest,
   output: InsertSmarttapResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertOfferobjectRequest {
@@ -5388,7 +5529,12 @@ export type InsertOfferobjectResponse = OfferObject;
 export const InsertOfferobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ OfferObject;
 
-export type InsertOfferobjectError = DefaultErrors;
+export type InsertOfferobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an offer object with the given ID and properties. */
 export const insertOfferobject: API.OperationMethod<
@@ -5399,7 +5545,7 @@ export const insertOfferobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertOfferobjectRequest,
   output: InsertOfferobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOfferobjectRequest {
@@ -5426,7 +5572,7 @@ export type ListOfferobjectResponse = OfferObjectListResponse;
 export const ListOfferobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ OfferObjectListResponse;
 
-export type ListOfferobjectError = DefaultErrors;
+export type ListOfferobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all offer objects for a given issuer ID. */
 export const listOfferobject: API.OperationMethod<
@@ -5437,7 +5583,7 @@ export const listOfferobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOfferobjectRequest,
   output: ListOfferobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOfferobjectRequest {
@@ -5464,7 +5610,12 @@ export type UpdateOfferobjectResponse = OfferObject;
 export const UpdateOfferobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ OfferObject;
 
-export type UpdateOfferobjectError = DefaultErrors;
+export type UpdateOfferobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the offer object referenced by the given object ID. */
 export const updateOfferobject: API.OperationMethod<
@@ -5475,7 +5626,7 @@ export const updateOfferobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOfferobjectRequest,
   output: UpdateOfferobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOfferobjectRequest {
@@ -5493,7 +5644,7 @@ export const GetOfferobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOfferobjectResponse = OfferObject;
 export const GetOfferobjectResponse = /*@__PURE__*/ /*#__PURE__*/ OfferObject;
 
-export type GetOfferobjectError = DefaultErrors;
+export type GetOfferobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the offer object with the given object ID. */
 export const getOfferobject: API.OperationMethod<
@@ -5504,7 +5655,7 @@ export const getOfferobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOfferobjectRequest,
   output: GetOfferobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOfferobjectRequest {
@@ -5530,7 +5681,12 @@ export const PatchOfferobjectRequest =
 export type PatchOfferobjectResponse = OfferObject;
 export const PatchOfferobjectResponse = /*@__PURE__*/ /*#__PURE__*/ OfferObject;
 
-export type PatchOfferobjectError = DefaultErrors;
+export type PatchOfferobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the offer object referenced by the given object ID. This method supports patch semantics. */
 export const patchOfferobject: API.OperationMethod<
@@ -5541,7 +5697,7 @@ export const patchOfferobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOfferobjectRequest,
   output: PatchOfferobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageOfferobjectRequest {
@@ -5568,7 +5724,12 @@ export type AddmessageOfferobjectResponse = OfferObjectAddMessageResponse;
 export const AddmessageOfferobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ OfferObjectAddMessageResponse;
 
-export type AddmessageOfferobjectError = DefaultErrors;
+export type AddmessageOfferobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the offer object referenced by the given object ID. */
 export const addmessageOfferobject: API.OperationMethod<
@@ -5579,7 +5740,7 @@ export const addmessageOfferobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageOfferobjectRequest,
   output: AddmessageOfferobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGenericclassRequest {
@@ -5605,7 +5766,7 @@ export type ListGenericclassResponse = GenericClassListResponse;
 export const ListGenericclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericClassListResponse;
 
-export type ListGenericclassError = DefaultErrors;
+export type ListGenericclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all generic classes for a given issuer ID. */
 export const listGenericclass: API.OperationMethod<
@@ -5616,7 +5777,7 @@ export const listGenericclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGenericclassRequest,
   output: ListGenericclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertGenericclassRequest {
@@ -5640,7 +5801,12 @@ export type InsertGenericclassResponse = GenericClass;
 export const InsertGenericclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericClass;
 
-export type InsertGenericclassError = DefaultErrors;
+export type InsertGenericclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a generic class with the given ID and properties. */
 export const insertGenericclass: API.OperationMethod<
@@ -5651,7 +5817,7 @@ export const insertGenericclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGenericclassRequest,
   output: InsertGenericclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageGenericclassRequest {
@@ -5678,7 +5844,12 @@ export type AddmessageGenericclassResponse = GenericClassAddMessageResponse;
 export const AddmessageGenericclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericClassAddMessageResponse;
 
-export type AddmessageGenericclassError = DefaultErrors;
+export type AddmessageGenericclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the generic class referenced by the given class ID. */
 export const addmessageGenericclass: API.OperationMethod<
@@ -5689,7 +5860,7 @@ export const addmessageGenericclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageGenericclassRequest,
   output: AddmessageGenericclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGenericclassRequest {
@@ -5709,7 +5880,7 @@ export const GetGenericclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetGenericclassResponse = GenericClass;
 export const GetGenericclassResponse = /*@__PURE__*/ /*#__PURE__*/ GenericClass;
 
-export type GetGenericclassError = DefaultErrors;
+export type GetGenericclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the generic class with the given class ID. */
 export const getGenericclass: API.OperationMethod<
@@ -5720,7 +5891,7 @@ export const getGenericclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGenericclassRequest,
   output: GetGenericclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchGenericclassRequest {
@@ -5747,7 +5918,12 @@ export type PatchGenericclassResponse = GenericClass;
 export const PatchGenericclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericClass;
 
-export type PatchGenericclassError = DefaultErrors;
+export type PatchGenericclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the generic class referenced by the given class ID. This method supports patch semantics. */
 export const patchGenericclass: API.OperationMethod<
@@ -5758,7 +5934,7 @@ export const patchGenericclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGenericclassRequest,
   output: PatchGenericclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateGenericclassRequest {
@@ -5785,7 +5961,12 @@ export type UpdateGenericclassResponse = GenericClass;
 export const UpdateGenericclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericClass;
 
-export type UpdateGenericclassError = DefaultErrors;
+export type UpdateGenericclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Generic class referenced by the given class ID. */
 export const updateGenericclass: API.OperationMethod<
@@ -5796,7 +5977,7 @@ export const updateGenericclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGenericclassRequest,
   output: UpdateGenericclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertJwtRequest {
@@ -5814,7 +5995,12 @@ export const InsertJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertJwtResponse = JwtInsertResponse;
 export const InsertJwtResponse = /*@__PURE__*/ /*#__PURE__*/ JwtInsertResponse;
 
-export type InsertJwtError = DefaultErrors;
+export type InsertJwtError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts the resources in the JWT. */
 export const insertJwt: API.OperationMethod<
@@ -5825,7 +6011,7 @@ export const insertJwt: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertJwtRequest,
   output: InsertJwtResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLoyaltyclassRequest {
@@ -5851,7 +6037,7 @@ export type ListLoyaltyclassResponse = LoyaltyClassListResponse;
 export const ListLoyaltyclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyClassListResponse;
 
-export type ListLoyaltyclassError = DefaultErrors;
+export type ListLoyaltyclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all loyalty classes for a given issuer ID. */
 export const listLoyaltyclass: API.OperationMethod<
@@ -5862,7 +6048,7 @@ export const listLoyaltyclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLoyaltyclassRequest,
   output: ListLoyaltyclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertLoyaltyclassRequest {
@@ -5886,7 +6072,12 @@ export type InsertLoyaltyclassResponse = LoyaltyClass;
 export const InsertLoyaltyclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
 
-export type InsertLoyaltyclassError = DefaultErrors;
+export type InsertLoyaltyclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an loyalty class with the given ID and properties. */
 export const insertLoyaltyclass: API.OperationMethod<
@@ -5897,7 +6088,7 @@ export const insertLoyaltyclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLoyaltyclassRequest,
   output: InsertLoyaltyclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLoyaltyclassRequest {
@@ -5917,7 +6108,7 @@ export const GetLoyaltyclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetLoyaltyclassResponse = LoyaltyClass;
 export const GetLoyaltyclassResponse = /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
 
-export type GetLoyaltyclassError = DefaultErrors;
+export type GetLoyaltyclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the loyalty class with the given class ID. */
 export const getLoyaltyclass: API.OperationMethod<
@@ -5928,7 +6119,7 @@ export const getLoyaltyclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoyaltyclassRequest,
   output: GetLoyaltyclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchLoyaltyclassRequest {
@@ -5955,7 +6146,12 @@ export type PatchLoyaltyclassResponse = LoyaltyClass;
 export const PatchLoyaltyclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
 
-export type PatchLoyaltyclassError = DefaultErrors;
+export type PatchLoyaltyclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the loyalty class referenced by the given class ID. This method supports patch semantics. */
 export const patchLoyaltyclass: API.OperationMethod<
@@ -5966,7 +6162,7 @@ export const patchLoyaltyclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLoyaltyclassRequest,
   output: PatchLoyaltyclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageLoyaltyclassRequest {
@@ -5993,7 +6189,12 @@ export type AddmessageLoyaltyclassResponse = LoyaltyClassAddMessageResponse;
 export const AddmessageLoyaltyclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyClassAddMessageResponse;
 
-export type AddmessageLoyaltyclassError = DefaultErrors;
+export type AddmessageLoyaltyclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the loyalty class referenced by the given class ID. */
 export const addmessageLoyaltyclass: API.OperationMethod<
@@ -6004,7 +6205,7 @@ export const addmessageLoyaltyclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageLoyaltyclassRequest,
   output: AddmessageLoyaltyclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLoyaltyclassRequest {
@@ -6031,7 +6232,12 @@ export type UpdateLoyaltyclassResponse = LoyaltyClass;
 export const UpdateLoyaltyclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoyaltyClass;
 
-export type UpdateLoyaltyclassError = DefaultErrors;
+export type UpdateLoyaltyclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the loyalty class referenced by the given class ID. */
 export const updateLoyaltyclass: API.OperationMethod<
@@ -6042,7 +6248,7 @@ export const updateLoyaltyclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLoyaltyclassRequest,
   output: UpdateLoyaltyclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertGiftcardobjectRequest {
@@ -6066,7 +6272,12 @@ export type InsertGiftcardobjectResponse = GiftCardObject;
 export const InsertGiftcardobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
 
-export type InsertGiftcardobjectError = DefaultErrors;
+export type InsertGiftcardobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an gift card object with the given ID and properties. */
 export const insertGiftcardobject: API.OperationMethod<
@@ -6077,7 +6288,7 @@ export const insertGiftcardobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGiftcardobjectRequest,
   output: InsertGiftcardobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGiftcardobjectRequest {
@@ -6103,7 +6314,7 @@ export type ListGiftcardobjectResponse = GiftCardObjectListResponse;
 export const ListGiftcardobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardObjectListResponse;
 
-export type ListGiftcardobjectError = DefaultErrors;
+export type ListGiftcardobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all gift card objects for a given issuer ID. */
 export const listGiftcardobject: API.OperationMethod<
@@ -6114,7 +6325,7 @@ export const listGiftcardobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGiftcardobjectRequest,
   output: ListGiftcardobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateGiftcardobjectRequest {
@@ -6141,7 +6352,12 @@ export type UpdateGiftcardobjectResponse = GiftCardObject;
 export const UpdateGiftcardobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
 
-export type UpdateGiftcardobjectError = DefaultErrors;
+export type UpdateGiftcardobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the gift card object referenced by the given object ID. */
 export const updateGiftcardobject: API.OperationMethod<
@@ -6152,7 +6368,7 @@ export const updateGiftcardobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGiftcardobjectRequest,
   output: UpdateGiftcardobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageGiftcardobjectRequest {
@@ -6179,7 +6395,12 @@ export type AddmessageGiftcardobjectResponse = GiftCardObjectAddMessageResponse;
 export const AddmessageGiftcardobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardObjectAddMessageResponse;
 
-export type AddmessageGiftcardobjectError = DefaultErrors;
+export type AddmessageGiftcardobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the gift card object referenced by the given object ID. */
 export const addmessageGiftcardobject: API.OperationMethod<
@@ -6190,7 +6411,7 @@ export const addmessageGiftcardobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageGiftcardobjectRequest,
   output: AddmessageGiftcardobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGiftcardobjectRequest {
@@ -6213,7 +6434,7 @@ export type GetGiftcardobjectResponse = GiftCardObject;
 export const GetGiftcardobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
 
-export type GetGiftcardobjectError = DefaultErrors;
+export type GetGiftcardobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the gift card object with the given object ID. */
 export const getGiftcardobject: API.OperationMethod<
@@ -6224,7 +6445,7 @@ export const getGiftcardobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGiftcardobjectRequest,
   output: GetGiftcardobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchGiftcardobjectRequest {
@@ -6251,7 +6472,12 @@ export type PatchGiftcardobjectResponse = GiftCardObject;
 export const PatchGiftcardobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardObject;
 
-export type PatchGiftcardobjectError = DefaultErrors;
+export type PatchGiftcardobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the gift card object referenced by the given object ID. This method supports patch semantics. */
 export const patchGiftcardobject: API.OperationMethod<
@@ -6262,7 +6488,7 @@ export const patchGiftcardobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGiftcardobjectRequest,
   output: PatchGiftcardobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEventticketclassRequest {
@@ -6289,7 +6515,12 @@ export type UpdateEventticketclassResponse = EventTicketClass;
 export const UpdateEventticketclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
 
-export type UpdateEventticketclassError = DefaultErrors;
+export type UpdateEventticketclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the event ticket class referenced by the given class ID. */
 export const updateEventticketclass: API.OperationMethod<
@@ -6300,7 +6531,7 @@ export const updateEventticketclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventticketclassRequest,
   output: UpdateEventticketclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEventticketclassRequest {
@@ -6323,7 +6554,7 @@ export type GetEventticketclassResponse = EventTicketClass;
 export const GetEventticketclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
 
-export type GetEventticketclassError = DefaultErrors;
+export type GetEventticketclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the event ticket class with the given class ID. */
 export const getEventticketclass: API.OperationMethod<
@@ -6334,7 +6565,7 @@ export const getEventticketclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventticketclassRequest,
   output: GetEventticketclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchEventticketclassRequest {
@@ -6361,7 +6592,12 @@ export type PatchEventticketclassResponse = EventTicketClass;
 export const PatchEventticketclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
 
-export type PatchEventticketclassError = DefaultErrors;
+export type PatchEventticketclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the event ticket class referenced by the given class ID. This method supports patch semantics. */
 export const patchEventticketclass: API.OperationMethod<
@@ -6372,7 +6608,7 @@ export const patchEventticketclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEventticketclassRequest,
   output: PatchEventticketclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageEventticketclassRequest {
@@ -6400,7 +6636,12 @@ export type AddmessageEventticketclassResponse =
 export const AddmessageEventticketclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketClassAddMessageResponse;
 
-export type AddmessageEventticketclassError = DefaultErrors;
+export type AddmessageEventticketclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the event ticket class referenced by the given class ID. */
 export const addmessageEventticketclass: API.OperationMethod<
@@ -6411,7 +6652,7 @@ export const addmessageEventticketclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageEventticketclassRequest,
   output: AddmessageEventticketclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertEventticketclassRequest {
@@ -6435,7 +6676,12 @@ export type InsertEventticketclassResponse = EventTicketClass;
 export const InsertEventticketclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketClass;
 
-export type InsertEventticketclassError = DefaultErrors;
+export type InsertEventticketclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an event ticket class with the given ID and properties. */
 export const insertEventticketclass: API.OperationMethod<
@@ -6446,7 +6692,7 @@ export const insertEventticketclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertEventticketclassRequest,
   output: InsertEventticketclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEventticketclassRequest {
@@ -6472,7 +6718,7 @@ export type ListEventticketclassResponse = EventTicketClassListResponse;
 export const ListEventticketclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTicketClassListResponse;
 
-export type ListEventticketclassError = DefaultErrors;
+export type ListEventticketclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all event ticket classes for a given issuer ID. */
 export const listEventticketclass: API.OperationMethod<
@@ -6483,7 +6729,7 @@ export const listEventticketclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEventticketclassRequest,
   output: ListEventticketclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFlightobjectRequest {
@@ -6503,7 +6749,7 @@ export const GetFlightobjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetFlightobjectResponse = FlightObject;
 export const GetFlightobjectResponse = /*@__PURE__*/ /*#__PURE__*/ FlightObject;
 
-export type GetFlightobjectError = DefaultErrors;
+export type GetFlightobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the flight object with the given object ID. */
 export const getFlightobject: API.OperationMethod<
@@ -6514,7 +6760,7 @@ export const getFlightobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFlightobjectRequest,
   output: GetFlightobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFlightobjectRequest {
@@ -6541,7 +6787,12 @@ export type PatchFlightobjectResponse = FlightObject;
 export const PatchFlightobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightObject;
 
-export type PatchFlightobjectError = DefaultErrors;
+export type PatchFlightobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the flight object referenced by the given object ID. This method supports patch semantics. */
 export const patchFlightobject: API.OperationMethod<
@@ -6552,7 +6803,7 @@ export const patchFlightobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFlightobjectRequest,
   output: PatchFlightobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageFlightobjectRequest {
@@ -6579,7 +6830,12 @@ export type AddmessageFlightobjectResponse = FlightObjectAddMessageResponse;
 export const AddmessageFlightobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightObjectAddMessageResponse;
 
-export type AddmessageFlightobjectError = DefaultErrors;
+export type AddmessageFlightobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the flight object referenced by the given object ID. */
 export const addmessageFlightobject: API.OperationMethod<
@@ -6590,7 +6846,7 @@ export const addmessageFlightobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageFlightobjectRequest,
   output: AddmessageFlightobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateFlightobjectRequest {
@@ -6617,7 +6873,12 @@ export type UpdateFlightobjectResponse = FlightObject;
 export const UpdateFlightobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightObject;
 
-export type UpdateFlightobjectError = DefaultErrors;
+export type UpdateFlightobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the flight object referenced by the given object ID. */
 export const updateFlightobject: API.OperationMethod<
@@ -6628,7 +6889,7 @@ export const updateFlightobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFlightobjectRequest,
   output: UpdateFlightobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFlightobjectRequest {
@@ -6654,7 +6915,7 @@ export type ListFlightobjectResponse = FlightObjectListResponse;
 export const ListFlightobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightObjectListResponse;
 
-export type ListFlightobjectError = DefaultErrors;
+export type ListFlightobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all flight objects for a given issuer ID. */
 export const listFlightobject: API.OperationMethod<
@@ -6665,7 +6926,7 @@ export const listFlightobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFlightobjectRequest,
   output: ListFlightobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertFlightobjectRequest {
@@ -6689,7 +6950,12 @@ export type InsertFlightobjectResponse = FlightObject;
 export const InsertFlightobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightObject;
 
-export type InsertFlightobjectError = DefaultErrors;
+export type InsertFlightobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an flight object with the given ID and properties. */
 export const insertFlightobject: API.OperationMethod<
@@ -6700,7 +6966,7 @@ export const insertFlightobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFlightobjectRequest,
   output: InsertFlightobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertGiftcardclassRequest {
@@ -6724,7 +6990,12 @@ export type InsertGiftcardclassResponse = GiftCardClass;
 export const InsertGiftcardclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
 
-export type InsertGiftcardclassError = DefaultErrors;
+export type InsertGiftcardclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an gift card class with the given ID and properties. */
 export const insertGiftcardclass: API.OperationMethod<
@@ -6735,7 +7006,7 @@ export const insertGiftcardclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGiftcardclassRequest,
   output: InsertGiftcardclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGiftcardclassRequest {
@@ -6761,7 +7032,7 @@ export type ListGiftcardclassResponse = GiftCardClassListResponse;
 export const ListGiftcardclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardClassListResponse;
 
-export type ListGiftcardclassError = DefaultErrors;
+export type ListGiftcardclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all gift card classes for a given issuer ID. */
 export const listGiftcardclass: API.OperationMethod<
@@ -6772,7 +7043,7 @@ export const listGiftcardclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGiftcardclassRequest,
   output: ListGiftcardclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateGiftcardclassRequest {
@@ -6799,7 +7070,12 @@ export type UpdateGiftcardclassResponse = GiftCardClass;
 export const UpdateGiftcardclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
 
-export type UpdateGiftcardclassError = DefaultErrors;
+export type UpdateGiftcardclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the gift card class referenced by the given class ID. */
 export const updateGiftcardclass: API.OperationMethod<
@@ -6810,7 +7086,7 @@ export const updateGiftcardclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGiftcardclassRequest,
   output: UpdateGiftcardclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageGiftcardclassRequest {
@@ -6837,7 +7113,12 @@ export type AddmessageGiftcardclassResponse = GiftCardClassAddMessageResponse;
 export const AddmessageGiftcardclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardClassAddMessageResponse;
 
-export type AddmessageGiftcardclassError = DefaultErrors;
+export type AddmessageGiftcardclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the gift card class referenced by the given class ID. */
 export const addmessageGiftcardclass: API.OperationMethod<
@@ -6848,7 +7129,7 @@ export const addmessageGiftcardclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageGiftcardclassRequest,
   output: AddmessageGiftcardclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGiftcardclassRequest {
@@ -6871,7 +7152,7 @@ export type GetGiftcardclassResponse = GiftCardClass;
 export const GetGiftcardclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
 
-export type GetGiftcardclassError = DefaultErrors;
+export type GetGiftcardclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the gift card class with the given class ID. */
 export const getGiftcardclass: API.OperationMethod<
@@ -6882,7 +7163,7 @@ export const getGiftcardclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGiftcardclassRequest,
   output: GetGiftcardclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchGiftcardclassRequest {
@@ -6909,7 +7190,12 @@ export type PatchGiftcardclassResponse = GiftCardClass;
 export const PatchGiftcardclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ GiftCardClass;
 
-export type PatchGiftcardclassError = DefaultErrors;
+export type PatchGiftcardclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the gift card class referenced by the given class ID. This method supports patch semantics. */
 export const patchGiftcardclass: API.OperationMethod<
@@ -6920,7 +7206,7 @@ export const patchGiftcardclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGiftcardclassRequest,
   output: PatchGiftcardclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertGenericobjectRequest {
@@ -6944,7 +7230,12 @@ export type InsertGenericobjectResponse = GenericObject;
 export const InsertGenericobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericObject;
 
-export type InsertGenericobjectError = DefaultErrors;
+export type InsertGenericobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a generic object with the given ID and properties. */
 export const insertGenericobject: API.OperationMethod<
@@ -6955,7 +7246,7 @@ export const insertGenericobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGenericobjectRequest,
   output: InsertGenericobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGenericobjectRequest {
@@ -6981,7 +7272,7 @@ export type ListGenericobjectResponse = GenericObjectListResponse;
 export const ListGenericobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericObjectListResponse;
 
-export type ListGenericobjectError = DefaultErrors;
+export type ListGenericobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all generic objects for a given issuer ID. */
 export const listGenericobject: API.OperationMethod<
@@ -6992,7 +7283,7 @@ export const listGenericobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGenericobjectRequest,
   output: ListGenericobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateGenericobjectRequest {
@@ -7019,7 +7310,12 @@ export type UpdateGenericobjectResponse = GenericObject;
 export const UpdateGenericobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericObject;
 
-export type UpdateGenericobjectError = DefaultErrors;
+export type UpdateGenericobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the generic object referenced by the given object ID. */
 export const updateGenericobject: API.OperationMethod<
@@ -7030,7 +7326,7 @@ export const updateGenericobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGenericobjectRequest,
   output: UpdateGenericobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGenericobjectRequest {
@@ -7053,7 +7349,7 @@ export type GetGenericobjectResponse = GenericObject;
 export const GetGenericobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericObject;
 
-export type GetGenericobjectError = DefaultErrors;
+export type GetGenericobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the generic object with the given object ID. */
 export const getGenericobject: API.OperationMethod<
@@ -7064,7 +7360,7 @@ export const getGenericobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGenericobjectRequest,
   output: GetGenericobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchGenericobjectRequest {
@@ -7091,7 +7387,12 @@ export type PatchGenericobjectResponse = GenericObject;
 export const PatchGenericobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericObject;
 
-export type PatchGenericobjectError = DefaultErrors;
+export type PatchGenericobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the generic object referenced by the given object ID. This method supports patch semantics. */
 export const patchGenericobject: API.OperationMethod<
@@ -7102,7 +7403,7 @@ export const patchGenericobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGenericobjectRequest,
   output: PatchGenericobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageGenericobjectRequest {
@@ -7129,7 +7430,12 @@ export type AddmessageGenericobjectResponse = GenericObjectAddMessageResponse;
 export const AddmessageGenericobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenericObjectAddMessageResponse;
 
-export type AddmessageGenericobjectError = DefaultErrors;
+export type AddmessageGenericobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the generic object referenced by the given object ID. */
 export const addmessageGenericobject: API.OperationMethod<
@@ -7140,7 +7446,7 @@ export const addmessageGenericobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageGenericobjectRequest,
   output: AddmessageGenericobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadMediaRequest {
@@ -7169,7 +7475,12 @@ export type UploadMediaResponse =
 export const UploadMediaResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitObjectUploadRotatingBarcodeValuesResponse;
 
-export type UploadMediaError = DefaultErrors;
+export type UploadMediaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads rotating barcode values for the transit object referenced by the given object ID. Note the max upload size is specified in google3/production/config/cdd/apps-upload/customers/payments-consumer-passes/config.gcl and enforced by Scotty. */
 export const uploadMedia: API.OperationMethod<
@@ -7180,7 +7491,7 @@ export const uploadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadMediaRequest {
@@ -7201,7 +7512,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DownloadMediaResponse = Media;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
 
-export type DownloadMediaError = DefaultErrors;
+export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
 /** Downloads rotating barcode values for the transit object referenced by the given object ID. */
 export const downloadMedia: API.OperationMethod<
@@ -7212,7 +7523,7 @@ export const downloadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertFlightclassRequest {
@@ -7236,7 +7547,12 @@ export type InsertFlightclassResponse = FlightClass;
 export const InsertFlightclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightClass;
 
-export type InsertFlightclassError = DefaultErrors;
+export type InsertFlightclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an flight class with the given ID and properties. */
 export const insertFlightclass: API.OperationMethod<
@@ -7247,7 +7563,7 @@ export const insertFlightclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFlightclassRequest,
   output: InsertFlightclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFlightclassRequest {
@@ -7274,7 +7590,7 @@ export type ListFlightclassResponse = FlightClassListResponse;
 export const ListFlightclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightClassListResponse;
 
-export type ListFlightclassError = DefaultErrors;
+export type ListFlightclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all flight classes for a given issuer ID. */
 export const listFlightclass: API.OperationMethod<
@@ -7285,7 +7601,7 @@ export const listFlightclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFlightclassRequest,
   output: ListFlightclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateFlightclassRequest {
@@ -7312,7 +7628,12 @@ export type UpdateFlightclassResponse = FlightClass;
 export const UpdateFlightclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightClass;
 
-export type UpdateFlightclassError = DefaultErrors;
+export type UpdateFlightclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the flight class referenced by the given class ID. */
 export const updateFlightclass: API.OperationMethod<
@@ -7323,7 +7644,7 @@ export const updateFlightclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFlightclassRequest,
   output: UpdateFlightclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFlightclassRequest {
@@ -7341,7 +7662,7 @@ export const GetFlightclassRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFlightclassResponse = FlightClass;
 export const GetFlightclassResponse = /*@__PURE__*/ /*#__PURE__*/ FlightClass;
 
-export type GetFlightclassError = DefaultErrors;
+export type GetFlightclassError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the flight class with the given class ID. */
 export const getFlightclass: API.OperationMethod<
@@ -7352,7 +7673,7 @@ export const getFlightclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFlightclassRequest,
   output: GetFlightclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFlightclassRequest {
@@ -7378,7 +7699,12 @@ export const PatchFlightclassRequest =
 export type PatchFlightclassResponse = FlightClass;
 export const PatchFlightclassResponse = /*@__PURE__*/ /*#__PURE__*/ FlightClass;
 
-export type PatchFlightclassError = DefaultErrors;
+export type PatchFlightclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the flight class referenced by the given class ID. This method supports patch semantics. */
 export const patchFlightclass: API.OperationMethod<
@@ -7389,7 +7715,7 @@ export const patchFlightclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFlightclassRequest,
   output: PatchFlightclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageFlightclassRequest {
@@ -7416,7 +7742,12 @@ export type AddmessageFlightclassResponse = FlightClassAddMessageResponse;
 export const AddmessageFlightclassResponse =
   /*@__PURE__*/ /*#__PURE__*/ FlightClassAddMessageResponse;
 
-export type AddmessageFlightclassError = DefaultErrors;
+export type AddmessageFlightclassError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the flight class referenced by the given class ID. */
 export const addmessageFlightclass: API.OperationMethod<
@@ -7427,7 +7758,7 @@ export const addmessageFlightclass: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageFlightclassRequest,
   output: AddmessageFlightclassResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertTransitobjectRequest {
@@ -7451,7 +7782,12 @@ export type InsertTransitobjectResponse = TransitObject;
 export const InsertTransitobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitObject;
 
-export type InsertTransitobjectError = DefaultErrors;
+export type InsertTransitobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an transit object with the given ID and properties. */
 export const insertTransitobject: API.OperationMethod<
@@ -7462,7 +7798,7 @@ export const insertTransitobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTransitobjectRequest,
   output: InsertTransitobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTransitobjectRequest {
@@ -7488,7 +7824,7 @@ export type ListTransitobjectResponse = TransitObjectListResponse;
 export const ListTransitobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitObjectListResponse;
 
-export type ListTransitobjectError = DefaultErrors;
+export type ListTransitobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all transit objects for a given issuer ID. */
 export const listTransitobject: API.OperationMethod<
@@ -7499,7 +7835,7 @@ export const listTransitobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTransitobjectRequest,
   output: ListTransitobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateTransitobjectRequest {
@@ -7526,7 +7862,12 @@ export type UpdateTransitobjectResponse = TransitObject;
 export const UpdateTransitobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitObject;
 
-export type UpdateTransitobjectError = DefaultErrors;
+export type UpdateTransitobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the transit object referenced by the given object ID. */
 export const updateTransitobject: API.OperationMethod<
@@ -7537,7 +7878,7 @@ export const updateTransitobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTransitobjectRequest,
   output: UpdateTransitobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTransitobjectRequest {
@@ -7560,7 +7901,7 @@ export type GetTransitobjectResponse = TransitObject;
 export const GetTransitobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitObject;
 
-export type GetTransitobjectError = DefaultErrors;
+export type GetTransitobjectError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the transit object with the given object ID. */
 export const getTransitobject: API.OperationMethod<
@@ -7571,7 +7912,7 @@ export const getTransitobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTransitobjectRequest,
   output: GetTransitobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchTransitobjectRequest {
@@ -7598,7 +7939,12 @@ export type PatchTransitobjectResponse = TransitObject;
 export const PatchTransitobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitObject;
 
-export type PatchTransitobjectError = DefaultErrors;
+export type PatchTransitobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the transit object referenced by the given object ID. This method supports patch semantics. */
 export const patchTransitobject: API.OperationMethod<
@@ -7609,7 +7955,7 @@ export const patchTransitobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTransitobjectRequest,
   output: PatchTransitobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddmessageTransitobjectRequest {
@@ -7636,7 +7982,12 @@ export type AddmessageTransitobjectResponse = TransitObjectAddMessageResponse;
 export const AddmessageTransitobjectResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransitObjectAddMessageResponse;
 
-export type AddmessageTransitobjectError = DefaultErrors;
+export type AddmessageTransitobjectError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the transit object referenced by the given object ID. */
 export const addmessageTransitobject: API.OperationMethod<
@@ -7647,7 +7998,7 @@ export const addmessageTransitobject: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddmessageTransitobjectRequest,
   output: AddmessageTransitobjectResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest {
@@ -7673,7 +8024,11 @@ export const SetPassUpdateNoticeWalletobjectsV1PrivateContentResponse =
   /*@__PURE__*/ /*#__PURE__*/ SetPassUpdateNoticeResponse;
 
 export type SetPassUpdateNoticeWalletobjectsV1PrivateContentError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provide Google with information about awaiting private pass update. This will allow Google to provide the update notification to the device that currently holds this pass. */
 export const setPassUpdateNoticeWalletobjectsV1PrivateContent: API.OperationMethod<
@@ -7684,7 +8039,7 @@ export const setPassUpdateNoticeWalletobjectsV1PrivateContent: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetPassUpdateNoticeWalletobjectsV1PrivateContentRequest,
   output: SetPassUpdateNoticeWalletobjectsV1PrivateContentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateIssuerRequest {
@@ -7709,7 +8064,12 @@ export const UpdateIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateIssuerResponse = Issuer;
 export const UpdateIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
 
-export type UpdateIssuerError = DefaultErrors;
+export type UpdateIssuerError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the issuer referenced by the given issuer ID. */
 export const updateIssuer: API.OperationMethod<
@@ -7720,7 +8080,7 @@ export const updateIssuer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateIssuerRequest,
   output: UpdateIssuerResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIssuerRequest {
@@ -7738,7 +8098,7 @@ export const GetIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetIssuerResponse = Issuer;
 export const GetIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
 
-export type GetIssuerError = DefaultErrors;
+export type GetIssuerError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the issuer with the given issuer ID. */
 export const getIssuer: API.OperationMethod<
@@ -7749,7 +8109,7 @@ export const getIssuer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIssuerRequest,
   output: GetIssuerResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchIssuerRequest {
@@ -7774,7 +8134,12 @@ export const PatchIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchIssuerResponse = Issuer;
 export const PatchIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
 
-export type PatchIssuerError = DefaultErrors;
+export type PatchIssuerError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the issuer referenced by the given issuer ID. This method supports patch semantics. */
 export const patchIssuer: API.OperationMethod<
@@ -7785,7 +8150,7 @@ export const patchIssuer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchIssuerRequest,
   output: PatchIssuerResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertIssuerRequest {
@@ -7803,7 +8168,12 @@ export const InsertIssuerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertIssuerResponse = Issuer;
 export const InsertIssuerResponse = /*@__PURE__*/ /*#__PURE__*/ Issuer;
 
-export type InsertIssuerError = DefaultErrors;
+export type InsertIssuerError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an issuer with the given ID and properties. */
 export const insertIssuer: API.OperationMethod<
@@ -7814,7 +8184,7 @@ export const insertIssuer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertIssuerRequest,
   output: InsertIssuerResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListIssuerRequest {}
@@ -7830,7 +8200,7 @@ export type ListIssuerResponse = IssuerListResponse;
 export const ListIssuerResponse =
   /*@__PURE__*/ /*#__PURE__*/ IssuerListResponse;
 
-export type ListIssuerError = DefaultErrors;
+export type ListIssuerError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of all issuers shared to the caller. */
 export const listIssuer: API.OperationMethod<
@@ -7841,7 +8211,7 @@ export const listIssuer: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListIssuerRequest,
   output: ListIssuerResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPermissionsRequest {
@@ -7859,7 +8229,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPermissionsResponse = Permissions;
 export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permissions;
 
-export type GetPermissionsError = DefaultErrors;
+export type GetPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the permissions for the given issuer id. */
 export const getPermissions: API.OperationMethod<
@@ -7870,7 +8240,7 @@ export const getPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPermissionsRequest,
   output: GetPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdatePermissionsRequest {
@@ -7897,7 +8267,12 @@ export type UpdatePermissionsResponse = Permissions;
 export const UpdatePermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Permissions;
 
-export type UpdatePermissionsError = DefaultErrors;
+export type UpdatePermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the permissions for the given issuer. */
 export const updatePermissions: API.OperationMethod<
@@ -7908,5 +8283,5 @@ export const updatePermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePermissionsRequest,
   output: UpdatePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

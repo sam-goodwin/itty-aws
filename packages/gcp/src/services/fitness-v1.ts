@@ -453,6 +453,52 @@ export const AggregateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "AggregateResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -480,7 +526,12 @@ export type AggregateUsersDatasetResponse = AggregateResponse;
 export const AggregateUsersDatasetResponse =
   /*@__PURE__*/ /*#__PURE__*/ AggregateResponse;
 
-export type AggregateUsersDatasetError = DefaultErrors;
+export type AggregateUsersDatasetError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request. */
 export const aggregateUsersDataset: API.OperationMethod<
@@ -491,7 +542,7 @@ export const aggregateUsersDataset: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AggregateUsersDatasetRequest,
   output: AggregateUsersDatasetResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateUsersSessionsRequest {
@@ -520,7 +571,12 @@ export const UpdateUsersSessionsRequest =
 export type UpdateUsersSessionsResponse = Session;
 export const UpdateUsersSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Session;
 
-export type UpdateUsersSessionsError = DefaultErrors;
+export type UpdateUsersSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or insert a given session. */
 export const updateUsersSessions: API.OperationMethod<
@@ -531,7 +587,7 @@ export const updateUsersSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersSessionsRequest,
   output: UpdateUsersSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSessionsRequest {
@@ -570,7 +626,7 @@ export type ListUsersSessionsResponse = ListSessionsResponse;
 export const ListUsersSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSessionsResponse;
 
-export type ListUsersSessionsError = DefaultErrors;
+export type ListUsersSessionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists sessions previously created. */
 export const listUsersSessions: API.PaginatedOperationMethod<
@@ -581,7 +637,7 @@ export const listUsersSessions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSessionsRequest,
   output: ListUsersSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -610,7 +666,12 @@ export const DeleteUsersSessionsResponse: Schema.Schema<DeleteUsersSessionsRespo
     {},
   ) as any as Schema.Schema<DeleteUsersSessionsResponse>;
 
-export type DeleteUsersSessionsError = DefaultErrors;
+export type DeleteUsersSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a session specified by the given session ID. */
 export const deleteUsersSessions: API.OperationMethod<
@@ -621,7 +682,7 @@ export const deleteUsersSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSessionsRequest,
   output: DeleteUsersSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersDataSourcesRequest {
@@ -646,7 +707,7 @@ export type ListUsersDataSourcesResponse = ListDataSourcesResponse;
 export const ListUsersDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
 
-export type ListUsersDataSourcesError = DefaultErrors;
+export type ListUsersDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all data sources that are visible to the developer, using the OAuth scopes provided. The list is not exhaustive; the user may have private data sources that are only visible to other developers, or calls using other scopes. */
 export const listUsersDataSources: API.OperationMethod<
@@ -657,7 +718,7 @@ export const listUsersDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersDataSourcesRequest,
   output: ListUsersDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateUsersDataSourcesRequest {
@@ -687,7 +748,12 @@ export type UpdateUsersDataSourcesResponse = DataSource;
 export const UpdateUsersDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type UpdateUsersDataSourcesError = DefaultErrors;
+export type UpdateUsersDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified. Data sources are identified by their dataStreamId. */
 export const updateUsersDataSources: API.OperationMethod<
@@ -698,7 +764,7 @@ export const updateUsersDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersDataSourcesRequest,
   output: UpdateUsersDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersDataSourcesRequest {
@@ -721,7 +787,12 @@ export type DeleteUsersDataSourcesResponse = DataSource;
 export const DeleteUsersDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type DeleteUsersDataSourcesError = DefaultErrors;
+export type DeleteUsersDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified data source. The request will fail if the data source contains any data points. */
 export const deleteUsersDataSources: API.OperationMethod<
@@ -732,7 +803,7 @@ export const deleteUsersDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersDataSourcesRequest,
   output: DeleteUsersDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersDataSourcesRequest {
@@ -755,7 +826,7 @@ export type GetUsersDataSourcesResponse = DataSource;
 export const GetUsersDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type GetUsersDataSourcesError = DefaultErrors;
+export type GetUsersDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified data source. */
 export const getUsersDataSources: API.OperationMethod<
@@ -766,7 +837,7 @@ export const getUsersDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersDataSourcesRequest,
   output: GetUsersDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUsersDataSourcesRequest {
@@ -789,7 +860,12 @@ export type CreateUsersDataSourcesResponse = DataSource;
 export const CreateUsersDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type CreateUsersDataSourcesError = DefaultErrors;
+export type CreateUsersDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new data source that is unique across all data sources belonging to this user. A data source is a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point in every dataset inserted into or read from the Fitness API has an associated data source. Each data source produces a unique stream of dataset updates, with a unique data source identifier. Not all changes to data source affect the data stream ID, so that data collected by updated versions of the same application/device can still be considered to belong to the same data source. Data sources are identified using a string generated by the server, based on the contents of the source being created. The dataStreamId field should not be set when invoking this method. It will be automatically generated by the server with the correct format. If a dataStreamId is set, it must match the format that the server would generate. This format is a combination of some fields from the data source, and has a specific order. If it doesn't match, the request will fail with an error. Specifying a DataType which is not a known type (beginning with "com.google.") will create a DataSource with a *custom data type*. Custom data types are only readable by the application that created them. Custom data types are *deprecated*; use standard data types instead. In addition to the data source fields included in the data source ID, the developer project number that is authenticated when creating the data source is included. This developer project number is obfuscated when read by any other developer reading public data types. */
 export const createUsersDataSources: API.OperationMethod<
@@ -800,7 +876,7 @@ export const createUsersDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersDataSourcesRequest,
   output: CreateUsersDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersDataSourcesDatasetsRequest {
@@ -831,7 +907,12 @@ export const DeleteUsersDataSourcesDatasetsResponse: Schema.Schema<DeleteUsersDa
     {},
   ) as any as Schema.Schema<DeleteUsersDataSourcesDatasetsResponse>;
 
-export type DeleteUsersDataSourcesDatasetsError = DefaultErrors;
+export type DeleteUsersDataSourcesDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted. */
 export const deleteUsersDataSourcesDatasets: API.OperationMethod<
@@ -842,7 +923,7 @@ export const deleteUsersDataSourcesDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersDataSourcesDatasetsRequest,
   output: DeleteUsersDataSourcesDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchUsersDataSourcesDatasetsRequest {
@@ -875,7 +956,12 @@ export type PatchUsersDataSourcesDatasetsResponse = Dataset;
 export const PatchUsersDataSourcesDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type PatchUsersDataSourcesDatasetsError = DefaultErrors;
+export type PatchUsersDataSourcesDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds data points to a dataset. The dataset need not be previously created. All points within the given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong to more than one dataset. This method does not use patch semantics: the data points provided are merely inserted, with no existing data replaced. */
 export const patchUsersDataSourcesDatasets: API.OperationMethod<
@@ -886,7 +972,7 @@ export const patchUsersDataSourcesDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersDataSourcesDatasetsRequest,
   output: PatchUsersDataSourcesDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersDataSourcesDatasetsRequest {
@@ -921,7 +1007,10 @@ export type GetUsersDataSourcesDatasetsResponse = Dataset;
 export const GetUsersDataSourcesDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type GetUsersDataSourcesDatasetsError = DefaultErrors;
+export type GetUsersDataSourcesDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time. */
 export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
@@ -932,7 +1021,7 @@ export const getUsersDataSourcesDatasets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetUsersDataSourcesDatasetsRequest,
   output: GetUsersDataSourcesDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -969,7 +1058,10 @@ export type ListUsersDataSourcesDataPointChangesResponse =
 export const ListUsersDataSourcesDataPointChangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataPointChangesResponse;
 
-export type ListUsersDataSourcesDataPointChangesError = DefaultErrors;
+export type ListUsersDataSourcesDataPointChangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Queries for user's data point changes for a particular data source. */
 export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
@@ -980,7 +1072,7 @@ export const listUsersDataSourcesDataPointChanges: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersDataSourcesDataPointChangesRequest,
   output: ListUsersDataSourcesDataPointChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

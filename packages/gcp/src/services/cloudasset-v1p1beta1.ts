@@ -894,6 +894,31 @@ export const AnalyzeIamPolicyLongrunningMetadata =
   }).annotate({ identifier: "AnalyzeIamPolicyLongrunningMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -931,7 +956,7 @@ export type SearchAllResourcesResponse_Op = SearchAllResourcesResponse;
 export const SearchAllResourcesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchAllResourcesResponse;
 
-export type SearchAllResourcesError = DefaultErrors;
+export type SearchAllResourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches all the resources within a given accessible Resource Manager scope (project/folder/organization). This RPC gives callers especially administrators the ability to search all the resources within a scope, even if they don't have `.get` permission of all the resources. Callers should have `cloudasset.assets.searchAllResources` permission on the requested scope, otherwise the request will be rejected. */
 export const searchAllResources: API.PaginatedOperationMethod<
@@ -942,7 +967,7 @@ export const searchAllResources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAllResourcesRequest,
   output: SearchAllResourcesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -975,7 +1000,7 @@ export type SearchAllIamPoliciesResponse_Op = SearchAllIamPoliciesResponse;
 export const SearchAllIamPoliciesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchAllIamPoliciesResponse;
 
-export type SearchAllIamPoliciesError = DefaultErrors;
+export type SearchAllIamPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches all the IAM policies within a given accessible Resource Manager scope (project/folder/organization). This RPC gives callers especially administrators the ability to search all the IAM policies within a scope, even if they don't have `.getIamPolicy` permission of all the IAM policies. Callers should have `cloudasset.assets.searchAllIamPolicies` permission on the requested scope, otherwise the request will be rejected. */
 export const searchAllIamPolicies: API.PaginatedOperationMethod<
@@ -986,7 +1011,7 @@ export const searchAllIamPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAllIamPoliciesRequest,
   output: SearchAllIamPoliciesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

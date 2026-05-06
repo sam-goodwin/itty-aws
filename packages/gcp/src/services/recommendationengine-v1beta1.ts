@@ -1073,6 +1073,52 @@ export const GoogleCloudRecommendationengineV1beta1ListUserEventsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1102,7 +1148,12 @@ export type PatchProjectsLocationsCatalogsResponse =
 export const PatchProjectsLocationsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1Catalog;
 
-export type PatchProjectsLocationsCatalogsError = DefaultErrors;
+export type PatchProjectsLocationsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the catalog configuration. */
 export const patchProjectsLocationsCatalogs: API.OperationMethod<
@@ -1113,7 +1164,7 @@ export const patchProjectsLocationsCatalogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCatalogsRequest,
   output: PatchProjectsLocationsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCatalogsRequest {
@@ -1140,7 +1191,10 @@ export type ListProjectsLocationsCatalogsResponse =
 export const ListProjectsLocationsCatalogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1ListCatalogsResponse;
 
-export type ListProjectsLocationsCatalogsError = DefaultErrors;
+export type ListProjectsLocationsCatalogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the catalog configurations associated with the project. */
 export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
@@ -1151,7 +1205,7 @@ export const listProjectsLocationsCatalogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsRequest,
   output: ListProjectsLocationsCatalogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1190,7 +1244,10 @@ export type ListProjectsLocationsCatalogsOperationsResponse =
 export const ListProjectsLocationsCatalogsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsCatalogsOperationsError = DefaultErrors;
+export type ListProjectsLocationsCatalogsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMethod<
@@ -1201,7 +1258,7 @@ export const listProjectsLocationsCatalogsOperations: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsOperationsRequest,
   output: ListProjectsLocationsCatalogsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1226,7 +1283,10 @@ export type GetProjectsLocationsCatalogsOperationsResponse =
 export const GetProjectsLocationsCatalogsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsCatalogsOperationsError = DefaultErrors;
+export type GetProjectsLocationsCatalogsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCatalogsOperations: API.OperationMethod<
@@ -1237,7 +1297,7 @@ export const getProjectsLocationsCatalogsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsOperationsRequest,
   output: GetProjectsLocationsCatalogsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCatalogsCatalogItemsRequest {
@@ -1267,7 +1327,12 @@ export type CreateProjectsLocationsCatalogsCatalogItemsResponse =
 export const CreateProjectsLocationsCatalogsCatalogItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1CatalogItem;
 
-export type CreateProjectsLocationsCatalogsCatalogItemsError = DefaultErrors;
+export type CreateProjectsLocationsCatalogsCatalogItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a catalog item. */
 export const createProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
@@ -1278,7 +1343,7 @@ export const createProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCatalogsCatalogItemsRequest,
   output: CreateProjectsLocationsCatalogsCatalogItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCatalogsCatalogItemsRequest {
@@ -1299,7 +1364,10 @@ export type GetProjectsLocationsCatalogsCatalogItemsResponse =
 export const GetProjectsLocationsCatalogsCatalogItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1CatalogItem;
 
-export type GetProjectsLocationsCatalogsCatalogItemsError = DefaultErrors;
+export type GetProjectsLocationsCatalogsCatalogItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a specific catalog item. */
 export const getProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
@@ -1310,7 +1378,7 @@ export const getProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsCatalogItemsRequest,
   output: GetProjectsLocationsCatalogsCatalogItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportProjectsLocationsCatalogsCatalogItemsRequest {
@@ -1340,7 +1408,12 @@ export type ImportProjectsLocationsCatalogsCatalogItemsResponse =
 export const ImportProjectsLocationsCatalogsCatalogItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsCatalogsCatalogItemsError = DefaultErrors;
+export type ImportProjectsLocationsCatalogsCatalogItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of multiple catalog items. Request processing may be synchronous. No partial updating supported. Non-existing items will be created. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully updated. */
 export const importProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
@@ -1351,7 +1424,7 @@ export const importProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsCatalogsCatalogItemsRequest,
   output: ImportProjectsLocationsCatalogsCatalogItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCatalogsCatalogItemsRequest {
@@ -1380,7 +1453,12 @@ export type PatchProjectsLocationsCatalogsCatalogItemsResponse =
 export const PatchProjectsLocationsCatalogsCatalogItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1CatalogItem;
 
-export type PatchProjectsLocationsCatalogsCatalogItemsError = DefaultErrors;
+export type PatchProjectsLocationsCatalogsCatalogItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a catalog item. Partial updating is supported. Non-existing items will be created. */
 export const patchProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
@@ -1391,7 +1469,7 @@ export const patchProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCatalogsCatalogItemsRequest,
   output: PatchProjectsLocationsCatalogsCatalogItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCatalogsCatalogItemsRequest {
@@ -1421,7 +1499,10 @@ export type ListProjectsLocationsCatalogsCatalogItemsResponse =
 export const ListProjectsLocationsCatalogsCatalogItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse;
 
-export type ListProjectsLocationsCatalogsCatalogItemsError = DefaultErrors;
+export type ListProjectsLocationsCatalogsCatalogItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of catalog items. */
 export const listProjectsLocationsCatalogsCatalogItems: API.PaginatedOperationMethod<
@@ -1432,7 +1513,7 @@ export const listProjectsLocationsCatalogsCatalogItems: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsCatalogItemsRequest,
   output: ListProjectsLocationsCatalogsCatalogItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1457,7 +1538,12 @@ export type DeleteProjectsLocationsCatalogsCatalogItemsResponse =
 export const DeleteProjectsLocationsCatalogsCatalogItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsCatalogsCatalogItemsError = DefaultErrors;
+export type DeleteProjectsLocationsCatalogsCatalogItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a catalog item. */
 export const deleteProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
@@ -1468,7 +1554,7 @@ export const deleteProjectsLocationsCatalogsCatalogItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCatalogsCatalogItemsRequest,
   output: DeleteProjectsLocationsCatalogsCatalogItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PredictProjectsLocationsCatalogsEventStoresPlacementsRequest {
@@ -1494,7 +1580,11 @@ export const PredictProjectsLocationsCatalogsEventStoresPlacementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1PredictResponse;
 
 export type PredictProjectsLocationsCatalogsEventStoresPlacementsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes a recommendation prediction. If using API Key based authentication, the API Key must be registered using the PredictionApiKeyRegistry service. [Learn more](https://cloud.google.com/recommendations-ai/docs/setting-up#register-key). */
 export const predictProjectsLocationsCatalogsEventStoresPlacements: API.OperationMethod<
@@ -1505,7 +1595,7 @@ export const predictProjectsLocationsCatalogsEventStoresPlacements: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PredictProjectsLocationsCatalogsEventStoresPlacementsRequest,
   output: PredictProjectsLocationsCatalogsEventStoresPlacementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest {
@@ -1536,7 +1626,9 @@ export const ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse;
 
 export type ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the registered apiKeys for use with predict method. */
 export const listProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.PaginatedOperationMethod<
@@ -1549,7 +1641,7 @@ export const listProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistratio
     ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest,
   output:
     ListProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1575,7 +1667,11 @@ export const DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unregister an apiKey from using for predict method. */
 export const deleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.OperationMethod<
@@ -1588,7 +1684,7 @@ export const deleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
     DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest,
   output:
     DeleteProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest {
@@ -1619,7 +1715,11 @@ export const CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration;
 
 export type CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Register an API key for use with predict method. */
 export const createProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrations: API.OperationMethod<
@@ -1632,7 +1732,7 @@ export const createProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrat
     CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsRequest,
   output:
     CreateProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest {
@@ -1663,7 +1763,11 @@ export const PurgeProjectsLocationsCatalogsEventStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCatalogsEventStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first. */
 export const purgeProjectsLocationsCatalogsEventStoresUserEvents: API.OperationMethod<
@@ -1674,7 +1778,7 @@ export const purgeProjectsLocationsCatalogsEventStoresUserEvents: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsCatalogsEventStoresUserEventsRequest,
   output: PurgeProjectsLocationsCatalogsEventStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCatalogsEventStoresUserEventsRequest {
@@ -1705,7 +1809,9 @@ export const ListProjectsLocationsCatalogsEventStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1ListUserEventsResponse;
 
 export type ListProjectsLocationsCatalogsEventStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of user events within a time range, with potential filtering. The method does not list unjoined user events. Unjoined user event definition: when a user event is ingested from Recommendations AI User Event APIs, the catalog item included in the user event is connected with the current catalog. If a catalog item of the ingested event is not in the current catalog, it could lead to degraded model quality. This is called an unjoined event. */
 export const listProjectsLocationsCatalogsEventStoresUserEvents: API.PaginatedOperationMethod<
@@ -1716,7 +1822,7 @@ export const listProjectsLocationsCatalogsEventStoresUserEvents: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsEventStoresUserEventsRequest,
   output: ListProjectsLocationsCatalogsEventStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1751,7 +1857,9 @@ export const CollectProjectsLocationsCatalogsEventStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
 export type CollectProjectsLocationsCatalogsEventStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a 3rd party domain. This method is used only by the Recommendations AI JavaScript pixel. Users should not call this method directly. */
 export const collectProjectsLocationsCatalogsEventStoresUserEvents: API.OperationMethod<
@@ -1762,7 +1870,7 @@ export const collectProjectsLocationsCatalogsEventStoresUserEvents: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CollectProjectsLocationsCatalogsEventStoresUserEventsRequest,
   output: CollectProjectsLocationsCatalogsEventStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WriteProjectsLocationsCatalogsEventStoresUserEventsRequest {
@@ -1793,7 +1901,11 @@ export const WriteProjectsLocationsCatalogsEventStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudRecommendationengineV1beta1UserEvent;
 
 export type WriteProjectsLocationsCatalogsEventStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Writes a single user event. */
 export const writeProjectsLocationsCatalogsEventStoresUserEvents: API.OperationMethod<
@@ -1804,7 +1916,7 @@ export const writeProjectsLocationsCatalogsEventStoresUserEvents: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteProjectsLocationsCatalogsEventStoresUserEventsRequest,
   output: WriteProjectsLocationsCatalogsEventStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsCatalogsEventStoresUserEventsRequest {
@@ -1835,7 +1947,11 @@ export const ImportProjectsLocationsCatalogsEventStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCatalogsEventStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of User events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata. */
 export const importProjectsLocationsCatalogsEventStoresUserEvents: API.OperationMethod<
@@ -1846,7 +1962,7 @@ export const importProjectsLocationsCatalogsEventStoresUserEvents: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsCatalogsEventStoresUserEventsRequest,
   output: ImportProjectsLocationsCatalogsEventStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest {
@@ -1877,7 +1993,11 @@ export const RejoinProjectsLocationsCatalogsEventStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type RejoinProjectsLocationsCatalogsEventStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Triggers a user event rejoin operation with latest catalog data. Events will not be annotated with detailed catalog information if catalog item is missing at the time the user event is ingested, and these events are stored as unjoined events with a limited usage on training and serving. This API can be used to trigger a 'join' operation on specified events with latest version of catalog items. It can also be used to correct events joined with wrong catalog items. */
 export const rejoinProjectsLocationsCatalogsEventStoresUserEvents: API.OperationMethod<
@@ -1888,7 +2008,7 @@ export const rejoinProjectsLocationsCatalogsEventStoresUserEvents: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejoinProjectsLocationsCatalogsEventStoresUserEventsRequest,
   output: RejoinProjectsLocationsCatalogsEventStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCatalogsEventStoresOperationsRequest {
@@ -1924,7 +2044,9 @@ export const ListProjectsLocationsCatalogsEventStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCatalogsEventStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCatalogsEventStoresOperations: API.PaginatedOperationMethod<
@@ -1935,7 +2057,7 @@ export const listProjectsLocationsCatalogsEventStoresOperations: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCatalogsEventStoresOperationsRequest,
   output: ListProjectsLocationsCatalogsEventStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1961,7 +2083,9 @@ export const GetProjectsLocationsCatalogsEventStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCatalogsEventStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCatalogsEventStoresOperations: API.OperationMethod<
@@ -1972,5 +2096,5 @@ export const getProjectsLocationsCatalogsEventStoresOperations: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCatalogsEventStoresOperationsRequest,
   output: GetProjectsLocationsCatalogsEventStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

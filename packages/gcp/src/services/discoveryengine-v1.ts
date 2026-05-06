@@ -20565,6 +20565,52 @@ export const GoogleCloudDiscoveryengineV1alphaBatchUpdateUserLicensesResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -20598,7 +20644,11 @@ export const DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsR
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1DistributeLicenseConfigResponse;
 
 export type DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Distributes a LicenseConfig from billing account level to project level. */
 export const distributeLicenseConfigBillingAccountsBillingAccountLicenseConfigs: API.OperationMethod<
@@ -20611,7 +20661,7 @@ export const distributeLicenseConfigBillingAccountsBillingAccountLicenseConfigs:
     DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest,
   output:
     DistributeLicenseConfigBillingAccountsBillingAccountLicenseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest {
@@ -20644,7 +20694,11 @@ export const RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1RetractLicenseConfigResponse;
 
 export type RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This method is called from the billing account side to retract the LicenseConfig from the given project back to the billing account. */
 export const retractLicenseConfigBillingAccountsBillingAccountLicenseConfigs: API.OperationMethod<
@@ -20656,7 +20710,7 @@ export const retractLicenseConfigBillingAccountsBillingAccountLicenseConfigs: AP
   input: RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsRequest,
   output:
     RetractLicenseConfigBillingAccountsBillingAccountLicenseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvisionProjectsRequest {
@@ -20681,7 +20735,12 @@ export type ProvisionProjectsResponse = GoogleLongrunningOperation;
 export const ProvisionProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ProvisionProjectsError = DefaultErrors;
+export type ProvisionProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provisions the project resource. During the process, related systems will get prepared and initialized. Caller must read the [Terms for data use](https://cloud.google.com/retail/data-use-terms), and optionally specify in request to provide consent to that service terms. */
 export const provisionProjects: API.OperationMethod<
@@ -20692,7 +20751,7 @@ export const provisionProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionProjectsRequest,
   output: ProvisionProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetUpDataConnectorV2ProjectsLocationsRequest {
@@ -20732,7 +20791,12 @@ export type SetUpDataConnectorV2ProjectsLocationsResponse =
 export const SetUpDataConnectorV2ProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type SetUpDataConnectorV2ProjectsLocationsError = DefaultErrors;
+export type SetUpDataConnectorV2ProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Collection and sets up the DataConnector for it. To stop a DataConnector after setup, use the CollectionService.DeleteCollection method. */
 export const setUpDataConnectorV2ProjectsLocations: API.OperationMethod<
@@ -20743,7 +20807,7 @@ export const setUpDataConnectorV2ProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUpDataConnectorV2ProjectsLocationsRequest,
   output: SetUpDataConnectorV2ProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAclConfigProjectsLocationsRequest {
@@ -20764,7 +20828,10 @@ export type GetAclConfigProjectsLocationsResponse =
 export const GetAclConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AclConfig;
 
-export type GetAclConfigProjectsLocationsError = DefaultErrors;
+export type GetAclConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the AclConfig. */
 export const getAclConfigProjectsLocations: API.OperationMethod<
@@ -20775,7 +20842,7 @@ export const getAclConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAclConfigProjectsLocationsRequest,
   output: GetAclConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateCmekConfigProjectsLocationsRequest {
@@ -20804,7 +20871,12 @@ export type UpdateCmekConfigProjectsLocationsResponse =
 export const UpdateCmekConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type UpdateCmekConfigProjectsLocationsError = DefaultErrors;
+export type UpdateCmekConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provisions a CMEK key for use in a location of a customer's project. This method will also conduct location validation on the provided cmekConfig to make sure the key is valid and can be used in the selected location. */
 export const updateCmekConfigProjectsLocations: API.OperationMethod<
@@ -20815,7 +20887,7 @@ export const updateCmekConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCmekConfigProjectsLocationsRequest,
   output: UpdateCmekConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAclConfigProjectsLocationsRequest {
@@ -20841,7 +20913,12 @@ export type UpdateAclConfigProjectsLocationsResponse =
 export const UpdateAclConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AclConfig;
 
-export type UpdateAclConfigProjectsLocationsError = DefaultErrors;
+export type UpdateAclConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Default ACL configuration for use in a location of a customer's project. Updates will only reflect to new data stores. Existing data stores will still use the old value. */
 export const updateAclConfigProjectsLocations: API.OperationMethod<
@@ -20852,7 +20929,7 @@ export const updateAclConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAclConfigProjectsLocationsRequest,
   output: UpdateAclConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCmekConfigProjectsLocationsRequest {
@@ -20873,7 +20950,10 @@ export type GetCmekConfigProjectsLocationsResponse =
 export const GetCmekConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1CmekConfig;
 
-export type GetCmekConfigProjectsLocationsError = DefaultErrors;
+export type GetCmekConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the CmekConfig. */
 export const getCmekConfigProjectsLocations: API.OperationMethod<
@@ -20884,7 +20964,7 @@ export const getCmekConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCmekConfigProjectsLocationsRequest,
   output: GetCmekConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetUpDataConnectorProjectsLocationsRequest {
@@ -20914,7 +20994,12 @@ export type SetUpDataConnectorProjectsLocationsResponse =
 export const SetUpDataConnectorProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type SetUpDataConnectorProjectsLocationsError = DefaultErrors;
+export type SetUpDataConnectorProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Collection and sets up the DataConnector for it. To stop a DataConnector after setup, use the CollectionService.DeleteCollection method. */
 export const setUpDataConnectorProjectsLocations: API.OperationMethod<
@@ -20925,7 +21010,7 @@ export const setUpDataConnectorProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUpDataConnectorProjectsLocationsRequest,
   output: SetUpDataConnectorProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsUserEventsRequest {
@@ -20955,7 +21040,12 @@ export type ImportProjectsLocationsUserEventsResponse =
 export const ImportProjectsLocationsUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsUserEventsError = DefaultErrors;
+export type ImportProjectsLocationsUserEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of user events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata. */
 export const importProjectsLocationsUserEvents: API.OperationMethod<
@@ -20966,7 +21056,7 @@ export const importProjectsLocationsUserEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsUserEventsRequest,
   output: ImportProjectsLocationsUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WriteProjectsLocationsUserEventsRequest {
@@ -20999,7 +21089,12 @@ export type WriteProjectsLocationsUserEventsResponse =
 export const WriteProjectsLocationsUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1UserEvent;
 
-export type WriteProjectsLocationsUserEventsError = DefaultErrors;
+export type WriteProjectsLocationsUserEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Writes a single user event. */
 export const writeProjectsLocationsUserEvents: API.OperationMethod<
@@ -21010,7 +21105,7 @@ export const writeProjectsLocationsUserEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteProjectsLocationsUserEventsRequest,
   output: WriteProjectsLocationsUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CollectProjectsLocationsUserEventsRequest {
@@ -21039,7 +21134,10 @@ export type CollectProjectsLocationsUserEventsResponse = GoogleApiHttpBody;
 export const CollectProjectsLocationsUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type CollectProjectsLocationsUserEventsError = DefaultErrors;
+export type CollectProjectsLocationsUserEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript pixel and Google Tag Manager. Users should not call this method directly. */
 export const collectProjectsLocationsUserEvents: API.OperationMethod<
@@ -21050,7 +21148,7 @@ export const collectProjectsLocationsUserEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CollectProjectsLocationsUserEventsRequest,
   output: CollectProjectsLocationsUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -21070,7 +21168,10 @@ export type GetProjectsLocationsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -21081,7 +21182,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -21116,7 +21217,10 @@ export type ListProjectsLocationsOperationsResponse =
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -21127,7 +21231,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -21161,7 +21265,12 @@ export type CheckProjectsLocationsGroundingConfigsResponse =
 export const CheckProjectsLocationsGroundingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1CheckGroundingResponse;
 
-export type CheckProjectsLocationsGroundingConfigsError = DefaultErrors;
+export type CheckProjectsLocationsGroundingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a grounding check. */
 export const checkProjectsLocationsGroundingConfigs: API.OperationMethod<
@@ -21172,7 +21281,7 @@ export const checkProjectsLocationsGroundingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckProjectsLocationsGroundingConfigsRequest,
   output: CheckProjectsLocationsGroundingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCmekConfigsRequest {
@@ -21193,7 +21302,10 @@ export type ListProjectsLocationsCmekConfigsResponse =
 export const ListProjectsLocationsCmekConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListCmekConfigsResponse;
 
-export type ListProjectsLocationsCmekConfigsError = DefaultErrors;
+export type ListProjectsLocationsCmekConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the CmekConfigs with the project. */
 export const listProjectsLocationsCmekConfigs: API.OperationMethod<
@@ -21204,7 +21316,7 @@ export const listProjectsLocationsCmekConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsCmekConfigsRequest,
   output: ListProjectsLocationsCmekConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsCmekConfigsRequest {
@@ -21225,7 +21337,12 @@ export type DeleteProjectsLocationsCmekConfigsResponse =
 export const DeleteProjectsLocationsCmekConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsCmekConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsCmekConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** De-provisions a CmekConfig. */
 export const deleteProjectsLocationsCmekConfigs: API.OperationMethod<
@@ -21236,7 +21353,7 @@ export const deleteProjectsLocationsCmekConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCmekConfigsRequest,
   output: DeleteProjectsLocationsCmekConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCmekConfigsRequest {
@@ -21257,7 +21374,10 @@ export type GetProjectsLocationsCmekConfigsResponse =
 export const GetProjectsLocationsCmekConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1CmekConfig;
 
-export type GetProjectsLocationsCmekConfigsError = DefaultErrors;
+export type GetProjectsLocationsCmekConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the CmekConfig. */
 export const getProjectsLocationsCmekConfigs: API.OperationMethod<
@@ -21268,7 +21388,7 @@ export const getProjectsLocationsCmekConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCmekConfigsRequest,
   output: GetProjectsLocationsCmekConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsCmekConfigsRequest {
@@ -21297,7 +21417,12 @@ export type PatchProjectsLocationsCmekConfigsResponse =
 export const PatchProjectsLocationsCmekConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsCmekConfigsError = DefaultErrors;
+export type PatchProjectsLocationsCmekConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Provisions a CMEK key for use in a location of a customer's project. This method will also conduct location validation on the provided cmekConfig to make sure the key is valid and can be used in the selected location. */
 export const patchProjectsLocationsCmekConfigs: API.OperationMethod<
@@ -21308,7 +21433,7 @@ export const patchProjectsLocationsCmekConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCmekConfigsRequest,
   output: PatchProjectsLocationsCmekConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsPodcastsOperationsRequest {
@@ -21329,7 +21454,10 @@ export type GetProjectsLocationsPodcastsOperationsResponse =
 export const GetProjectsLocationsPodcastsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsPodcastsOperationsError = DefaultErrors;
+export type GetProjectsLocationsPodcastsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsPodcastsOperations: API.OperationMethod<
@@ -21340,7 +21468,7 @@ export const getProjectsLocationsPodcastsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPodcastsOperationsRequest,
   output: GetProjectsLocationsPodcastsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RankProjectsLocationsRankingConfigsRequest {
@@ -21366,7 +21494,12 @@ export type RankProjectsLocationsRankingConfigsResponse =
 export const RankProjectsLocationsRankingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1RankResponse;
 
-export type RankProjectsLocationsRankingConfigsError = DefaultErrors;
+export type RankProjectsLocationsRankingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Ranks a list of text records based on the given input query. */
 export const rankProjectsLocationsRankingConfigs: API.OperationMethod<
@@ -21377,7 +21510,7 @@ export const rankProjectsLocationsRankingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RankProjectsLocationsRankingConfigsRequest,
   output: RankProjectsLocationsRankingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresRequest {
@@ -21407,7 +21540,10 @@ export type ListProjectsLocationsDataStoresResponse =
 export const ListProjectsLocationsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListDataStoresResponse;
 
-export type ListProjectsLocationsDataStoresError = DefaultErrors;
+export type ListProjectsLocationsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the DataStores associated with the project. */
 export const listProjectsLocationsDataStores: API.PaginatedOperationMethod<
@@ -21418,7 +21554,7 @@ export const listProjectsLocationsDataStores: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresRequest,
   output: ListProjectsLocationsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -21473,7 +21609,12 @@ export type CreateProjectsLocationsDataStoresResponse =
 export const CreateProjectsLocationsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsDataStoresError = DefaultErrors;
+export type CreateProjectsLocationsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately. */
 export const createProjectsLocationsDataStores: API.OperationMethod<
@@ -21484,7 +21625,7 @@ export const createProjectsLocationsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresRequest,
   output: CreateProjectsLocationsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDataStoresRequest {
@@ -21505,7 +21646,12 @@ export type DeleteProjectsLocationsDataStoresResponse =
 export const DeleteProjectsLocationsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsDataStoresError = DefaultErrors;
+export type DeleteProjectsLocationsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a DataStore. */
 export const deleteProjectsLocationsDataStores: API.OperationMethod<
@@ -21516,7 +21662,7 @@ export const deleteProjectsLocationsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresRequest,
   output: DeleteProjectsLocationsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteQueryProjectsLocationsDataStoresRequest {
@@ -21553,7 +21699,10 @@ export type CompleteQueryProjectsLocationsDataStoresResponse =
 export const CompleteQueryProjectsLocationsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1CompleteQueryResponse;
 
-export type CompleteQueryProjectsLocationsDataStoresError = DefaultErrors;
+export type CompleteQueryProjectsLocationsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Completes the specified user input with keyword suggestions. */
 export const completeQueryProjectsLocationsDataStores: API.OperationMethod<
@@ -21564,7 +21713,7 @@ export const completeQueryProjectsLocationsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteQueryProjectsLocationsDataStoresRequest,
   output: CompleteQueryProjectsLocationsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsDataStoresRequest {
@@ -21585,7 +21734,10 @@ export type GetProjectsLocationsDataStoresResponse =
 export const GetProjectsLocationsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1DataStore;
 
-export type GetProjectsLocationsDataStoresError = DefaultErrors;
+export type GetProjectsLocationsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DataStore. */
 export const getProjectsLocationsDataStores: API.OperationMethod<
@@ -21596,7 +21748,7 @@ export const getProjectsLocationsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresRequest,
   output: GetProjectsLocationsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSiteSearchEngineProjectsLocationsDataStoresRequest {
@@ -21617,7 +21769,10 @@ export type GetSiteSearchEngineProjectsLocationsDataStoresResponse =
 export const GetSiteSearchEngineProjectsLocationsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SiteSearchEngine;
 
-export type GetSiteSearchEngineProjectsLocationsDataStoresError = DefaultErrors;
+export type GetSiteSearchEngineProjectsLocationsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the SiteSearchEngine. */
 export const getSiteSearchEngineProjectsLocationsDataStores: API.OperationMethod<
@@ -21628,7 +21783,7 @@ export const getSiteSearchEngineProjectsLocationsDataStores: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSiteSearchEngineProjectsLocationsDataStoresRequest,
   output: GetSiteSearchEngineProjectsLocationsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsDataStoresRequest {
@@ -21657,7 +21812,12 @@ export type PatchProjectsLocationsDataStoresResponse =
 export const PatchProjectsLocationsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1DataStore;
 
-export type PatchProjectsLocationsDataStoresError = DefaultErrors;
+export type PatchProjectsLocationsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a DataStore */
 export const patchProjectsLocationsDataStores: API.OperationMethod<
@@ -21668,7 +21828,7 @@ export const patchProjectsLocationsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresRequest,
   output: PatchProjectsLocationsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresSchemasRequest {
@@ -21695,7 +21855,10 @@ export type ListProjectsLocationsDataStoresSchemasResponse =
 export const ListProjectsLocationsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListSchemasResponse;
 
-export type ListProjectsLocationsDataStoresSchemasError = DefaultErrors;
+export type ListProjectsLocationsDataStoresSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of Schemas. */
 export const listProjectsLocationsDataStoresSchemas: API.PaginatedOperationMethod<
@@ -21706,7 +21869,7 @@ export const listProjectsLocationsDataStoresSchemas: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresSchemasRequest,
   output: ListProjectsLocationsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -21739,7 +21902,12 @@ export type CreateProjectsLocationsDataStoresSchemasResponse =
 export const CreateProjectsLocationsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsDataStoresSchemasError = DefaultErrors;
+export type CreateProjectsLocationsDataStoresSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Schema. */
 export const createProjectsLocationsDataStoresSchemas: API.OperationMethod<
@@ -21750,7 +21918,7 @@ export const createProjectsLocationsDataStoresSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresSchemasRequest,
   output: CreateProjectsLocationsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataStoresSchemasRequest {
@@ -21771,7 +21939,10 @@ export type GetProjectsLocationsDataStoresSchemasResponse =
 export const GetProjectsLocationsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Schema;
 
-export type GetProjectsLocationsDataStoresSchemasError = DefaultErrors;
+export type GetProjectsLocationsDataStoresSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Schema. */
 export const getProjectsLocationsDataStoresSchemas: API.OperationMethod<
@@ -21782,7 +21953,7 @@ export const getProjectsLocationsDataStoresSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresSchemasRequest,
   output: GetProjectsLocationsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDataStoresSchemasRequest {
@@ -21803,7 +21974,12 @@ export type DeleteProjectsLocationsDataStoresSchemasResponse =
 export const DeleteProjectsLocationsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsDataStoresSchemasError = DefaultErrors;
+export type DeleteProjectsLocationsDataStoresSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Schema. */
 export const deleteProjectsLocationsDataStoresSchemas: API.OperationMethod<
@@ -21814,7 +21990,7 @@ export const deleteProjectsLocationsDataStoresSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresSchemasRequest,
   output: DeleteProjectsLocationsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDataStoresSchemasRequest {
@@ -21845,7 +22021,12 @@ export type PatchProjectsLocationsDataStoresSchemasResponse =
 export const PatchProjectsLocationsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PatchProjectsLocationsDataStoresSchemasError = DefaultErrors;
+export type PatchProjectsLocationsDataStoresSchemasError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Schema. */
 export const patchProjectsLocationsDataStoresSchemas: API.OperationMethod<
@@ -21856,7 +22037,7 @@ export const patchProjectsLocationsDataStoresSchemas: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresSchemasRequest,
   output: PatchProjectsLocationsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest {
@@ -21887,7 +22068,11 @@ export const CompleteQueryProjectsLocationsDataStoresCompletionConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsDataStoresCompletionConfigError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the user input with advanced keyword suggestions. */
 export const completeQueryProjectsLocationsDataStoresCompletionConfig: API.OperationMethod<
@@ -21898,7 +22083,7 @@ export const completeQueryProjectsLocationsDataStoresCompletionConfig: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteQueryProjectsLocationsDataStoresCompletionConfigRequest,
   output: CompleteQueryProjectsLocationsDataStoresCompletionConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CollectProjectsLocationsDataStoresUserEventsRequest {
@@ -21928,7 +22113,10 @@ export type CollectProjectsLocationsDataStoresUserEventsResponse =
 export const CollectProjectsLocationsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type CollectProjectsLocationsDataStoresUserEventsError = DefaultErrors;
+export type CollectProjectsLocationsDataStoresUserEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript pixel and Google Tag Manager. Users should not call this method directly. */
 export const collectProjectsLocationsDataStoresUserEvents: API.OperationMethod<
@@ -21939,7 +22127,7 @@ export const collectProjectsLocationsDataStoresUserEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CollectProjectsLocationsDataStoresUserEventsRequest,
   output: CollectProjectsLocationsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WriteProjectsLocationsDataStoresUserEventsRequest {
@@ -21972,7 +22160,12 @@ export type WriteProjectsLocationsDataStoresUserEventsResponse =
 export const WriteProjectsLocationsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1UserEvent;
 
-export type WriteProjectsLocationsDataStoresUserEventsError = DefaultErrors;
+export type WriteProjectsLocationsDataStoresUserEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Writes a single user event. */
 export const writeProjectsLocationsDataStoresUserEvents: API.OperationMethod<
@@ -21983,7 +22176,7 @@ export const writeProjectsLocationsDataStoresUserEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteProjectsLocationsDataStoresUserEventsRequest,
   output: WriteProjectsLocationsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsDataStoresUserEventsRequest {
@@ -22013,7 +22206,12 @@ export type ImportProjectsLocationsDataStoresUserEventsResponse =
 export const ImportProjectsLocationsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ImportProjectsLocationsDataStoresUserEventsError = DefaultErrors;
+export type ImportProjectsLocationsDataStoresUserEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of user events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata. */
 export const importProjectsLocationsDataStoresUserEvents: API.OperationMethod<
@@ -22024,7 +22222,7 @@ export const importProjectsLocationsDataStoresUserEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDataStoresUserEventsRequest,
   output: ImportProjectsLocationsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsDataStoresUserEventsRequest {
@@ -22054,7 +22252,12 @@ export type PurgeProjectsLocationsDataStoresUserEventsResponse =
 export const PurgeProjectsLocationsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type PurgeProjectsLocationsDataStoresUserEventsError = DefaultErrors;
+export type PurgeProjectsLocationsDataStoresUserEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first. */
 export const purgeProjectsLocationsDataStoresUserEvents: API.OperationMethod<
@@ -22065,7 +22268,7 @@ export const purgeProjectsLocationsDataStoresUserEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsDataStoresUserEventsRequest,
   output: PurgeProjectsLocationsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresModelsOperationsRequest {
@@ -22101,7 +22304,9 @@ export const ListProjectsLocationsDataStoresModelsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsDataStoresModelsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsDataStoresModelsOperations: API.PaginatedOperationMethod<
@@ -22112,7 +22317,7 @@ export const listProjectsLocationsDataStoresModelsOperations: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresModelsOperationsRequest,
   output: ListProjectsLocationsDataStoresModelsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -22137,7 +22342,10 @@ export type GetProjectsLocationsDataStoresModelsOperationsResponse =
 export const GetProjectsLocationsDataStoresModelsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsDataStoresModelsOperationsError = DefaultErrors;
+export type GetProjectsLocationsDataStoresModelsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsDataStoresModelsOperations: API.OperationMethod<
@@ -22148,7 +22356,7 @@ export const getProjectsLocationsDataStoresModelsOperations: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresModelsOperationsRequest,
   output: GetProjectsLocationsDataStoresModelsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDataStoresControlsRequest {
@@ -22169,7 +22377,12 @@ export type DeleteProjectsLocationsDataStoresControlsResponse =
 export const DeleteProjectsLocationsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDataStoresControlsError = DefaultErrors;
+export type DeleteProjectsLocationsDataStoresControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsDataStoresControls: API.OperationMethod<
@@ -22180,7 +22393,7 @@ export const deleteProjectsLocationsDataStoresControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresControlsRequest,
   output: DeleteProjectsLocationsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataStoresControlsRequest {
@@ -22201,7 +22414,10 @@ export type GetProjectsLocationsDataStoresControlsResponse =
 export const GetProjectsLocationsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
-export type GetProjectsLocationsDataStoresControlsError = DefaultErrors;
+export type GetProjectsLocationsDataStoresControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Control. */
 export const getProjectsLocationsDataStoresControls: API.OperationMethod<
@@ -22212,7 +22428,7 @@ export const getProjectsLocationsDataStoresControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresControlsRequest,
   output: GetProjectsLocationsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsDataStoresControlsRequest {
@@ -22242,7 +22458,10 @@ export type ListProjectsLocationsDataStoresControlsResponse =
 export const ListProjectsLocationsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListControlsResponse;
 
-export type ListProjectsLocationsDataStoresControlsError = DefaultErrors;
+export type ListProjectsLocationsDataStoresControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Controls by their parent DataStore. */
 export const listProjectsLocationsDataStoresControls: API.PaginatedOperationMethod<
@@ -22253,7 +22472,7 @@ export const listProjectsLocationsDataStoresControls: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresControlsRequest,
   output: ListProjectsLocationsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -22286,7 +22505,12 @@ export type PatchProjectsLocationsDataStoresControlsResponse =
 export const PatchProjectsLocationsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
-export type PatchProjectsLocationsDataStoresControlsError = DefaultErrors;
+export type PatchProjectsLocationsDataStoresControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsDataStoresControls: API.OperationMethod<
@@ -22297,7 +22521,7 @@ export const patchProjectsLocationsDataStoresControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresControlsRequest,
   output: PatchProjectsLocationsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDataStoresControlsRequest {
@@ -22326,7 +22550,12 @@ export type CreateProjectsLocationsDataStoresControlsResponse =
 export const CreateProjectsLocationsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
-export type CreateProjectsLocationsDataStoresControlsError = DefaultErrors;
+export type CreateProjectsLocationsDataStoresControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsDataStoresControls: API.OperationMethod<
@@ -22337,7 +22566,7 @@ export const createProjectsLocationsDataStoresControls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresControlsRequest,
   output: CreateProjectsLocationsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataStoresWidgetConfigsRequest {
@@ -22370,7 +22599,10 @@ export type GetProjectsLocationsDataStoresWidgetConfigsResponse =
 export const GetProjectsLocationsDataStoresWidgetConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1WidgetConfig;
 
-export type GetProjectsLocationsDataStoresWidgetConfigsError = DefaultErrors;
+export type GetProjectsLocationsDataStoresWidgetConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a WidgetConfig. */
 export const getProjectsLocationsDataStoresWidgetConfigs: API.OperationMethod<
@@ -22381,7 +22613,7 @@ export const getProjectsLocationsDataStoresWidgetConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresWidgetConfigsRequest,
   output: GetProjectsLocationsDataStoresWidgetConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsDataStoresWidgetConfigsRequest {
@@ -22410,7 +22642,12 @@ export type PatchProjectsLocationsDataStoresWidgetConfigsResponse =
 export const PatchProjectsLocationsDataStoresWidgetConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1WidgetConfig;
 
-export type PatchProjectsLocationsDataStoresWidgetConfigsError = DefaultErrors;
+export type PatchProjectsLocationsDataStoresWidgetConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a WidgetConfig. */
 export const patchProjectsLocationsDataStoresWidgetConfigs: API.OperationMethod<
@@ -22421,7 +22658,7 @@ export const patchProjectsLocationsDataStoresWidgetConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresWidgetConfigsRequest,
   output: PatchProjectsLocationsDataStoresWidgetConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsLocationsDataStoresServingConfigsRequest {
@@ -22452,7 +22689,11 @@ export const SearchProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SearchResponse;
 
 export type SearchProjectsLocationsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. */
 export const searchProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22463,7 +22704,7 @@ export const searchProjectsLocationsDataStoresServingConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsLocationsDataStoresServingConfigsRequest,
   output: SearchProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataStoresServingConfigsRequest {
@@ -22484,7 +22725,10 @@ export type GetProjectsLocationsDataStoresServingConfigsResponse =
 export const GetProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
-export type GetProjectsLocationsDataStoresServingConfigsError = DefaultErrors;
+export type GetProjectsLocationsDataStoresServingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist. */
 export const getProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22495,7 +22739,7 @@ export const getProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresServingConfigsRequest,
   output: GetProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AnswerProjectsLocationsDataStoresServingConfigsRequest {
@@ -22526,7 +22770,11 @@ export const AnswerProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AnswerQueryResponse;
 
 export type AnswerProjectsLocationsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method. */
 export const answerProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22537,7 +22785,7 @@ export const answerProjectsLocationsDataStoresServingConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnswerProjectsLocationsDataStoresServingConfigsRequest,
   output: AnswerProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamAnswerProjectsLocationsDataStoresServingConfigsRequest {
@@ -22568,7 +22816,11 @@ export const StreamAnswerProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AnswerQueryResponse;
 
 export type StreamAnswerProjectsLocationsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream. */
 export const streamAnswerProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22579,7 +22831,7 @@ export const streamAnswerProjectsLocationsDataStoresServingConfigs: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StreamAnswerProjectsLocationsDataStoresServingConfigsRequest,
   output: StreamAnswerProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDataStoresServingConfigsRequest {
@@ -22608,7 +22860,12 @@ export type PatchProjectsLocationsDataStoresServingConfigsResponse =
 export const PatchProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
-export type PatchProjectsLocationsDataStoresServingConfigsError = DefaultErrors;
+export type PatchProjectsLocationsDataStoresServingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist. */
 export const patchProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22619,7 +22876,7 @@ export const patchProjectsLocationsDataStoresServingConfigs: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresServingConfigsRequest,
   output: PatchProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RecommendProjectsLocationsDataStoresServingConfigsRequest {
@@ -22650,7 +22907,11 @@ export const RecommendProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1RecommendResponse;
 
 export type RecommendProjectsLocationsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes a recommendation, which requires a contextual user event. */
 export const recommendProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22661,7 +22922,7 @@ export const recommendProjectsLocationsDataStoresServingConfigs: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecommendProjectsLocationsDataStoresServingConfigsRequest,
   output: RecommendProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresServingConfigsRequest {
@@ -22688,7 +22949,10 @@ export type ListProjectsLocationsDataStoresServingConfigsResponse =
 export const ListProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListServingConfigsResponse;
 
-export type ListProjectsLocationsDataStoresServingConfigsError = DefaultErrors;
+export type ListProjectsLocationsDataStoresServingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all ServingConfigs linked to this dataStore. */
 export const listProjectsLocationsDataStoresServingConfigs: API.PaginatedOperationMethod<
@@ -22699,7 +22963,7 @@ export const listProjectsLocationsDataStoresServingConfigs: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresServingConfigsRequest,
   output: ListProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -22725,7 +22989,11 @@ export const DeleteProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist. */
 export const deleteProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22736,7 +23004,7 @@ export const deleteProjectsLocationsDataStoresServingConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresServingConfigsRequest,
   output: DeleteProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDataStoresServingConfigsRequest {
@@ -22772,7 +23040,11 @@ export const CreateProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
 export type CreateProjectsLocationsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned. */
 export const createProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22783,7 +23055,7 @@ export const createProjectsLocationsDataStoresServingConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresServingConfigsRequest,
   output: CreateProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchLiteProjectsLocationsDataStoresServingConfigsRequest {
@@ -22814,7 +23086,11 @@ export const SearchLiteProjectsLocationsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SearchResponse;
 
 export type SearchLiteProjectsLocationsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security. */
 export const searchLiteProjectsLocationsDataStoresServingConfigs: API.OperationMethod<
@@ -22825,7 +23101,7 @@ export const searchLiteProjectsLocationsDataStoresServingConfigs: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchLiteProjectsLocationsDataStoresServingConfigsRequest,
   output: SearchLiteProjectsLocationsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDataStoresConversationsRequest {
@@ -22854,7 +23130,12 @@ export type PatchProjectsLocationsDataStoresConversationsResponse =
 export const PatchProjectsLocationsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
-export type PatchProjectsLocationsDataStoresConversationsError = DefaultErrors;
+export type PatchProjectsLocationsDataStoresConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsDataStoresConversations: API.OperationMethod<
@@ -22865,7 +23146,7 @@ export const patchProjectsLocationsDataStoresConversations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresConversationsRequest,
   output: PatchProjectsLocationsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDataStoresConversationsRequest {
@@ -22886,7 +23167,12 @@ export type DeleteProjectsLocationsDataStoresConversationsResponse =
 export const DeleteProjectsLocationsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDataStoresConversationsError = DefaultErrors;
+export type DeleteProjectsLocationsDataStoresConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsDataStoresConversations: API.OperationMethod<
@@ -22897,7 +23183,7 @@ export const deleteProjectsLocationsDataStoresConversations: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresConversationsRequest,
   output: DeleteProjectsLocationsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDataStoresConversationsRequest {
@@ -22927,7 +23213,12 @@ export type CreateProjectsLocationsDataStoresConversationsResponse =
 export const CreateProjectsLocationsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
-export type CreateProjectsLocationsDataStoresConversationsError = DefaultErrors;
+export type CreateProjectsLocationsDataStoresConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsDataStoresConversations: API.OperationMethod<
@@ -22938,7 +23229,7 @@ export const createProjectsLocationsDataStoresConversations: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresConversationsRequest,
   output: CreateProjectsLocationsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConverseProjectsLocationsDataStoresConversationsRequest {
@@ -22965,7 +23256,11 @@ export const ConverseProjectsLocationsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ConverseConversationResponse;
 
 export type ConverseProjectsLocationsDataStoresConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Converses a conversation. */
 export const converseProjectsLocationsDataStoresConversations: API.OperationMethod<
@@ -22976,7 +23271,7 @@ export const converseProjectsLocationsDataStoresConversations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConverseProjectsLocationsDataStoresConversationsRequest,
   output: ConverseProjectsLocationsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresConversationsRequest {
@@ -23009,7 +23304,10 @@ export type ListProjectsLocationsDataStoresConversationsResponse =
 export const ListProjectsLocationsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListConversationsResponse;
 
-export type ListProjectsLocationsDataStoresConversationsError = DefaultErrors;
+export type ListProjectsLocationsDataStoresConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Conversations by their parent DataStore. */
 export const listProjectsLocationsDataStoresConversations: API.PaginatedOperationMethod<
@@ -23020,7 +23318,7 @@ export const listProjectsLocationsDataStoresConversations: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresConversationsRequest,
   output: ListProjectsLocationsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -23045,7 +23343,10 @@ export type GetProjectsLocationsDataStoresConversationsResponse =
 export const GetProjectsLocationsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
-export type GetProjectsLocationsDataStoresConversationsError = DefaultErrors;
+export type GetProjectsLocationsDataStoresConversationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Conversation. */
 export const getProjectsLocationsDataStoresConversations: API.OperationMethod<
@@ -23056,7 +23357,7 @@ export const getProjectsLocationsDataStoresConversations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresConversationsRequest,
   output: GetProjectsLocationsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsDataStoresOperationsRequest {
@@ -23077,7 +23378,10 @@ export type GetProjectsLocationsDataStoresOperationsResponse =
 export const GetProjectsLocationsDataStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsDataStoresOperationsError = DefaultErrors;
+export type GetProjectsLocationsDataStoresOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsDataStoresOperations: API.OperationMethod<
@@ -23088,7 +23392,7 @@ export const getProjectsLocationsDataStoresOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresOperationsRequest,
   output: GetProjectsLocationsDataStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsDataStoresOperationsRequest {
@@ -23123,7 +23427,10 @@ export type ListProjectsLocationsDataStoresOperationsResponse =
 export const ListProjectsLocationsDataStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsDataStoresOperationsError = DefaultErrors;
+export type ListProjectsLocationsDataStoresOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsDataStoresOperations: API.PaginatedOperationMethod<
@@ -23134,7 +23441,7 @@ export const listProjectsLocationsDataStoresOperations: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresOperationsRequest,
   output: ListProjectsLocationsDataStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -23167,7 +23474,12 @@ export type PatchProjectsLocationsDataStoresSessionsResponse =
 export const PatchProjectsLocationsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
-export type PatchProjectsLocationsDataStoresSessionsError = DefaultErrors;
+export type PatchProjectsLocationsDataStoresSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsDataStoresSessions: API.OperationMethod<
@@ -23178,7 +23490,7 @@ export const patchProjectsLocationsDataStoresSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresSessionsRequest,
   output: PatchProjectsLocationsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDataStoresSessionsRequest {
@@ -23207,7 +23519,12 @@ export type CreateProjectsLocationsDataStoresSessionsResponse =
 export const CreateProjectsLocationsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
-export type CreateProjectsLocationsDataStoresSessionsError = DefaultErrors;
+export type CreateProjectsLocationsDataStoresSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsDataStoresSessions: API.OperationMethod<
@@ -23218,7 +23535,7 @@ export const createProjectsLocationsDataStoresSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresSessionsRequest,
   output: CreateProjectsLocationsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresSessionsRequest {
@@ -23251,7 +23568,10 @@ export type ListProjectsLocationsDataStoresSessionsResponse =
 export const ListProjectsLocationsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListSessionsResponse;
 
-export type ListProjectsLocationsDataStoresSessionsError = DefaultErrors;
+export type ListProjectsLocationsDataStoresSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Sessions by their parent DataStore. */
 export const listProjectsLocationsDataStoresSessions: API.PaginatedOperationMethod<
@@ -23262,7 +23582,7 @@ export const listProjectsLocationsDataStoresSessions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresSessionsRequest,
   output: ListProjectsLocationsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -23292,7 +23612,10 @@ export type GetProjectsLocationsDataStoresSessionsResponse =
 export const GetProjectsLocationsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
-export type GetProjectsLocationsDataStoresSessionsError = DefaultErrors;
+export type GetProjectsLocationsDataStoresSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Session. */
 export const getProjectsLocationsDataStoresSessions: API.OperationMethod<
@@ -23303,7 +23626,7 @@ export const getProjectsLocationsDataStoresSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresSessionsRequest,
   output: GetProjectsLocationsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDataStoresSessionsRequest {
@@ -23324,7 +23647,12 @@ export type DeleteProjectsLocationsDataStoresSessionsResponse =
 export const DeleteProjectsLocationsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDataStoresSessionsError = DefaultErrors;
+export type DeleteProjectsLocationsDataStoresSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsDataStoresSessions: API.OperationMethod<
@@ -23335,7 +23663,7 @@ export const deleteProjectsLocationsDataStoresSessions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresSessionsRequest,
   output: DeleteProjectsLocationsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataStoresSessionsAnswersRequest {
@@ -23356,7 +23684,10 @@ export type GetProjectsLocationsDataStoresSessionsAnswersResponse =
 export const GetProjectsLocationsDataStoresSessionsAnswersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Answer;
 
-export type GetProjectsLocationsDataStoresSessionsAnswersError = DefaultErrors;
+export type GetProjectsLocationsDataStoresSessionsAnswersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Answer. */
 export const getProjectsLocationsDataStoresSessionsAnswers: API.OperationMethod<
@@ -23367,7 +23698,7 @@ export const getProjectsLocationsDataStoresSessionsAnswers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresSessionsAnswersRequest,
   output: GetProjectsLocationsDataStoresSessionsAnswersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest {
@@ -23398,7 +23729,11 @@ export const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
 export const purgeProjectsLocationsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -23409,7 +23744,7 @@ export const purgeProjectsLocationsDataStoresSuggestionDenyListEntries: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest,
   output: PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest {
@@ -23440,7 +23775,11 @@ export const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports all SuggestionDenyListEntry for a DataStore. */
 export const importProjectsLocationsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -23451,7 +23790,7 @@ export const importProjectsLocationsDataStoresSuggestionDenyListEntries: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest,
   output: ImportProjectsLocationsDataStoresSuggestionDenyListEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest {
@@ -23482,7 +23821,11 @@ export const RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Request on-demand recrawl for a list of URIs. */
 export const recrawlUrisProjectsLocationsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -23493,7 +23836,7 @@ export const recrawlUrisProjectsLocationsDataStoresSiteSearchEngine: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineRequest,
   output: RecrawlUrisProjectsLocationsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest {
@@ -23524,7 +23867,11 @@ export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Downgrade from advanced site search to basic site search. */
 export const disableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -23537,7 +23884,7 @@ export const disableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngin
     DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest,
   output:
     DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest {
@@ -23568,7 +23915,11 @@ export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrade from basic site search to advanced site search. */
 export const enableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -23581,7 +23932,7 @@ export const enableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngine
     EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest,
   output:
     EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest {
@@ -23608,7 +23959,11 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Sitemap. */
 export const createProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -23619,7 +23974,7 @@ export const createProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest,
   output: CreateProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest {
@@ -23641,7 +23996,11 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Sitemap. */
 export const deleteProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -23652,7 +24011,7 @@ export const deleteProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest,
   output: DeleteProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest {
@@ -23679,7 +24038,9 @@ export const FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1FetchSitemapsResponse;
 
 export type FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetch Sitemaps in a DataStore. */
 export const fetchProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -23690,7 +24051,7 @@ export const fetchProjectsLocationsDataStoresSiteSearchEngineSitemaps: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsRequest,
   output: FetchProjectsLocationsDataStoresSiteSearchEngineSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -23717,7 +24078,11 @@ export const CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetSite. */
 export const createProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -23728,7 +24093,7 @@ export const createProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
   output: CreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -23755,7 +24120,11 @@ export const PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a TargetSite. */
 export const patchProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -23766,7 +24135,7 @@ export const patchProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
   output: PatchProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -23788,7 +24157,9 @@ export const GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1TargetSite;
 
 export type GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a TargetSite. */
 export const getProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -23799,7 +24170,7 @@ export const getProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
   output: GetProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -23821,7 +24192,11 @@ export const DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TargetSite. */
 export const deleteProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -23832,7 +24207,7 @@ export const deleteProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
   output: DeleteProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -23860,7 +24235,9 @@ export const ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListTargetSitesResponse;
 
 export type ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of TargetSites. */
 export const listProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.PaginatedOperationMethod<
@@ -23871,7 +24248,7 @@ export const listProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
   output: ListProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -23906,7 +24283,11 @@ export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates TargetSite in a batch. */
 export const batchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -23919,7 +24300,7 @@ export const batchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites: 
     BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
   output:
     BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest {
@@ -23951,7 +24332,9 @@ export const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse;
 
 export type BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets index freshness metadata for Documents. Supported for website search only. */
 export const batchGetDocumentsMetadataProjectsLocationsDataStoresBranches: API.OperationMethod<
@@ -23962,7 +24345,7 @@ export const batchGetDocumentsMetadataProjectsLocationsDataStoresBranches: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest,
   output: BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsDataStoresBranchesDocumentsRequest {
@@ -23997,7 +24380,11 @@ export const PatchProjectsLocationsDataStoresBranchesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Document;
 
 export type PatchProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Document. */
 export const patchProjectsLocationsDataStoresBranchesDocuments: API.OperationMethod<
@@ -24008,7 +24395,7 @@ export const patchProjectsLocationsDataStoresBranchesDocuments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataStoresBranchesDocumentsRequest,
   output: PatchProjectsLocationsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDataStoresBranchesDocumentsRequest {
@@ -24038,7 +24425,11 @@ export const CreateProjectsLocationsDataStoresBranchesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Document;
 
 export type CreateProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Document. */
 export const createProjectsLocationsDataStoresBranchesDocuments: API.OperationMethod<
@@ -24049,7 +24440,7 @@ export const createProjectsLocationsDataStoresBranchesDocuments: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataStoresBranchesDocumentsRequest,
   output: CreateProjectsLocationsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsDataStoresBranchesDocumentsRequest {
@@ -24080,7 +24471,11 @@ export const PurgeProjectsLocationsDataStoresBranchesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all selected Documents in a branch. This process is asynchronous. Depending on the number of Documents to be deleted, this operation can take hours to complete. Before the delete operation completes, some Documents might still be returned by DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the Documents to be deleted, set PurgeDocumentsRequest.force to false. */
 export const purgeProjectsLocationsDataStoresBranchesDocuments: API.OperationMethod<
@@ -24091,7 +24486,7 @@ export const purgeProjectsLocationsDataStoresBranchesDocuments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsDataStoresBranchesDocumentsRequest,
   output: PurgeProjectsLocationsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataStoresBranchesDocumentsRequest {
@@ -24119,7 +24514,9 @@ export const ListProjectsLocationsDataStoresBranchesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListDocumentsResponse;
 
 export type ListProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of Documents. */
 export const listProjectsLocationsDataStoresBranchesDocuments: API.PaginatedOperationMethod<
@@ -24130,7 +24527,7 @@ export const listProjectsLocationsDataStoresBranchesDocuments: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresBranchesDocumentsRequest,
   output: ListProjectsLocationsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -24156,7 +24553,9 @@ export const GetProjectsLocationsDataStoresBranchesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Document;
 
 export type GetProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Document. */
 export const getProjectsLocationsDataStoresBranchesDocuments: API.OperationMethod<
@@ -24167,7 +24566,7 @@ export const getProjectsLocationsDataStoresBranchesDocuments: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresBranchesDocumentsRequest,
   output: GetProjectsLocationsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDataStoresBranchesDocumentsRequest {
@@ -24189,7 +24588,11 @@ export const DeleteProjectsLocationsDataStoresBranchesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Document. */
 export const deleteProjectsLocationsDataStoresBranchesDocuments: API.OperationMethod<
@@ -24200,7 +24603,7 @@ export const deleteProjectsLocationsDataStoresBranchesDocuments: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataStoresBranchesDocumentsRequest,
   output: DeleteProjectsLocationsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsDataStoresBranchesDocumentsRequest {
@@ -24231,7 +24634,11 @@ export const ImportProjectsLocationsDataStoresBranchesDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated. */
 export const importProjectsLocationsDataStoresBranchesDocuments: API.OperationMethod<
@@ -24242,7 +24649,7 @@ export const importProjectsLocationsDataStoresBranchesDocuments: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDataStoresBranchesDocumentsRequest,
   output: ImportProjectsLocationsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsDataStoresBranchesOperationsRequest {
@@ -24269,7 +24676,11 @@ export const CancelProjectsLocationsDataStoresBranchesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsDataStoresBranchesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsDataStoresBranchesOperations: API.OperationMethod<
@@ -24280,7 +24691,7 @@ export const cancelProjectsLocationsDataStoresBranchesOperations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsDataStoresBranchesOperationsRequest,
   output: CancelProjectsLocationsDataStoresBranchesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataStoresBranchesOperationsRequest {
@@ -24302,7 +24713,9 @@ export const GetProjectsLocationsDataStoresBranchesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsDataStoresBranchesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsDataStoresBranchesOperations: API.OperationMethod<
@@ -24313,7 +24726,7 @@ export const getProjectsLocationsDataStoresBranchesOperations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataStoresBranchesOperationsRequest,
   output: GetProjectsLocationsDataStoresBranchesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsDataStoresBranchesOperationsRequest {
@@ -24349,7 +24762,9 @@ export const ListProjectsLocationsDataStoresBranchesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsDataStoresBranchesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsDataStoresBranchesOperations: API.PaginatedOperationMethod<
@@ -24360,7 +24775,7 @@ export const listProjectsLocationsDataStoresBranchesOperations: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataStoresBranchesOperationsRequest,
   output: ListProjectsLocationsDataStoresBranchesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -24395,7 +24810,11 @@ export const ImportProjectsLocationsDataStoresCompletionSuggestionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsDataStoresCompletionSuggestionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports CompletionSuggestions for a DataStore. */
 export const importProjectsLocationsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -24406,7 +24825,7 @@ export const importProjectsLocationsDataStoresCompletionSuggestions: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDataStoresCompletionSuggestionsRequest,
   output: ImportProjectsLocationsDataStoresCompletionSuggestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest {
@@ -24437,7 +24856,11 @@ export const PurgeProjectsLocationsDataStoresCompletionSuggestionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsDataStoresCompletionSuggestionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all CompletionSuggestions for a DataStore. */
 export const purgeProjectsLocationsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -24448,7 +24871,7 @@ export const purgeProjectsLocationsDataStoresCompletionSuggestions: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest,
   output: PurgeProjectsLocationsDataStoresCompletionSuggestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdateUserLicensesProjectsLocationsUserStoresRequest {
@@ -24479,7 +24902,11 @@ export const BatchUpdateUserLicensesProjectsLocationsUserStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchUpdateUserLicensesProjectsLocationsUserStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the User License. This method is used for batch assign/unassign licenses to users. */
 export const batchUpdateUserLicensesProjectsLocationsUserStores: API.OperationMethod<
@@ -24490,7 +24917,7 @@ export const batchUpdateUserLicensesProjectsLocationsUserStores: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateUserLicensesProjectsLocationsUserStoresRequest,
   output: BatchUpdateUserLicensesProjectsLocationsUserStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsUserStoresRequest {
@@ -24519,7 +24946,12 @@ export type PatchProjectsLocationsUserStoresResponse =
 export const PatchProjectsLocationsUserStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1UserStore;
 
-export type PatchProjectsLocationsUserStoresError = DefaultErrors;
+export type PatchProjectsLocationsUserStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the User Store. */
 export const patchProjectsLocationsUserStores: API.OperationMethod<
@@ -24530,7 +24962,7 @@ export const patchProjectsLocationsUserStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsUserStoresRequest,
   output: PatchProjectsLocationsUserStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsUserStoresRequest {
@@ -24551,7 +24983,10 @@ export type GetProjectsLocationsUserStoresResponse =
 export const GetProjectsLocationsUserStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1UserStore;
 
-export type GetProjectsLocationsUserStoresError = DefaultErrors;
+export type GetProjectsLocationsUserStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the User Store. */
 export const getProjectsLocationsUserStores: API.OperationMethod<
@@ -24562,7 +24997,7 @@ export const getProjectsLocationsUserStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsUserStoresRequest,
   output: GetProjectsLocationsUserStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsUserStoresUserLicensesRequest {
@@ -24595,7 +25030,10 @@ export type ListProjectsLocationsUserStoresUserLicensesResponse =
 export const ListProjectsLocationsUserStoresUserLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListUserLicensesResponse;
 
-export type ListProjectsLocationsUserStoresUserLicensesError = DefaultErrors;
+export type ListProjectsLocationsUserStoresUserLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the User Licenses. */
 export const listProjectsLocationsUserStoresUserLicenses: API.PaginatedOperationMethod<
@@ -24606,7 +25044,7 @@ export const listProjectsLocationsUserStoresUserLicenses: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsUserStoresUserLicensesRequest,
   output: ListProjectsLocationsUserStoresUserLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -24632,7 +25070,9 @@ export const ListProjectsLocationsUserStoresLicenseConfigsUsageStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListLicenseConfigsUsageStatsResponse;
 
 export type ListProjectsLocationsUserStoresLicenseConfigsUsageStatsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the LicenseConfigUsageStatss associated with the project. */
 export const listProjectsLocationsUserStoresLicenseConfigsUsageStats: API.OperationMethod<
@@ -24643,7 +25083,7 @@ export const listProjectsLocationsUserStoresLicenseConfigsUsageStats: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsUserStoresLicenseConfigsUsageStatsRequest,
   output: ListProjectsLocationsUserStoresLicenseConfigsUsageStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest {
@@ -24676,7 +25116,11 @@ export const PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Purges specified or all Identity Mapping Entries from an Identity Mapping Store. */
 export const purgeIdentityMappingsProjectsLocationsIdentityMappingStores: API.OperationMethod<
@@ -24687,7 +25131,7 @@ export const purgeIdentityMappingsProjectsLocationsIdentityMappingStores: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresRequest,
   output: PurgeIdentityMappingsProjectsLocationsIdentityMappingStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest {
@@ -24720,7 +25164,9 @@ export const ListIdentityMappingsProjectsLocationsIdentityMappingStoresResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse;
 
 export type ListIdentityMappingsProjectsLocationsIdentityMappingStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Identity Mappings in an Identity Mapping Store. */
 export const listIdentityMappingsProjectsLocationsIdentityMappingStores: API.PaginatedOperationMethod<
@@ -24731,7 +25177,7 @@ export const listIdentityMappingsProjectsLocationsIdentityMappingStores: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListIdentityMappingsProjectsLocationsIdentityMappingStoresRequest,
   output: ListIdentityMappingsProjectsLocationsIdentityMappingStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -24756,7 +25202,10 @@ export type GetProjectsLocationsIdentityMappingStoresResponse =
 export const GetProjectsLocationsIdentityMappingStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1IdentityMappingStore;
 
-export type GetProjectsLocationsIdentityMappingStoresError = DefaultErrors;
+export type GetProjectsLocationsIdentityMappingStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Identity Mapping Store. */
 export const getProjectsLocationsIdentityMappingStores: API.OperationMethod<
@@ -24767,7 +25216,7 @@ export const getProjectsLocationsIdentityMappingStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsIdentityMappingStoresRequest,
   output: GetProjectsLocationsIdentityMappingStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsIdentityMappingStoresRequest {
@@ -24812,7 +25261,12 @@ export type CreateProjectsLocationsIdentityMappingStoresResponse =
 export const CreateProjectsLocationsIdentityMappingStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1IdentityMappingStore;
 
-export type CreateProjectsLocationsIdentityMappingStoresError = DefaultErrors;
+export type CreateProjectsLocationsIdentityMappingStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Identity Mapping Store. */
 export const createProjectsLocationsIdentityMappingStores: API.OperationMethod<
@@ -24823,7 +25277,7 @@ export const createProjectsLocationsIdentityMappingStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsIdentityMappingStoresRequest,
   output: CreateProjectsLocationsIdentityMappingStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsIdentityMappingStoresRequest {
@@ -24850,7 +25304,10 @@ export type ListProjectsLocationsIdentityMappingStoresResponse =
 export const ListProjectsLocationsIdentityMappingStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListIdentityMappingStoresResponse;
 
-export type ListProjectsLocationsIdentityMappingStoresError = DefaultErrors;
+export type ListProjectsLocationsIdentityMappingStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Identity Mapping Stores. */
 export const listProjectsLocationsIdentityMappingStores: API.PaginatedOperationMethod<
@@ -24861,7 +25318,7 @@ export const listProjectsLocationsIdentityMappingStores: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsIdentityMappingStoresRequest,
   output: ListProjectsLocationsIdentityMappingStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -24898,7 +25355,11 @@ export const ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportIdentityMappingsProjectsLocationsIdentityMappingStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports a list of Identity Mapping Entries to an Identity Mapping Store. */
 export const importIdentityMappingsProjectsLocationsIdentityMappingStores: API.OperationMethod<
@@ -24909,7 +25370,7 @@ export const importIdentityMappingsProjectsLocationsIdentityMappingStores: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportIdentityMappingsProjectsLocationsIdentityMappingStoresRequest,
   output: ImportIdentityMappingsProjectsLocationsIdentityMappingStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsIdentityMappingStoresRequest {
@@ -24930,7 +25391,12 @@ export type DeleteProjectsLocationsIdentityMappingStoresResponse =
 export const DeleteProjectsLocationsIdentityMappingStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsIdentityMappingStoresError = DefaultErrors;
+export type DeleteProjectsLocationsIdentityMappingStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the Identity Mapping Store. */
 export const deleteProjectsLocationsIdentityMappingStores: API.OperationMethod<
@@ -24941,7 +25407,7 @@ export const deleteProjectsLocationsIdentityMappingStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsIdentityMappingStoresRequest,
   output: DeleteProjectsLocationsIdentityMappingStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsIdentityMappingStoresOperationsRequest {
@@ -24963,7 +25429,9 @@ export const GetProjectsLocationsIdentityMappingStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsIdentityMappingStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsIdentityMappingStoresOperations: API.OperationMethod<
@@ -24974,7 +25442,7 @@ export const getProjectsLocationsIdentityMappingStoresOperations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsIdentityMappingStoresOperationsRequest,
   output: GetProjectsLocationsIdentityMappingStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsIdentityMappingStoresOperationsRequest {
@@ -25010,7 +25478,9 @@ export const ListProjectsLocationsIdentityMappingStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsIdentityMappingStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsIdentityMappingStoresOperations: API.PaginatedOperationMethod<
@@ -25021,7 +25491,7 @@ export const listProjectsLocationsIdentityMappingStoresOperations: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsIdentityMappingStoresOperationsRequest,
   output: ListProjectsLocationsIdentityMappingStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -25046,7 +25516,12 @@ export type DeleteProjectsLocationsCollectionsResponse =
 export const DeleteProjectsLocationsCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsCollectionsError = DefaultErrors;
+export type DeleteProjectsLocationsCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Collection. */
 export const deleteProjectsLocationsCollections: API.OperationMethod<
@@ -25057,7 +25532,7 @@ export const deleteProjectsLocationsCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsRequest,
   output: DeleteProjectsLocationsCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDataConnectorProjectsLocationsCollectionsRequest {
@@ -25087,7 +25562,11 @@ export const UpdateDataConnectorProjectsLocationsCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1DataConnector;
 
 export type UpdateDataConnectorProjectsLocationsCollectionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a DataConnector. */
 export const updateDataConnectorProjectsLocationsCollections: API.OperationMethod<
@@ -25098,7 +25577,7 @@ export const updateDataConnectorProjectsLocationsCollections: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDataConnectorProjectsLocationsCollectionsRequest,
   output: UpdateDataConnectorProjectsLocationsCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDataConnectorProjectsLocationsCollectionsRequest {
@@ -25119,7 +25598,10 @@ export type GetDataConnectorProjectsLocationsCollectionsResponse =
 export const GetDataConnectorProjectsLocationsCollectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1DataConnector;
 
-export type GetDataConnectorProjectsLocationsCollectionsError = DefaultErrors;
+export type GetDataConnectorProjectsLocationsCollectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the DataConnector. DataConnector is a singleton resource for each Collection. */
 export const getDataConnectorProjectsLocationsCollections: API.OperationMethod<
@@ -25130,7 +25612,7 @@ export const getDataConnectorProjectsLocationsCollections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataConnectorProjectsLocationsCollectionsRequest,
   output: GetDataConnectorProjectsLocationsCollectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsCollectionsOperationsRequest {
@@ -25151,7 +25633,10 @@ export type GetProjectsLocationsCollectionsOperationsResponse =
 export const GetProjectsLocationsCollectionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsLocationsCollectionsOperationsError = DefaultErrors;
+export type GetProjectsLocationsCollectionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsOperations: API.OperationMethod<
@@ -25162,7 +25647,7 @@ export const getProjectsLocationsCollectionsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsOperationsRequest,
   output: GetProjectsLocationsCollectionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsOperationsRequest {
@@ -25197,7 +25682,10 @@ export type ListProjectsLocationsCollectionsOperationsResponse =
 export const ListProjectsLocationsCollectionsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsLocationsCollectionsOperationsError = DefaultErrors;
+export type ListProjectsLocationsCollectionsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsOperations: API.PaginatedOperationMethod<
@@ -25208,7 +25696,7 @@ export const listProjectsLocationsCollectionsOperations: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsOperationsRequest,
   output: ListProjectsLocationsCollectionsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -25252,7 +25740,12 @@ export type McpProjectsLocationsCollectionsDataConnectorResponse =
 export const McpProjectsLocationsCollectionsDataConnectorResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
-export type McpProjectsLocationsCollectionsDataConnectorError = DefaultErrors;
+export type McpProjectsLocationsCollectionsDataConnectorError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** ServeMcpDeleteRequest serves a MCP DELETE request. */
 export const mcpProjectsLocationsCollectionsDataConnector: API.OperationMethod<
@@ -25263,7 +25756,7 @@ export const mcpProjectsLocationsCollectionsDataConnector: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: McpProjectsLocationsCollectionsDataConnectorRequest,
   output: McpProjectsLocationsCollectionsDataConnectorResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataConnectorOperationsRequest {
@@ -25285,7 +25778,9 @@ export const GetProjectsLocationsCollectionsDataConnectorOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataConnectorOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataConnectorOperations: API.OperationMethod<
@@ -25296,7 +25791,7 @@ export const getProjectsLocationsCollectionsDataConnectorOperations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataConnectorOperationsRequest,
   output: GetProjectsLocationsCollectionsDataConnectorOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsDataConnectorOperationsRequest {
@@ -25332,7 +25827,9 @@ export const ListProjectsLocationsCollectionsDataConnectorOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataConnectorOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataConnectorOperations: API.PaginatedOperationMethod<
@@ -25343,7 +25840,7 @@ export const listProjectsLocationsCollectionsDataConnectorOperations: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataConnectorOperationsRequest,
   output: ListProjectsLocationsCollectionsDataConnectorOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -25376,7 +25873,12 @@ export type PatchProjectsLocationsCollectionsDataStoresResponse =
 export const PatchProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1DataStore;
 
-export type PatchProjectsLocationsCollectionsDataStoresError = DefaultErrors;
+export type PatchProjectsLocationsCollectionsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a DataStore */
 export const patchProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -25387,7 +25889,7 @@ export const patchProjectsLocationsCollectionsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresRequest,
   output: PatchProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteQueryProjectsLocationsCollectionsDataStoresRequest {
@@ -25425,7 +25927,9 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1CompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsCollectionsDataStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Completes the specified user input with keyword suggestions. */
 export const completeQueryProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -25436,7 +25940,7 @@ export const completeQueryProjectsLocationsCollectionsDataStores: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteQueryProjectsLocationsCollectionsDataStoresRequest,
   output: CompleteQueryProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresRequest {
@@ -25466,7 +25970,10 @@ export type ListProjectsLocationsCollectionsDataStoresResponse =
 export const ListProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListDataStoresResponse;
 
-export type ListProjectsLocationsCollectionsDataStoresError = DefaultErrors;
+export type ListProjectsLocationsCollectionsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the DataStores associated with the project. */
 export const listProjectsLocationsCollectionsDataStores: API.PaginatedOperationMethod<
@@ -25477,7 +25984,7 @@ export const listProjectsLocationsCollectionsDataStores: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresRequest,
   output: ListProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -25512,7 +26019,11 @@ export const TrainCustomModelProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type TrainCustomModelProjectsLocationsCollectionsDataStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Trains a custom model. */
 export const trainCustomModelProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -25523,7 +26034,7 @@ export const trainCustomModelProjectsLocationsCollectionsDataStores: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TrainCustomModelProjectsLocationsCollectionsDataStoresRequest,
   output: TrainCustomModelProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest {
@@ -25545,7 +26056,9 @@ export const GetSiteSearchEngineProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SiteSearchEngine;
 
 export type GetSiteSearchEngineProjectsLocationsCollectionsDataStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the SiteSearchEngine. */
 export const getSiteSearchEngineProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -25556,7 +26069,7 @@ export const getSiteSearchEngineProjectsLocationsCollectionsDataStores: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSiteSearchEngineProjectsLocationsCollectionsDataStoresRequest,
   output: GetSiteSearchEngineProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresRequest {
@@ -25577,7 +26090,12 @@ export type DeleteProjectsLocationsCollectionsDataStoresResponse =
 export const DeleteProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsCollectionsDataStoresError = DefaultErrors;
+export type DeleteProjectsLocationsCollectionsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a DataStore. */
 export const deleteProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -25588,7 +26106,7 @@ export const deleteProjectsLocationsCollectionsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsDataStoresRequest,
   output: DeleteProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresRequest {
@@ -25639,7 +26157,12 @@ export type CreateProjectsLocationsCollectionsDataStoresResponse =
 export const CreateProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsCollectionsDataStoresError = DefaultErrors;
+export type CreateProjectsLocationsCollectionsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately. */
 export const createProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -25650,7 +26173,7 @@ export const createProjectsLocationsCollectionsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsDataStoresRequest,
   output: CreateProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresRequest {
@@ -25671,7 +26194,10 @@ export type GetProjectsLocationsCollectionsDataStoresResponse =
 export const GetProjectsLocationsCollectionsDataStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1DataStore;
 
-export type GetProjectsLocationsCollectionsDataStoresError = DefaultErrors;
+export type GetProjectsLocationsCollectionsDataStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DataStore. */
 export const getProjectsLocationsCollectionsDataStores: API.OperationMethod<
@@ -25682,7 +26208,7 @@ export const getProjectsLocationsCollectionsDataStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresRequest,
   output: GetProjectsLocationsCollectionsDataStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -25713,7 +26239,11 @@ export const SearchProjectsLocationsCollectionsDataStoresServingConfigsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SearchResponse;
 
 export type SearchProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. */
 export const searchProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -25724,7 +26254,7 @@ export const searchProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: SearchProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -25746,7 +26276,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresServingConfigsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist. */
 export const deleteProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -25757,7 +26291,7 @@ export const deleteProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: DeleteProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -25793,7 +26327,11 @@ export const CreateProjectsLocationsCollectionsDataStoresServingConfigsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
 export type CreateProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned. */
 export const createProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -25804,7 +26342,7 @@ export const createProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: CreateProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -25834,7 +26372,11 @@ export const PatchProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
 export type PatchProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist. */
 export const patchProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -25845,7 +26387,7 @@ export const patchProjectsLocationsCollectionsDataStoresServingConfigs: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: PatchProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -25876,7 +26418,11 @@ export const StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AnswerQueryResponse;
 
 export type StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream. */
 export const streamAnswerProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -25889,7 +26435,7 @@ export const streamAnswerProjectsLocationsCollectionsDataStoresServingConfigs: A
     StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output:
     StreamAnswerProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -25920,7 +26466,11 @@ export const SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SearchResponse;
 
 export type SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security. */
 export const searchLiteProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -25932,7 +26482,7 @@ export const searchLiteProjectsLocationsCollectionsDataStoresServingConfigs: API
   input: SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output:
     SearchLiteProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -25960,7 +26510,9 @@ export const ListProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListServingConfigsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all ServingConfigs linked to this dataStore. */
 export const listProjectsLocationsCollectionsDataStoresServingConfigs: API.PaginatedOperationMethod<
@@ -25971,7 +26523,7 @@ export const listProjectsLocationsCollectionsDataStoresServingConfigs: API.Pagin
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: ListProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -26006,7 +26558,11 @@ export const RecommendProjectsLocationsCollectionsDataStoresServingConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1RecommendResponse;
 
 export type RecommendProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes a recommendation, which requires a contextual user event. */
 export const recommendProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -26017,7 +26573,7 @@ export const recommendProjectsLocationsCollectionsDataStoresServingConfigs: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecommendProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: RecommendProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -26039,7 +26595,9 @@ export const GetProjectsLocationsCollectionsDataStoresServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
 export type GetProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist. */
 export const getProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -26050,7 +26608,7 @@ export const getProjectsLocationsCollectionsDataStoresServingConfigs: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: GetProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest {
@@ -26081,7 +26639,11 @@ export const AnswerProjectsLocationsCollectionsDataStoresServingConfigsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AnswerQueryResponse;
 
 export type AnswerProjectsLocationsCollectionsDataStoresServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method. */
 export const answerProjectsLocationsCollectionsDataStoresServingConfigs: API.OperationMethod<
@@ -26092,7 +26654,7 @@ export const answerProjectsLocationsCollectionsDataStoresServingConfigs: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnswerProjectsLocationsCollectionsDataStoresServingConfigsRequest,
   output: AnswerProjectsLocationsCollectionsDataStoresServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresSessionsRequest {
@@ -26114,7 +26676,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsCollectionsDataStoresSessions: API.OperationMethod<
@@ -26125,7 +26691,7 @@ export const deleteProjectsLocationsCollectionsDataStoresSessions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsDataStoresSessionsRequest,
   output: DeleteProjectsLocationsCollectionsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresSessionsRequest {
@@ -26152,7 +26718,9 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
 export type GetProjectsLocationsCollectionsDataStoresSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Session. */
 export const getProjectsLocationsCollectionsDataStoresSessions: API.OperationMethod<
@@ -26163,7 +26731,7 @@ export const getProjectsLocationsCollectionsDataStoresSessions: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresSessionsRequest,
   output: GetProjectsLocationsCollectionsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresSessionsRequest {
@@ -26193,7 +26761,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
 export type CreateProjectsLocationsCollectionsDataStoresSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsCollectionsDataStoresSessions: API.OperationMethod<
@@ -26204,7 +26776,7 @@ export const createProjectsLocationsCollectionsDataStoresSessions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsDataStoresSessionsRequest,
   output: CreateProjectsLocationsCollectionsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsDataStoresSessionsRequest {
@@ -26234,7 +26806,11 @@ export const PatchProjectsLocationsCollectionsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
 export type PatchProjectsLocationsCollectionsDataStoresSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsCollectionsDataStoresSessions: API.OperationMethod<
@@ -26245,7 +26821,7 @@ export const patchProjectsLocationsCollectionsDataStoresSessions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresSessionsRequest,
   output: PatchProjectsLocationsCollectionsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresSessionsRequest {
@@ -26279,7 +26855,9 @@ export const ListProjectsLocationsCollectionsDataStoresSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListSessionsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Sessions by their parent DataStore. */
 export const listProjectsLocationsCollectionsDataStoresSessions: API.PaginatedOperationMethod<
@@ -26290,7 +26868,7 @@ export const listProjectsLocationsCollectionsDataStoresSessions: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresSessionsRequest,
   output: ListProjectsLocationsCollectionsDataStoresSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -26316,7 +26894,9 @@ export const GetProjectsLocationsCollectionsDataStoresSessionsAnswersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Answer;
 
 export type GetProjectsLocationsCollectionsDataStoresSessionsAnswersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Answer. */
 export const getProjectsLocationsCollectionsDataStoresSessionsAnswers: API.OperationMethod<
@@ -26327,7 +26907,7 @@ export const getProjectsLocationsCollectionsDataStoresSessionsAnswers: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresSessionsAnswersRequest,
   output: GetProjectsLocationsCollectionsDataStoresSessionsAnswersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresOperationsRequest {
@@ -26363,7 +26943,9 @@ export const ListProjectsLocationsCollectionsDataStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresOperations: API.PaginatedOperationMethod<
@@ -26374,7 +26956,7 @@ export const listProjectsLocationsCollectionsDataStoresOperations: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresOperationsRequest,
   output: ListProjectsLocationsCollectionsDataStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -26400,7 +26982,9 @@ export const GetProjectsLocationsCollectionsDataStoresOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresOperations: API.OperationMethod<
@@ -26411,7 +26995,7 @@ export const getProjectsLocationsCollectionsDataStoresOperations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresOperationsRequest,
   output: GetProjectsLocationsCollectionsDataStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest {
@@ -26447,7 +27031,9 @@ export const ListProjectsLocationsCollectionsDataStoresModelsOperationsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresModelsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresModelsOperations: API.PaginatedOperationMethod<
@@ -26458,7 +27044,7 @@ export const listProjectsLocationsCollectionsDataStoresModelsOperations: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresModelsOperationsRequest,
   output: ListProjectsLocationsCollectionsDataStoresModelsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -26484,7 +27070,9 @@ export const GetProjectsLocationsCollectionsDataStoresModelsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresModelsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresModelsOperations: API.OperationMethod<
@@ -26495,7 +27083,7 @@ export const getProjectsLocationsCollectionsDataStoresModelsOperations: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresModelsOperationsRequest,
   output: GetProjectsLocationsCollectionsDataStoresModelsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresConversationsRequest {
@@ -26517,7 +27105,9 @@ export const GetProjectsLocationsCollectionsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
 export type GetProjectsLocationsCollectionsDataStoresConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Conversation. */
 export const getProjectsLocationsCollectionsDataStoresConversations: API.OperationMethod<
@@ -26528,7 +27118,7 @@ export const getProjectsLocationsCollectionsDataStoresConversations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresConversationsRequest,
   output: GetProjectsLocationsCollectionsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresConversationsRequest {
@@ -26559,7 +27149,11 @@ export const CreateProjectsLocationsCollectionsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
 export type CreateProjectsLocationsCollectionsDataStoresConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsCollectionsDataStoresConversations: API.OperationMethod<
@@ -26570,7 +27164,7 @@ export const createProjectsLocationsCollectionsDataStoresConversations: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsDataStoresConversationsRequest,
   output: CreateProjectsLocationsCollectionsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConverseProjectsLocationsCollectionsDataStoresConversationsRequest {
@@ -26597,7 +27191,11 @@ export const ConverseProjectsLocationsCollectionsDataStoresConversationsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ConverseConversationResponse;
 
 export type ConverseProjectsLocationsCollectionsDataStoresConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Converses a conversation. */
 export const converseProjectsLocationsCollectionsDataStoresConversations: API.OperationMethod<
@@ -26608,7 +27206,7 @@ export const converseProjectsLocationsCollectionsDataStoresConversations: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConverseProjectsLocationsCollectionsDataStoresConversationsRequest,
   output: ConverseProjectsLocationsCollectionsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresConversationsRequest {
@@ -26630,7 +27228,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsDataStoresConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsCollectionsDataStoresConversations: API.OperationMethod<
@@ -26641,7 +27243,7 @@ export const deleteProjectsLocationsCollectionsDataStoresConversations: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsDataStoresConversationsRequest,
   output: DeleteProjectsLocationsCollectionsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresConversationsRequest {
@@ -26675,7 +27277,9 @@ export const ListProjectsLocationsCollectionsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListConversationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Conversations by their parent DataStore. */
 export const listProjectsLocationsCollectionsDataStoresConversations: API.PaginatedOperationMethod<
@@ -26686,7 +27290,7 @@ export const listProjectsLocationsCollectionsDataStoresConversations: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresConversationsRequest,
   output: ListProjectsLocationsCollectionsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -26720,7 +27324,11 @@ export const PatchProjectsLocationsCollectionsDataStoresConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
 export type PatchProjectsLocationsCollectionsDataStoresConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsCollectionsDataStoresConversations: API.OperationMethod<
@@ -26731,7 +27339,7 @@ export const patchProjectsLocationsCollectionsDataStoresConversations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresConversationsRequest,
   output: PatchProjectsLocationsCollectionsDataStoresConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresSchemasRequest {
@@ -26761,7 +27369,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsCollectionsDataStoresSchemasError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Schema. */
 export const createProjectsLocationsCollectionsDataStoresSchemas: API.OperationMethod<
@@ -26772,7 +27384,7 @@ export const createProjectsLocationsCollectionsDataStoresSchemas: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsDataStoresSchemasRequest,
   output: CreateProjectsLocationsCollectionsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresSchemasRequest {
@@ -26800,7 +27412,9 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListSchemasResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSchemasError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of Schemas. */
 export const listProjectsLocationsCollectionsDataStoresSchemas: API.PaginatedOperationMethod<
@@ -26811,7 +27425,7 @@ export const listProjectsLocationsCollectionsDataStoresSchemas: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresSchemasRequest,
   output: ListProjectsLocationsCollectionsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -26837,7 +27451,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSchemasError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Schema. */
 export const deleteProjectsLocationsCollectionsDataStoresSchemas: API.OperationMethod<
@@ -26848,7 +27466,7 @@ export const deleteProjectsLocationsCollectionsDataStoresSchemas: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsDataStoresSchemasRequest,
   output: DeleteProjectsLocationsCollectionsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsDataStoresSchemasRequest {
@@ -26880,7 +27498,11 @@ export const PatchProjectsLocationsCollectionsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsCollectionsDataStoresSchemasError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Schema. */
 export const patchProjectsLocationsCollectionsDataStoresSchemas: API.OperationMethod<
@@ -26891,7 +27513,7 @@ export const patchProjectsLocationsCollectionsDataStoresSchemas: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresSchemasRequest,
   output: PatchProjectsLocationsCollectionsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresSchemasRequest {
@@ -26913,7 +27535,9 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Schema;
 
 export type GetProjectsLocationsCollectionsDataStoresSchemasError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Schema. */
 export const getProjectsLocationsCollectionsDataStoresSchemas: API.OperationMethod<
@@ -26924,7 +27548,7 @@ export const getProjectsLocationsCollectionsDataStoresSchemas: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresSchemasRequest,
   output: GetProjectsLocationsCollectionsDataStoresSchemasResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest {
@@ -26960,7 +27584,9 @@ export const ListProjectsLocationsCollectionsDataStoresSchemasOperationsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSchemasOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresSchemasOperations: API.PaginatedOperationMethod<
@@ -26971,7 +27597,7 @@ export const listProjectsLocationsCollectionsDataStoresSchemasOperations: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresSchemasOperationsRequest,
   output: ListProjectsLocationsCollectionsDataStoresSchemasOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -26997,7 +27623,9 @@ export const GetProjectsLocationsCollectionsDataStoresSchemasOperationsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresSchemasOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresSchemasOperations: API.OperationMethod<
@@ -27008,7 +27636,7 @@ export const getProjectsLocationsCollectionsDataStoresSchemasOperations: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresSchemasOperationsRequest,
   output: GetProjectsLocationsCollectionsDataStoresSchemasOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest {
@@ -27039,7 +27667,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first. */
 export const purgeProjectsLocationsCollectionsDataStoresUserEvents: API.OperationMethod<
@@ -27050,7 +27682,7 @@ export const purgeProjectsLocationsCollectionsDataStoresUserEvents: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsCollectionsDataStoresUserEventsRequest,
   output: PurgeProjectsLocationsCollectionsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsCollectionsDataStoresUserEventsRequest {
@@ -27081,7 +27713,11 @@ export const ImportProjectsLocationsCollectionsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of user events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata. */
 export const importProjectsLocationsCollectionsDataStoresUserEvents: API.OperationMethod<
@@ -27092,7 +27728,7 @@ export const importProjectsLocationsCollectionsDataStoresUserEvents: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsCollectionsDataStoresUserEventsRequest,
   output: ImportProjectsLocationsCollectionsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WriteProjectsLocationsCollectionsDataStoresUserEventsRequest {
@@ -27126,7 +27762,11 @@ export const WriteProjectsLocationsCollectionsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1UserEvent;
 
 export type WriteProjectsLocationsCollectionsDataStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Writes a single user event. */
 export const writeProjectsLocationsCollectionsDataStoresUserEvents: API.OperationMethod<
@@ -27137,7 +27777,7 @@ export const writeProjectsLocationsCollectionsDataStoresUserEvents: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WriteProjectsLocationsCollectionsDataStoresUserEventsRequest,
   output: WriteProjectsLocationsCollectionsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CollectProjectsLocationsCollectionsDataStoresUserEventsRequest {
@@ -27168,7 +27808,9 @@ export const CollectProjectsLocationsCollectionsDataStoresUserEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleApiHttpBody;
 
 export type CollectProjectsLocationsCollectionsDataStoresUserEventsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript pixel and Google Tag Manager. Users should not call this method directly. */
 export const collectProjectsLocationsCollectionsDataStoresUserEvents: API.OperationMethod<
@@ -27179,7 +27821,7 @@ export const collectProjectsLocationsCollectionsDataStoresUserEvents: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CollectProjectsLocationsCollectionsDataStoresUserEventsRequest,
   output: CollectProjectsLocationsCollectionsDataStoresUserEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest {
@@ -27210,7 +27852,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all CompletionSuggestions for a DataStore. */
 export const purgeProjectsLocationsCollectionsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -27223,7 +27869,7 @@ export const purgeProjectsLocationsCollectionsDataStoresCompletionSuggestions: A
     PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest,
   output:
     PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest {
@@ -27254,7 +27900,11 @@ export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports CompletionSuggestions for a DataStore. */
 export const importProjectsLocationsCollectionsDataStoresCompletionSuggestions: API.OperationMethod<
@@ -27267,7 +27917,7 @@ export const importProjectsLocationsCollectionsDataStoresCompletionSuggestions: 
     ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest,
   output:
     ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresControlsRequest {
@@ -27289,7 +27939,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsDataStoresControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsCollectionsDataStoresControls: API.OperationMethod<
@@ -27300,7 +27954,7 @@ export const deleteProjectsLocationsCollectionsDataStoresControls: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsDataStoresControlsRequest,
   output: DeleteProjectsLocationsCollectionsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresControlsRequest {
@@ -27331,7 +27985,9 @@ export const ListProjectsLocationsCollectionsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListControlsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Controls by their parent DataStore. */
 export const listProjectsLocationsCollectionsDataStoresControls: API.PaginatedOperationMethod<
@@ -27342,7 +27998,7 @@ export const listProjectsLocationsCollectionsDataStoresControls: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresControlsRequest,
   output: ListProjectsLocationsCollectionsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -27376,7 +28032,11 @@ export const PatchProjectsLocationsCollectionsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
 export type PatchProjectsLocationsCollectionsDataStoresControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsCollectionsDataStoresControls: API.OperationMethod<
@@ -27387,7 +28047,7 @@ export const patchProjectsLocationsCollectionsDataStoresControls: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresControlsRequest,
   output: PatchProjectsLocationsCollectionsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresControlsRequest {
@@ -27417,7 +28077,11 @@ export const CreateProjectsLocationsCollectionsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
 export type CreateProjectsLocationsCollectionsDataStoresControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsCollectionsDataStoresControls: API.OperationMethod<
@@ -27428,7 +28092,7 @@ export const createProjectsLocationsCollectionsDataStoresControls: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsDataStoresControlsRequest,
   output: CreateProjectsLocationsCollectionsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresControlsRequest {
@@ -27450,7 +28114,9 @@ export const GetProjectsLocationsCollectionsDataStoresControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
 export type GetProjectsLocationsCollectionsDataStoresControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Control. */
 export const getProjectsLocationsCollectionsDataStoresControls: API.OperationMethod<
@@ -27461,7 +28127,7 @@ export const getProjectsLocationsCollectionsDataStoresControls: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresControlsRequest,
   output: GetProjectsLocationsCollectionsDataStoresControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest {
@@ -27492,7 +28158,11 @@ export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports all SuggestionDenyListEntry for a DataStore. */
 export const importProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -27505,7 +28175,7 @@ export const importProjectsLocationsCollectionsDataStoresSuggestionDenyListEntri
     ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest,
   output:
     ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest {
@@ -27536,7 +28206,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
 export const purgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
@@ -27549,7 +28223,7 @@ export const purgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntrie
     PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest,
   output:
     PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
@@ -27580,7 +28254,11 @@ export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Downgrade from advanced site search to basic site search. */
 export const disableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -27593,7 +28271,7 @@ export const disableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSite
     DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest,
   output:
     DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
@@ -27624,7 +28302,11 @@ export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upgrade from basic site search to advanced site search. */
 export const enableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -27637,7 +28319,7 @@ export const enableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteS
     EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest,
   output:
     EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
@@ -27668,7 +28350,11 @@ export const RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRe
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Request on-demand recrawl for a list of URIs. */
 export const recrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -27681,7 +28367,7 @@ export const recrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngine: 
     RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest,
   output:
     RecrawlUrisProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
@@ -27712,7 +28398,11 @@ export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verify target sites' ownership and validity. This API sends all the target sites under site search engine for verification. */
 export const batchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
@@ -27725,7 +28415,7 @@ export const batchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSea
     BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest,
   output:
     BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
@@ -27756,7 +28446,9 @@ export const FetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse;
 
 export type FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns list of target sites with its domain verification status. This method can only be called under data store with BASIC_SITE_SEARCH state at the moment. */
 export const fetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.PaginatedOperationMethod<
@@ -27769,7 +28461,7 @@ export const fetchDomainVerificationStatusProjectsLocationsCollectionsDataStores
     FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest,
   output:
     FetchDomainVerificationStatusProjectsLocationsCollectionsDataStoresSiteSearchEngineResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -27801,7 +28493,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListTargetSitesResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of TargetSites. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.PaginatedOperationMethod<
@@ -27814,7 +28508,7 @@ export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
     ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
   output:
     ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -27845,7 +28539,11 @@ export const PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a TargetSite. */
 export const patchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -27858,7 +28556,7 @@ export const patchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSi
     PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
   output:
     PatchProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -27885,7 +28583,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetSite. */
 export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -27898,7 +28600,7 @@ export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
     CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
   output:
     CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -27920,7 +28622,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1TargetSite;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a TargetSite. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -27933,7 +28637,7 @@ export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
     GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
   output:
     GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -27964,7 +28668,11 @@ export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates TargetSite in a batch. */
 export const batchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -27977,7 +28685,7 @@ export const batchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTa
     BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
   output:
     BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest {
@@ -27999,7 +28707,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a TargetSite. */
 export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
@@ -28012,7 +28724,7 @@ export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetS
     DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
   output:
     DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest {
@@ -28048,7 +28760,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperations: API.PaginatedOperationMethod<
@@ -28061,7 +28775,7 @@ export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSit
     ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest,
   output:
     ListProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -28087,7 +28801,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperations: API.OperationMethod<
@@ -28100,7 +28816,7 @@ export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSite
     GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsRequest,
   output:
     GetProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest {
@@ -28127,7 +28843,11 @@ export const CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Sitemap. */
 export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -28140,7 +28860,7 @@ export const createProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
     CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest,
   output:
     CreateProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest {
@@ -28167,7 +28887,9 @@ export const FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1FetchSitemapsResponse;
 
 export type FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetch Sitemaps in a DataStore. */
 export const fetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -28180,7 +28902,7 @@ export const fetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps
     FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest,
   output:
     FetchProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest {
@@ -28202,7 +28924,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Sitemap. */
 export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemaps: API.OperationMethod<
@@ -28215,7 +28941,7 @@ export const deleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemap
     DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsRequest,
   output:
     DeleteProjectsLocationsCollectionsDataStoresSiteSearchEngineSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest {
@@ -28251,7 +28977,9 @@ export const ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations: API.PaginatedOperationMethod<
@@ -28264,7 +28992,7 @@ export const listProjectsLocationsCollectionsDataStoresSiteSearchEngineOperation
     ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest,
   output:
     ListProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -28290,7 +29018,9 @@ export const GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations: API.OperationMethod<
@@ -28303,7 +29033,7 @@ export const getProjectsLocationsCollectionsDataStoresSiteSearchEngineOperations
     GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsRequest,
   output:
     GetProjectsLocationsCollectionsDataStoresSiteSearchEngineOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest {
@@ -28335,7 +29065,9 @@ export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse;
 
 export type BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets index freshness metadata for Documents. Supported for website search only. */
 export const batchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranches: API.OperationMethod<
@@ -28348,7 +29080,7 @@ export const batchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBran
     BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest,
   output:
     BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest {
@@ -28370,7 +29102,9 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesOperationsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsDataStoresBranchesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsDataStoresBranchesOperations: API.OperationMethod<
@@ -28381,7 +29115,7 @@ export const getProjectsLocationsCollectionsDataStoresBranchesOperations: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresBranchesOperationsRequest,
   output: GetProjectsLocationsCollectionsDataStoresBranchesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest {
@@ -28417,7 +29151,9 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesOperationsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresBranchesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsDataStoresBranchesOperations: API.PaginatedOperationMethod<
@@ -28428,7 +29164,7 @@ export const listProjectsLocationsCollectionsDataStoresBranchesOperations: API.P
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresBranchesOperationsRequest,
   output: ListProjectsLocationsCollectionsDataStoresBranchesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -28459,7 +29195,11 @@ export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsCollectionsDataStoresBranchesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsCollectionsDataStoresBranchesOperations: API.OperationMethod<
@@ -28471,7 +29211,7 @@ export const cancelProjectsLocationsCollectionsDataStoresBranchesOperations: API
   input: CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest,
   output:
     CancelProjectsLocationsCollectionsDataStoresBranchesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest {
@@ -28501,7 +29241,11 @@ export const CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Document;
 
 export type CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Document. */
 export const createProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28512,7 +29256,7 @@ export const createProjectsLocationsCollectionsDataStoresBranchesDocuments: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest,
   output: CreateProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest {
@@ -28540,7 +29284,9 @@ export const ListProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListDocumentsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of Documents. */
 export const listProjectsLocationsCollectionsDataStoresBranchesDocuments: API.PaginatedOperationMethod<
@@ -28551,7 +29297,7 @@ export const listProjectsLocationsCollectionsDataStoresBranchesDocuments: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest,
   output: ListProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -28577,7 +29323,9 @@ export const GetProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Document;
 
 export type GetProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Document. */
 export const getProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28588,7 +29336,7 @@ export const getProjectsLocationsCollectionsDataStoresBranchesDocuments: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest,
   output: GetProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest {
@@ -28619,7 +29367,11 @@ export const ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated. */
 export const importProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28630,7 +29382,7 @@ export const importProjectsLocationsCollectionsDataStoresBranchesDocuments: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest,
   output: ImportProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest {
@@ -28652,7 +29404,11 @@ export const DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Document. */
 export const deleteProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28663,7 +29419,7 @@ export const deleteProjectsLocationsCollectionsDataStoresBranchesDocuments: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest,
   output: DeleteProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest {
@@ -28698,7 +29454,11 @@ export const PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Document;
 
 export type PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Document. */
 export const patchProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28709,7 +29469,7 @@ export const patchProjectsLocationsCollectionsDataStoresBranchesDocuments: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest,
   output: PatchProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest {
@@ -28740,7 +29500,11 @@ export const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all selected Documents in a branch. This process is asynchronous. Depending on the number of Documents to be deleted, this operation can take hours to complete. Before the delete operation completes, some Documents might still be returned by DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the Documents to be deleted, set PurgeDocumentsRequest.force to false. */
 export const purgeProjectsLocationsCollectionsDataStoresBranchesDocuments: API.OperationMethod<
@@ -28751,7 +29515,7 @@ export const purgeProjectsLocationsCollectionsDataStoresBranchesDocuments: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest,
   output: PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest {
@@ -28782,7 +29546,11 @@ export const CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfig
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the user input with advanced keyword suggestions. */
 export const completeQueryProjectsLocationsCollectionsDataStoresCompletionConfig: API.OperationMethod<
@@ -28795,7 +29563,7 @@ export const completeQueryProjectsLocationsCollectionsDataStoresCompletionConfig
     CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigRequest,
   output:
     CompleteQueryProjectsLocationsCollectionsDataStoresCompletionConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsDataStoresCustomModelsRequest {
@@ -28817,7 +29585,9 @@ export const ListProjectsLocationsCollectionsDataStoresCustomModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListCustomModelsResponse;
 
 export type ListProjectsLocationsCollectionsDataStoresCustomModelsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of all the custom models. */
 export const listProjectsLocationsCollectionsDataStoresCustomModels: API.OperationMethod<
@@ -28828,7 +29598,7 @@ export const listProjectsLocationsCollectionsDataStoresCustomModels: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsCollectionsDataStoresCustomModelsRequest,
   output: ListProjectsLocationsCollectionsDataStoresCustomModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest {
@@ -28858,7 +29628,11 @@ export const PatchProjectsLocationsCollectionsDataStoresWidgetConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1WidgetConfig;
 
 export type PatchProjectsLocationsCollectionsDataStoresWidgetConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a WidgetConfig. */
 export const patchProjectsLocationsCollectionsDataStoresWidgetConfigs: API.OperationMethod<
@@ -28869,7 +29643,7 @@ export const patchProjectsLocationsCollectionsDataStoresWidgetConfigs: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsDataStoresWidgetConfigsRequest,
   output: PatchProjectsLocationsCollectionsDataStoresWidgetConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest {
@@ -28903,7 +29677,9 @@ export const GetProjectsLocationsCollectionsDataStoresWidgetConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1WidgetConfig;
 
 export type GetProjectsLocationsCollectionsDataStoresWidgetConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a WidgetConfig. */
 export const getProjectsLocationsCollectionsDataStoresWidgetConfigs: API.OperationMethod<
@@ -28914,7 +29690,7 @@ export const getProjectsLocationsCollectionsDataStoresWidgetConfigs: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsDataStoresWidgetConfigsRequest,
   output: GetProjectsLocationsCollectionsDataStoresWidgetConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsCollectionsEnginesRequest {
@@ -28935,7 +29711,12 @@ export type DeleteProjectsLocationsCollectionsEnginesResponse =
 export const DeleteProjectsLocationsCollectionsEnginesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeleteProjectsLocationsCollectionsEnginesError = DefaultErrors;
+export type DeleteProjectsLocationsCollectionsEnginesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an Engine. */
 export const deleteProjectsLocationsCollectionsEngines: API.OperationMethod<
@@ -28946,7 +29727,7 @@ export const deleteProjectsLocationsCollectionsEngines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsEnginesRequest,
   output: DeleteProjectsLocationsCollectionsEnginesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesRequest {
@@ -28967,7 +29748,10 @@ export type GetProjectsLocationsCollectionsEnginesResponse =
 export const GetProjectsLocationsCollectionsEnginesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Engine;
 
-export type GetProjectsLocationsCollectionsEnginesError = DefaultErrors;
+export type GetProjectsLocationsCollectionsEnginesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an Engine. */
 export const getProjectsLocationsCollectionsEngines: API.OperationMethod<
@@ -28978,7 +29762,7 @@ export const getProjectsLocationsCollectionsEngines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesRequest,
   output: GetProjectsLocationsCollectionsEnginesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCollectionsEnginesRequest {
@@ -29007,7 +29791,12 @@ export type CreateProjectsLocationsCollectionsEnginesResponse =
 export const CreateProjectsLocationsCollectionsEnginesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateProjectsLocationsCollectionsEnginesError = DefaultErrors;
+export type CreateProjectsLocationsCollectionsEnginesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Engine. */
 export const createProjectsLocationsCollectionsEngines: API.OperationMethod<
@@ -29018,7 +29807,7 @@ export const createProjectsLocationsCollectionsEngines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsEnginesRequest,
   output: CreateProjectsLocationsCollectionsEnginesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesRequest {
@@ -29048,7 +29837,10 @@ export type ListProjectsLocationsCollectionsEnginesResponse =
 export const ListProjectsLocationsCollectionsEnginesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListEnginesResponse;
 
-export type ListProjectsLocationsCollectionsEnginesError = DefaultErrors;
+export type ListProjectsLocationsCollectionsEnginesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the Engines associated with the project. */
 export const listProjectsLocationsCollectionsEngines: API.PaginatedOperationMethod<
@@ -29059,7 +29851,7 @@ export const listProjectsLocationsCollectionsEngines: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsEnginesRequest,
   output: ListProjectsLocationsCollectionsEnginesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -29092,7 +29884,12 @@ export type PatchProjectsLocationsCollectionsEnginesResponse =
 export const PatchProjectsLocationsCollectionsEnginesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Engine;
 
-export type PatchProjectsLocationsCollectionsEnginesError = DefaultErrors;
+export type PatchProjectsLocationsCollectionsEnginesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an Engine */
 export const patchProjectsLocationsCollectionsEngines: API.OperationMethod<
@@ -29103,7 +29900,7 @@ export const patchProjectsLocationsCollectionsEngines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsEnginesRequest,
   output: PatchProjectsLocationsCollectionsEnginesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsCollectionsEnginesRequest {
@@ -29130,7 +29927,9 @@ export const GetIamPolicyProjectsLocationsCollectionsEnginesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type GetIamPolicyProjectsLocationsCollectionsEnginesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. */
 export const getIamPolicyProjectsLocationsCollectionsEngines: API.OperationMethod<
@@ -29141,7 +29940,7 @@ export const getIamPolicyProjectsLocationsCollectionsEngines: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsCollectionsEnginesRequest,
   output: GetIamPolicyProjectsLocationsCollectionsEnginesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsCollectionsEnginesRequest {
@@ -29170,7 +29969,11 @@ export const SetIamPolicyProjectsLocationsCollectionsEnginesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV1Policy;
 
 export type SetIamPolicyProjectsLocationsCollectionsEnginesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the resource does not exist. **Important:** When setting a policy directly on an Engine resource, the only recommended roles in the bindings are: `roles/discoveryengine.user` and `roles/discoveryengine.agentspaceUser`. Attempting to grant any other role will result in a warning in logging. */
 export const setIamPolicyProjectsLocationsCollectionsEngines: API.OperationMethod<
@@ -29181,7 +29984,7 @@ export const setIamPolicyProjectsLocationsCollectionsEngines: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsCollectionsEnginesRequest,
   output: SetIamPolicyProjectsLocationsCollectionsEnginesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29209,7 +30012,9 @@ export const ListProjectsLocationsCollectionsEnginesServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListServingConfigsResponse;
 
 export type ListProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all ServingConfigs linked to this dataStore. */
 export const listProjectsLocationsCollectionsEnginesServingConfigs: API.PaginatedOperationMethod<
@@ -29220,7 +30025,7 @@ export const listProjectsLocationsCollectionsEnginesServingConfigs: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: ListProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -29255,7 +30060,11 @@ export const SearchProjectsLocationsCollectionsEnginesServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SearchResponse;
 
 export type SearchProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. */
 export const searchProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29266,7 +30075,7 @@ export const searchProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: SearchProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29288,7 +30097,11 @@ export const DeleteProjectsLocationsCollectionsEnginesServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist. */
 export const deleteProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29299,7 +30112,7 @@ export const deleteProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: DeleteProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29330,7 +30143,11 @@ export const RecommendProjectsLocationsCollectionsEnginesServingConfigsResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1RecommendResponse;
 
 export type RecommendProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes a recommendation, which requires a contextual user event. */
 export const recommendProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29341,7 +30158,7 @@ export const recommendProjectsLocationsCollectionsEnginesServingConfigs: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecommendProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: RecommendProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29371,7 +30188,11 @@ export const PatchProjectsLocationsCollectionsEnginesServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
 export type PatchProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist. */
 export const patchProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29382,7 +30203,7 @@ export const patchProjectsLocationsCollectionsEnginesServingConfigs: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: PatchProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29418,7 +30239,11 @@ export const CreateProjectsLocationsCollectionsEnginesServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
 export type CreateProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned. */
 export const createProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29429,7 +30254,7 @@ export const createProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: CreateProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29460,7 +30285,11 @@ export const StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AnswerQueryResponse;
 
 export type StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream. */
 export const streamAnswerProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29471,7 +30300,7 @@ export const streamAnswerProjectsLocationsCollectionsEnginesServingConfigs: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: StreamAnswerProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29493,7 +30322,9 @@ export const GetProjectsLocationsCollectionsEnginesServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ServingConfig;
 
 export type GetProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist. */
 export const getProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29504,7 +30335,7 @@ export const getProjectsLocationsCollectionsEnginesServingConfigs: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: GetProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29535,7 +30366,11 @@ export const SearchLiteProjectsLocationsCollectionsEnginesServingConfigsResponse
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1SearchResponse;
 
 export type SearchLiteProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security. */
 export const searchLiteProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29546,7 +30381,7 @@ export const searchLiteProjectsLocationsCollectionsEnginesServingConfigs: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchLiteProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: SearchLiteProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest {
@@ -29577,7 +30412,11 @@ export const AnswerProjectsLocationsCollectionsEnginesServingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AnswerQueryResponse;
 
 export type AnswerProjectsLocationsCollectionsEnginesServingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Answer query method. */
 export const answerProjectsLocationsCollectionsEnginesServingConfigs: API.OperationMethod<
@@ -29588,7 +30427,7 @@ export const answerProjectsLocationsCollectionsEnginesServingConfigs: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnswerProjectsLocationsCollectionsEnginesServingConfigsRequest,
   output: AnswerProjectsLocationsCollectionsEnginesServingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesConversationsRequest {
@@ -29610,7 +30449,9 @@ export const GetProjectsLocationsCollectionsEnginesConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
 export type GetProjectsLocationsCollectionsEnginesConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Conversation. */
 export const getProjectsLocationsCollectionsEnginesConversations: API.OperationMethod<
@@ -29621,7 +30462,7 @@ export const getProjectsLocationsCollectionsEnginesConversations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesConversationsRequest,
   output: GetProjectsLocationsCollectionsEnginesConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCollectionsEnginesConversationsRequest {
@@ -29652,7 +30493,11 @@ export const CreateProjectsLocationsCollectionsEnginesConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
 export type CreateProjectsLocationsCollectionsEnginesConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsCollectionsEnginesConversations: API.OperationMethod<
@@ -29663,7 +30508,7 @@ export const createProjectsLocationsCollectionsEnginesConversations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsEnginesConversationsRequest,
   output: CreateProjectsLocationsCollectionsEnginesConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesConversationsRequest {
@@ -29697,7 +30542,9 @@ export const ListProjectsLocationsCollectionsEnginesConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListConversationsResponse;
 
 export type ListProjectsLocationsCollectionsEnginesConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Conversations by their parent DataStore. */
 export const listProjectsLocationsCollectionsEnginesConversations: API.PaginatedOperationMethod<
@@ -29708,7 +30555,7 @@ export const listProjectsLocationsCollectionsEnginesConversations: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsEnginesConversationsRequest,
   output: ListProjectsLocationsCollectionsEnginesConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -29739,7 +30586,11 @@ export const ConverseProjectsLocationsCollectionsEnginesConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ConverseConversationResponse;
 
 export type ConverseProjectsLocationsCollectionsEnginesConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Converses a conversation. */
 export const converseProjectsLocationsCollectionsEnginesConversations: API.OperationMethod<
@@ -29750,7 +30601,7 @@ export const converseProjectsLocationsCollectionsEnginesConversations: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConverseProjectsLocationsCollectionsEnginesConversationsRequest,
   output: ConverseProjectsLocationsCollectionsEnginesConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsEnginesConversationsRequest {
@@ -29772,7 +30623,11 @@ export const DeleteProjectsLocationsCollectionsEnginesConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsEnginesConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsCollectionsEnginesConversations: API.OperationMethod<
@@ -29783,7 +30638,7 @@ export const deleteProjectsLocationsCollectionsEnginesConversations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsEnginesConversationsRequest,
   output: DeleteProjectsLocationsCollectionsEnginesConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsEnginesConversationsRequest {
@@ -29813,7 +30668,11 @@ export const PatchProjectsLocationsCollectionsEnginesConversationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Conversation;
 
 export type PatchProjectsLocationsCollectionsEnginesConversationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsCollectionsEnginesConversations: API.OperationMethod<
@@ -29824,7 +30683,7 @@ export const patchProjectsLocationsCollectionsEnginesConversations: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsEnginesConversationsRequest,
   output: PatchProjectsLocationsCollectionsEnginesConversationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest {
@@ -29854,7 +30713,11 @@ export const PatchProjectsLocationsCollectionsEnginesWidgetConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1WidgetConfig;
 
 export type PatchProjectsLocationsCollectionsEnginesWidgetConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a WidgetConfig. */
 export const patchProjectsLocationsCollectionsEnginesWidgetConfigs: API.OperationMethod<
@@ -29865,7 +30728,7 @@ export const patchProjectsLocationsCollectionsEnginesWidgetConfigs: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsEnginesWidgetConfigsRequest,
   output: PatchProjectsLocationsCollectionsEnginesWidgetConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest {
@@ -29899,7 +30762,9 @@ export const GetProjectsLocationsCollectionsEnginesWidgetConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1WidgetConfig;
 
 export type GetProjectsLocationsCollectionsEnginesWidgetConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a WidgetConfig. */
 export const getProjectsLocationsCollectionsEnginesWidgetConfigs: API.OperationMethod<
@@ -29910,7 +30775,7 @@ export const getProjectsLocationsCollectionsEnginesWidgetConfigs: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesWidgetConfigsRequest,
   output: GetProjectsLocationsCollectionsEnginesWidgetConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsCollectionsEnginesControlsRequest {
@@ -29940,7 +30805,11 @@ export const PatchProjectsLocationsCollectionsEnginesControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
 export type PatchProjectsLocationsCollectionsEnginesControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsCollectionsEnginesControls: API.OperationMethod<
@@ -29951,7 +30820,7 @@ export const patchProjectsLocationsCollectionsEnginesControls: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsEnginesControlsRequest,
   output: PatchProjectsLocationsCollectionsEnginesControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesControlsRequest {
@@ -29982,7 +30851,9 @@ export const ListProjectsLocationsCollectionsEnginesControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListControlsResponse;
 
 export type ListProjectsLocationsCollectionsEnginesControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Controls by their parent DataStore. */
 export const listProjectsLocationsCollectionsEnginesControls: API.PaginatedOperationMethod<
@@ -29993,7 +30864,7 @@ export const listProjectsLocationsCollectionsEnginesControls: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsEnginesControlsRequest,
   output: ListProjectsLocationsCollectionsEnginesControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -30018,7 +30889,10 @@ export type GetProjectsLocationsCollectionsEnginesControlsResponse =
 export const GetProjectsLocationsCollectionsEnginesControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
-export type GetProjectsLocationsCollectionsEnginesControlsError = DefaultErrors;
+export type GetProjectsLocationsCollectionsEnginesControlsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Control. */
 export const getProjectsLocationsCollectionsEnginesControls: API.OperationMethod<
@@ -30029,7 +30903,7 @@ export const getProjectsLocationsCollectionsEnginesControls: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesControlsRequest,
   output: GetProjectsLocationsCollectionsEnginesControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCollectionsEnginesControlsRequest {
@@ -30059,7 +30933,11 @@ export const CreateProjectsLocationsCollectionsEnginesControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Control;
 
 export type CreateProjectsLocationsCollectionsEnginesControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsCollectionsEnginesControls: API.OperationMethod<
@@ -30070,7 +30948,7 @@ export const createProjectsLocationsCollectionsEnginesControls: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsEnginesControlsRequest,
   output: CreateProjectsLocationsCollectionsEnginesControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsEnginesControlsRequest {
@@ -30092,7 +30970,11 @@ export const DeleteProjectsLocationsCollectionsEnginesControlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsEnginesControlsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsCollectionsEnginesControls: API.OperationMethod<
@@ -30103,7 +30985,7 @@ export const deleteProjectsLocationsCollectionsEnginesControls: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsEnginesControlsRequest,
   output: DeleteProjectsLocationsCollectionsEnginesControlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsCollectionsEnginesOperationsRequest {
@@ -30130,7 +31012,11 @@ export const CancelProjectsLocationsCollectionsEnginesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type CancelProjectsLocationsCollectionsEnginesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsCollectionsEnginesOperations: API.OperationMethod<
@@ -30141,7 +31027,7 @@ export const cancelProjectsLocationsCollectionsEnginesOperations: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsCollectionsEnginesOperationsRequest,
   output: CancelProjectsLocationsCollectionsEnginesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesOperationsRequest {
@@ -30163,7 +31049,9 @@ export const GetProjectsLocationsCollectionsEnginesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsEnginesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsEnginesOperations: API.OperationMethod<
@@ -30174,7 +31062,7 @@ export const getProjectsLocationsCollectionsEnginesOperations: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesOperationsRequest,
   output: GetProjectsLocationsCollectionsEnginesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesOperationsRequest {
@@ -30210,7 +31098,9 @@ export const ListProjectsLocationsCollectionsEnginesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
 export type ListProjectsLocationsCollectionsEnginesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsCollectionsEnginesOperations: API.PaginatedOperationMethod<
@@ -30221,7 +31111,7 @@ export const listProjectsLocationsCollectionsEnginesOperations: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsEnginesOperationsRequest,
   output: ListProjectsLocationsCollectionsEnginesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -30247,7 +31137,9 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Assistant;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an Assistant. */
 export const getProjectsLocationsCollectionsEnginesAssistants: API.OperationMethod<
@@ -30258,7 +31150,7 @@ export const getProjectsLocationsCollectionsEnginesAssistants: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesAssistantsRequest,
   output: GetProjectsLocationsCollectionsEnginesAssistantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsCollectionsEnginesAssistantsRequest {
@@ -30288,7 +31180,11 @@ export const PatchProjectsLocationsCollectionsEnginesAssistantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Assistant;
 
 export type PatchProjectsLocationsCollectionsEnginesAssistantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an Assistant */
 export const patchProjectsLocationsCollectionsEnginesAssistants: API.OperationMethod<
@@ -30299,7 +31195,7 @@ export const patchProjectsLocationsCollectionsEnginesAssistants: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsEnginesAssistantsRequest,
   output: PatchProjectsLocationsCollectionsEnginesAssistantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsEnginesAssistantsRequest {
@@ -30331,7 +31227,11 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Assistant;
 
 export type CreateProjectsLocationsCollectionsEnginesAssistantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Assistant. */
 export const createProjectsLocationsCollectionsEnginesAssistants: API.OperationMethod<
@@ -30342,7 +31242,7 @@ export const createProjectsLocationsCollectionsEnginesAssistants: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsEnginesAssistantsRequest,
   output: CreateProjectsLocationsCollectionsEnginesAssistantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsCollectionsEnginesAssistantsRequest {
@@ -30364,7 +31264,11 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsEnginesAssistantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an Assistant. */
 export const deleteProjectsLocationsCollectionsEnginesAssistants: API.OperationMethod<
@@ -30375,7 +31279,7 @@ export const deleteProjectsLocationsCollectionsEnginesAssistants: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsEnginesAssistantsRequest,
   output: DeleteProjectsLocationsCollectionsEnginesAssistantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest {
@@ -30402,7 +31306,11 @@ export const StreamAssistProjectsLocationsCollectionsEnginesAssistantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1StreamAssistResponse;
 
 export type StreamAssistProjectsLocationsCollectionsEnginesAssistantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Assists the user with a query in a streaming fashion. */
 export const streamAssistProjectsLocationsCollectionsEnginesAssistants: API.OperationMethod<
@@ -30413,7 +31321,7 @@ export const streamAssistProjectsLocationsCollectionsEnginesAssistants: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StreamAssistProjectsLocationsCollectionsEnginesAssistantsRequest,
   output: StreamAssistProjectsLocationsCollectionsEnginesAssistantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesAssistantsRequest {
@@ -30441,7 +31349,9 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListAssistantsResponse;
 
 export type ListProjectsLocationsCollectionsEnginesAssistantsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Assistants under an Engine. */
 export const listProjectsLocationsCollectionsEnginesAssistants: API.PaginatedOperationMethod<
@@ -30452,7 +31362,7 @@ export const listProjectsLocationsCollectionsEnginesAssistants: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsEnginesAssistantsRequest,
   output: ListProjectsLocationsCollectionsEnginesAssistantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -30478,7 +31388,9 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsCollectionsEnginesAssistantsAgentsOperations: API.OperationMethod<
@@ -30491,7 +31403,7 @@ export const getProjectsLocationsCollectionsEnginesAssistantsAgentsOperations: A
     GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsRequest,
   output:
     GetProjectsLocationsCollectionsEnginesAssistantsAgentsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Request {
@@ -30513,7 +31425,9 @@ export const GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Resp
   /*@__PURE__*/ /*#__PURE__*/ A2aV1AgentCard;
 
 export type GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Error =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetAgentCard returns the agent card for the agent. */
 export const getCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1: API.OperationMethod<
@@ -30525,7 +31439,7 @@ export const getCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1: AP
   input: GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Request,
   output:
     GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest {
@@ -30550,7 +31464,9 @@ export const SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Ta
   /*@__PURE__*/ /*#__PURE__*/ A2aV1StreamResponse;
 
 export type SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** TaskSubscription is a streaming call that will return a stream of task update events. This attaches the stream to an existing in process task. If the task is complete the stream will return the completed task (like GetTask) and close the stream. */
 export const subscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks: API.OperationMethod<
@@ -30563,7 +31479,7 @@ export const subscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Ta
     SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest,
   output:
     SubscribeProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest {
@@ -30595,7 +31511,11 @@ export const CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   /*@__PURE__*/ /*#__PURE__*/ A2aV1Task;
 
 export type CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel a task from the agent. If supported one should expect no more task updates for the task. */
 export const cancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks: API.OperationMethod<
@@ -30608,7 +31528,7 @@ export const cancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
     CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest,
   output:
     CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest {
@@ -30638,7 +31558,9 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRes
   /*@__PURE__*/ /*#__PURE__*/ A2aV1Task;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the current state of a task from the agent. */
 export const getProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks: API.OperationMethod<
@@ -30651,7 +31573,7 @@ export const getProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks: A
     GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest,
   output:
     GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest {
@@ -30676,7 +31598,11 @@ export const DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a push notification config for a task. */
 export const deleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigs: API.OperationMethod<
@@ -30689,7 +31615,7 @@ export const deleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
     DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest,
   output:
     DeleteProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest {
@@ -30723,7 +31649,9 @@ export const ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPu
   /*@__PURE__*/ /*#__PURE__*/ A2aV1ListTaskPushNotificationConfigResponse;
 
 export type ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of push notifications configured for a task. */
 export const listProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigs: API.PaginatedOperationMethod<
@@ -30736,7 +31664,7 @@ export const listProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPu
     ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest,
   output:
     ListProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -30765,7 +31693,9 @@ export const GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPus
   /*@__PURE__*/ /*#__PURE__*/ A2aV1TaskPushNotificationConfig;
 
 export type GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a push notification config for a task. */
 export const getProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigs: API.OperationMethod<
@@ -30778,7 +31708,7 @@ export const getProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPus
     GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest,
   output:
     GetProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest {
@@ -30813,7 +31743,11 @@ export const CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
   /*@__PURE__*/ /*#__PURE__*/ A2aV1TaskPushNotificationConfig;
 
 export type CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set a push notification config for a task. */
 export const createProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigs: API.OperationMethod<
@@ -30826,7 +31760,7 @@ export const createProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
     CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsRequest,
   output:
     CreateProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageRequest {
@@ -30855,7 +31789,11 @@ export const StreamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Messa
   /*@__PURE__*/ /*#__PURE__*/ A2aV1StreamResponse;
 
 export type StreamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** SendStreamingMessage is a streaming call that will return a stream of task update events until the Task is in an interrupted or terminal state. */
 export const streamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Message: API.OperationMethod<
@@ -30868,7 +31806,7 @@ export const streamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Messa
     StreamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageRequest,
   output:
     StreamProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageRequest {
@@ -30897,7 +31835,11 @@ export const SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Message
   /*@__PURE__*/ /*#__PURE__*/ A2aV1SendMessageResponse;
 
 export type SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Send a message to the agent. This is a blocking call that will return the task once it is completed, or a LRO if requested. */
 export const sendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Message: API.OperationMethod<
@@ -30910,7 +31852,7 @@ export const sendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Message
     SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageRequest,
   output:
     SendProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1MessageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest {
@@ -30941,7 +31883,11 @@ export const CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1AdvancedCompleteQueryResponse;
 
 export type CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the user input with advanced keyword suggestions. */
 export const completeQueryProjectsLocationsCollectionsEnginesCompletionConfig: API.OperationMethod<
@@ -30954,7 +31900,7 @@ export const completeQueryProjectsLocationsCollectionsEnginesCompletionConfig: A
     CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigRequest,
   output:
     CompleteQueryProjectsLocationsCollectionsEnginesCompletionConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsCollectionsEnginesSessionsRequest {
@@ -30988,7 +31934,9 @@ export const ListProjectsLocationsCollectionsEnginesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1ListSessionsResponse;
 
 export type ListProjectsLocationsCollectionsEnginesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Sessions by their parent DataStore. */
 export const listProjectsLocationsCollectionsEnginesSessions: API.PaginatedOperationMethod<
@@ -30999,7 +31947,7 @@ export const listProjectsLocationsCollectionsEnginesSessions: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsCollectionsEnginesSessionsRequest,
   output: ListProjectsLocationsCollectionsEnginesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -31025,7 +31973,11 @@ export const DeleteProjectsLocationsCollectionsEnginesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteProjectsLocationsCollectionsEnginesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned. */
 export const deleteProjectsLocationsCollectionsEnginesSessions: API.OperationMethod<
@@ -31036,7 +31988,7 @@ export const deleteProjectsLocationsCollectionsEnginesSessions: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsCollectionsEnginesSessionsRequest,
   output: DeleteProjectsLocationsCollectionsEnginesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsCollectionsEnginesSessionsRequest {
@@ -31066,7 +32018,11 @@ export const CreateProjectsLocationsCollectionsEnginesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
 export type CreateProjectsLocationsCollectionsEnginesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned. */
 export const createProjectsLocationsCollectionsEnginesSessions: API.OperationMethod<
@@ -31077,7 +32033,7 @@ export const createProjectsLocationsCollectionsEnginesSessions: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsCollectionsEnginesSessionsRequest,
   output: CreateProjectsLocationsCollectionsEnginesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsCollectionsEnginesSessionsRequest {
@@ -31107,7 +32063,11 @@ export const PatchProjectsLocationsCollectionsEnginesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
 export type PatchProjectsLocationsCollectionsEnginesSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned. */
 export const patchProjectsLocationsCollectionsEnginesSessions: API.OperationMethod<
@@ -31118,7 +32078,7 @@ export const patchProjectsLocationsCollectionsEnginesSessions: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsCollectionsEnginesSessionsRequest,
   output: PatchProjectsLocationsCollectionsEnginesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesSessionsRequest {
@@ -31144,7 +32104,10 @@ export type GetProjectsLocationsCollectionsEnginesSessionsResponse =
 export const GetProjectsLocationsCollectionsEnginesSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Session;
 
-export type GetProjectsLocationsCollectionsEnginesSessionsError = DefaultErrors;
+export type GetProjectsLocationsCollectionsEnginesSessionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Session. */
 export const getProjectsLocationsCollectionsEnginesSessions: API.OperationMethod<
@@ -31155,7 +32118,7 @@ export const getProjectsLocationsCollectionsEnginesSessions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesSessionsRequest,
   output: GetProjectsLocationsCollectionsEnginesSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest {
@@ -31177,7 +32140,9 @@ export const GetProjectsLocationsCollectionsEnginesSessionsAnswersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1Answer;
 
 export type GetProjectsLocationsCollectionsEnginesSessionsAnswersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Answer. */
 export const getProjectsLocationsCollectionsEnginesSessionsAnswers: API.OperationMethod<
@@ -31188,7 +32153,7 @@ export const getProjectsLocationsCollectionsEnginesSessionsAnswers: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsCollectionsEnginesSessionsAnswersRequest,
   output: GetProjectsLocationsCollectionsEnginesSessionsAnswersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsLicenseConfigsRequest {
@@ -31223,7 +32188,12 @@ export type CreateProjectsLocationsLicenseConfigsResponse =
 export const CreateProjectsLocationsLicenseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1LicenseConfig;
 
-export type CreateProjectsLocationsLicenseConfigsError = DefaultErrors;
+export type CreateProjectsLocationsLicenseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a LicenseConfig This method should only be used for creating NotebookLm licenses or Gemini Enterprise free trial licenses. */
 export const createProjectsLocationsLicenseConfigs: API.OperationMethod<
@@ -31234,7 +32204,7 @@ export const createProjectsLocationsLicenseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsLicenseConfigsRequest,
   output: CreateProjectsLocationsLicenseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsLicenseConfigsRequest {
@@ -31255,7 +32225,10 @@ export type GetProjectsLocationsLicenseConfigsResponse =
 export const GetProjectsLocationsLicenseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1LicenseConfig;
 
-export type GetProjectsLocationsLicenseConfigsError = DefaultErrors;
+export type GetProjectsLocationsLicenseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a LicenseConfig. */
 export const getProjectsLocationsLicenseConfigs: API.OperationMethod<
@@ -31266,7 +32239,7 @@ export const getProjectsLocationsLicenseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsLicenseConfigsRequest,
   output: GetProjectsLocationsLicenseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsLicenseConfigsRequest {
@@ -31295,7 +32268,12 @@ export type PatchProjectsLocationsLicenseConfigsResponse =
 export const PatchProjectsLocationsLicenseConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDiscoveryengineV1LicenseConfig;
 
-export type PatchProjectsLocationsLicenseConfigsError = DefaultErrors;
+export type PatchProjectsLocationsLicenseConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the LicenseConfig */
 export const patchProjectsLocationsLicenseConfigs: API.OperationMethod<
@@ -31306,7 +32284,7 @@ export const patchProjectsLocationsLicenseConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsLicenseConfigsRequest,
   output: PatchProjectsLocationsLicenseConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsOperationsRequest {
@@ -31326,7 +32304,7 @@ export type GetProjectsOperationsResponse = GoogleLongrunningOperation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -31337,7 +32315,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsOperationsRequest {
@@ -31362,7 +32340,12 @@ export type CancelProjectsOperationsResponse = GoogleProtobufEmpty;
 export const CancelProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsOperationsError = DefaultErrors;
+export type CancelProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsOperations: API.OperationMethod<
@@ -31373,7 +32356,7 @@ export const cancelProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsOperationsRequest,
   output: CancelProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsOperationsRequest {
@@ -31408,7 +32391,7 @@ export type ListProjectsOperationsResponse =
 export const ListProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListProjectsOperationsError = DefaultErrors;
+export type ListProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsOperations: API.PaginatedOperationMethod<
@@ -31419,7 +32402,7 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsOperationsRequest,
   output: ListProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

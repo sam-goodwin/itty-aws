@@ -586,6 +586,52 @@ export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SetIamPolicyRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -613,7 +659,10 @@ export type ListProjectsLocationsDataExchangesResponse =
 export const ListProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataExchangesResponse;
 
-export type ListProjectsLocationsDataExchangesError = DefaultErrors;
+export type ListProjectsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all data exchanges in a given project and location. */
 export const listProjectsLocationsDataExchanges: API.PaginatedOperationMethod<
@@ -624,7 +673,7 @@ export const listProjectsLocationsDataExchanges: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataExchangesRequest,
   output: ListProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -660,7 +709,12 @@ export type CreateProjectsLocationsDataExchangesResponse = DataExchange;
 export const CreateProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataExchange;
 
-export type CreateProjectsLocationsDataExchangesError = DefaultErrors;
+export type CreateProjectsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new data exchange. */
 export const createProjectsLocationsDataExchanges: API.OperationMethod<
@@ -671,7 +725,7 @@ export const createProjectsLocationsDataExchanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataExchangesRequest,
   output: CreateProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDataExchangesRequest {
@@ -697,7 +751,12 @@ export type PatchProjectsLocationsDataExchangesResponse = DataExchange;
 export const PatchProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataExchange;
 
-export type PatchProjectsLocationsDataExchangesError = DefaultErrors;
+export type PatchProjectsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing data exchange. */
 export const patchProjectsLocationsDataExchanges: API.OperationMethod<
@@ -708,7 +767,7 @@ export const patchProjectsLocationsDataExchanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataExchangesRequest,
   output: PatchProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDataExchangesRequest {
@@ -737,7 +796,11 @@ export const TestIamPermissionsProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDataExchangesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has. */
 export const testIamPermissionsProjectsLocationsDataExchanges: API.OperationMethod<
@@ -748,7 +811,7 @@ export const testIamPermissionsProjectsLocationsDataExchanges: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDataExchangesRequest,
   output: TestIamPermissionsProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataExchangesRequest {
@@ -768,7 +831,10 @@ export type GetProjectsLocationsDataExchangesResponse = DataExchange;
 export const GetProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataExchange;
 
-export type GetProjectsLocationsDataExchangesError = DefaultErrors;
+export type GetProjectsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a data exchange. */
 export const getProjectsLocationsDataExchanges: API.OperationMethod<
@@ -779,7 +845,7 @@ export const getProjectsLocationsDataExchanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataExchangesRequest,
   output: GetProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDataExchangesRequest {
@@ -799,7 +865,12 @@ export type DeleteProjectsLocationsDataExchangesResponse = Empty;
 export const DeleteProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDataExchangesError = DefaultErrors;
+export type DeleteProjectsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing data exchange. */
 export const deleteProjectsLocationsDataExchanges: API.OperationMethod<
@@ -810,7 +881,7 @@ export const deleteProjectsLocationsDataExchanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataExchangesRequest,
   output: DeleteProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDataExchangesRequest {
@@ -837,7 +908,12 @@ export type GetIamPolicyProjectsLocationsDataExchangesResponse = Policy;
 export const GetIamPolicyProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsDataExchangesError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy. */
 export const getIamPolicyProjectsLocationsDataExchanges: API.OperationMethod<
@@ -848,7 +924,7 @@ export const getIamPolicyProjectsLocationsDataExchanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDataExchangesRequest,
   output: GetIamPolicyProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsDataExchangesRequest {
@@ -875,7 +951,12 @@ export type SetIamPolicyProjectsLocationsDataExchangesResponse = Policy;
 export const SetIamPolicyProjectsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsDataExchangesError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy. */
 export const setIamPolicyProjectsLocationsDataExchanges: API.OperationMethod<
@@ -886,7 +967,7 @@ export const setIamPolicyProjectsLocationsDataExchanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDataExchangesRequest,
   output: SetIamPolicyProjectsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDataExchangesListingsRequest {
@@ -906,7 +987,12 @@ export type DeleteProjectsLocationsDataExchangesListingsResponse = Empty;
 export const DeleteProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDataExchangesListingsError = DefaultErrors;
+export type DeleteProjectsLocationsDataExchangesListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a listing. */
 export const deleteProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -917,7 +1003,7 @@ export const deleteProjectsLocationsDataExchangesListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDataExchangesListingsRequest,
   output: DeleteProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDataExchangesListingsRequest {
@@ -946,7 +1032,11 @@ export const TestIamPermissionsProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDataExchangesListingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has. */
 export const testIamPermissionsProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -957,7 +1047,7 @@ export const testIamPermissionsProjectsLocationsDataExchangesListings: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDataExchangesListingsRequest,
   output: TestIamPermissionsProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubscribeProjectsLocationsDataExchangesListingsRequest {
@@ -982,7 +1072,11 @@ export const SubscribeProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscribeListingResponse;
 
 export type SubscribeProjectsLocationsDataExchangesListingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Subscribes to a listing. Currently, with Analytics Hub, you can create listings that reference only BigQuery datasets. Upon subscription to a listing for a BigQuery dataset, Analytics Hub creates a linked dataset in the subscriber's project. */
 export const subscribeProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -993,7 +1087,7 @@ export const subscribeProjectsLocationsDataExchangesListings: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubscribeProjectsLocationsDataExchangesListingsRequest,
   output: SubscribeProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsDataExchangesListingsRequest {
@@ -1021,7 +1115,11 @@ export const SetIamPolicyProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsDataExchangesListingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy. */
 export const setIamPolicyProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -1032,7 +1130,7 @@ export const setIamPolicyProjectsLocationsDataExchangesListings: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDataExchangesListingsRequest,
   output: SetIamPolicyProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDataExchangesListingsRequest {
@@ -1052,7 +1150,10 @@ export type GetProjectsLocationsDataExchangesListingsResponse = Listing;
 export const GetProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Listing;
 
-export type GetProjectsLocationsDataExchangesListingsError = DefaultErrors;
+export type GetProjectsLocationsDataExchangesListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a listing. */
 export const getProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -1063,7 +1164,7 @@ export const getProjectsLocationsDataExchangesListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataExchangesListingsRequest,
   output: GetProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyProjectsLocationsDataExchangesListingsRequest {
@@ -1091,7 +1192,11 @@ export const GetIamPolicyProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsDataExchangesListingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy. */
 export const getIamPolicyProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -1102,7 +1207,7 @@ export const getIamPolicyProjectsLocationsDataExchangesListings: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDataExchangesListingsRequest,
   output: GetIamPolicyProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDataExchangesListingsRequest {
@@ -1132,7 +1237,12 @@ export type CreateProjectsLocationsDataExchangesListingsResponse = Listing;
 export const CreateProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Listing;
 
-export type CreateProjectsLocationsDataExchangesListingsError = DefaultErrors;
+export type CreateProjectsLocationsDataExchangesListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new listing. */
 export const createProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -1143,7 +1253,7 @@ export const createProjectsLocationsDataExchangesListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDataExchangesListingsRequest,
   output: CreateProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDataExchangesListingsRequest {
@@ -1169,7 +1279,12 @@ export type PatchProjectsLocationsDataExchangesListingsResponse = Listing;
 export const PatchProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Listing;
 
-export type PatchProjectsLocationsDataExchangesListingsError = DefaultErrors;
+export type PatchProjectsLocationsDataExchangesListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing listing. */
 export const patchProjectsLocationsDataExchangesListings: API.OperationMethod<
@@ -1180,7 +1295,7 @@ export const patchProjectsLocationsDataExchangesListings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDataExchangesListingsRequest,
   output: PatchProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataExchangesListingsRequest {
@@ -1207,7 +1322,10 @@ export type ListProjectsLocationsDataExchangesListingsResponse =
 export const ListProjectsLocationsDataExchangesListingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListListingsResponse;
 
-export type ListProjectsLocationsDataExchangesListingsError = DefaultErrors;
+export type ListProjectsLocationsDataExchangesListingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all listings in a given project and location. */
 export const listProjectsLocationsDataExchangesListings: API.PaginatedOperationMethod<
@@ -1218,7 +1336,7 @@ export const listProjectsLocationsDataExchangesListings: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataExchangesListingsRequest,
   output: ListProjectsLocationsDataExchangesListingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1249,7 +1367,10 @@ export type ListOrganizationsLocationsDataExchangesResponse =
 export const ListOrganizationsLocationsDataExchangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOrgDataExchangesResponse;
 
-export type ListOrganizationsLocationsDataExchangesError = DefaultErrors;
+export type ListOrganizationsLocationsDataExchangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all data exchanges from projects in a given organization and location. */
 export const listOrganizationsLocationsDataExchanges: API.PaginatedOperationMethod<
@@ -1260,7 +1381,7 @@ export const listOrganizationsLocationsDataExchanges: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDataExchangesRequest,
   output: ListOrganizationsLocationsDataExchangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

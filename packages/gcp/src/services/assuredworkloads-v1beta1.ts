@@ -1134,6 +1134,52 @@ export const GoogleCloudAssuredworkloadsV1beta1ApplyWorkloadUpdateOperationMetad
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1169,7 +1215,10 @@ export type ListOrganizationsLocationsOperationsResponse =
 export const ListOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListOrganizationsLocationsOperationsError = DefaultErrors;
+export type ListOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
@@ -1180,7 +1229,7 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsOperationsRequest,
   output: ListOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1205,7 +1254,10 @@ export type GetOrganizationsLocationsOperationsResponse =
 export const GetOrganizationsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetOrganizationsLocationsOperationsError = DefaultErrors;
+export type GetOrganizationsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsOperations: API.OperationMethod<
@@ -1216,7 +1268,7 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsOperationsRequest,
   output: GetOrganizationsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsLocationsWorkloadsRequest {
@@ -1249,7 +1301,12 @@ export type CreateOrganizationsLocationsWorkloadsResponse =
 export const CreateOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreateOrganizationsLocationsWorkloadsError = DefaultErrors;
+export type CreateOrganizationsLocationsWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates Assured Workload. */
 export const createOrganizationsLocationsWorkloads: API.OperationMethod<
@@ -1260,7 +1317,7 @@ export const createOrganizationsLocationsWorkloads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsWorkloadsRequest,
   output: CreateOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsWorkloadsRequest {
@@ -1289,7 +1346,12 @@ export type PatchOrganizationsLocationsWorkloadsResponse =
 export const PatchOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1Workload;
 
-export type PatchOrganizationsLocationsWorkloadsError = DefaultErrors;
+export type PatchOrganizationsLocationsWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing workload. Currently allows updating of workload display_name and labels. For force updates don't set etag field in the Workload. Only one update operation per workload can be in progress. */
 export const patchOrganizationsLocationsWorkloads: API.OperationMethod<
@@ -1300,7 +1362,7 @@ export const patchOrganizationsLocationsWorkloads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsWorkloadsRequest,
   output: PatchOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest {
@@ -1331,7 +1393,11 @@ export const RestrictAllowedResourcesOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1RestrictAllowedResourcesResponse;
 
 export type RestrictAllowedResourcesOrganizationsLocationsWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restrict the list of resources allowed in the Workload environment. The current list of allowed products can be found at https://cloud.google.com/assured-workloads/docs/supported-products In addition to assuredworkloads.workload.update permission, the user should also have orgpolicy.policy.set permission on the folder resource to use this functionality. */
 export const restrictAllowedResourcesOrganizationsLocationsWorkloads: API.OperationMethod<
@@ -1342,7 +1408,7 @@ export const restrictAllowedResourcesOrganizationsLocationsWorkloads: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestrictAllowedResourcesOrganizationsLocationsWorkloadsRequest,
   output: RestrictAllowedResourcesOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsWorkloadsRequest {
@@ -1365,7 +1431,12 @@ export type DeleteOrganizationsLocationsWorkloadsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsLocationsWorkloadsError = DefaultErrors;
+export type DeleteOrganizationsLocationsWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the workload. Make sure that workload's direct children are already in a deleted state, otherwise the request will fail with a FAILED_PRECONDITION error. In addition to assuredworkloads.workload.delete permission, the user should also have orgpolicy.policy.set permission on the deleted folder to remove Assured Workloads OrgPolicies. */
 export const deleteOrganizationsLocationsWorkloads: API.OperationMethod<
@@ -1376,7 +1447,7 @@ export const deleteOrganizationsLocationsWorkloads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsWorkloadsRequest,
   output: DeleteOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsWorkloadsRequest {
@@ -1397,7 +1468,10 @@ export type GetOrganizationsLocationsWorkloadsResponse =
 export const GetOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1Workload;
 
-export type GetOrganizationsLocationsWorkloadsError = DefaultErrors;
+export type GetOrganizationsLocationsWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets Assured Workload associated with a CRM Node */
 export const getOrganizationsLocationsWorkloads: API.OperationMethod<
@@ -1408,7 +1482,7 @@ export const getOrganizationsLocationsWorkloads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsWorkloadsRequest,
   output: GetOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest {
@@ -1444,7 +1518,9 @@ export const AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse;
 
 export type AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks. The analysis is best effort and is not guaranteed to be exhaustive. */
 export const analyzeWorkloadMoveOrganizationsLocationsWorkloads: API.PaginatedOperationMethod<
@@ -1455,7 +1531,7 @@ export const analyzeWorkloadMoveOrganizationsLocationsWorkloads: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsRequest,
   output: AnalyzeWorkloadMoveOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1489,7 +1565,10 @@ export type ListOrganizationsLocationsWorkloadsResponse =
 export const ListOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1ListWorkloadsResponse;
 
-export type ListOrganizationsLocationsWorkloadsError = DefaultErrors;
+export type ListOrganizationsLocationsWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Assured Workloads under a CRM Node. */
 export const listOrganizationsLocationsWorkloads: API.PaginatedOperationMethod<
@@ -1500,7 +1579,7 @@ export const listOrganizationsLocationsWorkloads: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsRequest,
   output: ListOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1530,7 +1609,11 @@ export const EnableResourceMonitoringOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1EnableResourceMonitoringResponse;
 
 export type EnableResourceMonitoringOrganizationsLocationsWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable resource violation monitoring for a workload. */
 export const enableResourceMonitoringOrganizationsLocationsWorkloads: API.OperationMethod<
@@ -1541,7 +1624,7 @@ export const enableResourceMonitoringOrganizationsLocationsWorkloads: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableResourceMonitoringOrganizationsLocationsWorkloadsRequest,
   output: EnableResourceMonitoringOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest {
@@ -1567,7 +1650,11 @@ export const EnableComplianceUpdatesOrganizationsLocationsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1EnableComplianceUpdatesResponse;
 
 export type EnableComplianceUpdatesOrganizationsLocationsWorkloadsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This endpoint enables Assured Workloads service to offer compliance updates for the folder based assured workload. It sets up an Assured Workloads Service Agent, having permissions to read compliance controls (for example: Org Policies) applied on the workload. The caller must have `resourcemanager.folders.getIamPolicy` and `resourcemanager.folders.setIamPolicy` permissions on the assured workload folder. */
 export const enableComplianceUpdatesOrganizationsLocationsWorkloads: API.OperationMethod<
@@ -1578,7 +1665,7 @@ export const enableComplianceUpdatesOrganizationsLocationsWorkloads: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableComplianceUpdatesOrganizationsLocationsWorkloadsRequest,
   output: EnableComplianceUpdatesOrganizationsLocationsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsWorkloadsViolationsRequest {
@@ -1618,7 +1705,10 @@ export type ListOrganizationsLocationsWorkloadsViolationsResponse =
 export const ListOrganizationsLocationsWorkloadsViolationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse;
 
-export type ListOrganizationsLocationsWorkloadsViolationsError = DefaultErrors;
+export type ListOrganizationsLocationsWorkloadsViolationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Violations in the AssuredWorkload Environment. Callers may also choose to read across multiple Workloads as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of workload-id in the parent. Format `organizations/{org_id}/locations/{location}/workloads/-` */
 export const listOrganizationsLocationsWorkloadsViolations: API.PaginatedOperationMethod<
@@ -1629,7 +1719,7 @@ export const listOrganizationsLocationsWorkloadsViolations: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsViolationsRequest,
   output: ListOrganizationsLocationsWorkloadsViolationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1654,7 +1744,10 @@ export type GetOrganizationsLocationsWorkloadsViolationsResponse =
 export const GetOrganizationsLocationsWorkloadsViolationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1Violation;
 
-export type GetOrganizationsLocationsWorkloadsViolationsError = DefaultErrors;
+export type GetOrganizationsLocationsWorkloadsViolationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves Assured Workload Violation based on ID. */
 export const getOrganizationsLocationsWorkloadsViolations: API.OperationMethod<
@@ -1665,7 +1758,7 @@ export const getOrganizationsLocationsWorkloadsViolations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsWorkloadsViolationsRequest,
   output: GetOrganizationsLocationsWorkloadsViolationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest {
@@ -1696,7 +1789,11 @@ export const AcknowledgeOrganizationsLocationsWorkloadsViolationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationResponse;
 
 export type AcknowledgeOrganizationsLocationsWorkloadsViolationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges an existing violation. By acknowledging a violation, users acknowledge the existence of a compliance violation in their workload and decide to ignore it due to a valid business justification. Acknowledgement is a permanent operation and it cannot be reverted. */
 export const acknowledgeOrganizationsLocationsWorkloadsViolations: API.OperationMethod<
@@ -1707,7 +1804,7 @@ export const acknowledgeOrganizationsLocationsWorkloadsViolations: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgeOrganizationsLocationsWorkloadsViolationsRequest,
   output: AcknowledgeOrganizationsLocationsWorkloadsViolationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsWorkloadsUpdatesRequest {
@@ -1734,7 +1831,10 @@ export type ListOrganizationsLocationsWorkloadsUpdatesResponse =
 export const ListOrganizationsLocationsWorkloadsUpdatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudAssuredworkloadsV1beta1ListWorkloadUpdatesResponse;
 
-export type ListOrganizationsLocationsWorkloadsUpdatesError = DefaultErrors;
+export type ListOrganizationsLocationsWorkloadsUpdatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** This endpoint lists all updates for the given workload. */
 export const listOrganizationsLocationsWorkloadsUpdates: API.PaginatedOperationMethod<
@@ -1745,7 +1845,7 @@ export const listOrganizationsLocationsWorkloadsUpdates: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsWorkloadsUpdatesRequest,
   output: ListOrganizationsLocationsWorkloadsUpdatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1775,7 +1875,12 @@ export type ApplyOrganizationsLocationsWorkloadsUpdatesResponse =
 export const ApplyOrganizationsLocationsWorkloadsUpdatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type ApplyOrganizationsLocationsWorkloadsUpdatesError = DefaultErrors;
+export type ApplyOrganizationsLocationsWorkloadsUpdatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This endpoint creates a new operation to apply the given update. */
 export const applyOrganizationsLocationsWorkloadsUpdates: API.OperationMethod<
@@ -1786,5 +1891,5 @@ export const applyOrganizationsLocationsWorkloadsUpdates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyOrganizationsLocationsWorkloadsUpdatesRequest,
   output: ApplyOrganizationsLocationsWorkloadsUpdatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -1599,6 +1599,52 @@ export const ProductsApproveRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ProductsApproveRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1629,7 +1675,12 @@ export type UpdateStorelayoutpagesResponse = StorePage;
 export const UpdateStorelayoutpagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StorePage;
 
-export type UpdateStorelayoutpagesError = DefaultErrors;
+export type UpdateStorelayoutpagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the content of a store page. */
 export const updateStorelayoutpages: API.OperationMethod<
@@ -1640,7 +1691,7 @@ export const updateStorelayoutpages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStorelayoutpagesRequest,
   output: UpdateStorelayoutpagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteStorelayoutpagesRequest {
@@ -1668,7 +1719,12 @@ export const DeleteStorelayoutpagesResponse: Schema.Schema<DeleteStorelayoutpage
     {},
   ) as any as Schema.Schema<DeleteStorelayoutpagesResponse>;
 
-export type DeleteStorelayoutpagesError = DefaultErrors;
+export type DeleteStorelayoutpagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a store page. */
 export const deleteStorelayoutpages: API.OperationMethod<
@@ -1679,7 +1735,7 @@ export const deleteStorelayoutpages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStorelayoutpagesRequest,
   output: DeleteStorelayoutpagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListStorelayoutpagesRequest {
@@ -1702,7 +1758,7 @@ export type ListStorelayoutpagesResponse = StoreLayoutPagesListResponse;
 export const ListStorelayoutpagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoreLayoutPagesListResponse;
 
-export type ListStorelayoutpagesError = DefaultErrors;
+export type ListStorelayoutpagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the details of all pages in the store. */
 export const listStorelayoutpages: API.OperationMethod<
@@ -1713,7 +1769,7 @@ export const listStorelayoutpages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListStorelayoutpagesRequest,
   output: ListStorelayoutpagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertStorelayoutpagesRequest {
@@ -1740,7 +1796,12 @@ export type InsertStorelayoutpagesResponse = StorePage;
 export const InsertStorelayoutpagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StorePage;
 
-export type InsertStorelayoutpagesError = DefaultErrors;
+export type InsertStorelayoutpagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new store page. */
 export const insertStorelayoutpages: API.OperationMethod<
@@ -1751,7 +1812,7 @@ export const insertStorelayoutpages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertStorelayoutpagesRequest,
   output: InsertStorelayoutpagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStorelayoutpagesRequest {
@@ -1777,7 +1838,7 @@ export type GetStorelayoutpagesResponse = StorePage;
 export const GetStorelayoutpagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StorePage;
 
-export type GetStorelayoutpagesError = DefaultErrors;
+export type GetStorelayoutpagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves details of a store page. */
 export const getStorelayoutpages: API.OperationMethod<
@@ -1788,7 +1849,7 @@ export const getStorelayoutpages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStorelayoutpagesRequest,
   output: GetStorelayoutpagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListGrouplicenseusersRequest {
@@ -1814,7 +1875,7 @@ export type ListGrouplicenseusersResponse = GroupLicenseUsersListResponse;
 export const ListGrouplicenseusersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupLicenseUsersListResponse;
 
-export type ListGrouplicenseusersError = DefaultErrors;
+export type ListGrouplicenseusersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the IDs of the users who have been granted entitlements under the license. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const listGrouplicenseusers: API.OperationMethod<
@@ -1825,7 +1886,7 @@ export const listGrouplicenseusers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGrouplicenseusersRequest,
   output: ListGrouplicenseusersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPermissionsRequest {
@@ -1849,7 +1910,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPermissionsResponse = Permission;
 export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type GetPermissionsError = DefaultErrors;
+export type GetPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves details of an Android app permission for display to an enterprise admin. */
 export const getPermissions: API.OperationMethod<
@@ -1860,7 +1921,7 @@ export const getPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPermissionsRequest,
   output: GetPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUsersRequest {
@@ -1884,7 +1945,7 @@ export const GetUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUsersResponse = User;
 export const GetUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type GetUsersError = DefaultErrors;
+export type GetUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a user's details. */
 export const getUsers: API.OperationMethod<
@@ -1895,7 +1956,7 @@ export const getUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersRequest,
   output: GetUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetAvailableProductSetUsersRequest {
@@ -1925,7 +1986,12 @@ export type SetAvailableProductSetUsersResponse = ProductSet;
 export const SetAvailableProductSetUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductSet;
 
-export type SetAvailableProductSetUsersError = DefaultErrors;
+export type SetAvailableProductSetUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the set of products that a user is entitled to access (referred to as *whitelisted* products). Only products that are approved or products that were previously approved (products with revoked approval) can be whitelisted. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const setAvailableProductSetUsers: API.OperationMethod<
@@ -1936,7 +2002,7 @@ export const setAvailableProductSetUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAvailableProductSetUsersRequest,
   output: SetAvailableProductSetUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAvailableProductSetUsersRequest {
@@ -1962,7 +2028,10 @@ export type GetAvailableProductSetUsersResponse = ProductSet;
 export const GetAvailableProductSetUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductSet;
 
-export type GetAvailableProductSetUsersError = DefaultErrors;
+export type GetAvailableProductSetUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the set of products a user is entitled to access. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const getAvailableProductSetUsers: API.OperationMethod<
@@ -1973,7 +2042,7 @@ export const getAvailableProductSetUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAvailableProductSetUsersRequest,
   output: GetAvailableProductSetUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertUsersRequest {
@@ -1998,7 +2067,12 @@ export const InsertUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertUsersResponse = User;
 export const InsertUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type InsertUsersError = DefaultErrors;
+export type InsertUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new EMM-managed user. The Users resource passed in the body of the request should include an accountIdentifier and an accountType. If a corresponding user already exists with the same account identifier, the user will be updated with the resource. In this case only the displayName field can be changed. */
 export const insertUsers: API.OperationMethod<
@@ -2009,7 +2083,7 @@ export const insertUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUsersRequest,
   output: InsertUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersRequest {
@@ -2033,7 +2107,7 @@ export const ListUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListUsersResponse = UsersListResponse;
 export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ UsersListResponse;
 
-export type ListUsersError = DefaultErrors;
+export type ListUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up a user by primary email address. This is only supported for Google-managed users. Lookup of the id is not needed for EMM-managed users because the id is already returned in the result of the Users.insert call. */
 export const listUsers: API.OperationMethod<
@@ -2044,7 +2118,7 @@ export const listUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUsersRequest,
   output: ListUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateAuthenticationTokenUsersRequest {
@@ -2071,7 +2145,12 @@ export type GenerateAuthenticationTokenUsersResponse = AuthenticationToken;
 export const GenerateAuthenticationTokenUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthenticationToken;
 
-export type GenerateAuthenticationTokenUsersError = DefaultErrors;
+export type GenerateAuthenticationTokenUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an authentication token which the device policy client can use to provision the given EMM-managed user account on a device. The generated token is single-use and expires after a few minutes. You can provision a maximum of 10 devices per user. This call only works with EMM-managed accounts. */
 export const generateAuthenticationTokenUsers: API.OperationMethod<
@@ -2082,7 +2161,7 @@ export const generateAuthenticationTokenUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAuthenticationTokenUsersRequest,
   output: GenerateAuthenticationTokenUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateUsersRequest {
@@ -2110,7 +2189,12 @@ export const UpdateUsersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateUsersResponse = User;
 export const UpdateUsersResponse = /*@__PURE__*/ /*#__PURE__*/ User;
 
-export type UpdateUsersError = DefaultErrors;
+export type UpdateUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the details of an EMM-managed user. Can be used with EMM-managed users only (not Google managed users). Pass the new details in the Users resource in the request body. Only the displayName field can be changed. Other fields must either be unset or have the currently active value. */
 export const updateUsers: API.OperationMethod<
@@ -2121,7 +2205,7 @@ export const updateUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUsersRequest,
   output: UpdateUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RevokeDeviceAccessUsersRequest {
@@ -2149,7 +2233,12 @@ export const RevokeDeviceAccessUsersResponse: Schema.Schema<RevokeDeviceAccessUs
     {},
   ) as any as Schema.Schema<RevokeDeviceAccessUsersResponse>;
 
-export type RevokeDeviceAccessUsersError = DefaultErrors;
+export type RevokeDeviceAccessUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revokes access to all devices currently provisioned to the user. The user will no longer be able to use the managed Play store on any of their managed devices. This call only works with EMM-managed accounts. */
 export const revokeDeviceAccessUsers: API.OperationMethod<
@@ -2160,7 +2249,7 @@ export const revokeDeviceAccessUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeDeviceAccessUsersRequest,
   output: RevokeDeviceAccessUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersRequest {
@@ -2187,7 +2276,12 @@ export const DeleteUsersResponse: Schema.Schema<DeleteUsersResponse> =
     {},
   ) as any as Schema.Schema<DeleteUsersResponse>;
 
-export type DeleteUsersError = DefaultErrors;
+export type DeleteUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deleted an EMM-managed user. */
 export const deleteUsers: API.OperationMethod<
@@ -2198,7 +2292,7 @@ export const deleteUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersRequest,
   output: DeleteUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateInstallsRequest {
@@ -2232,7 +2326,12 @@ export const UpdateInstallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateInstallsResponse = Install;
 export const UpdateInstallsResponse = /*@__PURE__*/ /*#__PURE__*/ Install;
 
-export type UpdateInstallsError = DefaultErrors;
+export type UpdateInstallsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary. */
 export const updateInstalls: API.OperationMethod<
@@ -2243,7 +2342,7 @@ export const updateInstalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInstallsRequest,
   output: UpdateInstallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInstallsRequest {
@@ -2273,7 +2372,7 @@ export const GetInstallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetInstallsResponse = Install;
 export const GetInstallsResponse = /*@__PURE__*/ /*#__PURE__*/ Install;
 
-export type GetInstallsError = DefaultErrors;
+export type GetInstallsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves details of an installation of an app on a device. */
 export const getInstalls: API.OperationMethod<
@@ -2284,7 +2383,7 @@ export const getInstalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstallsRequest,
   output: GetInstallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInstallsRequest {
@@ -2312,7 +2411,7 @@ export type ListInstallsResponse = InstallsListResponse;
 export const ListInstallsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstallsListResponse;
 
-export type ListInstallsError = DefaultErrors;
+export type ListInstallsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the details of all apps installed on the specified device. */
 export const listInstalls: API.OperationMethod<
@@ -2323,7 +2422,7 @@ export const listInstalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListInstallsRequest,
   output: ListInstallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteInstallsRequest {
@@ -2356,7 +2455,12 @@ export const DeleteInstallsResponse: Schema.Schema<DeleteInstallsResponse> =
     {},
   ) as any as Schema.Schema<DeleteInstallsResponse>;
 
-export type DeleteInstallsError = DefaultErrors;
+export type DeleteInstallsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests to remove an app from a device. A call to get or list will still show the app as installed on the device until it is actually removed. A successful response indicates that a removal request has been sent to the device. The call will be considered successful even if the app is not present on the device (e.g. it was never installed, or was removed by the user). */
 export const deleteInstalls: API.OperationMethod<
@@ -2367,7 +2471,7 @@ export const deleteInstalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstallsRequest,
   output: DeleteInstallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateEnrollmentTokensRequest {
@@ -2394,7 +2498,12 @@ export type CreateEnrollmentTokensResponse = EnrollmentToken;
 export const CreateEnrollmentTokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ EnrollmentToken;
 
-export type CreateEnrollmentTokensError = DefaultErrors;
+export type CreateEnrollmentTokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a token for device enrollment. The DPC can encode this token within the QR/NFC/zero-touch enrollment payload or fetch it before calling the on-device API to authenticate the user. The token can be generated for each device or reused across multiple devices. */
 export const createEnrollmentTokens: API.OperationMethod<
@@ -2405,7 +2514,7 @@ export const createEnrollmentTokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateEnrollmentTokensRequest,
   output: CreateEnrollmentTokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStateDevicesRequest {
@@ -2434,7 +2543,7 @@ export const GetStateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetStateDevicesResponse = DeviceState;
 export const GetStateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ DeviceState;
 
-export type GetStateDevicesError = DefaultErrors;
+export type GetStateDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Checks if a device can access Google apps and services for a user. Returns whether access is "enabled" or "disabled". A "disabled" state prevents the user's Managed Google Account on the device from successfully authenticating with Google. This blocks access to most Google applications and services, including Google Play, as the device cannot prove its entitlement to access them. New devices default to "disabled". Important: Enforcement of this state depends on the following conditions: * The user must be a managed google account. * The enterprise must be a managed google domain. * Third-party Android mobile management must be active in the Google Admin Console for the user's Organizational Unit. If these conditions aren't met, access may still be possible even in a "disabled" state. */
 export const getStateDevices: API.OperationMethod<
@@ -2445,7 +2554,7 @@ export const getStateDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStateDevicesRequest,
   output: GetStateDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ForceReportUploadDevicesRequest {
@@ -2477,7 +2586,12 @@ export const ForceReportUploadDevicesResponse: Schema.Schema<ForceReportUploadDe
     {},
   ) as any as Schema.Schema<ForceReportUploadDevicesResponse>;
 
-export type ForceReportUploadDevicesError = DefaultErrors;
+export type ForceReportUploadDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a report containing any changes in app states on the device since the last report was generated. You can call this method up to 3 times every 24 hours for a given device. If you exceed the quota, then the Google Play EMM API returns HTTP 429 Too Many Requests. */
 export const forceReportUploadDevices: API.OperationMethod<
@@ -2488,7 +2602,7 @@ export const forceReportUploadDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ForceReportUploadDevicesRequest,
   output: ForceReportUploadDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDevicesRequest {
@@ -2513,7 +2627,7 @@ export type ListDevicesResponse = DevicesListResponse;
 export const ListDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DevicesListResponse;
 
-export type ListDevicesError = DefaultErrors;
+export type ListDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the IDs of all of a user's devices. */
 export const listDevices: API.OperationMethod<
@@ -2524,7 +2638,7 @@ export const listDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDevicesRequest,
   output: ListDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateDevicesRequest {
@@ -2558,7 +2672,12 @@ export const UpdateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDevicesResponse = Device;
 export const UpdateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
 
-export type UpdateDevicesError = DefaultErrors;
+export type UpdateDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the device policy. To ensure the policy is properly enforced, you need to prevent unmanaged accounts from accessing Google Play by setting the allowed_accounts in the managed configuration for the Google Play package. See restrict accounts in Google Play. When provisioning a new device, you should set the device policy using this method before adding the managed Google Play Account to the device, otherwise the policy will not be applied for a short period of time after adding the account to the device. */
 export const updateDevices: API.OperationMethod<
@@ -2569,7 +2688,7 @@ export const updateDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDevicesRequest,
   output: UpdateDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetStateDevicesRequest {
@@ -2602,7 +2721,12 @@ export const SetStateDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SetStateDevicesResponse = DeviceState;
 export const SetStateDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ DeviceState;
 
-export type SetStateDevicesError = DefaultErrors;
+export type SetStateDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets whether a device's access to Google services (including Google Play) is enabled or disabled for the specified user. Setting the state to "enabled" allows the Google Account to access Google services, while "disabled" blocks access by preventing OAuth token issuance. Preconditions for Enforcement: 1. This setting is only effective for Google-managed users. 2. The enterprise must be linked to a Google Managed Domain. 3. Enforcement requires third-party Android mobile management to be enabled within the Google Admin Console for the user's Organizational Unit. If these preconditions are not met, changes to this state may be ignored. */
 export const setStateDevices: API.OperationMethod<
@@ -2613,7 +2737,7 @@ export const setStateDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetStateDevicesRequest,
   output: SetStateDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDevicesRequest {
@@ -2640,7 +2764,7 @@ export const GetDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDevicesResponse = Device;
 export const GetDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Device;
 
-export type GetDevicesError = DefaultErrors;
+export type GetDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the details of a device. */
 export const getDevices: API.OperationMethod<
@@ -2651,7 +2775,7 @@ export const getDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDevicesRequest,
   output: GetDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListWebappsRequest {
@@ -2673,7 +2797,7 @@ export type ListWebappsResponse = WebAppsListResponse;
 export const ListWebappsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WebAppsListResponse;
 
-export type ListWebappsError = DefaultErrors;
+export type ListWebappsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the details of all web apps for a given enterprise. */
 export const listWebapps: API.OperationMethod<
@@ -2684,7 +2808,7 @@ export const listWebapps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListWebappsRequest,
   output: ListWebappsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertWebappsRequest {
@@ -2709,7 +2833,12 @@ export const InsertWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertWebappsResponse = WebApp;
 export const InsertWebappsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type InsertWebappsError = DefaultErrors;
+export type InsertWebappsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new web app for the enterprise. */
 export const insertWebapps: API.OperationMethod<
@@ -2720,7 +2849,7 @@ export const insertWebapps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertWebappsRequest,
   output: InsertWebappsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteWebappsRequest {
@@ -2747,7 +2876,12 @@ export const DeleteWebappsResponse: Schema.Schema<DeleteWebappsResponse> =
     {},
   ) as any as Schema.Schema<DeleteWebappsResponse>;
 
-export type DeleteWebappsError = DefaultErrors;
+export type DeleteWebappsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing web app. */
 export const deleteWebapps: API.OperationMethod<
@@ -2758,7 +2892,7 @@ export const deleteWebapps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWebappsRequest,
   output: DeleteWebappsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateWebappsRequest {
@@ -2786,7 +2920,12 @@ export const UpdateWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateWebappsResponse = WebApp;
 export const UpdateWebappsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type UpdateWebappsError = DefaultErrors;
+export type UpdateWebappsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing web app. */
 export const updateWebapps: API.OperationMethod<
@@ -2797,7 +2936,7 @@ export const updateWebapps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateWebappsRequest,
   output: UpdateWebappsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetWebappsRequest {
@@ -2821,7 +2960,7 @@ export const GetWebappsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetWebappsResponse = WebApp;
 export const GetWebappsResponse = /*@__PURE__*/ /*#__PURE__*/ WebApp;
 
-export type GetWebappsError = DefaultErrors;
+export type GetWebappsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an existing web app. */
 export const getWebapps: API.OperationMethod<
@@ -2832,7 +2971,7 @@ export const getWebapps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWebappsRequest,
   output: GetWebappsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PullNotificationSetEnterprisesRequest {
@@ -2858,7 +2997,12 @@ export type PullNotificationSetEnterprisesResponse = NotificationSet;
 export const PullNotificationSetEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationSet;
 
-export type PullNotificationSetEnterprisesError = DefaultErrors;
+export type PullNotificationSetEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pulls and returns a notification set for the enterprises associated with the service account authenticated for the request. The notification set may be empty if no notification are pending. A notification set returned needs to be acknowledged within 20 seconds by calling Enterprises.AcknowledgeNotificationSet, unless the notification set is empty. Notifications that are not acknowledged within the 20 seconds will eventually be included again in the response to another PullNotificationSet request, and those that are never acknowledged will ultimately be deleted according to the Google Cloud Platform Pub/Sub system policy. Multiple requests might be performed concurrently to retrieve notifications, in which case the pending notifications (if any) will be split among each caller, if any are pending. If no notifications are present, an empty notification list is returned. Subsequent requests may return more notifications once they become available. */
 export const pullNotificationSetEnterprises: API.OperationMethod<
@@ -2869,7 +3013,7 @@ export const pullNotificationSetEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PullNotificationSetEnterprisesRequest,
   output: PullNotificationSetEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetStoreLayoutEnterprisesRequest {
@@ -2896,7 +3040,12 @@ export type SetStoreLayoutEnterprisesResponse = StoreLayout;
 export const SetStoreLayoutEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoreLayout;
 
-export type SetStoreLayoutEnterprisesError = DefaultErrors;
+export type SetStoreLayoutEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the store layout for the enterprise. By default, storeLayoutType is set to "basic" and the basic store layout is enabled. The basic layout only contains apps approved by the admin, and that have been added to the available product set for a user (using the setAvailableProductSet call). Apps on the page are sorted in order of their product ID value. If you create a custom store layout (by setting storeLayoutType = "custom" and setting a homepage), the basic store layout is disabled. */
 export const setStoreLayoutEnterprises: API.OperationMethod<
@@ -2907,7 +3056,7 @@ export const setStoreLayoutEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetStoreLayoutEnterprisesRequest,
   output: SetStoreLayoutEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListEnterprisesRequest {
@@ -2928,7 +3077,7 @@ export type ListEnterprisesResponse = EnterprisesListResponse;
 export const ListEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EnterprisesListResponse;
 
-export type ListEnterprisesError = DefaultErrors;
+export type ListEnterprisesError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up an enterprise by domain name. This is only supported for enterprises created via the Google-initiated creation flow. Lookup of the id is not needed for enterprises created via the EMM-initiated flow since the EMM learns the enterprise ID in the callback specified in the Enterprises.generateSignupUrl call. */
 export const listEnterprises: API.OperationMethod<
@@ -2939,7 +3088,7 @@ export const listEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEnterprisesRequest,
   output: ListEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetServiceAccountEnterprisesRequest {
@@ -2965,7 +3114,10 @@ export type GetServiceAccountEnterprisesResponse = ServiceAccount;
 export const GetServiceAccountEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccount;
 
-export type GetServiceAccountEnterprisesError = DefaultErrors;
+export type GetServiceAccountEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a service account and credentials. The service account can be bound to the enterprise by calling setAccount. The service account is unique to this enterprise and EMM, and will be deleted if the enterprise is unbound. The credentials contain private key data and are not stored server-side. This method can only be called after calling Enterprises.Enroll or Enterprises.CompleteSignup, and before Enterprises.SetAccount; at other times it will return an error. Subsequent calls after the first will generate a new, unique set of credentials, and invalidate the previously generated credentials. Once the service account is bound to the enterprise, it can be managed using the serviceAccountKeys resource. *Note:* After you create a key, you might need to wait for 60 seconds or more before you perform another operation with the key. If you try to perform an operation with the key immediately after you create the key, and you receive an error, you can retry the request with exponential backoff . */
 export const getServiceAccountEnterprises: API.OperationMethod<
@@ -2976,7 +3128,7 @@ export const getServiceAccountEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceAccountEnterprisesRequest,
   output: GetServiceAccountEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetEnterprisesRequest {
@@ -2997,7 +3149,7 @@ export const GetEnterprisesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEnterprisesResponse = Enterprise;
 export const GetEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
 
-export type GetEnterprisesError = DefaultErrors;
+export type GetEnterprisesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the name and domain of an enterprise. */
 export const getEnterprises: API.OperationMethod<
@@ -3008,7 +3160,7 @@ export const getEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesRequest,
   output: GetEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateSignupUrlEnterprisesRequest {
@@ -3042,7 +3194,12 @@ export type GenerateSignupUrlEnterprisesResponse = SignupInfo;
 export const GenerateSignupUrlEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SignupInfo;
 
-export type GenerateSignupUrlEnterprisesError = DefaultErrors;
+export type GenerateSignupUrlEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a sign-up URL. */
 export const generateSignupUrlEnterprises: API.OperationMethod<
@@ -3053,7 +3210,7 @@ export const generateSignupUrlEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateSignupUrlEnterprisesRequest,
   output: GenerateSignupUrlEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnrollEnterprisesRequest {
@@ -3079,7 +3236,12 @@ export const EnrollEnterprisesRequest =
 export type EnrollEnterprisesResponse = Enterprise;
 export const EnrollEnterprisesResponse = /*@__PURE__*/ /*#__PURE__*/ Enterprise;
 
-export type EnrollEnterprisesError = DefaultErrors;
+export type EnrollEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enrolls an enterprise with the calling EMM. */
 export const enrollEnterprises: API.OperationMethod<
@@ -3090,7 +3252,7 @@ export const enrollEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollEnterprisesRequest,
   output: EnrollEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetAccountEnterprisesRequest {
@@ -3117,7 +3279,12 @@ export type SetAccountEnterprisesResponse = EnterpriseAccount;
 export const SetAccountEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EnterpriseAccount;
 
-export type SetAccountEnterprisesError = DefaultErrors;
+export type SetAccountEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the account that will be used to authenticate to the API as the enterprise. */
 export const setAccountEnterprises: API.OperationMethod<
@@ -3128,7 +3295,7 @@ export const setAccountEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetAccountEnterprisesRequest,
   output: SetAccountEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SendTestPushNotificationEnterprisesRequest {
@@ -3153,7 +3320,12 @@ export type SendTestPushNotificationEnterprisesResponse =
 export const SendTestPushNotificationEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EnterprisesSendTestPushNotificationResponse;
 
-export type SendTestPushNotificationEnterprisesError = DefaultErrors;
+export type SendTestPushNotificationEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends a test notification to validate the EMM integration with the Google Cloud Pub/Sub service for this enterprise. */
 export const sendTestPushNotificationEnterprises: API.OperationMethod<
@@ -3164,7 +3336,7 @@ export const sendTestPushNotificationEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendTestPushNotificationEnterprisesRequest,
   output: SendTestPushNotificationEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnenrollEnterprisesRequest {
@@ -3190,7 +3362,12 @@ export const UnenrollEnterprisesResponse: Schema.Schema<UnenrollEnterprisesRespo
     {},
   ) as any as Schema.Schema<UnenrollEnterprisesResponse>;
 
-export type UnenrollEnterprisesError = DefaultErrors;
+export type UnenrollEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenrolls an enterprise from the calling EMM. */
 export const unenrollEnterprises: API.OperationMethod<
@@ -3201,7 +3378,7 @@ export const unenrollEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollEnterprisesRequest,
   output: UnenrollEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStoreLayoutEnterprisesRequest {
@@ -3224,7 +3401,10 @@ export type GetStoreLayoutEnterprisesResponse = StoreLayout;
 export const GetStoreLayoutEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoreLayout;
 
-export type GetStoreLayoutEnterprisesError = DefaultErrors;
+export type GetStoreLayoutEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the store layout for the enterprise. If the store layout has not been set, returns "basic" as the store layout type and no homepage. */
 export const getStoreLayoutEnterprises: API.OperationMethod<
@@ -3235,7 +3415,7 @@ export const getStoreLayoutEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStoreLayoutEnterprisesRequest,
   output: GetStoreLayoutEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateEnterpriseUpgradeUrlEnterprisesRequest {
@@ -3268,7 +3448,12 @@ export type GenerateEnterpriseUpgradeUrlEnterprisesResponse =
 export const GenerateEnterpriseUpgradeUrlEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateEnterpriseUpgradeUrlResponse;
 
-export type GenerateEnterpriseUpgradeUrlEnterprisesError = DefaultErrors;
+export type GenerateEnterpriseUpgradeUrlEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a managed Google domain. See the guide to upgrading an enterprise for more details. */
 export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
@@ -3279,7 +3464,7 @@ export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateEnterpriseUpgradeUrlEnterprisesRequest,
   output: GenerateEnterpriseUpgradeUrlEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcknowledgeNotificationSetEnterprisesRequest {
@@ -3307,7 +3492,12 @@ export const AcknowledgeNotificationSetEnterprisesResponse: Schema.Schema<Acknow
     {},
   ) as any as Schema.Schema<AcknowledgeNotificationSetEnterprisesResponse>;
 
-export type AcknowledgeNotificationSetEnterprisesError = DefaultErrors;
+export type AcknowledgeNotificationSetEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges notifications that were received from Enterprises.PullNotificationSet to prevent subsequent calls from returning the same notifications. */
 export const acknowledgeNotificationSetEnterprises: API.OperationMethod<
@@ -3318,7 +3508,7 @@ export const acknowledgeNotificationSetEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgeNotificationSetEnterprisesRequest,
   output: AcknowledgeNotificationSetEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CompleteSignupEnterprisesRequest {
@@ -3349,7 +3539,12 @@ export type CompleteSignupEnterprisesResponse = Enterprise;
 export const CompleteSignupEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Enterprise;
 
-export type CompleteSignupEnterprisesError = DefaultErrors;
+export type CompleteSignupEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the signup flow, by specifying the Completion token and Enterprise token. This request must not be called multiple times for a given Enterprise Token. */
 export const completeSignupEnterprises: API.OperationMethod<
@@ -3360,7 +3555,7 @@ export const completeSignupEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteSignupEnterprisesRequest,
   output: CompleteSignupEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateWebTokenEnterprisesRequest {
@@ -3387,7 +3582,12 @@ export type CreateWebTokenEnterprisesResponse = AdministratorWebToken;
 export const CreateWebTokenEnterprisesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdministratorWebToken;
 
-export type CreateWebTokenEnterprisesError = DefaultErrors;
+export type CreateWebTokenEnterprisesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the managed Google Play javascript API. Each token may only be used to start one UI session. See the JavaScript API documentation for further information. */
 export const createWebTokenEnterprises: API.OperationMethod<
@@ -3398,7 +3598,7 @@ export const createWebTokenEnterprises: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateWebTokenEnterprisesRequest,
   output: CreateWebTokenEnterprisesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStorelayoutclustersRequest {
@@ -3427,7 +3627,7 @@ export type GetStorelayoutclustersResponse = StoreCluster;
 export const GetStorelayoutclustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoreCluster;
 
-export type GetStorelayoutclustersError = DefaultErrors;
+export type GetStorelayoutclustersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves details of a cluster. */
 export const getStorelayoutclusters: API.OperationMethod<
@@ -3438,7 +3638,7 @@ export const getStorelayoutclusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStorelayoutclustersRequest,
   output: GetStorelayoutclustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateStorelayoutclustersRequest {
@@ -3471,7 +3671,12 @@ export type UpdateStorelayoutclustersResponse = StoreCluster;
 export const UpdateStorelayoutclustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoreCluster;
 
-export type UpdateStorelayoutclustersError = DefaultErrors;
+export type UpdateStorelayoutclustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a cluster. */
 export const updateStorelayoutclusters: API.OperationMethod<
@@ -3482,7 +3687,7 @@ export const updateStorelayoutclusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStorelayoutclustersRequest,
   output: UpdateStorelayoutclustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteStorelayoutclustersRequest {
@@ -3513,7 +3718,12 @@ export const DeleteStorelayoutclustersResponse: Schema.Schema<DeleteStorelayoutc
     {},
   ) as any as Schema.Schema<DeleteStorelayoutclustersResponse>;
 
-export type DeleteStorelayoutclustersError = DefaultErrors;
+export type DeleteStorelayoutclustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a cluster. */
 export const deleteStorelayoutclusters: API.OperationMethod<
@@ -3524,7 +3734,7 @@ export const deleteStorelayoutclusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStorelayoutclustersRequest,
   output: DeleteStorelayoutclustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListStorelayoutclustersRequest {
@@ -3550,7 +3760,7 @@ export type ListStorelayoutclustersResponse = StoreLayoutClustersListResponse;
 export const ListStorelayoutclustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoreLayoutClustersListResponse;
 
-export type ListStorelayoutclustersError = DefaultErrors;
+export type ListStorelayoutclustersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the details of all clusters on the specified page. */
 export const listStorelayoutclusters: API.OperationMethod<
@@ -3561,7 +3771,7 @@ export const listStorelayoutclusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListStorelayoutclustersRequest,
   output: ListStorelayoutclustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertStorelayoutclustersRequest {
@@ -3591,7 +3801,12 @@ export type InsertStorelayoutclustersResponse = StoreCluster;
 export const InsertStorelayoutclustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoreCluster;
 
-export type InsertStorelayoutclustersError = DefaultErrors;
+export type InsertStorelayoutclustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new cluster in a page. */
 export const insertStorelayoutclusters: API.OperationMethod<
@@ -3602,7 +3817,7 @@ export const insertStorelayoutclusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertStorelayoutclustersRequest,
   output: InsertStorelayoutclustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEntitlementsRequest {
@@ -3638,7 +3853,12 @@ export type UpdateEntitlementsResponse = Entitlement;
 export const UpdateEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Entitlement;
 
-export type UpdateEntitlementsError = DefaultErrors;
+export type UpdateEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds or updates an entitlement to an app for a user. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const updateEntitlements: API.OperationMethod<
@@ -3649,7 +3869,7 @@ export const updateEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEntitlementsRequest,
   output: UpdateEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEntitlementsRequest {
@@ -3678,7 +3898,7 @@ export const GetEntitlementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetEntitlementsResponse = Entitlement;
 export const GetEntitlementsResponse = /*@__PURE__*/ /*#__PURE__*/ Entitlement;
 
-export type GetEntitlementsError = DefaultErrors;
+export type GetEntitlementsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves details of an entitlement. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const getEntitlements: API.OperationMethod<
@@ -3689,7 +3909,7 @@ export const getEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEntitlementsRequest,
   output: GetEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEntitlementsRequest {
@@ -3715,7 +3935,7 @@ export type ListEntitlementsResponse = EntitlementsListResponse;
 export const ListEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EntitlementsListResponse;
 
-export type ListEntitlementsError = DefaultErrors;
+export type ListEntitlementsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all entitlements for the specified user. Only the ID is set. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const listEntitlements: API.OperationMethod<
@@ -3726,7 +3946,7 @@ export const listEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEntitlementsRequest,
   output: ListEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteEntitlementsRequest {
@@ -3757,7 +3977,12 @@ export const DeleteEntitlementsResponse: Schema.Schema<DeleteEntitlementsRespons
     {},
   ) as any as Schema.Schema<DeleteEntitlementsResponse>;
 
-export type DeleteEntitlementsError = DefaultErrors;
+export type DeleteEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an entitlement to an app for a user. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const deleteEntitlements: API.OperationMethod<
@@ -3768,7 +3993,7 @@ export const deleteEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEntitlementsRequest,
   output: DeleteEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProductsRequest {
@@ -3805,7 +4030,7 @@ export type ListProductsResponse = ProductsListResponse;
 export const ListProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductsListResponse;
 
-export type ListProductsError = DefaultErrors;
+export type ListProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Finds approved products that match a query, or all approved products if there is no query. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const listProducts: API.OperationMethod<
@@ -3816,7 +4041,7 @@ export const listProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProductsRequest,
   output: ListProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnapproveProductsRequest {
@@ -3845,7 +4070,12 @@ export const UnapproveProductsResponse: Schema.Schema<UnapproveProductsResponse>
     {},
   ) as any as Schema.Schema<UnapproveProductsResponse>;
 
-export type UnapproveProductsError = DefaultErrors;
+export type UnapproveProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unapproves the specified product (and the relevant app permissions, if any) **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const unapproveProducts: API.OperationMethod<
@@ -3856,7 +4086,7 @@ export const unapproveProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnapproveProductsRequest,
   output: UnapproveProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPermissionsProductsRequest {
@@ -3882,7 +4112,7 @@ export type GetPermissionsProductsResponse = ProductPermissions;
 export const GetPermissionsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductPermissions;
 
-export type GetPermissionsProductsError = DefaultErrors;
+export type GetPermissionsProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the Android app permissions required by this app. */
 export const getPermissionsProducts: API.OperationMethod<
@@ -3893,7 +4123,7 @@ export const getPermissionsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPermissionsProductsRequest,
   output: GetPermissionsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAppRestrictionsSchemaProductsRequest {
@@ -3922,7 +4152,10 @@ export type GetAppRestrictionsSchemaProductsResponse = AppRestrictionsSchema;
 export const GetAppRestrictionsSchemaProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppRestrictionsSchema;
 
-export type GetAppRestrictionsSchemaProductsError = DefaultErrors;
+export type GetAppRestrictionsSchemaProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the schema that defines the configurable properties for this product. All products have a schema, but this schema may be empty if no managed configurations have been defined. This schema can be used to populate a UI that allows an admin to configure the product. To apply a managed configuration based on the schema obtained using this API, see Managed Configurations through Play. */
 export const getAppRestrictionsSchemaProducts: API.OperationMethod<
@@ -3933,7 +4166,7 @@ export const getAppRestrictionsSchemaProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppRestrictionsSchemaProductsRequest,
   output: GetAppRestrictionsSchemaProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateApprovalUrlProductsRequest {
@@ -3966,7 +4199,12 @@ export type GenerateApprovalUrlProductsResponse =
 export const GenerateApprovalUrlProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductsGenerateApprovalUrlResponse;
 
-export type GenerateApprovalUrlProductsError = DefaultErrors;
+export type GenerateApprovalUrlProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a URL that can be rendered in an iframe to display the permissions (if any) of a product. An enterprise admin must view these permissions and accept them on behalf of their organization in order to approve that product. Admins should accept the displayed permissions by interacting with a separate UI element in the EMM console, which in turn should trigger the use of this URL as the approvalUrlInfo.approvalUrl property in a Products.approve call to approve the product. This URL can only be used to display permissions for up to 1 day. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const generateApprovalUrlProducts: API.OperationMethod<
@@ -3977,7 +4215,7 @@ export const generateApprovalUrlProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateApprovalUrlProductsRequest,
   output: GenerateApprovalUrlProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApproveProductsRequest {
@@ -4010,7 +4248,12 @@ export const ApproveProductsResponse: Schema.Schema<ApproveProductsResponse> =
     {},
   ) as any as Schema.Schema<ApproveProductsResponse>;
 
-export type ApproveProductsError = DefaultErrors;
+export type ApproveProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves the specified product and the relevant app permissions, if any. The maximum number of products that you can approve per enterprise customer is 1,000. To learn how to use managed Google Play to design and create a store layout to display approved products to your users, see Store Layout Design. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const approveProducts: API.OperationMethod<
@@ -4021,7 +4264,7 @@ export const approveProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveProductsRequest,
   output: ApproveProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProductsRequest {
@@ -4048,7 +4291,7 @@ export const GetProductsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProductsResponse = Product;
 export const GetProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type GetProductsError = DefaultErrors;
+export type GetProductsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves details of a product for display to an enterprise admin. */
 export const getProducts: API.OperationMethod<
@@ -4059,7 +4302,7 @@ export const getProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProductsRequest,
   output: GetProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetGrouplicensesRequest {
@@ -4085,7 +4328,7 @@ export type GetGrouplicensesResponse = GroupLicense;
 export const GetGrouplicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupLicense;
 
-export type GetGrouplicensesError = DefaultErrors;
+export type GetGrouplicensesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves details of an enterprise's group license for a product. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const getGrouplicenses: API.OperationMethod<
@@ -4096,7 +4339,7 @@ export const getGrouplicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGrouplicensesRequest,
   output: GetGrouplicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListGrouplicensesRequest {
@@ -4119,7 +4362,7 @@ export type ListGrouplicensesResponse = GroupLicensesListResponse;
 export const ListGrouplicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupLicensesListResponse;
 
-export type ListGrouplicensesError = DefaultErrors;
+export type ListGrouplicensesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves IDs of all products for which the enterprise has a group license. **Note:** This item has been deprecated. New integrations cannot use this method and can refer to our new recommendations. */
 export const listGrouplicenses: API.OperationMethod<
@@ -4130,7 +4373,7 @@ export const listGrouplicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGrouplicensesRequest,
   output: ListGrouplicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListManagedconfigurationssettingsRequest {
@@ -4157,7 +4400,10 @@ export type ListManagedconfigurationssettingsResponse =
 export const ListManagedconfigurationssettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedConfigurationsSettingsListResponse;
 
-export type ListManagedconfigurationssettingsError = DefaultErrors;
+export type ListManagedconfigurationssettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the managed configurations settings for the specified app. */
 export const listManagedconfigurationssettings: API.OperationMethod<
@@ -4168,7 +4414,7 @@ export const listManagedconfigurationssettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagedconfigurationssettingsRequest,
   output: ListManagedconfigurationssettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListManagedconfigurationsfordeviceRequest {
@@ -4198,7 +4444,10 @@ export type ListManagedconfigurationsfordeviceResponse =
 export const ListManagedconfigurationsfordeviceResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedConfigurationsForDeviceListResponse;
 
-export type ListManagedconfigurationsfordeviceError = DefaultErrors;
+export type ListManagedconfigurationsfordeviceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the per-device managed configurations for the specified device. Only the ID is set. */
 export const listManagedconfigurationsfordevice: API.OperationMethod<
@@ -4209,7 +4458,7 @@ export const listManagedconfigurationsfordevice: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagedconfigurationsfordeviceRequest,
   output: ListManagedconfigurationsfordeviceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagedconfigurationsfordeviceRequest {
@@ -4245,7 +4494,12 @@ export const DeleteManagedconfigurationsfordeviceResponse: Schema.Schema<DeleteM
     {},
   ) as any as Schema.Schema<DeleteManagedconfigurationsfordeviceResponse>;
 
-export type DeleteManagedconfigurationsfordeviceError = DefaultErrors;
+export type DeleteManagedconfigurationsfordeviceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a per-device managed configuration for an app for the specified device. */
 export const deleteManagedconfigurationsfordevice: API.OperationMethod<
@@ -4256,7 +4510,7 @@ export const deleteManagedconfigurationsfordevice: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagedconfigurationsfordeviceRequest,
   output: DeleteManagedconfigurationsfordeviceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagedconfigurationsfordeviceRequest {
@@ -4294,7 +4548,12 @@ export type UpdateManagedconfigurationsfordeviceResponse = ManagedConfiguration;
 export const UpdateManagedconfigurationsfordeviceResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedConfiguration;
 
-export type UpdateManagedconfigurationsfordeviceError = DefaultErrors;
+export type UpdateManagedconfigurationsfordeviceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds or updates a per-device managed configuration for an app for the specified device. */
 export const updateManagedconfigurationsfordevice: API.OperationMethod<
@@ -4305,7 +4564,7 @@ export const updateManagedconfigurationsfordevice: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagedconfigurationsfordeviceRequest,
   output: UpdateManagedconfigurationsfordeviceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagedconfigurationsfordeviceRequest {
@@ -4339,7 +4598,10 @@ export type GetManagedconfigurationsfordeviceResponse = ManagedConfiguration;
 export const GetManagedconfigurationsfordeviceResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedConfiguration;
 
-export type GetManagedconfigurationsfordeviceError = DefaultErrors;
+export type GetManagedconfigurationsfordeviceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves details of a per-device managed configuration. */
 export const getManagedconfigurationsfordevice: API.OperationMethod<
@@ -4350,7 +4612,7 @@ export const getManagedconfigurationsfordevice: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedconfigurationsfordeviceRequest,
   output: GetManagedconfigurationsfordeviceResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListManagedconfigurationsforuserRequest {
@@ -4377,7 +4639,10 @@ export type ListManagedconfigurationsforuserResponse =
 export const ListManagedconfigurationsforuserResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedConfigurationsForUserListResponse;
 
-export type ListManagedconfigurationsforuserError = DefaultErrors;
+export type ListManagedconfigurationsforuserError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the per-user managed configurations for the specified user. Only the ID is set. */
 export const listManagedconfigurationsforuser: API.OperationMethod<
@@ -4388,7 +4653,7 @@ export const listManagedconfigurationsforuser: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListManagedconfigurationsforuserRequest,
   output: ListManagedconfigurationsforuserResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteManagedconfigurationsforuserRequest {
@@ -4421,7 +4686,12 @@ export const DeleteManagedconfigurationsforuserResponse: Schema.Schema<DeleteMan
     {},
   ) as any as Schema.Schema<DeleteManagedconfigurationsforuserResponse>;
 
-export type DeleteManagedconfigurationsforuserError = DefaultErrors;
+export type DeleteManagedconfigurationsforuserError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a per-user managed configuration for an app for the specified user. */
 export const deleteManagedconfigurationsforuser: API.OperationMethod<
@@ -4432,7 +4702,7 @@ export const deleteManagedconfigurationsforuser: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteManagedconfigurationsforuserRequest,
   output: DeleteManagedconfigurationsforuserResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateManagedconfigurationsforuserRequest {
@@ -4467,7 +4737,12 @@ export type UpdateManagedconfigurationsforuserResponse = ManagedConfiguration;
 export const UpdateManagedconfigurationsforuserResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedConfiguration;
 
-export type UpdateManagedconfigurationsforuserError = DefaultErrors;
+export type UpdateManagedconfigurationsforuserError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds or updates the managed configuration settings for an app for the specified user. If you support the Managed configurations iframe, you can apply managed configurations to a user by specifying an mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply managed configurations by passing a list of managed properties. */
 export const updateManagedconfigurationsforuser: API.OperationMethod<
@@ -4478,7 +4753,7 @@ export const updateManagedconfigurationsforuser: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateManagedconfigurationsforuserRequest,
   output: UpdateManagedconfigurationsforuserResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetManagedconfigurationsforuserRequest {
@@ -4509,7 +4784,10 @@ export type GetManagedconfigurationsforuserResponse = ManagedConfiguration;
 export const GetManagedconfigurationsforuserResponse =
   /*@__PURE__*/ /*#__PURE__*/ ManagedConfiguration;
 
-export type GetManagedconfigurationsforuserError = DefaultErrors;
+export type GetManagedconfigurationsforuserError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves details of a per-user managed configuration for an app for the specified user. */
 export const getManagedconfigurationsforuser: API.OperationMethod<
@@ -4520,7 +4798,7 @@ export const getManagedconfigurationsforuser: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetManagedconfigurationsforuserRequest,
   output: GetManagedconfigurationsforuserResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertServiceaccountkeysRequest {
@@ -4547,7 +4825,12 @@ export type InsertServiceaccountkeysResponse = ServiceAccountKey;
 export const InsertServiceaccountkeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccountKey;
 
-export type InsertServiceaccountkeysError = DefaultErrors;
+export type InsertServiceaccountkeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates new credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount. Only the type of the key should be populated in the resource to be inserted. */
 export const insertServiceaccountkeys: API.OperationMethod<
@@ -4558,7 +4841,7 @@ export const insertServiceaccountkeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertServiceaccountkeysRequest,
   output: InsertServiceaccountkeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServiceaccountkeysRequest {
@@ -4581,7 +4864,7 @@ export type ListServiceaccountkeysResponse = ServiceAccountKeysListResponse;
 export const ListServiceaccountkeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccountKeysListResponse;
 
-export type ListServiceaccountkeysError = DefaultErrors;
+export type ListServiceaccountkeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all active credentials for the service account associated with this enterprise. Only the ID and key type are returned. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount. */
 export const listServiceaccountkeys: API.OperationMethod<
@@ -4592,7 +4875,7 @@ export const listServiceaccountkeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListServiceaccountkeysRequest,
   output: ListServiceaccountkeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteServiceaccountkeysRequest {
@@ -4620,7 +4903,12 @@ export const DeleteServiceaccountkeysResponse: Schema.Schema<DeleteServiceaccoun
     {},
   ) as any as Schema.Schema<DeleteServiceaccountkeysResponse>;
 
-export type DeleteServiceaccountkeysError = DefaultErrors;
+export type DeleteServiceaccountkeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes and invalidates the specified credentials for the service account associated with this enterprise. The calling service account must have been retrieved by calling Enterprises.GetServiceAccount and must have been set as the enterprise service account by calling Enterprises.SetAccount. */
 export const deleteServiceaccountkeys: API.OperationMethod<
@@ -4631,5 +4919,5 @@ export const deleteServiceaccountkeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServiceaccountkeysRequest,
   output: DeleteServiceaccountkeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

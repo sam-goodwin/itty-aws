@@ -8002,6 +8002,52 @@ export const AdsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "AdsListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -8021,7 +8067,7 @@ export type ListRegionsResponse = RegionsListResponse;
 export const ListRegionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionsListResponse;
 
-export type ListRegionsError = DefaultErrors;
+export type ListRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of regions. */
 export const listRegions: API.OperationMethod<
@@ -8032,7 +8078,7 @@ export const listRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetMobileAppsRequest {
@@ -8053,7 +8099,7 @@ export const GetMobileAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetMobileAppsResponse = MobileApp;
 export const GetMobileAppsResponse = /*@__PURE__*/ /*#__PURE__*/ MobileApp;
 
-export type GetMobileAppsError = DefaultErrors;
+export type GetMobileAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one mobile app by ID. */
 export const getMobileApps: API.OperationMethod<
@@ -8064,7 +8110,7 @@ export const getMobileApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMobileAppsRequest,
   output: GetMobileAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMobileAppsRequest {
@@ -8114,7 +8160,7 @@ export type ListMobileAppsResponse = MobileAppsListResponse;
 export const ListMobileAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MobileAppsListResponse;
 
-export type ListMobileAppsError = DefaultErrors;
+export type ListMobileAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves list of available mobile apps. */
 export const listMobileApps: API.PaginatedOperationMethod<
@@ -8125,7 +8171,7 @@ export const listMobileApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMobileAppsRequest,
   output: ListMobileAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8159,7 +8205,12 @@ export type PatchRemarketingListsResponse = RemarketingList;
 export const PatchRemarketingListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingList;
 
-export type PatchRemarketingListsError = DefaultErrors;
+export type PatchRemarketingListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing remarketing list. This method supports patch semantics. */
 export const patchRemarketingLists: API.OperationMethod<
@@ -8170,7 +8221,7 @@ export const patchRemarketingLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRemarketingListsRequest,
   output: PatchRemarketingListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertRemarketingListsRequest {
@@ -8197,7 +8248,12 @@ export type InsertRemarketingListsResponse = RemarketingList;
 export const InsertRemarketingListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingList;
 
-export type InsertRemarketingListsError = DefaultErrors;
+export type InsertRemarketingListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new remarketing list. */
 export const insertRemarketingLists: API.OperationMethod<
@@ -8208,7 +8264,7 @@ export const insertRemarketingLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRemarketingListsRequest,
   output: InsertRemarketingListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRemarketingListsRequest {
@@ -8234,7 +8290,7 @@ export type GetRemarketingListsResponse = RemarketingList;
 export const GetRemarketingListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingList;
 
-export type GetRemarketingListsError = DefaultErrors;
+export type GetRemarketingListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one remarketing list by ID. */
 export const getRemarketingLists: API.OperationMethod<
@@ -8245,7 +8301,7 @@ export const getRemarketingLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRemarketingListsRequest,
   output: GetRemarketingListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRemarketingListsRequest {
@@ -8294,7 +8350,7 @@ export type ListRemarketingListsResponse = RemarketingListsListResponse;
 export const ListRemarketingListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingListsListResponse;
 
-export type ListRemarketingListsError = DefaultErrors;
+export type ListRemarketingListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of remarketing lists, possibly filtered. This method supports paging. */
 export const listRemarketingLists: API.PaginatedOperationMethod<
@@ -8305,7 +8361,7 @@ export const listRemarketingLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRemarketingListsRequest,
   output: ListRemarketingListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8336,7 +8392,12 @@ export type UpdateRemarketingListsResponse = RemarketingList;
 export const UpdateRemarketingListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingList;
 
-export type UpdateRemarketingListsError = DefaultErrors;
+export type UpdateRemarketingListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing remarketing list. */
 export const updateRemarketingLists: API.OperationMethod<
@@ -8347,7 +8408,7 @@ export const updateRemarketingLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRemarketingListsRequest,
   output: UpdateRemarketingListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBrowsersRequest {
@@ -8366,7 +8427,7 @@ export type ListBrowsersResponse = BrowsersListResponse;
 export const ListBrowsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ BrowsersListResponse;
 
-export type ListBrowsersError = DefaultErrors;
+export type ListBrowsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of browsers. */
 export const listBrowsers: API.OperationMethod<
@@ -8377,7 +8438,7 @@ export const listBrowsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBrowsersRequest,
   output: ListBrowsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertCreativeGroupsRequest {
@@ -8404,7 +8465,12 @@ export type InsertCreativeGroupsResponse = CreativeGroup;
 export const InsertCreativeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeGroup;
 
-export type InsertCreativeGroupsError = DefaultErrors;
+export type InsertCreativeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new creative group. */
 export const insertCreativeGroups: API.OperationMethod<
@@ -8415,7 +8481,7 @@ export const insertCreativeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCreativeGroupsRequest,
   output: InsertCreativeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCreativeGroupsRequest {
@@ -8445,7 +8511,12 @@ export type PatchCreativeGroupsResponse = CreativeGroup;
 export const PatchCreativeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeGroup;
 
-export type PatchCreativeGroupsError = DefaultErrors;
+export type PatchCreativeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative group. This method supports patch semantics. */
 export const patchCreativeGroups: API.OperationMethod<
@@ -8456,7 +8527,7 @@ export const patchCreativeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCreativeGroupsRequest,
   output: PatchCreativeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCreativeGroupsRequest {
@@ -8482,7 +8553,7 @@ export type GetCreativeGroupsResponse = CreativeGroup;
 export const GetCreativeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeGroup;
 
-export type GetCreativeGroupsError = DefaultErrors;
+export type GetCreativeGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one creative group by ID. */
 export const getCreativeGroups: API.OperationMethod<
@@ -8493,7 +8564,7 @@ export const getCreativeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCreativeGroupsRequest,
   output: GetCreativeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCreativeGroupsRequest {
@@ -8543,7 +8614,7 @@ export type ListCreativeGroupsResponse = CreativeGroupsListResponse;
 export const ListCreativeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeGroupsListResponse;
 
-export type ListCreativeGroupsError = DefaultErrors;
+export type ListCreativeGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of creative groups, possibly filtered. This method supports paging. */
 export const listCreativeGroups: API.PaginatedOperationMethod<
@@ -8554,7 +8625,7 @@ export const listCreativeGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCreativeGroupsRequest,
   output: ListCreativeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8585,7 +8656,12 @@ export type UpdateCreativeGroupsResponse = CreativeGroup;
 export const UpdateCreativeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeGroup;
 
-export type UpdateCreativeGroupsError = DefaultErrors;
+export type UpdateCreativeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative group. */
 export const updateCreativeGroups: API.OperationMethod<
@@ -8596,7 +8672,7 @@ export const updateCreativeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCreativeGroupsRequest,
   output: UpdateCreativeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCreativesRequest {
@@ -8617,7 +8693,7 @@ export const GetCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCreativesResponse = Creative;
 export const GetCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type GetCreativesError = DefaultErrors;
+export type GetCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one creative by ID. */
 export const getCreatives: API.OperationMethod<
@@ -8628,7 +8704,7 @@ export const getCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCreativesRequest,
   output: GetCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCreativesRequest {
@@ -8737,7 +8813,7 @@ export type ListCreativesResponse = CreativesListResponse;
 export const ListCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativesListResponse;
 
-export type ListCreativesError = DefaultErrors;
+export type ListCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of creatives, possibly filtered. This method supports paging. */
 export const listCreatives: API.PaginatedOperationMethod<
@@ -8748,7 +8824,7 @@ export const listCreatives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCreativesRequest,
   output: ListCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8779,7 +8855,12 @@ export const UpdateCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateCreativesResponse = Creative;
 export const UpdateCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type UpdateCreativesError = DefaultErrors;
+export type UpdateCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative. */
 export const updateCreatives: API.OperationMethod<
@@ -8790,7 +8871,7 @@ export const updateCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCreativesRequest,
   output: UpdateCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertCreativesRequest {
@@ -8817,7 +8898,12 @@ export const InsertCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertCreativesResponse = Creative;
 export const InsertCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type InsertCreativesError = DefaultErrors;
+export type InsertCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new creative. */
 export const insertCreatives: API.OperationMethod<
@@ -8828,7 +8914,7 @@ export const insertCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCreativesRequest,
   output: InsertCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCreativesRequest {
@@ -8856,7 +8942,12 @@ export const PatchCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchCreativesResponse = Creative;
 export const PatchCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type PatchCreativesError = DefaultErrors;
+export type PatchCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative. This method supports patch semantics. */
 export const patchCreatives: API.OperationMethod<
@@ -8867,7 +8958,7 @@ export const patchCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCreativesRequest,
   output: PatchCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConnectionTypesRequest {
@@ -8893,7 +8984,7 @@ export type GetConnectionTypesResponse = ConnectionType;
 export const GetConnectionTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConnectionType;
 
-export type GetConnectionTypesError = DefaultErrors;
+export type GetConnectionTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one connection type by ID. */
 export const getConnectionTypes: API.OperationMethod<
@@ -8904,7 +8995,7 @@ export const getConnectionTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConnectionTypesRequest,
   output: GetConnectionTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConnectionTypesRequest {
@@ -8924,7 +9015,7 @@ export type ListConnectionTypesResponse = ConnectionTypesListResponse;
 export const ListConnectionTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConnectionTypesListResponse;
 
-export type ListConnectionTypesError = DefaultErrors;
+export type ListConnectionTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of connection types. */
 export const listConnectionTypes: API.OperationMethod<
@@ -8935,7 +9026,7 @@ export const listConnectionTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListConnectionTypesRequest,
   output: ListConnectionTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchPlacementsRequest {
@@ -8965,7 +9056,12 @@ export const PatchPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PatchPlacementsResponse = Placement;
 export const PatchPlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
 
-export type PatchPlacementsError = DefaultErrors;
+export type PatchPlacementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing placement. This method supports patch semantics. */
 export const patchPlacements: API.OperationMethod<
@@ -8976,7 +9072,7 @@ export const patchPlacements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPlacementsRequest,
   output: PatchPlacementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPlacementsRequest {
@@ -9002,7 +9098,12 @@ export const InsertPlacementsRequest =
 export type InsertPlacementsResponse = Placement;
 export const InsertPlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
 
-export type InsertPlacementsError = DefaultErrors;
+export type InsertPlacementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new placement. */
 export const insertPlacements: API.OperationMethod<
@@ -9013,7 +9114,7 @@ export const insertPlacements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPlacementsRequest,
   output: InsertPlacementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GeneratetagsPlacementsRequest {
@@ -9071,7 +9172,12 @@ export type GeneratetagsPlacementsResponse = PlacementsGenerateTagsResponse;
 export const GeneratetagsPlacementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementsGenerateTagsResponse;
 
-export type GeneratetagsPlacementsError = DefaultErrors;
+export type GeneratetagsPlacementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates tags for a placement. */
 export const generatetagsPlacements: API.OperationMethod<
@@ -9082,7 +9188,7 @@ export const generatetagsPlacements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GeneratetagsPlacementsRequest,
   output: GeneratetagsPlacementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPlacementsRequest {
@@ -9103,7 +9209,7 @@ export const GetPlacementsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPlacementsResponse = Placement;
 export const GetPlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
 
-export type GetPlacementsError = DefaultErrors;
+export type GetPlacementsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one placement by ID. */
 export const getPlacements: API.OperationMethod<
@@ -9114,7 +9220,7 @@ export const getPlacements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlacementsRequest,
   output: GetPlacementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPlacementsRequest {
@@ -9252,7 +9358,7 @@ export type ListPlacementsResponse = PlacementsListResponse;
 export const ListPlacementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementsListResponse;
 
-export type ListPlacementsError = DefaultErrors;
+export type ListPlacementsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of placements, possibly filtered. This method supports paging. */
 export const listPlacements: API.PaginatedOperationMethod<
@@ -9263,7 +9369,7 @@ export const listPlacements: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlacementsRequest,
   output: ListPlacementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9293,7 +9399,12 @@ export const UpdatePlacementsRequest =
 export type UpdatePlacementsResponse = Placement;
 export const UpdatePlacementsResponse = /*@__PURE__*/ /*#__PURE__*/ Placement;
 
-export type UpdatePlacementsError = DefaultErrors;
+export type UpdatePlacementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing placement. */
 export const updatePlacements: API.OperationMethod<
@@ -9304,7 +9415,7 @@ export const updatePlacements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlacementsRequest,
   output: UpdatePlacementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperatingSystemVersionsRequest {
@@ -9330,7 +9441,10 @@ export type GetOperatingSystemVersionsResponse = OperatingSystemVersion;
 export const GetOperatingSystemVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperatingSystemVersion;
 
-export type GetOperatingSystemVersionsError = DefaultErrors;
+export type GetOperatingSystemVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one operating system version by ID. */
 export const getOperatingSystemVersions: API.OperationMethod<
@@ -9341,7 +9455,7 @@ export const getOperatingSystemVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperatingSystemVersionsRequest,
   output: GetOperatingSystemVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOperatingSystemVersionsRequest {
@@ -9365,7 +9479,10 @@ export type ListOperatingSystemVersionsResponse =
 export const ListOperatingSystemVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperatingSystemVersionsListResponse;
 
-export type ListOperatingSystemVersionsError = DefaultErrors;
+export type ListOperatingSystemVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of operating system versions. */
 export const listOperatingSystemVersions: API.OperationMethod<
@@ -9376,7 +9493,7 @@ export const listOperatingSystemVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOperatingSystemVersionsRequest,
   output: ListOperatingSystemVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsRequest {
@@ -9397,7 +9514,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetProjectsError = DefaultErrors;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one project by ID. */
 export const getProjects: API.OperationMethod<
@@ -9408,7 +9525,7 @@ export const getProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsRequest {
@@ -9452,7 +9569,7 @@ export type ListProjectsResponse = ProjectsListResponse;
 export const ListProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectsListResponse;
 
-export type ListProjectsError = DefaultErrors;
+export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of projects, possibly filtered. This method supports paging . */
 export const listProjects: API.PaginatedOperationMethod<
@@ -9463,7 +9580,7 @@ export const listProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9493,7 +9610,12 @@ export const InsertAdvertisersRequest =
 export type InsertAdvertisersResponse = Advertiser;
 export const InsertAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
 
-export type InsertAdvertisersError = DefaultErrors;
+export type InsertAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new advertiser. */
 export const insertAdvertisers: API.OperationMethod<
@@ -9504,7 +9626,7 @@ export const insertAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAdvertisersRequest,
   output: InsertAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertisersRequest {
@@ -9533,7 +9655,12 @@ export const PatchAdvertisersRequest =
 export type PatchAdvertisersResponse = Advertiser;
 export const PatchAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
 
-export type PatchAdvertisersError = DefaultErrors;
+export type PatchAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing advertiser. This method supports patch semantics. */
 export const patchAdvertisers: API.OperationMethod<
@@ -9544,7 +9671,7 @@ export const patchAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertisersRequest,
   output: PatchAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertisersRequest {
@@ -9565,7 +9692,7 @@ export const GetAdvertisersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAdvertisersResponse = Advertiser;
 export const GetAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
 
-export type GetAdvertisersError = DefaultErrors;
+export type GetAdvertisersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one advertiser by ID. */
 export const getAdvertisers: API.OperationMethod<
@@ -9576,7 +9703,7 @@ export const getAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertisersRequest,
   output: GetAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdvertisersRequest {
@@ -9643,7 +9770,7 @@ export type ListAdvertisersResponse = AdvertisersListResponse;
 export const ListAdvertisersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertisersListResponse;
 
-export type ListAdvertisersError = DefaultErrors;
+export type ListAdvertisersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of advertisers, possibly filtered. This method supports paging. */
 export const listAdvertisers: API.PaginatedOperationMethod<
@@ -9654,7 +9781,7 @@ export const listAdvertisers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertisersRequest,
   output: ListAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9684,7 +9811,12 @@ export const UpdateAdvertisersRequest =
 export type UpdateAdvertisersResponse = Advertiser;
 export const UpdateAdvertisersResponse = /*@__PURE__*/ /*#__PURE__*/ Advertiser;
 
-export type UpdateAdvertisersError = DefaultErrors;
+export type UpdateAdvertisersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing advertiser. */
 export const updateAdvertisers: API.OperationMethod<
@@ -9695,7 +9827,7 @@ export const updateAdvertisers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAdvertisersRequest,
   output: UpdateAdvertisersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertBillingAssignmentsRequest {
@@ -9725,7 +9857,12 @@ export type InsertBillingAssignmentsResponse = BillingAssignment;
 export const InsertBillingAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAssignment;
 
-export type InsertBillingAssignmentsError = DefaultErrors;
+export type InsertBillingAssignmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new billing assignment and returns the new assignment. Only one of advertiser_id or campaign_id is support per request. If the new assignment has no effect (assigning a campaign to the parent advertiser billing profile or assigning an advertiser to the account billing profile), no assignment will be returned. */
 export const insertBillingAssignments: API.OperationMethod<
@@ -9736,7 +9873,7 @@ export const insertBillingAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertBillingAssignmentsRequest,
   output: InsertBillingAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingAssignmentsRequest {
@@ -9762,7 +9899,7 @@ export type ListBillingAssignmentsResponse = BillingAssignmentsListResponse;
 export const ListBillingAssignmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingAssignmentsListResponse;
 
-export type ListBillingAssignmentsError = DefaultErrors;
+export type ListBillingAssignmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of billing assignments. */
 export const listBillingAssignments: API.OperationMethod<
@@ -9773,7 +9910,7 @@ export const listBillingAssignments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBillingAssignmentsRequest,
   output: ListBillingAssignmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCountriesRequest {
@@ -9797,7 +9934,7 @@ export const GetCountriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCountriesResponse = Country;
 export const GetCountriesResponse = /*@__PURE__*/ /*#__PURE__*/ Country;
 
-export type GetCountriesError = DefaultErrors;
+export type GetCountriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one country by ID. */
 export const getCountries: API.OperationMethod<
@@ -9808,7 +9945,7 @@ export const getCountries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCountriesRequest,
   output: GetCountriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCountriesRequest {
@@ -9827,7 +9964,7 @@ export type ListCountriesResponse = CountriesListResponse;
 export const ListCountriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CountriesListResponse;
 
-export type ListCountriesError = DefaultErrors;
+export type ListCountriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of countries. */
 export const listCountries: API.OperationMethod<
@@ -9838,7 +9975,7 @@ export const listCountries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCountriesRequest,
   output: ListCountriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GeneratetagFloodlightActivitiesRequest {
@@ -9868,7 +10005,12 @@ export type GeneratetagFloodlightActivitiesResponse =
 export const GeneratetagFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivitiesGenerateTagResponse;
 
-export type GeneratetagFloodlightActivitiesError = DefaultErrors;
+export type GeneratetagFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a tag for a floodlight activity. */
 export const generatetagFloodlightActivities: API.OperationMethod<
@@ -9879,7 +10021,7 @@ export const generatetagFloodlightActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GeneratetagFloodlightActivitiesRequest,
   output: GeneratetagFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFloodlightActivitiesRequest {
@@ -9905,7 +10047,7 @@ export type GetFloodlightActivitiesResponse = FloodlightActivity;
 export const GetFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivity;
 
-export type GetFloodlightActivitiesError = DefaultErrors;
+export type GetFloodlightActivitiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one floodlight activity by ID. */
 export const getFloodlightActivities: API.OperationMethod<
@@ -9916,7 +10058,7 @@ export const getFloodlightActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFloodlightActivitiesRequest,
   output: GetFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFloodlightActivitiesRequest {
@@ -9992,7 +10134,10 @@ export type ListFloodlightActivitiesResponse = FloodlightActivitiesListResponse;
 export const ListFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivitiesListResponse;
 
-export type ListFloodlightActivitiesError = DefaultErrors;
+export type ListFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of floodlight activities, possibly filtered. This method supports paging. */
 export const listFloodlightActivities: API.PaginatedOperationMethod<
@@ -10003,7 +10148,7 @@ export const listFloodlightActivities: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFloodlightActivitiesRequest,
   output: ListFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10034,7 +10179,12 @@ export type UpdateFloodlightActivitiesResponse = FloodlightActivity;
 export const UpdateFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivity;
 
-export type UpdateFloodlightActivitiesError = DefaultErrors;
+export type UpdateFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing floodlight activity. */
 export const updateFloodlightActivities: API.OperationMethod<
@@ -10045,7 +10195,7 @@ export const updateFloodlightActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFloodlightActivitiesRequest,
   output: UpdateFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFloodlightActivitiesRequest {
@@ -10073,7 +10223,12 @@ export const DeleteFloodlightActivitiesResponse: Schema.Schema<DeleteFloodlightA
     {},
   ) as any as Schema.Schema<DeleteFloodlightActivitiesResponse>;
 
-export type DeleteFloodlightActivitiesError = DefaultErrors;
+export type DeleteFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing floodlight activity. */
 export const deleteFloodlightActivities: API.OperationMethod<
@@ -10084,7 +10239,7 @@ export const deleteFloodlightActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFloodlightActivitiesRequest,
   output: DeleteFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertFloodlightActivitiesRequest {
@@ -10111,7 +10266,12 @@ export type InsertFloodlightActivitiesResponse = FloodlightActivity;
 export const InsertFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivity;
 
-export type InsertFloodlightActivitiesError = DefaultErrors;
+export type InsertFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new floodlight activity. */
 export const insertFloodlightActivities: API.OperationMethod<
@@ -10122,7 +10282,7 @@ export const insertFloodlightActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFloodlightActivitiesRequest,
   output: InsertFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFloodlightActivitiesRequest {
@@ -10152,7 +10312,12 @@ export type PatchFloodlightActivitiesResponse = FloodlightActivity;
 export const PatchFloodlightActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivity;
 
-export type PatchFloodlightActivitiesError = DefaultErrors;
+export type PatchFloodlightActivitiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing floodlight activity. This method supports patch semantics. */
 export const patchFloodlightActivities: API.OperationMethod<
@@ -10163,7 +10328,7 @@ export const patchFloodlightActivities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFloodlightActivitiesRequest,
   output: PatchFloodlightActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBillingRatesRequest {
@@ -10189,7 +10354,7 @@ export type ListBillingRatesResponse = BillingRatesListResponse;
 export const ListBillingRatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingRatesListResponse;
 
-export type ListBillingRatesError = DefaultErrors;
+export type ListBillingRatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of billing rates. This method supports paging. */
 export const listBillingRates: API.OperationMethod<
@@ -10200,7 +10365,7 @@ export const listBillingRates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListBillingRatesRequest,
   output: ListBillingRatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetVideoFormatsRequest {
@@ -10223,7 +10388,7 @@ export const GetVideoFormatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetVideoFormatsResponse = VideoFormat;
 export const GetVideoFormatsResponse = /*@__PURE__*/ /*#__PURE__*/ VideoFormat;
 
-export type GetVideoFormatsError = DefaultErrors;
+export type GetVideoFormatsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one video format by ID. */
 export const getVideoFormats: API.OperationMethod<
@@ -10234,7 +10399,7 @@ export const getVideoFormats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVideoFormatsRequest,
   output: GetVideoFormatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListVideoFormatsRequest {
@@ -10254,7 +10419,7 @@ export type ListVideoFormatsResponse = VideoFormatsListResponse;
 export const ListVideoFormatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VideoFormatsListResponse;
 
-export type ListVideoFormatsError = DefaultErrors;
+export type ListVideoFormatsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists available video formats. */
 export const listVideoFormats: API.OperationMethod<
@@ -10265,7 +10430,7 @@ export const listVideoFormats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVideoFormatsRequest,
   output: ListVideoFormatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCitiesRequest {
@@ -10302,7 +10467,7 @@ export type ListCitiesResponse = CitiesListResponse;
 export const ListCitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CitiesListResponse;
 
-export type ListCitiesError = DefaultErrors;
+export type ListCitiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of cities, possibly filtered. */
 export const listCities: API.OperationMethod<
@@ -10313,7 +10478,7 @@ export const listCities: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCitiesRequest,
   output: ListCitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertEventTagsRequest {
@@ -10340,7 +10505,12 @@ export const InsertEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertEventTagsResponse = EventTag;
 export const InsertEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
 
-export type InsertEventTagsError = DefaultErrors;
+export type InsertEventTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new event tag. */
 export const insertEventTags: API.OperationMethod<
@@ -10351,7 +10521,7 @@ export const insertEventTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertEventTagsRequest,
   output: InsertEventTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchEventTagsRequest {
@@ -10379,7 +10549,12 @@ export const PatchEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchEventTagsResponse = EventTag;
 export const PatchEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
 
-export type PatchEventTagsError = DefaultErrors;
+export type PatchEventTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing event tag. This method supports patch semantics. */
 export const patchEventTags: API.OperationMethod<
@@ -10390,7 +10565,7 @@ export const patchEventTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchEventTagsRequest,
   output: PatchEventTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteEventTagsRequest {
@@ -10416,7 +10591,12 @@ export const DeleteEventTagsResponse: Schema.Schema<DeleteEventTagsResponse> =
     {},
   ) as any as Schema.Schema<DeleteEventTagsResponse>;
 
-export type DeleteEventTagsError = DefaultErrors;
+export type DeleteEventTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing event tag. */
 export const deleteEventTags: API.OperationMethod<
@@ -10427,7 +10607,7 @@ export const deleteEventTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteEventTagsRequest,
   output: DeleteEventTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateEventTagsRequest {
@@ -10454,7 +10634,12 @@ export const UpdateEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateEventTagsResponse = EventTag;
 export const UpdateEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
 
-export type UpdateEventTagsError = DefaultErrors;
+export type UpdateEventTagsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing event tag. */
 export const updateEventTags: API.OperationMethod<
@@ -10465,7 +10650,7 @@ export const updateEventTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEventTagsRequest,
   output: UpdateEventTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEventTagsRequest {
@@ -10486,7 +10671,7 @@ export const GetEventTagsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetEventTagsResponse = EventTag;
 export const GetEventTagsResponse = /*@__PURE__*/ /*#__PURE__*/ EventTag;
 
-export type GetEventTagsError = DefaultErrors;
+export type GetEventTagsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one event tag by ID. */
 export const getEventTags: API.OperationMethod<
@@ -10497,7 +10682,7 @@ export const getEventTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEventTagsRequest,
   output: GetEventTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEventTagsRequest {
@@ -10558,7 +10743,7 @@ export type ListEventTagsResponse = EventTagsListResponse;
 export const ListEventTagsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventTagsListResponse;
 
-export type ListEventTagsError = DefaultErrors;
+export type ListEventTagsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of event tags, possibly filtered. */
 export const listEventTags: API.OperationMethod<
@@ -10569,7 +10754,7 @@ export const listEventTags: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEventTagsRequest,
   output: ListEventTagsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePlacementStrategiesRequest {
@@ -10597,7 +10782,12 @@ export const DeletePlacementStrategiesResponse: Schema.Schema<DeletePlacementStr
     {},
   ) as any as Schema.Schema<DeletePlacementStrategiesResponse>;
 
-export type DeletePlacementStrategiesError = DefaultErrors;
+export type DeletePlacementStrategiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing placement strategy. */
 export const deletePlacementStrategies: API.OperationMethod<
@@ -10608,7 +10798,7 @@ export const deletePlacementStrategies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlacementStrategiesRequest,
   output: DeletePlacementStrategiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPlacementStrategiesRequest {
@@ -10638,7 +10828,12 @@ export type PatchPlacementStrategiesResponse = PlacementStrategy;
 export const PatchPlacementStrategiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementStrategy;
 
-export type PatchPlacementStrategiesError = DefaultErrors;
+export type PatchPlacementStrategiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing placement strategy. This method supports patch semantics. */
 export const patchPlacementStrategies: API.OperationMethod<
@@ -10649,7 +10844,7 @@ export const patchPlacementStrategies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPlacementStrategiesRequest,
   output: PatchPlacementStrategiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPlacementStrategiesRequest {
@@ -10676,7 +10871,12 @@ export type InsertPlacementStrategiesResponse = PlacementStrategy;
 export const InsertPlacementStrategiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementStrategy;
 
-export type InsertPlacementStrategiesError = DefaultErrors;
+export type InsertPlacementStrategiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new placement strategy. */
 export const insertPlacementStrategies: API.OperationMethod<
@@ -10687,7 +10887,7 @@ export const insertPlacementStrategies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPlacementStrategiesRequest,
   output: InsertPlacementStrategiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPlacementStrategiesRequest {
@@ -10713,7 +10913,7 @@ export type GetPlacementStrategiesResponse = PlacementStrategy;
 export const GetPlacementStrategiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementStrategy;
 
-export type GetPlacementStrategiesError = DefaultErrors;
+export type GetPlacementStrategiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one placement strategy by ID. */
 export const getPlacementStrategies: API.OperationMethod<
@@ -10724,7 +10924,7 @@ export const getPlacementStrategies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlacementStrategiesRequest,
   output: GetPlacementStrategiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPlacementStrategiesRequest {
@@ -10767,7 +10967,7 @@ export type ListPlacementStrategiesResponse = PlacementStrategiesListResponse;
 export const ListPlacementStrategiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementStrategiesListResponse;
 
-export type ListPlacementStrategiesError = DefaultErrors;
+export type ListPlacementStrategiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of placement strategies, possibly filtered. This method supports paging. */
 export const listPlacementStrategies: API.PaginatedOperationMethod<
@@ -10778,7 +10978,7 @@ export const listPlacementStrategies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlacementStrategiesRequest,
   output: ListPlacementStrategiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10809,7 +11009,12 @@ export type UpdatePlacementStrategiesResponse = PlacementStrategy;
 export const UpdatePlacementStrategiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementStrategy;
 
-export type UpdatePlacementStrategiesError = DefaultErrors;
+export type UpdatePlacementStrategiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing placement strategy. */
 export const updatePlacementStrategies: API.OperationMethod<
@@ -10820,7 +11025,7 @@ export const updatePlacementStrategies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlacementStrategiesRequest,
   output: UpdatePlacementStrategiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUserRolePermissionGroupsRequest {
@@ -10846,7 +11051,10 @@ export type GetUserRolePermissionGroupsResponse = UserRolePermissionGroup;
 export const GetUserRolePermissionGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserRolePermissionGroup;
 
-export type GetUserRolePermissionGroupsError = DefaultErrors;
+export type GetUserRolePermissionGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one user role permission group by ID. */
 export const getUserRolePermissionGroups: API.OperationMethod<
@@ -10857,7 +11065,7 @@ export const getUserRolePermissionGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserRolePermissionGroupsRequest,
   output: GetUserRolePermissionGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListUserRolePermissionGroupsRequest {
@@ -10881,7 +11089,10 @@ export type ListUserRolePermissionGroupsResponse =
 export const ListUserRolePermissionGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserRolePermissionGroupsListResponse;
 
-export type ListUserRolePermissionGroupsError = DefaultErrors;
+export type ListUserRolePermissionGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a list of all supported user role permission groups. */
 export const listUserRolePermissionGroups: API.OperationMethod<
@@ -10892,7 +11103,7 @@ export const listUserRolePermissionGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUserRolePermissionGroupsRequest,
   output: ListUserRolePermissionGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteContentCategoriesRequest {
@@ -10920,7 +11131,12 @@ export const DeleteContentCategoriesResponse: Schema.Schema<DeleteContentCategor
     {},
   ) as any as Schema.Schema<DeleteContentCategoriesResponse>;
 
-export type DeleteContentCategoriesError = DefaultErrors;
+export type DeleteContentCategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing content category. */
 export const deleteContentCategories: API.OperationMethod<
@@ -10931,7 +11147,7 @@ export const deleteContentCategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteContentCategoriesRequest,
   output: DeleteContentCategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertContentCategoriesRequest {
@@ -10958,7 +11174,12 @@ export type InsertContentCategoriesResponse = ContentCategory;
 export const InsertContentCategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContentCategory;
 
-export type InsertContentCategoriesError = DefaultErrors;
+export type InsertContentCategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new content category. */
 export const insertContentCategories: API.OperationMethod<
@@ -10969,7 +11190,7 @@ export const insertContentCategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertContentCategoriesRequest,
   output: InsertContentCategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchContentCategoriesRequest {
@@ -10999,7 +11220,12 @@ export type PatchContentCategoriesResponse = ContentCategory;
 export const PatchContentCategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContentCategory;
 
-export type PatchContentCategoriesError = DefaultErrors;
+export type PatchContentCategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing content category. This method supports patch semantics. */
 export const patchContentCategories: API.OperationMethod<
@@ -11010,7 +11236,7 @@ export const patchContentCategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchContentCategoriesRequest,
   output: PatchContentCategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetContentCategoriesRequest {
@@ -11036,7 +11262,7 @@ export type GetContentCategoriesResponse = ContentCategory;
 export const GetContentCategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContentCategory;
 
-export type GetContentCategoriesError = DefaultErrors;
+export type GetContentCategoriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one content category by ID. */
 export const getContentCategories: API.OperationMethod<
@@ -11047,7 +11273,7 @@ export const getContentCategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContentCategoriesRequest,
   output: GetContentCategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListContentCategoriesRequest {
@@ -11090,7 +11316,7 @@ export type ListContentCategoriesResponse = ContentCategoriesListResponse;
 export const ListContentCategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContentCategoriesListResponse;
 
-export type ListContentCategoriesError = DefaultErrors;
+export type ListContentCategoriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of content categories, possibly filtered. This method supports paging. */
 export const listContentCategories: API.PaginatedOperationMethod<
@@ -11101,7 +11327,7 @@ export const listContentCategories: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListContentCategoriesRequest,
   output: ListContentCategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11132,7 +11358,12 @@ export type UpdateContentCategoriesResponse = ContentCategory;
 export const UpdateContentCategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ContentCategory;
 
-export type UpdateContentCategoriesError = DefaultErrors;
+export type UpdateContentCategoriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing content category. */
 export const updateContentCategories: API.OperationMethod<
@@ -11143,7 +11374,7 @@ export const updateContentCategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContentCategoriesRequest,
   output: UpdateContentCategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPostalCodesRequest {
@@ -11167,7 +11398,7 @@ export const GetPostalCodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPostalCodesResponse = PostalCode;
 export const GetPostalCodesResponse = /*@__PURE__*/ /*#__PURE__*/ PostalCode;
 
-export type GetPostalCodesError = DefaultErrors;
+export type GetPostalCodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one postal code by ID. */
 export const getPostalCodes: API.OperationMethod<
@@ -11178,7 +11409,7 @@ export const getPostalCodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPostalCodesRequest,
   output: GetPostalCodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPostalCodesRequest {
@@ -11199,7 +11430,7 @@ export type ListPostalCodesResponse = PostalCodesListResponse;
 export const ListPostalCodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PostalCodesListResponse;
 
-export type ListPostalCodesError = DefaultErrors;
+export type ListPostalCodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of postal codes. */
 export const listPostalCodes: API.OperationMethod<
@@ -11210,7 +11441,7 @@ export const listPostalCodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPostalCodesRequest,
   output: ListPostalCodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchSitesRequest {
@@ -11238,7 +11469,12 @@ export const PatchSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchSitesResponse = Site;
 export const PatchSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type PatchSitesError = DefaultErrors;
+export type PatchSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing site. This method supports patch semantics. */
 export const patchSites: API.OperationMethod<
@@ -11249,7 +11485,7 @@ export const patchSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSitesRequest,
   output: PatchSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertSitesRequest {
@@ -11274,7 +11510,12 @@ export const InsertSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertSitesResponse = Site;
 export const InsertSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type InsertSitesError = DefaultErrors;
+export type InsertSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new site. */
 export const insertSites: API.OperationMethod<
@@ -11285,7 +11526,7 @@ export const insertSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSitesRequest,
   output: InsertSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSitesRequest {
@@ -11310,7 +11551,12 @@ export const UpdateSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateSitesResponse = Site;
 export const UpdateSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type UpdateSitesError = DefaultErrors;
+export type UpdateSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing site. */
 export const updateSites: API.OperationMethod<
@@ -11321,7 +11567,7 @@ export const updateSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSitesRequest,
   output: UpdateSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSitesRequest {
@@ -11342,7 +11588,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSitesResponse = Site;
 export const GetSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Site;
 
-export type GetSitesError = DefaultErrors;
+export type GetSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one site by ID. */
 export const getSites: API.OperationMethod<
@@ -11353,7 +11599,7 @@ export const getSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesRequest,
   output: GetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSitesRequest {
@@ -11432,7 +11678,7 @@ export const ListSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListSitesResponse = SitesListResponse;
 export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SitesListResponse;
 
-export type ListSitesError = DefaultErrors;
+export type ListSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of sites, possibly filtered. This method supports paging. */
 export const listSites: API.PaginatedOperationMethod<
@@ -11443,7 +11689,7 @@ export const listSites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSitesRequest,
   output: ListSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11473,7 +11719,7 @@ export type GetPlatformTypesResponse = PlatformType;
 export const GetPlatformTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlatformType;
 
-export type GetPlatformTypesError = DefaultErrors;
+export type GetPlatformTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one platform type by ID. */
 export const getPlatformTypes: API.OperationMethod<
@@ -11484,7 +11730,7 @@ export const getPlatformTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlatformTypesRequest,
   output: GetPlatformTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPlatformTypesRequest {
@@ -11504,7 +11750,7 @@ export type ListPlatformTypesResponse = PlatformTypesListResponse;
 export const ListPlatformTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlatformTypesListResponse;
 
-export type ListPlatformTypesError = DefaultErrors;
+export type ListPlatformTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of platform types. */
 export const listPlatformTypes: API.OperationMethod<
@@ -11515,7 +11761,7 @@ export const listPlatformTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPlatformTypesRequest,
   output: ListPlatformTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdvertiserInvoicesRequest {
@@ -11550,7 +11796,7 @@ export type ListAdvertiserInvoicesResponse = AdvertiserInvoicesListResponse;
 export const ListAdvertiserInvoicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertiserInvoicesListResponse;
 
-export type ListAdvertiserInvoicesError = DefaultErrors;
+export type ListAdvertiserInvoicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of invoices for a particular issue month. The api only works if the billing profile invoice level is set to either advertiser or campaign non-consolidated invoice level. */
 export const listAdvertiserInvoices: API.PaginatedOperationMethod<
@@ -11561,7 +11807,7 @@ export const listAdvertiserInvoices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertiserInvoicesRequest,
   output: ListAdvertiserInvoicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11585,7 +11831,7 @@ export const GetDynamicFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetDynamicFeedsResponse = DynamicFeed;
 export const GetDynamicFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ DynamicFeed;
 
-export type GetDynamicFeedsError = DefaultErrors;
+export type GetDynamicFeedsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a dynamic feed by ID. */
 export const getDynamicFeeds: API.OperationMethod<
@@ -11596,7 +11842,7 @@ export const getDynamicFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDynamicFeedsRequest,
   output: GetDynamicFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertDynamicFeedsRequest {
@@ -11616,7 +11862,12 @@ export type InsertDynamicFeedsResponse = DynamicFeed;
 export const InsertDynamicFeedsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicFeed;
 
-export type InsertDynamicFeedsError = DefaultErrors;
+export type InsertDynamicFeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new dynamic feed. */
 export const insertDynamicFeeds: API.OperationMethod<
@@ -11627,7 +11878,7 @@ export const insertDynamicFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDynamicFeedsRequest,
   output: InsertDynamicFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDynamicFeedsRequest {
@@ -11647,7 +11898,12 @@ export type UpdateDynamicFeedsResponse = DynamicFeed;
 export const UpdateDynamicFeedsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicFeed;
 
-export type UpdateDynamicFeedsError = DefaultErrors;
+export type UpdateDynamicFeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a new dynamic feed. For draft feeds, only Element can be updated. For published feeds, only FeedSchedule can be updated. Other fields will be ignored. */
 export const updateDynamicFeeds: API.OperationMethod<
@@ -11658,7 +11914,7 @@ export const updateDynamicFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDynamicFeedsRequest,
   output: UpdateDynamicFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetransformDynamicFeedsRequest {
@@ -11682,7 +11938,12 @@ export type RetransformDynamicFeedsResponse = DynamicFeed;
 export const RetransformDynamicFeedsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicFeed;
 
-export type RetransformDynamicFeedsError = DefaultErrors;
+export type RetransformDynamicFeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the feed has not been published). */
 export const retransformDynamicFeeds: API.OperationMethod<
@@ -11693,7 +11954,7 @@ export const retransformDynamicFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetransformDynamicFeedsRequest,
   output: RetransformDynamicFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertStudioCreativesRequest {
@@ -11713,7 +11974,12 @@ export type InsertStudioCreativesResponse = StudioCreative;
 export const InsertStudioCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudioCreative;
 
-export type InsertStudioCreativesError = DefaultErrors;
+export type InsertStudioCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new studio creative. */
 export const insertStudioCreatives: API.OperationMethod<
@@ -11724,7 +11990,7 @@ export const insertStudioCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertStudioCreativesRequest,
   output: InsertStudioCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishStudioCreativesRequest {
@@ -11750,7 +12016,12 @@ export const PublishStudioCreativesResponse: Schema.Schema<PublishStudioCreative
     {},
   ) as any as Schema.Schema<PublishStudioCreativesResponse>;
 
-export type PublishStudioCreativesError = DefaultErrors;
+export type PublishStudioCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publish for a studio creative. */
 export const publishStudioCreatives: API.OperationMethod<
@@ -11761,7 +12032,7 @@ export const publishStudioCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishStudioCreativesRequest,
   output: PublishStudioCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStudioCreativesRequest {
@@ -11781,7 +12052,7 @@ export type GetStudioCreativesResponse = StudioCreative;
 export const GetStudioCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudioCreative;
 
-export type GetStudioCreativesError = DefaultErrors;
+export type GetStudioCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a studio creative by ID. */
 export const getStudioCreatives: API.OperationMethod<
@@ -11792,7 +12063,7 @@ export const getStudioCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStudioCreativesRequest,
   output: GetStudioCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateUserRolesRequest {
@@ -11819,7 +12090,12 @@ export const UpdateUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateUserRolesResponse = UserRole;
 export const UpdateUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
 
-export type UpdateUserRolesError = DefaultErrors;
+export type UpdateUserRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing user role. */
 export const updateUserRoles: API.OperationMethod<
@@ -11830,7 +12106,7 @@ export const updateUserRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUserRolesRequest,
   output: UpdateUserRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUserRolesRequest {
@@ -11851,7 +12127,7 @@ export const GetUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUserRolesResponse = UserRole;
 export const GetUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
 
-export type GetUserRolesError = DefaultErrors;
+export type GetUserRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one user role by ID. */
 export const getUserRoles: API.OperationMethod<
@@ -11862,7 +12138,7 @@ export const getUserRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserRolesRequest,
   output: GetUserRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListUserRolesRequest {
@@ -11911,7 +12187,7 @@ export type ListUserRolesResponse = UserRolesListResponse;
 export const ListUserRolesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserRolesListResponse;
 
-export type ListUserRolesError = DefaultErrors;
+export type ListUserRolesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of user roles, possibly filtered. This method supports paging. */
 export const listUserRoles: API.PaginatedOperationMethod<
@@ -11922,7 +12198,7 @@ export const listUserRoles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserRolesRequest,
   output: ListUserRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11954,7 +12230,12 @@ export const PatchUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchUserRolesResponse = UserRole;
 export const PatchUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
 
-export type PatchUserRolesError = DefaultErrors;
+export type PatchUserRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing user role. This method supports patch semantics. */
 export const patchUserRoles: API.OperationMethod<
@@ -11965,7 +12246,7 @@ export const patchUserRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUserRolesRequest,
   output: PatchUserRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertUserRolesRequest {
@@ -11992,7 +12273,12 @@ export const InsertUserRolesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertUserRolesResponse = UserRole;
 export const InsertUserRolesResponse = /*@__PURE__*/ /*#__PURE__*/ UserRole;
 
-export type InsertUserRolesError = DefaultErrors;
+export type InsertUserRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new user role. */
 export const insertUserRoles: API.OperationMethod<
@@ -12003,7 +12289,7 @@ export const insertUserRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUserRolesRequest,
   output: InsertUserRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUserRolesRequest {
@@ -12029,7 +12315,12 @@ export const DeleteUserRolesResponse: Schema.Schema<DeleteUserRolesResponse> =
     {},
   ) as any as Schema.Schema<DeleteUserRolesResponse>;
 
-export type DeleteUserRolesError = DefaultErrors;
+export type DeleteUserRolesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing user role. */
 export const deleteUserRoles: API.OperationMethod<
@@ -12040,7 +12331,7 @@ export const deleteUserRoles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserRolesRequest,
   output: DeleteUserRolesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDynamicTargetingKeysRequest {
@@ -12079,7 +12370,12 @@ export const DeleteDynamicTargetingKeysResponse: Schema.Schema<DeleteDynamicTarg
     {},
   ) as any as Schema.Schema<DeleteDynamicTargetingKeysResponse>;
 
-export type DeleteDynamicTargetingKeysError = DefaultErrors;
+export type DeleteDynamicTargetingKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing dynamic targeting key. */
 export const deleteDynamicTargetingKeys: API.OperationMethod<
@@ -12090,7 +12386,7 @@ export const deleteDynamicTargetingKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDynamicTargetingKeysRequest,
   output: DeleteDynamicTargetingKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDynamicTargetingKeysRequest {
@@ -12134,7 +12430,10 @@ export type ListDynamicTargetingKeysResponse = DynamicTargetingKeysListResponse;
 export const ListDynamicTargetingKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicTargetingKeysListResponse;
 
-export type ListDynamicTargetingKeysError = DefaultErrors;
+export type ListDynamicTargetingKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of dynamic targeting keys. */
 export const listDynamicTargetingKeys: API.OperationMethod<
@@ -12145,7 +12444,7 @@ export const listDynamicTargetingKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListDynamicTargetingKeysRequest,
   output: ListDynamicTargetingKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertDynamicTargetingKeysRequest {
@@ -12172,7 +12471,12 @@ export type InsertDynamicTargetingKeysResponse = DynamicTargetingKey;
 export const InsertDynamicTargetingKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicTargetingKey;
 
-export type InsertDynamicTargetingKeysError = DefaultErrors;
+export type InsertDynamicTargetingKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new dynamic targeting key. Keys must be created at the advertiser level before being assigned to the advertiser's ads, creatives, or placements. There is a maximum of 1000 keys per advertiser, out of which a maximum of 20 keys can be assigned per ad, creative, or placement. */
 export const insertDynamicTargetingKeys: API.OperationMethod<
@@ -12183,7 +12487,7 @@ export const insertDynamicTargetingKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDynamicTargetingKeysRequest,
   output: InsertDynamicTargetingKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertStudioCreativeAssetsRequest {
@@ -12205,7 +12509,12 @@ export type InsertStudioCreativeAssetsResponse = StudioCreativeAssetsResponse;
 export const InsertStudioCreativeAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudioCreativeAssetsResponse;
 
-export type InsertStudioCreativeAssetsError = DefaultErrors;
+export type InsertStudioCreativeAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new studio creative asset. */
 export const insertStudioCreativeAssets: API.OperationMethod<
@@ -12216,7 +12525,7 @@ export const insertStudioCreativeAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertStudioCreativeAssetsRequest,
   output: InsertStudioCreativeAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountPermissionsRequest {
@@ -12242,7 +12551,7 @@ export type GetAccountPermissionsResponse = AccountPermission;
 export const GetAccountPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountPermission;
 
-export type GetAccountPermissionsError = DefaultErrors;
+export type GetAccountPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one account permission by ID. */
 export const getAccountPermissions: API.OperationMethod<
@@ -12253,7 +12562,7 @@ export const getAccountPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountPermissionsRequest,
   output: GetAccountPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountPermissionsRequest {
@@ -12276,7 +12585,7 @@ export type ListAccountPermissionsResponse = AccountPermissionsListResponse;
 export const ListAccountPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountPermissionsListResponse;
 
-export type ListAccountPermissionsError = DefaultErrors;
+export type ListAccountPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of account permissions. */
 export const listAccountPermissions: API.OperationMethod<
@@ -12287,7 +12596,7 @@ export const listAccountPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountPermissionsRequest,
   output: ListAccountPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrdersRequest {
@@ -12314,7 +12623,7 @@ export const GetOrdersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOrdersResponse = Order;
 export const GetOrdersResponse = /*@__PURE__*/ /*#__PURE__*/ Order;
 
-export type GetOrdersError = DefaultErrors;
+export type GetOrdersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one order by ID. */
 export const getOrders: API.OperationMethod<
@@ -12325,7 +12634,7 @@ export const getOrders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrdersRequest,
   output: GetOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrdersRequest {
@@ -12375,7 +12684,7 @@ export type ListOrdersResponse = OrdersListResponse;
 export const ListOrdersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrdersListResponse;
 
-export type ListOrdersError = DefaultErrors;
+export type ListOrdersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of orders, possibly filtered. This method supports paging. */
 export const listOrders: API.PaginatedOperationMethod<
@@ -12386,7 +12695,7 @@ export const listOrders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrdersRequest,
   output: ListOrdersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12411,7 +12720,7 @@ export const GetAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAdsResponse = Ad;
 export const GetAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
 
-export type GetAdsError = DefaultErrors;
+export type GetAdsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one ad by ID. */
 export const getAds: API.OperationMethod<
@@ -12422,7 +12731,7 @@ export const getAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdsRequest,
   output: GetAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdsRequest {
@@ -12550,7 +12859,7 @@ export const ListAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAdsResponse = AdsListResponse;
 export const ListAdsResponse = /*@__PURE__*/ /*#__PURE__*/ AdsListResponse;
 
-export type ListAdsError = DefaultErrors;
+export type ListAdsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of ads, possibly filtered. This method supports paging. */
 export const listAds: API.PaginatedOperationMethod<
@@ -12561,7 +12870,7 @@ export const listAds: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdsRequest,
   output: ListAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12590,7 +12899,12 @@ export const UpdateAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAdsResponse = Ad;
 export const UpdateAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
 
-export type UpdateAdsError = DefaultErrors;
+export type UpdateAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing ad. */
 export const updateAds: API.OperationMethod<
@@ -12601,7 +12915,7 @@ export const updateAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAdsRequest,
   output: UpdateAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAdsRequest {
@@ -12626,7 +12940,12 @@ export const InsertAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertAdsResponse = Ad;
 export const InsertAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
 
-export type InsertAdsError = DefaultErrors;
+export type InsertAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new ad. */
 export const insertAds: API.OperationMethod<
@@ -12637,7 +12956,7 @@ export const insertAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAdsRequest,
   output: InsertAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdsRequest {
@@ -12665,7 +12984,12 @@ export const PatchAdsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchAdsResponse = Ad;
 export const PatchAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Ad;
 
-export type PatchAdsError = DefaultErrors;
+export type PatchAdsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing ad. This method supports patch semantics. */
 export const patchAds: API.OperationMethod<
@@ -12676,7 +13000,7 @@ export const patchAds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdsRequest,
   output: PatchAdsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFilesRequest {
@@ -12697,7 +13021,7 @@ export const GetFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFilesResponse = File;
 export const GetFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type GetFilesError = DefaultErrors;
+export type GetFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a report file by its report ID and file ID. This method supports media download. */
 export const getFiles: API.OperationMethod<
@@ -12708,7 +13032,7 @@ export const getFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFilesRequest,
   output: GetFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFilesRequest {
@@ -12741,7 +13065,7 @@ export const ListFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListFilesResponse = FileList;
 export const ListFilesResponse = /*@__PURE__*/ /*#__PURE__*/ FileList;
 
-export type ListFilesError = DefaultErrors;
+export type ListFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists files for a user profile. */
 export const listFiles: API.PaginatedOperationMethod<
@@ -12752,7 +13076,7 @@ export const listFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFilesRequest,
   output: ListFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12787,7 +13111,12 @@ export type UpdateCreativeFieldValuesResponse = CreativeFieldValue;
 export const UpdateCreativeFieldValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeFieldValue;
 
-export type UpdateCreativeFieldValuesError = DefaultErrors;
+export type UpdateCreativeFieldValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative field value. */
 export const updateCreativeFieldValues: API.OperationMethod<
@@ -12798,7 +13127,7 @@ export const updateCreativeFieldValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCreativeFieldValuesRequest,
   output: UpdateCreativeFieldValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCreativeFieldValuesRequest {
@@ -12827,7 +13156,7 @@ export type GetCreativeFieldValuesResponse = CreativeFieldValue;
 export const GetCreativeFieldValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeFieldValue;
 
-export type GetCreativeFieldValuesError = DefaultErrors;
+export type GetCreativeFieldValuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one creative field value by ID. */
 export const getCreativeFieldValues: API.OperationMethod<
@@ -12838,7 +13167,7 @@ export const getCreativeFieldValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCreativeFieldValuesRequest,
   output: GetCreativeFieldValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCreativeFieldValuesRequest {
@@ -12884,7 +13213,7 @@ export type ListCreativeFieldValuesResponse = CreativeFieldValuesListResponse;
 export const ListCreativeFieldValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeFieldValuesListResponse;
 
-export type ListCreativeFieldValuesError = DefaultErrors;
+export type ListCreativeFieldValuesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of creative field values, possibly filtered. This method supports paging. */
 export const listCreativeFieldValues: API.PaginatedOperationMethod<
@@ -12895,7 +13224,7 @@ export const listCreativeFieldValues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCreativeFieldValuesRequest,
   output: ListCreativeFieldValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12929,7 +13258,12 @@ export type InsertCreativeFieldValuesResponse = CreativeFieldValue;
 export const InsertCreativeFieldValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeFieldValue;
 
-export type InsertCreativeFieldValuesError = DefaultErrors;
+export type InsertCreativeFieldValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new creative field value. */
 export const insertCreativeFieldValues: API.OperationMethod<
@@ -12940,7 +13274,7 @@ export const insertCreativeFieldValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCreativeFieldValuesRequest,
   output: InsertCreativeFieldValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCreativeFieldValuesRequest {
@@ -12973,7 +13307,12 @@ export type PatchCreativeFieldValuesResponse = CreativeFieldValue;
 export const PatchCreativeFieldValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeFieldValue;
 
-export type PatchCreativeFieldValuesError = DefaultErrors;
+export type PatchCreativeFieldValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative field value. This method supports patch semantics. */
 export const patchCreativeFieldValues: API.OperationMethod<
@@ -12984,7 +13323,7 @@ export const patchCreativeFieldValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCreativeFieldValuesRequest,
   output: PatchCreativeFieldValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCreativeFieldValuesRequest {
@@ -13015,7 +13354,12 @@ export const DeleteCreativeFieldValuesResponse: Schema.Schema<DeleteCreativeFiel
     {},
   ) as any as Schema.Schema<DeleteCreativeFieldValuesResponse>;
 
-export type DeleteCreativeFieldValuesError = DefaultErrors;
+export type DeleteCreativeFieldValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing creative field value. */
 export const deleteCreativeFieldValues: API.OperationMethod<
@@ -13026,7 +13370,7 @@ export const deleteCreativeFieldValues: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCreativeFieldValuesRequest,
   output: DeleteCreativeFieldValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTargetableRemarketingListsRequest {
@@ -13052,7 +13396,10 @@ export type GetTargetableRemarketingListsResponse = TargetableRemarketingList;
 export const GetTargetableRemarketingListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetableRemarketingList;
 
-export type GetTargetableRemarketingListsError = DefaultErrors;
+export type GetTargetableRemarketingListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one remarketing list by ID. */
 export const getTargetableRemarketingLists: API.OperationMethod<
@@ -13063,7 +13410,7 @@ export const getTargetableRemarketingLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetableRemarketingListsRequest,
   output: GetTargetableRemarketingListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListTargetableRemarketingListsRequest {
@@ -13108,7 +13455,10 @@ export type ListTargetableRemarketingListsResponse =
 export const ListTargetableRemarketingListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetableRemarketingListsListResponse;
 
-export type ListTargetableRemarketingListsError = DefaultErrors;
+export type ListTargetableRemarketingListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging. */
 export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
@@ -13119,7 +13469,7 @@ export const listTargetableRemarketingLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetableRemarketingListsRequest,
   output: ListTargetableRemarketingListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13150,7 +13500,12 @@ export const InsertCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertCampaignsResponse = Campaign;
 export const InsertCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
 
-export type InsertCampaignsError = DefaultErrors;
+export type InsertCampaignsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new campaign. */
 export const insertCampaigns: API.OperationMethod<
@@ -13161,7 +13516,7 @@ export const insertCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCampaignsRequest,
   output: InsertCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCampaignsRequest {
@@ -13189,7 +13544,12 @@ export const PatchCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchCampaignsResponse = Campaign;
 export const PatchCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
 
-export type PatchCampaignsError = DefaultErrors;
+export type PatchCampaignsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing campaign. This method supports patch semantics. */
 export const patchCampaigns: API.OperationMethod<
@@ -13200,7 +13560,7 @@ export const patchCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCampaignsRequest,
   output: PatchCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCampaignsRequest {
@@ -13221,7 +13581,7 @@ export const GetCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCampaignsResponse = Campaign;
 export const GetCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
 
-export type GetCampaignsError = DefaultErrors;
+export type GetCampaignsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one campaign by ID. */
 export const getCampaigns: API.OperationMethod<
@@ -13232,7 +13592,7 @@ export const getCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCampaignsRequest,
   output: GetCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCampaignsRequest {
@@ -13304,7 +13664,7 @@ export type ListCampaignsResponse = CampaignsListResponse;
 export const ListCampaignsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CampaignsListResponse;
 
-export type ListCampaignsError = DefaultErrors;
+export type ListCampaignsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of campaigns, possibly filtered. This method supports paging. */
 export const listCampaigns: API.PaginatedOperationMethod<
@@ -13315,7 +13675,7 @@ export const listCampaigns: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignsRequest,
   output: ListCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13346,7 +13706,12 @@ export const UpdateCampaignsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateCampaignsResponse = Campaign;
 export const UpdateCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Campaign;
 
-export type UpdateCampaignsError = DefaultErrors;
+export type UpdateCampaignsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing campaign. */
 export const updateCampaigns: API.OperationMethod<
@@ -13357,7 +13722,7 @@ export const updateCampaigns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCampaignsRequest,
   output: UpdateCampaignsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMobileCarriersRequest {
@@ -13383,7 +13748,7 @@ export type GetMobileCarriersResponse = MobileCarrier;
 export const GetMobileCarriersResponse =
   /*@__PURE__*/ /*#__PURE__*/ MobileCarrier;
 
-export type GetMobileCarriersError = DefaultErrors;
+export type GetMobileCarriersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one mobile carrier by ID. */
 export const getMobileCarriers: API.OperationMethod<
@@ -13394,7 +13759,7 @@ export const getMobileCarriers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMobileCarriersRequest,
   output: GetMobileCarriersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMobileCarriersRequest {
@@ -13414,7 +13779,7 @@ export type ListMobileCarriersResponse = MobileCarriersListResponse;
 export const ListMobileCarriersResponse =
   /*@__PURE__*/ /*#__PURE__*/ MobileCarriersListResponse;
 
-export type ListMobileCarriersError = DefaultErrors;
+export type ListMobileCarriersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of mobile carriers. */
 export const listMobileCarriers: API.OperationMethod<
@@ -13425,7 +13790,7 @@ export const listMobileCarriers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMobileCarriersRequest,
   output: ListMobileCarriersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDirectorySitesRequest {
@@ -13451,7 +13816,7 @@ export type GetDirectorySitesResponse = DirectorySite;
 export const GetDirectorySitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DirectorySite;
 
-export type GetDirectorySitesError = DefaultErrors;
+export type GetDirectorySitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one directory site by ID. */
 export const getDirectorySites: API.OperationMethod<
@@ -13462,7 +13827,7 @@ export const getDirectorySites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDirectorySitesRequest,
   output: GetDirectorySitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDirectorySitesRequest {
@@ -13525,7 +13890,7 @@ export type ListDirectorySitesResponse = DirectorySitesListResponse;
 export const ListDirectorySitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DirectorySitesListResponse;
 
-export type ListDirectorySitesError = DefaultErrors;
+export type ListDirectorySitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of directory sites, possibly filtered. This method supports paging. */
 export const listDirectorySites: API.PaginatedOperationMethod<
@@ -13536,7 +13901,7 @@ export const listDirectorySites: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDirectorySitesRequest,
   output: ListDirectorySitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13567,7 +13932,12 @@ export type InsertDirectorySitesResponse = DirectorySite;
 export const InsertDirectorySitesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DirectorySite;
 
-export type InsertDirectorySitesError = DefaultErrors;
+export type InsertDirectorySitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new directory site. */
 export const insertDirectorySites: API.OperationMethod<
@@ -13578,7 +13948,7 @@ export const insertDirectorySites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDirectorySitesRequest,
   output: InsertDirectorySitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperatingSystemsRequest {
@@ -13604,7 +13974,7 @@ export type GetOperatingSystemsResponse = OperatingSystem;
 export const GetOperatingSystemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperatingSystem;
 
-export type GetOperatingSystemsError = DefaultErrors;
+export type GetOperatingSystemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one operating system by DART ID. */
 export const getOperatingSystems: API.OperationMethod<
@@ -13615,7 +13985,7 @@ export const getOperatingSystems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperatingSystemsRequest,
   output: GetOperatingSystemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOperatingSystemsRequest {
@@ -13638,7 +14008,7 @@ export type ListOperatingSystemsResponse = OperatingSystemsListResponse;
 export const ListOperatingSystemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperatingSystemsListResponse;
 
-export type ListOperatingSystemsError = DefaultErrors;
+export type ListOperatingSystemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of operating systems. */
 export const listOperatingSystems: API.OperationMethod<
@@ -13649,7 +14019,7 @@ export const listOperatingSystems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOperatingSystemsRequest,
   output: ListOperatingSystemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateFloodlightConfigurationsRequest {
@@ -13676,7 +14046,12 @@ export type UpdateFloodlightConfigurationsResponse = FloodlightConfiguration;
 export const UpdateFloodlightConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightConfiguration;
 
-export type UpdateFloodlightConfigurationsError = DefaultErrors;
+export type UpdateFloodlightConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing floodlight configuration. */
 export const updateFloodlightConfigurations: API.OperationMethod<
@@ -13687,7 +14062,7 @@ export const updateFloodlightConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFloodlightConfigurationsRequest,
   output: UpdateFloodlightConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFloodlightConfigurationsRequest {
@@ -13717,7 +14092,12 @@ export type PatchFloodlightConfigurationsResponse = FloodlightConfiguration;
 export const PatchFloodlightConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightConfiguration;
 
-export type PatchFloodlightConfigurationsError = DefaultErrors;
+export type PatchFloodlightConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing floodlight configuration. This method supports patch semantics. */
 export const patchFloodlightConfigurations: API.OperationMethod<
@@ -13728,7 +14108,7 @@ export const patchFloodlightConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFloodlightConfigurationsRequest,
   output: PatchFloodlightConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFloodlightConfigurationsRequest {
@@ -13754,7 +14134,10 @@ export type GetFloodlightConfigurationsResponse = FloodlightConfiguration;
 export const GetFloodlightConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightConfiguration;
 
-export type GetFloodlightConfigurationsError = DefaultErrors;
+export type GetFloodlightConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one floodlight configuration by ID. */
 export const getFloodlightConfigurations: API.OperationMethod<
@@ -13765,7 +14148,7 @@ export const getFloodlightConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFloodlightConfigurationsRequest,
   output: GetFloodlightConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFloodlightConfigurationsRequest {
@@ -13792,7 +14175,10 @@ export type ListFloodlightConfigurationsResponse =
 export const ListFloodlightConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightConfigurationsListResponse;
 
-export type ListFloodlightConfigurationsError = DefaultErrors;
+export type ListFloodlightConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of floodlight configurations, possibly filtered. */
 export const listFloodlightConfigurations: API.OperationMethod<
@@ -13803,7 +14189,7 @@ export const listFloodlightConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFloodlightConfigurationsRequest,
   output: ListFloodlightConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteReportsRequest {
@@ -13830,7 +14216,12 @@ export const DeleteReportsResponse: Schema.Schema<DeleteReportsResponse> =
     {},
   ) as any as Schema.Schema<DeleteReportsResponse>;
 
-export type DeleteReportsError = DefaultErrors;
+export type DeleteReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a report by its ID. */
 export const deleteReports: API.OperationMethod<
@@ -13841,7 +14232,7 @@ export const deleteReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteReportsRequest,
   output: DeleteReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertReportsRequest {
@@ -13866,7 +14257,12 @@ export const InsertReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertReportsResponse = Report;
 export const InsertReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type InsertReportsError = DefaultErrors;
+export type InsertReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a report. */
 export const insertReports: API.OperationMethod<
@@ -13877,7 +14273,7 @@ export const insertReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertReportsRequest,
   output: InsertReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchReportsRequest {
@@ -13905,7 +14301,12 @@ export const PatchReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchReportsResponse = Report;
 export const PatchReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type PatchReportsError = DefaultErrors;
+export type PatchReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing report. This method supports patch semantics. */
 export const patchReports: API.OperationMethod<
@@ -13916,7 +14317,7 @@ export const patchReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchReportsRequest,
   output: PatchReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReportsRequest {
@@ -13940,7 +14341,7 @@ export const GetReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetReportsResponse = Report;
 export const GetReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type GetReportsError = DefaultErrors;
+export type GetReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a report by its ID. */
 export const getReports: API.OperationMethod<
@@ -13951,7 +14352,7 @@ export const getReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReportsRequest,
   output: GetReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListReportsRequest {
@@ -13984,7 +14385,7 @@ export const ListReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListReportsResponse = ReportList;
 export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ ReportList;
 
-export type ListReportsError = DefaultErrors;
+export type ListReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves list of reports. */
 export const listReports: API.PaginatedOperationMethod<
@@ -13995,7 +14396,7 @@ export const listReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReportsRequest,
   output: ListReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14028,7 +14429,12 @@ export const RunReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunReportsResponse = File;
 export const RunReportsResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type RunReportsError = DefaultErrors;
+export type RunReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs a report. */
 export const runReports: API.OperationMethod<
@@ -14039,7 +14445,7 @@ export const runReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunReportsRequest,
   output: RunReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateReportsRequest {
@@ -14067,7 +14473,12 @@ export const UpdateReportsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateReportsResponse = Report;
 export const UpdateReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type UpdateReportsError = DefaultErrors;
+export type UpdateReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a report. */
 export const updateReports: API.OperationMethod<
@@ -14078,7 +14489,7 @@ export const updateReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateReportsRequest,
   output: UpdateReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReportsFilesRequest {
@@ -14107,7 +14518,7 @@ export const GetReportsFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetReportsFilesResponse = File;
 export const GetReportsFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type GetReportsFilesError = DefaultErrors;
+export type GetReportsFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a report file by its report ID and file ID. This method supports media download. */
 export const getReportsFiles: API.OperationMethod<
@@ -14118,7 +14529,7 @@ export const getReportsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReportsFilesRequest,
   output: GetReportsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListReportsFilesRequest {
@@ -14155,7 +14566,7 @@ export const ListReportsFilesRequest =
 export type ListReportsFilesResponse = FileList;
 export const ListReportsFilesResponse = /*@__PURE__*/ /*#__PURE__*/ FileList;
 
-export type ListReportsFilesError = DefaultErrors;
+export type ListReportsFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists files for a report. */
 export const listReportsFiles: API.PaginatedOperationMethod<
@@ -14166,7 +14577,7 @@ export const listReportsFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReportsFilesRequest,
   output: ListReportsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14198,7 +14609,12 @@ export type QueryReportsCompatibleFieldsResponse = CompatibleFields;
 export const QueryReportsCompatibleFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompatibleFields;
 
-export type QueryReportsCompatibleFieldsError = DefaultErrors;
+export type QueryReportsCompatibleFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the fields that are compatible to be selected in the respective sections of a report criteria, given the fields already selected in the input report and user permissions. */
 export const queryReportsCompatibleFields: API.OperationMethod<
@@ -14209,7 +14625,7 @@ export const queryReportsCompatibleFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryReportsCompatibleFieldsRequest,
   output: QueryReportsCompatibleFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMetrosRequest {
@@ -14228,7 +14644,7 @@ export type ListMetrosResponse = MetrosListResponse;
 export const ListMetrosResponse =
   /*@__PURE__*/ /*#__PURE__*/ MetrosListResponse;
 
-export type ListMetrosError = DefaultErrors;
+export type ListMetrosError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of metros. */
 export const listMetros: API.OperationMethod<
@@ -14239,7 +14655,7 @@ export const listMetros: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMetrosRequest,
   output: ListMetrosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountsRequest {
@@ -14260,7 +14676,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = Account;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one account by ID. */
 export const getAccounts: API.OperationMethod<
@@ -14271,7 +14687,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsRequest {
@@ -14313,7 +14729,7 @@ export type ListAccountsResponse = AccountsListResponse;
 export const ListAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountsListResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of accounts, possibly filtered. This method supports paging. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -14324,7 +14740,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14353,7 +14769,12 @@ export const UpdateAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateAccountsResponse = Account;
 export const UpdateAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type UpdateAccountsError = DefaultErrors;
+export type UpdateAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing account. */
 export const updateAccounts: API.OperationMethod<
@@ -14364,7 +14785,7 @@ export const updateAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountsRequest,
   output: UpdateAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountsRequest {
@@ -14392,7 +14813,12 @@ export const PatchAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchAccountsResponse = Account;
 export const PatchAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type PatchAccountsError = DefaultErrors;
+export type PatchAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing account. This method supports patch semantics. */
 export const patchAccounts: API.OperationMethod<
@@ -14403,7 +14829,7 @@ export const patchAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsRequest,
   output: PatchAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertCampaignCreativeAssociationsRequest {
@@ -14434,7 +14860,12 @@ export type InsertCampaignCreativeAssociationsResponse =
 export const InsertCampaignCreativeAssociationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CampaignCreativeAssociation;
 
-export type InsertCampaignCreativeAssociationsError = DefaultErrors;
+export type InsertCampaignCreativeAssociationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Associates a creative with the specified campaign. This method creates a default ad with dimensions matching the creative in the campaign if such a default ad does not exist already. */
 export const insertCampaignCreativeAssociations: API.OperationMethod<
@@ -14445,7 +14876,7 @@ export const insertCampaignCreativeAssociations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCampaignCreativeAssociationsRequest,
   output: InsertCampaignCreativeAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCampaignCreativeAssociationsRequest {
@@ -14481,7 +14912,10 @@ export type ListCampaignCreativeAssociationsResponse =
 export const ListCampaignCreativeAssociationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CampaignCreativeAssociationsListResponse;
 
-export type ListCampaignCreativeAssociationsError = DefaultErrors;
+export type ListCampaignCreativeAssociationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of creative IDs associated with the specified campaign. This method supports paging. */
 export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
@@ -14492,7 +14926,7 @@ export const listCampaignCreativeAssociations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCampaignCreativeAssociationsRequest,
   output: ListCampaignCreativeAssociationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14525,7 +14959,7 @@ export type GetInventoryItemsResponse = InventoryItem;
 export const GetInventoryItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventoryItem;
 
-export type GetInventoryItemsError = DefaultErrors;
+export type GetInventoryItemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one inventory item by ID. */
 export const getInventoryItems: API.OperationMethod<
@@ -14536,7 +14970,7 @@ export const getInventoryItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInventoryItemsRequest,
   output: GetInventoryItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInventoryItemsRequest {
@@ -14596,7 +15030,7 @@ export type ListInventoryItemsResponse = InventoryItemsListResponse;
 export const ListInventoryItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InventoryItemsListResponse;
 
-export type ListInventoryItemsError = DefaultErrors;
+export type ListInventoryItemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of inventory items, possibly filtered. This method supports paging. */
 export const listInventoryItems: API.PaginatedOperationMethod<
@@ -14607,7 +15041,7 @@ export const listInventoryItems: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInventoryItemsRequest,
   output: ListInventoryItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14641,7 +15075,12 @@ export type PatchRemarketingListSharesResponse = RemarketingListShare;
 export const PatchRemarketingListSharesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingListShare;
 
-export type PatchRemarketingListSharesError = DefaultErrors;
+export type PatchRemarketingListSharesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing remarketing list share. This method supports patch semantics. */
 export const patchRemarketingListShares: API.OperationMethod<
@@ -14652,7 +15091,7 @@ export const patchRemarketingListShares: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRemarketingListSharesRequest,
   output: PatchRemarketingListSharesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRemarketingListSharesRequest {
@@ -14679,7 +15118,12 @@ export type UpdateRemarketingListSharesResponse = RemarketingListShare;
 export const UpdateRemarketingListSharesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingListShare;
 
-export type UpdateRemarketingListSharesError = DefaultErrors;
+export type UpdateRemarketingListSharesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing remarketing list share. */
 export const updateRemarketingListShares: API.OperationMethod<
@@ -14690,7 +15134,7 @@ export const updateRemarketingListShares: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRemarketingListSharesRequest,
   output: UpdateRemarketingListSharesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRemarketingListSharesRequest {
@@ -14716,7 +15160,10 @@ export type GetRemarketingListSharesResponse = RemarketingListShare;
 export const GetRemarketingListSharesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RemarketingListShare;
 
-export type GetRemarketingListSharesError = DefaultErrors;
+export type GetRemarketingListSharesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one remarketing list share by remarketing list ID. */
 export const getRemarketingListShares: API.OperationMethod<
@@ -14727,7 +15174,7 @@ export const getRemarketingListShares: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRemarketingListSharesRequest,
   output: GetRemarketingListSharesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountUserProfilesRequest {
@@ -14753,7 +15200,7 @@ export type GetAccountUserProfilesResponse = AccountUserProfile;
 export const GetAccountUserProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountUserProfile;
 
-export type GetAccountUserProfilesError = DefaultErrors;
+export type GetAccountUserProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one account user profile by ID. */
 export const getAccountUserProfiles: API.OperationMethod<
@@ -14764,7 +15211,7 @@ export const getAccountUserProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountUserProfilesRequest,
   output: GetAccountUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountUserProfilesRequest {
@@ -14818,7 +15265,7 @@ export type ListAccountUserProfilesResponse = AccountUserProfilesListResponse;
 export const ListAccountUserProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountUserProfilesListResponse;
 
-export type ListAccountUserProfilesError = DefaultErrors;
+export type ListAccountUserProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of account user profiles, possibly filtered. This method supports paging. */
 export const listAccountUserProfiles: API.PaginatedOperationMethod<
@@ -14829,7 +15276,7 @@ export const listAccountUserProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountUserProfilesRequest,
   output: ListAccountUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14860,7 +15307,12 @@ export type UpdateAccountUserProfilesResponse = AccountUserProfile;
 export const UpdateAccountUserProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountUserProfile;
 
-export type UpdateAccountUserProfilesError = DefaultErrors;
+export type UpdateAccountUserProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing account user profile. */
 export const updateAccountUserProfiles: API.OperationMethod<
@@ -14871,7 +15323,7 @@ export const updateAccountUserProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccountUserProfilesRequest,
   output: UpdateAccountUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAccountUserProfilesRequest {
@@ -14898,7 +15350,12 @@ export type InsertAccountUserProfilesResponse = AccountUserProfile;
 export const InsertAccountUserProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountUserProfile;
 
-export type InsertAccountUserProfilesError = DefaultErrors;
+export type InsertAccountUserProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new account user profile. */
 export const insertAccountUserProfiles: API.OperationMethod<
@@ -14909,7 +15366,7 @@ export const insertAccountUserProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountUserProfilesRequest,
   output: InsertAccountUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountUserProfilesRequest {
@@ -14939,7 +15396,12 @@ export type PatchAccountUserProfilesResponse = AccountUserProfile;
 export const PatchAccountUserProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountUserProfile;
 
-export type PatchAccountUserProfilesError = DefaultErrors;
+export type PatchAccountUserProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing account user profile. This method supports patch semantics. */
 export const patchAccountUserProfiles: API.OperationMethod<
@@ -14950,7 +15412,7 @@ export const patchAccountUserProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountUserProfilesRequest,
   output: PatchAccountUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateBillingProfilesRequest {
@@ -14977,7 +15439,12 @@ export type UpdateBillingProfilesResponse = BillingProfile;
 export const UpdateBillingProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingProfile;
 
-export type UpdateBillingProfilesError = DefaultErrors;
+export type UpdateBillingProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing billing profile. */
 export const updateBillingProfiles: API.OperationMethod<
@@ -14988,7 +15455,7 @@ export const updateBillingProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBillingProfilesRequest,
   output: UpdateBillingProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingProfilesRequest {
@@ -15014,7 +15481,7 @@ export type GetBillingProfilesResponse = BillingProfile;
 export const GetBillingProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingProfile;
 
-export type GetBillingProfilesError = DefaultErrors;
+export type GetBillingProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one billing profile by ID. */
 export const getBillingProfiles: API.OperationMethod<
@@ -15025,7 +15492,7 @@ export const getBillingProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingProfilesRequest,
   output: GetBillingProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingProfilesRequest {
@@ -15083,7 +15550,7 @@ export type ListBillingProfilesResponse = BillingProfilesListResponse;
 export const ListBillingProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BillingProfilesListResponse;
 
-export type ListBillingProfilesError = DefaultErrors;
+export type ListBillingProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of billing profiles, possibly filtered. This method supports paging. */
 export const listBillingProfiles: API.PaginatedOperationMethod<
@@ -15094,7 +15561,7 @@ export const listBillingProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingProfilesRequest,
   output: ListBillingProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15125,7 +15592,12 @@ export type UpdateCreativeFieldsResponse = CreativeField;
 export const UpdateCreativeFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeField;
 
-export type UpdateCreativeFieldsError = DefaultErrors;
+export type UpdateCreativeFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative field. */
 export const updateCreativeFields: API.OperationMethod<
@@ -15136,7 +15608,7 @@ export const updateCreativeFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCreativeFieldsRequest,
   output: UpdateCreativeFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCreativeFieldsRequest {
@@ -15162,7 +15634,7 @@ export type GetCreativeFieldsResponse = CreativeField;
 export const GetCreativeFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeField;
 
-export type GetCreativeFieldsError = DefaultErrors;
+export type GetCreativeFieldsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one creative field by ID. */
 export const getCreativeFields: API.OperationMethod<
@@ -15173,7 +15645,7 @@ export const getCreativeFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCreativeFieldsRequest,
   output: GetCreativeFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCreativeFieldsRequest {
@@ -15218,7 +15690,7 @@ export type ListCreativeFieldsResponse = CreativeFieldsListResponse;
 export const ListCreativeFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeFieldsListResponse;
 
-export type ListCreativeFieldsError = DefaultErrors;
+export type ListCreativeFieldsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of creative fields, possibly filtered. This method supports paging. */
 export const listCreativeFields: API.PaginatedOperationMethod<
@@ -15229,7 +15701,7 @@ export const listCreativeFields: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCreativeFieldsRequest,
   output: ListCreativeFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15260,7 +15732,12 @@ export type InsertCreativeFieldsResponse = CreativeField;
 export const InsertCreativeFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeField;
 
-export type InsertCreativeFieldsError = DefaultErrors;
+export type InsertCreativeFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new creative field. */
 export const insertCreativeFields: API.OperationMethod<
@@ -15271,7 +15748,7 @@ export const insertCreativeFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCreativeFieldsRequest,
   output: InsertCreativeFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCreativeFieldsRequest {
@@ -15301,7 +15778,12 @@ export type PatchCreativeFieldsResponse = CreativeField;
 export const PatchCreativeFieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeField;
 
-export type PatchCreativeFieldsError = DefaultErrors;
+export type PatchCreativeFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing creative field. This method supports patch semantics. */
 export const patchCreativeFields: API.OperationMethod<
@@ -15312,7 +15794,7 @@ export const patchCreativeFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCreativeFieldsRequest,
   output: PatchCreativeFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCreativeFieldsRequest {
@@ -15340,7 +15822,12 @@ export const DeleteCreativeFieldsResponse: Schema.Schema<DeleteCreativeFieldsRes
     {},
   ) as any as Schema.Schema<DeleteCreativeFieldsResponse>;
 
-export type DeleteCreativeFieldsError = DefaultErrors;
+export type DeleteCreativeFieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing creative field. */
 export const deleteCreativeFields: API.OperationMethod<
@@ -15351,7 +15838,7 @@ export const deleteCreativeFields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCreativeFieldsRequest,
   output: DeleteCreativeFieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountPermissionGroupsRequest {
@@ -15377,7 +15864,10 @@ export type GetAccountPermissionGroupsResponse = AccountPermissionGroup;
 export const GetAccountPermissionGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountPermissionGroup;
 
-export type GetAccountPermissionGroupsError = DefaultErrors;
+export type GetAccountPermissionGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one account permission group by ID. */
 export const getAccountPermissionGroups: API.OperationMethod<
@@ -15388,7 +15878,7 @@ export const getAccountPermissionGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountPermissionGroupsRequest,
   output: GetAccountPermissionGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountPermissionGroupsRequest {
@@ -15412,7 +15902,10 @@ export type ListAccountPermissionGroupsResponse =
 export const ListAccountPermissionGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountPermissionGroupsListResponse;
 
-export type ListAccountPermissionGroupsError = DefaultErrors;
+export type ListAccountPermissionGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of account permission groups. */
 export const listAccountPermissionGroups: API.OperationMethod<
@@ -15423,7 +15916,7 @@ export const listAccountPermissionGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccountPermissionGroupsRequest,
   output: ListAccountPermissionGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertCreativeAssetsRequest {
@@ -15453,7 +15946,12 @@ export type InsertCreativeAssetsResponse = CreativeAssetMetadata;
 export const InsertCreativeAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CreativeAssetMetadata;
 
-export type InsertCreativeAssetsError = DefaultErrors;
+export type InsertCreativeAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new creative asset. */
 export const insertCreativeAssets: API.OperationMethod<
@@ -15464,7 +15962,7 @@ export const insertCreativeAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCreativeAssetsRequest,
   output: InsertCreativeAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAdvertiserLandingPagesRequest {
@@ -15491,7 +15989,12 @@ export type InsertAdvertiserLandingPagesResponse = LandingPage;
 export const InsertAdvertiserLandingPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LandingPage;
 
-export type InsertAdvertiserLandingPagesError = DefaultErrors;
+export type InsertAdvertiserLandingPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new landing page. */
 export const insertAdvertiserLandingPages: API.OperationMethod<
@@ -15502,7 +16005,7 @@ export const insertAdvertiserLandingPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAdvertiserLandingPagesRequest,
   output: InsertAdvertiserLandingPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertiserLandingPagesRequest {
@@ -15532,7 +16035,12 @@ export type PatchAdvertiserLandingPagesResponse = LandingPage;
 export const PatchAdvertiserLandingPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LandingPage;
 
-export type PatchAdvertiserLandingPagesError = DefaultErrors;
+export type PatchAdvertiserLandingPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing landing page. This method supports patch semantics. */
 export const patchAdvertiserLandingPages: API.OperationMethod<
@@ -15543,7 +16051,7 @@ export const patchAdvertiserLandingPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertiserLandingPagesRequest,
   output: PatchAdvertiserLandingPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAdvertiserLandingPagesRequest {
@@ -15570,7 +16078,12 @@ export type UpdateAdvertiserLandingPagesResponse = LandingPage;
 export const UpdateAdvertiserLandingPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LandingPage;
 
-export type UpdateAdvertiserLandingPagesError = DefaultErrors;
+export type UpdateAdvertiserLandingPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing landing page. */
 export const updateAdvertiserLandingPages: API.OperationMethod<
@@ -15581,7 +16094,7 @@ export const updateAdvertiserLandingPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAdvertiserLandingPagesRequest,
   output: UpdateAdvertiserLandingPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertiserLandingPagesRequest {
@@ -15607,7 +16120,10 @@ export type GetAdvertiserLandingPagesResponse = LandingPage;
 export const GetAdvertiserLandingPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LandingPage;
 
-export type GetAdvertiserLandingPagesError = DefaultErrors;
+export type GetAdvertiserLandingPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one landing page by ID. */
 export const getAdvertiserLandingPages: API.OperationMethod<
@@ -15618,7 +16134,7 @@ export const getAdvertiserLandingPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertiserLandingPagesRequest,
   output: GetAdvertiserLandingPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdvertiserLandingPagesRequest {
@@ -15680,7 +16196,10 @@ export type ListAdvertiserLandingPagesResponse =
 export const ListAdvertiserLandingPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertiserLandingPagesListResponse;
 
-export type ListAdvertiserLandingPagesError = DefaultErrors;
+export type ListAdvertiserLandingPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of landing pages. */
 export const listAdvertiserLandingPages: API.PaginatedOperationMethod<
@@ -15691,7 +16210,7 @@ export const listAdvertiserLandingPages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertiserLandingPagesRequest,
   output: ListAdvertiserLandingPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15724,7 +16243,12 @@ export const PatchSubaccountsRequest =
 export type PatchSubaccountsResponse = Subaccount;
 export const PatchSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
 
-export type PatchSubaccountsError = DefaultErrors;
+export type PatchSubaccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing subaccount. This method supports patch semantics. */
 export const patchSubaccounts: API.OperationMethod<
@@ -15735,7 +16259,7 @@ export const patchSubaccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSubaccountsRequest,
   output: PatchSubaccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertSubaccountsRequest {
@@ -15761,7 +16285,12 @@ export const InsertSubaccountsRequest =
 export type InsertSubaccountsResponse = Subaccount;
 export const InsertSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
 
-export type InsertSubaccountsError = DefaultErrors;
+export type InsertSubaccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new subaccount. */
 export const insertSubaccounts: API.OperationMethod<
@@ -15772,7 +16301,7 @@ export const insertSubaccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSubaccountsRequest,
   output: InsertSubaccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSubaccountsRequest {
@@ -15793,7 +16322,7 @@ export const GetSubaccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSubaccountsResponse = Subaccount;
 export const GetSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
 
-export type GetSubaccountsError = DefaultErrors;
+export type GetSubaccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one subaccount by ID. */
 export const getSubaccounts: API.OperationMethod<
@@ -15804,7 +16333,7 @@ export const getSubaccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubaccountsRequest,
   output: GetSubaccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSubaccountsRequest {
@@ -15845,7 +16374,7 @@ export type ListSubaccountsResponse = SubaccountsListResponse;
 export const ListSubaccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubaccountsListResponse;
 
-export type ListSubaccountsError = DefaultErrors;
+export type ListSubaccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a list of subaccounts, possibly filtered. This method supports paging. */
 export const listSubaccounts: API.PaginatedOperationMethod<
@@ -15856,7 +16385,7 @@ export const listSubaccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubaccountsRequest,
   output: ListSubaccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15886,7 +16415,12 @@ export const UpdateSubaccountsRequest =
 export type UpdateSubaccountsResponse = Subaccount;
 export const UpdateSubaccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Subaccount;
 
-export type UpdateSubaccountsError = DefaultErrors;
+export type UpdateSubaccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing subaccount. */
 export const updateSubaccounts: API.OperationMethod<
@@ -15897,7 +16431,7 @@ export const updateSubaccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSubaccountsRequest,
   output: UpdateSubaccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFloodlightActivityGroupsRequest {
@@ -15923,7 +16457,10 @@ export type GetFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const GetFloodlightActivityGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivityGroup;
 
-export type GetFloodlightActivityGroupsError = DefaultErrors;
+export type GetFloodlightActivityGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets one floodlight activity group by ID. */
 export const getFloodlightActivityGroups: API.OperationMethod<
@@ -15934,7 +16471,7 @@ export const getFloodlightActivityGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFloodlightActivityGroupsRequest,
   output: GetFloodlightActivityGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFloodlightActivityGroupsRequest {
@@ -15991,7 +16528,10 @@ export type ListFloodlightActivityGroupsResponse =
 export const ListFloodlightActivityGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivityGroupsListResponse;
 
-export type ListFloodlightActivityGroupsError = DefaultErrors;
+export type ListFloodlightActivityGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging. */
 export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
@@ -16002,7 +16542,7 @@ export const listFloodlightActivityGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFloodlightActivityGroupsRequest,
   output: ListFloodlightActivityGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16033,7 +16573,12 @@ export type UpdateFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const UpdateFloodlightActivityGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivityGroup;
 
-export type UpdateFloodlightActivityGroupsError = DefaultErrors;
+export type UpdateFloodlightActivityGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing floodlight activity group. */
 export const updateFloodlightActivityGroups: API.OperationMethod<
@@ -16044,7 +16589,7 @@ export const updateFloodlightActivityGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFloodlightActivityGroupsRequest,
   output: UpdateFloodlightActivityGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertFloodlightActivityGroupsRequest {
@@ -16071,7 +16616,12 @@ export type InsertFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const InsertFloodlightActivityGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivityGroup;
 
-export type InsertFloodlightActivityGroupsError = DefaultErrors;
+export type InsertFloodlightActivityGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new floodlight activity group. */
 export const insertFloodlightActivityGroups: API.OperationMethod<
@@ -16082,7 +16632,7 @@ export const insertFloodlightActivityGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFloodlightActivityGroupsRequest,
   output: InsertFloodlightActivityGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFloodlightActivityGroupsRequest {
@@ -16112,7 +16662,12 @@ export type PatchFloodlightActivityGroupsResponse = FloodlightActivityGroup;
 export const PatchFloodlightActivityGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FloodlightActivityGroup;
 
-export type PatchFloodlightActivityGroupsError = DefaultErrors;
+export type PatchFloodlightActivityGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing floodlight activity group. This method supports patch semantics. */
 export const patchFloodlightActivityGroups: API.OperationMethod<
@@ -16123,7 +16678,7 @@ export const patchFloodlightActivityGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFloodlightActivityGroupsRequest,
   output: PatchFloodlightActivityGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPlacementGroupsRequest {
@@ -16153,7 +16708,12 @@ export type PatchPlacementGroupsResponse = PlacementGroup;
 export const PatchPlacementGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementGroup;
 
-export type PatchPlacementGroupsError = DefaultErrors;
+export type PatchPlacementGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing placement group. This method supports patch semantics. */
 export const patchPlacementGroups: API.OperationMethod<
@@ -16164,7 +16724,7 @@ export const patchPlacementGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPlacementGroupsRequest,
   output: PatchPlacementGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPlacementGroupsRequest {
@@ -16191,7 +16751,12 @@ export type InsertPlacementGroupsResponse = PlacementGroup;
 export const InsertPlacementGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementGroup;
 
-export type InsertPlacementGroupsError = DefaultErrors;
+export type InsertPlacementGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new placement group. */
 export const insertPlacementGroups: API.OperationMethod<
@@ -16202,7 +16767,7 @@ export const insertPlacementGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPlacementGroupsRequest,
   output: InsertPlacementGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPlacementGroupsRequest {
@@ -16228,7 +16793,7 @@ export type GetPlacementGroupsResponse = PlacementGroup;
 export const GetPlacementGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementGroup;
 
-export type GetPlacementGroupsError = DefaultErrors;
+export type GetPlacementGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one placement group by ID. */
 export const getPlacementGroups: API.OperationMethod<
@@ -16239,7 +16804,7 @@ export const getPlacementGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlacementGroupsRequest,
   output: GetPlacementGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPlacementGroupsRequest {
@@ -16356,7 +16921,7 @@ export type ListPlacementGroupsResponse = PlacementGroupsListResponse;
 export const ListPlacementGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementGroupsListResponse;
 
-export type ListPlacementGroupsError = DefaultErrors;
+export type ListPlacementGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of placement groups, possibly filtered. This method supports paging. */
 export const listPlacementGroups: API.PaginatedOperationMethod<
@@ -16367,7 +16932,7 @@ export const listPlacementGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlacementGroupsRequest,
   output: ListPlacementGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16398,7 +16963,12 @@ export type UpdatePlacementGroupsResponse = PlacementGroup;
 export const UpdatePlacementGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlacementGroup;
 
-export type UpdatePlacementGroupsError = DefaultErrors;
+export type UpdatePlacementGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing placement group. */
 export const updatePlacementGroups: API.OperationMethod<
@@ -16409,7 +16979,7 @@ export const updatePlacementGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlacementGroupsRequest,
   output: UpdatePlacementGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTvCampaignSummariesRequest {
@@ -16438,7 +17008,7 @@ export type ListTvCampaignSummariesResponse = TvCampaignSummariesListResponse;
 export const ListTvCampaignSummariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TvCampaignSummariesListResponse;
 
-export type ListTvCampaignSummariesError = DefaultErrors;
+export type ListTvCampaignSummariesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of TV campaign summaries. */
 export const listTvCampaignSummaries: API.OperationMethod<
@@ -16449,7 +17019,7 @@ export const listTvCampaignSummaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListTvCampaignSummariesRequest,
   output: ListTvCampaignSummariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUserProfilesRequest {
@@ -16469,7 +17039,7 @@ export const GetUserProfilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetUserProfilesResponse = UserProfile;
 export const GetUserProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ UserProfile;
 
-export type GetUserProfilesError = DefaultErrors;
+export type GetUserProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one user profile by ID. */
 export const getUserProfiles: API.OperationMethod<
@@ -16480,7 +17050,7 @@ export const getUserProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserProfilesRequest,
   output: GetUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListUserProfilesRequest {}
@@ -16495,7 +17065,7 @@ export type ListUserProfilesResponse = UserProfileList;
 export const ListUserProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserProfileList;
 
-export type ListUserProfilesError = DefaultErrors;
+export type ListUserProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves list of user profiles for a user. */
 export const listUserProfiles: API.OperationMethod<
@@ -16506,7 +17076,7 @@ export const listUserProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUserProfilesRequest,
   output: ListUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertDynamicProfilesRequest {
@@ -16526,7 +17096,12 @@ export type InsertDynamicProfilesResponse = DynamicProfile;
 export const InsertDynamicProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicProfile;
 
-export type InsertDynamicProfilesError = DefaultErrors;
+export type InsertDynamicProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new dynamic profile. */
 export const insertDynamicProfiles: API.OperationMethod<
@@ -16537,7 +17112,7 @@ export const insertDynamicProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDynamicProfilesRequest,
   output: InsertDynamicProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDynamicProfilesRequest {
@@ -16557,7 +17132,12 @@ export type UpdateDynamicProfilesResponse = DynamicProfile;
 export const UpdateDynamicProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicProfile;
 
-export type UpdateDynamicProfilesError = DefaultErrors;
+export type UpdateDynamicProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing dynamic profile. */
 export const updateDynamicProfiles: API.OperationMethod<
@@ -16568,7 +17148,7 @@ export const updateDynamicProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDynamicProfilesRequest,
   output: UpdateDynamicProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishDynamicProfilesRequest {
@@ -16594,7 +17174,12 @@ export const PublishDynamicProfilesResponse: Schema.Schema<PublishDynamicProfile
     {},
   ) as any as Schema.Schema<PublishDynamicProfilesResponse>;
 
-export type PublishDynamicProfilesError = DefaultErrors;
+export type PublishDynamicProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Publish for a dynamic profile. */
 export const publishDynamicProfiles: API.OperationMethod<
@@ -16605,7 +17190,7 @@ export const publishDynamicProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishDynamicProfilesRequest,
   output: PublishDynamicProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDynamicProfilesRequest {
@@ -16628,7 +17213,7 @@ export type GetDynamicProfilesResponse = DynamicProfile;
 export const GetDynamicProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicProfile;
 
-export type GetDynamicProfilesError = DefaultErrors;
+export type GetDynamicProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a dynamic profile by ID. */
 export const getDynamicProfiles: API.OperationMethod<
@@ -16639,7 +17224,7 @@ export const getDynamicProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDynamicProfilesRequest,
   output: GetDynamicProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateCodeDynamicProfilesRequest {
@@ -16663,7 +17248,10 @@ export type GenerateCodeDynamicProfilesResponse =
 export const GenerateCodeDynamicProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DynamicProfileGenerateCodeResponse;
 
-export type GenerateCodeDynamicProfilesError = DefaultErrors;
+export type GenerateCodeDynamicProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates code for a dynamic profile, which will need unescaping. */
 export const generateCodeDynamicProfiles: API.OperationMethod<
@@ -16674,7 +17262,7 @@ export const generateCodeDynamicProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateCodeDynamicProfilesRequest,
   output: GenerateCodeDynamicProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAdvertiserGroupsRequest {
@@ -16701,7 +17289,12 @@ export type UpdateAdvertiserGroupsResponse = AdvertiserGroup;
 export const UpdateAdvertiserGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertiserGroup;
 
-export type UpdateAdvertiserGroupsError = DefaultErrors;
+export type UpdateAdvertiserGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing advertiser group. */
 export const updateAdvertiserGroups: API.OperationMethod<
@@ -16712,7 +17305,7 @@ export const updateAdvertiserGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAdvertiserGroupsRequest,
   output: UpdateAdvertiserGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdvertiserGroupsRequest {
@@ -16738,7 +17331,7 @@ export type GetAdvertiserGroupsResponse = AdvertiserGroup;
 export const GetAdvertiserGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertiserGroup;
 
-export type GetAdvertiserGroupsError = DefaultErrors;
+export type GetAdvertiserGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one advertiser group by ID. */
 export const getAdvertiserGroups: API.OperationMethod<
@@ -16749,7 +17342,7 @@ export const getAdvertiserGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdvertiserGroupsRequest,
   output: GetAdvertiserGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdvertiserGroupsRequest {
@@ -16792,7 +17385,7 @@ export type ListAdvertiserGroupsResponse = AdvertiserGroupsListResponse;
 export const ListAdvertiserGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertiserGroupsListResponse;
 
-export type ListAdvertiserGroupsError = DefaultErrors;
+export type ListAdvertiserGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of advertiser groups, possibly filtered. This method supports paging. */
 export const listAdvertiserGroups: API.PaginatedOperationMethod<
@@ -16803,7 +17396,7 @@ export const listAdvertiserGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdvertiserGroupsRequest,
   output: ListAdvertiserGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -16834,7 +17427,12 @@ export type InsertAdvertiserGroupsResponse = AdvertiserGroup;
 export const InsertAdvertiserGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertiserGroup;
 
-export type InsertAdvertiserGroupsError = DefaultErrors;
+export type InsertAdvertiserGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new advertiser group. */
 export const insertAdvertiserGroups: API.OperationMethod<
@@ -16845,7 +17443,7 @@ export const insertAdvertiserGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAdvertiserGroupsRequest,
   output: InsertAdvertiserGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdvertiserGroupsRequest {
@@ -16875,7 +17473,12 @@ export type PatchAdvertiserGroupsResponse = AdvertiserGroup;
 export const PatchAdvertiserGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdvertiserGroup;
 
-export type PatchAdvertiserGroupsError = DefaultErrors;
+export type PatchAdvertiserGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing advertiser group. This method supports patch semantics. */
 export const patchAdvertiserGroups: API.OperationMethod<
@@ -16886,7 +17489,7 @@ export const patchAdvertiserGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdvertiserGroupsRequest,
   output: PatchAdvertiserGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAdvertiserGroupsRequest {
@@ -16914,7 +17517,12 @@ export const DeleteAdvertiserGroupsResponse: Schema.Schema<DeleteAdvertiserGroup
     {},
   ) as any as Schema.Schema<DeleteAdvertiserGroupsResponse>;
 
-export type DeleteAdvertiserGroupsError = DefaultErrors;
+export type DeleteAdvertiserGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing advertiser group. */
 export const deleteAdvertiserGroups: API.OperationMethod<
@@ -16925,7 +17533,7 @@ export const deleteAdvertiserGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdvertiserGroupsRequest,
   output: DeleteAdvertiserGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUserRolePermissionsRequest {
@@ -16951,7 +17559,7 @@ export type GetUserRolePermissionsResponse = UserRolePermission;
 export const GetUserRolePermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserRolePermission;
 
-export type GetUserRolePermissionsError = DefaultErrors;
+export type GetUserRolePermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one user role permission by ID. */
 export const getUserRolePermissions: API.OperationMethod<
@@ -16962,7 +17570,7 @@ export const getUserRolePermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserRolePermissionsRequest,
   output: GetUserRolePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListUserRolePermissionsRequest {
@@ -16988,7 +17596,7 @@ export type ListUserRolePermissionsResponse = UserRolePermissionsListResponse;
 export const ListUserRolePermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserRolePermissionsListResponse;
 
-export type ListUserRolePermissionsError = DefaultErrors;
+export type ListUserRolePermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a list of user role permissions, possibly filtered. */
 export const listUserRolePermissions: API.OperationMethod<
@@ -16999,7 +17607,7 @@ export const listUserRolePermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListUserRolePermissionsRequest,
   output: ListUserRolePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLanguagesRequest {
@@ -17018,7 +17626,7 @@ export type ListLanguagesResponse = LanguagesListResponse;
 export const ListLanguagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LanguagesListResponse;
 
-export type ListLanguagesError = DefaultErrors;
+export type ListLanguagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of languages. */
 export const listLanguages: API.OperationMethod<
@@ -17029,7 +17637,7 @@ export const listLanguages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLanguagesRequest,
   output: ListLanguagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAccountActiveAdSummariesRequest {
@@ -17055,7 +17663,10 @@ export type GetAccountActiveAdSummariesResponse = AccountActiveAdSummary;
 export const GetAccountActiveAdSummariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccountActiveAdSummary;
 
-export type GetAccountActiveAdSummariesError = DefaultErrors;
+export type GetAccountActiveAdSummariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the account's active ad summary by account ID. */
 export const getAccountActiveAdSummaries: API.OperationMethod<
@@ -17066,7 +17677,7 @@ export const getAccountActiveAdSummaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountActiveAdSummariesRequest,
   output: GetAccountActiveAdSummariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryDimensionValuesRequest {
@@ -17099,7 +17710,12 @@ export type QueryDimensionValuesResponse = DimensionValueList;
 export const QueryDimensionValuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DimensionValueList;
 
-export type QueryDimensionValuesError = DefaultErrors;
+export type QueryDimensionValuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Retrieves list of report dimension values for a list of filters. */
 export const queryDimensionValues: API.PaginatedOperationMethod<
@@ -17110,7 +17726,7 @@ export const queryDimensionValues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryDimensionValuesRequest,
   output: QueryDimensionValuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17144,7 +17760,7 @@ export type GetTvCampaignDetailsResponse = TvCampaignDetail;
 export const GetTvCampaignDetailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TvCampaignDetail;
 
-export type GetTvCampaignDetailsError = DefaultErrors;
+export type GetTvCampaignDetailsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one TvCampaignDetail by ID. */
 export const getTvCampaignDetails: API.OperationMethod<
@@ -17155,7 +17771,7 @@ export const getTvCampaignDetails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTvCampaignDetailsRequest,
   output: GetTvCampaignDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetChangeLogsRequest {
@@ -17176,7 +17792,7 @@ export const GetChangeLogsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetChangeLogsResponse = ChangeLog;
 export const GetChangeLogsResponse = /*@__PURE__*/ /*#__PURE__*/ ChangeLog;
 
-export type GetChangeLogsError = DefaultErrors;
+export type GetChangeLogsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one change log by ID. */
 export const getChangeLogs: API.OperationMethod<
@@ -17187,7 +17803,7 @@ export const getChangeLogs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChangeLogsRequest,
   output: GetChangeLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListChangeLogsRequest {
@@ -17308,7 +17924,7 @@ export type ListChangeLogsResponse = ChangeLogsListResponse;
 export const ListChangeLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChangeLogsListResponse;
 
-export type ListChangeLogsError = DefaultErrors;
+export type ListChangeLogsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of change logs. This method supports paging. */
 export const listChangeLogs: API.PaginatedOperationMethod<
@@ -17319,7 +17935,7 @@ export const listChangeLogs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChangeLogsRequest,
   output: ListChangeLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17350,7 +17966,12 @@ export type BatchupdateConversionsResponse = ConversionsBatchUpdateResponse;
 export const BatchupdateConversionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionsBatchUpdateResponse;
 
-export type BatchupdateConversionsError = DefaultErrors;
+export type BatchupdateConversionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates existing conversions. */
 export const batchupdateConversions: API.OperationMethod<
@@ -17361,7 +17982,7 @@ export const batchupdateConversions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchupdateConversionsRequest,
   output: BatchupdateConversionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchinsertConversionsRequest {
@@ -17388,7 +18009,12 @@ export type BatchinsertConversionsResponse = ConversionsBatchInsertResponse;
 export const BatchinsertConversionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConversionsBatchInsertResponse;
 
-export type BatchinsertConversionsError = DefaultErrors;
+export type BatchinsertConversionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts conversions. */
 export const batchinsertConversions: API.OperationMethod<
@@ -17399,7 +18025,7 @@ export const batchinsertConversions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchinsertConversionsRequest,
   output: BatchinsertConversionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchTargetingTemplatesRequest {
@@ -17429,7 +18055,12 @@ export type PatchTargetingTemplatesResponse = TargetingTemplate;
 export const PatchTargetingTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetingTemplate;
 
-export type PatchTargetingTemplatesError = DefaultErrors;
+export type PatchTargetingTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing targeting template. This method supports patch semantics. */
 export const patchTargetingTemplates: API.OperationMethod<
@@ -17440,7 +18071,7 @@ export const patchTargetingTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTargetingTemplatesRequest,
   output: PatchTargetingTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertTargetingTemplatesRequest {
@@ -17467,7 +18098,12 @@ export type InsertTargetingTemplatesResponse = TargetingTemplate;
 export const InsertTargetingTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetingTemplate;
 
-export type InsertTargetingTemplatesError = DefaultErrors;
+export type InsertTargetingTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new targeting template. */
 export const insertTargetingTemplates: API.OperationMethod<
@@ -17478,7 +18114,7 @@ export const insertTargetingTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetingTemplatesRequest,
   output: InsertTargetingTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateTargetingTemplatesRequest {
@@ -17505,7 +18141,12 @@ export type UpdateTargetingTemplatesResponse = TargetingTemplate;
 export const UpdateTargetingTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetingTemplate;
 
-export type UpdateTargetingTemplatesError = DefaultErrors;
+export type UpdateTargetingTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing targeting template. */
 export const updateTargetingTemplates: API.OperationMethod<
@@ -17516,7 +18157,7 @@ export const updateTargetingTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTargetingTemplatesRequest,
   output: UpdateTargetingTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTargetingTemplatesRequest {
@@ -17542,7 +18183,7 @@ export type GetTargetingTemplatesResponse = TargetingTemplate;
 export const GetTargetingTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetingTemplate;
 
-export type GetTargetingTemplatesError = DefaultErrors;
+export type GetTargetingTemplatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one targeting template by ID. */
 export const getTargetingTemplates: API.OperationMethod<
@@ -17553,7 +18194,7 @@ export const getTargetingTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetingTemplatesRequest,
   output: GetTargetingTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListTargetingTemplatesRequest {
@@ -17601,7 +18242,7 @@ export type ListTargetingTemplatesResponse = TargetingTemplatesListResponse;
 export const ListTargetingTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetingTemplatesListResponse;
 
-export type ListTargetingTemplatesError = DefaultErrors;
+export type ListTargetingTemplatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of targeting templates, optionally filtered. This method supports paging. */
 export const listTargetingTemplates: API.PaginatedOperationMethod<
@@ -17612,7 +18253,7 @@ export const listTargetingTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetingTemplatesRequest,
   output: ListTargetingTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -17641,7 +18282,12 @@ export const InsertSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertSizesResponse = Size;
 export const InsertSizesResponse = /*@__PURE__*/ /*#__PURE__*/ Size;
 
-export type InsertSizesError = DefaultErrors;
+export type InsertSizesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new size. */
 export const insertSizes: API.OperationMethod<
@@ -17652,7 +18298,7 @@ export const insertSizes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSizesRequest,
   output: InsertSizesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSizesRequest {
@@ -17673,7 +18319,7 @@ export const GetSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSizesResponse = Size;
 export const GetSizesResponse = /*@__PURE__*/ /*#__PURE__*/ Size;
 
-export type GetSizesError = DefaultErrors;
+export type GetSizesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets one size by ID. */
 export const getSizes: API.OperationMethod<
@@ -17684,7 +18330,7 @@ export const getSizes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSizesRequest,
   output: GetSizesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSizesRequest {
@@ -17714,7 +18360,7 @@ export const ListSizesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListSizesResponse = SizesListResponse;
 export const ListSizesResponse = /*@__PURE__*/ /*#__PURE__*/ SizesListResponse;
 
-export type ListSizesError = DefaultErrors;
+export type ListSizesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include values not currently in use by your account. Due to this, the list of sizes returned by this method may differ from the list seen in the Trafficking UI. */
 export const listSizes: API.OperationMethod<
@@ -17725,5 +18371,5 @@ export const listSizes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSizesRequest,
   output: ListSizesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

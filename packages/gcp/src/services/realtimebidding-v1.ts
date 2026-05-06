@@ -1251,6 +1251,52 @@ export const AddTargetedAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "AddTargetedAppsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1269,7 +1315,7 @@ export const GetBiddersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetBiddersResponse = Bidder;
 export const GetBiddersResponse = /*@__PURE__*/ /*#__PURE__*/ Bidder;
 
-export type GetBiddersError = DefaultErrors;
+export type GetBiddersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a bidder account by its name. */
 export const getBidders: API.OperationMethod<
@@ -1280,7 +1326,7 @@ export const getBidders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBiddersRequest,
   output: GetBiddersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBiddersRequest {
@@ -1302,7 +1348,7 @@ export type ListBiddersResponse_Op = ListBiddersResponse;
 export const ListBiddersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListBiddersResponse;
 
-export type ListBiddersError = DefaultErrors;
+export type ListBiddersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the bidder accounts that belong to the caller. */
 export const listBidders: API.PaginatedOperationMethod<
@@ -1313,7 +1359,7 @@ export const listBidders: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersRequest,
   output: ListBiddersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1343,7 +1389,12 @@ export type PatchBiddersEndpointsResponse = Endpoint;
 export const PatchBiddersEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Endpoint;
 
-export type PatchBiddersEndpointsError = DefaultErrors;
+export type PatchBiddersEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a bidder's endpoint. */
 export const patchBiddersEndpoints: API.OperationMethod<
@@ -1354,7 +1405,7 @@ export const patchBiddersEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBiddersEndpointsRequest,
   output: PatchBiddersEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBiddersEndpointsRequest {
@@ -1373,7 +1424,7 @@ export const GetBiddersEndpointsRequest =
 export type GetBiddersEndpointsResponse = Endpoint;
 export const GetBiddersEndpointsResponse = /*@__PURE__*/ /*#__PURE__*/ Endpoint;
 
-export type GetBiddersEndpointsError = DefaultErrors;
+export type GetBiddersEndpointsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a bidder endpoint by its name. */
 export const getBiddersEndpoints: API.OperationMethod<
@@ -1384,7 +1435,7 @@ export const getBiddersEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBiddersEndpointsRequest,
   output: GetBiddersEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBiddersEndpointsRequest {
@@ -1410,7 +1461,7 @@ export type ListBiddersEndpointsResponse = ListEndpointsResponse;
 export const ListBiddersEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEndpointsResponse;
 
-export type ListBiddersEndpointsError = DefaultErrors;
+export type ListBiddersEndpointsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the bidder's endpoints. */
 export const listBiddersEndpoints: API.PaginatedOperationMethod<
@@ -1421,7 +1472,7 @@ export const listBiddersEndpoints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersEndpointsRequest,
   output: ListBiddersEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1452,7 +1503,12 @@ export type WatchBiddersCreativesResponse = WatchCreativesResponse;
 export const WatchBiddersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ WatchCreativesResponse;
 
-export type WatchBiddersCreativesError = DefaultErrors;
+export type WatchBiddersCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watches all creatives pertaining to a bidder. It is sufficient to invoke this endpoint once per bidder. A Pub/Sub topic will be created and notifications will be pushed to the topic when any of the bidder's creatives change status. All of the bidder's service accounts will have access to read from the topic. Subsequent invocations of this method will return the existing Pub/Sub configuration. */
 export const watchBiddersCreatives: API.OperationMethod<
@@ -1463,7 +1519,7 @@ export const watchBiddersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchBiddersCreativesRequest,
   output: WatchBiddersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBiddersCreativesRequest {
@@ -1499,7 +1555,7 @@ export type ListBiddersCreativesResponse = ListCreativesResponse;
 export const ListBiddersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativesResponse;
 
-export type ListBiddersCreativesError = DefaultErrors;
+export type ListBiddersCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists creatives as they are at the time of the initial request. This call may take multiple hours to complete. For large, paginated requests, this method returns a snapshot of creatives at the time of request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for creatives on sequential pages. We recommend [Google Cloud Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status. */
 export const listBiddersCreatives: API.PaginatedOperationMethod<
@@ -1510,7 +1566,7 @@ export const listBiddersCreatives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersCreativesRequest,
   output: ListBiddersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1537,7 +1593,12 @@ export type ActivateBiddersPretargetingConfigsResponse = PretargetingConfig;
 export const ActivateBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type ActivateBiddersPretargetingConfigsError = DefaultErrors;
+export type ActivateBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates a pretargeting configuration. */
 export const activateBiddersPretargetingConfigs: API.OperationMethod<
@@ -1548,7 +1609,7 @@ export const activateBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateBiddersPretargetingConfigsRequest,
   output: ActivateBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBiddersPretargetingConfigsRequest {
@@ -1575,7 +1636,12 @@ export type CreateBiddersPretargetingConfigsResponse = PretargetingConfig;
 export const CreateBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type CreateBiddersPretargetingConfigsError = DefaultErrors;
+export type CreateBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pretargeting configuration. A pretargeting configuration's state (PretargetingConfig.state) is active upon creation, and it will start to affect traffic shortly after. A bidder may create a maximum of 10 pretargeting configurations. Attempts to exceed this maximum results in a 400 bad request error. */
 export const createBiddersPretargetingConfigs: API.OperationMethod<
@@ -1586,7 +1652,7 @@ export const createBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBiddersPretargetingConfigsRequest,
   output: CreateBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveTargetedPublishersBiddersPretargetingConfigsRequest {
@@ -1615,7 +1681,11 @@ export const RemoveTargetedPublishersBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
 export type RemoveTargetedPublishersBiddersPretargetingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes targeted publishers from the pretargeting config. */
 export const removeTargetedPublishersBiddersPretargetingConfigs: API.OperationMethod<
@@ -1626,7 +1696,7 @@ export const removeTargetedPublishersBiddersPretargetingConfigs: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTargetedPublishersBiddersPretargetingConfigsRequest,
   output: RemoveTargetedPublishersBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddTargetedPublishersBiddersPretargetingConfigsRequest {
@@ -1655,7 +1725,11 @@ export const AddTargetedPublishersBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
 export type AddTargetedPublishersBiddersPretargetingConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds targeted publishers to the pretargeting config. */
 export const addTargetedPublishersBiddersPretargetingConfigs: API.OperationMethod<
@@ -1666,7 +1740,7 @@ export const addTargetedPublishersBiddersPretargetingConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTargetedPublishersBiddersPretargetingConfigsRequest,
   output: AddTargetedPublishersBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBiddersPretargetingConfigsRequest {
@@ -1686,7 +1760,12 @@ export type DeleteBiddersPretargetingConfigsResponse = Empty;
 export const DeleteBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteBiddersPretargetingConfigsError = DefaultErrors;
+export type DeleteBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a pretargeting configuration. */
 export const deleteBiddersPretargetingConfigs: API.OperationMethod<
@@ -1697,7 +1776,7 @@ export const deleteBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBiddersPretargetingConfigsRequest,
   output: DeleteBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBiddersPretargetingConfigsRequest {
@@ -1724,7 +1803,10 @@ export type ListBiddersPretargetingConfigsResponse =
 export const ListBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPretargetingConfigsResponse;
 
-export type ListBiddersPretargetingConfigsError = DefaultErrors;
+export type ListBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all pretargeting configurations for a single bidder. */
 export const listBiddersPretargetingConfigs: API.PaginatedOperationMethod<
@@ -1735,7 +1817,7 @@ export const listBiddersPretargetingConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersPretargetingConfigsRequest,
   output: ListBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1767,7 +1849,12 @@ export type RemoveTargetedSitesBiddersPretargetingConfigsResponse =
 export const RemoveTargetedSitesBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type RemoveTargetedSitesBiddersPretargetingConfigsError = DefaultErrors;
+export type RemoveTargetedSitesBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes targeted sites from the pretargeting configuration. */
 export const removeTargetedSitesBiddersPretargetingConfigs: API.OperationMethod<
@@ -1778,7 +1865,7 @@ export const removeTargetedSitesBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTargetedSitesBiddersPretargetingConfigsRequest,
   output: RemoveTargetedSitesBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBiddersPretargetingConfigsRequest {
@@ -1804,7 +1891,12 @@ export type PatchBiddersPretargetingConfigsResponse = PretargetingConfig;
 export const PatchBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type PatchBiddersPretargetingConfigsError = DefaultErrors;
+export type PatchBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a pretargeting configuration. */
 export const patchBiddersPretargetingConfigs: API.OperationMethod<
@@ -1815,7 +1907,7 @@ export const patchBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBiddersPretargetingConfigsRequest,
   output: PatchBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveTargetedAppsBiddersPretargetingConfigsRequest {
@@ -1843,7 +1935,12 @@ export type RemoveTargetedAppsBiddersPretargetingConfigsResponse =
 export const RemoveTargetedAppsBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type RemoveTargetedAppsBiddersPretargetingConfigsError = DefaultErrors;
+export type RemoveTargetedAppsBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes targeted apps from the pretargeting configuration. */
 export const removeTargetedAppsBiddersPretargetingConfigs: API.OperationMethod<
@@ -1854,7 +1951,7 @@ export const removeTargetedAppsBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveTargetedAppsBiddersPretargetingConfigsRequest,
   output: RemoveTargetedAppsBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBiddersPretargetingConfigsRequest {
@@ -1874,7 +1971,10 @@ export type GetBiddersPretargetingConfigsResponse = PretargetingConfig;
 export const GetBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type GetBiddersPretargetingConfigsError = DefaultErrors;
+export type GetBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a pretargeting configuration. */
 export const getBiddersPretargetingConfigs: API.OperationMethod<
@@ -1885,7 +1985,7 @@ export const getBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBiddersPretargetingConfigsRequest,
   output: GetBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SuspendBiddersPretargetingConfigsRequest {
@@ -1908,7 +2008,12 @@ export type SuspendBiddersPretargetingConfigsResponse = PretargetingConfig;
 export const SuspendBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type SuspendBiddersPretargetingConfigsError = DefaultErrors;
+export type SuspendBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Suspends a pretargeting configuration. */
 export const suspendBiddersPretargetingConfigs: API.OperationMethod<
@@ -1919,7 +2024,7 @@ export const suspendBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuspendBiddersPretargetingConfigsRequest,
   output: SuspendBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddTargetedSitesBiddersPretargetingConfigsRequest {
@@ -1947,7 +2052,12 @@ export type AddTargetedSitesBiddersPretargetingConfigsResponse =
 export const AddTargetedSitesBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type AddTargetedSitesBiddersPretargetingConfigsError = DefaultErrors;
+export type AddTargetedSitesBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds targeted sites to the pretargeting configuration. */
 export const addTargetedSitesBiddersPretargetingConfigs: API.OperationMethod<
@@ -1958,7 +2068,7 @@ export const addTargetedSitesBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTargetedSitesBiddersPretargetingConfigsRequest,
   output: AddTargetedSitesBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddTargetedAppsBiddersPretargetingConfigsRequest {
@@ -1986,7 +2096,12 @@ export type AddTargetedAppsBiddersPretargetingConfigsResponse =
 export const AddTargetedAppsBiddersPretargetingConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PretargetingConfig;
 
-export type AddTargetedAppsBiddersPretargetingConfigsError = DefaultErrors;
+export type AddTargetedAppsBiddersPretargetingConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds targeted apps to the pretargeting configuration. */
 export const addTargetedAppsBiddersPretargetingConfigs: API.OperationMethod<
@@ -1997,7 +2112,7 @@ export const addTargetedAppsBiddersPretargetingConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddTargetedAppsBiddersPretargetingConfigsRequest,
   output: AddTargetedAppsBiddersPretargetingConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchApproveBiddersPublisherConnectionsRequest {
@@ -2027,7 +2142,12 @@ export type BatchApproveBiddersPublisherConnectionsResponse =
 export const BatchApproveBiddersPublisherConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchApprovePublisherConnectionsResponse;
 
-export type BatchApproveBiddersPublisherConnectionsError = DefaultErrors;
+export type BatchApproveBiddersPublisherConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch approves multiple publisher connections. */
 export const batchApproveBiddersPublisherConnections: API.OperationMethod<
@@ -2038,7 +2158,7 @@ export const batchApproveBiddersPublisherConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchApproveBiddersPublisherConnectionsRequest,
   output: BatchApproveBiddersPublisherConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBiddersPublisherConnectionsRequest {
@@ -2058,7 +2178,10 @@ export type GetBiddersPublisherConnectionsResponse = PublisherConnection;
 export const GetBiddersPublisherConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublisherConnection;
 
-export type GetBiddersPublisherConnectionsError = DefaultErrors;
+export type GetBiddersPublisherConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a publisher connection. */
 export const getBiddersPublisherConnections: API.OperationMethod<
@@ -2069,7 +2192,7 @@ export const getBiddersPublisherConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBiddersPublisherConnectionsRequest,
   output: GetBiddersPublisherConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBiddersPublisherConnectionsRequest {
@@ -2102,7 +2225,10 @@ export type ListBiddersPublisherConnectionsResponse =
 export const ListBiddersPublisherConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPublisherConnectionsResponse;
 
-export type ListBiddersPublisherConnectionsError = DefaultErrors;
+export type ListBiddersPublisherConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists publisher connections for a given bidder. */
 export const listBiddersPublisherConnections: API.PaginatedOperationMethod<
@@ -2113,7 +2239,7 @@ export const listBiddersPublisherConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBiddersPublisherConnectionsRequest,
   output: ListBiddersPublisherConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2147,7 +2273,12 @@ export type BatchRejectBiddersPublisherConnectionsResponse =
 export const BatchRejectBiddersPublisherConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchRejectPublisherConnectionsResponse;
 
-export type BatchRejectBiddersPublisherConnectionsError = DefaultErrors;
+export type BatchRejectBiddersPublisherConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch rejects multiple publisher connections. */
 export const batchRejectBiddersPublisherConnections: API.OperationMethod<
@@ -2158,7 +2289,7 @@ export const batchRejectBiddersPublisherConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchRejectBiddersPublisherConnectionsRequest,
   output: BatchRejectBiddersPublisherConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersRequest {
@@ -2176,7 +2307,7 @@ export const GetBuyersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetBuyersResponse = Buyer;
 export const GetBuyersResponse = /*@__PURE__*/ /*#__PURE__*/ Buyer;
 
-export type GetBuyersError = DefaultErrors;
+export type GetBuyersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a buyer account by its name. */
 export const getBuyers: API.OperationMethod<
@@ -2187,7 +2318,7 @@ export const getBuyers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersRequest,
   output: GetBuyersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBuyersRequest {
@@ -2209,7 +2340,7 @@ export type ListBuyersResponse_Op = ListBuyersResponse;
 export const ListBuyersResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListBuyersResponse;
 
-export type ListBuyersError = DefaultErrors;
+export type ListBuyersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all buyer account information the calling buyer user or service account is permissioned to manage. */
 export const listBuyers: API.PaginatedOperationMethod<
@@ -2220,7 +2351,7 @@ export const listBuyers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersRequest,
   output: ListBuyersResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2244,7 +2375,7 @@ export type GetRemarketingTagBuyersResponse = GetRemarketingTagResponse;
 export const GetRemarketingTagBuyersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetRemarketingTagResponse;
 
-export type GetRemarketingTagBuyersError = DefaultErrors;
+export type GetRemarketingTagBuyersError = DefaultErrors | NotFound | Forbidden;
 
 /** This has been sunset as of October 2023, and will return an error response if called. For more information, see the release notes: https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list. */
 export const getRemarketingTagBuyers: API.OperationMethod<
@@ -2255,7 +2386,7 @@ export const getRemarketingTagBuyers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRemarketingTagBuyersRequest,
   output: GetRemarketingTagBuyersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchBuyersCreativesRequest {
@@ -2281,7 +2412,12 @@ export type PatchBuyersCreativesResponse = Creative;
 export const PatchBuyersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type PatchBuyersCreativesError = DefaultErrors;
+export type PatchBuyersCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a creative. */
 export const patchBuyersCreatives: API.OperationMethod<
@@ -2292,7 +2428,7 @@ export const patchBuyersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBuyersCreativesRequest,
   output: PatchBuyersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersCreativesRequest {
@@ -2318,7 +2454,7 @@ export const GetBuyersCreativesRequest =
 export type GetBuyersCreativesResponse = Creative;
 export const GetBuyersCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type GetBuyersCreativesError = DefaultErrors;
+export type GetBuyersCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a creative. */
 export const getBuyersCreatives: API.OperationMethod<
@@ -2329,7 +2465,7 @@ export const getBuyersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersCreativesRequest,
   output: GetBuyersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBuyersCreativesRequest {
@@ -2365,7 +2501,7 @@ export type ListBuyersCreativesResponse = ListCreativesResponse;
 export const ListBuyersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCreativesResponse;
 
-export type ListBuyersCreativesError = DefaultErrors;
+export type ListBuyersCreativesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists creatives as they are at the time of the initial request. This call may take multiple hours to complete. For large, paginated requests, this method returns a snapshot of creatives at the time of request for the first page. `lastStatusUpdate` and `creativeServingDecision` may be outdated for creatives on sequential pages. We recommend [Google Cloud Pub/Sub](//cloud.google.com/pubsub/docs/overview) to view the latest status. */
 export const listBuyersCreatives: API.PaginatedOperationMethod<
@@ -2376,7 +2512,7 @@ export const listBuyersCreatives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersCreativesRequest,
   output: ListBuyersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2403,7 +2539,12 @@ export type CreateBuyersCreativesResponse = Creative;
 export const CreateBuyersCreativesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Creative;
 
-export type CreateBuyersCreativesError = DefaultErrors;
+export type CreateBuyersCreativesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a creative. */
 export const createBuyersCreatives: API.OperationMethod<
@@ -2414,7 +2555,7 @@ export const createBuyersCreatives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBuyersCreativesRequest,
   output: CreateBuyersCreativesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBuyersUserListsRequest {
@@ -2433,7 +2574,7 @@ export const GetBuyersUserListsRequest =
 export type GetBuyersUserListsResponse = UserList;
 export const GetBuyersUserListsResponse = /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type GetBuyersUserListsError = DefaultErrors;
+export type GetBuyersUserListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a user list by its name. */
 export const getBuyersUserLists: API.OperationMethod<
@@ -2444,7 +2585,7 @@ export const getBuyersUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBuyersUserListsRequest,
   output: GetBuyersUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateBuyersUserListsRequest {
@@ -2467,7 +2608,12 @@ export type UpdateBuyersUserListsResponse = UserList;
 export const UpdateBuyersUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type UpdateBuyersUserListsError = DefaultErrors;
+export type UpdateBuyersUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the given user list. Only user lists with URLRestrictions can be updated. */
 export const updateBuyersUserLists: API.OperationMethod<
@@ -2478,7 +2624,7 @@ export const updateBuyersUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBuyersUserListsRequest,
   output: UpdateBuyersUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateBuyersUserListsRequest {
@@ -2501,7 +2647,12 @@ export type CreateBuyersUserListsResponse = UserList;
 export const CreateBuyersUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type CreateBuyersUserListsError = DefaultErrors;
+export type CreateBuyersUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new user list. */
 export const createBuyersUserLists: API.OperationMethod<
@@ -2512,7 +2663,7 @@ export const createBuyersUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBuyersUserListsRequest,
   output: CreateBuyersUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CloseBuyersUserListsRequest {
@@ -2535,7 +2686,12 @@ export type CloseBuyersUserListsResponse = UserList;
 export const CloseBuyersUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type CloseBuyersUserListsError = DefaultErrors;
+export type CloseBuyersUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the status of a user list to CLOSED. This prevents new users from being added to the user list. */
 export const closeBuyersUserLists: API.OperationMethod<
@@ -2546,7 +2702,7 @@ export const closeBuyersUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloseBuyersUserListsRequest,
   output: CloseBuyersUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface OpenBuyersUserListsRequest {
@@ -2568,7 +2724,12 @@ export const OpenBuyersUserListsRequest =
 export type OpenBuyersUserListsResponse = UserList;
 export const OpenBuyersUserListsResponse = /*@__PURE__*/ /*#__PURE__*/ UserList;
 
-export type OpenBuyersUserListsError = DefaultErrors;
+export type OpenBuyersUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the status of a user list to OPEN. This allows new users to be added to the user list. */
 export const openBuyersUserLists: API.OperationMethod<
@@ -2579,7 +2740,7 @@ export const openBuyersUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: OpenBuyersUserListsRequest,
   output: OpenBuyersUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRemarketingTagBuyersUserListsRequest {
@@ -2600,7 +2761,10 @@ export type GetRemarketingTagBuyersUserListsResponse =
 export const GetRemarketingTagBuyersUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetRemarketingTagResponse;
 
-export type GetRemarketingTagBuyersUserListsError = DefaultErrors;
+export type GetRemarketingTagBuyersUserListsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** This has been sunset as of October 2023, and will return an error response if called. For more information, see the release notes: https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list. */
 export const getRemarketingTagBuyersUserLists: API.OperationMethod<
@@ -2611,7 +2775,7 @@ export const getRemarketingTagBuyersUserLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRemarketingTagBuyersUserListsRequest,
   output: GetRemarketingTagBuyersUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBuyersUserListsRequest {
@@ -2637,7 +2801,7 @@ export type ListBuyersUserListsResponse = ListUserListsResponse;
 export const ListBuyersUserListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserListsResponse;
 
-export type ListBuyersUserListsError = DefaultErrors;
+export type ListBuyersUserListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the user lists visible to the current user. */
 export const listBuyersUserLists: API.PaginatedOperationMethod<
@@ -2648,7 +2812,7 @@ export const listBuyersUserLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBuyersUserListsRequest,
   output: ListBuyersUserListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

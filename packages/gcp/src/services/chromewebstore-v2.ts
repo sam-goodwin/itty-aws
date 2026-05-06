@@ -206,6 +206,52 @@ export const UploadItemPackageRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -229,7 +275,12 @@ export type PublishPublishersItemsResponse = PublishItemResponse;
 export const PublishPublishersItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublishItemResponse;
 
-export type PublishPublishersItemsError = DefaultErrors;
+export type PublishPublishersItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submit the item to be published in the store. The item will be submitted for review unless `skip_review` is set to true, or the item is staged from a previous submission with `publish_type` set to `STAGED_PUBLISH`. */
 export const publishPublishersItems: API.OperationMethod<
@@ -240,7 +291,7 @@ export const publishPublishersItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishPublishersItemsRequest,
   output: PublishPublishersItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchStatusPublishersItemsRequest {
@@ -260,7 +311,10 @@ export type FetchStatusPublishersItemsResponse = FetchItemStatusResponse;
 export const FetchStatusPublishersItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchItemStatusResponse;
 
-export type FetchStatusPublishersItemsError = DefaultErrors;
+export type FetchStatusPublishersItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetch the status of an item. */
 export const fetchStatusPublishersItems: API.OperationMethod<
@@ -271,7 +325,7 @@ export const fetchStatusPublishersItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchStatusPublishersItemsRequest,
   output: FetchStatusPublishersItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelSubmissionPublishersItemsRequest {
@@ -298,7 +352,12 @@ export type CancelSubmissionPublishersItemsResponse = CancelSubmissionResponse;
 export const CancelSubmissionPublishersItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CancelSubmissionResponse;
 
-export type CancelSubmissionPublishersItemsError = DefaultErrors;
+export type CancelSubmissionPublishersItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel the current active submission of an item if present. This can be used to cancel the review of a pending submission. */
 export const cancelSubmissionPublishersItems: API.OperationMethod<
@@ -309,7 +368,7 @@ export const cancelSubmissionPublishersItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelSubmissionPublishersItemsRequest,
   output: CancelSubmissionPublishersItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetPublishedDeployPercentagePublishersItemsRequest {
@@ -339,7 +398,12 @@ export type SetPublishedDeployPercentagePublishersItemsResponse =
 export const SetPublishedDeployPercentagePublishersItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SetPublishedDeployPercentageResponse;
 
-export type SetPublishedDeployPercentagePublishersItemsError = DefaultErrors;
+export type SetPublishedDeployPercentagePublishersItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users. */
 export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
@@ -350,7 +414,7 @@ export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetPublishedDeployPercentagePublishersItemsRequest,
   output: SetPublishedDeployPercentagePublishersItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UploadMediaRequest {
@@ -372,7 +436,12 @@ export type UploadMediaResponse = UploadItemPackageResponse;
 export const UploadMediaResponse =
   /*@__PURE__*/ /*#__PURE__*/ UploadItemPackageResponse;
 
-export type UploadMediaError = DefaultErrors;
+export type UploadMediaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Upload a new package to an existing item. */
 export const uploadMedia: API.OperationMethod<
@@ -383,5 +452,5 @@ export const uploadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

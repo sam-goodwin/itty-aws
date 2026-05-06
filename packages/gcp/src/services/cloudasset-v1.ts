@@ -2682,6 +2682,52 @@ export const AnalyzeIamPolicyLongrunningMetadata =
   }).annotate({ identifier: "AnalyzeIamPolicyLongrunningMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2700,7 +2746,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2711,7 +2757,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExportAssetsV1Request {
@@ -2732,7 +2778,12 @@ export const ExportAssetsV1Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ExportAssetsV1Response = Operation;
 export const ExportAssetsV1Response = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportAssetsV1Error = DefaultErrors;
+export type ExportAssetsV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports assets with time and resource types to a given Cloud Storage location/BigQuery table. For Cloud Storage location destinations, the output format is newline-delimited JSON. Each line represents a google.cloud.asset.v1.Asset in the JSON format; for BigQuery table destinations, the output table stores the fields in asset Protobuf as columns. This API implements the google.longrunning.Operation API, which allows you to keep track of the export. We recommend intervals of at least 2 seconds with exponential retry to poll the export operation result. For regular-size resource parent, the export operation usually finishes within 5 minutes. */
 export const exportAssetsV1: API.OperationMethod<
@@ -2743,7 +2794,7 @@ export const exportAssetsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportAssetsV1Request,
   output: ExportAssetsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetAssetsHistoryV1Request {
@@ -2796,7 +2847,7 @@ export type BatchGetAssetsHistoryV1Response = BatchGetAssetsHistoryResponse;
 export const BatchGetAssetsHistoryV1Response =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetAssetsHistoryResponse;
 
-export type BatchGetAssetsHistoryV1Error = DefaultErrors;
+export type BatchGetAssetsHistoryV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset does not exist, this API returns an INVALID_ARGUMENT error. */
 export const batchGetAssetsHistoryV1: API.OperationMethod<
@@ -2807,7 +2858,7 @@ export const batchGetAssetsHistoryV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetAssetsHistoryV1Request,
   output: BatchGetAssetsHistoryV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchAllResourcesV1Request {
@@ -2847,7 +2898,7 @@ export type SearchAllResourcesV1Response = SearchAllResourcesResponse;
 export const SearchAllResourcesV1Response =
   /*@__PURE__*/ /*#__PURE__*/ SearchAllResourcesResponse;
 
-export type SearchAllResourcesV1Error = DefaultErrors;
+export type SearchAllResourcesV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. The caller must be granted the `cloudasset.assets.searchAllResources` permission on the desired scope, otherwise the request will be rejected. */
 export const searchAllResourcesV1: API.PaginatedOperationMethod<
@@ -2858,7 +2909,7 @@ export const searchAllResourcesV1: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAllResourcesV1Request,
   output: SearchAllResourcesV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2899,7 +2950,7 @@ export type SearchAllIamPoliciesV1Response = SearchAllIamPoliciesResponse;
 export const SearchAllIamPoliciesV1Response =
   /*@__PURE__*/ /*#__PURE__*/ SearchAllIamPoliciesResponse;
 
-export type SearchAllIamPoliciesV1Error = DefaultErrors;
+export type SearchAllIamPoliciesV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Searches all IAM policies within the specified scope, such as a project, folder, or organization. The caller must be granted the `cloudasset.assets.searchAllIamPolicies` permission on the desired scope, otherwise the request will be rejected. */
 export const searchAllIamPoliciesV1: API.PaginatedOperationMethod<
@@ -2910,7 +2961,7 @@ export const searchAllIamPoliciesV1: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAllIamPoliciesV1Request,
   output: SearchAllIamPoliciesV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3001,7 +3052,7 @@ export type AnalyzeIamPolicyV1Response = AnalyzeIamPolicyResponse;
 export const AnalyzeIamPolicyV1Response =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeIamPolicyResponse;
 
-export type AnalyzeIamPolicyV1Error = DefaultErrors;
+export type AnalyzeIamPolicyV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Analyzes IAM policies to answer which identities have what accesses on which resources. */
 export const analyzeIamPolicyV1: API.OperationMethod<
@@ -3012,7 +3063,7 @@ export const analyzeIamPolicyV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeIamPolicyV1Request,
   output: AnalyzeIamPolicyV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AnalyzeIamPolicyLongrunningV1Request {
@@ -3041,7 +3092,12 @@ export type AnalyzeIamPolicyLongrunningV1Response = Operation;
 export const AnalyzeIamPolicyLongrunningV1Response =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AnalyzeIamPolicyLongrunningV1Error = DefaultErrors;
+export type AnalyzeIamPolicyLongrunningV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyzes IAM policies asynchronously to answer which identities have what accesses on which resources, and writes the analysis results to a Google Cloud Storage or a BigQuery destination. For Cloud Storage destination, the output format is the JSON format that represents a AnalyzeIamPolicyResponse. This method implements the google.longrunning.Operation, which allows you to track the operation status. We recommend intervals of at least 2 seconds with exponential backoff retry to poll the operation result. The metadata contains the metadata for the long-running operation. */
 export const analyzeIamPolicyLongrunningV1: API.OperationMethod<
@@ -3052,7 +3108,7 @@ export const analyzeIamPolicyLongrunningV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeIamPolicyLongrunningV1Request,
   output: AnalyzeIamPolicyLongrunningV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeMoveV1Request {
@@ -3079,7 +3135,7 @@ export type AnalyzeMoveV1Response = AnalyzeMoveResponse;
 export const AnalyzeMoveV1Response =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeMoveResponse;
 
-export type AnalyzeMoveV1Error = DefaultErrors;
+export type AnalyzeMoveV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Analyze moving a resource to a specified destination without kicking off the actual move. The analysis is best effort depending on the user's permissions of viewing different hierarchical policies and configurations. The policies and configuration are subject to change before the actual resource migration takes place. */
 export const analyzeMoveV1: API.OperationMethod<
@@ -3090,7 +3146,7 @@ export const analyzeMoveV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeMoveV1Request,
   output: AnalyzeMoveV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryAssetsV1Request {
@@ -3112,7 +3168,12 @@ export type QueryAssetsV1Response = QueryAssetsResponse;
 export const QueryAssetsV1Response =
   /*@__PURE__*/ /*#__PURE__*/ QueryAssetsResponse;
 
-export type QueryAssetsV1Error = DefaultErrors;
+export type QueryAssetsV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Issue a job that queries assets using a SQL statement compatible with [BigQuery SQL](https://cloud.google.com/bigquery/docs/introduction-sql). If the query execution finishes within timeout and there's no pagination, the full query results will be returned in the `QueryAssetsResponse`. Otherwise, full query results can be obtained by issuing extra requests with the `job_reference` from the a previous `QueryAssets` call. Note, the query result has approximately 10 GB limitation enforced by [BigQuery](https://cloud.google.com/bigquery/docs/best-practices-performance-output). Queries return larger results will result in errors. */
 export const queryAssetsV1: API.OperationMethod<
@@ -3123,7 +3184,7 @@ export const queryAssetsV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryAssetsV1Request,
   output: QueryAssetsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeOrgPoliciesV1Request {
@@ -3155,7 +3216,7 @@ export type AnalyzeOrgPoliciesV1Response = AnalyzeOrgPoliciesResponse;
 export const AnalyzeOrgPoliciesV1Response =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeOrgPoliciesResponse;
 
-export type AnalyzeOrgPoliciesV1Error = DefaultErrors;
+export type AnalyzeOrgPoliciesV1Error = DefaultErrors | NotFound | Forbidden;
 
 /** Analyzes organization policies under a scope. */
 export const analyzeOrgPoliciesV1: API.PaginatedOperationMethod<
@@ -3166,7 +3227,7 @@ export const analyzeOrgPoliciesV1: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeOrgPoliciesV1Request,
   output: AnalyzeOrgPoliciesV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3206,7 +3267,10 @@ export type AnalyzeOrgPolicyGovernedContainersV1Response =
 export const AnalyzeOrgPolicyGovernedContainersV1Response =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeOrgPolicyGovernedContainersResponse;
 
-export type AnalyzeOrgPolicyGovernedContainersV1Error = DefaultErrors;
+export type AnalyzeOrgPolicyGovernedContainersV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Analyzes organization policies governed containers (projects, folders or organization) under a scope. */
 export const analyzeOrgPolicyGovernedContainersV1: API.PaginatedOperationMethod<
@@ -3217,7 +3281,7 @@ export const analyzeOrgPolicyGovernedContainersV1: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeOrgPolicyGovernedContainersV1Request,
   output: AnalyzeOrgPolicyGovernedContainersV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3257,7 +3321,10 @@ export type AnalyzeOrgPolicyGovernedAssetsV1Response =
 export const AnalyzeOrgPolicyGovernedAssetsV1Response =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeOrgPolicyGovernedAssetsResponse;
 
-export type AnalyzeOrgPolicyGovernedAssetsV1Error = DefaultErrors;
+export type AnalyzeOrgPolicyGovernedAssetsV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Analyzes organization policies governed assets (Google Cloud resources or policies) under a scope. This RPC supports custom constraints and the following canned constraints: * constraints/ainotebooks.accessMode * constraints/ainotebooks.disableFileDownloads * constraints/ainotebooks.disableRootAccess * constraints/ainotebooks.disableTerminal * constraints/ainotebooks.environmentOptions * constraints/ainotebooks.requireAutoUpgradeSchedule * constraints/ainotebooks.restrictVpcNetworks * constraints/compute.disableGuestAttributesAccess * constraints/compute.disableInstanceDataAccessApis * constraints/compute.disableNestedVirtualization * constraints/compute.disableSerialPortAccess * constraints/compute.disableSerialPortLogging * constraints/compute.disableVpcExternalIpv6 * constraints/compute.requireOsLogin * constraints/compute.requireShieldedVm * constraints/compute.restrictLoadBalancerCreationForTypes * constraints/compute.restrictProtocolForwardingCreationForTypes * constraints/compute.restrictXpnProjectLienRemoval * constraints/compute.setNewProjectDefaultToZonalDNSOnly * constraints/compute.skipDefaultNetworkCreation * constraints/compute.trustedImageProjects * constraints/compute.vmCanIpForward * constraints/compute.vmExternalIpAccess * constraints/gcp.detailedAuditLoggingMode * constraints/gcp.resourceLocations * constraints/iam.allowedPolicyMemberDomains * constraints/iam.automaticIamGrantsForDefaultServiceAccounts * constraints/iam.disableServiceAccountCreation * constraints/iam.disableServiceAccountKeyCreation * constraints/iam.disableServiceAccountKeyUpload * constraints/iam.restrictCrossProjectServiceAccountLienRemoval * constraints/iam.serviceAccountKeyExpiryHours * constraints/resourcemanager.accessBoundaries * constraints/resourcemanager.allowedExportDestinations * constraints/sql.restrictAuthorizedNetworks * constraints/sql.restrictNoncompliantDiagnosticDataAccess * constraints/sql.restrictNoncompliantResourceCreation * constraints/sql.restrictPublicIp * constraints/storage.publicAccessPrevention * constraints/storage.restrictAuthTypes * constraints/storage.uniformBucketLevelAccess This RPC only returns either resources of types [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) or IAM policies. */
 export const analyzeOrgPolicyGovernedAssetsV1: API.PaginatedOperationMethod<
@@ -3268,7 +3335,7 @@ export const analyzeOrgPolicyGovernedAssetsV1: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AnalyzeOrgPolicyGovernedAssetsV1Request,
   output: AnalyzeOrgPolicyGovernedAssetsV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3321,7 +3388,7 @@ export type ListAssetsResponse_Op = ListAssetsResponse;
 export const ListAssetsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAssetsResponse;
 
-export type ListAssetsError = DefaultErrors;
+export type ListAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists assets with time and resource types and returns paged results in response. */
 export const listAssets: API.PaginatedOperationMethod<
@@ -3332,7 +3399,7 @@ export const listAssets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3357,7 +3424,12 @@ export const CreateFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateFeedsResponse = Feed;
 export const CreateFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Feed;
 
-export type CreateFeedsError = DefaultErrors;
+export type CreateFeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a feed in a parent project/folder/organization to listen to its asset updates. */
 export const createFeeds: API.OperationMethod<
@@ -3368,7 +3440,7 @@ export const createFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFeedsRequest,
   output: CreateFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFeedsRequest {
@@ -3386,7 +3458,7 @@ export const GetFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFeedsResponse = Feed;
 export const GetFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Feed;
 
-export type GetFeedsError = DefaultErrors;
+export type GetFeedsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details about an asset feed. */
 export const getFeeds: API.OperationMethod<
@@ -3397,7 +3469,7 @@ export const getFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFeedsRequest,
   output: GetFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFeedsRequest {
@@ -3416,7 +3488,7 @@ export type ListFeedsResponse_Op = ListFeedsResponse;
 export const ListFeedsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListFeedsResponse;
 
-export type ListFeedsError = DefaultErrors;
+export type ListFeedsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all asset feeds in a parent project/folder/organization. */
 export const listFeeds: API.OperationMethod<
@@ -3427,7 +3499,7 @@ export const listFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFeedsRequest,
   output: ListFeedsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFeedsRequest {
@@ -3448,7 +3520,12 @@ export const PatchFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchFeedsResponse = Feed;
 export const PatchFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Feed;
 
-export type PatchFeedsError = DefaultErrors;
+export type PatchFeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an asset feed configuration. */
 export const patchFeeds: API.OperationMethod<
@@ -3459,7 +3536,7 @@ export const patchFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFeedsRequest,
   output: PatchFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFeedsRequest {
@@ -3477,7 +3554,12 @@ export const DeleteFeedsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteFeedsResponse = Empty;
 export const DeleteFeedsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFeedsError = DefaultErrors;
+export type DeleteFeedsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an asset feed. */
 export const deleteFeeds: API.OperationMethod<
@@ -3488,7 +3570,7 @@ export const deleteFeeds: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFeedsRequest,
   output: DeleteFeedsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSavedQueriesRequest {
@@ -3516,7 +3598,12 @@ export type CreateSavedQueriesResponse = SavedQuery;
 export const CreateSavedQueriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type CreateSavedQueriesError = DefaultErrors;
+export type CreateSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a saved query in a parent project/folder/organization. */
 export const createSavedQueries: API.OperationMethod<
@@ -3527,7 +3614,7 @@ export const createSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSavedQueriesRequest,
   output: CreateSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSavedQueriesRequest {
@@ -3547,7 +3634,7 @@ export const GetSavedQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetSavedQueriesResponse = SavedQuery;
 export const GetSavedQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type GetSavedQueriesError = DefaultErrors;
+export type GetSavedQueriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details about a saved query. */
 export const getSavedQueries: API.OperationMethod<
@@ -3558,7 +3645,7 @@ export const getSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSavedQueriesRequest,
   output: GetSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSavedQueriesRequest {
@@ -3587,7 +3674,7 @@ export type ListSavedQueriesResponse_Op = ListSavedQueriesResponse;
 export const ListSavedQueriesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListSavedQueriesResponse;
 
-export type ListSavedQueriesError = DefaultErrors;
+export type ListSavedQueriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all saved queries in a parent project/folder/organization. */
 export const listSavedQueries: API.PaginatedOperationMethod<
@@ -3598,7 +3685,7 @@ export const listSavedQueries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSavedQueriesRequest,
   output: ListSavedQueriesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3627,7 +3714,12 @@ export const PatchSavedQueriesRequest =
 export type PatchSavedQueriesResponse = SavedQuery;
 export const PatchSavedQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ SavedQuery;
 
-export type PatchSavedQueriesError = DefaultErrors;
+export type PatchSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a saved query. */
 export const patchSavedQueries: API.OperationMethod<
@@ -3638,7 +3730,7 @@ export const patchSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSavedQueriesRequest,
   output: PatchSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSavedQueriesRequest {
@@ -3657,7 +3749,12 @@ export const DeleteSavedQueriesRequest =
 export type DeleteSavedQueriesResponse = Empty;
 export const DeleteSavedQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSavedQueriesError = DefaultErrors;
+export type DeleteSavedQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a saved query. */
 export const deleteSavedQueries: API.OperationMethod<
@@ -3668,7 +3765,7 @@ export const deleteSavedQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSavedQueriesRequest,
   output: DeleteSavedQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchGetEffectiveIamPoliciesRequest {
@@ -3694,7 +3791,10 @@ export type BatchGetEffectiveIamPoliciesResponse_Op =
 export const BatchGetEffectiveIamPoliciesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetEffectiveIamPoliciesResponse;
 
-export type BatchGetEffectiveIamPoliciesError = DefaultErrors;
+export type BatchGetEffectiveIamPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets effective IAM policies for a batch of resources. */
 export const batchGetEffectiveIamPolicies: API.OperationMethod<
@@ -3705,5 +3805,5 @@ export const batchGetEffectiveIamPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetEffectiveIamPoliciesRequest,
   output: BatchGetEffectiveIamPoliciesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

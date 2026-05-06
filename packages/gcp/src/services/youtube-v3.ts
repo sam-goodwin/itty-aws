@@ -5243,6 +5243,52 @@ export const InvideoBranding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "InvideoBranding" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5266,7 +5312,10 @@ export type ListVideoAbuseReportReasonsResponse =
 export const ListVideoAbuseReportReasonsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VideoAbuseReportReasonListResponse;
 
-export type ListVideoAbuseReportReasonsError = DefaultErrors;
+export type ListVideoAbuseReportReasonsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listVideoAbuseReportReasons: API.OperationMethod<
@@ -5277,7 +5326,7 @@ export const listVideoAbuseReportReasons: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVideoAbuseReportReasonsRequest,
   output: ListVideoAbuseReportReasonsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListVideoCategoriesRequest {
@@ -5304,7 +5353,7 @@ export type ListVideoCategoriesResponse = VideoCategoryListResponse;
 export const ListVideoCategoriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ VideoCategoryListResponse;
 
-export type ListVideoCategoriesError = DefaultErrors;
+export type ListVideoCategoriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listVideoCategories: API.OperationMethod<
@@ -5315,7 +5364,7 @@ export const listVideoCategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListVideoCategoriesRequest,
   output: ListVideoCategoriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateChannelsRequest {
@@ -5341,7 +5390,12 @@ export const UpdateChannelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateChannelsResponse = Channel;
 export const UpdateChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type UpdateChannelsError = DefaultErrors;
+export type UpdateChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updateChannels: API.OperationMethod<
@@ -5352,7 +5406,7 @@ export const updateChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChannelsRequest,
   output: UpdateChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListChannelsRequest {
@@ -5408,7 +5462,7 @@ export type ListChannelsResponse = ChannelListResponse;
 export const ListChannelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChannelListResponse;
 
-export type ListChannelsError = DefaultErrors;
+export type ListChannelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listChannels: API.PaginatedOperationMethod<
@@ -5419,7 +5473,7 @@ export const listChannels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChannelsRequest,
   output: ListChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5457,7 +5511,7 @@ export type ListThirdPartyLinksResponse = ThirdPartyLinkListResponse;
 export const ListThirdPartyLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ThirdPartyLinkListResponse;
 
-export type ListThirdPartyLinksError = DefaultErrors;
+export type ListThirdPartyLinksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listThirdPartyLinks: API.OperationMethod<
@@ -5468,7 +5522,7 @@ export const listThirdPartyLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListThirdPartyLinksRequest,
   output: ListThirdPartyLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateThirdPartyLinksRequest {
@@ -5500,7 +5554,12 @@ export type UpdateThirdPartyLinksResponse = ThirdPartyLink;
 export const UpdateThirdPartyLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ThirdPartyLink;
 
-export type UpdateThirdPartyLinksError = DefaultErrors;
+export type UpdateThirdPartyLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updateThirdPartyLinks: API.OperationMethod<
@@ -5511,7 +5570,7 @@ export const updateThirdPartyLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateThirdPartyLinksRequest,
   output: UpdateThirdPartyLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteThirdPartyLinksRequest {
@@ -5546,7 +5605,12 @@ export const DeleteThirdPartyLinksResponse: Schema.Schema<DeleteThirdPartyLinksR
     {},
   ) as any as Schema.Schema<DeleteThirdPartyLinksResponse>;
 
-export type DeleteThirdPartyLinksError = DefaultErrors;
+export type DeleteThirdPartyLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deleteThirdPartyLinks: API.OperationMethod<
@@ -5557,7 +5621,7 @@ export const deleteThirdPartyLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteThirdPartyLinksRequest,
   output: DeleteThirdPartyLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertThirdPartyLinksRequest {
@@ -5589,7 +5653,12 @@ export type InsertThirdPartyLinksResponse = ThirdPartyLink;
 export const InsertThirdPartyLinksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ThirdPartyLink;
 
-export type InsertThirdPartyLinksError = DefaultErrors;
+export type InsertThirdPartyLinksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertThirdPartyLinks: API.OperationMethod<
@@ -5600,7 +5669,7 @@ export const insertThirdPartyLinks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertThirdPartyLinksRequest,
   output: InsertThirdPartyLinksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnsetWatermarksRequest {
@@ -5631,7 +5700,12 @@ export const UnsetWatermarksResponse: Schema.Schema<UnsetWatermarksResponse> =
     {},
   ) as any as Schema.Schema<UnsetWatermarksResponse>;
 
-export type UnsetWatermarksError = DefaultErrors;
+export type UnsetWatermarksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows removal of channel watermark. */
 export const unsetWatermarks: API.OperationMethod<
@@ -5642,7 +5716,7 @@ export const unsetWatermarks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnsetWatermarksRequest,
   output: UnsetWatermarksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetWatermarksRequest {
@@ -5670,7 +5744,12 @@ export const SetWatermarksResponse: Schema.Schema<SetWatermarksResponse> =
     {},
   ) as any as Schema.Schema<SetWatermarksResponse>;
 
-export type SetWatermarksError = DefaultErrors;
+export type SetWatermarksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows upload of watermark image and setting it for a channel. */
 export const setWatermarks: API.OperationMethod<
@@ -5681,7 +5760,7 @@ export const setWatermarks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetWatermarksRequest,
   output: SetWatermarksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCommentThreadsYoutubeV3Request {
@@ -5706,7 +5785,12 @@ export type UpdateCommentThreadsYoutubeV3Response = CommentThread;
 export const UpdateCommentThreadsYoutubeV3Response =
   /*@__PURE__*/ /*#__PURE__*/ CommentThread;
 
-export type UpdateCommentThreadsYoutubeV3Error = DefaultErrors;
+export type UpdateCommentThreadsYoutubeV3Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updateCommentThreadsYoutubeV3: API.OperationMethod<
@@ -5717,7 +5801,7 @@ export const updateCommentThreadsYoutubeV3: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCommentThreadsYoutubeV3Request,
   output: UpdateCommentThreadsYoutubeV3Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StreamYoutubeV3LiveChatMessagesRequest {
@@ -5757,7 +5841,10 @@ export type StreamYoutubeV3LiveChatMessagesResponse =
 export const StreamYoutubeV3LiveChatMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveChatMessageListResponse;
 
-export type StreamYoutubeV3LiveChatMessagesError = DefaultErrors;
+export type StreamYoutubeV3LiveChatMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Allows a user to load live chat through a server-streamed RPC. */
 export const streamYoutubeV3LiveChatMessages: API.PaginatedOperationMethod<
@@ -5768,7 +5855,7 @@ export const streamYoutubeV3LiveChatMessages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: StreamYoutubeV3LiveChatMessagesRequest,
   output: StreamYoutubeV3LiveChatMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5795,7 +5882,7 @@ export type ListI18nLanguagesResponse = I18nLanguageListResponse;
 export const ListI18nLanguagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ I18nLanguageListResponse;
 
-export type ListI18nLanguagesError = DefaultErrors;
+export type ListI18nLanguagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listI18nLanguages: API.OperationMethod<
@@ -5806,7 +5893,7 @@ export const listI18nLanguages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListI18nLanguagesRequest,
   output: ListI18nLanguagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTestsRequest {
@@ -5834,7 +5921,12 @@ export const InsertTestsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertTestsResponse = TestItem;
 export const InsertTestsResponse = /*@__PURE__*/ /*#__PURE__*/ TestItem;
 
-export type InsertTestsError = DefaultErrors;
+export type InsertTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** POST method. */
 export const insertTests: API.OperationMethod<
@@ -5845,7 +5937,7 @@ export const insertTests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTestsRequest,
   output: InsertTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertAbuseReportsRequest {
@@ -5868,7 +5960,12 @@ export type InsertAbuseReportsResponse = AbuseReport;
 export const InsertAbuseReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AbuseReport;
 
-export type InsertAbuseReportsError = DefaultErrors;
+export type InsertAbuseReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertAbuseReports: API.OperationMethod<
@@ -5879,7 +5976,7 @@ export const insertAbuseReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAbuseReportsRequest,
   output: InsertAbuseReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPlaylistsRequest {
@@ -5912,7 +6009,12 @@ export const InsertPlaylistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertPlaylistsResponse = Playlist;
 export const InsertPlaylistsResponse = /*@__PURE__*/ /*#__PURE__*/ Playlist;
 
-export type InsertPlaylistsError = DefaultErrors;
+export type InsertPlaylistsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertPlaylists: API.OperationMethod<
@@ -5923,7 +6025,7 @@ export const insertPlaylists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPlaylistsRequest,
   output: InsertPlaylistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePlaylistsRequest {
@@ -5951,7 +6053,12 @@ export const UpdatePlaylistsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdatePlaylistsResponse = Playlist;
 export const UpdatePlaylistsResponse = /*@__PURE__*/ /*#__PURE__*/ Playlist;
 
-export type UpdatePlaylistsError = DefaultErrors;
+export type UpdatePlaylistsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updatePlaylists: API.OperationMethod<
@@ -5962,7 +6069,7 @@ export const updatePlaylists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlaylistsRequest,
   output: UpdatePlaylistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePlaylistsRequest {
@@ -5989,7 +6096,12 @@ export const DeletePlaylistsResponse: Schema.Schema<DeletePlaylistsResponse> =
     {},
   ) as any as Schema.Schema<DeletePlaylistsResponse>;
 
-export type DeletePlaylistsError = DefaultErrors;
+export type DeletePlaylistsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deletePlaylists: API.OperationMethod<
@@ -6000,7 +6112,7 @@ export const deletePlaylists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlaylistsRequest,
   output: DeletePlaylistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPlaylistsRequest {
@@ -6047,7 +6159,7 @@ export type ListPlaylistsResponse = PlaylistListResponse;
 export const ListPlaylistsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaylistListResponse;
 
-export type ListPlaylistsError = DefaultErrors;
+export type ListPlaylistsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listPlaylists: API.PaginatedOperationMethod<
@@ -6058,7 +6170,7 @@ export const listPlaylists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlaylistsRequest,
   output: ListPlaylistsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6100,7 +6212,7 @@ export type ListChannelSectionsResponse = ChannelSectionListResponse;
 export const ListChannelSectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChannelSectionListResponse;
 
-export type ListChannelSectionsError = DefaultErrors;
+export type ListChannelSectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listChannelSections: API.OperationMethod<
@@ -6111,7 +6223,7 @@ export const listChannelSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListChannelSectionsRequest,
   output: ListChannelSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateChannelSectionsRequest {
@@ -6143,7 +6255,12 @@ export type UpdateChannelSectionsResponse = ChannelSection;
 export const UpdateChannelSectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChannelSection;
 
-export type UpdateChannelSectionsError = DefaultErrors;
+export type UpdateChannelSectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updateChannelSections: API.OperationMethod<
@@ -6154,7 +6271,7 @@ export const updateChannelSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateChannelSectionsRequest,
   output: UpdateChannelSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteChannelSectionsRequest {
@@ -6180,7 +6297,12 @@ export const DeleteChannelSectionsResponse: Schema.Schema<DeleteChannelSectionsR
     {},
   ) as any as Schema.Schema<DeleteChannelSectionsResponse>;
 
-export type DeleteChannelSectionsError = DefaultErrors;
+export type DeleteChannelSectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deleteChannelSections: API.OperationMethod<
@@ -6191,7 +6313,7 @@ export const deleteChannelSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChannelSectionsRequest,
   output: DeleteChannelSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertChannelSectionsRequest {
@@ -6228,7 +6350,12 @@ export type InsertChannelSectionsResponse = ChannelSection;
 export const InsertChannelSectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChannelSection;
 
-export type InsertChannelSectionsError = DefaultErrors;
+export type InsertChannelSectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertChannelSections: API.OperationMethod<
@@ -6239,7 +6366,7 @@ export const insertChannelSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertChannelSectionsRequest,
   output: InsertChannelSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLiveBroadcastsRequest {
@@ -6301,7 +6428,7 @@ export type ListLiveBroadcastsResponse = LiveBroadcastListResponse;
 export const ListLiveBroadcastsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveBroadcastListResponse;
 
-export type ListLiveBroadcastsError = DefaultErrors;
+export type ListLiveBroadcastsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve the list of broadcasts associated with the given channel. */
 export const listLiveBroadcasts: API.PaginatedOperationMethod<
@@ -6312,7 +6439,7 @@ export const listLiveBroadcasts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiveBroadcastsRequest,
   output: ListLiveBroadcastsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6357,7 +6484,12 @@ export type BindLiveBroadcastsResponse = LiveBroadcast;
 export const BindLiveBroadcastsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveBroadcast;
 
-export type BindLiveBroadcastsError = DefaultErrors;
+export type BindLiveBroadcastsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bind a broadcast to a stream. */
 export const bindLiveBroadcasts: API.OperationMethod<
@@ -6368,7 +6500,7 @@ export const bindLiveBroadcasts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BindLiveBroadcastsRequest,
   output: BindLiveBroadcastsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TransitionLiveBroadcastsRequest {
@@ -6413,7 +6545,12 @@ export type TransitionLiveBroadcastsResponse = LiveBroadcast;
 export const TransitionLiveBroadcastsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveBroadcast;
 
-export type TransitionLiveBroadcastsError = DefaultErrors;
+export type TransitionLiveBroadcastsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Transition a broadcast to a given status. */
 export const transitionLiveBroadcasts: API.OperationMethod<
@@ -6424,7 +6561,7 @@ export const transitionLiveBroadcasts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransitionLiveBroadcastsRequest,
   output: TransitionLiveBroadcastsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLiveBroadcastsRequest {
@@ -6457,7 +6594,12 @@ export type UpdateLiveBroadcastsResponse = LiveBroadcast;
 export const UpdateLiveBroadcastsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveBroadcast;
 
-export type UpdateLiveBroadcastsError = DefaultErrors;
+export type UpdateLiveBroadcastsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing broadcast for the authenticated user. */
 export const updateLiveBroadcasts: API.OperationMethod<
@@ -6468,7 +6610,7 @@ export const updateLiveBroadcasts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLiveBroadcastsRequest,
   output: UpdateLiveBroadcastsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLiveBroadcastsRequest {
@@ -6500,7 +6642,12 @@ export const DeleteLiveBroadcastsResponse: Schema.Schema<DeleteLiveBroadcastsRes
     {},
   ) as any as Schema.Schema<DeleteLiveBroadcastsResponse>;
 
-export type DeleteLiveBroadcastsError = DefaultErrors;
+export type DeleteLiveBroadcastsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a given broadcast. */
 export const deleteLiveBroadcasts: API.OperationMethod<
@@ -6511,7 +6658,7 @@ export const deleteLiveBroadcasts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiveBroadcastsRequest,
   output: DeleteLiveBroadcastsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertLiveBroadcastsRequest {
@@ -6548,7 +6695,12 @@ export type InsertLiveBroadcastsResponse = LiveBroadcast;
 export const InsertLiveBroadcastsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveBroadcast;
 
-export type InsertLiveBroadcastsError = DefaultErrors;
+export type InsertLiveBroadcastsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new stream for the authenticated user. */
 export const insertLiveBroadcasts: API.OperationMethod<
@@ -6559,7 +6711,7 @@ export const insertLiveBroadcasts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLiveBroadcastsRequest,
   output: InsertLiveBroadcastsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertCuepointLiveBroadcastsRequest {
@@ -6601,7 +6753,12 @@ export type InsertCuepointLiveBroadcastsResponse = Cuepoint;
 export const InsertCuepointLiveBroadcastsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cuepoint;
 
-export type InsertCuepointLiveBroadcastsError = DefaultErrors;
+export type InsertCuepointLiveBroadcastsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Insert cuepoints in a broadcast */
 export const insertCuepointLiveBroadcasts: API.OperationMethod<
@@ -6612,7 +6769,7 @@ export const insertCuepointLiveBroadcasts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCuepointLiveBroadcastsRequest,
   output: InsertCuepointLiveBroadcastsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLiveChatBansRequest {
@@ -6633,7 +6790,12 @@ export const DeleteLiveChatBansResponse: Schema.Schema<DeleteLiveChatBansRespons
     {},
   ) as any as Schema.Schema<DeleteLiveChatBansResponse>;
 
-export type DeleteLiveChatBansError = DefaultErrors;
+export type DeleteLiveChatBansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a chat ban. */
 export const deleteLiveChatBans: API.OperationMethod<
@@ -6644,7 +6806,7 @@ export const deleteLiveChatBans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiveChatBansRequest,
   output: DeleteLiveChatBansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertLiveChatBansRequest {
@@ -6667,7 +6829,12 @@ export type InsertLiveChatBansResponse = LiveChatBan;
 export const InsertLiveChatBansResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveChatBan;
 
-export type InsertLiveChatBansError = DefaultErrors;
+export type InsertLiveChatBansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertLiveChatBans: API.OperationMethod<
@@ -6678,7 +6845,7 @@ export const insertLiveChatBans: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLiveChatBansRequest,
   output: InsertLiveChatBansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSearchRequest {
@@ -6859,7 +7026,7 @@ export type ListSearchResponse = SearchListResponse;
 export const ListSearchResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchListResponse;
 
-export type ListSearchError = DefaultErrors;
+export type ListSearchError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of search resources */
 export const listSearch: API.PaginatedOperationMethod<
@@ -6870,7 +7037,7 @@ export const listSearch: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSearchRequest,
   output: ListSearchResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6904,7 +7071,7 @@ export type ListSuperChatEventsResponse = SuperChatEventListResponse;
 export const ListSuperChatEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SuperChatEventListResponse;
 
-export type ListSuperChatEventsError = DefaultErrors;
+export type ListSuperChatEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listSuperChatEvents: API.PaginatedOperationMethod<
@@ -6915,7 +7082,7 @@ export const listSuperChatEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSuperChatEventsRequest,
   output: ListSuperChatEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6940,7 +7107,7 @@ export type ListMembershipsLevelsResponse = MembershipsLevelListResponse;
 export const ListMembershipsLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MembershipsLevelListResponse;
 
-export type ListMembershipsLevelsError = DefaultErrors;
+export type ListMembershipsLevelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of all pricing levels offered by a creator to the fans. */
 export const listMembershipsLevels: API.OperationMethod<
@@ -6951,7 +7118,7 @@ export const listMembershipsLevels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListMembershipsLevelsRequest,
   output: ListMembershipsLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListActivitiesRequest {
@@ -6992,7 +7159,7 @@ export type ListActivitiesResponse = ActivityListResponse;
 export const ListActivitiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ActivityListResponse;
 
-export type ListActivitiesError = DefaultErrors;
+export type ListActivitiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listActivities: API.PaginatedOperationMethod<
@@ -7003,7 +7170,7 @@ export const listActivities: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListActivitiesRequest,
   output: ListActivitiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7029,7 +7196,12 @@ export const DeleteSubscriptionsResponse: Schema.Schema<DeleteSubscriptionsRespo
     {},
   ) as any as Schema.Schema<DeleteSubscriptionsResponse>;
 
-export type DeleteSubscriptionsError = DefaultErrors;
+export type DeleteSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deleteSubscriptions: API.OperationMethod<
@@ -7040,7 +7212,7 @@ export const deleteSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionsRequest,
   output: DeleteSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSubscriptionsRequest {
@@ -7107,7 +7279,7 @@ export type ListSubscriptionsResponse = SubscriptionListResponse;
 export const ListSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubscriptionListResponse;
 
-export type ListSubscriptionsError = DefaultErrors;
+export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listSubscriptions: API.PaginatedOperationMethod<
@@ -7118,7 +7290,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7146,7 +7318,12 @@ export type InsertSubscriptionsResponse = Subscription;
 export const InsertSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type InsertSubscriptionsError = DefaultErrors;
+export type InsertSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertSubscriptions: API.OperationMethod<
@@ -7157,7 +7334,7 @@ export const insertSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSubscriptionsRequest,
   output: InsertSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListVideosRequest {
@@ -7213,7 +7390,7 @@ export const ListVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListVideosResponse = VideoListResponse;
 export const ListVideosResponse = /*@__PURE__*/ /*#__PURE__*/ VideoListResponse;
 
-export type ListVideosError = DefaultErrors;
+export type ListVideosError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listVideos: API.PaginatedOperationMethod<
@@ -7224,7 +7401,7 @@ export const listVideos: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVideosRequest,
   output: ListVideosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7254,7 +7431,7 @@ export type GetRatingVideosResponse = VideoGetRatingResponse;
 export const GetRatingVideosResponse =
   /*@__PURE__*/ /*#__PURE__*/ VideoGetRatingResponse;
 
-export type GetRatingVideosError = DefaultErrors;
+export type GetRatingVideosError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the ratings that the authorized user gave to a list of specified videos. */
 export const getRatingVideos: API.OperationMethod<
@@ -7265,7 +7442,7 @@ export const getRatingVideos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRatingVideosRequest,
   output: GetRatingVideosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReportAbuseVideosRequest {
@@ -7296,7 +7473,12 @@ export const ReportAbuseVideosResponse: Schema.Schema<ReportAbuseVideosResponse>
     {},
   ) as any as Schema.Schema<ReportAbuseVideosResponse>;
 
-export type ReportAbuseVideosError = DefaultErrors;
+export type ReportAbuseVideosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Report abuse for a video. */
 export const reportAbuseVideos: API.OperationMethod<
@@ -7307,7 +7489,7 @@ export const reportAbuseVideos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportAbuseVideosRequest,
   output: ReportAbuseVideosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateVideosRequest {
@@ -7333,7 +7515,12 @@ export const UpdateVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateVideosResponse = Video;
 export const UpdateVideosResponse = /*@__PURE__*/ /*#__PURE__*/ Video;
 
-export type UpdateVideosError = DefaultErrors;
+export type UpdateVideosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updateVideos: API.OperationMethod<
@@ -7344,7 +7531,7 @@ export const updateVideos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateVideosRequest,
   output: UpdateVideosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteVideosRequest {
@@ -7369,7 +7556,12 @@ export const DeleteVideosResponse: Schema.Schema<DeleteVideosResponse> =
     {},
   ) as any as Schema.Schema<DeleteVideosResponse>;
 
-export type DeleteVideosError = DefaultErrors;
+export type DeleteVideosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deleteVideos: API.OperationMethod<
@@ -7380,7 +7572,7 @@ export const deleteVideos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVideosRequest,
   output: DeleteVideosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertVideosRequest {
@@ -7422,7 +7614,12 @@ export const InsertVideosRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertVideosResponse = Video;
 export const InsertVideosResponse = /*@__PURE__*/ /*#__PURE__*/ Video;
 
-export type InsertVideosError = DefaultErrors;
+export type InsertVideosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertVideos: API.OperationMethod<
@@ -7433,7 +7630,7 @@ export const insertVideos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertVideosRequest,
   output: InsertVideosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RateVideosRequest {
@@ -7455,7 +7652,12 @@ export const RateVideosResponse: Schema.Schema<RateVideosResponse> =
     {},
   ) as any as Schema.Schema<RateVideosResponse>;
 
-export type RateVideosError = DefaultErrors;
+export type RateVideosError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a like or dislike rating to a video or removes a rating from a video. */
 export const rateVideos: API.OperationMethod<
@@ -7466,7 +7668,7 @@ export const rateVideos: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RateVideosRequest,
   output: RateVideosResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLiveChatMessagesRequest {
@@ -7487,7 +7689,12 @@ export const DeleteLiveChatMessagesResponse: Schema.Schema<DeleteLiveChatMessage
     {},
   ) as any as Schema.Schema<DeleteLiveChatMessagesResponse>;
 
-export type DeleteLiveChatMessagesError = DefaultErrors;
+export type DeleteLiveChatMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a chat message. */
 export const deleteLiveChatMessages: API.OperationMethod<
@@ -7498,7 +7705,7 @@ export const deleteLiveChatMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiveChatMessagesRequest,
   output: DeleteLiveChatMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLiveChatMessagesRequest {
@@ -7535,7 +7742,7 @@ export type ListLiveChatMessagesResponse = LiveChatMessageListResponse;
 export const ListLiveChatMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveChatMessageListResponse;
 
-export type ListLiveChatMessagesError = DefaultErrors;
+export type ListLiveChatMessagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listLiveChatMessages: API.PaginatedOperationMethod<
@@ -7546,7 +7753,7 @@ export const listLiveChatMessages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiveChatMessagesRequest,
   output: ListLiveChatMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7578,7 +7785,12 @@ export type TransitionLiveChatMessagesResponse = LiveChatMessage;
 export const TransitionLiveChatMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveChatMessage;
 
-export type TransitionLiveChatMessagesError = DefaultErrors;
+export type TransitionLiveChatMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Transition a durable chat event. */
 export const transitionLiveChatMessages: API.OperationMethod<
@@ -7589,7 +7801,7 @@ export const transitionLiveChatMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TransitionLiveChatMessagesRequest,
   output: TransitionLiveChatMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertLiveChatMessagesRequest {
@@ -7616,7 +7828,12 @@ export type InsertLiveChatMessagesResponse = LiveChatMessage;
 export const InsertLiveChatMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveChatMessage;
 
-export type InsertLiveChatMessagesError = DefaultErrors;
+export type InsertLiveChatMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertLiveChatMessages: API.OperationMethod<
@@ -7627,7 +7844,7 @@ export const insertLiveChatMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLiveChatMessagesRequest,
   output: InsertLiveChatMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCaptionsRequest {
@@ -7660,7 +7877,7 @@ export type ListCaptionsResponse = CaptionListResponse;
 export const ListCaptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CaptionListResponse;
 
-export type ListCaptionsError = DefaultErrors;
+export type ListCaptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listCaptions: API.OperationMethod<
@@ -7671,7 +7888,7 @@ export const listCaptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCaptionsRequest,
   output: ListCaptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertCaptionsRequest {
@@ -7703,7 +7920,12 @@ export const InsertCaptionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertCaptionsResponse = Caption;
 export const InsertCaptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Caption;
 
-export type InsertCaptionsError = DefaultErrors;
+export type InsertCaptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertCaptions: API.OperationMethod<
@@ -7714,7 +7936,7 @@ export const insertCaptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCaptionsRequest,
   output: InsertCaptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadCaptionsRequest {
@@ -7750,7 +7972,7 @@ export const DownloadCaptionsResponse: Schema.Schema<DownloadCaptionsResponse> =
     {},
   ) as any as Schema.Schema<DownloadCaptionsResponse>;
 
-export type DownloadCaptionsError = DefaultErrors;
+export type DownloadCaptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Downloads a caption track. */
 export const downloadCaptions: API.OperationMethod<
@@ -7761,7 +7983,7 @@ export const downloadCaptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadCaptionsRequest,
   output: DownloadCaptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateCaptionsRequest {
@@ -7793,7 +8015,12 @@ export const UpdateCaptionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateCaptionsResponse = Caption;
 export const UpdateCaptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Caption;
 
-export type UpdateCaptionsError = DefaultErrors;
+export type UpdateCaptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updateCaptions: API.OperationMethod<
@@ -7804,7 +8031,7 @@ export const updateCaptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCaptionsRequest,
   output: UpdateCaptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCaptionsRequest {
@@ -7832,7 +8059,12 @@ export const DeleteCaptionsResponse: Schema.Schema<DeleteCaptionsResponse> =
     {},
   ) as any as Schema.Schema<DeleteCaptionsResponse>;
 
-export type DeleteCaptionsError = DefaultErrors;
+export type DeleteCaptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deleteCaptions: API.OperationMethod<
@@ -7843,7 +8075,7 @@ export const deleteCaptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCaptionsRequest,
   output: DeleteCaptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertLiveStreamsRequest {
@@ -7875,7 +8107,12 @@ export const InsertLiveStreamsRequest =
 export type InsertLiveStreamsResponse = LiveStream;
 export const InsertLiveStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ LiveStream;
 
-export type InsertLiveStreamsError = DefaultErrors;
+export type InsertLiveStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new stream for the authenticated user. */
 export const insertLiveStreams: API.OperationMethod<
@@ -7886,7 +8123,7 @@ export const insertLiveStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLiveStreamsRequest,
   output: InsertLiveStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLiveStreamsRequest {
@@ -7918,7 +8155,12 @@ export const UpdateLiveStreamsRequest =
 export type UpdateLiveStreamsResponse = LiveStream;
 export const UpdateLiveStreamsResponse = /*@__PURE__*/ /*#__PURE__*/ LiveStream;
 
-export type UpdateLiveStreamsError = DefaultErrors;
+export type UpdateLiveStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing stream for the authenticated user. */
 export const updateLiveStreams: API.OperationMethod<
@@ -7929,7 +8171,7 @@ export const updateLiveStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLiveStreamsRequest,
   output: UpdateLiveStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLiveStreamsRequest {
@@ -7960,7 +8202,12 @@ export const DeleteLiveStreamsResponse: Schema.Schema<DeleteLiveStreamsResponse>
     {},
   ) as any as Schema.Schema<DeleteLiveStreamsResponse>;
 
-export type DeleteLiveStreamsError = DefaultErrors;
+export type DeleteLiveStreamsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing stream for the authenticated user. */
 export const deleteLiveStreams: API.OperationMethod<
@@ -7971,7 +8218,7 @@ export const deleteLiveStreams: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiveStreamsRequest,
   output: DeleteLiveStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLiveStreamsRequest {
@@ -8013,7 +8260,7 @@ export type ListLiveStreamsResponse = LiveStreamListResponse;
 export const ListLiveStreamsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveStreamListResponse;
 
-export type ListLiveStreamsError = DefaultErrors;
+export type ListLiveStreamsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve the list of streams associated with the given channel. -- */
 export const listLiveStreams: API.PaginatedOperationMethod<
@@ -8024,7 +8271,7 @@ export const listLiveStreams: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiveStreamsRequest,
   output: ListLiveStreamsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8056,7 +8303,12 @@ export type InsertLiveChatModeratorsResponse = LiveChatModerator;
 export const InsertLiveChatModeratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveChatModerator;
 
-export type InsertLiveChatModeratorsError = DefaultErrors;
+export type InsertLiveChatModeratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertLiveChatModerators: API.OperationMethod<
@@ -8067,7 +8319,7 @@ export const insertLiveChatModerators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLiveChatModeratorsRequest,
   output: InsertLiveChatModeratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLiveChatModeratorsRequest {
@@ -8088,7 +8340,12 @@ export const DeleteLiveChatModeratorsResponse: Schema.Schema<DeleteLiveChatModer
     {},
   ) as any as Schema.Schema<DeleteLiveChatModeratorsResponse>;
 
-export type DeleteLiveChatModeratorsError = DefaultErrors;
+export type DeleteLiveChatModeratorsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a chat moderator. */
 export const deleteLiveChatModerators: API.OperationMethod<
@@ -8099,7 +8356,7 @@ export const deleteLiveChatModerators: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiveChatModeratorsRequest,
   output: DeleteLiveChatModeratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLiveChatModeratorsRequest {
@@ -8128,7 +8385,7 @@ export type ListLiveChatModeratorsResponse = LiveChatModeratorListResponse;
 export const ListLiveChatModeratorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LiveChatModeratorListResponse;
 
-export type ListLiveChatModeratorsError = DefaultErrors;
+export type ListLiveChatModeratorsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listLiveChatModerators: API.PaginatedOperationMethod<
@@ -8139,7 +8396,7 @@ export const listLiveChatModerators: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiveChatModeratorsRequest,
   output: ListLiveChatModeratorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8168,7 +8425,12 @@ export type SetThumbnailsResponse = ThumbnailSetResponse;
 export const SetThumbnailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ThumbnailSetResponse;
 
-export type SetThumbnailsError = DefaultErrors;
+export type SetThumbnailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** As this is not an insert in a strict sense (it supports uploading/setting of a thumbnail for multiple videos, which doesn't result in creation of a single resource), I use a custom verb here. */
 export const setThumbnails: API.OperationMethod<
@@ -8179,7 +8441,7 @@ export const setThumbnails: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetThumbnailsRequest,
   output: SetThumbnailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListI18nRegionsRequest {
@@ -8202,7 +8464,7 @@ export type ListI18nRegionsResponse = I18nRegionListResponse;
 export const ListI18nRegionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ I18nRegionListResponse;
 
-export type ListI18nRegionsError = DefaultErrors;
+export type ListI18nRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listI18nRegions: API.OperationMethod<
@@ -8213,7 +8475,7 @@ export const listI18nRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListI18nRegionsRequest,
   output: ListI18nRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCommentThreadsRequest {
@@ -8276,7 +8538,7 @@ export type ListCommentThreadsResponse = CommentThreadListResponse;
 export const ListCommentThreadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommentThreadListResponse;
 
-export type ListCommentThreadsError = DefaultErrors;
+export type ListCommentThreadsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listCommentThreads: API.PaginatedOperationMethod<
@@ -8287,7 +8549,7 @@ export const listCommentThreads: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCommentThreadsRequest,
   output: ListCommentThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8319,7 +8581,12 @@ export type InsertCommentThreadsResponse = CommentThread;
 export const InsertCommentThreadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommentThread;
 
-export type InsertCommentThreadsError = DefaultErrors;
+export type InsertCommentThreadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertCommentThreads: API.OperationMethod<
@@ -8330,7 +8597,7 @@ export const insertCommentThreads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCommentThreadsRequest,
   output: InsertCommentThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertChannelBannersRequest {
@@ -8367,7 +8634,12 @@ export type InsertChannelBannersResponse = ChannelBannerResource;
 export const InsertChannelBannersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChannelBannerResource;
 
-export type InsertChannelBannersError = DefaultErrors;
+export type InsertChannelBannersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertChannelBanners: API.OperationMethod<
@@ -8378,7 +8650,7 @@ export const insertChannelBanners: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertChannelBannersRequest,
   output: InsertChannelBannersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVideoTrainabilityRequest {
@@ -8398,7 +8670,7 @@ export type GetVideoTrainabilityResponse = VideoTrainability;
 export const GetVideoTrainabilityResponse =
   /*@__PURE__*/ /*#__PURE__*/ VideoTrainability;
 
-export type GetVideoTrainabilityError = DefaultErrors;
+export type GetVideoTrainabilityError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the trainability status of a video. */
 export const getVideoTrainability: API.OperationMethod<
@@ -8409,7 +8681,7 @@ export const getVideoTrainability: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVideoTrainabilityRequest,
   output: GetVideoTrainabilityResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertPlaylistImagesRequest {
@@ -8448,7 +8720,12 @@ export type InsertPlaylistImagesResponse = PlaylistImage;
 export const InsertPlaylistImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaylistImage;
 
-export type InsertPlaylistImagesError = DefaultErrors;
+export type InsertPlaylistImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertPlaylistImages: API.OperationMethod<
@@ -8459,7 +8736,7 @@ export const insertPlaylistImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPlaylistImagesRequest,
   output: InsertPlaylistImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPlaylistImagesRequest {
@@ -8500,7 +8777,7 @@ export type ListPlaylistImagesResponse = PlaylistImageListResponse;
 export const ListPlaylistImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaylistImageListResponse;
 
-export type ListPlaylistImagesError = DefaultErrors;
+export type ListPlaylistImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listPlaylistImages: API.PaginatedOperationMethod<
@@ -8511,7 +8788,7 @@ export const listPlaylistImages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlaylistImagesRequest,
   output: ListPlaylistImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8546,7 +8823,12 @@ export type UpdatePlaylistImagesResponse = PlaylistImage;
 export const UpdatePlaylistImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaylistImage;
 
-export type UpdatePlaylistImagesError = DefaultErrors;
+export type UpdatePlaylistImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updatePlaylistImages: API.OperationMethod<
@@ -8557,7 +8839,7 @@ export const updatePlaylistImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlaylistImagesRequest,
   output: UpdatePlaylistImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePlaylistImagesRequest {
@@ -8584,7 +8866,12 @@ export const DeletePlaylistImagesResponse: Schema.Schema<DeletePlaylistImagesRes
     {},
   ) as any as Schema.Schema<DeletePlaylistImagesResponse>;
 
-export type DeletePlaylistImagesError = DefaultErrors;
+export type DeletePlaylistImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deletePlaylistImages: API.OperationMethod<
@@ -8595,7 +8882,7 @@ export const deletePlaylistImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlaylistImagesRequest,
   output: DeletePlaylistImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCommentsRequest {
@@ -8616,7 +8903,12 @@ export const UpdateCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateCommentsResponse = Comment;
 export const UpdateCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type UpdateCommentsError = DefaultErrors;
+export type UpdateCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updateComments: API.OperationMethod<
@@ -8627,7 +8919,7 @@ export const updateComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCommentsRequest,
   output: UpdateCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCommentsRequest {
@@ -8647,7 +8939,12 @@ export const DeleteCommentsResponse: Schema.Schema<DeleteCommentsResponse> =
     {},
   ) as any as Schema.Schema<DeleteCommentsResponse>;
 
-export type DeleteCommentsError = DefaultErrors;
+export type DeleteCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deleteComments: API.OperationMethod<
@@ -8658,7 +8955,7 @@ export const deleteComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCommentsRequest,
   output: DeleteCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetModerationStatusCommentsRequest {
@@ -8695,7 +8992,12 @@ export const SetModerationStatusCommentsResponse: Schema.Schema<SetModerationSta
     {},
   ) as any as Schema.Schema<SetModerationStatusCommentsResponse>;
 
-export type SetModerationStatusCommentsError = DefaultErrors;
+export type SetModerationStatusCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the moderation status of one or more comments. */
 export const setModerationStatusComments: API.OperationMethod<
@@ -8706,7 +9008,7 @@ export const setModerationStatusComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetModerationStatusCommentsRequest,
   output: SetModerationStatusCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MarkAsSpamCommentsRequest {
@@ -8732,7 +9034,12 @@ export const MarkAsSpamCommentsResponse: Schema.Schema<MarkAsSpamCommentsRespons
     {},
   ) as any as Schema.Schema<MarkAsSpamCommentsResponse>;
 
-export type MarkAsSpamCommentsError = DefaultErrors;
+export type MarkAsSpamCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Expresses the caller's opinion that one or more comments should be flagged as spam. */
 export const markAsSpamComments: API.OperationMethod<
@@ -8743,7 +9050,7 @@ export const markAsSpamComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MarkAsSpamCommentsRequest,
   output: MarkAsSpamCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertCommentsRequest {
@@ -8764,7 +9071,12 @@ export const InsertCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertCommentsResponse = Comment;
 export const InsertCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type InsertCommentsError = DefaultErrors;
+export type InsertCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertComments: API.OperationMethod<
@@ -8775,7 +9087,7 @@ export const insertComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCommentsRequest,
   output: InsertCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCommentsRequest {
@@ -8809,7 +9121,7 @@ export type ListCommentsResponse = CommentListResponse;
 export const ListCommentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommentListResponse;
 
-export type ListCommentsError = DefaultErrors;
+export type ListCommentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listComments: API.PaginatedOperationMethod<
@@ -8820,7 +9132,7 @@ export const listComments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: ListCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8864,7 +9176,7 @@ export type ListPlaylistItemsResponse = PlaylistItemListResponse;
 export const ListPlaylistItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaylistItemListResponse;
 
-export type ListPlaylistItemsError = DefaultErrors;
+export type ListPlaylistItemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources, possibly filtered. */
 export const listPlaylistItems: API.PaginatedOperationMethod<
@@ -8875,7 +9187,7 @@ export const listPlaylistItems: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlaylistItemsRequest,
   output: ListPlaylistItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8906,7 +9218,12 @@ export const DeletePlaylistItemsResponse: Schema.Schema<DeletePlaylistItemsRespo
     {},
   ) as any as Schema.Schema<DeletePlaylistItemsResponse>;
 
-export type DeletePlaylistItemsError = DefaultErrors;
+export type DeletePlaylistItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a resource. */
 export const deletePlaylistItems: API.OperationMethod<
@@ -8917,7 +9234,7 @@ export const deletePlaylistItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePlaylistItemsRequest,
   output: DeletePlaylistItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePlaylistItemsRequest {
@@ -8945,7 +9262,12 @@ export type UpdatePlaylistItemsResponse = PlaylistItem;
 export const UpdatePlaylistItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaylistItem;
 
-export type UpdatePlaylistItemsError = DefaultErrors;
+export type UpdatePlaylistItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing resource. */
 export const updatePlaylistItems: API.OperationMethod<
@@ -8956,7 +9278,7 @@ export const updatePlaylistItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePlaylistItemsRequest,
   output: UpdatePlaylistItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPlaylistItemsRequest {
@@ -8984,7 +9306,12 @@ export type InsertPlaylistItemsResponse = PlaylistItem;
 export const InsertPlaylistItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlaylistItem;
 
-export type InsertPlaylistItemsError = DefaultErrors;
+export type InsertPlaylistItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new resource into this collection. */
 export const insertPlaylistItems: API.OperationMethod<
@@ -8995,7 +9322,7 @@ export const insertPlaylistItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPlaylistItemsRequest,
   output: InsertPlaylistItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMembersRequest {
@@ -9033,7 +9360,7 @@ export type ListMembersResponse = MemberListResponse;
 export const ListMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ MemberListResponse;
 
-export type ListMembersError = DefaultErrors;
+export type ListMembersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of members that match the request criteria for a channel. */
 export const listMembers: API.PaginatedOperationMethod<
@@ -9044,7 +9371,7 @@ export const listMembers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMembersRequest,
   output: ListMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

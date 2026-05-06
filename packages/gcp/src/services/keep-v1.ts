@@ -228,6 +228,52 @@ export const BatchDeletePermissionsRequest =
   }).annotate({ identifier: "BatchDeletePermissionsRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -246,7 +292,12 @@ export const CreateNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateNotesResponse = Note;
 export const CreateNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type CreateNotesError = DefaultErrors;
+export type CreateNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new note. */
 export const createNotes: API.OperationMethod<
@@ -257,7 +308,7 @@ export const createNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNotesRequest,
   output: CreateNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNotesRequest {
@@ -282,7 +333,7 @@ export type ListNotesResponse_Op = ListNotesResponse;
 export const ListNotesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListNotesResponse;
 
-export type ListNotesError = DefaultErrors;
+export type ListNotesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists notes. Every list call returns a page of results with `page_size` as the upper bound of returned items. A `page_size` of zero allows the server to choose the upper bound. The ListNotesResponse contains at most `page_size` entries. If there are more things left to list, it provides a `next_page_token` value. (Page tokens are opaque values.) To get the next page of results, copy the result's `next_page_token` into the next request's `page_token`. Repeat until the `next_page_token` returned with a page of results is empty. ListNotes return consistent results in the face of concurrent changes, or signals that it cannot with an ABORTED error. */
 export const listNotes: API.PaginatedOperationMethod<
@@ -293,7 +344,7 @@ export const listNotes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNotesRequest,
   output: ListNotesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -315,7 +366,7 @@ export const GetNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetNotesResponse = Note;
 export const GetNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Note;
 
-export type GetNotesError = DefaultErrors;
+export type GetNotesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a note. */
 export const getNotes: API.OperationMethod<
@@ -326,7 +377,7 @@ export const getNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNotesRequest,
   output: GetNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteNotesRequest {
@@ -344,7 +395,12 @@ export const DeleteNotesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteNotesResponse = Empty;
 export const DeleteNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteNotesError = DefaultErrors;
+export type DeleteNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a note. Caller must have the `OWNER` role on the note to delete. Deleting a note removes the resource immediately and cannot be undone. Any collaborators will lose access to the note. */
 export const deleteNotes: API.OperationMethod<
@@ -355,7 +411,7 @@ export const deleteNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNotesRequest,
   output: DeleteNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteNotesPermissionsRequest {
@@ -382,7 +438,12 @@ export type BatchDeleteNotesPermissionsResponse = Empty;
 export const BatchDeleteNotesPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type BatchDeleteNotesPermissionsError = DefaultErrors;
+export type BatchDeleteNotesPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note. */
 export const batchDeleteNotesPermissions: API.OperationMethod<
@@ -393,7 +454,7 @@ export const batchDeleteNotesPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteNotesPermissionsRequest,
   output: BatchDeleteNotesPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateNotesPermissionsRequest {
@@ -421,7 +482,12 @@ export type BatchCreateNotesPermissionsResponse =
 export const BatchCreateNotesPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreatePermissionsResponse;
 
-export type BatchCreateNotesPermissionsError = DefaultErrors;
+export type BatchCreateNotesPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates one or more permissions on the note. Only permissions with the `WRITER` role may be created. If adding any permission fails, then the entire request fails and no changes are made. */
 export const batchCreateNotesPermissions: API.OperationMethod<
@@ -432,7 +498,7 @@ export const batchCreateNotesPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateNotesPermissionsRequest,
   output: BatchCreateNotesPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadMediaRequest {
@@ -453,7 +519,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DownloadMediaResponse = Attachment;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Attachment;
 
-export type DownloadMediaError = DefaultErrors;
+export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an attachment. To download attachment media via REST requires the alt=media query parameter. Returns a 400 bad request error if attachment media is not available in the requested MIME type. */
 export const downloadMedia: API.OperationMethod<
@@ -464,5 +530,5 @@ export const downloadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

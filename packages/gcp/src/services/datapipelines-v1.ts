@@ -498,6 +498,52 @@ export const GoogleCloudDatapipelinesV1ListJobsResponse =
   }).annotate({ identifier: "GoogleCloudDatapipelinesV1ListJobsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -524,7 +570,12 @@ export type CreateProjectsLocationsPipelinesResponse =
 export const CreateProjectsLocationsPipelinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatapipelinesV1Pipeline;
 
-export type CreateProjectsLocationsPipelinesError = DefaultErrors;
+export type CreateProjectsLocationsPipelinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pipeline. For a batch pipeline, you can pass scheduler information. Data Pipelines uses the scheduler information to create an internal scheduler that runs jobs periodically. If the internal scheduler is not configured, you can use RunPipeline to run jobs. */
 export const createProjectsLocationsPipelines: API.OperationMethod<
@@ -535,7 +586,7 @@ export const createProjectsLocationsPipelines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsPipelinesRequest,
   output: CreateProjectsLocationsPipelinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsPipelinesRequest {
@@ -564,7 +615,12 @@ export type PatchProjectsLocationsPipelinesResponse =
 export const PatchProjectsLocationsPipelinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatapipelinesV1Pipeline;
 
-export type PatchProjectsLocationsPipelinesError = DefaultErrors;
+export type PatchProjectsLocationsPipelinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a pipeline. If successful, the updated Pipeline is returned. Returns `NOT_FOUND` if the pipeline doesn't exist. If UpdatePipeline does not return successfully, you can retry the UpdatePipeline request until you receive a successful response. */
 export const patchProjectsLocationsPipelines: API.OperationMethod<
@@ -575,7 +631,7 @@ export const patchProjectsLocationsPipelines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsPipelinesRequest,
   output: PatchProjectsLocationsPipelinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsPipelinesRequest {
@@ -595,7 +651,12 @@ export type DeleteProjectsLocationsPipelinesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsPipelinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsPipelinesError = DefaultErrors;
+export type DeleteProjectsLocationsPipelinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a pipeline. If a scheduler job is attached to the pipeline, it will be deleted. */
 export const deleteProjectsLocationsPipelines: API.OperationMethod<
@@ -606,7 +667,7 @@ export const deleteProjectsLocationsPipelines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsPipelinesRequest,
   output: DeleteProjectsLocationsPipelinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPipelinesRequest {
@@ -636,7 +697,10 @@ export type ListProjectsLocationsPipelinesResponse =
 export const ListProjectsLocationsPipelinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatapipelinesV1ListPipelinesResponse;
 
-export type ListProjectsLocationsPipelinesError = DefaultErrors;
+export type ListProjectsLocationsPipelinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists pipelines. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it. */
 export const listProjectsLocationsPipelines: API.PaginatedOperationMethod<
@@ -647,7 +711,7 @@ export const listProjectsLocationsPipelines: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPipelinesRequest,
   output: ListProjectsLocationsPipelinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -672,7 +736,10 @@ export type GetProjectsLocationsPipelinesResponse =
 export const GetProjectsLocationsPipelinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatapipelinesV1Pipeline;
 
-export type GetProjectsLocationsPipelinesError = DefaultErrors;
+export type GetProjectsLocationsPipelinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Looks up a single pipeline. Returns a "NOT_FOUND" error if no such pipeline exists. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it. */
 export const getProjectsLocationsPipelines: API.OperationMethod<
@@ -683,7 +750,7 @@ export const getProjectsLocationsPipelines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsPipelinesRequest,
   output: GetProjectsLocationsPipelinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StopProjectsLocationsPipelinesRequest {
@@ -709,7 +776,12 @@ export type StopProjectsLocationsPipelinesResponse =
 export const StopProjectsLocationsPipelinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatapipelinesV1Pipeline;
 
-export type StopProjectsLocationsPipelinesError = DefaultErrors;
+export type StopProjectsLocationsPipelinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Freezes pipeline execution permanently. If there's a corresponding scheduler entry, it's deleted, and the pipeline state is changed to "ARCHIVED". However, pipeline metadata is retained. */
 export const stopProjectsLocationsPipelines: API.OperationMethod<
@@ -720,7 +792,7 @@ export const stopProjectsLocationsPipelines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopProjectsLocationsPipelinesRequest,
   output: StopProjectsLocationsPipelinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunProjectsLocationsPipelinesRequest {
@@ -746,7 +818,12 @@ export type RunProjectsLocationsPipelinesResponse =
 export const RunProjectsLocationsPipelinesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatapipelinesV1RunPipelineResponse;
 
-export type RunProjectsLocationsPipelinesError = DefaultErrors;
+export type RunProjectsLocationsPipelinesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a job for the specified pipeline directly. You can use this method when the internal scheduler is not configured and you want to trigger the job directly or through an external system. Returns a "NOT_FOUND" error if the pipeline doesn't exist. Returns a "FORBIDDEN" error if the user doesn't have permission to access the pipeline or run jobs for the pipeline. */
 export const runProjectsLocationsPipelines: API.OperationMethod<
@@ -757,7 +834,7 @@ export const runProjectsLocationsPipelines: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunProjectsLocationsPipelinesRequest,
   output: RunProjectsLocationsPipelinesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsPipelinesJobsRequest {
@@ -784,7 +861,10 @@ export type ListProjectsLocationsPipelinesJobsResponse =
 export const ListProjectsLocationsPipelinesJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudDatapipelinesV1ListJobsResponse;
 
-export type ListProjectsLocationsPipelinesJobsError = DefaultErrors;
+export type ListProjectsLocationsPipelinesJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists jobs for a given pipeline. Throws a "FORBIDDEN" error if the caller doesn't have permission to access it. */
 export const listProjectsLocationsPipelinesJobs: API.PaginatedOperationMethod<
@@ -795,7 +875,7 @@ export const listProjectsLocationsPipelinesJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsPipelinesJobsRequest,
   output: ListProjectsLocationsPipelinesJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

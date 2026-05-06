@@ -426,6 +426,52 @@ export const LookupHistoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "LookupHistoryRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -468,7 +514,10 @@ export type LookupHeatmapTileMapTypesHeatmapTilesResponse = HttpBody;
 export const LookupHeatmapTileMapTypesHeatmapTilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type LookupHeatmapTileMapTypesHeatmapTilesError = DefaultErrors;
+export type LookupHeatmapTileMapTypesHeatmapTilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a bytes array containing the data of the tile PNG image. */
 export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
@@ -479,7 +528,7 @@ export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupHeatmapTileMapTypesHeatmapTilesRequest,
   output: LookupHeatmapTileMapTypesHeatmapTilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LookupCurrentConditionsRequest_Op {
@@ -504,7 +553,12 @@ export type LookupCurrentConditionsResponse_Op =
 export const LookupCurrentConditionsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ LookupCurrentConditionsResponse;
 
-export type LookupCurrentConditionsError = DefaultErrors;
+export type LookupCurrentConditionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** The Current Conditions endpoint provides hourly air quality information in more than 100 countries, up to a 500 x 500 meters resolution. Includes over 70 local indexes and global air quality index and categories. */
 export const lookupCurrentConditions: API.OperationMethod<
@@ -515,7 +569,7 @@ export const lookupCurrentConditions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupCurrentConditionsRequest_Op,
   output: LookupCurrentConditionsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupHistoryRequest_Op {
@@ -535,7 +589,12 @@ export type LookupHistoryResponse_Op = LookupHistoryResponse;
 export const LookupHistoryResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ LookupHistoryResponse;
 
-export type LookupHistoryError = DefaultErrors;
+export type LookupHistoryError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns air quality history for a specific location for a given time range. */
 export const lookupHistory: API.OperationMethod<
@@ -546,7 +605,7 @@ export const lookupHistory: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupHistoryRequest_Op,
   output: LookupHistoryResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupForecastRequest_Op {
@@ -566,7 +625,12 @@ export type LookupForecastResponse_Op = LookupForecastResponse;
 export const LookupForecastResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ LookupForecastResponse;
 
-export type LookupForecastError = DefaultErrors;
+export type LookupForecastError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns air quality forecast for a specific location for a given time range. */
 export const lookupForecast: API.OperationMethod<
@@ -577,5 +641,5 @@ export const lookupForecast: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupForecastRequest_Op,
   output: LookupForecastResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

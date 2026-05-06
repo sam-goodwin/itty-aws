@@ -296,6 +296,52 @@ export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearch
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -318,7 +364,12 @@ export type CreatePagesResponse =
 export const CreatePagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 
-export type CreatePagesError = DefaultErrors;
+export type CreatePagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create `ClaimReview` markup on a page. */
 export const createPages: API.OperationMethod<
@@ -329,7 +380,7 @@ export const createPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePagesRequest,
   output: CreatePagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPagesRequest {
@@ -363,7 +414,7 @@ export type ListPagesResponse =
 export const ListPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse;
 
-export type ListPagesError = DefaultErrors;
+export type ListPagesError = DefaultErrors | NotFound | Forbidden;
 
 /** List the `ClaimReview` markup pages for a specific URL or for an organization. */
 export const listPages: API.PaginatedOperationMethod<
@@ -374,7 +425,7 @@ export const listPages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPagesRequest,
   output: ListPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -397,7 +448,12 @@ export type DeletePagesResponse = GoogleProtobufEmpty;
 export const DeletePagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeletePagesError = DefaultErrors;
+export type DeletePagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete all `ClaimReview` markup on a page. */
 export const deletePages: API.OperationMethod<
@@ -408,7 +464,7 @@ export const deletePages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePagesRequest,
   output: DeletePagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePagesRequest {
@@ -433,7 +489,12 @@ export type UpdatePagesResponse =
 export const UpdatePagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 
-export type UpdatePagesError = DefaultErrors;
+export type UpdatePagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update for all `ClaimReview` markup on a page Note that this is a full update. To retain the existing `ClaimReview` markup on a page, first perform a Get operation, then modify the returned markup, and finally call Update with the entire `ClaimReview` markup as the body. */
 export const updatePages: API.OperationMethod<
@@ -444,7 +505,7 @@ export const updatePages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePagesRequest,
   output: UpdatePagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPagesRequest {
@@ -464,7 +525,7 @@ export type GetPagesResponse =
 export const GetPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage;
 
-export type GetPagesError = DefaultErrors;
+export type GetPagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get all `ClaimReview` markup on a page. */
 export const getPages: API.OperationMethod<
@@ -475,7 +536,7 @@ export const getPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPagesRequest,
   output: GetPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchClaimsRequest {
@@ -517,7 +578,7 @@ export type SearchClaimsResponse =
 export const SearchClaimsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse;
 
-export type SearchClaimsError = DefaultErrors;
+export type SearchClaimsError = DefaultErrors | NotFound | Forbidden;
 
 /** Search through fact-checked claims. */
 export const searchClaims: API.PaginatedOperationMethod<
@@ -528,7 +589,7 @@ export const searchClaims: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchClaimsRequest,
   output: SearchClaimsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -567,7 +628,7 @@ export type ImageSearchClaimsResponse =
 export const ImageSearchClaimsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse;
 
-export type ImageSearchClaimsError = DefaultErrors;
+export type ImageSearchClaimsError = DefaultErrors | NotFound | Forbidden;
 
 /** Search through fact-checked claims using an image as the query. */
 export const imageSearchClaims: API.PaginatedOperationMethod<
@@ -578,7 +639,7 @@ export const imageSearchClaims: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ImageSearchClaimsRequest,
   output: ImageSearchClaimsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

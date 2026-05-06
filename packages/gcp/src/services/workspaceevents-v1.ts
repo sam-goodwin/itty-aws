@@ -482,6 +482,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -512,7 +558,12 @@ export const PatchSubscriptionsRequest =
 export type PatchSubscriptionsResponse = Operation;
 export const PatchSubscriptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchSubscriptionsError = DefaultErrors;
+export type PatchSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or renews a Google Workspace subscription. To learn how to use this method, see [Update or renew a Google Workspace subscription](https://developers.google.com/workspace/events/guides/update-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can update a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). */
 export const patchSubscriptions: API.OperationMethod<
@@ -523,7 +574,7 @@ export const patchSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSubscriptionsRequest,
   output: PatchSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReactivateSubscriptionsRequest {
@@ -546,7 +597,12 @@ export type ReactivateSubscriptionsResponse = Operation;
 export const ReactivateSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ReactivateSubscriptionsError = DefaultErrors;
+export type ReactivateSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reactivates a suspended Google Workspace subscription. This method resets your subscription's `State` field to `ACTIVE`. Before you use this method, you must fix the error that suspended the subscription. This method will ignore or reject any subscription that isn't currently in a suspended state. To learn how to use this method, see [Reactivate a Google Workspace subscription](https://developers.google.com/workspace/events/guides/reactivate-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can reactivate a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). */
 export const reactivateSubscriptions: API.OperationMethod<
@@ -557,7 +613,7 @@ export const reactivateSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReactivateSubscriptionsRequest,
   output: ReactivateSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSubscriptionsRequest {
@@ -577,7 +633,7 @@ export type GetSubscriptionsResponse = Subscription;
 export const GetSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetSubscriptionsError = DefaultErrors;
+export type GetSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details about a Google Workspace subscription. To learn how to use this method, see [Get details about a Google Workspace subscription](https://developers.google.com/workspace/events/guides/get-subscription). */
 export const getSubscriptions: API.OperationMethod<
@@ -588,7 +644,7 @@ export const getSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionsRequest,
   output: GetSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateSubscriptionsRequest {
@@ -613,7 +669,12 @@ export type CreateSubscriptionsResponse = Operation;
 export const CreateSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateSubscriptionsError = DefaultErrors;
+export type CreateSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Google Workspace subscription. To learn how to use this method, see [Create a Google Workspace subscription](https://developers.google.com/workspace/events/guides/create-subscription). For a subscription on a [Chat target resource](https://developers.google.com/workspace/events/guides/events-chat), you can create a subscription as: - A Chat app by specifying an authorization scope that begins with `chat.app` and getting one-time administrator approval. To learn more, see [Authorize as a Chat app with administrator approval](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). - A user by specifying an authorization scope that doesn't include `app` in its name. To learn more, see [Authorize as a Chat user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). */
 export const createSubscriptions: API.OperationMethod<
@@ -624,7 +685,7 @@ export const createSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionsRequest,
   output: CreateSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSubscriptionsRequest {
@@ -657,7 +718,12 @@ export type DeleteSubscriptionsResponse = Operation;
 export const DeleteSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSubscriptionsError = DefaultErrors;
+export type DeleteSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a Google Workspace subscription. To learn how to use this method, see [Delete a Google Workspace subscription](https://developers.google.com/workspace/events/guides/delete-subscription). */
 export const deleteSubscriptions: API.OperationMethod<
@@ -668,7 +734,7 @@ export const deleteSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionsRequest,
   output: DeleteSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSubscriptionsRequest {
@@ -694,7 +760,7 @@ export type ListSubscriptionsResponse_Op = ListSubscriptionsResponse;
 export const ListSubscriptionsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
 
-export type ListSubscriptionsError = DefaultErrors;
+export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists Google Workspace subscriptions. To learn how to use this method, see [List Google Workspace subscriptions](https://developers.google.com/workspace/events/guides/list-subscriptions). */
 export const listSubscriptions: API.PaginatedOperationMethod<
@@ -705,7 +771,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -727,7 +793,12 @@ export const StreamMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StreamMessageResponse = StreamResponse;
 export const StreamMessageResponse = /*@__PURE__*/ /*#__PURE__*/ StreamResponse;
 
-export type StreamMessageError = DefaultErrors;
+export type StreamMessageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** SendStreamingMessage is a streaming call that will return a stream of task update events until the Task is in an interrupted or terminal state. */
 export const streamMessage: API.OperationMethod<
@@ -738,7 +809,7 @@ export const streamMessage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StreamMessageRequest,
   output: StreamMessageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTasksRequest {
@@ -764,7 +835,7 @@ export const GetTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTasksResponse = Task;
 export const GetTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type GetTasksError = DefaultErrors;
+export type GetTasksError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the current state of a task from the agent. */
 export const getTasks: API.OperationMethod<
@@ -775,7 +846,7 @@ export const getTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTasksRequest,
   output: GetTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelTasksRequest {
@@ -796,7 +867,12 @@ export const CancelTasksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CancelTasksResponse = Task;
 export const CancelTasksResponse = /*@__PURE__*/ /*#__PURE__*/ Task;
 
-export type CancelTasksError = DefaultErrors;
+export type CancelTasksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel a task from the agent. If supported one should expect no more task updates for the task. */
 export const cancelTasks: API.OperationMethod<
@@ -807,7 +883,7 @@ export const cancelTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelTasksRequest,
   output: CancelTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubscribeTasksRequest {
@@ -829,7 +905,7 @@ export type SubscribeTasksResponse = StreamResponse;
 export const SubscribeTasksResponse =
   /*@__PURE__*/ /*#__PURE__*/ StreamResponse;
 
-export type SubscribeTasksError = DefaultErrors;
+export type SubscribeTasksError = DefaultErrors | NotFound | Forbidden;
 
 /** TaskSubscription is a streaming call that will return a stream of task update events. This attaches the stream to an existing in process task. If the task is complete the stream will return the completed task (like GetTask) and close the stream. */
 export const subscribeTasks: API.OperationMethod<
@@ -840,7 +916,7 @@ export const subscribeTasks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubscribeTasksRequest,
   output: SubscribeTasksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetTasksPushNotificationConfigsRequest {
@@ -864,7 +940,10 @@ export type GetTasksPushNotificationConfigsResponse =
 export const GetTasksPushNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TaskPushNotificationConfig;
 
-export type GetTasksPushNotificationConfigsError = DefaultErrors;
+export type GetTasksPushNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a push notification config for a task. */
 export const getTasksPushNotificationConfigs: API.OperationMethod<
@@ -875,7 +954,7 @@ export const getTasksPushNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTasksPushNotificationConfigsRequest,
   output: GetTasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListTasksPushNotificationConfigsRequest {
@@ -905,7 +984,10 @@ export type ListTasksPushNotificationConfigsResponse =
 export const ListTasksPushNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTaskPushNotificationConfigResponse;
 
-export type ListTasksPushNotificationConfigsError = DefaultErrors;
+export type ListTasksPushNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of push notifications configured for a task. */
 export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
@@ -916,7 +998,7 @@ export const listTasksPushNotificationConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTasksPushNotificationConfigsRequest,
   output: ListTasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -950,7 +1032,12 @@ export type CreateTasksPushNotificationConfigsResponse =
 export const CreateTasksPushNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TaskPushNotificationConfig;
 
-export type CreateTasksPushNotificationConfigsError = DefaultErrors;
+export type CreateTasksPushNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set a push notification config for a task. */
 export const createTasksPushNotificationConfigs: API.OperationMethod<
@@ -961,7 +1048,7 @@ export const createTasksPushNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTasksPushNotificationConfigsRequest,
   output: CreateTasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTasksPushNotificationConfigsRequest {
@@ -984,7 +1071,12 @@ export type DeleteTasksPushNotificationConfigsResponse = Empty;
 export const DeleteTasksPushNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteTasksPushNotificationConfigsError = DefaultErrors;
+export type DeleteTasksPushNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a push notification config for a task. */
 export const deleteTasksPushNotificationConfigs: API.OperationMethod<
@@ -995,7 +1087,7 @@ export const deleteTasksPushNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTasksPushNotificationConfigsRequest,
   output: DeleteTasksPushNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -1013,7 +1105,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1024,5 +1116,5 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -805,6 +805,52 @@ export const SasPortalCreateSignedDeviceRequest =
   }).annotate({ identifier: "SasPortalCreateSignedDeviceRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -823,7 +869,7 @@ export const GetNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetNodesResponse = SasPortalNode;
 export const GetNodesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type GetNodesError = DefaultErrors;
+export type GetNodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a requested node. */
 export const getNodes: API.OperationMethod<
@@ -834,7 +880,7 @@ export const getNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNodesRequest,
   output: GetNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteNodesDeploymentsRequest {
@@ -854,7 +900,12 @@ export type DeleteNodesDeploymentsResponse = SasPortalEmpty;
 export const DeleteNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteNodesDeploymentsError = DefaultErrors;
+export type DeleteNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a deployment. */
 export const deleteNodesDeployments: API.OperationMethod<
@@ -865,7 +916,7 @@ export const deleteNodesDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNodesDeploymentsRequest,
   output: DeleteNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNodesDeploymentsRequest {
@@ -885,7 +936,7 @@ export type GetNodesDeploymentsResponse = SasPortalDeployment;
 export const GetNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type GetNodesDeploymentsError = DefaultErrors;
+export type GetNodesDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a requested deployment. */
 export const getNodesDeployments: API.OperationMethod<
@@ -896,7 +947,7 @@ export const getNodesDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNodesDeploymentsRequest,
   output: GetNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListNodesDeploymentsRequest {
@@ -925,7 +976,7 @@ export type ListNodesDeploymentsResponse = SasPortalListDeploymentsResponse;
 export const ListNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDeploymentsResponse;
 
-export type ListNodesDeploymentsError = DefaultErrors;
+export type ListNodesDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists deployments. */
 export const listNodesDeployments: API.PaginatedOperationMethod<
@@ -936,7 +987,7 @@ export const listNodesDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesDeploymentsRequest,
   output: ListNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -966,7 +1017,12 @@ export type PatchNodesDeploymentsResponse = SasPortalDeployment;
 export const PatchNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type PatchNodesDeploymentsError = DefaultErrors;
+export type PatchNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing deployment. */
 export const patchNodesDeployments: API.OperationMethod<
@@ -977,7 +1033,7 @@ export const patchNodesDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNodesDeploymentsRequest,
   output: PatchNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveNodesDeploymentsRequest {
@@ -1000,7 +1056,12 @@ export type MoveNodesDeploymentsResponse = SasPortalOperation;
 export const MoveNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MoveNodesDeploymentsError = DefaultErrors;
+export type MoveNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a deployment under another node or customer. */
 export const moveNodesDeployments: API.OperationMethod<
@@ -1011,7 +1072,7 @@ export const moveNodesDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveNodesDeploymentsRequest,
   output: MoveNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSignedNodesDeploymentsDevicesRequest {
@@ -1040,7 +1101,12 @@ export type CreateSignedNodesDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateSignedNodesDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateSignedNodesDeploymentsDevicesError = DefaultErrors;
+export type CreateSignedNodesDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a signed device under a node or customer. */
 export const createSignedNodesDeploymentsDevices: API.OperationMethod<
@@ -1051,7 +1117,7 @@ export const createSignedNodesDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignedNodesDeploymentsDevicesRequest,
   output: CreateSignedNodesDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodesDeploymentsDevicesRequest {
@@ -1080,7 +1146,10 @@ export type ListNodesDeploymentsDevicesResponse = SasPortalListDevicesResponse;
 export const ListNodesDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
 
-export type ListNodesDeploymentsDevicesError = DefaultErrors;
+export type ListNodesDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists devices under a node or customer. */
 export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
@@ -1091,7 +1160,7 @@ export const listNodesDeploymentsDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesDeploymentsDevicesRequest,
   output: ListNodesDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1122,7 +1191,12 @@ export type CreateNodesDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateNodesDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateNodesDeploymentsDevicesError = DefaultErrors;
+export type CreateNodesDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a device under a node or customer. */
 export const createNodesDeploymentsDevices: API.OperationMethod<
@@ -1133,7 +1207,7 @@ export const createNodesDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNodesDeploymentsDevicesRequest,
   output: CreateNodesDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveNodesDevicesRequest {
@@ -1156,7 +1230,12 @@ export type MoveNodesDevicesResponse = SasPortalOperation;
 export const MoveNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MoveNodesDevicesError = DefaultErrors;
+export type MoveNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a device under another node or customer. */
 export const moveNodesDevices: API.OperationMethod<
@@ -1167,7 +1246,7 @@ export const moveNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveNodesDevicesRequest,
   output: MoveNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateNodesDevicesRequest {
@@ -1194,7 +1273,12 @@ export type CreateNodesDevicesResponse = SasPortalDevice;
 export const CreateNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateNodesDevicesError = DefaultErrors;
+export type CreateNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a device under a node or customer. */
 export const createNodesDevices: API.OperationMethod<
@@ -1205,7 +1289,7 @@ export const createNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNodesDevicesRequest,
   output: CreateNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSignedNodesDevicesRequest {
@@ -1234,7 +1318,12 @@ export type CreateSignedNodesDevicesResponse = SasPortalDevice;
 export const CreateSignedNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateSignedNodesDevicesError = DefaultErrors;
+export type CreateSignedNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a signed device under a node or customer. */
 export const createSignedNodesDevices: API.OperationMethod<
@@ -1245,7 +1334,7 @@ export const createSignedNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignedNodesDevicesRequest,
   output: CreateSignedNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchNodesDevicesRequest {
@@ -1271,7 +1360,12 @@ export type PatchNodesDevicesResponse = SasPortalDevice;
 export const PatchNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type PatchNodesDevicesError = DefaultErrors;
+export type PatchNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a device. */
 export const patchNodesDevices: API.OperationMethod<
@@ -1282,7 +1376,7 @@ export const patchNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNodesDevicesRequest,
   output: PatchNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNodesDevicesRequest {
@@ -1303,7 +1397,7 @@ export type GetNodesDevicesResponse = SasPortalDevice;
 export const GetNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type GetNodesDevicesError = DefaultErrors;
+export type GetNodesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details about a device. */
 export const getNodesDevices: API.OperationMethod<
@@ -1314,7 +1408,7 @@ export const getNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNodesDevicesRequest,
   output: GetNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListNodesDevicesRequest {
@@ -1343,7 +1437,7 @@ export type ListNodesDevicesResponse = SasPortalListDevicesResponse;
 export const ListNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
 
-export type ListNodesDevicesError = DefaultErrors;
+export type ListNodesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists devices under a node or customer. */
 export const listNodesDevices: API.PaginatedOperationMethod<
@@ -1354,7 +1448,7 @@ export const listNodesDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesDevicesRequest,
   output: ListNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1385,7 +1479,12 @@ export type SignDeviceNodesDevicesResponse = SasPortalEmpty;
 export const SignDeviceNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type SignDeviceNodesDevicesError = DefaultErrors;
+export type SignDeviceNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a device. */
 export const signDeviceNodesDevices: API.OperationMethod<
@@ -1396,7 +1495,7 @@ export const signDeviceNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignDeviceNodesDevicesRequest,
   output: SignDeviceNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNodesDevicesRequest {
@@ -1416,7 +1515,12 @@ export type DeleteNodesDevicesResponse = SasPortalEmpty;
 export const DeleteNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteNodesDevicesError = DefaultErrors;
+export type DeleteNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a device. */
 export const deleteNodesDevices: API.OperationMethod<
@@ -1427,7 +1531,7 @@ export const deleteNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNodesDevicesRequest,
   output: DeleteNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSignedNodesDevicesRequest {
@@ -1456,7 +1560,12 @@ export type UpdateSignedNodesDevicesResponse = SasPortalDevice;
 export const UpdateSignedNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type UpdateSignedNodesDevicesError = DefaultErrors;
+export type UpdateSignedNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a signed device. */
 export const updateSignedNodesDevices: API.OperationMethod<
@@ -1467,7 +1576,7 @@ export const updateSignedNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSignedNodesDevicesRequest,
   output: UpdateSignedNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchNodesNodesRequest {
@@ -1494,7 +1603,12 @@ export type PatchNodesNodesResponse = SasPortalNode;
 export const PatchNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type PatchNodesNodesError = DefaultErrors;
+export type PatchNodesNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing node. */
 export const patchNodesNodes: API.OperationMethod<
@@ -1505,7 +1619,7 @@ export const patchNodesNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNodesNodesRequest,
   output: PatchNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveNodesNodesRequest {
@@ -1527,7 +1641,12 @@ export type MoveNodesNodesResponse = SasPortalOperation;
 export const MoveNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MoveNodesNodesError = DefaultErrors;
+export type MoveNodesNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a node under another node or customer. */
 export const moveNodesNodes: API.OperationMethod<
@@ -1538,7 +1657,7 @@ export const moveNodesNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveNodesNodesRequest,
   output: MoveNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNodesNodesRequest {
@@ -1556,7 +1675,7 @@ export const GetNodesNodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetNodesNodesResponse = SasPortalNode;
 export const GetNodesNodesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type GetNodesNodesError = DefaultErrors;
+export type GetNodesNodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a requested node. */
 export const getNodesNodes: API.OperationMethod<
@@ -1567,7 +1686,7 @@ export const getNodesNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNodesNodesRequest,
   output: GetNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListNodesNodesRequest {
@@ -1595,7 +1714,7 @@ export type ListNodesNodesResponse = SasPortalListNodesResponse;
 export const ListNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
 
-export type ListNodesNodesError = DefaultErrors;
+export type ListNodesNodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists nodes. */
 export const listNodesNodes: API.PaginatedOperationMethod<
@@ -1606,7 +1725,7 @@ export const listNodesNodes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesRequest,
   output: ListNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1633,7 +1752,12 @@ export type CreateNodesNodesResponse = SasPortalNode;
 export const CreateNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type CreateNodesNodesError = DefaultErrors;
+export type CreateNodesNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new node. */
 export const createNodesNodes: API.OperationMethod<
@@ -1644,7 +1768,7 @@ export const createNodesNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNodesNodesRequest,
   output: CreateNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNodesNodesRequest {
@@ -1664,7 +1788,12 @@ export type DeleteNodesNodesResponse = SasPortalEmpty;
 export const DeleteNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteNodesNodesError = DefaultErrors;
+export type DeleteNodesNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a node. */
 export const deleteNodesNodes: API.OperationMethod<
@@ -1675,7 +1804,7 @@ export const deleteNodesNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNodesNodesRequest,
   output: DeleteNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateNodesNodesDevicesRequest {
@@ -1702,7 +1831,12 @@ export type CreateNodesNodesDevicesResponse = SasPortalDevice;
 export const CreateNodesNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateNodesNodesDevicesError = DefaultErrors;
+export type CreateNodesNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a device under a node or customer. */
 export const createNodesNodesDevices: API.OperationMethod<
@@ -1713,7 +1847,7 @@ export const createNodesNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNodesNodesDevicesRequest,
   output: CreateNodesNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSignedNodesNodesDevicesRequest {
@@ -1742,7 +1876,12 @@ export type CreateSignedNodesNodesDevicesResponse = SasPortalDevice;
 export const CreateSignedNodesNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateSignedNodesNodesDevicesError = DefaultErrors;
+export type CreateSignedNodesNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a signed device under a node or customer. */
 export const createSignedNodesNodesDevices: API.OperationMethod<
@@ -1753,7 +1892,7 @@ export const createSignedNodesNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignedNodesNodesDevicesRequest,
   output: CreateSignedNodesNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodesNodesDevicesRequest {
@@ -1782,7 +1921,7 @@ export type ListNodesNodesDevicesResponse = SasPortalListDevicesResponse;
 export const ListNodesNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
 
-export type ListNodesNodesDevicesError = DefaultErrors;
+export type ListNodesNodesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists devices under a node or customer. */
 export const listNodesNodesDevices: API.PaginatedOperationMethod<
@@ -1793,7 +1932,7 @@ export const listNodesNodesDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesDevicesRequest,
   output: ListNodesNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1820,7 +1959,12 @@ export type CreateNodesNodesNodesResponse = SasPortalNode;
 export const CreateNodesNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type CreateNodesNodesNodesError = DefaultErrors;
+export type CreateNodesNodesNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new node. */
 export const createNodesNodesNodes: API.OperationMethod<
@@ -1831,7 +1975,7 @@ export const createNodesNodesNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNodesNodesNodesRequest,
   output: CreateNodesNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodesNodesNodesRequest {
@@ -1860,7 +2004,7 @@ export type ListNodesNodesNodesResponse = SasPortalListNodesResponse;
 export const ListNodesNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
 
-export type ListNodesNodesNodesError = DefaultErrors;
+export type ListNodesNodesNodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists nodes. */
 export const listNodesNodesNodes: API.PaginatedOperationMethod<
@@ -1871,7 +2015,7 @@ export const listNodesNodesNodes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesNodesRequest,
   output: ListNodesNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1902,7 +2046,12 @@ export type CreateNodesNodesDeploymentsResponse = SasPortalDeployment;
 export const CreateNodesNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type CreateNodesNodesDeploymentsError = DefaultErrors;
+export type CreateNodesNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new deployment. */
 export const createNodesNodesDeployments: API.OperationMethod<
@@ -1913,7 +2062,7 @@ export const createNodesNodesDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateNodesNodesDeploymentsRequest,
   output: CreateNodesNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodesNodesDeploymentsRequest {
@@ -1943,7 +2092,10 @@ export type ListNodesNodesDeploymentsResponse =
 export const ListNodesNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDeploymentsResponse;
 
-export type ListNodesNodesDeploymentsError = DefaultErrors;
+export type ListNodesNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists deployments. */
 export const listNodesNodesDeployments: API.PaginatedOperationMethod<
@@ -1954,7 +2106,7 @@ export const listNodesNodesDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodesDeploymentsRequest,
   output: ListNodesNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1976,7 +2128,12 @@ export const SetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SetPoliciesResponse = SasPortalPolicy;
 export const SetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
 
-export type SetPoliciesError = DefaultErrors;
+export type SetPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setPolicies: API.OperationMethod<
@@ -1987,7 +2144,7 @@ export const setPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetPoliciesRequest,
   output: SetPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPoliciesRequest {
@@ -2005,7 +2162,12 @@ export const GetPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPoliciesResponse = SasPortalPolicy;
 export const GetPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SasPortalPolicy;
 
-export type GetPoliciesError = DefaultErrors;
+export type GetPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getPolicies: API.OperationMethod<
@@ -2016,7 +2178,7 @@ export const getPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPoliciesRequest,
   output: GetPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestPoliciesRequest {
@@ -2035,7 +2197,12 @@ export type TestPoliciesResponse = SasPortalTestPermissionsResponse;
 export const TestPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalTestPermissionsResponse;
 
-export type TestPoliciesError = DefaultErrors;
+export type TestPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testPolicies: API.OperationMethod<
@@ -2046,7 +2213,7 @@ export const testPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestPoliciesRequest,
   output: TestPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvisionDeploymentCustomersRequest {
@@ -2073,7 +2240,12 @@ export type ProvisionDeploymentCustomersResponse =
 export const ProvisionDeploymentCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalProvisionDeploymentResponse;
 
-export type ProvisionDeploymentCustomersError = DefaultErrors;
+export type ProvisionDeploymentCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SAS deployment through the GCP workflow. Creates a SAS organization if an organization match is not found. */
 export const provisionDeploymentCustomers: API.OperationMethod<
@@ -2084,7 +2256,7 @@ export const provisionDeploymentCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionDeploymentCustomersRequest,
   output: ProvisionDeploymentCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLegacyOrganizationsCustomersRequest {}
@@ -2103,7 +2275,10 @@ export type ListLegacyOrganizationsCustomersResponse =
 export const ListLegacyOrganizationsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListLegacyOrganizationsResponse;
 
-export type ListLegacyOrganizationsCustomersError = DefaultErrors;
+export type ListLegacyOrganizationsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of legacy organizations. */
 export const listLegacyOrganizationsCustomers: API.OperationMethod<
@@ -2114,7 +2289,7 @@ export const listLegacyOrganizationsCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLegacyOrganizationsCustomersRequest,
   output: ListLegacyOrganizationsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCustomersRequest {
@@ -2133,7 +2308,7 @@ export type GetCustomersResponse = SasPortalCustomer;
 export const GetCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalCustomer;
 
-export type GetCustomersError = DefaultErrors;
+export type GetCustomersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a requested customer. */
 export const getCustomers: API.OperationMethod<
@@ -2144,7 +2319,7 @@ export const getCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersRequest,
   output: GetCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersRequest {
@@ -2166,7 +2341,7 @@ export type ListCustomersResponse = SasPortalListCustomersResponse;
 export const ListCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListCustomersResponse;
 
-export type ListCustomersError = DefaultErrors;
+export type ListCustomersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of requested customers. */
 export const listCustomers: API.PaginatedOperationMethod<
@@ -2177,7 +2352,7 @@ export const listCustomers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersRequest,
   output: ListCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2207,7 +2382,12 @@ export type MigrateOrganizationCustomersResponse = SasPortalOperation;
 export const MigrateOrganizationCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MigrateOrganizationCustomersError = DefaultErrors;
+export type MigrateOrganizationCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Migrates a SAS organization to the cloud. This will create GCP projects for each deployment and associate them. The SAS Organization is linked to the gcp project that called the command. go/sas-legacy-customer-migration */
 export const migrateOrganizationCustomers: API.OperationMethod<
@@ -2218,7 +2398,7 @@ export const migrateOrganizationCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MigrateOrganizationCustomersRequest,
   output: MigrateOrganizationCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGcpProjectDeploymentsCustomersRequest {}
@@ -2237,7 +2417,10 @@ export type ListGcpProjectDeploymentsCustomersResponse =
 export const ListGcpProjectDeploymentsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListGcpProjectDeploymentsResponse;
 
-export type ListGcpProjectDeploymentsCustomersError = DefaultErrors;
+export type ListGcpProjectDeploymentsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of SAS deployments associated with current GCP project. Includes whether SAS analytics has been enabled or not. */
 export const listGcpProjectDeploymentsCustomers: API.OperationMethod<
@@ -2248,7 +2431,7 @@ export const listGcpProjectDeploymentsCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListGcpProjectDeploymentsCustomersRequest,
   output: ListGcpProjectDeploymentsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetupSasAnalyticsCustomersRequest {
@@ -2272,7 +2455,12 @@ export type SetupSasAnalyticsCustomersResponse = SasPortalOperation;
 export const SetupSasAnalyticsCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type SetupSasAnalyticsCustomersError = DefaultErrors;
+export type SetupSasAnalyticsCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub with a subscription to BigQuery. All the Pub/Sub topics and BigQuery tables are created automatically as part of this service. */
 export const setupSasAnalyticsCustomers: API.OperationMethod<
@@ -2283,7 +2471,7 @@ export const setupSasAnalyticsCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetupSasAnalyticsCustomersRequest,
   output: SetupSasAnalyticsCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCustomersRequest {
@@ -2308,7 +2496,12 @@ export type PatchCustomersResponse = SasPortalCustomer;
 export const PatchCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalCustomer;
 
-export type PatchCustomersError = DefaultErrors;
+export type PatchCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing customer. */
 export const patchCustomers: API.OperationMethod<
@@ -2319,7 +2512,7 @@ export const patchCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersRequest,
   output: PatchCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersDeploymentsRequest {
@@ -2339,7 +2532,7 @@ export type GetCustomersDeploymentsResponse = SasPortalDeployment;
 export const GetCustomersDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type GetCustomersDeploymentsError = DefaultErrors;
+export type GetCustomersDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a requested deployment. */
 export const getCustomersDeployments: API.OperationMethod<
@@ -2350,7 +2543,7 @@ export const getCustomersDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersDeploymentsRequest,
   output: GetCustomersDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersDeploymentsRequest {
@@ -2379,7 +2572,10 @@ export type ListCustomersDeploymentsResponse = SasPortalListDeploymentsResponse;
 export const ListCustomersDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDeploymentsResponse;
 
-export type ListCustomersDeploymentsError = DefaultErrors;
+export type ListCustomersDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists deployments. */
 export const listCustomersDeployments: API.PaginatedOperationMethod<
@@ -2390,7 +2586,7 @@ export const listCustomersDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDeploymentsRequest,
   output: ListCustomersDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2421,7 +2617,12 @@ export type CreateCustomersDeploymentsResponse = SasPortalDeployment;
 export const CreateCustomersDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type CreateCustomersDeploymentsError = DefaultErrors;
+export type CreateCustomersDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new deployment. */
 export const createCustomersDeployments: API.OperationMethod<
@@ -2432,7 +2633,7 @@ export const createCustomersDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersDeploymentsRequest,
   output: CreateCustomersDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCustomersDeploymentsRequest {
@@ -2458,7 +2659,12 @@ export type PatchCustomersDeploymentsResponse = SasPortalDeployment;
 export const PatchCustomersDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type PatchCustomersDeploymentsError = DefaultErrors;
+export type PatchCustomersDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing deployment. */
 export const patchCustomersDeployments: API.OperationMethod<
@@ -2469,7 +2675,7 @@ export const patchCustomersDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersDeploymentsRequest,
   output: PatchCustomersDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveCustomersDeploymentsRequest {
@@ -2492,7 +2698,12 @@ export type MoveCustomersDeploymentsResponse = SasPortalOperation;
 export const MoveCustomersDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MoveCustomersDeploymentsError = DefaultErrors;
+export type MoveCustomersDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a deployment under another node or customer. */
 export const moveCustomersDeployments: API.OperationMethod<
@@ -2503,7 +2714,7 @@ export const moveCustomersDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveCustomersDeploymentsRequest,
   output: MoveCustomersDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCustomersDeploymentsRequest {
@@ -2523,7 +2734,12 @@ export type DeleteCustomersDeploymentsResponse = SasPortalEmpty;
 export const DeleteCustomersDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteCustomersDeploymentsError = DefaultErrors;
+export type DeleteCustomersDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a deployment. */
 export const deleteCustomersDeployments: API.OperationMethod<
@@ -2534,7 +2750,7 @@ export const deleteCustomersDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersDeploymentsRequest,
   output: DeleteCustomersDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSignedCustomersDeploymentsDevicesRequest {
@@ -2563,7 +2779,12 @@ export type CreateSignedCustomersDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateSignedCustomersDeploymentsDevicesError = DefaultErrors;
+export type CreateSignedCustomersDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a signed device under a node or customer. */
 export const createSignedCustomersDeploymentsDevices: API.OperationMethod<
@@ -2574,7 +2795,7 @@ export const createSignedCustomersDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignedCustomersDeploymentsDevicesRequest,
   output: CreateSignedCustomersDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersDeploymentsDevicesRequest {
@@ -2604,7 +2825,10 @@ export type ListCustomersDeploymentsDevicesResponse =
 export const ListCustomersDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
 
-export type ListCustomersDeploymentsDevicesError = DefaultErrors;
+export type ListCustomersDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists devices under a node or customer. */
 export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
@@ -2615,7 +2839,7 @@ export const listCustomersDeploymentsDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDeploymentsDevicesRequest,
   output: ListCustomersDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2646,7 +2870,12 @@ export type CreateCustomersDeploymentsDevicesResponse = SasPortalDevice;
 export const CreateCustomersDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateCustomersDeploymentsDevicesError = DefaultErrors;
+export type CreateCustomersDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a device under a node or customer. */
 export const createCustomersDeploymentsDevices: API.OperationMethod<
@@ -2657,7 +2886,7 @@ export const createCustomersDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersDeploymentsDevicesRequest,
   output: CreateCustomersDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSignedCustomersDevicesRequest {
@@ -2686,7 +2915,12 @@ export type UpdateSignedCustomersDevicesResponse = SasPortalDevice;
 export const UpdateSignedCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type UpdateSignedCustomersDevicesError = DefaultErrors;
+export type UpdateSignedCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a signed device. */
 export const updateSignedCustomersDevices: API.OperationMethod<
@@ -2697,7 +2931,7 @@ export const updateSignedCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSignedCustomersDevicesRequest,
   output: UpdateSignedCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignDeviceCustomersDevicesRequest {
@@ -2724,7 +2958,12 @@ export type SignDeviceCustomersDevicesResponse = SasPortalEmpty;
 export const SignDeviceCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type SignDeviceCustomersDevicesError = DefaultErrors;
+export type SignDeviceCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a device. */
 export const signDeviceCustomersDevices: API.OperationMethod<
@@ -2735,7 +2974,7 @@ export const signDeviceCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignDeviceCustomersDevicesRequest,
   output: SignDeviceCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCustomersDevicesRequest {
@@ -2755,7 +2994,12 @@ export type DeleteCustomersDevicesResponse = SasPortalEmpty;
 export const DeleteCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteCustomersDevicesError = DefaultErrors;
+export type DeleteCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a device. */
 export const deleteCustomersDevices: API.OperationMethod<
@@ -2766,7 +3010,7 @@ export const deleteCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersDevicesRequest,
   output: DeleteCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersDevicesRequest {
@@ -2786,7 +3030,7 @@ export type GetCustomersDevicesResponse = SasPortalDevice;
 export const GetCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type GetCustomersDevicesError = DefaultErrors;
+export type GetCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details about a device. */
 export const getCustomersDevices: API.OperationMethod<
@@ -2797,7 +3041,7 @@ export const getCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersDevicesRequest,
   output: GetCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersDevicesRequest {
@@ -2826,7 +3070,7 @@ export type ListCustomersDevicesResponse = SasPortalListDevicesResponse;
 export const ListCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
 
-export type ListCustomersDevicesError = DefaultErrors;
+export type ListCustomersDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists devices under a node or customer. */
 export const listCustomersDevices: API.PaginatedOperationMethod<
@@ -2837,7 +3081,7 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersDevicesRequest,
   output: ListCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2867,7 +3111,12 @@ export type PatchCustomersDevicesResponse = SasPortalDevice;
 export const PatchCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type PatchCustomersDevicesError = DefaultErrors;
+export type PatchCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a device. */
 export const patchCustomersDevices: API.OperationMethod<
@@ -2878,7 +3127,7 @@ export const patchCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersDevicesRequest,
   output: PatchCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCustomersDevicesRequest {
@@ -2905,7 +3154,12 @@ export type CreateCustomersDevicesResponse = SasPortalDevice;
 export const CreateCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateCustomersDevicesError = DefaultErrors;
+export type CreateCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a device under a node or customer. */
 export const createCustomersDevices: API.OperationMethod<
@@ -2916,7 +3170,7 @@ export const createCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersDevicesRequest,
   output: CreateCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSignedCustomersDevicesRequest {
@@ -2945,7 +3199,12 @@ export type CreateSignedCustomersDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateSignedCustomersDevicesError = DefaultErrors;
+export type CreateSignedCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a signed device under a node or customer. */
 export const createSignedCustomersDevices: API.OperationMethod<
@@ -2956,7 +3215,7 @@ export const createSignedCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignedCustomersDevicesRequest,
   output: CreateSignedCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveCustomersDevicesRequest {
@@ -2979,7 +3238,12 @@ export type MoveCustomersDevicesResponse = SasPortalOperation;
 export const MoveCustomersDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MoveCustomersDevicesError = DefaultErrors;
+export type MoveCustomersDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a device under another node or customer. */
 export const moveCustomersDevices: API.OperationMethod<
@@ -2990,7 +3254,7 @@ export const moveCustomersDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveCustomersDevicesRequest,
   output: MoveCustomersDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCustomersNodesRequest {
@@ -3010,7 +3274,12 @@ export type DeleteCustomersNodesResponse = SasPortalEmpty;
 export const DeleteCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteCustomersNodesError = DefaultErrors;
+export type DeleteCustomersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a node. */
 export const deleteCustomersNodes: API.OperationMethod<
@@ -3021,7 +3290,7 @@ export const deleteCustomersNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersNodesRequest,
   output: DeleteCustomersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCustomersNodesRequest {
@@ -3044,7 +3313,12 @@ export type CreateCustomersNodesResponse = SasPortalNode;
 export const CreateCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type CreateCustomersNodesError = DefaultErrors;
+export type CreateCustomersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new node. */
 export const createCustomersNodes: API.OperationMethod<
@@ -3055,7 +3329,7 @@ export const createCustomersNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersNodesRequest,
   output: CreateCustomersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersNodesRequest {
@@ -3075,7 +3349,7 @@ export type GetCustomersNodesResponse = SasPortalNode;
 export const GetCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type GetCustomersNodesError = DefaultErrors;
+export type GetCustomersNodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a requested node. */
 export const getCustomersNodes: API.OperationMethod<
@@ -3086,7 +3360,7 @@ export const getCustomersNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersNodesRequest,
   output: GetCustomersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersNodesRequest {
@@ -3115,7 +3389,7 @@ export type ListCustomersNodesResponse = SasPortalListNodesResponse;
 export const ListCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
 
-export type ListCustomersNodesError = DefaultErrors;
+export type ListCustomersNodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists nodes. */
 export const listCustomersNodes: API.PaginatedOperationMethod<
@@ -3126,7 +3400,7 @@ export const listCustomersNodes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesRequest,
   output: ListCustomersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3153,7 +3427,12 @@ export type MoveCustomersNodesResponse = SasPortalOperation;
 export const MoveCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MoveCustomersNodesError = DefaultErrors;
+export type MoveCustomersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a node under another node or customer. */
 export const moveCustomersNodes: API.OperationMethod<
@@ -3164,7 +3443,7 @@ export const moveCustomersNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveCustomersNodesRequest,
   output: MoveCustomersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCustomersNodesRequest {
@@ -3190,7 +3469,12 @@ export type PatchCustomersNodesResponse = SasPortalNode;
 export const PatchCustomersNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type PatchCustomersNodesError = DefaultErrors;
+export type PatchCustomersNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing node. */
 export const patchCustomersNodes: API.OperationMethod<
@@ -3201,7 +3485,7 @@ export const patchCustomersNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCustomersNodesRequest,
   output: PatchCustomersNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSignedCustomersNodesDevicesRequest {
@@ -3230,7 +3514,12 @@ export type CreateSignedCustomersNodesDevicesResponse = SasPortalDevice;
 export const CreateSignedCustomersNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateSignedCustomersNodesDevicesError = DefaultErrors;
+export type CreateSignedCustomersNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a signed device under a node or customer. */
 export const createSignedCustomersNodesDevices: API.OperationMethod<
@@ -3241,7 +3530,7 @@ export const createSignedCustomersNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSignedCustomersNodesDevicesRequest,
   output: CreateSignedCustomersNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersNodesDevicesRequest {
@@ -3270,7 +3559,10 @@ export type ListCustomersNodesDevicesResponse = SasPortalListDevicesResponse;
 export const ListCustomersNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDevicesResponse;
 
-export type ListCustomersNodesDevicesError = DefaultErrors;
+export type ListCustomersNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists devices under a node or customer. */
 export const listCustomersNodesDevices: API.PaginatedOperationMethod<
@@ -3281,7 +3573,7 @@ export const listCustomersNodesDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesDevicesRequest,
   output: ListCustomersNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3312,7 +3604,12 @@ export type CreateCustomersNodesDevicesResponse = SasPortalDevice;
 export const CreateCustomersNodesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type CreateCustomersNodesDevicesError = DefaultErrors;
+export type CreateCustomersNodesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a device under a node or customer. */
 export const createCustomersNodesDevices: API.OperationMethod<
@@ -3323,7 +3620,7 @@ export const createCustomersNodesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersNodesDevicesRequest,
   output: CreateCustomersNodesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCustomersNodesNodesRequest {
@@ -3346,7 +3643,12 @@ export type CreateCustomersNodesNodesResponse = SasPortalNode;
 export const CreateCustomersNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalNode;
 
-export type CreateCustomersNodesNodesError = DefaultErrors;
+export type CreateCustomersNodesNodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new node. */
 export const createCustomersNodesNodes: API.OperationMethod<
@@ -3357,7 +3659,7 @@ export const createCustomersNodesNodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersNodesNodesRequest,
   output: CreateCustomersNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersNodesNodesRequest {
@@ -3386,7 +3688,7 @@ export type ListCustomersNodesNodesResponse = SasPortalListNodesResponse;
 export const ListCustomersNodesNodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListNodesResponse;
 
-export type ListCustomersNodesNodesError = DefaultErrors;
+export type ListCustomersNodesNodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists nodes. */
 export const listCustomersNodesNodes: API.PaginatedOperationMethod<
@@ -3397,7 +3699,7 @@ export const listCustomersNodesNodes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesNodesRequest,
   output: ListCustomersNodesNodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3428,7 +3730,12 @@ export type CreateCustomersNodesDeploymentsResponse = SasPortalDeployment;
 export const CreateCustomersNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type CreateCustomersNodesDeploymentsError = DefaultErrors;
+export type CreateCustomersNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new deployment. */
 export const createCustomersNodesDeployments: API.OperationMethod<
@@ -3439,7 +3746,7 @@ export const createCustomersNodesDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersNodesDeploymentsRequest,
   output: CreateCustomersNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersNodesDeploymentsRequest {
@@ -3469,7 +3776,10 @@ export type ListCustomersNodesDeploymentsResponse =
 export const ListCustomersNodesDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalListDeploymentsResponse;
 
-export type ListCustomersNodesDeploymentsError = DefaultErrors;
+export type ListCustomersNodesDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists deployments. */
 export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
@@ -3480,7 +3790,7 @@ export const listCustomersNodesDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersNodesDeploymentsRequest,
   output: ListCustomersNodesDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3508,7 +3818,12 @@ export type GenerateSecretInstallerResponse = SasPortalGenerateSecretResponse;
 export const GenerateSecretInstallerResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalGenerateSecretResponse;
 
-export type GenerateSecretInstallerError = DefaultErrors;
+export type GenerateSecretInstallerError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a secret to be used with the ValidateInstaller. */
 export const generateSecretInstaller: API.OperationMethod<
@@ -3519,7 +3834,7 @@ export const generateSecretInstaller: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateSecretInstallerRequest,
   output: GenerateSecretInstallerResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateInstallerRequest {
@@ -3543,7 +3858,12 @@ export type ValidateInstallerResponse = SasPortalValidateInstallerResponse;
 export const ValidateInstallerResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalValidateInstallerResponse;
 
-export type ValidateInstallerError = DefaultErrors;
+export type ValidateInstallerError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates the identity of a Certified Professional Installer (CPI). */
 export const validateInstaller: API.OperationMethod<
@@ -3554,7 +3874,7 @@ export const validateInstaller: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateInstallerRequest,
   output: ValidateInstallerResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDeploymentsRequest {
@@ -3573,7 +3893,7 @@ export type GetDeploymentsResponse = SasPortalDeployment;
 export const GetDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDeployment;
 
-export type GetDeploymentsError = DefaultErrors;
+export type GetDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a requested deployment. */
 export const getDeployments: API.OperationMethod<
@@ -3584,7 +3904,7 @@ export const getDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentsRequest,
   output: GetDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDeploymentsDevicesRequest {
@@ -3604,7 +3924,7 @@ export type GetDeploymentsDevicesResponse = SasPortalDevice;
 export const GetDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type GetDeploymentsDevicesError = DefaultErrors;
+export type GetDeploymentsDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details about a device. */
 export const getDeploymentsDevices: API.OperationMethod<
@@ -3615,7 +3935,7 @@ export const getDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDeploymentsDevicesRequest,
   output: GetDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchDeploymentsDevicesRequest {
@@ -3641,7 +3961,12 @@ export type PatchDeploymentsDevicesResponse = SasPortalDevice;
 export const PatchDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type PatchDeploymentsDevicesError = DefaultErrors;
+export type PatchDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a device. */
 export const patchDeploymentsDevices: API.OperationMethod<
@@ -3652,7 +3977,7 @@ export const patchDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchDeploymentsDevicesRequest,
   output: PatchDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveDeploymentsDevicesRequest {
@@ -3675,7 +4000,12 @@ export type MoveDeploymentsDevicesResponse = SasPortalOperation;
 export const MoveDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalOperation;
 
-export type MoveDeploymentsDevicesError = DefaultErrors;
+export type MoveDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a device under another node or customer. */
 export const moveDeploymentsDevices: API.OperationMethod<
@@ -3686,7 +4016,7 @@ export const moveDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveDeploymentsDevicesRequest,
   output: MoveDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSignedDeploymentsDevicesRequest {
@@ -3715,7 +4045,12 @@ export type UpdateSignedDeploymentsDevicesResponse = SasPortalDevice;
 export const UpdateSignedDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalDevice;
 
-export type UpdateSignedDeploymentsDevicesError = DefaultErrors;
+export type UpdateSignedDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a signed device. */
 export const updateSignedDeploymentsDevices: API.OperationMethod<
@@ -3726,7 +4061,7 @@ export const updateSignedDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSignedDeploymentsDevicesRequest,
   output: UpdateSignedDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDeploymentsDevicesRequest {
@@ -3746,7 +4081,12 @@ export type DeleteDeploymentsDevicesResponse = SasPortalEmpty;
 export const DeleteDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type DeleteDeploymentsDevicesError = DefaultErrors;
+export type DeleteDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a device. */
 export const deleteDeploymentsDevices: API.OperationMethod<
@@ -3757,7 +4097,7 @@ export const deleteDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDeploymentsDevicesRequest,
   output: DeleteDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignDeviceDeploymentsDevicesRequest {
@@ -3784,7 +4124,12 @@ export type SignDeviceDeploymentsDevicesResponse = SasPortalEmpty;
 export const SignDeviceDeploymentsDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SasPortalEmpty;
 
-export type SignDeviceDeploymentsDevicesError = DefaultErrors;
+export type SignDeviceDeploymentsDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a device. */
 export const signDeviceDeploymentsDevices: API.OperationMethod<
@@ -3795,5 +4140,5 @@ export const signDeviceDeploymentsDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignDeviceDeploymentsDevicesRequest,
   output: SignDeviceDeploymentsDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

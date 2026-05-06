@@ -381,6 +381,52 @@ export const GoogleCloudOrgpolicyV2ListCustomConstraintsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -401,7 +447,7 @@ export type GetProjectsPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const GetProjectsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type GetProjectsPoliciesError = DefaultErrors;
+export type GetProjectsPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write. */
 export const getProjectsPolicies: API.OperationMethod<
@@ -412,7 +458,7 @@ export const getProjectsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsPoliciesRequest,
   output: GetProjectsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsPoliciesRequest {
@@ -435,7 +481,12 @@ export type CreateProjectsPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const CreateProjectsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type CreateProjectsPoliciesError = DefaultErrors;
+export type CreateProjectsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource. */
 export const createProjectsPolicies: API.OperationMethod<
@@ -446,7 +497,7 @@ export const createProjectsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsPoliciesRequest,
   output: CreateProjectsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsPoliciesRequest {
@@ -469,7 +520,12 @@ export type DeleteProjectsPoliciesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsPoliciesError = DefaultErrors;
+export type DeleteProjectsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist. */
 export const deleteProjectsPolicies: API.OperationMethod<
@@ -480,7 +536,7 @@ export const deleteProjectsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsPoliciesRequest,
   output: DeleteProjectsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectivePolicyProjectsPoliciesRequest {
@@ -501,7 +557,10 @@ export type GetEffectivePolicyProjectsPoliciesResponse =
 export const GetEffectivePolicyProjectsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type GetEffectivePolicyProjectsPoliciesError = DefaultErrors;
+export type GetEffectivePolicyProjectsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
 export const getEffectivePolicyProjectsPolicies: API.OperationMethod<
@@ -512,7 +571,7 @@ export const getEffectivePolicyProjectsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectivePolicyProjectsPoliciesRequest,
   output: GetEffectivePolicyProjectsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsPoliciesRequest {
@@ -538,7 +597,12 @@ export type PatchProjectsPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const PatchProjectsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type PatchProjectsPoliciesError = DefaultErrors;
+export type PatchProjectsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields. */
 export const patchProjectsPolicies: API.OperationMethod<
@@ -549,7 +613,7 @@ export const patchProjectsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsPoliciesRequest,
   output: PatchProjectsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsPoliciesRequest {
@@ -576,7 +640,7 @@ export type ListProjectsPoliciesResponse =
 export const ListProjectsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2ListPoliciesResponse;
 
-export type ListProjectsPoliciesError = DefaultErrors;
+export type ListProjectsPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves all of the policies that exist on a particular resource. */
 export const listProjectsPolicies: API.PaginatedOperationMethod<
@@ -587,7 +651,7 @@ export const listProjectsPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPoliciesRequest,
   output: ListProjectsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -618,7 +682,7 @@ export type ListProjectsConstraintsResponse =
 export const ListProjectsConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2ListConstraintsResponse;
 
-export type ListProjectsConstraintsError = DefaultErrors;
+export type ListProjectsConstraintsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists constraints that could be applied on the specified resource. */
 export const listProjectsConstraints: API.PaginatedOperationMethod<
@@ -629,7 +693,7 @@ export const listProjectsConstraints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConstraintsRequest,
   output: ListProjectsConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -659,7 +723,12 @@ export type PatchFoldersPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const PatchFoldersPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type PatchFoldersPoliciesError = DefaultErrors;
+export type PatchFoldersPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields. */
 export const patchFoldersPolicies: API.OperationMethod<
@@ -670,7 +739,7 @@ export const patchFoldersPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersPoliciesRequest,
   output: PatchFoldersPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersPoliciesRequest {
@@ -697,7 +766,7 @@ export type ListFoldersPoliciesResponse =
 export const ListFoldersPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2ListPoliciesResponse;
 
-export type ListFoldersPoliciesError = DefaultErrors;
+export type ListFoldersPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves all of the policies that exist on a particular resource. */
 export const listFoldersPolicies: API.PaginatedOperationMethod<
@@ -708,7 +777,7 @@ export const listFoldersPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersPoliciesRequest,
   output: ListFoldersPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -732,7 +801,7 @@ export type GetFoldersPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const GetFoldersPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type GetFoldersPoliciesError = DefaultErrors;
+export type GetFoldersPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write. */
 export const getFoldersPolicies: API.OperationMethod<
@@ -743,7 +812,7 @@ export const getFoldersPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersPoliciesRequest,
   output: GetFoldersPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateFoldersPoliciesRequest {
@@ -766,7 +835,12 @@ export type CreateFoldersPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const CreateFoldersPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type CreateFoldersPoliciesError = DefaultErrors;
+export type CreateFoldersPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource. */
 export const createFoldersPolicies: API.OperationMethod<
@@ -777,7 +851,7 @@ export const createFoldersPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersPoliciesRequest,
   output: CreateFoldersPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersPoliciesRequest {
@@ -800,7 +874,12 @@ export type DeleteFoldersPoliciesResponse = GoogleProtobufEmpty;
 export const DeleteFoldersPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteFoldersPoliciesError = DefaultErrors;
+export type DeleteFoldersPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist. */
 export const deleteFoldersPolicies: API.OperationMethod<
@@ -811,7 +890,7 @@ export const deleteFoldersPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersPoliciesRequest,
   output: DeleteFoldersPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectivePolicyFoldersPoliciesRequest {
@@ -832,7 +911,10 @@ export type GetEffectivePolicyFoldersPoliciesResponse =
 export const GetEffectivePolicyFoldersPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type GetEffectivePolicyFoldersPoliciesError = DefaultErrors;
+export type GetEffectivePolicyFoldersPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
 export const getEffectivePolicyFoldersPolicies: API.OperationMethod<
@@ -843,7 +925,7 @@ export const getEffectivePolicyFoldersPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectivePolicyFoldersPoliciesRequest,
   output: GetEffectivePolicyFoldersPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersConstraintsRequest {
@@ -870,7 +952,7 @@ export type ListFoldersConstraintsResponse =
 export const ListFoldersConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2ListConstraintsResponse;
 
-export type ListFoldersConstraintsError = DefaultErrors;
+export type ListFoldersConstraintsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists constraints that could be applied on the specified resource. */
 export const listFoldersConstraints: API.PaginatedOperationMethod<
@@ -881,7 +963,7 @@ export const listFoldersConstraints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersConstraintsRequest,
   output: ListFoldersConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -912,7 +994,10 @@ export type ListOrganizationsConstraintsResponse =
 export const ListOrganizationsConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2ListConstraintsResponse;
 
-export type ListOrganizationsConstraintsError = DefaultErrors;
+export type ListOrganizationsConstraintsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists constraints that could be applied on the specified resource. */
 export const listOrganizationsConstraints: API.PaginatedOperationMethod<
@@ -923,7 +1008,7 @@ export const listOrganizationsConstraints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsConstraintsRequest,
   output: ListOrganizationsConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -953,7 +1038,12 @@ export type PatchOrganizationsCustomConstraintsResponse =
 export const PatchOrganizationsCustomConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2CustomConstraint;
 
-export type PatchOrganizationsCustomConstraintsError = DefaultErrors;
+export type PatchOrganizationsCustomConstraintsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields. */
 export const patchOrganizationsCustomConstraints: API.OperationMethod<
@@ -964,7 +1054,7 @@ export const patchOrganizationsCustomConstraints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsCustomConstraintsRequest,
   output: PatchOrganizationsCustomConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsCustomConstraintsRequest {
@@ -991,7 +1081,10 @@ export type ListOrganizationsCustomConstraintsResponse =
 export const ListOrganizationsCustomConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2ListCustomConstraintsResponse;
 
-export type ListOrganizationsCustomConstraintsError = DefaultErrors;
+export type ListOrganizationsCustomConstraintsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves all of the custom constraints that exist on a particular organization resource. */
 export const listOrganizationsCustomConstraints: API.PaginatedOperationMethod<
@@ -1002,7 +1095,7 @@ export const listOrganizationsCustomConstraints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsCustomConstraintsRequest,
   output: ListOrganizationsCustomConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1036,7 +1129,12 @@ export type CreateOrganizationsCustomConstraintsResponse =
 export const CreateOrganizationsCustomConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2CustomConstraint;
 
-export type CreateOrganizationsCustomConstraintsError = DefaultErrors;
+export type CreateOrganizationsCustomConstraintsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the organization does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the constraint already exists on the given organization. */
 export const createOrganizationsCustomConstraints: API.OperationMethod<
@@ -1047,7 +1145,7 @@ export const createOrganizationsCustomConstraints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsCustomConstraintsRequest,
   output: CreateOrganizationsCustomConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsCustomConstraintsRequest {
@@ -1068,7 +1166,10 @@ export type GetOrganizationsCustomConstraintsResponse =
 export const GetOrganizationsCustomConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2CustomConstraint;
 
-export type GetOrganizationsCustomConstraintsError = DefaultErrors;
+export type GetOrganizationsCustomConstraintsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a custom or managed constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom or managed constraint does not exist. */
 export const getOrganizationsCustomConstraints: API.OperationMethod<
@@ -1079,7 +1180,7 @@ export const getOrganizationsCustomConstraints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsCustomConstraintsRequest,
   output: GetOrganizationsCustomConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsCustomConstraintsRequest {
@@ -1099,7 +1200,12 @@ export type DeleteOrganizationsCustomConstraintsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsCustomConstraintsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsCustomConstraintsError = DefaultErrors;
+export type DeleteOrganizationsCustomConstraintsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. */
 export const deleteOrganizationsCustomConstraints: API.OperationMethod<
@@ -1110,7 +1216,7 @@ export const deleteOrganizationsCustomConstraints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsCustomConstraintsRequest,
   output: DeleteOrganizationsCustomConstraintsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsPoliciesRequest {
@@ -1130,7 +1236,10 @@ export type GetOrganizationsPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const GetOrganizationsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type GetOrganizationsPoliciesError = DefaultErrors;
+export type GetOrganizationsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write. */
 export const getOrganizationsPolicies: API.OperationMethod<
@@ -1141,7 +1250,7 @@ export const getOrganizationsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsPoliciesRequest,
   output: GetOrganizationsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsPoliciesRequest {
@@ -1164,7 +1273,12 @@ export type CreateOrganizationsPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const CreateOrganizationsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type CreateOrganizationsPoliciesError = DefaultErrors;
+export type CreateOrganizationsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource. */
 export const createOrganizationsPolicies: API.OperationMethod<
@@ -1175,7 +1289,7 @@ export const createOrganizationsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsPoliciesRequest,
   output: CreateOrganizationsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsPoliciesRequest {
@@ -1198,7 +1312,12 @@ export type DeleteOrganizationsPoliciesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsPoliciesError = DefaultErrors;
+export type DeleteOrganizationsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist. */
 export const deleteOrganizationsPolicies: API.OperationMethod<
@@ -1209,7 +1328,7 @@ export const deleteOrganizationsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsPoliciesRequest,
   output: DeleteOrganizationsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectivePolicyOrganizationsPoliciesRequest {
@@ -1230,7 +1349,10 @@ export type GetEffectivePolicyOrganizationsPoliciesResponse =
 export const GetEffectivePolicyOrganizationsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type GetEffectivePolicyOrganizationsPoliciesError = DefaultErrors;
+export type GetEffectivePolicyOrganizationsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
 export const getEffectivePolicyOrganizationsPolicies: API.OperationMethod<
@@ -1241,7 +1363,7 @@ export const getEffectivePolicyOrganizationsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectivePolicyOrganizationsPoliciesRequest,
   output: GetEffectivePolicyOrganizationsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsPoliciesRequest {
@@ -1268,7 +1390,10 @@ export type ListOrganizationsPoliciesResponse =
 export const ListOrganizationsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2ListPoliciesResponse;
 
-export type ListOrganizationsPoliciesError = DefaultErrors;
+export type ListOrganizationsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves all of the policies that exist on a particular resource. */
 export const listOrganizationsPolicies: API.PaginatedOperationMethod<
@@ -1279,7 +1404,7 @@ export const listOrganizationsPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsPoliciesRequest,
   output: ListOrganizationsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1309,7 +1434,12 @@ export type PatchOrganizationsPoliciesResponse = GoogleCloudOrgpolicyV2Policy;
 export const PatchOrganizationsPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudOrgpolicyV2Policy;
 
-export type PatchOrganizationsPoliciesError = DefaultErrors;
+export type PatchOrganizationsPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields. */
 export const patchOrganizationsPolicies: API.OperationMethod<
@@ -1320,5 +1450,5 @@ export const patchOrganizationsPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsPoliciesRequest,
   output: PatchOrganizationsPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

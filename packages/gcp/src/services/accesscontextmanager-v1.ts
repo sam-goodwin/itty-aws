@@ -969,6 +969,52 @@ export const AccessContextManagerOperationMetadata =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1002,7 +1048,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -1013,7 +1059,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1035,7 +1081,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1046,7 +1092,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOperationsRequest {
@@ -1065,7 +1111,12 @@ export const DeleteOperationsRequest =
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -1076,7 +1127,7 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOperationsRequest {
@@ -1098,7 +1149,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -1109,7 +1165,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccessPoliciesRequest {
@@ -1135,7 +1191,7 @@ export type ListAccessPoliciesResponse_Op = ListAccessPoliciesResponse;
 export const ListAccessPoliciesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAccessPoliciesResponse;
 
-export type ListAccessPoliciesError = DefaultErrors;
+export type ListAccessPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all access policies in an organization. */
 export const listAccessPolicies: API.PaginatedOperationMethod<
@@ -1146,7 +1202,7 @@ export const listAccessPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesRequest,
   output: ListAccessPoliciesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1170,7 +1226,7 @@ export type GetAccessPoliciesResponse = AccessPolicy;
 export const GetAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessPolicy;
 
-export type GetAccessPoliciesError = DefaultErrors;
+export type GetAccessPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an access policy based on the name. */
 export const getAccessPolicies: API.OperationMethod<
@@ -1181,7 +1237,7 @@ export const getAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesRequest,
   output: GetAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccessPoliciesRequest {
@@ -1201,7 +1257,12 @@ export type CreateAccessPoliciesResponse = Operation;
 export const CreateAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAccessPoliciesError = DefaultErrors;
+export type CreateAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an access policy. This method fails if the organization already has an access policy. The long-running operation has a successful status after the access policy propagates to long-lasting storage. Syntactic and basic semantic errors are returned in `metadata` as a BadRequest proto. */
 export const createAccessPolicies: API.OperationMethod<
@@ -1212,7 +1273,7 @@ export const createAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesRequest,
   output: CreateAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccessPoliciesRequest {
@@ -1238,7 +1299,12 @@ export type PatchAccessPoliciesResponse = Operation;
 export const PatchAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAccessPoliciesError = DefaultErrors;
+export type PatchAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an access policy. The long-running operation from this RPC has a successful status after the changes to the access policy propagate to long-lasting storage. */
 export const patchAccessPolicies: API.OperationMethod<
@@ -1249,7 +1315,7 @@ export const patchAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesRequest,
   output: PatchAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccessPoliciesRequest {
@@ -1269,7 +1335,12 @@ export type DeleteAccessPoliciesResponse = Operation;
 export const DeleteAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAccessPoliciesError = DefaultErrors;
+export type DeleteAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an access policy based on the resource name. The long-running operation has a successful status after the access policy is removed from long-lasting storage. */
 export const deleteAccessPolicies: API.OperationMethod<
@@ -1280,7 +1351,7 @@ export const deleteAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesRequest,
   output: DeleteAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyAccessPoliciesRequest {
@@ -1307,7 +1378,12 @@ export type SetIamPolicyAccessPoliciesResponse = Policy;
 export const SetIamPolicyAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyAccessPoliciesError = DefaultErrors;
+export type SetIamPolicyAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM policy for the specified Access Context Manager access policy. This method replaces the existing IAM policy on the access policy. The IAM policy controls the set of users who can perform specific operations on the Access Context Manager access policy. */
 export const setIamPolicyAccessPolicies: API.OperationMethod<
@@ -1318,7 +1394,7 @@ export const setIamPolicyAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyAccessPoliciesRequest,
   output: SetIamPolicyAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyAccessPoliciesRequest {
@@ -1345,7 +1421,12 @@ export type GetIamPolicyAccessPoliciesResponse = Policy;
 export const GetIamPolicyAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyAccessPoliciesError = DefaultErrors;
+export type GetIamPolicyAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the IAM policy for the specified Access Context Manager access policy. */
 export const getIamPolicyAccessPolicies: API.OperationMethod<
@@ -1356,7 +1437,7 @@ export const getIamPolicyAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyAccessPoliciesRequest,
   output: GetIamPolicyAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsAccessPoliciesRequest {
@@ -1384,7 +1465,12 @@ export type TestIamPermissionsAccessPoliciesResponse =
 export const TestIamPermissionsAccessPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsAccessPoliciesError = DefaultErrors;
+export type TestIamPermissionsAccessPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. */
 export const testIamPermissionsAccessPolicies: API.OperationMethod<
@@ -1395,7 +1481,7 @@ export const testIamPermissionsAccessPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAccessPoliciesRequest,
   output: TestIamPermissionsAccessPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccessPoliciesAccessLevelsRequest {
@@ -1430,7 +1516,10 @@ export type ListAccessPoliciesAccessLevelsResponse = ListAccessLevelsResponse;
 export const ListAccessPoliciesAccessLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccessLevelsResponse;
 
-export type ListAccessPoliciesAccessLevelsError = DefaultErrors;
+export type ListAccessPoliciesAccessLevelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all access levels for an access policy. */
 export const listAccessPoliciesAccessLevels: API.PaginatedOperationMethod<
@@ -1441,7 +1530,7 @@ export const listAccessPoliciesAccessLevels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesAccessLevelsRequest,
   output: ListAccessPoliciesAccessLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1474,7 +1563,10 @@ export type GetAccessPoliciesAccessLevelsResponse = AccessLevel;
 export const GetAccessPoliciesAccessLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AccessLevel;
 
-export type GetAccessPoliciesAccessLevelsError = DefaultErrors;
+export type GetAccessPoliciesAccessLevelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an access level based on the resource name. */
 export const getAccessPoliciesAccessLevels: API.OperationMethod<
@@ -1485,7 +1577,7 @@ export const getAccessPoliciesAccessLevels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesAccessLevelsRequest,
   output: GetAccessPoliciesAccessLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccessPoliciesAccessLevelsRequest {
@@ -1508,7 +1600,12 @@ export type CreateAccessPoliciesAccessLevelsResponse = Operation;
 export const CreateAccessPoliciesAccessLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAccessPoliciesAccessLevelsError = DefaultErrors;
+export type CreateAccessPoliciesAccessLevelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an access level. The long-running operation from this RPC has a successful status after the access level propagates to long-lasting storage. If access levels contain errors, an error response is returned for the first error encountered. */
 export const createAccessPoliciesAccessLevels: API.OperationMethod<
@@ -1519,7 +1616,7 @@ export const createAccessPoliciesAccessLevels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesAccessLevelsRequest,
   output: CreateAccessPoliciesAccessLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccessPoliciesAccessLevelsRequest {
@@ -1545,7 +1642,12 @@ export type PatchAccessPoliciesAccessLevelsResponse = Operation;
 export const PatchAccessPoliciesAccessLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAccessPoliciesAccessLevelsError = DefaultErrors;
+export type PatchAccessPoliciesAccessLevelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an access level. The long-running operation from this RPC has a successful status after the changes to the access level propagate to long-lasting storage. If access levels contain errors, an error response is returned for the first error encountered. */
 export const patchAccessPoliciesAccessLevels: API.OperationMethod<
@@ -1556,7 +1658,7 @@ export const patchAccessPoliciesAccessLevels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesAccessLevelsRequest,
   output: PatchAccessPoliciesAccessLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccessPoliciesAccessLevelsRequest {
@@ -1576,7 +1678,12 @@ export type DeleteAccessPoliciesAccessLevelsResponse = Operation;
 export const DeleteAccessPoliciesAccessLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAccessPoliciesAccessLevelsError = DefaultErrors;
+export type DeleteAccessPoliciesAccessLevelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an access level based on the resource name. The long-running operation from this RPC has a successful status after the access level has been removed from long-lasting storage. */
 export const deleteAccessPoliciesAccessLevels: API.OperationMethod<
@@ -1587,7 +1694,7 @@ export const deleteAccessPoliciesAccessLevels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesAccessLevelsRequest,
   output: DeleteAccessPoliciesAccessLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplaceAllAccessPoliciesAccessLevelsRequest {
@@ -1614,7 +1721,12 @@ export type ReplaceAllAccessPoliciesAccessLevelsResponse = Operation;
 export const ReplaceAllAccessPoliciesAccessLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ReplaceAllAccessPoliciesAccessLevelsError = DefaultErrors;
+export type ReplaceAllAccessPoliciesAccessLevelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces all existing access levels in an access policy with the access levels provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. If the replacement contains errors, an error response is returned for the first error encountered. Upon error, the replacement is cancelled, and existing access levels are not affected. The Operation.response field contains ReplaceAccessLevelsResponse. Removing access levels contained in existing service perimeters result in an error. */
 export const replaceAllAccessPoliciesAccessLevels: API.OperationMethod<
@@ -1625,7 +1737,7 @@ export const replaceAllAccessPoliciesAccessLevels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceAllAccessPoliciesAccessLevelsRequest,
   output: ReplaceAllAccessPoliciesAccessLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsAccessPoliciesAccessLevelsRequest {
@@ -1653,7 +1765,12 @@ export type TestIamPermissionsAccessPoliciesAccessLevelsResponse =
 export const TestIamPermissionsAccessPoliciesAccessLevelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsAccessPoliciesAccessLevelsError = DefaultErrors;
+export type TestIamPermissionsAccessPoliciesAccessLevelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. */
 export const testIamPermissionsAccessPoliciesAccessLevels: API.OperationMethod<
@@ -1664,7 +1781,7 @@ export const testIamPermissionsAccessPoliciesAccessLevels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAccessPoliciesAccessLevelsRequest,
   output: TestIamPermissionsAccessPoliciesAccessLevelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccessPoliciesServicePerimetersRequest {
@@ -1691,7 +1808,10 @@ export type ListAccessPoliciesServicePerimetersResponse =
 export const ListAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListServicePerimetersResponse;
 
-export type ListAccessPoliciesServicePerimetersError = DefaultErrors;
+export type ListAccessPoliciesServicePerimetersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all service perimeters for an access policy. */
 export const listAccessPoliciesServicePerimeters: API.PaginatedOperationMethod<
@@ -1702,7 +1822,7 @@ export const listAccessPoliciesServicePerimeters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesServicePerimetersRequest,
   output: ListAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1726,7 +1846,10 @@ export type GetAccessPoliciesServicePerimetersResponse = ServicePerimeter;
 export const GetAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServicePerimeter;
 
-export type GetAccessPoliciesServicePerimetersError = DefaultErrors;
+export type GetAccessPoliciesServicePerimetersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a service perimeter based on the resource name. */
 export const getAccessPoliciesServicePerimeters: API.OperationMethod<
@@ -1737,7 +1860,7 @@ export const getAccessPoliciesServicePerimeters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesServicePerimetersRequest,
   output: GetAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccessPoliciesServicePerimetersRequest {
@@ -1764,7 +1887,12 @@ export type CreateAccessPoliciesServicePerimetersResponse = Operation;
 export const CreateAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAccessPoliciesServicePerimetersError = DefaultErrors;
+export type CreateAccessPoliciesServicePerimetersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a service perimeter. The long-running operation from this RPC has a successful status after the service perimeter propagates to long-lasting storage. If a service perimeter contains errors, an error response is returned for the first error encountered. */
 export const createAccessPoliciesServicePerimeters: API.OperationMethod<
@@ -1775,7 +1903,7 @@ export const createAccessPoliciesServicePerimeters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesServicePerimetersRequest,
   output: CreateAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccessPoliciesServicePerimetersRequest {
@@ -1801,7 +1929,12 @@ export type PatchAccessPoliciesServicePerimetersResponse = Operation;
 export const PatchAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAccessPoliciesServicePerimetersError = DefaultErrors;
+export type PatchAccessPoliciesServicePerimetersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a service perimeter. The long-running operation from this RPC has a successful status after the service perimeter propagates to long-lasting storage. If a service perimeter contains errors, an error response is returned for the first error encountered. */
 export const patchAccessPoliciesServicePerimeters: API.OperationMethod<
@@ -1812,7 +1945,7 @@ export const patchAccessPoliciesServicePerimeters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesServicePerimetersRequest,
   output: PatchAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccessPoliciesServicePerimetersRequest {
@@ -1832,7 +1965,12 @@ export type DeleteAccessPoliciesServicePerimetersResponse = Operation;
 export const DeleteAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAccessPoliciesServicePerimetersError = DefaultErrors;
+export type DeleteAccessPoliciesServicePerimetersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a service perimeter based on the resource name. The long-running operation from this RPC has a successful status after the service perimeter is removed from long-lasting storage. */
 export const deleteAccessPoliciesServicePerimeters: API.OperationMethod<
@@ -1843,7 +1981,7 @@ export const deleteAccessPoliciesServicePerimeters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesServicePerimetersRequest,
   output: DeleteAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReplaceAllAccessPoliciesServicePerimetersRequest {
@@ -1870,7 +2008,12 @@ export type ReplaceAllAccessPoliciesServicePerimetersResponse = Operation;
 export const ReplaceAllAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ReplaceAllAccessPoliciesServicePerimetersError = DefaultErrors;
+export type ReplaceAllAccessPoliciesServicePerimetersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replace all existing service perimeters in an access policy with the service perimeters provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. Replacements containing errors result in an error response for the first error encountered. Upon an error, replacement are cancelled and existing service perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse. */
 export const replaceAllAccessPoliciesServicePerimeters: API.OperationMethod<
@@ -1881,7 +2024,7 @@ export const replaceAllAccessPoliciesServicePerimeters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReplaceAllAccessPoliciesServicePerimetersRequest,
   output: ReplaceAllAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CommitAccessPoliciesServicePerimetersRequest {
@@ -1908,7 +2051,12 @@ export type CommitAccessPoliciesServicePerimetersResponse = Operation;
 export const CommitAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CommitAccessPoliciesServicePerimetersError = DefaultErrors;
+export type CommitAccessPoliciesServicePerimetersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Commits the dry-run specification for all the service perimeters in an access policy. A commit operation on a service perimeter involves copying its `spec` field to the `status` field of the service perimeter. Only service perimeters with `use_explicit_dry_run_spec` field set to true are affected by a commit operation. The long-running operation from this RPC has a successful status after the dry-run specifications for all the service perimeters have been committed. If a commit fails, it causes the long-running operation to return an error response and the entire commit operation is cancelled. When successful, the Operation.response field contains CommitServicePerimetersResponse. The `dry_run` and the `spec` fields are cleared after a successful commit operation. */
 export const commitAccessPoliciesServicePerimeters: API.OperationMethod<
@@ -1919,7 +2067,7 @@ export const commitAccessPoliciesServicePerimeters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitAccessPoliciesServicePerimetersRequest,
   output: CommitAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsAccessPoliciesServicePerimetersRequest {
@@ -1948,7 +2096,11 @@ export const TestIamPermissionsAccessPoliciesServicePerimetersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsAccessPoliciesServicePerimetersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. */
 export const testIamPermissionsAccessPoliciesServicePerimeters: API.OperationMethod<
@@ -1959,7 +2111,7 @@ export const testIamPermissionsAccessPoliciesServicePerimeters: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAccessPoliciesServicePerimetersRequest,
   output: TestIamPermissionsAccessPoliciesServicePerimetersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccessPoliciesAuthorizedOrgsDescsRequest {
@@ -1986,7 +2138,10 @@ export type ListAccessPoliciesAuthorizedOrgsDescsResponse =
 export const ListAccessPoliciesAuthorizedOrgsDescsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedOrgsDescsResponse;
 
-export type ListAccessPoliciesAuthorizedOrgsDescsError = DefaultErrors;
+export type ListAccessPoliciesAuthorizedOrgsDescsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all authorized orgs descs for an access policy. */
 export const listAccessPoliciesAuthorizedOrgsDescs: API.PaginatedOperationMethod<
@@ -1997,7 +2152,7 @@ export const listAccessPoliciesAuthorizedOrgsDescs: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccessPoliciesAuthorizedOrgsDescsRequest,
   output: ListAccessPoliciesAuthorizedOrgsDescsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2021,7 +2176,10 @@ export type GetAccessPoliciesAuthorizedOrgsDescsResponse = AuthorizedOrgsDesc;
 export const GetAccessPoliciesAuthorizedOrgsDescsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedOrgsDesc;
 
-export type GetAccessPoliciesAuthorizedOrgsDescsError = DefaultErrors;
+export type GetAccessPoliciesAuthorizedOrgsDescsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an authorized orgs desc based on the resource name. */
 export const getAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
@@ -2032,7 +2190,7 @@ export const getAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccessPoliciesAuthorizedOrgsDescsRequest,
   output: GetAccessPoliciesAuthorizedOrgsDescsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAccessPoliciesAuthorizedOrgsDescsRequest {
@@ -2059,7 +2217,12 @@ export type CreateAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const CreateAccessPoliciesAuthorizedOrgsDescsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateAccessPoliciesAuthorizedOrgsDescsError = DefaultErrors;
+export type CreateAccessPoliciesAuthorizedOrgsDescsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation. */
 export const createAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
@@ -2070,7 +2233,7 @@ export const createAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccessPoliciesAuthorizedOrgsDescsRequest,
   output: CreateAccessPoliciesAuthorizedOrgsDescsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccessPoliciesAuthorizedOrgsDescsRequest {
@@ -2096,7 +2259,12 @@ export type PatchAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const PatchAccessPoliciesAuthorizedOrgsDescsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAccessPoliciesAuthorizedOrgsDescsError = DefaultErrors;
+export type PatchAccessPoliciesAuthorizedOrgsDescsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. Only the organization list in `AuthorizedOrgsDesc` can be updated. The name, authorization_type, asset_type and authorization_direction cannot be updated. */
 export const patchAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
@@ -2107,7 +2275,7 @@ export const patchAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccessPoliciesAuthorizedOrgsDescsRequest,
   output: PatchAccessPoliciesAuthorizedOrgsDescsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccessPoliciesAuthorizedOrgsDescsRequest {
@@ -2127,7 +2295,12 @@ export type DeleteAccessPoliciesAuthorizedOrgsDescsResponse = Operation;
 export const DeleteAccessPoliciesAuthorizedOrgsDescsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAccessPoliciesAuthorizedOrgsDescsError = DefaultErrors;
+export type DeleteAccessPoliciesAuthorizedOrgsDescsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an authorized orgs desc based on the resource name. The long-running operation from this RPC has a successful status after the authorized orgs desc is removed from long-lasting storage. */
 export const deleteAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
@@ -2138,7 +2311,7 @@ export const deleteAccessPoliciesAuthorizedOrgsDescs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessPoliciesAuthorizedOrgsDescsRequest,
   output: DeleteAccessPoliciesAuthorizedOrgsDescsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesRequest {
@@ -2160,7 +2333,7 @@ export type ListServicesResponse = ListSupportedServicesResponse;
 export const ListServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSupportedServicesResponse;
 
-export type ListServicesError = DefaultErrors;
+export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all VPC-SC supported services. */
 export const listServices: API.PaginatedOperationMethod<
@@ -2171,7 +2344,7 @@ export const listServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2193,7 +2366,7 @@ export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetServicesResponse = SupportedService;
 export const GetServicesResponse = /*@__PURE__*/ /*#__PURE__*/ SupportedService;
 
-export type GetServicesError = DefaultErrors;
+export type GetServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a VPC-SC supported service based on the service name. */
 export const getServices: API.OperationMethod<
@@ -2204,7 +2377,7 @@ export const getServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesRequest,
   output: GetServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsGcpUserAccessBindingsRequest {
@@ -2231,7 +2404,10 @@ export type ListOrganizationsGcpUserAccessBindingsResponse =
 export const ListOrganizationsGcpUserAccessBindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGcpUserAccessBindingsResponse;
 
-export type ListOrganizationsGcpUserAccessBindingsError = DefaultErrors;
+export type ListOrganizationsGcpUserAccessBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all GcpUserAccessBindings for a Google Cloud organization. */
 export const listOrganizationsGcpUserAccessBindings: API.PaginatedOperationMethod<
@@ -2242,7 +2418,7 @@ export const listOrganizationsGcpUserAccessBindings: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsGcpUserAccessBindingsRequest,
   output: ListOrganizationsGcpUserAccessBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2267,7 +2443,10 @@ export type GetOrganizationsGcpUserAccessBindingsResponse =
 export const GetOrganizationsGcpUserAccessBindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GcpUserAccessBinding;
 
-export type GetOrganizationsGcpUserAccessBindingsError = DefaultErrors;
+export type GetOrganizationsGcpUserAccessBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the GcpUserAccessBinding with the given name. */
 export const getOrganizationsGcpUserAccessBindings: API.OperationMethod<
@@ -2278,7 +2457,7 @@ export const getOrganizationsGcpUserAccessBindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsGcpUserAccessBindingsRequest,
   output: GetOrganizationsGcpUserAccessBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsGcpUserAccessBindingsRequest {
@@ -2305,7 +2484,12 @@ export type CreateOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const CreateOrganizationsGcpUserAccessBindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateOrganizationsGcpUserAccessBindingsError = DefaultErrors;
+export type CreateOrganizationsGcpUserAccessBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GcpUserAccessBinding. If the client specifies a name, the server ignores it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time. */
 export const createOrganizationsGcpUserAccessBindings: API.OperationMethod<
@@ -2316,7 +2500,7 @@ export const createOrganizationsGcpUserAccessBindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsGcpUserAccessBindingsRequest,
   output: CreateOrganizationsGcpUserAccessBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsGcpUserAccessBindingsRequest {
@@ -2345,7 +2529,12 @@ export type PatchOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const PatchOrganizationsGcpUserAccessBindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchOrganizationsGcpUserAccessBindingsError = DefaultErrors;
+export type PatchOrganizationsGcpUserAccessBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a GcpUserAccessBinding. Completion of this long-running operation does not necessarily signify that the changed binding is deployed onto all affected users, which may take more time. */
 export const patchOrganizationsGcpUserAccessBindings: API.OperationMethod<
@@ -2356,7 +2545,7 @@ export const patchOrganizationsGcpUserAccessBindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsGcpUserAccessBindingsRequest,
   output: PatchOrganizationsGcpUserAccessBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsGcpUserAccessBindingsRequest {
@@ -2376,7 +2565,12 @@ export type DeleteOrganizationsGcpUserAccessBindingsResponse = Operation;
 export const DeleteOrganizationsGcpUserAccessBindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteOrganizationsGcpUserAccessBindingsError = DefaultErrors;
+export type DeleteOrganizationsGcpUserAccessBindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a GcpUserAccessBinding. Completion of this long-running operation does not necessarily signify that the binding deletion is deployed onto all affected users, which may take more time. */
 export const deleteOrganizationsGcpUserAccessBindings: API.OperationMethod<
@@ -2387,7 +2581,7 @@ export const deleteOrganizationsGcpUserAccessBindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsGcpUserAccessBindingsRequest,
   output: DeleteOrganizationsGcpUserAccessBindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPermissionsRequest {
@@ -2411,7 +2605,7 @@ export type ListPermissionsResponse = ListSupportedPermissionsResponse;
 export const ListPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSupportedPermissionsResponse;
 
-export type ListPermissionsError = DefaultErrors;
+export type ListPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all supported permissions in VPCSC Granular Controls. */
 export const listPermissions: API.PaginatedOperationMethod<
@@ -2422,7 +2616,7 @@ export const listPermissions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

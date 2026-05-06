@@ -614,6 +614,52 @@ export const TranslateDocumentResponse =
   }).annotate({ identifier: "TranslateDocumentResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -641,7 +687,12 @@ export type TranslateTextProjectsResponse = TranslateTextResponse;
 export const TranslateTextProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslateTextResponse;
 
-export type TranslateTextProjectsError = DefaultErrors;
+export type TranslateTextProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates input text and returns translated text. */
 export const translateTextProjects: API.OperationMethod<
@@ -652,7 +703,7 @@ export const translateTextProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateTextProjectsRequest,
   output: TranslateTextProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetectLanguageProjectsRequest {
@@ -679,7 +730,12 @@ export type DetectLanguageProjectsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DetectLanguageResponse;
 
-export type DetectLanguageProjectsError = DefaultErrors;
+export type DetectLanguageProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detects the language of text within a request. */
 export const detectLanguageProjects: API.OperationMethod<
@@ -690,7 +746,7 @@ export const detectLanguageProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetectLanguageProjectsRequest,
   output: DetectLanguageProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSupportedLanguagesProjectsRequest {
@@ -718,7 +774,10 @@ export type GetSupportedLanguagesProjectsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SupportedLanguages;
 
-export type GetSupportedLanguagesProjectsError = DefaultErrors;
+export type GetSupportedLanguagesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of supported languages for translation. */
 export const getSupportedLanguagesProjects: API.OperationMethod<
@@ -729,7 +788,7 @@ export const getSupportedLanguagesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSupportedLanguagesProjectsRequest,
   output: GetSupportedLanguagesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsRequest {
@@ -749,7 +808,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -760,7 +819,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchTranslateTextProjectsLocationsRequest {
@@ -787,7 +846,12 @@ export type BatchTranslateTextProjectsLocationsResponse = Operation;
 export const BatchTranslateTextProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchTranslateTextProjectsLocationsError = DefaultErrors;
+export type BatchTranslateTextProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates a large volume of text in asynchronous batch mode. This function provides real-time output as the inputs are being processed. If caller cancels a request, the partial results (for an input file, it's all or nothing) may still be available on the specified output location. This call returns immediately and you can use google.longrunning.Operation.name to poll the status of the call. */
 export const batchTranslateTextProjectsLocations: API.OperationMethod<
@@ -798,7 +862,7 @@ export const batchTranslateTextProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchTranslateTextProjectsLocationsRequest,
   output: BatchTranslateTextProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TranslateDocumentProjectsLocationsRequest {
@@ -826,7 +890,12 @@ export type TranslateDocumentProjectsLocationsResponse =
 export const TranslateDocumentProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslateDocumentResponse;
 
-export type TranslateDocumentProjectsLocationsError = DefaultErrors;
+export type TranslateDocumentProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates documents in synchronous mode. */
 export const translateDocumentProjectsLocations: API.OperationMethod<
@@ -837,7 +906,7 @@ export const translateDocumentProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateDocumentProjectsLocationsRequest,
   output: TranslateDocumentProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetectLanguageProjectsLocationsRequest {
@@ -864,7 +933,12 @@ export type DetectLanguageProjectsLocationsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DetectLanguageResponse;
 
-export type DetectLanguageProjectsLocationsError = DefaultErrors;
+export type DetectLanguageProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detects the language of text within a request. */
 export const detectLanguageProjectsLocations: API.OperationMethod<
@@ -875,7 +949,7 @@ export const detectLanguageProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetectLanguageProjectsLocationsRequest,
   output: DetectLanguageProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSupportedLanguagesProjectsLocationsRequest {
@@ -903,7 +977,10 @@ export type GetSupportedLanguagesProjectsLocationsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SupportedLanguages;
 
-export type GetSupportedLanguagesProjectsLocationsError = DefaultErrors;
+export type GetSupportedLanguagesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of supported languages for translation. */
 export const getSupportedLanguagesProjectsLocations: API.OperationMethod<
@@ -914,7 +991,7 @@ export const getSupportedLanguagesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSupportedLanguagesProjectsLocationsRequest,
   output: GetSupportedLanguagesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchTranslateDocumentProjectsLocationsRequest {
@@ -941,7 +1018,12 @@ export type BatchTranslateDocumentProjectsLocationsResponse = Operation;
 export const BatchTranslateDocumentProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchTranslateDocumentProjectsLocationsError = DefaultErrors;
+export type BatchTranslateDocumentProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates a large volume of document in asynchronous batch mode. This function provides real-time output as the inputs are being processed. If caller cancels a request, the partial results (for an input file, it's all or nothing) may still be available on the specified output location. This call returns immediately and you can use google.longrunning.Operation.name to poll the status of the call. */
 export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
@@ -952,7 +1034,7 @@ export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchTranslateDocumentProjectsLocationsRequest,
   output: BatchTranslateDocumentProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -986,7 +1068,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -997,7 +1079,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1028,7 +1110,12 @@ export type RefineTextProjectsLocationsResponse = RefineTextResponse;
 export const RefineTextProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RefineTextResponse;
 
-export type RefineTextProjectsLocationsError = DefaultErrors;
+export type RefineTextProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Refines the input translated text to improve the quality. */
 export const refineTextProjectsLocations: API.OperationMethod<
@@ -1039,7 +1126,7 @@ export const refineTextProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefineTextProjectsLocationsRequest,
   output: RefineTextProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TranslateTextProjectsLocationsRequest {
@@ -1066,7 +1153,12 @@ export type TranslateTextProjectsLocationsResponse = TranslateTextResponse;
 export const TranslateTextProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslateTextResponse;
 
-export type TranslateTextProjectsLocationsError = DefaultErrors;
+export type TranslateTextProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates input text and returns translated text. */
 export const translateTextProjectsLocations: API.OperationMethod<
@@ -1077,7 +1169,7 @@ export const translateTextProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateTextProjectsLocationsRequest,
   output: TranslateTextProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -1097,7 +1189,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1108,7 +1203,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -1128,7 +1223,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -1139,7 +1239,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -1162,7 +1262,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -1173,7 +1278,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -1207,7 +1312,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1218,7 +1326,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1245,7 +1353,12 @@ export type WaitProjectsLocationsOperationsResponse = Operation;
 export const WaitProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WaitProjectsLocationsOperationsError = DefaultErrors;
+export type WaitProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsOperations: API.OperationMethod<
@@ -1256,7 +1369,7 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WaitProjectsLocationsOperationsRequest,
   output: WaitProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlossariesRequest {
@@ -1285,7 +1398,10 @@ export type ListProjectsLocationsGlossariesResponse = ListGlossariesResponse;
 export const ListProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGlossariesResponse;
 
-export type ListProjectsLocationsGlossariesError = DefaultErrors;
+export type ListProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't exist. */
 export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
@@ -1296,7 +1412,7 @@ export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlossariesRequest,
   output: ListProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1320,7 +1436,10 @@ export type GetProjectsLocationsGlossariesResponse = Glossary;
 export const GetProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Glossary;
 
-export type GetProjectsLocationsGlossariesError = DefaultErrors;
+export type GetProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist. */
 export const getProjectsLocationsGlossaries: API.OperationMethod<
@@ -1331,7 +1450,7 @@ export const getProjectsLocationsGlossaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlossariesRequest,
   output: GetProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsGlossariesRequest {
@@ -1351,7 +1470,12 @@ export type DeleteProjectsLocationsGlossariesResponse = Operation;
 export const DeleteProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGlossariesError = DefaultErrors;
+export type DeleteProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a glossary, or cancels glossary construction if the glossary isn't created yet. Returns NOT_FOUND, if the glossary doesn't exist. */
 export const deleteProjectsLocationsGlossaries: API.OperationMethod<
@@ -1362,7 +1486,7 @@ export const deleteProjectsLocationsGlossaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlossariesRequest,
   output: DeleteProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGlossariesRequest {
@@ -1389,7 +1513,12 @@ export type CreateProjectsLocationsGlossariesResponse = Operation;
 export const CreateProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGlossariesError = DefaultErrors;
+export type CreateProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist. */
 export const createProjectsLocationsGlossaries: API.OperationMethod<
@@ -1400,5 +1529,5 @@ export const createProjectsLocationsGlossaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlossariesRequest,
   output: CreateProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

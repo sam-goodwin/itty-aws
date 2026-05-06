@@ -561,6 +561,52 @@ export const ExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ExecutionResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -594,7 +640,7 @@ export const GetMetricsProjectsRequest =
 export type GetMetricsProjectsResponse = Metrics;
 export const GetMetricsProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Metrics;
 
-export type GetMetricsProjectsError = DefaultErrors;
+export type GetMetricsProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get metrics data for scripts, such as number of executions and active users. */
 export const getMetricsProjects: API.OperationMethod<
@@ -605,7 +651,7 @@ export const getMetricsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetricsProjectsRequest,
   output: GetMetricsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsRequest {
@@ -623,7 +669,12 @@ export const CreateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateProjectsResponse = Project;
 export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type CreateProjectsError = DefaultErrors;
+export type CreateProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new, empty script project with no script files and a base manifest file. */
 export const createProjects: API.OperationMethod<
@@ -634,7 +685,7 @@ export const createProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRequest,
   output: CreateProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRequest {
@@ -652,7 +703,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetProjectsError = DefaultErrors;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a script project's metadata. */
 export const getProjects: API.OperationMethod<
@@ -663,7 +714,7 @@ export const getProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetContentProjectsRequest {
@@ -687,7 +738,7 @@ export const GetContentProjectsRequest =
 export type GetContentProjectsResponse = Content;
 export const GetContentProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Content;
 
-export type GetContentProjectsError = DefaultErrors;
+export type GetContentProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the content of the script project, including the code source and metadata for each script file. */
 export const getContentProjects: API.OperationMethod<
@@ -698,7 +749,7 @@ export const getContentProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetContentProjectsRequest,
   output: GetContentProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateContentProjectsRequest {
@@ -725,7 +776,12 @@ export type UpdateContentProjectsResponse = Content;
 export const UpdateContentProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Content;
 
-export type UpdateContentProjectsError = DefaultErrors;
+export type UpdateContentProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project. */
 export const updateContentProjects: API.OperationMethod<
@@ -736,7 +792,7 @@ export const updateContentProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateContentProjectsRequest,
   output: UpdateContentProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsDeploymentsRequest {
@@ -763,7 +819,12 @@ export type CreateProjectsDeploymentsResponse = Deployment;
 export const CreateProjectsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Deployment;
 
-export type CreateProjectsDeploymentsError = DefaultErrors;
+export type CreateProjectsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a deployment of an Apps Script project. */
 export const createProjectsDeployments: API.OperationMethod<
@@ -774,7 +835,7 @@ export const createProjectsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDeploymentsRequest,
   output: CreateProjectsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsDeploymentsRequest {
@@ -804,7 +865,12 @@ export type UpdateProjectsDeploymentsResponse = Deployment;
 export const UpdateProjectsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Deployment;
 
-export type UpdateProjectsDeploymentsError = DefaultErrors;
+export type UpdateProjectsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a deployment of an Apps Script project. */
 export const updateProjectsDeployments: API.OperationMethod<
@@ -815,7 +881,7 @@ export const updateProjectsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsDeploymentsRequest,
   output: UpdateProjectsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsDeploymentsRequest {
@@ -841,7 +907,12 @@ export type DeleteProjectsDeploymentsResponse = Empty;
 export const DeleteProjectsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsDeploymentsError = DefaultErrors;
+export type DeleteProjectsDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a deployment of an Apps Script project. */
 export const deleteProjectsDeployments: API.OperationMethod<
@@ -852,7 +923,7 @@ export const deleteProjectsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDeploymentsRequest,
   output: DeleteProjectsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDeploymentsRequest {
@@ -878,7 +949,7 @@ export type GetProjectsDeploymentsResponse = Deployment;
 export const GetProjectsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Deployment;
 
-export type GetProjectsDeploymentsError = DefaultErrors;
+export type GetProjectsDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a deployment of an Apps Script project. */
 export const getProjectsDeployments: API.OperationMethod<
@@ -889,7 +960,7 @@ export const getProjectsDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDeploymentsRequest,
   output: GetProjectsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsDeploymentsRequest {
@@ -915,7 +986,7 @@ export type ListProjectsDeploymentsResponse = ListDeploymentsResponse;
 export const ListProjectsDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDeploymentsResponse;
 
-export type ListProjectsDeploymentsError = DefaultErrors;
+export type ListProjectsDeploymentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the deployments of an Apps Script project. */
 export const listProjectsDeployments: API.PaginatedOperationMethod<
@@ -926,7 +997,7 @@ export const listProjectsDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDeploymentsRequest,
   output: ListProjectsDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -957,7 +1028,12 @@ export type CreateProjectsVersionsResponse = Version;
 export const CreateProjectsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type CreateProjectsVersionsError = DefaultErrors;
+export type CreateProjectsVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new immutable version using the current code, with a unique version number. */
 export const createProjectsVersions: API.OperationMethod<
@@ -968,7 +1044,7 @@ export const createProjectsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsVersionsRequest,
   output: CreateProjectsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsVersionsRequest {
@@ -993,7 +1069,7 @@ export const GetProjectsVersionsRequest =
 export type GetProjectsVersionsResponse = Version;
 export const GetProjectsVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Version;
 
-export type GetProjectsVersionsError = DefaultErrors;
+export type GetProjectsVersionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a version of a script project. */
 export const getProjectsVersions: API.OperationMethod<
@@ -1004,7 +1080,7 @@ export const getProjectsVersions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsVersionsRequest,
   output: GetProjectsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsVersionsRequest {
@@ -1030,7 +1106,7 @@ export type ListProjectsVersionsResponse = ListVersionsResponse;
 export const ListProjectsVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVersionsResponse;
 
-export type ListProjectsVersionsError = DefaultErrors;
+export type ListProjectsVersionsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the versions of a script project. */
 export const listProjectsVersions: API.PaginatedOperationMethod<
@@ -1041,7 +1117,7 @@ export const listProjectsVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsVersionsRequest,
   output: ListProjectsVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1134,7 +1210,10 @@ export type ListScriptProcessesProcessesResponse = ListScriptProcessesResponse;
 export const ListScriptProcessesProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListScriptProcessesResponse;
 
-export type ListScriptProcessesProcessesError = DefaultErrors;
+export type ListScriptProcessesProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List information about a script's executed processes, such as process type and current status. */
 export const listScriptProcessesProcesses: API.PaginatedOperationMethod<
@@ -1145,7 +1224,7 @@ export const listScriptProcessesProcesses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScriptProcessesProcessesRequest,
   output: ListScriptProcessesProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1244,7 +1323,7 @@ export type ListProcessesResponse = ListUserProcessesResponse;
 export const ListProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserProcessesResponse;
 
-export type ListProcessesError = DefaultErrors;
+export type ListProcessesError = DefaultErrors | NotFound | Forbidden;
 
 /** List information about processes made by or on behalf of a user, such as process type and current status. */
 export const listProcesses: API.PaginatedOperationMethod<
@@ -1255,7 +1334,7 @@ export const listProcesses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProcessesRequest,
   output: ListProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1280,7 +1359,12 @@ export const RunScriptsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunScriptsResponse = Operation;
 export const RunScriptsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunScriptsError = DefaultErrors;
+export type RunScriptsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 export const runScripts: API.OperationMethod<
   RunScriptsRequest,
@@ -1290,5 +1374,5 @@ export const runScripts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunScriptsRequest,
   output: RunScriptsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

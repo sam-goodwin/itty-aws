@@ -738,6 +738,52 @@ export const GoogleSecuritySafebrowsingV4ListThreatListsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -761,7 +807,12 @@ export type FindThreatMatchesResponse =
 export const FindThreatMatchesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV4FindThreatMatchesResponse;
 
-export type FindThreatMatchesError = DefaultErrors;
+export type FindThreatMatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds the threat entries that match the Safe Browsing lists. */
 export const findThreatMatches: API.OperationMethod<
@@ -772,7 +823,7 @@ export const findThreatMatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindThreatMatchesRequest,
   output: FindThreatMatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchThreatListUpdatesRequest {
@@ -799,7 +850,12 @@ export type FetchThreatListUpdatesResponse =
 export const FetchThreatListUpdatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse;
 
-export type FetchThreatListUpdatesError = DefaultErrors;
+export type FetchThreatListUpdatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Fetches the most recent threat list updates. A client can request updates for multiple lists at once. */
 export const fetchThreatListUpdates: API.OperationMethod<
@@ -810,7 +866,7 @@ export const fetchThreatListUpdates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchThreatListUpdatesRequest,
   output: FetchThreatListUpdatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEncodedUpdatesRequest {
@@ -839,7 +895,7 @@ export type GetEncodedUpdatesResponse =
 export const GetEncodedUpdatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse;
 
-export type GetEncodedUpdatesError = DefaultErrors;
+export type GetEncodedUpdatesError = DefaultErrors | NotFound | Forbidden;
 
 export const getEncodedUpdates: API.OperationMethod<
   GetEncodedUpdatesRequest,
@@ -849,7 +905,7 @@ export const getEncodedUpdates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEncodedUpdatesRequest,
   output: GetEncodedUpdatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FindFullHashesRequest {
@@ -871,7 +927,12 @@ export type FindFullHashesResponse =
 export const FindFullHashesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV4FindFullHashesResponse;
 
-export type FindFullHashesError = DefaultErrors;
+export type FindFullHashesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds the full hashes that match the requested hash prefixes. */
 export const findFullHashes: API.OperationMethod<
@@ -882,7 +943,7 @@ export const findFullHashes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindFullHashesRequest,
   output: FindFullHashesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEncodedFullHashesRequest {
@@ -911,7 +972,7 @@ export type GetEncodedFullHashesResponse =
 export const GetEncodedFullHashesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV4FindFullHashesResponse;
 
-export type GetEncodedFullHashesError = DefaultErrors;
+export type GetEncodedFullHashesError = DefaultErrors | NotFound | Forbidden;
 
 export const getEncodedFullHashes: API.OperationMethod<
   GetEncodedFullHashesRequest,
@@ -921,7 +982,7 @@ export const getEncodedFullHashes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEncodedFullHashesRequest,
   output: GetEncodedFullHashesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateThreatHitsRequest {
@@ -943,7 +1004,12 @@ export type CreateThreatHitsResponse = GoogleProtobufEmpty;
 export const CreateThreatHitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CreateThreatHitsError = DefaultErrors;
+export type CreateThreatHitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method. */
 export const createThreatHits: API.OperationMethod<
@@ -954,7 +1020,7 @@ export const createThreatHits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateThreatHitsRequest,
   output: CreateThreatHitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListThreatListsRequest {}
@@ -971,7 +1037,7 @@ export type ListThreatListsResponse =
 export const ListThreatListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV4ListThreatListsResponse;
 
-export type ListThreatListsError = DefaultErrors;
+export type ListThreatListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the Safe Browsing threat lists available for download. */
 export const listThreatLists: API.OperationMethod<
@@ -982,5 +1048,5 @@ export const listThreatLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListThreatListsRequest,
   output: ListThreatListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -104,6 +104,31 @@ export const WebfontList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "WebfontList" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -150,7 +175,7 @@ export const ListWebfontsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListWebfontsResponse = WebfontList;
 export const ListWebfontsResponse = /*@__PURE__*/ /*#__PURE__*/ WebfontList;
 
-export type ListWebfontsError = DefaultErrors;
+export type ListWebfontsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of fonts currently served by the Google Fonts Developer API. */
 export const listWebfonts: API.OperationMethod<
@@ -161,5 +186,5 @@ export const listWebfonts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListWebfontsRequest,
   output: ListWebfontsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

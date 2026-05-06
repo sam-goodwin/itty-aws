@@ -7626,6 +7626,52 @@ export const GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -7646,7 +7692,10 @@ export type GetOrganizationSettingsOrganizationsResponse = OrganizationSettings;
 export const GetOrganizationSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrganizationSettings;
 
-export type GetOrganizationSettingsOrganizationsError = DefaultErrors;
+export type GetOrganizationSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the settings for an organization. */
 export const getOrganizationSettingsOrganizations: API.OperationMethod<
@@ -7657,7 +7706,7 @@ export const getOrganizationSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationSettingsOrganizationsRequest,
   output: GetOrganizationSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationSettingsOrganizationsRequest {
@@ -7684,7 +7733,12 @@ export type UpdateOrganizationSettingsOrganizationsResponse =
 export const UpdateOrganizationSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrganizationSettings;
 
-export type UpdateOrganizationSettingsOrganizationsError = DefaultErrors;
+export type UpdateOrganizationSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an organization's settings. */
 export const updateOrganizationSettingsOrganizations: API.OperationMethod<
@@ -7695,7 +7749,7 @@ export const updateOrganizationSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationSettingsOrganizationsRequest,
   output: UpdateOrganizationSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunDiscoveryOrganizationsAssetsRequest {
@@ -7722,7 +7776,12 @@ export type RunDiscoveryOrganizationsAssetsResponse = Operation;
 export const RunDiscoveryOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunDiscoveryOrganizationsAssetsError = DefaultErrors;
+export type RunDiscoveryOrganizationsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs asset discovery. The discovery is tracked with a long-running operation. This API can only be called with limited frequency for an organization. If it is called too frequently the caller will receive a TOO_MANY_REQUESTS error. */
 export const runDiscoveryOrganizationsAssets: API.OperationMethod<
@@ -7733,7 +7792,7 @@ export const runDiscoveryOrganizationsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunDiscoveryOrganizationsAssetsRequest,
   output: RunDiscoveryOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GroupOrganizationsAssetsRequest {
@@ -7760,7 +7819,12 @@ export type GroupOrganizationsAssetsResponse = GroupAssetsResponse;
 export const GroupOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupAssetsResponse;
 
-export type GroupOrganizationsAssetsError = DefaultErrors;
+export type GroupOrganizationsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization's assets and groups them by their specified properties. */
 export const groupOrganizationsAssets: API.OperationMethod<
@@ -7771,7 +7835,7 @@ export const groupOrganizationsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupOrganizationsAssetsRequest,
   output: GroupOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsAssetsRequest {
@@ -7814,7 +7878,7 @@ export type ListOrganizationsAssetsResponse = ListAssetsResponse;
 export const ListOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAssetsResponse;
 
-export type ListOrganizationsAssetsError = DefaultErrors;
+export type ListOrganizationsAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists an organization's assets. */
 export const listOrganizationsAssets: API.PaginatedOperationMethod<
@@ -7825,7 +7889,7 @@ export const listOrganizationsAssets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAssetsRequest,
   output: ListOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7861,7 +7925,12 @@ export type UpdateSecurityMarksOrganizationsAssetsResponse =
 export const UpdateSecurityMarksOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1beta1SecurityMarks;
 
-export type UpdateSecurityMarksOrganizationsAssetsError = DefaultErrors;
+export type UpdateSecurityMarksOrganizationsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksOrganizationsAssets: API.OperationMethod<
@@ -7872,7 +7941,7 @@ export const updateSecurityMarksOrganizationsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksOrganizationsAssetsRequest,
   output: UpdateSecurityMarksOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsOperationsRequest {
@@ -7906,7 +7975,10 @@ export type ListOrganizationsOperationsResponse = ListOperationsResponse;
 export const ListOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOrganizationsOperationsError = DefaultErrors;
+export type ListOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsOperations: API.PaginatedOperationMethod<
@@ -7917,7 +7989,7 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsOperationsRequest,
   output: ListOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7944,7 +8016,12 @@ export type CancelOrganizationsOperationsResponse = Empty;
 export const CancelOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOrganizationsOperationsError = DefaultErrors;
+export type CancelOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsOperations: API.OperationMethod<
@@ -7955,7 +8032,7 @@ export const cancelOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOrganizationsOperationsRequest,
   output: CancelOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsOperationsRequest {
@@ -7975,7 +8052,10 @@ export type GetOrganizationsOperationsResponse = Operation;
 export const GetOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOrganizationsOperationsError = DefaultErrors;
+export type GetOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsOperations: API.OperationMethod<
@@ -7986,7 +8066,7 @@ export const getOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsOperationsRequest,
   output: GetOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsOperationsRequest {
@@ -8006,7 +8086,12 @@ export type DeleteOrganizationsOperationsResponse = Empty;
 export const DeleteOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsOperationsError = DefaultErrors;
+export type DeleteOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsOperations: API.OperationMethod<
@@ -8017,7 +8102,7 @@ export const deleteOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsOperationsRequest,
   output: DeleteOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyOrganizationsSourcesRequest {
@@ -8044,7 +8129,12 @@ export type GetIamPolicyOrganizationsSourcesResponse = Policy;
 export const GetIamPolicyOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyOrganizationsSourcesError = DefaultErrors;
+export type GetIamPolicyOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy on the specified Source. */
 export const getIamPolicyOrganizationsSources: API.OperationMethod<
@@ -8055,7 +8145,7 @@ export const getIamPolicyOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsSourcesRequest,
   output: GetIamPolicyOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSourcesRequest {
@@ -8078,7 +8168,12 @@ export type CreateOrganizationsSourcesResponse = Source;
 export const CreateOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Source;
 
-export type CreateOrganizationsSourcesError = DefaultErrors;
+export type CreateOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a source. */
 export const createOrganizationsSources: API.OperationMethod<
@@ -8089,7 +8184,7 @@ export const createOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSourcesRequest,
   output: CreateOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsOrganizationsSourcesRequest {
@@ -8117,7 +8212,12 @@ export type TestIamPermissionsOrganizationsSourcesResponse =
 export const TestIamPermissionsOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsOrganizationsSourcesError = DefaultErrors;
+export type TestIamPermissionsOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has on the specified source. */
 export const testIamPermissionsOrganizationsSources: API.OperationMethod<
@@ -8128,7 +8228,7 @@ export const testIamPermissionsOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsSourcesRequest,
   output: TestIamPermissionsOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSourcesRequest {
@@ -8154,7 +8254,12 @@ export type PatchOrganizationsSourcesResponse = Source;
 export const PatchOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Source;
 
-export type PatchOrganizationsSourcesError = DefaultErrors;
+export type PatchOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a source. */
 export const patchOrganizationsSources: API.OperationMethod<
@@ -8165,7 +8270,7 @@ export const patchOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSourcesRequest,
   output: PatchOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSourcesRequest {
@@ -8185,7 +8290,7 @@ export type GetOrganizationsSourcesResponse = Source;
 export const GetOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Source;
 
-export type GetOrganizationsSourcesError = DefaultErrors;
+export type GetOrganizationsSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a source. */
 export const getOrganizationsSources: API.OperationMethod<
@@ -8196,7 +8301,7 @@ export const getOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSourcesRequest,
   output: GetOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSourcesRequest {
@@ -8222,7 +8327,10 @@ export type ListOrganizationsSourcesResponse = ListSourcesResponse;
 export const ListOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSourcesResponse;
 
-export type ListOrganizationsSourcesError = DefaultErrors;
+export type ListOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all sources belonging to an organization. */
 export const listOrganizationsSources: API.PaginatedOperationMethod<
@@ -8233,7 +8341,7 @@ export const listOrganizationsSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesRequest,
   output: ListOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8264,7 +8372,12 @@ export type SetIamPolicyOrganizationsSourcesResponse = Policy;
 export const SetIamPolicyOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyOrganizationsSourcesError = DefaultErrors;
+export type SetIamPolicyOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified Source. */
 export const setIamPolicyOrganizationsSources: API.OperationMethod<
@@ -8275,7 +8388,7 @@ export const setIamPolicyOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsSourcesRequest,
   output: SetIamPolicyOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GroupOrganizationsSourcesFindingsRequest {
@@ -8302,7 +8415,12 @@ export type GroupOrganizationsSourcesFindingsResponse = GroupFindingsResponse;
 export const GroupOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupFindingsResponse;
 
-export type GroupOrganizationsSourcesFindingsError = DefaultErrors;
+export type GroupOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1beta1/organizations/{organization_id}/sources/-/findings */
 export const groupOrganizationsSourcesFindings: API.OperationMethod<
@@ -8313,7 +8431,7 @@ export const groupOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupOrganizationsSourcesFindingsRequest,
   output: GroupOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSourcesFindingsRequest {
@@ -8351,7 +8469,10 @@ export type ListOrganizationsSourcesFindingsResponse = ListFindingsResponse;
 export const ListOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
 
-export type ListOrganizationsSourcesFindingsError = DefaultErrors;
+export type ListOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1beta1/organizations/{organization_id}/sources/-/findings */
 export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
@@ -8362,7 +8483,7 @@ export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesFindingsRequest,
   output: ListOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8390,7 +8511,12 @@ export type SetStateOrganizationsSourcesFindingsResponse =
 export const SetStateOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1beta1Finding;
 
-export type SetStateOrganizationsSourcesFindingsError = DefaultErrors;
+export type SetStateOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the state of a finding. */
 export const setStateOrganizationsSourcesFindings: API.OperationMethod<
@@ -8401,7 +8527,7 @@ export const setStateOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetStateOrganizationsSourcesFindingsRequest,
   output: SetStateOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSourcesFindingsRequest {
@@ -8430,7 +8556,12 @@ export type PatchOrganizationsSourcesFindingsResponse =
 export const PatchOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1beta1Finding;
 
-export type PatchOrganizationsSourcesFindingsError = DefaultErrors;
+export type PatchOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a finding. The corresponding source must exist for a finding creation to succeed. */
 export const patchOrganizationsSourcesFindings: API.OperationMethod<
@@ -8441,7 +8572,7 @@ export const patchOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSourcesFindingsRequest,
   output: PatchOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSourcesFindingsRequest {
@@ -8474,7 +8605,12 @@ export type CreateOrganizationsSourcesFindingsResponse =
 export const CreateOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1beta1Finding;
 
-export type CreateOrganizationsSourcesFindingsError = DefaultErrors;
+export type CreateOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a finding. The corresponding source must exist for finding creation to succeed. */
 export const createOrganizationsSourcesFindings: API.OperationMethod<
@@ -8485,7 +8621,7 @@ export const createOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSourcesFindingsRequest,
   output: CreateOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSecurityMarksOrganizationsSourcesFindingsRequest {
@@ -8518,7 +8654,11 @@ export const UpdateSecurityMarksOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1beta1SecurityMarks;
 
 export type UpdateSecurityMarksOrganizationsSourcesFindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksOrganizationsSourcesFindings: API.OperationMethod<
@@ -8529,5 +8669,5 @@ export const updateSecurityMarksOrganizationsSourcesFindings: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksOrganizationsSourcesFindingsRequest,
   output: UpdateSecurityMarksOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

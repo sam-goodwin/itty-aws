@@ -458,6 +458,52 @@ export const ProductStatusChangeMessage =
   }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -485,7 +531,12 @@ export type CreateAccountsDataSourcesResponse = DataSource;
 export const CreateAccountsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type CreateAccountsDataSourcesError = DefaultErrors;
+export type CreateAccountsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the new data source configuration for the given account. This method always creates a new data source. */
 export const createAccountsDataSources: API.OperationMethod<
@@ -496,7 +547,7 @@ export const createAccountsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsDataSourcesRequest,
   output: CreateAccountsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchAccountsDataSourcesRequest {
@@ -523,7 +574,12 @@ export type FetchAccountsDataSourcesResponse = Empty;
 export const FetchAccountsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type FetchAccountsDataSourcesError = DefaultErrors;
+export type FetchAccountsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set. */
 export const fetchAccountsDataSources: API.OperationMethod<
@@ -534,7 +590,7 @@ export const fetchAccountsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchAccountsDataSourcesRequest,
   output: FetchAccountsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAccountsDataSourcesRequest {
@@ -554,7 +610,7 @@ export type GetAccountsDataSourcesResponse = DataSource;
 export const GetAccountsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type GetAccountsDataSourcesError = DefaultErrors;
+export type GetAccountsDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the data source configuration for the given account. */
 export const getAccountsDataSources: API.OperationMethod<
@@ -565,7 +621,7 @@ export const getAccountsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsDataSourcesRequest,
   output: GetAccountsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchAccountsDataSourcesRequest {
@@ -591,7 +647,12 @@ export type PatchAccountsDataSourcesResponse = DataSource;
 export const PatchAccountsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type PatchAccountsDataSourcesError = DefaultErrors;
+export type PatchAccountsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted. */
 export const patchAccountsDataSources: API.OperationMethod<
@@ -602,7 +663,7 @@ export const patchAccountsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsDataSourcesRequest,
   output: PatchAccountsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccountsDataSourcesRequest {
@@ -622,7 +683,12 @@ export type DeleteAccountsDataSourcesResponse = Empty;
 export const DeleteAccountsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAccountsDataSourcesError = DefaultErrors;
+export type DeleteAccountsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a data source from your Merchant Center account. */
 export const deleteAccountsDataSources: API.OperationMethod<
@@ -633,7 +699,7 @@ export const deleteAccountsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccountsDataSourcesRequest,
   output: DeleteAccountsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsDataSourcesRequest {
@@ -659,7 +725,7 @@ export type ListAccountsDataSourcesResponse = ListDataSourcesResponse;
 export const ListAccountsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
 
-export type ListAccountsDataSourcesError = DefaultErrors;
+export type ListAccountsDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the configurations for data sources for the given account. */
 export const listAccountsDataSources: API.PaginatedOperationMethod<
@@ -670,7 +736,7 @@ export const listAccountsDataSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsDataSourcesRequest,
   output: ListAccountsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -694,7 +760,10 @@ export type GetAccountsDataSourcesFileUploadsResponse = FileUpload;
 export const GetAccountsDataSourcesFileUploadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FileUpload;
 
-export type GetAccountsDataSourcesFileUploadsError = DefaultErrors;
+export type GetAccountsDataSourcesFileUploadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest data source file upload. Only the `latest` alias is accepted for a file upload. */
 export const getAccountsDataSourcesFileUploads: API.OperationMethod<
@@ -705,5 +774,5 @@ export const getAccountsDataSourcesFileUploads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsDataSourcesFileUploadsRequest,
   output: GetAccountsDataSourcesFileUploadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -993,6 +993,52 @@ export const MarkAlertAsReadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "MarkAlertAsReadRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1022,7 +1068,12 @@ export type GenerateOrgProfileProjectsResponse = Operation;
 export const GenerateOrgProfileProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GenerateOrgProfileProjectsError = DefaultErrors;
+export type GenerateOrgProfileProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Triggers the generation of a Customer Profile for a project. */
 export const generateOrgProfileProjects: API.OperationMethod<
@@ -1033,7 +1084,7 @@ export const generateOrgProfileProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateOrgProfileProjectsRequest,
   output: GenerateOrgProfileProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsAlertsRequest {
@@ -1065,7 +1116,7 @@ export type ListProjectsAlertsResponse = ListAlertsResponse;
 export const ListProjectsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAlertsResponse;
 
-export type ListProjectsAlertsError = DefaultErrors;
+export type ListProjectsAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a list of alerts that meet the filter criteria. */
 export const listProjectsAlerts: API.PaginatedOperationMethod<
@@ -1076,7 +1127,7 @@ export const listProjectsAlerts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAlertsRequest,
   output: ListProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1102,7 +1153,12 @@ export const ReadProjectsAlertsRequest =
 export type ReadProjectsAlertsResponse = Alert;
 export const ReadProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type ReadProjectsAlertsError = DefaultErrors;
+export type ReadProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as read - READ. */
 export const readProjectsAlerts: API.OperationMethod<
@@ -1113,7 +1169,7 @@ export const readProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReadProjectsAlertsRequest,
   output: ReadProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EscalateProjectsAlertsRequest {
@@ -1135,7 +1191,12 @@ export const EscalateProjectsAlertsRequest =
 export type EscalateProjectsAlertsResponse = Alert;
 export const EscalateProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type EscalateProjectsAlertsError = DefaultErrors;
+export type EscalateProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as escalated - ESCALATED. */
 export const escalateProjectsAlerts: API.OperationMethod<
@@ -1146,7 +1207,7 @@ export const escalateProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EscalateProjectsAlertsRequest,
   output: EscalateProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface NotActionableProjectsAlertsRequest {
@@ -1173,7 +1234,12 @@ export type NotActionableProjectsAlertsResponse = Alert;
 export const NotActionableProjectsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type NotActionableProjectsAlertsError = DefaultErrors;
+export type NotActionableProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as not actionable - NOT_ACTIONABLE. */
 export const notActionableProjectsAlerts: API.OperationMethod<
@@ -1184,7 +1250,7 @@ export const notActionableProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: NotActionableProjectsAlertsRequest,
   output: NotActionableProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DuplicateProjectsAlertsRequest {
@@ -1207,7 +1273,12 @@ export type DuplicateProjectsAlertsResponse = Alert;
 export const DuplicateProjectsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type DuplicateProjectsAlertsError = DefaultErrors;
+export type DuplicateProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as a duplicate of another alert. - DUPLICATE. */
 export const duplicateProjectsAlerts: API.OperationMethod<
@@ -1218,7 +1289,7 @@ export const duplicateProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DuplicateProjectsAlertsRequest,
   output: DuplicateProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAlertsRequest {
@@ -1237,7 +1308,7 @@ export const GetProjectsAlertsRequest =
 export type GetProjectsAlertsResponse = Alert;
 export const GetProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type GetProjectsAlertsError = DefaultErrors;
+export type GetProjectsAlertsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get an alert by name. */
 export const getProjectsAlerts: API.OperationMethod<
@@ -1248,7 +1319,7 @@ export const getProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAlertsRequest,
   output: GetProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnumerateFacetsProjectsAlertsRequest {
@@ -1272,7 +1343,10 @@ export type EnumerateFacetsProjectsAlertsResponse =
 export const EnumerateFacetsProjectsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EnumerateAlertFacetsResponse;
 
-export type EnumerateFacetsProjectsAlertsError = DefaultErrors;
+export type EnumerateFacetsProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** EnumerateAlertFacets returns the facets and the number of alerts that meet the filter criteria and have that value for each facet. */
 export const enumerateFacetsProjectsAlerts: API.OperationMethod<
@@ -1283,7 +1357,7 @@ export const enumerateFacetsProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnumerateFacetsProjectsAlertsRequest,
   output: EnumerateFacetsProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TriageProjectsAlertsRequest {
@@ -1305,7 +1379,12 @@ export const TriageProjectsAlertsRequest =
 export type TriageProjectsAlertsResponse = Alert;
 export const TriageProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type TriageProjectsAlertsError = DefaultErrors;
+export type TriageProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as triaged - TRIAGED. */
 export const triageProjectsAlerts: API.OperationMethod<
@@ -1316,7 +1395,7 @@ export const triageProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TriageProjectsAlertsRequest,
   output: TriageProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TrackExternallyProjectsAlertsRequest {
@@ -1345,7 +1424,12 @@ export type TrackExternallyProjectsAlertsResponse = Alert;
 export const TrackExternallyProjectsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type TrackExternallyProjectsAlertsError = DefaultErrors;
+export type TrackExternallyProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as tracked externally - TRACKED_EXTERNALLY. */
 export const trackExternallyProjectsAlerts: API.OperationMethod<
@@ -1356,7 +1440,7 @@ export const trackExternallyProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TrackExternallyProjectsAlertsRequest,
   output: TrackExternallyProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FalsePositiveProjectsAlertsRequest {
@@ -1383,7 +1467,12 @@ export type FalsePositiveProjectsAlertsResponse = Alert;
 export const FalsePositiveProjectsAlertsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type FalsePositiveProjectsAlertsError = DefaultErrors;
+export type FalsePositiveProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as a false positive - FALSE_POSITIVE. */
 export const falsePositiveProjectsAlerts: API.OperationMethod<
@@ -1394,7 +1483,7 @@ export const falsePositiveProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FalsePositiveProjectsAlertsRequest,
   output: FalsePositiveProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResolveProjectsAlertsRequest {
@@ -1416,7 +1505,12 @@ export const ResolveProjectsAlertsRequest =
 export type ResolveProjectsAlertsResponse = Alert;
 export const ResolveProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type ResolveProjectsAlertsError = DefaultErrors;
+export type ResolveProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert to closed state - RESOLVED. */
 export const resolveProjectsAlerts: API.OperationMethod<
@@ -1427,7 +1521,7 @@ export const resolveProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResolveProjectsAlertsRequest,
   output: ResolveProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BenignProjectsAlertsRequest {
@@ -1449,7 +1543,12 @@ export const BenignProjectsAlertsRequest =
 export type BenignProjectsAlertsResponse = Alert;
 export const BenignProjectsAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Alert;
 
-export type BenignProjectsAlertsError = DefaultErrors;
+export type BenignProjectsAlertsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks an alert as benign - BENIGN. */
 export const benignProjectsAlerts: API.OperationMethod<
@@ -1460,7 +1559,7 @@ export const benignProjectsAlerts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BenignProjectsAlertsRequest,
   output: BenignProjectsAlertsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAlertsDocumentsRequest {
@@ -1480,7 +1579,10 @@ export type GetProjectsAlertsDocumentsResponse = AlertDocument;
 export const GetProjectsAlertsDocumentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AlertDocument;
 
-export type GetProjectsAlertsDocumentsError = DefaultErrors;
+export type GetProjectsAlertsDocumentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a specific document associated with an alert. */
 export const getProjectsAlertsDocuments: API.OperationMethod<
@@ -1491,7 +1593,7 @@ export const getProjectsAlertsDocuments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAlertsDocumentsRequest,
   output: GetProjectsAlertsDocumentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsFindingsRequest {
@@ -1523,7 +1625,7 @@ export type ListProjectsFindingsResponse = ListFindingsResponse;
 export const ListProjectsFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
 
-export type ListProjectsFindingsError = DefaultErrors;
+export type ListProjectsFindingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a list of findings that meet the filter criteria. The `parent` field in ListFindingsRequest should have the format: projects/{project} */
 export const listProjectsFindings: API.PaginatedOperationMethod<
@@ -1534,7 +1636,7 @@ export const listProjectsFindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsFindingsRequest,
   output: ListProjectsFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1570,7 +1672,7 @@ export type SearchProjectsFindingsResponse = SearchFindingsResponse;
 export const SearchProjectsFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchFindingsResponse;
 
-export type SearchProjectsFindingsError = DefaultErrors;
+export type SearchProjectsFindingsError = DefaultErrors | NotFound | Forbidden;
 
 /** SearchFindings is a more powerful version of ListFindings that supports complex queries like "findings for alerts" using functions such as `has_alert` in the query string. The `parent` field in SearchFindingsRequest should have the format: projects/{project} Example to search for findings for a specific issue: `has_alert("name=\"projects/gti-12345/alerts/alert-12345\"")` */
 export const searchProjectsFindings: API.PaginatedOperationMethod<
@@ -1581,7 +1683,7 @@ export const searchProjectsFindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsFindingsRequest,
   output: SearchProjectsFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1604,7 +1706,7 @@ export const GetProjectsFindingsRequest =
 export type GetProjectsFindingsResponse = Finding;
 export const GetProjectsFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type GetProjectsFindingsError = DefaultErrors;
+export type GetProjectsFindingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a finding by name. The `name` field should have the format: `projects/{project}/findings/{finding}` */
 export const getProjectsFindings: API.OperationMethod<
@@ -1615,7 +1717,7 @@ export const getProjectsFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsFindingsRequest,
   output: GetProjectsFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsConfigurationsRequest {
@@ -1647,7 +1749,10 @@ export type ListProjectsConfigurationsResponse = ListConfigurationsResponse;
 export const ListProjectsConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConfigurationsResponse;
 
-export type ListProjectsConfigurationsError = DefaultErrors;
+export type ListProjectsConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of configurations that meet the filter criteria. */
 export const listProjectsConfigurations: API.PaginatedOperationMethod<
@@ -1658,7 +1763,7 @@ export const listProjectsConfigurations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigurationsRequest,
   output: ListProjectsConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1682,7 +1787,10 @@ export type GetProjectsConfigurationsResponse = Configuration;
 export const GetProjectsConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Configuration;
 
-export type GetProjectsConfigurationsError = DefaultErrors;
+export type GetProjectsConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a configuration by name. */
 export const getProjectsConfigurations: API.OperationMethod<
@@ -1693,7 +1801,7 @@ export const getProjectsConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsConfigurationsRequest,
   output: GetProjectsConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpsertProjectsConfigurationsRequest {
@@ -1725,7 +1833,12 @@ export type UpsertProjectsConfigurationsResponse = UpsertConfigurationResponse;
 export const UpsertProjectsConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UpsertConfigurationResponse;
 
-export type UpsertProjectsConfigurationsError = DefaultErrors;
+export type UpsertProjectsConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a configuration. */
 export const upsertProjectsConfigurations: API.OperationMethod<
@@ -1736,7 +1849,7 @@ export const upsertProjectsConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpsertProjectsConfigurationsRequest,
   output: UpsertProjectsConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsConfigurationsRevisionsRequest {
@@ -1769,7 +1882,10 @@ export type ListProjectsConfigurationsRevisionsResponse =
 export const ListProjectsConfigurationsRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConfigurationRevisionsResponse;
 
-export type ListProjectsConfigurationsRevisionsError = DefaultErrors;
+export type ListProjectsConfigurationsRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List configuration revisions that meet the filter criteria. */
 export const listProjectsConfigurationsRevisions: API.PaginatedOperationMethod<
@@ -1780,7 +1896,7 @@ export const listProjectsConfigurationsRevisions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigurationsRevisionsRequest,
   output: ListProjectsConfigurationsRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

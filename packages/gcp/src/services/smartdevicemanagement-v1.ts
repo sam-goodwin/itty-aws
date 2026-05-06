@@ -153,6 +153,52 @@ export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -174,7 +220,10 @@ export type GetEnterprisesStructuresResponse =
 export const GetEnterprisesStructuresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Structure;
 
-export type GetEnterprisesStructuresError = DefaultErrors;
+export type GetEnterprisesStructuresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a structure managed by the enterprise. */
 export const getEnterprisesStructures: API.OperationMethod<
@@ -185,7 +234,7 @@ export const getEnterprisesStructures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesStructuresRequest,
   output: GetEnterprisesStructuresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesStructuresRequest {
@@ -209,7 +258,10 @@ export type ListEnterprisesStructuresResponse =
 export const ListEnterprisesStructuresResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ListStructuresResponse;
 
-export type ListEnterprisesStructuresError = DefaultErrors;
+export type ListEnterprisesStructuresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists structures managed by the enterprise. */
 export const listEnterprisesStructures: API.OperationMethod<
@@ -220,7 +272,7 @@ export const listEnterprisesStructures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEnterprisesStructuresRequest,
   output: ListEnterprisesStructuresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetEnterprisesStructuresRoomsRequest {
@@ -241,7 +293,10 @@ export type GetEnterprisesStructuresRoomsResponse =
 export const GetEnterprisesStructuresRoomsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Room;
 
-export type GetEnterprisesStructuresRoomsError = DefaultErrors;
+export type GetEnterprisesStructuresRoomsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a room managed by the enterprise. */
 export const getEnterprisesStructuresRooms: API.OperationMethod<
@@ -252,7 +307,7 @@ export const getEnterprisesStructuresRooms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesStructuresRoomsRequest,
   output: GetEnterprisesStructuresRoomsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesStructuresRoomsRequest {
@@ -273,7 +328,10 @@ export type ListEnterprisesStructuresRoomsResponse =
 export const ListEnterprisesStructuresRoomsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ListRoomsResponse;
 
-export type ListEnterprisesStructuresRoomsError = DefaultErrors;
+export type ListEnterprisesStructuresRoomsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists rooms managed by the enterprise. */
 export const listEnterprisesStructuresRooms: API.OperationMethod<
@@ -284,7 +342,7 @@ export const listEnterprisesStructuresRooms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEnterprisesStructuresRoomsRequest,
   output: ListEnterprisesStructuresRoomsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListEnterprisesDevicesRequest {
@@ -308,7 +366,7 @@ export type ListEnterprisesDevicesResponse =
 export const ListEnterprisesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ListDevicesResponse;
 
-export type ListEnterprisesDevicesError = DefaultErrors;
+export type ListEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists devices managed by the enterprise. */
 export const listEnterprisesDevices: API.OperationMethod<
@@ -319,7 +377,7 @@ export const listEnterprisesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListEnterprisesDevicesRequest,
   output: ListEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetEnterprisesDevicesRequest {
@@ -339,7 +397,7 @@ export type GetEnterprisesDevicesResponse = GoogleHomeEnterpriseSdmV1Device;
 export const GetEnterprisesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1Device;
 
-export type GetEnterprisesDevicesError = DefaultErrors;
+export type GetEnterprisesDevicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a device managed by the enterprise. */
 export const getEnterprisesDevices: API.OperationMethod<
@@ -350,7 +408,7 @@ export const getEnterprisesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEnterprisesDevicesRequest,
   output: GetEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExecuteCommandEnterprisesDevicesRequest {
@@ -376,7 +434,12 @@ export type ExecuteCommandEnterprisesDevicesResponse =
 export const ExecuteCommandEnterprisesDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse;
 
-export type ExecuteCommandEnterprisesDevicesError = DefaultErrors;
+export type ExecuteCommandEnterprisesDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a command to device managed by the enterprise. */
 export const executeCommandEnterprisesDevices: API.OperationMethod<
@@ -387,5 +450,5 @@ export const executeCommandEnterprisesDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteCommandEnterprisesDevicesRequest,
   output: ExecuteCommandEnterprisesDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

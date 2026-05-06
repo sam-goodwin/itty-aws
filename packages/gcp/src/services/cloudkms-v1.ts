@@ -1979,6 +1979,52 @@ export const RestoreCryptoKeyVersionRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2008,7 +2054,12 @@ export type UpdateKajPolicyConfigProjectsResponse =
 export const UpdateKajPolicyConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyAccessJustificationsPolicyConfig;
 
-export type UpdateKajPolicyConfigProjectsError = DefaultErrors;
+export type UpdateKajPolicyConfigProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project. */
 export const updateKajPolicyConfigProjects: API.OperationMethod<
@@ -2019,7 +2070,7 @@ export const updateKajPolicyConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKajPolicyConfigProjectsRequest,
   output: UpdateKajPolicyConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ShowEffectiveAutokeyConfigProjectsRequest {
@@ -2040,7 +2091,10 @@ export type ShowEffectiveAutokeyConfigProjectsResponse =
 export const ShowEffectiveAutokeyConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShowEffectiveAutokeyConfigResponse;
 
-export type ShowEffectiveAutokeyConfigProjectsError = DefaultErrors;
+export type ShowEffectiveAutokeyConfigProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the effective Cloud KMS Autokey configuration for a given project. */
 export const showEffectiveAutokeyConfigProjects: API.OperationMethod<
@@ -2051,7 +2105,7 @@ export const showEffectiveAutokeyConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ShowEffectiveAutokeyConfigProjectsRequest,
   output: ShowEffectiveAutokeyConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetKajPolicyConfigProjectsRequest {
@@ -2072,7 +2126,10 @@ export type GetKajPolicyConfigProjectsResponse =
 export const GetKajPolicyConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyAccessJustificationsPolicyConfig;
 
-export type GetKajPolicyConfigProjectsError = DefaultErrors;
+export type GetKajPolicyConfigProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project. */
 export const getKajPolicyConfigProjects: API.OperationMethod<
@@ -2083,7 +2140,7 @@ export const getKajPolicyConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKajPolicyConfigProjectsRequest,
   output: GetKajPolicyConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAutokeyConfigProjectsRequest {
@@ -2109,7 +2166,12 @@ export type UpdateAutokeyConfigProjectsResponse = AutokeyConfig;
 export const UpdateAutokeyConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutokeyConfig;
 
-export type UpdateAutokeyConfigProjectsError = DefaultErrors;
+export type UpdateAutokeyConfigProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the AutokeyConfig for a folder or a project. The caller must have both `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine where to create the resulting CryptoKey. */
 export const updateAutokeyConfigProjects: API.OperationMethod<
@@ -2120,7 +2182,7 @@ export const updateAutokeyConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutokeyConfigProjectsRequest,
   output: UpdateAutokeyConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAutokeyConfigProjectsRequest {
@@ -2140,7 +2202,10 @@ export type GetAutokeyConfigProjectsResponse = AutokeyConfig;
 export const GetAutokeyConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutokeyConfig;
 
-export type GetAutokeyConfigProjectsError = DefaultErrors;
+export type GetAutokeyConfigProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the AutokeyConfig for a folder or project. */
 export const getAutokeyConfigProjects: API.OperationMethod<
@@ -2151,7 +2216,7 @@ export const getAutokeyConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutokeyConfigProjectsRequest,
   output: GetAutokeyConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest {
@@ -2176,7 +2241,9 @@ export const ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShowEffectiveKeyAccessJustificationsPolicyConfigResponse;
 
 export type ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the given project in hierarchy. */
 export const showEffectiveKeyAccessJustificationsPolicyConfigProjects: API.OperationMethod<
@@ -2187,7 +2254,7 @@ export const showEffectiveKeyAccessJustificationsPolicyConfigProjects: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest,
   output: ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest {
@@ -2212,7 +2279,9 @@ export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRespons
   /*@__PURE__*/ /*#__PURE__*/ ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse;
 
 export type ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to the given project in hierarchy. */
 export const showEffectiveKeyAccessJustificationsEnrollmentConfigProjects: API.OperationMethod<
@@ -2223,7 +2292,7 @@ export const showEffectiveKeyAccessJustificationsEnrollmentConfigProjects: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest,
   output: ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateEkmConfigProjectsLocationsRequest {
@@ -2249,7 +2318,12 @@ export type UpdateEkmConfigProjectsLocationsResponse = EkmConfig;
 export const UpdateEkmConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EkmConfig;
 
-export type UpdateEkmConfigProjectsLocationsError = DefaultErrors;
+export type UpdateEkmConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the EkmConfig singleton resource for a given project and location. */
 export const updateEkmConfigProjectsLocations: API.OperationMethod<
@@ -2260,7 +2334,7 @@ export const updateEkmConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateEkmConfigProjectsLocationsRequest,
   output: UpdateEkmConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateRandomBytesProjectsLocationsRequest {
@@ -2288,7 +2362,12 @@ export type GenerateRandomBytesProjectsLocationsResponse =
 export const GenerateRandomBytesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateRandomBytesResponse;
 
-export type GenerateRandomBytesProjectsLocationsError = DefaultErrors;
+export type GenerateRandomBytesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generate random bytes using the Cloud KMS randomness source in the provided location. */
 export const generateRandomBytesProjectsLocations: API.OperationMethod<
@@ -2299,7 +2378,7 @@ export const generateRandomBytesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateRandomBytesProjectsLocationsRequest,
   output: GenerateRandomBytesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEkmConfigProjectsLocationsRequest {
@@ -2319,7 +2398,10 @@ export type GetEkmConfigProjectsLocationsResponse = EkmConfig;
 export const GetEkmConfigProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EkmConfig;
 
-export type GetEkmConfigProjectsLocationsError = DefaultErrors;
+export type GetEkmConfigProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the EkmConfig singleton resource for a given project and location. */
 export const getEkmConfigProjectsLocations: API.OperationMethod<
@@ -2330,7 +2412,7 @@ export const getEkmConfigProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEkmConfigProjectsLocationsRequest,
   output: GetEkmConfigProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsRequest {
@@ -2350,7 +2432,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2361,7 +2443,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -2395,7 +2477,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2406,7 +2488,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2438,7 +2520,12 @@ export type CreateProjectsLocationsKeyHandlesResponse = Operation;
 export const CreateProjectsLocationsKeyHandlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsKeyHandlesError = DefaultErrors;
+export type CreateProjectsLocationsKeyHandlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new KeyHandle, triggering the provisioning of a new CryptoKey for CMEK use with the given resource type in the configured key project and the same location. GetOperation should be used to resolve the resulting long-running operation and get the resulting KeyHandle and CryptoKey. */
 export const createProjectsLocationsKeyHandles: API.OperationMethod<
@@ -2449,7 +2536,7 @@ export const createProjectsLocationsKeyHandles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsKeyHandlesRequest,
   output: CreateProjectsLocationsKeyHandlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsKeyHandlesRequest {
@@ -2469,7 +2556,10 @@ export type GetProjectsLocationsKeyHandlesResponse = KeyHandle;
 export const GetProjectsLocationsKeyHandlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyHandle;
 
-export type GetProjectsLocationsKeyHandlesError = DefaultErrors;
+export type GetProjectsLocationsKeyHandlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the KeyHandle. */
 export const getProjectsLocationsKeyHandles: API.OperationMethod<
@@ -2480,7 +2570,7 @@ export const getProjectsLocationsKeyHandles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsKeyHandlesRequest,
   output: GetProjectsLocationsKeyHandlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsKeyHandlesRequest {
@@ -2509,7 +2599,10 @@ export type ListProjectsLocationsKeyHandlesResponse = ListKeyHandlesResponse;
 export const ListProjectsLocationsKeyHandlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListKeyHandlesResponse;
 
-export type ListProjectsLocationsKeyHandlesError = DefaultErrors;
+export type ListProjectsLocationsKeyHandlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists KeyHandles. */
 export const listProjectsLocationsKeyHandles: API.PaginatedOperationMethod<
@@ -2520,7 +2613,7 @@ export const listProjectsLocationsKeyHandles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeyHandlesRequest,
   output: ListProjectsLocationsKeyHandlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2550,7 +2643,12 @@ export type CreateProjectsLocationsKeyRingsResponse = KeyRing;
 export const CreateProjectsLocationsKeyRingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyRing;
 
-export type CreateProjectsLocationsKeyRingsError = DefaultErrors;
+export type CreateProjectsLocationsKeyRingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new KeyRing in a given Project and Location. */
 export const createProjectsLocationsKeyRings: API.OperationMethod<
@@ -2561,7 +2659,7 @@ export const createProjectsLocationsKeyRings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsKeyRingsRequest,
   output: CreateProjectsLocationsKeyRingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsKeyRingsRequest {
@@ -2593,7 +2691,10 @@ export type ListProjectsLocationsKeyRingsResponse = ListKeyRingsResponse;
 export const ListProjectsLocationsKeyRingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListKeyRingsResponse;
 
-export type ListProjectsLocationsKeyRingsError = DefaultErrors;
+export type ListProjectsLocationsKeyRingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists KeyRings. */
 export const listProjectsLocationsKeyRings: API.PaginatedOperationMethod<
@@ -2604,7 +2705,7 @@ export const listProjectsLocationsKeyRings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeyRingsRequest,
   output: ListProjectsLocationsKeyRingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2633,7 +2734,10 @@ export type GetIamPolicyProjectsLocationsKeyRingsResponse = Policy;
 export const GetIamPolicyProjectsLocationsKeyRingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsKeyRingsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsKeyRingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsKeyRings: API.OperationMethod<
@@ -2644,7 +2748,7 @@ export const getIamPolicyProjectsLocationsKeyRings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsKeyRingsRequest,
   output: GetIamPolicyProjectsLocationsKeyRingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsKeyRingsRequest {
@@ -2672,7 +2776,12 @@ export type TestIamPermissionsProjectsLocationsKeyRingsResponse =
 export const TestIamPermissionsProjectsLocationsKeyRingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsKeyRingsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsKeyRingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsKeyRings: API.OperationMethod<
@@ -2683,7 +2792,7 @@ export const testIamPermissionsProjectsLocationsKeyRings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsKeyRingsRequest,
   output: TestIamPermissionsProjectsLocationsKeyRingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsKeyRingsRequest {
@@ -2703,7 +2812,10 @@ export type GetProjectsLocationsKeyRingsResponse = KeyRing;
 export const GetProjectsLocationsKeyRingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyRing;
 
-export type GetProjectsLocationsKeyRingsError = DefaultErrors;
+export type GetProjectsLocationsKeyRingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata for a given KeyRing. */
 export const getProjectsLocationsKeyRings: API.OperationMethod<
@@ -2714,7 +2826,7 @@ export const getProjectsLocationsKeyRings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsKeyRingsRequest,
   output: GetProjectsLocationsKeyRingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsKeyRingsRequest {
@@ -2741,7 +2853,12 @@ export type SetIamPolicyProjectsLocationsKeyRingsResponse = Policy;
 export const SetIamPolicyProjectsLocationsKeyRingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsKeyRingsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsKeyRingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsKeyRings: API.OperationMethod<
@@ -2752,7 +2869,7 @@ export const setIamPolicyProjectsLocationsKeyRings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsKeyRingsRequest,
   output: SetIamPolicyProjectsLocationsKeyRingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsKeyRingsImportJobsRequest {
@@ -2772,7 +2889,10 @@ export type GetProjectsLocationsKeyRingsImportJobsResponse = ImportJob;
 export const GetProjectsLocationsKeyRingsImportJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImportJob;
 
-export type GetProjectsLocationsKeyRingsImportJobsError = DefaultErrors;
+export type GetProjectsLocationsKeyRingsImportJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata for a given ImportJob. */
 export const getProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
@@ -2783,7 +2903,7 @@ export const getProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsKeyRingsImportJobsRequest,
   output: GetProjectsLocationsKeyRingsImportJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest {
@@ -2811,7 +2931,11 @@ export const SetIamPolicyProjectsLocationsKeyRingsImportJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsKeyRingsImportJobsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
@@ -2822,7 +2946,7 @@ export const setIamPolicyProjectsLocationsKeyRingsImportJobs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest,
   output: SetIamPolicyProjectsLocationsKeyRingsImportJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsKeyRingsImportJobsRequest {
@@ -2850,7 +2974,12 @@ export type CreateProjectsLocationsKeyRingsImportJobsResponse = ImportJob;
 export const CreateProjectsLocationsKeyRingsImportJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImportJob;
 
-export type CreateProjectsLocationsKeyRingsImportJobsError = DefaultErrors;
+export type CreateProjectsLocationsKeyRingsImportJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new ImportJob within a KeyRing. ImportJob.import_method is required. */
 export const createProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
@@ -2861,7 +2990,7 @@ export const createProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsKeyRingsImportJobsRequest,
   output: CreateProjectsLocationsKeyRingsImportJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsKeyRingsImportJobsRequest {
@@ -2894,7 +3023,10 @@ export type ListProjectsLocationsKeyRingsImportJobsResponse =
 export const ListProjectsLocationsKeyRingsImportJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListImportJobsResponse;
 
-export type ListProjectsLocationsKeyRingsImportJobsError = DefaultErrors;
+export type ListProjectsLocationsKeyRingsImportJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists ImportJobs. */
 export const listProjectsLocationsKeyRingsImportJobs: API.PaginatedOperationMethod<
@@ -2905,7 +3037,7 @@ export const listProjectsLocationsKeyRingsImportJobs: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeyRingsImportJobsRequest,
   output: ListProjectsLocationsKeyRingsImportJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2935,7 +3067,9 @@ export const GetIamPolicyProjectsLocationsKeyRingsImportJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsKeyRingsImportJobsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
@@ -2946,7 +3080,7 @@ export const getIamPolicyProjectsLocationsKeyRingsImportJobs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsKeyRingsImportJobsRequest,
   output: GetIamPolicyProjectsLocationsKeyRingsImportJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest {
@@ -2975,7 +3109,11 @@ export const TestIamPermissionsProjectsLocationsKeyRingsImportJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsKeyRingsImportJobsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsKeyRingsImportJobs: API.OperationMethod<
@@ -2986,7 +3124,7 @@ export const testIamPermissionsProjectsLocationsKeyRingsImportJobs: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsKeyRingsImportJobsRequest,
   output: TestIamPermissionsProjectsLocationsKeyRingsImportJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3012,7 +3150,12 @@ export type PatchProjectsLocationsKeyRingsCryptoKeysResponse = CryptoKey;
 export const PatchProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ CryptoKey;
 
-export type PatchProjectsLocationsKeyRingsCryptoKeysError = DefaultErrors;
+export type PatchProjectsLocationsKeyRingsCryptoKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a CryptoKey. */
 export const patchProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3023,7 +3166,7 @@ export const patchProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsKeyRingsCryptoKeysRequest,
   output: PatchProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3051,7 +3194,11 @@ export const SetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsKeyRingsCryptoKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3062,7 +3209,7 @@ export const setIamPolicyProjectsLocationsKeyRingsCryptoKeys: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest,
   output: SetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EncryptProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3086,7 +3233,12 @@ export type EncryptProjectsLocationsKeyRingsCryptoKeysResponse =
 export const EncryptProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ EncryptResponse;
 
-export type EncryptProjectsLocationsKeyRingsCryptoKeysError = DefaultErrors;
+export type EncryptProjectsLocationsKeyRingsCryptoKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Encrypts data, so that it can only be recovered by a call to Decrypt. The CryptoKey.purpose must be ENCRYPT_DECRYPT. */
 export const encryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3097,7 +3249,7 @@ export const encryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EncryptProjectsLocationsKeyRingsCryptoKeysRequest,
   output: EncryptProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3135,7 +3287,10 @@ export type ListProjectsLocationsKeyRingsCryptoKeysResponse =
 export const ListProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCryptoKeysResponse;
 
-export type ListProjectsLocationsKeyRingsCryptoKeysError = DefaultErrors;
+export type ListProjectsLocationsKeyRingsCryptoKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CryptoKeys. */
 export const listProjectsLocationsKeyRingsCryptoKeys: API.PaginatedOperationMethod<
@@ -3146,7 +3301,7 @@ export const listProjectsLocationsKeyRingsCryptoKeys: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeyRingsCryptoKeysRequest,
   output: ListProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3179,7 +3334,11 @@ export const TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3190,7 +3349,7 @@ export const testIamPermissionsProjectsLocationsKeyRingsCryptoKeys: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysRequest,
   output: TestIamPermissionsProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3223,7 +3382,12 @@ export type CreateProjectsLocationsKeyRingsCryptoKeysResponse = CryptoKey;
 export const CreateProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ CryptoKey;
 
-export type CreateProjectsLocationsKeyRingsCryptoKeysError = DefaultErrors;
+export type CreateProjectsLocationsKeyRingsCryptoKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required. */
 export const createProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3234,7 +3398,7 @@ export const createProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsKeyRingsCryptoKeysRequest,
   output: CreateProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DecryptProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3258,7 +3422,12 @@ export type DecryptProjectsLocationsKeyRingsCryptoKeysResponse =
 export const DecryptProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ DecryptResponse;
 
-export type DecryptProjectsLocationsKeyRingsCryptoKeysError = DefaultErrors;
+export type DecryptProjectsLocationsKeyRingsCryptoKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decrypts data that was protected by Encrypt. The CryptoKey.purpose must be ENCRYPT_DECRYPT. */
 export const decryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3269,7 +3438,7 @@ export const decryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DecryptProjectsLocationsKeyRingsCryptoKeysRequest,
   output: DecryptProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3300,7 +3469,11 @@ export const UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ CryptoKey;
 
 export type UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the version of a CryptoKey that will be used in Encrypt. Returns an error if called on a key whose purpose is not ENCRYPT_DECRYPT. */
 export const updatePrimaryVersionProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3311,7 +3484,7 @@ export const updatePrimaryVersionProjectsLocationsKeyRingsCryptoKeys: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysRequest,
   output: UpdatePrimaryVersionProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3331,7 +3504,10 @@ export type GetProjectsLocationsKeyRingsCryptoKeysResponse = CryptoKey;
 export const GetProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ CryptoKey;
 
-export type GetProjectsLocationsKeyRingsCryptoKeysError = DefaultErrors;
+export type GetProjectsLocationsKeyRingsCryptoKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata for a given CryptoKey, as well as its primary CryptoKeyVersion. */
 export const getProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3342,7 +3518,7 @@ export const getProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsKeyRingsCryptoKeysRequest,
   output: GetProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3362,7 +3538,12 @@ export type DeleteProjectsLocationsKeyRingsCryptoKeysResponse = Operation;
 export const DeleteProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsKeyRingsCryptoKeysError = DefaultErrors;
+export type DeleteProjectsLocationsKeyRingsCryptoKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes the given CryptoKey. All child CryptoKeyVersions must have been previously deleted using KeyManagementService.DeleteCryptoKeyVersion. The specified crypto key will be immediately and permanently deleted upon calling this method. This action cannot be undone. */
 export const deleteProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3373,7 +3554,7 @@ export const deleteProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsKeyRingsCryptoKeysRequest,
   output: DeleteProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest {
@@ -3399,7 +3580,9 @@ export const GetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsKeyRingsCryptoKeysError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
@@ -3410,7 +3593,7 @@ export const getIamPolicyProjectsLocationsKeyRingsCryptoKeys: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsKeyRingsCryptoKeysRequest,
   output: GetIamPolicyProjectsLocationsKeyRingsCryptoKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3435,7 +3618,11 @@ export const DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse
   /*@__PURE__*/ /*#__PURE__*/ CryptoKeyVersion;
 
 export type DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Schedule a CryptoKeyVersion for destruction. Upon calling this method, CryptoKeyVersion.state will be set to DESTROY_SCHEDULED, and destroy_time will be set to the time destroy_scheduled_duration in the future. At that time, the state will automatically change to DESTROYED, and the key material will be irrevocably destroyed. Before the destroy_time is reached, RestoreCryptoKeyVersion may be called to reverse the process. */
 export const destroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3446,7 +3633,7 @@ export const destroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: DestroyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3471,7 +3658,11 @@ export const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespo
   /*@__PURE__*/ /*#__PURE__*/ RawEncryptResponse;
 
 export type RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and Decrypt rather than their raw counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
 export const rawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3483,7 +3674,7 @@ export const rawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API
   input: RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output:
     RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3508,7 +3699,11 @@ export const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespon
   /*@__PURE__*/ /*#__PURE__*/ MacVerifyResponse;
 
 export type MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response that indicates whether or not the verification was successful. */
 export const macVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3519,7 +3714,7 @@ export const macVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3548,7 +3743,11 @@ export const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersio
   /*@__PURE__*/ /*#__PURE__*/ AsymmetricDecryptResponse;
 
 export type AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decrypts data that was encrypted with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT. */
 export const asymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3561,7 +3760,7 @@ export const asymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersio
     AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output:
     AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3586,7 +3785,11 @@ export const RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse
   /*@__PURE__*/ /*#__PURE__*/ CryptoKeyVersion;
 
 export type RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of the CryptoKeyVersion, state will be set to DISABLED, and destroy_time will be cleared. */
 export const restoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3597,7 +3800,7 @@ export const restoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: RestoreProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3619,7 +3822,11 @@ export const DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes the given CryptoKeyVersion. Only possible if the version has not been previously imported and if its state is one of DESTROYED, IMPORT_FAILED, or GENERATION_FAILED. Successfully imported CryptoKeyVersions cannot be deleted at this time. The specified version will be immediately and permanently deleted upon calling this method. This action cannot be undone. */
 export const deleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3630,7 +3837,7 @@ export const deleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: DeleteProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3655,7 +3862,11 @@ export const DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResp
   /*@__PURE__*/ /*#__PURE__*/ DecapsulateResponse;
 
 export type DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decapsulates data that was encapsulated with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose KEY_ENCAPSULATION. */
 export const decapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3667,7 +3878,7 @@ export const decapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: AP
   input: DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output:
     DecapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3696,7 +3907,11 @@ export const CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse 
   /*@__PURE__*/ /*#__PURE__*/ CryptoKeyVersion;
 
 export type CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED. */
 export const createProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3707,7 +3922,7 @@ export const createProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: CreateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3744,7 +3959,9 @@ export const ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCryptoKeyVersionsResponse;
 
 export type ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists CryptoKeyVersions. */
 export const listProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.PaginatedOperationMethod<
@@ -3755,7 +3972,7 @@ export const listProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Pagin
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: ListProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3784,7 +4001,11 @@ export const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRespo
   /*@__PURE__*/ /*#__PURE__*/ RawDecryptResponse;
 
 export type RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Decrypts data that was originally encrypted using a raw cryptographic mechanism. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
 export const rawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3796,7 +4017,7 @@ export const rawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API
   input: RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output:
     RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3824,7 +4045,11 @@ export const PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CryptoKeyVersion;
 
 export type PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and DISABLED using this method. See DestroyCryptoKeyVersion and RestoreCryptoKeyVersion to move between other states. */
 export const patchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3835,7 +4060,7 @@ export const patchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3860,7 +4085,11 @@ export const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsR
   /*@__PURE__*/ /*#__PURE__*/ AsymmetricSignResponse;
 
 export type AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, producing a signature that can be verified with the public key retrieved from GetPublicKey. */
 export const asymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3873,7 +4102,7 @@ export const asymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions:
     AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output:
     AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3898,7 +4127,11 @@ export const MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse
   /*@__PURE__*/ /*#__PURE__*/ MacSignResponse;
 
 export type MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a tag that can be verified by another source with the same key. */
 export const macSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3909,7 +4142,7 @@ export const macSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3938,7 +4171,11 @@ export const ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse 
   /*@__PURE__*/ /*#__PURE__*/ CryptoKeyVersion;
 
 export type ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Import wrapped key material into a CryptoKeyVersion. All requests must specify a CryptoKey. If a CryptoKeyVersion is additionally specified in the request, key material will be reimported into that version. Otherwise, a new version will be created, and will be assigned the next sequential id within the CryptoKey. */
 export const importProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3949,7 +4186,7 @@ export const importProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: ImportProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -3971,7 +4208,9 @@ export const GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CryptoKeyVersion;
 
 export type GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata for a given CryptoKeyVersion. */
 export const getProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -3982,7 +4221,7 @@ export const getProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: GetProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
@@ -4015,7 +4254,9 @@ export const GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRes
   /*@__PURE__*/ /*#__PURE__*/ PublicKey;
 
 export type GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the public key for the given CryptoKeyVersion. The CryptoKey.purpose must be ASYMMETRIC_SIGN or ASYMMETRIC_DECRYPT. */
 export const getPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
@@ -4028,7 +4269,7 @@ export const getPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: A
     GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output:
     GetPublicKeyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsEkmConfigRequest {
@@ -4055,7 +4296,12 @@ export type SetIamPolicyProjectsLocationsEkmConfigResponse = Policy;
 export const SetIamPolicyProjectsLocationsEkmConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsEkmConfigError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsEkmConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsEkmConfig: API.OperationMethod<
@@ -4066,7 +4312,7 @@ export const setIamPolicyProjectsLocationsEkmConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsEkmConfigRequest,
   output: SetIamPolicyProjectsLocationsEkmConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsEkmConfigRequest {
@@ -4091,7 +4337,10 @@ export type GetIamPolicyProjectsLocationsEkmConfigResponse = Policy;
 export const GetIamPolicyProjectsLocationsEkmConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsEkmConfigError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsEkmConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsEkmConfig: API.OperationMethod<
@@ -4102,7 +4351,7 @@ export const getIamPolicyProjectsLocationsEkmConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsEkmConfigRequest,
   output: GetIamPolicyProjectsLocationsEkmConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsEkmConfigRequest {
@@ -4130,7 +4379,12 @@ export type TestIamPermissionsProjectsLocationsEkmConfigResponse =
 export const TestIamPermissionsProjectsLocationsEkmConfigResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsEkmConfigError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsEkmConfigError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsEkmConfig: API.OperationMethod<
@@ -4141,7 +4395,7 @@ export const testIamPermissionsProjectsLocationsEkmConfig: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsEkmConfigRequest,
   output: TestIamPermissionsProjectsLocationsEkmConfigResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -4161,7 +4415,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -4172,7 +4429,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsRetiredResourcesRequest {
@@ -4192,7 +4449,10 @@ export type GetProjectsLocationsRetiredResourcesResponse = RetiredResource;
 export const GetProjectsLocationsRetiredResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetiredResource;
 
-export type GetProjectsLocationsRetiredResourcesError = DefaultErrors;
+export type GetProjectsLocationsRetiredResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a specific RetiredResource resource, which represents the record of a deleted CryptoKey. */
 export const getProjectsLocationsRetiredResources: API.OperationMethod<
@@ -4203,7 +4463,7 @@ export const getProjectsLocationsRetiredResources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRetiredResourcesRequest,
   output: GetProjectsLocationsRetiredResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsRetiredResourcesRequest {
@@ -4230,7 +4490,10 @@ export type ListProjectsLocationsRetiredResourcesResponse =
 export const ListProjectsLocationsRetiredResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRetiredResourcesResponse;
 
-export type ListProjectsLocationsRetiredResourcesError = DefaultErrors;
+export type ListProjectsLocationsRetiredResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the RetiredResources which are the records of deleted CryptoKeys. RetiredResources prevent the reuse of these resource names after deletion. */
 export const listProjectsLocationsRetiredResources: API.PaginatedOperationMethod<
@@ -4241,7 +4504,7 @@ export const listProjectsLocationsRetiredResources: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRetiredResourcesRequest,
   output: ListProjectsLocationsRetiredResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4277,7 +4540,12 @@ export type CreateProjectsLocationsEkmConnectionsResponse = EkmConnection;
 export const CreateProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EkmConnection;
 
-export type CreateProjectsLocationsEkmConnectionsError = DefaultErrors;
+export type CreateProjectsLocationsEkmConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new EkmConnection in a given Project and Location. */
 export const createProjectsLocationsEkmConnections: API.OperationMethod<
@@ -4288,7 +4556,7 @@ export const createProjectsLocationsEkmConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEkmConnectionsRequest,
   output: CreateProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsEkmConnectionsRequest {
@@ -4321,7 +4589,10 @@ export type ListProjectsLocationsEkmConnectionsResponse =
 export const ListProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEkmConnectionsResponse;
 
-export type ListProjectsLocationsEkmConnectionsError = DefaultErrors;
+export type ListProjectsLocationsEkmConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists EkmConnections. */
 export const listProjectsLocationsEkmConnections: API.PaginatedOperationMethod<
@@ -4332,7 +4603,7 @@ export const listProjectsLocationsEkmConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEkmConnectionsRequest,
   output: ListProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4361,7 +4632,10 @@ export type GetIamPolicyProjectsLocationsEkmConnectionsResponse = Policy;
 export const GetIamPolicyProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsEkmConnectionsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsEkmConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsEkmConnections: API.OperationMethod<
@@ -4372,7 +4646,7 @@ export const getIamPolicyProjectsLocationsEkmConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsEkmConnectionsRequest,
   output: GetIamPolicyProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsEkmConnectionsRequest {
@@ -4401,7 +4675,11 @@ export const TestIamPermissionsProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsEkmConnectionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsEkmConnections: API.OperationMethod<
@@ -4412,7 +4690,7 @@ export const testIamPermissionsProjectsLocationsEkmConnections: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsEkmConnectionsRequest,
   output: TestIamPermissionsProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsEkmConnectionsRequest {
@@ -4432,7 +4710,10 @@ export type GetProjectsLocationsEkmConnectionsResponse = EkmConnection;
 export const GetProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EkmConnection;
 
-export type GetProjectsLocationsEkmConnectionsError = DefaultErrors;
+export type GetProjectsLocationsEkmConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata for a given EkmConnection. */
 export const getProjectsLocationsEkmConnections: API.OperationMethod<
@@ -4443,7 +4724,7 @@ export const getProjectsLocationsEkmConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsEkmConnectionsRequest,
   output: GetProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsEkmConnectionsRequest {
@@ -4469,7 +4750,12 @@ export type PatchProjectsLocationsEkmConnectionsResponse = EkmConnection;
 export const PatchProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EkmConnection;
 
-export type PatchProjectsLocationsEkmConnectionsError = DefaultErrors;
+export type PatchProjectsLocationsEkmConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an EkmConnection's metadata. */
 export const patchProjectsLocationsEkmConnections: API.OperationMethod<
@@ -4480,7 +4766,7 @@ export const patchProjectsLocationsEkmConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsEkmConnectionsRequest,
   output: PatchProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyConnectivityProjectsLocationsEkmConnectionsRequest {
@@ -4502,7 +4788,9 @@ export const VerifyConnectivityProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VerifyConnectivityResponse;
 
 export type VerifyConnectivityProjectsLocationsEkmConnectionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Verifies that Cloud KMS can successfully connect to the external key manager specified by an EkmConnection. If there is an error connecting to the EKM, this method returns a FAILED_PRECONDITION status containing structured information as described at https://cloud.google.com/kms/docs/reference/ekm_errors. */
 export const verifyConnectivityProjectsLocationsEkmConnections: API.OperationMethod<
@@ -4513,7 +4801,7 @@ export const verifyConnectivityProjectsLocationsEkmConnections: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyConnectivityProjectsLocationsEkmConnectionsRequest,
   output: VerifyConnectivityProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsEkmConnectionsRequest {
@@ -4540,7 +4828,12 @@ export type SetIamPolicyProjectsLocationsEkmConnectionsResponse = Policy;
 export const SetIamPolicyProjectsLocationsEkmConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsEkmConnectionsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsEkmConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsEkmConnections: API.OperationMethod<
@@ -4551,7 +4844,7 @@ export const setIamPolicyProjectsLocationsEkmConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsEkmConnectionsRequest,
   output: SetIamPolicyProjectsLocationsEkmConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsSingleTenantHsmInstancesRequest {
@@ -4589,7 +4882,10 @@ export type ListProjectsLocationsSingleTenantHsmInstancesResponse =
 export const ListProjectsLocationsSingleTenantHsmInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSingleTenantHsmInstancesResponse;
 
-export type ListProjectsLocationsSingleTenantHsmInstancesError = DefaultErrors;
+export type ListProjectsLocationsSingleTenantHsmInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SingleTenantHsmInstances. */
 export const listProjectsLocationsSingleTenantHsmInstances: API.PaginatedOperationMethod<
@@ -4600,7 +4896,7 @@ export const listProjectsLocationsSingleTenantHsmInstances: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSingleTenantHsmInstancesRequest,
   output: ListProjectsLocationsSingleTenantHsmInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4637,7 +4933,11 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsSingleTenantHsmInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SingleTenantHsmInstance in a given Project and Location. User must create a RegisterTwoFactorAuthKeys proposal with this single-tenant HSM instance to finish setup of the instance. */
 export const createProjectsLocationsSingleTenantHsmInstances: API.OperationMethod<
@@ -4648,7 +4948,7 @@ export const createProjectsLocationsSingleTenantHsmInstances: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSingleTenantHsmInstancesRequest,
   output: CreateProjectsLocationsSingleTenantHsmInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSingleTenantHsmInstancesRequest {
@@ -4669,7 +4969,10 @@ export type GetProjectsLocationsSingleTenantHsmInstancesResponse =
 export const GetProjectsLocationsSingleTenantHsmInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SingleTenantHsmInstance;
 
-export type GetProjectsLocationsSingleTenantHsmInstancesError = DefaultErrors;
+export type GetProjectsLocationsSingleTenantHsmInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata for a given SingleTenantHsmInstance. */
 export const getProjectsLocationsSingleTenantHsmInstances: API.OperationMethod<
@@ -4680,7 +4983,7 @@ export const getProjectsLocationsSingleTenantHsmInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSingleTenantHsmInstancesRequest,
   output: GetProjectsLocationsSingleTenantHsmInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
@@ -4719,7 +5022,9 @@ export const ListProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSingleTenantHsmInstanceProposalsResponse;
 
 export type ListProjectsLocationsSingleTenantHsmInstancesProposalsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists SingleTenantHsmInstanceProposals. */
 export const listProjectsLocationsSingleTenantHsmInstancesProposals: API.PaginatedOperationMethod<
@@ -4730,7 +5035,7 @@ export const listProjectsLocationsSingleTenantHsmInstancesProposals: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsSingleTenantHsmInstancesProposalsRequest,
   output: ListProjectsLocationsSingleTenantHsmInstancesProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4764,7 +5069,11 @@ export const CreateProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsLocationsSingleTenantHsmInstancesProposalsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance. */
 export const createProjectsLocationsSingleTenantHsmInstancesProposals: API.OperationMethod<
@@ -4775,7 +5084,7 @@ export const createProjectsLocationsSingleTenantHsmInstancesProposals: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsSingleTenantHsmInstancesProposalsRequest,
   output: CreateProjectsLocationsSingleTenantHsmInstancesProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
@@ -4802,7 +5111,11 @@ export const ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance. The proposal must be in the APPROVED state. */
 export const executeProjectsLocationsSingleTenantHsmInstancesProposals: API.OperationMethod<
@@ -4813,7 +5126,7 @@ export const executeProjectsLocationsSingleTenantHsmInstancesProposals: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsRequest,
   output: ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
@@ -4835,7 +5148,9 @@ export const GetProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SingleTenantHsmInstanceProposal;
 
 export type GetProjectsLocationsSingleTenantHsmInstancesProposalsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns metadata for a given SingleTenantHsmInstanceProposal. */
 export const getProjectsLocationsSingleTenantHsmInstancesProposals: API.OperationMethod<
@@ -4846,7 +5161,7 @@ export const getProjectsLocationsSingleTenantHsmInstancesProposals: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsSingleTenantHsmInstancesProposalsRequest,
   output: GetProjectsLocationsSingleTenantHsmInstancesProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
@@ -4868,7 +5183,11 @@ export const DeleteProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsSingleTenantHsmInstancesProposalsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a SingleTenantHsmInstanceProposal. */
 export const deleteProjectsLocationsSingleTenantHsmInstancesProposals: API.OperationMethod<
@@ -4879,7 +5198,7 @@ export const deleteProjectsLocationsSingleTenantHsmInstancesProposals: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsSingleTenantHsmInstancesProposalsRequest,
   output: DeleteProjectsLocationsSingleTenantHsmInstancesProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest {
@@ -4906,7 +5225,11 @@ export const ApproveProjectsLocationsSingleTenantHsmInstancesProposalsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApproveSingleTenantHsmInstanceProposalResponse;
 
 export type ApproveProjectsLocationsSingleTenantHsmInstancesProposalsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves a SingleTenantHsmInstanceProposal for a given SingleTenantHsmInstance. The proposal must be in the PENDING state. */
 export const approveProjectsLocationsSingleTenantHsmInstancesProposals: API.OperationMethod<
@@ -4917,7 +5240,7 @@ export const approveProjectsLocationsSingleTenantHsmInstancesProposals: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest,
   output: ApproveProjectsLocationsSingleTenantHsmInstancesProposalsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAutokeyConfigFoldersRequest {
@@ -4943,7 +5266,12 @@ export type UpdateAutokeyConfigFoldersResponse = AutokeyConfig;
 export const UpdateAutokeyConfigFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutokeyConfig;
 
-export type UpdateAutokeyConfigFoldersError = DefaultErrors;
+export type UpdateAutokeyConfigFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the AutokeyConfig for a folder or a project. The caller must have both `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine where to create the resulting CryptoKey. */
 export const updateAutokeyConfigFolders: API.OperationMethod<
@@ -4954,7 +5282,7 @@ export const updateAutokeyConfigFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutokeyConfigFoldersRequest,
   output: UpdateAutokeyConfigFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateKajPolicyConfigFoldersRequest {
@@ -4983,7 +5311,12 @@ export type UpdateKajPolicyConfigFoldersResponse =
 export const UpdateKajPolicyConfigFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyAccessJustificationsPolicyConfig;
 
-export type UpdateKajPolicyConfigFoldersError = DefaultErrors;
+export type UpdateKajPolicyConfigFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project. */
 export const updateKajPolicyConfigFolders: API.OperationMethod<
@@ -4994,7 +5327,7 @@ export const updateKajPolicyConfigFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKajPolicyConfigFoldersRequest,
   output: UpdateKajPolicyConfigFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAutokeyConfigFoldersRequest {
@@ -5014,7 +5347,7 @@ export type GetAutokeyConfigFoldersResponse = AutokeyConfig;
 export const GetAutokeyConfigFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutokeyConfig;
 
-export type GetAutokeyConfigFoldersError = DefaultErrors;
+export type GetAutokeyConfigFoldersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the AutokeyConfig for a folder or project. */
 export const getAutokeyConfigFolders: API.OperationMethod<
@@ -5025,7 +5358,7 @@ export const getAutokeyConfigFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutokeyConfigFoldersRequest,
   output: GetAutokeyConfigFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetKajPolicyConfigFoldersRequest {
@@ -5046,7 +5379,10 @@ export type GetKajPolicyConfigFoldersResponse =
 export const GetKajPolicyConfigFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyAccessJustificationsPolicyConfig;
 
-export type GetKajPolicyConfigFoldersError = DefaultErrors;
+export type GetKajPolicyConfigFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project. */
 export const getKajPolicyConfigFolders: API.OperationMethod<
@@ -5057,7 +5393,7 @@ export const getKajPolicyConfigFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKajPolicyConfigFoldersRequest,
   output: GetKajPolicyConfigFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetKajPolicyConfigOrganizationsRequest {
@@ -5078,7 +5414,10 @@ export type GetKajPolicyConfigOrganizationsResponse =
 export const GetKajPolicyConfigOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyAccessJustificationsPolicyConfig;
 
-export type GetKajPolicyConfigOrganizationsError = DefaultErrors;
+export type GetKajPolicyConfigOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project. */
 export const getKajPolicyConfigOrganizations: API.OperationMethod<
@@ -5089,7 +5428,7 @@ export const getKajPolicyConfigOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKajPolicyConfigOrganizationsRequest,
   output: GetKajPolicyConfigOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateKajPolicyConfigOrganizationsRequest {
@@ -5118,7 +5457,12 @@ export type UpdateKajPolicyConfigOrganizationsResponse =
 export const UpdateKajPolicyConfigOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ KeyAccessJustificationsPolicyConfig;
 
-export type UpdateKajPolicyConfigOrganizationsError = DefaultErrors;
+export type UpdateKajPolicyConfigOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project. */
 export const updateKajPolicyConfigOrganizations: API.OperationMethod<
@@ -5129,5 +5473,5 @@ export const updateKajPolicyConfigOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKajPolicyConfigOrganizationsRequest,
   output: UpdateKajPolicyConfigOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

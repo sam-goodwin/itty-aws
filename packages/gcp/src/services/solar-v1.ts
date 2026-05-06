@@ -474,6 +474,31 @@ export const BuildingInsights = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "BuildingInsights" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -525,7 +550,10 @@ export type FindClosestBuildingInsightsResponse = BuildingInsights;
 export const FindClosestBuildingInsightsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BuildingInsights;
 
-export type FindClosestBuildingInsightsError = DefaultErrors;
+export type FindClosestBuildingInsightsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Locates the building whose centroid is closest to a query point. Returns an error with code `NOT_FOUND` if there are no buildings within approximately 50m of the query point. */
 export const findClosestBuildingInsights: API.OperationMethod<
@@ -536,7 +564,7 @@ export const findClosestBuildingInsights: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindClosestBuildingInsightsRequest,
   output: FindClosestBuildingInsightsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetGeoTiffRequest {
@@ -554,7 +582,7 @@ export const GetGeoTiffRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetGeoTiffResponse = HttpBody;
 export const GetGeoTiffResponse = /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type GetGeoTiffError = DefaultErrors;
+export type GetGeoTiffError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an image by its ID. */
 export const getGeoTiff: API.OperationMethod<
@@ -565,7 +593,7 @@ export const getGeoTiff: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGeoTiffRequest,
   output: GetGeoTiffResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetDataLayersRequest {
@@ -634,7 +662,7 @@ export const GetDataLayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDataLayersResponse = DataLayers;
 export const GetDataLayersResponse = /*@__PURE__*/ /*#__PURE__*/ DataLayers;
 
-export type GetDataLayersError = DefaultErrors;
+export type GetDataLayersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets solar information for a region surrounding a location. Returns an error with code `NOT_FOUND` if the location is outside the coverage area. */
 export const getDataLayers: API.OperationMethod<
@@ -645,5 +673,5 @@ export const getDataLayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDataLayersRequest,
   output: GetDataLayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

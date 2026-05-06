@@ -679,6 +679,52 @@ export const SearchAnalyticsQueryResponse =
   }).annotate({ identifier: "SearchAnalyticsQueryResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -703,7 +749,12 @@ export type InspectUrlInspectionIndexResponse = InspectUrlIndexResponse;
 export const InspectUrlInspectionIndexResponse =
   /*@__PURE__*/ /*#__PURE__*/ InspectUrlIndexResponse;
 
-export type InspectUrlInspectionIndexError = DefaultErrors;
+export type InspectUrlInspectionIndexError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Index inspection. */
 export const inspectUrlInspectionIndex: API.OperationMethod<
@@ -714,7 +765,7 @@ export const inspectUrlInspectionIndex: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InspectUrlInspectionIndexRequest,
   output: InspectUrlInspectionIndexResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunUrlTestingToolsMobileFriendlyTestRequest {
@@ -739,7 +790,12 @@ export type RunUrlTestingToolsMobileFriendlyTestResponse =
 export const RunUrlTestingToolsMobileFriendlyTestResponse =
   /*@__PURE__*/ /*#__PURE__*/ RunMobileFriendlyTestResponse;
 
-export type RunUrlTestingToolsMobileFriendlyTestError = DefaultErrors;
+export type RunUrlTestingToolsMobileFriendlyTestError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs Mobile-Friendly Test for a given URL. */
 export const runUrlTestingToolsMobileFriendlyTest: API.OperationMethod<
@@ -750,7 +806,7 @@ export const runUrlTestingToolsMobileFriendlyTest: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunUrlTestingToolsMobileFriendlyTestRequest,
   output: RunUrlTestingToolsMobileFriendlyTestResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSitemapsRequest {
@@ -777,7 +833,12 @@ export const DeleteSitemapsResponse: Schema.Schema<DeleteSitemapsResponse> =
     {},
   ) as any as Schema.Schema<DeleteSitemapsResponse>;
 
-export type DeleteSitemapsError = DefaultErrors;
+export type DeleteSitemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap. */
 export const deleteSitemaps: API.OperationMethod<
@@ -788,7 +849,7 @@ export const deleteSitemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSitemapsRequest,
   output: DeleteSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSitemapsRequest {
@@ -812,7 +873,7 @@ export const GetSitemapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSitemapsResponse = WmxSitemap;
 export const GetSitemapsResponse = /*@__PURE__*/ /*#__PURE__*/ WmxSitemap;
 
-export type GetSitemapsError = DefaultErrors;
+export type GetSitemapsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about a specific sitemap. */
 export const getSitemaps: API.OperationMethod<
@@ -823,7 +884,7 @@ export const getSitemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitemapsRequest,
   output: GetSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSitemapsRequest {
@@ -847,7 +908,7 @@ export type ListSitemapsResponse = SitemapsListResponse;
 export const ListSitemapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SitemapsListResponse;
 
-export type ListSitemapsError = DefaultErrors;
+export type ListSitemapsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request). */
 export const listSitemaps: API.OperationMethod<
@@ -858,7 +919,7 @@ export const listSitemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSitemapsRequest,
   output: ListSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SubmitSitemapsRequest {
@@ -886,7 +947,12 @@ export const SubmitSitemapsResponse: Schema.Schema<SubmitSitemapsResponse> =
     {},
   ) as any as Schema.Schema<SubmitSitemapsResponse>;
 
-export type SubmitSitemapsError = DefaultErrors;
+export type SubmitSitemapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submits a sitemap for a site. */
 export const submitSitemaps: API.OperationMethod<
@@ -897,7 +963,7 @@ export const submitSitemaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitSitemapsRequest,
   output: SubmitSitemapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSitesRequest {
@@ -915,7 +981,7 @@ export const GetSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSitesResponse = WmxSite;
 export const GetSitesResponse = /*@__PURE__*/ /*#__PURE__*/ WmxSite;
 
-export type GetSitesError = DefaultErrors;
+export type GetSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about specific site. */
 export const getSites: API.OperationMethod<
@@ -926,7 +992,7 @@ export const getSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSitesRequest,
   output: GetSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSitesRequest {}
@@ -941,7 +1007,7 @@ export const ListSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ListSitesResponse = SitesListResponse;
 export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ SitesListResponse;
 
-export type ListSitesError = DefaultErrors;
+export type ListSitesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the user's Search Console sites. */
 export const listSites: API.OperationMethod<
@@ -952,7 +1018,7 @@ export const listSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListSitesRequest,
   output: ListSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteSitesRequest {
@@ -973,7 +1039,12 @@ export const DeleteSitesResponse: Schema.Schema<DeleteSitesResponse> =
     {},
   ) as any as Schema.Schema<DeleteSitesResponse>;
 
-export type DeleteSitesError = DefaultErrors;
+export type DeleteSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a site from the set of the user's Search Console sites. */
 export const deleteSites: API.OperationMethod<
@@ -984,7 +1055,7 @@ export const deleteSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSitesRequest,
   output: DeleteSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddSitesRequest {
@@ -1009,7 +1080,12 @@ export const AddSitesResponse: Schema.Schema<AddSitesResponse> =
     {},
   ) as any as Schema.Schema<AddSitesResponse>;
 
-export type AddSitesError = DefaultErrors;
+export type AddSitesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a site to the set of the user's sites in Search Console. */
 export const addSites: API.OperationMethod<
@@ -1020,7 +1096,7 @@ export const addSites: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddSitesRequest,
   output: AddSitesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QuerySearchanalyticsRequest {
@@ -1047,7 +1123,12 @@ export type QuerySearchanalyticsResponse = SearchAnalyticsQueryResponse;
 export const QuerySearchanalyticsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchAnalyticsQueryResponse;
 
-export type QuerySearchanalyticsError = DefaultErrors;
+export type QuerySearchanalyticsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned. */
 export const querySearchanalytics: API.OperationMethod<
@@ -1058,5 +1139,5 @@ export const querySearchanalytics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QuerySearchanalyticsRequest,
   output: QuerySearchanalyticsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

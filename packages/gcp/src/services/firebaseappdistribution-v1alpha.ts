@@ -1093,6 +1093,52 @@ export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1112,7 +1158,7 @@ export type GetJwtAppsResponse = GoogleFirebaseAppdistroV1alphaJwt;
 export const GetJwtAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaJwt;
 
-export type GetJwtAppsError = DefaultErrors;
+export type GetJwtAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a JWT token */
 export const getJwtApps: API.OperationMethod<
@@ -1123,7 +1169,7 @@ export const getJwtApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetJwtAppsRequest,
   output: GetJwtAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAppsRequest {
@@ -1145,7 +1191,7 @@ export type GetAppsResponse = GoogleFirebaseAppdistroV1alphaApp;
 export const GetAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaApp;
 
-export type GetAppsError = DefaultErrors;
+export type GetAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the app, if it exists */
 export const getApps: API.OperationMethod<
@@ -1156,7 +1202,7 @@ export const getApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsRequest,
   output: GetAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAppsUpload_statusRequest {
@@ -1183,7 +1229,7 @@ export type GetAppsUpload_statusResponse =
 export const GetAppsUpload_statusResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse;
 
-export type GetAppsUpload_statusError = DefaultErrors;
+export type GetAppsUpload_statusError = DefaultErrors | NotFound | Forbidden;
 
 /** GET Binary upload status by token */
 export const getAppsUpload_status: API.OperationMethod<
@@ -1194,7 +1240,7 @@ export const getAppsUpload_status: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsUpload_statusRequest,
   output: GetAppsUpload_statusResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAppsRelease_by_hashRequest {
@@ -1221,7 +1267,7 @@ export type GetAppsRelease_by_hashResponse =
 export const GetAppsRelease_by_hashResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse;
 
-export type GetAppsRelease_by_hashError = DefaultErrors;
+export type GetAppsRelease_by_hashError = DefaultErrors | NotFound | Forbidden;
 
 /** GET Release by binary upload hash */
 export const getAppsRelease_by_hash: API.OperationMethod<
@@ -1232,7 +1278,7 @@ export const getAppsRelease_by_hash: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsRelease_by_hashRequest,
   output: GetAppsRelease_by_hashResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetTesterUdidsAppsTestersRequest {
@@ -1259,7 +1305,10 @@ export type GetTesterUdidsAppsTestersResponse =
 export const GetTesterUdidsAppsTestersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
 
-export type GetTesterUdidsAppsTestersError = DefaultErrors;
+export type GetTesterUdidsAppsTestersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get UDIDs of tester iOS devices in a project */
 export const getTesterUdidsAppsTesters: API.OperationMethod<
@@ -1270,7 +1319,7 @@ export const getTesterUdidsAppsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTesterUdidsAppsTestersRequest,
   output: GetTesterUdidsAppsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Enable_accessAppsReleasesRequest {
@@ -1303,7 +1352,12 @@ export type Enable_accessAppsReleasesResponse =
 export const Enable_accessAppsReleasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse;
 
-export type Enable_accessAppsReleasesError = DefaultErrors;
+export type Enable_accessAppsReleasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable access on a release for testers. */
 export const enable_accessAppsReleases: API.OperationMethod<
@@ -1314,7 +1368,7 @@ export const enable_accessAppsReleases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Enable_accessAppsReleasesRequest,
   output: Enable_accessAppsReleasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAppsReleasesNotesRequest {
@@ -1347,7 +1401,12 @@ export type CreateAppsReleasesNotesResponse =
 export const CreateAppsReleasesNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse;
 
-export type CreateAppsReleasesNotesError = DefaultErrors;
+export type CreateAppsReleasesNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create release notes on a release. */
 export const createAppsReleasesNotes: API.OperationMethod<
@@ -1358,7 +1417,7 @@ export const createAppsReleasesNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAppsReleasesNotesRequest,
   output: CreateAppsReleasesNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTestQuotaProjectsRequest {
@@ -1379,7 +1438,7 @@ export type GetTestQuotaProjectsResponse =
 export const GetTestQuotaProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestQuota;
 
-export type GetTestQuotaProjectsError = DefaultErrors;
+export type GetTestQuotaProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get information about the quota for `ReleaseTests`. */
 export const getTestQuotaProjects: API.OperationMethod<
@@ -1390,7 +1449,7 @@ export const getTestQuotaProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTestQuotaProjectsRequest,
   output: GetTestQuotaProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUdidsProjectsTestersRequest {
@@ -1416,7 +1475,7 @@ export type GetUdidsProjectsTestersResponse =
 export const GetUdidsProjectsTestersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse;
 
-export type GetUdidsProjectsTestersError = DefaultErrors;
+export type GetUdidsProjectsTestersError = DefaultErrors | NotFound | Forbidden;
 
 /** Get UDIDs of tester iOS devices in a project */
 export const getUdidsProjectsTesters: API.OperationMethod<
@@ -1427,7 +1486,7 @@ export const getUdidsProjectsTesters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUdidsProjectsTestersRequest,
   output: GetUdidsProjectsTestersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateTestConfigProjectsAppsRequest {
@@ -1456,7 +1515,12 @@ export type UpdateTestConfigProjectsAppsResponse =
 export const UpdateTestConfigProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestConfig;
 
-export type UpdateTestConfigProjectsAppsError = DefaultErrors;
+export type UpdateTestConfigProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates automated test configuration. */
 export const updateTestConfigProjectsApps: API.OperationMethod<
@@ -1467,7 +1531,7 @@ export const updateTestConfigProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTestConfigProjectsAppsRequest,
   output: UpdateTestConfigProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTestConfigProjectsAppsRequest {
@@ -1488,7 +1552,10 @@ export type GetTestConfigProjectsAppsResponse =
 export const GetTestConfigProjectsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestConfig;
 
-export type GetTestConfigProjectsAppsError = DefaultErrors;
+export type GetTestConfigProjectsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets configuration for automated tests. */
 export const getTestConfigProjectsApps: API.OperationMethod<
@@ -1499,7 +1566,7 @@ export const getTestConfigProjectsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTestConfigProjectsAppsRequest,
   output: GetTestConfigProjectsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsAppsReleasesTestsRequest {
@@ -1530,7 +1597,12 @@ export type CreateProjectsAppsReleasesTestsResponse =
 export const CreateProjectsAppsReleasesTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaReleaseTest;
 
-export type CreateProjectsAppsReleasesTestsError = DefaultErrors;
+export type CreateProjectsAppsReleasesTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run automated test(s) on release. */
 export const createProjectsAppsReleasesTests: API.OperationMethod<
@@ -1541,7 +1613,7 @@ export const createProjectsAppsReleasesTests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAppsReleasesTestsRequest,
   output: CreateProjectsAppsReleasesTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsAppsReleasesTestsRequest {
@@ -1575,7 +1647,10 @@ export type ListProjectsAppsReleasesTestsResponse =
 export const ListProjectsAppsReleasesTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse;
 
-export type ListProjectsAppsReleasesTestsError = DefaultErrors;
+export type ListProjectsAppsReleasesTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List results for automated tests run on release. */
 export const listProjectsAppsReleasesTests: API.PaginatedOperationMethod<
@@ -1586,7 +1661,7 @@ export const listProjectsAppsReleasesTests: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsReleasesTestsRequest,
   output: ListProjectsAppsReleasesTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1611,7 +1686,10 @@ export type CancelProjectsAppsReleasesTestsResponse =
 export const CancelProjectsAppsReleasesTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse;
 
-export type CancelProjectsAppsReleasesTestsError = DefaultErrors;
+export type CancelProjectsAppsReleasesTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Abort automated test run on release. */
 export const cancelProjectsAppsReleasesTests: API.OperationMethod<
@@ -1622,7 +1700,7 @@ export const cancelProjectsAppsReleasesTests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsAppsReleasesTestsRequest,
   output: CancelProjectsAppsReleasesTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsAppsReleasesTestsRequest {
@@ -1643,7 +1721,10 @@ export type GetProjectsAppsReleasesTestsResponse =
 export const GetProjectsAppsReleasesTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaReleaseTest;
 
-export type GetProjectsAppsReleasesTestsError = DefaultErrors;
+export type GetProjectsAppsReleasesTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get results for automated test run on release. */
 export const getProjectsAppsReleasesTests: API.OperationMethod<
@@ -1654,7 +1735,7 @@ export const getProjectsAppsReleasesTests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsReleasesTestsRequest,
   output: GetProjectsAppsReleasesTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ClearTestCaseCacheProjectsAppsTestCasesRequest {
@@ -1684,7 +1765,12 @@ export type ClearTestCaseCacheProjectsAppsTestCasesResponse =
 export const ClearTestCaseCacheProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse;
 
-export type ClearTestCaseCacheProjectsAppsTestCasesError = DefaultErrors;
+export type ClearTestCaseCacheProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears cached test runs for a specific test case and device(s). */
 export const clearTestCaseCacheProjectsAppsTestCases: API.OperationMethod<
@@ -1695,7 +1781,7 @@ export const clearTestCaseCacheProjectsAppsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearTestCaseCacheProjectsAppsTestCasesRequest,
   output: ClearTestCaseCacheProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsAppsTestCasesRequest {
@@ -1715,7 +1801,12 @@ export type DeleteProjectsAppsTestCasesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsAppsTestCasesError = DefaultErrors;
+export type DeleteProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a test case. */
 export const deleteProjectsAppsTestCases: API.OperationMethod<
@@ -1726,7 +1817,7 @@ export const deleteProjectsAppsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAppsTestCasesRequest,
   output: DeleteProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAppsTestCasesRequest {
@@ -1747,7 +1838,10 @@ export type GetProjectsAppsTestCasesResponse =
 export const GetProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
 
-export type GetProjectsAppsTestCasesError = DefaultErrors;
+export type GetProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a test case. */
 export const getProjectsAppsTestCases: API.OperationMethod<
@@ -1758,7 +1852,7 @@ export const getProjectsAppsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAppsTestCasesRequest,
   output: GetProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchUpdateProjectsAppsTestCasesRequest {
@@ -1788,7 +1882,12 @@ export type BatchUpdateProjectsAppsTestCasesResponse =
 export const BatchUpdateProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse;
 
-export type BatchUpdateProjectsAppsTestCasesError = DefaultErrors;
+export type BatchUpdateProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates multiple test cases. */
 export const batchUpdateProjectsAppsTestCases: API.OperationMethod<
@@ -1799,7 +1898,7 @@ export const batchUpdateProjectsAppsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateProjectsAppsTestCasesRequest,
   output: BatchUpdateProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsAppsTestCasesRequest {
@@ -1832,7 +1931,12 @@ export type CreateProjectsAppsTestCasesResponse =
 export const CreateProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
 
-export type CreateProjectsAppsTestCasesError = DefaultErrors;
+export type CreateProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new test case. */
 export const createProjectsAppsTestCases: API.OperationMethod<
@@ -1843,7 +1947,7 @@ export const createProjectsAppsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAppsTestCasesRequest,
   output: CreateProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsAppsTestCasesRequest {
@@ -1870,7 +1974,10 @@ export type ListProjectsAppsTestCasesResponse =
 export const ListProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaListTestCasesResponse;
 
-export type ListProjectsAppsTestCasesError = DefaultErrors;
+export type ListProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List test cases. */
 export const listProjectsAppsTestCases: API.PaginatedOperationMethod<
@@ -1881,7 +1988,7 @@ export const listProjectsAppsTestCases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAppsTestCasesRequest,
   output: ListProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1916,7 +2023,12 @@ export type PatchProjectsAppsTestCasesResponse =
 export const PatchProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseAppdistroV1alphaTestCase;
 
-export type PatchProjectsAppsTestCasesError = DefaultErrors;
+export type PatchProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a test case. */
 export const patchProjectsAppsTestCases: API.OperationMethod<
@@ -1927,7 +2039,7 @@ export const patchProjectsAppsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsTestCasesRequest,
   output: PatchProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchDeleteProjectsAppsTestCasesRequest {
@@ -1956,7 +2068,12 @@ export type BatchDeleteProjectsAppsTestCasesResponse = GoogleProtobufEmpty;
 export const BatchDeleteProjectsAppsTestCasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type BatchDeleteProjectsAppsTestCasesError = DefaultErrors;
+export type BatchDeleteProjectsAppsTestCasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes multiple test cases. */
 export const batchDeleteProjectsAppsTestCases: API.OperationMethod<
@@ -1967,5 +2084,5 @@ export const batchDeleteProjectsAppsTestCases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchDeleteProjectsAppsTestCasesRequest,
   output: BatchDeleteProjectsAppsTestCasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

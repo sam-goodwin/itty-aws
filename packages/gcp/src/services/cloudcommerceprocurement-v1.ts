@@ -306,6 +306,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -329,7 +375,12 @@ export type ApproveProvidersEntitlementsResponse = Empty;
 export const ApproveProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ApproveProvidersEntitlementsError = DefaultErrors;
+export type ApproveProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves an entitlement that is in the EntitlementState.ENTITLEMENT_ACTIVATION_REQUESTED state. This method is invoked by the provider to approve the creation of the entitlement resource. */
 export const approveProvidersEntitlements: API.OperationMethod<
@@ -340,7 +391,7 @@ export const approveProvidersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveProvidersEntitlementsRequest,
   output: ApproveProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RejectPlanChangeProvidersEntitlementsRequest {
@@ -369,7 +420,12 @@ export type RejectPlanChangeProvidersEntitlementsResponse = Empty;
 export const RejectPlanChangeProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RejectPlanChangeProvidersEntitlementsError = DefaultErrors;
+export type RejectPlanChangeProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rejects an entitlement plan change that is in the EntitlementState.ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL state. This method is invoked by the provider to reject the plan change on the entitlement resource. */
 export const rejectPlanChangeProvidersEntitlements: API.OperationMethod<
@@ -380,7 +436,7 @@ export const rejectPlanChangeProvidersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectPlanChangeProvidersEntitlementsRequest,
   output: RejectPlanChangeProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProvidersEntitlementsRequest {
@@ -400,7 +456,10 @@ export type GetProvidersEntitlementsResponse = Entitlement;
 export const GetProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Entitlement;
 
-export type GetProvidersEntitlementsError = DefaultErrors;
+export type GetProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a requested Entitlement resource. */
 export const getProvidersEntitlements: API.OperationMethod<
@@ -411,7 +470,7 @@ export const getProvidersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProvidersEntitlementsRequest,
   output: GetProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProvidersEntitlementsRequest {
@@ -437,7 +496,12 @@ export type PatchProvidersEntitlementsResponse = Entitlement;
 export const PatchProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Entitlement;
 
-export type PatchProvidersEntitlementsError = DefaultErrors;
+export type PatchProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing Entitlement. */
 export const patchProvidersEntitlements: API.OperationMethod<
@@ -448,7 +512,7 @@ export const patchProvidersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProvidersEntitlementsRequest,
   output: PatchProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RejectProvidersEntitlementsRequest {
@@ -471,7 +535,12 @@ export type RejectProvidersEntitlementsResponse = Empty;
 export const RejectProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RejectProvidersEntitlementsError = DefaultErrors;
+export type RejectProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rejects an entitlement that is in the EntitlementState.ENTITLEMENT_ACTIVATION_REQUESTED state. This method is invoked by the provider to reject the creation of the entitlement resource. */
 export const rejectProvidersEntitlements: API.OperationMethod<
@@ -482,7 +551,7 @@ export const rejectProvidersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectProvidersEntitlementsRequest,
   output: RejectProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProvidersEntitlementsRequest {
@@ -511,7 +580,10 @@ export type ListProvidersEntitlementsResponse = ListEntitlementsResponse;
 export const ListProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEntitlementsResponse;
 
-export type ListProvidersEntitlementsError = DefaultErrors;
+export type ListProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Entitlements for which the provider has read access. */
 export const listProvidersEntitlements: API.PaginatedOperationMethod<
@@ -522,7 +594,7 @@ export const listProvidersEntitlements: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProvidersEntitlementsRequest,
   output: ListProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -555,7 +627,12 @@ export type ApprovePlanChangeProvidersEntitlementsResponse = Empty;
 export const ApprovePlanChangeProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ApprovePlanChangeProvidersEntitlementsError = DefaultErrors;
+export type ApprovePlanChangeProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Approves an entitlement plan change that is in the EntitlementState.ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL state. This method is invoked by the provider to approve the plan change on the entitlement resource. */
 export const approvePlanChangeProvidersEntitlements: API.OperationMethod<
@@ -566,7 +643,7 @@ export const approvePlanChangeProvidersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApprovePlanChangeProvidersEntitlementsRequest,
   output: ApprovePlanChangeProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SuspendProvidersEntitlementsRequest {
@@ -589,7 +666,12 @@ export type SuspendProvidersEntitlementsResponse = Empty;
 export const SuspendProvidersEntitlementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type SuspendProvidersEntitlementsError = DefaultErrors;
+export type SuspendProvidersEntitlementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests suspension of an active Entitlement. This is not yet supported. */
 export const suspendProvidersEntitlements: API.OperationMethod<
@@ -600,7 +682,7 @@ export const suspendProvidersEntitlements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuspendProvidersEntitlementsRequest,
   output: SuspendProvidersEntitlementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RejectProvidersAccountsRequest {
@@ -623,7 +705,12 @@ export type RejectProvidersAccountsResponse = Empty;
 export const RejectProvidersAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RejectProvidersAccountsError = DefaultErrors;
+export type RejectProvidersAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rejects an approval on an Account. */
 export const rejectProvidersAccounts: API.OperationMethod<
@@ -634,7 +721,7 @@ export const rejectProvidersAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectProvidersAccountsRequest,
   output: RejectProvidersAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProvidersAccountsRequest {
@@ -660,7 +747,7 @@ export type ListProvidersAccountsResponse = ListAccountsResponse;
 export const ListProvidersAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAccountsResponse;
 
-export type ListProvidersAccountsError = DefaultErrors;
+export type ListProvidersAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists Accounts that the provider has access to. */
 export const listProvidersAccounts: API.PaginatedOperationMethod<
@@ -671,7 +758,7 @@ export const listProvidersAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProvidersAccountsRequest,
   output: ListProvidersAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -698,7 +785,12 @@ export type ApproveProvidersAccountsResponse = Empty;
 export const ApproveProvidersAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ApproveProvidersAccountsError = DefaultErrors;
+export type ApproveProvidersAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Grants an approval on an Account. */
 export const approveProvidersAccounts: API.OperationMethod<
@@ -709,7 +801,7 @@ export const approveProvidersAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApproveProvidersAccountsRequest,
   output: ApproveProvidersAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProvidersAccountsRequest {
@@ -735,7 +827,7 @@ export const GetProvidersAccountsRequest =
 export type GetProvidersAccountsResponse = Account;
 export const GetProvidersAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Account;
 
-export type GetProvidersAccountsError = DefaultErrors;
+export type GetProvidersAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a requested Account resource. */
 export const getProvidersAccounts: API.OperationMethod<
@@ -746,7 +838,7 @@ export const getProvidersAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProvidersAccountsRequest,
   output: GetProvidersAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ResetProvidersAccountsRequest {
@@ -768,7 +860,12 @@ export const ResetProvidersAccountsRequest =
 export type ResetProvidersAccountsResponse = Empty;
 export const ResetProvidersAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ResetProvidersAccountsError = DefaultErrors;
+export type ResetProvidersAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resets an Account and cancels all associated Entitlements. Partner can only reset accounts they own rather than customer accounts. */
 export const resetProvidersAccounts: API.OperationMethod<
@@ -779,5 +876,5 @@ export const resetProvidersAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetProvidersAccountsRequest,
   output: ResetProvidersAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

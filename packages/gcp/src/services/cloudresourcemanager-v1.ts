@@ -855,17 +855,14 @@ export const UpdateTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 // Errors
 // ==========================================================================
 
-export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
-  "BadRequest",
-  {
-    code: Schema.optional(Schema.Number),
-    message: Schema.String,
-    status: Schema.optional(Schema.String),
-    reason: Schema.optional(Schema.String),
-    domain: Schema.optional(Schema.String),
-  },
-) {}
-T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
 
 export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
   "Forbidden",
@@ -879,14 +876,17 @@ export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
 ) {}
 T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
 
-export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
-  code: Schema.optional(Schema.Number),
-  message: Schema.String,
-  status: Schema.optional(Schema.String),
-  reason: Schema.optional(Schema.String),
-  domain: Schema.optional(Schema.String),
-}) {}
-T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
 
 export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
   code: Schema.optional(Schema.Number),
@@ -923,7 +923,7 @@ export type ListLiensResponse_Op = ListLiensResponse;
 export const ListLiensResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListLiensResponse;
 
-export type ListLiensError = DefaultErrors;
+export type ListLiensError = DefaultErrors | NotFound | Forbidden;
 
 /** List all Liens applied to the `parent` resource. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get`. */
 export const listLiens: API.PaginatedOperationMethod<
@@ -934,7 +934,7 @@ export const listLiens: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLiensRequest,
   output: ListLiensResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -956,7 +956,7 @@ export const GetLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetLiensResponse = Lien;
 export const GetLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
 
-export type GetLiensError = DefaultErrors;
+export type GetLiensError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.get` */
 export const getLiens: API.OperationMethod<
@@ -967,7 +967,7 @@ export const getLiens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLiensRequest,
   output: GetLiensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateLiensRequest {
@@ -985,7 +985,12 @@ export const CreateLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateLiensResponse = Lien;
 export const CreateLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Lien;
 
-export type CreateLiensError = DefaultErrors;
+export type CreateLiensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a Lien which applies to the resource denoted by the `parent` field. Callers of this method will require permission on the `parent` resource. For example, applying to `projects/1234` requires permission `resourcemanager.projects.updateLiens`. NOTE: Some resources may limit the number of Liens which may be applied. */
 export const createLiens: API.OperationMethod<
@@ -996,7 +1001,7 @@ export const createLiens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLiensRequest,
   output: CreateLiensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLiensRequest {
@@ -1014,7 +1019,12 @@ export const DeleteLiensRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteLiensResponse = Empty;
 export const DeleteLiensResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLiensError = DefaultErrors;
+export type DeleteLiensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a Lien by `name`. Callers of this method will require permission on the `parent` resource. For example, a Lien with a `parent` of `projects/1234` requires permission `resourcemanager.projects.updateLiens`. */
 export const deleteLiens: API.OperationMethod<
@@ -1025,7 +1035,7 @@ export const deleteLiens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLiensRequest,
   output: DeleteLiensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrgPoliciesProjectsRequest {
@@ -1052,7 +1062,12 @@ export type ListOrgPoliciesProjectsResponse = ListOrgPoliciesResponse;
 export const ListOrgPoliciesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOrgPoliciesResponse;
 
-export type ListOrgPoliciesProjectsError = DefaultErrors;
+export type ListOrgPoliciesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all the `Policies` set for a particular resource. */
 export const listOrgPoliciesProjects: API.OperationMethod<
@@ -1063,7 +1078,7 @@ export const listOrgPoliciesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrgPoliciesProjectsRequest,
   output: ListOrgPoliciesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetOrgPolicyProjectsRequest {
@@ -1090,7 +1105,12 @@ export type SetOrgPolicyProjectsResponse = OrgPolicy;
 export const SetOrgPolicyProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type SetOrgPolicyProjectsError = DefaultErrors;
+export type SetOrgPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`. */
 export const setOrgPolicyProjects: API.OperationMethod<
@@ -1101,7 +1121,7 @@ export const setOrgPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetOrgPolicyProjectsRequest,
   output: SetOrgPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsRequest {
@@ -1128,7 +1148,12 @@ export type TestIamPermissionsProjectsResponse = TestIamPermissionsResponse;
 export const TestIamPermissionsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsError = DefaultErrors;
+export type TestIamPermissionsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified Project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). There are no permissions required for making this API call. */
 export const testIamPermissionsProjects: API.OperationMethod<
@@ -1139,7 +1164,7 @@ export const testIamPermissionsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsRequest,
   output: TestIamPermissionsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsRequest {
@@ -1164,7 +1189,7 @@ export type ListProjectsResponse_Op = ListProjectsResponse;
 export const ListProjectsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListProjectsResponse;
 
-export type ListProjectsError = DefaultErrors;
+export type ListProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists Projects that the caller has the `resourcemanager.projects.get` permission on and satisfy the specified filter. This method returns Projects in an unspecified order. This method is eventually consistent with project mutations; this means that a newly created project may not appear in the results or recent updates to an existing project may not be reflected in the results. To retrieve the latest state of a project, use the GetProject method. NOTE: If the request filter contains a `parent.type` and `parent.id` and the caller has the `resourcemanager.projects.list` permission on the parent, the results will be drawn from an alternate index which provides more consistent results. In future versions of this API, this List method will be split into List and Search to properly capture the behavioral difference. */
 export const listProjects: API.PaginatedOperationMethod<
@@ -1175,7 +1200,7 @@ export const listProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsRequest,
   output: ListProjectsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1205,7 +1230,12 @@ export const UndeleteProjectsRequest =
 export type UndeleteProjectsResponse = Empty;
 export const UndeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UndeleteProjectsError = DefaultErrors;
+export type UndeleteProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores the Project identified by the specified `project_id` (for example, `my-project-123`). You can only use this method for a Project that has a lifecycle state of DELETE_REQUESTED. After deletion starts, the Project cannot be restored. The caller must have undelete permissions for this Project. */
 export const undeleteProjects: API.OperationMethod<
@@ -1216,7 +1246,7 @@ export const undeleteProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsRequest,
   output: UndeleteProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsRequest {
@@ -1236,9 +1266,10 @@ export const DeleteProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsError =
   | DefaultErrors
-  | BadRequest
+  | NotFound
   | Forbidden
-  | NotFound;
+  | BadRequest
+  | Conflict;
 
 /** Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE. This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an unspecified time, at which point the Project is no longer accessible. Until the deletion completes, you can check the lifecycle state checked by retrieving the Project with GetProject, and the Project remains visible to ListProjects. However, you cannot update the project. After the deletion completes, the Project is not retrievable by the GetProject and ListProjects methods. The caller must have delete permissions for this Project. */
 export const deleteProjects: API.OperationMethod<
@@ -1249,7 +1280,7 @@ export const deleteProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsRequest,
   output: DeleteProjectsResponse,
-  errors: [BadRequest, Forbidden, NotFound],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClearOrgPolicyProjectsRequest {
@@ -1275,7 +1306,12 @@ export const ClearOrgPolicyProjectsRequest =
 export type ClearOrgPolicyProjectsResponse = Empty;
 export const ClearOrgPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ClearOrgPolicyProjectsError = DefaultErrors;
+export type ClearOrgPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears a `Policy` from a resource. */
 export const clearOrgPolicyProjects: API.OperationMethod<
@@ -1286,7 +1322,7 @@ export const clearOrgPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearOrgPolicyProjectsRequest,
   output: ClearOrgPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsRequest {
@@ -1307,7 +1343,12 @@ export const UpdateProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateProjectsResponse = Project;
 export const UpdateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type UpdateProjectsError = DefaultErrors;
+export type UpdateProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the attributes of the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have modify permissions for this Project. */
 export const updateProjects: API.OperationMethod<
@@ -1318,7 +1359,7 @@ export const updateProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsRequest,
   output: UpdateProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectiveOrgPolicyProjectsRequest {
@@ -1345,7 +1386,12 @@ export type GetEffectiveOrgPolicyProjectsResponse = OrgPolicy;
 export const GetEffectiveOrgPolicyProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetEffectiveOrgPolicyProjectsError = DefaultErrors;
+export type GetEffectiveOrgPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
 export const getEffectiveOrgPolicyProjects: API.OperationMethod<
@@ -1356,7 +1402,7 @@ export const getEffectiveOrgPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectiveOrgPolicyProjectsRequest,
   output: GetEffectiveOrgPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAvailableOrgPolicyConstraintsProjectsRequest {
@@ -1386,7 +1432,12 @@ export type ListAvailableOrgPolicyConstraintsProjectsResponse =
 export const ListAvailableOrgPolicyConstraintsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAvailableOrgPolicyConstraintsResponse;
 
-export type ListAvailableOrgPolicyConstraintsProjectsError = DefaultErrors;
+export type ListAvailableOrgPolicyConstraintsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists `Constraints` that could be applied on the specified resource. */
 export const listAvailableOrgPolicyConstraintsProjects: API.OperationMethod<
@@ -1397,7 +1448,7 @@ export const listAvailableOrgPolicyConstraintsProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAvailableOrgPolicyConstraintsProjectsRequest,
   output: ListAvailableOrgPolicyConstraintsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsRequest {
@@ -1423,7 +1474,12 @@ export const GetIamPolicyProjectsRequest =
 export type GetIamPolicyProjectsResponse = Policy;
 export const GetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsError = DefaultErrors;
+export type GetIamPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). */
 export const getIamPolicyProjects: API.OperationMethod<
@@ -1434,7 +1490,7 @@ export const getIamPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsRequest,
   output: GetIamPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRequest {
@@ -1489,7 +1545,12 @@ export const SetIamPolicyProjectsRequest =
 export type SetIamPolicyProjectsResponse = Policy;
 export const SetIamPolicyProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsError = DefaultErrors;
+export type SetIamPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the IAM access control policy for the specified Project. CAUTION: This method will replace the existing policy, and cannot be used to append additional IAM settings. NOTE: Removing service accounts from policies or changing their roles can render services completely inoperable. It is important to understand how the service account is being used before removing or updating its roles. For additional information about `resource` (e.g. my-project-id) structure and identification, see [Resource Names](https://cloud.google.com/apis/design/resource_names). The following constraints apply when using `setIamPolicy()`: + Project does not support `allUsers` and `allAuthenticatedUsers` as `members` in a `Binding` of a `Policy`. + The owner role can be granted to a `user`, `serviceAccount`, or a group that is part of an organization. For example, group@myownpersonaldomain.com could be added as an owner to a project in the myownpersonaldomain.com organization, but not the examplepetstore.com organization. + Service accounts can be made owners of a project directly without any restrictions. However, to be added as an owner, a user must be invited via Cloud Platform console and must accept the invitation. + A user cannot be granted the owner role using `setIamPolicy()`. The user must be granted the owner role using the Cloud Platform Console and must explicitly accept the invitation. + You can only grant ownership of a project to a member by using the Google Cloud console. Inviting a member will deliver an invitation email that they must accept. An invitation email is not generated if you are granting a role other than owner, or if both the member you are inviting and the project are part of your organization. + If the project is not part of an organization, there must be at least one owner who has accepted the Terms of Service (ToS) agreement in the policy. Calling `setIamPolicy()` to remove the last ToS-accepted owner from the policy will fail. This restriction also applies to legacy projects that no longer have owners who have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is rectified. If the project is part of an organization, you can remove all owners, potentially making the organization inaccessible. Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the project */
 export const setIamPolicyProjects: API.OperationMethod<
@@ -1500,7 +1561,7 @@ export const setIamPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsRequest,
   output: SetIamPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsRequest {
@@ -1520,8 +1581,9 @@ export const CreateProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateProjectsError =
   | DefaultErrors
-  | BadRequest
+  | NotFound
   | Forbidden
+  | BadRequest
   | Conflict;
 
 /** Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method. */
@@ -1533,7 +1595,7 @@ export const createProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsRequest,
   output: CreateProjectsResponse,
-  errors: [BadRequest, Forbidden, Conflict],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrgPolicyProjectsRequest {
@@ -1560,7 +1622,12 @@ export type GetOrgPolicyProjectsResponse = OrgPolicy;
 export const GetOrgPolicyProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetOrgPolicyProjectsError = DefaultErrors;
+export type GetOrgPolicyProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write. */
 export const getOrgPolicyProjects: API.OperationMethod<
@@ -1571,7 +1638,7 @@ export const getOrgPolicyProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrgPolicyProjectsRequest,
   output: GetOrgPolicyProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAncestryProjectsRequest {
@@ -1598,7 +1665,12 @@ export type GetAncestryProjectsResponse = GetAncestryResponse;
 export const GetAncestryProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetAncestryResponse;
 
-export type GetAncestryProjectsError = DefaultErrors;
+export type GetAncestryProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a list of ancestors in the resource hierarchy for the Project identified by the specified `project_id` (for example, `my-project-123`). The caller must have read permissions for this Project. */
 export const getAncestryProjects: API.OperationMethod<
@@ -1609,7 +1681,7 @@ export const getAncestryProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAncestryProjectsRequest,
   output: GetAncestryProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -1627,7 +1699,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors | Forbidden | NotFound;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1638,7 +1710,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [Forbidden, NotFound],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyOrganizationsRequest {
@@ -1665,7 +1737,12 @@ export type GetIamPolicyOrganizationsResponse = Policy;
 export const GetIamPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyOrganizationsError = DefaultErrors;
+export type GetIamPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an Organization resource. May be empty if no such policy or resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the specified organization */
 export const getIamPolicyOrganizations: API.OperationMethod<
@@ -1676,7 +1753,7 @@ export const getIamPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsRequest,
   output: GetIamPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAvailableOrgPolicyConstraintsOrganizationsRequest {
@@ -1706,7 +1783,12 @@ export type ListAvailableOrgPolicyConstraintsOrganizationsResponse =
 export const ListAvailableOrgPolicyConstraintsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAvailableOrgPolicyConstraintsResponse;
 
-export type ListAvailableOrgPolicyConstraintsOrganizationsError = DefaultErrors;
+export type ListAvailableOrgPolicyConstraintsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists `Constraints` that could be applied on the specified resource. */
 export const listAvailableOrgPolicyConstraintsOrganizations: API.OperationMethod<
@@ -1717,7 +1799,7 @@ export const listAvailableOrgPolicyConstraintsOrganizations: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAvailableOrgPolicyConstraintsOrganizationsRequest,
   output: ListAvailableOrgPolicyConstraintsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectiveOrgPolicyOrganizationsRequest {
@@ -1744,7 +1826,12 @@ export type GetEffectiveOrgPolicyOrganizationsResponse = OrgPolicy;
 export const GetEffectiveOrgPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetEffectiveOrgPolicyOrganizationsError = DefaultErrors;
+export type GetEffectiveOrgPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
 export const getEffectiveOrgPolicyOrganizations: API.OperationMethod<
@@ -1755,7 +1842,7 @@ export const getEffectiveOrgPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectiveOrgPolicyOrganizationsRequest,
   output: GetEffectiveOrgPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetOrgPolicyOrganizationsRequest {
@@ -1782,7 +1869,12 @@ export type SetOrgPolicyOrganizationsResponse = OrgPolicy;
 export const SetOrgPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type SetOrgPolicyOrganizationsError = DefaultErrors;
+export type SetOrgPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`. */
 export const setOrgPolicyOrganizations: API.OperationMethod<
@@ -1793,7 +1885,7 @@ export const setOrgPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetOrgPolicyOrganizationsRequest,
   output: SetOrgPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsOrganizationsRequest {
@@ -1821,7 +1913,12 @@ export type TestIamPermissionsOrganizationsResponse =
 export const TestIamPermissionsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsOrganizationsError = DefaultErrors;
+export type TestIamPermissionsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified Organization. The `resource` field should be the organization's resource name, e.g. "organizations/123". There are no permissions required for making this API call. */
 export const testIamPermissionsOrganizations: API.OperationMethod<
@@ -1832,7 +1929,7 @@ export const testIamPermissionsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsRequest,
   output: TestIamPermissionsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrgPoliciesOrganizationsRequest {
@@ -1859,7 +1956,12 @@ export type ListOrgPoliciesOrganizationsResponse = ListOrgPoliciesResponse;
 export const ListOrgPoliciesOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOrgPoliciesResponse;
 
-export type ListOrgPoliciesOrganizationsError = DefaultErrors;
+export type ListOrgPoliciesOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all the `Policies` set for a particular resource. */
 export const listOrgPoliciesOrganizations: API.OperationMethod<
@@ -1870,7 +1972,7 @@ export const listOrgPoliciesOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrgPoliciesOrganizationsRequest,
   output: ListOrgPoliciesOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClearOrgPolicyOrganizationsRequest {
@@ -1897,7 +1999,12 @@ export type ClearOrgPolicyOrganizationsResponse = Empty;
 export const ClearOrgPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ClearOrgPolicyOrganizationsError = DefaultErrors;
+export type ClearOrgPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears a `Policy` from a resource. */
 export const clearOrgPolicyOrganizations: API.OperationMethod<
@@ -1908,7 +2015,7 @@ export const clearOrgPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearOrgPolicyOrganizationsRequest,
   output: ClearOrgPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchOrganizationsRequest_Op {
@@ -1928,7 +2035,12 @@ export type SearchOrganizationsResponse_Op = SearchOrganizationsResponse;
 export const SearchOrganizationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchOrganizationsResponse;
 
-export type SearchOrganizationsError = DefaultErrors;
+export type SearchOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches Organization resources that are visible to the user and satisfy the specified filter. This method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end of the results. Search will only return organizations on which the user has the permission `resourcemanager.organizations.get` or has super admin privileges. */
 export const searchOrganizations: API.OperationMethod<
@@ -1939,7 +2051,7 @@ export const searchOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchOrganizationsRequest_Op,
   output: SearchOrganizationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrgPolicyOrganizationsRequest {
@@ -1966,7 +2078,12 @@ export type GetOrgPolicyOrganizationsResponse = OrgPolicy;
 export const GetOrgPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetOrgPolicyOrganizationsError = DefaultErrors;
+export type GetOrgPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write. */
 export const getOrgPolicyOrganizations: API.OperationMethod<
@@ -1977,7 +2094,7 @@ export const getOrgPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrgPolicyOrganizationsRequest,
   output: GetOrgPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyOrganizationsRequest {
@@ -2004,7 +2121,12 @@ export type SetIamPolicyOrganizationsResponse = Policy;
 export const SetIamPolicyOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyOrganizationsError = DefaultErrors;
+export type SetIamPolicyOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization */
 export const setIamPolicyOrganizations: API.OperationMethod<
@@ -2015,7 +2137,7 @@ export const setIamPolicyOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsRequest,
   output: SetIamPolicyOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsRequest {
@@ -2035,7 +2157,7 @@ export type GetOrganizationsResponse = Organization;
 export const GetOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Organization;
 
-export type GetOrganizationsError = DefaultErrors;
+export type GetOrganizationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches an Organization resource identified by the specified resource name. */
 export const getOrganizations: API.OperationMethod<
@@ -2046,7 +2168,7 @@ export const getOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsRequest,
   output: GetOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAvailableOrgPolicyConstraintsFoldersRequest {
@@ -2076,7 +2198,12 @@ export type ListAvailableOrgPolicyConstraintsFoldersResponse =
 export const ListAvailableOrgPolicyConstraintsFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAvailableOrgPolicyConstraintsResponse;
 
-export type ListAvailableOrgPolicyConstraintsFoldersError = DefaultErrors;
+export type ListAvailableOrgPolicyConstraintsFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists `Constraints` that could be applied on the specified resource. */
 export const listAvailableOrgPolicyConstraintsFolders: API.OperationMethod<
@@ -2087,7 +2214,7 @@ export const listAvailableOrgPolicyConstraintsFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAvailableOrgPolicyConstraintsFoldersRequest,
   output: ListAvailableOrgPolicyConstraintsFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrgPolicyFoldersRequest {
@@ -2114,7 +2241,12 @@ export type GetOrgPolicyFoldersResponse = OrgPolicy;
 export const GetOrgPolicyFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetOrgPolicyFoldersError = DefaultErrors;
+export type GetOrgPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy` is returned with default values including `POLICY_TYPE_NOT_SET` for the `policy_type oneof`. The `etag` value can be used with `SetOrgPolicy()` to create or update a `Policy` during read-modify-write. */
 export const getOrgPolicyFolders: API.OperationMethod<
@@ -2125,7 +2257,7 @@ export const getOrgPolicyFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrgPolicyFoldersRequest,
   output: GetOrgPolicyFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClearOrgPolicyFoldersRequest {
@@ -2151,7 +2283,12 @@ export const ClearOrgPolicyFoldersRequest =
 export type ClearOrgPolicyFoldersResponse = Empty;
 export const ClearOrgPolicyFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ClearOrgPolicyFoldersError = DefaultErrors;
+export type ClearOrgPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Clears a `Policy` from a resource. */
 export const clearOrgPolicyFolders: API.OperationMethod<
@@ -2162,7 +2299,7 @@ export const clearOrgPolicyFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClearOrgPolicyFoldersRequest,
   output: ClearOrgPolicyFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrgPoliciesFoldersRequest {
@@ -2189,7 +2326,12 @@ export type ListOrgPoliciesFoldersResponse = ListOrgPoliciesResponse;
 export const ListOrgPoliciesFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOrgPoliciesResponse;
 
-export type ListOrgPoliciesFoldersError = DefaultErrors;
+export type ListOrgPoliciesFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all the `Policies` set for a particular resource. */
 export const listOrgPoliciesFolders: API.OperationMethod<
@@ -2200,7 +2342,7 @@ export const listOrgPoliciesFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrgPoliciesFoldersRequest,
   output: ListOrgPoliciesFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectiveOrgPolicyFoldersRequest {
@@ -2227,7 +2369,12 @@ export type GetEffectiveOrgPolicyFoldersResponse = OrgPolicy;
 export const GetEffectiveOrgPolicyFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type GetEffectiveOrgPolicyFoldersError = DefaultErrors;
+export type GetEffectiveOrgPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the effective `Policy` on a resource. This is the result of merging `Policies` in the resource hierarchy. The returned `Policy` will not have an `etag`set because it is a computed `Policy` across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded. */
 export const getEffectiveOrgPolicyFolders: API.OperationMethod<
@@ -2238,7 +2385,7 @@ export const getEffectiveOrgPolicyFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectiveOrgPolicyFoldersRequest,
   output: GetEffectiveOrgPolicyFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetOrgPolicyFoldersRequest {
@@ -2265,7 +2412,12 @@ export type SetOrgPolicyFoldersResponse = OrgPolicy;
 export const SetOrgPolicyFoldersResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrgPolicy;
 
-export type SetOrgPolicyFoldersError = DefaultErrors;
+export type SetOrgPolicyFoldersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified `Policy` on the resource. Creates a new `Policy` for that `Constraint` on the resource if one does not exist. Not supplying an `etag` on the request `Policy` results in an unconditional write of the `Policy`. */
 export const setOrgPolicyFolders: API.OperationMethod<
@@ -2276,5 +2428,5 @@ export const setOrgPolicyFolders: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetOrgPolicyFoldersRequest,
   output: SetOrgPolicyFoldersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

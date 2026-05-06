@@ -3455,6 +3455,52 @@ export const GetGoogleUpdatedLodgingResponse =
   }).annotate({ identifier: "GetGoogleUpdatedLodgingResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3477,7 +3523,7 @@ export const GetLodgingLocationsRequest =
 export type GetLodgingLocationsResponse = Lodging;
 export const GetLodgingLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Lodging;
 
-export type GetLodgingLocationsError = DefaultErrors;
+export type GetLodgingLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the Lodging of a specific location. */
 export const getLodgingLocations: API.OperationMethod<
@@ -3488,7 +3534,7 @@ export const getLodgingLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLodgingLocationsRequest,
   output: GetLodgingLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateLodgingLocationsRequest {
@@ -3514,7 +3560,12 @@ export type UpdateLodgingLocationsResponse = Lodging;
 export const UpdateLodgingLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Lodging;
 
-export type UpdateLodgingLocationsError = DefaultErrors;
+export type UpdateLodgingLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Lodging of a specific location. */
 export const updateLodgingLocations: API.OperationMethod<
@@ -3525,7 +3576,7 @@ export const updateLodgingLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLodgingLocationsRequest,
   output: UpdateLodgingLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGoogleUpdatedLocationsLodgingRequest {
@@ -3549,7 +3600,10 @@ export type GetGoogleUpdatedLocationsLodgingResponse =
 export const GetGoogleUpdatedLocationsLodgingResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetGoogleUpdatedLodgingResponse;
 
-export type GetGoogleUpdatedLocationsLodgingError = DefaultErrors;
+export type GetGoogleUpdatedLocationsLodgingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the Google updated Lodging of a specific location. */
 export const getGoogleUpdatedLocationsLodging: API.OperationMethod<
@@ -3560,5 +3614,5 @@ export const getGoogleUpdatedLocationsLodging: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGoogleUpdatedLocationsLodgingRequest,
   output: GetGoogleUpdatedLocationsLodgingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

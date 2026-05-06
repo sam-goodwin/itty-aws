@@ -294,6 +294,52 @@ export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListReportsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -312,7 +358,12 @@ export const CreateQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateQueriesResponse = Query;
 export const CreateQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
 
-export type CreateQueriesError = DefaultErrors;
+export type CreateQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new query. */
 export const createQueries: API.OperationMethod<
@@ -323,7 +374,7 @@ export const createQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateQueriesRequest,
   output: CreateQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListQueriesRequest {
@@ -348,7 +399,7 @@ export type ListQueriesResponse_Op = ListQueriesResponse;
 export const ListQueriesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListQueriesResponse;
 
-export type ListQueriesError = DefaultErrors;
+export type ListQueriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists queries created by the current user. */
 export const listQueries: API.PaginatedOperationMethod<
@@ -359,7 +410,7 @@ export const listQueries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesRequest,
   output: ListQueriesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -387,7 +438,12 @@ export const RunQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type RunQueriesResponse = Report;
 export const RunQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type RunQueriesError = DefaultErrors;
+export type RunQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs an existing query to generate a report. */
 export const runQueries: API.OperationMethod<
@@ -398,7 +454,7 @@ export const runQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunQueriesRequest,
   output: RunQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetQueriesRequest {
@@ -416,7 +472,7 @@ export const GetQueriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetQueriesResponse = Query;
 export const GetQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Query;
 
-export type GetQueriesError = DefaultErrors;
+export type GetQueriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a query. */
 export const getQueries: API.OperationMethod<
@@ -427,7 +483,7 @@ export const getQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueriesRequest,
   output: GetQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteQueriesRequest {
@@ -448,7 +504,12 @@ export const DeleteQueriesResponse: Schema.Schema<DeleteQueriesResponse> =
     {},
   ) as any as Schema.Schema<DeleteQueriesResponse>;
 
-export type DeleteQueriesError = DefaultErrors;
+export type DeleteQueriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing query as well as its generated reports. */
 export const deleteQueries: API.OperationMethod<
@@ -459,7 +520,7 @@ export const deleteQueries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteQueriesRequest,
   output: DeleteQueriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetQueriesReportsRequest {
@@ -481,7 +542,7 @@ export const GetQueriesReportsRequest =
 export type GetQueriesReportsResponse = Report;
 export const GetQueriesReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Report;
 
-export type GetQueriesReportsError = DefaultErrors;
+export type GetQueriesReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a report. */
 export const getQueriesReports: API.OperationMethod<
@@ -492,7 +553,7 @@ export const getQueriesReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetQueriesReportsRequest,
   output: GetQueriesReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListQueriesReportsRequest {
@@ -521,7 +582,7 @@ export type ListQueriesReportsResponse = ListReportsResponse;
 export const ListQueriesReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReportsResponse;
 
-export type ListQueriesReportsError = DefaultErrors;
+export type ListQueriesReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists reports generated by the provided query. */
 export const listQueriesReports: API.PaginatedOperationMethod<
@@ -532,7 +593,7 @@ export const listQueriesReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListQueriesReportsRequest,
   output: ListQueriesReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

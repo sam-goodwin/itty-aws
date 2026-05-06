@@ -401,6 +401,52 @@ export const GoogleIamV3betaOperationMetadata =
   }).annotate({ identifier: "GoogleIamV3betaOperationMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -427,7 +473,12 @@ export type CreatePolicyPoliciesResponse = GoogleLongrunningOperation;
 export const CreatePolicyPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type CreatePolicyPoliciesError = DefaultErrors;
+export type CreatePolicyPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a policy. */
 export const createPolicyPolicies: API.OperationMethod<
@@ -438,7 +489,7 @@ export const createPolicyPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePolicyPoliciesRequest,
   output: CreatePolicyPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePoliciesRequest {
@@ -460,7 +511,12 @@ export type DeletePoliciesResponse = GoogleLongrunningOperation;
 export const DeletePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type DeletePoliciesError = DefaultErrors;
+export type DeletePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a policy. This action is permanent. */
 export const deletePolicies: API.OperationMethod<
@@ -471,7 +527,7 @@ export const deletePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePoliciesRequest,
   output: DeletePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPoliciesPoliciesRequest {
@@ -497,7 +553,7 @@ export type ListPoliciesPoliciesResponse = GoogleIamV2ListPoliciesResponse;
 export const ListPoliciesPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV2ListPoliciesResponse;
 
-export type ListPoliciesPoliciesError = DefaultErrors;
+export type ListPoliciesPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the policies of the specified kind that are attached to a resource. The response lists only policy metadata. In particular, policy rules are omitted. */
 export const listPoliciesPolicies: API.PaginatedOperationMethod<
@@ -508,7 +564,7 @@ export const listPoliciesPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPoliciesPoliciesRequest,
   output: ListPoliciesPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -534,7 +590,12 @@ export type UpdatePoliciesResponse = GoogleLongrunningOperation;
 export const UpdatePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type UpdatePoliciesError = DefaultErrors;
+export type UpdatePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified policy. You can update only the rules and the display name for the policy. To update a policy, you should use a read-modify-write loop: 1. Use GetPolicy to read the current version of the policy. 2. Modify the policy as needed. 3. Use `UpdatePolicy` to write the updated policy. This pattern helps prevent conflicts between concurrent updates. */
 export const updatePolicies: API.OperationMethod<
@@ -545,7 +606,7 @@ export const updatePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePoliciesRequest,
   output: UpdatePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPoliciesRequest {
@@ -564,7 +625,7 @@ export type GetPoliciesResponse = GoogleIamV2Policy;
 export const GetPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleIamV2Policy;
 
-export type GetPoliciesError = DefaultErrors;
+export type GetPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a policy. */
 export const getPolicies: API.OperationMethod<
@@ -575,7 +636,7 @@ export const getPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPoliciesRequest,
   output: GetPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPoliciesOperationsRequest {
@@ -595,7 +656,7 @@ export type GetPoliciesOperationsResponse = GoogleLongrunningOperation;
 export const GetPoliciesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
-export type GetPoliciesOperationsError = DefaultErrors;
+export type GetPoliciesOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getPoliciesOperations: API.OperationMethod<
@@ -606,5 +667,5 @@ export const getPoliciesOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPoliciesOperationsRequest,
   output: GetPoliciesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

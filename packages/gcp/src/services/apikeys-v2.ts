@@ -225,6 +225,52 @@ export const V2UndeleteKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "V2UndeleteKeyRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -244,7 +290,7 @@ export type LookupKeyKeysResponse = V2LookupKeyResponse;
 export const LookupKeyKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ V2LookupKeyResponse;
 
-export type LookupKeyKeysError = DefaultErrors;
+export type LookupKeyKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Find the parent project and resource name of the API key that matches the key string in the request. If the API key has been purged, resource name will not be set. The service account must have the `apikeys.keys.lookup` permission on the parent project. */
 export const lookupKeyKeys: API.OperationMethod<
@@ -255,7 +301,7 @@ export const lookupKeyKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupKeyKeysRequest,
   output: LookupKeyKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetKeyStringProjectsLocationsKeysRequest {
@@ -275,7 +321,10 @@ export type GetKeyStringProjectsLocationsKeysResponse = V2GetKeyStringResponse;
 export const GetKeyStringProjectsLocationsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ V2GetKeyStringResponse;
 
-export type GetKeyStringProjectsLocationsKeysError = DefaultErrors;
+export type GetKeyStringProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the key string for an API key. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const getKeyStringProjectsLocationsKeys: API.OperationMethod<
@@ -286,7 +335,7 @@ export const getKeyStringProjectsLocationsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetKeyStringProjectsLocationsKeysRequest,
   output: GetKeyStringProjectsLocationsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsKeysRequest {
@@ -312,7 +361,12 @@ export type CreateProjectsLocationsKeysResponse = Operation;
 export const CreateProjectsLocationsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsKeysError = DefaultErrors;
+export type CreateProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const createProjectsLocationsKeys: API.OperationMethod<
@@ -323,7 +377,7 @@ export const createProjectsLocationsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsKeysRequest,
   output: CreateProjectsLocationsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsKeysRequest {
@@ -343,7 +397,10 @@ export type GetProjectsLocationsKeysResponse = V2Key;
 export const GetProjectsLocationsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ V2Key;
 
-export type GetProjectsLocationsKeysError = DefaultErrors;
+export type GetProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const getProjectsLocationsKeys: API.OperationMethod<
@@ -354,7 +411,7 @@ export const getProjectsLocationsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsKeysRequest,
   output: GetProjectsLocationsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UndeleteProjectsLocationsKeysRequest {
@@ -377,7 +434,12 @@ export type UndeleteProjectsLocationsKeysResponse = Operation;
 export const UndeleteProjectsLocationsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsLocationsKeysError = DefaultErrors;
+export type UndeleteProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const undeleteProjectsLocationsKeys: API.OperationMethod<
@@ -388,7 +450,7 @@ export const undeleteProjectsLocationsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsLocationsKeysRequest,
   output: UndeleteProjectsLocationsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsKeysRequest {
@@ -419,7 +481,10 @@ export type ListProjectsLocationsKeysResponse = V2ListKeysResponse;
 export const ListProjectsLocationsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ V2ListKeysResponse;
 
-export type ListProjectsLocationsKeysError = DefaultErrors;
+export type ListProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the API keys owned by a project. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
@@ -430,7 +495,7 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsKeysRequest,
   output: ListProjectsLocationsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -460,7 +525,12 @@ export type PatchProjectsLocationsKeysResponse = Operation;
 export const PatchProjectsLocationsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsKeysError = DefaultErrors;
+export type PatchProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const patchProjectsLocationsKeys: API.OperationMethod<
@@ -471,7 +541,7 @@ export const patchProjectsLocationsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsKeysRequest,
   output: PatchProjectsLocationsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsKeysRequest {
@@ -494,7 +564,12 @@ export type DeleteProjectsLocationsKeysResponse = Operation;
 export const DeleteProjectsLocationsKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsKeysError = DefaultErrors;
+export type DeleteProjectsLocationsKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`. */
 export const deleteProjectsLocationsKeys: API.OperationMethod<
@@ -505,7 +580,7 @@ export const deleteProjectsLocationsKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsKeysRequest,
   output: DeleteProjectsLocationsKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationsRequest {
@@ -523,7 +598,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -534,5 +609,5 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

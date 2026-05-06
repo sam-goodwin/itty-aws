@@ -541,6 +541,52 @@ export const ListSmartNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ListSmartNotesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -559,7 +605,12 @@ export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateSpacesResponse = Space;
 export const CreateSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type CreateSpacesError = DefaultErrors;
+export type CreateSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a space. */
 export const createSpaces: API.OperationMethod<
@@ -570,7 +621,7 @@ export const createSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSpacesRequest,
   output: CreateSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpacesRequest {
@@ -588,7 +639,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSpacesResponse = Space;
 export const GetSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type GetSpacesError = DefaultErrors;
+export type GetSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets details about a meeting space. For an example, see [Get a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#get-meeting-space). */
 export const getSpaces: API.OperationMethod<
@@ -599,7 +650,7 @@ export const getSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpacesRequest,
   output: GetSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EndActiveConferenceSpacesRequest {
@@ -626,7 +677,12 @@ export type EndActiveConferenceSpacesResponse = Empty;
 export const EndActiveConferenceSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type EndActiveConferenceSpacesError = DefaultErrors;
+export type EndActiveConferenceSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Ends an active conference (if there's one). For an example, see [End active conference](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#end-active-conference). */
 export const endActiveConferenceSpaces: API.OperationMethod<
@@ -637,7 +693,7 @@ export const endActiveConferenceSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EndActiveConferenceSpacesRequest,
   output: EndActiveConferenceSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchSpacesRequest {
@@ -661,7 +717,12 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchSpacesResponse = Space;
 export const PatchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type PatchSpacesError = DefaultErrors;
+export type PatchSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates details about a meeting space. For an example, see [Update a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#update-meeting-space). */
 export const patchSpaces: API.OperationMethod<
@@ -672,7 +733,7 @@ export const patchSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSpacesRequest,
   output: PatchSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetConferenceRecordsRequest {
@@ -692,7 +753,7 @@ export type GetConferenceRecordsResponse = ConferenceRecord;
 export const GetConferenceRecordsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConferenceRecord;
 
-export type GetConferenceRecordsError = DefaultErrors;
+export type GetConferenceRecordsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a conference record by conference ID. */
 export const getConferenceRecords: API.OperationMethod<
@@ -703,7 +764,7 @@ export const getConferenceRecords: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsRequest,
   output: GetConferenceRecordsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConferenceRecordsRequest {
@@ -729,7 +790,7 @@ export type ListConferenceRecordsResponse_Op = ListConferenceRecordsResponse;
 export const ListConferenceRecordsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListConferenceRecordsResponse;
 
-export type ListConferenceRecordsError = DefaultErrors;
+export type ListConferenceRecordsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the conference records. By default, ordered by start time and in descending order. */
 export const listConferenceRecords: API.PaginatedOperationMethod<
@@ -740,7 +801,7 @@ export const listConferenceRecords: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRequest,
   output: ListConferenceRecordsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -764,7 +825,10 @@ export type GetConferenceRecordsRecordingsResponse = Recording;
 export const GetConferenceRecordsRecordingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Recording;
 
-export type GetConferenceRecordsRecordingsError = DefaultErrors;
+export type GetConferenceRecordsRecordingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a recording by recording ID. */
 export const getConferenceRecordsRecordings: API.OperationMethod<
@@ -775,7 +839,7 @@ export const getConferenceRecordsRecordings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsRecordingsRequest,
   output: GetConferenceRecordsRecordingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConferenceRecordsRecordingsRequest {
@@ -801,7 +865,10 @@ export type ListConferenceRecordsRecordingsResponse = ListRecordingsResponse;
 export const ListConferenceRecordsRecordingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRecordingsResponse;
 
-export type ListConferenceRecordsRecordingsError = DefaultErrors;
+export type ListConferenceRecordsRecordingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the recording resources from the conference record. By default, ordered by start time and in ascending order. */
 export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
@@ -812,7 +879,7 @@ export const listConferenceRecordsRecordings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsRecordingsRequest,
   output: ListConferenceRecordsRecordingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -836,7 +903,10 @@ export type GetConferenceRecordsParticipantsResponse = Participant;
 export const GetConferenceRecordsParticipantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Participant;
 
-export type GetConferenceRecordsParticipantsError = DefaultErrors;
+export type GetConferenceRecordsParticipantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a participant by participant ID. */
 export const getConferenceRecordsParticipants: API.OperationMethod<
@@ -847,7 +917,7 @@ export const getConferenceRecordsParticipants: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsParticipantsRequest,
   output: GetConferenceRecordsParticipantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConferenceRecordsParticipantsRequest {
@@ -877,7 +947,10 @@ export type ListConferenceRecordsParticipantsResponse =
 export const ListConferenceRecordsParticipantsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListParticipantsResponse;
 
-export type ListConferenceRecordsParticipantsError = DefaultErrors;
+export type ListConferenceRecordsParticipantsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the participants in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted, this API defaults to `'participants/*, next_page_token'`. */
 export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
@@ -888,7 +961,7 @@ export const listConferenceRecordsParticipants: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsParticipantsRequest,
   output: ListConferenceRecordsParticipantsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -914,7 +987,9 @@ export const GetConferenceRecordsParticipantsParticipantSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ParticipantSession;
 
 export type GetConferenceRecordsParticipantsParticipantSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a participant session by participant session ID. */
 export const getConferenceRecordsParticipantsParticipantSessions: API.OperationMethod<
@@ -925,7 +1000,7 @@ export const getConferenceRecordsParticipantsParticipantSessions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsParticipantsParticipantSessionsRequest,
   output: GetConferenceRecordsParticipantsParticipantSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConferenceRecordsParticipantsParticipantSessionsRequest {
@@ -956,7 +1031,9 @@ export const ListConferenceRecordsParticipantsParticipantSessionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListParticipantSessionsResponse;
 
 export type ListConferenceRecordsParticipantsParticipantSessionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the participant sessions of a participant in a conference record. By default, ordered by join time and in descending order. This API supports `fields` as standard parameters like every other API. However, when the `fields` request parameter is omitted this API defaults to `'participantsessions/*, next_page_token'`. */
 export const listConferenceRecordsParticipantsParticipantSessions: API.PaginatedOperationMethod<
@@ -967,7 +1044,7 @@ export const listConferenceRecordsParticipantsParticipantSessions: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsParticipantsParticipantSessionsRequest,
   output: ListConferenceRecordsParticipantsParticipantSessionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -991,7 +1068,10 @@ export type GetConferenceRecordsTranscriptsResponse = Transcript;
 export const GetConferenceRecordsTranscriptsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Transcript;
 
-export type GetConferenceRecordsTranscriptsError = DefaultErrors;
+export type GetConferenceRecordsTranscriptsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a transcript by transcript ID. */
 export const getConferenceRecordsTranscripts: API.OperationMethod<
@@ -1002,7 +1082,7 @@ export const getConferenceRecordsTranscripts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsTranscriptsRequest,
   output: GetConferenceRecordsTranscriptsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConferenceRecordsTranscriptsRequest {
@@ -1028,7 +1108,10 @@ export type ListConferenceRecordsTranscriptsResponse = ListTranscriptsResponse;
 export const ListConferenceRecordsTranscriptsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTranscriptsResponse;
 
-export type ListConferenceRecordsTranscriptsError = DefaultErrors;
+export type ListConferenceRecordsTranscriptsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the set of transcripts from the conference record. By default, ordered by start time and in ascending order. */
 export const listConferenceRecordsTranscripts: API.PaginatedOperationMethod<
@@ -1039,7 +1122,7 @@ export const listConferenceRecordsTranscripts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsTranscriptsRequest,
   output: ListConferenceRecordsTranscriptsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1063,7 +1146,10 @@ export type GetConferenceRecordsTranscriptsEntriesResponse = TranscriptEntry;
 export const GetConferenceRecordsTranscriptsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranscriptEntry;
 
-export type GetConferenceRecordsTranscriptsEntriesError = DefaultErrors;
+export type GetConferenceRecordsTranscriptsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a `TranscriptEntry` resource by entry ID. Note: The transcript entries returned by the Google Meet API might not match the transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation. */
 export const getConferenceRecordsTranscriptsEntries: API.OperationMethod<
@@ -1074,7 +1160,7 @@ export const getConferenceRecordsTranscriptsEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsTranscriptsEntriesRequest,
   output: GetConferenceRecordsTranscriptsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConferenceRecordsTranscriptsEntriesRequest {
@@ -1101,7 +1187,10 @@ export type ListConferenceRecordsTranscriptsEntriesResponse =
 export const ListConferenceRecordsTranscriptsEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTranscriptEntriesResponse;
 
-export type ListConferenceRecordsTranscriptsEntriesError = DefaultErrors;
+export type ListConferenceRecordsTranscriptsEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the structured transcript entries per transcript. By default, ordered by start time and in ascending order. Note: The transcript entries returned by the Google Meet API might not match the transcription found in the Google Docs transcript file. This can occur when 1) we have interleaved speakers within milliseconds, or 2) the Google Docs transcript file is modified after generation. */
 export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMethod<
@@ -1112,7 +1201,7 @@ export const listConferenceRecordsTranscriptsEntries: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsTranscriptsEntriesRequest,
   output: ListConferenceRecordsTranscriptsEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1136,7 +1225,10 @@ export type GetConferenceRecordsSmartNotesResponse = SmartNote;
 export const GetConferenceRecordsSmartNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SmartNote;
 
-export type GetConferenceRecordsSmartNotesError = DefaultErrors;
+export type GetConferenceRecordsSmartNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets smart notes by smart note ID. */
 export const getConferenceRecordsSmartNotes: API.OperationMethod<
@@ -1147,7 +1239,7 @@ export const getConferenceRecordsSmartNotes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetConferenceRecordsSmartNotesRequest,
   output: GetConferenceRecordsSmartNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListConferenceRecordsSmartNotesRequest {
@@ -1173,7 +1265,10 @@ export type ListConferenceRecordsSmartNotesResponse = ListSmartNotesResponse;
 export const ListConferenceRecordsSmartNotesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSmartNotesResponse;
 
-export type ListConferenceRecordsSmartNotesError = DefaultErrors;
+export type ListConferenceRecordsSmartNotesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the set of smart notes from the conference record. By default, ordered by start time and in ascending order. */
 export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
@@ -1184,7 +1279,7 @@ export const listConferenceRecordsSmartNotes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListConferenceRecordsSmartNotesRequest,
   output: ListConferenceRecordsSmartNotesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

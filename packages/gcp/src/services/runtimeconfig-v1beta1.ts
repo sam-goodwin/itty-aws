@@ -270,6 +270,52 @@ export const ListVariablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListVariablesResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -290,7 +336,7 @@ export type GetProjectsConfigsResponse = RuntimeConfig;
 export const GetProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
 
-export type GetProjectsConfigsError = DefaultErrors;
+export type GetProjectsConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a RuntimeConfig resource. */
 export const getProjectsConfigs: API.OperationMethod<
@@ -301,7 +347,7 @@ export const getProjectsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsRequest,
   output: GetProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsConfigsRequest {
@@ -320,7 +366,12 @@ export const DeleteProjectsConfigsRequest =
 export type DeleteProjectsConfigsResponse = Empty;
 export const DeleteProjectsConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsConfigsError = DefaultErrors;
+export type DeleteProjectsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a RuntimeConfig resource. */
 export const deleteProjectsConfigs: API.OperationMethod<
@@ -331,7 +382,7 @@ export const deleteProjectsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsConfigsRequest,
   output: DeleteProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsConfigsRequest {
@@ -359,7 +410,12 @@ export type TestIamPermissionsProjectsConfigsResponse =
 export const TestIamPermissionsProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsConfigsError = DefaultErrors;
+export type TestIamPermissionsProjectsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigs: API.OperationMethod<
@@ -370,7 +426,7 @@ export const testIamPermissionsProjectsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsRequest,
   output: TestIamPermissionsProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsConfigsRequest {
@@ -395,7 +451,10 @@ export type GetIamPolicyProjectsConfigsResponse = Policy;
 export const GetIamPolicyProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsConfigsError = DefaultErrors;
+export type GetIamPolicyProjectsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsConfigs: API.OperationMethod<
@@ -406,7 +465,7 @@ export const getIamPolicyProjectsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsConfigsRequest,
   output: GetIamPolicyProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsConfigsRequest {
@@ -433,7 +492,12 @@ export type SetIamPolicyProjectsConfigsResponse = Policy;
 export const SetIamPolicyProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsConfigsError = DefaultErrors;
+export type SetIamPolicyProjectsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsConfigs: API.OperationMethod<
@@ -444,7 +508,7 @@ export const setIamPolicyProjectsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsConfigsRequest,
   output: SetIamPolicyProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsConfigsRequest {
@@ -470,7 +534,12 @@ export type CreateProjectsConfigsResponse = RuntimeConfig;
 export const CreateProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
 
-export type CreateProjectsConfigsError = DefaultErrors;
+export type CreateProjectsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new RuntimeConfig resource. The configuration name must be unique within project. */
 export const createProjectsConfigs: API.OperationMethod<
@@ -481,7 +550,7 @@ export const createProjectsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsConfigsRequest,
   output: CreateProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsConfigsRequest {
@@ -504,7 +573,12 @@ export type UpdateProjectsConfigsResponse = RuntimeConfig;
 export const UpdateProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RuntimeConfig;
 
-export type UpdateProjectsConfigsError = DefaultErrors;
+export type UpdateProjectsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a RuntimeConfig resource. The configuration must exist beforehand. */
 export const updateProjectsConfigs: API.OperationMethod<
@@ -515,7 +589,7 @@ export const updateProjectsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsConfigsRequest,
   output: UpdateProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsConfigsRequest {
@@ -541,7 +615,7 @@ export type ListProjectsConfigsResponse = ListConfigsResponse;
 export const ListProjectsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConfigsResponse;
 
-export type ListProjectsConfigsError = DefaultErrors;
+export type ListProjectsConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the RuntimeConfig resources within project. */
 export const listProjectsConfigs: API.PaginatedOperationMethod<
@@ -552,7 +626,7 @@ export const listProjectsConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsRequest,
   output: ListProjectsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -576,7 +650,10 @@ export type GetProjectsConfigsVariablesResponse = Variable;
 export const GetProjectsConfigsVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type GetProjectsConfigsVariablesError = DefaultErrors;
+export type GetProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a single variable. */
 export const getProjectsConfigsVariables: API.OperationMethod<
@@ -587,7 +664,7 @@ export const getProjectsConfigsVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsVariablesRequest,
   output: GetProjectsConfigsVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WatchProjectsConfigsVariablesRequest {
@@ -610,7 +687,12 @@ export type WatchProjectsConfigsVariablesResponse = Variable;
 export const WatchProjectsConfigsVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type WatchProjectsConfigsVariablesError = DefaultErrors;
+export type WatchProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Watches a specific variable and waits for a change in the variable's value. When there is a change, this method returns the new value or times out. If a variable is deleted while being watched, the `variableState` state is set to `DELETED` and the method returns the last known variable `value`. If you set the deadline for watching to a larger value than internal timeout (60 seconds), the current variable value is returned and the `variableState` will be `VARIABLE_STATE_UNSPECIFIED`. To learn more about creating a watcher, read the [Watching a Variable for Changes](/deployment-manager/runtime-configurator/watching-a-variable) documentation. */
 export const watchProjectsConfigsVariables: API.OperationMethod<
@@ -621,7 +703,7 @@ export const watchProjectsConfigsVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchProjectsConfigsVariablesRequest,
   output: WatchProjectsConfigsVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsConfigsVariablesRequest {
@@ -651,7 +733,12 @@ export type CreateProjectsConfigsVariablesResponse = Variable;
 export const CreateProjectsConfigsVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type CreateProjectsConfigsVariablesError = DefaultErrors;
+export type CreateProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation. */
 export const createProjectsConfigsVariables: API.OperationMethod<
@@ -662,7 +749,7 @@ export const createProjectsConfigsVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsConfigsVariablesRequest,
   output: CreateProjectsConfigsVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsConfigsVariablesRequest {
@@ -685,7 +772,12 @@ export type UpdateProjectsConfigsVariablesResponse = Variable;
 export const UpdateProjectsConfigsVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Variable;
 
-export type UpdateProjectsConfigsVariablesError = DefaultErrors;
+export type UpdateProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing variable with a new value. */
 export const updateProjectsConfigsVariables: API.OperationMethod<
@@ -696,7 +788,7 @@ export const updateProjectsConfigsVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsConfigsVariablesRequest,
   output: UpdateProjectsConfigsVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsConfigsVariablesRequest {
@@ -730,7 +822,10 @@ export type ListProjectsConfigsVariablesResponse = ListVariablesResponse;
 export const ListProjectsConfigsVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVariablesResponse;
 
-export type ListProjectsConfigsVariablesError = DefaultErrors;
+export type ListProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists variables within given a configuration, matching any provided filters. This only lists variable names, not the values, unless `return_values` is true, in which case only variables that user has IAM permission to GetVariable will be returned. */
 export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
@@ -741,7 +836,7 @@ export const listProjectsConfigsVariables: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsVariablesRequest,
   output: ListProjectsConfigsVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -768,7 +863,12 @@ export type DeleteProjectsConfigsVariablesResponse = Empty;
 export const DeleteProjectsConfigsVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsConfigsVariablesError = DefaultErrors;
+export type DeleteProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a variable or multiple variables. If you specify a variable name, then that variable is deleted. If you specify a prefix and `recursive` is true, then all variables with that prefix are deleted. You must set a `recursive` to true if you delete variables by prefix. */
 export const deleteProjectsConfigsVariables: API.OperationMethod<
@@ -779,7 +879,7 @@ export const deleteProjectsConfigsVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsConfigsVariablesRequest,
   output: DeleteProjectsConfigsVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsConfigsVariablesRequest {
@@ -807,7 +907,12 @@ export type TestIamPermissionsProjectsConfigsVariablesResponse =
 export const TestIamPermissionsProjectsConfigsVariablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsConfigsVariablesError = DefaultErrors;
+export type TestIamPermissionsProjectsConfigsVariablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
@@ -818,7 +923,7 @@ export const testIamPermissionsProjectsConfigsVariables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsVariablesRequest,
   output: TestIamPermissionsProjectsConfigsVariablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsConfigsWaitersRequest {
@@ -846,7 +951,12 @@ export type TestIamPermissionsProjectsConfigsWaitersResponse =
 export const TestIamPermissionsProjectsConfigsWaitersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsConfigsWaitersError = DefaultErrors;
+export type TestIamPermissionsProjectsConfigsWaitersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
@@ -857,7 +967,7 @@ export const testIamPermissionsProjectsConfigsWaiters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsWaitersRequest,
   output: TestIamPermissionsProjectsConfigsWaitersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsConfigsWaitersRequest {
@@ -883,7 +993,12 @@ export type CreateProjectsConfigsWaitersResponse = Operation;
 export const CreateProjectsConfigsWaitersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsConfigsWaitersError = DefaultErrors;
+export type CreateProjectsConfigsWaitersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts. */
 export const createProjectsConfigsWaiters: API.OperationMethod<
@@ -894,7 +1009,7 @@ export const createProjectsConfigsWaiters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsConfigsWaitersRequest,
   output: CreateProjectsConfigsWaitersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsConfigsWaitersRequest {
@@ -920,7 +1035,10 @@ export type ListProjectsConfigsWaitersResponse = ListWaitersResponse;
 export const ListProjectsConfigsWaitersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWaitersResponse;
 
-export type ListProjectsConfigsWaitersError = DefaultErrors;
+export type ListProjectsConfigsWaitersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List waiters within the given configuration. */
 export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
@@ -931,7 +1049,7 @@ export const listProjectsConfigsWaiters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsConfigsWaitersRequest,
   output: ListProjectsConfigsWaitersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -955,7 +1073,12 @@ export type DeleteProjectsConfigsWaitersResponse = Empty;
 export const DeleteProjectsConfigsWaitersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsConfigsWaitersError = DefaultErrors;
+export type DeleteProjectsConfigsWaitersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the waiter with the specified name. */
 export const deleteProjectsConfigsWaiters: API.OperationMethod<
@@ -966,7 +1089,7 @@ export const deleteProjectsConfigsWaiters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsConfigsWaitersRequest,
   output: DeleteProjectsConfigsWaitersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsConfigsWaitersRequest {
@@ -986,7 +1109,10 @@ export type GetProjectsConfigsWaitersResponse = Waiter;
 export const GetProjectsConfigsWaitersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Waiter;
 
-export type GetProjectsConfigsWaitersError = DefaultErrors;
+export type GetProjectsConfigsWaitersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a single waiter. */
 export const getProjectsConfigsWaiters: API.OperationMethod<
@@ -997,7 +1123,7 @@ export const getProjectsConfigsWaiters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsWaitersRequest,
   output: GetProjectsConfigsWaitersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsConfigsOperationsRequest {
@@ -1017,7 +1143,10 @@ export type GetProjectsConfigsOperationsResponse = Operation;
 export const GetProjectsConfigsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsConfigsOperationsError = DefaultErrors;
+export type GetProjectsConfigsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsConfigsOperations: API.OperationMethod<
@@ -1028,7 +1157,7 @@ export const getProjectsConfigsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsConfigsOperationsRequest,
   output: GetProjectsConfigsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsConfigsOperationsRequest {
@@ -1056,7 +1185,12 @@ export type TestIamPermissionsProjectsConfigsOperationsResponse =
 export const TestIamPermissionsProjectsConfigsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsConfigsOperationsError = DefaultErrors;
+export type TestIamPermissionsProjectsConfigsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
@@ -1067,5 +1201,5 @@ export const testIamPermissionsProjectsConfigsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsConfigsOperationsRequest,
   output: TestIamPermissionsProjectsConfigsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

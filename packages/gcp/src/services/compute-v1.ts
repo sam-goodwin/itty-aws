@@ -33192,6 +33192,52 @@ export const ZoneList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ZoneList" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -33229,7 +33275,7 @@ export type ListGlobalOperationsResponse = OperationList;
 export const ListGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperationList;
 
-export type ListGlobalOperationsError = DefaultErrors;
+export type ListGlobalOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of Operation resources contained within the specified project. */
 export const listGlobalOperations: API.PaginatedOperationMethod<
@@ -33240,7 +33286,7 @@ export const listGlobalOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalOperationsRequest,
   output: ListGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -33292,7 +33338,10 @@ export type AggregatedListGlobalOperationsResponse = OperationAggregatedList;
 export const AggregatedListGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperationAggregatedList;
 
-export type AggregatedListGlobalOperationsError = DefaultErrors;
+export type AggregatedListGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of all operations. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListGlobalOperations: API.PaginatedOperationMethod<
@@ -33303,7 +33352,7 @@ export const aggregatedListGlobalOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListGlobalOperationsRequest,
   output: AggregatedListGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -33334,7 +33383,7 @@ export type GetGlobalOperationsResponse = Operation;
 export const GetGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetGlobalOperationsError = DefaultErrors;
+export type GetGlobalOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified Operations resource. */
 export const getGlobalOperations: API.OperationMethod<
@@ -33345,7 +33394,7 @@ export const getGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalOperationsRequest,
   output: GetGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WaitGlobalOperationsRequest {
@@ -33372,7 +33421,12 @@ export type WaitGlobalOperationsResponse = Operation;
 export const WaitGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WaitGlobalOperationsError = DefaultErrors;
+export type WaitGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2 minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the operation, which might be `DONE` or still in progress. This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is overloaded, the request might return before the default deadline is reached, or might return after zero seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done when the method returns. Be prepared to retry if the operation is not `DONE`. */
 export const waitGlobalOperations: API.OperationMethod<
@@ -33383,7 +33437,7 @@ export const waitGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WaitGlobalOperationsRequest,
   output: WaitGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGlobalOperationsRequest {
@@ -33411,7 +33465,12 @@ export const DeleteGlobalOperationsResponse: Schema.Schema<DeleteGlobalOperation
     {},
   ) as any as Schema.Schema<DeleteGlobalOperationsResponse>;
 
-export type DeleteGlobalOperationsError = DefaultErrors;
+export type DeleteGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Operations resource. */
 export const deleteGlobalOperations: API.OperationMethod<
@@ -33422,7 +33481,7 @@ export const deleteGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalOperationsRequest,
   output: DeleteGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGlobalOrganizationOperationsRequest {
@@ -33459,7 +33518,10 @@ export type ListGlobalOrganizationOperationsResponse = OperationList;
 export const ListGlobalOrganizationOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperationList;
 
-export type ListGlobalOrganizationOperationsError = DefaultErrors;
+export type ListGlobalOrganizationOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of Operation resources contained within the specified organization. */
 export const listGlobalOrganizationOperations: API.PaginatedOperationMethod<
@@ -33470,7 +33532,7 @@ export const listGlobalOrganizationOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalOrganizationOperationsRequest,
   output: ListGlobalOrganizationOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -33498,7 +33560,10 @@ export type GetGlobalOrganizationOperationsResponse = Operation;
 export const GetGlobalOrganizationOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetGlobalOrganizationOperationsError = DefaultErrors;
+export type GetGlobalOrganizationOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the specified Operations resource. Gets a list of operations by making a `list()` request. */
 export const getGlobalOrganizationOperations: API.OperationMethod<
@@ -33509,7 +33574,7 @@ export const getGlobalOrganizationOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalOrganizationOperationsRequest,
   output: GetGlobalOrganizationOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteGlobalOrganizationOperationsRequest {
@@ -33537,7 +33602,12 @@ export const DeleteGlobalOrganizationOperationsResponse: Schema.Schema<DeleteGlo
     {},
   ) as any as Schema.Schema<DeleteGlobalOrganizationOperationsResponse>;
 
-export type DeleteGlobalOrganizationOperationsError = DefaultErrors;
+export type DeleteGlobalOrganizationOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Operations resource. */
 export const deleteGlobalOrganizationOperations: API.OperationMethod<
@@ -33548,7 +33618,7 @@ export const deleteGlobalOrganizationOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalOrganizationOperationsRequest,
   output: DeleteGlobalOrganizationOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListZoneOperationsRequest {
@@ -33591,7 +33661,7 @@ export type ListZoneOperationsResponse = OperationList;
 export const ListZoneOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperationList;
 
-export type ListZoneOperationsError = DefaultErrors;
+export type ListZoneOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of Operation resources contained within the specified zone. */
 export const listZoneOperations: API.PaginatedOperationMethod<
@@ -33602,7 +33672,7 @@ export const listZoneOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZoneOperationsRequest,
   output: ListZoneOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -33635,7 +33705,7 @@ export const GetZoneOperationsRequest =
 export type GetZoneOperationsResponse = Operation;
 export const GetZoneOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetZoneOperationsError = DefaultErrors;
+export type GetZoneOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified zone-specific Operations resource. */
 export const getZoneOperations: API.OperationMethod<
@@ -33646,7 +33716,7 @@ export const getZoneOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneOperationsRequest,
   output: GetZoneOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WaitZoneOperationsRequest {
@@ -33675,7 +33745,12 @@ export const WaitZoneOperationsRequest =
 export type WaitZoneOperationsResponse = Operation;
 export const WaitZoneOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WaitZoneOperationsError = DefaultErrors;
+export type WaitZoneOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2 minute deadline, and retrieves the specified Operation resource. This method waits for no more than the 2 minutes and then returns the current state of the operation, which might be `DONE` or still in progress. This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is overloaded, the request might return before the default deadline is reached, or might return after zero seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done when the method returns. Be prepared to retry if the operation is not `DONE`. */
 export const waitZoneOperations: API.OperationMethod<
@@ -33686,7 +33761,7 @@ export const waitZoneOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WaitZoneOperationsRequest,
   output: WaitZoneOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteZoneOperationsRequest {
@@ -33717,7 +33792,12 @@ export const DeleteZoneOperationsResponse: Schema.Schema<DeleteZoneOperationsRes
     {},
   ) as any as Schema.Schema<DeleteZoneOperationsResponse>;
 
-export type DeleteZoneOperationsError = DefaultErrors;
+export type DeleteZoneOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified zone-specific Operations resource. */
 export const deleteZoneOperations: API.OperationMethod<
@@ -33728,7 +33808,7 @@ export const deleteZoneOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneOperationsRequest,
   output: DeleteZoneOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionOperationsRequest {
@@ -33771,7 +33851,7 @@ export type ListRegionOperationsResponse = OperationList;
 export const ListRegionOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OperationList;
 
-export type ListRegionOperationsError = DefaultErrors;
+export type ListRegionOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of Operation resources contained within the specified region. */
 export const listRegionOperations: API.PaginatedOperationMethod<
@@ -33782,7 +33862,7 @@ export const listRegionOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionOperationsRequest,
   output: ListRegionOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -33816,7 +33896,7 @@ export type GetRegionOperationsResponse = Operation;
 export const GetRegionOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetRegionOperationsError = DefaultErrors;
+export type GetRegionOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the specified region-specific Operations resource. */
 export const getRegionOperations: API.OperationMethod<
@@ -33827,7 +33907,7 @@ export const getRegionOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionOperationsRequest,
   output: GetRegionOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WaitRegionOperationsRequest {
@@ -33857,7 +33937,12 @@ export type WaitRegionOperationsResponse = Operation;
 export const WaitRegionOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WaitRegionOperationsError = DefaultErrors;
+export type WaitRegionOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Waits for the specified Operation resource to return as `DONE` or for the request to approach the 2 minute deadline, and retrieves the specified Operation resource. This method differs from the `GET` method in that it waits for no more than the default deadline (2 minutes) and then returns the current state of the operation, which might be `DONE` or still in progress. This method is called on a best-effort basis. Specifically: - In uncommon cases, when the server is overloaded, the request might return before the default deadline is reached, or might return after zero seconds. - If the default deadline is reached, there is no guarantee that the operation is actually done when the method returns. Be prepared to retry if the operation is not `DONE`. */
 export const waitRegionOperations: API.OperationMethod<
@@ -33868,7 +33953,7 @@ export const waitRegionOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WaitRegionOperationsRequest,
   output: WaitRegionOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionOperationsRequest {
@@ -33899,7 +33984,12 @@ export const DeleteRegionOperationsResponse: Schema.Schema<DeleteRegionOperation
     {},
   ) as any as Schema.Schema<DeleteRegionOperationsResponse>;
 
-export type DeleteRegionOperationsError = DefaultErrors;
+export type DeleteRegionOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified region-specific Operations resource. */
 export const deleteRegionOperations: API.OperationMethod<
@@ -33910,7 +34000,7 @@ export const deleteRegionOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionOperationsRequest,
   output: DeleteRegionOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAcceleratorTypesRequest {
@@ -33953,7 +34043,7 @@ export type ListAcceleratorTypesResponse = AcceleratorTypeList;
 export const ListAcceleratorTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AcceleratorTypeList;
 
-export type ListAcceleratorTypesError = DefaultErrors;
+export type ListAcceleratorTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of accelerator types that are available to the specified project. */
 export const listAcceleratorTypes: API.PaginatedOperationMethod<
@@ -33964,7 +34054,7 @@ export const listAcceleratorTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAcceleratorTypesRequest,
   output: ListAcceleratorTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -34020,7 +34110,10 @@ export type AggregatedListAcceleratorTypesResponse =
 export const AggregatedListAcceleratorTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AcceleratorTypeAggregatedList;
 
-export type AggregatedListAcceleratorTypesError = DefaultErrors;
+export type AggregatedListAcceleratorTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of accelerator types. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListAcceleratorTypes: API.PaginatedOperationMethod<
@@ -34031,7 +34124,7 @@ export const aggregatedListAcceleratorTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListAcceleratorTypesRequest,
   output: AggregatedListAcceleratorTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -34065,7 +34158,7 @@ export type GetAcceleratorTypesResponse = AcceleratorType;
 export const GetAcceleratorTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AcceleratorType;
 
-export type GetAcceleratorTypesError = DefaultErrors;
+export type GetAcceleratorTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified accelerator type. */
 export const getAcceleratorTypes: API.OperationMethod<
@@ -34076,7 +34169,7 @@ export const getAcceleratorTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAcceleratorTypesRequest,
   output: GetAcceleratorTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListGlobalAddressesRequest {
@@ -34113,7 +34206,7 @@ export type ListGlobalAddressesResponse = AddressList;
 export const ListGlobalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddressList;
 
-export type ListGlobalAddressesError = DefaultErrors;
+export type ListGlobalAddressesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of global addresses. */
 export const listGlobalAddresses: API.PaginatedOperationMethod<
@@ -34124,7 +34217,7 @@ export const listGlobalAddresses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalAddressesRequest,
   output: ListGlobalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -34154,7 +34247,7 @@ export const GetGlobalAddressesRequest =
 export type GetGlobalAddressesResponse = Address;
 export const GetGlobalAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Address;
 
-export type GetGlobalAddressesError = DefaultErrors;
+export type GetGlobalAddressesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified address resource. */
 export const getGlobalAddresses: API.OperationMethod<
@@ -34165,7 +34258,7 @@ export const getGlobalAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalAddressesRequest,
   output: GetGlobalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertGlobalAddressesRequest {
@@ -34195,7 +34288,12 @@ export type InsertGlobalAddressesResponse = Operation;
 export const InsertGlobalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertGlobalAddressesError = DefaultErrors;
+export type InsertGlobalAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an address resource in the specified project by using the data included in the request. */
 export const insertGlobalAddresses: API.OperationMethod<
@@ -34206,7 +34304,7 @@ export const insertGlobalAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGlobalAddressesRequest,
   output: InsertGlobalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGlobalAddressesRequest {
@@ -34235,7 +34333,12 @@ export type DeleteGlobalAddressesResponse = Operation;
 export const DeleteGlobalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteGlobalAddressesError = DefaultErrors;
+export type DeleteGlobalAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified address resource. */
 export const deleteGlobalAddresses: API.OperationMethod<
@@ -34246,7 +34349,7 @@ export const deleteGlobalAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalAddressesRequest,
   output: DeleteGlobalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveGlobalAddressesRequest {
@@ -34279,7 +34382,12 @@ export type MoveGlobalAddressesResponse = Operation;
 export const MoveGlobalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveGlobalAddressesError = DefaultErrors;
+export type MoveGlobalAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the specified address resource from one project to another project. */
 export const moveGlobalAddresses: API.OperationMethod<
@@ -34290,7 +34398,7 @@ export const moveGlobalAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveGlobalAddressesRequest,
   output: MoveGlobalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsGlobalAddressesRequest {
@@ -34320,7 +34428,12 @@ export type TestIamPermissionsGlobalAddressesResponse = TestPermissionsResponse;
 export const TestIamPermissionsGlobalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsGlobalAddressesError = DefaultErrors;
+export type TestIamPermissionsGlobalAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsGlobalAddresses: API.OperationMethod<
@@ -34331,7 +34444,7 @@ export const testIamPermissionsGlobalAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsGlobalAddressesRequest,
   output: TestIamPermissionsGlobalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsGlobalAddressesRequest {
@@ -34361,7 +34474,12 @@ export type SetLabelsGlobalAddressesResponse = Operation;
 export const SetLabelsGlobalAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsGlobalAddressesError = DefaultErrors;
+export type SetLabelsGlobalAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a GlobalAddress. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsGlobalAddresses: API.OperationMethod<
@@ -34372,7 +34490,7 @@ export const setLabelsGlobalAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsGlobalAddressesRequest,
   output: SetLabelsGlobalAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAddressesRequest {
@@ -34413,7 +34531,7 @@ export const ListAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAddressesResponse = AddressList;
 export const ListAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ AddressList;
 
-export type ListAddressesError = DefaultErrors;
+export type ListAddressesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of addresses contained within the specified region. */
 export const listAddresses: API.PaginatedOperationMethod<
@@ -34424,7 +34542,7 @@ export const listAddresses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAddressesRequest,
   output: ListAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -34476,7 +34594,7 @@ export type AggregatedListAddressesResponse = AddressAggregatedList;
 export const AggregatedListAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddressAggregatedList;
 
-export type AggregatedListAddressesError = DefaultErrors;
+export type AggregatedListAddressesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an aggregated list of addresses. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListAddresses: API.PaginatedOperationMethod<
@@ -34487,7 +34605,7 @@ export const aggregatedListAddresses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListAddressesRequest,
   output: AggregatedListAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -34519,7 +34637,7 @@ export const GetAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAddressesResponse = Address;
 export const GetAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Address;
 
-export type GetAddressesError = DefaultErrors;
+export type GetAddressesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified address resource. */
 export const getAddresses: API.OperationMethod<
@@ -34530,7 +34648,7 @@ export const getAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAddressesRequest,
   output: GetAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertAddressesRequest {
@@ -34563,7 +34681,12 @@ export const InsertAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertAddressesResponse = Operation;
 export const InsertAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertAddressesError = DefaultErrors;
+export type InsertAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an address resource in the specified project by using the data included in the request. */
 export const insertAddresses: API.OperationMethod<
@@ -34574,7 +34697,7 @@ export const insertAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAddressesRequest,
   output: InsertAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAddressesRequest {
@@ -34606,7 +34729,12 @@ export const DeleteAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteAddressesResponse = Operation;
 export const DeleteAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAddressesError = DefaultErrors;
+export type DeleteAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified address resource. */
 export const deleteAddresses: API.OperationMethod<
@@ -34617,7 +34745,7 @@ export const deleteAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAddressesRequest,
   output: DeleteAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveAddressesRequest {
@@ -34651,7 +34779,12 @@ export const MoveAddressesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type MoveAddressesResponse = Operation;
 export const MoveAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveAddressesError = DefaultErrors;
+export type MoveAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the specified address resource. */
 export const moveAddresses: API.OperationMethod<
@@ -34662,7 +34795,7 @@ export const moveAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveAddressesRequest,
   output: MoveAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsAddressesRequest {
@@ -34695,7 +34828,12 @@ export type TestIamPermissionsAddressesResponse = TestPermissionsResponse;
 export const TestIamPermissionsAddressesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsAddressesError = DefaultErrors;
+export type TestIamPermissionsAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsAddresses: API.OperationMethod<
@@ -34706,7 +34844,7 @@ export const testIamPermissionsAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAddressesRequest,
   output: TestIamPermissionsAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsAddressesRequest {
@@ -34741,7 +34879,12 @@ export const SetLabelsAddressesRequest =
 export type SetLabelsAddressesResponse = Operation;
 export const SetLabelsAddressesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsAddressesError = DefaultErrors;
+export type SetLabelsAddressesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on an Address. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsAddresses: API.OperationMethod<
@@ -34752,7 +34895,7 @@ export const setLabelsAddresses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsAddressesRequest,
   output: SetLabelsAddressesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListImagesRequest {
@@ -34787,7 +34930,7 @@ export const ListImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListImagesResponse = ImageList;
 export const ListImagesResponse = /*@__PURE__*/ /*#__PURE__*/ ImageList;
 
-export type ListImagesError = DefaultErrors;
+export type ListImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of custom images available to the specified project. Custom images are images you create that belong to your project. This method does not get any images that belong to other projects, including publicly-available images, like Debian 8. If you want to get a list of publicly-available images, use this method to make a request to the respective image project, such as debian-cloud or windows-cloud. */
 export const listImages: API.PaginatedOperationMethod<
@@ -34798,7 +34941,7 @@ export const listImages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListImagesRequest,
   output: ListImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -34824,7 +34967,7 @@ export const GetImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetImagesResponse = Image;
 export const GetImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Image;
 
-export type GetImagesError = DefaultErrors;
+export type GetImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified image. */
 export const getImages: API.OperationMethod<
@@ -34835,7 +34978,7 @@ export const getImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetImagesRequest,
   output: GetImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetFromFamilyImagesRequest {
@@ -34860,7 +35003,7 @@ export const GetFromFamilyImagesRequest =
 export type GetFromFamilyImagesResponse = Image;
 export const GetFromFamilyImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Image;
 
-export type GetFromFamilyImagesError = DefaultErrors;
+export type GetFromFamilyImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the latest image that is part of an image family and is not deprecated. For more information on image families, seePublic image families documentation. */
 export const getFromFamilyImages: API.OperationMethod<
@@ -34871,7 +35014,7 @@ export const getFromFamilyImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFromFamilyImagesRequest,
   output: GetFromFamilyImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertImagesRequest {
@@ -34902,7 +35045,12 @@ export const InsertImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertImagesResponse = Operation;
 export const InsertImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertImagesError = DefaultErrors;
+export type InsertImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an image in the specified project using the data included in the request. */
 export const insertImages: API.OperationMethod<
@@ -34913,7 +35061,7 @@ export const insertImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertImagesRequest,
   output: InsertImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsImagesRequest {
@@ -34943,7 +35091,12 @@ export const SetLabelsImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type SetLabelsImagesResponse = Operation;
 export const SetLabelsImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsImagesError = DefaultErrors;
+export type SetLabelsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on an image. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsImages: API.OperationMethod<
@@ -34954,7 +35107,7 @@ export const setLabelsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsImagesRequest,
   output: SetLabelsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteImagesRequest {
@@ -34981,7 +35134,12 @@ export const DeleteImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteImagesResponse = Operation;
 export const DeleteImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteImagesError = DefaultErrors;
+export type DeleteImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified image. */
 export const deleteImages: API.OperationMethod<
@@ -34992,7 +35150,7 @@ export const deleteImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteImagesRequest,
   output: DeleteImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeprecateImagesRequest {
@@ -35025,7 +35183,12 @@ export const DeprecateImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeprecateImagesResponse = Operation;
 export const DeprecateImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeprecateImagesError = DefaultErrors;
+export type DeprecateImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the deprecation status of an image. If an empty request body is given, clears the deprecation status instead. */
 export const deprecateImages: API.OperationMethod<
@@ -35036,7 +35199,7 @@ export const deprecateImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeprecateImagesRequest,
   output: DeprecateImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyImagesRequest {
@@ -35066,7 +35229,7 @@ export const GetIamPolicyImagesRequest =
 export type GetIamPolicyImagesResponse = Policy;
 export const GetIamPolicyImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyImagesError = DefaultErrors;
+export type GetIamPolicyImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyImages: API.OperationMethod<
@@ -35077,7 +35240,7 @@ export const getIamPolicyImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyImagesRequest,
   output: GetIamPolicyImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchImagesRequest {
@@ -35108,7 +35271,12 @@ export const PatchImagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchImagesResponse = Operation;
 export const PatchImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchImagesError = DefaultErrors;
+export type PatchImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified image with the data included in the request. Only the following fields can be modified: family, description, deprecation status. */
 export const patchImages: API.OperationMethod<
@@ -35119,7 +35287,7 @@ export const patchImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchImagesRequest,
   output: PatchImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyImagesRequest {
@@ -35148,7 +35316,12 @@ export const SetIamPolicyImagesRequest =
 export type SetIamPolicyImagesResponse = Policy;
 export const SetIamPolicyImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyImagesError = DefaultErrors;
+export type SetIamPolicyImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyImages: API.OperationMethod<
@@ -35159,7 +35332,7 @@ export const setIamPolicyImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyImagesRequest,
   output: SetIamPolicyImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsImagesRequest {
@@ -35189,7 +35362,12 @@ export type TestIamPermissionsImagesResponse = TestPermissionsResponse;
 export const TestIamPermissionsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsImagesError = DefaultErrors;
+export type TestIamPermissionsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsImages: API.OperationMethod<
@@ -35200,7 +35378,7 @@ export const testIamPermissionsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsImagesRequest,
   output: TestIamPermissionsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetImageFamilyViewsRequest {
@@ -35229,7 +35407,7 @@ export type GetImageFamilyViewsResponse = ImageFamilyView;
 export const GetImageFamilyViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImageFamilyView;
 
-export type GetImageFamilyViewsError = DefaultErrors;
+export type GetImageFamilyViewsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the latest image that is part of an image family, is not deprecated and is rolled out in the specified zone. */
 export const getImageFamilyViews: API.OperationMethod<
@@ -35240,7 +35418,7 @@ export const getImageFamilyViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetImageFamilyViewsRequest,
   output: GetImageFamilyViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSnapshotsRequest {
@@ -35275,7 +35453,7 @@ export const ListSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListSnapshotsResponse = SnapshotList;
 export const ListSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ SnapshotList;
 
-export type ListSnapshotsError = DefaultErrors;
+export type ListSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of Snapshot resources contained within the specified project. */
 export const listSnapshots: API.PaginatedOperationMethod<
@@ -35286,7 +35464,7 @@ export const listSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsRequest,
   output: ListSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -35315,7 +35493,7 @@ export const GetSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSnapshotsResponse = Snapshot;
 export const GetSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type GetSnapshotsError = DefaultErrors;
+export type GetSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Snapshot resource. */
 export const getSnapshots: API.OperationMethod<
@@ -35326,7 +35504,7 @@ export const getSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSnapshotsRequest,
   output: GetSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSnapshotsRequest {
@@ -35356,7 +35534,12 @@ export const InsertSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertSnapshotsResponse = Operation;
 export const InsertSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertSnapshotsError = DefaultErrors;
+export type InsertSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a snapshot in the specified project using the data included in the request. For regular snapshot creation, consider using this method instead of disks.createSnapshot, as this method supports more features, such as creating snapshots in a project different from the source disk project. */
 export const insertSnapshots: API.OperationMethod<
@@ -35367,7 +35550,7 @@ export const insertSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSnapshotsRequest,
   output: InsertSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsSnapshotsRequest {
@@ -35396,7 +35579,12 @@ export const SetLabelsSnapshotsRequest =
 export type SetLabelsSnapshotsResponse = Operation;
 export const SetLabelsSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsSnapshotsError = DefaultErrors;
+export type SetLabelsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a snapshot. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsSnapshots: API.OperationMethod<
@@ -35407,7 +35595,7 @@ export const setLabelsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsSnapshotsRequest,
   output: SetLabelsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSnapshotsRequest {
@@ -35436,7 +35624,12 @@ export const DeleteSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteSnapshotsResponse = Operation;
 export const DeleteSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSnapshotsError = DefaultErrors;
+export type DeleteSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is needed for subsequent snapshots, the data will be moved to the next corresponding snapshot. For more information, seeDeleting snapshots. */
 export const deleteSnapshots: API.OperationMethod<
@@ -35447,7 +35640,7 @@ export const deleteSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSnapshotsRequest,
   output: DeleteSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicySnapshotsRequest {
@@ -35477,7 +35670,7 @@ export const GetIamPolicySnapshotsRequest =
 export type GetIamPolicySnapshotsResponse = Policy;
 export const GetIamPolicySnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicySnapshotsError = DefaultErrors;
+export type GetIamPolicySnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicySnapshots: API.OperationMethod<
@@ -35488,7 +35681,7 @@ export const getIamPolicySnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicySnapshotsRequest,
   output: GetIamPolicySnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicySnapshotsRequest {
@@ -35517,7 +35710,12 @@ export const SetIamPolicySnapshotsRequest =
 export type SetIamPolicySnapshotsResponse = Policy;
 export const SetIamPolicySnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicySnapshotsError = DefaultErrors;
+export type SetIamPolicySnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicySnapshots: API.OperationMethod<
@@ -35528,7 +35726,7 @@ export const setIamPolicySnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicySnapshotsRequest,
   output: SetIamPolicySnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsSnapshotsRequest {
@@ -35558,7 +35756,12 @@ export type TestIamPermissionsSnapshotsResponse = TestPermissionsResponse;
 export const TestIamPermissionsSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsSnapshotsError = DefaultErrors;
+export type TestIamPermissionsSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsSnapshots: API.OperationMethod<
@@ -35569,7 +35772,7 @@ export const testIamPermissionsSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsSnapshotsRequest,
   output: TestIamPermissionsSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateKmsKeySnapshotsRequest {
@@ -35602,7 +35805,12 @@ export type UpdateKmsKeySnapshotsResponse = Operation;
 export const UpdateKmsKeySnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateKmsKeySnapshotsError = DefaultErrors;
+export type UpdateKmsKeySnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rotates the customer-managed encryption key to the latest version for the specified snapshot. */
 export const updateKmsKeySnapshots: API.OperationMethod<
@@ -35613,7 +35821,7 @@ export const updateKmsKeySnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKmsKeySnapshotsRequest,
   output: UpdateKmsKeySnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionSnapshotsRequest {
@@ -35656,7 +35864,7 @@ export type ListRegionSnapshotsResponse = SnapshotList;
 export const ListRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SnapshotList;
 
-export type ListRegionSnapshotsError = DefaultErrors;
+export type ListRegionSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of Snapshot resources contained within the specified region. */
 export const listRegionSnapshots: API.PaginatedOperationMethod<
@@ -35667,7 +35875,7 @@ export const listRegionSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSnapshotsRequest,
   output: ListRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -35700,7 +35908,7 @@ export const GetRegionSnapshotsRequest =
 export type GetRegionSnapshotsResponse = Snapshot;
 export const GetRegionSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type GetRegionSnapshotsError = DefaultErrors;
+export type GetRegionSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Snapshot resource. */
 export const getRegionSnapshots: API.OperationMethod<
@@ -35711,7 +35919,7 @@ export const getRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionSnapshotsRequest,
   output: GetRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionSnapshotsRequest {
@@ -35744,7 +35952,12 @@ export type InsertRegionSnapshotsResponse = Operation;
 export const InsertRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionSnapshotsError = DefaultErrors;
+export type InsertRegionSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a snapshot in the specified region using the data included in the request. */
 export const insertRegionSnapshots: API.OperationMethod<
@@ -35755,7 +35968,7 @@ export const insertRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionSnapshotsRequest,
   output: InsertRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsRegionSnapshotsRequest {
@@ -35791,7 +36004,12 @@ export type SetLabelsRegionSnapshotsResponse = Operation;
 export const SetLabelsRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsRegionSnapshotsError = DefaultErrors;
+export type SetLabelsRegionSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a regional snapshot. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsRegionSnapshots: API.OperationMethod<
@@ -35802,7 +36020,7 @@ export const setLabelsRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsRegionSnapshotsRequest,
   output: SetLabelsRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionSnapshotsRequest {
@@ -35834,7 +36052,12 @@ export type DeleteRegionSnapshotsResponse = Operation;
 export const DeleteRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionSnapshotsError = DefaultErrors;
+export type DeleteRegionSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Snapshot resource. Keep in mind that deleting a single snapshot might not necessarily delete all the data on that snapshot. If any data on the snapshot that is marked for deletion is needed for subsequent snapshots, the data will be moved to the next corresponding snapshot. For more information, seeDeleting snapshots. */
 export const deleteRegionSnapshots: API.OperationMethod<
@@ -35845,7 +36068,7 @@ export const deleteRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionSnapshotsRequest,
   output: DeleteRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyRegionSnapshotsRequest {
@@ -35879,7 +36102,10 @@ export type GetIamPolicyRegionSnapshotsResponse = Policy;
 export const GetIamPolicyRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRegionSnapshotsError = DefaultErrors;
+export type GetIamPolicyRegionSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyRegionSnapshots: API.OperationMethod<
@@ -35890,7 +36116,7 @@ export const getIamPolicyRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRegionSnapshotsRequest,
   output: GetIamPolicyRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyRegionSnapshotsRequest {
@@ -35923,7 +36149,12 @@ export type SetIamPolicyRegionSnapshotsResponse = Policy;
 export const SetIamPolicyRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRegionSnapshotsError = DefaultErrors;
+export type SetIamPolicyRegionSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyRegionSnapshots: API.OperationMethod<
@@ -35934,7 +36165,7 @@ export const setIamPolicyRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRegionSnapshotsRequest,
   output: SetIamPolicyRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionSnapshotsRequest {
@@ -35967,7 +36198,12 @@ export type TestIamPermissionsRegionSnapshotsResponse = TestPermissionsResponse;
 export const TestIamPermissionsRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionSnapshotsError = DefaultErrors;
+export type TestIamPermissionsRegionSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionSnapshots: API.OperationMethod<
@@ -35978,7 +36214,7 @@ export const testIamPermissionsRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionSnapshotsRequest,
   output: TestIamPermissionsRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateKmsKeyRegionSnapshotsRequest {
@@ -36014,7 +36250,12 @@ export type UpdateKmsKeyRegionSnapshotsResponse = Operation;
 export const UpdateKmsKeyRegionSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateKmsKeyRegionSnapshotsError = DefaultErrors;
+export type UpdateKmsKeyRegionSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rotates the customer-managed encryption key to the latest version for the specified snapshot. */
 export const updateKmsKeyRegionSnapshots: API.OperationMethod<
@@ -36025,7 +36266,7 @@ export const updateKmsKeyRegionSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKmsKeyRegionSnapshotsRequest,
   output: UpdateKmsKeyRegionSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDisksRequest {
@@ -36063,7 +36304,7 @@ export const ListDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDisksResponse = DiskList;
 export const ListDisksResponse = /*@__PURE__*/ /*#__PURE__*/ DiskList;
 
-export type ListDisksError = DefaultErrors;
+export type ListDisksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of persistent disks contained within the specified zone. */
 export const listDisks: API.PaginatedOperationMethod<
@@ -36074,7 +36315,7 @@ export const listDisks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDisksRequest,
   output: ListDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -36126,7 +36367,7 @@ export type AggregatedListDisksResponse = DiskAggregatedList;
 export const AggregatedListDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ DiskAggregatedList;
 
-export type AggregatedListDisksError = DefaultErrors;
+export type AggregatedListDisksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an aggregated list of persistent disks. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListDisks: API.PaginatedOperationMethod<
@@ -36137,7 +36378,7 @@ export const aggregatedListDisks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListDisksRequest,
   output: AggregatedListDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -36169,7 +36410,7 @@ export const GetDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDisksResponse = Disk;
 export const GetDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Disk;
 
-export type GetDisksError = DefaultErrors;
+export type GetDisksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified persistent disk. */
 export const getDisks: API.OperationMethod<
@@ -36180,7 +36421,7 @@ export const getDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDisksRequest,
   output: GetDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertDisksRequest {
@@ -36214,7 +36455,12 @@ export const InsertDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertDisksResponse = Operation;
 export const InsertDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertDisksError = DefaultErrors;
+export type InsertDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, orsourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property. */
 export const insertDisks: API.OperationMethod<
@@ -36225,7 +36471,7 @@ export const insertDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDisksRequest,
   output: InsertDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsDisksRequest {
@@ -36259,7 +36505,12 @@ export const SetLabelsDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SetLabelsDisksResponse = Operation;
 export const SetLabelsDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsDisksError = DefaultErrors;
+export type SetLabelsDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a disk. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsDisks: API.OperationMethod<
@@ -36270,7 +36521,7 @@ export const setLabelsDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsDisksRequest,
   output: SetLabelsDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkSetLabelsDisksRequest {
@@ -36305,7 +36556,12 @@ export const BulkSetLabelsDisksRequest =
 export type BulkSetLabelsDisksResponse = Operation;
 export const BulkSetLabelsDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkSetLabelsDisksError = DefaultErrors;
+export type BulkSetLabelsDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on many disks at once. To learn more about labels, read theLabeling Resources documentation. */
 export const bulkSetLabelsDisks: API.OperationMethod<
@@ -36316,7 +36572,7 @@ export const bulkSetLabelsDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkSetLabelsDisksRequest,
   output: BulkSetLabelsDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDisksRequest {
@@ -36346,7 +36602,12 @@ export const DeleteDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteDisksResponse = Operation;
 export const DeleteDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteDisksError = DefaultErrors;
+export type DeleteDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified persistent disk. Deleting a disk removes its data permanently and is irreversible. However, deleting a disk does not delete any snapshots previously made from the disk. You must separatelydelete snapshots. */
 export const deleteDisks: API.OperationMethod<
@@ -36357,7 +36618,7 @@ export const deleteDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDisksRequest,
   output: DeleteDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSnapshotDisksRequest {
@@ -36396,7 +36657,12 @@ export type CreateSnapshotDisksResponse = Operation;
 export const CreateSnapshotDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateSnapshotDisksError = DefaultErrors;
+export type CreateSnapshotDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a snapshot of a specified persistent disk. For regular snapshot creation, consider using snapshots.insert instead, as that method supports more features, such as creating snapshots in a project different from the source disk project. */
 export const createSnapshotDisks: API.OperationMethod<
@@ -36407,7 +36673,7 @@ export const createSnapshotDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSnapshotDisksRequest,
   output: CreateSnapshotDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResizeDisksRequest {
@@ -36441,7 +36707,12 @@ export const ResizeDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ResizeDisksResponse = Operation;
 export const ResizeDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResizeDisksError = DefaultErrors;
+export type ResizeDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resizes the specified persistent disk. You can only increase the size of the disk. */
 export const resizeDisks: API.OperationMethod<
@@ -36452,7 +36723,7 @@ export const resizeDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResizeDisksRequest,
   output: ResizeDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddResourcePoliciesDisksRequest {
@@ -36488,7 +36759,12 @@ export type AddResourcePoliciesDisksResponse = Operation;
 export const AddResourcePoliciesDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddResourcePoliciesDisksError = DefaultErrors;
+export type AddResourcePoliciesDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds existing resource policies to a disk. You can only add one policy which will be applied to this disk for scheduling snapshot creation. */
 export const addResourcePoliciesDisks: API.OperationMethod<
@@ -36499,7 +36775,7 @@ export const addResourcePoliciesDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddResourcePoliciesDisksRequest,
   output: AddResourcePoliciesDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveResourcePoliciesDisksRequest {
@@ -36537,7 +36813,12 @@ export type RemoveResourcePoliciesDisksResponse = Operation;
 export const RemoveResourcePoliciesDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveResourcePoliciesDisksError = DefaultErrors;
+export type RemoveResourcePoliciesDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes resource policies from a disk. */
 export const removeResourcePoliciesDisks: API.OperationMethod<
@@ -36548,7 +36829,7 @@ export const removeResourcePoliciesDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveResourcePoliciesDisksRequest,
   output: RemoveResourcePoliciesDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyDisksRequest {
@@ -36581,7 +36862,7 @@ export const GetIamPolicyDisksRequest =
 export type GetIamPolicyDisksResponse = Policy;
 export const GetIamPolicyDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyDisksError = DefaultErrors;
+export type GetIamPolicyDisksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyDisks: API.OperationMethod<
@@ -36592,7 +36873,7 @@ export const getIamPolicyDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyDisksRequest,
   output: GetIamPolicyDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyDisksRequest {
@@ -36624,7 +36905,12 @@ export const SetIamPolicyDisksRequest =
 export type SetIamPolicyDisksResponse = Policy;
 export const SetIamPolicyDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyDisksError = DefaultErrors;
+export type SetIamPolicyDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyDisks: API.OperationMethod<
@@ -36635,7 +36921,7 @@ export const setIamPolicyDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyDisksRequest,
   output: SetIamPolicyDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsDisksRequest {
@@ -36668,7 +36954,12 @@ export type TestIamPermissionsDisksResponse = TestPermissionsResponse;
 export const TestIamPermissionsDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsDisksError = DefaultErrors;
+export type TestIamPermissionsDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsDisks: API.OperationMethod<
@@ -36679,7 +36970,7 @@ export const testIamPermissionsDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsDisksRequest,
   output: TestIamPermissionsDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDisksRequest {
@@ -36720,7 +37011,12 @@ export const UpdateDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDisksResponse = Operation;
 export const UpdateDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateDisksError = DefaultErrors;
+export type UpdateDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified disk with the data included in the request. The update is performed only on selected fields included as part of update-mask. */
 export const updateDisks: API.OperationMethod<
@@ -36731,7 +37027,7 @@ export const updateDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDisksRequest,
   output: UpdateDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartAsyncReplicationDisksRequest {
@@ -36767,7 +37063,12 @@ export type StartAsyncReplicationDisksResponse = Operation;
 export const StartAsyncReplicationDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartAsyncReplicationDisksError = DefaultErrors;
+export type StartAsyncReplicationDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous replication. Must be invoked on the primary disk. */
 export const startAsyncReplicationDisks: API.OperationMethod<
@@ -36778,7 +37079,7 @@ export const startAsyncReplicationDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAsyncReplicationDisksRequest,
   output: StartAsyncReplicationDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopAsyncReplicationDisksRequest {
@@ -36811,7 +37112,12 @@ export type StopAsyncReplicationDisksResponse = Operation;
 export const StopAsyncReplicationDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopAsyncReplicationDisksError = DefaultErrors;
+export type StopAsyncReplicationDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops asynchronous replication. Can be invoked either on the primary or on the secondary disk. */
 export const stopAsyncReplicationDisks: API.OperationMethod<
@@ -36822,7 +37128,7 @@ export const stopAsyncReplicationDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopAsyncReplicationDisksRequest,
   output: StopAsyncReplicationDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopGroupAsyncReplicationDisksRequest {
@@ -36857,7 +37163,12 @@ export type StopGroupAsyncReplicationDisksResponse = Operation;
 export const StopGroupAsyncReplicationDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopGroupAsyncReplicationDisksError = DefaultErrors;
+export type StopGroupAsyncReplicationDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops asynchronous replication for a consistency group of disks. Can be invoked either in the primary or secondary scope. */
 export const stopGroupAsyncReplicationDisks: API.OperationMethod<
@@ -36868,7 +37179,7 @@ export const stopGroupAsyncReplicationDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopGroupAsyncReplicationDisksRequest,
   output: StopGroupAsyncReplicationDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkInsertDisksRequest {
@@ -36901,7 +37212,12 @@ export const BulkInsertDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type BulkInsertDisksResponse = Operation;
 export const BulkInsertDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkInsertDisksError = DefaultErrors;
+export type BulkInsertDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk create a set of disks. */
 export const bulkInsertDisks: API.OperationMethod<
@@ -36912,7 +37228,7 @@ export const bulkInsertDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkInsertDisksRequest,
   output: BulkInsertDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateKmsKeyDisksRequest {
@@ -36947,7 +37263,12 @@ export const UpdateKmsKeyDisksRequest =
 export type UpdateKmsKeyDisksResponse = Operation;
 export const UpdateKmsKeyDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateKmsKeyDisksError = DefaultErrors;
+export type UpdateKmsKeyDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rotates the customer-managed encryption key to the latest version for the specified persistent disk. */
 export const updateKmsKeyDisks: API.OperationMethod<
@@ -36958,7 +37279,7 @@ export const updateKmsKeyDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKmsKeyDisksRequest,
   output: UpdateKmsKeyDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionDisksRequest {
@@ -36998,7 +37319,7 @@ export const ListRegionDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ListRegionDisksResponse = DiskList;
 export const ListRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ DiskList;
 
-export type ListRegionDisksError = DefaultErrors;
+export type ListRegionDisksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of persistent disks contained within the specified region. */
 export const listRegionDisks: API.PaginatedOperationMethod<
@@ -37009,7 +37330,7 @@ export const listRegionDisks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionDisksRequest,
   output: ListRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -37041,7 +37362,7 @@ export const GetRegionDisksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRegionDisksResponse = Disk;
 export const GetRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Disk;
 
-export type GetRegionDisksError = DefaultErrors;
+export type GetRegionDisksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a specified regional persistent disk. */
 export const getRegionDisks: API.OperationMethod<
@@ -37052,7 +37373,7 @@ export const getRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionDisksRequest,
   output: GetRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionDisksRequest {
@@ -37089,7 +37410,12 @@ export const InsertRegionDisksRequest =
 export type InsertRegionDisksResponse = Operation;
 export const InsertRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionDisksError = DefaultErrors;
+export type InsertRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a persistent regional disk in the specified project using the data included in the request. */
 export const insertRegionDisks: API.OperationMethod<
@@ -37100,7 +37426,7 @@ export const insertRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionDisksRequest,
   output: InsertRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsRegionDisksRequest {
@@ -37136,7 +37462,12 @@ export type SetLabelsRegionDisksResponse = Operation;
 export const SetLabelsRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsRegionDisksError = DefaultErrors;
+export type SetLabelsRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on the target regional disk. */
 export const setLabelsRegionDisks: API.OperationMethod<
@@ -37147,7 +37478,7 @@ export const setLabelsRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsRegionDisksRequest,
   output: SetLabelsRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionDisksRequest {
@@ -37178,7 +37509,12 @@ export const DeleteRegionDisksRequest =
 export type DeleteRegionDisksResponse = Operation;
 export const DeleteRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionDisksError = DefaultErrors;
+export type DeleteRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified regional persistent disk. Deleting a regional disk removes all the replicas of its data permanently and is irreversible. However, deleting a disk does not delete anysnapshots previously made from the disk. You must separatelydelete snapshots. */
 export const deleteRegionDisks: API.OperationMethod<
@@ -37189,7 +37525,7 @@ export const deleteRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionDisksRequest,
   output: DeleteRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSnapshotRegionDisksRequest {
@@ -37225,7 +37561,12 @@ export type CreateSnapshotRegionDisksResponse = Operation;
 export const CreateSnapshotRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateSnapshotRegionDisksError = DefaultErrors;
+export type CreateSnapshotRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a snapshot of a specified persistent disk. For regular snapshot creation, consider using snapshots.insert instead, as that method supports more features, such as creating snapshots in a project different from the source disk project. */
 export const createSnapshotRegionDisks: API.OperationMethod<
@@ -37236,7 +37577,7 @@ export const createSnapshotRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSnapshotRegionDisksRequest,
   output: CreateSnapshotRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResizeRegionDisksRequest {
@@ -37271,7 +37612,12 @@ export const ResizeRegionDisksRequest =
 export type ResizeRegionDisksResponse = Operation;
 export const ResizeRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResizeRegionDisksError = DefaultErrors;
+export type ResizeRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resizes the specified regional persistent disk. */
 export const resizeRegionDisks: API.OperationMethod<
@@ -37282,7 +37628,7 @@ export const resizeRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResizeRegionDisksRequest,
   output: ResizeRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddResourcePoliciesRegionDisksRequest {
@@ -37320,7 +37666,12 @@ export type AddResourcePoliciesRegionDisksResponse = Operation;
 export const AddResourcePoliciesRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddResourcePoliciesRegionDisksError = DefaultErrors;
+export type AddResourcePoliciesRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds existing resource policies to a regional disk. You can only add one policy which will be applied to this disk for scheduling snapshot creation. */
 export const addResourcePoliciesRegionDisks: API.OperationMethod<
@@ -37331,7 +37682,7 @@ export const addResourcePoliciesRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddResourcePoliciesRegionDisksRequest,
   output: AddResourcePoliciesRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveResourcePoliciesRegionDisksRequest {
@@ -37369,7 +37720,12 @@ export type RemoveResourcePoliciesRegionDisksResponse = Operation;
 export const RemoveResourcePoliciesRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveResourcePoliciesRegionDisksError = DefaultErrors;
+export type RemoveResourcePoliciesRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes resource policies from a regional disk. */
 export const removeResourcePoliciesRegionDisks: API.OperationMethod<
@@ -37380,7 +37736,7 @@ export const removeResourcePoliciesRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveResourcePoliciesRegionDisksRequest,
   output: RemoveResourcePoliciesRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyRegionDisksRequest {
@@ -37414,7 +37770,7 @@ export type GetIamPolicyRegionDisksResponse = Policy;
 export const GetIamPolicyRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRegionDisksError = DefaultErrors;
+export type GetIamPolicyRegionDisksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyRegionDisks: API.OperationMethod<
@@ -37425,7 +37781,7 @@ export const getIamPolicyRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRegionDisksRequest,
   output: GetIamPolicyRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyRegionDisksRequest {
@@ -37458,7 +37814,12 @@ export type SetIamPolicyRegionDisksResponse = Policy;
 export const SetIamPolicyRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRegionDisksError = DefaultErrors;
+export type SetIamPolicyRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyRegionDisks: API.OperationMethod<
@@ -37469,7 +37830,7 @@ export const setIamPolicyRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRegionDisksRequest,
   output: SetIamPolicyRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionDisksRequest {
@@ -37502,7 +37863,12 @@ export type TestIamPermissionsRegionDisksResponse = TestPermissionsResponse;
 export const TestIamPermissionsRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionDisksError = DefaultErrors;
+export type TestIamPermissionsRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionDisks: API.OperationMethod<
@@ -37513,7 +37879,7 @@ export const testIamPermissionsRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionDisksRequest,
   output: TestIamPermissionsRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRegionDisksRequest {
@@ -37555,7 +37921,12 @@ export const UpdateRegionDisksRequest =
 export type UpdateRegionDisksResponse = Operation;
 export const UpdateRegionDisksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRegionDisksError = DefaultErrors;
+export type UpdateRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the specified disk with the data included in the request. Update is performed only on selected fields included as part of update-mask. */
 export const updateRegionDisks: API.OperationMethod<
@@ -37566,7 +37937,7 @@ export const updateRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRegionDisksRequest,
   output: UpdateRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartAsyncReplicationRegionDisksRequest {
@@ -37604,7 +37975,12 @@ export type StartAsyncReplicationRegionDisksResponse = Operation;
 export const StartAsyncReplicationRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartAsyncReplicationRegionDisksError = DefaultErrors;
+export type StartAsyncReplicationRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous replication. Must be invoked on the primary disk. */
 export const startAsyncReplicationRegionDisks: API.OperationMethod<
@@ -37615,7 +37991,7 @@ export const startAsyncReplicationRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartAsyncReplicationRegionDisksRequest,
   output: StartAsyncReplicationRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopAsyncReplicationRegionDisksRequest {
@@ -37648,7 +38024,12 @@ export type StopAsyncReplicationRegionDisksResponse = Operation;
 export const StopAsyncReplicationRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopAsyncReplicationRegionDisksError = DefaultErrors;
+export type StopAsyncReplicationRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops asynchronous replication. Can be invoked either on the primary or on the secondary disk. */
 export const stopAsyncReplicationRegionDisks: API.OperationMethod<
@@ -37659,7 +38040,7 @@ export const stopAsyncReplicationRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopAsyncReplicationRegionDisksRequest,
   output: StopAsyncReplicationRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopGroupAsyncReplicationRegionDisksRequest {
@@ -37694,7 +38075,12 @@ export type StopGroupAsyncReplicationRegionDisksResponse = Operation;
 export const StopGroupAsyncReplicationRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopGroupAsyncReplicationRegionDisksError = DefaultErrors;
+export type StopGroupAsyncReplicationRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops asynchronous replication for a consistency group of disks. Can be invoked either in the primary or secondary scope. */
 export const stopGroupAsyncReplicationRegionDisks: API.OperationMethod<
@@ -37705,7 +38091,7 @@ export const stopGroupAsyncReplicationRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopGroupAsyncReplicationRegionDisksRequest,
   output: StopGroupAsyncReplicationRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkInsertRegionDisksRequest {
@@ -37738,7 +38124,12 @@ export type BulkInsertRegionDisksResponse = Operation;
 export const BulkInsertRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkInsertRegionDisksError = DefaultErrors;
+export type BulkInsertRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk create a set of disks. */
 export const bulkInsertRegionDisks: API.OperationMethod<
@@ -37749,7 +38140,7 @@ export const bulkInsertRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkInsertRegionDisksRequest,
   output: BulkInsertRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateKmsKeyRegionDisksRequest {
@@ -37785,7 +38176,12 @@ export type UpdateKmsKeyRegionDisksResponse = Operation;
 export const UpdateKmsKeyRegionDisksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateKmsKeyRegionDisksError = DefaultErrors;
+export type UpdateKmsKeyRegionDisksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rotates the customer-managed encryption key to the latest version for the specified persistent disk. */
 export const updateKmsKeyRegionDisks: API.OperationMethod<
@@ -37796,7 +38192,7 @@ export const updateKmsKeyRegionDisks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateKmsKeyRegionDisksRequest,
   output: UpdateKmsKeyRegionDisksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFirewallsRequest {
@@ -37831,7 +38227,7 @@ export const ListFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListFirewallsResponse = FirewallList;
 export const ListFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ FirewallList;
 
-export type ListFirewallsError = DefaultErrors;
+export type ListFirewallsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of firewall rules available to the specified project. */
 export const listFirewalls: API.PaginatedOperationMethod<
@@ -37842,7 +38238,7 @@ export const listFirewalls: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallsRequest,
   output: ListFirewallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -37871,7 +38267,7 @@ export const GetFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFirewallsResponse = Firewall;
 export const GetFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Firewall;
 
-export type GetFirewallsError = DefaultErrors;
+export type GetFirewallsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified firewall. */
 export const getFirewalls: API.OperationMethod<
@@ -37882,7 +38278,7 @@ export const getFirewalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFirewallsRequest,
   output: GetFirewallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertFirewallsRequest {
@@ -37912,7 +38308,12 @@ export const InsertFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertFirewallsResponse = Operation;
 export const InsertFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertFirewallsError = DefaultErrors;
+export type InsertFirewallsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a firewall rule in the specified project using the data included in the request. */
 export const insertFirewalls: API.OperationMethod<
@@ -37923,7 +38324,7 @@ export const insertFirewalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFirewallsRequest,
   output: InsertFirewallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFirewallsRequest {
@@ -37952,7 +38353,12 @@ export const DeleteFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteFirewallsResponse = Operation;
 export const DeleteFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteFirewallsError = DefaultErrors;
+export type DeleteFirewallsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified firewall. */
 export const deleteFirewalls: API.OperationMethod<
@@ -37963,7 +38369,7 @@ export const deleteFirewalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFirewallsRequest,
   output: DeleteFirewallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateFirewallsRequest {
@@ -37996,7 +38402,12 @@ export const UpdateFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateFirewallsResponse = Operation;
 export const UpdateFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateFirewallsError = DefaultErrors;
+export type UpdateFirewallsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified firewall rule with the data included in the request. Note that all fields will be updated if using PUT, even fields that are not specified. To update individual fields, please use PATCH instead. */
 export const updateFirewalls: API.OperationMethod<
@@ -38007,7 +38418,7 @@ export const updateFirewalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFirewallsRequest,
   output: UpdateFirewallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFirewallsRequest {
@@ -38038,7 +38449,12 @@ export const PatchFirewallsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchFirewallsResponse = Operation;
 export const PatchFirewallsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchFirewallsError = DefaultErrors;
+export type PatchFirewallsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified firewall rule with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchFirewalls: API.OperationMethod<
@@ -38049,7 +38465,7 @@ export const patchFirewalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFirewallsRequest,
   output: PatchFirewallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsFirewallsRequest {
@@ -38079,7 +38495,12 @@ export type TestIamPermissionsFirewallsResponse = TestPermissionsResponse;
 export const TestIamPermissionsFirewallsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsFirewallsError = DefaultErrors;
+export type TestIamPermissionsFirewallsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsFirewalls: API.OperationMethod<
@@ -38090,7 +38511,7 @@ export const testIamPermissionsFirewalls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsFirewallsRequest,
   output: TestIamPermissionsFirewallsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFirewallPoliciesRequest {
@@ -38127,7 +38548,7 @@ export type ListFirewallPoliciesResponse = FirewallPolicyList;
 export const ListFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyList;
 
-export type ListFirewallPoliciesError = DefaultErrors;
+export type ListFirewallPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the policies that have been configured for the specified folder or organization. */
 export const listFirewallPolicies: API.PaginatedOperationMethod<
@@ -38138,7 +38559,7 @@ export const listFirewallPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFirewallPoliciesRequest,
   output: ListFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -38166,7 +38587,7 @@ export type GetFirewallPoliciesResponse = FirewallPolicy;
 export const GetFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicy;
 
-export type GetFirewallPoliciesError = DefaultErrors;
+export type GetFirewallPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified firewall policy. */
 export const getFirewallPolicies: API.OperationMethod<
@@ -38177,7 +38598,7 @@ export const getFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFirewallPoliciesRequest,
   output: GetFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertFirewallPoliciesRequest {
@@ -38207,7 +38628,12 @@ export type InsertFirewallPoliciesResponse = Operation;
 export const InsertFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertFirewallPoliciesError = DefaultErrors;
+export type InsertFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy in the specified project using the data included in the request. */
 export const insertFirewallPolicies: API.OperationMethod<
@@ -38218,7 +38644,7 @@ export const insertFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFirewallPoliciesRequest,
   output: InsertFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFirewallPoliciesRequest {
@@ -38244,7 +38670,12 @@ export type DeleteFirewallPoliciesResponse = Operation;
 export const DeleteFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteFirewallPoliciesError = DefaultErrors;
+export type DeleteFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified policy. */
 export const deleteFirewallPolicies: API.OperationMethod<
@@ -38255,7 +38686,7 @@ export const deleteFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFirewallPoliciesRequest,
   output: DeleteFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFirewallPoliciesRequest {
@@ -38285,7 +38716,12 @@ export type PatchFirewallPoliciesResponse = Operation;
 export const PatchFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchFirewallPoliciesError = DefaultErrors;
+export type PatchFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified policy with the data included in the request. */
 export const patchFirewallPolicies: API.OperationMethod<
@@ -38296,7 +38732,7 @@ export const patchFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFirewallPoliciesRequest,
   output: PatchFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRuleFirewallPoliciesRequest {
@@ -38322,7 +38758,7 @@ export type GetRuleFirewallPoliciesResponse = FirewallPolicyRule;
 export const GetRuleFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyRule;
 
-export type GetRuleFirewallPoliciesError = DefaultErrors;
+export type GetRuleFirewallPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a rule of the specified priority. */
 export const getRuleFirewallPolicies: API.OperationMethod<
@@ -38333,7 +38769,7 @@ export const getRuleFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleFirewallPoliciesRequest,
   output: GetRuleFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddRuleFirewallPoliciesRequest {
@@ -38363,7 +38799,12 @@ export type AddRuleFirewallPoliciesResponse = Operation;
 export const AddRuleFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddRuleFirewallPoliciesError = DefaultErrors;
+export type AddRuleFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a rule into a firewall policy. */
 export const addRuleFirewallPolicies: API.OperationMethod<
@@ -38374,7 +38815,7 @@ export const addRuleFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddRuleFirewallPoliciesRequest,
   output: AddRuleFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveRuleFirewallPoliciesRequest {
@@ -38404,7 +38845,12 @@ export type RemoveRuleFirewallPoliciesResponse = Operation;
 export const RemoveRuleFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveRuleFirewallPoliciesError = DefaultErrors;
+export type RemoveRuleFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rule of the specified priority. */
 export const removeRuleFirewallPolicies: API.OperationMethod<
@@ -38415,7 +38861,7 @@ export const removeRuleFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveRuleFirewallPoliciesRequest,
   output: RemoveRuleFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRuleFirewallPoliciesRequest {
@@ -38448,7 +38894,12 @@ export type PatchRuleFirewallPoliciesResponse = Operation;
 export const PatchRuleFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRuleFirewallPoliciesError = DefaultErrors;
+export type PatchRuleFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a rule of the specified priority. */
 export const patchRuleFirewallPolicies: API.OperationMethod<
@@ -38459,7 +38910,7 @@ export const patchRuleFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleFirewallPoliciesRequest,
   output: PatchRuleFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddAssociationFirewallPoliciesRequest {
@@ -38494,7 +38945,12 @@ export type AddAssociationFirewallPoliciesResponse = Operation;
 export const AddAssociationFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddAssociationFirewallPoliciesError = DefaultErrors;
+export type AddAssociationFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an association for the specified firewall policy. */
 export const addAssociationFirewallPolicies: API.OperationMethod<
@@ -38505,7 +38961,7 @@ export const addAssociationFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAssociationFirewallPoliciesRequest,
   output: AddAssociationFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveAssociationFirewallPoliciesRequest {
@@ -38535,7 +38991,12 @@ export type RemoveAssociationFirewallPoliciesResponse = Operation;
 export const RemoveAssociationFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveAssociationFirewallPoliciesError = DefaultErrors;
+export type RemoveAssociationFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an association for the specified firewall policy. */
 export const removeAssociationFirewallPolicies: API.OperationMethod<
@@ -38546,7 +39007,7 @@ export const removeAssociationFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAssociationFirewallPoliciesRequest,
   output: RemoveAssociationFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAssociationsFirewallPoliciesRequest {
@@ -38577,7 +39038,10 @@ export type ListAssociationsFirewallPoliciesResponse =
 export const ListAssociationsFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPoliciesListAssociationsResponse;
 
-export type ListAssociationsFirewallPoliciesError = DefaultErrors;
+export type ListAssociationsFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists associations of a specified target, i.e., organization or folder. */
 export const listAssociationsFirewallPolicies: API.OperationMethod<
@@ -38588,7 +39052,7 @@ export const listAssociationsFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAssociationsFirewallPoliciesRequest,
   output: ListAssociationsFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAssociationFirewallPoliciesRequest {
@@ -38614,7 +39078,10 @@ export type GetAssociationFirewallPoliciesResponse = FirewallPolicyAssociation;
 export const GetAssociationFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyAssociation;
 
-export type GetAssociationFirewallPoliciesError = DefaultErrors;
+export type GetAssociationFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an association with the specified name. */
 export const getAssociationFirewallPolicies: API.OperationMethod<
@@ -38625,7 +39092,7 @@ export const getAssociationFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssociationFirewallPoliciesRequest,
   output: GetAssociationFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CloneRulesFirewallPoliciesRequest {
@@ -38657,7 +39124,12 @@ export type CloneRulesFirewallPoliciesResponse = Operation;
 export const CloneRulesFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloneRulesFirewallPoliciesError = DefaultErrors;
+export type CloneRulesFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies rules to the specified firewall policy. */
 export const cloneRulesFirewallPolicies: API.OperationMethod<
@@ -38668,7 +39140,7 @@ export const cloneRulesFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloneRulesFirewallPoliciesRequest,
   output: CloneRulesFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveFirewallPoliciesRequest {
@@ -38698,7 +39170,12 @@ export type MoveFirewallPoliciesResponse = Operation;
 export const MoveFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveFirewallPoliciesError = DefaultErrors;
+export type MoveFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the specified firewall policy. */
 export const moveFirewallPolicies: API.OperationMethod<
@@ -38709,7 +39186,7 @@ export const moveFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveFirewallPoliciesRequest,
   output: MoveFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyFirewallPoliciesRequest {
@@ -38737,7 +39214,10 @@ export type GetIamPolicyFirewallPoliciesResponse = Policy;
 export const GetIamPolicyFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyFirewallPoliciesError = DefaultErrors;
+export type GetIamPolicyFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyFirewallPolicies: API.OperationMethod<
@@ -38748,7 +39228,7 @@ export const getIamPolicyFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyFirewallPoliciesRequest,
   output: GetIamPolicyFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyFirewallPoliciesRequest {
@@ -38777,7 +39257,12 @@ export type SetIamPolicyFirewallPoliciesResponse = Policy;
 export const SetIamPolicyFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyFirewallPoliciesError = DefaultErrors;
+export type SetIamPolicyFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyFirewallPolicies: API.OperationMethod<
@@ -38788,7 +39273,7 @@ export const setIamPolicyFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyFirewallPoliciesRequest,
   output: SetIamPolicyFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsFirewallPoliciesRequest {
@@ -38816,7 +39301,12 @@ export type TestIamPermissionsFirewallPoliciesResponse =
 export const TestIamPermissionsFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsFirewallPoliciesError = DefaultErrors;
+export type TestIamPermissionsFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsFirewallPolicies: API.OperationMethod<
@@ -38827,7 +39317,7 @@ export const testIamPermissionsFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsFirewallPoliciesRequest,
   output: TestIamPermissionsFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNetworkFirewallPoliciesRequest {
@@ -38867,7 +39357,10 @@ export type ListNetworkFirewallPoliciesResponse = FirewallPolicyList;
 export const ListNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyList;
 
-export type ListNetworkFirewallPoliciesError = DefaultErrors;
+export type ListNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the policies that have been configured for the specified project. */
 export const listNetworkFirewallPolicies: API.PaginatedOperationMethod<
@@ -38878,7 +39371,7 @@ export const listNetworkFirewallPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkFirewallPoliciesRequest,
   output: ListNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -38909,7 +39402,10 @@ export type GetNetworkFirewallPoliciesResponse = FirewallPolicy;
 export const GetNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicy;
 
-export type GetNetworkFirewallPoliciesError = DefaultErrors;
+export type GetNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified network firewall policy. */
 export const getNetworkFirewallPolicies: API.OperationMethod<
@@ -38920,7 +39416,7 @@ export const getNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkFirewallPoliciesRequest,
   output: GetNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNetworkFirewallPoliciesRequest {
@@ -38950,7 +39446,12 @@ export type InsertNetworkFirewallPoliciesResponse = Operation;
 export const InsertNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertNetworkFirewallPoliciesError = DefaultErrors;
+export type InsertNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy in the specified project using the data included in the request. */
 export const insertNetworkFirewallPolicies: API.OperationMethod<
@@ -38961,7 +39462,7 @@ export const insertNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNetworkFirewallPoliciesRequest,
   output: InsertNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNetworkFirewallPoliciesRequest {
@@ -38990,7 +39491,12 @@ export type DeleteNetworkFirewallPoliciesResponse = Operation;
 export const DeleteNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNetworkFirewallPoliciesError = DefaultErrors;
+export type DeleteNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified policy. */
 export const deleteNetworkFirewallPolicies: API.OperationMethod<
@@ -39001,7 +39507,7 @@ export const deleteNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkFirewallPoliciesRequest,
   output: DeleteNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchNetworkFirewallPoliciesRequest {
@@ -39034,7 +39540,12 @@ export type PatchNetworkFirewallPoliciesResponse = Operation;
 export const PatchNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchNetworkFirewallPoliciesError = DefaultErrors;
+export type PatchNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified policy with the data included in the request. */
 export const patchNetworkFirewallPolicies: API.OperationMethod<
@@ -39045,7 +39556,7 @@ export const patchNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNetworkFirewallPoliciesRequest,
   output: PatchNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRuleNetworkFirewallPoliciesRequest {
@@ -39074,7 +39585,10 @@ export type GetRuleNetworkFirewallPoliciesResponse = FirewallPolicyRule;
 export const GetRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyRule;
 
-export type GetRuleNetworkFirewallPoliciesError = DefaultErrors;
+export type GetRuleNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a rule of the specified priority. */
 export const getRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39085,7 +39599,7 @@ export const getRuleNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleNetworkFirewallPoliciesRequest,
   output: GetRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPacketMirroringRuleNetworkFirewallPoliciesRequest {
@@ -39115,7 +39629,10 @@ export type GetPacketMirroringRuleNetworkFirewallPoliciesResponse =
 export const GetPacketMirroringRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyRule;
 
-export type GetPacketMirroringRuleNetworkFirewallPoliciesError = DefaultErrors;
+export type GetPacketMirroringRuleNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a packet mirroring rule of the specified priority. */
 export const getPacketMirroringRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39126,7 +39643,7 @@ export const getPacketMirroringRuleNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPacketMirroringRuleNetworkFirewallPoliciesRequest,
   output: GetPacketMirroringRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddRuleNetworkFirewallPoliciesRequest {
@@ -39169,7 +39686,12 @@ export type AddRuleNetworkFirewallPoliciesResponse = Operation;
 export const AddRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddRuleNetworkFirewallPoliciesError = DefaultErrors;
+export type AddRuleNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a rule into a firewall policy. */
 export const addRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39180,7 +39702,7 @@ export const addRuleNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddRuleNetworkFirewallPoliciesRequest,
   output: AddRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddPacketMirroringRuleNetworkFirewallPoliciesRequest {
@@ -39223,7 +39745,12 @@ export type AddPacketMirroringRuleNetworkFirewallPoliciesResponse = Operation;
 export const AddPacketMirroringRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddPacketMirroringRuleNetworkFirewallPoliciesError = DefaultErrors;
+export type AddPacketMirroringRuleNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a packet mirroring rule into a firewall policy. */
 export const addPacketMirroringRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39234,7 +39761,7 @@ export const addPacketMirroringRuleNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddPacketMirroringRuleNetworkFirewallPoliciesRequest,
   output: AddPacketMirroringRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveRuleNetworkFirewallPoliciesRequest {
@@ -39267,7 +39794,12 @@ export type RemoveRuleNetworkFirewallPoliciesResponse = Operation;
 export const RemoveRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveRuleNetworkFirewallPoliciesError = DefaultErrors;
+export type RemoveRuleNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rule of the specified priority. */
 export const removeRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39278,7 +39810,7 @@ export const removeRuleNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveRuleNetworkFirewallPoliciesRequest,
   output: RemoveRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemovePacketMirroringRuleNetworkFirewallPoliciesRequest {
@@ -39313,7 +39845,11 @@ export const RemovePacketMirroringRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type RemovePacketMirroringRuleNetworkFirewallPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a packet mirroring rule of the specified priority. */
 export const removePacketMirroringRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39324,7 +39860,7 @@ export const removePacketMirroringRuleNetworkFirewallPolicies: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemovePacketMirroringRuleNetworkFirewallPoliciesRequest,
   output: RemovePacketMirroringRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRuleNetworkFirewallPoliciesRequest {
@@ -39360,7 +39896,12 @@ export type PatchRuleNetworkFirewallPoliciesResponse = Operation;
 export const PatchRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRuleNetworkFirewallPoliciesError = DefaultErrors;
+export type PatchRuleNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a rule of the specified priority. */
 export const patchRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39371,7 +39912,7 @@ export const patchRuleNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleNetworkFirewallPoliciesRequest,
   output: PatchRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPacketMirroringRuleNetworkFirewallPoliciesRequest {
@@ -39408,7 +39949,11 @@ export const PatchPacketMirroringRuleNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchPacketMirroringRuleNetworkFirewallPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a packet mirroring rule of the specified priority. */
 export const patchPacketMirroringRuleNetworkFirewallPolicies: API.OperationMethod<
@@ -39419,7 +39964,7 @@ export const patchPacketMirroringRuleNetworkFirewallPolicies: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPacketMirroringRuleNetworkFirewallPoliciesRequest,
   output: PatchPacketMirroringRuleNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyNetworkFirewallPoliciesRequest {
@@ -39450,7 +39995,10 @@ export type GetIamPolicyNetworkFirewallPoliciesResponse = Policy;
 export const GetIamPolicyNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyNetworkFirewallPoliciesError = DefaultErrors;
+export type GetIamPolicyNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyNetworkFirewallPolicies: API.OperationMethod<
@@ -39461,7 +40009,7 @@ export const getIamPolicyNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyNetworkFirewallPoliciesRequest,
   output: GetIamPolicyNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyNetworkFirewallPoliciesRequest {
@@ -39491,7 +40039,12 @@ export type SetIamPolicyNetworkFirewallPoliciesResponse = Policy;
 export const SetIamPolicyNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyNetworkFirewallPoliciesError = DefaultErrors;
+export type SetIamPolicyNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyNetworkFirewallPolicies: API.OperationMethod<
@@ -39502,7 +40055,7 @@ export const setIamPolicyNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyNetworkFirewallPoliciesRequest,
   output: SetIamPolicyNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsNetworkFirewallPoliciesRequest {
@@ -39533,7 +40086,12 @@ export type TestIamPermissionsNetworkFirewallPoliciesResponse =
 export const TestIamPermissionsNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsNetworkFirewallPoliciesError = DefaultErrors;
+export type TestIamPermissionsNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsNetworkFirewallPolicies: API.OperationMethod<
@@ -39544,7 +40102,7 @@ export const testIamPermissionsNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsNetworkFirewallPoliciesRequest,
   output: TestIamPermissionsNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddAssociationNetworkFirewallPoliciesRequest {
@@ -39582,7 +40140,12 @@ export type AddAssociationNetworkFirewallPoliciesResponse = Operation;
 export const AddAssociationNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddAssociationNetworkFirewallPoliciesError = DefaultErrors;
+export type AddAssociationNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an association for the specified firewall policy. */
 export const addAssociationNetworkFirewallPolicies: API.OperationMethod<
@@ -39593,7 +40156,7 @@ export const addAssociationNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAssociationNetworkFirewallPoliciesRequest,
   output: AddAssociationNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveAssociationNetworkFirewallPoliciesRequest {
@@ -39626,7 +40189,12 @@ export type RemoveAssociationNetworkFirewallPoliciesResponse = Operation;
 export const RemoveAssociationNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveAssociationNetworkFirewallPoliciesError = DefaultErrors;
+export type RemoveAssociationNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an association for the specified firewall policy. */
 export const removeAssociationNetworkFirewallPolicies: API.OperationMethod<
@@ -39637,7 +40205,7 @@ export const removeAssociationNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAssociationNetworkFirewallPoliciesRequest,
   output: RemoveAssociationNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAssociationNetworkFirewallPoliciesRequest {
@@ -39667,7 +40235,10 @@ export type GetAssociationNetworkFirewallPoliciesResponse =
 export const GetAssociationNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyAssociation;
 
-export type GetAssociationNetworkFirewallPoliciesError = DefaultErrors;
+export type GetAssociationNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an association with the specified name. */
 export const getAssociationNetworkFirewallPolicies: API.OperationMethod<
@@ -39678,7 +40249,7 @@ export const getAssociationNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssociationNetworkFirewallPoliciesRequest,
   output: GetAssociationNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CloneRulesNetworkFirewallPoliciesRequest {
@@ -39713,7 +40284,12 @@ export type CloneRulesNetworkFirewallPoliciesResponse = Operation;
 export const CloneRulesNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloneRulesNetworkFirewallPoliciesError = DefaultErrors;
+export type CloneRulesNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies rules to the specified firewall policy. */
 export const cloneRulesNetworkFirewallPolicies: API.OperationMethod<
@@ -39724,7 +40300,7 @@ export const cloneRulesNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloneRulesNetworkFirewallPoliciesRequest,
   output: CloneRulesNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListNetworkFirewallPoliciesRequest {
@@ -39775,7 +40351,10 @@ export type AggregatedListNetworkFirewallPoliciesResponse =
 export const AggregatedListNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkFirewallPolicyAggregatedList;
 
-export type AggregatedListNetworkFirewallPoliciesError = DefaultErrors;
+export type AggregatedListNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of network firewall policies, listing network firewall policies from all applicable scopes (global and regional) and grouping the results per scope. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListNetworkFirewallPolicies: API.PaginatedOperationMethod<
@@ -39786,7 +40365,7 @@ export const aggregatedListNetworkFirewallPolicies: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListNetworkFirewallPoliciesRequest,
   output: AggregatedListNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -39834,7 +40413,10 @@ export type ListRegionNetworkFirewallPoliciesResponse = FirewallPolicyList;
 export const ListRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyList;
 
-export type ListRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type ListRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the network firewall policies that have been configured for the specified project in the given region. */
 export const listRegionNetworkFirewallPolicies: API.PaginatedOperationMethod<
@@ -39845,7 +40427,7 @@ export const listRegionNetworkFirewallPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionNetworkFirewallPoliciesRequest,
   output: ListRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -39879,7 +40461,10 @@ export type GetRegionNetworkFirewallPoliciesResponse = FirewallPolicy;
 export const GetRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicy;
 
-export type GetRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type GetRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified network firewall policy. */
 export const getRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -39890,7 +40475,7 @@ export const getRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionNetworkFirewallPoliciesRequest,
   output: GetRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionNetworkFirewallPoliciesRequest {
@@ -39923,7 +40508,12 @@ export type InsertRegionNetworkFirewallPoliciesResponse = Operation;
 export const InsertRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type InsertRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new network firewall policy in the specified project and region. */
 export const insertRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -39934,7 +40524,7 @@ export const insertRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionNetworkFirewallPoliciesRequest,
   output: InsertRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionNetworkFirewallPoliciesRequest {
@@ -39966,7 +40556,12 @@ export type DeleteRegionNetworkFirewallPoliciesResponse = Operation;
 export const DeleteRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type DeleteRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified network firewall policy. */
 export const deleteRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -39977,7 +40572,7 @@ export const deleteRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionNetworkFirewallPoliciesRequest,
   output: DeleteRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionNetworkFirewallPoliciesRequest {
@@ -40013,7 +40608,12 @@ export type PatchRegionNetworkFirewallPoliciesResponse = Operation;
 export const PatchRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type PatchRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified network firewall policy. */
 export const patchRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40024,7 +40624,7 @@ export const patchRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionNetworkFirewallPoliciesRequest,
   output: PatchRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRuleRegionNetworkFirewallPoliciesRequest {
@@ -40056,7 +40656,10 @@ export type GetRuleRegionNetworkFirewallPoliciesResponse = FirewallPolicyRule;
 export const GetRuleRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyRule;
 
-export type GetRuleRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type GetRuleRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a rule of the specified priority. */
 export const getRuleRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40067,7 +40670,7 @@ export const getRuleRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleRegionNetworkFirewallPoliciesRequest,
   output: GetRuleRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddRuleRegionNetworkFirewallPoliciesRequest {
@@ -40113,7 +40716,12 @@ export type AddRuleRegionNetworkFirewallPoliciesResponse = Operation;
 export const AddRuleRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddRuleRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type AddRuleRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a rule into a network firewall policy. */
 export const addRuleRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40124,7 +40732,7 @@ export const addRuleRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddRuleRegionNetworkFirewallPoliciesRequest,
   output: AddRuleRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveRuleRegionNetworkFirewallPoliciesRequest {
@@ -40160,7 +40768,12 @@ export type RemoveRuleRegionNetworkFirewallPoliciesResponse = Operation;
 export const RemoveRuleRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveRuleRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type RemoveRuleRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rule of the specified priority. */
 export const removeRuleRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40171,7 +40784,7 @@ export const removeRuleRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveRuleRegionNetworkFirewallPoliciesRequest,
   output: RemoveRuleRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRuleRegionNetworkFirewallPoliciesRequest {
@@ -40210,7 +40823,12 @@ export type PatchRuleRegionNetworkFirewallPoliciesResponse = Operation;
 export const PatchRuleRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRuleRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type PatchRuleRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a rule of the specified priority. */
 export const patchRuleRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40221,7 +40839,7 @@ export const patchRuleRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleRegionNetworkFirewallPoliciesRequest,
   output: PatchRuleRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CloneRulesRegionNetworkFirewallPoliciesRequest {
@@ -40259,7 +40877,12 @@ export type CloneRulesRegionNetworkFirewallPoliciesResponse = Operation;
 export const CloneRulesRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CloneRulesRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type CloneRulesRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies rules to the specified network firewall policy. */
 export const cloneRulesRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40270,7 +40893,7 @@ export const cloneRulesRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CloneRulesRegionNetworkFirewallPoliciesRequest,
   output: CloneRulesRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAssociationRegionNetworkFirewallPoliciesRequest {
@@ -40303,7 +40926,10 @@ export type GetAssociationRegionNetworkFirewallPoliciesResponse =
 export const GetAssociationRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FirewallPolicyAssociation;
 
-export type GetAssociationRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type GetAssociationRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an association with the specified name. */
 export const getAssociationRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40314,7 +40940,7 @@ export const getAssociationRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssociationRegionNetworkFirewallPoliciesRequest,
   output: GetAssociationRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddAssociationRegionNetworkFirewallPoliciesRequest {
@@ -40355,7 +40981,12 @@ export type AddAssociationRegionNetworkFirewallPoliciesResponse = Operation;
 export const AddAssociationRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddAssociationRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type AddAssociationRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an association for the specified network firewall policy. */
 export const addAssociationRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40366,7 +40997,7 @@ export const addAssociationRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAssociationRegionNetworkFirewallPoliciesRequest,
   output: AddAssociationRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveAssociationRegionNetworkFirewallPoliciesRequest {
@@ -40402,7 +41033,12 @@ export type RemoveAssociationRegionNetworkFirewallPoliciesResponse = Operation;
 export const RemoveAssociationRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveAssociationRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type RemoveAssociationRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an association for the specified network firewall policy. */
 export const removeAssociationRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40413,7 +41049,7 @@ export const removeAssociationRegionNetworkFirewallPolicies: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAssociationRegionNetworkFirewallPoliciesRequest,
   output: RemoveAssociationRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectiveFirewallsRegionNetworkFirewallPoliciesRequest {
@@ -40444,7 +41080,9 @@ export const GetEffectiveFirewallsRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse;
 
 export type GetEffectiveFirewallsRegionNetworkFirewallPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the effective firewalls on a given network. */
 export const getEffectiveFirewallsRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40455,7 +41093,7 @@ export const getEffectiveFirewallsRegionNetworkFirewallPolicies: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectiveFirewallsRegionNetworkFirewallPoliciesRequest,
   output: GetEffectiveFirewallsRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyRegionNetworkFirewallPoliciesRequest {
@@ -40489,7 +41127,10 @@ export type GetIamPolicyRegionNetworkFirewallPoliciesResponse = Policy;
 export const GetIamPolicyRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type GetIamPolicyRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40500,7 +41141,7 @@ export const getIamPolicyRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRegionNetworkFirewallPoliciesRequest,
   output: GetIamPolicyRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyRegionNetworkFirewallPoliciesRequest {
@@ -40533,7 +41174,12 @@ export type SetIamPolicyRegionNetworkFirewallPoliciesResponse = Policy;
 export const SetIamPolicyRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRegionNetworkFirewallPoliciesError = DefaultErrors;
+export type SetIamPolicyRegionNetworkFirewallPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40544,7 +41190,7 @@ export const setIamPolicyRegionNetworkFirewallPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRegionNetworkFirewallPoliciesRequest,
   output: SetIamPolicyRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionNetworkFirewallPoliciesRequest {
@@ -40579,7 +41225,11 @@ export const TestIamPermissionsRegionNetworkFirewallPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
 export type TestIamPermissionsRegionNetworkFirewallPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionNetworkFirewallPolicies: API.OperationMethod<
@@ -40590,7 +41240,7 @@ export const testIamPermissionsRegionNetworkFirewallPolicies: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionNetworkFirewallPoliciesRequest,
   output: TestIamPermissionsRegionNetworkFirewallPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSecurityPoliciesRequest {
@@ -40630,7 +41280,7 @@ export type ListSecurityPoliciesResponse = SecurityPolicyList;
 export const ListSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicyList;
 
-export type ListSecurityPoliciesError = DefaultErrors;
+export type ListSecurityPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** List all the policies that have been configured for the specified project. */
 export const listSecurityPolicies: API.PaginatedOperationMethod<
@@ -40641,7 +41291,7 @@ export const listSecurityPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityPoliciesRequest,
   output: ListSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -40672,7 +41322,7 @@ export type GetSecurityPoliciesResponse = SecurityPolicy;
 export const GetSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicy;
 
-export type GetSecurityPoliciesError = DefaultErrors;
+export type GetSecurityPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** List all of the ordered rules present in a single specified policy. */
 export const getSecurityPolicies: API.OperationMethod<
@@ -40683,7 +41333,7 @@ export const getSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSecurityPoliciesRequest,
   output: GetSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSecurityPoliciesRequest {
@@ -40718,7 +41368,12 @@ export type InsertSecurityPoliciesResponse = Operation;
 export const InsertSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertSecurityPoliciesError = DefaultErrors;
+export type InsertSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy in the specified project using the data included in the request. */
 export const insertSecurityPolicies: API.OperationMethod<
@@ -40729,7 +41384,7 @@ export const insertSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSecurityPoliciesRequest,
   output: InsertSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSecurityPoliciesRequest {
@@ -40758,7 +41413,12 @@ export type DeleteSecurityPoliciesResponse = Operation;
 export const DeleteSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSecurityPoliciesError = DefaultErrors;
+export type DeleteSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified policy. */
 export const deleteSecurityPolicies: API.OperationMethod<
@@ -40769,7 +41429,7 @@ export const deleteSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSecurityPoliciesRequest,
   output: DeleteSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchSecurityPoliciesRequest {
@@ -40805,7 +41465,12 @@ export type PatchSecurityPoliciesResponse = Operation;
 export const PatchSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchSecurityPoliciesError = DefaultErrors;
+export type PatchSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified policy with the data included in the request. To clear fields in the policy, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead. */
 export const patchSecurityPolicies: API.OperationMethod<
@@ -40816,7 +41481,7 @@ export const patchSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSecurityPoliciesRequest,
   output: PatchSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRuleSecurityPoliciesRequest {
@@ -40845,7 +41510,7 @@ export type GetRuleSecurityPoliciesResponse = SecurityPolicyRule;
 export const GetRuleSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicyRule;
 
-export type GetRuleSecurityPoliciesError = DefaultErrors;
+export type GetRuleSecurityPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a rule at the specified priority. */
 export const getRuleSecurityPolicies: API.OperationMethod<
@@ -40856,7 +41521,7 @@ export const getRuleSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleSecurityPoliciesRequest,
   output: GetRuleSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddRuleSecurityPoliciesRequest {
@@ -40891,7 +41556,12 @@ export type AddRuleSecurityPoliciesResponse = Operation;
 export const AddRuleSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddRuleSecurityPoliciesError = DefaultErrors;
+export type AddRuleSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a rule into a security policy. */
 export const addRuleSecurityPolicies: API.OperationMethod<
@@ -40902,7 +41572,7 @@ export const addRuleSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddRuleSecurityPoliciesRequest,
   output: AddRuleSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveRuleSecurityPoliciesRequest {
@@ -40932,7 +41602,12 @@ export type RemoveRuleSecurityPoliciesResponse = Operation;
 export const RemoveRuleSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveRuleSecurityPoliciesError = DefaultErrors;
+export type RemoveRuleSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rule at the specified priority. */
 export const removeRuleSecurityPolicies: API.OperationMethod<
@@ -40943,7 +41618,7 @@ export const removeRuleSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveRuleSecurityPoliciesRequest,
   output: RemoveRuleSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRuleSecurityPoliciesRequest {
@@ -40984,7 +41659,12 @@ export type PatchRuleSecurityPoliciesResponse = Operation;
 export const PatchRuleSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRuleSecurityPoliciesError = DefaultErrors;
+export type PatchRuleSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a rule at the specified priority. To clear fields in the rule, leave the fields empty and specify them in the updateMask. */
 export const patchRuleSecurityPolicies: API.OperationMethod<
@@ -40995,7 +41675,7 @@ export const patchRuleSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleSecurityPoliciesRequest,
   output: PatchRuleSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPreconfiguredExpressionSetsSecurityPoliciesRequest {
@@ -41037,7 +41717,9 @@ export const ListPreconfiguredExpressionSetsSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPoliciesListPreconfiguredExpressionSetsResponse;
 
 export type ListPreconfiguredExpressionSetsSecurityPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the current list of preconfigured Web Application Firewall (WAF) expressions. */
 export const listPreconfiguredExpressionSetsSecurityPolicies: API.OperationMethod<
@@ -41048,7 +41730,7 @@ export const listPreconfiguredExpressionSetsSecurityPolicies: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPreconfiguredExpressionSetsSecurityPoliciesRequest,
   output: ListPreconfiguredExpressionSetsSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetLabelsSecurityPoliciesRequest {
@@ -41078,7 +41760,12 @@ export type SetLabelsSecurityPoliciesResponse = Operation;
 export const SetLabelsSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsSecurityPoliciesError = DefaultErrors;
+export type SetLabelsSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a security policy. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsSecurityPolicies: API.OperationMethod<
@@ -41089,7 +41776,7 @@ export const setLabelsSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsSecurityPoliciesRequest,
   output: SetLabelsSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListSecurityPoliciesRequest {
@@ -41140,7 +41827,10 @@ export type AggregatedListSecurityPoliciesResponse =
 export const AggregatedListSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPoliciesAggregatedList;
 
-export type AggregatedListSecurityPoliciesError = DefaultErrors;
+export type AggregatedListSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all SecurityPolicy resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListSecurityPolicies: API.PaginatedOperationMethod<
@@ -41151,7 +41841,7 @@ export const aggregatedListSecurityPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListSecurityPoliciesRequest,
   output: AggregatedListSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -41199,7 +41889,10 @@ export type ListRegionSecurityPoliciesResponse = SecurityPolicyList;
 export const ListRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicyList;
 
-export type ListRegionSecurityPoliciesError = DefaultErrors;
+export type ListRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all the policies that have been configured for the specified project and region. */
 export const listRegionSecurityPolicies: API.PaginatedOperationMethod<
@@ -41210,7 +41903,7 @@ export const listRegionSecurityPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSecurityPoliciesRequest,
   output: ListRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -41244,7 +41937,10 @@ export type GetRegionSecurityPoliciesResponse = SecurityPolicy;
 export const GetRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicy;
 
-export type GetRegionSecurityPoliciesError = DefaultErrors;
+export type GetRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all of the ordered rules present in a single specified policy. */
 export const getRegionSecurityPolicies: API.OperationMethod<
@@ -41255,7 +41951,7 @@ export const getRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionSecurityPoliciesRequest,
   output: GetRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionSecurityPoliciesRequest {
@@ -41293,7 +41989,12 @@ export type InsertRegionSecurityPoliciesResponse = Operation;
 export const InsertRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionSecurityPoliciesError = DefaultErrors;
+export type InsertRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy in the specified project using the data included in the request. */
 export const insertRegionSecurityPolicies: API.OperationMethod<
@@ -41304,7 +42005,7 @@ export const insertRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionSecurityPoliciesRequest,
   output: InsertRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionSecurityPoliciesRequest {
@@ -41336,7 +42037,12 @@ export type DeleteRegionSecurityPoliciesResponse = Operation;
 export const DeleteRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionSecurityPoliciesError = DefaultErrors;
+export type DeleteRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified policy. */
 export const deleteRegionSecurityPolicies: API.OperationMethod<
@@ -41347,7 +42053,7 @@ export const deleteRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionSecurityPoliciesRequest,
   output: DeleteRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionSecurityPoliciesRequest {
@@ -41386,7 +42092,12 @@ export type PatchRegionSecurityPoliciesResponse = Operation;
 export const PatchRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionSecurityPoliciesError = DefaultErrors;
+export type PatchRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified policy with the data included in the request. To clear fields in the policy, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead. */
 export const patchRegionSecurityPolicies: API.OperationMethod<
@@ -41397,7 +42108,7 @@ export const patchRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionSecurityPoliciesRequest,
   output: PatchRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRuleRegionSecurityPoliciesRequest {
@@ -41429,7 +42140,10 @@ export type GetRuleRegionSecurityPoliciesResponse = SecurityPolicyRule;
 export const GetRuleRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicyRule;
 
-export type GetRuleRegionSecurityPoliciesError = DefaultErrors;
+export type GetRuleRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a rule at the specified priority. */
 export const getRuleRegionSecurityPolicies: API.OperationMethod<
@@ -41440,7 +42154,7 @@ export const getRuleRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleRegionSecurityPoliciesRequest,
   output: GetRuleRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddRuleRegionSecurityPoliciesRequest {
@@ -41478,7 +42192,12 @@ export type AddRuleRegionSecurityPoliciesResponse = Operation;
 export const AddRuleRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddRuleRegionSecurityPoliciesError = DefaultErrors;
+export type AddRuleRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a rule into a security policy. */
 export const addRuleRegionSecurityPolicies: API.OperationMethod<
@@ -41489,7 +42208,7 @@ export const addRuleRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddRuleRegionSecurityPoliciesRequest,
   output: AddRuleRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveRuleRegionSecurityPoliciesRequest {
@@ -41522,7 +42241,12 @@ export type RemoveRuleRegionSecurityPoliciesResponse = Operation;
 export const RemoveRuleRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveRuleRegionSecurityPoliciesError = DefaultErrors;
+export type RemoveRuleRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rule at the specified priority. */
 export const removeRuleRegionSecurityPolicies: API.OperationMethod<
@@ -41533,7 +42257,7 @@ export const removeRuleRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveRuleRegionSecurityPoliciesRequest,
   output: RemoveRuleRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRuleRegionSecurityPoliciesRequest {
@@ -41577,7 +42301,12 @@ export type PatchRuleRegionSecurityPoliciesResponse = Operation;
 export const PatchRuleRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRuleRegionSecurityPoliciesError = DefaultErrors;
+export type PatchRuleRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a rule at the specified priority. To clear fields in the rule, leave the fields empty and specify them in the updateMask. */
 export const patchRuleRegionSecurityPolicies: API.OperationMethod<
@@ -41588,7 +42317,7 @@ export const patchRuleRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleRegionSecurityPoliciesRequest,
   output: PatchRuleRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsRegionSecurityPoliciesRequest {
@@ -41624,7 +42353,12 @@ export type SetLabelsRegionSecurityPoliciesResponse = Operation;
 export const SetLabelsRegionSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsRegionSecurityPoliciesError = DefaultErrors;
+export type SetLabelsRegionSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a security policy. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsRegionSecurityPolicies: API.OperationMethod<
@@ -41635,7 +42369,7 @@ export const setLabelsRegionSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsRegionSecurityPoliciesRequest,
   output: SetLabelsRegionSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationSecurityPoliciesRequest {
@@ -41672,7 +42406,10 @@ export type ListOrganizationSecurityPoliciesResponse = SecurityPolicyList;
 export const ListOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicyList;
 
-export type ListOrganizationSecurityPoliciesError = DefaultErrors;
+export type ListOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all the policies that have been configured for the specified organization. Use this API to read Cloud Armor policies. Previously, alpha and beta versions of this API were used to read firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.list instead. */
 export const listOrganizationSecurityPolicies: API.PaginatedOperationMethod<
@@ -41683,7 +42420,7 @@ export const listOrganizationSecurityPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationSecurityPoliciesRequest,
   output: ListOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -41711,7 +42448,10 @@ export type GetOrganizationSecurityPoliciesResponse = SecurityPolicy;
 export const GetOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicy;
 
-export type GetOrganizationSecurityPoliciesError = DefaultErrors;
+export type GetOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all of the ordered rules present in a single specified policy. Use this API to read Cloud Armor policies. Previously, alpha and beta versions of this API were used to read firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.get instead. */
 export const getOrganizationSecurityPolicies: API.OperationMethod<
@@ -41722,7 +42462,7 @@ export const getOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationSecurityPoliciesRequest,
   output: GetOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertOrganizationSecurityPoliciesRequest {
@@ -41752,7 +42492,12 @@ export type InsertOrganizationSecurityPoliciesResponse = Operation;
 export const InsertOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertOrganizationSecurityPoliciesError = DefaultErrors;
+export type InsertOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy in the specified organization using the data included in the request. Use this API to add Cloud Armor policies. Previously, alpha and beta versions of this API were used to add firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.insert instead. */
 export const insertOrganizationSecurityPolicies: API.OperationMethod<
@@ -41763,7 +42508,7 @@ export const insertOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertOrganizationSecurityPoliciesRequest,
   output: InsertOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationSecurityPoliciesRequest {
@@ -41789,7 +42534,12 @@ export type DeleteOrganizationSecurityPoliciesResponse = Operation;
 export const DeleteOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteOrganizationSecurityPoliciesError = DefaultErrors;
+export type DeleteOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified policy. Use this API to remove Cloud Armor policies. Previously, alpha and beta versions of this API were used to remove firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.delete instead. */
 export const deleteOrganizationSecurityPolicies: API.OperationMethod<
@@ -41800,7 +42550,7 @@ export const deleteOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationSecurityPoliciesRequest,
   output: DeleteOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationSecurityPoliciesRequest {
@@ -41830,7 +42580,12 @@ export type PatchOrganizationSecurityPoliciesResponse = Operation;
 export const PatchOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchOrganizationSecurityPoliciesError = DefaultErrors;
+export type PatchOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified policy with the data included in the request. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.patch instead. */
 export const patchOrganizationSecurityPolicies: API.OperationMethod<
@@ -41841,7 +42596,7 @@ export const patchOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationSecurityPoliciesRequest,
   output: PatchOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRuleOrganizationSecurityPoliciesRequest {
@@ -41867,7 +42622,10 @@ export type GetRuleOrganizationSecurityPoliciesResponse = SecurityPolicyRule;
 export const GetRuleOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicyRule;
 
-export type GetRuleOrganizationSecurityPoliciesError = DefaultErrors;
+export type GetRuleOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a rule at the specified priority. Use this API to read Cloud Armor policies. Previously, alpha and beta versions of this API were used to read firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.getRule instead. */
 export const getRuleOrganizationSecurityPolicies: API.OperationMethod<
@@ -41878,7 +42636,7 @@ export const getRuleOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRuleOrganizationSecurityPoliciesRequest,
   output: GetRuleOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddRuleOrganizationSecurityPoliciesRequest {
@@ -41908,7 +42666,12 @@ export type AddRuleOrganizationSecurityPoliciesResponse = Operation;
 export const AddRuleOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddRuleOrganizationSecurityPoliciesError = DefaultErrors;
+export type AddRuleOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a rule into a security policy. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.addRule instead. */
 export const addRuleOrganizationSecurityPolicies: API.OperationMethod<
@@ -41919,7 +42682,7 @@ export const addRuleOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddRuleOrganizationSecurityPoliciesRequest,
   output: AddRuleOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveRuleOrganizationSecurityPoliciesRequest {
@@ -41949,7 +42712,12 @@ export type RemoveRuleOrganizationSecurityPoliciesResponse = Operation;
 export const RemoveRuleOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveRuleOrganizationSecurityPoliciesError = DefaultErrors;
+export type RemoveRuleOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rule at the specified priority. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.removeRule instead. */
 export const removeRuleOrganizationSecurityPolicies: API.OperationMethod<
@@ -41960,7 +42728,7 @@ export const removeRuleOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveRuleOrganizationSecurityPoliciesRequest,
   output: RemoveRuleOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRuleOrganizationSecurityPoliciesRequest {
@@ -41993,7 +42761,12 @@ export type PatchRuleOrganizationSecurityPoliciesResponse = Operation;
 export const PatchRuleOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRuleOrganizationSecurityPoliciesError = DefaultErrors;
+export type PatchRuleOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches a rule at the specified priority. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.patchRule instead. */
 export const patchRuleOrganizationSecurityPolicies: API.OperationMethod<
@@ -42004,7 +42777,7 @@ export const patchRuleOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRuleOrganizationSecurityPoliciesRequest,
   output: PatchRuleOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesRequest {
@@ -42046,7 +42819,9 @@ export const ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesResponse
   /*@__PURE__*/ /*#__PURE__*/ SecurityPoliciesListPreconfiguredExpressionSetsResponse;
 
 export type ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the current list of preconfigured Web Application Firewall (WAF) expressions. */
 export const listPreconfiguredExpressionSetsOrganizationSecurityPolicies: API.OperationMethod<
@@ -42057,7 +42832,7 @@ export const listPreconfiguredExpressionSetsOrganizationSecurityPolicies: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesRequest,
   output: ListPreconfiguredExpressionSetsOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AddAssociationOrganizationSecurityPoliciesRequest {
@@ -42092,7 +42867,12 @@ export type AddAssociationOrganizationSecurityPoliciesResponse = Operation;
 export const AddAssociationOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddAssociationOrganizationSecurityPoliciesError = DefaultErrors;
+export type AddAssociationOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts an association for the specified security policy. This has billing implications. Projects in the hierarchy with effective hierarchical security policies will be automatically enrolled into Cloud Armor Enterprise if not already enrolled. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.addAssociation instead. */
 export const addAssociationOrganizationSecurityPolicies: API.OperationMethod<
@@ -42103,7 +42883,7 @@ export const addAssociationOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAssociationOrganizationSecurityPoliciesRequest,
   output: AddAssociationOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveAssociationOrganizationSecurityPoliciesRequest {
@@ -42133,7 +42913,12 @@ export type RemoveAssociationOrganizationSecurityPoliciesResponse = Operation;
 export const RemoveAssociationOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveAssociationOrganizationSecurityPoliciesError = DefaultErrors;
+export type RemoveAssociationOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes an association for the specified security policy. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.removeAssociation instead. */
 export const removeAssociationOrganizationSecurityPolicies: API.OperationMethod<
@@ -42144,7 +42929,7 @@ export const removeAssociationOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveAssociationOrganizationSecurityPoliciesRequest,
   output: RemoveAssociationOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAssociationsOrganizationSecurityPoliciesRequest {
@@ -42170,7 +42955,10 @@ export type ListAssociationsOrganizationSecurityPoliciesResponse =
 export const ListAssociationsOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrganizationSecurityPoliciesListAssociationsResponse;
 
-export type ListAssociationsOrganizationSecurityPoliciesError = DefaultErrors;
+export type ListAssociationsOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists associations of a specified target, i.e., organization or folder. Use this API to read Cloud Armor policies. Previously, alpha and beta versions of this API were used to read firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.listAssociations instead. */
 export const listAssociationsOrganizationSecurityPolicies: API.OperationMethod<
@@ -42181,7 +42969,7 @@ export const listAssociationsOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAssociationsOrganizationSecurityPoliciesRequest,
   output: ListAssociationsOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAssociationOrganizationSecurityPoliciesRequest {
@@ -42208,7 +42996,10 @@ export type GetAssociationOrganizationSecurityPoliciesResponse =
 export const GetAssociationOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityPolicyAssociation;
 
-export type GetAssociationOrganizationSecurityPoliciesError = DefaultErrors;
+export type GetAssociationOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an association with the specified name. Use this API to read Cloud Armor policies. Previously, alpha and beta versions of this API were used to read firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.getAssociation instead. */
 export const getAssociationOrganizationSecurityPolicies: API.OperationMethod<
@@ -42219,7 +43010,7 @@ export const getAssociationOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAssociationOrganizationSecurityPoliciesRequest,
   output: GetAssociationOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CopyRulesOrganizationSecurityPoliciesRequest {
@@ -42251,7 +43042,12 @@ export type CopyRulesOrganizationSecurityPoliciesResponse = Operation;
 export const CopyRulesOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CopyRulesOrganizationSecurityPoliciesError = DefaultErrors;
+export type CopyRulesOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copies rules to the specified security policy. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.cloneRules instead. */
 export const copyRulesOrganizationSecurityPolicies: API.OperationMethod<
@@ -42262,7 +43058,7 @@ export const copyRulesOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyRulesOrganizationSecurityPoliciesRequest,
   output: CopyRulesOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveOrganizationSecurityPoliciesRequest {
@@ -42292,7 +43088,12 @@ export type MoveOrganizationSecurityPoliciesResponse = Operation;
 export const MoveOrganizationSecurityPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveOrganizationSecurityPoliciesError = DefaultErrors;
+export type MoveOrganizationSecurityPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves the specified security policy. Use this API to modify Cloud Armor policies. Previously, alpha and beta versions of this API were used to modify firewall policies. This usage is now disabled for most organizations. Use firewallPolicies.move instead. */
 export const moveOrganizationSecurityPolicies: API.OperationMethod<
@@ -42303,7 +43104,7 @@ export const moveOrganizationSecurityPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveOrganizationSecurityPoliciesRequest,
   output: MoveOrganizationSecurityPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstancesRequest {
@@ -42341,7 +43142,7 @@ export const ListInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListInstancesResponse = InstanceList;
 export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ InstanceList;
 
-export type ListInstancesError = DefaultErrors;
+export type ListInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of instances contained within the specified zone. */
 export const listInstances: API.PaginatedOperationMethod<
@@ -42352,7 +43153,7 @@ export const listInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRequest,
   output: ListInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -42404,7 +43205,7 @@ export type AggregatedListInstancesResponse = InstanceAggregatedList;
 export const AggregatedListInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceAggregatedList;
 
-export type AggregatedListInstancesError = DefaultErrors;
+export type AggregatedListInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an aggregated list of all of the instances in your project across all regions and zones. The performance of this method degrades when a filter is specified on a project that has a very large number of instances. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListInstances: API.PaginatedOperationMethod<
@@ -42415,7 +43216,7 @@ export const aggregatedListInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListInstancesRequest,
   output: AggregatedListInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -42466,7 +43267,7 @@ export type ListReferrersInstancesResponse = InstanceListReferrers;
 export const ListReferrersInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceListReferrers;
 
-export type ListReferrersInstancesError = DefaultErrors;
+export type ListReferrersInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of resources that refer to the VM instance specified in the request. For example, if the VM instance is part of a managed or unmanaged instance group, the referrers list includes the instance group. For more information, readViewing referrers to VM instances. */
 export const listReferrersInstances: API.PaginatedOperationMethod<
@@ -42477,7 +43278,7 @@ export const listReferrersInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReferrersInstancesRequest,
   output: ListReferrersInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -42509,7 +43310,7 @@ export const GetInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetInstancesResponse = Instance;
 export const GetInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type GetInstancesError = DefaultErrors;
+export type GetInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Instance resource. */
 export const getInstances: API.OperationMethod<
@@ -42520,7 +43321,7 @@ export const getInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstancesRequest,
   output: GetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInstancesRequest {
@@ -42563,7 +43364,12 @@ export const InsertInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type InsertInstancesResponse = Operation;
 export const InsertInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstancesError = DefaultErrors;
+export type InsertInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instance resource in the specified project using the data included in the request. */
 export const insertInstances: API.OperationMethod<
@@ -42574,7 +43380,7 @@ export const insertInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstancesRequest,
   output: InsertInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstancesRequest {
@@ -42606,7 +43412,12 @@ export const DeleteInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteInstancesResponse = Operation;
 export const DeleteInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstancesError = DefaultErrors;
+export type DeleteInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Instance resource. For more information, seeDeleting an instance. */
 export const deleteInstances: API.OperationMethod<
@@ -42617,7 +43428,7 @@ export const deleteInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstancesRequest,
   output: DeleteInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetInstancesRequest {
@@ -42648,7 +43459,12 @@ export const ResetInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ResetInstancesResponse = Operation;
 export const ResetInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResetInstancesError = DefaultErrors;
+export type ResetInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a reset on the instance. This is a hard reset. The VM does not do a graceful shutdown. For more information, seeResetting an instance. */
 export const resetInstances: API.OperationMethod<
@@ -42659,7 +43475,7 @@ export const resetInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetInstancesRequest,
   output: ResetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SimulateMaintenanceEventInstancesRequest {
@@ -42697,7 +43513,12 @@ export type SimulateMaintenanceEventInstancesResponse = Operation;
 export const SimulateMaintenanceEventInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SimulateMaintenanceEventInstancesError = DefaultErrors;
+export type SimulateMaintenanceEventInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Simulates a host maintenance event on a VM. For more information, see Simulate a host maintenance event. */
 export const simulateMaintenanceEventInstances: API.OperationMethod<
@@ -42708,7 +43529,7 @@ export const simulateMaintenanceEventInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SimulateMaintenanceEventInstancesRequest,
   output: SimulateMaintenanceEventInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PerformMaintenanceInstancesRequest {
@@ -42741,7 +43562,12 @@ export type PerformMaintenanceInstancesResponse = Operation;
 export const PerformMaintenanceInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PerformMaintenanceInstancesError = DefaultErrors;
+export type PerformMaintenanceInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform a manual maintenance on the instance. */
 export const performMaintenanceInstances: API.OperationMethod<
@@ -42752,7 +43578,7 @@ export const performMaintenanceInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PerformMaintenanceInstancesRequest,
   output: PerformMaintenanceInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReportHostAsFaultyInstancesRequest {
@@ -42790,7 +43616,12 @@ export type ReportHostAsFaultyInstancesResponse = Operation;
 export const ReportHostAsFaultyInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ReportHostAsFaultyInstancesError = DefaultErrors;
+export type ReportHostAsFaultyInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Mark the host as faulty and try to restart the instance on a new host. */
 export const reportHostAsFaultyInstances: API.OperationMethod<
@@ -42801,7 +43632,7 @@ export const reportHostAsFaultyInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportHostAsFaultyInstancesRequest,
   output: ReportHostAsFaultyInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddAccessConfigInstancesRequest {
@@ -42840,7 +43671,12 @@ export type AddAccessConfigInstancesResponse = Operation;
 export const AddAccessConfigInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddAccessConfigInstancesError = DefaultErrors;
+export type AddAccessConfigInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an access config to an instance's network interface. */
 export const addAccessConfigInstances: API.OperationMethod<
@@ -42851,7 +43687,7 @@ export const addAccessConfigInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddAccessConfigInstancesRequest,
   output: AddAccessConfigInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAccessConfigInstancesRequest {
@@ -42890,7 +43726,12 @@ export type DeleteAccessConfigInstancesResponse = Operation;
 export const DeleteAccessConfigInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAccessConfigInstancesError = DefaultErrors;
+export type DeleteAccessConfigInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an access config from an instance's network interface. */
 export const deleteAccessConfigInstances: API.OperationMethod<
@@ -42901,7 +43742,7 @@ export const deleteAccessConfigInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAccessConfigInstancesRequest,
   output: DeleteAccessConfigInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAccessConfigInstancesRequest {
@@ -42940,7 +43781,12 @@ export type UpdateAccessConfigInstancesResponse = Operation;
 export const UpdateAccessConfigInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateAccessConfigInstancesError = DefaultErrors;
+export type UpdateAccessConfigInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified access config from an instance's network interface with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const updateAccessConfigInstances: API.OperationMethod<
@@ -42951,7 +43797,7 @@ export const updateAccessConfigInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAccessConfigInstancesRequest,
   output: UpdateAccessConfigInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddNetworkInterfaceInstancesRequest {
@@ -42987,7 +43833,12 @@ export type AddNetworkInterfaceInstancesResponse = Operation;
 export const AddNetworkInterfaceInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddNetworkInterfaceInstancesError = DefaultErrors;
+export type AddNetworkInterfaceInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds one dynamic network interface to an active instance. */
 export const addNetworkInterfaceInstances: API.OperationMethod<
@@ -42998,7 +43849,7 @@ export const addNetworkInterfaceInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddNetworkInterfaceInstancesRequest,
   output: AddNetworkInterfaceInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNetworkInterfaceInstancesRequest {
@@ -43036,7 +43887,12 @@ export type DeleteNetworkInterfaceInstancesResponse = Operation;
 export const DeleteNetworkInterfaceInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNetworkInterfaceInstancesError = DefaultErrors;
+export type DeleteNetworkInterfaceInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes one dynamic network interface from an active instance. InstancesDeleteNetworkInterfaceRequest indicates: - instance from which to delete, using project+zone+resource_id fields; - dynamic network interface to be deleted, using network_interface_name field; */
 export const deleteNetworkInterfaceInstances: API.OperationMethod<
@@ -43047,7 +43903,7 @@ export const deleteNetworkInterfaceInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkInterfaceInstancesRequest,
   output: DeleteNetworkInterfaceInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateNetworkInterfaceInstancesRequest {
@@ -43086,7 +43942,12 @@ export type UpdateNetworkInterfaceInstancesResponse = Operation;
 export const UpdateNetworkInterfaceInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateNetworkInterfaceInstancesError = DefaultErrors;
+export type UpdateNetworkInterfaceInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an instance's network interface. This method can only update an interface's alias IP range and attached network. See Modifying alias IP ranges for an existing instance for instructions on changing alias IP ranges. See Migrating a VM between networks for instructions on migrating an interface. This method follows PATCH semantics. */
 export const updateNetworkInterfaceInstances: API.OperationMethod<
@@ -43097,7 +43958,7 @@ export const updateNetworkInterfaceInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateNetworkInterfaceInstancesRequest,
   output: UpdateNetworkInterfaceInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSchedulingInstancesRequest {
@@ -43133,7 +43994,12 @@ export type SetSchedulingInstancesResponse = Operation;
 export const SetSchedulingInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSchedulingInstancesError = DefaultErrors;
+export type SetSchedulingInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets an instance's scheduling options. You can only call this method on astopped instance, that is, a VM instance that is in a `TERMINATED` state. SeeInstance Life Cycle for more information on the possible instance states. For more information about setting scheduling options for a VM, seeSet VM host maintenance policy. */
 export const setSchedulingInstances: API.OperationMethod<
@@ -43144,7 +44010,7 @@ export const setSchedulingInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSchedulingInstancesRequest,
   output: SetSchedulingInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSerialPortOutputInstancesRequest {
@@ -43179,7 +44045,10 @@ export type GetSerialPortOutputInstancesResponse = SerialPortOutput;
 export const GetSerialPortOutputInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SerialPortOutput;
 
-export type GetSerialPortOutputInstancesError = DefaultErrors;
+export type GetSerialPortOutputInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the last 1 MB of serial port output from the specified instance. */
 export const getSerialPortOutputInstances: API.OperationMethod<
@@ -43190,7 +44059,7 @@ export const getSerialPortOutputInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSerialPortOutputInstancesRequest,
   output: GetSerialPortOutputInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetScreenshotInstancesRequest {
@@ -43219,7 +44088,7 @@ export type GetScreenshotInstancesResponse = Screenshot;
 export const GetScreenshotInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Screenshot;
 
-export type GetScreenshotInstancesError = DefaultErrors;
+export type GetScreenshotInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the screenshot from the specified instance. */
 export const getScreenshotInstances: API.OperationMethod<
@@ -43230,7 +44099,7 @@ export const getScreenshotInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetScreenshotInstancesRequest,
   output: GetScreenshotInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SendDiagnosticInterruptInstancesRequest {
@@ -43262,7 +44131,12 @@ export const SendDiagnosticInterruptInstancesResponse: Schema.Schema<SendDiagnos
     {},
   ) as any as Schema.Schema<SendDiagnosticInterruptInstancesResponse>;
 
-export type SendDiagnosticInterruptInstancesError = DefaultErrors;
+export type SendDiagnosticInterruptInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sends diagnostic interrupt to the instance. */
 export const sendDiagnosticInterruptInstances: API.OperationMethod<
@@ -43273,7 +44147,7 @@ export const sendDiagnosticInterruptInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendDiagnosticInterruptInstancesRequest,
   output: SendDiagnosticInterruptInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGuestAttributesInstancesRequest {
@@ -43310,7 +44184,10 @@ export type GetGuestAttributesInstancesResponse = GuestAttributes;
 export const GetGuestAttributesInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuestAttributes;
 
-export type GetGuestAttributesInstancesError = DefaultErrors;
+export type GetGuestAttributesInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified guest attributes entry. */
 export const getGuestAttributesInstances: API.OperationMethod<
@@ -43321,7 +44198,7 @@ export const getGuestAttributesInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGuestAttributesInstancesRequest,
   output: GetGuestAttributesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AttachDiskInstancesRequest {
@@ -43362,7 +44239,12 @@ export type AttachDiskInstancesResponse = Operation;
 export const AttachDiskInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AttachDiskInstancesError = DefaultErrors;
+export type AttachDiskInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attaches an existing Disk resource to an instance. You must first create the disk before you can attach it. It is not possible to create and attach a disk at the same time. For more information, readAdding a persistent disk to your instance. */
 export const attachDiskInstances: API.OperationMethod<
@@ -43373,7 +44255,7 @@ export const attachDiskInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachDiskInstancesRequest,
   output: AttachDiskInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetachDiskInstancesRequest {
@@ -43409,7 +44291,12 @@ export type DetachDiskInstancesResponse = Operation;
 export const DetachDiskInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DetachDiskInstancesError = DefaultErrors;
+export type DetachDiskInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detaches a disk from an instance. */
 export const detachDiskInstances: API.OperationMethod<
@@ -43420,7 +44307,7 @@ export const detachDiskInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachDiskInstancesRequest,
   output: DetachDiskInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetMachineResourcesInstancesRequest {
@@ -43458,7 +44345,12 @@ export type SetMachineResourcesInstancesResponse = Operation;
 export const SetMachineResourcesInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetMachineResourcesInstancesError = DefaultErrors;
+export type SetMachineResourcesInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the number and/or type of accelerator for a stopped instance to the values specified in the request. */
 export const setMachineResourcesInstances: API.OperationMethod<
@@ -43469,7 +44361,7 @@ export const setMachineResourcesInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMachineResourcesInstancesRequest,
   output: SetMachineResourcesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetMachineTypeInstancesRequest {
@@ -43505,7 +44397,12 @@ export type SetMachineTypeInstancesResponse = Operation;
 export const SetMachineTypeInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetMachineTypeInstancesError = DefaultErrors;
+export type SetMachineTypeInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the machine type for a stopped instance to the machine type specified in the request. */
 export const setMachineTypeInstances: API.OperationMethod<
@@ -43516,7 +44413,7 @@ export const setMachineTypeInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMachineTypeInstancesRequest,
   output: SetMachineTypeInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetMetadataInstancesRequest {
@@ -43552,7 +44449,12 @@ export type SetMetadataInstancesResponse = Operation;
 export const SetMetadataInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetMetadataInstancesError = DefaultErrors;
+export type SetMetadataInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets metadata for the specified instance to the data included in the request. */
 export const setMetadataInstances: API.OperationMethod<
@@ -43563,7 +44465,7 @@ export const setMetadataInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMetadataInstancesRequest,
   output: SetMetadataInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetMinCpuPlatformInstancesRequest {
@@ -43599,7 +44501,12 @@ export type SetMinCpuPlatformInstancesResponse = Operation;
 export const SetMinCpuPlatformInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetMinCpuPlatformInstancesError = DefaultErrors;
+export type SetMinCpuPlatformInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the minimum CPU platform that this instance should use. This method can only be called on a stopped instance. For more information, readSpecifying a Minimum CPU Platform. */
 export const setMinCpuPlatformInstances: API.OperationMethod<
@@ -43610,7 +44517,7 @@ export const setMinCpuPlatformInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMinCpuPlatformInstancesRequest,
   output: SetMinCpuPlatformInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetTagsInstancesRequest {
@@ -43645,7 +44552,12 @@ export const SetTagsInstancesRequest =
 export type SetTagsInstancesResponse = Operation;
 export const SetTagsInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetTagsInstancesError = DefaultErrors;
+export type SetTagsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets network tags for the specified instance to the data included in the request. */
 export const setTagsInstances: API.OperationMethod<
@@ -43656,7 +44568,7 @@ export const setTagsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetTagsInstancesRequest,
   output: SetTagsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsInstancesRequest {
@@ -43691,7 +44603,12 @@ export const SetLabelsInstancesRequest =
 export type SetLabelsInstancesResponse = Operation;
 export const SetLabelsInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsInstancesError = DefaultErrors;
+export type SetLabelsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets labels on an instance. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsInstances: API.OperationMethod<
@@ -43702,7 +44619,7 @@ export const setLabelsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsInstancesRequest,
   output: SetLabelsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetNameInstancesRequest {
@@ -43737,7 +44654,12 @@ export const SetNameInstancesRequest =
 export type SetNameInstancesResponse = Operation;
 export const SetNameInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetNameInstancesError = DefaultErrors;
+export type SetNameInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets name of an instance. */
 export const setNameInstances: API.OperationMethod<
@@ -43748,7 +44670,7 @@ export const setNameInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetNameInstancesRequest,
   output: SetNameInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetDiskAutoDeleteInstancesRequest {
@@ -43787,7 +44709,12 @@ export type SetDiskAutoDeleteInstancesResponse = Operation;
 export const SetDiskAutoDeleteInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetDiskAutoDeleteInstancesError = DefaultErrors;
+export type SetDiskAutoDeleteInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the auto-delete flag for a disk attached to an instance. */
 export const setDiskAutoDeleteInstances: API.OperationMethod<
@@ -43798,7 +44725,7 @@ export const setDiskAutoDeleteInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDiskAutoDeleteInstancesRequest,
   output: SetDiskAutoDeleteInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartInstancesRequest {
@@ -43829,7 +44756,12 @@ export const StartInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StartInstancesResponse = Operation;
 export const StartInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartInstancesError = DefaultErrors;
+export type StartInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts an instance that was stopped using theinstances().stop method. For more information, seeRestart an instance. */
 export const startInstances: API.OperationMethod<
@@ -43840,7 +44772,7 @@ export const startInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartInstancesRequest,
   output: StartInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartWithEncryptionKeyInstancesRequest {
@@ -43878,7 +44810,12 @@ export type StartWithEncryptionKeyInstancesResponse = Operation;
 export const StartWithEncryptionKeyInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartWithEncryptionKeyInstancesError = DefaultErrors;
+export type StartWithEncryptionKeyInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts an instance that was stopped using theinstances().stop method. For more information, seeRestart an instance. */
 export const startWithEncryptionKeyInstances: API.OperationMethod<
@@ -43889,7 +44826,7 @@ export const startWithEncryptionKeyInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartWithEncryptionKeyInstancesRequest,
   output: StartWithEncryptionKeyInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopInstancesRequest {
@@ -43925,7 +44862,12 @@ export const StopInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type StopInstancesResponse = Operation;
 export const StopInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopInstancesError = DefaultErrors;
+export type StopInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a later time. Stopped instances do not incur VM usage charges while they are stopped. However, resources that the VM is using, such as persistent disks and static IP addresses, will continue to be charged until they are deleted. For more information, seeStopping an instance. */
 export const stopInstances: API.OperationMethod<
@@ -43936,7 +44878,7 @@ export const stopInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopInstancesRequest,
   output: StopInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyInstancesRequest {
@@ -43969,7 +44911,7 @@ export const GetIamPolicyInstancesRequest =
 export type GetIamPolicyInstancesResponse = Policy;
 export const GetIamPolicyInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyInstancesError = DefaultErrors;
+export type GetIamPolicyInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyInstances: API.OperationMethod<
@@ -43980,7 +44922,7 @@ export const getIamPolicyInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyInstancesRequest,
   output: GetIamPolicyInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyInstancesRequest {
@@ -44012,7 +44954,12 @@ export const SetIamPolicyInstancesRequest =
 export type SetIamPolicyInstancesResponse = Policy;
 export const SetIamPolicyInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyInstancesError = DefaultErrors;
+export type SetIamPolicyInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyInstances: API.OperationMethod<
@@ -44023,7 +44970,7 @@ export const setIamPolicyInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyInstancesRequest,
   output: SetIamPolicyInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsInstancesRequest {
@@ -44056,7 +45003,12 @@ export type TestIamPermissionsInstancesResponse = TestPermissionsResponse;
 export const TestIamPermissionsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsInstancesError = DefaultErrors;
+export type TestIamPermissionsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsInstances: API.OperationMethod<
@@ -44067,7 +45019,7 @@ export const testIamPermissionsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsInstancesRequest,
   output: TestIamPermissionsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetServiceAccountInstancesRequest {
@@ -44103,7 +45055,12 @@ export type SetServiceAccountInstancesResponse = Operation;
 export const SetServiceAccountInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetServiceAccountInstancesError = DefaultErrors;
+export type SetServiceAccountInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the service account on the instance. For more information, readChanging the service account and access scopes for an instance. */
 export const setServiceAccountInstances: API.OperationMethod<
@@ -44114,7 +45071,7 @@ export const setServiceAccountInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetServiceAccountInstancesRequest,
   output: SetServiceAccountInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetDeletionProtectionInstancesRequest {
@@ -44152,7 +45109,12 @@ export type SetDeletionProtectionInstancesResponse = Operation;
 export const SetDeletionProtectionInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetDeletionProtectionInstancesError = DefaultErrors;
+export type SetDeletionProtectionInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets deletion protection on the instance. */
 export const setDeletionProtectionInstances: API.OperationMethod<
@@ -44163,7 +45125,7 @@ export const setDeletionProtectionInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDeletionProtectionInstancesRequest,
   output: SetDeletionProtectionInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SuspendInstancesRequest {
@@ -44200,7 +45162,12 @@ export const SuspendInstancesRequest =
 export type SuspendInstancesResponse = Operation;
 export const SuspendInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SuspendInstancesError = DefaultErrors;
+export type SuspendInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** This method suspends a running instance, saving its state to persistent storage, and allows you to resume the instance at a later time. Suspended instances have no compute costs (cores or RAM), and incur only storage charges for the saved VM memory and localSSD data. Any charged resources the virtual machine was using, such as persistent disks and static IP addresses, will continue to be charged while the instance is suspended. For more information, see Suspending and resuming an instance. */
 export const suspendInstances: API.OperationMethod<
@@ -44211,7 +45178,7 @@ export const suspendInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuspendInstancesRequest,
   output: SuspendInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeInstancesRequest {
@@ -44244,7 +45211,12 @@ export const ResumeInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ResumeInstancesResponse = Operation;
 export const ResumeInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResumeInstancesError = DefaultErrors;
+export type ResumeInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resumes an instance that was suspended using theinstances().suspend method. */
 export const resumeInstances: API.OperationMethod<
@@ -44255,7 +45227,7 @@ export const resumeInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeInstancesRequest,
   output: ResumeInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddResourcePoliciesInstancesRequest {
@@ -44293,7 +45265,12 @@ export type AddResourcePoliciesInstancesResponse = Operation;
 export const AddResourcePoliciesInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddResourcePoliciesInstancesError = DefaultErrors;
+export type AddResourcePoliciesInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds existing resource policies to an instance. You can only add one policy right now which will be applied to this instance for scheduling live migrations. */
 export const addResourcePoliciesInstances: API.OperationMethod<
@@ -44304,7 +45281,7 @@ export const addResourcePoliciesInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddResourcePoliciesInstancesRequest,
   output: AddResourcePoliciesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveResourcePoliciesInstancesRequest {
@@ -44342,7 +45319,12 @@ export type RemoveResourcePoliciesInstancesResponse = Operation;
 export const RemoveResourcePoliciesInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveResourcePoliciesInstancesError = DefaultErrors;
+export type RemoveResourcePoliciesInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes resource policies from an instance. */
 export const removeResourcePoliciesInstances: API.OperationMethod<
@@ -44353,7 +45335,7 @@ export const removeResourcePoliciesInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveResourcePoliciesInstancesRequest,
   output: RemoveResourcePoliciesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateInstancesRequest {
@@ -44414,7 +45396,12 @@ export const UpdateInstancesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateInstancesResponse = Operation;
 export const UpdateInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateInstancesError = DefaultErrors;
+export type UpdateInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an instance only if the necessary resources are available. This method can update only a specific set of instance properties. See Updating a running instance for a list of updatable instance properties. */
 export const updateInstances: API.OperationMethod<
@@ -44425,7 +45412,7 @@ export const updateInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateInstancesRequest,
   output: UpdateInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateShieldedInstanceConfigInstancesRequest {
@@ -44461,7 +45448,12 @@ export type UpdateShieldedInstanceConfigInstancesResponse = Operation;
 export const UpdateShieldedInstanceConfigInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateShieldedInstanceConfigInstancesError = DefaultErrors;
+export type UpdateShieldedInstanceConfigInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Shielded Instance config for an instance. You can only use this method on a stopped instance. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const updateShieldedInstanceConfigInstances: API.OperationMethod<
@@ -44472,7 +45464,7 @@ export const updateShieldedInstanceConfigInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateShieldedInstanceConfigInstancesRequest,
   output: UpdateShieldedInstanceConfigInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateDisplayDeviceInstancesRequest {
@@ -44508,7 +45500,12 @@ export type UpdateDisplayDeviceInstancesResponse = Operation;
 export const UpdateDisplayDeviceInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateDisplayDeviceInstancesError = DefaultErrors;
+export type UpdateDisplayDeviceInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Display config for a VM instance. You can only use this method on a stopped VM instance. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const updateDisplayDeviceInstances: API.OperationMethod<
@@ -44519,7 +45516,7 @@ export const updateDisplayDeviceInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDisplayDeviceInstancesRequest,
   output: UpdateDisplayDeviceInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetShieldedInstanceIntegrityPolicyInstancesRequest {
@@ -44555,7 +45552,12 @@ export type SetShieldedInstanceIntegrityPolicyInstancesResponse = Operation;
 export const SetShieldedInstanceIntegrityPolicyInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetShieldedInstanceIntegrityPolicyInstancesError = DefaultErrors;
+export type SetShieldedInstanceIntegrityPolicyInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Shielded Instance integrity policy for an instance. You can only use this method on a running instance. This method supports PATCH semantics and uses the JSON merge patch format and processing rules. */
 export const setShieldedInstanceIntegrityPolicyInstances: API.OperationMethod<
@@ -44566,7 +45568,7 @@ export const setShieldedInstanceIntegrityPolicyInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetShieldedInstanceIntegrityPolicyInstancesRequest,
   output: SetShieldedInstanceIntegrityPolicyInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSecurityPolicyInstancesRequest {
@@ -44602,7 +45604,12 @@ export type SetSecurityPolicyInstancesResponse = Operation;
 export const SetSecurityPolicyInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSecurityPolicyInstancesError = DefaultErrors;
+export type SetSecurityPolicyInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Google Cloud Armor security policy for the specified instance. For more information, seeGoogle Cloud Armor Overview */
 export const setSecurityPolicyInstances: API.OperationMethod<
@@ -44613,7 +45620,7 @@ export const setSecurityPolicyInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSecurityPolicyInstancesRequest,
   output: SetSecurityPolicyInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetShieldedInstanceIdentityInstancesRequest {
@@ -44643,7 +45650,10 @@ export type GetShieldedInstanceIdentityInstancesResponse =
 export const GetShieldedInstanceIdentityInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ShieldedInstanceIdentity;
 
-export type GetShieldedInstanceIdentityInstancesError = DefaultErrors;
+export type GetShieldedInstanceIdentityInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the Shielded Instance Identity of an instance */
 export const getShieldedInstanceIdentityInstances: API.OperationMethod<
@@ -44654,7 +45664,7 @@ export const getShieldedInstanceIdentityInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetShieldedInstanceIdentityInstancesRequest,
   output: GetShieldedInstanceIdentityInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BulkInsertInstancesRequest {
@@ -44687,7 +45697,12 @@ export type BulkInsertInstancesResponse = Operation;
 export const BulkInsertInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkInsertInstancesError = DefaultErrors;
+export type BulkInsertInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates multiple instances. Count specifies the number of instances to create. For more information, seeAbout bulk creation of VMs. */
 export const bulkInsertInstances: API.OperationMethod<
@@ -44698,7 +45713,7 @@ export const bulkInsertInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkInsertInstancesRequest,
   output: BulkInsertInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectiveFirewallsInstancesRequest {
@@ -44731,7 +45746,10 @@ export type GetEffectiveFirewallsInstancesResponse =
 export const GetEffectiveFirewallsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstancesGetEffectiveFirewallsResponse;
 
-export type GetEffectiveFirewallsInstancesError = DefaultErrors;
+export type GetEffectiveFirewallsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns effective firewalls applied to an interface of the instance. */
 export const getEffectiveFirewallsInstances: API.OperationMethod<
@@ -44742,7 +45760,7 @@ export const getEffectiveFirewallsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectiveFirewallsInstancesRequest,
   output: GetEffectiveFirewallsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BulkInsertRegionInstancesRequest {
@@ -44775,7 +45793,12 @@ export type BulkInsertRegionInstancesResponse = Operation;
 export const BulkInsertRegionInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkInsertRegionInstancesError = DefaultErrors;
+export type BulkInsertRegionInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates multiple instances in a given region. Count specifies the number of instances to create. */
 export const bulkInsertRegionInstances: API.OperationMethod<
@@ -44786,7 +45809,7 @@ export const bulkInsertRegionInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkInsertRegionInstancesRequest,
   output: BulkInsertRegionInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListReservationsRequest {
@@ -44829,7 +45852,7 @@ export type ListReservationsResponse = ReservationList;
 export const ListReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationList;
 
-export type ListReservationsError = DefaultErrors;
+export type ListReservationsError = DefaultErrors | NotFound | Forbidden;
 
 /** A list of all the reservations that have been configured for the specified project in specified zone. */
 export const listReservations: API.PaginatedOperationMethod<
@@ -44840,7 +45863,7 @@ export const listReservations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReservationsRequest,
   output: ListReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -44895,7 +45918,10 @@ export type AggregatedListReservationsResponse = ReservationAggregatedList;
 export const AggregatedListReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationAggregatedList;
 
-export type AggregatedListReservationsError = DefaultErrors;
+export type AggregatedListReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of reservations. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListReservations: API.PaginatedOperationMethod<
@@ -44906,7 +45932,7 @@ export const aggregatedListReservations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListReservationsRequest,
   output: AggregatedListReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -44940,7 +45966,7 @@ export const GetReservationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetReservationsResponse = Reservation;
 export const GetReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
-export type GetReservationsError = DefaultErrors;
+export type GetReservationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about the specified reservation. */
 export const getReservations: API.OperationMethod<
@@ -44951,7 +45977,7 @@ export const getReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReservationsRequest,
   output: GetReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertReservationsRequest {
@@ -44983,7 +46009,12 @@ export const InsertReservationsRequest =
 export type InsertReservationsResponse = Operation;
 export const InsertReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertReservationsError = DefaultErrors;
+export type InsertReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new reservation. For more information, readReserving zonal resources. */
 export const insertReservations: API.OperationMethod<
@@ -44994,7 +46025,7 @@ export const insertReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertReservationsRequest,
   output: InsertReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteReservationsRequest {
@@ -45025,7 +46056,12 @@ export const DeleteReservationsRequest =
 export type DeleteReservationsResponse = Operation;
 export const DeleteReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteReservationsError = DefaultErrors;
+export type DeleteReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified reservation. */
 export const deleteReservations: API.OperationMethod<
@@ -45036,7 +46072,7 @@ export const deleteReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteReservationsRequest,
   output: DeleteReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResizeReservationsRequest {
@@ -45071,7 +46107,12 @@ export const ResizeReservationsRequest =
 export type ResizeReservationsResponse = Operation;
 export const ResizeReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResizeReservationsError = DefaultErrors;
+export type ResizeReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resizes the reservation (applicable to standalone reservations only). For more information, readModifying reservations. */
 export const resizeReservations: API.OperationMethod<
@@ -45082,7 +46123,7 @@ export const resizeReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResizeReservationsRequest,
   output: ResizeReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateReservationsRequest {
@@ -45124,7 +46165,12 @@ export const UpdateReservationsRequest =
 export type UpdateReservationsResponse = Operation;
 export const UpdateReservationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateReservationsError = DefaultErrors;
+export type UpdateReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update share settings of the reservation. */
 export const updateReservations: API.OperationMethod<
@@ -45135,7 +46181,7 @@ export const updateReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateReservationsRequest,
   output: UpdateReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyReservationsRequest {
@@ -45169,7 +46215,10 @@ export type GetIamPolicyReservationsResponse = Policy;
 export const GetIamPolicyReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyReservationsError = DefaultErrors;
+export type GetIamPolicyReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyReservations: API.OperationMethod<
@@ -45180,7 +46229,7 @@ export const getIamPolicyReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyReservationsRequest,
   output: GetIamPolicyReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyReservationsRequest {
@@ -45213,7 +46262,12 @@ export type SetIamPolicyReservationsResponse = Policy;
 export const SetIamPolicyReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyReservationsError = DefaultErrors;
+export type SetIamPolicyReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyReservations: API.OperationMethod<
@@ -45224,7 +46278,7 @@ export const setIamPolicyReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyReservationsRequest,
   output: SetIamPolicyReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsReservationsRequest {
@@ -45257,7 +46311,12 @@ export type TestIamPermissionsReservationsResponse = TestPermissionsResponse;
 export const TestIamPermissionsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsReservationsError = DefaultErrors;
+export type TestIamPermissionsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsReservations: API.OperationMethod<
@@ -45268,7 +46327,7 @@ export const testIamPermissionsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsReservationsRequest,
   output: TestIamPermissionsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PerformMaintenanceReservationsRequest {
@@ -45306,7 +46365,12 @@ export type PerformMaintenanceReservationsResponse = Operation;
 export const PerformMaintenanceReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PerformMaintenanceReservationsError = DefaultErrors;
+export type PerformMaintenanceReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform maintenance on an extended reservation */
 export const performMaintenanceReservations: API.OperationMethod<
@@ -45317,7 +46381,7 @@ export const performMaintenanceReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PerformMaintenanceReservationsRequest,
   output: PerformMaintenanceReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstanceGroupsRequest {
@@ -45360,7 +46424,7 @@ export type ListInstanceGroupsResponse = InstanceGroupList;
 export const ListInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupList;
 
-export type ListInstanceGroupsError = DefaultErrors;
+export type ListInstanceGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of zonal instance group resources contained within the specified zone. For managed instance groups, use theinstanceGroupManagers or regionInstanceGroupManagers methods instead. */
 export const listInstanceGroups: API.PaginatedOperationMethod<
@@ -45371,7 +46435,7 @@ export const listInstanceGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupsRequest,
   output: ListInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -45426,7 +46490,10 @@ export type AggregatedListInstanceGroupsResponse = InstanceGroupAggregatedList;
 export const AggregatedListInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupAggregatedList;
 
-export type AggregatedListInstanceGroupsError = DefaultErrors;
+export type AggregatedListInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of instance groups and sorts them by zone. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListInstanceGroups: API.PaginatedOperationMethod<
@@ -45437,7 +46504,7 @@ export const aggregatedListInstanceGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListInstanceGroupsRequest,
   output: AggregatedListInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -45471,7 +46538,7 @@ export type GetInstanceGroupsResponse = InstanceGroup;
 export const GetInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroup;
 
-export type GetInstanceGroupsError = DefaultErrors;
+export type GetInstanceGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use theinstanceGroupManagers or regionInstanceGroupManagers methods instead. */
 export const getInstanceGroups: API.OperationMethod<
@@ -45482,7 +46549,7 @@ export const getInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceGroupsRequest,
   output: GetInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInstanceGroupsRequest {
@@ -45515,7 +46582,12 @@ export type InsertInstanceGroupsResponse = Operation;
 export const InsertInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstanceGroupsError = DefaultErrors;
+export type InsertInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instance group in the specified project using the parameters that are included in the request. */
 export const insertInstanceGroups: API.OperationMethod<
@@ -45526,7 +46598,7 @@ export const insertInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstanceGroupsRequest,
   output: InsertInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstanceGroupsRequest {
@@ -45558,7 +46630,12 @@ export type DeleteInstanceGroupsResponse = Operation;
 export const DeleteInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstanceGroupsError = DefaultErrors;
+export type DeleteInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified instance group. The instances in the group are not deleted. Note that instance group must not belong to a backend service. Read Deleting an instance group for more information. */
 export const deleteInstanceGroups: API.OperationMethod<
@@ -45569,7 +46646,7 @@ export const deleteInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceGroupsRequest,
   output: DeleteInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddInstancesInstanceGroupsRequest {
@@ -45605,7 +46682,12 @@ export type AddInstancesInstanceGroupsResponse = Operation;
 export const AddInstancesInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddInstancesInstanceGroupsError = DefaultErrors;
+export type AddInstancesInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a list of instances to the specified instance group. All of the instances in the instance group must be in the same network/subnetwork. Read Adding instances for more information. */
 export const addInstancesInstanceGroups: API.OperationMethod<
@@ -45616,7 +46698,7 @@ export const addInstancesInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddInstancesInstanceGroupsRequest,
   output: AddInstancesInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveInstancesInstanceGroupsRequest {
@@ -45654,7 +46736,12 @@ export type RemoveInstancesInstanceGroupsResponse = Operation;
 export const RemoveInstancesInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveInstancesInstanceGroupsError = DefaultErrors;
+export type RemoveInstancesInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes one or more instances from the specified instance group, but does not delete those instances. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration before the VM instance is removed or deleted. */
 export const removeInstancesInstanceGroups: API.OperationMethod<
@@ -45665,7 +46752,7 @@ export const removeInstancesInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveInstancesInstanceGroupsRequest,
   output: RemoveInstancesInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstancesInstanceGroupsRequest {
@@ -45717,7 +46804,12 @@ export type ListInstancesInstanceGroupsResponse = InstanceGroupsListInstances;
 export const ListInstancesInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupsListInstances;
 
-export type ListInstancesInstanceGroupsError = DefaultErrors;
+export type ListInstancesInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the instances in the specified instance group. The orderBy query parameter is not supported. The filter query parameter is supported, but only for expressions that use `eq` (equal) or `ne` (not equal) operators. */
 export const listInstancesInstanceGroups: API.PaginatedOperationMethod<
@@ -45728,7 +46820,7 @@ export const listInstancesInstanceGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesInstanceGroupsRequest,
   output: ListInstancesInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -45771,7 +46863,12 @@ export type SetNamedPortsInstanceGroupsResponse = Operation;
 export const SetNamedPortsInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetNamedPortsInstanceGroupsError = DefaultErrors;
+export type SetNamedPortsInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the named ports for the specified instance group. */
 export const setNamedPortsInstanceGroups: API.OperationMethod<
@@ -45782,7 +46879,7 @@ export const setNamedPortsInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetNamedPortsInstanceGroupsRequest,
   output: SetNamedPortsInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsInstanceGroupsRequest {
@@ -45815,7 +46912,12 @@ export type TestIamPermissionsInstanceGroupsResponse = TestPermissionsResponse;
 export const TestIamPermissionsInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsInstanceGroupsError = DefaultErrors;
+export type TestIamPermissionsInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsInstanceGroups: API.OperationMethod<
@@ -45826,7 +46928,7 @@ export const testIamPermissionsInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsInstanceGroupsRequest,
   output: TestIamPermissionsInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionInstanceGroupsRequest {
@@ -45869,7 +46971,10 @@ export type ListRegionInstanceGroupsResponse = RegionInstanceGroupList;
 export const ListRegionInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupList;
 
-export type ListRegionInstanceGroupsError = DefaultErrors;
+export type ListRegionInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of instance group resources contained within the specified region. */
 export const listRegionInstanceGroups: API.PaginatedOperationMethod<
@@ -45880,7 +46985,7 @@ export const listRegionInstanceGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceGroupsRequest,
   output: ListRegionInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -45914,7 +47019,7 @@ export type GetRegionInstanceGroupsResponse = InstanceGroup;
 export const GetRegionInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroup;
 
-export type GetRegionInstanceGroupsError = DefaultErrors;
+export type GetRegionInstanceGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified instance group resource. */
 export const getRegionInstanceGroups: API.OperationMethod<
@@ -45925,7 +47030,7 @@ export const getRegionInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionInstanceGroupsRequest,
   output: GetRegionInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInstancesRegionInstanceGroupsRequest {
@@ -45978,7 +47083,12 @@ export type ListInstancesRegionInstanceGroupsResponse =
 export const ListInstancesRegionInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupsListInstances;
 
-export type ListInstancesRegionInstanceGroupsError = DefaultErrors;
+export type ListInstancesRegionInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the instances in the specified instance group and displays information about the named ports. Depending on the specified options, this method can list all instances or only the instances that are running. The orderBy query parameter is not supported. */
 export const listInstancesRegionInstanceGroups: API.PaginatedOperationMethod<
@@ -45989,7 +47099,7 @@ export const listInstancesRegionInstanceGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstancesRegionInstanceGroupsRequest,
   output: ListInstancesRegionInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -46032,7 +47142,12 @@ export type SetNamedPortsRegionInstanceGroupsResponse = Operation;
 export const SetNamedPortsRegionInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetNamedPortsRegionInstanceGroupsError = DefaultErrors;
+export type SetNamedPortsRegionInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the named ports for the specified regional instance group. */
 export const setNamedPortsRegionInstanceGroups: API.OperationMethod<
@@ -46043,7 +47158,7 @@ export const setNamedPortsRegionInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetNamedPortsRegionInstanceGroupsRequest,
   output: SetNamedPortsRegionInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionInstanceGroupsRequest {
@@ -46077,7 +47192,12 @@ export type TestIamPermissionsRegionInstanceGroupsResponse =
 export const TestIamPermissionsRegionInstanceGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionInstanceGroupsError = DefaultErrors;
+export type TestIamPermissionsRegionInstanceGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionInstanceGroups: API.OperationMethod<
@@ -46088,7 +47208,7 @@ export const testIamPermissionsRegionInstanceGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionInstanceGroupsRequest,
   output: TestIamPermissionsRegionInstanceGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstanceGroupManagersRequest {
@@ -46131,7 +47251,10 @@ export type ListInstanceGroupManagersResponse = InstanceGroupManagerList;
 export const ListInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagerList;
 
-export type ListInstanceGroupManagersError = DefaultErrors;
+export type ListInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of managed instance groups that are contained within the specified project and zone. */
 export const listInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -46142,7 +47265,7 @@ export const listInstanceGroupManagers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupManagersRequest,
   output: ListInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -46198,7 +47321,10 @@ export type AggregatedListInstanceGroupManagersResponse =
 export const AggregatedListInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagerAggregatedList;
 
-export type AggregatedListInstanceGroupManagersError = DefaultErrors;
+export type AggregatedListInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of managed instance groups and groups them by zone. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -46209,7 +47335,7 @@ export const aggregatedListInstanceGroupManagers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListInstanceGroupManagersRequest,
   output: AggregatedListInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -46245,7 +47371,10 @@ export type GetInstanceGroupManagersResponse = InstanceGroupManager;
 export const GetInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManager;
 
-export type GetInstanceGroupManagersError = DefaultErrors;
+export type GetInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all of the details about the specified managed instance group. */
 export const getInstanceGroupManagers: API.OperationMethod<
@@ -46256,7 +47385,7 @@ export const getInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceGroupManagersRequest,
   output: GetInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInstanceGroupManagersRequest {
@@ -46289,7 +47418,12 @@ export type InsertInstanceGroupManagersResponse = Operation;
 export const InsertInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstanceGroupManagersError = DefaultErrors;
+export type InsertInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with thelistmanagedinstances method. A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit. */
 export const insertInstanceGroupManagers: API.OperationMethod<
@@ -46300,7 +47434,7 @@ export const insertInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstanceGroupManagersRequest,
   output: InsertInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInstanceGroupManagersRequest {
@@ -46338,7 +47472,12 @@ export type PatchInstanceGroupManagersResponse = Operation;
 export const PatchInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInstanceGroupManagersError = DefaultErrors;
+export type PatchInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with thelistManagedInstances method. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. If you update your group to specify a new template or instance configuration, it's possible that your intended specification for each VM in the group is different from the current state of that VM. To learn how to apply an updated configuration to the VMs in a MIG, seeUpdating instances in a MIG. */
 export const patchInstanceGroupManagers: API.OperationMethod<
@@ -46349,7 +47488,7 @@ export const patchInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInstanceGroupManagersRequest,
   output: PatchInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstanceGroupManagersRequest {
@@ -46383,7 +47522,12 @@ export type DeleteInstanceGroupManagersResponse = Operation;
 export const DeleteInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstanceGroupManagersError = DefaultErrors;
+export type DeleteInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified managed instance group and all of the instances in that group. Note that the instance group must not belong to a backend service. Read Deleting an instance group for more information. */
 export const deleteInstanceGroupManagers: API.OperationMethod<
@@ -46394,7 +47538,7 @@ export const deleteInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceGroupManagersRequest,
   output: DeleteInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstancesInstanceGroupManagersRequest {
@@ -46434,7 +47578,12 @@ export type DeleteInstancesInstanceGroupManagersResponse = Operation;
 export const DeleteInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstancesInstanceGroupManagersError = DefaultErrors;
+export type DeleteInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group for immediate deletion. The instances are also removed from any target pools of which they were a member. This method reduces thetargetSize of the managed instance group by the number of instances that you delete. This operation is marked as DONE when the action is scheduled even if the instances are still being deleted. You must separately verify the status of the deleting action with thelistmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request. */
 export const deleteInstancesInstanceGroupManagers: API.OperationMethod<
@@ -46445,7 +47594,7 @@ export const deleteInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstancesInstanceGroupManagersRequest,
   output: DeleteInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SuspendInstancesInstanceGroupManagersRequest {
@@ -46485,7 +47634,12 @@ export type SuspendInstancesInstanceGroupManagersResponse = Operation;
 export const SuspendInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SuspendInstancesInstanceGroupManagersError = DefaultErrors;
+export type SuspendInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be immediately suspended. You can only specify instances that are running in this request. This method reduces thetargetSize and increases the targetSuspendedSize of the managed instance group by the number of instances that you suspend. The suspendInstances operation is marked DONE if the suspendInstances request is successful. The underlying actions take additional time. You must separately verify the status of theSUSPENDING action with thelistmanagedinstances method. If the standbyPolicy.initialDelaySec field is set, the group delays suspension of the instances until initialDelaySec have passed from instance.creationTimestamp (that is, when the instance was created). This delay gives your application time to set itself up and initialize on the instance. If more thaninitialDelaySec seconds have passed sinceinstance.creationTimestamp when this method is called, there will be zero delay. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is suspended. Suspended instances can be resumed using the resumeInstances method. You can specify a maximum of 1000 instances with this method per request. */
 export const suspendInstancesInstanceGroupManagers: API.OperationMethod<
@@ -46496,7 +47650,7 @@ export const suspendInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuspendInstancesInstanceGroupManagersRequest,
   output: SuspendInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeInstancesInstanceGroupManagersRequest {
@@ -46536,7 +47690,12 @@ export type ResumeInstancesInstanceGroupManagersResponse = Operation;
 export const ResumeInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResumeInstancesInstanceGroupManagersError = DefaultErrors;
+export type ResumeInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be resumed. This method increases thetargetSize and decreases the targetSuspendedSize of the managed instance group by the number of instances that you resume. The resumeInstances operation is marked DONE if the resumeInstances request is successful. The underlying actions take additional time. You must separately verify the status of theRESUMING action with thelistmanagedinstances method. In this request, you can only specify instances that are suspended. For example, if an instance was previously suspended using the suspendInstances method, it can be resumed using the resumeInstances method. If a health check is attached to the managed instance group, the specified instances will be verified as healthy after they are resumed. You can specify a maximum of 1000 instances with this method per request. */
 export const resumeInstancesInstanceGroupManagers: API.OperationMethod<
@@ -46547,7 +47706,7 @@ export const resumeInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeInstancesInstanceGroupManagersRequest,
   output: ResumeInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopInstancesInstanceGroupManagersRequest {
@@ -46587,7 +47746,12 @@ export type StopInstancesInstanceGroupManagersResponse = Operation;
 export const StopInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopInstancesInstanceGroupManagersError = DefaultErrors;
+export type StopInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be immediately stopped. You can only specify instances that are running in this request. This method reduces thetargetSize and increases the targetStoppedSize of the managed instance group by the number of instances that you stop. The stopInstances operation is marked DONE if the stopInstances request is successful. The underlying actions take additional time. You must separately verify the status of theSTOPPING action with thelistmanagedinstances method. If the standbyPolicy.initialDelaySec field is set, the group delays stopping the instances until initialDelaySec have passed from instance.creationTimestamp (that is, when the instance was created). This delay gives your application time to set itself up and initialize on the instance. If more thaninitialDelaySec seconds have passed sinceinstance.creationTimestamp when this method is called, there will be zero delay. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is stopped. Stopped instances can be started using the startInstances method. You can specify a maximum of 1000 instances with this method per request. */
 export const stopInstancesInstanceGroupManagers: API.OperationMethod<
@@ -46598,7 +47762,7 @@ export const stopInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopInstancesInstanceGroupManagersRequest,
   output: StopInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartInstancesInstanceGroupManagersRequest {
@@ -46638,7 +47802,12 @@ export type StartInstancesInstanceGroupManagersResponse = Operation;
 export const StartInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartInstancesInstanceGroupManagersError = DefaultErrors;
+export type StartInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be started. This method increases thetargetSize and decreases the targetStoppedSize of the managed instance group by the number of instances that you start. The startInstances operation is marked DONE if the startInstances request is successful. The underlying actions take additional time. You must separately verify the status of theSTARTING action with thelistmanagedinstances method. In this request, you can only specify instances that are stopped. For example, if an instance was previously stopped using the stopInstances method, it can be started using the startInstances method. If a health check is attached to the managed instance group, the specified instances will be verified as healthy after they are started. You can specify a maximum of 1000 instances with this method per request. */
 export const startInstancesInstanceGroupManagers: API.OperationMethod<
@@ -46649,7 +47818,7 @@ export const startInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartInstancesInstanceGroupManagersRequest,
   output: StartInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AbandonInstancesInstanceGroupManagersRequest {
@@ -46689,7 +47858,12 @@ export type AbandonInstancesInstanceGroupManagersResponse = Operation;
 export const AbandonInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AbandonInstancesInstanceGroupManagersError = DefaultErrors;
+export type AbandonInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances to be removed from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces thetargetSize of the managed instance group by the number of instances that you abandon. This operation is marked asDONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with thelistmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request. */
 export const abandonInstancesInstanceGroupManagers: API.OperationMethod<
@@ -46700,7 +47874,7 @@ export const abandonInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AbandonInstancesInstanceGroupManagersRequest,
   output: AbandonInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RecreateInstancesInstanceGroupManagersRequest {
@@ -46740,7 +47914,12 @@ export type RecreateInstancesInstanceGroupManagersResponse = Operation;
 export const RecreateInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RecreateInstancesInstanceGroupManagersError = DefaultErrors;
+export type RecreateInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified VM instances in the managed instance group to be immediately recreated. Each instance is recreated using the group's current configuration. This operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must separately verify the status of each instance by checking itscurrentAction field; for more information, see Checking the status of managed instances. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request. */
 export const recreateInstancesInstanceGroupManagers: API.OperationMethod<
@@ -46751,7 +47930,7 @@ export const recreateInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecreateInstancesInstanceGroupManagersRequest,
   output: RecreateInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResizeInstanceGroupManagersRequest {
@@ -46789,7 +47968,12 @@ export type ResizeInstanceGroupManagersResponse = Operation;
 export const ResizeInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResizeInstanceGroupManagersError = DefaultErrors;
+export type ResizeInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resizes the managed instance group. If you increase the size, the group creates new instances using the current instance template. If you decrease the size, the group deletes instances. The resize operation is markedDONE when the resize actions are scheduled even if the group has not yet added or deleted any instances. You must separately verify the status of the creating or deleting actions with thelistmanagedinstances method. When resizing down, the instance group arbitrarily chooses the order in which VMs are deleted. The group takes into account some VM attributes when making the selection including: + The status of the VM instance. + The health of the VM instance. + The instance template version the VM is based on. + For regional managed instance groups, the location of the VM instance. This list is subject to change. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. */
 export const resizeInstanceGroupManagers: API.OperationMethod<
@@ -46800,7 +47984,7 @@ export const resizeInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResizeInstanceGroupManagersRequest,
   output: ResizeInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetInstanceTemplateInstanceGroupManagersRequest {
@@ -46840,7 +48024,12 @@ export type SetInstanceTemplateInstanceGroupManagersResponse = Operation;
 export const SetInstanceTemplateInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetInstanceTemplateInstanceGroupManagersError = DefaultErrors;
+export type SetInstanceTemplateInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Specifies the instance template to use when creating new instances in this group. The templates for existing instances in the group do not change unless you run recreateInstances, runapplyUpdatesToInstances, or set the group'supdatePolicy.type to PROACTIVE. */
 export const setInstanceTemplateInstanceGroupManagers: API.OperationMethod<
@@ -46851,7 +48040,7 @@ export const setInstanceTemplateInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetInstanceTemplateInstanceGroupManagersRequest,
   output: SetInstanceTemplateInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetTargetPoolsInstanceGroupManagersRequest {
@@ -46891,7 +48080,12 @@ export type SetTargetPoolsInstanceGroupManagersResponse = Operation;
 export const SetTargetPoolsInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetTargetPoolsInstanceGroupManagersError = DefaultErrors;
+export type SetTargetPoolsInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the target pools to which all instances in this managed instance group are assigned. The target pools automatically apply to all of the instances in the managed instance group. This operation is markedDONE when you make the request even if the instances have not yet been added to their target pools. The change might take some time to apply to all of the instances in the group depending on the size of the group. */
 export const setTargetPoolsInstanceGroupManagers: API.OperationMethod<
@@ -46902,7 +48096,7 @@ export const setTargetPoolsInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetTargetPoolsInstanceGroupManagersRequest,
   output: SetTargetPoolsInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagedInstancesInstanceGroupManagersRequest {
@@ -46952,7 +48146,12 @@ export type ListManagedInstancesInstanceGroupManagersResponse =
 export const ListManagedInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagersListManagedInstancesResponse;
 
-export type ListManagedInstancesInstanceGroupManagersError = DefaultErrors;
+export type ListManagedInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all of the instances in the managed instance group. Each instance in the list has a currentAction, which indicates the action that the managed instance group is performing on the instance. For example, if the group is still creating an instance, the currentAction is CREATING. If a previous action failed, the list displays the errors for that failed action. The orderBy query parameter is not supported. The `pageToken` query parameter is supported only if the group's `listManagedInstancesResults` field is set to `PAGINATED`. */
 export const listManagedInstancesInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -46963,7 +48162,7 @@ export const listManagedInstancesInstanceGroupManagers: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedInstancesInstanceGroupManagersRequest,
   output: ListManagedInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -47016,7 +48215,10 @@ export type ListErrorsInstanceGroupManagersResponse =
 export const ListErrorsInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagersListErrorsResponse;
 
-export type ListErrorsInstanceGroupManagersError = DefaultErrors;
+export type ListErrorsInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all errors thrown by actions on instances for a given managed instance group. The filter and orderBy query parameters are not supported. */
 export const listErrorsInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -47027,7 +48229,7 @@ export const listErrorsInstanceGroupManagers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListErrorsInstanceGroupManagersRequest,
   output: ListErrorsInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -47082,7 +48284,12 @@ export type ListPerInstanceConfigsInstanceGroupManagersResponse =
 export const ListPerInstanceConfigsInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagersListPerInstanceConfigsResp;
 
-export type ListPerInstanceConfigsInstanceGroupManagersError = DefaultErrors;
+export type ListPerInstanceConfigsInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all of the per-instance configurations defined for the managed instance group. The orderBy query parameter is not supported. */
 export const listPerInstanceConfigsInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -47093,7 +48300,7 @@ export const listPerInstanceConfigsInstanceGroupManagers: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPerInstanceConfigsInstanceGroupManagersRequest,
   output: ListPerInstanceConfigsInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -47138,7 +48345,12 @@ export type UpdatePerInstanceConfigsInstanceGroupManagersResponse = Operation;
 export const UpdatePerInstanceConfigsInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdatePerInstanceConfigsInstanceGroupManagersError = DefaultErrors;
+export type UpdatePerInstanceConfigsInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts or updates per-instance configurations for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch. */
 export const updatePerInstanceConfigsInstanceGroupManagers: API.OperationMethod<
@@ -47149,7 +48361,7 @@ export const updatePerInstanceConfigsInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePerInstanceConfigsInstanceGroupManagersRequest,
   output: UpdatePerInstanceConfigsInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPerInstanceConfigsInstanceGroupManagersRequest {
@@ -47189,7 +48401,12 @@ export type PatchPerInstanceConfigsInstanceGroupManagersResponse = Operation;
 export const PatchPerInstanceConfigsInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchPerInstanceConfigsInstanceGroupManagersError = DefaultErrors;
+export type PatchPerInstanceConfigsInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts or patches per-instance configurations for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch. */
 export const patchPerInstanceConfigsInstanceGroupManagers: API.OperationMethod<
@@ -47200,7 +48417,7 @@ export const patchPerInstanceConfigsInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPerInstanceConfigsInstanceGroupManagersRequest,
   output: PatchPerInstanceConfigsInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePerInstanceConfigsInstanceGroupManagersRequest {
@@ -47237,7 +48454,12 @@ export type DeletePerInstanceConfigsInstanceGroupManagersResponse = Operation;
 export const DeletePerInstanceConfigsInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeletePerInstanceConfigsInstanceGroupManagersError = DefaultErrors;
+export type DeletePerInstanceConfigsInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes selected per-instance configurations for the managed instance group. */
 export const deletePerInstanceConfigsInstanceGroupManagers: API.OperationMethod<
@@ -47248,7 +48470,7 @@ export const deletePerInstanceConfigsInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePerInstanceConfigsInstanceGroupManagersRequest,
   output: DeletePerInstanceConfigsInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApplyUpdatesToInstancesInstanceGroupManagersRequest {
@@ -47285,7 +48507,12 @@ export type ApplyUpdatesToInstancesInstanceGroupManagersResponse = Operation;
 export const ApplyUpdatesToInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ApplyUpdatesToInstancesInstanceGroupManagersError = DefaultErrors;
+export type ApplyUpdatesToInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies changes to selected instances on the managed instance group. This method can be used to apply new overrides and/or new versions. */
 export const applyUpdatesToInstancesInstanceGroupManagers: API.OperationMethod<
@@ -47296,7 +48523,7 @@ export const applyUpdatesToInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyUpdatesToInstancesInstanceGroupManagersRequest,
   output: ApplyUpdatesToInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateInstancesInstanceGroupManagersRequest {
@@ -47336,7 +48563,12 @@ export type CreateInstancesInstanceGroupManagersResponse = Operation;
 export const CreateInstancesInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateInstancesInstanceGroupManagersError = DefaultErrors;
+export type CreateInstancesInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates instances with per-instance configurations in this managed instance group. Instances are created using the current instance template. Thecreate instances operation is marked DONE if thecreateInstances request is successful. The underlying actions take additional time. You must separately verify the status of thecreating or actions with the listmanagedinstances method. */
 export const createInstancesInstanceGroupManagers: API.OperationMethod<
@@ -47347,7 +48579,7 @@ export const createInstancesInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInstancesInstanceGroupManagersRequest,
   output: CreateInstancesInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInstanceGroupManagerResizeRequestsRequest {
@@ -47382,7 +48614,10 @@ export type GetInstanceGroupManagerResizeRequestsResponse =
 export const GetInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagerResizeRequest;
 
-export type GetInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type GetInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all of the details about the specified resize request. */
 export const getInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -47393,7 +48628,7 @@ export const getInstanceGroupManagerResizeRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceGroupManagerResizeRequestsRequest,
   output: GetInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInstanceGroupManagerResizeRequestsRequest {
@@ -47431,7 +48666,12 @@ export type InsertInstanceGroupManagerResizeRequestsResponse = Operation;
 export const InsertInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type InsertInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new resize request that starts provisioning VMs immediately or queues VM creation. */
 export const insertInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -47442,7 +48682,7 @@ export const insertInstanceGroupManagerResizeRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstanceGroupManagerResizeRequestsRequest,
   output: InsertInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstanceGroupManagerResizeRequestsRequest {
@@ -47491,7 +48731,10 @@ export type ListInstanceGroupManagerResizeRequestsResponse =
 export const ListInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagerResizeRequestsListResponse;
 
-export type ListInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type ListInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of resize requests that are contained in the managed instance group. */
 export const listInstanceGroupManagerResizeRequests: API.PaginatedOperationMethod<
@@ -47502,7 +48745,7 @@ export const listInstanceGroupManagerResizeRequests: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceGroupManagerResizeRequestsRequest,
   output: ListInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -47545,7 +48788,12 @@ export type CancelInstanceGroupManagerResizeRequestsResponse = Operation;
 export const CancelInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type CancelInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels the specified resize request and removes it from the queue. Cancelled resize request does no longer wait for the resources to be provisioned. Cancel is only possible for requests that are accepted in the queue. */
 export const cancelInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -47556,7 +48804,7 @@ export const cancelInstanceGroupManagerResizeRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelInstanceGroupManagerResizeRequestsRequest,
   output: CancelInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstanceGroupManagerResizeRequestsRequest {
@@ -47593,7 +48841,12 @@ export type DeleteInstanceGroupManagerResizeRequestsResponse = Operation;
 export const DeleteInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type DeleteInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified, inactive resize request. Requests that are still active cannot be deleted. Deleting request does not delete instances that were provisioned previously. */
 export const deleteInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -47604,7 +48857,7 @@ export const deleteInstanceGroupManagerResizeRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceGroupManagerResizeRequestsRequest,
   output: DeleteInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionInstanceGroupManagersRequest {
@@ -47648,7 +48901,10 @@ export type ListRegionInstanceGroupManagersResponse =
 export const ListRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupManagerList;
 
-export type ListRegionInstanceGroupManagersError = DefaultErrors;
+export type ListRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of managed instance groups that are contained within the specified region. */
 export const listRegionInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -47659,7 +48915,7 @@ export const listRegionInstanceGroupManagers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceGroupManagersRequest,
   output: ListRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -47695,7 +48951,10 @@ export type GetRegionInstanceGroupManagersResponse = InstanceGroupManager;
 export const GetRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManager;
 
-export type GetRegionInstanceGroupManagersError = DefaultErrors;
+export type GetRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all of the details about the specified managed instance group. */
 export const getRegionInstanceGroupManagers: API.OperationMethod<
@@ -47706,7 +48965,7 @@ export const getRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionInstanceGroupManagersRequest,
   output: GetRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionInstanceGroupManagersRequest {
@@ -47739,7 +48998,12 @@ export type InsertRegionInstanceGroupManagersResponse = Operation;
 export const InsertRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionInstanceGroupManagersError = DefaultErrors;
+export type InsertRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with thelistmanagedinstances method. A regional managed instance group can contain up to 2000 instances. */
 export const insertRegionInstanceGroupManagers: API.OperationMethod<
@@ -47750,7 +49014,7 @@ export const insertRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionInstanceGroupManagersRequest,
   output: InsertRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionInstanceGroupManagersRequest {
@@ -47788,7 +49052,12 @@ export type PatchRegionInstanceGroupManagersResponse = Operation;
 export const PatchRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionInstanceGroupManagersError = DefaultErrors;
+export type PatchRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a managed instance group using the information that you specify in the request. This operation is marked as DONE when the group is patched even if the instances in the group are still in the process of being patched. You must separately verify the status of the individual instances with the listmanagedinstances method. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. If you update your group to specify a new template or instance configuration, it's possible that your intended specification for each VM in the group is different from the current state of that VM. To learn how to apply an updated configuration to the VMs in a MIG, seeUpdating instances in a MIG. */
 export const patchRegionInstanceGroupManagers: API.OperationMethod<
@@ -47799,7 +49068,7 @@ export const patchRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionInstanceGroupManagersRequest,
   output: PatchRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionInstanceGroupManagersRequest {
@@ -47833,7 +49102,12 @@ export type DeleteRegionInstanceGroupManagersResponse = Operation;
 export const DeleteRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionInstanceGroupManagersError = DefaultErrors;
+export type DeleteRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified managed instance group and all of the instances in that group. */
 export const deleteRegionInstanceGroupManagers: API.OperationMethod<
@@ -47844,7 +49118,7 @@ export const deleteRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionInstanceGroupManagersRequest,
   output: DeleteRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstancesRegionInstanceGroupManagersRequest {
@@ -47884,7 +49158,12 @@ export type DeleteInstancesRegionInstanceGroupManagersResponse = Operation;
 export const DeleteInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type DeleteInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be immediately deleted. The instances are also removed from any target pools of which they were a member. This method reduces thetargetSize of the managed instance group by the number of instances that you delete. The deleteInstances operation is marked DONE if the deleteInstances request is successful. The underlying actions take additional time. You must separately verify the status of thedeleting action with thelistmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request. */
 export const deleteInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -47895,7 +49174,7 @@ export const deleteInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstancesRegionInstanceGroupManagersRequest,
   output: DeleteInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SuspendInstancesRegionInstanceGroupManagersRequest {
@@ -47935,7 +49214,12 @@ export type SuspendInstancesRegionInstanceGroupManagersResponse = Operation;
 export const SuspendInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SuspendInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type SuspendInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be immediately suspended. You can only specify instances that are running in this request. This method reduces thetargetSize and increases the targetSuspendedSize of the managed instance group by the number of instances that you suspend. The suspendInstances operation is marked DONE if the suspendInstances request is successful. The underlying actions take additional time. You must separately verify the status of theSUSPENDING action with thelistmanagedinstances method. If the standbyPolicy.initialDelaySec field is set, the group delays suspension of the instances until initialDelaySec have passed from instance.creationTimestamp (that is, when the instance was created). This delay gives your application time to set itself up and initialize on the instance. If more thaninitialDelaySec seconds have passed sinceinstance.creationTimestamp when this method is called, there will be zero delay. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is suspended. Suspended instances can be resumed using the resumeInstances method. You can specify a maximum of 1000 instances with this method per request. */
 export const suspendInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -47946,7 +49230,7 @@ export const suspendInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SuspendInstancesRegionInstanceGroupManagersRequest,
   output: SuspendInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeInstancesRegionInstanceGroupManagersRequest {
@@ -47986,7 +49270,12 @@ export type ResumeInstancesRegionInstanceGroupManagersResponse = Operation;
 export const ResumeInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResumeInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type ResumeInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be resumed. This method increases thetargetSize and decreases the targetSuspendedSize of the managed instance group by the number of instances that you resume. The resumeInstances operation is marked DONE if the resumeInstances request is successful. The underlying actions take additional time. You must separately verify the status of theRESUMING action with thelistmanagedinstances method. In this request, you can only specify instances that are suspended. For example, if an instance was previously suspended using the suspendInstances method, it can be resumed using the resumeInstances method. If a health check is attached to the managed instance group, the specified instances will be verified as healthy after they are resumed. You can specify a maximum of 1000 instances with this method per request. */
 export const resumeInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -47997,7 +49286,7 @@ export const resumeInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeInstancesRegionInstanceGroupManagersRequest,
   output: ResumeInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopInstancesRegionInstanceGroupManagersRequest {
@@ -48037,7 +49326,12 @@ export type StopInstancesRegionInstanceGroupManagersResponse = Operation;
 export const StopInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StopInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type StopInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be immediately stopped. You can only specify instances that are running in this request. This method reduces thetargetSize and increases the targetStoppedSize of the managed instance group by the number of instances that you stop. The stopInstances operation is marked DONE if the stopInstances request is successful. The underlying actions take additional time. You must separately verify the status of theSTOPPING action with thelistmanagedinstances method. If the standbyPolicy.initialDelaySec field is set, the group delays stopping the instances until initialDelaySec have passed from instance.creationTimestamp (that is, when the instance was created). This delay gives your application time to set itself up and initialize on the instance. If more thaninitialDelaySec seconds have passed sinceinstance.creationTimestamp when this method is called, there will be zero delay. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is stopped. Stopped instances can be started using the startInstances method. You can specify a maximum of 1000 instances with this method per request. */
 export const stopInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -48048,7 +49342,7 @@ export const stopInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopInstancesRegionInstanceGroupManagersRequest,
   output: StopInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StartInstancesRegionInstanceGroupManagersRequest {
@@ -48088,7 +49382,12 @@ export type StartInstancesRegionInstanceGroupManagersResponse = Operation;
 export const StartInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type StartInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type StartInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances in the managed instance group to be started. This method increases thetargetSize and decreases the targetStoppedSize of the managed instance group by the number of instances that you start. The startInstances operation is marked DONE if the startInstances request is successful. The underlying actions take additional time. You must separately verify the status of theSTARTING action with thelistmanagedinstances method. In this request, you can only specify instances that are stopped. For example, if an instance was previously stopped using the stopInstances method, it can be started using the startInstances method. If a health check is attached to the managed instance group, the specified instances will be verified as healthy after they are started. You can specify a maximum of 1000 instances with this method per request. */
 export const startInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -48099,7 +49398,7 @@ export const startInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartInstancesRegionInstanceGroupManagersRequest,
   output: StartInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AbandonInstancesRegionInstanceGroupManagersRequest {
@@ -48139,7 +49438,12 @@ export type AbandonInstancesRegionInstanceGroupManagersResponse = Operation;
 export const AbandonInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AbandonInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type AbandonInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified instances to be immediately removed from the managed instance group. Abandoning an instance does not delete the instance, but it does remove the instance from any target pools that are applied by the managed instance group. This method reduces thetargetSize of the managed instance group by the number of instances that you abandon. This operation is marked asDONE when the action is scheduled even if the instances have not yet been removed from the group. You must separately verify the status of the abandoning action with thelistmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request. */
 export const abandonInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -48150,7 +49454,7 @@ export const abandonInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AbandonInstancesRegionInstanceGroupManagersRequest,
   output: AbandonInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RecreateInstancesRegionInstanceGroupManagersRequest {
@@ -48190,7 +49494,12 @@ export type RecreateInstancesRegionInstanceGroupManagersResponse = Operation;
 export const RecreateInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RecreateInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type RecreateInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Flags the specified VM instances in the managed instance group to be immediately recreated. Each instance is recreated using the group's current configuration. This operation is marked as DONE when the flag is set even if the instances have not yet been recreated. You must separately verify the status of each instance by checking itscurrentAction field; for more information, see Checking the status of managed instances. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. You can specify a maximum of 1000 instances with this method per request. */
 export const recreateInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -48201,7 +49510,7 @@ export const recreateInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecreateInstancesRegionInstanceGroupManagersRequest,
   output: RecreateInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResizeRegionInstanceGroupManagersRequest {
@@ -48239,7 +49548,12 @@ export type ResizeRegionInstanceGroupManagersResponse = Operation;
 export const ResizeRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ResizeRegionInstanceGroupManagersError = DefaultErrors;
+export type ResizeRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the intended size of the managed instance group. If you increase the size, the group creates new instances using the current instance template. If you decrease the size, the group deletes one or more instances. The resize operation is marked DONE if theresize request is successful. The underlying actions take additional time. You must separately verify the status of thecreating or deleting actions with thelistmanagedinstances method. If the group is part of a backend service that has enabled connection draining, it can take up to 60 seconds after the connection draining duration has elapsed before the VM instance is removed or deleted. */
 export const resizeRegionInstanceGroupManagers: API.OperationMethod<
@@ -48250,7 +49564,7 @@ export const resizeRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResizeRegionInstanceGroupManagersRequest,
   output: ResizeRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetInstanceTemplateRegionInstanceGroupManagersRequest {
@@ -48290,7 +49604,12 @@ export type SetInstanceTemplateRegionInstanceGroupManagersResponse = Operation;
 export const SetInstanceTemplateRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetInstanceTemplateRegionInstanceGroupManagersError = DefaultErrors;
+export type SetInstanceTemplateRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the instance template to use when creating new instances or recreating instances in this group. Existing instances are not affected. */
 export const setInstanceTemplateRegionInstanceGroupManagers: API.OperationMethod<
@@ -48301,7 +49620,7 @@ export const setInstanceTemplateRegionInstanceGroupManagers: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetInstanceTemplateRegionInstanceGroupManagersRequest,
   output: SetInstanceTemplateRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetTargetPoolsRegionInstanceGroupManagersRequest {
@@ -48341,7 +49660,12 @@ export type SetTargetPoolsRegionInstanceGroupManagersResponse = Operation;
 export const SetTargetPoolsRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetTargetPoolsRegionInstanceGroupManagersError = DefaultErrors;
+export type SetTargetPoolsRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the target pools to which all new instances in this group are assigned. Existing instances in the group are not affected. */
 export const setTargetPoolsRegionInstanceGroupManagers: API.OperationMethod<
@@ -48352,7 +49676,7 @@ export const setTargetPoolsRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetTargetPoolsRegionInstanceGroupManagersRequest,
   output: SetTargetPoolsRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListManagedInstancesRegionInstanceGroupManagersRequest {
@@ -48403,7 +49727,11 @@ export const ListManagedInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupManagersListInstancesResponse;
 
 export type ListManagedInstancesRegionInstanceGroupManagersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the instances in the managed instance group and instances that are scheduled to be created. The list includes any current actions that the group has scheduled for its instances. The orderBy query parameter is not supported. The `pageToken` query parameter is supported only if the group's `listManagedInstancesResults` field is set to `PAGINATED`. */
 export const listManagedInstancesRegionInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -48414,7 +49742,7 @@ export const listManagedInstancesRegionInstanceGroupManagers: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListManagedInstancesRegionInstanceGroupManagersRequest,
   output: ListManagedInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -48467,7 +49795,10 @@ export type ListErrorsRegionInstanceGroupManagersResponse =
 export const ListErrorsRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupManagersListErrorsResponse;
 
-export type ListErrorsRegionInstanceGroupManagersError = DefaultErrors;
+export type ListErrorsRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all errors thrown by actions on instances for a given regional managed instance group. The filter andorderBy query parameters are not supported. */
 export const listErrorsRegionInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -48478,7 +49809,7 @@ export const listErrorsRegionInstanceGroupManagers: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListErrorsRegionInstanceGroupManagersRequest,
   output: ListErrorsRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -48534,7 +49865,11 @@ export const ListPerInstanceConfigsRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupManagersListInstanceConfigsResp;
 
 export type ListPerInstanceConfigsRegionInstanceGroupManagersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all of the per-instance configurations defined for the managed instance group. The orderBy query parameter is not supported. */
 export const listPerInstanceConfigsRegionInstanceGroupManagers: API.PaginatedOperationMethod<
@@ -48545,7 +49880,7 @@ export const listPerInstanceConfigsRegionInstanceGroupManagers: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPerInstanceConfigsRegionInstanceGroupManagersRequest,
   output: ListPerInstanceConfigsRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -48592,7 +49927,11 @@ export const UpdatePerInstanceConfigsRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type UpdatePerInstanceConfigsRegionInstanceGroupManagersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts or updates per-instance configurations for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch. */
 export const updatePerInstanceConfigsRegionInstanceGroupManagers: API.OperationMethod<
@@ -48603,7 +49942,7 @@ export const updatePerInstanceConfigsRegionInstanceGroupManagers: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePerInstanceConfigsRegionInstanceGroupManagersRequest,
   output: UpdatePerInstanceConfigsRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPerInstanceConfigsRegionInstanceGroupManagersRequest {
@@ -48645,7 +49984,11 @@ export const PatchPerInstanceConfigsRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchPerInstanceConfigsRegionInstanceGroupManagersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts or patches per-instance configurations for the managed instance group. perInstanceConfig.name serves as a key used to distinguish whether to perform insert or patch. */
 export const patchPerInstanceConfigsRegionInstanceGroupManagers: API.OperationMethod<
@@ -48656,7 +49999,7 @@ export const patchPerInstanceConfigsRegionInstanceGroupManagers: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPerInstanceConfigsRegionInstanceGroupManagersRequest,
   output: PatchPerInstanceConfigsRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePerInstanceConfigsRegionInstanceGroupManagersRequest {
@@ -48695,7 +50038,11 @@ export const DeletePerInstanceConfigsRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeletePerInstanceConfigsRegionInstanceGroupManagersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes selected per-instance configurations for the managed instance group. */
 export const deletePerInstanceConfigsRegionInstanceGroupManagers: API.OperationMethod<
@@ -48706,7 +50053,7 @@ export const deletePerInstanceConfigsRegionInstanceGroupManagers: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePerInstanceConfigsRegionInstanceGroupManagersRequest,
   output: DeletePerInstanceConfigsRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApplyUpdatesToInstancesRegionInstanceGroupManagersRequest {
@@ -48745,7 +50092,11 @@ export const ApplyUpdatesToInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ApplyUpdatesToInstancesRegionInstanceGroupManagersError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Apply updates to selected instances the managed instance group. */
 export const applyUpdatesToInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -48756,7 +50107,7 @@ export const applyUpdatesToInstancesRegionInstanceGroupManagers: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyUpdatesToInstancesRegionInstanceGroupManagersRequest,
   output: ApplyUpdatesToInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateInstancesRegionInstanceGroupManagersRequest {
@@ -48796,7 +50147,12 @@ export type CreateInstancesRegionInstanceGroupManagersResponse = Operation;
 export const CreateInstancesRegionInstanceGroupManagersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateInstancesRegionInstanceGroupManagersError = DefaultErrors;
+export type CreateInstancesRegionInstanceGroupManagersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates instances with per-instance configurations in this regional managed instance group. Instances are created using the current instance template. The create instances operation is marked DONE if the createInstances request is successful. The underlying actions take additional time. You must separately verify the status of thecreating or actions with the listmanagedinstances method. */
 export const createInstancesRegionInstanceGroupManagers: API.OperationMethod<
@@ -48807,7 +50163,7 @@ export const createInstancesRegionInstanceGroupManagers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInstancesRegionInstanceGroupManagersRequest,
   output: CreateInstancesRegionInstanceGroupManagersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRegionInstanceGroupManagerResizeRequestsRequest {
@@ -48842,7 +50198,10 @@ export type GetRegionInstanceGroupManagerResizeRequestsResponse =
 export const GetRegionInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceGroupManagerResizeRequest;
 
-export type GetRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type GetRegionInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all of the details about the specified resize request. */
 export const getRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -48853,7 +50212,7 @@ export const getRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionInstanceGroupManagerResizeRequestsRequest,
   output: GetRegionInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionInstanceGroupManagerResizeRequestsRequest {
@@ -48891,7 +50250,12 @@ export type InsertRegionInstanceGroupManagerResizeRequestsResponse = Operation;
 export const InsertRegionInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type InsertRegionInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Resize Request that starts provisioning VMs immediately or queues VM creation. */
 export const insertRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -48902,7 +50266,7 @@ export const insertRegionInstanceGroupManagerResizeRequests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionInstanceGroupManagerResizeRequestsRequest,
   output: InsertRegionInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionInstanceGroupManagerResizeRequestsRequest {
@@ -48951,7 +50315,10 @@ export type ListRegionInstanceGroupManagerResizeRequestsResponse =
 export const ListRegionInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionInstanceGroupManagerResizeRequestsListResponse;
 
-export type ListRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type ListRegionInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of Resize Requests that are contained in the managed instance group. */
 export const listRegionInstanceGroupManagerResizeRequests: API.PaginatedOperationMethod<
@@ -48962,7 +50329,7 @@ export const listRegionInstanceGroupManagerResizeRequests: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceGroupManagerResizeRequestsRequest,
   output: ListRegionInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -49005,7 +50372,12 @@ export type CancelRegionInstanceGroupManagerResizeRequestsResponse = Operation;
 export const CancelRegionInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type CancelRegionInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels the specified resize request. Cancelled resize request no longer waits for the resources to be provisioned. Cancel is only possible for requests that are in accepted state. */
 export const cancelRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -49016,7 +50388,7 @@ export const cancelRegionInstanceGroupManagerResizeRequests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelRegionInstanceGroupManagerResizeRequestsRequest,
   output: CancelRegionInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionInstanceGroupManagerResizeRequestsRequest {
@@ -49053,7 +50425,12 @@ export type DeleteRegionInstanceGroupManagerResizeRequestsResponse = Operation;
 export const DeleteRegionInstanceGroupManagerResizeRequestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionInstanceGroupManagerResizeRequestsError = DefaultErrors;
+export type DeleteRegionInstanceGroupManagerResizeRequestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified, inactive resize request. Requests that are still active cannot be deleted. Deleting request does not delete instances that were provisioned previously. */
 export const deleteRegionInstanceGroupManagerResizeRequests: API.OperationMethod<
@@ -49064,7 +50441,7 @@ export const deleteRegionInstanceGroupManagerResizeRequests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionInstanceGroupManagerResizeRequestsRequest,
   output: DeleteRegionInstanceGroupManagerResizeRequestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAutoscalersRequest {
@@ -49108,7 +50485,7 @@ export type ListAutoscalersResponse = AutoscalerList;
 export const ListAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalerList;
 
-export type ListAutoscalersError = DefaultErrors;
+export type ListAutoscalersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of autoscalers contained within the specified zone. */
 export const listAutoscalers: API.PaginatedOperationMethod<
@@ -49119,7 +50496,7 @@ export const listAutoscalers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAutoscalersRequest,
   output: ListAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -49174,7 +50551,10 @@ export type AggregatedListAutoscalersResponse = AutoscalerAggregatedList;
 export const AggregatedListAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ AutoscalerAggregatedList;
 
-export type AggregatedListAutoscalersError = DefaultErrors;
+export type AggregatedListAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of autoscalers. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListAutoscalers: API.PaginatedOperationMethod<
@@ -49185,7 +50565,7 @@ export const aggregatedListAutoscalers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListAutoscalersRequest,
   output: AggregatedListAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -49217,7 +50597,7 @@ export const GetAutoscalersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAutoscalersResponse = Autoscaler;
 export const GetAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Autoscaler;
 
-export type GetAutoscalersError = DefaultErrors;
+export type GetAutoscalersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified autoscaler resource. */
 export const getAutoscalers: API.OperationMethod<
@@ -49228,7 +50608,7 @@ export const getAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAutoscalersRequest,
   output: GetAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertAutoscalersRequest {
@@ -49260,7 +50640,12 @@ export const InsertAutoscalersRequest =
 export type InsertAutoscalersResponse = Operation;
 export const InsertAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertAutoscalersError = DefaultErrors;
+export type InsertAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an autoscaler in the specified project using the data included in the request. */
 export const insertAutoscalers: API.OperationMethod<
@@ -49271,7 +50656,7 @@ export const insertAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAutoscalersRequest,
   output: InsertAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateAutoscalersRequest {
@@ -49306,7 +50691,12 @@ export const UpdateAutoscalersRequest =
 export type UpdateAutoscalersResponse = Operation;
 export const UpdateAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateAutoscalersError = DefaultErrors;
+export type UpdateAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an autoscaler in the specified project using the data included in the request. */
 export const updateAutoscalers: API.OperationMethod<
@@ -49317,7 +50707,7 @@ export const updateAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAutoscalersRequest,
   output: UpdateAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAutoscalersRequest {
@@ -49352,7 +50742,12 @@ export const PatchAutoscalersRequest =
 export type PatchAutoscalersResponse = Operation;
 export const PatchAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchAutoscalersError = DefaultErrors;
+export type PatchAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an autoscaler in the specified project using the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchAutoscalers: API.OperationMethod<
@@ -49363,7 +50758,7 @@ export const patchAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAutoscalersRequest,
   output: PatchAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteAutoscalersRequest {
@@ -49394,7 +50789,12 @@ export const DeleteAutoscalersRequest =
 export type DeleteAutoscalersResponse = Operation;
 export const DeleteAutoscalersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteAutoscalersError = DefaultErrors;
+export type DeleteAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified autoscaler. */
 export const deleteAutoscalers: API.OperationMethod<
@@ -49405,7 +50805,7 @@ export const deleteAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAutoscalersRequest,
   output: DeleteAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsAutoscalersRequest {
@@ -49438,7 +50838,12 @@ export type TestIamPermissionsAutoscalersResponse = TestPermissionsResponse;
 export const TestIamPermissionsAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsAutoscalersError = DefaultErrors;
+export type TestIamPermissionsAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsAutoscalers: API.OperationMethod<
@@ -49449,7 +50854,7 @@ export const testIamPermissionsAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsAutoscalersRequest,
   output: TestIamPermissionsAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionAutoscalersRequest {
@@ -49492,7 +50897,7 @@ export type ListRegionAutoscalersResponse = RegionAutoscalerList;
 export const ListRegionAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionAutoscalerList;
 
-export type ListRegionAutoscalersError = DefaultErrors;
+export type ListRegionAutoscalersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of autoscalers contained within the specified region. */
 export const listRegionAutoscalers: API.PaginatedOperationMethod<
@@ -49503,7 +50908,7 @@ export const listRegionAutoscalers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionAutoscalersRequest,
   output: ListRegionAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -49537,7 +50942,7 @@ export type GetRegionAutoscalersResponse = Autoscaler;
 export const GetRegionAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Autoscaler;
 
-export type GetRegionAutoscalersError = DefaultErrors;
+export type GetRegionAutoscalersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified autoscaler. */
 export const getRegionAutoscalers: API.OperationMethod<
@@ -49548,7 +50953,7 @@ export const getRegionAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionAutoscalersRequest,
   output: GetRegionAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionAutoscalersRequest {
@@ -49581,7 +50986,12 @@ export type InsertRegionAutoscalersResponse = Operation;
 export const InsertRegionAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionAutoscalersError = DefaultErrors;
+export type InsertRegionAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an autoscaler in the specified project using the data included in the request. */
 export const insertRegionAutoscalers: API.OperationMethod<
@@ -49592,7 +51002,7 @@ export const insertRegionAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionAutoscalersRequest,
   output: InsertRegionAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRegionAutoscalersRequest {
@@ -49628,7 +51038,12 @@ export type UpdateRegionAutoscalersResponse = Operation;
 export const UpdateRegionAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRegionAutoscalersError = DefaultErrors;
+export type UpdateRegionAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an autoscaler in the specified project using the data included in the request. */
 export const updateRegionAutoscalers: API.OperationMethod<
@@ -49639,7 +51054,7 @@ export const updateRegionAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRegionAutoscalersRequest,
   output: UpdateRegionAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionAutoscalersRequest {
@@ -49675,7 +51090,12 @@ export type PatchRegionAutoscalersResponse = Operation;
 export const PatchRegionAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionAutoscalersError = DefaultErrors;
+export type PatchRegionAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an autoscaler in the specified project using the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchRegionAutoscalers: API.OperationMethod<
@@ -49686,7 +51106,7 @@ export const patchRegionAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionAutoscalersRequest,
   output: PatchRegionAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionAutoscalersRequest {
@@ -49718,7 +51138,12 @@ export type DeleteRegionAutoscalersResponse = Operation;
 export const DeleteRegionAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionAutoscalersError = DefaultErrors;
+export type DeleteRegionAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified autoscaler. */
 export const deleteRegionAutoscalers: API.OperationMethod<
@@ -49729,7 +51154,7 @@ export const deleteRegionAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionAutoscalersRequest,
   output: DeleteRegionAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionAutoscalersRequest {
@@ -49763,7 +51188,12 @@ export type TestIamPermissionsRegionAutoscalersResponse =
 export const TestIamPermissionsRegionAutoscalersResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionAutoscalersError = DefaultErrors;
+export type TestIamPermissionsRegionAutoscalersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionAutoscalers: API.OperationMethod<
@@ -49774,7 +51204,7 @@ export const testIamPermissionsRegionAutoscalers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionAutoscalersRequest,
   output: TestIamPermissionsRegionAutoscalersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBackendBucketsRequest {
@@ -49811,7 +51241,7 @@ export type ListBackendBucketsResponse = BackendBucketList;
 export const ListBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendBucketList;
 
-export type ListBackendBucketsError = DefaultErrors;
+export type ListBackendBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of BackendBucket resources available to the specified project. */
 export const listBackendBuckets: API.PaginatedOperationMethod<
@@ -49822,7 +51252,7 @@ export const listBackendBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBackendBucketsRequest,
   output: ListBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -49877,7 +51307,10 @@ export type AggregatedListBackendBucketsResponse = BackendBucketAggregatedList;
 export const AggregatedListBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendBucketAggregatedList;
 
-export type AggregatedListBackendBucketsError = DefaultErrors;
+export type AggregatedListBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all BackendBucket resources, regional and global, available to the specified project. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListBackendBuckets: API.PaginatedOperationMethod<
@@ -49888,7 +51321,7 @@ export const aggregatedListBackendBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListBackendBucketsRequest,
   output: AggregatedListBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -49919,7 +51352,7 @@ export type GetBackendBucketsResponse = BackendBucket;
 export const GetBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendBucket;
 
-export type GetBackendBucketsError = DefaultErrors;
+export type GetBackendBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified BackendBucket resource. */
 export const getBackendBuckets: API.OperationMethod<
@@ -49930,7 +51363,7 @@ export const getBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendBucketsRequest,
   output: GetBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListUsableBackendBucketsRequest {
@@ -49970,7 +51403,10 @@ export type ListUsableBackendBucketsResponse = BackendBucketListUsable;
 export const ListUsableBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendBucketListUsable;
 
-export type ListUsableBackendBucketsError = DefaultErrors;
+export type ListUsableBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of all usable backend buckets in the specified project. */
 export const listUsableBackendBuckets: API.PaginatedOperationMethod<
@@ -49981,7 +51417,7 @@ export const listUsableBackendBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsableBackendBucketsRequest,
   output: ListUsableBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -50016,7 +51452,12 @@ export type InsertBackendBucketsResponse = Operation;
 export const InsertBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertBackendBucketsError = DefaultErrors;
+export type InsertBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a BackendBucket resource in the specified project using the data included in the request. */
 export const insertBackendBuckets: API.OperationMethod<
@@ -50027,7 +51468,7 @@ export const insertBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertBackendBucketsRequest,
   output: InsertBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBackendBucketsRequest {
@@ -50056,7 +51497,12 @@ export type DeleteBackendBucketsResponse = Operation;
 export const DeleteBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteBackendBucketsError = DefaultErrors;
+export type DeleteBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified BackendBucket resource. */
 export const deleteBackendBuckets: API.OperationMethod<
@@ -50067,7 +51513,7 @@ export const deleteBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackendBucketsRequest,
   output: DeleteBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateBackendBucketsRequest {
@@ -50100,7 +51546,12 @@ export type UpdateBackendBucketsResponse = Operation;
 export const UpdateBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateBackendBucketsError = DefaultErrors;
+export type UpdateBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified BackendBucket resource with the data included in the request. */
 export const updateBackendBuckets: API.OperationMethod<
@@ -50111,7 +51562,7 @@ export const updateBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackendBucketsRequest,
   output: UpdateBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBackendBucketsRequest {
@@ -50144,7 +51595,12 @@ export type PatchBackendBucketsResponse = Operation;
 export const PatchBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchBackendBucketsError = DefaultErrors;
+export type PatchBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified BackendBucket resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchBackendBuckets: API.OperationMethod<
@@ -50155,7 +51611,7 @@ export const patchBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBackendBucketsRequest,
   output: PatchBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddSignedUrlKeyBackendBucketsRequest {
@@ -50188,7 +51644,12 @@ export type AddSignedUrlKeyBackendBucketsResponse = Operation;
 export const AddSignedUrlKeyBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddSignedUrlKeyBackendBucketsError = DefaultErrors;
+export type AddSignedUrlKeyBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a key for validating requests with signed URLs for this backend bucket. */
 export const addSignedUrlKeyBackendBuckets: API.OperationMethod<
@@ -50199,7 +51660,7 @@ export const addSignedUrlKeyBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddSignedUrlKeyBackendBucketsRequest,
   output: AddSignedUrlKeyBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSignedUrlKeyBackendBucketsRequest {
@@ -50232,7 +51693,12 @@ export type DeleteSignedUrlKeyBackendBucketsResponse = Operation;
 export const DeleteSignedUrlKeyBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSignedUrlKeyBackendBucketsError = DefaultErrors;
+export type DeleteSignedUrlKeyBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key for validating requests with signed URLs for this backend bucket. */
 export const deleteSignedUrlKeyBackendBuckets: API.OperationMethod<
@@ -50243,7 +51709,7 @@ export const deleteSignedUrlKeyBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSignedUrlKeyBackendBucketsRequest,
   output: DeleteSignedUrlKeyBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetEdgeSecurityPolicyBackendBucketsRequest {
@@ -50276,7 +51742,12 @@ export type SetEdgeSecurityPolicyBackendBucketsResponse = Operation;
 export const SetEdgeSecurityPolicyBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetEdgeSecurityPolicyBackendBucketsError = DefaultErrors;
+export type SetEdgeSecurityPolicyBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the edge security policy for the specified backend bucket. */
 export const setEdgeSecurityPolicyBackendBuckets: API.OperationMethod<
@@ -50287,7 +51758,7 @@ export const setEdgeSecurityPolicyBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetEdgeSecurityPolicyBackendBucketsRequest,
   output: SetEdgeSecurityPolicyBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyBackendBucketsRequest {
@@ -50318,7 +51789,10 @@ export type GetIamPolicyBackendBucketsResponse = Policy;
 export const GetIamPolicyBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyBackendBucketsError = DefaultErrors;
+export type GetIamPolicyBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyBackendBuckets: API.OperationMethod<
@@ -50329,7 +51803,7 @@ export const getIamPolicyBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyBackendBucketsRequest,
   output: GetIamPolicyBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyBackendBucketsRequest {
@@ -50359,7 +51833,12 @@ export type SetIamPolicyBackendBucketsResponse = Policy;
 export const SetIamPolicyBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyBackendBucketsError = DefaultErrors;
+export type SetIamPolicyBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyBackendBuckets: API.OperationMethod<
@@ -50370,7 +51849,7 @@ export const setIamPolicyBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyBackendBucketsRequest,
   output: SetIamPolicyBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsBackendBucketsRequest {
@@ -50400,7 +51879,12 @@ export type TestIamPermissionsBackendBucketsResponse = TestPermissionsResponse;
 export const TestIamPermissionsBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsBackendBucketsError = DefaultErrors;
+export type TestIamPermissionsBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsBackendBuckets: API.OperationMethod<
@@ -50411,7 +51895,7 @@ export const testIamPermissionsBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBackendBucketsRequest,
   output: TestIamPermissionsBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionBackendBucketsRequest {
@@ -50454,7 +51938,10 @@ export type ListRegionBackendBucketsResponse = BackendBucketList;
 export const ListRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendBucketList;
 
-export type ListRegionBackendBucketsError = DefaultErrors;
+export type ListRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of BackendBucket resources available to the specified project in the given region. */
 export const listRegionBackendBuckets: API.PaginatedOperationMethod<
@@ -50465,7 +51952,7 @@ export const listRegionBackendBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionBackendBucketsRequest,
   output: ListRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -50513,7 +52000,10 @@ export type ListUsableRegionBackendBucketsResponse = BackendBucketListUsable;
 export const ListUsableRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendBucketListUsable;
 
-export type ListUsableRegionBackendBucketsError = DefaultErrors;
+export type ListUsableRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of all usable backend buckets in the specified project in the given region. */
 export const listUsableRegionBackendBuckets: API.PaginatedOperationMethod<
@@ -50524,7 +52014,7 @@ export const listUsableRegionBackendBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsableRegionBackendBucketsRequest,
   output: ListUsableRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -50558,7 +52048,7 @@ export type GetRegionBackendBucketsResponse = BackendBucket;
 export const GetRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendBucket;
 
-export type GetRegionBackendBucketsError = DefaultErrors;
+export type GetRegionBackendBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified regional BackendBucket resource. */
 export const getRegionBackendBuckets: API.OperationMethod<
@@ -50569,7 +52059,7 @@ export const getRegionBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionBackendBucketsRequest,
   output: GetRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionBackendBucketsRequest {
@@ -50602,7 +52092,12 @@ export type InsertRegionBackendBucketsResponse = Operation;
 export const InsertRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionBackendBucketsError = DefaultErrors;
+export type InsertRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a RegionBackendBucket in the specified project in the given scope using the parameters that are included in the request. */
 export const insertRegionBackendBuckets: API.OperationMethod<
@@ -50613,7 +52108,7 @@ export const insertRegionBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionBackendBucketsRequest,
   output: InsertRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionBackendBucketsRequest {
@@ -50645,7 +52140,12 @@ export type DeleteRegionBackendBucketsResponse = Operation;
 export const DeleteRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionBackendBucketsError = DefaultErrors;
+export type DeleteRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified regional BackendBucket resource. */
 export const deleteRegionBackendBuckets: API.OperationMethod<
@@ -50656,7 +52156,7 @@ export const deleteRegionBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionBackendBucketsRequest,
   output: DeleteRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionBackendBucketsRequest {
@@ -50692,7 +52192,12 @@ export type PatchRegionBackendBucketsResponse = Operation;
 export const PatchRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionBackendBucketsError = DefaultErrors;
+export type PatchRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified BackendBucket resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchRegionBackendBuckets: API.OperationMethod<
@@ -50703,7 +52208,7 @@ export const patchRegionBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionBackendBucketsRequest,
   output: PatchRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyRegionBackendBucketsRequest {
@@ -50737,7 +52242,10 @@ export type GetIamPolicyRegionBackendBucketsResponse = Policy;
 export const GetIamPolicyRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRegionBackendBucketsError = DefaultErrors;
+export type GetIamPolicyRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyRegionBackendBuckets: API.OperationMethod<
@@ -50748,7 +52256,7 @@ export const getIamPolicyRegionBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRegionBackendBucketsRequest,
   output: GetIamPolicyRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyRegionBackendBucketsRequest {
@@ -50781,7 +52289,12 @@ export type SetIamPolicyRegionBackendBucketsResponse = Policy;
 export const SetIamPolicyRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRegionBackendBucketsError = DefaultErrors;
+export type SetIamPolicyRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyRegionBackendBuckets: API.OperationMethod<
@@ -50792,7 +52305,7 @@ export const setIamPolicyRegionBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRegionBackendBucketsRequest,
   output: SetIamPolicyRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionBackendBucketsRequest {
@@ -50826,7 +52339,12 @@ export type TestIamPermissionsRegionBackendBucketsResponse =
 export const TestIamPermissionsRegionBackendBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionBackendBucketsError = DefaultErrors;
+export type TestIamPermissionsRegionBackendBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionBackendBuckets: API.OperationMethod<
@@ -50837,7 +52355,7 @@ export const testIamPermissionsRegionBackendBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionBackendBucketsRequest,
   output: TestIamPermissionsRegionBackendBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListBackendServicesRequest {
@@ -50877,7 +52395,7 @@ export type ListBackendServicesResponse = BackendServiceList;
 export const ListBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendServiceList;
 
-export type ListBackendServicesError = DefaultErrors;
+export type ListBackendServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of BackendService resources available to the specified project. */
 export const listBackendServices: API.PaginatedOperationMethod<
@@ -50888,7 +52406,7 @@ export const listBackendServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBackendServicesRequest,
   output: ListBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -50944,7 +52462,10 @@ export type AggregatedListBackendServicesResponse =
 export const AggregatedListBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendServiceAggregatedList;
 
-export type AggregatedListBackendServicesError = DefaultErrors;
+export type AggregatedListBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all BackendService resources, regional and global, available to the specified project. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListBackendServices: API.PaginatedOperationMethod<
@@ -50955,7 +52476,7 @@ export const aggregatedListBackendServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListBackendServicesRequest,
   output: AggregatedListBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -51000,7 +52521,10 @@ export type ListUsableBackendServicesResponse = BackendServiceListUsable;
 export const ListUsableBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendServiceListUsable;
 
-export type ListUsableBackendServicesError = DefaultErrors;
+export type ListUsableBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of all usable backend services in the specified project. */
 export const listUsableBackendServices: API.PaginatedOperationMethod<
@@ -51011,7 +52535,7 @@ export const listUsableBackendServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsableBackendServicesRequest,
   output: ListUsableBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -51042,7 +52566,7 @@ export type GetBackendServicesResponse = BackendService;
 export const GetBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendService;
 
-export type GetBackendServicesError = DefaultErrors;
+export type GetBackendServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified BackendService resource. */
 export const getBackendServices: API.OperationMethod<
@@ -51053,7 +52577,7 @@ export const getBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBackendServicesRequest,
   output: GetBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertBackendServicesRequest {
@@ -51083,7 +52607,12 @@ export type InsertBackendServicesResponse = Operation;
 export const InsertBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertBackendServicesError = DefaultErrors;
+export type InsertBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview. */
 export const insertBackendServices: API.OperationMethod<
@@ -51094,7 +52623,7 @@ export const insertBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertBackendServicesRequest,
   output: InsertBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteBackendServicesRequest {
@@ -51123,7 +52652,12 @@ export type DeleteBackendServicesResponse = Operation;
 export const DeleteBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteBackendServicesError = DefaultErrors;
+export type DeleteBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified BackendService resource. */
 export const deleteBackendServices: API.OperationMethod<
@@ -51134,7 +52668,7 @@ export const deleteBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBackendServicesRequest,
   output: DeleteBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateBackendServicesRequest {
@@ -51167,7 +52701,12 @@ export type UpdateBackendServicesResponse = Operation;
 export const UpdateBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateBackendServicesError = DefaultErrors;
+export type UpdateBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified BackendService resource with the data included in the request. For more information, seeBackend services overview. */
 export const updateBackendServices: API.OperationMethod<
@@ -51178,7 +52717,7 @@ export const updateBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateBackendServicesRequest,
   output: UpdateBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBackendServicesRequest {
@@ -51211,7 +52750,12 @@ export type PatchBackendServicesResponse = Operation;
 export const PatchBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchBackendServicesError = DefaultErrors;
+export type PatchBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified BackendService resource with the data included in the request. For more information, see Backend services overview. This method supports PATCH semantics and uses the JSON merge patch format and processing rules. */
 export const patchBackendServices: API.OperationMethod<
@@ -51222,7 +52766,7 @@ export const patchBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBackendServicesRequest,
   output: PatchBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddSignedUrlKeyBackendServicesRequest {
@@ -51255,7 +52799,12 @@ export type AddSignedUrlKeyBackendServicesResponse = Operation;
 export const AddSignedUrlKeyBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddSignedUrlKeyBackendServicesError = DefaultErrors;
+export type AddSignedUrlKeyBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a key for validating requests with signed URLs for this backend service. */
 export const addSignedUrlKeyBackendServices: API.OperationMethod<
@@ -51266,7 +52815,7 @@ export const addSignedUrlKeyBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddSignedUrlKeyBackendServicesRequest,
   output: AddSignedUrlKeyBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSignedUrlKeyBackendServicesRequest {
@@ -51299,7 +52848,12 @@ export type DeleteSignedUrlKeyBackendServicesResponse = Operation;
 export const DeleteSignedUrlKeyBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSignedUrlKeyBackendServicesError = DefaultErrors;
+export type DeleteSignedUrlKeyBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a key for validating requests with signed URLs for this backend service. */
 export const deleteSignedUrlKeyBackendServices: API.OperationMethod<
@@ -51310,7 +52864,7 @@ export const deleteSignedUrlKeyBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSignedUrlKeyBackendServicesRequest,
   output: DeleteSignedUrlKeyBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSecurityPolicyBackendServicesRequest {
@@ -51343,7 +52897,12 @@ export type SetSecurityPolicyBackendServicesResponse = Operation;
 export const SetSecurityPolicyBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSecurityPolicyBackendServicesError = DefaultErrors;
+export type SetSecurityPolicyBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Google Cloud Armor security policy for the specified backend service. For more information, seeGoogle Cloud Armor Overview */
 export const setSecurityPolicyBackendServices: API.OperationMethod<
@@ -51354,7 +52913,7 @@ export const setSecurityPolicyBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSecurityPolicyBackendServicesRequest,
   output: SetSecurityPolicyBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetEdgeSecurityPolicyBackendServicesRequest {
@@ -51387,7 +52946,12 @@ export type SetEdgeSecurityPolicyBackendServicesResponse = Operation;
 export const SetEdgeSecurityPolicyBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetEdgeSecurityPolicyBackendServicesError = DefaultErrors;
+export type SetEdgeSecurityPolicyBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the edge security policy for the specified backend service. */
 export const setEdgeSecurityPolicyBackendServices: API.OperationMethod<
@@ -51398,7 +52962,7 @@ export const setEdgeSecurityPolicyBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetEdgeSecurityPolicyBackendServicesRequest,
   output: SetEdgeSecurityPolicyBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectiveSecurityPoliciesBackendServicesRequest {
@@ -51426,7 +52990,10 @@ export const GetEffectiveSecurityPoliciesBackendServicesResponse: Schema.Schema<
     {},
   ) as any as Schema.Schema<GetEffectiveSecurityPoliciesBackendServicesResponse>;
 
-export type GetEffectiveSecurityPoliciesBackendServicesError = DefaultErrors;
+export type GetEffectiveSecurityPoliciesBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns effective security policies applied to this backend service. */
 export const getEffectiveSecurityPoliciesBackendServices: API.OperationMethod<
@@ -51437,7 +53004,7 @@ export const getEffectiveSecurityPoliciesBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectiveSecurityPoliciesBackendServicesRequest,
   output: GetEffectiveSecurityPoliciesBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetHealthBackendServicesRequest {
@@ -51466,7 +53033,12 @@ export type GetHealthBackendServicesResponse = BackendServiceGroupHealth;
 export const GetHealthBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendServiceGroupHealth;
 
-export type GetHealthBackendServicesError = DefaultErrors;
+export type GetHealthBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the most recent health check results for this BackendService. Example request body: { "group": "/zones/us-east1-b/instanceGroups/lb-backend-example" } */
 export const getHealthBackendServices: API.OperationMethod<
@@ -51477,7 +53049,7 @@ export const getHealthBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthBackendServicesRequest,
   output: GetHealthBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyBackendServicesRequest {
@@ -51508,7 +53080,10 @@ export type GetIamPolicyBackendServicesResponse = Policy;
 export const GetIamPolicyBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyBackendServicesError = DefaultErrors;
+export type GetIamPolicyBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyBackendServices: API.OperationMethod<
@@ -51519,7 +53094,7 @@ export const getIamPolicyBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyBackendServicesRequest,
   output: GetIamPolicyBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyBackendServicesRequest {
@@ -51549,7 +53124,12 @@ export type SetIamPolicyBackendServicesResponse = Policy;
 export const SetIamPolicyBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyBackendServicesError = DefaultErrors;
+export type SetIamPolicyBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyBackendServices: API.OperationMethod<
@@ -51560,7 +53140,7 @@ export const setIamPolicyBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyBackendServicesRequest,
   output: SetIamPolicyBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsBackendServicesRequest {
@@ -51590,7 +53170,12 @@ export type TestIamPermissionsBackendServicesResponse = TestPermissionsResponse;
 export const TestIamPermissionsBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsBackendServicesError = DefaultErrors;
+export type TestIamPermissionsBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsBackendServices: API.OperationMethod<
@@ -51601,7 +53186,7 @@ export const testIamPermissionsBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsBackendServicesRequest,
   output: TestIamPermissionsBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionBackendServicesRequest {
@@ -51644,7 +53229,10 @@ export type ListRegionBackendServicesResponse = BackendServiceList;
 export const ListRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendServiceList;
 
-export type ListRegionBackendServicesError = DefaultErrors;
+export type ListRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of regional BackendService resources available to the specified project in the given region. */
 export const listRegionBackendServices: API.PaginatedOperationMethod<
@@ -51655,7 +53243,7 @@ export const listRegionBackendServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionBackendServicesRequest,
   output: ListRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -51703,7 +53291,10 @@ export type ListUsableRegionBackendServicesResponse = BackendServiceListUsable;
 export const ListUsableRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendServiceListUsable;
 
-export type ListUsableRegionBackendServicesError = DefaultErrors;
+export type ListUsableRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of all usable backend services in the specified project in the given region. */
 export const listUsableRegionBackendServices: API.PaginatedOperationMethod<
@@ -51714,7 +53305,7 @@ export const listUsableRegionBackendServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsableRegionBackendServicesRequest,
   output: ListUsableRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -51748,7 +53339,10 @@ export type GetRegionBackendServicesResponse = BackendService;
 export const GetRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendService;
 
-export type GetRegionBackendServicesError = DefaultErrors;
+export type GetRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified regional BackendService resource. */
 export const getRegionBackendServices: API.OperationMethod<
@@ -51759,7 +53353,7 @@ export const getRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionBackendServicesRequest,
   output: GetRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionBackendServicesRequest {
@@ -51792,7 +53386,12 @@ export type InsertRegionBackendServicesResponse = Operation;
 export const InsertRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionBackendServicesError = DefaultErrors;
+export type InsertRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview. */
 export const insertRegionBackendServices: API.OperationMethod<
@@ -51803,7 +53402,7 @@ export const insertRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionBackendServicesRequest,
   output: InsertRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionBackendServicesRequest {
@@ -51835,7 +53434,12 @@ export type DeleteRegionBackendServicesResponse = Operation;
 export const DeleteRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionBackendServicesError = DefaultErrors;
+export type DeleteRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified regional BackendService resource. */
 export const deleteRegionBackendServices: API.OperationMethod<
@@ -51846,7 +53450,7 @@ export const deleteRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionBackendServicesRequest,
   output: DeleteRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRegionBackendServicesRequest {
@@ -51882,7 +53486,12 @@ export type UpdateRegionBackendServicesResponse = Operation;
 export const UpdateRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRegionBackendServicesError = DefaultErrors;
+export type UpdateRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified regional BackendService resource with the data included in the request. For more information, see Backend services overview. */
 export const updateRegionBackendServices: API.OperationMethod<
@@ -51893,7 +53502,7 @@ export const updateRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRegionBackendServicesRequest,
   output: UpdateRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionBackendServicesRequest {
@@ -51929,7 +53538,12 @@ export type PatchRegionBackendServicesResponse = Operation;
 export const PatchRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionBackendServicesError = DefaultErrors;
+export type PatchRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified regional BackendService resource with the data included in the request. For more information, see Understanding backend services This method supports PATCH semantics and uses the JSON merge patch format and processing rules. */
 export const patchRegionBackendServices: API.OperationMethod<
@@ -51940,7 +53554,7 @@ export const patchRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionBackendServicesRequest,
   output: PatchRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSecurityPolicyRegionBackendServicesRequest {
@@ -51976,7 +53590,12 @@ export type SetSecurityPolicyRegionBackendServicesResponse = Operation;
 export const SetSecurityPolicyRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSecurityPolicyRegionBackendServicesError = DefaultErrors;
+export type SetSecurityPolicyRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Google Cloud Armor security policy for the specified backend service. For more information, seeGoogle Cloud Armor Overview */
 export const setSecurityPolicyRegionBackendServices: API.OperationMethod<
@@ -51987,7 +53606,7 @@ export const setSecurityPolicyRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSecurityPolicyRegionBackendServicesRequest,
   output: SetSecurityPolicyRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetHealthRegionBackendServicesRequest {
@@ -52019,7 +53638,12 @@ export type GetHealthRegionBackendServicesResponse = BackendServiceGroupHealth;
 export const GetHealthRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BackendServiceGroupHealth;
 
-export type GetHealthRegionBackendServicesError = DefaultErrors;
+export type GetHealthRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the most recent health check results for this regional BackendService. */
 export const getHealthRegionBackendServices: API.OperationMethod<
@@ -52030,7 +53654,7 @@ export const getHealthRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthRegionBackendServicesRequest,
   output: GetHealthRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyRegionBackendServicesRequest {
@@ -52064,7 +53688,10 @@ export type GetIamPolicyRegionBackendServicesResponse = Policy;
 export const GetIamPolicyRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRegionBackendServicesError = DefaultErrors;
+export type GetIamPolicyRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyRegionBackendServices: API.OperationMethod<
@@ -52075,7 +53702,7 @@ export const getIamPolicyRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRegionBackendServicesRequest,
   output: GetIamPolicyRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyRegionBackendServicesRequest {
@@ -52108,7 +53735,12 @@ export type SetIamPolicyRegionBackendServicesResponse = Policy;
 export const SetIamPolicyRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRegionBackendServicesError = DefaultErrors;
+export type SetIamPolicyRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyRegionBackendServices: API.OperationMethod<
@@ -52119,7 +53751,7 @@ export const setIamPolicyRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRegionBackendServicesRequest,
   output: SetIamPolicyRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionBackendServicesRequest {
@@ -52153,7 +53785,12 @@ export type TestIamPermissionsRegionBackendServicesResponse =
 export const TestIamPermissionsRegionBackendServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionBackendServicesError = DefaultErrors;
+export type TestIamPermissionsRegionBackendServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionBackendServices: API.OperationMethod<
@@ -52164,7 +53801,7 @@ export const testIamPermissionsRegionBackendServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionBackendServicesRequest,
   output: TestIamPermissionsRegionBackendServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListRegionCompositeHealthChecksRequest {
@@ -52215,7 +53852,10 @@ export type AggregatedListRegionCompositeHealthChecksResponse =
 export const AggregatedListRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompositeHealthCheckAggregatedList;
 
-export type AggregatedListRegionCompositeHealthChecksError = DefaultErrors;
+export type AggregatedListRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all CompositeHealthCheck resources (all regional) available to the specified project. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListRegionCompositeHealthChecks: API.PaginatedOperationMethod<
@@ -52226,7 +53866,7 @@ export const aggregatedListRegionCompositeHealthChecks: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListRegionCompositeHealthChecksRequest,
   output: AggregatedListRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -52274,7 +53914,10 @@ export type ListRegionCompositeHealthChecksResponse = CompositeHealthCheckList;
 export const ListRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompositeHealthCheckList;
 
-export type ListRegionCompositeHealthChecksError = DefaultErrors;
+export type ListRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the CompositeHealthChecks for a project in the given region. */
 export const listRegionCompositeHealthChecks: API.PaginatedOperationMethod<
@@ -52285,7 +53928,7 @@ export const listRegionCompositeHealthChecks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionCompositeHealthChecksRequest,
   output: ListRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -52321,7 +53964,10 @@ export type GetRegionCompositeHealthChecksResponse = CompositeHealthCheck;
 export const GetRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompositeHealthCheck;
 
-export type GetRegionCompositeHealthChecksError = DefaultErrors;
+export type GetRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified CompositeHealthCheck resource in the given region. */
 export const getRegionCompositeHealthChecks: API.OperationMethod<
@@ -52332,7 +53978,7 @@ export const getRegionCompositeHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionCompositeHealthChecksRequest,
   output: GetRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionCompositeHealthChecksRequest {
@@ -52365,7 +54011,12 @@ export type InsertRegionCompositeHealthChecksResponse = Operation;
 export const InsertRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionCompositeHealthChecksError = DefaultErrors;
+export type InsertRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a CompositeHealthCheck in the specified project in the given region using the parameters that are included in the request. */
 export const insertRegionCompositeHealthChecks: API.OperationMethod<
@@ -52376,7 +54027,7 @@ export const insertRegionCompositeHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionCompositeHealthChecksRequest,
   output: InsertRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionCompositeHealthChecksRequest {
@@ -52410,7 +54061,12 @@ export type DeleteRegionCompositeHealthChecksResponse = Operation;
 export const DeleteRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionCompositeHealthChecksError = DefaultErrors;
+export type DeleteRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified CompositeHealthCheck in the given region */
 export const deleteRegionCompositeHealthChecks: API.OperationMethod<
@@ -52421,7 +54077,7 @@ export const deleteRegionCompositeHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionCompositeHealthChecksRequest,
   output: DeleteRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionCompositeHealthChecksRequest {
@@ -52459,7 +54115,12 @@ export type PatchRegionCompositeHealthChecksResponse = Operation;
 export const PatchRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionCompositeHealthChecksError = DefaultErrors;
+export type PatchRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified regional CompositeHealthCheck resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchRegionCompositeHealthChecks: API.OperationMethod<
@@ -52470,7 +54131,7 @@ export const patchRegionCompositeHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionCompositeHealthChecksRequest,
   output: PatchRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionCompositeHealthChecksRequest {
@@ -52504,7 +54165,12 @@ export type TestIamPermissionsRegionCompositeHealthChecksResponse =
 export const TestIamPermissionsRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionCompositeHealthChecksError = DefaultErrors;
+export type TestIamPermissionsRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionCompositeHealthChecks: API.OperationMethod<
@@ -52515,7 +54181,7 @@ export const testIamPermissionsRegionCompositeHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionCompositeHealthChecksRequest,
   output: TestIamPermissionsRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetHealthRegionCompositeHealthChecksRequest {
@@ -52547,7 +54213,10 @@ export type GetHealthRegionCompositeHealthChecksResponse =
 export const GetHealthRegionCompositeHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompositeHealthCheckHealth;
 
-export type GetHealthRegionCompositeHealthChecksError = DefaultErrors;
+export type GetHealthRegionCompositeHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the most recent health check results for this regional CompositeHealthCheck. */
 export const getHealthRegionCompositeHealthChecks: API.OperationMethod<
@@ -52558,7 +54227,7 @@ export const getHealthRegionCompositeHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthRegionCompositeHealthChecksRequest,
   output: GetHealthRegionCompositeHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CalendarModeAdviceRequest_Op {
@@ -52588,7 +54257,12 @@ export type CalendarModeAdviceResponse_Op = CalendarModeAdviceResponse;
 export const CalendarModeAdviceResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ CalendarModeAdviceResponse;
 
-export type CalendarModeAdviceError = DefaultErrors;
+export type CalendarModeAdviceError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Advise how, where and when to create the requested amount of instances with specified accelerators, within the specified time and location limits. The method recommends creating future reservations for the requested resources. */
 export const calendarModeAdvice: API.OperationMethod<
@@ -52599,7 +54273,7 @@ export const calendarModeAdvice: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CalendarModeAdviceRequest_Op,
   output: CalendarModeAdviceResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionCommitmentsRequest {
@@ -52642,7 +54316,7 @@ export type ListRegionCommitmentsResponse = CommitmentList;
 export const ListRegionCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommitmentList;
 
-export type ListRegionCommitmentsError = DefaultErrors;
+export type ListRegionCommitmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of commitments contained within the specified region. */
 export const listRegionCommitments: API.PaginatedOperationMethod<
@@ -52653,7 +54327,7 @@ export const listRegionCommitments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionCommitmentsRequest,
   output: ListRegionCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -52708,7 +54382,10 @@ export type AggregatedListRegionCommitmentsResponse = CommitmentAggregatedList;
 export const AggregatedListRegionCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommitmentAggregatedList;
 
-export type AggregatedListRegionCommitmentsError = DefaultErrors;
+export type AggregatedListRegionCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of commitments by region. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListRegionCommitments: API.PaginatedOperationMethod<
@@ -52719,7 +54396,7 @@ export const aggregatedListRegionCommitments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListRegionCommitmentsRequest,
   output: AggregatedListRegionCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -52753,7 +54430,7 @@ export type GetRegionCommitmentsResponse = Commitment;
 export const GetRegionCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Commitment;
 
-export type GetRegionCommitmentsError = DefaultErrors;
+export type GetRegionCommitmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified commitment resource. */
 export const getRegionCommitments: API.OperationMethod<
@@ -52764,7 +54441,7 @@ export const getRegionCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionCommitmentsRequest,
   output: GetRegionCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionCommitmentsRequest {
@@ -52797,7 +54474,12 @@ export type InsertRegionCommitmentsResponse = Operation;
 export const InsertRegionCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionCommitmentsError = DefaultErrors;
+export type InsertRegionCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a commitment in the specified project using the data included in the request. */
 export const insertRegionCommitments: API.OperationMethod<
@@ -52808,7 +54490,7 @@ export const insertRegionCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionCommitmentsRequest,
   output: InsertRegionCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRegionCommitmentsRequest {
@@ -52851,7 +54533,12 @@ export type UpdateRegionCommitmentsResponse = Operation;
 export const UpdateRegionCommitmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRegionCommitmentsError = DefaultErrors;
+export type UpdateRegionCommitmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified commitment with the data included in the request. Update is performed only on selected fields included as part of update-mask. Only the following fields can be updated: auto_renew and plan. */
 export const updateRegionCommitments: API.OperationMethod<
@@ -52862,7 +54549,7 @@ export const updateRegionCommitments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRegionCommitmentsRequest,
   output: UpdateRegionCommitmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCrossSiteNetworksRequest {
@@ -52902,7 +54589,7 @@ export type ListCrossSiteNetworksResponse = CrossSiteNetworkList;
 export const ListCrossSiteNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CrossSiteNetworkList;
 
-export type ListCrossSiteNetworksError = DefaultErrors;
+export type ListCrossSiteNetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the cross-site networks for a project in the given scope. */
 export const listCrossSiteNetworks: API.PaginatedOperationMethod<
@@ -52913,7 +54600,7 @@ export const listCrossSiteNetworks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCrossSiteNetworksRequest,
   output: ListCrossSiteNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -52944,7 +54631,7 @@ export type GetCrossSiteNetworksResponse = CrossSiteNetwork;
 export const GetCrossSiteNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ CrossSiteNetwork;
 
-export type GetCrossSiteNetworksError = DefaultErrors;
+export type GetCrossSiteNetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified cross-site network in the given scope. */
 export const getCrossSiteNetworks: API.OperationMethod<
@@ -52955,7 +54642,7 @@ export const getCrossSiteNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCrossSiteNetworksRequest,
   output: GetCrossSiteNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertCrossSiteNetworksRequest {
@@ -52990,7 +54677,12 @@ export type InsertCrossSiteNetworksResponse = Operation;
 export const InsertCrossSiteNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertCrossSiteNetworksError = DefaultErrors;
+export type InsertCrossSiteNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a cross-site network in the specified project in the given scope using the parameters that are included in the request. */
 export const insertCrossSiteNetworks: API.OperationMethod<
@@ -53001,7 +54693,7 @@ export const insertCrossSiteNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCrossSiteNetworksRequest,
   output: InsertCrossSiteNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCrossSiteNetworksRequest {
@@ -53030,7 +54722,12 @@ export type DeleteCrossSiteNetworksResponse = Operation;
 export const DeleteCrossSiteNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteCrossSiteNetworksError = DefaultErrors;
+export type DeleteCrossSiteNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified cross-site network in the given scope. */
 export const deleteCrossSiteNetworks: API.OperationMethod<
@@ -53041,7 +54738,7 @@ export const deleteCrossSiteNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCrossSiteNetworksRequest,
   output: DeleteCrossSiteNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCrossSiteNetworksRequest {
@@ -53082,7 +54779,12 @@ export type PatchCrossSiteNetworksResponse = Operation;
 export const PatchCrossSiteNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchCrossSiteNetworksError = DefaultErrors;
+export type PatchCrossSiteNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified cross-site network with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchCrossSiteNetworks: API.OperationMethod<
@@ -53093,7 +54795,7 @@ export const patchCrossSiteNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCrossSiteNetworksRequest,
   output: PatchCrossSiteNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDiskTypesRequest {
@@ -53131,7 +54833,7 @@ export const ListDiskTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDiskTypesResponse = DiskTypeList;
 export const ListDiskTypesResponse = /*@__PURE__*/ /*#__PURE__*/ DiskTypeList;
 
-export type ListDiskTypesError = DefaultErrors;
+export type ListDiskTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of disk types available to the specified project. */
 export const listDiskTypes: API.PaginatedOperationMethod<
@@ -53142,7 +54844,7 @@ export const listDiskTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDiskTypesRequest,
   output: ListDiskTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -53194,7 +54896,7 @@ export type AggregatedListDiskTypesResponse = DiskTypeAggregatedList;
 export const AggregatedListDiskTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DiskTypeAggregatedList;
 
-export type AggregatedListDiskTypesError = DefaultErrors;
+export type AggregatedListDiskTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an aggregated list of disk types. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListDiskTypes: API.PaginatedOperationMethod<
@@ -53205,7 +54907,7 @@ export const aggregatedListDiskTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListDiskTypesRequest,
   output: AggregatedListDiskTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -53237,7 +54939,7 @@ export const GetDiskTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDiskTypesResponse = DiskType;
 export const GetDiskTypesResponse = /*@__PURE__*/ /*#__PURE__*/ DiskType;
 
-export type GetDiskTypesError = DefaultErrors;
+export type GetDiskTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified disk type. */
 export const getDiskTypes: API.OperationMethod<
@@ -53248,7 +54950,7 @@ export const getDiskTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDiskTypesRequest,
   output: GetDiskTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRegionDiskTypesRequest {
@@ -53291,7 +54993,7 @@ export type ListRegionDiskTypesResponse = RegionDiskTypeList;
 export const ListRegionDiskTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ RegionDiskTypeList;
 
-export type ListRegionDiskTypesError = DefaultErrors;
+export type ListRegionDiskTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of regional disk types available to the specified project. */
 export const listRegionDiskTypes: API.PaginatedOperationMethod<
@@ -53302,7 +55004,7 @@ export const listRegionDiskTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionDiskTypesRequest,
   output: ListRegionDiskTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -53335,7 +55037,7 @@ export const GetRegionDiskTypesRequest =
 export type GetRegionDiskTypesResponse = DiskType;
 export const GetRegionDiskTypesResponse = /*@__PURE__*/ /*#__PURE__*/ DiskType;
 
-export type GetRegionDiskTypesError = DefaultErrors;
+export type GetRegionDiskTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified regional disk type. */
 export const getRegionDiskTypes: API.OperationMethod<
@@ -53346,7 +55048,7 @@ export const getRegionDiskTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionDiskTypesRequest,
   output: GetRegionDiskTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertZoneVmExtensionPoliciesRequest {
@@ -53379,7 +55081,12 @@ export type InsertZoneVmExtensionPoliciesResponse = Operation;
 export const InsertZoneVmExtensionPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertZoneVmExtensionPoliciesError = DefaultErrors;
+export type InsertZoneVmExtensionPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new zone-level VM extension policy within a project. */
 export const insertZoneVmExtensionPolicies: API.OperationMethod<
@@ -53390,7 +55097,7 @@ export const insertZoneVmExtensionPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertZoneVmExtensionPoliciesRequest,
   output: InsertZoneVmExtensionPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetZoneVmExtensionPoliciesRequest {
@@ -53419,7 +55126,10 @@ export type GetZoneVmExtensionPoliciesResponse = VmExtensionPolicy;
 export const GetZoneVmExtensionPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ VmExtensionPolicy;
 
-export type GetZoneVmExtensionPoliciesError = DefaultErrors;
+export type GetZoneVmExtensionPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves details of a specific zone VM extension policy. */
 export const getZoneVmExtensionPolicies: API.OperationMethod<
@@ -53430,7 +55140,7 @@ export const getZoneVmExtensionPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZoneVmExtensionPoliciesRequest,
   output: GetZoneVmExtensionPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateZoneVmExtensionPoliciesRequest {
@@ -53466,7 +55176,12 @@ export type UpdateZoneVmExtensionPoliciesResponse = Operation;
 export const UpdateZoneVmExtensionPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateZoneVmExtensionPoliciesError = DefaultErrors;
+export type UpdateZoneVmExtensionPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies an existing zone VM extension policy. */
 export const updateZoneVmExtensionPolicies: API.OperationMethod<
@@ -53477,7 +55192,7 @@ export const updateZoneVmExtensionPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateZoneVmExtensionPoliciesRequest,
   output: UpdateZoneVmExtensionPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteZoneVmExtensionPoliciesRequest {
@@ -53509,7 +55224,12 @@ export type DeleteZoneVmExtensionPoliciesResponse = Operation;
 export const DeleteZoneVmExtensionPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteZoneVmExtensionPoliciesError = DefaultErrors;
+export type DeleteZoneVmExtensionPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specified zone VM extension policy. */
 export const deleteZoneVmExtensionPolicies: API.OperationMethod<
@@ -53520,7 +55240,7 @@ export const deleteZoneVmExtensionPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteZoneVmExtensionPoliciesRequest,
   output: DeleteZoneVmExtensionPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListZoneVmExtensionPoliciesRequest {
@@ -53563,7 +55283,10 @@ export type ListZoneVmExtensionPoliciesResponse = VmExtensionPolicyList;
 export const ListZoneVmExtensionPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ VmExtensionPolicyList;
 
-export type ListZoneVmExtensionPoliciesError = DefaultErrors;
+export type ListZoneVmExtensionPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all VM extension policies within a specific zone for a project. */
 export const listZoneVmExtensionPolicies: API.PaginatedOperationMethod<
@@ -53574,7 +55297,7 @@ export const listZoneVmExtensionPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZoneVmExtensionPoliciesRequest,
   output: ListZoneVmExtensionPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -53622,7 +55345,10 @@ export type ListInterconnectAttachmentsResponse = InterconnectAttachmentList;
 export const ListInterconnectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectAttachmentList;
 
-export type ListInterconnectAttachmentsError = DefaultErrors;
+export type ListInterconnectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of interconnect attachments contained within the specified region. */
 export const listInterconnectAttachments: API.PaginatedOperationMethod<
@@ -53633,7 +55359,7 @@ export const listInterconnectAttachments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectAttachmentsRequest,
   output: ListInterconnectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -53689,7 +55415,10 @@ export type AggregatedListInterconnectAttachmentsResponse =
 export const AggregatedListInterconnectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectAttachmentAggregatedList;
 
-export type AggregatedListInterconnectAttachmentsError = DefaultErrors;
+export type AggregatedListInterconnectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of interconnect attachments. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListInterconnectAttachments: API.PaginatedOperationMethod<
@@ -53700,7 +55429,7 @@ export const aggregatedListInterconnectAttachments: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListInterconnectAttachmentsRequest,
   output: AggregatedListInterconnectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -53736,7 +55465,10 @@ export type GetInterconnectAttachmentsResponse = InterconnectAttachment;
 export const GetInterconnectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectAttachment;
 
-export type GetInterconnectAttachmentsError = DefaultErrors;
+export type GetInterconnectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified interconnect attachment. */
 export const getInterconnectAttachments: API.OperationMethod<
@@ -53747,7 +55479,7 @@ export const getInterconnectAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInterconnectAttachmentsRequest,
   output: GetInterconnectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInterconnectAttachmentsRequest {
@@ -53785,7 +55517,12 @@ export type InsertInterconnectAttachmentsResponse = Operation;
 export const InsertInterconnectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInterconnectAttachmentsError = DefaultErrors;
+export type InsertInterconnectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InterconnectAttachment in the specified project using the data included in the request. */
 export const insertInterconnectAttachments: API.OperationMethod<
@@ -53796,7 +55533,7 @@ export const insertInterconnectAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInterconnectAttachmentsRequest,
   output: InsertInterconnectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInterconnectAttachmentsRequest {
@@ -53834,7 +55571,12 @@ export type PatchInterconnectAttachmentsResponse = Operation;
 export const PatchInterconnectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInterconnectAttachmentsError = DefaultErrors;
+export type PatchInterconnectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified interconnect attachment with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchInterconnectAttachments: API.OperationMethod<
@@ -53845,7 +55587,7 @@ export const patchInterconnectAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInterconnectAttachmentsRequest,
   output: PatchInterconnectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInterconnectAttachmentsRequest {
@@ -53879,7 +55621,12 @@ export type DeleteInterconnectAttachmentsResponse = Operation;
 export const DeleteInterconnectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInterconnectAttachmentsError = DefaultErrors;
+export type DeleteInterconnectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified interconnect attachment. */
 export const deleteInterconnectAttachments: API.OperationMethod<
@@ -53890,7 +55637,7 @@ export const deleteInterconnectAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInterconnectAttachmentsRequest,
   output: DeleteInterconnectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsInterconnectAttachmentsRequest {
@@ -53926,7 +55673,12 @@ export type SetLabelsInterconnectAttachmentsResponse = Operation;
 export const SetLabelsInterconnectAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsInterconnectAttachmentsError = DefaultErrors;
+export type SetLabelsInterconnectAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on an InterconnectAttachment. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsInterconnectAttachments: API.OperationMethod<
@@ -53937,7 +55689,7 @@ export const setLabelsInterconnectAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsInterconnectAttachmentsRequest,
   output: SetLabelsInterconnectAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInterconnectAttachmentGroupsRequest {
@@ -53978,7 +55730,10 @@ export type ListInterconnectAttachmentGroupsResponse =
 export const ListInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectAttachmentGroupsListResponse;
 
-export type ListInterconnectAttachmentGroupsError = DefaultErrors;
+export type ListInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the InterconnectAttachmentGroups for a project in the given scope. */
 export const listInterconnectAttachmentGroups: API.PaginatedOperationMethod<
@@ -53989,7 +55744,7 @@ export const listInterconnectAttachmentGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectAttachmentGroupsRequest,
   output: ListInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -54023,7 +55778,10 @@ export type GetInterconnectAttachmentGroupsResponse =
 export const GetInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectAttachmentGroup;
 
-export type GetInterconnectAttachmentGroupsError = DefaultErrors;
+export type GetInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified InterconnectAttachmentGroup resource in the given scope. */
 export const getInterconnectAttachmentGroups: API.OperationMethod<
@@ -54034,7 +55792,7 @@ export const getInterconnectAttachmentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInterconnectAttachmentGroupsRequest,
   output: GetInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInterconnectAttachmentGroupsRequest {
@@ -54064,7 +55822,12 @@ export type InsertInterconnectAttachmentGroupsResponse = Operation;
 export const InsertInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInterconnectAttachmentGroupsError = DefaultErrors;
+export type InsertInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a InterconnectAttachmentGroup in the specified project in the given scope using the parameters that are included in the request. */
 export const insertInterconnectAttachmentGroups: API.OperationMethod<
@@ -54075,7 +55838,7 @@ export const insertInterconnectAttachmentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInterconnectAttachmentGroupsRequest,
   output: InsertInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInterconnectAttachmentGroupsRequest {
@@ -54106,7 +55869,12 @@ export type DeleteInterconnectAttachmentGroupsResponse = Operation;
 export const DeleteInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInterconnectAttachmentGroupsError = DefaultErrors;
+export type DeleteInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified InterconnectAttachmentGroup in the given scope */
 export const deleteInterconnectAttachmentGroups: API.OperationMethod<
@@ -54117,7 +55885,7 @@ export const deleteInterconnectAttachmentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInterconnectAttachmentGroupsRequest,
   output: DeleteInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInterconnectAttachmentGroupsRequest {
@@ -54155,7 +55923,12 @@ export type PatchInterconnectAttachmentGroupsResponse = Operation;
 export const PatchInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInterconnectAttachmentGroupsError = DefaultErrors;
+export type PatchInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified InterconnectAttachmentGroup resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchInterconnectAttachmentGroups: API.OperationMethod<
@@ -54166,7 +55939,7 @@ export const patchInterconnectAttachmentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInterconnectAttachmentGroupsRequest,
   output: PatchInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyInterconnectAttachmentGroupsRequest {
@@ -54197,7 +55970,10 @@ export type GetIamPolicyInterconnectAttachmentGroupsResponse = Policy;
 export const GetIamPolicyInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyInterconnectAttachmentGroupsError = DefaultErrors;
+export type GetIamPolicyInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyInterconnectAttachmentGroups: API.OperationMethod<
@@ -54208,7 +55984,7 @@ export const getIamPolicyInterconnectAttachmentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyInterconnectAttachmentGroupsRequest,
   output: GetIamPolicyInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyInterconnectAttachmentGroupsRequest {
@@ -54238,7 +56014,12 @@ export type SetIamPolicyInterconnectAttachmentGroupsResponse = Policy;
 export const SetIamPolicyInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyInterconnectAttachmentGroupsError = DefaultErrors;
+export type SetIamPolicyInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyInterconnectAttachmentGroups: API.OperationMethod<
@@ -54249,7 +56030,7 @@ export const setIamPolicyInterconnectAttachmentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyInterconnectAttachmentGroupsRequest,
   output: SetIamPolicyInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsInterconnectAttachmentGroupsRequest {
@@ -54280,7 +56061,12 @@ export type TestIamPermissionsInterconnectAttachmentGroupsResponse =
 export const TestIamPermissionsInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsInterconnectAttachmentGroupsError = DefaultErrors;
+export type TestIamPermissionsInterconnectAttachmentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsInterconnectAttachmentGroups: API.OperationMethod<
@@ -54291,7 +56077,7 @@ export const testIamPermissionsInterconnectAttachmentGroups: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsInterconnectAttachmentGroupsRequest,
   output: TestIamPermissionsInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationalStatusInterconnectAttachmentGroupsRequest {
@@ -54321,7 +56107,9 @@ export const GetOperationalStatusInterconnectAttachmentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectAttachmentGroupsGetOperationalStatusResponse;
 
 export type GetOperationalStatusInterconnectAttachmentGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the InterconnectAttachmentStatuses for the specified InterconnectAttachmentGroup resource. */
 export const getOperationalStatusInterconnectAttachmentGroups: API.OperationMethod<
@@ -54332,7 +56120,7 @@ export const getOperationalStatusInterconnectAttachmentGroups: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationalStatusInterconnectAttachmentGroupsRequest,
   output: GetOperationalStatusInterconnectAttachmentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInterconnectsRequest {
@@ -54362,7 +56150,12 @@ export type InsertInterconnectsResponse = Operation;
 export const InsertInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInterconnectsError = DefaultErrors;
+export type InsertInterconnectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Interconnect in the specified project using the data included in the request. */
 export const insertInterconnects: API.OperationMethod<
@@ -54373,7 +56166,7 @@ export const insertInterconnects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInterconnectsRequest,
   output: InsertInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInterconnectsRequest {
@@ -54410,7 +56203,7 @@ export type ListInterconnectsResponse = InterconnectList;
 export const ListInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectList;
 
-export type ListInterconnectsError = DefaultErrors;
+export type ListInterconnectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of Interconnects available to the specified project. */
 export const listInterconnects: API.PaginatedOperationMethod<
@@ -54421,7 +56214,7 @@ export const listInterconnects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectsRequest,
   output: ListInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -54453,7 +56246,10 @@ export type GetDiagnosticsInterconnectsResponse =
 export const GetDiagnosticsInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectsGetDiagnosticsResponse;
 
-export type GetDiagnosticsInterconnectsError = DefaultErrors;
+export type GetDiagnosticsInterconnectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the interconnectDiagnostics for the specified Interconnect. In the event of a global outage, do not use this API to make decisions about where to redirect your network traffic. Unlike a VLAN attachment, which is regional, a Cloud Interconnect connection is a global resource. A global outage can prevent this API from functioning properly. */
 export const getDiagnosticsInterconnects: API.OperationMethod<
@@ -54464,7 +56260,7 @@ export const getDiagnosticsInterconnects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDiagnosticsInterconnectsRequest,
   output: GetDiagnosticsInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetMacsecConfigInterconnectsRequest {
@@ -54491,7 +56287,10 @@ export type GetMacsecConfigInterconnectsResponse =
 export const GetMacsecConfigInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectsGetMacsecConfigResponse;
 
-export type GetMacsecConfigInterconnectsError = DefaultErrors;
+export type GetMacsecConfigInterconnectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the interconnectMacsecConfig for the specified Interconnect. */
 export const getMacsecConfigInterconnects: API.OperationMethod<
@@ -54502,7 +56301,7 @@ export const getMacsecConfigInterconnects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMacsecConfigInterconnectsRequest,
   output: GetMacsecConfigInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetInterconnectsRequest {
@@ -54528,7 +56327,7 @@ export type GetInterconnectsResponse = Interconnect;
 export const GetInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Interconnect;
 
-export type GetInterconnectsError = DefaultErrors;
+export type GetInterconnectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Interconnect. Get a list of available Interconnects by making a list() request. */
 export const getInterconnects: API.OperationMethod<
@@ -54539,7 +56338,7 @@ export const getInterconnects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInterconnectsRequest,
   output: GetInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteInterconnectsRequest {
@@ -54568,7 +56367,12 @@ export type DeleteInterconnectsResponse = Operation;
 export const DeleteInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInterconnectsError = DefaultErrors;
+export type DeleteInterconnectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Interconnect. */
 export const deleteInterconnects: API.OperationMethod<
@@ -54579,7 +56383,7 @@ export const deleteInterconnects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInterconnectsRequest,
   output: DeleteInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInterconnectsRequest {
@@ -54611,7 +56415,12 @@ export const PatchInterconnectsRequest =
 export type PatchInterconnectsResponse = Operation;
 export const PatchInterconnectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInterconnectsError = DefaultErrors;
+export type PatchInterconnectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Interconnect with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchInterconnects: API.OperationMethod<
@@ -54622,7 +56431,7 @@ export const patchInterconnects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInterconnectsRequest,
   output: PatchInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsInterconnectsRequest {
@@ -54652,7 +56461,12 @@ export type SetLabelsInterconnectsResponse = Operation;
 export const SetLabelsInterconnectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsInterconnectsError = DefaultErrors;
+export type SetLabelsInterconnectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on an Interconnect. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsInterconnects: API.OperationMethod<
@@ -54663,7 +56477,7 @@ export const setLabelsInterconnects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsInterconnectsRequest,
   output: SetLabelsInterconnectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInterconnectGroupsRequest {
@@ -54703,7 +56517,7 @@ export type ListInterconnectGroupsResponse = InterconnectGroupsListResponse;
 export const ListInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectGroupsListResponse;
 
-export type ListInterconnectGroupsError = DefaultErrors;
+export type ListInterconnectGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the InterconnectGroups for a project in the given scope. */
 export const listInterconnectGroups: API.PaginatedOperationMethod<
@@ -54714,7 +56528,7 @@ export const listInterconnectGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectGroupsRequest,
   output: ListInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -54745,7 +56559,7 @@ export type GetInterconnectGroupsResponse = InterconnectGroup;
 export const GetInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectGroup;
 
-export type GetInterconnectGroupsError = DefaultErrors;
+export type GetInterconnectGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified InterconnectGroup resource in the given scope. */
 export const getInterconnectGroups: API.OperationMethod<
@@ -54756,7 +56570,7 @@ export const getInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInterconnectGroupsRequest,
   output: GetInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInterconnectGroupsRequest {
@@ -54786,7 +56600,12 @@ export type InsertInterconnectGroupsResponse = Operation;
 export const InsertInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInterconnectGroupsError = DefaultErrors;
+export type InsertInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a InterconnectGroup in the specified project in the given scope using the parameters that are included in the request. */
 export const insertInterconnectGroups: API.OperationMethod<
@@ -54797,7 +56616,7 @@ export const insertInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInterconnectGroupsRequest,
   output: InsertInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInterconnectGroupsRequest {
@@ -54826,7 +56645,12 @@ export type DeleteInterconnectGroupsResponse = Operation;
 export const DeleteInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInterconnectGroupsError = DefaultErrors;
+export type DeleteInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified InterconnectGroup in the given scope */
 export const deleteInterconnectGroups: API.OperationMethod<
@@ -54837,7 +56661,7 @@ export const deleteInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInterconnectGroupsRequest,
   output: DeleteInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchInterconnectGroupsRequest {
@@ -54873,7 +56697,12 @@ export type PatchInterconnectGroupsResponse = Operation;
 export const PatchInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInterconnectGroupsError = DefaultErrors;
+export type PatchInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified InterconnectGroup resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchInterconnectGroups: API.OperationMethod<
@@ -54884,7 +56713,7 @@ export const patchInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInterconnectGroupsRequest,
   output: PatchInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOperationalStatusInterconnectGroupsRequest {
@@ -54911,7 +56740,10 @@ export type GetOperationalStatusInterconnectGroupsResponse =
 export const GetOperationalStatusInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectGroupsGetOperationalStatusResponse;
 
-export type GetOperationalStatusInterconnectGroupsError = DefaultErrors;
+export type GetOperationalStatusInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the interconnectStatuses for the specified InterconnectGroup. */
 export const getOperationalStatusInterconnectGroups: API.OperationMethod<
@@ -54922,7 +56754,7 @@ export const getOperationalStatusInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationalStatusInterconnectGroupsRequest,
   output: GetOperationalStatusInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetIamPolicyInterconnectGroupsRequest {
@@ -54953,7 +56785,10 @@ export type GetIamPolicyInterconnectGroupsResponse = Policy;
 export const GetIamPolicyInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyInterconnectGroupsError = DefaultErrors;
+export type GetIamPolicyInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyInterconnectGroups: API.OperationMethod<
@@ -54964,7 +56799,7 @@ export const getIamPolicyInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyInterconnectGroupsRequest,
   output: GetIamPolicyInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyInterconnectGroupsRequest {
@@ -54994,7 +56829,12 @@ export type SetIamPolicyInterconnectGroupsResponse = Policy;
 export const SetIamPolicyInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyInterconnectGroupsError = DefaultErrors;
+export type SetIamPolicyInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyInterconnectGroups: API.OperationMethod<
@@ -55005,7 +56845,7 @@ export const setIamPolicyInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyInterconnectGroupsRequest,
   output: SetIamPolicyInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsInterconnectGroupsRequest {
@@ -55036,7 +56876,12 @@ export type TestIamPermissionsInterconnectGroupsResponse =
 export const TestIamPermissionsInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsInterconnectGroupsError = DefaultErrors;
+export type TestIamPermissionsInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsInterconnectGroups: API.OperationMethod<
@@ -55047,7 +56892,7 @@ export const testIamPermissionsInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsInterconnectGroupsRequest,
   output: TestIamPermissionsInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateMembersInterconnectGroupsRequest {
@@ -55079,7 +56924,12 @@ export type CreateMembersInterconnectGroupsResponse = Operation;
 export const CreateMembersInterconnectGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateMembersInterconnectGroupsError = DefaultErrors;
+export type CreateMembersInterconnectGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create Interconnects with redundancy by creating them in a specified interconnect group. */
 export const createMembersInterconnectGroups: API.OperationMethod<
@@ -55090,7 +56940,7 @@ export const createMembersInterconnectGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateMembersInterconnectGroupsRequest,
   output: CreateMembersInterconnectGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertExternalVpnGatewaysRequest {
@@ -55120,7 +56970,12 @@ export type InsertExternalVpnGatewaysResponse = Operation;
 export const InsertExternalVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertExternalVpnGatewaysError = DefaultErrors;
+export type InsertExternalVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ExternalVpnGateway in the specified project using the data included in the request. */
 export const insertExternalVpnGateways: API.OperationMethod<
@@ -55131,7 +56986,7 @@ export const insertExternalVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertExternalVpnGatewaysRequest,
   output: InsertExternalVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListExternalVpnGatewaysRequest {
@@ -55171,7 +57026,7 @@ export type ListExternalVpnGatewaysResponse = ExternalVpnGatewayList;
 export const ListExternalVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExternalVpnGatewayList;
 
-export type ListExternalVpnGatewaysError = DefaultErrors;
+export type ListExternalVpnGatewaysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of ExternalVpnGateway available to the specified project. */
 export const listExternalVpnGateways: API.PaginatedOperationMethod<
@@ -55182,7 +57037,7 @@ export const listExternalVpnGateways: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListExternalVpnGatewaysRequest,
   output: ListExternalVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -55213,7 +57068,7 @@ export type GetExternalVpnGatewaysResponse = ExternalVpnGateway;
 export const GetExternalVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExternalVpnGateway;
 
-export type GetExternalVpnGatewaysError = DefaultErrors;
+export type GetExternalVpnGatewaysError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request. */
 export const getExternalVpnGateways: API.OperationMethod<
@@ -55224,7 +57079,7 @@ export const getExternalVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetExternalVpnGatewaysRequest,
   output: GetExternalVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteExternalVpnGatewaysRequest {
@@ -55253,7 +57108,12 @@ export type DeleteExternalVpnGatewaysResponse = Operation;
 export const DeleteExternalVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteExternalVpnGatewaysError = DefaultErrors;
+export type DeleteExternalVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified externalVpnGateway. */
 export const deleteExternalVpnGateways: API.OperationMethod<
@@ -55264,7 +57124,7 @@ export const deleteExternalVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteExternalVpnGatewaysRequest,
   output: DeleteExternalVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsExternalVpnGatewaysRequest {
@@ -55295,7 +57155,12 @@ export type TestIamPermissionsExternalVpnGatewaysResponse =
 export const TestIamPermissionsExternalVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsExternalVpnGatewaysError = DefaultErrors;
+export type TestIamPermissionsExternalVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsExternalVpnGateways: API.OperationMethod<
@@ -55306,7 +57171,7 @@ export const testIamPermissionsExternalVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsExternalVpnGatewaysRequest,
   output: TestIamPermissionsExternalVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsExternalVpnGatewaysRequest {
@@ -55336,7 +57201,12 @@ export type SetLabelsExternalVpnGatewaysResponse = Operation;
 export const SetLabelsExternalVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsExternalVpnGatewaysError = DefaultErrors;
+export type SetLabelsExternalVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on an ExternalVpnGateway. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsExternalVpnGateways: API.OperationMethod<
@@ -55347,7 +57217,7 @@ export const setLabelsExternalVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsExternalVpnGatewaysRequest,
   output: SetLabelsExternalVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGlobalForwardingRulesRequest {
@@ -55387,7 +57257,10 @@ export type ListGlobalForwardingRulesResponse = ForwardingRuleList;
 export const ListGlobalForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ForwardingRuleList;
 
-export type ListGlobalForwardingRulesError = DefaultErrors;
+export type ListGlobalForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of GlobalForwardingRule resources available to the specified project. */
 export const listGlobalForwardingRules: API.PaginatedOperationMethod<
@@ -55398,7 +57271,7 @@ export const listGlobalForwardingRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalForwardingRulesRequest,
   output: ListGlobalForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -55429,7 +57302,10 @@ export type GetGlobalForwardingRulesResponse = ForwardingRule;
 export const GetGlobalForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ForwardingRule;
 
-export type GetGlobalForwardingRulesError = DefaultErrors;
+export type GetGlobalForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request. */
 export const getGlobalForwardingRules: API.OperationMethod<
@@ -55440,7 +57316,7 @@ export const getGlobalForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalForwardingRulesRequest,
   output: GetGlobalForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertGlobalForwardingRulesRequest {
@@ -55470,7 +57346,12 @@ export type InsertGlobalForwardingRulesResponse = Operation;
 export const InsertGlobalForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertGlobalForwardingRulesError = DefaultErrors;
+export type InsertGlobalForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a GlobalForwardingRule resource in the specified project using the data included in the request. */
 export const insertGlobalForwardingRules: API.OperationMethod<
@@ -55481,7 +57362,7 @@ export const insertGlobalForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGlobalForwardingRulesRequest,
   output: InsertGlobalForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGlobalForwardingRulesRequest {
@@ -55510,7 +57391,12 @@ export type DeleteGlobalForwardingRulesResponse = Operation;
 export const DeleteGlobalForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteGlobalForwardingRulesError = DefaultErrors;
+export type DeleteGlobalForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified GlobalForwardingRule resource. */
 export const deleteGlobalForwardingRules: API.OperationMethod<
@@ -55521,7 +57407,7 @@ export const deleteGlobalForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalForwardingRulesRequest,
   output: DeleteGlobalForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetTargetGlobalForwardingRulesRequest {
@@ -55554,7 +57440,12 @@ export type SetTargetGlobalForwardingRulesResponse = Operation;
 export const SetTargetGlobalForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetTargetGlobalForwardingRulesError = DefaultErrors;
+export type SetTargetGlobalForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes target URL for the GlobalForwardingRule resource. The new target should be of the same type as the old target. */
 export const setTargetGlobalForwardingRules: API.OperationMethod<
@@ -55565,7 +57456,7 @@ export const setTargetGlobalForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetTargetGlobalForwardingRulesRequest,
   output: SetTargetGlobalForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchGlobalForwardingRulesRequest {
@@ -55598,7 +57489,12 @@ export type PatchGlobalForwardingRulesResponse = Operation;
 export const PatchGlobalForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchGlobalForwardingRulesError = DefaultErrors;
+export type PatchGlobalForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified forwarding rule with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. Currently, you can only patch the network_tier field. */
 export const patchGlobalForwardingRules: API.OperationMethod<
@@ -55609,7 +57505,7 @@ export const patchGlobalForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGlobalForwardingRulesRequest,
   output: PatchGlobalForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsGlobalForwardingRulesRequest {
@@ -55639,7 +57535,12 @@ export type SetLabelsGlobalForwardingRulesResponse = Operation;
 export const SetLabelsGlobalForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsGlobalForwardingRulesError = DefaultErrors;
+export type SetLabelsGlobalForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on the specified resource. To learn more about labels, read the Labeling resources documentation. */
 export const setLabelsGlobalForwardingRules: API.OperationMethod<
@@ -55650,7 +57551,7 @@ export const setLabelsGlobalForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsGlobalForwardingRulesRequest,
   output: SetLabelsGlobalForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListForwardingRulesRequest {
@@ -55693,7 +57594,7 @@ export type ListForwardingRulesResponse = ForwardingRuleList;
 export const ListForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ForwardingRuleList;
 
-export type ListForwardingRulesError = DefaultErrors;
+export type ListForwardingRulesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of ForwardingRule resources available to the specified project and region. */
 export const listForwardingRules: API.PaginatedOperationMethod<
@@ -55704,7 +57605,7 @@ export const listForwardingRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListForwardingRulesRequest,
   output: ListForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -55760,7 +57661,10 @@ export type AggregatedListForwardingRulesResponse =
 export const AggregatedListForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ForwardingRuleAggregatedList;
 
-export type AggregatedListForwardingRulesError = DefaultErrors;
+export type AggregatedListForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of forwarding rules. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListForwardingRules: API.PaginatedOperationMethod<
@@ -55771,7 +57675,7 @@ export const aggregatedListForwardingRules: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListForwardingRulesRequest,
   output: AggregatedListForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -55805,7 +57709,7 @@ export type GetForwardingRulesResponse = ForwardingRule;
 export const GetForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ForwardingRule;
 
-export type GetForwardingRulesError = DefaultErrors;
+export type GetForwardingRulesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified ForwardingRule resource. */
 export const getForwardingRules: API.OperationMethod<
@@ -55816,7 +57720,7 @@ export const getForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetForwardingRulesRequest,
   output: GetForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertForwardingRulesRequest {
@@ -55849,7 +57753,12 @@ export type InsertForwardingRulesResponse = Operation;
 export const InsertForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertForwardingRulesError = DefaultErrors;
+export type InsertForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ForwardingRule resource in the specified project and region using the data included in the request. */
 export const insertForwardingRules: API.OperationMethod<
@@ -55860,7 +57769,7 @@ export const insertForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertForwardingRulesRequest,
   output: InsertForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteForwardingRulesRequest {
@@ -55892,7 +57801,12 @@ export type DeleteForwardingRulesResponse = Operation;
 export const DeleteForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteForwardingRulesError = DefaultErrors;
+export type DeleteForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified ForwardingRule resource. */
 export const deleteForwardingRules: API.OperationMethod<
@@ -55903,7 +57817,7 @@ export const deleteForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteForwardingRulesRequest,
   output: DeleteForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetTargetForwardingRulesRequest {
@@ -55939,7 +57853,12 @@ export type SetTargetForwardingRulesResponse = Operation;
 export const SetTargetForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetTargetForwardingRulesError = DefaultErrors;
+export type SetTargetForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes target URL for forwarding rule. The new target should be of the same type as the old target. */
 export const setTargetForwardingRules: API.OperationMethod<
@@ -55950,7 +57869,7 @@ export const setTargetForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetTargetForwardingRulesRequest,
   output: SetTargetForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchForwardingRulesRequest {
@@ -55986,7 +57905,12 @@ export type PatchForwardingRulesResponse = Operation;
 export const PatchForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchForwardingRulesError = DefaultErrors;
+export type PatchForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified forwarding rule with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. Currently, you can only patch the network_tier field. */
 export const patchForwardingRules: API.OperationMethod<
@@ -55997,7 +57921,7 @@ export const patchForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchForwardingRulesRequest,
   output: PatchForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsForwardingRulesRequest {
@@ -56033,7 +57957,12 @@ export type SetLabelsForwardingRulesResponse = Operation;
 export const SetLabelsForwardingRulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsForwardingRulesError = DefaultErrors;
+export type SetLabelsForwardingRulesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on the specified resource. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsForwardingRules: API.OperationMethod<
@@ -56044,7 +57973,7 @@ export const setLabelsForwardingRules: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsForwardingRulesRequest,
   output: SetLabelsForwardingRulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertFutureReservationsRequest {
@@ -56077,7 +58006,12 @@ export type InsertFutureReservationsResponse = Operation;
 export const InsertFutureReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertFutureReservationsError = DefaultErrors;
+export type InsertFutureReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Future Reservation. */
 export const insertFutureReservations: API.OperationMethod<
@@ -56088,7 +58022,7 @@ export const insertFutureReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFutureReservationsRequest,
   output: InsertFutureReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFutureReservationsRequest {
@@ -56117,7 +58051,7 @@ export type GetFutureReservationsResponse = FutureReservation;
 export const GetFutureReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FutureReservation;
 
-export type GetFutureReservationsError = DefaultErrors;
+export type GetFutureReservationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about the specified future reservation. */
 export const getFutureReservations: API.OperationMethod<
@@ -56128,7 +58062,7 @@ export const getFutureReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFutureReservationsRequest,
   output: GetFutureReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFutureReservationsRequest {
@@ -56160,7 +58094,12 @@ export type DeleteFutureReservationsResponse = Operation;
 export const DeleteFutureReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteFutureReservationsError = DefaultErrors;
+export type DeleteFutureReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified future reservation. */
 export const deleteFutureReservations: API.OperationMethod<
@@ -56171,7 +58110,7 @@ export const deleteFutureReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFutureReservationsRequest,
   output: DeleteFutureReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFutureReservationsRequest {
@@ -56214,7 +58153,7 @@ export type ListFutureReservationsResponse = FutureReservationsListResponse;
 export const ListFutureReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FutureReservationsListResponse;
 
-export type ListFutureReservationsError = DefaultErrors;
+export type ListFutureReservationsError = DefaultErrors | NotFound | Forbidden;
 
 /** A list of all the future reservations that have been configured for the specified project in specified zone. */
 export const listFutureReservations: API.PaginatedOperationMethod<
@@ -56225,7 +58164,7 @@ export const listFutureReservations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFutureReservationsRequest,
   output: ListFutureReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -56281,7 +58220,10 @@ export type AggregatedListFutureReservationsResponse =
 export const AggregatedListFutureReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FutureReservationsAggregatedListResponse;
 
-export type AggregatedListFutureReservationsError = DefaultErrors;
+export type AggregatedListFutureReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of future reservations. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListFutureReservations: API.PaginatedOperationMethod<
@@ -56292,7 +58234,7 @@ export const aggregatedListFutureReservations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListFutureReservationsRequest,
   output: AggregatedListFutureReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -56336,7 +58278,12 @@ export type UpdateFutureReservationsResponse = Operation;
 export const UpdateFutureReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateFutureReservationsError = DefaultErrors;
+export type UpdateFutureReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified future reservation. */
 export const updateFutureReservations: API.OperationMethod<
@@ -56347,7 +58294,7 @@ export const updateFutureReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFutureReservationsRequest,
   output: UpdateFutureReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelFutureReservationsRequest {
@@ -56380,7 +58327,12 @@ export type CancelFutureReservationsResponse = Operation;
 export const CancelFutureReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CancelFutureReservationsError = DefaultErrors;
+export type CancelFutureReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel the specified future reservation. */
 export const cancelFutureReservations: API.OperationMethod<
@@ -56391,7 +58343,7 @@ export const cancelFutureReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelFutureReservationsRequest,
   output: CancelFutureReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionHealthAggregationPoliciesRequest {
@@ -56435,7 +58387,10 @@ export type ListRegionHealthAggregationPoliciesResponse =
 export const ListRegionHealthAggregationPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthAggregationPolicyList;
 
-export type ListRegionHealthAggregationPoliciesError = DefaultErrors;
+export type ListRegionHealthAggregationPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the HealthAggregationPolicies for a project in the given region. */
 export const listRegionHealthAggregationPolicies: API.PaginatedOperationMethod<
@@ -56446,7 +58401,7 @@ export const listRegionHealthAggregationPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthAggregationPoliciesRequest,
   output: ListRegionHealthAggregationPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -56483,7 +58438,10 @@ export type GetRegionHealthAggregationPoliciesResponse =
 export const GetRegionHealthAggregationPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthAggregationPolicy;
 
-export type GetRegionHealthAggregationPoliciesError = DefaultErrors;
+export type GetRegionHealthAggregationPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified HealthAggregationPolicy resource in the given region. */
 export const getRegionHealthAggregationPolicies: API.OperationMethod<
@@ -56494,7 +58452,7 @@ export const getRegionHealthAggregationPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionHealthAggregationPoliciesRequest,
   output: GetRegionHealthAggregationPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionHealthAggregationPoliciesRequest {
@@ -56527,7 +58485,12 @@ export type InsertRegionHealthAggregationPoliciesResponse = Operation;
 export const InsertRegionHealthAggregationPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionHealthAggregationPoliciesError = DefaultErrors;
+export type InsertRegionHealthAggregationPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a HealthAggregationPolicy in the specified project in the given region using the parameters that are included in the request. */
 export const insertRegionHealthAggregationPolicies: API.OperationMethod<
@@ -56538,7 +58501,7 @@ export const insertRegionHealthAggregationPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionHealthAggregationPoliciesRequest,
   output: InsertRegionHealthAggregationPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionHealthAggregationPoliciesRequest {
@@ -56572,7 +58535,12 @@ export type DeleteRegionHealthAggregationPoliciesResponse = Operation;
 export const DeleteRegionHealthAggregationPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionHealthAggregationPoliciesError = DefaultErrors;
+export type DeleteRegionHealthAggregationPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified HealthAggregationPolicy in the given region. */
 export const deleteRegionHealthAggregationPolicies: API.OperationMethod<
@@ -56583,7 +58551,7 @@ export const deleteRegionHealthAggregationPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionHealthAggregationPoliciesRequest,
   output: DeleteRegionHealthAggregationPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionHealthAggregationPoliciesRequest {
@@ -56621,7 +58589,12 @@ export type PatchRegionHealthAggregationPoliciesResponse = Operation;
 export const PatchRegionHealthAggregationPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionHealthAggregationPoliciesError = DefaultErrors;
+export type PatchRegionHealthAggregationPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified regional HealthAggregationPolicy resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchRegionHealthAggregationPolicies: API.OperationMethod<
@@ -56632,7 +58605,7 @@ export const patchRegionHealthAggregationPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionHealthAggregationPoliciesRequest,
   output: PatchRegionHealthAggregationPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionHealthAggregationPoliciesRequest {
@@ -56667,7 +58640,11 @@ export const TestIamPermissionsRegionHealthAggregationPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
 export type TestIamPermissionsRegionHealthAggregationPoliciesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionHealthAggregationPolicies: API.OperationMethod<
@@ -56678,7 +58655,7 @@ export const testIamPermissionsRegionHealthAggregationPolicies: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionHealthAggregationPoliciesRequest,
   output: TestIamPermissionsRegionHealthAggregationPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListRegionHealthAggregationPoliciesRequest {
@@ -56729,7 +58706,10 @@ export type AggregatedListRegionHealthAggregationPoliciesResponse =
 export const AggregatedListRegionHealthAggregationPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthAggregationPolicyAggregatedList;
 
-export type AggregatedListRegionHealthAggregationPoliciesError = DefaultErrors;
+export type AggregatedListRegionHealthAggregationPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all HealthAggregationPolicy resources, regional and global, available to the specified project. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListRegionHealthAggregationPolicies: API.PaginatedOperationMethod<
@@ -56740,7 +58720,7 @@ export const aggregatedListRegionHealthAggregationPolicies: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListRegionHealthAggregationPoliciesRequest,
   output: AggregatedListRegionHealthAggregationPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -56796,7 +58776,10 @@ export type AggregatedListRegionHealthCheckServicesResponse =
 export const AggregatedListRegionHealthCheckServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthCheckServiceAggregatedList;
 
-export type AggregatedListRegionHealthCheckServicesError = DefaultErrors;
+export type AggregatedListRegionHealthCheckServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all HealthCheckService resources, regional and global, available to the specified project. To prevent failure, it is recommended that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListRegionHealthCheckServices: API.PaginatedOperationMethod<
@@ -56807,7 +58790,7 @@ export const aggregatedListRegionHealthCheckServices: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListRegionHealthCheckServicesRequest,
   output: AggregatedListRegionHealthCheckServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -56855,7 +58838,10 @@ export type ListRegionHealthCheckServicesResponse = HealthCheckServicesList;
 export const ListRegionHealthCheckServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthCheckServicesList;
 
-export type ListRegionHealthCheckServicesError = DefaultErrors;
+export type ListRegionHealthCheckServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the HealthCheckService resources that have been configured for the specified project in the given region. */
 export const listRegionHealthCheckServices: API.PaginatedOperationMethod<
@@ -56866,7 +58852,7 @@ export const listRegionHealthCheckServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthCheckServicesRequest,
   output: ListRegionHealthCheckServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -56900,7 +58886,10 @@ export type GetRegionHealthCheckServicesResponse = HealthCheckService;
 export const GetRegionHealthCheckServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthCheckService;
 
-export type GetRegionHealthCheckServicesError = DefaultErrors;
+export type GetRegionHealthCheckServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified regional HealthCheckService resource. */
 export const getRegionHealthCheckServices: API.OperationMethod<
@@ -56911,7 +58900,7 @@ export const getRegionHealthCheckServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionHealthCheckServicesRequest,
   output: GetRegionHealthCheckServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionHealthCheckServicesRequest {
@@ -56944,7 +58933,12 @@ export type InsertRegionHealthCheckServicesResponse = Operation;
 export const InsertRegionHealthCheckServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionHealthCheckServicesError = DefaultErrors;
+export type InsertRegionHealthCheckServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a regional HealthCheckService resource in the specified project and region using the data included in the request. */
 export const insertRegionHealthCheckServices: API.OperationMethod<
@@ -56955,7 +58949,7 @@ export const insertRegionHealthCheckServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionHealthCheckServicesRequest,
   output: InsertRegionHealthCheckServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionHealthCheckServicesRequest {
@@ -56987,7 +58981,12 @@ export type DeleteRegionHealthCheckServicesResponse = Operation;
 export const DeleteRegionHealthCheckServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionHealthCheckServicesError = DefaultErrors;
+export type DeleteRegionHealthCheckServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified regional HealthCheckService. */
 export const deleteRegionHealthCheckServices: API.OperationMethod<
@@ -56998,7 +58997,7 @@ export const deleteRegionHealthCheckServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionHealthCheckServicesRequest,
   output: DeleteRegionHealthCheckServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionHealthCheckServicesRequest {
@@ -57034,7 +59033,12 @@ export type PatchRegionHealthCheckServicesResponse = Operation;
 export const PatchRegionHealthCheckServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionHealthCheckServicesError = DefaultErrors;
+export type PatchRegionHealthCheckServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified regional HealthCheckService resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchRegionHealthCheckServices: API.OperationMethod<
@@ -57045,7 +59049,7 @@ export const patchRegionHealthCheckServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionHealthCheckServicesRequest,
   output: PatchRegionHealthCheckServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionHealthCheckServicesRequest {
@@ -57079,7 +59083,12 @@ export type TestIamPermissionsRegionHealthCheckServicesResponse =
 export const TestIamPermissionsRegionHealthCheckServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionHealthCheckServicesError = DefaultErrors;
+export type TestIamPermissionsRegionHealthCheckServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionHealthCheckServices: API.OperationMethod<
@@ -57090,7 +59099,7 @@ export const testIamPermissionsRegionHealthCheckServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionHealthCheckServicesRequest,
   output: TestIamPermissionsRegionHealthCheckServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListHealthChecksRequest {
@@ -57127,7 +59136,7 @@ export type ListHealthChecksResponse = HealthCheckList;
 export const ListHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthCheckList;
 
-export type ListHealthChecksError = DefaultErrors;
+export type ListHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of HealthCheck resources available to the specified project. */
 export const listHealthChecks: API.PaginatedOperationMethod<
@@ -57138,7 +59147,7 @@ export const listHealthChecks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHealthChecksRequest,
   output: ListHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -57193,7 +59202,10 @@ export type AggregatedListHealthChecksResponse = HealthChecksAggregatedList;
 export const AggregatedListHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthChecksAggregatedList;
 
-export type AggregatedListHealthChecksError = DefaultErrors;
+export type AggregatedListHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all HealthCheck resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListHealthChecks: API.PaginatedOperationMethod<
@@ -57204,7 +59216,7 @@ export const aggregatedListHealthChecks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListHealthChecksRequest,
   output: AggregatedListHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -57235,7 +59247,7 @@ export const GetHealthChecksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetHealthChecksResponse = HealthCheck;
 export const GetHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ HealthCheck;
 
-export type GetHealthChecksError = DefaultErrors;
+export type GetHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified HealthCheck resource. */
 export const getHealthChecks: API.OperationMethod<
@@ -57246,7 +59258,7 @@ export const getHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthChecksRequest,
   output: GetHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertHealthChecksRequest {
@@ -57275,7 +59287,12 @@ export const InsertHealthChecksRequest =
 export type InsertHealthChecksResponse = Operation;
 export const InsertHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertHealthChecksError = DefaultErrors;
+export type InsertHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a HealthCheck resource in the specified project using the data included in the request. */
 export const insertHealthChecks: API.OperationMethod<
@@ -57286,7 +59303,7 @@ export const insertHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertHealthChecksRequest,
   output: InsertHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteHealthChecksRequest {
@@ -57314,7 +59331,12 @@ export const DeleteHealthChecksRequest =
 export type DeleteHealthChecksResponse = Operation;
 export const DeleteHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteHealthChecksError = DefaultErrors;
+export type DeleteHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified HealthCheck resource. */
 export const deleteHealthChecks: API.OperationMethod<
@@ -57325,7 +59347,7 @@ export const deleteHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHealthChecksRequest,
   output: DeleteHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateHealthChecksRequest {
@@ -57357,7 +59379,12 @@ export const UpdateHealthChecksRequest =
 export type UpdateHealthChecksResponse = Operation;
 export const UpdateHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateHealthChecksError = DefaultErrors;
+export type UpdateHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HealthCheck resource in the specified project using the data included in the request. */
 export const updateHealthChecks: API.OperationMethod<
@@ -57368,7 +59395,7 @@ export const updateHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHealthChecksRequest,
   output: UpdateHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchHealthChecksRequest {
@@ -57400,7 +59427,12 @@ export const PatchHealthChecksRequest =
 export type PatchHealthChecksResponse = Operation;
 export const PatchHealthChecksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchHealthChecksError = DefaultErrors;
+export type PatchHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HealthCheck resource in the specified project using the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchHealthChecks: API.OperationMethod<
@@ -57411,7 +59443,7 @@ export const patchHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchHealthChecksRequest,
   output: PatchHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsHealthChecksRequest {
@@ -57441,7 +59473,12 @@ export type TestIamPermissionsHealthChecksResponse = TestPermissionsResponse;
 export const TestIamPermissionsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsHealthChecksError = DefaultErrors;
+export type TestIamPermissionsHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsHealthChecks: API.OperationMethod<
@@ -57452,7 +59489,7 @@ export const testIamPermissionsHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsHealthChecksRequest,
   output: TestIamPermissionsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionHealthChecksRequest {
@@ -57495,7 +59532,7 @@ export type ListRegionHealthChecksResponse = HealthCheckList;
 export const ListRegionHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthCheckList;
 
-export type ListRegionHealthChecksError = DefaultErrors;
+export type ListRegionHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of HealthCheck resources available to the specified project. */
 export const listRegionHealthChecks: API.PaginatedOperationMethod<
@@ -57506,7 +59543,7 @@ export const listRegionHealthChecks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthChecksRequest,
   output: ListRegionHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -57540,7 +59577,7 @@ export type GetRegionHealthChecksResponse = HealthCheck;
 export const GetRegionHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthCheck;
 
-export type GetRegionHealthChecksError = DefaultErrors;
+export type GetRegionHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified HealthCheck resource. */
 export const getRegionHealthChecks: API.OperationMethod<
@@ -57551,7 +59588,7 @@ export const getRegionHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionHealthChecksRequest,
   output: GetRegionHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionHealthChecksRequest {
@@ -57584,7 +59621,12 @@ export type InsertRegionHealthChecksResponse = Operation;
 export const InsertRegionHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionHealthChecksError = DefaultErrors;
+export type InsertRegionHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a HealthCheck resource in the specified project using the data included in the request. */
 export const insertRegionHealthChecks: API.OperationMethod<
@@ -57595,7 +59637,7 @@ export const insertRegionHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionHealthChecksRequest,
   output: InsertRegionHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionHealthChecksRequest {
@@ -57627,7 +59669,12 @@ export type DeleteRegionHealthChecksResponse = Operation;
 export const DeleteRegionHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionHealthChecksError = DefaultErrors;
+export type DeleteRegionHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified HealthCheck resource. */
 export const deleteRegionHealthChecks: API.OperationMethod<
@@ -57638,7 +59685,7 @@ export const deleteRegionHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionHealthChecksRequest,
   output: DeleteRegionHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRegionHealthChecksRequest {
@@ -57674,7 +59721,12 @@ export type UpdateRegionHealthChecksResponse = Operation;
 export const UpdateRegionHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRegionHealthChecksError = DefaultErrors;
+export type UpdateRegionHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HealthCheck resource in the specified project using the data included in the request. */
 export const updateRegionHealthChecks: API.OperationMethod<
@@ -57685,7 +59737,7 @@ export const updateRegionHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRegionHealthChecksRequest,
   output: UpdateRegionHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionHealthChecksRequest {
@@ -57721,7 +59773,12 @@ export type PatchRegionHealthChecksResponse = Operation;
 export const PatchRegionHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionHealthChecksError = DefaultErrors;
+export type PatchRegionHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HealthCheck resource in the specified project using the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchRegionHealthChecks: API.OperationMethod<
@@ -57732,7 +59789,7 @@ export const patchRegionHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionHealthChecksRequest,
   output: PatchRegionHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionHealthChecksRequest {
@@ -57766,7 +59823,12 @@ export type TestIamPermissionsRegionHealthChecksResponse =
 export const TestIamPermissionsRegionHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionHealthChecksError = DefaultErrors;
+export type TestIamPermissionsRegionHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionHealthChecks: API.OperationMethod<
@@ -57777,7 +59839,7 @@ export const testIamPermissionsRegionHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionHealthChecksRequest,
   output: TestIamPermissionsRegionHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListRegionHealthSourcesRequest {
@@ -57828,7 +59890,10 @@ export type AggregatedListRegionHealthSourcesResponse =
 export const AggregatedListRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthSourceAggregatedList;
 
-export type AggregatedListRegionHealthSourcesError = DefaultErrors;
+export type AggregatedListRegionHealthSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all HealthSource resources (all regional) available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListRegionHealthSources: API.PaginatedOperationMethod<
@@ -57839,7 +59904,7 @@ export const aggregatedListRegionHealthSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListRegionHealthSourcesRequest,
   output: AggregatedListRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -57887,7 +59952,7 @@ export type ListRegionHealthSourcesResponse = HealthSourceList;
 export const ListRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthSourceList;
 
-export type ListRegionHealthSourcesError = DefaultErrors;
+export type ListRegionHealthSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the HealthSources for a project in the given region. */
 export const listRegionHealthSources: API.PaginatedOperationMethod<
@@ -57898,7 +59963,7 @@ export const listRegionHealthSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionHealthSourcesRequest,
   output: ListRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -57932,7 +59997,7 @@ export type GetRegionHealthSourcesResponse = HealthSource;
 export const GetRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthSource;
 
-export type GetRegionHealthSourcesError = DefaultErrors;
+export type GetRegionHealthSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified HealthSource resource in the given region. */
 export const getRegionHealthSources: API.OperationMethod<
@@ -57943,7 +60008,7 @@ export const getRegionHealthSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionHealthSourcesRequest,
   output: GetRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionHealthSourcesRequest {
@@ -57976,7 +60041,12 @@ export type InsertRegionHealthSourcesResponse = Operation;
 export const InsertRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionHealthSourcesError = DefaultErrors;
+export type InsertRegionHealthSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a HealthSource in the specified project in the given region using the parameters that are included in the request. */
 export const insertRegionHealthSources: API.OperationMethod<
@@ -57987,7 +60057,7 @@ export const insertRegionHealthSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionHealthSourcesRequest,
   output: InsertRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionHealthSourcesRequest {
@@ -58019,7 +60089,12 @@ export type DeleteRegionHealthSourcesResponse = Operation;
 export const DeleteRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionHealthSourcesError = DefaultErrors;
+export type DeleteRegionHealthSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified HealthSource in the given region */
 export const deleteRegionHealthSources: API.OperationMethod<
@@ -58030,7 +60105,7 @@ export const deleteRegionHealthSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionHealthSourcesRequest,
   output: DeleteRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionHealthSourcesRequest {
@@ -58066,7 +60141,12 @@ export type PatchRegionHealthSourcesResponse = Operation;
 export const PatchRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionHealthSourcesError = DefaultErrors;
+export type PatchRegionHealthSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified regional HealthSource resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchRegionHealthSources: API.OperationMethod<
@@ -58077,7 +60157,7 @@ export const patchRegionHealthSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionHealthSourcesRequest,
   output: PatchRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionHealthSourcesRequest {
@@ -58111,7 +60191,12 @@ export type TestIamPermissionsRegionHealthSourcesResponse =
 export const TestIamPermissionsRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionHealthSourcesError = DefaultErrors;
+export type TestIamPermissionsRegionHealthSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionHealthSources: API.OperationMethod<
@@ -58122,7 +60207,7 @@ export const testIamPermissionsRegionHealthSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionHealthSourcesRequest,
   output: TestIamPermissionsRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetHealthRegionHealthSourcesRequest {
@@ -58151,7 +60236,10 @@ export type GetHealthRegionHealthSourcesResponse = HealthSourceHealth;
 export const GetHealthRegionHealthSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HealthSourceHealth;
 
-export type GetHealthRegionHealthSourcesError = DefaultErrors;
+export type GetHealthRegionHealthSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the most recent health check results for this regional HealthSource. */
 export const getHealthRegionHealthSources: API.OperationMethod<
@@ -58162,7 +60250,7 @@ export const getHealthRegionHealthSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthRegionHealthSourcesRequest,
   output: GetHealthRegionHealthSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListHttpHealthChecksRequest {
@@ -58202,7 +60290,7 @@ export type ListHttpHealthChecksResponse = HttpHealthCheckList;
 export const ListHttpHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpHealthCheckList;
 
-export type ListHttpHealthChecksError = DefaultErrors;
+export type ListHttpHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of HttpHealthCheck resources available to the specified project. */
 export const listHttpHealthChecks: API.PaginatedOperationMethod<
@@ -58213,7 +60301,7 @@ export const listHttpHealthChecks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHttpHealthChecksRequest,
   output: ListHttpHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -58244,7 +60332,7 @@ export type GetHttpHealthChecksResponse = HttpHealthCheck;
 export const GetHttpHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpHealthCheck;
 
-export type GetHttpHealthChecksError = DefaultErrors;
+export type GetHttpHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified HttpHealthCheck resource. */
 export const getHttpHealthChecks: API.OperationMethod<
@@ -58255,7 +60343,7 @@ export const getHttpHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHttpHealthChecksRequest,
   output: GetHttpHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertHttpHealthChecksRequest {
@@ -58285,7 +60373,12 @@ export type InsertHttpHealthChecksResponse = Operation;
 export const InsertHttpHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertHttpHealthChecksError = DefaultErrors;
+export type InsertHttpHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a HttpHealthCheck resource in the specified project using the data included in the request. */
 export const insertHttpHealthChecks: API.OperationMethod<
@@ -58296,7 +60389,7 @@ export const insertHttpHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertHttpHealthChecksRequest,
   output: InsertHttpHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteHttpHealthChecksRequest {
@@ -58325,7 +60418,12 @@ export type DeleteHttpHealthChecksResponse = Operation;
 export const DeleteHttpHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteHttpHealthChecksError = DefaultErrors;
+export type DeleteHttpHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified HttpHealthCheck resource. */
 export const deleteHttpHealthChecks: API.OperationMethod<
@@ -58336,7 +60434,7 @@ export const deleteHttpHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHttpHealthChecksRequest,
   output: DeleteHttpHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateHttpHealthChecksRequest {
@@ -58369,7 +60467,12 @@ export type UpdateHttpHealthChecksResponse = Operation;
 export const UpdateHttpHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateHttpHealthChecksError = DefaultErrors;
+export type UpdateHttpHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HttpHealthCheck resource in the specified project using the data included in the request. */
 export const updateHttpHealthChecks: API.OperationMethod<
@@ -58380,7 +60483,7 @@ export const updateHttpHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHttpHealthChecksRequest,
   output: UpdateHttpHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchHttpHealthChecksRequest {
@@ -58413,7 +60516,12 @@ export type PatchHttpHealthChecksResponse = Operation;
 export const PatchHttpHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchHttpHealthChecksError = DefaultErrors;
+export type PatchHttpHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HttpHealthCheck resource in the specified project using the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchHttpHealthChecks: API.OperationMethod<
@@ -58424,7 +60532,7 @@ export const patchHttpHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchHttpHealthChecksRequest,
   output: PatchHttpHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsHttpHealthChecksRequest {
@@ -58455,7 +60563,12 @@ export type TestIamPermissionsHttpHealthChecksResponse =
 export const TestIamPermissionsHttpHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsHttpHealthChecksError = DefaultErrors;
+export type TestIamPermissionsHttpHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsHttpHealthChecks: API.OperationMethod<
@@ -58466,7 +60579,7 @@ export const testIamPermissionsHttpHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsHttpHealthChecksRequest,
   output: TestIamPermissionsHttpHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListHttpsHealthChecksRequest {
@@ -58506,7 +60619,7 @@ export type ListHttpsHealthChecksResponse = HttpsHealthCheckList;
 export const ListHttpsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpsHealthCheckList;
 
-export type ListHttpsHealthChecksError = DefaultErrors;
+export type ListHttpsHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of HttpsHealthCheck resources available to the specified project. */
 export const listHttpsHealthChecks: API.PaginatedOperationMethod<
@@ -58517,7 +60630,7 @@ export const listHttpsHealthChecks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHttpsHealthChecksRequest,
   output: ListHttpsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -58548,7 +60661,7 @@ export type GetHttpsHealthChecksResponse = HttpsHealthCheck;
 export const GetHttpsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpsHealthCheck;
 
-export type GetHttpsHealthChecksError = DefaultErrors;
+export type GetHttpsHealthChecksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified HttpsHealthCheck resource. */
 export const getHttpsHealthChecks: API.OperationMethod<
@@ -58559,7 +60672,7 @@ export const getHttpsHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHttpsHealthChecksRequest,
   output: GetHttpsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertHttpsHealthChecksRequest {
@@ -58589,7 +60702,12 @@ export type InsertHttpsHealthChecksResponse = Operation;
 export const InsertHttpsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertHttpsHealthChecksError = DefaultErrors;
+export type InsertHttpsHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a HttpsHealthCheck resource in the specified project using the data included in the request. */
 export const insertHttpsHealthChecks: API.OperationMethod<
@@ -58600,7 +60718,7 @@ export const insertHttpsHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertHttpsHealthChecksRequest,
   output: InsertHttpsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteHttpsHealthChecksRequest {
@@ -58629,7 +60747,12 @@ export type DeleteHttpsHealthChecksResponse = Operation;
 export const DeleteHttpsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteHttpsHealthChecksError = DefaultErrors;
+export type DeleteHttpsHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified HttpsHealthCheck resource. */
 export const deleteHttpsHealthChecks: API.OperationMethod<
@@ -58640,7 +60763,7 @@ export const deleteHttpsHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteHttpsHealthChecksRequest,
   output: DeleteHttpsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateHttpsHealthChecksRequest {
@@ -58673,7 +60796,12 @@ export type UpdateHttpsHealthChecksResponse = Operation;
 export const UpdateHttpsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateHttpsHealthChecksError = DefaultErrors;
+export type UpdateHttpsHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HttpsHealthCheck resource in the specified project using the data included in the request. */
 export const updateHttpsHealthChecks: API.OperationMethod<
@@ -58684,7 +60812,7 @@ export const updateHttpsHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateHttpsHealthChecksRequest,
   output: UpdateHttpsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchHttpsHealthChecksRequest {
@@ -58717,7 +60845,12 @@ export type PatchHttpsHealthChecksResponse = Operation;
 export const PatchHttpsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchHttpsHealthChecksError = DefaultErrors;
+export type PatchHttpsHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a HttpsHealthCheck resource in the specified project using the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchHttpsHealthChecks: API.OperationMethod<
@@ -58728,7 +60861,7 @@ export const patchHttpsHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchHttpsHealthChecksRequest,
   output: PatchHttpsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsHttpsHealthChecksRequest {
@@ -58759,7 +60892,12 @@ export type TestIamPermissionsHttpsHealthChecksResponse =
 export const TestIamPermissionsHttpsHealthChecksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsHttpsHealthChecksError = DefaultErrors;
+export type TestIamPermissionsHttpsHealthChecksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsHttpsHealthChecks: API.OperationMethod<
@@ -58770,7 +60908,7 @@ export const testIamPermissionsHttpsHealthChecks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsHttpsHealthChecksRequest,
   output: TestIamPermissionsHttpsHealthChecksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstanceTemplatesRequest {
@@ -58810,7 +60948,7 @@ export type ListInstanceTemplatesResponse = InstanceTemplateList;
 export const ListInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceTemplateList;
 
-export type ListInstanceTemplatesError = DefaultErrors;
+export type ListInstanceTemplatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of instance templates that are contained within the specified project. */
 export const listInstanceTemplates: API.PaginatedOperationMethod<
@@ -58821,7 +60959,7 @@ export const listInstanceTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstanceTemplatesRequest,
   output: ListInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -58852,7 +60990,7 @@ export type GetInstanceTemplatesResponse = InstanceTemplate;
 export const GetInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceTemplate;
 
-export type GetInstanceTemplatesError = DefaultErrors;
+export type GetInstanceTemplatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified instance template. */
 export const getInstanceTemplates: API.OperationMethod<
@@ -58863,7 +61001,7 @@ export const getInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceTemplatesRequest,
   output: GetInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInstanceTemplatesRequest {
@@ -58893,7 +61031,12 @@ export type InsertInstanceTemplatesResponse = Operation;
 export const InsertInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstanceTemplatesError = DefaultErrors;
+export type InsertInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template. */
 export const insertInstanceTemplates: API.OperationMethod<
@@ -58904,7 +61047,7 @@ export const insertInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstanceTemplatesRequest,
   output: InsertInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstanceTemplatesRequest {
@@ -58933,7 +61076,12 @@ export type DeleteInstanceTemplatesResponse = Operation;
 export const DeleteInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstanceTemplatesError = DefaultErrors;
+export type DeleteInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified instance template. Deleting an instance template is permanent and cannot be undone. It is not possible to delete templates that are already in use by a managed instance group. */
 export const deleteInstanceTemplates: API.OperationMethod<
@@ -58944,7 +61092,7 @@ export const deleteInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstanceTemplatesRequest,
   output: DeleteInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListInstanceTemplatesRequest {
@@ -58995,7 +61143,10 @@ export type AggregatedListInstanceTemplatesResponse =
 export const AggregatedListInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceTemplateAggregatedList;
 
-export type AggregatedListInstanceTemplatesError = DefaultErrors;
+export type AggregatedListInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all InstanceTemplates resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListInstanceTemplates: API.PaginatedOperationMethod<
@@ -59006,7 +61157,7 @@ export const aggregatedListInstanceTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListInstanceTemplatesRequest,
   output: AggregatedListInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -59042,7 +61193,10 @@ export type GetIamPolicyInstanceTemplatesResponse = Policy;
 export const GetIamPolicyInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyInstanceTemplatesError = DefaultErrors;
+export type GetIamPolicyInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyInstanceTemplates: API.OperationMethod<
@@ -59053,7 +61207,7 @@ export const getIamPolicyInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyInstanceTemplatesRequest,
   output: GetIamPolicyInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyInstanceTemplatesRequest {
@@ -59083,7 +61237,12 @@ export type SetIamPolicyInstanceTemplatesResponse = Policy;
 export const SetIamPolicyInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyInstanceTemplatesError = DefaultErrors;
+export type SetIamPolicyInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyInstanceTemplates: API.OperationMethod<
@@ -59094,7 +61253,7 @@ export const setIamPolicyInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyInstanceTemplatesRequest,
   output: SetIamPolicyInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsInstanceTemplatesRequest {
@@ -59125,7 +61284,12 @@ export type TestIamPermissionsInstanceTemplatesResponse =
 export const TestIamPermissionsInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsInstanceTemplatesError = DefaultErrors;
+export type TestIamPermissionsInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsInstanceTemplates: API.OperationMethod<
@@ -59136,7 +61300,7 @@ export const testIamPermissionsInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsInstanceTemplatesRequest,
   output: TestIamPermissionsInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionInstanceTemplatesRequest {
@@ -59179,7 +61343,10 @@ export type ListRegionInstanceTemplatesResponse = InstanceTemplateList;
 export const ListRegionInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceTemplateList;
 
-export type ListRegionInstanceTemplatesError = DefaultErrors;
+export type ListRegionInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of instance templates that are contained within the specified project and region. */
 export const listRegionInstanceTemplates: API.PaginatedOperationMethod<
@@ -59190,7 +61357,7 @@ export const listRegionInstanceTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstanceTemplatesRequest,
   output: ListRegionInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -59224,7 +61391,10 @@ export type GetRegionInstanceTemplatesResponse = InstanceTemplate;
 export const GetRegionInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceTemplate;
 
-export type GetRegionInstanceTemplatesError = DefaultErrors;
+export type GetRegionInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified instance template. */
 export const getRegionInstanceTemplates: API.OperationMethod<
@@ -59235,7 +61405,7 @@ export const getRegionInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionInstanceTemplatesRequest,
   output: GetRegionInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionInstanceTemplatesRequest {
@@ -59268,7 +61438,12 @@ export type InsertRegionInstanceTemplatesResponse = Operation;
 export const InsertRegionInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionInstanceTemplatesError = DefaultErrors;
+export type InsertRegionInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instance template in the specified project and region using the global instance template whose URL is included in the request. */
 export const insertRegionInstanceTemplates: API.OperationMethod<
@@ -59279,7 +61454,7 @@ export const insertRegionInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionInstanceTemplatesRequest,
   output: InsertRegionInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionInstanceTemplatesRequest {
@@ -59311,7 +61486,12 @@ export type DeleteRegionInstanceTemplatesResponse = Operation;
 export const DeleteRegionInstanceTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionInstanceTemplatesError = DefaultErrors;
+export type DeleteRegionInstanceTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified instance template. Deleting an instance template is permanent and cannot be undone. */
 export const deleteRegionInstanceTemplates: API.OperationMethod<
@@ -59322,7 +61502,7 @@ export const deleteRegionInstanceTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionInstanceTemplatesRequest,
   output: DeleteRegionInstanceTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInstanceSettingsRequest {
@@ -59348,7 +61528,7 @@ export type GetInstanceSettingsResponse = InstanceSettings;
 export const GetInstanceSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstanceSettings;
 
-export type GetInstanceSettingsError = DefaultErrors;
+export type GetInstanceSettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get Instance settings. */
 export const getInstanceSettings: API.OperationMethod<
@@ -59359,7 +61539,7 @@ export const getInstanceSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstanceSettingsRequest,
   output: GetInstanceSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchInstanceSettingsRequest {
@@ -59395,7 +61575,12 @@ export type PatchInstanceSettingsResponse = Operation;
 export const PatchInstanceSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchInstanceSettingsError = DefaultErrors;
+export type PatchInstanceSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch Instance settings */
 export const patchInstanceSettings: API.OperationMethod<
@@ -59406,7 +61591,7 @@ export const patchInstanceSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchInstanceSettingsRequest,
   output: PatchInstanceSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInstantSnapshotsRequest {
@@ -59449,7 +61634,7 @@ export type ListInstantSnapshotsResponse = InstantSnapshotList;
 export const ListInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstantSnapshotList;
 
-export type ListInstantSnapshotsError = DefaultErrors;
+export type ListInstantSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of InstantSnapshot resources contained within the specified zone. */
 export const listInstantSnapshots: API.PaginatedOperationMethod<
@@ -59460,7 +61645,7 @@ export const listInstantSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstantSnapshotsRequest,
   output: ListInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -59494,7 +61679,7 @@ export type GetInstantSnapshotsResponse = InstantSnapshot;
 export const GetInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstantSnapshot;
 
-export type GetInstantSnapshotsError = DefaultErrors;
+export type GetInstantSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified InstantSnapshot resource in the specified zone. */
 export const getInstantSnapshots: API.OperationMethod<
@@ -59505,7 +61690,7 @@ export const getInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstantSnapshotsRequest,
   output: GetInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertInstantSnapshotsRequest {
@@ -59538,7 +61723,12 @@ export type InsertInstantSnapshotsResponse = Operation;
 export const InsertInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstantSnapshotsError = DefaultErrors;
+export type InsertInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instant snapshot in the specified zone. */
 export const insertInstantSnapshots: API.OperationMethod<
@@ -59549,7 +61739,7 @@ export const insertInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstantSnapshotsRequest,
   output: InsertInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsInstantSnapshotsRequest {
@@ -59585,7 +61775,12 @@ export type SetLabelsInstantSnapshotsResponse = Operation;
 export const SetLabelsInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsInstantSnapshotsError = DefaultErrors;
+export type SetLabelsInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a instantSnapshot in the given zone. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsInstantSnapshots: API.OperationMethod<
@@ -59596,7 +61791,7 @@ export const setLabelsInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsInstantSnapshotsRequest,
   output: SetLabelsInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteInstantSnapshotsRequest {
@@ -59628,7 +61823,12 @@ export type DeleteInstantSnapshotsResponse = Operation;
 export const DeleteInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstantSnapshotsError = DefaultErrors;
+export type DeleteInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified InstantSnapshot resource. Keep in mind that deleting a single instantSnapshot might not necessarily delete all the data on that instantSnapshot. If any data on the instantSnapshot that is marked for deletion is needed for subsequent instantSnapshots, the data will be moved to the next corresponding instantSnapshot. For more information, seeDeleting instantSnapshots. */
 export const deleteInstantSnapshots: API.OperationMethod<
@@ -59639,7 +61839,7 @@ export const deleteInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstantSnapshotsRequest,
   output: DeleteInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyInstantSnapshotsRequest {
@@ -59673,7 +61873,10 @@ export type GetIamPolicyInstantSnapshotsResponse = Policy;
 export const GetIamPolicyInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyInstantSnapshotsError = DefaultErrors;
+export type GetIamPolicyInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyInstantSnapshots: API.OperationMethod<
@@ -59684,7 +61887,7 @@ export const getIamPolicyInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyInstantSnapshotsRequest,
   output: GetIamPolicyInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyInstantSnapshotsRequest {
@@ -59717,7 +61920,12 @@ export type SetIamPolicyInstantSnapshotsResponse = Policy;
 export const SetIamPolicyInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyInstantSnapshotsError = DefaultErrors;
+export type SetIamPolicyInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyInstantSnapshots: API.OperationMethod<
@@ -59728,7 +61936,7 @@ export const setIamPolicyInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyInstantSnapshotsRequest,
   output: SetIamPolicyInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsInstantSnapshotsRequest {
@@ -59762,7 +61970,12 @@ export type TestIamPermissionsInstantSnapshotsResponse =
 export const TestIamPermissionsInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsInstantSnapshotsError = DefaultErrors;
+export type TestIamPermissionsInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsInstantSnapshots: API.OperationMethod<
@@ -59773,7 +61986,7 @@ export const testIamPermissionsInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsInstantSnapshotsRequest,
   output: TestIamPermissionsInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListInstantSnapshotsRequest {
@@ -59824,7 +62037,10 @@ export type AggregatedListInstantSnapshotsResponse =
 export const AggregatedListInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstantSnapshotAggregatedList;
 
-export type AggregatedListInstantSnapshotsError = DefaultErrors;
+export type AggregatedListInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of instantSnapshots. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListInstantSnapshots: API.PaginatedOperationMethod<
@@ -59835,7 +62051,7 @@ export const aggregatedListInstantSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListInstantSnapshotsRequest,
   output: AggregatedListInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -59883,7 +62099,10 @@ export type ListRegionInstantSnapshotsResponse = InstantSnapshotList;
 export const ListRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstantSnapshotList;
 
-export type ListRegionInstantSnapshotsError = DefaultErrors;
+export type ListRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of InstantSnapshot resources contained within the specified region. */
 export const listRegionInstantSnapshots: API.PaginatedOperationMethod<
@@ -59894,7 +62113,7 @@ export const listRegionInstantSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstantSnapshotsRequest,
   output: ListRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -59928,7 +62147,10 @@ export type GetRegionInstantSnapshotsResponse = InstantSnapshot;
 export const GetRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstantSnapshot;
 
-export type GetRegionInstantSnapshotsError = DefaultErrors;
+export type GetRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified InstantSnapshot resource in the specified region. */
 export const getRegionInstantSnapshots: API.OperationMethod<
@@ -59939,7 +62161,7 @@ export const getRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionInstantSnapshotsRequest,
   output: GetRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionInstantSnapshotsRequest {
@@ -59972,7 +62194,12 @@ export type InsertRegionInstantSnapshotsResponse = Operation;
 export const InsertRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionInstantSnapshotsError = DefaultErrors;
+export type InsertRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an instant snapshot in the specified region. */
 export const insertRegionInstantSnapshots: API.OperationMethod<
@@ -59983,7 +62210,7 @@ export const insertRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionInstantSnapshotsRequest,
   output: InsertRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsRegionInstantSnapshotsRequest {
@@ -60019,7 +62246,12 @@ export type SetLabelsRegionInstantSnapshotsResponse = Operation;
 export const SetLabelsRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsRegionInstantSnapshotsError = DefaultErrors;
+export type SetLabelsRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a instantSnapshot in the given region. To learn more about labels, read the Labeling Resources documentation. */
 export const setLabelsRegionInstantSnapshots: API.OperationMethod<
@@ -60030,7 +62262,7 @@ export const setLabelsRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsRegionInstantSnapshotsRequest,
   output: SetLabelsRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionInstantSnapshotsRequest {
@@ -60062,7 +62294,12 @@ export type DeleteRegionInstantSnapshotsResponse = Operation;
 export const DeleteRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionInstantSnapshotsError = DefaultErrors;
+export type DeleteRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified InstantSnapshot resource. Keep in mind that deleting a single instantSnapshot might not necessarily delete all the data on that instantSnapshot. If any data on the instantSnapshot that is marked for deletion is needed for subsequent instantSnapshots, the data will be moved to the next corresponding instantSnapshot. For more information, seeDeleting instantSnapshots. */
 export const deleteRegionInstantSnapshots: API.OperationMethod<
@@ -60073,7 +62310,7 @@ export const deleteRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionInstantSnapshotsRequest,
   output: DeleteRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyRegionInstantSnapshotsRequest {
@@ -60107,7 +62344,10 @@ export type GetIamPolicyRegionInstantSnapshotsResponse = Policy;
 export const GetIamPolicyRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRegionInstantSnapshotsError = DefaultErrors;
+export type GetIamPolicyRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyRegionInstantSnapshots: API.OperationMethod<
@@ -60118,7 +62358,7 @@ export const getIamPolicyRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRegionInstantSnapshotsRequest,
   output: GetIamPolicyRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyRegionInstantSnapshotsRequest {
@@ -60151,7 +62391,12 @@ export type SetIamPolicyRegionInstantSnapshotsResponse = Policy;
 export const SetIamPolicyRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRegionInstantSnapshotsError = DefaultErrors;
+export type SetIamPolicyRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyRegionInstantSnapshots: API.OperationMethod<
@@ -60162,7 +62407,7 @@ export const setIamPolicyRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRegionInstantSnapshotsRequest,
   output: SetIamPolicyRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionInstantSnapshotsRequest {
@@ -60196,7 +62441,12 @@ export type TestIamPermissionsRegionInstantSnapshotsResponse =
 export const TestIamPermissionsRegionInstantSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionInstantSnapshotsError = DefaultErrors;
+export type TestIamPermissionsRegionInstantSnapshotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionInstantSnapshots: API.OperationMethod<
@@ -60207,7 +62457,7 @@ export const testIamPermissionsRegionInstantSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionInstantSnapshotsRequest,
   output: TestIamPermissionsRegionInstantSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertInstantSnapshotGroupsRequest {
@@ -60245,7 +62495,12 @@ export type InsertInstantSnapshotGroupsResponse = Operation;
 export const InsertInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertInstantSnapshotGroupsError = DefaultErrors;
+export type InsertInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** inserts a Zonal InstantSnapshotGroup resource */
 export const insertInstantSnapshotGroups: API.OperationMethod<
@@ -60256,7 +62511,7 @@ export const insertInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertInstantSnapshotGroupsRequest,
   output: InsertInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInstantSnapshotGroupsRequest {
@@ -60287,7 +62542,10 @@ export type GetInstantSnapshotGroupsResponse = InstantSnapshotGroup;
 export const GetInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstantSnapshotGroup;
 
-export type GetInstantSnapshotGroupsError = DefaultErrors;
+export type GetInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** returns the specified InstantSnapshotGroup resource in the specified zone. */
 export const getInstantSnapshotGroups: API.OperationMethod<
@@ -60298,7 +62556,7 @@ export const getInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInstantSnapshotGroupsRequest,
   output: GetInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInstantSnapshotGroupsRequest {
@@ -60341,7 +62599,10 @@ export type ListInstantSnapshotGroupsResponse = ListInstantSnapshotGroups;
 export const ListInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstantSnapshotGroups;
 
-export type ListInstantSnapshotGroupsError = DefaultErrors;
+export type ListInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** retrieves the list of InstantSnapshotGroup resources contained within the specified zone. */
 export const listInstantSnapshotGroups: API.PaginatedOperationMethod<
@@ -60352,7 +62613,7 @@ export const listInstantSnapshotGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInstantSnapshotGroupsRequest,
   output: ListInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -60391,7 +62652,12 @@ export type DeleteInstantSnapshotGroupsResponse = Operation;
 export const DeleteInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteInstantSnapshotGroupsError = DefaultErrors;
+export type DeleteInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** deletes a Zonal InstantSnapshotGroup resource */
 export const deleteInstantSnapshotGroups: API.OperationMethod<
@@ -60402,7 +62668,7 @@ export const deleteInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInstantSnapshotGroupsRequest,
   output: DeleteInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyInstantSnapshotGroupsRequest {
@@ -60436,7 +62702,10 @@ export type GetIamPolicyInstantSnapshotGroupsResponse = Policy;
 export const GetIamPolicyInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyInstantSnapshotGroupsError = DefaultErrors;
+export type GetIamPolicyInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyInstantSnapshotGroups: API.OperationMethod<
@@ -60447,7 +62716,7 @@ export const getIamPolicyInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyInstantSnapshotGroupsRequest,
   output: GetIamPolicyInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyInstantSnapshotGroupsRequest {
@@ -60480,7 +62749,12 @@ export type SetIamPolicyInstantSnapshotGroupsResponse = Policy;
 export const SetIamPolicyInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyInstantSnapshotGroupsError = DefaultErrors;
+export type SetIamPolicyInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyInstantSnapshotGroups: API.OperationMethod<
@@ -60491,7 +62765,7 @@ export const setIamPolicyInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyInstantSnapshotGroupsRequest,
   output: SetIamPolicyInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsInstantSnapshotGroupsRequest {
@@ -60525,7 +62799,12 @@ export type TestIamPermissionsInstantSnapshotGroupsResponse =
 export const TestIamPermissionsInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsInstantSnapshotGroupsError = DefaultErrors;
+export type TestIamPermissionsInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsInstantSnapshotGroups: API.OperationMethod<
@@ -60536,7 +62815,7 @@ export const testIamPermissionsInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsInstantSnapshotGroupsRequest,
   output: TestIamPermissionsInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertRegionInstantSnapshotGroupsRequest {
@@ -60574,7 +62853,12 @@ export type InsertRegionInstantSnapshotGroupsResponse = Operation;
 export const InsertRegionInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionInstantSnapshotGroupsError = DefaultErrors;
+export type InsertRegionInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** creates a Regional InstantSnapshotGroup resource */
 export const insertRegionInstantSnapshotGroups: API.OperationMethod<
@@ -60585,7 +62869,7 @@ export const insertRegionInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionInstantSnapshotGroupsRequest,
   output: InsertRegionInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRegionInstantSnapshotGroupsRequest {
@@ -60616,7 +62900,10 @@ export type GetRegionInstantSnapshotGroupsResponse = InstantSnapshotGroup;
 export const GetRegionInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InstantSnapshotGroup;
 
-export type GetRegionInstantSnapshotGroupsError = DefaultErrors;
+export type GetRegionInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** returns the specified InstantSnapshotGroup resource in the specified region. */
 export const getRegionInstantSnapshotGroups: API.OperationMethod<
@@ -60627,7 +62914,7 @@ export const getRegionInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionInstantSnapshotGroupsRequest,
   output: GetRegionInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRegionInstantSnapshotGroupsRequest {
@@ -60670,7 +62957,10 @@ export type ListRegionInstantSnapshotGroupsResponse = ListInstantSnapshotGroups;
 export const ListRegionInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstantSnapshotGroups;
 
-export type ListRegionInstantSnapshotGroupsError = DefaultErrors;
+export type ListRegionInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** retrieves the list of InstantSnapshotGroup resources contained within the specified region. */
 export const listRegionInstantSnapshotGroups: API.PaginatedOperationMethod<
@@ -60681,7 +62971,7 @@ export const listRegionInstantSnapshotGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionInstantSnapshotGroupsRequest,
   output: ListRegionInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -60720,7 +63010,12 @@ export type DeleteRegionInstantSnapshotGroupsResponse = Operation;
 export const DeleteRegionInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionInstantSnapshotGroupsError = DefaultErrors;
+export type DeleteRegionInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** deletes a Regional InstantSnapshotGroup resource */
 export const deleteRegionInstantSnapshotGroups: API.OperationMethod<
@@ -60731,7 +63026,7 @@ export const deleteRegionInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionInstantSnapshotGroupsRequest,
   output: DeleteRegionInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyRegionInstantSnapshotGroupsRequest {
@@ -60765,7 +63060,10 @@ export type GetIamPolicyRegionInstantSnapshotGroupsResponse = Policy;
 export const GetIamPolicyRegionInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyRegionInstantSnapshotGroupsError = DefaultErrors;
+export type GetIamPolicyRegionInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyRegionInstantSnapshotGroups: API.OperationMethod<
@@ -60776,7 +63074,7 @@ export const getIamPolicyRegionInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyRegionInstantSnapshotGroupsRequest,
   output: GetIamPolicyRegionInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyRegionInstantSnapshotGroupsRequest {
@@ -60809,7 +63107,12 @@ export type SetIamPolicyRegionInstantSnapshotGroupsResponse = Policy;
 export const SetIamPolicyRegionInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyRegionInstantSnapshotGroupsError = DefaultErrors;
+export type SetIamPolicyRegionInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyRegionInstantSnapshotGroups: API.OperationMethod<
@@ -60820,7 +63123,7 @@ export const setIamPolicyRegionInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyRegionInstantSnapshotGroupsRequest,
   output: SetIamPolicyRegionInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionInstantSnapshotGroupsRequest {
@@ -60854,7 +63157,12 @@ export type TestIamPermissionsRegionInstantSnapshotGroupsResponse =
 export const TestIamPermissionsRegionInstantSnapshotGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionInstantSnapshotGroupsError = DefaultErrors;
+export type TestIamPermissionsRegionInstantSnapshotGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionInstantSnapshotGroups: API.OperationMethod<
@@ -60865,7 +63173,7 @@ export const testIamPermissionsRegionInstantSnapshotGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionInstantSnapshotGroupsRequest,
   output: TestIamPermissionsRegionInstantSnapshotGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInterconnectLocationsRequest {
@@ -60905,7 +63213,10 @@ export type ListInterconnectLocationsResponse = InterconnectLocationList;
 export const ListInterconnectLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectLocationList;
 
-export type ListInterconnectLocationsError = DefaultErrors;
+export type ListInterconnectLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of interconnect locations available to the specified project. */
 export const listInterconnectLocations: API.PaginatedOperationMethod<
@@ -60916,7 +63227,7 @@ export const listInterconnectLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectLocationsRequest,
   output: ListInterconnectLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -60949,7 +63260,10 @@ export type GetInterconnectLocationsResponse = InterconnectLocation;
 export const GetInterconnectLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectLocation;
 
-export type GetInterconnectLocationsError = DefaultErrors;
+export type GetInterconnectLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the details for the specified interconnect location. Gets a list of available interconnect locations by making a list() request. */
 export const getInterconnectLocations: API.OperationMethod<
@@ -60960,7 +63274,7 @@ export const getInterconnectLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInterconnectLocationsRequest,
   output: GetInterconnectLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListInterconnectRemoteLocationsRequest {
@@ -61001,7 +63315,10 @@ export type ListInterconnectRemoteLocationsResponse =
 export const ListInterconnectRemoteLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectRemoteLocationList;
 
-export type ListInterconnectRemoteLocationsError = DefaultErrors;
+export type ListInterconnectRemoteLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of interconnect remote locations available to the specified project. */
 export const listInterconnectRemoteLocations: API.PaginatedOperationMethod<
@@ -61012,7 +63329,7 @@ export const listInterconnectRemoteLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInterconnectRemoteLocationsRequest,
   output: ListInterconnectRemoteLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -61045,7 +63362,10 @@ export type GetInterconnectRemoteLocationsResponse = InterconnectRemoteLocation;
 export const GetInterconnectRemoteLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ InterconnectRemoteLocation;
 
-export type GetInterconnectRemoteLocationsError = DefaultErrors;
+export type GetInterconnectRemoteLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the details for the specified interconnect remote location. Gets a list of available interconnect remote locations by making alist() request. */
 export const getInterconnectRemoteLocations: API.OperationMethod<
@@ -61056,7 +63376,7 @@ export const getInterconnectRemoteLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInterconnectRemoteLocationsRequest,
   output: GetInterconnectRemoteLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetLicenseCodesRequest {
@@ -61082,7 +63402,7 @@ export const GetLicenseCodesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetLicenseCodesResponse = LicenseCode;
 export const GetLicenseCodesResponse = /*@__PURE__*/ /*#__PURE__*/ LicenseCode;
 
-export type GetLicenseCodesError = DefaultErrors;
+export type GetLicenseCodesError = DefaultErrors | NotFound | Forbidden;
 
 /** Return a specified license code. License codes are mirrored across all projects that have permissions to read the License Code. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const getLicenseCodes: API.OperationMethod<
@@ -61093,7 +63413,7 @@ export const getLicenseCodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLicenseCodesRequest,
   output: GetLicenseCodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsLicenseCodesRequest {
@@ -61123,7 +63443,12 @@ export type TestIamPermissionsLicenseCodesResponse = TestPermissionsResponse;
 export const TestIamPermissionsLicenseCodesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsLicenseCodesError = DefaultErrors;
+export type TestIamPermissionsLicenseCodesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const testIamPermissionsLicenseCodes: API.OperationMethod<
@@ -61134,7 +63459,7 @@ export const testIamPermissionsLicenseCodes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsLicenseCodesRequest,
   output: TestIamPermissionsLicenseCodesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLicensesRequest {
@@ -61158,7 +63483,7 @@ export const GetLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetLicensesResponse = License;
 export const GetLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ License;
 
-export type GetLicensesError = DefaultErrors;
+export type GetLicensesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const getLicenses: API.OperationMethod<
@@ -61169,7 +63494,7 @@ export const getLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLicensesRequest,
   output: GetLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLicensesRequest {
@@ -61205,7 +63530,7 @@ export type ListLicensesResponse = LicensesListResponse;
 export const ListLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ LicensesListResponse;
 
-export type ListLicensesError = DefaultErrors;
+export type ListLicensesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of licenses available in the specified project. This method does not get any licenses that belong to other projects, including licenses attached to publicly-available images, like Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the respective image project, such as debian-cloud orwindows-cloud. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const listLicenses: API.PaginatedOperationMethod<
@@ -61216,7 +63541,7 @@ export const listLicenses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLicensesRequest,
   output: ListLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -61248,7 +63573,12 @@ export const DeleteLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteLicensesResponse = Operation;
 export const DeleteLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteLicensesError = DefaultErrors;
+export type DeleteLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified license. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const deleteLicenses: API.OperationMethod<
@@ -61259,7 +63589,7 @@ export const deleteLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLicensesRequest,
   output: DeleteLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertLicensesRequest {
@@ -61287,7 +63617,12 @@ export const InsertLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertLicensesResponse = Operation;
 export const InsertLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertLicensesError = DefaultErrors;
+export type InsertLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const insertLicenses: API.OperationMethod<
@@ -61298,7 +63633,7 @@ export const insertLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLicensesRequest,
   output: InsertLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateLicensesRequest {
@@ -61332,7 +63667,12 @@ export const UpdateLicensesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateLicensesResponse = Operation;
 export const UpdateLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateLicensesError = DefaultErrors;
+export type UpdateLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const updateLicenses: API.OperationMethod<
@@ -61343,7 +63683,7 @@ export const updateLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLicensesRequest,
   output: UpdateLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyLicensesRequest {
@@ -61373,7 +63713,7 @@ export const GetIamPolicyLicensesRequest =
 export type GetIamPolicyLicensesResponse = Policy;
 export const GetIamPolicyLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyLicensesError = DefaultErrors;
+export type GetIamPolicyLicensesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const getIamPolicyLicenses: API.OperationMethod<
@@ -61384,7 +63724,7 @@ export const getIamPolicyLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyLicensesRequest,
   output: GetIamPolicyLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyLicensesRequest {
@@ -61413,7 +63753,12 @@ export const SetIamPolicyLicensesRequest =
 export type SetIamPolicyLicensesResponse = Policy;
 export const SetIamPolicyLicensesResponse = /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyLicensesError = DefaultErrors;
+export type SetIamPolicyLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const setIamPolicyLicenses: API.OperationMethod<
@@ -61424,7 +63769,7 @@ export const setIamPolicyLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyLicensesRequest,
   output: SetIamPolicyLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsLicensesRequest {
@@ -61454,7 +63799,12 @@ export type TestIamPermissionsLicensesResponse = TestPermissionsResponse;
 export const TestIamPermissionsLicensesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsLicensesError = DefaultErrors;
+export type TestIamPermissionsLicensesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. *Caution* This resource is intended for use only by third-party partners who are creatingCloud Marketplace images. */
 export const testIamPermissionsLicenses: API.OperationMethod<
@@ -61465,7 +63815,7 @@ export const testIamPermissionsLicenses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsLicensesRequest,
   output: TestIamPermissionsLicensesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMachineImagesRequest {
@@ -61502,7 +63852,7 @@ export type ListMachineImagesResponse = MachineImageList;
 export const ListMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ MachineImageList;
 
-export type ListMachineImagesError = DefaultErrors;
+export type ListMachineImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of machine images that are contained within the specified project. */
 export const listMachineImages: API.PaginatedOperationMethod<
@@ -61513,7 +63863,7 @@ export const listMachineImages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMachineImagesRequest,
   output: ListMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -61544,7 +63894,7 @@ export type GetMachineImagesResponse = MachineImage;
 export const GetMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ MachineImage;
 
-export type GetMachineImagesError = DefaultErrors;
+export type GetMachineImagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified machine image. */
 export const getMachineImages: API.OperationMethod<
@@ -61555,7 +63905,7 @@ export const getMachineImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMachineImagesRequest,
   output: GetMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertMachineImagesRequest {
@@ -61590,7 +63940,12 @@ export type InsertMachineImagesResponse = Operation;
 export const InsertMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertMachineImagesError = DefaultErrors;
+export type InsertMachineImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a machine image in the specified project using the data that is included in the request. If you are creating a new machine image to update an existing instance, your new machine image should use the same network or, if applicable, the same subnetwork as the original instance. */
 export const insertMachineImages: API.OperationMethod<
@@ -61601,7 +63956,7 @@ export const insertMachineImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertMachineImagesRequest,
   output: InsertMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsMachineImagesRequest {
@@ -61631,7 +63986,12 @@ export type SetLabelsMachineImagesResponse = Operation;
 export const SetLabelsMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsMachineImagesError = DefaultErrors;
+export type SetLabelsMachineImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a machine image. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsMachineImages: API.OperationMethod<
@@ -61642,7 +64002,7 @@ export const setLabelsMachineImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsMachineImagesRequest,
   output: SetLabelsMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteMachineImagesRequest {
@@ -61671,7 +64031,12 @@ export type DeleteMachineImagesResponse = Operation;
 export const DeleteMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteMachineImagesError = DefaultErrors;
+export type DeleteMachineImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified machine image. Deleting a machine image is permanent and cannot be undone. */
 export const deleteMachineImages: API.OperationMethod<
@@ -61682,7 +64047,7 @@ export const deleteMachineImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteMachineImagesRequest,
   output: DeleteMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyMachineImagesRequest {
@@ -61713,7 +64078,10 @@ export type GetIamPolicyMachineImagesResponse = Policy;
 export const GetIamPolicyMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyMachineImagesError = DefaultErrors;
+export type GetIamPolicyMachineImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyMachineImages: API.OperationMethod<
@@ -61724,7 +64092,7 @@ export const getIamPolicyMachineImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyMachineImagesRequest,
   output: GetIamPolicyMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyMachineImagesRequest {
@@ -61754,7 +64122,12 @@ export type SetIamPolicyMachineImagesResponse = Policy;
 export const SetIamPolicyMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyMachineImagesError = DefaultErrors;
+export type SetIamPolicyMachineImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyMachineImages: API.OperationMethod<
@@ -61765,7 +64138,7 @@ export const setIamPolicyMachineImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyMachineImagesRequest,
   output: SetIamPolicyMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsMachineImagesRequest {
@@ -61795,7 +64168,12 @@ export type TestIamPermissionsMachineImagesResponse = TestPermissionsResponse;
 export const TestIamPermissionsMachineImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsMachineImagesError = DefaultErrors;
+export type TestIamPermissionsMachineImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsMachineImages: API.OperationMethod<
@@ -61806,7 +64184,7 @@ export const testIamPermissionsMachineImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsMachineImagesRequest,
   output: TestIamPermissionsMachineImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListMachineTypesRequest {
@@ -61849,7 +64227,7 @@ export type ListMachineTypesResponse = MachineTypeList;
 export const ListMachineTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ MachineTypeList;
 
-export type ListMachineTypesError = DefaultErrors;
+export type ListMachineTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of machine types available to the specified project. */
 export const listMachineTypes: API.PaginatedOperationMethod<
@@ -61860,7 +64238,7 @@ export const listMachineTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListMachineTypesRequest,
   output: ListMachineTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -61915,7 +64293,10 @@ export type AggregatedListMachineTypesResponse = MachineTypeAggregatedList;
 export const AggregatedListMachineTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ MachineTypeAggregatedList;
 
-export type AggregatedListMachineTypesError = DefaultErrors;
+export type AggregatedListMachineTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of machine types. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListMachineTypes: API.PaginatedOperationMethod<
@@ -61926,7 +64307,7 @@ export const aggregatedListMachineTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListMachineTypesRequest,
   output: AggregatedListMachineTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -61960,7 +64341,7 @@ export const GetMachineTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetMachineTypesResponse = MachineType;
 export const GetMachineTypesResponse = /*@__PURE__*/ /*#__PURE__*/ MachineType;
 
-export type GetMachineTypesError = DefaultErrors;
+export type GetMachineTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified machine type. */
 export const getMachineTypes: API.OperationMethod<
@@ -61971,7 +64352,7 @@ export const getMachineTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMachineTypesRequest,
   output: GetMachineTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AggregatedListNetworkAttachmentsRequest {
@@ -62022,7 +64403,10 @@ export type AggregatedListNetworkAttachmentsResponse =
 export const AggregatedListNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkAttachmentAggregatedList;
 
-export type AggregatedListNetworkAttachmentsError = DefaultErrors;
+export type AggregatedListNetworkAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all NetworkAttachment resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListNetworkAttachments: API.PaginatedOperationMethod<
@@ -62033,7 +64417,7 @@ export const aggregatedListNetworkAttachments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListNetworkAttachmentsRequest,
   output: AggregatedListNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -62081,7 +64465,7 @@ export type ListNetworkAttachmentsResponse = NetworkAttachmentList;
 export const ListNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkAttachmentList;
 
-export type ListNetworkAttachmentsError = DefaultErrors;
+export type ListNetworkAttachmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the NetworkAttachments for a project in the given scope. */
 export const listNetworkAttachments: API.PaginatedOperationMethod<
@@ -62092,7 +64476,7 @@ export const listNetworkAttachments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkAttachmentsRequest,
   output: ListNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -62126,7 +64510,7 @@ export type GetNetworkAttachmentsResponse = NetworkAttachment;
 export const GetNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkAttachment;
 
-export type GetNetworkAttachmentsError = DefaultErrors;
+export type GetNetworkAttachmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified NetworkAttachment resource in the given scope. */
 export const getNetworkAttachments: API.OperationMethod<
@@ -62137,7 +64521,7 @@ export const getNetworkAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkAttachmentsRequest,
   output: GetNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNetworkAttachmentsRequest {
@@ -62170,7 +64554,12 @@ export type InsertNetworkAttachmentsResponse = Operation;
 export const InsertNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertNetworkAttachmentsError = DefaultErrors;
+export type InsertNetworkAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a NetworkAttachment in the specified project in the given scope using the parameters that are included in the request. */
 export const insertNetworkAttachments: API.OperationMethod<
@@ -62181,7 +64570,7 @@ export const insertNetworkAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNetworkAttachmentsRequest,
   output: InsertNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNetworkAttachmentsRequest {
@@ -62213,7 +64602,12 @@ export type DeleteNetworkAttachmentsResponse = Operation;
 export const DeleteNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNetworkAttachmentsError = DefaultErrors;
+export type DeleteNetworkAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified NetworkAttachment in the given scope */
 export const deleteNetworkAttachments: API.OperationMethod<
@@ -62224,7 +64618,7 @@ export const deleteNetworkAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkAttachmentsRequest,
   output: DeleteNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchNetworkAttachmentsRequest {
@@ -62260,7 +64654,12 @@ export type PatchNetworkAttachmentsResponse = Operation;
 export const PatchNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchNetworkAttachmentsError = DefaultErrors;
+export type PatchNetworkAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified NetworkAttachment resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchNetworkAttachments: API.OperationMethod<
@@ -62271,7 +64670,7 @@ export const patchNetworkAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNetworkAttachmentsRequest,
   output: PatchNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyNetworkAttachmentsRequest {
@@ -62305,7 +64704,10 @@ export type GetIamPolicyNetworkAttachmentsResponse = Policy;
 export const GetIamPolicyNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyNetworkAttachmentsError = DefaultErrors;
+export type GetIamPolicyNetworkAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyNetworkAttachments: API.OperationMethod<
@@ -62316,7 +64718,7 @@ export const getIamPolicyNetworkAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyNetworkAttachmentsRequest,
   output: GetIamPolicyNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyNetworkAttachmentsRequest {
@@ -62349,7 +64751,12 @@ export type SetIamPolicyNetworkAttachmentsResponse = Policy;
 export const SetIamPolicyNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyNetworkAttachmentsError = DefaultErrors;
+export type SetIamPolicyNetworkAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyNetworkAttachments: API.OperationMethod<
@@ -62360,7 +64767,7 @@ export const setIamPolicyNetworkAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyNetworkAttachmentsRequest,
   output: SetIamPolicyNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsNetworkAttachmentsRequest {
@@ -62394,7 +64801,12 @@ export type TestIamPermissionsNetworkAttachmentsResponse =
 export const TestIamPermissionsNetworkAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsNetworkAttachmentsError = DefaultErrors;
+export type TestIamPermissionsNetworkAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsNetworkAttachments: API.OperationMethod<
@@ -62405,7 +64817,7 @@ export const testIamPermissionsNetworkAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsNetworkAttachmentsRequest,
   output: TestIamPermissionsNetworkAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetNetworkEdgeSecurityServicesRequest {
@@ -62436,7 +64848,10 @@ export type GetNetworkEdgeSecurityServicesResponse = NetworkEdgeSecurityService;
 export const GetNetworkEdgeSecurityServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEdgeSecurityService;
 
-export type GetNetworkEdgeSecurityServicesError = DefaultErrors;
+export type GetNetworkEdgeSecurityServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a specified NetworkEdgeSecurityService. */
 export const getNetworkEdgeSecurityServices: API.OperationMethod<
@@ -62447,7 +64862,7 @@ export const getNetworkEdgeSecurityServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkEdgeSecurityServicesRequest,
   output: GetNetworkEdgeSecurityServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNetworkEdgeSecurityServicesRequest {
@@ -62485,7 +64900,12 @@ export type InsertNetworkEdgeSecurityServicesResponse = Operation;
 export const InsertNetworkEdgeSecurityServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertNetworkEdgeSecurityServicesError = DefaultErrors;
+export type InsertNetworkEdgeSecurityServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new service in the specified project using the data included in the request. */
 export const insertNetworkEdgeSecurityServices: API.OperationMethod<
@@ -62496,7 +64916,7 @@ export const insertNetworkEdgeSecurityServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNetworkEdgeSecurityServicesRequest,
   output: InsertNetworkEdgeSecurityServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNetworkEdgeSecurityServicesRequest {
@@ -62530,7 +64950,12 @@ export type DeleteNetworkEdgeSecurityServicesResponse = Operation;
 export const DeleteNetworkEdgeSecurityServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNetworkEdgeSecurityServicesError = DefaultErrors;
+export type DeleteNetworkEdgeSecurityServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified service. */
 export const deleteNetworkEdgeSecurityServices: API.OperationMethod<
@@ -62541,7 +64966,7 @@ export const deleteNetworkEdgeSecurityServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkEdgeSecurityServicesRequest,
   output: DeleteNetworkEdgeSecurityServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchNetworkEdgeSecurityServicesRequest {
@@ -62586,7 +65011,12 @@ export type PatchNetworkEdgeSecurityServicesResponse = Operation;
 export const PatchNetworkEdgeSecurityServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchNetworkEdgeSecurityServicesError = DefaultErrors;
+export type PatchNetworkEdgeSecurityServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified policy with the data included in the request. */
 export const patchNetworkEdgeSecurityServices: API.OperationMethod<
@@ -62597,7 +65027,7 @@ export const patchNetworkEdgeSecurityServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNetworkEdgeSecurityServicesRequest,
   output: PatchNetworkEdgeSecurityServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListNetworkEdgeSecurityServicesRequest {
@@ -62648,7 +65078,10 @@ export type AggregatedListNetworkEdgeSecurityServicesResponse =
 export const AggregatedListNetworkEdgeSecurityServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEdgeSecurityServiceAggregatedList;
 
-export type AggregatedListNetworkEdgeSecurityServicesError = DefaultErrors;
+export type AggregatedListNetworkEdgeSecurityServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all NetworkEdgeSecurityService resources available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListNetworkEdgeSecurityServices: API.PaginatedOperationMethod<
@@ -62659,7 +65092,7 @@ export const aggregatedListNetworkEdgeSecurityServices: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListNetworkEdgeSecurityServicesRequest,
   output: AggregatedListNetworkEdgeSecurityServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -62707,7 +65140,10 @@ export type ListNetworkEndpointGroupsResponse = NetworkEndpointGroupList;
 export const ListNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroupList;
 
-export type ListNetworkEndpointGroupsError = DefaultErrors;
+export type ListNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of network endpoint groups that are located in the specified project and zone. */
 export const listNetworkEndpointGroups: API.PaginatedOperationMethod<
@@ -62718,7 +65154,7 @@ export const listNetworkEndpointGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointGroupsRequest,
   output: ListNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -62774,7 +65210,10 @@ export type AggregatedListNetworkEndpointGroupsResponse =
 export const AggregatedListNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroupAggregatedList;
 
-export type AggregatedListNetworkEndpointGroupsError = DefaultErrors;
+export type AggregatedListNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of network endpoint groups and sorts them by zone. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListNetworkEndpointGroups: API.PaginatedOperationMethod<
@@ -62785,7 +65224,7 @@ export const aggregatedListNetworkEndpointGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListNetworkEndpointGroupsRequest,
   output: AggregatedListNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -62821,7 +65260,10 @@ export type GetNetworkEndpointGroupsResponse = NetworkEndpointGroup;
 export const GetNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroup;
 
-export type GetNetworkEndpointGroupsError = DefaultErrors;
+export type GetNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified network endpoint group. */
 export const getNetworkEndpointGroups: API.OperationMethod<
@@ -62832,7 +65274,7 @@ export const getNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkEndpointGroupsRequest,
   output: GetNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNetworkEndpointGroupsRequest {
@@ -62865,7 +65307,12 @@ export type InsertNetworkEndpointGroupsResponse = Operation;
 export const InsertNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertNetworkEndpointGroupsError = DefaultErrors;
+export type InsertNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a network endpoint group in the specified project using the parameters that are included in the request. Note: Use the following APIs to manage network endpoint groups: - To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity NEGs): zonal API - To manage NEGs with regional scope (such as regional internet NEGs, serverless NEGs, Private Service Connect NEGs): regional API - To manage NEGs with global scope (such as global internet NEGs):global API */
 export const insertNetworkEndpointGroups: API.OperationMethod<
@@ -62876,7 +65323,7 @@ export const insertNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNetworkEndpointGroupsRequest,
   output: InsertNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNetworkEndpointGroupsRequest {
@@ -62910,7 +65357,12 @@ export type DeleteNetworkEndpointGroupsResponse = Operation;
 export const DeleteNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNetworkEndpointGroupsError = DefaultErrors;
+export type DeleteNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified network endpoint group. The network endpoints in the NEG and the VM instances they belong to are not terminated when the NEG is deleted. Note that the NEG cannot be deleted if there are backend services referencing it. */
 export const deleteNetworkEndpointGroups: API.OperationMethod<
@@ -62921,7 +65373,7 @@ export const deleteNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworkEndpointGroupsRequest,
   output: DeleteNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttachNetworkEndpointsNetworkEndpointGroupsRequest {
@@ -62961,7 +65413,12 @@ export type AttachNetworkEndpointsNetworkEndpointGroupsResponse = Operation;
 export const AttachNetworkEndpointsNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AttachNetworkEndpointsNetworkEndpointGroupsError = DefaultErrors;
+export type AttachNetworkEndpointsNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attach a list of network endpoints to the specified network endpoint group. */
 export const attachNetworkEndpointsNetworkEndpointGroups: API.OperationMethod<
@@ -62972,7 +65429,7 @@ export const attachNetworkEndpointsNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachNetworkEndpointsNetworkEndpointGroupsRequest,
   output: AttachNetworkEndpointsNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetachNetworkEndpointsNetworkEndpointGroupsRequest {
@@ -63012,7 +65469,12 @@ export type DetachNetworkEndpointsNetworkEndpointGroupsResponse = Operation;
 export const DetachNetworkEndpointsNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DetachNetworkEndpointsNetworkEndpointGroupsError = DefaultErrors;
+export type DetachNetworkEndpointsNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detach a list of network endpoints from the specified network endpoint group. */
 export const detachNetworkEndpointsNetworkEndpointGroups: API.OperationMethod<
@@ -63023,7 +65485,7 @@ export const detachNetworkEndpointsNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachNetworkEndpointsNetworkEndpointGroupsRequest,
   output: DetachNetworkEndpointsNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNetworkEndpointsNetworkEndpointGroupsRequest {
@@ -63078,7 +65540,12 @@ export type ListNetworkEndpointsNetworkEndpointGroupsResponse =
 export const ListNetworkEndpointsNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroupsListNetworkEndpoints;
 
-export type ListNetworkEndpointsNetworkEndpointGroupsError = DefaultErrors;
+export type ListNetworkEndpointsNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the network endpoints in the specified network endpoint group. */
 export const listNetworkEndpointsNetworkEndpointGroups: API.PaginatedOperationMethod<
@@ -63089,7 +65556,7 @@ export const listNetworkEndpointsNetworkEndpointGroups: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointsNetworkEndpointGroupsRequest,
   output: ListNetworkEndpointsNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -63128,7 +65595,12 @@ export type TestIamPermissionsNetworkEndpointGroupsResponse =
 export const TestIamPermissionsNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsNetworkEndpointGroupsError = DefaultErrors;
+export type TestIamPermissionsNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsNetworkEndpointGroups: API.OperationMethod<
@@ -63139,7 +65611,7 @@ export const testIamPermissionsNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsNetworkEndpointGroupsRequest,
   output: TestIamPermissionsNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGlobalNetworkEndpointGroupsRequest {
@@ -63179,7 +65651,10 @@ export type ListGlobalNetworkEndpointGroupsResponse = NetworkEndpointGroupList;
 export const ListGlobalNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroupList;
 
-export type ListGlobalNetworkEndpointGroupsError = DefaultErrors;
+export type ListGlobalNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of network endpoint groups that are located in the specified project. */
 export const listGlobalNetworkEndpointGroups: API.PaginatedOperationMethod<
@@ -63190,7 +65665,7 @@ export const listGlobalNetworkEndpointGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalNetworkEndpointGroupsRequest,
   output: ListGlobalNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -63223,7 +65698,10 @@ export type GetGlobalNetworkEndpointGroupsResponse = NetworkEndpointGroup;
 export const GetGlobalNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroup;
 
-export type GetGlobalNetworkEndpointGroupsError = DefaultErrors;
+export type GetGlobalNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified network endpoint group. */
 export const getGlobalNetworkEndpointGroups: API.OperationMethod<
@@ -63234,7 +65712,7 @@ export const getGlobalNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalNetworkEndpointGroupsRequest,
   output: GetGlobalNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertGlobalNetworkEndpointGroupsRequest {
@@ -63264,7 +65742,12 @@ export type InsertGlobalNetworkEndpointGroupsResponse = Operation;
 export const InsertGlobalNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertGlobalNetworkEndpointGroupsError = DefaultErrors;
+export type InsertGlobalNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a network endpoint group in the specified project using the parameters that are included in the request. Note: Use the following APIs to manage network endpoint groups: - To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity NEGs): zonal API - To manage NEGs with regional scope (such as regional internet NEGs, serverless NEGs, Private Service Connect NEGs): regional API - To manage NEGs with global scope (such as global internet NEGs):global API */
 export const insertGlobalNetworkEndpointGroups: API.OperationMethod<
@@ -63275,7 +65758,7 @@ export const insertGlobalNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGlobalNetworkEndpointGroupsRequest,
   output: InsertGlobalNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGlobalNetworkEndpointGroupsRequest {
@@ -63306,7 +65789,12 @@ export type DeleteGlobalNetworkEndpointGroupsResponse = Operation;
 export const DeleteGlobalNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteGlobalNetworkEndpointGroupsError = DefaultErrors;
+export type DeleteGlobalNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified network endpoint group.Note that the NEG cannot be deleted if there are backend services referencing it. */
 export const deleteGlobalNetworkEndpointGroups: API.OperationMethod<
@@ -63317,7 +65805,7 @@ export const deleteGlobalNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalNetworkEndpointGroupsRequest,
   output: DeleteGlobalNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttachNetworkEndpointsGlobalNetworkEndpointGroupsRequest {
@@ -63356,7 +65844,11 @@ export const AttachNetworkEndpointsGlobalNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type AttachNetworkEndpointsGlobalNetworkEndpointGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attach a network endpoint to the specified network endpoint group. */
 export const attachNetworkEndpointsGlobalNetworkEndpointGroups: API.OperationMethod<
@@ -63367,7 +65859,7 @@ export const attachNetworkEndpointsGlobalNetworkEndpointGroups: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachNetworkEndpointsGlobalNetworkEndpointGroupsRequest,
   output: AttachNetworkEndpointsGlobalNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetachNetworkEndpointsGlobalNetworkEndpointGroupsRequest {
@@ -63406,7 +65898,11 @@ export const DetachNetworkEndpointsGlobalNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DetachNetworkEndpointsGlobalNetworkEndpointGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detach the network endpoint from the specified network endpoint group. */
 export const detachNetworkEndpointsGlobalNetworkEndpointGroups: API.OperationMethod<
@@ -63417,7 +65913,7 @@ export const detachNetworkEndpointsGlobalNetworkEndpointGroups: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachNetworkEndpointsGlobalNetworkEndpointGroupsRequest,
   output: DetachNetworkEndpointsGlobalNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest {
@@ -63465,7 +65961,11 @@ export const ListNetworkEndpointsGlobalNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroupsListNetworkEndpoints;
 
 export type ListNetworkEndpointsGlobalNetworkEndpointGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the network endpoints in the specified network endpoint group. */
 export const listNetworkEndpointsGlobalNetworkEndpointGroups: API.PaginatedOperationMethod<
@@ -63476,7 +65976,7 @@ export const listNetworkEndpointsGlobalNetworkEndpointGroups: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointsGlobalNetworkEndpointGroupsRequest,
   output: ListNetworkEndpointsGlobalNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -63524,7 +66024,10 @@ export type ListRegionNetworkEndpointGroupsResponse = NetworkEndpointGroupList;
 export const ListRegionNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroupList;
 
-export type ListRegionNetworkEndpointGroupsError = DefaultErrors;
+export type ListRegionNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of regional network endpoint groups available to the specified project in the given region. */
 export const listRegionNetworkEndpointGroups: API.PaginatedOperationMethod<
@@ -63535,7 +66038,7 @@ export const listRegionNetworkEndpointGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionNetworkEndpointGroupsRequest,
   output: ListRegionNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -63571,7 +66074,10 @@ export type GetRegionNetworkEndpointGroupsResponse = NetworkEndpointGroup;
 export const GetRegionNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroup;
 
-export type GetRegionNetworkEndpointGroupsError = DefaultErrors;
+export type GetRegionNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified network endpoint group. */
 export const getRegionNetworkEndpointGroups: API.OperationMethod<
@@ -63582,7 +66088,7 @@ export const getRegionNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionNetworkEndpointGroupsRequest,
   output: GetRegionNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionNetworkEndpointGroupsRequest {
@@ -63615,7 +66121,12 @@ export type InsertRegionNetworkEndpointGroupsResponse = Operation;
 export const InsertRegionNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionNetworkEndpointGroupsError = DefaultErrors;
+export type InsertRegionNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a network endpoint group in the specified project using the parameters that are included in the request. Note: Use the following APIs to manage network endpoint groups: - To manage NEGs with zonal scope (such as zonal NEGs, hybrid connectivity NEGs): zonal API - To manage NEGs with regional scope (such as regional internet NEGs, serverless NEGs, Private Service Connect NEGs): regional API - To manage NEGs with global scope (such as global internet NEGs):global API */
 export const insertRegionNetworkEndpointGroups: API.OperationMethod<
@@ -63626,7 +66137,7 @@ export const insertRegionNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionNetworkEndpointGroupsRequest,
   output: InsertRegionNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionNetworkEndpointGroupsRequest {
@@ -63660,7 +66171,12 @@ export type DeleteRegionNetworkEndpointGroupsResponse = Operation;
 export const DeleteRegionNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionNetworkEndpointGroupsError = DefaultErrors;
+export type DeleteRegionNetworkEndpointGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified network endpoint group. Note that the NEG cannot be deleted if it is configured as a backend of a backend service. */
 export const deleteRegionNetworkEndpointGroups: API.OperationMethod<
@@ -63671,7 +66187,7 @@ export const deleteRegionNetworkEndpointGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionNetworkEndpointGroupsRequest,
   output: DeleteRegionNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttachNetworkEndpointsRegionNetworkEndpointGroupsRequest {
@@ -63713,7 +66229,11 @@ export const AttachNetworkEndpointsRegionNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type AttachNetworkEndpointsRegionNetworkEndpointGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attach a list of network endpoints to the specified network endpoint group. */
 export const attachNetworkEndpointsRegionNetworkEndpointGroups: API.OperationMethod<
@@ -63724,7 +66244,7 @@ export const attachNetworkEndpointsRegionNetworkEndpointGroups: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachNetworkEndpointsRegionNetworkEndpointGroupsRequest,
   output: AttachNetworkEndpointsRegionNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetachNetworkEndpointsRegionNetworkEndpointGroupsRequest {
@@ -63766,7 +66286,11 @@ export const DetachNetworkEndpointsRegionNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DetachNetworkEndpointsRegionNetworkEndpointGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detach the network endpoint from the specified network endpoint group. */
 export const detachNetworkEndpointsRegionNetworkEndpointGroups: API.OperationMethod<
@@ -63777,7 +66301,7 @@ export const detachNetworkEndpointsRegionNetworkEndpointGroups: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetachNetworkEndpointsRegionNetworkEndpointGroupsRequest,
   output: DetachNetworkEndpointsRegionNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNetworkEndpointsRegionNetworkEndpointGroupsRequest {
@@ -63828,7 +66352,11 @@ export const ListNetworkEndpointsRegionNetworkEndpointGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkEndpointGroupsListNetworkEndpoints;
 
 export type ListNetworkEndpointsRegionNetworkEndpointGroupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists the network endpoints in the specified network endpoint group. */
 export const listNetworkEndpointsRegionNetworkEndpointGroups: API.PaginatedOperationMethod<
@@ -63839,7 +66367,7 @@ export const listNetworkEndpointsRegionNetworkEndpointGroups: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkEndpointsRegionNetworkEndpointGroupsRequest,
   output: ListNetworkEndpointsRegionNetworkEndpointGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -63879,7 +66407,7 @@ export const ListNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListNetworksResponse = NetworkList;
 export const ListNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ NetworkList;
 
-export type ListNetworksError = DefaultErrors;
+export type ListNetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of networks available to the specified project. */
 export const listNetworks: API.PaginatedOperationMethod<
@@ -63890,7 +66418,7 @@ export const listNetworks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworksRequest,
   output: ListNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -63919,7 +66447,7 @@ export const GetNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetNetworksResponse = Network;
 export const GetNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Network;
 
-export type GetNetworksError = DefaultErrors;
+export type GetNetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified network. */
 export const getNetworks: API.OperationMethod<
@@ -63930,7 +66458,7 @@ export const getNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworksRequest,
   output: GetNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNetworksRequest {
@@ -63958,7 +66486,12 @@ export const InsertNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertNetworksResponse = Operation;
 export const InsertNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertNetworksError = DefaultErrors;
+export type InsertNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a network in the specified project using the data included in the request. */
 export const insertNetworks: API.OperationMethod<
@@ -63969,7 +66502,7 @@ export const insertNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNetworksRequest,
   output: InsertNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNetworksRequest {
@@ -63996,7 +66529,12 @@ export const DeleteNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteNetworksResponse = Operation;
 export const DeleteNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNetworksError = DefaultErrors;
+export type DeleteNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified network. */
 export const deleteNetworks: API.OperationMethod<
@@ -64007,7 +66545,7 @@ export const deleteNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNetworksRequest,
   output: DeleteNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchNetworksRequest {
@@ -64038,7 +66576,12 @@ export const PatchNetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchNetworksResponse = Operation;
 export const PatchNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchNetworksError = DefaultErrors;
+export type PatchNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified network with the data included in the request. Only routingConfig can be modified. */
 export const patchNetworks: API.OperationMethod<
@@ -64049,7 +66592,7 @@ export const patchNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNetworksRequest,
   output: PatchNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePeeringNetworksRequest {
@@ -64082,7 +66625,12 @@ export type UpdatePeeringNetworksResponse = Operation;
 export const UpdatePeeringNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdatePeeringNetworksError = DefaultErrors;
+export type UpdatePeeringNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified network peering with the data included in the request. You can only modify the NetworkPeering.export_custom_routes field and the NetworkPeering.import_custom_routes field. */
 export const updatePeeringNetworks: API.OperationMethod<
@@ -64093,7 +66641,7 @@ export const updatePeeringNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePeeringNetworksRequest,
   output: UpdatePeeringNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddPeeringNetworksRequest {
@@ -64125,7 +66673,12 @@ export const AddPeeringNetworksRequest =
 export type AddPeeringNetworksResponse = Operation;
 export const AddPeeringNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddPeeringNetworksError = DefaultErrors;
+export type AddPeeringNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a peering to the specified network. */
 export const addPeeringNetworks: API.OperationMethod<
@@ -64136,7 +66689,7 @@ export const addPeeringNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddPeeringNetworksRequest,
   output: AddPeeringNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RequestRemovePeeringNetworksRequest {
@@ -64171,7 +66724,12 @@ export type RequestRemovePeeringNetworksResponse = Operation;
 export const RequestRemovePeeringNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RequestRemovePeeringNetworksError = DefaultErrors;
+export type RequestRemovePeeringNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests to remove a peering from the specified network. Applicable only for PeeringConnection with update_strategy=CONSENSUS. */
 export const requestRemovePeeringNetworks: API.OperationMethod<
@@ -64182,7 +66740,7 @@ export const requestRemovePeeringNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RequestRemovePeeringNetworksRequest,
   output: RequestRemovePeeringNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemovePeeringNetworksRequest {
@@ -64215,7 +66773,12 @@ export type RemovePeeringNetworksResponse = Operation;
 export const RemovePeeringNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemovePeeringNetworksError = DefaultErrors;
+export type RemovePeeringNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a peering from the specified network. */
 export const removePeeringNetworks: API.OperationMethod<
@@ -64226,7 +66789,7 @@ export const removePeeringNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemovePeeringNetworksRequest,
   output: RemovePeeringNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SwitchToCustomModeNetworksRequest {
@@ -64256,7 +66819,12 @@ export type SwitchToCustomModeNetworksResponse = Operation;
 export const SwitchToCustomModeNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SwitchToCustomModeNetworksError = DefaultErrors;
+export type SwitchToCustomModeNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Switches the network mode from auto subnet mode to custom subnet mode. */
 export const switchToCustomModeNetworks: API.OperationMethod<
@@ -64267,7 +66835,7 @@ export const switchToCustomModeNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SwitchToCustomModeNetworksRequest,
   output: SwitchToCustomModeNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetEffectiveFirewallsNetworksRequest {
@@ -64294,7 +66862,10 @@ export type GetEffectiveFirewallsNetworksResponse =
 export const GetEffectiveFirewallsNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworksGetEffectiveFirewallsResponse;
 
-export type GetEffectiveFirewallsNetworksError = DefaultErrors;
+export type GetEffectiveFirewallsNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the effective firewalls on a given network. */
 export const getEffectiveFirewallsNetworks: API.OperationMethod<
@@ -64305,7 +66876,7 @@ export const getEffectiveFirewallsNetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEffectiveFirewallsNetworksRequest,
   output: GetEffectiveFirewallsNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPeeringRoutesNetworksRequest {
@@ -64359,7 +66930,10 @@ export type ListPeeringRoutesNetworksResponse = ExchangedPeeringRoutesList;
 export const ListPeeringRoutesNetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExchangedPeeringRoutesList;
 
-export type ListPeeringRoutesNetworksError = DefaultErrors;
+export type ListPeeringRoutesNetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the peering routes exchanged over peering connection. */
 export const listPeeringRoutesNetworks: API.PaginatedOperationMethod<
@@ -64370,7 +66944,7 @@ export const listPeeringRoutesNetworks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPeeringRoutesNetworksRequest,
   output: ListPeeringRoutesNetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -64413,7 +66987,7 @@ export const ListNodeGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListNodeGroupsResponse = NodeGroupList;
 export const ListNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ NodeGroupList;
 
-export type ListNodeGroupsError = DefaultErrors;
+export type ListNodeGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of node groups available to the specified project. Note: use nodeGroups.listNodes for more details about each group. */
 export const listNodeGroups: API.PaginatedOperationMethod<
@@ -64424,7 +66998,7 @@ export const listNodeGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodeGroupsRequest,
   output: ListNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -64476,7 +67050,10 @@ export type AggregatedListNodeGroupsResponse = NodeGroupAggregatedList;
 export const AggregatedListNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeGroupAggregatedList;
 
-export type AggregatedListNodeGroupsError = DefaultErrors;
+export type AggregatedListNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of node groups. Note: use nodeGroups.listNodes for more details about each group. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListNodeGroups: API.PaginatedOperationMethod<
@@ -64487,7 +67064,7 @@ export const aggregatedListNodeGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListNodeGroupsRequest,
   output: AggregatedListNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -64519,7 +67096,7 @@ export const GetNodeGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetNodeGroupsResponse = NodeGroup;
 export const GetNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ NodeGroup;
 
-export type GetNodeGroupsError = DefaultErrors;
+export type GetNodeGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead. */
 export const getNodeGroups: API.OperationMethod<
@@ -64530,7 +67107,7 @@ export const getNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNodeGroupsRequest,
   output: GetNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNodeGroupsRequest {
@@ -64565,7 +67142,12 @@ export const InsertNodeGroupsRequest =
 export type InsertNodeGroupsResponse = Operation;
 export const InsertNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertNodeGroupsError = DefaultErrors;
+export type InsertNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a NodeGroup resource in the specified project using the data included in the request. */
 export const insertNodeGroups: API.OperationMethod<
@@ -64576,7 +67158,7 @@ export const insertNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNodeGroupsRequest,
   output: InsertNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNodeGroupsRequest {
@@ -64607,7 +67189,12 @@ export const DeleteNodeGroupsRequest =
 export type DeleteNodeGroupsResponse = Operation;
 export const DeleteNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNodeGroupsError = DefaultErrors;
+export type DeleteNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified NodeGroup resource. */
 export const deleteNodeGroups: API.OperationMethod<
@@ -64618,7 +67205,7 @@ export const deleteNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNodeGroupsRequest,
   output: DeleteNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddNodesNodeGroupsRequest {
@@ -64653,7 +67240,12 @@ export const AddNodesNodeGroupsRequest =
 export type AddNodesNodeGroupsResponse = Operation;
 export const AddNodesNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddNodesNodeGroupsError = DefaultErrors;
+export type AddNodesNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds specified number of nodes to the node group. */
 export const addNodesNodeGroups: API.OperationMethod<
@@ -64664,7 +67256,7 @@ export const addNodesNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddNodesNodeGroupsRequest,
   output: AddNodesNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNodesNodeGroupsRequest {
@@ -64700,7 +67292,12 @@ export type DeleteNodesNodeGroupsResponse = Operation;
 export const DeleteNodesNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNodesNodeGroupsError = DefaultErrors;
+export type DeleteNodesNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes specified nodes from the node group. */
 export const deleteNodesNodeGroups: API.OperationMethod<
@@ -64711,7 +67308,7 @@ export const deleteNodesNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNodesNodeGroupsRequest,
   output: DeleteNodesNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodesNodeGroupsRequest {
@@ -64758,7 +67355,12 @@ export type ListNodesNodeGroupsResponse = NodeGroupsListNodes;
 export const ListNodesNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeGroupsListNodes;
 
-export type ListNodesNodeGroupsError = DefaultErrors;
+export type ListNodesNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists nodes in the node group. */
 export const listNodesNodeGroups: API.PaginatedOperationMethod<
@@ -64769,7 +67371,7 @@ export const listNodesNodeGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodesNodeGroupsRequest,
   output: ListNodesNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -64810,7 +67412,12 @@ export type SetNodeTemplateNodeGroupsResponse = Operation;
 export const SetNodeTemplateNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetNodeTemplateNodeGroupsError = DefaultErrors;
+export type SetNodeTemplateNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the node template of the node group. */
 export const setNodeTemplateNodeGroups: API.OperationMethod<
@@ -64821,7 +67428,7 @@ export const setNodeTemplateNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetNodeTemplateNodeGroupsRequest,
   output: SetNodeTemplateNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchNodeGroupsRequest {
@@ -64857,7 +67464,12 @@ export const PatchNodeGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PatchNodeGroupsResponse = Operation;
 export const PatchNodeGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchNodeGroupsError = DefaultErrors;
+export type PatchNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified node group. */
 export const patchNodeGroups: API.OperationMethod<
@@ -64868,7 +67480,7 @@ export const patchNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchNodeGroupsRequest,
   output: PatchNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SimulateMaintenanceEventNodeGroupsRequest {
@@ -64906,7 +67518,12 @@ export type SimulateMaintenanceEventNodeGroupsResponse = Operation;
 export const SimulateMaintenanceEventNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SimulateMaintenanceEventNodeGroupsError = DefaultErrors;
+export type SimulateMaintenanceEventNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Simulates maintenance event on specified nodes from the node group. */
 export const simulateMaintenanceEventNodeGroups: API.OperationMethod<
@@ -64917,7 +67534,7 @@ export const simulateMaintenanceEventNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SimulateMaintenanceEventNodeGroupsRequest,
   output: SimulateMaintenanceEventNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PerformMaintenanceNodeGroupsRequest {
@@ -64955,7 +67572,12 @@ export type PerformMaintenanceNodeGroupsResponse = Operation;
 export const PerformMaintenanceNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PerformMaintenanceNodeGroupsError = DefaultErrors;
+export type PerformMaintenanceNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Perform maintenance on a subset of nodes in the node group. */
 export const performMaintenanceNodeGroups: API.OperationMethod<
@@ -64966,7 +67588,7 @@ export const performMaintenanceNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PerformMaintenanceNodeGroupsRequest,
   output: PerformMaintenanceNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyNodeGroupsRequest {
@@ -65000,7 +67622,7 @@ export type GetIamPolicyNodeGroupsResponse = Policy;
 export const GetIamPolicyNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyNodeGroupsError = DefaultErrors;
+export type GetIamPolicyNodeGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyNodeGroups: API.OperationMethod<
@@ -65011,7 +67633,7 @@ export const getIamPolicyNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyNodeGroupsRequest,
   output: GetIamPolicyNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyNodeGroupsRequest {
@@ -65044,7 +67666,12 @@ export type SetIamPolicyNodeGroupsResponse = Policy;
 export const SetIamPolicyNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyNodeGroupsError = DefaultErrors;
+export type SetIamPolicyNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyNodeGroups: API.OperationMethod<
@@ -65055,7 +67682,7 @@ export const setIamPolicyNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyNodeGroupsRequest,
   output: SetIamPolicyNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsNodeGroupsRequest {
@@ -65088,7 +67715,12 @@ export type TestIamPermissionsNodeGroupsResponse = TestPermissionsResponse;
 export const TestIamPermissionsNodeGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsNodeGroupsError = DefaultErrors;
+export type TestIamPermissionsNodeGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsNodeGroups: API.OperationMethod<
@@ -65099,7 +67731,7 @@ export const testIamPermissionsNodeGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsNodeGroupsRequest,
   output: TestIamPermissionsNodeGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodeTemplatesRequest {
@@ -65142,7 +67774,7 @@ export type ListNodeTemplatesResponse = NodeTemplateList;
 export const ListNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeTemplateList;
 
-export type ListNodeTemplatesError = DefaultErrors;
+export type ListNodeTemplatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of node templates available to the specified project. */
 export const listNodeTemplates: API.PaginatedOperationMethod<
@@ -65153,7 +67785,7 @@ export const listNodeTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodeTemplatesRequest,
   output: ListNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -65208,7 +67840,10 @@ export type AggregatedListNodeTemplatesResponse = NodeTemplateAggregatedList;
 export const AggregatedListNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeTemplateAggregatedList;
 
-export type AggregatedListNodeTemplatesError = DefaultErrors;
+export type AggregatedListNodeTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of node templates. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListNodeTemplates: API.PaginatedOperationMethod<
@@ -65219,7 +67854,7 @@ export const aggregatedListNodeTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListNodeTemplatesRequest,
   output: AggregatedListNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -65253,7 +67888,7 @@ export type GetNodeTemplatesResponse = NodeTemplate;
 export const GetNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeTemplate;
 
-export type GetNodeTemplatesError = DefaultErrors;
+export type GetNodeTemplatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified node template. */
 export const getNodeTemplates: API.OperationMethod<
@@ -65264,7 +67899,7 @@ export const getNodeTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNodeTemplatesRequest,
   output: GetNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertNodeTemplatesRequest {
@@ -65297,7 +67932,12 @@ export type InsertNodeTemplatesResponse = Operation;
 export const InsertNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertNodeTemplatesError = DefaultErrors;
+export type InsertNodeTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a NodeTemplate resource in the specified project using the data included in the request. */
 export const insertNodeTemplates: API.OperationMethod<
@@ -65308,7 +67948,7 @@ export const insertNodeTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertNodeTemplatesRequest,
   output: InsertNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteNodeTemplatesRequest {
@@ -65340,7 +67980,12 @@ export type DeleteNodeTemplatesResponse = Operation;
 export const DeleteNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteNodeTemplatesError = DefaultErrors;
+export type DeleteNodeTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified NodeTemplate resource. */
 export const deleteNodeTemplates: API.OperationMethod<
@@ -65351,7 +67996,7 @@ export const deleteNodeTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteNodeTemplatesRequest,
   output: DeleteNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyNodeTemplatesRequest {
@@ -65385,7 +68030,10 @@ export type GetIamPolicyNodeTemplatesResponse = Policy;
 export const GetIamPolicyNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyNodeTemplatesError = DefaultErrors;
+export type GetIamPolicyNodeTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyNodeTemplates: API.OperationMethod<
@@ -65396,7 +68044,7 @@ export const getIamPolicyNodeTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyNodeTemplatesRequest,
   output: GetIamPolicyNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyNodeTemplatesRequest {
@@ -65429,7 +68077,12 @@ export type SetIamPolicyNodeTemplatesResponse = Policy;
 export const SetIamPolicyNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyNodeTemplatesError = DefaultErrors;
+export type SetIamPolicyNodeTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyNodeTemplates: API.OperationMethod<
@@ -65440,7 +68093,7 @@ export const setIamPolicyNodeTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyNodeTemplatesRequest,
   output: SetIamPolicyNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsNodeTemplatesRequest {
@@ -65473,7 +68126,12 @@ export type TestIamPermissionsNodeTemplatesResponse = TestPermissionsResponse;
 export const TestIamPermissionsNodeTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsNodeTemplatesError = DefaultErrors;
+export type TestIamPermissionsNodeTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsNodeTemplates: API.OperationMethod<
@@ -65484,7 +68142,7 @@ export const testIamPermissionsNodeTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsNodeTemplatesRequest,
   output: TestIamPermissionsNodeTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNodeTypesRequest {
@@ -65522,7 +68180,7 @@ export const ListNodeTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListNodeTypesResponse = NodeTypeList;
 export const ListNodeTypesResponse = /*@__PURE__*/ /*#__PURE__*/ NodeTypeList;
 
-export type ListNodeTypesError = DefaultErrors;
+export type ListNodeTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of node types available to the specified project. */
 export const listNodeTypes: API.PaginatedOperationMethod<
@@ -65533,7 +68191,7 @@ export const listNodeTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNodeTypesRequest,
   output: ListNodeTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -65585,7 +68243,7 @@ export type AggregatedListNodeTypesResponse = NodeTypeAggregatedList;
 export const AggregatedListNodeTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NodeTypeAggregatedList;
 
-export type AggregatedListNodeTypesError = DefaultErrors;
+export type AggregatedListNodeTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an aggregated list of node types. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListNodeTypes: API.PaginatedOperationMethod<
@@ -65596,7 +68254,7 @@ export const aggregatedListNodeTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListNodeTypesRequest,
   output: AggregatedListNodeTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -65628,7 +68286,7 @@ export const GetNodeTypesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetNodeTypesResponse = NodeType;
 export const GetNodeTypesResponse = /*@__PURE__*/ /*#__PURE__*/ NodeType;
 
-export type GetNodeTypesError = DefaultErrors;
+export type GetNodeTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified node type. */
 export const getNodeTypes: API.OperationMethod<
@@ -65639,7 +68297,7 @@ export const getNodeTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNodeTypesRequest,
   output: GetNodeTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AggregatedListRegionNotificationEndpointsRequest {
@@ -65690,7 +68348,10 @@ export type AggregatedListRegionNotificationEndpointsResponse =
 export const AggregatedListRegionNotificationEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationEndpointAggregatedList;
 
-export type AggregatedListRegionNotificationEndpointsError = DefaultErrors;
+export type AggregatedListRegionNotificationEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all NotificationEndpoint resources, regional and global, available to the specified project. */
 export const aggregatedListRegionNotificationEndpoints: API.PaginatedOperationMethod<
@@ -65701,7 +68362,7 @@ export const aggregatedListRegionNotificationEndpoints: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListRegionNotificationEndpointsRequest,
   output: AggregatedListRegionNotificationEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -65749,7 +68410,10 @@ export type ListRegionNotificationEndpointsResponse = NotificationEndpointList;
 export const ListRegionNotificationEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationEndpointList;
 
-export type ListRegionNotificationEndpointsError = DefaultErrors;
+export type ListRegionNotificationEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the NotificationEndpoints for a project in the given region. */
 export const listRegionNotificationEndpoints: API.PaginatedOperationMethod<
@@ -65760,7 +68424,7 @@ export const listRegionNotificationEndpoints: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionNotificationEndpointsRequest,
   output: ListRegionNotificationEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -65796,7 +68460,10 @@ export type GetRegionNotificationEndpointsResponse = NotificationEndpoint;
 export const GetRegionNotificationEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationEndpoint;
 
-export type GetRegionNotificationEndpointsError = DefaultErrors;
+export type GetRegionNotificationEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified NotificationEndpoint resource in the given region. */
 export const getRegionNotificationEndpoints: API.OperationMethod<
@@ -65807,7 +68474,7 @@ export const getRegionNotificationEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionNotificationEndpointsRequest,
   output: GetRegionNotificationEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionNotificationEndpointsRequest {
@@ -65840,7 +68507,12 @@ export type InsertRegionNotificationEndpointsResponse = Operation;
 export const InsertRegionNotificationEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionNotificationEndpointsError = DefaultErrors;
+export type InsertRegionNotificationEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a NotificationEndpoint in the specified project in the given region using the parameters that are included in the request. */
 export const insertRegionNotificationEndpoints: API.OperationMethod<
@@ -65851,7 +68523,7 @@ export const insertRegionNotificationEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionNotificationEndpointsRequest,
   output: InsertRegionNotificationEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionNotificationEndpointsRequest {
@@ -65885,7 +68557,12 @@ export type DeleteRegionNotificationEndpointsResponse = Operation;
 export const DeleteRegionNotificationEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionNotificationEndpointsError = DefaultErrors;
+export type DeleteRegionNotificationEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified NotificationEndpoint in the given region */
 export const deleteRegionNotificationEndpoints: API.OperationMethod<
@@ -65896,7 +68573,7 @@ export const deleteRegionNotificationEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionNotificationEndpointsRequest,
   output: DeleteRegionNotificationEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRegionNotificationEndpointsRequest {
@@ -65930,7 +68607,12 @@ export type TestIamPermissionsRegionNotificationEndpointsResponse =
 export const TestIamPermissionsRegionNotificationEndpointsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRegionNotificationEndpointsError = DefaultErrors;
+export type TestIamPermissionsRegionNotificationEndpointsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRegionNotificationEndpoints: API.OperationMethod<
@@ -65941,7 +68623,7 @@ export const testIamPermissionsRegionNotificationEndpoints: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRegionNotificationEndpointsRequest,
   output: TestIamPermissionsRegionNotificationEndpointsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPacketMirroringsRequest {
@@ -65970,7 +68652,7 @@ export type GetPacketMirroringsResponse = PacketMirroring;
 export const GetPacketMirroringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PacketMirroring;
 
-export type GetPacketMirroringsError = DefaultErrors;
+export type GetPacketMirroringsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified PacketMirroring resource. */
 export const getPacketMirrorings: API.OperationMethod<
@@ -65981,7 +68663,7 @@ export const getPacketMirrorings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPacketMirroringsRequest,
   output: GetPacketMirroringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertPacketMirroringsRequest {
@@ -66014,7 +68696,12 @@ export type InsertPacketMirroringsResponse = Operation;
 export const InsertPacketMirroringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertPacketMirroringsError = DefaultErrors;
+export type InsertPacketMirroringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a PacketMirroring resource in the specified project and region using the data included in the request. */
 export const insertPacketMirrorings: API.OperationMethod<
@@ -66025,7 +68712,7 @@ export const insertPacketMirrorings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPacketMirroringsRequest,
   output: InsertPacketMirroringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPacketMirroringsRequest {
@@ -66061,7 +68748,12 @@ export type PatchPacketMirroringsResponse = Operation;
 export const PatchPacketMirroringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchPacketMirroringsError = DefaultErrors;
+export type PatchPacketMirroringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified PacketMirroring resource with the data included in the request. This method supportsPATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchPacketMirrorings: API.OperationMethod<
@@ -66072,7 +68764,7 @@ export const patchPacketMirrorings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPacketMirroringsRequest,
   output: PatchPacketMirroringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePacketMirroringsRequest {
@@ -66104,7 +68796,12 @@ export type DeletePacketMirroringsResponse = Operation;
 export const DeletePacketMirroringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeletePacketMirroringsError = DefaultErrors;
+export type DeletePacketMirroringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified PacketMirroring resource. */
 export const deletePacketMirrorings: API.OperationMethod<
@@ -66115,7 +68812,7 @@ export const deletePacketMirrorings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePacketMirroringsRequest,
   output: DeletePacketMirroringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPacketMirroringsRequest {
@@ -66158,7 +68855,7 @@ export type ListPacketMirroringsResponse = PacketMirroringList;
 export const ListPacketMirroringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PacketMirroringList;
 
-export type ListPacketMirroringsError = DefaultErrors;
+export type ListPacketMirroringsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of PacketMirroring resources available to the specified project and region. */
 export const listPacketMirrorings: API.PaginatedOperationMethod<
@@ -66169,7 +68866,7 @@ export const listPacketMirrorings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPacketMirroringsRequest,
   output: ListPacketMirroringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -66225,7 +68922,10 @@ export type AggregatedListPacketMirroringsResponse =
 export const AggregatedListPacketMirroringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PacketMirroringAggregatedList;
 
-export type AggregatedListPacketMirroringsError = DefaultErrors;
+export type AggregatedListPacketMirroringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of packetMirrorings. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListPacketMirrorings: API.PaginatedOperationMethod<
@@ -66236,7 +68936,7 @@ export const aggregatedListPacketMirrorings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListPacketMirroringsRequest,
   output: AggregatedListPacketMirroringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -66275,7 +68975,12 @@ export type TestIamPermissionsPacketMirroringsResponse =
 export const TestIamPermissionsPacketMirroringsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsPacketMirroringsError = DefaultErrors;
+export type TestIamPermissionsPacketMirroringsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsPacketMirrorings: API.OperationMethod<
@@ -66286,7 +68991,7 @@ export const testIamPermissionsPacketMirrorings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsPacketMirroringsRequest,
   output: TestIamPermissionsPacketMirroringsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsRequest {
@@ -66304,7 +69009,7 @@ export const GetProjectsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetProjectsResponse = Project;
 export const GetProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetProjectsError = DefaultErrors;
+export type GetProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Project resource. To decrease latency for this method, you can optionally omit any unneeded information from the response by using a field mask. This practice is especially recommended for unused quota information (the `quotas` field). To exclude one or more fields, set your request's `fields` query parameter to only include the fields you need. For example, to only include the `id` and `selfLink` fields, add the query parameter `?fields=id,selfLink` to your request. */
 export const getProjects: API.OperationMethod<
@@ -66315,7 +69020,7 @@ export const getProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsRequest,
   output: GetProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetCommonInstanceMetadataProjectsRequest {
@@ -66345,7 +69050,12 @@ export type SetCommonInstanceMetadataProjectsResponse = Operation;
 export const SetCommonInstanceMetadataProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetCommonInstanceMetadataProjectsError = DefaultErrors;
+export type SetCommonInstanceMetadataProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets metadata common to all instances within the specified project using the data included in the request. */
 export const setCommonInstanceMetadataProjects: API.OperationMethod<
@@ -66356,7 +69066,7 @@ export const setCommonInstanceMetadataProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetCommonInstanceMetadataProjectsRequest,
   output: SetCommonInstanceMetadataProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetUsageExportBucketProjectsRequest {
@@ -66386,7 +69096,12 @@ export type SetUsageExportBucketProjectsResponse = Operation;
 export const SetUsageExportBucketProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetUsageExportBucketProjectsError = DefaultErrors;
+export type SetUsageExportBucketProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables the usage export feature and sets theusage export bucket where reports are stored. If you provide an empty request body using this method, the usage export feature will be disabled. */
 export const setUsageExportBucketProjects: API.OperationMethod<
@@ -66397,7 +69112,7 @@ export const setUsageExportBucketProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUsageExportBucketProjectsRequest,
   output: SetUsageExportBucketProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveInstanceProjectsRequest {
@@ -66427,7 +69142,12 @@ export type MoveInstanceProjectsResponse = Operation;
 export const MoveInstanceProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveInstanceProjectsError = DefaultErrors;
+export type MoveInstanceProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an instance and its attached persistent disks from one zone to another. *Note*: Moving VMs or disks by using this method might cause unexpected behavior. For more information, see the [known issue](/compute/docs/troubleshooting/known-issues#moving_vms_or_disks_using_the_moveinstance_api_or_the_causes_unexpected_behavior). [Deprecated] This method is deprecated. See [moving instance across zones](/compute/docs/instances/moving-instance-across-zones) instead. */
 export const moveInstanceProjects: API.OperationMethod<
@@ -66438,7 +69158,7 @@ export const moveInstanceProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveInstanceProjectsRequest,
   output: MoveInstanceProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface MoveDiskProjectsRequest {
@@ -66467,7 +69187,12 @@ export const MoveDiskProjectsRequest =
 export type MoveDiskProjectsResponse = Operation;
 export const MoveDiskProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type MoveDiskProjectsError = DefaultErrors;
+export type MoveDiskProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a persistent disk from one zone to another. *Note*: The moveDisk API will be deprecated on September 29, 2026. Starting September 29, 2025, you can't use the moveDisk API on new projects. To move a disk to a different region or zone, follow the steps in [Change the location of a disk](https://cloud.google.com/compute/docs/disks/migrate-to-hyperdisk#migrate-to-hd). Projects that already use the moveDisk API can continue usage until September 29, 2026. Starting November 1, 2025, API responses will include a warning message in the response body about the upcoming deprecation. You can skip the message to continue using the service without interruption. */
 export const moveDiskProjects: API.OperationMethod<
@@ -66478,7 +69203,7 @@ export const moveDiskProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveDiskProjectsRequest,
   output: MoveDiskProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListXpnHostsProjectsRequest {
@@ -66522,7 +69247,12 @@ export type ListXpnHostsProjectsResponse = XpnHostList;
 export const ListXpnHostsProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ XpnHostList;
 
-export type ListXpnHostsProjectsError = DefaultErrors;
+export type ListXpnHostsProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists all shared VPC host projects visible to the user in an organization. */
 export const listXpnHostsProjects: API.PaginatedOperationMethod<
@@ -66533,7 +69263,7 @@ export const listXpnHostsProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListXpnHostsProjectsRequest,
   output: ListXpnHostsProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -66565,7 +69295,12 @@ export type EnableXpnHostProjectsResponse = Operation;
 export const EnableXpnHostProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnableXpnHostProjectsError = DefaultErrors;
+export type EnableXpnHostProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable this project as a shared VPC host project. */
 export const enableXpnHostProjects: API.OperationMethod<
@@ -66576,7 +69311,7 @@ export const enableXpnHostProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableXpnHostProjectsRequest,
   output: EnableXpnHostProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableXpnHostProjectsRequest {
@@ -66603,7 +69338,12 @@ export type DisableXpnHostProjectsResponse = Operation;
 export const DisableXpnHostProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DisableXpnHostProjectsError = DefaultErrors;
+export type DisableXpnHostProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable this project as a shared VPC host project. */
 export const disableXpnHostProjects: API.OperationMethod<
@@ -66614,7 +69354,7 @@ export const disableXpnHostProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableXpnHostProjectsRequest,
   output: DisableXpnHostProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableXpnResourceProjectsRequest {
@@ -66644,7 +69384,12 @@ export type EnableXpnResourceProjectsResponse = Operation;
 export const EnableXpnResourceProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnableXpnResourceProjectsError = DefaultErrors;
+export type EnableXpnResourceProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enable service resource (a.k.a service project) for a host project, so that subnets in the host project can be used by instances in the service project. */
 export const enableXpnResourceProjects: API.OperationMethod<
@@ -66655,7 +69400,7 @@ export const enableXpnResourceProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableXpnResourceProjectsRequest,
   output: EnableXpnResourceProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DisableXpnResourceProjectsRequest {
@@ -66685,7 +69430,12 @@ export type DisableXpnResourceProjectsResponse = Operation;
 export const DisableXpnResourceProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DisableXpnResourceProjectsError = DefaultErrors;
+export type DisableXpnResourceProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disable a service resource (also known as service project) associated with this host project. */
 export const disableXpnResourceProjects: API.OperationMethod<
@@ -66696,7 +69446,7 @@ export const disableXpnResourceProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableXpnResourceProjectsRequest,
   output: DisableXpnResourceProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetXpnHostProjectsRequest {
@@ -66715,7 +69465,7 @@ export const GetXpnHostProjectsRequest =
 export type GetXpnHostProjectsResponse = Project;
 export const GetXpnHostProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Project;
 
-export type GetXpnHostProjectsError = DefaultErrors;
+export type GetXpnHostProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the shared VPC host project that this project links to. May be empty if no link exists. */
 export const getXpnHostProjects: API.OperationMethod<
@@ -66726,7 +69476,7 @@ export const getXpnHostProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetXpnHostProjectsRequest,
   output: GetXpnHostProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetXpnResourcesProjectsRequest {
@@ -66763,7 +69513,7 @@ export type GetXpnResourcesProjectsResponse = ProjectsGetXpnResources;
 export const GetXpnResourcesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProjectsGetXpnResources;
 
-export type GetXpnResourcesProjectsError = DefaultErrors;
+export type GetXpnResourcesProjectsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets service resources (a.k.a service project) associated with this host project. */
 export const getXpnResourcesProjects: API.PaginatedOperationMethod<
@@ -66774,7 +69524,7 @@ export const getXpnResourcesProjects: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetXpnResourcesProjectsRequest,
   output: GetXpnResourcesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -66810,7 +69560,12 @@ export type SetDefaultNetworkTierProjectsResponse = Operation;
 export const SetDefaultNetworkTierProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetDefaultNetworkTierProjectsError = DefaultErrors;
+export type SetDefaultNetworkTierProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the default network tier of the project. The default network tier is used when an address/forwardingRule/instance is created without specifying the network tier field. */
 export const setDefaultNetworkTierProjects: API.OperationMethod<
@@ -66821,7 +69576,7 @@ export const setDefaultNetworkTierProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetDefaultNetworkTierProjectsRequest,
   output: SetDefaultNetworkTierProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetCloudArmorTierProjectsRequest {
@@ -66851,7 +69606,12 @@ export type SetCloudArmorTierProjectsResponse = Operation;
 export const SetCloudArmorTierProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetCloudArmorTierProjectsError = DefaultErrors;
+export type SetCloudArmorTierProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Cloud Armor tier of the project. To set ENTERPRISE or above the billing account of the project must be subscribed to Cloud Armor Enterprise. See Subscribing to Cloud Armor Enterprise for more information. */
 export const setCloudArmorTierProjects: API.OperationMethod<
@@ -66862,7 +69622,7 @@ export const setCloudArmorTierProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetCloudArmorTierProjectsRequest,
   output: SetCloudArmorTierProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPublicAdvertisedPrefixesRequest {
@@ -66902,7 +69662,10 @@ export type ListPublicAdvertisedPrefixesResponse = PublicAdvertisedPrefixList;
 export const ListPublicAdvertisedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublicAdvertisedPrefixList;
 
-export type ListPublicAdvertisedPrefixesError = DefaultErrors;
+export type ListPublicAdvertisedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the PublicAdvertisedPrefixes for a project. */
 export const listPublicAdvertisedPrefixes: API.PaginatedOperationMethod<
@@ -66913,7 +69676,7 @@ export const listPublicAdvertisedPrefixes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPublicAdvertisedPrefixesRequest,
   output: ListPublicAdvertisedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -66946,7 +69709,10 @@ export type GetPublicAdvertisedPrefixesResponse = PublicAdvertisedPrefix;
 export const GetPublicAdvertisedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublicAdvertisedPrefix;
 
-export type GetPublicAdvertisedPrefixesError = DefaultErrors;
+export type GetPublicAdvertisedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified PublicAdvertisedPrefix resource. */
 export const getPublicAdvertisedPrefixes: API.OperationMethod<
@@ -66957,7 +69723,7 @@ export const getPublicAdvertisedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicAdvertisedPrefixesRequest,
   output: GetPublicAdvertisedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertPublicAdvertisedPrefixesRequest {
@@ -66987,7 +69753,12 @@ export type InsertPublicAdvertisedPrefixesResponse = Operation;
 export const InsertPublicAdvertisedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertPublicAdvertisedPrefixesError = DefaultErrors;
+export type InsertPublicAdvertisedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request. */
 export const insertPublicAdvertisedPrefixes: API.OperationMethod<
@@ -66998,7 +69769,7 @@ export const insertPublicAdvertisedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPublicAdvertisedPrefixesRequest,
   output: InsertPublicAdvertisedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePublicAdvertisedPrefixesRequest {
@@ -67029,7 +69800,12 @@ export type DeletePublicAdvertisedPrefixesResponse = Operation;
 export const DeletePublicAdvertisedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeletePublicAdvertisedPrefixesError = DefaultErrors;
+export type DeletePublicAdvertisedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified PublicAdvertisedPrefix */
 export const deletePublicAdvertisedPrefixes: API.OperationMethod<
@@ -67040,7 +69816,7 @@ export const deletePublicAdvertisedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePublicAdvertisedPrefixesRequest,
   output: DeletePublicAdvertisedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPublicAdvertisedPrefixesRequest {
@@ -67075,7 +69851,12 @@ export type PatchPublicAdvertisedPrefixesResponse = Operation;
 export const PatchPublicAdvertisedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchPublicAdvertisedPrefixesError = DefaultErrors;
+export type PatchPublicAdvertisedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified Router resource with the data included in the request. This method supportsPATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchPublicAdvertisedPrefixes: API.OperationMethod<
@@ -67086,7 +69867,7 @@ export const patchPublicAdvertisedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPublicAdvertisedPrefixesRequest,
   output: PatchPublicAdvertisedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnouncePublicAdvertisedPrefixesRequest {
@@ -67118,7 +69899,12 @@ export type AnnouncePublicAdvertisedPrefixesResponse = Operation;
 export const AnnouncePublicAdvertisedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AnnouncePublicAdvertisedPrefixesError = DefaultErrors;
+export type AnnouncePublicAdvertisedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Announces the specified PublicAdvertisedPrefix */
 export const announcePublicAdvertisedPrefixes: API.OperationMethod<
@@ -67129,7 +69915,7 @@ export const announcePublicAdvertisedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnouncePublicAdvertisedPrefixesRequest,
   output: AnnouncePublicAdvertisedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WithdrawPublicAdvertisedPrefixesRequest {
@@ -67161,7 +69947,12 @@ export type WithdrawPublicAdvertisedPrefixesResponse = Operation;
 export const WithdrawPublicAdvertisedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WithdrawPublicAdvertisedPrefixesError = DefaultErrors;
+export type WithdrawPublicAdvertisedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Withdraws the specified PublicAdvertisedPrefix */
 export const withdrawPublicAdvertisedPrefixes: API.OperationMethod<
@@ -67172,7 +69963,7 @@ export const withdrawPublicAdvertisedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WithdrawPublicAdvertisedPrefixesRequest,
   output: WithdrawPublicAdvertisedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListGlobalPublicDelegatedPrefixesRequest {
@@ -67213,7 +70004,10 @@ export type ListGlobalPublicDelegatedPrefixesResponse =
 export const ListGlobalPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublicDelegatedPrefixList;
 
-export type ListGlobalPublicDelegatedPrefixesError = DefaultErrors;
+export type ListGlobalPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the global PublicDelegatedPrefixes for a project. */
 export const listGlobalPublicDelegatedPrefixes: API.PaginatedOperationMethod<
@@ -67224,7 +70018,7 @@ export const listGlobalPublicDelegatedPrefixes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListGlobalPublicDelegatedPrefixesRequest,
   output: ListGlobalPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -67257,7 +70051,10 @@ export type GetGlobalPublicDelegatedPrefixesResponse = PublicDelegatedPrefix;
 export const GetGlobalPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublicDelegatedPrefix;
 
-export type GetGlobalPublicDelegatedPrefixesError = DefaultErrors;
+export type GetGlobalPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified global PublicDelegatedPrefix resource. */
 export const getGlobalPublicDelegatedPrefixes: API.OperationMethod<
@@ -67268,7 +70065,7 @@ export const getGlobalPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGlobalPublicDelegatedPrefixesRequest,
   output: GetGlobalPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertGlobalPublicDelegatedPrefixesRequest {
@@ -67298,7 +70095,12 @@ export type InsertGlobalPublicDelegatedPrefixesResponse = Operation;
 export const InsertGlobalPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertGlobalPublicDelegatedPrefixesError = DefaultErrors;
+export type InsertGlobalPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a global PublicDelegatedPrefix in the specified project using the parameters that are included in the request. */
 export const insertGlobalPublicDelegatedPrefixes: API.OperationMethod<
@@ -67309,7 +70111,7 @@ export const insertGlobalPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertGlobalPublicDelegatedPrefixesRequest,
   output: InsertGlobalPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteGlobalPublicDelegatedPrefixesRequest {
@@ -67340,7 +70142,12 @@ export type DeleteGlobalPublicDelegatedPrefixesResponse = Operation;
 export const DeleteGlobalPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteGlobalPublicDelegatedPrefixesError = DefaultErrors;
+export type DeleteGlobalPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified global PublicDelegatedPrefix. */
 export const deleteGlobalPublicDelegatedPrefixes: API.OperationMethod<
@@ -67351,7 +70158,7 @@ export const deleteGlobalPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteGlobalPublicDelegatedPrefixesRequest,
   output: DeleteGlobalPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchGlobalPublicDelegatedPrefixesRequest {
@@ -67386,7 +70193,12 @@ export type PatchGlobalPublicDelegatedPrefixesResponse = Operation;
 export const PatchGlobalPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchGlobalPublicDelegatedPrefixesError = DefaultErrors;
+export type PatchGlobalPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified global PublicDelegatedPrefix resource with the data included in the request. This method supportsPATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchGlobalPublicDelegatedPrefixes: API.OperationMethod<
@@ -67397,7 +70209,7 @@ export const patchGlobalPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchGlobalPublicDelegatedPrefixesRequest,
   output: PatchGlobalPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPublicDelegatedPrefixesRequest {
@@ -67440,7 +70252,10 @@ export type ListPublicDelegatedPrefixesResponse = PublicDelegatedPrefixList;
 export const ListPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublicDelegatedPrefixList;
 
-export type ListPublicDelegatedPrefixesError = DefaultErrors;
+export type ListPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the PublicDelegatedPrefixes for a project in the given region. */
 export const listPublicDelegatedPrefixes: API.PaginatedOperationMethod<
@@ -67451,7 +70266,7 @@ export const listPublicDelegatedPrefixes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPublicDelegatedPrefixesRequest,
   output: ListPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -67487,7 +70302,10 @@ export type GetPublicDelegatedPrefixesResponse = PublicDelegatedPrefix;
 export const GetPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublicDelegatedPrefix;
 
-export type GetPublicDelegatedPrefixesError = DefaultErrors;
+export type GetPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified PublicDelegatedPrefix resource in the given region. */
 export const getPublicDelegatedPrefixes: API.OperationMethod<
@@ -67498,7 +70316,7 @@ export const getPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPublicDelegatedPrefixesRequest,
   output: GetPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertPublicDelegatedPrefixesRequest {
@@ -67531,7 +70349,12 @@ export type InsertPublicDelegatedPrefixesResponse = Operation;
 export const InsertPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertPublicDelegatedPrefixesError = DefaultErrors;
+export type InsertPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request. */
 export const insertPublicDelegatedPrefixes: API.OperationMethod<
@@ -67542,7 +70365,7 @@ export const insertPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPublicDelegatedPrefixesRequest,
   output: InsertPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeletePublicDelegatedPrefixesRequest {
@@ -67576,7 +70399,12 @@ export type DeletePublicDelegatedPrefixesResponse = Operation;
 export const DeletePublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeletePublicDelegatedPrefixesError = DefaultErrors;
+export type DeletePublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified PublicDelegatedPrefix in the given region. */
 export const deletePublicDelegatedPrefixes: API.OperationMethod<
@@ -67587,7 +70415,7 @@ export const deletePublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePublicDelegatedPrefixesRequest,
   output: DeletePublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPublicDelegatedPrefixesRequest {
@@ -67625,7 +70453,12 @@ export type PatchPublicDelegatedPrefixesResponse = Operation;
 export const PatchPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchPublicDelegatedPrefixesError = DefaultErrors;
+export type PatchPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified PublicDelegatedPrefix resource with the data included in the request. This method supportsPATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchPublicDelegatedPrefixes: API.OperationMethod<
@@ -67636,7 +70469,7 @@ export const patchPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPublicDelegatedPrefixesRequest,
   output: PatchPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnouncePublicDelegatedPrefixesRequest {
@@ -67671,7 +70504,12 @@ export type AnnouncePublicDelegatedPrefixesResponse = Operation;
 export const AnnouncePublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AnnouncePublicDelegatedPrefixesError = DefaultErrors;
+export type AnnouncePublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Announces the specified PublicDelegatedPrefix in the given region. */
 export const announcePublicDelegatedPrefixes: API.OperationMethod<
@@ -67682,7 +70520,7 @@ export const announcePublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnouncePublicDelegatedPrefixesRequest,
   output: AnnouncePublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WithdrawPublicDelegatedPrefixesRequest {
@@ -67717,7 +70555,12 @@ export type WithdrawPublicDelegatedPrefixesResponse = Operation;
 export const WithdrawPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WithdrawPublicDelegatedPrefixesError = DefaultErrors;
+export type WithdrawPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Withdraws the specified PublicDelegatedPrefix in the given region. */
 export const withdrawPublicDelegatedPrefixes: API.OperationMethod<
@@ -67728,7 +70571,7 @@ export const withdrawPublicDelegatedPrefixes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WithdrawPublicDelegatedPrefixesRequest,
   output: WithdrawPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListPublicDelegatedPrefixesRequest {
@@ -67779,7 +70622,10 @@ export type AggregatedListPublicDelegatedPrefixesResponse =
 export const AggregatedListPublicDelegatedPrefixesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublicDelegatedPrefixAggregatedList;
 
-export type AggregatedListPublicDelegatedPrefixesError = DefaultErrors;
+export type AggregatedListPublicDelegatedPrefixesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all PublicDelegatedPrefix resources owned by the specific project across all scopes. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListPublicDelegatedPrefixes: API.PaginatedOperationMethod<
@@ -67790,7 +70636,7 @@ export const aggregatedListPublicDelegatedPrefixes: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListPublicDelegatedPrefixesRequest,
   output: AggregatedListPublicDelegatedPrefixesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -67830,7 +70676,7 @@ export const ListRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRegionsResponse = RegionList;
 export const ListRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ RegionList;
 
-export type ListRegionsError = DefaultErrors;
+export type ListRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of region resources available to the specified project. To decrease latency for this method, you can optionally omit any unneeded information from the response by using a field mask. This practice is especially recommended for unused quota information (the `items.quotas` field). To exclude one or more fields, set your request's `fields` query parameter to only include the fields you need. For example, to only include the `id` and `selfLink` fields, add the query parameter `?fields=id,selfLink` to your request. This method fails if the quota information is unavailable for the region and if the organization policy constraint compute.requireBasicQuotaInResponse is enforced. This constraint, when enforced, disables the fail-open behaviour when quota information (the `items.quotas` field) is unavailable for the region. It is recommended to use the default setting for the constraint unless your application requires the fail-closed behaviour for this method. */
 export const listRegions: API.PaginatedOperationMethod<
@@ -67841,7 +70687,7 @@ export const listRegions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionsRequest,
   output: ListRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -67867,7 +70713,7 @@ export const GetRegionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRegionsResponse = Region;
 export const GetRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Region;
 
-export type GetRegionsError = DefaultErrors;
+export type GetRegionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Region resource. To decrease latency for this method, you can optionally omit any unneeded information from the response by using a field mask. This practice is especially recommended for unused quota information (the `quotas` field). To exclude one or more fields, set your request's `fields` query parameter to only include the fields you need. For example, to only include the `id` and `selfLink` fields, add the query parameter `?fields=id,selfLink` to your request. This method fails if the quota information is unavailable for the region and if the organization policy constraint compute.requireBasicQuotaInResponse is enforced. This constraint, when enforced, disables the fail-open behaviour when quota information (the `items.quotas` field) is unavailable for the region. It is recommended to use the default setting for the constraint unless your application requires the fail-closed behaviour for this method. */
 export const getRegions: API.OperationMethod<
@@ -67878,7 +70724,7 @@ export const getRegions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionsRequest,
   output: GetRegionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSubnetworksRequest {
@@ -67927,7 +70773,7 @@ export type ListSubnetworksResponse = SubnetworkList;
 export const ListSubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubnetworkList;
 
-export type ListSubnetworksError = DefaultErrors;
+export type ListSubnetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of subnetworks available to the specified project. */
 export const listSubnetworks: API.PaginatedOperationMethod<
@@ -67938,7 +70784,7 @@ export const listSubnetworks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubnetworksRequest,
   output: ListSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -67998,7 +70844,10 @@ export type AggregatedListSubnetworksResponse = SubnetworkAggregatedList;
 export const AggregatedListSubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ SubnetworkAggregatedList;
 
-export type AggregatedListSubnetworksError = DefaultErrors;
+export type AggregatedListSubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of subnetworks. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListSubnetworks: API.PaginatedOperationMethod<
@@ -68009,7 +70858,7 @@ export const aggregatedListSubnetworks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListSubnetworksRequest,
   output: AggregatedListSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -68059,7 +70908,7 @@ export type ListUsableSubnetworksResponse = UsableSubnetworksAggregatedList;
 export const ListUsableSubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ UsableSubnetworksAggregatedList;
 
-export type ListUsableSubnetworksError = DefaultErrors;
+export type ListUsableSubnetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an aggregated list of all usable subnetworks in the project. */
 export const listUsableSubnetworks: API.PaginatedOperationMethod<
@@ -68070,7 +70919,7 @@ export const listUsableSubnetworks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsableSubnetworksRequest,
   output: ListUsableSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -68107,7 +70956,7 @@ export const GetSubnetworksRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSubnetworksResponse = Subnetwork;
 export const GetSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Subnetwork;
 
-export type GetSubnetworksError = DefaultErrors;
+export type GetSubnetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified subnetwork. */
 export const getSubnetworks: API.OperationMethod<
@@ -68118,7 +70967,7 @@ export const getSubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubnetworksRequest,
   output: GetSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSubnetworksRequest {
@@ -68150,7 +70999,12 @@ export const InsertSubnetworksRequest =
 export type InsertSubnetworksResponse = Operation;
 export const InsertSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertSubnetworksError = DefaultErrors;
+export type InsertSubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a subnetwork in the specified project using the data included in the request. */
 export const insertSubnetworks: API.OperationMethod<
@@ -68161,7 +71015,7 @@ export const insertSubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSubnetworksRequest,
   output: InsertSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSubnetworksRequest {
@@ -68192,7 +71046,12 @@ export const DeleteSubnetworksRequest =
 export type DeleteSubnetworksResponse = Operation;
 export const DeleteSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSubnetworksError = DefaultErrors;
+export type DeleteSubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified subnetwork. */
 export const deleteSubnetworks: API.OperationMethod<
@@ -68203,7 +71062,7 @@ export const deleteSubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubnetworksRequest,
   output: DeleteSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExpandIpCidrRangeSubnetworksRequest {
@@ -68241,7 +71100,12 @@ export type ExpandIpCidrRangeSubnetworksResponse = Operation;
 export const ExpandIpCidrRangeSubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExpandIpCidrRangeSubnetworksError = DefaultErrors;
+export type ExpandIpCidrRangeSubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Expands the IP CIDR range of the subnetwork to a specified value. */
 export const expandIpCidrRangeSubnetworks: API.OperationMethod<
@@ -68252,7 +71116,7 @@ export const expandIpCidrRangeSubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExpandIpCidrRangeSubnetworksRequest,
   output: ExpandIpCidrRangeSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchSubnetworksRequest {
@@ -68292,7 +71156,12 @@ export const PatchSubnetworksRequest =
 export type PatchSubnetworksResponse = Operation;
 export const PatchSubnetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchSubnetworksError = DefaultErrors;
+export type PatchSubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified subnetwork with the data included in the request. Only certain fields can be updated with a patch request as indicated in the field descriptions. You must specify the current fingerprint of the subnetwork resource being patched. */
 export const patchSubnetworks: API.OperationMethod<
@@ -68303,7 +71172,7 @@ export const patchSubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSubnetworksRequest,
   output: PatchSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicySubnetworksRequest {
@@ -68337,7 +71206,7 @@ export type GetIamPolicySubnetworksResponse = Policy;
 export const GetIamPolicySubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicySubnetworksError = DefaultErrors;
+export type GetIamPolicySubnetworksError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicySubnetworks: API.OperationMethod<
@@ -68348,7 +71217,7 @@ export const getIamPolicySubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicySubnetworksRequest,
   output: GetIamPolicySubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicySubnetworksRequest {
@@ -68381,7 +71250,12 @@ export type SetIamPolicySubnetworksResponse = Policy;
 export const SetIamPolicySubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicySubnetworksError = DefaultErrors;
+export type SetIamPolicySubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicySubnetworks: API.OperationMethod<
@@ -68392,7 +71266,7 @@ export const setIamPolicySubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicySubnetworksRequest,
   output: SetIamPolicySubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsSubnetworksRequest {
@@ -68425,7 +71299,12 @@ export type TestIamPermissionsSubnetworksResponse = TestPermissionsResponse;
 export const TestIamPermissionsSubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsSubnetworksError = DefaultErrors;
+export type TestIamPermissionsSubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsSubnetworks: API.OperationMethod<
@@ -68436,7 +71315,7 @@ export const testIamPermissionsSubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsSubnetworksRequest,
   output: TestIamPermissionsSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetPrivateIpGoogleAccessSubnetworksRequest {
@@ -68474,7 +71353,12 @@ export type SetPrivateIpGoogleAccessSubnetworksResponse = Operation;
 export const SetPrivateIpGoogleAccessSubnetworksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetPrivateIpGoogleAccessSubnetworksError = DefaultErrors;
+export type SetPrivateIpGoogleAccessSubnetworksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set whether VMs in this subnet can access Google services without assigning external IP addresses through Private Google Access. */
 export const setPrivateIpGoogleAccessSubnetworks: API.OperationMethod<
@@ -68485,7 +71369,7 @@ export const setPrivateIpGoogleAccessSubnetworks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetPrivateIpGoogleAccessSubnetworksRequest,
   output: SetPrivateIpGoogleAccessSubnetworksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListNetworkProfilesRequest {
@@ -68525,7 +71409,7 @@ export type ListNetworkProfilesResponse = NetworkProfilesListResponse;
 export const ListNetworkProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkProfilesListResponse;
 
-export type ListNetworkProfilesError = DefaultErrors;
+export type ListNetworkProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of network profiles available to the specified project. */
 export const listNetworkProfiles: API.PaginatedOperationMethod<
@@ -68536,7 +71420,7 @@ export const listNetworkProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListNetworkProfilesRequest,
   output: ListNetworkProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -68567,7 +71451,7 @@ export type GetNetworkProfilesResponse = NetworkProfile;
 export const GetNetworkProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ NetworkProfile;
 
-export type GetNetworkProfilesError = DefaultErrors;
+export type GetNetworkProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified network profile. */
 export const getNetworkProfiles: API.OperationMethod<
@@ -68578,7 +71462,7 @@ export const getNetworkProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNetworkProfilesRequest,
   output: GetNetworkProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPreviewFeaturesRequest {
@@ -68604,7 +71488,7 @@ export type GetPreviewFeaturesResponse = PreviewFeature;
 export const GetPreviewFeaturesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PreviewFeature;
 
-export type GetPreviewFeaturesError = DefaultErrors;
+export type GetPreviewFeaturesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the details of the given PreviewFeature. */
 export const getPreviewFeatures: API.OperationMethod<
@@ -68615,7 +71499,7 @@ export const getPreviewFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPreviewFeaturesRequest,
   output: GetPreviewFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPreviewFeaturesRequest {
@@ -68655,7 +71539,7 @@ export type ListPreviewFeaturesResponse = PreviewFeatureList;
 export const ListPreviewFeaturesResponse =
   /*@__PURE__*/ /*#__PURE__*/ PreviewFeatureList;
 
-export type ListPreviewFeaturesError = DefaultErrors;
+export type ListPreviewFeaturesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the details of the given PreviewFeature. */
 export const listPreviewFeatures: API.PaginatedOperationMethod<
@@ -68666,7 +71550,7 @@ export const listPreviewFeatures: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPreviewFeaturesRequest,
   output: ListPreviewFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -68704,7 +71588,12 @@ export type UpdatePreviewFeaturesResponse = Operation;
 export const UpdatePreviewFeaturesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdatePreviewFeaturesError = DefaultErrors;
+export type UpdatePreviewFeaturesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the given PreviewFeature. This method is used to enable or disable a PreviewFeature. */
 export const updatePreviewFeatures: API.OperationMethod<
@@ -68715,7 +71604,7 @@ export const updatePreviewFeatures: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePreviewFeaturesRequest,
   output: UpdatePreviewFeaturesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReservationBlocksRequest {
@@ -68750,7 +71639,7 @@ export type GetReservationBlocksResponse = ReservationBlocksGetResponse;
 export const GetReservationBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationBlocksGetResponse;
 
-export type GetReservationBlocksError = DefaultErrors;
+export type GetReservationBlocksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about the specified reservation block. */
 export const getReservationBlocks: API.OperationMethod<
@@ -68761,7 +71650,7 @@ export const getReservationBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReservationBlocksRequest,
   output: GetReservationBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListReservationBlocksRequest {
@@ -68807,7 +71696,7 @@ export type ListReservationBlocksResponse = ReservationBlocksListResponse;
 export const ListReservationBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationBlocksListResponse;
 
-export type ListReservationBlocksError = DefaultErrors;
+export type ListReservationBlocksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of reservation blocks under a single reservation. */
 export const listReservationBlocks: API.PaginatedOperationMethod<
@@ -68818,7 +71707,7 @@ export const listReservationBlocks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReservationBlocksRequest,
   output: ListReservationBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -68860,7 +71749,10 @@ export type GetIamPolicyReservationBlocksResponse = Policy;
 export const GetIamPolicyReservationBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyReservationBlocksError = DefaultErrors;
+export type GetIamPolicyReservationBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyReservationBlocks: API.OperationMethod<
@@ -68871,7 +71763,7 @@ export const getIamPolicyReservationBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyReservationBlocksRequest,
   output: GetIamPolicyReservationBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyReservationBlocksRequest {
@@ -68907,7 +71799,12 @@ export type SetIamPolicyReservationBlocksResponse = Policy;
 export const SetIamPolicyReservationBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyReservationBlocksError = DefaultErrors;
+export type SetIamPolicyReservationBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyReservationBlocks: API.OperationMethod<
@@ -68918,7 +71815,7 @@ export const setIamPolicyReservationBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyReservationBlocksRequest,
   output: SetIamPolicyReservationBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsReservationBlocksRequest {
@@ -68955,7 +71852,12 @@ export type TestIamPermissionsReservationBlocksResponse =
 export const TestIamPermissionsReservationBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsReservationBlocksError = DefaultErrors;
+export type TestIamPermissionsReservationBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsReservationBlocks: API.OperationMethod<
@@ -68966,7 +71868,7 @@ export const testIamPermissionsReservationBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsReservationBlocksRequest,
   output: TestIamPermissionsReservationBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PerformMaintenanceReservationBlocksRequest {
@@ -69007,7 +71909,12 @@ export type PerformMaintenanceReservationBlocksResponse = Operation;
 export const PerformMaintenanceReservationBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PerformMaintenanceReservationBlocksError = DefaultErrors;
+export type PerformMaintenanceReservationBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows customers to perform maintenance on a reservation block */
 export const performMaintenanceReservationBlocks: API.OperationMethod<
@@ -69018,7 +71925,7 @@ export const performMaintenanceReservationBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PerformMaintenanceReservationBlocksRequest,
   output: PerformMaintenanceReservationBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReservationSlotsRequest {
@@ -69050,7 +71957,7 @@ export type GetReservationSlotsResponse = ReservationSlotsGetResponse;
 export const GetReservationSlotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationSlotsGetResponse;
 
-export type GetReservationSlotsError = DefaultErrors;
+export type GetReservationSlotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about the specified reservation slot. */
 export const getReservationSlots: API.OperationMethod<
@@ -69061,7 +71968,7 @@ export const getReservationSlots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReservationSlotsRequest,
   output: GetReservationSlotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListReservationSlotsRequest {
@@ -69107,7 +72014,7 @@ export type ListReservationSlotsResponse = ReservationSlotsListResponse;
 export const ListReservationSlotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationSlotsListResponse;
 
-export type ListReservationSlotsError = DefaultErrors;
+export type ListReservationSlotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of reservation slots under a single reservation. */
 export const listReservationSlots: API.PaginatedOperationMethod<
@@ -69118,7 +72025,7 @@ export const listReservationSlots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReservationSlotsRequest,
   output: ListReservationSlotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -69162,7 +72069,12 @@ export type GetVersionReservationSlotsResponse = Operation;
 export const GetVersionReservationSlotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetVersionReservationSlotsError = DefaultErrors;
+export type GetVersionReservationSlotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows customers to get SBOM versions of a reservation slot. */
 export const getVersionReservationSlots: API.OperationMethod<
@@ -69173,7 +72085,7 @@ export const getVersionReservationSlots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVersionReservationSlotsRequest,
   output: GetVersionReservationSlotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateReservationSlotsRequest {
@@ -69212,7 +72124,12 @@ export type UpdateReservationSlotsResponse = Operation;
 export const UpdateReservationSlotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateReservationSlotsError = DefaultErrors;
+export type UpdateReservationSlotsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a reservation slot in the specified sub-block. */
 export const updateReservationSlots: API.OperationMethod<
@@ -69223,7 +72140,7 @@ export const updateReservationSlots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateReservationSlotsRequest,
   output: UpdateReservationSlotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetReservationSubBlocksRequest {
@@ -69262,7 +72179,7 @@ export type GetReservationSubBlocksResponse = ReservationSubBlocksGetResponse;
 export const GetReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationSubBlocksGetResponse;
 
-export type GetReservationSubBlocksError = DefaultErrors;
+export type GetReservationSubBlocksError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves information about the specified reservation subBlock. */
 export const getReservationSubBlocks: API.OperationMethod<
@@ -69273,7 +72190,7 @@ export const getReservationSubBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetReservationSubBlocksRequest,
   output: GetReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListReservationSubBlocksRequest {
@@ -69319,7 +72236,10 @@ export type ListReservationSubBlocksResponse = ReservationSubBlocksListResponse;
 export const ListReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReservationSubBlocksListResponse;
 
-export type ListReservationSubBlocksError = DefaultErrors;
+export type ListReservationSubBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of reservation subBlocks under a single reservation. */
 export const listReservationSubBlocks: API.PaginatedOperationMethod<
@@ -69330,7 +72250,7 @@ export const listReservationSubBlocks: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListReservationSubBlocksRequest,
   output: ListReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -69372,7 +72292,10 @@ export type GetIamPolicyReservationSubBlocksResponse = Policy;
 export const GetIamPolicyReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyReservationSubBlocksError = DefaultErrors;
+export type GetIamPolicyReservationSubBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyReservationSubBlocks: API.OperationMethod<
@@ -69383,7 +72306,7 @@ export const getIamPolicyReservationSubBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyReservationSubBlocksRequest,
   output: GetIamPolicyReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyReservationSubBlocksRequest {
@@ -69419,7 +72342,12 @@ export type SetIamPolicyReservationSubBlocksResponse = Policy;
 export const SetIamPolicyReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyReservationSubBlocksError = DefaultErrors;
+export type SetIamPolicyReservationSubBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyReservationSubBlocks: API.OperationMethod<
@@ -69430,7 +72358,7 @@ export const setIamPolicyReservationSubBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyReservationSubBlocksRequest,
   output: SetIamPolicyReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsReservationSubBlocksRequest {
@@ -69467,7 +72395,12 @@ export type TestIamPermissionsReservationSubBlocksResponse =
 export const TestIamPermissionsReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsReservationSubBlocksError = DefaultErrors;
+export type TestIamPermissionsReservationSubBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsReservationSubBlocks: API.OperationMethod<
@@ -69478,7 +72411,7 @@ export const testIamPermissionsReservationSubBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsReservationSubBlocksRequest,
   output: TestIamPermissionsReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PerformMaintenanceReservationSubBlocksRequest {
@@ -69514,7 +72447,12 @@ export type PerformMaintenanceReservationSubBlocksResponse = Operation;
 export const PerformMaintenanceReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PerformMaintenanceReservationSubBlocksError = DefaultErrors;
+export type PerformMaintenanceReservationSubBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows customers to perform maintenance on a reservation subBlock */
 export const performMaintenanceReservationSubBlocks: API.OperationMethod<
@@ -69525,7 +72463,7 @@ export const performMaintenanceReservationSubBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PerformMaintenanceReservationSubBlocksRequest,
   output: PerformMaintenanceReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReportFaultyReservationSubBlocksRequest {
@@ -69566,7 +72504,12 @@ export type ReportFaultyReservationSubBlocksResponse = Operation;
 export const ReportFaultyReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ReportFaultyReservationSubBlocksError = DefaultErrors;
+export type ReportFaultyReservationSubBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows customers to report a faulty subBlock. */
 export const reportFaultyReservationSubBlocks: API.OperationMethod<
@@ -69577,7 +72520,7 @@ export const reportFaultyReservationSubBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReportFaultyReservationSubBlocksRequest,
   output: ReportFaultyReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVersionReservationSubBlocksRequest {
@@ -69618,7 +72561,12 @@ export type GetVersionReservationSubBlocksResponse = Operation;
 export const GetVersionReservationSubBlocksResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetVersionReservationSubBlocksError = DefaultErrors;
+export type GetVersionReservationSubBlocksError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows customers to get SBOM versions of a reservation subBlock. */
 export const getVersionReservationSubBlocks: API.OperationMethod<
@@ -69629,7 +72577,7 @@ export const getVersionReservationSubBlocks: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVersionReservationSubBlocksRequest,
   output: GetVersionReservationSubBlocksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListResourcePoliciesRequest {
@@ -69672,7 +72620,7 @@ export type ListResourcePoliciesResponse = ResourcePolicyList;
 export const ListResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourcePolicyList;
 
-export type ListResourcePoliciesError = DefaultErrors;
+export type ListResourcePoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** A list all the resource policies that have been configured for the specified project in specified region. */
 export const listResourcePolicies: API.PaginatedOperationMethod<
@@ -69683,7 +72631,7 @@ export const listResourcePolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListResourcePoliciesRequest,
   output: ListResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -69739,7 +72687,10 @@ export type AggregatedListResourcePoliciesResponse =
 export const AggregatedListResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourcePolicyAggregatedList;
 
-export type AggregatedListResourcePoliciesError = DefaultErrors;
+export type AggregatedListResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of resource policies. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListResourcePolicies: API.PaginatedOperationMethod<
@@ -69750,7 +72701,7 @@ export const aggregatedListResourcePolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListResourcePoliciesRequest,
   output: AggregatedListResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -69784,7 +72735,7 @@ export type GetResourcePoliciesResponse = ResourcePolicy;
 export const GetResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResourcePolicy;
 
-export type GetResourcePoliciesError = DefaultErrors;
+export type GetResourcePoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves all information of the specified resource policy. */
 export const getResourcePolicies: API.OperationMethod<
@@ -69795,7 +72746,7 @@ export const getResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetResourcePoliciesRequest,
   output: GetResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertResourcePoliciesRequest {
@@ -69828,7 +72779,12 @@ export type InsertResourcePoliciesResponse = Operation;
 export const InsertResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertResourcePoliciesError = DefaultErrors;
+export type InsertResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new resource policy. */
 export const insertResourcePolicies: API.OperationMethod<
@@ -69839,7 +72795,7 @@ export const insertResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertResourcePoliciesRequest,
   output: InsertResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteResourcePoliciesRequest {
@@ -69871,7 +72827,12 @@ export type DeleteResourcePoliciesResponse = Operation;
 export const DeleteResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteResourcePoliciesError = DefaultErrors;
+export type DeleteResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified resource policy. */
 export const deleteResourcePolicies: API.OperationMethod<
@@ -69882,7 +72843,7 @@ export const deleteResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteResourcePoliciesRequest,
   output: DeleteResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchResourcePoliciesRequest {
@@ -69921,7 +72882,12 @@ export type PatchResourcePoliciesResponse = Operation;
 export const PatchResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchResourcePoliciesError = DefaultErrors;
+export type PatchResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modify the specified resource policy. */
 export const patchResourcePolicies: API.OperationMethod<
@@ -69932,7 +72898,7 @@ export const patchResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchResourcePoliciesRequest,
   output: PatchResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyResourcePoliciesRequest {
@@ -69966,7 +72932,10 @@ export type GetIamPolicyResourcePoliciesResponse = Policy;
 export const GetIamPolicyResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyResourcePoliciesError = DefaultErrors;
+export type GetIamPolicyResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyResourcePolicies: API.OperationMethod<
@@ -69977,7 +72946,7 @@ export const getIamPolicyResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyResourcePoliciesRequest,
   output: GetIamPolicyResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyResourcePoliciesRequest {
@@ -70010,7 +72979,12 @@ export type SetIamPolicyResourcePoliciesResponse = Policy;
 export const SetIamPolicyResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyResourcePoliciesError = DefaultErrors;
+export type SetIamPolicyResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyResourcePolicies: API.OperationMethod<
@@ -70021,7 +72995,7 @@ export const setIamPolicyResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyResourcePoliciesRequest,
   output: SetIamPolicyResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsResourcePoliciesRequest {
@@ -70055,7 +73029,12 @@ export type TestIamPermissionsResourcePoliciesResponse =
 export const TestIamPermissionsResourcePoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsResourcePoliciesError = DefaultErrors;
+export type TestIamPermissionsResourcePoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsResourcePolicies: API.OperationMethod<
@@ -70066,7 +73045,7 @@ export const testIamPermissionsResourcePolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsResourcePoliciesRequest,
   output: TestIamPermissionsResourcePoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRoutesRequest {
@@ -70101,7 +73080,7 @@ export const ListRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRoutesResponse = RouteList;
 export const ListRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ RouteList;
 
-export type ListRoutesError = DefaultErrors;
+export type ListRoutesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of Route resources available to the specified project. */
 export const listRoutes: API.PaginatedOperationMethod<
@@ -70112,7 +73091,7 @@ export const listRoutes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoutesRequest,
   output: ListRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -70138,7 +73117,7 @@ export const GetRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRoutesResponse = Route;
 export const GetRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Route;
 
-export type GetRoutesError = DefaultErrors;
+export type GetRoutesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Route resource. */
 export const getRoutes: API.OperationMethod<
@@ -70149,7 +73128,7 @@ export const getRoutes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRoutesRequest,
   output: GetRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRoutesRequest {
@@ -70177,7 +73156,12 @@ export const InsertRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertRoutesResponse = Operation;
 export const InsertRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRoutesError = DefaultErrors;
+export type InsertRoutesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Route resource in the specified project using the data included in the request. */
 export const insertRoutes: API.OperationMethod<
@@ -70188,7 +73172,7 @@ export const insertRoutes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRoutesRequest,
   output: InsertRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRoutesRequest {
@@ -70215,7 +73199,12 @@ export const DeleteRoutesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteRoutesResponse = Operation;
 export const DeleteRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRoutesError = DefaultErrors;
+export type DeleteRoutesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Route resource. */
 export const deleteRoutes: API.OperationMethod<
@@ -70226,7 +73215,7 @@ export const deleteRoutes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRoutesRequest,
   output: DeleteRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsRoutesRequest {
@@ -70256,7 +73245,12 @@ export type TestIamPermissionsRoutesResponse = TestPermissionsResponse;
 export const TestIamPermissionsRoutesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsRoutesError = DefaultErrors;
+export type TestIamPermissionsRoutesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsRoutes: API.OperationMethod<
@@ -70267,7 +73261,7 @@ export const testIamPermissionsRoutes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsRoutesRequest,
   output: TestIamPermissionsRoutesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRoutersRequest {
@@ -70294,7 +73288,7 @@ export const GetRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRoutersResponse = Router;
 export const GetRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Router;
 
-export type GetRoutersError = DefaultErrors;
+export type GetRoutersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Router resource. */
 export const getRouters: API.OperationMethod<
@@ -70305,7 +73299,7 @@ export const getRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRoutersRequest,
   output: GetRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRoutersRequest {
@@ -70336,7 +73330,12 @@ export const InsertRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertRoutersResponse = Operation;
 export const InsertRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRoutersError = DefaultErrors;
+export type InsertRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Router resource in the specified project and region using the data included in the request. */
 export const insertRouters: API.OperationMethod<
@@ -70347,7 +73346,7 @@ export const insertRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRoutersRequest,
   output: InsertRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRoutersRequest {
@@ -70381,7 +73380,12 @@ export const UpdateRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateRoutersResponse = Operation;
 export const UpdateRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRoutersError = DefaultErrors;
+export type UpdateRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Router resource with the data included in the request. This method conforms toPUT semantics, which requests that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload. */
 export const updateRouters: API.OperationMethod<
@@ -70392,7 +73396,7 @@ export const updateRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRoutersRequest,
   output: UpdateRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRoutersRequest {
@@ -70426,7 +73430,12 @@ export const PatchRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchRoutersResponse = Operation;
 export const PatchRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRoutersError = DefaultErrors;
+export type PatchRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified Router resource with the data included in the request. This method supportsPATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchRouters: API.OperationMethod<
@@ -70437,7 +73446,7 @@ export const patchRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRoutersRequest,
   output: PatchRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRoutersRequest {
@@ -70467,7 +73476,12 @@ export const DeleteRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteRoutersResponse = Operation;
 export const DeleteRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRoutersError = DefaultErrors;
+export type DeleteRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Router resource. */
 export const deleteRouters: API.OperationMethod<
@@ -70478,7 +73492,7 @@ export const deleteRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRoutersRequest,
   output: DeleteRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRoutersRequest {
@@ -70519,7 +73533,7 @@ export const ListRoutersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRoutersResponse = RouterList;
 export const ListRoutersResponse = /*@__PURE__*/ /*#__PURE__*/ RouterList;
 
-export type ListRoutersError = DefaultErrors;
+export type ListRoutersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of Router resources available to the specified project. */
 export const listRouters: API.PaginatedOperationMethod<
@@ -70530,7 +73544,7 @@ export const listRouters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoutersRequest,
   output: ListRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -70582,7 +73596,7 @@ export type AggregatedListRoutersResponse = RouterAggregatedList;
 export const AggregatedListRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RouterAggregatedList;
 
-export type AggregatedListRoutersError = DefaultErrors;
+export type AggregatedListRoutersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an aggregated list of routers. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListRouters: API.PaginatedOperationMethod<
@@ -70593,7 +73607,7 @@ export const aggregatedListRouters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListRoutersRequest,
   output: AggregatedListRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -70627,7 +73641,7 @@ export type GetRouterStatusRoutersResponse = RouterStatusResponse;
 export const GetRouterStatusRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RouterStatusResponse;
 
-export type GetRouterStatusRoutersError = DefaultErrors;
+export type GetRouterStatusRoutersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves runtime information of the specified router. */
 export const getRouterStatusRouters: API.OperationMethod<
@@ -70638,7 +73652,7 @@ export const getRouterStatusRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRouterStatusRoutersRequest,
   output: GetRouterStatusRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetNatMappingInfoRoutersRequest {
@@ -70687,7 +73701,10 @@ export type GetNatMappingInfoRoutersResponse = VmEndpointNatMappingsList;
 export const GetNatMappingInfoRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ VmEndpointNatMappingsList;
 
-export type GetNatMappingInfoRoutersError = DefaultErrors;
+export type GetNatMappingInfoRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves runtime Nat mapping information of VM endpoints. */
 export const getNatMappingInfoRouters: API.PaginatedOperationMethod<
@@ -70698,7 +73715,7 @@ export const getNatMappingInfoRouters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetNatMappingInfoRoutersRequest,
   output: GetNatMappingInfoRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -70734,7 +73751,7 @@ export type GetNatIpInfoRoutersResponse = NatIpInfoResponse;
 export const GetNatIpInfoRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ NatIpInfoResponse;
 
-export type GetNatIpInfoRoutersError = DefaultErrors;
+export type GetNatIpInfoRoutersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves runtime NAT IP information. */
 export const getNatIpInfoRouters: API.OperationMethod<
@@ -70745,7 +73762,7 @@ export const getNatIpInfoRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNatIpInfoRoutersRequest,
   output: GetNatIpInfoRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PreviewRoutersRequest {
@@ -70777,7 +73794,12 @@ export type PreviewRoutersResponse = RoutersPreviewResponse;
 export const PreviewRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RoutersPreviewResponse;
 
-export type PreviewRoutersError = DefaultErrors;
+export type PreviewRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Preview fields auto-generated during router create andupdate operations. Calling this method does NOT create or update the router. */
 export const previewRouters: API.OperationMethod<
@@ -70788,7 +73810,7 @@ export const previewRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PreviewRoutersRequest,
   output: PreviewRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRoutePolicyRoutersRequest {
@@ -70824,7 +73846,12 @@ export type UpdateRoutePolicyRoutersResponse = Operation;
 export const UpdateRoutePolicyRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRoutePolicyRoutersError = DefaultErrors;
+export type UpdateRoutePolicyRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates or creates new Route Policy */
 export const updateRoutePolicyRouters: API.OperationMethod<
@@ -70835,7 +73862,7 @@ export const updateRoutePolicyRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRoutePolicyRoutersRequest,
   output: UpdateRoutePolicyRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRoutePolicyRoutersRequest {
@@ -70871,7 +73898,12 @@ export type PatchRoutePolicyRoutersResponse = Operation;
 export const PatchRoutePolicyRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRoutePolicyRoutersError = DefaultErrors;
+export type PatchRoutePolicyRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches Route Policy */
 export const patchRoutePolicyRouters: API.OperationMethod<
@@ -70882,7 +73914,7 @@ export const patchRoutePolicyRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRoutePolicyRoutersRequest,
   output: PatchRoutePolicyRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRoutePolicyRoutersRequest {
@@ -70918,7 +73950,12 @@ export type DeleteRoutePolicyRoutersResponse = Operation;
 export const DeleteRoutePolicyRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRoutePolicyRoutersError = DefaultErrors;
+export type DeleteRoutePolicyRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes Route Policy */
 export const deleteRoutePolicyRouters: API.OperationMethod<
@@ -70929,7 +73966,7 @@ export const deleteRoutePolicyRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRoutePolicyRoutersRequest,
   output: DeleteRoutePolicyRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRoutePolicyRoutersRequest {
@@ -70961,7 +73998,7 @@ export type GetRoutePolicyRoutersResponse = RoutersGetRoutePolicyResponse;
 export const GetRoutePolicyRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RoutersGetRoutePolicyResponse;
 
-export type GetRoutePolicyRoutersError = DefaultErrors;
+export type GetRoutePolicyRoutersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns specified Route Policy */
 export const getRoutePolicyRouters: API.OperationMethod<
@@ -70972,7 +74009,7 @@ export const getRoutePolicyRouters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRoutePolicyRoutersRequest,
   output: GetRoutePolicyRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRoutePoliciesRoutersRequest {
@@ -71018,7 +74055,10 @@ export type ListRoutePoliciesRoutersResponse = RoutersListRoutePolicies;
 export const ListRoutePoliciesRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RoutersListRoutePolicies;
 
-export type ListRoutePoliciesRoutersError = DefaultErrors;
+export type ListRoutePoliciesRoutersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of router route policy subresources available to the specified project. */
 export const listRoutePoliciesRouters: API.PaginatedOperationMethod<
@@ -71029,7 +74069,7 @@ export const listRoutePoliciesRouters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRoutePoliciesRoutersRequest,
   output: ListRoutePoliciesRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -71104,7 +74144,7 @@ export type ListBgpRoutesRoutersResponse = RoutersListBgpRoutes;
 export const ListBgpRoutesRoutersResponse =
   /*@__PURE__*/ /*#__PURE__*/ RoutersListBgpRoutes;
 
-export type ListBgpRoutesRoutersError = DefaultErrors;
+export type ListBgpRoutesRoutersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of router bgp routes available to the specified project. */
 export const listBgpRoutesRouters: API.PaginatedOperationMethod<
@@ -71115,7 +74155,7 @@ export const listBgpRoutesRouters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBgpRoutesRoutersRequest,
   output: ListBgpRoutesRoutersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -71170,7 +74210,10 @@ export type AggregatedListServiceAttachmentsResponse =
 export const AggregatedListServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAttachmentAggregatedList;
 
-export type AggregatedListServiceAttachmentsError = DefaultErrors;
+export type AggregatedListServiceAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all ServiceAttachment resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListServiceAttachments: API.PaginatedOperationMethod<
@@ -71181,7 +74224,7 @@ export const aggregatedListServiceAttachments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListServiceAttachmentsRequest,
   output: AggregatedListServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -71229,7 +74272,7 @@ export type ListServiceAttachmentsResponse = ServiceAttachmentList;
 export const ListServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAttachmentList;
 
-export type ListServiceAttachmentsError = DefaultErrors;
+export type ListServiceAttachmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the ServiceAttachments for a project in the given scope. */
 export const listServiceAttachments: API.PaginatedOperationMethod<
@@ -71240,7 +74283,7 @@ export const listServiceAttachments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServiceAttachmentsRequest,
   output: ListServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -71277,7 +74320,7 @@ export type GetServiceAttachmentsResponse = ServiceAttachment;
 export const GetServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAttachment;
 
-export type GetServiceAttachmentsError = DefaultErrors;
+export type GetServiceAttachmentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified ServiceAttachment resource in the given scope. */
 export const getServiceAttachments: API.OperationMethod<
@@ -71288,7 +74331,7 @@ export const getServiceAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServiceAttachmentsRequest,
   output: GetServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertServiceAttachmentsRequest {
@@ -71321,7 +74364,12 @@ export type InsertServiceAttachmentsResponse = Operation;
 export const InsertServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertServiceAttachmentsError = DefaultErrors;
+export type InsertServiceAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request. */
 export const insertServiceAttachments: API.OperationMethod<
@@ -71332,7 +74380,7 @@ export const insertServiceAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertServiceAttachmentsRequest,
   output: InsertServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteServiceAttachmentsRequest {
@@ -71364,7 +74412,12 @@ export type DeleteServiceAttachmentsResponse = Operation;
 export const DeleteServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteServiceAttachmentsError = DefaultErrors;
+export type DeleteServiceAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified ServiceAttachment in the given scope */
 export const deleteServiceAttachments: API.OperationMethod<
@@ -71375,7 +74428,7 @@ export const deleteServiceAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServiceAttachmentsRequest,
   output: DeleteServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServiceAttachmentsRequest {
@@ -71411,7 +74464,12 @@ export type PatchServiceAttachmentsResponse = Operation;
 export const PatchServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchServiceAttachmentsError = DefaultErrors;
+export type PatchServiceAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified ServiceAttachment resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchServiceAttachments: API.OperationMethod<
@@ -71422,7 +74480,7 @@ export const patchServiceAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServiceAttachmentsRequest,
   output: PatchServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyServiceAttachmentsRequest {
@@ -71456,7 +74514,10 @@ export type GetIamPolicyServiceAttachmentsResponse = Policy;
 export const GetIamPolicyServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyServiceAttachmentsError = DefaultErrors;
+export type GetIamPolicyServiceAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyServiceAttachments: API.OperationMethod<
@@ -71467,7 +74528,7 @@ export const getIamPolicyServiceAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyServiceAttachmentsRequest,
   output: GetIamPolicyServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyServiceAttachmentsRequest {
@@ -71500,7 +74561,12 @@ export type SetIamPolicyServiceAttachmentsResponse = Policy;
 export const SetIamPolicyServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyServiceAttachmentsError = DefaultErrors;
+export type SetIamPolicyServiceAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyServiceAttachments: API.OperationMethod<
@@ -71511,7 +74577,7 @@ export const setIamPolicyServiceAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyServiceAttachmentsRequest,
   output: SetIamPolicyServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsServiceAttachmentsRequest {
@@ -71545,7 +74611,12 @@ export type TestIamPermissionsServiceAttachmentsResponse =
 export const TestIamPermissionsServiceAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsServiceAttachmentsError = DefaultErrors;
+export type TestIamPermissionsServiceAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsServiceAttachments: API.OperationMethod<
@@ -71556,7 +74627,7 @@ export const testIamPermissionsServiceAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsServiceAttachmentsRequest,
   output: TestIamPermissionsServiceAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSnapshotSettingsRequest {
@@ -71579,7 +74650,7 @@ export type GetSnapshotSettingsResponse = SnapshotSettings;
 export const GetSnapshotSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SnapshotSettings;
 
-export type GetSnapshotSettingsError = DefaultErrors;
+export type GetSnapshotSettingsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get snapshot settings. */
 export const getSnapshotSettings: API.OperationMethod<
@@ -71590,7 +74661,7 @@ export const getSnapshotSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSnapshotSettingsRequest,
   output: GetSnapshotSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchSnapshotSettingsRequest {
@@ -71623,7 +74694,12 @@ export type PatchSnapshotSettingsResponse = Operation;
 export const PatchSnapshotSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchSnapshotSettingsError = DefaultErrors;
+export type PatchSnapshotSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch snapshot settings. */
 export const patchSnapshotSettings: API.OperationMethod<
@@ -71634,7 +74710,7 @@ export const patchSnapshotSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSnapshotSettingsRequest,
   output: PatchSnapshotSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRegionSnapshotSettingsRequest {
@@ -71660,7 +74736,10 @@ export type GetRegionSnapshotSettingsResponse = SnapshotSettings;
 export const GetRegionSnapshotSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SnapshotSettings;
 
-export type GetRegionSnapshotSettingsError = DefaultErrors;
+export type GetRegionSnapshotSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get region snapshot settings. */
 export const getRegionSnapshotSettings: API.OperationMethod<
@@ -71671,7 +74750,7 @@ export const getRegionSnapshotSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionSnapshotSettingsRequest,
   output: GetRegionSnapshotSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchRegionSnapshotSettingsRequest {
@@ -71707,7 +74786,12 @@ export type PatchRegionSnapshotSettingsResponse = Operation;
 export const PatchRegionSnapshotSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionSnapshotSettingsError = DefaultErrors;
+export type PatchRegionSnapshotSettingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch region snapshot settings. */
 export const patchRegionSnapshotSettings: API.OperationMethod<
@@ -71718,7 +74802,7 @@ export const patchRegionSnapshotSettings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionSnapshotSettingsRequest,
   output: PatchRegionSnapshotSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSslCertificatesRequest {
@@ -71758,7 +74842,7 @@ export type ListSslCertificatesResponse = SslCertificateList;
 export const ListSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCertificateList;
 
-export type ListSslCertificatesError = DefaultErrors;
+export type ListSslCertificatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of SslCertificate resources available to the specified project. */
 export const listSslCertificates: API.PaginatedOperationMethod<
@@ -71769,7 +74853,7 @@ export const listSslCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSslCertificatesRequest,
   output: ListSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -71800,7 +74884,7 @@ export type GetSslCertificatesResponse = SslCertificate;
 export const GetSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCertificate;
 
-export type GetSslCertificatesError = DefaultErrors;
+export type GetSslCertificatesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified SslCertificate resource. */
 export const getSslCertificates: API.OperationMethod<
@@ -71811,7 +74895,7 @@ export const getSslCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSslCertificatesRequest,
   output: GetSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSslCertificatesRequest {
@@ -71841,7 +74925,12 @@ export type InsertSslCertificatesResponse = Operation;
 export const InsertSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertSslCertificatesError = DefaultErrors;
+export type InsertSslCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a SslCertificate resource in the specified project using the data included in the request. */
 export const insertSslCertificates: API.OperationMethod<
@@ -71852,7 +74941,7 @@ export const insertSslCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSslCertificatesRequest,
   output: InsertSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSslCertificatesRequest {
@@ -71881,7 +74970,12 @@ export type DeleteSslCertificatesResponse = Operation;
 export const DeleteSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSslCertificatesError = DefaultErrors;
+export type DeleteSslCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SslCertificate resource. */
 export const deleteSslCertificates: API.OperationMethod<
@@ -71892,7 +74986,7 @@ export const deleteSslCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSslCertificatesRequest,
   output: DeleteSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListSslCertificatesRequest {
@@ -71943,7 +75037,10 @@ export type AggregatedListSslCertificatesResponse =
 export const AggregatedListSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCertificateAggregatedList;
 
-export type AggregatedListSslCertificatesError = DefaultErrors;
+export type AggregatedListSslCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all SslCertificate resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListSslCertificates: API.PaginatedOperationMethod<
@@ -71954,7 +75051,7 @@ export const aggregatedListSslCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListSslCertificatesRequest,
   output: AggregatedListSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -72002,7 +75099,10 @@ export type ListRegionSslCertificatesResponse = SslCertificateList;
 export const ListRegionSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCertificateList;
 
-export type ListRegionSslCertificatesError = DefaultErrors;
+export type ListRegionSslCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of SslCertificate resources available to the specified project in the specified region. */
 export const listRegionSslCertificates: API.PaginatedOperationMethod<
@@ -72013,7 +75113,7 @@ export const listRegionSslCertificates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSslCertificatesRequest,
   output: ListRegionSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -72047,7 +75147,10 @@ export type GetRegionSslCertificatesResponse = SslCertificate;
 export const GetRegionSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslCertificate;
 
-export type GetRegionSslCertificatesError = DefaultErrors;
+export type GetRegionSslCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request. */
 export const getRegionSslCertificates: API.OperationMethod<
@@ -72058,7 +75161,7 @@ export const getRegionSslCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionSslCertificatesRequest,
   output: GetRegionSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionSslCertificatesRequest {
@@ -72091,7 +75194,12 @@ export type InsertRegionSslCertificatesResponse = Operation;
 export const InsertRegionSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionSslCertificatesError = DefaultErrors;
+export type InsertRegionSslCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a SslCertificate resource in the specified project and region using the data included in the request */
 export const insertRegionSslCertificates: API.OperationMethod<
@@ -72102,7 +75210,7 @@ export const insertRegionSslCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionSslCertificatesRequest,
   output: InsertRegionSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionSslCertificatesRequest {
@@ -72134,7 +75242,12 @@ export type DeleteRegionSslCertificatesResponse = Operation;
 export const DeleteRegionSslCertificatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionSslCertificatesError = DefaultErrors;
+export type DeleteRegionSslCertificatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SslCertificate resource in the region. */
 export const deleteRegionSslCertificates: API.OperationMethod<
@@ -72145,7 +75258,7 @@ export const deleteRegionSslCertificates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionSslCertificatesRequest,
   output: DeleteRegionSslCertificatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSslPoliciesRequest {
@@ -72183,7 +75296,7 @@ export type ListSslPoliciesResponse = SslPoliciesList;
 export const ListSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslPoliciesList;
 
-export type ListSslPoliciesError = DefaultErrors;
+export type ListSslPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the SSL policies that have been configured for the specified project. */
 export const listSslPolicies: API.PaginatedOperationMethod<
@@ -72194,7 +75307,7 @@ export const listSslPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSslPoliciesRequest,
   output: ListSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -72223,7 +75336,7 @@ export const GetSslPoliciesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSslPoliciesResponse = SslPolicy;
 export const GetSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ SslPolicy;
 
-export type GetSslPoliciesError = DefaultErrors;
+export type GetSslPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all of the ordered rules present in a single specified policy. */
 export const getSslPolicies: API.OperationMethod<
@@ -72234,7 +75347,7 @@ export const getSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSslPoliciesRequest,
   output: GetSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertSslPoliciesRequest {
@@ -72263,7 +75376,12 @@ export const InsertSslPoliciesRequest =
 export type InsertSslPoliciesResponse = Operation;
 export const InsertSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertSslPoliciesError = DefaultErrors;
+export type InsertSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the specified SSL policy resource. */
 export const insertSslPolicies: API.OperationMethod<
@@ -72274,7 +75392,7 @@ export const insertSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertSslPoliciesRequest,
   output: InsertSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSslPoliciesRequest {
@@ -72302,7 +75420,12 @@ export const DeleteSslPoliciesRequest =
 export type DeleteSslPoliciesResponse = Operation;
 export const DeleteSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteSslPoliciesError = DefaultErrors;
+export type DeleteSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SSL policy. The SSL policy resource can be deleted only if it is not in use by any TargetHttpsProxy or TargetSslProxy resources. */
 export const deleteSslPolicies: API.OperationMethod<
@@ -72313,7 +75436,7 @@ export const deleteSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSslPoliciesRequest,
   output: DeleteSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchSslPoliciesRequest {
@@ -72345,7 +75468,12 @@ export const PatchSslPoliciesRequest =
 export type PatchSslPoliciesResponse = Operation;
 export const PatchSslPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchSslPoliciesError = DefaultErrors;
+export type PatchSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified SSL policy with the data included in the request. */
 export const patchSslPolicies: API.OperationMethod<
@@ -72356,7 +75484,7 @@ export const patchSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSslPoliciesRequest,
   output: PatchSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAvailableFeaturesSslPoliciesRequest {
@@ -72397,7 +75525,10 @@ export type ListAvailableFeaturesSslPoliciesResponse =
 export const ListAvailableFeaturesSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslPoliciesListAvailableFeaturesResponse;
 
-export type ListAvailableFeaturesSslPoliciesError = DefaultErrors;
+export type ListAvailableFeaturesSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all features that can be specified in the SSL policy when using custom profile. */
 export const listAvailableFeaturesSslPolicies: API.OperationMethod<
@@ -72408,7 +75539,7 @@ export const listAvailableFeaturesSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAvailableFeaturesSslPoliciesRequest,
   output: ListAvailableFeaturesSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AggregatedListSslPoliciesRequest {
@@ -72458,7 +75589,10 @@ export type AggregatedListSslPoliciesResponse = SslPoliciesAggregatedList;
 export const AggregatedListSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslPoliciesAggregatedList;
 
-export type AggregatedListSslPoliciesError = DefaultErrors;
+export type AggregatedListSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all SslPolicy resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListSslPolicies: API.PaginatedOperationMethod<
@@ -72469,7 +75603,7 @@ export const aggregatedListSslPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListSslPoliciesRequest,
   output: AggregatedListSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -72517,7 +75651,7 @@ export type ListRegionSslPoliciesResponse = SslPoliciesList;
 export const ListRegionSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslPoliciesList;
 
-export type ListRegionSslPoliciesError = DefaultErrors;
+export type ListRegionSslPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the SSL policies that have been configured for the specified project and region. */
 export const listRegionSslPolicies: API.PaginatedOperationMethod<
@@ -72528,7 +75662,7 @@ export const listRegionSslPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionSslPoliciesRequest,
   output: ListRegionSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -72562,7 +75696,7 @@ export type GetRegionSslPoliciesResponse = SslPolicy;
 export const GetRegionSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslPolicy;
 
-export type GetRegionSslPoliciesError = DefaultErrors;
+export type GetRegionSslPoliciesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all of the ordered rules present in a single specified policy. */
 export const getRegionSslPolicies: API.OperationMethod<
@@ -72573,7 +75707,7 @@ export const getRegionSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionSslPoliciesRequest,
   output: GetRegionSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionSslPoliciesRequest {
@@ -72606,7 +75740,12 @@ export type InsertRegionSslPoliciesResponse = Operation;
 export const InsertRegionSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionSslPoliciesError = DefaultErrors;
+export type InsertRegionSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new policy in the specified project and region using the data included in the request. */
 export const insertRegionSslPolicies: API.OperationMethod<
@@ -72617,7 +75756,7 @@ export const insertRegionSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionSslPoliciesRequest,
   output: InsertRegionSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionSslPoliciesRequest {
@@ -72649,7 +75788,12 @@ export type DeleteRegionSslPoliciesResponse = Operation;
 export const DeleteRegionSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionSslPoliciesError = DefaultErrors;
+export type DeleteRegionSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SSL policy. The SSL policy resource can be deleted only if it is not in use by any TargetHttpsProxy or TargetSslProxy resources. */
 export const deleteRegionSslPolicies: API.OperationMethod<
@@ -72660,7 +75804,7 @@ export const deleteRegionSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionSslPoliciesRequest,
   output: DeleteRegionSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionSslPoliciesRequest {
@@ -72696,7 +75840,12 @@ export type PatchRegionSslPoliciesResponse = Operation;
 export const PatchRegionSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionSslPoliciesError = DefaultErrors;
+export type PatchRegionSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified SSL policy with the data included in the request. */
 export const patchRegionSslPolicies: API.OperationMethod<
@@ -72707,7 +75856,7 @@ export const patchRegionSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionSslPoliciesRequest,
   output: PatchRegionSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAvailableFeaturesRegionSslPoliciesRequest {
@@ -72751,7 +75900,10 @@ export type ListAvailableFeaturesRegionSslPoliciesResponse =
 export const ListAvailableFeaturesRegionSslPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SslPoliciesListAvailableFeaturesResponse;
 
-export type ListAvailableFeaturesRegionSslPoliciesError = DefaultErrors;
+export type ListAvailableFeaturesRegionSslPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all features that can be specified in the SSL policy when using custom profile. */
 export const listAvailableFeaturesRegionSslPolicies: API.OperationMethod<
@@ -72762,7 +75914,7 @@ export const listAvailableFeaturesRegionSslPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAvailableFeaturesRegionSslPoliciesRequest,
   output: ListAvailableFeaturesRegionSslPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListStoragePoolTypesRequest {
@@ -72805,7 +75957,7 @@ export type ListStoragePoolTypesResponse = StoragePoolTypeList;
 export const ListStoragePoolTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoragePoolTypeList;
 
-export type ListStoragePoolTypesError = DefaultErrors;
+export type ListStoragePoolTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of storage pool types available to the specified project. */
 export const listStoragePoolTypes: API.PaginatedOperationMethod<
@@ -72816,7 +75968,7 @@ export const listStoragePoolTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStoragePoolTypesRequest,
   output: ListStoragePoolTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -72872,7 +76024,10 @@ export type AggregatedListStoragePoolTypesResponse =
 export const AggregatedListStoragePoolTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoragePoolTypeAggregatedList;
 
-export type AggregatedListStoragePoolTypesError = DefaultErrors;
+export type AggregatedListStoragePoolTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of storage pool types. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListStoragePoolTypes: API.PaginatedOperationMethod<
@@ -72883,7 +76038,7 @@ export const aggregatedListStoragePoolTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListStoragePoolTypesRequest,
   output: AggregatedListStoragePoolTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -72917,7 +76072,7 @@ export type GetStoragePoolTypesResponse = StoragePoolType;
 export const GetStoragePoolTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoragePoolType;
 
-export type GetStoragePoolTypesError = DefaultErrors;
+export type GetStoragePoolTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified storage pool type. */
 export const getStoragePoolTypes: API.OperationMethod<
@@ -72928,7 +76083,7 @@ export const getStoragePoolTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStoragePoolTypesRequest,
   output: GetStoragePoolTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListStoragePoolsRequest {
@@ -72971,7 +76126,7 @@ export type ListStoragePoolsResponse = StoragePoolList;
 export const ListStoragePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoragePoolList;
 
-export type ListStoragePoolsError = DefaultErrors;
+export type ListStoragePoolsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of storage pools contained within the specified zone. */
 export const listStoragePools: API.PaginatedOperationMethod<
@@ -72982,7 +76137,7 @@ export const listStoragePools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListStoragePoolsRequest,
   output: ListStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -73037,7 +76192,10 @@ export type AggregatedListStoragePoolsResponse = StoragePoolAggregatedList;
 export const AggregatedListStoragePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoragePoolAggregatedList;
 
-export type AggregatedListStoragePoolsError = DefaultErrors;
+export type AggregatedListStoragePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of storage pools. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListStoragePools: API.PaginatedOperationMethod<
@@ -73048,7 +76206,7 @@ export const aggregatedListStoragePools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListStoragePoolsRequest,
   output: AggregatedListStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -73082,7 +76240,7 @@ export const GetStoragePoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetStoragePoolsResponse = StoragePool;
 export const GetStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ StoragePool;
 
-export type GetStoragePoolsError = DefaultErrors;
+export type GetStoragePoolsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a specified storage pool. Gets a list of available storage pools by making a list() request. */
 export const getStoragePools: API.OperationMethod<
@@ -73093,7 +76251,7 @@ export const getStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStoragePoolsRequest,
   output: GetStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertStoragePoolsRequest {
@@ -73125,7 +76283,12 @@ export const InsertStoragePoolsRequest =
 export type InsertStoragePoolsResponse = Operation;
 export const InsertStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertStoragePoolsError = DefaultErrors;
+export type InsertStoragePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a storage pool in the specified project using the data in the request. */
 export const insertStoragePools: API.OperationMethod<
@@ -73136,7 +76299,7 @@ export const insertStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertStoragePoolsRequest,
   output: InsertStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteStoragePoolsRequest {
@@ -73167,7 +76330,12 @@ export const DeleteStoragePoolsRequest =
 export type DeleteStoragePoolsResponse = Operation;
 export const DeleteStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteStoragePoolsError = DefaultErrors;
+export type DeleteStoragePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified storage pool. Deleting a storagePool removes its data permanently and is irreversible. However, deleting a storagePool does not delete any snapshots previously made from the storagePool. You must separately delete snapshots. */
 export const deleteStoragePools: API.OperationMethod<
@@ -73178,7 +76346,7 @@ export const deleteStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteStoragePoolsRequest,
   output: DeleteStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyStoragePoolsRequest {
@@ -73212,7 +76380,10 @@ export type GetIamPolicyStoragePoolsResponse = Policy;
 export const GetIamPolicyStoragePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyStoragePoolsError = DefaultErrors;
+export type GetIamPolicyStoragePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. May be empty if no such policy or resource exists. */
 export const getIamPolicyStoragePools: API.OperationMethod<
@@ -73223,7 +76394,7 @@ export const getIamPolicyStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyStoragePoolsRequest,
   output: GetIamPolicyStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyStoragePoolsRequest {
@@ -73256,7 +76427,12 @@ export type SetIamPolicyStoragePoolsResponse = Policy;
 export const SetIamPolicyStoragePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyStoragePoolsError = DefaultErrors;
+export type SetIamPolicyStoragePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. */
 export const setIamPolicyStoragePools: API.OperationMethod<
@@ -73267,7 +76443,7 @@ export const setIamPolicyStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyStoragePoolsRequest,
   output: SetIamPolicyStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsStoragePoolsRequest {
@@ -73300,7 +76476,12 @@ export type TestIamPermissionsStoragePoolsResponse = TestPermissionsResponse;
 export const TestIamPermissionsStoragePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsStoragePoolsError = DefaultErrors;
+export type TestIamPermissionsStoragePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsStoragePools: API.OperationMethod<
@@ -73311,7 +76492,7 @@ export const testIamPermissionsStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsStoragePoolsRequest,
   output: TestIamPermissionsStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateStoragePoolsRequest {
@@ -73349,7 +76530,12 @@ export const UpdateStoragePoolsRequest =
 export type UpdateStoragePoolsResponse = Operation;
 export const UpdateStoragePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateStoragePoolsError = DefaultErrors;
+export type UpdateStoragePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified storagePool with the data included in the request. The update is performed only on selected fields included as part of update-mask. Only the following fields can be modified: pool_provisioned_capacity_gb, pool_provisioned_iops and pool_provisioned_throughput. */
 export const updateStoragePools: API.OperationMethod<
@@ -73360,7 +76546,7 @@ export const updateStoragePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateStoragePoolsRequest,
   output: UpdateStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDisksStoragePoolsRequest {
@@ -73406,7 +76592,7 @@ export type ListDisksStoragePoolsResponse = StoragePoolListDisks;
 export const ListDisksStoragePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StoragePoolListDisks;
 
-export type ListDisksStoragePoolsError = DefaultErrors;
+export type ListDisksStoragePoolsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the disks in a specified storage pool. */
 export const listDisksStoragePools: API.PaginatedOperationMethod<
@@ -73417,7 +76603,7 @@ export const listDisksStoragePools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDisksStoragePoolsRequest,
   output: ListDisksStoragePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -73462,7 +76648,7 @@ export type ListTargetGrpcProxiesResponse = TargetGrpcProxyList;
 export const ListTargetGrpcProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetGrpcProxyList;
 
-export type ListTargetGrpcProxiesError = DefaultErrors;
+export type ListTargetGrpcProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the TargetGrpcProxies for a project in the given scope. */
 export const listTargetGrpcProxies: API.PaginatedOperationMethod<
@@ -73473,7 +76659,7 @@ export const listTargetGrpcProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetGrpcProxiesRequest,
   output: ListTargetGrpcProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -73504,7 +76690,7 @@ export type GetTargetGrpcProxiesResponse = TargetGrpcProxy;
 export const GetTargetGrpcProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetGrpcProxy;
 
-export type GetTargetGrpcProxiesError = DefaultErrors;
+export type GetTargetGrpcProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified TargetGrpcProxy resource in the given scope. */
 export const getTargetGrpcProxies: API.OperationMethod<
@@ -73515,7 +76701,7 @@ export const getTargetGrpcProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetGrpcProxiesRequest,
   output: GetTargetGrpcProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetGrpcProxiesRequest {
@@ -73545,7 +76731,12 @@ export type InsertTargetGrpcProxiesResponse = Operation;
 export const InsertTargetGrpcProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetGrpcProxiesError = DefaultErrors;
+export type InsertTargetGrpcProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetGrpcProxy in the specified project in the given scope using the parameters that are included in the request. */
 export const insertTargetGrpcProxies: API.OperationMethod<
@@ -73556,7 +76747,7 @@ export const insertTargetGrpcProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetGrpcProxiesRequest,
   output: InsertTargetGrpcProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetGrpcProxiesRequest {
@@ -73585,7 +76776,12 @@ export type DeleteTargetGrpcProxiesResponse = Operation;
 export const DeleteTargetGrpcProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetGrpcProxiesError = DefaultErrors;
+export type DeleteTargetGrpcProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetGrpcProxy in the given scope */
 export const deleteTargetGrpcProxies: API.OperationMethod<
@@ -73596,7 +76792,7 @@ export const deleteTargetGrpcProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetGrpcProxiesRequest,
   output: DeleteTargetGrpcProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchTargetGrpcProxiesRequest {
@@ -73629,7 +76825,12 @@ export type PatchTargetGrpcProxiesResponse = Operation;
 export const PatchTargetGrpcProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchTargetGrpcProxiesError = DefaultErrors;
+export type PatchTargetGrpcProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified TargetGrpcProxy resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchTargetGrpcProxies: API.OperationMethod<
@@ -73640,7 +76841,7 @@ export const patchTargetGrpcProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTargetGrpcProxiesRequest,
   output: PatchTargetGrpcProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetHttpProxiesRequest {
@@ -73680,7 +76881,7 @@ export type ListTargetHttpProxiesResponse = TargetHttpProxyList;
 export const ListTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpProxyList;
 
-export type ListTargetHttpProxiesError = DefaultErrors;
+export type ListTargetHttpProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of TargetHttpProxy resources available to the specified project. */
 export const listTargetHttpProxies: API.PaginatedOperationMethod<
@@ -73691,7 +76892,7 @@ export const listTargetHttpProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetHttpProxiesRequest,
   output: ListTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -73722,7 +76923,7 @@ export type GetTargetHttpProxiesResponse = TargetHttpProxy;
 export const GetTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpProxy;
 
-export type GetTargetHttpProxiesError = DefaultErrors;
+export type GetTargetHttpProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified TargetHttpProxy resource. */
 export const getTargetHttpProxies: API.OperationMethod<
@@ -73733,7 +76934,7 @@ export const getTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetHttpProxiesRequest,
   output: GetTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetHttpProxiesRequest {
@@ -73763,7 +76964,12 @@ export type InsertTargetHttpProxiesResponse = Operation;
 export const InsertTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetHttpProxiesError = DefaultErrors;
+export type InsertTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetHttpProxy resource in the specified project using the data included in the request. */
 export const insertTargetHttpProxies: API.OperationMethod<
@@ -73774,7 +76980,7 @@ export const insertTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetHttpProxiesRequest,
   output: InsertTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetHttpProxiesRequest {
@@ -73803,7 +77009,12 @@ export type DeleteTargetHttpProxiesResponse = Operation;
 export const DeleteTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetHttpProxiesError = DefaultErrors;
+export type DeleteTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetHttpProxy resource. */
 export const deleteTargetHttpProxies: API.OperationMethod<
@@ -73814,7 +77025,7 @@ export const deleteTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetHttpProxiesRequest,
   output: DeleteTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchTargetHttpProxiesRequest {
@@ -73847,7 +77058,12 @@ export type PatchTargetHttpProxiesResponse = Operation;
 export const PatchTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchTargetHttpProxiesError = DefaultErrors;
+export type PatchTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified TargetHttpProxy resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchTargetHttpProxies: API.OperationMethod<
@@ -73858,7 +77074,7 @@ export const patchTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTargetHttpProxiesRequest,
   output: PatchTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetUrlMapTargetHttpProxiesRequest {
@@ -73891,7 +77107,12 @@ export type SetUrlMapTargetHttpProxiesResponse = Operation;
 export const SetUrlMapTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetUrlMapTargetHttpProxiesError = DefaultErrors;
+export type SetUrlMapTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the URL map for TargetHttpProxy. */
 export const setUrlMapTargetHttpProxies: API.OperationMethod<
@@ -73902,7 +77123,7 @@ export const setUrlMapTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUrlMapTargetHttpProxiesRequest,
   output: SetUrlMapTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AggregatedListTargetHttpProxiesRequest {
@@ -73953,7 +77174,10 @@ export type AggregatedListTargetHttpProxiesResponse =
 export const AggregatedListTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpProxyAggregatedList;
 
-export type AggregatedListTargetHttpProxiesError = DefaultErrors;
+export type AggregatedListTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all TargetHttpProxy resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListTargetHttpProxies: API.PaginatedOperationMethod<
@@ -73964,7 +77188,7 @@ export const aggregatedListTargetHttpProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListTargetHttpProxiesRequest,
   output: AggregatedListTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -74012,7 +77236,10 @@ export type ListRegionTargetHttpProxiesResponse = TargetHttpProxyList;
 export const ListRegionTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpProxyList;
 
-export type ListRegionTargetHttpProxiesError = DefaultErrors;
+export type ListRegionTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of TargetHttpProxy resources available to the specified project in the specified region. */
 export const listRegionTargetHttpProxies: API.PaginatedOperationMethod<
@@ -74023,7 +77250,7 @@ export const listRegionTargetHttpProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionTargetHttpProxiesRequest,
   output: ListRegionTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -74057,7 +77284,10 @@ export type GetRegionTargetHttpProxiesResponse = TargetHttpProxy;
 export const GetRegionTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpProxy;
 
-export type GetRegionTargetHttpProxiesError = DefaultErrors;
+export type GetRegionTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified TargetHttpProxy resource in the specified region. */
 export const getRegionTargetHttpProxies: API.OperationMethod<
@@ -74068,7 +77298,7 @@ export const getRegionTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionTargetHttpProxiesRequest,
   output: GetRegionTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionTargetHttpProxiesRequest {
@@ -74101,7 +77331,12 @@ export type InsertRegionTargetHttpProxiesResponse = Operation;
 export const InsertRegionTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionTargetHttpProxiesError = DefaultErrors;
+export type InsertRegionTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetHttpProxy resource in the specified project and region using the data included in the request. */
 export const insertRegionTargetHttpProxies: API.OperationMethod<
@@ -74112,7 +77347,7 @@ export const insertRegionTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionTargetHttpProxiesRequest,
   output: InsertRegionTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionTargetHttpProxiesRequest {
@@ -74144,7 +77379,12 @@ export type DeleteRegionTargetHttpProxiesResponse = Operation;
 export const DeleteRegionTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionTargetHttpProxiesError = DefaultErrors;
+export type DeleteRegionTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetHttpProxy resource. */
 export const deleteRegionTargetHttpProxies: API.OperationMethod<
@@ -74155,7 +77395,7 @@ export const deleteRegionTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionTargetHttpProxiesRequest,
   output: DeleteRegionTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetUrlMapRegionTargetHttpProxiesRequest {
@@ -74191,7 +77431,12 @@ export type SetUrlMapRegionTargetHttpProxiesResponse = Operation;
 export const SetUrlMapRegionTargetHttpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetUrlMapRegionTargetHttpProxiesError = DefaultErrors;
+export type SetUrlMapRegionTargetHttpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the URL map for TargetHttpProxy. */
 export const setUrlMapRegionTargetHttpProxies: API.OperationMethod<
@@ -74202,7 +77447,7 @@ export const setUrlMapRegionTargetHttpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUrlMapRegionTargetHttpProxiesRequest,
   output: SetUrlMapRegionTargetHttpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetHttpsProxiesRequest {
@@ -74242,7 +77487,7 @@ export type ListTargetHttpsProxiesResponse = TargetHttpsProxyList;
 export const ListTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpsProxyList;
 
-export type ListTargetHttpsProxiesError = DefaultErrors;
+export type ListTargetHttpsProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of TargetHttpsProxy resources available to the specified project. */
 export const listTargetHttpsProxies: API.PaginatedOperationMethod<
@@ -74253,7 +77498,7 @@ export const listTargetHttpsProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetHttpsProxiesRequest,
   output: ListTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -74309,7 +77554,10 @@ export type AggregatedListTargetHttpsProxiesResponse =
 export const AggregatedListTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpsProxyAggregatedList;
 
-export type AggregatedListTargetHttpsProxiesError = DefaultErrors;
+export type AggregatedListTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all TargetHttpsProxy resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListTargetHttpsProxies: API.PaginatedOperationMethod<
@@ -74320,7 +77568,7 @@ export const aggregatedListTargetHttpsProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListTargetHttpsProxiesRequest,
   output: AggregatedListTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -74351,7 +77599,7 @@ export type GetTargetHttpsProxiesResponse = TargetHttpsProxy;
 export const GetTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpsProxy;
 
-export type GetTargetHttpsProxiesError = DefaultErrors;
+export type GetTargetHttpsProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified TargetHttpsProxy resource. */
 export const getTargetHttpsProxies: API.OperationMethod<
@@ -74362,7 +77610,7 @@ export const getTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetHttpsProxiesRequest,
   output: GetTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetHttpsProxiesRequest {
@@ -74392,7 +77640,12 @@ export type InsertTargetHttpsProxiesResponse = Operation;
 export const InsertTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetHttpsProxiesError = DefaultErrors;
+export type InsertTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetHttpsProxy resource in the specified project using the data included in the request. */
 export const insertTargetHttpsProxies: API.OperationMethod<
@@ -74403,7 +77656,7 @@ export const insertTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetHttpsProxiesRequest,
   output: InsertTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchTargetHttpsProxiesRequest {
@@ -74436,7 +77689,12 @@ export type PatchTargetHttpsProxiesResponse = Operation;
 export const PatchTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchTargetHttpsProxiesError = DefaultErrors;
+export type PatchTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified TargetHttpsProxy resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchTargetHttpsProxies: API.OperationMethod<
@@ -74447,7 +77705,7 @@ export const patchTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTargetHttpsProxiesRequest,
   output: PatchTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetHttpsProxiesRequest {
@@ -74476,7 +77734,12 @@ export type DeleteTargetHttpsProxiesResponse = Operation;
 export const DeleteTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetHttpsProxiesError = DefaultErrors;
+export type DeleteTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetHttpsProxy resource. */
 export const deleteTargetHttpsProxies: API.OperationMethod<
@@ -74487,7 +77750,7 @@ export const deleteTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetHttpsProxiesRequest,
   output: DeleteTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetUrlMapTargetHttpsProxiesRequest {
@@ -74520,7 +77783,12 @@ export type SetUrlMapTargetHttpsProxiesResponse = Operation;
 export const SetUrlMapTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetUrlMapTargetHttpsProxiesError = DefaultErrors;
+export type SetUrlMapTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the URL map for TargetHttpsProxy. */
 export const setUrlMapTargetHttpsProxies: API.OperationMethod<
@@ -74531,7 +77799,7 @@ export const setUrlMapTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUrlMapTargetHttpsProxiesRequest,
   output: SetUrlMapTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSslCertificatesTargetHttpsProxiesRequest {
@@ -74566,7 +77834,12 @@ export type SetSslCertificatesTargetHttpsProxiesResponse = Operation;
 export const SetSslCertificatesTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSslCertificatesTargetHttpsProxiesError = DefaultErrors;
+export type SetSslCertificatesTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces SslCertificates for TargetHttpsProxy. */
 export const setSslCertificatesTargetHttpsProxies: API.OperationMethod<
@@ -74577,7 +77850,7 @@ export const setSslCertificatesTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSslCertificatesTargetHttpsProxiesRequest,
   output: SetSslCertificatesTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetCertificateMapTargetHttpsProxiesRequest {
@@ -74612,7 +77885,12 @@ export type SetCertificateMapTargetHttpsProxiesResponse = Operation;
 export const SetCertificateMapTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetCertificateMapTargetHttpsProxiesError = DefaultErrors;
+export type SetCertificateMapTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the Certificate Map for TargetHttpsProxy. */
 export const setCertificateMapTargetHttpsProxies: API.OperationMethod<
@@ -74623,7 +77901,7 @@ export const setCertificateMapTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetCertificateMapTargetHttpsProxiesRequest,
   output: SetCertificateMapTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSslPolicyTargetHttpsProxiesRequest {
@@ -74656,7 +77934,12 @@ export type SetSslPolicyTargetHttpsProxiesResponse = Operation;
 export const SetSslPolicyTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSslPolicyTargetHttpsProxiesError = DefaultErrors;
+export type SetSslPolicyTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the SSL policy for TargetHttpsProxy. The SSL policy specifies the server-side support for SSL features. This affects connections between clients and the HTTPS proxy load balancer. They do not affect the connection between the load balancer and the backends. */
 export const setSslPolicyTargetHttpsProxies: API.OperationMethod<
@@ -74667,7 +77950,7 @@ export const setSslPolicyTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSslPolicyTargetHttpsProxiesRequest,
   output: SetSslPolicyTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetQuicOverrideTargetHttpsProxiesRequest {
@@ -74702,7 +77985,12 @@ export type SetQuicOverrideTargetHttpsProxiesResponse = Operation;
 export const SetQuicOverrideTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetQuicOverrideTargetHttpsProxiesError = DefaultErrors;
+export type SetQuicOverrideTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the QUIC override policy for TargetHttpsProxy. */
 export const setQuicOverrideTargetHttpsProxies: API.OperationMethod<
@@ -74713,7 +78001,7 @@ export const setQuicOverrideTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetQuicOverrideTargetHttpsProxiesRequest,
   output: SetQuicOverrideTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionTargetHttpsProxiesRequest {
@@ -74756,7 +78044,10 @@ export type ListRegionTargetHttpsProxiesResponse = TargetHttpsProxyList;
 export const ListRegionTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpsProxyList;
 
-export type ListRegionTargetHttpsProxiesError = DefaultErrors;
+export type ListRegionTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of TargetHttpsProxy resources available to the specified project in the specified region. */
 export const listRegionTargetHttpsProxies: API.PaginatedOperationMethod<
@@ -74767,7 +78058,7 @@ export const listRegionTargetHttpsProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionTargetHttpsProxiesRequest,
   output: ListRegionTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -74801,7 +78092,10 @@ export type GetRegionTargetHttpsProxiesResponse = TargetHttpsProxy;
 export const GetRegionTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetHttpsProxy;
 
-export type GetRegionTargetHttpsProxiesError = DefaultErrors;
+export type GetRegionTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified TargetHttpsProxy resource in the specified region. */
 export const getRegionTargetHttpsProxies: API.OperationMethod<
@@ -74812,7 +78106,7 @@ export const getRegionTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionTargetHttpsProxiesRequest,
   output: GetRegionTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionTargetHttpsProxiesRequest {
@@ -74845,7 +78139,12 @@ export type InsertRegionTargetHttpsProxiesResponse = Operation;
 export const InsertRegionTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionTargetHttpsProxiesError = DefaultErrors;
+export type InsertRegionTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request. */
 export const insertRegionTargetHttpsProxies: API.OperationMethod<
@@ -74856,7 +78155,7 @@ export const insertRegionTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionTargetHttpsProxiesRequest,
   output: InsertRegionTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionTargetHttpsProxiesRequest {
@@ -74888,7 +78187,12 @@ export type DeleteRegionTargetHttpsProxiesResponse = Operation;
 export const DeleteRegionTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionTargetHttpsProxiesError = DefaultErrors;
+export type DeleteRegionTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetHttpsProxy resource. */
 export const deleteRegionTargetHttpsProxies: API.OperationMethod<
@@ -74899,7 +78203,7 @@ export const deleteRegionTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionTargetHttpsProxiesRequest,
   output: DeleteRegionTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionTargetHttpsProxiesRequest {
@@ -74935,7 +78239,12 @@ export type PatchRegionTargetHttpsProxiesResponse = Operation;
 export const PatchRegionTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionTargetHttpsProxiesError = DefaultErrors;
+export type PatchRegionTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified regional TargetHttpsProxy resource with the data included in the request. This method supports PATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchRegionTargetHttpsProxies: API.OperationMethod<
@@ -74946,7 +78255,7 @@ export const patchRegionTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionTargetHttpsProxiesRequest,
   output: PatchRegionTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetUrlMapRegionTargetHttpsProxiesRequest {
@@ -74982,7 +78291,12 @@ export type SetUrlMapRegionTargetHttpsProxiesResponse = Operation;
 export const SetUrlMapRegionTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetUrlMapRegionTargetHttpsProxiesError = DefaultErrors;
+export type SetUrlMapRegionTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the URL map for TargetHttpsProxy. */
 export const setUrlMapRegionTargetHttpsProxies: API.OperationMethod<
@@ -74993,7 +78307,7 @@ export const setUrlMapRegionTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetUrlMapRegionTargetHttpsProxiesRequest,
   output: SetUrlMapRegionTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSslCertificatesRegionTargetHttpsProxiesRequest {
@@ -75031,7 +78345,12 @@ export type SetSslCertificatesRegionTargetHttpsProxiesResponse = Operation;
 export const SetSslCertificatesRegionTargetHttpsProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSslCertificatesRegionTargetHttpsProxiesError = DefaultErrors;
+export type SetSslCertificatesRegionTargetHttpsProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces SslCertificates for TargetHttpsProxy. */
 export const setSslCertificatesRegionTargetHttpsProxies: API.OperationMethod<
@@ -75042,7 +78361,7 @@ export const setSslCertificatesRegionTargetHttpsProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSslCertificatesRegionTargetHttpsProxiesRequest,
   output: SetSslCertificatesRegionTargetHttpsProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetInstancesRequest {
@@ -75085,7 +78404,7 @@ export type ListTargetInstancesResponse = TargetInstanceList;
 export const ListTargetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetInstanceList;
 
-export type ListTargetInstancesError = DefaultErrors;
+export type ListTargetInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of TargetInstance resources available to the specified project and zone. */
 export const listTargetInstances: API.PaginatedOperationMethod<
@@ -75096,7 +78415,7 @@ export const listTargetInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetInstancesRequest,
   output: ListTargetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -75152,7 +78471,10 @@ export type AggregatedListTargetInstancesResponse =
 export const AggregatedListTargetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetInstanceAggregatedList;
 
-export type AggregatedListTargetInstancesError = DefaultErrors;
+export type AggregatedListTargetInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of target instances. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListTargetInstances: API.PaginatedOperationMethod<
@@ -75163,7 +78485,7 @@ export const aggregatedListTargetInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListTargetInstancesRequest,
   output: AggregatedListTargetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -75197,7 +78519,7 @@ export type GetTargetInstancesResponse = TargetInstance;
 export const GetTargetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetInstance;
 
-export type GetTargetInstancesError = DefaultErrors;
+export type GetTargetInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified TargetInstance resource. */
 export const getTargetInstances: API.OperationMethod<
@@ -75208,7 +78530,7 @@ export const getTargetInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetInstancesRequest,
   output: GetTargetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetInstancesRequest {
@@ -75241,7 +78563,12 @@ export type InsertTargetInstancesResponse = Operation;
 export const InsertTargetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetInstancesError = DefaultErrors;
+export type InsertTargetInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetInstance resource in the specified project and zone using the data included in the request. */
 export const insertTargetInstances: API.OperationMethod<
@@ -75252,7 +78579,7 @@ export const insertTargetInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetInstancesRequest,
   output: InsertTargetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetInstancesRequest {
@@ -75284,7 +78611,12 @@ export type DeleteTargetInstancesResponse = Operation;
 export const DeleteTargetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetInstancesError = DefaultErrors;
+export type DeleteTargetInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetInstance resource. */
 export const deleteTargetInstances: API.OperationMethod<
@@ -75295,7 +78627,7 @@ export const deleteTargetInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetInstancesRequest,
   output: DeleteTargetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSecurityPolicyTargetInstancesRequest {
@@ -75331,7 +78663,12 @@ export type SetSecurityPolicyTargetInstancesResponse = Operation;
 export const SetSecurityPolicyTargetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSecurityPolicyTargetInstancesError = DefaultErrors;
+export type SetSecurityPolicyTargetInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Google Cloud Armor security policy for the specified target instance. For more information, seeGoogle Cloud Armor Overview */
 export const setSecurityPolicyTargetInstances: API.OperationMethod<
@@ -75342,7 +78679,7 @@ export const setSecurityPolicyTargetInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSecurityPolicyTargetInstancesRequest,
   output: SetSecurityPolicyTargetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsTargetInstancesRequest {
@@ -75375,7 +78712,12 @@ export type TestIamPermissionsTargetInstancesResponse = TestPermissionsResponse;
 export const TestIamPermissionsTargetInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsTargetInstancesError = DefaultErrors;
+export type TestIamPermissionsTargetInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsTargetInstances: API.OperationMethod<
@@ -75386,7 +78728,7 @@ export const testIamPermissionsTargetInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsTargetInstancesRequest,
   output: TestIamPermissionsTargetInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetPoolsRequest {
@@ -75430,7 +78772,7 @@ export type ListTargetPoolsResponse = TargetPoolList;
 export const ListTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetPoolList;
 
-export type ListTargetPoolsError = DefaultErrors;
+export type ListTargetPoolsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of target pools available to the specified project and region. */
 export const listTargetPools: API.PaginatedOperationMethod<
@@ -75441,7 +78783,7 @@ export const listTargetPools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetPoolsRequest,
   output: ListTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -75496,7 +78838,10 @@ export type AggregatedListTargetPoolsResponse = TargetPoolAggregatedList;
 export const AggregatedListTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetPoolAggregatedList;
 
-export type AggregatedListTargetPoolsError = DefaultErrors;
+export type AggregatedListTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of target pools. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListTargetPools: API.PaginatedOperationMethod<
@@ -75507,7 +78852,7 @@ export const aggregatedListTargetPools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListTargetPoolsRequest,
   output: AggregatedListTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -75539,7 +78884,7 @@ export const GetTargetPoolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTargetPoolsResponse = TargetPool;
 export const GetTargetPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ TargetPool;
 
-export type GetTargetPoolsError = DefaultErrors;
+export type GetTargetPoolsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified target pool. */
 export const getTargetPools: API.OperationMethod<
@@ -75550,7 +78895,7 @@ export const getTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetPoolsRequest,
   output: GetTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetPoolsRequest {
@@ -75582,7 +78927,12 @@ export const InsertTargetPoolsRequest =
 export type InsertTargetPoolsResponse = Operation;
 export const InsertTargetPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetPoolsError = DefaultErrors;
+export type InsertTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a target pool in the specified project and region using the data included in the request. */
 export const insertTargetPools: API.OperationMethod<
@@ -75593,7 +78943,7 @@ export const insertTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetPoolsRequest,
   output: InsertTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetPoolsRequest {
@@ -75624,7 +78974,12 @@ export const DeleteTargetPoolsRequest =
 export type DeleteTargetPoolsResponse = Operation;
 export const DeleteTargetPoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetPoolsError = DefaultErrors;
+export type DeleteTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified target pool. */
 export const deleteTargetPools: API.OperationMethod<
@@ -75635,7 +78990,7 @@ export const deleteTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetPoolsRequest,
   output: DeleteTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetHealthTargetPoolsRequest {
@@ -75668,7 +79023,12 @@ export type GetHealthTargetPoolsResponse = TargetPoolInstanceHealth;
 export const GetHealthTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetPoolInstanceHealth;
 
-export type GetHealthTargetPoolsError = DefaultErrors;
+export type GetHealthTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the most recent health check results for each IP for the instance that is referenced by the given target pool. */
 export const getHealthTargetPools: API.OperationMethod<
@@ -75679,7 +79039,7 @@ export const getHealthTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHealthTargetPoolsRequest,
   output: GetHealthTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddHealthCheckTargetPoolsRequest {
@@ -75715,7 +79075,12 @@ export type AddHealthCheckTargetPoolsResponse = Operation;
 export const AddHealthCheckTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddHealthCheckTargetPoolsError = DefaultErrors;
+export type AddHealthCheckTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds health check URLs to a target pool. */
 export const addHealthCheckTargetPools: API.OperationMethod<
@@ -75726,7 +79091,7 @@ export const addHealthCheckTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddHealthCheckTargetPoolsRequest,
   output: AddHealthCheckTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveHealthCheckTargetPoolsRequest {
@@ -75764,7 +79129,12 @@ export type RemoveHealthCheckTargetPoolsResponse = Operation;
 export const RemoveHealthCheckTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveHealthCheckTargetPoolsError = DefaultErrors;
+export type RemoveHealthCheckTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes health check URL from a target pool. */
 export const removeHealthCheckTargetPools: API.OperationMethod<
@@ -75775,7 +79145,7 @@ export const removeHealthCheckTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveHealthCheckTargetPoolsRequest,
   output: RemoveHealthCheckTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddInstanceTargetPoolsRequest {
@@ -75811,7 +79181,12 @@ export type AddInstanceTargetPoolsResponse = Operation;
 export const AddInstanceTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddInstanceTargetPoolsError = DefaultErrors;
+export type AddInstanceTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an instance to a target pool. */
 export const addInstanceTargetPools: API.OperationMethod<
@@ -75822,7 +79197,7 @@ export const addInstanceTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddInstanceTargetPoolsRequest,
   output: AddInstanceTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveInstanceTargetPoolsRequest {
@@ -75858,7 +79233,12 @@ export type RemoveInstanceTargetPoolsResponse = Operation;
 export const RemoveInstanceTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveInstanceTargetPoolsError = DefaultErrors;
+export type RemoveInstanceTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes instance URL from a target pool. */
 export const removeInstanceTargetPools: API.OperationMethod<
@@ -75869,7 +79249,7 @@ export const removeInstanceTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveInstanceTargetPoolsRequest,
   output: RemoveInstanceTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetBackupTargetPoolsRequest {
@@ -75910,7 +79290,12 @@ export type SetBackupTargetPoolsResponse = Operation;
 export const SetBackupTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetBackupTargetPoolsError = DefaultErrors;
+export type SetBackupTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes a backup target pool's configurations. */
 export const setBackupTargetPools: API.OperationMethod<
@@ -75921,7 +79306,7 @@ export const setBackupTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetBackupTargetPoolsRequest,
   output: SetBackupTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSecurityPolicyTargetPoolsRequest {
@@ -75957,7 +79342,12 @@ export type SetSecurityPolicyTargetPoolsResponse = Operation;
 export const SetSecurityPolicyTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSecurityPolicyTargetPoolsError = DefaultErrors;
+export type SetSecurityPolicyTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the Google Cloud Armor security policy for the specified target pool. For more information, seeGoogle Cloud Armor Overview */
 export const setSecurityPolicyTargetPools: API.OperationMethod<
@@ -75968,7 +79358,7 @@ export const setSecurityPolicyTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSecurityPolicyTargetPoolsRequest,
   output: SetSecurityPolicyTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsTargetPoolsRequest {
@@ -76001,7 +79391,12 @@ export type TestIamPermissionsTargetPoolsResponse = TestPermissionsResponse;
 export const TestIamPermissionsTargetPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsTargetPoolsError = DefaultErrors;
+export type TestIamPermissionsTargetPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsTargetPools: API.OperationMethod<
@@ -76012,7 +79407,7 @@ export const testIamPermissionsTargetPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsTargetPoolsRequest,
   output: TestIamPermissionsTargetPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetSslProxiesRequest {
@@ -76052,7 +79447,7 @@ export type ListTargetSslProxiesResponse = TargetSslProxyList;
 export const ListTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetSslProxyList;
 
-export type ListTargetSslProxiesError = DefaultErrors;
+export type ListTargetSslProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of TargetSslProxy resources available to the specified project. */
 export const listTargetSslProxies: API.PaginatedOperationMethod<
@@ -76063,7 +79458,7 @@ export const listTargetSslProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetSslProxiesRequest,
   output: ListTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -76094,7 +79489,7 @@ export type GetTargetSslProxiesResponse = TargetSslProxy;
 export const GetTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetSslProxy;
 
-export type GetTargetSslProxiesError = DefaultErrors;
+export type GetTargetSslProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified TargetSslProxy resource. */
 export const getTargetSslProxies: API.OperationMethod<
@@ -76105,7 +79500,7 @@ export const getTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetSslProxiesRequest,
   output: GetTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetSslProxiesRequest {
@@ -76135,7 +79530,12 @@ export type InsertTargetSslProxiesResponse = Operation;
 export const InsertTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetSslProxiesError = DefaultErrors;
+export type InsertTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetSslProxy resource in the specified project using the data included in the request. */
 export const insertTargetSslProxies: API.OperationMethod<
@@ -76146,7 +79546,7 @@ export const insertTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetSslProxiesRequest,
   output: InsertTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetSslProxiesRequest {
@@ -76175,7 +79575,12 @@ export type DeleteTargetSslProxiesResponse = Operation;
 export const DeleteTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetSslProxiesError = DefaultErrors;
+export type DeleteTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetSslProxy resource. */
 export const deleteTargetSslProxies: API.OperationMethod<
@@ -76186,7 +79591,7 @@ export const deleteTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetSslProxiesRequest,
   output: DeleteTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetBackendServiceTargetSslProxiesRequest {
@@ -76221,7 +79626,12 @@ export type SetBackendServiceTargetSslProxiesResponse = Operation;
 export const SetBackendServiceTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetBackendServiceTargetSslProxiesError = DefaultErrors;
+export type SetBackendServiceTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the BackendService for TargetSslProxy. */
 export const setBackendServiceTargetSslProxies: API.OperationMethod<
@@ -76232,7 +79642,7 @@ export const setBackendServiceTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetBackendServiceTargetSslProxiesRequest,
   output: SetBackendServiceTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSslCertificatesTargetSslProxiesRequest {
@@ -76267,7 +79677,12 @@ export type SetSslCertificatesTargetSslProxiesResponse = Operation;
 export const SetSslCertificatesTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSslCertificatesTargetSslProxiesError = DefaultErrors;
+export type SetSslCertificatesTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes SslCertificates for TargetSslProxy. */
 export const setSslCertificatesTargetSslProxies: API.OperationMethod<
@@ -76278,7 +79693,7 @@ export const setSslCertificatesTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSslCertificatesTargetSslProxiesRequest,
   output: SetSslCertificatesTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetCertificateMapTargetSslProxiesRequest {
@@ -76313,7 +79728,12 @@ export type SetCertificateMapTargetSslProxiesResponse = Operation;
 export const SetCertificateMapTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetCertificateMapTargetSslProxiesError = DefaultErrors;
+export type SetCertificateMapTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the Certificate Map for TargetSslProxy. */
 export const setCertificateMapTargetSslProxies: API.OperationMethod<
@@ -76324,7 +79744,7 @@ export const setCertificateMapTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetCertificateMapTargetSslProxiesRequest,
   output: SetCertificateMapTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetProxyHeaderTargetSslProxiesRequest {
@@ -76359,7 +79779,12 @@ export type SetProxyHeaderTargetSslProxiesResponse = Operation;
 export const SetProxyHeaderTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetProxyHeaderTargetSslProxiesError = DefaultErrors;
+export type SetProxyHeaderTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the ProxyHeaderType for TargetSslProxy. */
 export const setProxyHeaderTargetSslProxies: API.OperationMethod<
@@ -76370,7 +79795,7 @@ export const setProxyHeaderTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetProxyHeaderTargetSslProxiesRequest,
   output: SetProxyHeaderTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetSslPolicyTargetSslProxiesRequest {
@@ -76403,7 +79828,12 @@ export type SetSslPolicyTargetSslProxiesResponse = Operation;
 export const SetSslPolicyTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetSslPolicyTargetSslProxiesError = DefaultErrors;
+export type SetSslPolicyTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the SSL policy for TargetSslProxy. The SSL policy specifies the server-side support for SSL features. This affects connections between clients and the load balancer. They do not affect the connection between the load balancer and the backends. */
 export const setSslPolicyTargetSslProxies: API.OperationMethod<
@@ -76414,7 +79844,7 @@ export const setSslPolicyTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetSslPolicyTargetSslProxiesRequest,
   output: SetSslPolicyTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsTargetSslProxiesRequest {
@@ -76445,7 +79875,12 @@ export type TestIamPermissionsTargetSslProxiesResponse =
 export const TestIamPermissionsTargetSslProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsTargetSslProxiesError = DefaultErrors;
+export type TestIamPermissionsTargetSslProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsTargetSslProxies: API.OperationMethod<
@@ -76456,7 +79891,7 @@ export const testIamPermissionsTargetSslProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsTargetSslProxiesRequest,
   output: TestIamPermissionsTargetSslProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetTcpProxiesRequest {
@@ -76496,7 +79931,7 @@ export type ListTargetTcpProxiesResponse = TargetTcpProxyList;
 export const ListTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetTcpProxyList;
 
-export type ListTargetTcpProxiesError = DefaultErrors;
+export type ListTargetTcpProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of TargetTcpProxy resources available to the specified project. */
 export const listTargetTcpProxies: API.PaginatedOperationMethod<
@@ -76507,7 +79942,7 @@ export const listTargetTcpProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetTcpProxiesRequest,
   output: ListTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -76563,7 +79998,10 @@ export type AggregatedListTargetTcpProxiesResponse =
 export const AggregatedListTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetTcpProxyAggregatedList;
 
-export type AggregatedListTargetTcpProxiesError = DefaultErrors;
+export type AggregatedListTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the list of all TargetTcpProxy resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListTargetTcpProxies: API.PaginatedOperationMethod<
@@ -76574,7 +80012,7 @@ export const aggregatedListTargetTcpProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListTargetTcpProxiesRequest,
   output: AggregatedListTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -76605,7 +80043,7 @@ export type GetTargetTcpProxiesResponse = TargetTcpProxy;
 export const GetTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetTcpProxy;
 
-export type GetTargetTcpProxiesError = DefaultErrors;
+export type GetTargetTcpProxiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified TargetTcpProxy resource. */
 export const getTargetTcpProxies: API.OperationMethod<
@@ -76616,7 +80054,7 @@ export const getTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetTcpProxiesRequest,
   output: GetTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetTcpProxiesRequest {
@@ -76646,7 +80084,12 @@ export type InsertTargetTcpProxiesResponse = Operation;
 export const InsertTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetTcpProxiesError = DefaultErrors;
+export type InsertTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetTcpProxy resource in the specified project using the data included in the request. */
 export const insertTargetTcpProxies: API.OperationMethod<
@@ -76657,7 +80100,7 @@ export const insertTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetTcpProxiesRequest,
   output: InsertTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetTcpProxiesRequest {
@@ -76686,7 +80129,12 @@ export type DeleteTargetTcpProxiesResponse = Operation;
 export const DeleteTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetTcpProxiesError = DefaultErrors;
+export type DeleteTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetTcpProxy resource. */
 export const deleteTargetTcpProxies: API.OperationMethod<
@@ -76697,7 +80145,7 @@ export const deleteTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetTcpProxiesRequest,
   output: DeleteTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetBackendServiceTargetTcpProxiesRequest {
@@ -76732,7 +80180,12 @@ export type SetBackendServiceTargetTcpProxiesResponse = Operation;
 export const SetBackendServiceTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetBackendServiceTargetTcpProxiesError = DefaultErrors;
+export type SetBackendServiceTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the BackendService for TargetTcpProxy. */
 export const setBackendServiceTargetTcpProxies: API.OperationMethod<
@@ -76743,7 +80196,7 @@ export const setBackendServiceTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetBackendServiceTargetTcpProxiesRequest,
   output: SetBackendServiceTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetProxyHeaderTargetTcpProxiesRequest {
@@ -76778,7 +80231,12 @@ export type SetProxyHeaderTargetTcpProxiesResponse = Operation;
 export const SetProxyHeaderTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetProxyHeaderTargetTcpProxiesError = DefaultErrors;
+export type SetProxyHeaderTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the ProxyHeaderType for TargetTcpProxy. */
 export const setProxyHeaderTargetTcpProxies: API.OperationMethod<
@@ -76789,7 +80247,7 @@ export const setProxyHeaderTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetProxyHeaderTargetTcpProxiesRequest,
   output: SetProxyHeaderTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsTargetTcpProxiesRequest {
@@ -76820,7 +80278,12 @@ export type TestIamPermissionsTargetTcpProxiesResponse =
 export const TestIamPermissionsTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsTargetTcpProxiesError = DefaultErrors;
+export type TestIamPermissionsTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsTargetTcpProxies: API.OperationMethod<
@@ -76831,7 +80294,7 @@ export const testIamPermissionsTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsTargetTcpProxiesRequest,
   output: TestIamPermissionsTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionTargetTcpProxiesRequest {
@@ -76874,7 +80337,10 @@ export type ListRegionTargetTcpProxiesResponse = TargetTcpProxyList;
 export const ListRegionTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetTcpProxyList;
 
-export type ListRegionTargetTcpProxiesError = DefaultErrors;
+export type ListRegionTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a list of TargetTcpProxy resources available to the specified project in a given region. */
 export const listRegionTargetTcpProxies: API.PaginatedOperationMethod<
@@ -76885,7 +80351,7 @@ export const listRegionTargetTcpProxies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionTargetTcpProxiesRequest,
   output: ListRegionTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -76919,7 +80385,10 @@ export type GetRegionTargetTcpProxiesResponse = TargetTcpProxy;
 export const GetRegionTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetTcpProxy;
 
-export type GetRegionTargetTcpProxiesError = DefaultErrors;
+export type GetRegionTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the specified TargetTcpProxy resource. */
 export const getRegionTargetTcpProxies: API.OperationMethod<
@@ -76930,7 +80399,7 @@ export const getRegionTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionTargetTcpProxiesRequest,
   output: GetRegionTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionTargetTcpProxiesRequest {
@@ -76963,7 +80432,12 @@ export type InsertRegionTargetTcpProxiesResponse = Operation;
 export const InsertRegionTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionTargetTcpProxiesError = DefaultErrors;
+export type InsertRegionTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a TargetTcpProxy resource in the specified project and region using the data included in the request. */
 export const insertRegionTargetTcpProxies: API.OperationMethod<
@@ -76974,7 +80448,7 @@ export const insertRegionTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionTargetTcpProxiesRequest,
   output: InsertRegionTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionTargetTcpProxiesRequest {
@@ -77006,7 +80480,12 @@ export type DeleteRegionTargetTcpProxiesResponse = Operation;
 export const DeleteRegionTargetTcpProxiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionTargetTcpProxiesError = DefaultErrors;
+export type DeleteRegionTargetTcpProxiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified TargetTcpProxy resource. */
 export const deleteRegionTargetTcpProxies: API.OperationMethod<
@@ -77017,7 +80496,7 @@ export const deleteRegionTargetTcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionTargetTcpProxiesRequest,
   output: DeleteRegionTargetTcpProxiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTargetVpnGatewaysRequest {
@@ -77060,7 +80539,7 @@ export type ListTargetVpnGatewaysResponse = TargetVpnGatewayList;
 export const ListTargetVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetVpnGatewayList;
 
-export type ListTargetVpnGatewaysError = DefaultErrors;
+export type ListTargetVpnGatewaysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of target VPN gateways available to the specified project and region. */
 export const listTargetVpnGateways: API.PaginatedOperationMethod<
@@ -77071,7 +80550,7 @@ export const listTargetVpnGateways: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTargetVpnGatewaysRequest,
   output: ListTargetVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -77127,7 +80606,10 @@ export type AggregatedListTargetVpnGatewaysResponse =
 export const AggregatedListTargetVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetVpnGatewayAggregatedList;
 
-export type AggregatedListTargetVpnGatewaysError = DefaultErrors;
+export type AggregatedListTargetVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of target VPN gateways. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListTargetVpnGateways: API.PaginatedOperationMethod<
@@ -77138,7 +80620,7 @@ export const aggregatedListTargetVpnGateways: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListTargetVpnGatewaysRequest,
   output: AggregatedListTargetVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -77172,7 +80654,7 @@ export type GetTargetVpnGatewaysResponse = TargetVpnGateway;
 export const GetTargetVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ TargetVpnGateway;
 
-export type GetTargetVpnGatewaysError = DefaultErrors;
+export type GetTargetVpnGatewaysError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified target VPN gateway. */
 export const getTargetVpnGateways: API.OperationMethod<
@@ -77183,7 +80665,7 @@ export const getTargetVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTargetVpnGatewaysRequest,
   output: GetTargetVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertTargetVpnGatewaysRequest {
@@ -77216,7 +80698,12 @@ export type InsertTargetVpnGatewaysResponse = Operation;
 export const InsertTargetVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertTargetVpnGatewaysError = DefaultErrors;
+export type InsertTargetVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a target VPN gateway in the specified project and region using the data included in the request. */
 export const insertTargetVpnGateways: API.OperationMethod<
@@ -77227,7 +80714,7 @@ export const insertTargetVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTargetVpnGatewaysRequest,
   output: InsertTargetVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTargetVpnGatewaysRequest {
@@ -77259,7 +80746,12 @@ export type DeleteTargetVpnGatewaysResponse = Operation;
 export const DeleteTargetVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteTargetVpnGatewaysError = DefaultErrors;
+export type DeleteTargetVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified target VPN gateway. */
 export const deleteTargetVpnGateways: API.OperationMethod<
@@ -77270,7 +80762,7 @@ export const deleteTargetVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTargetVpnGatewaysRequest,
   output: DeleteTargetVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsTargetVpnGatewaysRequest {
@@ -77306,7 +80798,12 @@ export type SetLabelsTargetVpnGatewaysResponse = Operation;
 export const SetLabelsTargetVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsTargetVpnGatewaysError = DefaultErrors;
+export type SetLabelsTargetVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a TargetVpnGateway. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsTargetVpnGateways: API.OperationMethod<
@@ -77317,7 +80814,7 @@ export const setLabelsTargetVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsTargetVpnGatewaysRequest,
   output: SetLabelsTargetVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUrlMapsRequest {
@@ -77352,7 +80849,7 @@ export const ListUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListUrlMapsResponse = UrlMapList;
 export const ListUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMapList;
 
-export type ListUrlMapsError = DefaultErrors;
+export type ListUrlMapsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of UrlMap resources available to the specified project. */
 export const listUrlMaps: API.PaginatedOperationMethod<
@@ -77363,7 +80860,7 @@ export const listUrlMaps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUrlMapsRequest,
   output: ListUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -77415,7 +80912,7 @@ export type AggregatedListUrlMapsResponse = UrlMapsAggregatedList;
 export const AggregatedListUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UrlMapsAggregatedList;
 
-export type AggregatedListUrlMapsError = DefaultErrors;
+export type AggregatedListUrlMapsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of all UrlMap resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListUrlMaps: API.PaginatedOperationMethod<
@@ -77426,7 +80923,7 @@ export const aggregatedListUrlMaps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListUrlMapsRequest,
   output: AggregatedListUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -77452,7 +80949,7 @@ export const GetUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetUrlMapsResponse = UrlMap;
 export const GetUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMap;
 
-export type GetUrlMapsError = DefaultErrors;
+export type GetUrlMapsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified UrlMap resource. */
 export const getUrlMaps: API.OperationMethod<
@@ -77463,7 +80960,7 @@ export const getUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUrlMapsRequest,
   output: GetUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertUrlMapsRequest {
@@ -77491,7 +80988,12 @@ export const InsertUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertUrlMapsResponse = Operation;
 export const InsertUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertUrlMapsError = DefaultErrors;
+export type InsertUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a UrlMap resource in the specified project using the data included in the request. */
 export const insertUrlMaps: API.OperationMethod<
@@ -77502,7 +81004,7 @@ export const insertUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertUrlMapsRequest,
   output: InsertUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUrlMapsRequest {
@@ -77529,7 +81031,12 @@ export const DeleteUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteUrlMapsResponse = Operation;
 export const DeleteUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteUrlMapsError = DefaultErrors;
+export type DeleteUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified UrlMap resource. */
 export const deleteUrlMaps: API.OperationMethod<
@@ -77540,7 +81047,7 @@ export const deleteUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUrlMapsRequest,
   output: DeleteUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateUrlMapsRequest {
@@ -77571,7 +81078,12 @@ export const UpdateUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateUrlMapsResponse = Operation;
 export const UpdateUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateUrlMapsError = DefaultErrors;
+export type UpdateUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified UrlMap resource with the data included in the request. */
 export const updateUrlMaps: API.OperationMethod<
@@ -77582,7 +81094,7 @@ export const updateUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateUrlMapsRequest,
   output: UpdateUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchUrlMapsRequest {
@@ -77613,7 +81125,12 @@ export const PatchUrlMapsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchUrlMapsResponse = Operation;
 export const PatchUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchUrlMapsError = DefaultErrors;
+export type PatchUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified UrlMap resource with the data included in the request. This method supportsPATCH semantics and uses theJSON merge patch format and processing rules. */
 export const patchUrlMaps: API.OperationMethod<
@@ -77624,7 +81141,7 @@ export const patchUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUrlMapsRequest,
   output: PatchUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateUrlMapsRequest {
@@ -77655,7 +81172,12 @@ export type ValidateUrlMapsResponse = UrlMapsValidateResponse;
 export const ValidateUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UrlMapsValidateResponse;
 
-export type ValidateUrlMapsError = DefaultErrors;
+export type ValidateUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run. Calling this method does NOT create the UrlMap. */
 export const validateUrlMaps: API.OperationMethod<
@@ -77666,7 +81188,7 @@ export const validateUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateUrlMapsRequest,
   output: ValidateUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InvalidateCacheUrlMapsRequest {
@@ -77699,7 +81221,12 @@ export type InvalidateCacheUrlMapsResponse = Operation;
 export const InvalidateCacheUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InvalidateCacheUrlMapsError = DefaultErrors;
+export type InvalidateCacheUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Initiates a cache invalidation operation, invalidating the specified path, scoped to the specified UrlMap. For more information, see [Invalidating cached content](/cdn/docs/invalidating-cached-content). */
 export const invalidateCacheUrlMaps: API.OperationMethod<
@@ -77710,7 +81237,7 @@ export const invalidateCacheUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InvalidateCacheUrlMapsRequest,
   output: InvalidateCacheUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsUrlMapsRequest {
@@ -77740,7 +81267,12 @@ export type TestIamPermissionsUrlMapsResponse = TestPermissionsResponse;
 export const TestIamPermissionsUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsUrlMapsError = DefaultErrors;
+export type TestIamPermissionsUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsUrlMaps: API.OperationMethod<
@@ -77751,7 +81283,7 @@ export const testIamPermissionsUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsUrlMapsRequest,
   output: TestIamPermissionsUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRegionUrlMapsRequest {
@@ -77793,7 +81325,7 @@ export const ListRegionUrlMapsRequest =
 export type ListRegionUrlMapsResponse = UrlMapList;
 export const ListRegionUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMapList;
 
-export type ListRegionUrlMapsError = DefaultErrors;
+export type ListRegionUrlMapsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of UrlMap resources available to the specified project in the specified region. */
 export const listRegionUrlMaps: API.PaginatedOperationMethod<
@@ -77804,7 +81336,7 @@ export const listRegionUrlMaps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionUrlMapsRequest,
   output: ListRegionUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -77837,7 +81369,7 @@ export const GetRegionUrlMapsRequest =
 export type GetRegionUrlMapsResponse = UrlMap;
 export const GetRegionUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ UrlMap;
 
-export type GetRegionUrlMapsError = DefaultErrors;
+export type GetRegionUrlMapsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified UrlMap resource. */
 export const getRegionUrlMaps: API.OperationMethod<
@@ -77848,7 +81380,7 @@ export const getRegionUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRegionUrlMapsRequest,
   output: GetRegionUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertRegionUrlMapsRequest {
@@ -77881,7 +81413,12 @@ export type InsertRegionUrlMapsResponse = Operation;
 export const InsertRegionUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertRegionUrlMapsError = DefaultErrors;
+export type InsertRegionUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a UrlMap resource in the specified project using the data included in the request. */
 export const insertRegionUrlMaps: API.OperationMethod<
@@ -77892,7 +81429,7 @@ export const insertRegionUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRegionUrlMapsRequest,
   output: InsertRegionUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegionUrlMapsRequest {
@@ -77924,7 +81461,12 @@ export type DeleteRegionUrlMapsResponse = Operation;
 export const DeleteRegionUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteRegionUrlMapsError = DefaultErrors;
+export type DeleteRegionUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified UrlMap resource. */
 export const deleteRegionUrlMaps: API.OperationMethod<
@@ -77935,7 +81477,7 @@ export const deleteRegionUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegionUrlMapsRequest,
   output: DeleteRegionUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRegionUrlMapsRequest {
@@ -77971,7 +81513,12 @@ export type UpdateRegionUrlMapsResponse = Operation;
 export const UpdateRegionUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateRegionUrlMapsError = DefaultErrors;
+export type UpdateRegionUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified UrlMap resource with the data included in the request. */
 export const updateRegionUrlMaps: API.OperationMethod<
@@ -77982,7 +81529,7 @@ export const updateRegionUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRegionUrlMapsRequest,
   output: UpdateRegionUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRegionUrlMapsRequest {
@@ -78017,7 +81564,12 @@ export const PatchRegionUrlMapsRequest =
 export type PatchRegionUrlMapsResponse = Operation;
 export const PatchRegionUrlMapsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchRegionUrlMapsError = DefaultErrors;
+export type PatchRegionUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patches the specified UrlMap resource with the data included in the request. This method supportsPATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchRegionUrlMaps: API.OperationMethod<
@@ -78028,7 +81580,7 @@ export const patchRegionUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRegionUrlMapsRequest,
   output: PatchRegionUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateRegionUrlMapsRequest {
@@ -78061,7 +81613,12 @@ export type ValidateRegionUrlMapsResponse = UrlMapsValidateResponse;
 export const ValidateRegionUrlMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UrlMapsValidateResponse;
 
-export type ValidateRegionUrlMapsError = DefaultErrors;
+export type ValidateRegionUrlMapsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs static validation for the UrlMap. In particular, the tests of the provided UrlMap will be run. Calling this method does NOT create the UrlMap. */
 export const validateRegionUrlMaps: API.OperationMethod<
@@ -78072,7 +81629,7 @@ export const validateRegionUrlMaps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateRegionUrlMapsRequest,
   output: ValidateRegionUrlMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListVpnGatewaysRequest {
@@ -78116,7 +81673,7 @@ export type ListVpnGatewaysResponse = VpnGatewayList;
 export const ListVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ VpnGatewayList;
 
-export type ListVpnGatewaysError = DefaultErrors;
+export type ListVpnGatewaysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of VPN gateways available to the specified project and region. */
 export const listVpnGateways: API.PaginatedOperationMethod<
@@ -78127,7 +81684,7 @@ export const listVpnGateways: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVpnGatewaysRequest,
   output: ListVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -78182,7 +81739,10 @@ export type AggregatedListVpnGatewaysResponse = VpnGatewayAggregatedList;
 export const AggregatedListVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ VpnGatewayAggregatedList;
 
-export type AggregatedListVpnGatewaysError = DefaultErrors;
+export type AggregatedListVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of VPN gateways. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListVpnGateways: API.PaginatedOperationMethod<
@@ -78193,7 +81753,7 @@ export const aggregatedListVpnGateways: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListVpnGatewaysRequest,
   output: AggregatedListVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -78225,7 +81785,7 @@ export const GetVpnGatewaysRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetVpnGatewaysResponse = VpnGateway;
 export const GetVpnGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ VpnGateway;
 
-export type GetVpnGatewaysError = DefaultErrors;
+export type GetVpnGatewaysError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified VPN gateway. */
 export const getVpnGateways: API.OperationMethod<
@@ -78236,7 +81796,7 @@ export const getVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVpnGatewaysRequest,
   output: GetVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetStatusVpnGatewaysRequest {
@@ -78265,7 +81825,7 @@ export type GetStatusVpnGatewaysResponse = VpnGatewaysGetStatusResponse;
 export const GetStatusVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ VpnGatewaysGetStatusResponse;
 
-export type GetStatusVpnGatewaysError = DefaultErrors;
+export type GetStatusVpnGatewaysError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the status for the specified VPN gateway. */
 export const getStatusVpnGateways: API.OperationMethod<
@@ -78276,7 +81836,7 @@ export const getStatusVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStatusVpnGatewaysRequest,
   output: GetStatusVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertVpnGatewaysRequest {
@@ -78308,7 +81868,12 @@ export const InsertVpnGatewaysRequest =
 export type InsertVpnGatewaysResponse = Operation;
 export const InsertVpnGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertVpnGatewaysError = DefaultErrors;
+export type InsertVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a VPN gateway in the specified project and region using the data included in the request. */
 export const insertVpnGateways: API.OperationMethod<
@@ -78319,7 +81884,7 @@ export const insertVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertVpnGatewaysRequest,
   output: InsertVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteVpnGatewaysRequest {
@@ -78350,7 +81915,12 @@ export const DeleteVpnGatewaysRequest =
 export type DeleteVpnGatewaysResponse = Operation;
 export const DeleteVpnGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteVpnGatewaysError = DefaultErrors;
+export type DeleteVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified VPN gateway. */
 export const deleteVpnGateways: API.OperationMethod<
@@ -78361,7 +81931,7 @@ export const deleteVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVpnGatewaysRequest,
   output: DeleteVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsVpnGatewaysRequest {
@@ -78394,7 +81964,12 @@ export type TestIamPermissionsVpnGatewaysResponse = TestPermissionsResponse;
 export const TestIamPermissionsVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestPermissionsResponse;
 
-export type TestIamPermissionsVpnGatewaysError = DefaultErrors;
+export type TestIamPermissionsVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. */
 export const testIamPermissionsVpnGateways: API.OperationMethod<
@@ -78405,7 +81980,7 @@ export const testIamPermissionsVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsVpnGatewaysRequest,
   output: TestIamPermissionsVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsVpnGatewaysRequest {
@@ -78441,7 +82016,12 @@ export type SetLabelsVpnGatewaysResponse = Operation;
 export const SetLabelsVpnGatewaysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsVpnGatewaysError = DefaultErrors;
+export type SetLabelsVpnGatewaysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a VpnGateway. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsVpnGateways: API.OperationMethod<
@@ -78452,7 +82032,7 @@ export const setLabelsVpnGateways: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsVpnGatewaysRequest,
   output: SetLabelsVpnGatewaysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListVpnTunnelsRequest {
@@ -78493,7 +82073,7 @@ export const ListVpnTunnelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListVpnTunnelsResponse = VpnTunnelList;
 export const ListVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ VpnTunnelList;
 
-export type ListVpnTunnelsError = DefaultErrors;
+export type ListVpnTunnelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of VpnTunnel resources contained in the specified project and region. */
 export const listVpnTunnels: API.PaginatedOperationMethod<
@@ -78504,7 +82084,7 @@ export const listVpnTunnels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListVpnTunnelsRequest,
   output: ListVpnTunnelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -78556,7 +82136,10 @@ export type AggregatedListVpnTunnelsResponse = VpnTunnelAggregatedList;
 export const AggregatedListVpnTunnelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VpnTunnelAggregatedList;
 
-export type AggregatedListVpnTunnelsError = DefaultErrors;
+export type AggregatedListVpnTunnelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an aggregated list of VPN tunnels. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`. */
 export const aggregatedListVpnTunnels: API.PaginatedOperationMethod<
@@ -78567,7 +82150,7 @@ export const aggregatedListVpnTunnels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: AggregatedListVpnTunnelsRequest,
   output: AggregatedListVpnTunnelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -78599,7 +82182,7 @@ export const GetVpnTunnelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetVpnTunnelsResponse = VpnTunnel;
 export const GetVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ VpnTunnel;
 
-export type GetVpnTunnelsError = DefaultErrors;
+export type GetVpnTunnelsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified VpnTunnel resource. */
 export const getVpnTunnels: API.OperationMethod<
@@ -78610,7 +82193,7 @@ export const getVpnTunnels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVpnTunnelsRequest,
   output: GetVpnTunnelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertVpnTunnelsRequest {
@@ -78642,7 +82225,12 @@ export const InsertVpnTunnelsRequest =
 export type InsertVpnTunnelsResponse = Operation;
 export const InsertVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertVpnTunnelsError = DefaultErrors;
+export type InsertVpnTunnelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a VpnTunnel resource in the specified project and region using the data included in the request. */
 export const insertVpnTunnels: API.OperationMethod<
@@ -78653,7 +82241,7 @@ export const insertVpnTunnels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertVpnTunnelsRequest,
   output: InsertVpnTunnelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteVpnTunnelsRequest {
@@ -78684,7 +82272,12 @@ export const DeleteVpnTunnelsRequest =
 export type DeleteVpnTunnelsResponse = Operation;
 export const DeleteVpnTunnelsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteVpnTunnelsError = DefaultErrors;
+export type DeleteVpnTunnelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified VpnTunnel resource. */
 export const deleteVpnTunnels: API.OperationMethod<
@@ -78695,7 +82288,7 @@ export const deleteVpnTunnels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteVpnTunnelsRequest,
   output: DeleteVpnTunnelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetLabelsVpnTunnelsRequest {
@@ -78731,7 +82324,12 @@ export type SetLabelsVpnTunnelsResponse = Operation;
 export const SetLabelsVpnTunnelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SetLabelsVpnTunnelsError = DefaultErrors;
+export type SetLabelsVpnTunnelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the labels on a VpnTunnel. To learn more about labels, read theLabeling Resources documentation. */
 export const setLabelsVpnTunnels: API.OperationMethod<
@@ -78742,7 +82340,7 @@ export const setLabelsVpnTunnels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetLabelsVpnTunnelsRequest,
   output: SetLabelsVpnTunnelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListWireGroupsRequest {
@@ -78782,7 +82380,7 @@ export const ListWireGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListWireGroupsResponse = WireGroupList;
 export const ListWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ WireGroupList;
 
-export type ListWireGroupsError = DefaultErrors;
+export type ListWireGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the wire groups for a project in the given scope. */
 export const listWireGroups: API.PaginatedOperationMethod<
@@ -78793,7 +82391,7 @@ export const listWireGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWireGroupsRequest,
   output: ListWireGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -78824,7 +82422,7 @@ export const GetWireGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetWireGroupsResponse = WireGroup;
 export const GetWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ WireGroup;
 
-export type GetWireGroupsError = DefaultErrors;
+export type GetWireGroupsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified wire group resource in the given scope. */
 export const getWireGroups: API.OperationMethod<
@@ -78835,7 +82433,7 @@ export const getWireGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetWireGroupsRequest,
   output: GetWireGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertWireGroupsRequest {
@@ -78871,7 +82469,12 @@ export const InsertWireGroupsRequest =
 export type InsertWireGroupsResponse = Operation;
 export const InsertWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type InsertWireGroupsError = DefaultErrors;
+export type InsertWireGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a wire group in the specified project in the given scope using the parameters that are included in the request. */
 export const insertWireGroups: API.OperationMethod<
@@ -78882,7 +82485,7 @@ export const insertWireGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertWireGroupsRequest,
   output: InsertWireGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteWireGroupsRequest {
@@ -78912,7 +82515,12 @@ export const DeleteWireGroupsRequest =
 export type DeleteWireGroupsResponse = Operation;
 export const DeleteWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteWireGroupsError = DefaultErrors;
+export type DeleteWireGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified wire group in the given scope. */
 export const deleteWireGroups: API.OperationMethod<
@@ -78923,7 +82531,7 @@ export const deleteWireGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteWireGroupsRequest,
   output: DeleteWireGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchWireGroupsRequest {
@@ -78966,7 +82574,12 @@ export const PatchWireGroupsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PatchWireGroupsResponse = Operation;
 export const PatchWireGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchWireGroupsError = DefaultErrors;
+export type PatchWireGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified wire group resource with the data included in the request. This method supportsPATCH semantics and usesJSON merge patch format and processing rules. */
 export const patchWireGroups: API.OperationMethod<
@@ -78977,7 +82590,7 @@ export const patchWireGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchWireGroupsRequest,
   output: PatchWireGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListZonesRequest {
@@ -79012,7 +82625,7 @@ export const ListZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListZonesResponse = ZoneList;
 export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ZoneList;
 
-export type ListZonesError = DefaultErrors;
+export type ListZonesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of Zone resources available to the specified project. */
 export const listZones: API.PaginatedOperationMethod<
@@ -79023,7 +82636,7 @@ export const listZones: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListZonesRequest,
   output: ListZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -79049,7 +82662,7 @@ export const GetZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetZonesResponse = Zone;
 export const GetZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Zone;
 
-export type GetZonesError = DefaultErrors;
+export type GetZonesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified Zone resource. */
 export const getZones: API.OperationMethod<
@@ -79060,7 +82673,7 @@ export const getZones: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetZonesRequest,
   output: GetZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRegionZonesRequest {
@@ -79100,7 +82713,7 @@ export const ListRegionZonesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ListRegionZonesResponse = ZoneList;
 export const ListRegionZonesResponse = /*@__PURE__*/ /*#__PURE__*/ ZoneList;
 
-export type ListRegionZonesError = DefaultErrors;
+export type ListRegionZonesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the list of Zone resources under the specific region available to the specified project. */
 export const listRegionZones: API.PaginatedOperationMethod<
@@ -79111,7 +82724,7 @@ export const listRegionZones: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRegionZonesRequest,
   output: ListRegionZonesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

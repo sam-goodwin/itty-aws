@@ -1573,6 +1573,52 @@ export const ListAnnouncementsResponse =
   }).annotate({ identifier: "ListAnnouncementsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1593,7 +1639,7 @@ export const GetUserProfilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetUserProfilesResponse = UserProfile;
 export const GetUserProfilesResponse = /*@__PURE__*/ /*#__PURE__*/ UserProfile;
 
-export type GetUserProfilesError = DefaultErrors;
+export type GetUserProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a user profile. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access this user profile, if no profile exists with the requested ID, or for access errors. */
 export const getUserProfiles: API.OperationMethod<
@@ -1604,7 +1650,7 @@ export const getUserProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserProfilesRequest,
   output: GetUserProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListUserProfilesGuardianInvitationsRequest {
@@ -1648,7 +1694,10 @@ export type ListUserProfilesGuardianInvitationsResponse =
 export const ListUserProfilesGuardianInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGuardianInvitationsResponse;
 
-export type ListUserProfilesGuardianInvitationsError = DefaultErrors;
+export type ListUserProfilesGuardianInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of guardian invitations that the requesting user is permitted to view, filtered by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student. */
 export const listUserProfilesGuardianInvitations: API.PaginatedOperationMethod<
@@ -1659,7 +1708,7 @@ export const listUserProfilesGuardianInvitations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserProfilesGuardianInvitationsRequest,
   output: ListUserProfilesGuardianInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1696,7 +1745,12 @@ export type PatchUserProfilesGuardianInvitationsResponse = GuardianInvitation;
 export const PatchUserProfilesGuardianInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuardianInvitation;
 
-export type PatchUserProfilesGuardianInvitationsError = DefaultErrors;
+export type PatchUserProfilesGuardianInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies a guardian invitation. Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are not enabled for the domain in question or for other access errors. * `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student, or if the `id` field does not refer to a guardian invitation known to Classroom. */
 export const patchUserProfilesGuardianInvitations: API.OperationMethod<
@@ -1707,7 +1761,7 @@ export const patchUserProfilesGuardianInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUserProfilesGuardianInvitationsRequest,
   output: PatchUserProfilesGuardianInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUserProfilesGuardianInvitationsRequest {
@@ -1733,7 +1787,10 @@ export type GetUserProfilesGuardianInvitationsResponse = GuardianInvitation;
 export const GetUserProfilesGuardianInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuardianInvitation;
 
-export type GetUserProfilesGuardianInvitationsError = DefaultErrors;
+export type GetUserProfilesGuardianInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a specific guardian invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be returned if the student exists, but the requesting user does not have access to see that student. */
 export const getUserProfilesGuardianInvitations: API.OperationMethod<
@@ -1744,7 +1801,7 @@ export const getUserProfilesGuardianInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserProfilesGuardianInvitationsRequest,
   output: GetUserProfilesGuardianInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateUserProfilesGuardianInvitationsRequest {
@@ -1771,7 +1828,12 @@ export type CreateUserProfilesGuardianInvitationsResponse = GuardianInvitation;
 export const CreateUserProfilesGuardianInvitationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuardianInvitation;
 
-export type CreateUserProfilesGuardianInvitationsError = DefaultErrors;
+export type CreateUserProfilesGuardianInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a guardian invitation, and sends an email to the guardian asking them to confirm that they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be created to represent the active guardian. The request object must have the `student_id` and `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian in question has already rejected too many requests for that student, if guardians are not enabled for the domain in question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API). This error will also be returned if read-only fields are set, or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account of an existing `Guardian` for this user. */
 export const createUserProfilesGuardianInvitations: API.OperationMethod<
@@ -1782,7 +1844,7 @@ export const createUserProfilesGuardianInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUserProfilesGuardianInvitationsRequest,
   output: CreateUserProfilesGuardianInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUserProfilesGuardiansRequest {
@@ -1808,7 +1870,10 @@ export type GetUserProfilesGuardiansResponse = Guardian;
 export const GetUserProfilesGuardiansResponse =
   /*@__PURE__*/ /*#__PURE__*/ Guardian;
 
-export type GetUserProfilesGuardiansError = DefaultErrors;
+export type GetUserProfilesGuardiansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a specific guardian. This method returns the following error codes: * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to view guardian information for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if the requesting user is permitted to view guardians for the requested `student_id`, but no `Guardian` record exists for that student that matches the provided `guardian_id`. */
 export const getUserProfilesGuardians: API.OperationMethod<
@@ -1819,7 +1884,7 @@ export const getUserProfilesGuardians: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUserProfilesGuardiansRequest,
   output: GetUserProfilesGuardiansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteUserProfilesGuardiansRequest {
@@ -1845,7 +1910,12 @@ export type DeleteUserProfilesGuardiansResponse = Empty;
 export const DeleteUserProfilesGuardiansResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteUserProfilesGuardiansError = DefaultErrors;
+export type DeleteUserProfilesGuardiansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian will no longer be accessible via the API. This method returns the following error codes: * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to manage guardians for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API). * `NOT_FOUND` if the requesting user is permitted to modify guardians for the requested `student_id`, but no `Guardian` record exists for that student with the provided `guardian_id`. */
 export const deleteUserProfilesGuardians: API.OperationMethod<
@@ -1856,7 +1926,7 @@ export const deleteUserProfilesGuardians: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUserProfilesGuardiansRequest,
   output: DeleteUserProfilesGuardiansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUserProfilesGuardiansRequest {
@@ -1887,7 +1957,10 @@ export type ListUserProfilesGuardiansResponse = ListGuardiansResponse;
 export const ListUserProfilesGuardiansResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGuardiansResponse;
 
-export type ListUserProfilesGuardiansError = DefaultErrors;
+export type ListUserProfilesGuardiansError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of guardians that the requesting user is permitted to view, restricted to those that match the request. To list guardians for any student that the requesting user may view guardians for, use the literal character `-` for the student ID. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, if the `invited_email_address` filter is set by a user who is not a domain administrator, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student. */
 export const listUserProfilesGuardians: API.PaginatedOperationMethod<
@@ -1898,7 +1971,7 @@ export const listUserProfilesGuardians: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUserProfilesGuardiansRequest,
   output: ListUserProfilesGuardiansResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1922,7 +1995,12 @@ export type CreateRegistrationsResponse = Registration;
 export const CreateRegistrationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Registration;
 
-export type CreateRegistrationsError = DefaultErrors;
+export type CreateRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed` to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure that it exists and that Classroom has permission to publish to it. This method may return the following error codes: * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from the requested field; or * the current user has not granted access to the current Cloud project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to it. */
 export const createRegistrations: API.OperationMethod<
@@ -1933,7 +2011,7 @@ export const createRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRegistrationsRequest,
   output: CreateRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRegistrationsRequest {
@@ -1952,7 +2030,12 @@ export const DeleteRegistrationsRequest =
 export type DeleteRegistrationsResponse = Empty;
 export const DeleteRegistrationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteRegistrationsError = DefaultErrors;
+export type DeleteRegistrationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a `Registration`, causing Classroom to stop sending notifications for that `Registration`. */
 export const deleteRegistrations: API.OperationMethod<
@@ -1963,7 +2046,7 @@ export const deleteRegistrations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRegistrationsRequest,
   output: DeleteRegistrationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCoursesRequest {
@@ -1981,7 +2064,12 @@ export const CreateCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateCoursesResponse = Course;
 export const CreateCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
 
-export type CreateCoursesError = DefaultErrors;
+export type CreateCoursesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a course. The user specified in `ownerId` is the owner of the created course and added as a teacher. A non-admin requesting user can only create a course with themselves as the owner. Domain admins can create courses owned by any user within their domain. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's account is disabled or for the following request errors: * UserCannotOwnCourse * UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl * `ALREADY_EXISTS` if an alias was specified in the `id` and already exists. */
 export const createCourses: API.OperationMethod<
@@ -1992,7 +2080,7 @@ export const createCourses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesRequest,
   output: CreateCoursesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesRequest {
@@ -2010,7 +2098,7 @@ export const GetCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCoursesResponse = Course;
 export const GetCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
 
-export type GetCoursesError = DefaultErrors;
+export type GetCoursesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. */
 export const getCourses: API.OperationMethod<
@@ -2021,7 +2109,7 @@ export const getCourses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesRequest,
   output: GetCoursesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateCoursesRequest {
@@ -2042,7 +2130,12 @@ export const UpdateCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateCoursesResponse = Course;
 export const UpdateCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
 
-export type UpdateCoursesError = DefaultErrors;
+export type UpdateCoursesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl */
 export const updateCourses: API.OperationMethod<
@@ -2053,7 +2146,7 @@ export const updateCourses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCoursesRequest,
   output: UpdateCoursesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCoursesRequest {
@@ -2071,7 +2164,12 @@ export const DeleteCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteCoursesResponse = Empty;
 export const DeleteCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesError = DefaultErrors;
+export type DeleteCoursesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCourses: API.OperationMethod<
@@ -2082,7 +2180,7 @@ export const deleteCourses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesRequest,
   output: DeleteCoursesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGradingPeriodSettingsCoursesRequest {
@@ -2105,7 +2203,10 @@ export type GetGradingPeriodSettingsCoursesResponse = GradingPeriodSettings;
 export const GetGradingPeriodSettingsCoursesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GradingPeriodSettings;
 
-export type GetGradingPeriodSettingsCoursesError = DefaultErrors;
+export type GetGradingPeriodSettingsCoursesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the grading period settings in a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't permitted to access the grading period settings in the requested course or for access errors. * `NOT_FOUND` if the requested course does not exist. */
 export const getGradingPeriodSettingsCourses: API.OperationMethod<
@@ -2116,7 +2217,7 @@ export const getGradingPeriodSettingsCourses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGradingPeriodSettingsCoursesRequest,
   output: GetGradingPeriodSettingsCoursesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchCoursesRequest {
@@ -2140,7 +2241,12 @@ export const PatchCoursesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchCoursesResponse = Course;
 export const PatchCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Course;
 
-export type PatchCoursesError = DefaultErrors;
+export type PatchCoursesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates one or more fields in a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * InactiveCourseOwner * IneligibleOwner * CourseTitleCannotContainUrl */
 export const patchCourses: API.OperationMethod<
@@ -2151,7 +2257,7 @@ export const patchCourses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesRequest,
   output: PatchCoursesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesRequest {
@@ -2191,7 +2297,7 @@ export type ListCoursesResponse_Op = ListCoursesResponse;
 export const ListCoursesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCoursesResponse;
 
-export type ListCoursesError = DefaultErrors;
+export type ListCoursesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of courses that the requesting user is permitted to view, restricted to those that match the request. Returned courses are ordered by creation time, with the most recently created coming first. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the query argument is malformed. * `NOT_FOUND` if any users specified in the query arguments do not exist. */
 export const listCourses: API.PaginatedOperationMethod<
@@ -2202,7 +2308,7 @@ export const listCourses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesRequest,
   output: ListCoursesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2236,7 +2342,12 @@ export type UpdateGradingPeriodSettingsCoursesResponse = GradingPeriodSettings;
 export const UpdateGradingPeriodSettingsCoursesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GradingPeriodSettings;
 
-export type UpdateGradingPeriodSettingsCoursesError = DefaultErrors;
+export type UpdateGradingPeriodSettingsCoursesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates grading period settings of a course. Individual grading periods can be added, removed, or modified using this method. The requesting user and course owner must be eligible to modify Grading Periods. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements). This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the grading period settings in a course or for access errors: * UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const updateGradingPeriodSettingsCourses: API.OperationMethod<
@@ -2247,7 +2358,7 @@ export const updateGradingPeriodSettingsCourses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateGradingPeriodSettingsCoursesRequest,
   output: UpdateGradingPeriodSettingsCoursesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesStudentsRequest {
@@ -2273,7 +2384,7 @@ export type ListCoursesStudentsResponse = ListStudentsResponse;
 export const ListCoursesStudentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStudentsResponse;
 
-export type ListCoursesStudentsError = DefaultErrors;
+export type ListCoursesStudentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of students of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors. */
 export const listCoursesStudents: API.PaginatedOperationMethod<
@@ -2284,7 +2395,7 @@ export const listCoursesStudents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesStudentsRequest,
   output: ListCoursesStudentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2313,7 +2424,12 @@ export const DeleteCoursesStudentsRequest =
 export type DeleteCoursesStudentsResponse = Empty;
 export const DeleteCoursesStudentsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesStudentsError = DefaultErrors;
+export type DeleteCoursesStudentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a student of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist. */
 export const deleteCoursesStudents: API.OperationMethod<
@@ -2324,7 +2440,7 @@ export const deleteCoursesStudents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesStudentsRequest,
   output: DeleteCoursesStudentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCoursesStudentsRequest {
@@ -2356,7 +2472,12 @@ export type CreateCoursesStudentsResponse = Student;
 export const CreateCoursesStudentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Student;
 
-export type CreateCoursesStudentsError = DefaultErrors;
+export type CreateCoursesStudentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a user as a student of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as students to courses within their domain. Students are permitted to add themselves to a course using an enrollment code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a student or teacher in the course. */
 export const createCoursesStudents: API.OperationMethod<
@@ -2367,7 +2488,7 @@ export const createCoursesStudents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesStudentsRequest,
   output: CreateCoursesStudentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesStudentsRequest {
@@ -2389,7 +2510,7 @@ export const GetCoursesStudentsRequest =
 export type GetCoursesStudentsResponse = Student;
 export const GetCoursesStudentsResponse = /*@__PURE__*/ /*#__PURE__*/ Student;
 
-export type GetCoursesStudentsError = DefaultErrors;
+export type GetCoursesStudentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a student of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist. */
 export const getCoursesStudents: API.OperationMethod<
@@ -2400,7 +2521,7 @@ export const getCoursesStudents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesStudentsRequest,
   output: GetCoursesStudentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCoursesTopicsRequest {
@@ -2426,7 +2547,7 @@ export type ListCoursesTopicsResponse = ListTopicResponse;
 export const ListCoursesTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTopicResponse;
 
-export type ListCoursesTopicsError = DefaultErrors;
+export type ListCoursesTopicsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the list of topics that the requester is permitted to view. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const listCoursesTopics: API.PaginatedOperationMethod<
@@ -2437,7 +2558,7 @@ export const listCoursesTopics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesTopicsRequest,
   output: ListCoursesTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2473,7 +2594,12 @@ export const PatchCoursesTopicsRequest =
 export type PatchCoursesTopicsResponse = Topic;
 export const PatchCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type PatchCoursesTopicsError = DefaultErrors;
+export type PatchCoursesTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates one or more fields of a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if there exists a topic in the course with the same name. * `NOT_FOUND` if the requested course or topic does not exist */
 export const patchCoursesTopics: API.OperationMethod<
@@ -2484,7 +2610,7 @@ export const patchCoursesTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesTopicsRequest,
   output: PatchCoursesTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCoursesTopicsRequest {
@@ -2506,7 +2632,12 @@ export const DeleteCoursesTopicsRequest =
 export type DeleteCoursesTopicsResponse = Empty;
 export const DeleteCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesTopicsError = DefaultErrors;
+export type DeleteCoursesTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access errors. * `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no course or topic exists with the requested ID. */
 export const deleteCoursesTopics: API.OperationMethod<
@@ -2517,7 +2648,7 @@ export const deleteCoursesTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesTopicsRequest,
   output: DeleteCoursesTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCoursesTopicsRequest {
@@ -2543,7 +2674,12 @@ export const CreateCoursesTopicsRequest =
 export type CreateCoursesTopicsResponse = Topic;
 export const CreateCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type CreateCoursesTopicsError = DefaultErrors;
+export type CreateCoursesTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a topic in the course with the same name. * `FAILED_PRECONDITION` for the following request error: * CourseTopicLimitReached * `NOT_FOUND` if the requested course does not exist. */
 export const createCoursesTopics: API.OperationMethod<
@@ -2554,7 +2690,7 @@ export const createCoursesTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesTopicsRequest,
   output: CreateCoursesTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesTopicsRequest {
@@ -2576,7 +2712,7 @@ export const GetCoursesTopicsRequest =
 export type GetCoursesTopicsResponse = Topic;
 export const GetCoursesTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type GetCoursesTopicsError = DefaultErrors;
+export type GetCoursesTopicsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or topic, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or topic does not exist. */
 export const getCoursesTopics: API.OperationMethod<
@@ -2587,7 +2723,7 @@ export const getCoursesTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesTopicsRequest,
   output: GetCoursesTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCoursesCourseWorkRequest {
@@ -2626,7 +2762,7 @@ export type ListCoursesCourseWorkResponse = ListCourseWorkResponse;
 export const ListCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCourseWorkResponse;
 
-export type ListCoursesCourseWorkError = DefaultErrors;
+export type ListCoursesCourseWorkError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of course work that the requester is permitted to view. Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const listCoursesCourseWork: API.PaginatedOperationMethod<
@@ -2637,7 +2773,7 @@ export const listCoursesCourseWork: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkRequest,
   output: ListCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2674,7 +2810,12 @@ export type PatchCoursesCourseWorkResponse = CourseWork;
 export const PatchCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseWork;
 
-export type PatchCoursesCourseWorkError = DefaultErrors;
+export type PatchCoursesCourseWorkError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the user is not permitted to make the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if the requested course or course work does not exist. */
 export const patchCoursesCourseWork: API.OperationMethod<
@@ -2685,7 +2826,7 @@ export const patchCoursesCourseWork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesCourseWorkRequest,
   output: PatchCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCoursesCourseWorkRequest {
@@ -2708,7 +2849,12 @@ export type DeleteCoursesCourseWorkResponse = Empty;
 export const DeleteCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesCourseWorkError = DefaultErrors;
+export type DeleteCoursesCourseWorkError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a course work. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCoursesCourseWork: API.OperationMethod<
@@ -2719,7 +2865,7 @@ export const deleteCoursesCourseWork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesCourseWorkRequest,
   output: DeleteCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAddOnContextCoursesCourseWorkRequest {
@@ -2756,7 +2902,10 @@ export type GetAddOnContextCoursesCourseWorkResponse = AddOnContext;
 export const GetAddOnContextCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnContext;
 
-export type GetAddOnContextCoursesCourseWorkError = DefaultErrors;
+export type GetAddOnContextCoursesCourseWorkError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesCourseWork: API.OperationMethod<
@@ -2767,7 +2916,7 @@ export const getAddOnContextCoursesCourseWork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAddOnContextCoursesCourseWorkRequest,
   output: GetAddOnContextCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateRubricCoursesCourseWorkRequest {
@@ -2803,7 +2952,12 @@ export type UpdateRubricCoursesCourseWorkResponse = Rubric;
 export const UpdateRubricCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ Rubric;
 
-export type UpdateRubricCoursesCourseWorkError = DefaultErrors;
+export type UpdateRubricCoursesCourseWorkError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding course work, if the user isn't permitted to make the requested modification to the rubric, or for access errors. This error code is also returned if grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL` if grading has already started on the rubric. */
 export const updateRubricCoursesCourseWork: API.OperationMethod<
@@ -2814,7 +2968,7 @@ export const updateRubricCoursesCourseWork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRubricCoursesCourseWorkRequest,
   output: UpdateRubricCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyAssigneesCoursesCourseWorkRequest {
@@ -2844,7 +2998,12 @@ export type ModifyAssigneesCoursesCourseWorkResponse = CourseWork;
 export const ModifyAssigneesCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseWork;
 
-export type ModifyAssigneesCoursesCourseWorkError = DefaultErrors;
+export type ModifyAssigneesCoursesCourseWorkError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies assignee mode and options of a coursework. Only a teacher of the course that contains the coursework may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees */
 export const modifyAssigneesCoursesCourseWork: API.OperationMethod<
@@ -2855,7 +3014,7 @@ export const modifyAssigneesCoursesCourseWork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyAssigneesCoursesCourseWorkRequest,
   output: ModifyAssigneesCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCoursesCourseWorkRequest {
@@ -2882,7 +3041,12 @@ export type CreateCoursesCourseWorkResponse = CourseWork;
 export const CreateCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseWork;
 
-export type CreateCoursesCourseWorkError = DefaultErrors;
+export type CreateCoursesCourseWorkError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates course work. The resulting course work (and corresponding student submissions) are associated with the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to modify course work and student submissions must be made with an OAuth client ID from the associated Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create course work in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible */
 export const createCoursesCourseWork: API.OperationMethod<
@@ -2893,7 +3057,7 @@ export const createCoursesCourseWork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesCourseWorkRequest,
   output: CreateCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesCourseWorkRequest {
@@ -2916,7 +3080,7 @@ export type GetCoursesCourseWorkResponse = CourseWork;
 export const GetCoursesCourseWorkResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseWork;
 
-export type GetCoursesCourseWorkError = DefaultErrors;
+export type GetCoursesCourseWorkError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns course work. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. */
 export const getCoursesCourseWork: API.OperationMethod<
@@ -2927,7 +3091,7 @@ export const getCoursesCourseWork: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesCourseWorkRequest,
   output: GetCoursesCourseWorkResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ReclaimCoursesCourseWorkStudentSubmissionsRequest {
@@ -2960,7 +3124,12 @@ export type ReclaimCoursesCourseWorkStudentSubmissionsResponse = Empty;
 export const ReclaimCoursesCourseWorkStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ReclaimCoursesCourseWorkStudentSubmissionsError = DefaultErrors;
+export type ReclaimCoursesCourseWorkStudentSubmissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Reclaims a student submission on behalf of the student that owns it. Reclaiming a student submission transfers ownership of attached Drive files to the student and updates the submission state. Only the student that owns the requested student submission may call this method, and only for a student submission that has been turned in. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, unsubmit the requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const reclaimCoursesCourseWorkStudentSubmissions: API.OperationMethod<
@@ -2971,7 +3140,7 @@ export const reclaimCoursesCourseWorkStudentSubmissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReclaimCoursesCourseWorkStudentSubmissionsRequest,
   output: ReclaimCoursesCourseWorkStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReturnCoursesCourseWorkStudentSubmissionsRequest {
@@ -3004,7 +3173,12 @@ export type ReturnCoursesCourseWorkStudentSubmissionsResponse = Empty;
 export const ReturnCoursesCourseWorkStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ReturnCoursesCourseWorkStudentSubmissionsError = DefaultErrors;
+export type ReturnCoursesCourseWorkStudentSubmissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a student submission. Returning a student submission transfers ownership of attached Drive files to the student and may also update the submission state. Unlike the Classroom application, returning a student submission does not set assignedGrade to the draftGrade value. Only a teacher of the course that contains the requested student submission may call this method. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, return the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const returnCoursesCourseWorkStudentSubmissions: API.OperationMethod<
@@ -3015,7 +3189,7 @@ export const returnCoursesCourseWorkStudentSubmissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReturnCoursesCourseWorkStudentSubmissionsRequest,
   output: ReturnCoursesCourseWorkStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesCourseWorkStudentSubmissionsRequest {
@@ -3044,7 +3218,10 @@ export type GetCoursesCourseWorkStudentSubmissionsResponse = StudentSubmission;
 export const GetCoursesCourseWorkStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudentSubmission;
 
-export type GetCoursesCourseWorkStudentSubmissionsError = DefaultErrors;
+export type GetCoursesCourseWorkStudentSubmissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course work, or student submission or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const getCoursesCourseWorkStudentSubmissions: API.OperationMethod<
@@ -3055,7 +3232,7 @@ export const getCoursesCourseWorkStudentSubmissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesCourseWorkStudentSubmissionsRequest,
   output: GetCoursesCourseWorkStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCoursesCourseWorkStudentSubmissionsRequest {
@@ -3110,7 +3287,10 @@ export type ListCoursesCourseWorkStudentSubmissionsResponse =
 export const ListCoursesCourseWorkStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStudentSubmissionsResponse;
 
-export type ListCoursesCourseWorkStudentSubmissionsError = DefaultErrors;
+export type ListCoursesCourseWorkStudentSubmissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. A hyphen (`-`) may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const listCoursesCourseWorkStudentSubmissions: API.PaginatedOperationMethod<
@@ -3121,7 +3301,7 @@ export const listCoursesCourseWorkStudentSubmissions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkStudentSubmissionsRequest,
   output: ListCoursesCourseWorkStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3158,7 +3338,12 @@ export type TurnInCoursesCourseWorkStudentSubmissionsResponse = Empty;
 export const TurnInCoursesCourseWorkStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type TurnInCoursesCourseWorkStudentSubmissionsError = DefaultErrors;
+export type TurnInCoursesCourseWorkStudentSubmissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Turns in a student submission. Turning in a student submission transfers ownership of attached Drive files to the teacher and may also update the submission state. This may only be called by the student that owns the specified student submission. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const turnInCoursesCourseWorkStudentSubmissions: API.OperationMethod<
@@ -3169,7 +3354,7 @@ export const turnInCoursesCourseWorkStudentSubmissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TurnInCoursesCourseWorkStudentSubmissionsRequest,
   output: TurnInCoursesCourseWorkStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCoursesCourseWorkStudentSubmissionsRequest {
@@ -3206,7 +3391,12 @@ export type PatchCoursesCourseWorkStudentSubmissionsResponse =
 export const PatchCoursesCourseWorkStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudentSubmission;
 
-export type PatchCoursesCourseWorkStudentSubmissionsError = DefaultErrors;
+export type PatchCoursesCourseWorkStudentSubmissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates one or more fields of a student submission. See google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the user is not permitted to make the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const patchCoursesCourseWorkStudentSubmissions: API.OperationMethod<
@@ -3217,7 +3407,7 @@ export const patchCoursesCourseWorkStudentSubmissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesCourseWorkStudentSubmissionsRequest,
   output: PatchCoursesCourseWorkStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest {
@@ -3252,7 +3442,11 @@ export const ModifyAttachmentsCoursesCourseWorkStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudentSubmission;
 
 export type ModifyAttachmentsCoursesCourseWorkStudentSubmissionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies attachments of student submission. Attachments may only be added to student submissions belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, if the user is not permitted to modify attachments on the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist. */
 export const modifyAttachmentsCoursesCourseWorkStudentSubmissions: API.OperationMethod<
@@ -3263,7 +3457,7 @@ export const modifyAttachmentsCoursesCourseWorkStudentSubmissions: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyAttachmentsCoursesCourseWorkStudentSubmissionsRequest,
   output: ModifyAttachmentsCoursesCourseWorkStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesCourseWorkAddOnAttachmentsRequest {
@@ -3299,7 +3493,10 @@ export type ListCoursesCourseWorkAddOnAttachmentsResponse =
 export const ListCoursesCourseWorkAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAddOnAttachmentsResponse;
 
-export type ListCoursesCourseWorkAddOnAttachmentsError = DefaultErrors;
+export type ListCoursesCourseWorkAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesCourseWorkAddOnAttachments: API.PaginatedOperationMethod<
@@ -3310,7 +3507,7 @@ export const listCoursesCourseWorkAddOnAttachments: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkAddOnAttachmentsRequest,
   output: ListCoursesCourseWorkAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3353,7 +3550,12 @@ export type PatchCoursesCourseWorkAddOnAttachmentsResponse = AddOnAttachment;
 export const PatchCoursesCourseWorkAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type PatchCoursesCourseWorkAddOnAttachmentsError = DefaultErrors;
+export type PatchCoursesCourseWorkAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesCourseWorkAddOnAttachments: API.OperationMethod<
@@ -3364,7 +3566,7 @@ export const patchCoursesCourseWorkAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesCourseWorkAddOnAttachmentsRequest,
   output: PatchCoursesCourseWorkAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCoursesCourseWorkAddOnAttachmentsRequest {
@@ -3396,7 +3598,12 @@ export type DeleteCoursesCourseWorkAddOnAttachmentsResponse = Empty;
 export const DeleteCoursesCourseWorkAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesCourseWorkAddOnAttachmentsError = DefaultErrors;
+export type DeleteCoursesCourseWorkAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesCourseWorkAddOnAttachments: API.OperationMethod<
@@ -3407,7 +3614,7 @@ export const deleteCoursesCourseWorkAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesCourseWorkAddOnAttachmentsRequest,
   output: DeleteCoursesCourseWorkAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesCourseWorkAddOnAttachmentsRequest {
@@ -3439,7 +3646,10 @@ export type GetCoursesCourseWorkAddOnAttachmentsResponse = AddOnAttachment;
 export const GetCoursesCourseWorkAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type GetCoursesCourseWorkAddOnAttachmentsError = DefaultErrors;
+export type GetCoursesCourseWorkAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesCourseWorkAddOnAttachments: API.OperationMethod<
@@ -3450,7 +3660,7 @@ export const getCoursesCourseWorkAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesCourseWorkAddOnAttachmentsRequest,
   output: GetCoursesCourseWorkAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCoursesCourseWorkAddOnAttachmentsRequest {
@@ -3486,7 +3696,12 @@ export type CreateCoursesCourseWorkAddOnAttachmentsResponse = AddOnAttachment;
 export const CreateCoursesCourseWorkAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type CreateCoursesCourseWorkAddOnAttachmentsError = DefaultErrors;
+export type CreateCoursesCourseWorkAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesCourseWorkAddOnAttachments: API.OperationMethod<
@@ -3497,7 +3712,7 @@ export const createCoursesCourseWorkAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesCourseWorkAddOnAttachmentsRequest,
   output: CreateCoursesCourseWorkAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
@@ -3541,7 +3756,11 @@ export const PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachmentStudentSubmission;
 
 export type PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.OperationMethod<
@@ -3552,7 +3771,7 @@ export const patchCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest,
   output: PatchCoursesCourseWorkAddOnAttachmentsStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest {
@@ -3589,7 +3808,9 @@ export const GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachmentStudentSubmission;
 
 export type GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.OperationMethod<
@@ -3600,7 +3821,7 @@ export const getCoursesCourseWorkAddOnAttachmentsStudentSubmissions: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsRequest,
   output: GetCoursesCourseWorkAddOnAttachmentsStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCoursesCourseWorkRubricsRequest {
@@ -3630,7 +3851,12 @@ export type CreateCoursesCourseWorkRubricsResponse = Rubric;
 export const CreateCoursesCourseWorkRubricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Rubric;
 
-export type CreateCoursesCourseWorkRubricsError = DefaultErrors;
+export type CreateCoursesCourseWorkRubricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). For further details, see [Rubrics structure and known limitations](/classroom/rubrics/limitations). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't permitted to create rubrics for course work in the requested course. * `INTERNAL` if the request has insufficient OAuth scopes. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course or course work don't exist or the user doesn't have access to the course or course work. * `FAILED_PRECONDITION` for the following request error: * `AttachmentNotVisible` */
 export const createCoursesCourseWorkRubrics: API.OperationMethod<
@@ -3641,7 +3867,7 @@ export const createCoursesCourseWorkRubrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesCourseWorkRubricsRequest,
   output: CreateCoursesCourseWorkRubricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesCourseWorkRubricsRequest {
@@ -3670,7 +3896,10 @@ export type GetCoursesCourseWorkRubricsResponse = Rubric;
 export const GetCoursesCourseWorkRubricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Rubric;
 
-export type GetCoursesCourseWorkRubricsError = DefaultErrors;
+export type GetCoursesCourseWorkRubricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a rubric. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. */
 export const getCoursesCourseWorkRubrics: API.OperationMethod<
@@ -3681,7 +3910,7 @@ export const getCoursesCourseWorkRubrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesCourseWorkRubricsRequest,
   output: GetCoursesCourseWorkRubricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCoursesCourseWorkRubricsRequest {
@@ -3710,7 +3939,12 @@ export type DeleteCoursesCourseWorkRubricsResponse = Empty;
 export const DeleteCoursesCourseWorkRubricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesCourseWorkRubricsError = DefaultErrors;
+export type DeleteCoursesCourseWorkRubricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or the user does not have access to the course, course work, or rubric. * `INVALID_ARGUMENT` if grading has already started on the rubric. */
 export const deleteCoursesCourseWorkRubrics: API.OperationMethod<
@@ -3721,7 +3955,7 @@ export const deleteCoursesCourseWorkRubrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesCourseWorkRubricsRequest,
   output: DeleteCoursesCourseWorkRubricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCoursesCourseWorkRubricsRequest {
@@ -3757,7 +3991,12 @@ export type PatchCoursesCourseWorkRubricsResponse = Rubric;
 export const PatchCoursesCourseWorkRubricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Rubric;
 
-export type PatchCoursesCourseWorkRubricsError = DefaultErrors;
+export type PatchCoursesCourseWorkRubricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding course work, if the user isn't permitted to make the requested modification to the rubric, or for access errors. This error code is also returned if grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL` if grading has already started on the rubric. */
 export const patchCoursesCourseWorkRubrics: API.OperationMethod<
@@ -3768,7 +4007,7 @@ export const patchCoursesCourseWorkRubrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesCourseWorkRubricsRequest,
   output: PatchCoursesCourseWorkRubricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesCourseWorkRubricsRequest {
@@ -3800,7 +4039,10 @@ export type ListCoursesCourseWorkRubricsResponse = ListRubricsResponse;
 export const ListCoursesCourseWorkRubricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListRubricsResponse;
 
-export type ListCoursesCourseWorkRubricsError = DefaultErrors;
+export type ListCoursesCourseWorkRubricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of rubrics that the requester is permitted to view. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work doesn't exist or if the user doesn't have access to the corresponding course work. */
 export const listCoursesCourseWorkRubrics: API.PaginatedOperationMethod<
@@ -3811,7 +4053,7 @@ export const listCoursesCourseWorkRubrics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkRubricsRequest,
   output: ListCoursesCourseWorkRubricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3852,7 +4094,10 @@ export type GetAddOnContextCoursesPostsResponse = AddOnContext;
 export const GetAddOnContextCoursesPostsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnContext;
 
-export type GetAddOnContextCoursesPostsError = DefaultErrors;
+export type GetAddOnContextCoursesPostsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesPosts: API.OperationMethod<
@@ -3863,7 +4108,7 @@ export const getAddOnContextCoursesPosts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAddOnContextCoursesPostsRequest,
   output: GetAddOnContextCoursesPostsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCoursesPostsAddOnAttachmentsRequest {
@@ -3895,7 +4140,12 @@ export type DeleteCoursesPostsAddOnAttachmentsResponse = Empty;
 export const DeleteCoursesPostsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesPostsAddOnAttachmentsError = DefaultErrors;
+export type DeleteCoursesPostsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesPostsAddOnAttachments: API.OperationMethod<
@@ -3906,7 +4156,7 @@ export const deleteCoursesPostsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesPostsAddOnAttachmentsRequest,
   output: DeleteCoursesPostsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesPostsAddOnAttachmentsRequest {
@@ -3938,7 +4188,10 @@ export type GetCoursesPostsAddOnAttachmentsResponse = AddOnAttachment;
 export const GetCoursesPostsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type GetCoursesPostsAddOnAttachmentsError = DefaultErrors;
+export type GetCoursesPostsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesPostsAddOnAttachments: API.OperationMethod<
@@ -3949,7 +4202,7 @@ export const getCoursesPostsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesPostsAddOnAttachmentsRequest,
   output: GetCoursesPostsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCoursesPostsAddOnAttachmentsRequest {
@@ -3985,7 +4238,12 @@ export type CreateCoursesPostsAddOnAttachmentsResponse = AddOnAttachment;
 export const CreateCoursesPostsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type CreateCoursesPostsAddOnAttachmentsError = DefaultErrors;
+export type CreateCoursesPostsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesPostsAddOnAttachments: API.OperationMethod<
@@ -3996,7 +4254,7 @@ export const createCoursesPostsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesPostsAddOnAttachmentsRequest,
   output: CreateCoursesPostsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesPostsAddOnAttachmentsRequest {
@@ -4032,7 +4290,10 @@ export type ListCoursesPostsAddOnAttachmentsResponse =
 export const ListCoursesPostsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAddOnAttachmentsResponse;
 
-export type ListCoursesPostsAddOnAttachmentsError = DefaultErrors;
+export type ListCoursesPostsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesPostsAddOnAttachments: API.PaginatedOperationMethod<
@@ -4043,7 +4304,7 @@ export const listCoursesPostsAddOnAttachments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesPostsAddOnAttachmentsRequest,
   output: ListCoursesPostsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4086,7 +4347,12 @@ export type PatchCoursesPostsAddOnAttachmentsResponse = AddOnAttachment;
 export const PatchCoursesPostsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type PatchCoursesPostsAddOnAttachmentsError = DefaultErrors;
+export type PatchCoursesPostsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesPostsAddOnAttachments: API.OperationMethod<
@@ -4097,7 +4363,7 @@ export const patchCoursesPostsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesPostsAddOnAttachmentsRequest,
   output: PatchCoursesPostsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
@@ -4141,7 +4407,11 @@ export const PatchCoursesPostsAddOnAttachmentsStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachmentStudentSubmission;
 
 export type PatchCoursesPostsAddOnAttachmentsStudentSubmissionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationMethod<
@@ -4152,7 +4422,7 @@ export const patchCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesPostsAddOnAttachmentsStudentSubmissionsRequest,
   output: PatchCoursesPostsAddOnAttachmentsStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest {
@@ -4189,7 +4459,9 @@ export const GetCoursesPostsAddOnAttachmentsStudentSubmissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachmentStudentSubmission;
 
 export type GetCoursesPostsAddOnAttachmentsStudentSubmissionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationMethod<
@@ -4200,7 +4472,7 @@ export const getCoursesPostsAddOnAttachmentsStudentSubmissions: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesPostsAddOnAttachmentsStudentSubmissionsRequest,
   output: GetCoursesPostsAddOnAttachmentsStudentSubmissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchCoursesCourseWorkMaterialsRequest {
@@ -4233,7 +4505,12 @@ export type PatchCoursesCourseWorkMaterialsResponse = CourseWorkMaterial;
 export const PatchCoursesCourseWorkMaterialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseWorkMaterial;
 
-export type PatchCoursesCourseWorkMaterialsError = DefaultErrors;
+export type PatchCoursesCourseWorkMaterialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates one or more fields of a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work material has already been deleted. * `NOT_FOUND` if the requested course or course work material does not exist */
 export const patchCoursesCourseWorkMaterials: API.OperationMethod<
@@ -4244,7 +4521,7 @@ export const patchCoursesCourseWorkMaterials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesCourseWorkMaterialsRequest,
   output: PatchCoursesCourseWorkMaterialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesCourseWorkMaterialsRequest {
@@ -4297,7 +4574,10 @@ export type ListCoursesCourseWorkMaterialsResponse =
 export const ListCoursesCourseWorkMaterialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCourseWorkMaterialResponse;
 
-export type ListCoursesCourseWorkMaterialsError = DefaultErrors;
+export type ListCoursesCourseWorkMaterialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of course work material that the requester is permitted to view. Course students may only view `PUBLISHED` course work material. Course teachers and domain administrators may view all course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const listCoursesCourseWorkMaterials: API.PaginatedOperationMethod<
@@ -4308,7 +4588,7 @@ export const listCoursesCourseWorkMaterials: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkMaterialsRequest,
   output: ListCoursesCourseWorkMaterialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4339,7 +4619,12 @@ export type CreateCoursesCourseWorkMaterialsResponse = CourseWorkMaterial;
 export const CreateCoursesCourseWorkMaterialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseWorkMaterial;
 
-export type CreateCoursesCourseWorkMaterialsError = DefaultErrors;
+export type CreateCoursesCourseWorkMaterialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create course work material in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed or if more than 20 * materials are provided. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible */
 export const createCoursesCourseWorkMaterials: API.OperationMethod<
@@ -4350,7 +4635,7 @@ export const createCoursesCourseWorkMaterials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesCourseWorkMaterialsRequest,
   output: CreateCoursesCourseWorkMaterialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesCourseWorkMaterialsRequest {
@@ -4376,7 +4661,10 @@ export type GetCoursesCourseWorkMaterialsResponse = CourseWorkMaterial;
 export const GetCoursesCourseWorkMaterialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseWorkMaterial;
 
-export type GetCoursesCourseWorkMaterialsError = DefaultErrors;
+export type GetCoursesCourseWorkMaterialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work material, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work material does not exist. */
 export const getCoursesCourseWorkMaterials: API.OperationMethod<
@@ -4387,7 +4675,7 @@ export const getCoursesCourseWorkMaterials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesCourseWorkMaterialsRequest,
   output: GetCoursesCourseWorkMaterialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCoursesCourseWorkMaterialsRequest {
@@ -4413,7 +4701,12 @@ export type DeleteCoursesCourseWorkMaterialsResponse = Empty;
 export const DeleteCoursesCourseWorkMaterialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesCourseWorkMaterialsError = DefaultErrors;
+export type DeleteCoursesCourseWorkMaterialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a course work material. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work material item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work material, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work material has already been deleted. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCoursesCourseWorkMaterials: API.OperationMethod<
@@ -4424,7 +4717,7 @@ export const deleteCoursesCourseWorkMaterials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesCourseWorkMaterialsRequest,
   output: DeleteCoursesCourseWorkMaterialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAddOnContextCoursesCourseWorkMaterialsRequest {
@@ -4461,7 +4754,10 @@ export type GetAddOnContextCoursesCourseWorkMaterialsResponse = AddOnContext;
 export const GetAddOnContextCoursesCourseWorkMaterialsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnContext;
 
-export type GetAddOnContextCoursesCourseWorkMaterialsError = DefaultErrors;
+export type GetAddOnContextCoursesCourseWorkMaterialsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesCourseWorkMaterials: API.OperationMethod<
@@ -4472,7 +4768,7 @@ export const getAddOnContextCoursesCourseWorkMaterials: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAddOnContextCoursesCourseWorkMaterialsRequest,
   output: GetAddOnContextCoursesCourseWorkMaterialsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
@@ -4505,7 +4801,11 @@ export const DeleteCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteCoursesCourseWorkMaterialsAddOnAttachmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
@@ -4516,7 +4816,7 @@ export const deleteCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
   output: DeleteCoursesCourseWorkMaterialsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
@@ -4549,7 +4849,10 @@ export type GetCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
 export const GetCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type GetCoursesCourseWorkMaterialsAddOnAttachmentsError = DefaultErrors;
+export type GetCoursesCourseWorkMaterialsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
@@ -4560,7 +4863,7 @@ export const getCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
   output: GetCoursesCourseWorkMaterialsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
@@ -4598,7 +4901,11 @@ export const CreateCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
 export type CreateCoursesCourseWorkMaterialsAddOnAttachmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
@@ -4609,7 +4916,7 @@ export const createCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
   output: CreateCoursesCourseWorkMaterialsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest {
@@ -4645,7 +4952,10 @@ export type ListCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
 export const ListCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAddOnAttachmentsResponse;
 
-export type ListCoursesCourseWorkMaterialsAddOnAttachmentsError = DefaultErrors;
+export type ListCoursesCourseWorkMaterialsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesCourseWorkMaterialsAddOnAttachments: API.PaginatedOperationMethod<
@@ -4656,7 +4966,7 @@ export const listCoursesCourseWorkMaterialsAddOnAttachments: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
   output: ListCoursesCourseWorkMaterialsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4701,7 +5011,11 @@ export const PatchCoursesCourseWorkMaterialsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
 export type PatchCoursesCourseWorkMaterialsAddOnAttachmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMethod<
@@ -4712,7 +5026,7 @@ export const patchCoursesCourseWorkMaterialsAddOnAttachments: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesCourseWorkMaterialsAddOnAttachmentsRequest,
   output: PatchCoursesCourseWorkMaterialsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCoursesAliasesRequest {
@@ -4734,7 +5048,12 @@ export const DeleteCoursesAliasesRequest =
 export type DeleteCoursesAliasesResponse = Empty;
 export const DeleteCoursesAliasesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesAliasesError = DefaultErrors;
+export type DeleteCoursesAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an alias of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors. * `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to delete a domain-scoped alias). */
 export const deleteCoursesAliases: API.OperationMethod<
@@ -4745,7 +5064,7 @@ export const deleteCoursesAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesAliasesRequest,
   output: DeleteCoursesAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesAliasesRequest {
@@ -4771,7 +5090,7 @@ export type ListCoursesAliasesResponse = ListCourseAliasesResponse;
 export const ListCoursesAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCourseAliasesResponse;
 
-export type ListCoursesAliasesError = DefaultErrors;
+export type ListCoursesAliasesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of aliases for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors. * `NOT_FOUND` if the course does not exist. */
 export const listCoursesAliases: API.PaginatedOperationMethod<
@@ -4782,7 +5101,7 @@ export const listCoursesAliases: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesAliasesRequest,
   output: ListCoursesAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4813,7 +5132,12 @@ export type CreateCoursesAliasesResponse = CourseAlias;
 export const CreateCoursesAliasesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CourseAlias;
 
-export type CreateCoursesAliasesError = DefaultErrors;
+export type CreateCoursesAliasesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an alias for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors. * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to access a domain-scoped alias). */
 export const createCoursesAliases: API.OperationMethod<
@@ -4824,7 +5148,7 @@ export const createCoursesAliases: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesAliasesRequest,
   output: CreateCoursesAliasesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesTeachersRequest {
@@ -4850,7 +5174,7 @@ export type ListCoursesTeachersResponse = ListTeachersResponse;
 export const ListCoursesTeachersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTeachersResponse;
 
-export type ListCoursesTeachersError = DefaultErrors;
+export type ListCoursesTeachersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of teachers of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors. */
 export const listCoursesTeachers: API.PaginatedOperationMethod<
@@ -4861,7 +5185,7 @@ export const listCoursesTeachers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesTeachersRequest,
   output: ListCoursesTeachersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4890,7 +5214,12 @@ export const DeleteCoursesTeachersRequest =
 export type DeleteCoursesTeachersResponse = Empty;
 export const DeleteCoursesTeachersResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesTeachersError = DefaultErrors;
+export type DeleteCoursesTeachersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified teacher from the specified course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. * `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder. * `FAILED_PRECONDITION` if the course no longer has an active owner. */
 export const deleteCoursesTeachers: API.OperationMethod<
@@ -4901,7 +5230,7 @@ export const deleteCoursesTeachers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesTeachersRequest,
   output: DeleteCoursesTeachersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCoursesTeachersRequest {
@@ -4928,7 +5257,12 @@ export type CreateCoursesTeachersResponse = Teacher;
 export const CreateCoursesTeachersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Teacher;
 
-export type CreateCoursesTeachersError = DefaultErrors;
+export type CreateCoursesTeachersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a teacher of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as teachers to courses within their domain. Non-admin users should send an Invitation instead. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a teacher or student in the course. */
 export const createCoursesTeachers: API.OperationMethod<
@@ -4939,7 +5273,7 @@ export const createCoursesTeachers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesTeachersRequest,
   output: CreateCoursesTeachersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesTeachersRequest {
@@ -4961,7 +5295,7 @@ export const GetCoursesTeachersRequest =
 export type GetCoursesTeachersResponse = Teacher;
 export const GetCoursesTeachersResponse = /*@__PURE__*/ /*#__PURE__*/ Teacher;
 
-export type GetCoursesTeachersError = DefaultErrors;
+export type GetCoursesTeachersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a teacher of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist. */
 export const getCoursesTeachers: API.OperationMethod<
@@ -4972,7 +5306,7 @@ export const getCoursesTeachers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesTeachersRequest,
   output: GetCoursesTeachersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCoursesStudentGroupsRequest {
@@ -4998,7 +5332,10 @@ export type ListCoursesStudentGroupsResponse = ListStudentGroupsResponse;
 export const ListCoursesStudentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStudentGroupsResponse;
 
-export type ListCoursesStudentGroupsError = DefaultErrors;
+export type ListCoursesStudentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of groups in a course. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. */
 export const listCoursesStudentGroups: API.PaginatedOperationMethod<
@@ -5009,7 +5346,7 @@ export const listCoursesStudentGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesStudentGroupsRequest,
   output: ListCoursesStudentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5039,7 +5376,12 @@ export type DeleteCoursesStudentGroupsResponse = Empty;
 export const DeleteCoursesStudentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesStudentGroupsError = DefaultErrors;
+export type DeleteCoursesStudentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group or for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. */
 export const deleteCoursesStudentGroups: API.OperationMethod<
@@ -5050,7 +5392,7 @@ export const deleteCoursesStudentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesStudentGroupsRequest,
   output: DeleteCoursesStudentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchCoursesStudentGroupsRequest {
@@ -5083,7 +5425,12 @@ export type PatchCoursesStudentGroupsResponse = StudentGroup;
 export const PatchCoursesStudentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudentGroup;
 
-export type PatchCoursesStudentGroupsError = DefaultErrors;
+export type PatchCoursesStudentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates one or more fields in a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested student group or for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update mask is supplied. */
 export const patchCoursesStudentGroups: API.OperationMethod<
@@ -5094,7 +5441,7 @@ export const patchCoursesStudentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesStudentGroupsRequest,
   output: PatchCoursesStudentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCoursesStudentGroupsRequest {
@@ -5121,7 +5468,12 @@ export type CreateCoursesStudentGroupsResponse = StudentGroup;
 export const CreateCoursesStudentGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudentGroup;
 
-export type CreateCoursesStudentGroupsError = DefaultErrors;
+export type CreateCoursesStudentGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a student group for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or for access errors. * `NOT_FOUND` if the course does not exist or the requesting user doesn't have access to the course. * `FAILED_PRECONDITION` if creating the student group would exceed the maximum number of student groups per course. */
 export const createCoursesStudentGroups: API.OperationMethod<
@@ -5132,7 +5484,7 @@ export const createCoursesStudentGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesStudentGroupsRequest,
   output: CreateCoursesStudentGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesStudentGroupsStudentGroupMembersRequest {
@@ -5165,7 +5517,10 @@ export type ListCoursesStudentGroupsStudentGroupMembersResponse =
 export const ListCoursesStudentGroupsStudentGroupMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStudentGroupMembersResponse;
 
-export type ListCoursesStudentGroupsStudentGroupMembersError = DefaultErrors;
+export type ListCoursesStudentGroupsStudentGroupMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of students in a group. This method returns the following error codes: * `NOT_FOUND` if the course or student group does not exist. */
 export const listCoursesStudentGroupsStudentGroupMembers: API.PaginatedOperationMethod<
@@ -5176,7 +5531,7 @@ export const listCoursesStudentGroupsStudentGroupMembers: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesStudentGroupsStudentGroupMembersRequest,
   output: ListCoursesStudentGroupsStudentGroupMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5209,7 +5564,12 @@ export type DeleteCoursesStudentGroupsStudentGroupMembersResponse = Empty;
 export const DeleteCoursesStudentGroupsStudentGroupMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesStudentGroupsStudentGroupMembersError = DefaultErrors;
+export type DeleteCoursesStudentGroupsStudentGroupMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a student group member. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group member or for access errors. * `NOT_FOUND` if the student group member does not exist or the user does not have access to the student group. */
 export const deleteCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
@@ -5220,7 +5580,7 @@ export const deleteCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesStudentGroupsStudentGroupMembersRequest,
   output: DeleteCoursesStudentGroupsStudentGroupMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCoursesStudentGroupsStudentGroupMembersRequest {
@@ -5251,7 +5611,12 @@ export type CreateCoursesStudentGroupsStudentGroupMembersResponse =
 export const CreateCoursesStudentGroupsStudentGroupMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ StudentGroupMember;
 
-export type CreateCoursesStudentGroupsStudentGroupMembersError = DefaultErrors;
+export type CreateCoursesStudentGroupsStudentGroupMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a student group member for a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or member for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. * `ALREADY_EXISTS` if the student group member already exists. * `FAILED_PRECONDITION` if attempting to add a member to a student group that has reached its member limit. */
 export const createCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
@@ -5262,7 +5627,7 @@ export const createCoursesStudentGroupsStudentGroupMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesStudentGroupsStudentGroupMembersRequest,
   output: CreateCoursesStudentGroupsStudentGroupMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesAnnouncementsRequest {
@@ -5301,7 +5666,10 @@ export type ListCoursesAnnouncementsResponse = ListAnnouncementsResponse;
 export const ListCoursesAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAnnouncementsResponse;
 
-export type ListCoursesAnnouncementsError = DefaultErrors;
+export type ListCoursesAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of announcements that the requester is permitted to view. Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may view all announcements. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. */
 export const listCoursesAnnouncements: API.PaginatedOperationMethod<
@@ -5312,7 +5680,7 @@ export const listCoursesAnnouncements: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesAnnouncementsRequest,
   output: ListCoursesAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5349,7 +5717,12 @@ export type PatchCoursesAnnouncementsResponse = Announcement;
 export const PatchCoursesAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Announcement;
 
-export type PatchCoursesAnnouncementsError = DefaultErrors;
+export type PatchCoursesAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates one or more fields of an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if the requested course or announcement does not exist */
 export const patchCoursesAnnouncements: API.OperationMethod<
@@ -5360,7 +5733,7 @@ export const patchCoursesAnnouncements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesAnnouncementsRequest,
   output: PatchCoursesAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCoursesAnnouncementsRequest {
@@ -5386,7 +5759,12 @@ export type DeleteCoursesAnnouncementsResponse = Empty;
 export const DeleteCoursesAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesAnnouncementsError = DefaultErrors;
+export type DeleteCoursesAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an announcement. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if no course exists with the requested ID. */
 export const deleteCoursesAnnouncements: API.OperationMethod<
@@ -5397,7 +5775,7 @@ export const deleteCoursesAnnouncements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesAnnouncementsRequest,
   output: DeleteCoursesAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAddOnContextCoursesAnnouncementsRequest {
@@ -5434,7 +5812,10 @@ export type GetAddOnContextCoursesAnnouncementsResponse = AddOnContext;
 export const GetAddOnContextCoursesAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnContext;
 
-export type GetAddOnContextCoursesAnnouncementsError = DefaultErrors;
+export type GetAddOnContextCoursesAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getAddOnContextCoursesAnnouncements: API.OperationMethod<
@@ -5445,7 +5826,7 @@ export const getAddOnContextCoursesAnnouncements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAddOnContextCoursesAnnouncementsRequest,
   output: GetAddOnContextCoursesAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCoursesAnnouncementsRequest {
@@ -5472,7 +5853,12 @@ export type CreateCoursesAnnouncementsResponse = Announcement;
 export const CreateCoursesAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Announcement;
 
-export type CreateCoursesAnnouncementsError = DefaultErrors;
+export type CreateCoursesAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create announcements in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible */
 export const createCoursesAnnouncements: API.OperationMethod<
@@ -5483,7 +5869,7 @@ export const createCoursesAnnouncements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesAnnouncementsRequest,
   output: CreateCoursesAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesAnnouncementsRequest {
@@ -5506,7 +5892,7 @@ export type GetCoursesAnnouncementsResponse = Announcement;
 export const GetCoursesAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Announcement;
 
-export type GetCoursesAnnouncementsError = DefaultErrors;
+export type GetCoursesAnnouncementsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or announcement, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or announcement does not exist. */
 export const getCoursesAnnouncements: API.OperationMethod<
@@ -5517,7 +5903,7 @@ export const getCoursesAnnouncements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesAnnouncementsRequest,
   output: GetCoursesAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ModifyAssigneesCoursesAnnouncementsRequest {
@@ -5549,7 +5935,12 @@ export type ModifyAssigneesCoursesAnnouncementsResponse = Announcement;
 export const ModifyAssigneesCoursesAnnouncementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Announcement;
 
-export type ModifyAssigneesCoursesAnnouncementsError = DefaultErrors;
+export type ModifyAssigneesCoursesAnnouncementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies assignee mode and options of an announcement. Only a teacher of the course that contains the announcement may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees */
 export const modifyAssigneesCoursesAnnouncements: API.OperationMethod<
@@ -5560,7 +5951,7 @@ export const modifyAssigneesCoursesAnnouncements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyAssigneesCoursesAnnouncementsRequest,
   output: ModifyAssigneesCoursesAnnouncementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCoursesAnnouncementsAddOnAttachmentsRequest {
@@ -5596,7 +5987,10 @@ export type ListCoursesAnnouncementsAddOnAttachmentsResponse =
 export const ListCoursesAnnouncementsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAddOnAttachmentsResponse;
 
-export type ListCoursesAnnouncementsAddOnAttachmentsError = DefaultErrors;
+export type ListCoursesAnnouncementsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const listCoursesAnnouncementsAddOnAttachments: API.PaginatedOperationMethod<
@@ -5607,7 +6001,7 @@ export const listCoursesAnnouncementsAddOnAttachments: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCoursesAnnouncementsAddOnAttachmentsRequest,
   output: ListCoursesAnnouncementsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5650,7 +6044,12 @@ export type PatchCoursesAnnouncementsAddOnAttachmentsResponse = AddOnAttachment;
 export const PatchCoursesAnnouncementsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type PatchCoursesAnnouncementsAddOnAttachmentsError = DefaultErrors;
+export type PatchCoursesAnnouncementsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const patchCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
@@ -5661,7 +6060,7 @@ export const patchCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCoursesAnnouncementsAddOnAttachmentsRequest,
   output: PatchCoursesAnnouncementsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCoursesAnnouncementsAddOnAttachmentsRequest {
@@ -5693,7 +6092,12 @@ export type DeleteCoursesAnnouncementsAddOnAttachmentsResponse = Empty;
 export const DeleteCoursesAnnouncementsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCoursesAnnouncementsAddOnAttachmentsError = DefaultErrors;
+export type DeleteCoursesAnnouncementsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const deleteCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
@@ -5704,7 +6108,7 @@ export const deleteCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCoursesAnnouncementsAddOnAttachmentsRequest,
   output: DeleteCoursesAnnouncementsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCoursesAnnouncementsAddOnAttachmentsRequest {
@@ -5736,7 +6140,10 @@ export type GetCoursesAnnouncementsAddOnAttachmentsResponse = AddOnAttachment;
 export const GetCoursesAnnouncementsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type GetCoursesAnnouncementsAddOnAttachmentsError = DefaultErrors;
+export type GetCoursesAnnouncementsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const getCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
@@ -5747,7 +6154,7 @@ export const getCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCoursesAnnouncementsAddOnAttachmentsRequest,
   output: GetCoursesAnnouncementsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateCoursesAnnouncementsAddOnAttachmentsRequest {
@@ -5784,7 +6191,12 @@ export type CreateCoursesAnnouncementsAddOnAttachmentsResponse =
 export const CreateCoursesAnnouncementsAddOnAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AddOnAttachment;
 
-export type CreateCoursesAnnouncementsAddOnAttachmentsError = DefaultErrors;
+export type CreateCoursesAnnouncementsAddOnAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist. */
 export const createCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
@@ -5795,7 +6207,7 @@ export const createCoursesAnnouncementsAddOnAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCoursesAnnouncementsAddOnAttachmentsRequest,
   output: CreateCoursesAnnouncementsAddOnAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcceptInvitationsRequest {
@@ -5818,7 +6230,12 @@ export const AcceptInvitationsRequest =
 export type AcceptInvitationsResponse = Empty;
 export const AcceptInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AcceptInvitationsError = DefaultErrors;
+export type AcceptInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Accepts an invitation, removing it and adding the invited user to the teachers or students (as appropriate) of the specified course. Only the invited user may accept an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for access errors. * `FAILED_PRECONDITION` for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists with the requested ID. */
 export const acceptInvitations: API.OperationMethod<
@@ -5829,7 +6246,7 @@ export const acceptInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcceptInvitationsRequest,
   output: AcceptInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInvitationsRequest {
@@ -5859,7 +6276,7 @@ export type ListInvitationsResponse_Op = ListInvitationsResponse;
 export const ListInvitationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListInvitationsResponse;
 
-export type ListInvitationsError = DefaultErrors;
+export type ListInvitationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of invitations that the requesting user is permitted to view, restricted to those that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. */
 export const listInvitations: API.PaginatedOperationMethod<
@@ -5870,7 +6287,7 @@ export const listInvitations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListInvitationsRequest,
   output: ListInvitationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5893,7 +6310,12 @@ export const CreateInvitationsRequest =
 export type CreateInvitationsResponse = Invitation;
 export const CreateInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Invitation;
 
-export type CreateInvitationsError = DefaultErrors;
+export type CreateInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and re-create an invitation to make changes. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for access errors. * `NOT_FOUND` if the course or the user does not exist. * `FAILED_PRECONDITION`: * if the requested user's account is disabled. * if the user already has this role or a role with greater permissions. * for the following request errors: * IneligibleOwner * `ALREADY_EXISTS` if an invitation for the specified user and course already exists. */
 export const createInvitations: API.OperationMethod<
@@ -5904,7 +6326,7 @@ export const createInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateInvitationsRequest,
   output: CreateInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetInvitationsRequest {
@@ -5922,7 +6344,7 @@ export const GetInvitationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetInvitationsResponse = Invitation;
 export const GetInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Invitation;
 
-export type GetInvitationsError = DefaultErrors;
+export type GetInvitationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view the requested invitation or for access errors. * `NOT_FOUND` if no invitation exists with the requested ID. */
 export const getInvitations: API.OperationMethod<
@@ -5933,7 +6355,7 @@ export const getInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetInvitationsRequest,
   output: GetInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteInvitationsRequest {
@@ -5952,7 +6374,12 @@ export const DeleteInvitationsRequest =
 export type DeleteInvitationsResponse = Empty;
 export const DeleteInvitationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteInvitationsError = DefaultErrors;
+export type DeleteInvitationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for access errors. * `NOT_FOUND` if no invitation exists with the requested ID. */
 export const deleteInvitations: API.OperationMethod<
@@ -5963,5 +6390,5 @@ export const deleteInvitations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteInvitationsRequest,
   output: DeleteInvitationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

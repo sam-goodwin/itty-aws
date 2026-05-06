@@ -1157,6 +1157,52 @@ export const DatabaseFailoverResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1191,7 +1237,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -1202,7 +1251,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1226,7 +1275,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -1237,7 +1289,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -1257,7 +1309,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -1268,7 +1325,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsEnvironmentsRequest {
@@ -1295,7 +1352,12 @@ export type CreateProjectsLocationsEnvironmentsResponse = Operation;
 export const CreateProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsEnvironmentsError = DefaultErrors;
+export type CreateProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new environment. */
 export const createProjectsLocationsEnvironments: API.OperationMethod<
@@ -1306,7 +1368,7 @@ export const createProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEnvironmentsRequest,
   output: CreateProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsEnvironmentsRequest {
@@ -1326,7 +1388,10 @@ export type GetProjectsLocationsEnvironmentsResponse = Environment;
 export const GetProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Environment;
 
-export type GetProjectsLocationsEnvironmentsError = DefaultErrors;
+export type GetProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an existing environment. */
 export const getProjectsLocationsEnvironments: API.OperationMethod<
@@ -1337,7 +1402,7 @@ export const getProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsEnvironmentsRequest,
   output: GetProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsEnvironmentsRequest {
@@ -1364,7 +1429,10 @@ export type ListProjectsLocationsEnvironmentsResponse =
 export const ListProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEnvironmentsResponse;
 
-export type ListProjectsLocationsEnvironmentsError = DefaultErrors;
+export type ListProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List environments. */
 export const listProjectsLocationsEnvironments: API.PaginatedOperationMethod<
@@ -1375,7 +1443,7 @@ export const listProjectsLocationsEnvironments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEnvironmentsRequest,
   output: ListProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1405,7 +1473,12 @@ export type PatchProjectsLocationsEnvironmentsResponse = Operation;
 export const PatchProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsEnvironmentsError = DefaultErrors;
+export type PatchProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an environment. */
 export const patchProjectsLocationsEnvironments: API.OperationMethod<
@@ -1416,7 +1489,7 @@ export const patchProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsEnvironmentsRequest,
   output: PatchProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEnvironmentsRequest {
@@ -1436,7 +1509,12 @@ export type DeleteProjectsLocationsEnvironmentsResponse = Operation;
 export const DeleteProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsEnvironmentsError = DefaultErrors;
+export type DeleteProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an environment. */
 export const deleteProjectsLocationsEnvironments: API.OperationMethod<
@@ -1447,7 +1525,7 @@ export const deleteProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEnvironmentsRequest,
   output: DeleteProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestartWebServerProjectsLocationsEnvironmentsRequest {
@@ -1474,7 +1552,12 @@ export type RestartWebServerProjectsLocationsEnvironmentsResponse = Operation;
 export const RestartWebServerProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestartWebServerProjectsLocationsEnvironmentsError = DefaultErrors;
+export type RestartWebServerProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restart Airflow web server. */
 export const restartWebServerProjectsLocationsEnvironments: API.OperationMethod<
@@ -1485,7 +1568,7 @@ export const restartWebServerProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestartWebServerProjectsLocationsEnvironmentsRequest,
   output: RestartWebServerProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CheckUpgradeProjectsLocationsEnvironmentsRequest {
@@ -1512,7 +1595,12 @@ export type CheckUpgradeProjectsLocationsEnvironmentsResponse = Operation;
 export const CheckUpgradeProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CheckUpgradeProjectsLocationsEnvironmentsError = DefaultErrors;
+export type CheckUpgradeProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Check if an upgrade operation on the environment will succeed. In case of problems detailed info can be found in the returned Operation. */
 export const checkUpgradeProjectsLocationsEnvironments: API.OperationMethod<
@@ -1523,7 +1611,7 @@ export const checkUpgradeProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckUpgradeProjectsLocationsEnvironmentsRequest,
   output: CheckUpgradeProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest {
@@ -1552,7 +1640,11 @@ export const ExecuteAirflowCommandProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExecuteAirflowCommandResponse;
 
 export type ExecuteAirflowCommandProjectsLocationsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes Airflow CLI command. */
 export const executeAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
@@ -1563,7 +1655,7 @@ export const executeAirflowCommandProjectsLocationsEnvironments: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteAirflowCommandProjectsLocationsEnvironmentsRequest,
   output: ExecuteAirflowCommandProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopAirflowCommandProjectsLocationsEnvironmentsRequest {
@@ -1592,7 +1684,11 @@ export const StopAirflowCommandProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StopAirflowCommandResponse;
 
 export type StopAirflowCommandProjectsLocationsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops Airflow CLI command execution. */
 export const stopAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
@@ -1603,7 +1699,7 @@ export const stopAirflowCommandProjectsLocationsEnvironments: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopAirflowCommandProjectsLocationsEnvironmentsRequest,
   output: StopAirflowCommandProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PollAirflowCommandProjectsLocationsEnvironmentsRequest {
@@ -1632,7 +1728,11 @@ export const PollAirflowCommandProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PollAirflowCommandResponse;
 
 export type PollAirflowCommandProjectsLocationsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Polls Airflow CLI command execution and fetches logs. */
 export const pollAirflowCommandProjectsLocationsEnvironments: API.OperationMethod<
@@ -1643,7 +1743,7 @@ export const pollAirflowCommandProjectsLocationsEnvironments: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PollAirflowCommandProjectsLocationsEnvironmentsRequest,
   output: PollAirflowCommandProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SaveSnapshotProjectsLocationsEnvironmentsRequest {
@@ -1670,7 +1770,12 @@ export type SaveSnapshotProjectsLocationsEnvironmentsResponse = Operation;
 export const SaveSnapshotProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SaveSnapshotProjectsLocationsEnvironmentsError = DefaultErrors;
+export type SaveSnapshotProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a snapshots of a Cloud Composer environment. As a result of this operation, snapshot of environment's state is stored in a location specified in the SaveSnapshotRequest. */
 export const saveSnapshotProjectsLocationsEnvironments: API.OperationMethod<
@@ -1681,7 +1786,7 @@ export const saveSnapshotProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SaveSnapshotProjectsLocationsEnvironmentsRequest,
   output: SaveSnapshotProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LoadSnapshotProjectsLocationsEnvironmentsRequest {
@@ -1708,7 +1813,12 @@ export type LoadSnapshotProjectsLocationsEnvironmentsResponse = Operation;
 export const LoadSnapshotProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type LoadSnapshotProjectsLocationsEnvironmentsError = DefaultErrors;
+export type LoadSnapshotProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Loads a snapshot of a Cloud Composer environment. As a result of this operation, a snapshot of environment's specified in LoadSnapshotRequest is loaded into the environment. */
 export const loadSnapshotProjectsLocationsEnvironments: API.OperationMethod<
@@ -1719,7 +1829,7 @@ export const loadSnapshotProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LoadSnapshotProjectsLocationsEnvironmentsRequest,
   output: LoadSnapshotProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DatabaseFailoverProjectsLocationsEnvironmentsRequest {
@@ -1746,7 +1856,12 @@ export type DatabaseFailoverProjectsLocationsEnvironmentsResponse = Operation;
 export const DatabaseFailoverProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DatabaseFailoverProjectsLocationsEnvironmentsError = DefaultErrors;
+export type DatabaseFailoverProjectsLocationsEnvironmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Triggers database failover (only for highly resilient environments). */
 export const databaseFailoverProjectsLocationsEnvironments: API.OperationMethod<
@@ -1757,7 +1872,7 @@ export const databaseFailoverProjectsLocationsEnvironments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DatabaseFailoverProjectsLocationsEnvironmentsRequest,
   output: DatabaseFailoverProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest {
@@ -1782,7 +1897,9 @@ export const FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ FetchDatabasePropertiesResponse;
 
 export type FetchDatabasePropertiesProjectsLocationsEnvironmentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Fetches database properties. */
 export const fetchDatabasePropertiesProjectsLocationsEnvironments: API.OperationMethod<
@@ -1793,7 +1910,7 @@ export const fetchDatabasePropertiesProjectsLocationsEnvironments: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchDatabasePropertiesProjectsLocationsEnvironmentsRequest,
   output: FetchDatabasePropertiesProjectsLocationsEnvironmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsEnvironmentsWorkloadsRequest {
@@ -1823,7 +1940,10 @@ export type ListProjectsLocationsEnvironmentsWorkloadsResponse =
 export const ListProjectsLocationsEnvironmentsWorkloadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWorkloadsResponse;
 
-export type ListProjectsLocationsEnvironmentsWorkloadsError = DefaultErrors;
+export type ListProjectsLocationsEnvironmentsWorkloadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists workloads in a Cloud Composer environment. Workload is a unit that runs a single Composer component. This method is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer. */
 export const listProjectsLocationsEnvironmentsWorkloads: API.PaginatedOperationMethod<
@@ -1834,7 +1954,7 @@ export const listProjectsLocationsEnvironmentsWorkloads: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEnvironmentsWorkloadsRequest,
   output: ListProjectsLocationsEnvironmentsWorkloadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1867,7 +1987,11 @@ export const CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsSecret;
 
 export type CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const createProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
@@ -1878,7 +2002,7 @@ export const createProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
   output: CreateProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
@@ -1900,7 +2024,9 @@ export const GetProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsSecret;
 
 export type GetProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an existing user workloads Secret. Values of the "data" field in the response are cleared. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const getProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
@@ -1911,7 +2037,7 @@ export const getProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
   output: GetProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
@@ -1939,7 +2065,9 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserWorkloadsSecretsResponse;
 
 export type ListProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists user workloads Secrets. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const listProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.PaginatedOperationMethod<
@@ -1950,7 +2078,7 @@ export const listProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
   output: ListProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1979,7 +2107,11 @@ export const UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsSecret;
 
 export type UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const updateProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
@@ -1990,7 +2122,7 @@ export const updateProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
   output: UpdateProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest {
@@ -2012,7 +2144,11 @@ export const DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user workloads Secret. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const deleteProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.OperationMethod<
@@ -2023,7 +2159,7 @@ export const deleteProjectsLocationsEnvironmentsUserWorkloadsSecrets: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsRequest,
   output: DeleteProjectsLocationsEnvironmentsUserWorkloadsSecretsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
@@ -2052,7 +2188,11 @@ export const CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse 
   /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
 
 export type CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const createProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
@@ -2063,7 +2203,7 @@ export const createProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
   output: CreateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
@@ -2085,7 +2225,9 @@ export const GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
 
 export type GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const getProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
@@ -2096,7 +2238,7 @@ export const getProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
   output: GetProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
@@ -2124,7 +2266,9 @@ export const ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListUserWorkloadsConfigMapsResponse;
 
 export type ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const listProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.PaginatedOperationMethod<
@@ -2135,7 +2279,7 @@ export const listProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Pagin
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
   output: ListProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2164,7 +2308,11 @@ export const UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse 
   /*@__PURE__*/ /*#__PURE__*/ UserWorkloadsConfigMap;
 
 export type UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const updateProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
@@ -2175,7 +2323,7 @@ export const updateProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
   output: UpdateProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest {
@@ -2197,7 +2345,11 @@ export const DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in versions composer-3-airflow-*.*.*-build.* and newer. */
 export const deleteProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.OperationMethod<
@@ -2208,7 +2360,7 @@ export const deleteProjectsLocationsEnvironmentsUserWorkloadsConfigMaps: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsRequest,
   output: DeleteProjectsLocationsEnvironmentsUserWorkloadsConfigMapsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsImageVersionsRequest {
@@ -2240,7 +2392,10 @@ export type ListProjectsLocationsImageVersionsResponse =
 export const ListProjectsLocationsImageVersionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListImageVersionsResponse;
 
-export type ListProjectsLocationsImageVersionsError = DefaultErrors;
+export type ListProjectsLocationsImageVersionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List ImageVersions for provided location. */
 export const listProjectsLocationsImageVersions: API.PaginatedOperationMethod<
@@ -2251,7 +2406,7 @@ export const listProjectsLocationsImageVersions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsImageVersionsRequest,
   output: ListProjectsLocationsImageVersionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

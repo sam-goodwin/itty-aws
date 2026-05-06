@@ -921,6 +921,52 @@ export const TransferOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "TransferOperation" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -955,7 +1001,7 @@ export type ListTransferOperationsResponse = ListOperationsResponse;
 export const ListTransferOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListTransferOperationsError = DefaultErrors;
+export type ListTransferOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists transfer operations. Operations are ordered by their creation time in reverse chronological order. */
 export const listTransferOperations: API.PaginatedOperationMethod<
@@ -966,7 +1012,7 @@ export const listTransferOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTransferOperationsRequest,
   output: ListTransferOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -990,7 +1036,7 @@ export type GetTransferOperationsResponse = Operation;
 export const GetTransferOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetTransferOperationsError = DefaultErrors;
+export type GetTransferOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getTransferOperations: API.OperationMethod<
@@ -1001,7 +1047,7 @@ export const getTransferOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTransferOperationsRequest,
   output: GetTransferOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelTransferOperationsRequest {
@@ -1024,7 +1070,12 @@ export type CancelTransferOperationsResponse = Empty;
 export const CancelTransferOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelTransferOperationsError = DefaultErrors;
+export type CancelTransferOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels a transfer. Use the transferOperations.get method to check if the cancellation succeeded or if the operation completed despite the `cancel` request. When you cancel an operation, the currently running transfer is interrupted. For recurring transfer jobs, the next instance of the transfer job will still run. For example, if your job is configured to run every day at 1pm and you cancel Monday's operation at 1:05pm, Monday's transfer will stop. However, a transfer job will still be attempted on Tuesday. This applies only to currently running operations. If an operation is not currently running, `cancel` does nothing. *Caution:* Canceling a transfer job can leave your data in an unknown state. We recommend that you restore the state at both the destination and the source after the `cancel` request completes so that your data is in a consistent state. When you cancel a job, the next job computes a delta of files and may repair any inconsistent state. For instance, if you run a job every day, and today's job found 10 new files and transferred five files before you canceled the job, tomorrow's transfer operation will compute a new delta with the five files that were not copied today plus any new files discovered tomorrow. */
 export const cancelTransferOperations: API.OperationMethod<
@@ -1035,7 +1086,7 @@ export const cancelTransferOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelTransferOperationsRequest,
   output: CancelTransferOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseTransferOperationsRequest {
@@ -1058,7 +1109,12 @@ export type PauseTransferOperationsResponse = Empty;
 export const PauseTransferOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type PauseTransferOperationsError = DefaultErrors;
+export type PauseTransferOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pauses a transfer operation. */
 export const pauseTransferOperations: API.OperationMethod<
@@ -1069,7 +1125,7 @@ export const pauseTransferOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseTransferOperationsRequest,
   output: PauseTransferOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeTransferOperationsRequest {
@@ -1092,7 +1148,12 @@ export type ResumeTransferOperationsResponse = Empty;
 export const ResumeTransferOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ResumeTransferOperationsError = DefaultErrors;
+export type ResumeTransferOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Resumes a transfer operation that is paused. */
 export const resumeTransferOperations: API.OperationMethod<
@@ -1103,7 +1164,7 @@ export const resumeTransferOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeTransferOperationsRequest,
   output: ResumeTransferOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGoogleServiceAccountsRequest {
@@ -1123,7 +1184,10 @@ export type GetGoogleServiceAccountsResponse = GoogleServiceAccount;
 export const GetGoogleServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleServiceAccount;
 
-export type GetGoogleServiceAccountsError = DefaultErrors;
+export type GetGoogleServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the Google service account that is used by Storage Transfer Service to access buckets in the project where transfers run or in other projects. Each Google service account is associated with one Google Cloud project. Users should add this service account to the Google Cloud Storage bucket ACLs to grant access to Storage Transfer Service. This service account is created and owned by Storage Transfer Service and can only be used by Storage Transfer Service. */
 export const getGoogleServiceAccounts: API.OperationMethod<
@@ -1134,7 +1198,7 @@ export const getGoogleServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGoogleServiceAccountsRequest,
   output: GetGoogleServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateTransferJobsRequest {
@@ -1154,7 +1218,12 @@ export type CreateTransferJobsResponse = TransferJob;
 export const CreateTransferJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferJob;
 
-export type CreateTransferJobsError = DefaultErrors;
+export type CreateTransferJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a transfer job that runs periodically. */
 export const createTransferJobs: API.OperationMethod<
@@ -1165,7 +1234,7 @@ export const createTransferJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTransferJobsRequest,
   output: CreateTransferJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchTransferJobsRequest {
@@ -1188,7 +1257,12 @@ export type PatchTransferJobsResponse = TransferJob;
 export const PatchTransferJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferJob;
 
-export type PatchTransferJobsError = DefaultErrors;
+export type PatchTransferJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are running already. **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED). */
 export const patchTransferJobs: API.OperationMethod<
@@ -1199,7 +1273,7 @@ export const patchTransferJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchTransferJobsRequest,
   output: PatchTransferJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTransferJobsRequest {
@@ -1222,7 +1296,7 @@ export const GetTransferJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetTransferJobsResponse = TransferJob;
 export const GetTransferJobsResponse = /*@__PURE__*/ /*#__PURE__*/ TransferJob;
 
-export type GetTransferJobsError = DefaultErrors;
+export type GetTransferJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a transfer job. */
 export const getTransferJobs: API.OperationMethod<
@@ -1233,7 +1307,7 @@ export const getTransferJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTransferJobsRequest,
   output: GetTransferJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListTransferJobsRequest {
@@ -1259,7 +1333,7 @@ export type ListTransferJobsResponse_Op = ListTransferJobsResponse;
 export const ListTransferJobsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferJobsResponse;
 
-export type ListTransferJobsError = DefaultErrors;
+export type ListTransferJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists transfer jobs. */
 export const listTransferJobs: API.PaginatedOperationMethod<
@@ -1270,7 +1344,7 @@ export const listTransferJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTransferJobsRequest,
   output: ListTransferJobsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1297,7 +1371,12 @@ export const RunTransferJobsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type RunTransferJobsResponse = Operation;
 export const RunTransferJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunTransferJobsError = DefaultErrors;
+export type RunTransferJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned. */
 export const runTransferJobs: API.OperationMethod<
@@ -1308,7 +1387,7 @@ export const runTransferJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunTransferJobsRequest,
   output: RunTransferJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteTransferJobsRequest {
@@ -1330,7 +1409,12 @@ export const DeleteTransferJobsRequest =
 export type DeleteTransferJobsResponse = Empty;
 export const DeleteTransferJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteTransferJobsError = DefaultErrors;
+export type DeleteTransferJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a transfer job. Deleting a transfer job sets its status to DELETED. */
 export const deleteTransferJobs: API.OperationMethod<
@@ -1341,7 +1425,7 @@ export const deleteTransferJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTransferJobsRequest,
   output: DeleteTransferJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsAgentPoolsRequest {
@@ -1373,7 +1457,12 @@ export type CreateProjectsAgentPoolsResponse = AgentPool;
 export const CreateProjectsAgentPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AgentPool;
 
-export type CreateProjectsAgentPoolsError = DefaultErrors;
+export type CreateProjectsAgentPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an agent pool resource. */
 export const createProjectsAgentPools: API.OperationMethod<
@@ -1384,7 +1473,7 @@ export const createProjectsAgentPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsAgentPoolsRequest,
   output: CreateProjectsAgentPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsAgentPoolsRequest {
@@ -1410,7 +1499,12 @@ export type PatchProjectsAgentPoolsResponse = AgentPool;
 export const PatchProjectsAgentPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AgentPool;
 
-export type PatchProjectsAgentPoolsError = DefaultErrors;
+export type PatchProjectsAgentPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing agent pool resource. */
 export const patchProjectsAgentPools: API.OperationMethod<
@@ -1421,7 +1515,7 @@ export const patchProjectsAgentPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsAgentPoolsRequest,
   output: PatchProjectsAgentPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsAgentPoolsRequest {
@@ -1441,7 +1535,7 @@ export type GetProjectsAgentPoolsResponse = AgentPool;
 export const GetProjectsAgentPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AgentPool;
 
-export type GetProjectsAgentPoolsError = DefaultErrors;
+export type GetProjectsAgentPoolsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets an agent pool. */
 export const getProjectsAgentPools: API.OperationMethod<
@@ -1452,7 +1546,7 @@ export const getProjectsAgentPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsAgentPoolsRequest,
   output: GetProjectsAgentPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsAgentPoolsRequest {
@@ -1481,7 +1575,7 @@ export type ListProjectsAgentPoolsResponse = ListAgentPoolsResponse;
 export const ListProjectsAgentPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAgentPoolsResponse;
 
-export type ListProjectsAgentPoolsError = DefaultErrors;
+export type ListProjectsAgentPoolsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists agent pools. */
 export const listProjectsAgentPools: API.PaginatedOperationMethod<
@@ -1492,7 +1586,7 @@ export const listProjectsAgentPools: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAgentPoolsRequest,
   output: ListProjectsAgentPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1516,7 +1610,12 @@ export type DeleteProjectsAgentPoolsResponse = Empty;
 export const DeleteProjectsAgentPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsAgentPoolsError = DefaultErrors;
+export type DeleteProjectsAgentPoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an agent pool. */
 export const deleteProjectsAgentPools: API.OperationMethod<
@@ -1527,5 +1626,5 @@ export const deleteProjectsAgentPools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsAgentPoolsRequest,
   output: DeleteProjectsAgentPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

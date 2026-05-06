@@ -6034,6 +6034,52 @@ export const GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -6061,7 +6107,12 @@ export type SearchSearchAds360FieldsResponse =
 export const SearchSearchAds360FieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__SearchSearchAds360FieldsResponse;
 
-export type SearchSearchAds360FieldsError = DefaultErrors;
+export type SearchSearchAds360FieldsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns all fields that match the search [query](/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]() */
 export const searchSearchAds360Fields: API.OperationMethod<
@@ -6072,7 +6123,7 @@ export const searchSearchAds360Fields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchSearchAds360FieldsRequest,
   output: SearchSearchAds360FieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSearchAds360FieldsRequest {
@@ -6093,7 +6144,7 @@ export type GetSearchAds360FieldsResponse =
 export const GetSearchAds360FieldsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Resources__SearchAds360Field;
 
-export type GetSearchAds360FieldsError = DefaultErrors;
+export type GetSearchAds360FieldsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns just the requested field. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() */
 export const getSearchAds360Fields: API.OperationMethod<
@@ -6104,7 +6155,7 @@ export const getSearchAds360Fields: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSearchAds360FieldsRequest,
   output: GetSearchAds360FieldsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccessibleCustomersCustomersRequest {}
@@ -6120,7 +6171,10 @@ export type ListAccessibleCustomersCustomersResponse =
 export const ListAccessibleCustomersCustomersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__ListAccessibleCustomersResponse;
 
-export type ListAccessibleCustomersCustomersError = DefaultErrors;
+export type ListAccessibleCustomersCustomersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns resource names of customers directly accessible by the user authenticating the call. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]() */
 export const listAccessibleCustomersCustomers: API.OperationMethod<
@@ -6131,7 +6185,7 @@ export const listAccessibleCustomersCustomers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAccessibleCustomersCustomersRequest,
   output: ListAccessibleCustomersCustomersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersCustomColumnsRequest {
@@ -6152,7 +6206,10 @@ export type ListCustomersCustomColumnsResponse =
 export const ListCustomersCustomColumnsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__ListCustomColumnsResponse;
 
-export type ListCustomersCustomColumnsError = DefaultErrors;
+export type ListCustomersCustomColumnsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all the custom columns associated with the customer in full detail. */
 export const listCustomersCustomColumns: API.OperationMethod<
@@ -6163,7 +6220,7 @@ export const listCustomersCustomColumns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListCustomersCustomColumnsRequest,
   output: ListCustomersCustomColumnsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCustomersCustomColumnsRequest {
@@ -6184,7 +6241,10 @@ export type GetCustomersCustomColumnsResponse =
 export const GetCustomersCustomColumnsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Resources__CustomColumn;
 
-export type GetCustomersCustomColumnsError = DefaultErrors;
+export type GetCustomersCustomColumnsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the requested custom column in full detail. */
 export const getCustomersCustomColumns: API.OperationMethod<
@@ -6195,7 +6255,7 @@ export const getCustomersCustomColumns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersCustomColumnsRequest,
   output: GetCustomersCustomColumnsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchCustomersSearchAds360Request {
@@ -6225,7 +6285,12 @@ export type SearchCustomersSearchAds360Response =
 export const SearchCustomersSearchAds360Response =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsSearchads360V0Services__SearchSearchAds360Response;
 
-export type SearchCustomersSearchAds360Error = DefaultErrors;
+export type SearchCustomersSearchAds360Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns all rows that match the search query. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]() */
 export const searchCustomersSearchAds360: API.OperationMethod<
@@ -6236,5 +6301,5 @@ export const searchCustomersSearchAds360: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchCustomersSearchAds360Request,
   output: SearchCustomersSearchAds360Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

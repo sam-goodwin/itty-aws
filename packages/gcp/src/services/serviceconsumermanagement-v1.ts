@@ -2026,6 +2026,52 @@ export const V1AddVisibilityLabelsResponse =
   }).annotate({ identifier: "V1AddVisibilityLabelsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2048,7 +2094,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -2059,7 +2110,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOperationsRequest {
@@ -2078,7 +2129,12 @@ export const DeleteOperationsRequest =
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -2089,7 +2145,7 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOperationsRequest {
@@ -2122,7 +2178,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -2133,7 +2189,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2155,7 +2211,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2166,7 +2222,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchServicesRequest {
@@ -2194,7 +2250,7 @@ export type SearchServicesResponse = SearchTenancyUnitsResponse;
 export const SearchServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SearchTenancyUnitsResponse;
 
-export type SearchServicesError = DefaultErrors;
+export type SearchServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Search tenancy units for a managed service. */
 export const searchServices: API.PaginatedOperationMethod<
@@ -2205,7 +2261,7 @@ export const searchServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchServicesRequest,
   output: SearchServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2232,7 +2288,12 @@ export type DeleteProjectServicesTenancyUnitsResponse = Operation;
 export const DeleteProjectServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectServicesTenancyUnitsError = DefaultErrors;
+export type DeleteProjectServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified project resource identified by a tenant resource tag. The mothod removes a project lien with a 'TenantManager' origin if that was added. It will then attempt to delete the project. If that operation fails, this method also fails. After the project has been deleted, the tenant resource state is set to DELETED. To permanently remove resource metadata, call the `RemoveTenantProject` method. New resources with the same tag can't be added if there are existing resources in a DELETED state. Operation. */
 export const deleteProjectServicesTenancyUnits: API.OperationMethod<
@@ -2243,7 +2304,7 @@ export const deleteProjectServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectServicesTenancyUnitsRequest,
   output: DeleteProjectServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApplyProjectConfigServicesTenancyUnitsRequest {
@@ -2270,7 +2331,12 @@ export type ApplyProjectConfigServicesTenancyUnitsResponse = Operation;
 export const ApplyProjectConfigServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ApplyProjectConfigServicesTenancyUnitsError = DefaultErrors;
+export type ApplyProjectConfigServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Apply a configuration to an existing tenant project. This project must exist in an active state and have the original owner account. The caller must have permission to add a project to the given tenancy unit. The configuration is applied, but any existing settings on the project aren't modified. Specified policy bindings are applied. Existing bindings aren't modified. Specified services are activated. No service is deactivated. If specified, new billing configuration is applied. Omit a billing configuration to keep the existing one. A service account in the project is created if previously non existed. Specified labels will be appended to tenant project, note that the value of existing label key will be updated if the same label key is requested. The specified folder is ignored, as moving a tenant project to a different folder isn't supported. The operation fails if any of the steps fail, but no rollback of already applied configuration changes is attempted. Operation. */
 export const applyProjectConfigServicesTenancyUnits: API.OperationMethod<
@@ -2281,7 +2347,7 @@ export const applyProjectConfigServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyProjectConfigServicesTenancyUnitsRequest,
   output: ApplyProjectConfigServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AttachProjectServicesTenancyUnitsRequest {
@@ -2304,7 +2370,12 @@ export type AttachProjectServicesTenancyUnitsResponse = Operation;
 export const AttachProjectServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AttachProjectServicesTenancyUnitsError = DefaultErrors;
+export type AttachProjectServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attach an existing project to the tenancy unit as a new tenant resource. The project could either be the tenant project reserved by calling `AddTenantProject` under a tenancy unit of a service producer's project of a managed service, or from a separate project. The caller is checked against a set of permissions as if calling `AddTenantProject` on the same service consumer. To trigger the attachment, the targeted tenant project must be in a folder. Make sure the ServiceConsumerManagement service account is the owner of that project. These two requirements are already met if the project is reserved by calling `AddTenantProject`. Operation. */
 export const attachProjectServicesTenancyUnits: API.OperationMethod<
@@ -2315,7 +2386,7 @@ export const attachProjectServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AttachProjectServicesTenancyUnitsRequest,
   output: AttachProjectServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteServicesTenancyUnitsRequest {
@@ -2335,7 +2406,12 @@ export type DeleteServicesTenancyUnitsResponse = Operation;
 export const DeleteServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteServicesTenancyUnitsError = DefaultErrors;
+export type DeleteServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a tenancy unit. Before you delete the tenancy unit, there should be no tenant resources in it that aren't in a DELETED state. Operation. */
 export const deleteServicesTenancyUnits: API.OperationMethod<
@@ -2346,7 +2422,7 @@ export const deleteServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesTenancyUnitsRequest,
   output: DeleteServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateServicesTenancyUnitsRequest {
@@ -2369,7 +2445,12 @@ export type CreateServicesTenancyUnitsResponse = TenancyUnit;
 export const CreateServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TenancyUnit;
 
-export type CreateServicesTenancyUnitsError = DefaultErrors;
+export type CreateServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a tenancy unit with no tenant resources. If tenancy unit already exists, it will be returned, however, in this case, returned TenancyUnit does not have tenant_resources field set and ListTenancyUnits has to be used to get a complete TenancyUnit with all fields populated. */
 export const createServicesTenancyUnits: API.OperationMethod<
@@ -2380,7 +2461,7 @@ export const createServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesTenancyUnitsRequest,
   output: CreateServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddProjectServicesTenancyUnitsRequest {
@@ -2403,7 +2484,12 @@ export type AddProjectServicesTenancyUnitsResponse = Operation;
 export const AddProjectServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AddProjectServicesTenancyUnitsError = DefaultErrors;
+export type AddProjectServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Add a new tenant project to the tenancy unit. There can be a maximum of 1024 tenant projects in a tenancy unit. If there are previously failed `AddTenantProject` calls, you might need to call `RemoveTenantProject` first to resolve them before you can make another call to `AddTenantProject` with the same tag. Operation. */
 export const addProjectServicesTenancyUnits: API.OperationMethod<
@@ -2414,7 +2500,7 @@ export const addProjectServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddProjectServicesTenancyUnitsRequest,
   output: AddProjectServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveProjectServicesTenancyUnitsRequest {
@@ -2437,7 +2523,12 @@ export type RemoveProjectServicesTenancyUnitsResponse = Operation;
 export const RemoveProjectServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RemoveProjectServicesTenancyUnitsError = DefaultErrors;
+export type RemoveProjectServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes the specified project resource identified by a tenant resource tag. The method removes the project lien with 'TenantManager' origin if that was added. It then attempts to delete the project. If that operation fails, this method also fails. Calls to remove already removed or non-existent tenant project succeed. After the project has been deleted, or if was already in a DELETED state, resource metadata is permanently removed from the tenancy unit. Operation. */
 export const removeProjectServicesTenancyUnits: API.OperationMethod<
@@ -2448,7 +2539,7 @@ export const removeProjectServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveProjectServicesTenancyUnitsRequest,
   output: RemoveProjectServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectServicesTenancyUnitsRequest {
@@ -2475,7 +2566,12 @@ export type UndeleteProjectServicesTenancyUnitsResponse = Operation;
 export const UndeleteProjectServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectServicesTenancyUnitsError = DefaultErrors;
+export type UndeleteProjectServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Attempts to undelete a previously deleted tenant project. The project must be in a DELETED state. There are no guarantees that an undeleted project will be in a fully restored and functional state. Call the `ApplyTenantProjectConfig` method to update its configuration and then validate all managed service resources. Operation. */
 export const undeleteProjectServicesTenancyUnits: API.OperationMethod<
@@ -2486,7 +2582,7 @@ export const undeleteProjectServicesTenancyUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectServicesTenancyUnitsRequest,
   output: UndeleteProjectServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesTenancyUnitsRequest {
@@ -2515,7 +2611,10 @@ export type ListServicesTenancyUnitsResponse = ListTenancyUnitsResponse;
 export const ListServicesTenancyUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTenancyUnitsResponse;
 
-export type ListServicesTenancyUnitsError = DefaultErrors;
+export type ListServicesTenancyUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Find the tenancy unit for a managed service and service consumer. This method shouldn't be used in a service producer's runtime path, for example to find the tenant project number when creating VMs. Service producers must persist the tenant project's information after the project is created. */
 export const listServicesTenancyUnits: API.PaginatedOperationMethod<
@@ -2526,7 +2625,7 @@ export const listServicesTenancyUnits: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesTenancyUnitsRequest,
   output: ListServicesTenancyUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

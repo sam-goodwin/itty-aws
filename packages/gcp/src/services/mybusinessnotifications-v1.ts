@@ -52,6 +52,52 @@ export const NotificationSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "NotificationSetting" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -72,7 +118,10 @@ export type GetNotificationSettingAccountsResponse = NotificationSetting;
 export const GetNotificationSettingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationSetting;
 
-export type GetNotificationSettingAccountsError = DefaultErrors;
+export type GetNotificationSettingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the pubsub notification settings for the account. */
 export const getNotificationSettingAccounts: API.OperationMethod<
@@ -83,7 +132,7 @@ export const getNotificationSettingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetNotificationSettingAccountsRequest,
   output: GetNotificationSettingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateNotificationSettingAccountsRequest {
@@ -109,7 +158,12 @@ export type UpdateNotificationSettingAccountsResponse = NotificationSetting;
 export const UpdateNotificationSettingAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationSetting;
 
-export type UpdateNotificationSettingAccountsError = DefaultErrors;
+export type UpdateNotificationSettingAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the pubsub notification setting for the account informing Google which topic to send pubsub notifications for. Use the notification_types field within notification_setting to manipulate the events an account wants to subscribe to. An account will only have one notification setting resource, and only one pubsub topic can be set. To delete the setting, update with an empty notification_types */
 export const updateNotificationSettingAccounts: API.OperationMethod<
@@ -120,5 +174,5 @@ export const updateNotificationSettingAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateNotificationSettingAccountsRequest,
   output: UpdateNotificationSettingAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

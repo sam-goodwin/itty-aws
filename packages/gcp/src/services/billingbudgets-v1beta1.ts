@@ -263,6 +263,52 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "GoogleProtobufEmpty" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -289,7 +335,12 @@ export type CreateBillingAccountsBudgetsResponse =
 export const CreateBillingAccountsBudgetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
 
-export type CreateBillingAccountsBudgetsError = DefaultErrors;
+export type CreateBillingAccountsBudgetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create. */
 export const createBillingAccountsBudgets: API.OperationMethod<
@@ -300,7 +351,7 @@ export const createBillingAccountsBudgets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateBillingAccountsBudgetsRequest,
   output: CreateBillingAccountsBudgetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchBillingAccountsBudgetsRequest {
@@ -326,7 +377,12 @@ export type PatchBillingAccountsBudgetsResponse =
 export const PatchBillingAccountsBudgetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
 
-export type PatchBillingAccountsBudgetsError = DefaultErrors;
+export type PatchBillingAccountsBudgetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a budget and returns the updated budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. Budget fields that are not exposed in this API will not be changed by this method. */
 export const patchBillingAccountsBudgets: API.OperationMethod<
@@ -337,7 +393,7 @@ export const patchBillingAccountsBudgets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchBillingAccountsBudgetsRequest,
   output: PatchBillingAccountsBudgetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetBillingAccountsBudgetsRequest {
@@ -358,7 +414,10 @@ export type GetBillingAccountsBudgetsResponse =
 export const GetBillingAccountsBudgetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1Budget;
 
-export type GetBillingAccountsBudgetsError = DefaultErrors;
+export type GetBillingAccountsBudgetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console. */
 export const getBillingAccountsBudgets: API.OperationMethod<
@@ -369,7 +428,7 @@ export const getBillingAccountsBudgets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetBillingAccountsBudgetsRequest,
   output: GetBillingAccountsBudgetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListBillingAccountsBudgetsRequest {
@@ -399,7 +458,10 @@ export type ListBillingAccountsBudgetsResponse =
 export const ListBillingAccountsBudgetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse;
 
-export type ListBillingAccountsBudgetsError = DefaultErrors;
+export type ListBillingAccountsBudgetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console. */
 export const listBillingAccountsBudgets: API.PaginatedOperationMethod<
@@ -410,7 +472,7 @@ export const listBillingAccountsBudgets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListBillingAccountsBudgetsRequest,
   output: ListBillingAccountsBudgetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -434,7 +496,12 @@ export type DeleteBillingAccountsBudgetsResponse = GoogleProtobufEmpty;
 export const DeleteBillingAccountsBudgetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteBillingAccountsBudgetsError = DefaultErrors;
+export type DeleteBillingAccountsBudgetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a budget. Returns successfully if already deleted. */
 export const deleteBillingAccountsBudgets: API.OperationMethod<
@@ -445,5 +512,5 @@ export const deleteBillingAccountsBudgets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteBillingAccountsBudgetsRequest,
   output: DeleteBillingAccountsBudgetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

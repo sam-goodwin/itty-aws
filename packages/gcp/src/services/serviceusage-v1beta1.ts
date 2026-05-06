@@ -2589,6 +2589,52 @@ export const ImportAdminOverridesRequest =
   }).annotate({ identifier: "ImportAdminOverridesRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2607,7 +2653,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2618,7 +2664,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOperationsRequest {
@@ -2651,7 +2697,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -2662,7 +2708,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2689,7 +2735,12 @@ export const DisableServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DisableServicesResponse = Operation;
 export const DisableServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DisableServicesError = DefaultErrors;
+export type DisableServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Disables a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled. Operation response type: `google.protobuf.Empty` */
 export const disableServices: API.OperationMethod<
@@ -2700,7 +2751,7 @@ export const disableServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DisableServicesRequest,
   output: DisableServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EnableServicesRequest {
@@ -2721,7 +2772,12 @@ export const EnableServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type EnableServicesResponse = Operation;
 export const EnableServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type EnableServicesError = DefaultErrors;
+export type EnableServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty` */
 export const enableServices: API.OperationMethod<
@@ -2732,7 +2788,7 @@ export const enableServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnableServicesRequest,
   output: EnableServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateServiceIdentityServicesRequest {
@@ -2756,7 +2812,12 @@ export type GenerateServiceIdentityServicesResponse = Operation;
 export const GenerateServiceIdentityServicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GenerateServiceIdentityServicesError = DefaultErrors;
+export type GenerateServiceIdentityServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates service identity for service. */
 export const generateServiceIdentityServices: API.OperationMethod<
@@ -2767,7 +2828,7 @@ export const generateServiceIdentityServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateServiceIdentityServicesRequest,
   output: GenerateServiceIdentityServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServicesRequest {
@@ -2785,7 +2846,7 @@ export const GetServicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetServicesResponse = Service;
 export const GetServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Service;
 
-export type GetServicesError = DefaultErrors;
+export type GetServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the service configuration and enabled state for a given service. */
 export const getServices: API.OperationMethod<
@@ -2796,7 +2857,7 @@ export const getServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesRequest,
   output: GetServicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListServicesRequest {
@@ -2824,7 +2885,7 @@ export type ListServicesResponse_Op = ListServicesResponse;
 export const ListServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListServicesResponse;
 
-export type ListServicesError = DefaultErrors;
+export type ListServicesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all services available to the specified project, and the current state of those services with respect to the project. The list includes all public services, all services for which the calling user has the `servicemanagement.services.bind` permission, and all services that have already been enabled on the project. The list can be filtered to only include services in a specific state, for example to only include services enabled on the project. */
 export const listServices: API.PaginatedOperationMethod<
@@ -2835,7 +2896,7 @@ export const listServices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesRequest,
   output: ListServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2866,7 +2927,12 @@ export type BatchEnableServicesResponse_Op = Operation;
 export const BatchEnableServicesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchEnableServicesError = DefaultErrors;
+export type BatchEnableServicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty` */
 export const batchEnableServices: API.OperationMethod<
@@ -2877,7 +2943,7 @@ export const batchEnableServices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchEnableServicesRequest_Op,
   output: BatchEnableServicesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConsumerQuotaMetricsRequest {
@@ -2907,7 +2973,10 @@ export type ListServicesConsumerQuotaMetricsResponse =
 export const ListServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConsumerQuotaMetricsResponse;
 
-export type ListServicesConsumerQuotaMetricsError = DefaultErrors;
+export type ListServicesConsumerQuotaMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a summary of all quota information visible to the service consumer, organized by service metric. Each metric includes information about all of its defined limits. Each limit includes the limit configuration (quota unit, preciseness, default value), the current effective limit value, and all of the overrides applied to the limit. */
 export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
@@ -2918,7 +2987,7 @@ export const listServicesConsumerQuotaMetrics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsRequest,
   output: ListServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2945,7 +3014,10 @@ export type GetServicesConsumerQuotaMetricsResponse = ConsumerQuotaMetric;
 export const GetServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConsumerQuotaMetric;
 
-export type GetServicesConsumerQuotaMetricsError = DefaultErrors;
+export type GetServicesConsumerQuotaMetricsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a summary of quota information for a specific quota metric */
 export const getServicesConsumerQuotaMetrics: API.OperationMethod<
@@ -2956,7 +3028,7 @@ export const getServicesConsumerQuotaMetrics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsRequest,
   output: GetServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportAdminOverridesServicesConsumerQuotaMetricsRequest {
@@ -2985,7 +3057,11 @@ export const ImportAdminOverridesServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ImportAdminOverridesServicesConsumerQuotaMetricsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set. */
 export const importAdminOverridesServicesConsumerQuotaMetrics: API.OperationMethod<
@@ -2996,7 +3072,7 @@ export const importAdminOverridesServicesConsumerQuotaMetrics: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportAdminOverridesServicesConsumerQuotaMetricsRequest,
   output: ImportAdminOverridesServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportConsumerOverridesServicesConsumerQuotaMetricsRequest {
@@ -3025,7 +3101,11 @@ export const ImportConsumerOverridesServicesConsumerQuotaMetricsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ImportConsumerOverridesServicesConsumerQuotaMetricsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates multiple consumer overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set. */
 export const importConsumerOverridesServicesConsumerQuotaMetrics: API.OperationMethod<
@@ -3036,7 +3116,7 @@ export const importConsumerOverridesServicesConsumerQuotaMetrics: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportConsumerOverridesServicesConsumerQuotaMetricsRequest,
   output: ImportConsumerOverridesServicesConsumerQuotaMetricsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetServicesConsumerQuotaMetricsLimitsRequest {
@@ -3059,7 +3139,10 @@ export type GetServicesConsumerQuotaMetricsLimitsResponse = ConsumerQuotaLimit;
 export const GetServicesConsumerQuotaMetricsLimitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConsumerQuotaLimit;
 
-export type GetServicesConsumerQuotaMetricsLimitsError = DefaultErrors;
+export type GetServicesConsumerQuotaMetricsLimitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a summary of quota information for a specific quota limit. */
 export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
@@ -3070,7 +3153,7 @@ export const getServicesConsumerQuotaMetricsLimits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetServicesConsumerQuotaMetricsLimitsRequest,
   output: GetServicesConsumerQuotaMetricsLimitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
@@ -3111,7 +3194,11 @@ export const CreateServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsAdminOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an admin override. An admin override is applied by an administrator of a parent folder or parent organization of the consumer receiving the override. An admin override is intended to limit the amount of quota the consumer can use out of the total quota pool allocated to all children of the folder or organization. */
 export const createServicesConsumerQuotaMetricsLimitsAdminOverrides: API.OperationMethod<
@@ -3122,7 +3209,7 @@ export const createServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
@@ -3150,7 +3237,9 @@ export const ListServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdminOverridesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsAdminOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all admin overrides on this limit. */
 export const listServicesConsumerQuotaMetricsLimitsAdminOverrides: API.PaginatedOperationMethod<
@@ -3161,7 +3250,7 @@ export const listServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3199,7 +3288,11 @@ export const DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an admin override. */
 export const deleteServicesConsumerQuotaMetricsLimitsAdminOverrides: API.OperationMethod<
@@ -3210,7 +3303,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest {
@@ -3250,7 +3343,11 @@ export const PatchServicesConsumerQuotaMetricsLimitsAdminOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsAdminOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an admin override. */
 export const patchServicesConsumerQuotaMetricsLimitsAdminOverrides: API.OperationMethod<
@@ -3261,7 +3358,7 @@ export const patchServicesConsumerQuotaMetricsLimitsAdminOverrides: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsAdminOverridesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsAdminOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
@@ -3301,7 +3398,11 @@ export const PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a consumer override. */
 export const patchServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.OperationMethod<
@@ -3312,7 +3413,7 @@ export const patchServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: PatchServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
@@ -3346,7 +3447,11 @@ export const DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a consumer override. */
 export const deleteServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.OperationMethod<
@@ -3357,7 +3462,7 @@ export const deleteServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: DeleteServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
@@ -3398,7 +3503,11 @@ export const CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a consumer override. A consumer override is applied to the consumer on its own authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides, producer overrides, or the default limit of the service. */
 export const createServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.OperationMethod<
@@ -3409,7 +3518,7 @@ export const createServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: CreateServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest {
@@ -3437,7 +3546,9 @@ export const ListServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConsumerOverridesResponse;
 
 export type ListServicesConsumerQuotaMetricsLimitsConsumerOverridesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all consumer overrides on this limit. */
 export const listServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.PaginatedOperationMethod<
@@ -3448,7 +3559,7 @@ export const listServicesConsumerQuotaMetricsLimitsConsumerOverrides: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListServicesConsumerQuotaMetricsLimitsConsumerOverridesRequest,
   output: ListServicesConsumerQuotaMetricsLimitsConsumerOverridesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

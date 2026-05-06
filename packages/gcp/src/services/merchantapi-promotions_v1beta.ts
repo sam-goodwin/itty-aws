@@ -510,6 +510,52 @@ export const ListPromotionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "ListPromotionsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -530,7 +576,7 @@ export type GetAccountsPromotionsResponse = Promotion;
 export const GetAccountsPromotionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Promotion;
 
-export type GetAccountsPromotionsError = DefaultErrors;
+export type GetAccountsPromotionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the promotion from your Merchant Center account. After inserting or updating a promotion input, it may take several minutes before the updated promotion can be retrieved. */
 export const getAccountsPromotions: API.OperationMethod<
@@ -541,7 +587,7 @@ export const getAccountsPromotions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsPromotionsRequest,
   output: GetAccountsPromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertAccountsPromotionsRequest {
@@ -568,7 +614,12 @@ export type InsertAccountsPromotionsResponse = Promotion;
 export const InsertAccountsPromotionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Promotion;
 
-export type InsertAccountsPromotionsError = DefaultErrors;
+export type InsertAccountsPromotionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the promotion instead. */
 export const insertAccountsPromotions: API.OperationMethod<
@@ -579,7 +630,7 @@ export const insertAccountsPromotions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAccountsPromotionsRequest,
   output: InsertAccountsPromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsPromotionsRequest {
@@ -605,7 +656,7 @@ export type ListAccountsPromotionsResponse = ListPromotionsResponse;
 export const ListAccountsPromotionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPromotionsResponse;
 
-export type ListAccountsPromotionsError = DefaultErrors;
+export type ListAccountsPromotionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the promotions in your Merchant Center account. The response might contain fewer items than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested. After inserting or updating a promotion, it may take several minutes before the updated processed promotion can be retrieved. */
 export const listAccountsPromotions: API.PaginatedOperationMethod<
@@ -616,7 +667,7 @@ export const listAccountsPromotions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsPromotionsRequest,
   output: ListAccountsPromotionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

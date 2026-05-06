@@ -6358,6 +6358,52 @@ export const GooglePrivacyDlpV2RedactImageRequest =
   }).annotate({ identifier: "GooglePrivacyDlpV2RedactImageRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -6390,7 +6436,7 @@ export type ListLocationsInfoTypesResponse =
 export const ListLocationsInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInfoTypesResponse;
 
-export type ListLocationsInfoTypesError = DefaultErrors;
+export type ListLocationsInfoTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of the sensitive information types that the DLP API supports. See https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more. */
 export const listLocationsInfoTypes: API.OperationMethod<
@@ -6401,7 +6447,7 @@ export const listLocationsInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListLocationsInfoTypesRequest,
   output: ListLocationsInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsTableDataProfilesRequest {
@@ -6422,7 +6468,10 @@ export type GetProjectsLocationsTableDataProfilesResponse =
 export const GetProjectsLocationsTableDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2TableDataProfile;
 
-export type GetProjectsLocationsTableDataProfilesError = DefaultErrors;
+export type GetProjectsLocationsTableDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a table data profile. */
 export const getProjectsLocationsTableDataProfiles: API.OperationMethod<
@@ -6433,7 +6482,7 @@ export const getProjectsLocationsTableDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTableDataProfilesRequest,
   output: GetProjectsLocationsTableDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsTableDataProfilesRequest {
@@ -6466,7 +6515,10 @@ export type ListProjectsLocationsTableDataProfilesResponse =
 export const ListProjectsLocationsTableDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListTableDataProfilesResponse;
 
-export type ListProjectsLocationsTableDataProfilesError = DefaultErrors;
+export type ListProjectsLocationsTableDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists table data profiles for an organization. */
 export const listProjectsLocationsTableDataProfiles: API.PaginatedOperationMethod<
@@ -6477,7 +6529,7 @@ export const listProjectsLocationsTableDataProfiles: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTableDataProfilesRequest,
   output: ListProjectsLocationsTableDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6502,7 +6554,12 @@ export type DeleteProjectsLocationsTableDataProfilesResponse =
 export const DeleteProjectsLocationsTableDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsTableDataProfilesError = DefaultErrors;
+export type DeleteProjectsLocationsTableDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a TableDataProfile. Will not prevent the profile from being regenerated if the table is still included in a discovery configuration. */
 export const deleteProjectsLocationsTableDataProfiles: API.OperationMethod<
@@ -6513,7 +6570,7 @@ export const deleteProjectsLocationsTableDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTableDataProfilesRequest,
   output: DeleteProjectsLocationsTableDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsInfoTypesRequest {
@@ -6545,7 +6602,10 @@ export type ListProjectsLocationsInfoTypesResponse =
 export const ListProjectsLocationsInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInfoTypesResponse;
 
-export type ListProjectsLocationsInfoTypesError = DefaultErrors;
+export type ListProjectsLocationsInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of the sensitive information types that the DLP API supports. See https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more. */
 export const listProjectsLocationsInfoTypes: API.OperationMethod<
@@ -6556,7 +6616,7 @@ export const listProjectsLocationsInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationsInfoTypesRequest,
   output: ListProjectsLocationsInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsDeidentifyTemplatesRequest {
@@ -6586,7 +6646,12 @@ export type CreateProjectsLocationsDeidentifyTemplatesResponse =
 export const CreateProjectsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type CreateProjectsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const createProjectsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -6597,7 +6662,7 @@ export const createProjectsLocationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDeidentifyTemplatesRequest,
   output: CreateProjectsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDeidentifyTemplatesRequest {
@@ -6630,7 +6695,10 @@ export type ListProjectsLocationsDeidentifyTemplatesResponse =
 export const ListProjectsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
 
-export type ListProjectsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type ListProjectsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const listProjectsLocationsDeidentifyTemplates: API.PaginatedOperationMethod<
@@ -6641,7 +6709,7 @@ export const listProjectsLocationsDeidentifyTemplates: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDeidentifyTemplatesRequest,
   output: ListProjectsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6666,7 +6734,10 @@ export type GetProjectsLocationsDeidentifyTemplatesResponse =
 export const GetProjectsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type GetProjectsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type GetProjectsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const getProjectsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -6677,7 +6748,7 @@ export const getProjectsLocationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDeidentifyTemplatesRequest,
   output: GetProjectsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDeidentifyTemplatesRequest {
@@ -6698,7 +6769,12 @@ export type DeleteProjectsLocationsDeidentifyTemplatesResponse =
 export const DeleteProjectsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const deleteProjectsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -6709,7 +6785,7 @@ export const deleteProjectsLocationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDeidentifyTemplatesRequest,
   output: DeleteProjectsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDeidentifyTemplatesRequest {
@@ -6735,7 +6811,12 @@ export type PatchProjectsLocationsDeidentifyTemplatesResponse =
 export const PatchProjectsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type PatchProjectsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type PatchProjectsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const patchProjectsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -6746,7 +6827,7 @@ export const patchProjectsLocationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDeidentifyTemplatesRequest,
   output: PatchProjectsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsInspectTemplatesRequest {
@@ -6767,7 +6848,10 @@ export type GetProjectsLocationsInspectTemplatesResponse =
 export const GetProjectsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type GetProjectsLocationsInspectTemplatesError = DefaultErrors;
+export type GetProjectsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const getProjectsLocationsInspectTemplates: API.OperationMethod<
@@ -6778,7 +6862,7 @@ export const getProjectsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsInspectTemplatesRequest,
   output: GetProjectsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsInspectTemplatesRequest {
@@ -6811,7 +6895,10 @@ export type ListProjectsLocationsInspectTemplatesResponse =
 export const ListProjectsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInspectTemplatesResponse;
 
-export type ListProjectsLocationsInspectTemplatesError = DefaultErrors;
+export type ListProjectsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const listProjectsLocationsInspectTemplates: API.PaginatedOperationMethod<
@@ -6822,7 +6909,7 @@ export const listProjectsLocationsInspectTemplates: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsInspectTemplatesRequest,
   output: ListProjectsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6856,7 +6943,12 @@ export type CreateProjectsLocationsInspectTemplatesResponse =
 export const CreateProjectsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type CreateProjectsLocationsInspectTemplatesError = DefaultErrors;
+export type CreateProjectsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const createProjectsLocationsInspectTemplates: API.OperationMethod<
@@ -6867,7 +6959,7 @@ export const createProjectsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsInspectTemplatesRequest,
   output: CreateProjectsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsInspectTemplatesRequest {
@@ -6893,7 +6985,12 @@ export type PatchProjectsLocationsInspectTemplatesResponse =
 export const PatchProjectsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type PatchProjectsLocationsInspectTemplatesError = DefaultErrors;
+export type PatchProjectsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const patchProjectsLocationsInspectTemplates: API.OperationMethod<
@@ -6904,7 +7001,7 @@ export const patchProjectsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsInspectTemplatesRequest,
   output: PatchProjectsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsInspectTemplatesRequest {
@@ -6925,7 +7022,12 @@ export type DeleteProjectsLocationsInspectTemplatesResponse =
 export const DeleteProjectsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsInspectTemplatesError = DefaultErrors;
+export type DeleteProjectsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const deleteProjectsLocationsInspectTemplates: API.OperationMethod<
@@ -6936,7 +7038,7 @@ export const deleteProjectsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsInspectTemplatesRequest,
   output: DeleteProjectsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateProjectsLocationsJobTriggersRequest {
@@ -6962,7 +7064,12 @@ export type ActivateProjectsLocationsJobTriggersResponse =
 export const ActivateProjectsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DlpJob;
 
-export type ActivateProjectsLocationsJobTriggersError = DefaultErrors;
+export type ActivateProjectsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activate a job trigger. Causes the immediate execute of a trigger instead of waiting on the trigger event to occur. */
 export const activateProjectsLocationsJobTriggers: API.OperationMethod<
@@ -6973,7 +7080,7 @@ export const activateProjectsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateProjectsLocationsJobTriggersRequest,
   output: ActivateProjectsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsJobTriggersRequest {
@@ -6993,7 +7100,12 @@ export type DeleteProjectsLocationsJobTriggersResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsJobTriggersError = DefaultErrors;
+export type DeleteProjectsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const deleteProjectsLocationsJobTriggers: API.OperationMethod<
@@ -7004,7 +7116,7 @@ export const deleteProjectsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsJobTriggersRequest,
   output: DeleteProjectsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsJobTriggersRequest {
@@ -7030,7 +7142,12 @@ export type PatchProjectsLocationsJobTriggersResponse =
 export const PatchProjectsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type PatchProjectsLocationsJobTriggersError = DefaultErrors;
+export type PatchProjectsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const patchProjectsLocationsJobTriggers: API.OperationMethod<
@@ -7041,7 +7158,7 @@ export const patchProjectsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsJobTriggersRequest,
   output: PatchProjectsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsJobTriggersRequest {
@@ -7067,7 +7184,12 @@ export type CreateProjectsLocationsJobTriggersResponse =
 export const CreateProjectsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type CreateProjectsLocationsJobTriggersError = DefaultErrors;
+export type CreateProjectsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const createProjectsLocationsJobTriggers: API.OperationMethod<
@@ -7078,7 +7200,7 @@ export const createProjectsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsJobTriggersRequest,
   output: CreateProjectsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface HybridInspectProjectsLocationsJobTriggersRequest {
@@ -7104,7 +7226,12 @@ export type HybridInspectProjectsLocationsJobTriggersResponse =
 export const HybridInspectProjectsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2HybridInspectResponse;
 
-export type HybridInspectProjectsLocationsJobTriggersError = DefaultErrors;
+export type HybridInspectProjectsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inspect hybrid content and store findings to a trigger. The inspection will be processed asynchronously. To review the findings monitor the jobs within the trigger. */
 export const hybridInspectProjectsLocationsJobTriggers: API.OperationMethod<
@@ -7115,7 +7242,7 @@ export const hybridInspectProjectsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HybridInspectProjectsLocationsJobTriggersRequest,
   output: HybridInspectProjectsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsJobTriggersRequest {
@@ -7158,7 +7285,10 @@ export type ListProjectsLocationsJobTriggersResponse =
 export const ListProjectsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListJobTriggersResponse;
 
-export type ListProjectsLocationsJobTriggersError = DefaultErrors;
+export type ListProjectsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists job triggers. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const listProjectsLocationsJobTriggers: API.PaginatedOperationMethod<
@@ -7169,7 +7299,7 @@ export const listProjectsLocationsJobTriggers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsJobTriggersRequest,
   output: ListProjectsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7194,7 +7324,10 @@ export type GetProjectsLocationsJobTriggersResponse =
 export const GetProjectsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type GetProjectsLocationsJobTriggersError = DefaultErrors;
+export type GetProjectsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const getProjectsLocationsJobTriggers: API.OperationMethod<
@@ -7205,7 +7338,7 @@ export const getProjectsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsJobTriggersRequest,
   output: GetProjectsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsProjectDataProfilesRequest {
@@ -7226,7 +7359,10 @@ export type GetProjectsLocationsProjectDataProfilesResponse =
 export const GetProjectsLocationsProjectDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ProjectDataProfile;
 
-export type GetProjectsLocationsProjectDataProfilesError = DefaultErrors;
+export type GetProjectsLocationsProjectDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a project data profile. */
 export const getProjectsLocationsProjectDataProfiles: API.OperationMethod<
@@ -7237,7 +7373,7 @@ export const getProjectsLocationsProjectDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProjectDataProfilesRequest,
   output: GetProjectsLocationsProjectDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsProjectDataProfilesRequest {
@@ -7270,7 +7406,10 @@ export type ListProjectsLocationsProjectDataProfilesResponse =
 export const ListProjectsLocationsProjectDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListProjectDataProfilesResponse;
 
-export type ListProjectsLocationsProjectDataProfilesError = DefaultErrors;
+export type ListProjectsLocationsProjectDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists project data profiles for an organization. */
 export const listProjectsLocationsProjectDataProfiles: API.PaginatedOperationMethod<
@@ -7281,7 +7420,7 @@ export const listProjectsLocationsProjectDataProfiles: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProjectDataProfilesRequest,
   output: ListProjectsLocationsProjectDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7318,7 +7457,10 @@ export type ListProjectsLocationsFileStoreDataProfilesResponse =
 export const ListProjectsLocationsFileStoreDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListFileStoreDataProfilesResponse;
 
-export type ListProjectsLocationsFileStoreDataProfilesError = DefaultErrors;
+export type ListProjectsLocationsFileStoreDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists file store data profiles for an organization. */
 export const listProjectsLocationsFileStoreDataProfiles: API.PaginatedOperationMethod<
@@ -7329,7 +7471,7 @@ export const listProjectsLocationsFileStoreDataProfiles: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsFileStoreDataProfilesRequest,
   output: ListProjectsLocationsFileStoreDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7354,7 +7496,12 @@ export type DeleteProjectsLocationsFileStoreDataProfilesResponse =
 export const DeleteProjectsLocationsFileStoreDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsFileStoreDataProfilesError = DefaultErrors;
+export type DeleteProjectsLocationsFileStoreDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a FileStoreDataProfile. Will not prevent the profile from being regenerated if the resource is still included in a discovery configuration. */
 export const deleteProjectsLocationsFileStoreDataProfiles: API.OperationMethod<
@@ -7365,7 +7512,7 @@ export const deleteProjectsLocationsFileStoreDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsFileStoreDataProfilesRequest,
   output: DeleteProjectsLocationsFileStoreDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsFileStoreDataProfilesRequest {
@@ -7386,7 +7533,10 @@ export type GetProjectsLocationsFileStoreDataProfilesResponse =
 export const GetProjectsLocationsFileStoreDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2FileStoreDataProfile;
 
-export type GetProjectsLocationsFileStoreDataProfilesError = DefaultErrors;
+export type GetProjectsLocationsFileStoreDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a file store data profile. */
 export const getProjectsLocationsFileStoreDataProfiles: API.OperationMethod<
@@ -7397,7 +7547,7 @@ export const getProjectsLocationsFileStoreDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsFileStoreDataProfilesRequest,
   output: GetProjectsLocationsFileStoreDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RedactProjectsLocationsImageRequest {
@@ -7423,7 +7573,12 @@ export type RedactProjectsLocationsImageResponse =
 export const RedactProjectsLocationsImageResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2RedactImageResponse;
 
-export type RedactProjectsLocationsImageError = DefaultErrors;
+export type RedactProjectsLocationsImageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Redacts potentially sensitive info from an image. This method has limits on input size, processing time, and output size. See https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. Only the first frame of each multiframe image is redacted. Metadata and other frames are omitted in the response. */
 export const redactProjectsLocationsImage: API.OperationMethod<
@@ -7434,7 +7589,7 @@ export const redactProjectsLocationsImage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RedactProjectsLocationsImageRequest,
   output: RedactProjectsLocationsImageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDlpJobsRequest {
@@ -7454,7 +7609,10 @@ export type GetProjectsLocationsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const GetProjectsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DlpJob;
 
-export type GetProjectsLocationsDlpJobsError = DefaultErrors;
+export type GetProjectsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running DlpJob. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const getProjectsLocationsDlpJobs: API.OperationMethod<
@@ -7465,7 +7623,7 @@ export const getProjectsLocationsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDlpJobsRequest,
   output: GetProjectsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FinishProjectsLocationsDlpJobsRequest {
@@ -7490,7 +7648,12 @@ export type FinishProjectsLocationsDlpJobsResponse = GoogleProtobufEmpty;
 export const FinishProjectsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type FinishProjectsLocationsDlpJobsError = DefaultErrors;
+export type FinishProjectsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finish a running hybrid DlpJob. Triggers the finalization steps and running of any enabled actions that have not yet run. */
 export const finishProjectsLocationsDlpJobs: API.OperationMethod<
@@ -7501,7 +7664,7 @@ export const finishProjectsLocationsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FinishProjectsLocationsDlpJobsRequest,
   output: FinishProjectsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDlpJobsRequest {
@@ -7544,7 +7707,10 @@ export type ListProjectsLocationsDlpJobsResponse =
 export const ListProjectsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDlpJobsResponse;
 
-export type ListProjectsLocationsDlpJobsError = DefaultErrors;
+export type ListProjectsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const listProjectsLocationsDlpJobs: API.PaginatedOperationMethod<
@@ -7555,7 +7721,7 @@ export const listProjectsLocationsDlpJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDlpJobsRequest,
   output: ListProjectsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7585,7 +7751,12 @@ export type HybridInspectProjectsLocationsDlpJobsResponse =
 export const HybridInspectProjectsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2HybridInspectResponse;
 
-export type HybridInspectProjectsLocationsDlpJobsError = DefaultErrors;
+export type HybridInspectProjectsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inspect hybrid content and store findings to a job. To review the findings, inspect the job. Inspection will occur asynchronously. */
 export const hybridInspectProjectsLocationsDlpJobs: API.OperationMethod<
@@ -7596,7 +7767,7 @@ export const hybridInspectProjectsLocationsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HybridInspectProjectsLocationsDlpJobsRequest,
   output: HybridInspectProjectsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDlpJobsRequest {
@@ -7621,7 +7792,12 @@ export type CreateProjectsLocationsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const CreateProjectsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DlpJob;
 
-export type CreateProjectsLocationsDlpJobsError = DefaultErrors;
+export type CreateProjectsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. */
 export const createProjectsLocationsDlpJobs: API.OperationMethod<
@@ -7632,7 +7808,7 @@ export const createProjectsLocationsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDlpJobsRequest,
   output: CreateProjectsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDlpJobsRequest {
@@ -7652,7 +7828,12 @@ export type DeleteProjectsLocationsDlpJobsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDlpJobsError = DefaultErrors;
+export type DeleteProjectsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the DlpJob result. The job will be canceled if possible. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const deleteProjectsLocationsDlpJobs: API.OperationMethod<
@@ -7663,7 +7844,7 @@ export const deleteProjectsLocationsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDlpJobsRequest,
   output: DeleteProjectsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsDlpJobsRequest {
@@ -7688,7 +7869,12 @@ export type CancelProjectsLocationsDlpJobsResponse = GoogleProtobufEmpty;
 export const CancelProjectsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsLocationsDlpJobsError = DefaultErrors;
+export type CancelProjectsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel the DlpJob, but success is not guaranteed. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const cancelProjectsLocationsDlpJobs: API.OperationMethod<
@@ -7699,7 +7885,7 @@ export const cancelProjectsLocationsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsDlpJobsRequest,
   output: CancelProjectsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReidentifyProjectsLocationsContentRequest {
@@ -7729,7 +7915,12 @@ export type ReidentifyProjectsLocationsContentResponse =
 export const ReidentifyProjectsLocationsContentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ReidentifyContentResponse;
 
-export type ReidentifyProjectsLocationsContentError = DefaultErrors;
+export type ReidentifyProjectsLocationsContentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Re-identifies content that has been de-identified. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example to learn more. */
 export const reidentifyProjectsLocationsContent: API.OperationMethod<
@@ -7740,7 +7931,7 @@ export const reidentifyProjectsLocationsContent: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReidentifyProjectsLocationsContentRequest,
   output: ReidentifyProjectsLocationsContentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeidentifyProjectsLocationsContentRequest {
@@ -7770,7 +7961,12 @@ export type DeidentifyProjectsLocationsContentResponse =
 export const DeidentifyProjectsLocationsContentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyContentResponse;
 
-export type DeidentifyProjectsLocationsContentError = DefaultErrors;
+export type DeidentifyProjectsLocationsContentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** De-identifies potentially sensitive info from a ContentItem. This method has limits on input size and output size. See https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. */
 export const deidentifyProjectsLocationsContent: API.OperationMethod<
@@ -7781,7 +7977,7 @@ export const deidentifyProjectsLocationsContent: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeidentifyProjectsLocationsContentRequest,
   output: DeidentifyProjectsLocationsContentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InspectProjectsLocationsContentRequest {
@@ -7811,7 +8007,12 @@ export type InspectProjectsLocationsContentResponse =
 export const InspectProjectsLocationsContentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectContentResponse;
 
-export type InspectProjectsLocationsContentError = DefaultErrors;
+export type InspectProjectsLocationsContentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds potentially sensitive info in content. This method has limits on input size, processing time, and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. For how to guides, see https://cloud.google.com/sensitive-data-protection/docs/inspecting-images and https://cloud.google.com/sensitive-data-protection/docs/inspecting-text, */
 export const inspectProjectsLocationsContent: API.OperationMethod<
@@ -7822,7 +8023,7 @@ export const inspectProjectsLocationsContent: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InspectProjectsLocationsContentRequest,
   output: InspectProjectsLocationsContentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsConnectionsRequest {
@@ -7852,7 +8053,10 @@ export type ListProjectsLocationsConnectionsResponse =
 export const ListProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListConnectionsResponse;
 
-export type ListProjectsLocationsConnectionsError = DefaultErrors;
+export type ListProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Connections in a parent. Use SearchConnections to see all connections within an organization. */
 export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
@@ -7863,7 +8067,7 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsConnectionsRequest,
   output: ListProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7888,7 +8092,10 @@ export type GetProjectsLocationsConnectionsResponse =
 export const GetProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2Connection;
 
-export type GetProjectsLocationsConnectionsError = DefaultErrors;
+export type GetProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a Connection by name. */
 export const getProjectsLocationsConnections: API.OperationMethod<
@@ -7899,7 +8106,7 @@ export const getProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsConnectionsRequest,
   output: GetProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsConnectionsRequest {
@@ -7925,7 +8132,12 @@ export type CreateProjectsLocationsConnectionsResponse =
 export const CreateProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2Connection;
 
-export type CreateProjectsLocationsConnectionsError = DefaultErrors;
+export type CreateProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a Connection to an external data source. */
 export const createProjectsLocationsConnections: API.OperationMethod<
@@ -7936,7 +8148,7 @@ export const createProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsConnectionsRequest,
   output: CreateProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsLocationsConnectionsRequest {
@@ -7966,7 +8178,10 @@ export type SearchProjectsLocationsConnectionsResponse =
 export const SearchProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2SearchConnectionsResponse;
 
-export type SearchProjectsLocationsConnectionsError = DefaultErrors;
+export type SearchProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches for Connections in a parent. */
 export const searchProjectsLocationsConnections: API.PaginatedOperationMethod<
@@ -7977,7 +8192,7 @@ export const searchProjectsLocationsConnections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchProjectsLocationsConnectionsRequest,
   output: SearchProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8001,7 +8216,12 @@ export type DeleteProjectsLocationsConnectionsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsConnectionsError = DefaultErrors;
+export type DeleteProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a Connection. */
 export const deleteProjectsLocationsConnections: API.OperationMethod<
@@ -8012,7 +8232,7 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsConnectionsRequest,
   output: DeleteProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsConnectionsRequest {
@@ -8038,7 +8258,12 @@ export type PatchProjectsLocationsConnectionsResponse =
 export const PatchProjectsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2Connection;
 
-export type PatchProjectsLocationsConnectionsError = DefaultErrors;
+export type PatchProjectsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a Connection. */
 export const patchProjectsLocationsConnections: API.OperationMethod<
@@ -8049,7 +8274,7 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsConnectionsRequest,
   output: PatchProjectsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsColumnDataProfilesRequest {
@@ -8082,7 +8307,10 @@ export type ListProjectsLocationsColumnDataProfilesResponse =
 export const ListProjectsLocationsColumnDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListColumnDataProfilesResponse;
 
-export type ListProjectsLocationsColumnDataProfilesError = DefaultErrors;
+export type ListProjectsLocationsColumnDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists column data profiles for an organization. */
 export const listProjectsLocationsColumnDataProfiles: API.PaginatedOperationMethod<
@@ -8093,7 +8321,7 @@ export const listProjectsLocationsColumnDataProfiles: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsColumnDataProfilesRequest,
   output: ListProjectsLocationsColumnDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8118,7 +8346,10 @@ export type GetProjectsLocationsColumnDataProfilesResponse =
 export const GetProjectsLocationsColumnDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ColumnDataProfile;
 
-export type GetProjectsLocationsColumnDataProfilesError = DefaultErrors;
+export type GetProjectsLocationsColumnDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a column data profile. */
 export const getProjectsLocationsColumnDataProfiles: API.OperationMethod<
@@ -8129,7 +8360,7 @@ export const getProjectsLocationsColumnDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsColumnDataProfilesRequest,
   output: GetProjectsLocationsColumnDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsDiscoveryConfigsRequest {
@@ -8159,7 +8390,10 @@ export type ListProjectsLocationsDiscoveryConfigsResponse =
 export const ListProjectsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDiscoveryConfigsResponse;
 
-export type ListProjectsLocationsDiscoveryConfigsError = DefaultErrors;
+export type ListProjectsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists discovery configurations. */
 export const listProjectsLocationsDiscoveryConfigs: API.PaginatedOperationMethod<
@@ -8170,7 +8404,7 @@ export const listProjectsLocationsDiscoveryConfigs: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDiscoveryConfigsRequest,
   output: ListProjectsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8195,7 +8429,10 @@ export type GetProjectsLocationsDiscoveryConfigsResponse =
 export const GetProjectsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DiscoveryConfig;
 
-export type GetProjectsLocationsDiscoveryConfigsError = DefaultErrors;
+export type GetProjectsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a discovery configuration. */
 export const getProjectsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -8206,7 +8443,7 @@ export const getProjectsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDiscoveryConfigsRequest,
   output: GetProjectsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsDiscoveryConfigsRequest {
@@ -8236,7 +8473,12 @@ export type CreateProjectsLocationsDiscoveryConfigsResponse =
 export const CreateProjectsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DiscoveryConfig;
 
-export type CreateProjectsLocationsDiscoveryConfigsError = DefaultErrors;
+export type CreateProjectsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a config for discovery to scan and profile storage. */
 export const createProjectsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -8247,7 +8489,7 @@ export const createProjectsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDiscoveryConfigsRequest,
   output: CreateProjectsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDiscoveryConfigsRequest {
@@ -8268,7 +8510,12 @@ export type DeleteProjectsLocationsDiscoveryConfigsResponse =
 export const DeleteProjectsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsDiscoveryConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a discovery configuration. */
 export const deleteProjectsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -8279,7 +8526,7 @@ export const deleteProjectsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDiscoveryConfigsRequest,
   output: DeleteProjectsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDiscoveryConfigsRequest {
@@ -8305,7 +8552,12 @@ export type PatchProjectsLocationsDiscoveryConfigsResponse =
 export const PatchProjectsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DiscoveryConfig;
 
-export type PatchProjectsLocationsDiscoveryConfigsError = DefaultErrors;
+export type PatchProjectsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a discovery configuration. */
 export const patchProjectsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -8316,7 +8568,7 @@ export const patchProjectsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDiscoveryConfigsRequest,
   output: PatchProjectsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsStoredInfoTypesRequest {
@@ -8342,7 +8594,12 @@ export type PatchProjectsLocationsStoredInfoTypesResponse =
 export const PatchProjectsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type PatchProjectsLocationsStoredInfoTypesError = DefaultErrors;
+export type PatchProjectsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const patchProjectsLocationsStoredInfoTypes: API.OperationMethod<
@@ -8353,7 +8610,7 @@ export const patchProjectsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsStoredInfoTypesRequest,
   output: PatchProjectsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsStoredInfoTypesRequest {
@@ -8374,7 +8631,12 @@ export type DeleteProjectsLocationsStoredInfoTypesResponse =
 export const DeleteProjectsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsLocationsStoredInfoTypesError = DefaultErrors;
+export type DeleteProjectsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const deleteProjectsLocationsStoredInfoTypes: API.OperationMethod<
@@ -8385,7 +8647,7 @@ export const deleteProjectsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsStoredInfoTypesRequest,
   output: DeleteProjectsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsStoredInfoTypesRequest {
@@ -8415,7 +8677,12 @@ export type CreateProjectsLocationsStoredInfoTypesResponse =
 export const CreateProjectsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type CreateProjectsLocationsStoredInfoTypesError = DefaultErrors;
+export type CreateProjectsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const createProjectsLocationsStoredInfoTypes: API.OperationMethod<
@@ -8426,7 +8693,7 @@ export const createProjectsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsStoredInfoTypesRequest,
   output: CreateProjectsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsStoredInfoTypesRequest {
@@ -8447,7 +8714,10 @@ export type GetProjectsLocationsStoredInfoTypesResponse =
 export const GetProjectsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type GetProjectsLocationsStoredInfoTypesError = DefaultErrors;
+export type GetProjectsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const getProjectsLocationsStoredInfoTypes: API.OperationMethod<
@@ -8458,7 +8728,7 @@ export const getProjectsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsStoredInfoTypesRequest,
   output: GetProjectsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsStoredInfoTypesRequest {
@@ -8491,7 +8761,10 @@ export type ListProjectsLocationsStoredInfoTypesResponse =
 export const ListProjectsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListStoredInfoTypesResponse;
 
-export type ListProjectsLocationsStoredInfoTypesError = DefaultErrors;
+export type ListProjectsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const listProjectsLocationsStoredInfoTypes: API.PaginatedOperationMethod<
@@ -8502,7 +8775,7 @@ export const listProjectsLocationsStoredInfoTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsStoredInfoTypesRequest,
   output: ListProjectsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8531,7 +8804,12 @@ export type CreateProjectsJobTriggersResponse = GooglePrivacyDlpV2JobTrigger;
 export const CreateProjectsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type CreateProjectsJobTriggersError = DefaultErrors;
+export type CreateProjectsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const createProjectsJobTriggers: API.OperationMethod<
@@ -8542,7 +8820,7 @@ export const createProjectsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsJobTriggersRequest,
   output: CreateProjectsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsJobTriggersRequest {
@@ -8585,7 +8863,7 @@ export type ListProjectsJobTriggersResponse =
 export const ListProjectsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListJobTriggersResponse;
 
-export type ListProjectsJobTriggersError = DefaultErrors;
+export type ListProjectsJobTriggersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists job triggers. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const listProjectsJobTriggers: API.PaginatedOperationMethod<
@@ -8596,7 +8874,7 @@ export const listProjectsJobTriggers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsJobTriggersRequest,
   output: ListProjectsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8620,7 +8898,7 @@ export type GetProjectsJobTriggersResponse = GooglePrivacyDlpV2JobTrigger;
 export const GetProjectsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type GetProjectsJobTriggersError = DefaultErrors;
+export type GetProjectsJobTriggersError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const getProjectsJobTriggers: API.OperationMethod<
@@ -8631,7 +8909,7 @@ export const getProjectsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsJobTriggersRequest,
   output: GetProjectsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ActivateProjectsJobTriggersRequest {
@@ -8656,7 +8934,12 @@ export type ActivateProjectsJobTriggersResponse = GooglePrivacyDlpV2DlpJob;
 export const ActivateProjectsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DlpJob;
 
-export type ActivateProjectsJobTriggersError = DefaultErrors;
+export type ActivateProjectsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activate a job trigger. Causes the immediate execute of a trigger instead of waiting on the trigger event to occur. */
 export const activateProjectsJobTriggers: API.OperationMethod<
@@ -8667,7 +8950,7 @@ export const activateProjectsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateProjectsJobTriggersRequest,
   output: ActivateProjectsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsJobTriggersRequest {
@@ -8687,7 +8970,12 @@ export type DeleteProjectsJobTriggersResponse = GoogleProtobufEmpty;
 export const DeleteProjectsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsJobTriggersError = DefaultErrors;
+export type DeleteProjectsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const deleteProjectsJobTriggers: API.OperationMethod<
@@ -8698,7 +8986,7 @@ export const deleteProjectsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsJobTriggersRequest,
   output: DeleteProjectsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsJobTriggersRequest {
@@ -8723,7 +9011,12 @@ export type PatchProjectsJobTriggersResponse = GooglePrivacyDlpV2JobTrigger;
 export const PatchProjectsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type PatchProjectsJobTriggersError = DefaultErrors;
+export type PatchProjectsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const patchProjectsJobTriggers: API.OperationMethod<
@@ -8734,7 +9027,7 @@ export const patchProjectsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsJobTriggersRequest,
   output: PatchProjectsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsStoredInfoTypesRequest {
@@ -8764,7 +9057,12 @@ export type CreateProjectsStoredInfoTypesResponse =
 export const CreateProjectsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type CreateProjectsStoredInfoTypesError = DefaultErrors;
+export type CreateProjectsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const createProjectsStoredInfoTypes: API.OperationMethod<
@@ -8775,7 +9073,7 @@ export const createProjectsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsStoredInfoTypesRequest,
   output: CreateProjectsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsStoredInfoTypesRequest {
@@ -8808,7 +9106,10 @@ export type ListProjectsStoredInfoTypesResponse =
 export const ListProjectsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListStoredInfoTypesResponse;
 
-export type ListProjectsStoredInfoTypesError = DefaultErrors;
+export type ListProjectsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const listProjectsStoredInfoTypes: API.PaginatedOperationMethod<
@@ -8819,7 +9120,7 @@ export const listProjectsStoredInfoTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsStoredInfoTypesRequest,
   output: ListProjectsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8844,7 +9145,10 @@ export type GetProjectsStoredInfoTypesResponse =
 export const GetProjectsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type GetProjectsStoredInfoTypesError = DefaultErrors;
+export type GetProjectsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const getProjectsStoredInfoTypes: API.OperationMethod<
@@ -8855,7 +9159,7 @@ export const getProjectsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsStoredInfoTypesRequest,
   output: GetProjectsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsStoredInfoTypesRequest {
@@ -8875,7 +9179,12 @@ export type DeleteProjectsStoredInfoTypesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsStoredInfoTypesError = DefaultErrors;
+export type DeleteProjectsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const deleteProjectsStoredInfoTypes: API.OperationMethod<
@@ -8886,7 +9195,7 @@ export const deleteProjectsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsStoredInfoTypesRequest,
   output: DeleteProjectsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsStoredInfoTypesRequest {
@@ -8912,7 +9221,12 @@ export type PatchProjectsStoredInfoTypesResponse =
 export const PatchProjectsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type PatchProjectsStoredInfoTypesError = DefaultErrors;
+export type PatchProjectsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const patchProjectsStoredInfoTypes: API.OperationMethod<
@@ -8923,7 +9237,7 @@ export const patchProjectsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsStoredInfoTypesRequest,
   output: PatchProjectsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInspectTemplatesRequest {
@@ -8949,7 +9263,12 @@ export type PatchProjectsInspectTemplatesResponse =
 export const PatchProjectsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type PatchProjectsInspectTemplatesError = DefaultErrors;
+export type PatchProjectsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const patchProjectsInspectTemplates: API.OperationMethod<
@@ -8960,7 +9279,7 @@ export const patchProjectsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInspectTemplatesRequest,
   output: PatchProjectsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInspectTemplatesRequest {
@@ -8980,7 +9299,12 @@ export type DeleteProjectsInspectTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsInspectTemplatesError = DefaultErrors;
+export type DeleteProjectsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const deleteProjectsInspectTemplates: API.OperationMethod<
@@ -8991,7 +9315,7 @@ export const deleteProjectsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInspectTemplatesRequest,
   output: DeleteProjectsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInspectTemplatesRequest {
@@ -9021,7 +9345,12 @@ export type CreateProjectsInspectTemplatesResponse =
 export const CreateProjectsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type CreateProjectsInspectTemplatesError = DefaultErrors;
+export type CreateProjectsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const createProjectsInspectTemplates: API.OperationMethod<
@@ -9032,7 +9361,7 @@ export const createProjectsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInspectTemplatesRequest,
   output: CreateProjectsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInspectTemplatesRequest {
@@ -9053,7 +9382,10 @@ export type GetProjectsInspectTemplatesResponse =
 export const GetProjectsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type GetProjectsInspectTemplatesError = DefaultErrors;
+export type GetProjectsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const getProjectsInspectTemplates: API.OperationMethod<
@@ -9064,7 +9396,7 @@ export const getProjectsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInspectTemplatesRequest,
   output: GetProjectsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInspectTemplatesRequest {
@@ -9097,7 +9429,10 @@ export type ListProjectsInspectTemplatesResponse =
 export const ListProjectsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInspectTemplatesResponse;
 
-export type ListProjectsInspectTemplatesError = DefaultErrors;
+export type ListProjectsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const listProjectsInspectTemplates: API.PaginatedOperationMethod<
@@ -9108,7 +9443,7 @@ export const listProjectsInspectTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInspectTemplatesRequest,
   output: ListProjectsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9142,7 +9477,12 @@ export type ReidentifyProjectsContentResponse =
 export const ReidentifyProjectsContentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ReidentifyContentResponse;
 
-export type ReidentifyProjectsContentError = DefaultErrors;
+export type ReidentifyProjectsContentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Re-identifies content that has been de-identified. See https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example to learn more. */
 export const reidentifyProjectsContent: API.OperationMethod<
@@ -9153,7 +9493,7 @@ export const reidentifyProjectsContent: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReidentifyProjectsContentRequest,
   output: ReidentifyProjectsContentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeidentifyProjectsContentRequest {
@@ -9183,7 +9523,12 @@ export type DeidentifyProjectsContentResponse =
 export const DeidentifyProjectsContentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyContentResponse;
 
-export type DeidentifyProjectsContentError = DefaultErrors;
+export type DeidentifyProjectsContentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** De-identifies potentially sensitive info from a ContentItem. This method has limits on input size and output size. See https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. */
 export const deidentifyProjectsContent: API.OperationMethod<
@@ -9194,7 +9539,7 @@ export const deidentifyProjectsContent: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeidentifyProjectsContentRequest,
   output: DeidentifyProjectsContentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InspectProjectsContentRequest {
@@ -9224,7 +9569,12 @@ export type InspectProjectsContentResponse =
 export const InspectProjectsContentResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectContentResponse;
 
-export type InspectProjectsContentError = DefaultErrors;
+export type InspectProjectsContentError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Finds potentially sensitive info in content. This method has limits on input size, processing time, and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. For how to guides, see https://cloud.google.com/sensitive-data-protection/docs/inspecting-images and https://cloud.google.com/sensitive-data-protection/docs/inspecting-text, */
 export const inspectProjectsContent: API.OperationMethod<
@@ -9235,7 +9585,7 @@ export const inspectProjectsContent: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InspectProjectsContentRequest,
   output: InspectProjectsContentResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RedactProjectsImageRequest {
@@ -9260,7 +9610,12 @@ export type RedactProjectsImageResponse = GooglePrivacyDlpV2RedactImageResponse;
 export const RedactProjectsImageResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2RedactImageResponse;
 
-export type RedactProjectsImageError = DefaultErrors;
+export type RedactProjectsImageError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Redacts potentially sensitive info from an image. This method has limits on input size, processing time, and output size. See https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. Only the first frame of each multiframe image is redacted. Metadata and other frames are omitted in the response. */
 export const redactProjectsImage: API.OperationMethod<
@@ -9271,7 +9626,7 @@ export const redactProjectsImage: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RedactProjectsImageRequest,
   output: RedactProjectsImageResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsDeidentifyTemplatesRequest {
@@ -9291,7 +9646,12 @@ export type DeleteProjectsDeidentifyTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteProjectsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsDeidentifyTemplatesError = DefaultErrors;
+export type DeleteProjectsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const deleteProjectsDeidentifyTemplates: API.OperationMethod<
@@ -9302,7 +9662,7 @@ export const deleteProjectsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDeidentifyTemplatesRequest,
   output: DeleteProjectsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsDeidentifyTemplatesRequest {
@@ -9328,7 +9688,12 @@ export type PatchProjectsDeidentifyTemplatesResponse =
 export const PatchProjectsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type PatchProjectsDeidentifyTemplatesError = DefaultErrors;
+export type PatchProjectsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const patchProjectsDeidentifyTemplates: API.OperationMethod<
@@ -9339,7 +9704,7 @@ export const patchProjectsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsDeidentifyTemplatesRequest,
   output: PatchProjectsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDeidentifyTemplatesRequest {
@@ -9372,7 +9737,10 @@ export type ListProjectsDeidentifyTemplatesResponse =
 export const ListProjectsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
 
-export type ListProjectsDeidentifyTemplatesError = DefaultErrors;
+export type ListProjectsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const listProjectsDeidentifyTemplates: API.PaginatedOperationMethod<
@@ -9383,7 +9751,7 @@ export const listProjectsDeidentifyTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDeidentifyTemplatesRequest,
   output: ListProjectsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9408,7 +9776,10 @@ export type GetProjectsDeidentifyTemplatesResponse =
 export const GetProjectsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type GetProjectsDeidentifyTemplatesError = DefaultErrors;
+export type GetProjectsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const getProjectsDeidentifyTemplates: API.OperationMethod<
@@ -9419,7 +9790,7 @@ export const getProjectsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDeidentifyTemplatesRequest,
   output: GetProjectsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsDeidentifyTemplatesRequest {
@@ -9449,7 +9820,12 @@ export type CreateProjectsDeidentifyTemplatesResponse =
 export const CreateProjectsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type CreateProjectsDeidentifyTemplatesError = DefaultErrors;
+export type CreateProjectsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const createProjectsDeidentifyTemplates: API.OperationMethod<
@@ -9460,7 +9836,7 @@ export const createProjectsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDeidentifyTemplatesRequest,
   output: CreateProjectsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDlpJobsRequest {
@@ -9502,7 +9878,7 @@ export type ListProjectsDlpJobsResponse = GooglePrivacyDlpV2ListDlpJobsResponse;
 export const ListProjectsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDlpJobsResponse;
 
-export type ListProjectsDlpJobsError = DefaultErrors;
+export type ListProjectsDlpJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const listProjectsDlpJobs: API.PaginatedOperationMethod<
@@ -9513,7 +9889,7 @@ export const listProjectsDlpJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDlpJobsRequest,
   output: ListProjectsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9537,7 +9913,7 @@ export type GetProjectsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const GetProjectsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DlpJob;
 
-export type GetProjectsDlpJobsError = DefaultErrors;
+export type GetProjectsDlpJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running DlpJob. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const getProjectsDlpJobs: API.OperationMethod<
@@ -9548,7 +9924,7 @@ export const getProjectsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDlpJobsRequest,
   output: GetProjectsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsDlpJobsRequest {
@@ -9573,7 +9949,12 @@ export type CreateProjectsDlpJobsResponse = GooglePrivacyDlpV2DlpJob;
 export const CreateProjectsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DlpJob;
 
-export type CreateProjectsDlpJobsError = DefaultErrors;
+export type CreateProjectsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. */
 export const createProjectsDlpJobs: API.OperationMethod<
@@ -9584,7 +9965,7 @@ export const createProjectsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDlpJobsRequest,
   output: CreateProjectsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsDlpJobsRequest {
@@ -9604,7 +9985,12 @@ export type DeleteProjectsDlpJobsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsDlpJobsError = DefaultErrors;
+export type DeleteProjectsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the DlpJob result. The job will be canceled if possible. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const deleteProjectsDlpJobs: API.OperationMethod<
@@ -9615,7 +10001,7 @@ export const deleteProjectsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDlpJobsRequest,
   output: DeleteProjectsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsDlpJobsRequest {
@@ -9640,7 +10026,12 @@ export type CancelProjectsDlpJobsResponse = GoogleProtobufEmpty;
 export const CancelProjectsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelProjectsDlpJobsError = DefaultErrors;
+export type CancelProjectsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel the DlpJob, but success is not guaranteed. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const cancelProjectsDlpJobs: API.OperationMethod<
@@ -9651,7 +10042,7 @@ export const cancelProjectsDlpJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsDlpJobsRequest,
   output: CancelProjectsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsDeidentifyTemplatesRequest {
@@ -9672,7 +10063,12 @@ export type DeleteOrganizationsDeidentifyTemplatesResponse =
 export const DeleteOrganizationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsDeidentifyTemplatesError = DefaultErrors;
+export type DeleteOrganizationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const deleteOrganizationsDeidentifyTemplates: API.OperationMethod<
@@ -9683,7 +10079,7 @@ export const deleteOrganizationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsDeidentifyTemplatesRequest,
   output: DeleteOrganizationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsDeidentifyTemplatesRequest {
@@ -9709,7 +10105,12 @@ export type PatchOrganizationsDeidentifyTemplatesResponse =
 export const PatchOrganizationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type PatchOrganizationsDeidentifyTemplatesError = DefaultErrors;
+export type PatchOrganizationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const patchOrganizationsDeidentifyTemplates: API.OperationMethod<
@@ -9720,7 +10121,7 @@ export const patchOrganizationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsDeidentifyTemplatesRequest,
   output: PatchOrganizationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsDeidentifyTemplatesRequest {
@@ -9753,7 +10154,10 @@ export type ListOrganizationsDeidentifyTemplatesResponse =
 export const ListOrganizationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
 
-export type ListOrganizationsDeidentifyTemplatesError = DefaultErrors;
+export type ListOrganizationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const listOrganizationsDeidentifyTemplates: API.PaginatedOperationMethod<
@@ -9764,7 +10168,7 @@ export const listOrganizationsDeidentifyTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsDeidentifyTemplatesRequest,
   output: ListOrganizationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9789,7 +10193,10 @@ export type GetOrganizationsDeidentifyTemplatesResponse =
 export const GetOrganizationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type GetOrganizationsDeidentifyTemplatesError = DefaultErrors;
+export type GetOrganizationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const getOrganizationsDeidentifyTemplates: API.OperationMethod<
@@ -9800,7 +10207,7 @@ export const getOrganizationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsDeidentifyTemplatesRequest,
   output: GetOrganizationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsDeidentifyTemplatesRequest {
@@ -9830,7 +10237,12 @@ export type CreateOrganizationsDeidentifyTemplatesResponse =
 export const CreateOrganizationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type CreateOrganizationsDeidentifyTemplatesError = DefaultErrors;
+export type CreateOrganizationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const createOrganizationsDeidentifyTemplates: API.OperationMethod<
@@ -9841,7 +10253,7 @@ export const createOrganizationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsDeidentifyTemplatesRequest,
   output: CreateOrganizationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsStoredInfoTypesRequest {
@@ -9871,7 +10283,12 @@ export type CreateOrganizationsStoredInfoTypesResponse =
 export const CreateOrganizationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type CreateOrganizationsStoredInfoTypesError = DefaultErrors;
+export type CreateOrganizationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const createOrganizationsStoredInfoTypes: API.OperationMethod<
@@ -9882,7 +10299,7 @@ export const createOrganizationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsStoredInfoTypesRequest,
   output: CreateOrganizationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsStoredInfoTypesRequest {
@@ -9915,7 +10332,10 @@ export type ListOrganizationsStoredInfoTypesResponse =
 export const ListOrganizationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListStoredInfoTypesResponse;
 
-export type ListOrganizationsStoredInfoTypesError = DefaultErrors;
+export type ListOrganizationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const listOrganizationsStoredInfoTypes: API.PaginatedOperationMethod<
@@ -9926,7 +10346,7 @@ export const listOrganizationsStoredInfoTypes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsStoredInfoTypesRequest,
   output: ListOrganizationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9951,7 +10371,10 @@ export type GetOrganizationsStoredInfoTypesResponse =
 export const GetOrganizationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type GetOrganizationsStoredInfoTypesError = DefaultErrors;
+export type GetOrganizationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const getOrganizationsStoredInfoTypes: API.OperationMethod<
@@ -9962,7 +10385,7 @@ export const getOrganizationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsStoredInfoTypesRequest,
   output: GetOrganizationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsStoredInfoTypesRequest {
@@ -9982,7 +10405,12 @@ export type DeleteOrganizationsStoredInfoTypesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsStoredInfoTypesError = DefaultErrors;
+export type DeleteOrganizationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const deleteOrganizationsStoredInfoTypes: API.OperationMethod<
@@ -9993,7 +10421,7 @@ export const deleteOrganizationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsStoredInfoTypesRequest,
   output: DeleteOrganizationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsStoredInfoTypesRequest {
@@ -10019,7 +10447,12 @@ export type PatchOrganizationsStoredInfoTypesResponse =
 export const PatchOrganizationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type PatchOrganizationsStoredInfoTypesError = DefaultErrors;
+export type PatchOrganizationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const patchOrganizationsStoredInfoTypes: API.OperationMethod<
@@ -10030,7 +10463,7 @@ export const patchOrganizationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsStoredInfoTypesRequest,
   output: PatchOrganizationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsJobTriggersRequest {
@@ -10073,7 +10506,10 @@ export type ListOrganizationsLocationsJobTriggersResponse =
 export const ListOrganizationsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListJobTriggersResponse;
 
-export type ListOrganizationsLocationsJobTriggersError = DefaultErrors;
+export type ListOrganizationsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists job triggers. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const listOrganizationsLocationsJobTriggers: API.PaginatedOperationMethod<
@@ -10084,7 +10520,7 @@ export const listOrganizationsLocationsJobTriggers: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsJobTriggersRequest,
   output: ListOrganizationsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10109,7 +10545,10 @@ export type GetOrganizationsLocationsJobTriggersResponse =
 export const GetOrganizationsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type GetOrganizationsLocationsJobTriggersError = DefaultErrors;
+export type GetOrganizationsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const getOrganizationsLocationsJobTriggers: API.OperationMethod<
@@ -10120,7 +10559,7 @@ export const getOrganizationsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsJobTriggersRequest,
   output: GetOrganizationsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsLocationsJobTriggersRequest {
@@ -10146,7 +10585,12 @@ export type CreateOrganizationsLocationsJobTriggersResponse =
 export const CreateOrganizationsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type CreateOrganizationsLocationsJobTriggersError = DefaultErrors;
+export type CreateOrganizationsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const createOrganizationsLocationsJobTriggers: API.OperationMethod<
@@ -10157,7 +10601,7 @@ export const createOrganizationsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsJobTriggersRequest,
   output: CreateOrganizationsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsJobTriggersRequest {
@@ -10178,7 +10622,12 @@ export type DeleteOrganizationsLocationsJobTriggersResponse =
 export const DeleteOrganizationsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsLocationsJobTriggersError = DefaultErrors;
+export type DeleteOrganizationsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const deleteOrganizationsLocationsJobTriggers: API.OperationMethod<
@@ -10189,7 +10638,7 @@ export const deleteOrganizationsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsJobTriggersRequest,
   output: DeleteOrganizationsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsJobTriggersRequest {
@@ -10215,7 +10664,12 @@ export type PatchOrganizationsLocationsJobTriggersResponse =
 export const PatchOrganizationsLocationsJobTriggersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2JobTrigger;
 
-export type PatchOrganizationsLocationsJobTriggersError = DefaultErrors;
+export type PatchOrganizationsLocationsJobTriggersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more. */
 export const patchOrganizationsLocationsJobTriggers: API.OperationMethod<
@@ -10226,7 +10680,7 @@ export const patchOrganizationsLocationsJobTriggers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsJobTriggersRequest,
   output: PatchOrganizationsLocationsJobTriggersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsProjectDataProfilesRequest {
@@ -10247,7 +10701,10 @@ export type GetOrganizationsLocationsProjectDataProfilesResponse =
 export const GetOrganizationsLocationsProjectDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ProjectDataProfile;
 
-export type GetOrganizationsLocationsProjectDataProfilesError = DefaultErrors;
+export type GetOrganizationsLocationsProjectDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a project data profile. */
 export const getOrganizationsLocationsProjectDataProfiles: API.OperationMethod<
@@ -10258,7 +10715,7 @@ export const getOrganizationsLocationsProjectDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsProjectDataProfilesRequest,
   output: GetOrganizationsLocationsProjectDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsProjectDataProfilesRequest {
@@ -10291,7 +10748,10 @@ export type ListOrganizationsLocationsProjectDataProfilesResponse =
 export const ListOrganizationsLocationsProjectDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListProjectDataProfilesResponse;
 
-export type ListOrganizationsLocationsProjectDataProfilesError = DefaultErrors;
+export type ListOrganizationsLocationsProjectDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists project data profiles for an organization. */
 export const listOrganizationsLocationsProjectDataProfiles: API.PaginatedOperationMethod<
@@ -10302,7 +10762,7 @@ export const listOrganizationsLocationsProjectDataProfiles: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsProjectDataProfilesRequest,
   output: ListOrganizationsLocationsProjectDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10327,7 +10787,12 @@ export type DeleteOrganizationsLocationsStoredInfoTypesResponse =
 export const DeleteOrganizationsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsLocationsStoredInfoTypesError = DefaultErrors;
+export type DeleteOrganizationsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const deleteOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
@@ -10338,7 +10803,7 @@ export const deleteOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsStoredInfoTypesRequest,
   output: DeleteOrganizationsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsStoredInfoTypesRequest {
@@ -10364,7 +10829,12 @@ export type PatchOrganizationsLocationsStoredInfoTypesResponse =
 export const PatchOrganizationsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type PatchOrganizationsLocationsStoredInfoTypesError = DefaultErrors;
+export type PatchOrganizationsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the stored infoType by creating a new version. The existing version will continue to be used until the new version is ready. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const patchOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
@@ -10375,7 +10845,7 @@ export const patchOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsStoredInfoTypesRequest,
   output: PatchOrganizationsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsStoredInfoTypesRequest {
@@ -10408,7 +10878,10 @@ export type ListOrganizationsLocationsStoredInfoTypesResponse =
 export const ListOrganizationsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListStoredInfoTypesResponse;
 
-export type ListOrganizationsLocationsStoredInfoTypesError = DefaultErrors;
+export type ListOrganizationsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists stored infoTypes. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const listOrganizationsLocationsStoredInfoTypes: API.PaginatedOperationMethod<
@@ -10419,7 +10892,7 @@ export const listOrganizationsLocationsStoredInfoTypes: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsStoredInfoTypesRequest,
   output: ListOrganizationsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10444,7 +10917,10 @@ export type GetOrganizationsLocationsStoredInfoTypesResponse =
 export const GetOrganizationsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type GetOrganizationsLocationsStoredInfoTypesError = DefaultErrors;
+export type GetOrganizationsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a stored infoType. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const getOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
@@ -10455,7 +10931,7 @@ export const getOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsStoredInfoTypesRequest,
   output: GetOrganizationsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsLocationsStoredInfoTypesRequest {
@@ -10485,7 +10961,12 @@ export type CreateOrganizationsLocationsStoredInfoTypesResponse =
 export const CreateOrganizationsLocationsStoredInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2StoredInfoType;
 
-export type CreateOrganizationsLocationsStoredInfoTypesError = DefaultErrors;
+export type CreateOrganizationsLocationsStoredInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more. */
 export const createOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
@@ -10496,7 +10977,7 @@ export const createOrganizationsLocationsStoredInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsStoredInfoTypesRequest,
   output: CreateOrganizationsLocationsStoredInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsFileStoreDataProfilesRequest {
@@ -10530,7 +11011,9 @@ export const ListOrganizationsLocationsFileStoreDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListFileStoreDataProfilesResponse;
 
 export type ListOrganizationsLocationsFileStoreDataProfilesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists file store data profiles for an organization. */
 export const listOrganizationsLocationsFileStoreDataProfiles: API.PaginatedOperationMethod<
@@ -10541,7 +11024,7 @@ export const listOrganizationsLocationsFileStoreDataProfiles: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsFileStoreDataProfilesRequest,
   output: ListOrganizationsLocationsFileStoreDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10567,7 +11050,11 @@ export const DeleteOrganizationsLocationsFileStoreDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsLocationsFileStoreDataProfilesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a FileStoreDataProfile. Will not prevent the profile from being regenerated if the resource is still included in a discovery configuration. */
 export const deleteOrganizationsLocationsFileStoreDataProfiles: API.OperationMethod<
@@ -10578,7 +11065,7 @@ export const deleteOrganizationsLocationsFileStoreDataProfiles: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsFileStoreDataProfilesRequest,
   output: DeleteOrganizationsLocationsFileStoreDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsFileStoreDataProfilesRequest {
@@ -10599,7 +11086,10 @@ export type GetOrganizationsLocationsFileStoreDataProfilesResponse =
 export const GetOrganizationsLocationsFileStoreDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2FileStoreDataProfile;
 
-export type GetOrganizationsLocationsFileStoreDataProfilesError = DefaultErrors;
+export type GetOrganizationsLocationsFileStoreDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a file store data profile. */
 export const getOrganizationsLocationsFileStoreDataProfiles: API.OperationMethod<
@@ -10610,7 +11100,7 @@ export const getOrganizationsLocationsFileStoreDataProfiles: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsFileStoreDataProfilesRequest,
   output: GetOrganizationsLocationsFileStoreDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsLocationsInspectTemplatesRequest {
@@ -10640,7 +11130,12 @@ export type CreateOrganizationsLocationsInspectTemplatesResponse =
 export const CreateOrganizationsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type CreateOrganizationsLocationsInspectTemplatesError = DefaultErrors;
+export type CreateOrganizationsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const createOrganizationsLocationsInspectTemplates: API.OperationMethod<
@@ -10651,7 +11146,7 @@ export const createOrganizationsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsInspectTemplatesRequest,
   output: CreateOrganizationsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsInspectTemplatesRequest {
@@ -10684,7 +11179,10 @@ export type ListOrganizationsLocationsInspectTemplatesResponse =
 export const ListOrganizationsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInspectTemplatesResponse;
 
-export type ListOrganizationsLocationsInspectTemplatesError = DefaultErrors;
+export type ListOrganizationsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const listOrganizationsLocationsInspectTemplates: API.PaginatedOperationMethod<
@@ -10695,7 +11193,7 @@ export const listOrganizationsLocationsInspectTemplates: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsInspectTemplatesRequest,
   output: ListOrganizationsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10720,7 +11218,10 @@ export type GetOrganizationsLocationsInspectTemplatesResponse =
 export const GetOrganizationsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type GetOrganizationsLocationsInspectTemplatesError = DefaultErrors;
+export type GetOrganizationsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const getOrganizationsLocationsInspectTemplates: API.OperationMethod<
@@ -10731,7 +11232,7 @@ export const getOrganizationsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsInspectTemplatesRequest,
   output: GetOrganizationsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsLocationsInspectTemplatesRequest {
@@ -10752,7 +11253,12 @@ export type DeleteOrganizationsLocationsInspectTemplatesResponse =
 export const DeleteOrganizationsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsLocationsInspectTemplatesError = DefaultErrors;
+export type DeleteOrganizationsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const deleteOrganizationsLocationsInspectTemplates: API.OperationMethod<
@@ -10763,7 +11269,7 @@ export const deleteOrganizationsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsInspectTemplatesRequest,
   output: DeleteOrganizationsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsInspectTemplatesRequest {
@@ -10789,7 +11295,12 @@ export type PatchOrganizationsLocationsInspectTemplatesResponse =
 export const PatchOrganizationsLocationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type PatchOrganizationsLocationsInspectTemplatesError = DefaultErrors;
+export type PatchOrganizationsLocationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const patchOrganizationsLocationsInspectTemplates: API.OperationMethod<
@@ -10800,7 +11311,7 @@ export const patchOrganizationsLocationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsInspectTemplatesRequest,
   output: PatchOrganizationsLocationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsDiscoveryConfigsRequest {
@@ -10826,7 +11337,12 @@ export type PatchOrganizationsLocationsDiscoveryConfigsResponse =
 export const PatchOrganizationsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DiscoveryConfig;
 
-export type PatchOrganizationsLocationsDiscoveryConfigsError = DefaultErrors;
+export type PatchOrganizationsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a discovery configuration. */
 export const patchOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -10837,7 +11353,7 @@ export const patchOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsDiscoveryConfigsRequest,
   output: PatchOrganizationsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsDiscoveryConfigsRequest {
@@ -10858,7 +11374,12 @@ export type DeleteOrganizationsLocationsDiscoveryConfigsResponse =
 export const DeleteOrganizationsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsLocationsDiscoveryConfigsError = DefaultErrors;
+export type DeleteOrganizationsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a discovery configuration. */
 export const deleteOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -10869,7 +11390,7 @@ export const deleteOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsDiscoveryConfigsRequest,
   output: DeleteOrganizationsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsDiscoveryConfigsRequest {
@@ -10899,7 +11420,12 @@ export type CreateOrganizationsLocationsDiscoveryConfigsResponse =
 export const CreateOrganizationsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DiscoveryConfig;
 
-export type CreateOrganizationsLocationsDiscoveryConfigsError = DefaultErrors;
+export type CreateOrganizationsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a config for discovery to scan and profile storage. */
 export const createOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -10910,7 +11436,7 @@ export const createOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsDiscoveryConfigsRequest,
   output: CreateOrganizationsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsDiscoveryConfigsRequest {
@@ -10931,7 +11457,10 @@ export type GetOrganizationsLocationsDiscoveryConfigsResponse =
 export const GetOrganizationsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DiscoveryConfig;
 
-export type GetOrganizationsLocationsDiscoveryConfigsError = DefaultErrors;
+export type GetOrganizationsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a discovery configuration. */
 export const getOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
@@ -10942,7 +11471,7 @@ export const getOrganizationsLocationsDiscoveryConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsDiscoveryConfigsRequest,
   output: GetOrganizationsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsDiscoveryConfigsRequest {
@@ -10972,7 +11501,10 @@ export type ListOrganizationsLocationsDiscoveryConfigsResponse =
 export const ListOrganizationsLocationsDiscoveryConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDiscoveryConfigsResponse;
 
-export type ListOrganizationsLocationsDiscoveryConfigsError = DefaultErrors;
+export type ListOrganizationsLocationsDiscoveryConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists discovery configurations. */
 export const listOrganizationsLocationsDiscoveryConfigs: API.PaginatedOperationMethod<
@@ -10983,7 +11515,7 @@ export const listOrganizationsLocationsDiscoveryConfigs: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDiscoveryConfigsRequest,
   output: ListOrganizationsLocationsDiscoveryConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11019,7 +11551,10 @@ export type ListOrganizationsLocationsInfoTypesResponse =
 export const ListOrganizationsLocationsInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInfoTypesResponse;
 
-export type ListOrganizationsLocationsInfoTypesError = DefaultErrors;
+export type ListOrganizationsLocationsInfoTypesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of the sensitive information types that the DLP API supports. See https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more. */
 export const listOrganizationsLocationsInfoTypes: API.OperationMethod<
@@ -11030,7 +11565,7 @@ export const listOrganizationsLocationsInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListOrganizationsLocationsInfoTypesRequest,
   output: ListOrganizationsLocationsInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsColumnDataProfilesRequest {
@@ -11063,7 +11598,10 @@ export type ListOrganizationsLocationsColumnDataProfilesResponse =
 export const ListOrganizationsLocationsColumnDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListColumnDataProfilesResponse;
 
-export type ListOrganizationsLocationsColumnDataProfilesError = DefaultErrors;
+export type ListOrganizationsLocationsColumnDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists column data profiles for an organization. */
 export const listOrganizationsLocationsColumnDataProfiles: API.PaginatedOperationMethod<
@@ -11074,7 +11612,7 @@ export const listOrganizationsLocationsColumnDataProfiles: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsColumnDataProfilesRequest,
   output: ListOrganizationsLocationsColumnDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11099,7 +11637,10 @@ export type GetOrganizationsLocationsColumnDataProfilesResponse =
 export const GetOrganizationsLocationsColumnDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ColumnDataProfile;
 
-export type GetOrganizationsLocationsColumnDataProfilesError = DefaultErrors;
+export type GetOrganizationsLocationsColumnDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a column data profile. */
 export const getOrganizationsLocationsColumnDataProfiles: API.OperationMethod<
@@ -11110,7 +11651,7 @@ export const getOrganizationsLocationsColumnDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsColumnDataProfilesRequest,
   output: GetOrganizationsLocationsColumnDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsLocationsDeidentifyTemplatesRequest {
@@ -11136,7 +11677,12 @@ export type PatchOrganizationsLocationsDeidentifyTemplatesResponse =
 export const PatchOrganizationsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type PatchOrganizationsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type PatchOrganizationsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const patchOrganizationsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -11147,7 +11693,7 @@ export const patchOrganizationsLocationsDeidentifyTemplates: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsDeidentifyTemplatesRequest,
   output: PatchOrganizationsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsDeidentifyTemplatesRequest {
@@ -11169,7 +11715,11 @@ export const DeleteOrganizationsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
 export type DeleteOrganizationsLocationsDeidentifyTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const deleteOrganizationsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -11180,7 +11730,7 @@ export const deleteOrganizationsLocationsDeidentifyTemplates: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsDeidentifyTemplatesRequest,
   output: DeleteOrganizationsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsLocationsDeidentifyTemplatesRequest {
@@ -11211,7 +11761,11 @@ export const CreateOrganizationsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
 export type CreateOrganizationsLocationsDeidentifyTemplatesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const createOrganizationsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -11222,7 +11776,7 @@ export const createOrganizationsLocationsDeidentifyTemplates: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsDeidentifyTemplatesRequest,
   output: CreateOrganizationsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsDeidentifyTemplatesRequest {
@@ -11243,7 +11797,10 @@ export type GetOrganizationsLocationsDeidentifyTemplatesResponse =
 export const GetOrganizationsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2DeidentifyTemplate;
 
-export type GetOrganizationsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type GetOrganizationsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a DeidentifyTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const getOrganizationsLocationsDeidentifyTemplates: API.OperationMethod<
@@ -11254,7 +11811,7 @@ export const getOrganizationsLocationsDeidentifyTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsDeidentifyTemplatesRequest,
   output: GetOrganizationsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsDeidentifyTemplatesRequest {
@@ -11287,7 +11844,10 @@ export type ListOrganizationsLocationsDeidentifyTemplatesResponse =
 export const ListOrganizationsLocationsDeidentifyTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDeidentifyTemplatesResponse;
 
-export type ListOrganizationsLocationsDeidentifyTemplatesError = DefaultErrors;
+export type ListOrganizationsLocationsDeidentifyTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists DeidentifyTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more. */
 export const listOrganizationsLocationsDeidentifyTemplates: API.PaginatedOperationMethod<
@@ -11298,7 +11858,7 @@ export const listOrganizationsLocationsDeidentifyTemplates: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDeidentifyTemplatesRequest,
   output: ListOrganizationsLocationsDeidentifyTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11328,7 +11888,12 @@ export type CreateOrganizationsLocationsConnectionsResponse =
 export const CreateOrganizationsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2Connection;
 
-export type CreateOrganizationsLocationsConnectionsError = DefaultErrors;
+export type CreateOrganizationsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a Connection to an external data source. */
 export const createOrganizationsLocationsConnections: API.OperationMethod<
@@ -11339,7 +11904,7 @@ export const createOrganizationsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsConnectionsRequest,
   output: CreateOrganizationsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchOrganizationsLocationsConnectionsRequest {
@@ -11369,7 +11934,10 @@ export type SearchOrganizationsLocationsConnectionsResponse =
 export const SearchOrganizationsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2SearchConnectionsResponse;
 
-export type SearchOrganizationsLocationsConnectionsError = DefaultErrors;
+export type SearchOrganizationsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches for Connections in a parent. */
 export const searchOrganizationsLocationsConnections: API.PaginatedOperationMethod<
@@ -11380,7 +11948,7 @@ export const searchOrganizationsLocationsConnections: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchOrganizationsLocationsConnectionsRequest,
   output: SearchOrganizationsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11405,7 +11973,10 @@ export type GetOrganizationsLocationsConnectionsResponse =
 export const GetOrganizationsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2Connection;
 
-export type GetOrganizationsLocationsConnectionsError = DefaultErrors;
+export type GetOrganizationsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a Connection by name. */
 export const getOrganizationsLocationsConnections: API.OperationMethod<
@@ -11416,7 +11987,7 @@ export const getOrganizationsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsConnectionsRequest,
   output: GetOrganizationsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsConnectionsRequest {
@@ -11446,7 +12017,10 @@ export type ListOrganizationsLocationsConnectionsResponse =
 export const ListOrganizationsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListConnectionsResponse;
 
-export type ListOrganizationsLocationsConnectionsError = DefaultErrors;
+export type ListOrganizationsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Connections in a parent. Use SearchConnections to see all connections within an organization. */
 export const listOrganizationsLocationsConnections: API.PaginatedOperationMethod<
@@ -11457,7 +12031,7 @@ export const listOrganizationsLocationsConnections: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsConnectionsRequest,
   output: ListOrganizationsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11487,7 +12061,12 @@ export type PatchOrganizationsLocationsConnectionsResponse =
 export const PatchOrganizationsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2Connection;
 
-export type PatchOrganizationsLocationsConnectionsError = DefaultErrors;
+export type PatchOrganizationsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update a Connection. */
 export const patchOrganizationsLocationsConnections: API.OperationMethod<
@@ -11498,7 +12077,7 @@ export const patchOrganizationsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsConnectionsRequest,
   output: PatchOrganizationsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsConnectionsRequest {
@@ -11519,7 +12098,12 @@ export type DeleteOrganizationsLocationsConnectionsResponse =
 export const DeleteOrganizationsLocationsConnectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsLocationsConnectionsError = DefaultErrors;
+export type DeleteOrganizationsLocationsConnectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a Connection. */
 export const deleteOrganizationsLocationsConnections: API.OperationMethod<
@@ -11530,7 +12114,7 @@ export const deleteOrganizationsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsConnectionsRequest,
   output: DeleteOrganizationsLocationsConnectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsTableDataProfilesRequest {
@@ -11563,7 +12147,10 @@ export type ListOrganizationsLocationsTableDataProfilesResponse =
 export const ListOrganizationsLocationsTableDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListTableDataProfilesResponse;
 
-export type ListOrganizationsLocationsTableDataProfilesError = DefaultErrors;
+export type ListOrganizationsLocationsTableDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists table data profiles for an organization. */
 export const listOrganizationsLocationsTableDataProfiles: API.PaginatedOperationMethod<
@@ -11574,7 +12161,7 @@ export const listOrganizationsLocationsTableDataProfiles: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsTableDataProfilesRequest,
   output: ListOrganizationsLocationsTableDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11599,7 +12186,12 @@ export type DeleteOrganizationsLocationsTableDataProfilesResponse =
 export const DeleteOrganizationsLocationsTableDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsLocationsTableDataProfilesError = DefaultErrors;
+export type DeleteOrganizationsLocationsTableDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a TableDataProfile. Will not prevent the profile from being regenerated if the table is still included in a discovery configuration. */
 export const deleteOrganizationsLocationsTableDataProfiles: API.OperationMethod<
@@ -11610,7 +12202,7 @@ export const deleteOrganizationsLocationsTableDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsTableDataProfilesRequest,
   output: DeleteOrganizationsLocationsTableDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsTableDataProfilesRequest {
@@ -11631,7 +12223,10 @@ export type GetOrganizationsLocationsTableDataProfilesResponse =
 export const GetOrganizationsLocationsTableDataProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2TableDataProfile;
 
-export type GetOrganizationsLocationsTableDataProfilesError = DefaultErrors;
+export type GetOrganizationsLocationsTableDataProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a table data profile. */
 export const getOrganizationsLocationsTableDataProfiles: API.OperationMethod<
@@ -11642,7 +12237,7 @@ export const getOrganizationsLocationsTableDataProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsTableDataProfilesRequest,
   output: GetOrganizationsLocationsTableDataProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsDlpJobsRequest {
@@ -11685,7 +12280,10 @@ export type ListOrganizationsLocationsDlpJobsResponse =
 export const ListOrganizationsLocationsDlpJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListDlpJobsResponse;
 
-export type ListOrganizationsLocationsDlpJobsError = DefaultErrors;
+export type ListOrganizationsLocationsDlpJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. */
 export const listOrganizationsLocationsDlpJobs: API.PaginatedOperationMethod<
@@ -11696,7 +12294,7 @@ export const listOrganizationsLocationsDlpJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsDlpJobsRequest,
   output: ListOrganizationsLocationsDlpJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11733,7 +12331,10 @@ export type ListOrganizationsInspectTemplatesResponse =
 export const ListOrganizationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInspectTemplatesResponse;
 
-export type ListOrganizationsInspectTemplatesError = DefaultErrors;
+export type ListOrganizationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const listOrganizationsInspectTemplates: API.PaginatedOperationMethod<
@@ -11744,7 +12345,7 @@ export const listOrganizationsInspectTemplates: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsInspectTemplatesRequest,
   output: ListOrganizationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11769,7 +12370,10 @@ export type GetOrganizationsInspectTemplatesResponse =
 export const GetOrganizationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type GetOrganizationsInspectTemplatesError = DefaultErrors;
+export type GetOrganizationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const getOrganizationsInspectTemplates: API.OperationMethod<
@@ -11780,7 +12384,7 @@ export const getOrganizationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsInspectTemplatesRequest,
   output: GetOrganizationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsInspectTemplatesRequest {
@@ -11810,7 +12414,12 @@ export type CreateOrganizationsInspectTemplatesResponse =
 export const CreateOrganizationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type CreateOrganizationsInspectTemplatesError = DefaultErrors;
+export type CreateOrganizationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const createOrganizationsInspectTemplates: API.OperationMethod<
@@ -11821,7 +12430,7 @@ export const createOrganizationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsInspectTemplatesRequest,
   output: CreateOrganizationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsInspectTemplatesRequest {
@@ -11841,7 +12450,12 @@ export type DeleteOrganizationsInspectTemplatesResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsInspectTemplatesError = DefaultErrors;
+export type DeleteOrganizationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const deleteOrganizationsInspectTemplates: API.OperationMethod<
@@ -11852,7 +12466,7 @@ export const deleteOrganizationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsInspectTemplatesRequest,
   output: DeleteOrganizationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsInspectTemplatesRequest {
@@ -11878,7 +12492,12 @@ export type PatchOrganizationsInspectTemplatesResponse =
 export const PatchOrganizationsInspectTemplatesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2InspectTemplate;
 
-export type PatchOrganizationsInspectTemplatesError = DefaultErrors;
+export type PatchOrganizationsInspectTemplatesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more. */
 export const patchOrganizationsInspectTemplates: API.OperationMethod<
@@ -11889,7 +12508,7 @@ export const patchOrganizationsInspectTemplates: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsInspectTemplatesRequest,
   output: PatchOrganizationsInspectTemplatesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListInfoTypesRequest {
@@ -11919,7 +12538,7 @@ export type ListInfoTypesResponse = GooglePrivacyDlpV2ListInfoTypesResponse;
 export const ListInfoTypesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePrivacyDlpV2ListInfoTypesResponse;
 
-export type ListInfoTypesError = DefaultErrors;
+export type ListInfoTypesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of the sensitive information types that the DLP API supports. See https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more. */
 export const listInfoTypes: API.OperationMethod<
@@ -11930,5 +12549,5 @@ export const listInfoTypes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListInfoTypesRequest,
   output: ListInfoTypesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

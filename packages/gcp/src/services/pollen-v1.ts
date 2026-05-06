@@ -220,6 +220,31 @@ export const LookupForecastResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "LookupForecastResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -257,7 +282,10 @@ export type LookupHeatmapTileMapTypesHeatmapTilesResponse = HttpBody;
 export const LookupHeatmapTileMapTypesHeatmapTilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type LookupHeatmapTileMapTypesHeatmapTilesError = DefaultErrors;
+export type LookupHeatmapTileMapTypesHeatmapTilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a byte array containing the data of the tile PNG image. */
 export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
@@ -268,7 +296,7 @@ export const lookupHeatmapTileMapTypesHeatmapTiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupHeatmapTileMapTypesHeatmapTilesRequest,
   output: LookupHeatmapTileMapTypesHeatmapTilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LookupForecastRequest {
@@ -313,7 +341,7 @@ export type LookupForecastResponse_Op = LookupForecastResponse;
 export const LookupForecastResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ LookupForecastResponse;
 
-export type LookupForecastError = DefaultErrors;
+export type LookupForecastError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns up to 5 days of daily pollen information in more than 65 countries, up to 1km resolution. */
 export const lookupForecast: API.PaginatedOperationMethod<
@@ -324,7 +352,7 @@ export const lookupForecast: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: LookupForecastRequest,
   output: LookupForecastResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

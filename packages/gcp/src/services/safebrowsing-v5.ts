@@ -328,6 +328,31 @@ export const GoogleSecuritySafebrowsingV5BatchGetHashListsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -350,7 +375,7 @@ export type SearchHashesResponse =
 export const SearchHashesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV5SearchHashesResponse;
 
-export type SearchHashesError = DefaultErrors;
+export type SearchHashesError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches for full hashes matching the specified prefixes. This is a custom method as defined by https://google.aip.dev/136 (the custom method refers to this method having a custom name within Google's general API development nomenclature; it does not refer to using a custom HTTP method). */
 export const searchHashes: API.OperationMethod<
@@ -361,7 +386,7 @@ export const searchHashes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchHashesRequest,
   output: SearchHashesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchUrlsRequest {
@@ -380,7 +405,7 @@ export type SearchUrlsResponse = GoogleSecuritySafebrowsingV5SearchUrlsResponse;
 export const SearchUrlsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV5SearchUrlsResponse;
 
-export type SearchUrlsError = DefaultErrors;
+export type SearchUrlsError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches for URLs matching known threats. Each URL and it's host-suffix and path-prefix expressions (up to a limited depth) are checked. This means that the response may contain URLs that were not included in the request, but are expressions of the requested URLs. */
 export const searchUrls: API.OperationMethod<
@@ -391,7 +416,7 @@ export const searchUrls: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchUrlsRequest,
   output: SearchUrlsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetHashListRequest {
@@ -423,7 +448,7 @@ export type GetHashListResponse = GoogleSecuritySafebrowsingV5HashList;
 export const GetHashListResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV5HashList;
 
-export type GetHashListError = DefaultErrors;
+export type GetHashListError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest contents of a hash list. A hash list may either by a threat list or a non-threat list such as the Global Cache. This is a standard Get method as defined by https://google.aip.dev/131 and the HTTP method is also GET. */
 export const getHashList: API.OperationMethod<
@@ -434,7 +459,7 @@ export const getHashList: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHashListRequest,
   output: GetHashListResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListHashListsRequest {
@@ -457,7 +482,7 @@ export type ListHashListsResponse =
 export const ListHashListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV5ListHashListsResponse;
 
-export type ListHashListsError = DefaultErrors;
+export type ListHashListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists hash lists. In the V5 API, Google will never remove a hash list that has ever been returned by this method. This enables clients to skip using this method and simply hard-code all hash lists they need. This is a standard List method as defined by https://google.aip.dev/132 and the HTTP method is GET. */
 export const listHashLists: API.PaginatedOperationMethod<
@@ -468,7 +493,7 @@ export const listHashLists: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListHashListsRequest,
   output: ListHashListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -510,7 +535,7 @@ export type BatchGetHashListsResponse =
 export const BatchGetHashListsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleSecuritySafebrowsingV5BatchGetHashListsResponse;
 
-export type BatchGetHashListsError = DefaultErrors;
+export type BatchGetHashListsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets multiple hash lists at once. It is very common for a client to need to get multiple hash lists. Using this method is preferred over using the regular Get method multiple times. This is a standard batch Get method as defined by https://google.aip.dev/231 and the HTTP method is also GET. */
 export const batchGetHashLists: API.OperationMethod<
@@ -521,5 +546,5 @@ export const batchGetHashLists: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetHashListsRequest,
   output: BatchGetHashListsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

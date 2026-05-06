@@ -440,6 +440,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -469,7 +515,11 @@ export const TriggerPubsubExecutionProjectsLocationsWorkflowsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Execution;
 
 export type TriggerPubsubExecutionProjectsLocationsWorkflowsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Triggers a new execution using the latest revision of the given workflow by a Pub/Sub push notification. */
 export const triggerPubsubExecutionProjectsLocationsWorkflows: API.OperationMethod<
@@ -480,7 +530,7 @@ export const triggerPubsubExecutionProjectsLocationsWorkflows: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TriggerPubsubExecutionProjectsLocationsWorkflowsRequest,
   output: TriggerPubsubExecutionProjectsLocationsWorkflowsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkflowsExecutionsRequest {
@@ -516,7 +566,10 @@ export type ListProjectsLocationsWorkflowsExecutionsResponse =
 export const ListProjectsLocationsWorkflowsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExecutionsResponse;
 
-export type ListProjectsLocationsWorkflowsExecutionsError = DefaultErrors;
+export type ListProjectsLocationsWorkflowsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of executions which belong to the workflow with the given name. The method returns executions of all workflow revisions. Returned executions are ordered by their start time (newest first). */
 export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMethod<
@@ -527,7 +580,7 @@ export const listProjectsLocationsWorkflowsExecutions: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsRequest,
   output: ListProjectsLocationsWorkflowsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -554,7 +607,12 @@ export type CreateProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CreateProjectsLocationsWorkflowsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Execution;
 
-export type CreateProjectsLocationsWorkflowsExecutionsError = DefaultErrors;
+export type CreateProjectsLocationsWorkflowsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new execution using the latest revision of the given workflow. For more information, see Execute a workflow. */
 export const createProjectsLocationsWorkflowsExecutions: API.OperationMethod<
@@ -565,7 +623,7 @@ export const createProjectsLocationsWorkflowsExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsWorkflowsExecutionsRequest,
   output: CreateProjectsLocationsWorkflowsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsWorkflowsExecutionsRequest {
@@ -588,7 +646,10 @@ export type GetProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const GetProjectsLocationsWorkflowsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Execution;
 
-export type GetProjectsLocationsWorkflowsExecutionsError = DefaultErrors;
+export type GetProjectsLocationsWorkflowsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns an execution of the given name. */
 export const getProjectsLocationsWorkflowsExecutions: API.OperationMethod<
@@ -599,7 +660,7 @@ export const getProjectsLocationsWorkflowsExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkflowsExecutionsRequest,
   output: GetProjectsLocationsWorkflowsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsWorkflowsExecutionsRequest {
@@ -622,7 +683,12 @@ export type CancelProjectsLocationsWorkflowsExecutionsResponse = Execution;
 export const CancelProjectsLocationsWorkflowsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Execution;
 
-export type CancelProjectsLocationsWorkflowsExecutionsError = DefaultErrors;
+export type CancelProjectsLocationsWorkflowsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancels an execution of the given name. */
 export const cancelProjectsLocationsWorkflowsExecutions: API.OperationMethod<
@@ -633,7 +699,7 @@ export const cancelProjectsLocationsWorkflowsExecutions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsWorkflowsExecutionsRequest,
   output: CancelProjectsLocationsWorkflowsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportDataProjectsLocationsWorkflowsExecutionsRequest {
@@ -654,7 +720,10 @@ export type ExportDataProjectsLocationsWorkflowsExecutionsResponse =
 export const ExportDataProjectsLocationsWorkflowsExecutionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExportDataResponse;
 
-export type ExportDataProjectsLocationsWorkflowsExecutionsError = DefaultErrors;
+export type ExportDataProjectsLocationsWorkflowsExecutionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all metadata stored about an execution, excluding most data that is already accessible using other API methods. */
 export const exportDataProjectsLocationsWorkflowsExecutions: API.OperationMethod<
@@ -665,7 +734,7 @@ export const exportDataProjectsLocationsWorkflowsExecutions: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportDataProjectsLocationsWorkflowsExecutionsRequest,
   output: ExportDataProjectsLocationsWorkflowsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest {
@@ -694,7 +763,11 @@ export const DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsResponse 
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all step entries for an execution. */
 export const deleteExecutionHistoryProjectsLocationsWorkflowsExecutions: API.OperationMethod<
@@ -705,7 +778,7 @@ export const deleteExecutionHistoryProjectsLocationsWorkflowsExecutions: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsRequest,
   output: DeleteExecutionHistoryProjectsLocationsWorkflowsExecutionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsWorkflowsExecutionsCallbacksRequest {
@@ -733,7 +806,9 @@ export const ListProjectsLocationsWorkflowsExecutionsCallbacksResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListCallbacksResponse;
 
 export type ListProjectsLocationsWorkflowsExecutionsCallbacksError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of active callbacks that belong to the execution with the given name. The returned callbacks are ordered by callback ID. */
 export const listProjectsLocationsWorkflowsExecutionsCallbacks: API.PaginatedOperationMethod<
@@ -744,7 +819,7 @@ export const listProjectsLocationsWorkflowsExecutionsCallbacks: API.PaginatedOpe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsCallbacksRequest,
   output: ListProjectsLocationsWorkflowsExecutionsCallbacksResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -792,7 +867,9 @@ export const ListProjectsLocationsWorkflowsExecutionsStepEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListStepEntriesResponse;
 
 export type ListProjectsLocationsWorkflowsExecutionsStepEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists step entries for the corresponding workflow execution. Returned entries are ordered by their create_time. */
 export const listProjectsLocationsWorkflowsExecutionsStepEntries: API.PaginatedOperationMethod<
@@ -803,7 +880,7 @@ export const listProjectsLocationsWorkflowsExecutionsStepEntries: API.PaginatedO
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsWorkflowsExecutionsStepEntriesRequest,
   output: ListProjectsLocationsWorkflowsExecutionsStepEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -836,7 +913,9 @@ export const GetProjectsLocationsWorkflowsExecutionsStepEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StepEntry;
 
 export type GetProjectsLocationsWorkflowsExecutionsStepEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a step entry. */
 export const getProjectsLocationsWorkflowsExecutionsStepEntries: API.OperationMethod<
@@ -847,5 +926,5 @@ export const getProjectsLocationsWorkflowsExecutionsStepEntries: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsWorkflowsExecutionsStepEntriesRequest,
   output: GetProjectsLocationsWorkflowsExecutionsStepEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

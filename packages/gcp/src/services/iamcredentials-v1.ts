@@ -169,6 +169,52 @@ export const SignJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SignJwtRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -191,7 +237,9 @@ export const GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkloadIdentityPoolAllowedLocations;
 
 export type GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the trust boundary info for a given workload identity pool. */
 export const getAllowedLocationsProjectsLocationsWorkloadIdentityPools: API.OperationMethod<
@@ -202,7 +250,7 @@ export const getAllowedLocationsProjectsLocationsWorkloadIdentityPools: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsRequest,
   output: GetAllowedLocationsProjectsLocationsWorkloadIdentityPoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAllowedLocationsProjectsServiceAccountsRequest {
@@ -223,7 +271,10 @@ export type GetAllowedLocationsProjectsServiceAccountsResponse =
 export const GetAllowedLocationsProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ServiceAccountAllowedLocations;
 
-export type GetAllowedLocationsProjectsServiceAccountsError = DefaultErrors;
+export type GetAllowedLocationsProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the trust boundary info for a given service account. */
 export const getAllowedLocationsProjectsServiceAccounts: API.OperationMethod<
@@ -234,7 +285,7 @@ export const getAllowedLocationsProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAllowedLocationsProjectsServiceAccountsRequest,
   output: GetAllowedLocationsProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GenerateAccessTokenProjectsServiceAccountsRequest {
@@ -262,7 +313,12 @@ export type GenerateAccessTokenProjectsServiceAccountsResponse =
 export const GenerateAccessTokenProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateAccessTokenResponse;
 
-export type GenerateAccessTokenProjectsServiceAccountsError = DefaultErrors;
+export type GenerateAccessTokenProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an OAuth 2.0 access token for a service account. */
 export const generateAccessTokenProjectsServiceAccounts: API.OperationMethod<
@@ -273,7 +329,7 @@ export const generateAccessTokenProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccessTokenProjectsServiceAccountsRequest,
   output: GenerateAccessTokenProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignBlobProjectsServiceAccountsRequest {
@@ -296,7 +352,12 @@ export type SignBlobProjectsServiceAccountsResponse = SignBlobResponse;
 export const SignBlobProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SignBlobResponse;
 
-export type SignBlobProjectsServiceAccountsError = DefaultErrors;
+export type SignBlobProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a blob using a service account's system-managed private key. */
 export const signBlobProjectsServiceAccounts: API.OperationMethod<
@@ -307,7 +368,7 @@ export const signBlobProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignBlobProjectsServiceAccountsRequest,
   output: SignBlobProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateIdTokenProjectsServiceAccountsRequest {
@@ -335,7 +396,12 @@ export type GenerateIdTokenProjectsServiceAccountsResponse =
 export const GenerateIdTokenProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateIdTokenResponse;
 
-export type GenerateIdTokenProjectsServiceAccountsError = DefaultErrors;
+export type GenerateIdTokenProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an OpenID Connect ID token for a service account. */
 export const generateIdTokenProjectsServiceAccounts: API.OperationMethod<
@@ -346,7 +412,7 @@ export const generateIdTokenProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateIdTokenProjectsServiceAccountsRequest,
   output: GenerateIdTokenProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignJwtProjectsServiceAccountsRequest {
@@ -369,7 +435,12 @@ export type SignJwtProjectsServiceAccountsResponse = SignJwtResponse;
 export const SignJwtProjectsServiceAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SignJwtResponse;
 
-export type SignJwtProjectsServiceAccountsError = DefaultErrors;
+export type SignJwtProjectsServiceAccountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs a JWT using a service account's system-managed private key. */
 export const signJwtProjectsServiceAccounts: API.OperationMethod<
@@ -380,7 +451,7 @@ export const signJwtProjectsServiceAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignJwtProjectsServiceAccountsRequest,
   output: SignJwtProjectsServiceAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAllowedLocationsLocationsWorkforcePoolsRequest {
@@ -401,7 +472,10 @@ export type GetAllowedLocationsLocationsWorkforcePoolsResponse =
 export const GetAllowedLocationsLocationsWorkforcePoolsResponse =
   /*@__PURE__*/ /*#__PURE__*/ WorkforcePoolAllowedLocations;
 
-export type GetAllowedLocationsLocationsWorkforcePoolsError = DefaultErrors;
+export type GetAllowedLocationsLocationsWorkforcePoolsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the trust boundary info for a given workforce pool. */
 export const getAllowedLocationsLocationsWorkforcePools: API.OperationMethod<
@@ -412,5 +486,5 @@ export const getAllowedLocationsLocationsWorkforcePools: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAllowedLocationsLocationsWorkforcePoolsRequest,
   output: GetAllowedLocationsLocationsWorkforcePoolsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

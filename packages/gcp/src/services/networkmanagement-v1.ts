@@ -2180,6 +2180,52 @@ export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2214,7 +2260,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2225,7 +2271,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2249,7 +2295,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2260,7 +2306,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsGlobalOperationsRequest {
@@ -2295,7 +2341,10 @@ export type ListProjectsLocationsGlobalOperationsResponse =
 export const ListProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type ListProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod<
@@ -2306,7 +2355,7 @@ export const listProjectsLocationsGlobalOperations: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalOperationsRequest,
   output: ListProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2330,7 +2379,10 @@ export type GetProjectsLocationsGlobalOperationsResponse = Operation;
 export const GetProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type GetProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsGlobalOperations: API.OperationMethod<
@@ -2341,7 +2393,7 @@ export const getProjectsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalOperationsRequest,
   output: GetProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsGlobalOperationsRequest {
@@ -2361,7 +2413,12 @@ export type DeleteProjectsLocationsGlobalOperationsResponse = Empty;
 export const DeleteProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
@@ -2372,7 +2429,7 @@ export const deleteProjectsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalOperationsRequest,
   output: DeleteProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsGlobalOperationsRequest {
@@ -2395,7 +2452,12 @@ export type CancelProjectsLocationsGlobalOperationsResponse = Empty;
 export const CancelProjectsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsGlobalOperationsError = DefaultErrors;
+export type CancelProjectsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
@@ -2406,7 +2468,7 @@ export const cancelProjectsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsGlobalOperationsRequest,
   output: CancelProjectsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2439,7 +2501,10 @@ export type ListProjectsLocationsGlobalConnectivityTestsResponse =
 export const ListProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConnectivityTestsResponse;
 
-export type ListProjectsLocationsGlobalConnectivityTestsError = DefaultErrors;
+export type ListProjectsLocationsGlobalConnectivityTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Connectivity Tests owned by a project. */
 export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperationMethod<
@@ -2450,7 +2515,7 @@ export const listProjectsLocationsGlobalConnectivityTests: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlobalConnectivityTestsRequest,
   output: ListProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2475,7 +2540,10 @@ export type GetProjectsLocationsGlobalConnectivityTestsResponse =
 export const GetProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConnectivityTest;
 
-export type GetProjectsLocationsGlobalConnectivityTestsError = DefaultErrors;
+export type GetProjectsLocationsGlobalConnectivityTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific Connectivity Test. */
 export const getProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2486,7 +2554,7 @@ export const getProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlobalConnectivityTestsRequest,
   output: GetProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2516,7 +2584,12 @@ export type CreateProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const CreateProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGlobalConnectivityTestsError = DefaultErrors;
+export type CreateProjectsLocationsGlobalConnectivityTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation. */
 export const createProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2527,7 +2600,7 @@ export const createProjectsLocationsGlobalConnectivityTests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlobalConnectivityTestsRequest,
   output: CreateProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2553,7 +2626,12 @@ export type PatchProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const PatchProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsGlobalConnectivityTestsError = DefaultErrors;
+export type PatchProjectsLocationsGlobalConnectivityTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the configuration of an existing `ConnectivityTest`. After you update a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. The Reachability state in the test resource is updated with the new result. If the endpoint specifications in `ConnectivityTest` are invalid (for example, they contain non-existent resources in the network, or the user does not have read permissions to the network configurations of listed projects), then the reachability result returns a value of UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more details. */
 export const patchProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2564,7 +2642,7 @@ export const patchProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlobalConnectivityTestsRequest,
   output: PatchProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RerunProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2587,7 +2665,12 @@ export type RerunProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const RerunProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RerunProjectsLocationsGlobalConnectivityTestsError = DefaultErrors;
+export type RerunProjectsLocationsGlobalConnectivityTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rerun an existing `ConnectivityTest`. After the user triggers the rerun, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. Even though the test configuration remains the same, the reachability result may change due to underlying network configuration changes. If the endpoint specifications in `ConnectivityTest` become invalid (for example, specified resources are deleted in the network, or you lost read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. */
 export const rerunProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2598,7 +2681,7 @@ export const rerunProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RerunProjectsLocationsGlobalConnectivityTestsRequest,
   output: RerunProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2618,7 +2701,12 @@ export type DeleteProjectsLocationsGlobalConnectivityTestsResponse = Operation;
 export const DeleteProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGlobalConnectivityTestsError = DefaultErrors;
+export type DeleteProjectsLocationsGlobalConnectivityTestsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific `ConnectivityTest`. */
 export const deleteProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2629,7 +2717,7 @@ export const deleteProjectsLocationsGlobalConnectivityTests: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlobalConnectivityTestsRequest,
   output: DeleteProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2658,7 +2746,11 @@ export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsGlobalConnectivityTestsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2669,7 +2761,7 @@ export const setIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest,
   output: SetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2696,7 +2788,9 @@ export const GetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsGlobalConnectivityTestsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2707,7 +2801,7 @@ export const getIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest,
   output: GetIamPolicyProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest {
@@ -2736,7 +2830,11 @@ export const TestIamPermissionsProjectsLocationsGlobalConnectivityTestsResponse 
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsGlobalConnectivityTestsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.OperationMethod<
@@ -2747,7 +2845,7 @@ export const testIamPermissionsProjectsLocationsGlobalConnectivityTests: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsGlobalConnectivityTestsRequest,
   output: TestIamPermissionsProjectsLocationsGlobalConnectivityTestsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsVpcFlowLogsConfigsRequest {
@@ -2780,7 +2878,10 @@ export type ListProjectsLocationsVpcFlowLogsConfigsResponse =
 export const ListProjectsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVpcFlowLogsConfigsResponse;
 
-export type ListProjectsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type ListProjectsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all `VpcFlowLogsConfigs` in a given project. */
 export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
@@ -2791,7 +2892,7 @@ export const listProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsVpcFlowLogsConfigsRequest,
   output: ListProjectsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2815,7 +2916,10 @@ export type GetProjectsLocationsVpcFlowLogsConfigsResponse = VpcFlowLogsConfig;
 export const GetProjectsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VpcFlowLogsConfig;
 
-export type GetProjectsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type GetProjectsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific `VpcFlowLogsConfig`. */
 export const getProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -2826,7 +2930,7 @@ export const getProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsVpcFlowLogsConfigsRequest,
   output: GetProjectsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsVpcFlowLogsConfigsRequest {
@@ -2858,7 +2962,12 @@ export type CreateProjectsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const CreateProjectsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type CreateProjectsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - creating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const createProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -2869,7 +2978,7 @@ export const createProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsVpcFlowLogsConfigsRequest,
   output: CreateProjectsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsVpcFlowLogsConfigsRequest {
@@ -2895,7 +3004,12 @@ export type PatchProjectsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const PatchProjectsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type PatchProjectsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with `state=DISABLED` will fail. 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - updating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const patchProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -2906,7 +3020,7 @@ export const patchProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsVpcFlowLogsConfigsRequest,
   output: PatchProjectsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsVpcFlowLogsConfigsRequest {
@@ -2926,7 +3040,12 @@ export type DeleteProjectsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const DeleteProjectsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific `VpcFlowLogsConfig`. */
 export const deleteProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -2937,7 +3056,7 @@ export const deleteProjectsLocationsVpcFlowLogsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsVpcFlowLogsConfigsRequest,
   output: DeleteProjectsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest {
@@ -2971,7 +3090,9 @@ export const QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRespon
   /*@__PURE__*/ /*#__PURE__*/ QueryOrgVpcFlowLogsConfigsResponse;
 
 export type QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations applicable to the specified project. */
 export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
@@ -2982,7 +3103,7 @@ export const queryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   output: QueryOrgVpcFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3023,7 +3144,9 @@ export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResp
   /*@__PURE__*/ /*#__PURE__*/ ShowEffectiveFlowLogsConfigsResponse;
 
 export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource. */
 export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
@@ -3035,7 +3158,7 @@ export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: AP
   input: ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
   output:
     ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3073,7 +3196,10 @@ export type ListOrganizationsLocationsResponse = ListLocationsResponse;
 export const ListOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListOrganizationsLocationsError = DefaultErrors;
+export type ListOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listOrganizationsLocations: API.PaginatedOperationMethod<
@@ -3084,7 +3210,7 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsRequest,
   output: ListOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3108,7 +3234,10 @@ export type GetOrganizationsLocationsResponse = Location;
 export const GetOrganizationsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetOrganizationsLocationsError = DefaultErrors;
+export type GetOrganizationsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a location. */
 export const getOrganizationsLocations: API.OperationMethod<
@@ -3119,7 +3248,7 @@ export const getOrganizationsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsRequest,
   output: GetOrganizationsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsLocationsGlobalOperationsRequest {
@@ -3154,7 +3283,10 @@ export type ListOrganizationsLocationsGlobalOperationsResponse =
 export const ListOrganizationsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOrganizationsLocationsGlobalOperationsError = DefaultErrors;
+export type ListOrganizationsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationMethod<
@@ -3165,7 +3297,7 @@ export const listOrganizationsLocationsGlobalOperations: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsGlobalOperationsRequest,
   output: ListOrganizationsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3189,7 +3321,10 @@ export type GetOrganizationsLocationsGlobalOperationsResponse = Operation;
 export const GetOrganizationsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOrganizationsLocationsGlobalOperationsError = DefaultErrors;
+export type GetOrganizationsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsLocationsGlobalOperations: API.OperationMethod<
@@ -3200,7 +3335,7 @@ export const getOrganizationsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsGlobalOperationsRequest,
   output: GetOrganizationsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsLocationsGlobalOperationsRequest {
@@ -3220,7 +3355,12 @@ export type DeleteOrganizationsLocationsGlobalOperationsResponse = Empty;
 export const DeleteOrganizationsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsGlobalOperationsError = DefaultErrors;
+export type DeleteOrganizationsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsLocationsGlobalOperations: API.OperationMethod<
@@ -3231,7 +3371,7 @@ export const deleteOrganizationsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsGlobalOperationsRequest,
   output: DeleteOrganizationsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOrganizationsLocationsGlobalOperationsRequest {
@@ -3254,7 +3394,12 @@ export type CancelOrganizationsLocationsGlobalOperationsResponse = Empty;
 export const CancelOrganizationsLocationsGlobalOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOrganizationsLocationsGlobalOperationsError = DefaultErrors;
+export type CancelOrganizationsLocationsGlobalOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsLocationsGlobalOperations: API.OperationMethod<
@@ -3265,7 +3410,7 @@ export const cancelOrganizationsLocationsGlobalOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOrganizationsLocationsGlobalOperationsRequest,
   output: CancelOrganizationsLocationsGlobalOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsLocationsVpcFlowLogsConfigsRequest {
@@ -3298,7 +3443,10 @@ export type ListOrganizationsLocationsVpcFlowLogsConfigsResponse =
 export const ListOrganizationsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListVpcFlowLogsConfigsResponse;
 
-export type ListOrganizationsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type ListOrganizationsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all `VpcFlowLogsConfigs` in a given organization. */
 export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
@@ -3309,7 +3457,7 @@ export const listOrganizationsLocationsVpcFlowLogsConfigs: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: ListOrganizationsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3334,7 +3482,10 @@ export type GetOrganizationsLocationsVpcFlowLogsConfigsResponse =
 export const GetOrganizationsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ VpcFlowLogsConfig;
 
-export type GetOrganizationsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type GetOrganizationsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the details of a specific `VpcFlowLogsConfig`. */
 export const getOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -3345,7 +3496,7 @@ export const getOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: GetOrganizationsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsLocationsVpcFlowLogsConfigsRequest {
@@ -3377,7 +3528,12 @@ export type CreateOrganizationsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const CreateOrganizationsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateOrganizationsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type CreateOrganizationsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - creating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const createOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -3388,7 +3544,7 @@ export const createOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: CreateOrganizationsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsLocationsVpcFlowLogsConfigsRequest {
@@ -3414,7 +3570,12 @@ export type PatchOrganizationsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const PatchOrganizationsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchOrganizationsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type PatchOrganizationsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - updating another configuration with the same fields but different values for the following fields will fail as well: * name * create_time * update_time * labels * description */
 export const patchOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -3425,7 +3586,7 @@ export const patchOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: PatchOrganizationsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest {
@@ -3445,7 +3606,12 @@ export type DeleteOrganizationsLocationsVpcFlowLogsConfigsResponse = Operation;
 export const DeleteOrganizationsLocationsVpcFlowLogsConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteOrganizationsLocationsVpcFlowLogsConfigsError = DefaultErrors;
+export type DeleteOrganizationsLocationsVpcFlowLogsConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a specific `VpcFlowLogsConfig`. */
 export const deleteOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod<
@@ -3456,5 +3622,5 @@ export const deleteOrganizationsLocationsVpcFlowLogsConfigs: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsVpcFlowLogsConfigsRequest,
   output: DeleteOrganizationsLocationsVpcFlowLogsConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

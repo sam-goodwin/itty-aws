@@ -183,6 +183,31 @@ export const ListTrafficStatsResponse =
   }).annotate({ identifier: "ListTrafficStatsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -201,7 +226,7 @@ export const GetDomainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDomainsResponse = Domain;
 export const GetDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Domain;
 
-export type GetDomainsError = DefaultErrors;
+export type GetDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist. */
 export const getDomains: API.OperationMethod<
@@ -212,7 +237,7 @@ export const getDomains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainsRequest,
   output: GetDomainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDomainsRequest {
@@ -234,7 +259,7 @@ export type ListDomainsResponse_Op = ListDomainsResponse;
 export const ListDomainsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListDomainsResponse;
 
-export type ListDomainsError = DefaultErrors;
+export type ListDomainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the domains that have been registered by the client. The order of domains in the response is unspecified and non-deterministic. Newly created domains will not necessarily be added to the end of this list. */
 export const listDomains: API.PaginatedOperationMethod<
@@ -245,7 +270,7 @@ export const listDomains: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsRequest,
   output: ListDomainsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -269,7 +294,7 @@ export type GetDomainsTrafficStatsResponse = TrafficStats;
 export const GetDomainsTrafficStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TrafficStats;
 
-export type GetDomainsTrafficStatsError = DefaultErrors;
+export type GetDomainsTrafficStatsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain. */
 export const getDomainsTrafficStats: API.OperationMethod<
@@ -280,7 +305,7 @@ export const getDomainsTrafficStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDomainsTrafficStatsRequest,
   output: GetDomainsTrafficStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDomainsTrafficStatsRequest {
@@ -336,7 +361,7 @@ export type ListDomainsTrafficStatsResponse = ListTrafficStatsResponse;
 export const ListDomainsTrafficStatsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTrafficStatsResponse;
 
-export type ListDomainsTrafficStatsError = DefaultErrors;
+export type ListDomainsTrafficStatsError = DefaultErrors | NotFound | Forbidden;
 
 /** List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain. */
 export const listDomainsTrafficStats: API.PaginatedOperationMethod<
@@ -347,7 +372,7 @@ export const listDomainsTrafficStats: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDomainsTrafficStatsRequest,
   output: ListDomainsTrafficStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

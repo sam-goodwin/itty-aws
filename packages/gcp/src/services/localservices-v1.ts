@@ -281,6 +281,31 @@ export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -338,7 +363,7 @@ export type SearchAccountReportsResponse =
 export const SearchAccountReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse;
 
-export type SearchAccountReportsError = DefaultErrors;
+export type SearchAccountReportsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts. */
 export const searchAccountReports: API.PaginatedOperationMethod<
@@ -349,7 +374,7 @@ export const searchAccountReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAccountReportsRequest,
   output: SearchAccountReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -410,7 +435,10 @@ export type SearchDetailedLeadReportsResponse =
 export const SearchDetailedLeadReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse;
 
-export type SearchDetailedLeadReportsError = DefaultErrors;
+export type SearchDetailedLeadReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts. */
 export const searchDetailedLeadReports: API.PaginatedOperationMethod<
@@ -421,7 +449,7 @@ export const searchDetailedLeadReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchDetailedLeadReportsRequest,
   output: SearchDetailedLeadReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -1428,6 +1428,52 @@ export const StatusProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "StatusProto" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1455,7 +1501,12 @@ export type ExecuteProjectsPatchJobsResponse = PatchJob;
 export const ExecuteProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchJob;
 
-export type ExecuteProjectsPatchJobsError = DefaultErrors;
+export type ExecuteProjectsPatchJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Patch VM instances by creating and running a patch job. */
 export const executeProjectsPatchJobs: API.OperationMethod<
@@ -1466,7 +1517,7 @@ export const executeProjectsPatchJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteProjectsPatchJobsRequest,
   output: ExecuteProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsPatchJobsRequest {
@@ -1486,7 +1537,7 @@ export type GetProjectsPatchJobsResponse = PatchJob;
 export const GetProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchJob;
 
-export type GetProjectsPatchJobsError = DefaultErrors;
+export type GetProjectsPatchJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the patch job. This can be used to track the progress of an ongoing patch job or review the details of completed jobs. */
 export const getProjectsPatchJobs: API.OperationMethod<
@@ -1497,7 +1548,7 @@ export const getProjectsPatchJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsPatchJobsRequest,
   output: GetProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsPatchJobsRequest {
@@ -1520,7 +1571,12 @@ export type CancelProjectsPatchJobsResponse = PatchJob;
 export const CancelProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchJob;
 
-export type CancelProjectsPatchJobsError = DefaultErrors;
+export type CancelProjectsPatchJobsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted. */
 export const cancelProjectsPatchJobs: API.OperationMethod<
@@ -1531,7 +1587,7 @@ export const cancelProjectsPatchJobs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsPatchJobsRequest,
   output: CancelProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsPatchJobsRequest {
@@ -1560,7 +1616,7 @@ export type ListProjectsPatchJobsResponse = ListPatchJobsResponse;
 export const ListProjectsPatchJobsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPatchJobsResponse;
 
-export type ListProjectsPatchJobsError = DefaultErrors;
+export type ListProjectsPatchJobsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a list of patch jobs. */
 export const listProjectsPatchJobs: API.PaginatedOperationMethod<
@@ -1571,7 +1627,7 @@ export const listProjectsPatchJobs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsRequest,
   output: ListProjectsPatchJobsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1605,7 +1661,10 @@ export type ListProjectsPatchJobsInstanceDetailsResponse =
 export const ListProjectsPatchJobsInstanceDetailsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPatchJobInstanceDetailsResponse;
 
-export type ListProjectsPatchJobsInstanceDetailsError = DefaultErrors;
+export type ListProjectsPatchJobsInstanceDetailsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of instance details for a given patch job. */
 export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
@@ -1616,7 +1675,7 @@ export const listProjectsPatchJobsInstanceDetails: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchJobsInstanceDetailsRequest,
   output: ListProjectsPatchJobsInstanceDetailsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1652,7 +1711,12 @@ export type CreateProjectsPatchDeploymentsResponse = PatchDeployment;
 export const CreateProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type CreateProjectsPatchDeploymentsError = DefaultErrors;
+export type CreateProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an OS Config patch deployment. */
 export const createProjectsPatchDeployments: API.OperationMethod<
@@ -1663,7 +1727,7 @@ export const createProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsPatchDeploymentsRequest,
   output: CreateProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsPatchDeploymentsRequest {
@@ -1683,7 +1747,10 @@ export type GetProjectsPatchDeploymentsResponse = PatchDeployment;
 export const GetProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type GetProjectsPatchDeploymentsError = DefaultErrors;
+export type GetProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an OS Config patch deployment. */
 export const getProjectsPatchDeployments: API.OperationMethod<
@@ -1694,7 +1761,7 @@ export const getProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsPatchDeploymentsRequest,
   output: GetProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsPatchDeploymentsRequest {
@@ -1720,7 +1787,10 @@ export type ListProjectsPatchDeploymentsResponse = ListPatchDeploymentsResponse;
 export const ListProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPatchDeploymentsResponse;
 
-export type ListProjectsPatchDeploymentsError = DefaultErrors;
+export type ListProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a page of OS Config patch deployments. */
 export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
@@ -1731,7 +1801,7 @@ export const listProjectsPatchDeployments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsPatchDeploymentsRequest,
   output: ListProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1755,7 +1825,12 @@ export type DeleteProjectsPatchDeploymentsResponse = Empty;
 export const DeleteProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsPatchDeploymentsError = DefaultErrors;
+export type DeleteProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an OS Config patch deployment. */
 export const deleteProjectsPatchDeployments: API.OperationMethod<
@@ -1766,7 +1841,7 @@ export const deleteProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsPatchDeploymentsRequest,
   output: DeleteProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsPatchDeploymentsRequest {
@@ -1792,7 +1867,12 @@ export type PatchProjectsPatchDeploymentsResponse = PatchDeployment;
 export const PatchProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type PatchProjectsPatchDeploymentsError = DefaultErrors;
+export type PatchProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an OS Config patch deployment. */
 export const patchProjectsPatchDeployments: API.OperationMethod<
@@ -1803,7 +1883,7 @@ export const patchProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsPatchDeploymentsRequest,
   output: PatchProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PauseProjectsPatchDeploymentsRequest {
@@ -1826,7 +1906,12 @@ export type PauseProjectsPatchDeploymentsResponse = PatchDeployment;
 export const PauseProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type PauseProjectsPatchDeploymentsError = DefaultErrors;
+export type PauseProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Change state of patch deployment to "PAUSED". Patch deployment in paused state doesn't generate patch jobs. */
 export const pauseProjectsPatchDeployments: API.OperationMethod<
@@ -1837,7 +1922,7 @@ export const pauseProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PauseProjectsPatchDeploymentsRequest,
   output: PauseProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResumeProjectsPatchDeploymentsRequest {
@@ -1860,7 +1945,12 @@ export type ResumeProjectsPatchDeploymentsResponse = PatchDeployment;
 export const ResumeProjectsPatchDeploymentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PatchDeployment;
 
-export type ResumeProjectsPatchDeploymentsError = DefaultErrors;
+export type ResumeProjectsPatchDeploymentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Change state of patch deployment back to "ACTIVE". Patch deployment in active state continues to generate patch jobs. */
 export const resumeProjectsPatchDeployments: API.OperationMethod<
@@ -1871,7 +1961,7 @@ export const resumeProjectsPatchDeployments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResumeProjectsPatchDeploymentsRequest,
   output: ResumeProjectsPatchDeploymentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsGuestPoliciesRequest {
@@ -1903,7 +1993,12 @@ export type CreateProjectsGuestPoliciesResponse = GuestPolicy;
 export const CreateProjectsGuestPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuestPolicy;
 
-export type CreateProjectsGuestPoliciesError = DefaultErrors;
+export type CreateProjectsGuestPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an OS Config guest policy. */
 export const createProjectsGuestPolicies: API.OperationMethod<
@@ -1914,7 +2009,7 @@ export const createProjectsGuestPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsGuestPoliciesRequest,
   output: CreateProjectsGuestPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsGuestPoliciesRequest {
@@ -1934,7 +2029,10 @@ export type GetProjectsGuestPoliciesResponse = GuestPolicy;
 export const GetProjectsGuestPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuestPolicy;
 
-export type GetProjectsGuestPoliciesError = DefaultErrors;
+export type GetProjectsGuestPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get an OS Config guest policy. */
 export const getProjectsGuestPolicies: API.OperationMethod<
@@ -1945,7 +2043,7 @@ export const getProjectsGuestPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsGuestPoliciesRequest,
   output: GetProjectsGuestPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsGuestPoliciesRequest {
@@ -1971,7 +2069,10 @@ export type ListProjectsGuestPoliciesResponse = ListGuestPoliciesResponse;
 export const ListProjectsGuestPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGuestPoliciesResponse;
 
-export type ListProjectsGuestPoliciesError = DefaultErrors;
+export type ListProjectsGuestPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a page of OS Config guest policies. */
 export const listProjectsGuestPolicies: API.PaginatedOperationMethod<
@@ -1982,7 +2083,7 @@ export const listProjectsGuestPolicies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsGuestPoliciesRequest,
   output: ListProjectsGuestPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2012,7 +2113,12 @@ export type PatchProjectsGuestPoliciesResponse = GuestPolicy;
 export const PatchProjectsGuestPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GuestPolicy;
 
-export type PatchProjectsGuestPoliciesError = DefaultErrors;
+export type PatchProjectsGuestPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update an OS Config guest policy. */
 export const patchProjectsGuestPolicies: API.OperationMethod<
@@ -2023,7 +2129,7 @@ export const patchProjectsGuestPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsGuestPoliciesRequest,
   output: PatchProjectsGuestPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsGuestPoliciesRequest {
@@ -2043,7 +2149,12 @@ export type DeleteProjectsGuestPoliciesResponse = Empty;
 export const DeleteProjectsGuestPoliciesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsGuestPoliciesError = DefaultErrors;
+export type DeleteProjectsGuestPoliciesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an OS Config guest policy. */
 export const deleteProjectsGuestPolicies: API.OperationMethod<
@@ -2054,7 +2165,7 @@ export const deleteProjectsGuestPolicies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsGuestPoliciesRequest,
   output: DeleteProjectsGuestPoliciesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LookupEffectiveGuestPolicyProjectsZonesInstancesRequest {
@@ -2083,7 +2194,11 @@ export const LookupEffectiveGuestPolicyProjectsZonesInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EffectiveGuestPolicy;
 
 export type LookupEffectiveGuestPolicyProjectsZonesInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lookup the effective guest policy that applies to a VM instance. This lookup merges all policies that are assigned to the instance ancestry. */
 export const lookupEffectiveGuestPolicyProjectsZonesInstances: API.OperationMethod<
@@ -2094,5 +2209,5 @@ export const lookupEffectiveGuestPolicyProjectsZonesInstances: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LookupEffectiveGuestPolicyProjectsZonesInstancesRequest,
   output: LookupEffectiveGuestPolicyProjectsZonesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -130,6 +130,52 @@ export const GoogleCloudEssentialcontactsV1SendTestMessageRequest =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -156,7 +202,12 @@ export type CreateProjectsContactsResponse =
 export const CreateProjectsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type CreateProjectsContactsError = DefaultErrors;
+export type CreateProjectsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a new contact for a resource. */
 export const createProjectsContacts: API.OperationMethod<
@@ -167,7 +218,7 @@ export const createProjectsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsContactsRequest,
   output: CreateProjectsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsContactsRequest {
@@ -196,7 +247,12 @@ export type PatchProjectsContactsResponse =
 export const PatchProjectsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type PatchProjectsContactsError = DefaultErrors;
+export type PatchProjectsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a contact. Note: A contact's email address cannot be changed. */
 export const patchProjectsContacts: API.OperationMethod<
@@ -207,7 +263,7 @@ export const patchProjectsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsContactsRequest,
   output: PatchProjectsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsContactsRequest {
@@ -234,7 +290,7 @@ export type ListProjectsContactsResponse =
 export const ListProjectsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
 
-export type ListProjectsContactsError = DefaultErrors;
+export type ListProjectsContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the contacts that have been set on a resource. */
 export const listProjectsContacts: API.PaginatedOperationMethod<
@@ -245,7 +301,7 @@ export const listProjectsContacts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsContactsRequest,
   output: ListProjectsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -269,7 +325,7 @@ export type GetProjectsContactsResponse = GoogleCloudEssentialcontactsV1Contact;
 export const GetProjectsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type GetProjectsContactsError = DefaultErrors;
+export type GetProjectsContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a single contact. */
 export const getProjectsContacts: API.OperationMethod<
@@ -280,7 +336,7 @@ export const getProjectsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsContactsRequest,
   output: GetProjectsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsContactsRequest {
@@ -300,7 +356,12 @@ export type DeleteProjectsContactsResponse = GoogleProtobufEmpty;
 export const DeleteProjectsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteProjectsContactsError = DefaultErrors;
+export type DeleteProjectsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a contact. */
 export const deleteProjectsContacts: API.OperationMethod<
@@ -311,7 +372,7 @@ export const deleteProjectsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsContactsRequest,
   output: DeleteProjectsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComputeProjectsContactsRequest {
@@ -353,7 +414,7 @@ export type ComputeProjectsContactsResponse =
 export const ComputeProjectsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 
-export type ComputeProjectsContactsError = DefaultErrors;
+export type ComputeProjectsContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
 export const computeProjectsContacts: API.PaginatedOperationMethod<
@@ -364,7 +425,7 @@ export const computeProjectsContacts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ComputeProjectsContactsRequest,
   output: ComputeProjectsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -397,7 +458,12 @@ export type SendTestMessageProjectsContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageProjectsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type SendTestMessageProjectsContactsError = DefaultErrors;
+export type SendTestMessageProjectsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows a contact admin to send a test message to contact to verify that it has been configured correctly. */
 export const sendTestMessageProjectsContacts: API.OperationMethod<
@@ -408,7 +474,7 @@ export const sendTestMessageProjectsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendTestMessageProjectsContactsRequest,
   output: SendTestMessageProjectsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersContactsRequest {
@@ -434,7 +500,12 @@ export type CreateFoldersContactsResponse =
 export const CreateFoldersContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type CreateFoldersContactsError = DefaultErrors;
+export type CreateFoldersContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a new contact for a resource. */
 export const createFoldersContacts: API.OperationMethod<
@@ -445,7 +516,7 @@ export const createFoldersContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersContactsRequest,
   output: CreateFoldersContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersContactsRequest {
@@ -474,7 +545,12 @@ export type PatchFoldersContactsResponse =
 export const PatchFoldersContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type PatchFoldersContactsError = DefaultErrors;
+export type PatchFoldersContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a contact. Note: A contact's email address cannot be changed. */
 export const patchFoldersContacts: API.OperationMethod<
@@ -485,7 +561,7 @@ export const patchFoldersContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersContactsRequest,
   output: PatchFoldersContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersContactsRequest {
@@ -512,7 +588,7 @@ export type ListFoldersContactsResponse =
 export const ListFoldersContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
 
-export type ListFoldersContactsError = DefaultErrors;
+export type ListFoldersContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the contacts that have been set on a resource. */
 export const listFoldersContacts: API.PaginatedOperationMethod<
@@ -523,7 +599,7 @@ export const listFoldersContacts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersContactsRequest,
   output: ListFoldersContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -547,7 +623,7 @@ export type GetFoldersContactsResponse = GoogleCloudEssentialcontactsV1Contact;
 export const GetFoldersContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type GetFoldersContactsError = DefaultErrors;
+export type GetFoldersContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a single contact. */
 export const getFoldersContacts: API.OperationMethod<
@@ -558,7 +634,7 @@ export const getFoldersContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersContactsRequest,
   output: GetFoldersContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFoldersContactsRequest {
@@ -578,7 +654,12 @@ export type DeleteFoldersContactsResponse = GoogleProtobufEmpty;
 export const DeleteFoldersContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteFoldersContactsError = DefaultErrors;
+export type DeleteFoldersContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a contact. */
 export const deleteFoldersContacts: API.OperationMethod<
@@ -589,7 +670,7 @@ export const deleteFoldersContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersContactsRequest,
   output: DeleteFoldersContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComputeFoldersContactsRequest {
@@ -631,7 +712,7 @@ export type ComputeFoldersContactsResponse =
 export const ComputeFoldersContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 
-export type ComputeFoldersContactsError = DefaultErrors;
+export type ComputeFoldersContactsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
 export const computeFoldersContacts: API.PaginatedOperationMethod<
@@ -642,7 +723,7 @@ export const computeFoldersContacts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ComputeFoldersContactsRequest,
   output: ComputeFoldersContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -675,7 +756,12 @@ export type SendTestMessageFoldersContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageFoldersContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type SendTestMessageFoldersContactsError = DefaultErrors;
+export type SendTestMessageFoldersContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows a contact admin to send a test message to contact to verify that it has been configured correctly. */
 export const sendTestMessageFoldersContacts: API.OperationMethod<
@@ -686,7 +772,7 @@ export const sendTestMessageFoldersContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendTestMessageFoldersContactsRequest,
   output: SendTestMessageFoldersContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsContactsRequest {
@@ -712,7 +798,12 @@ export type CreateOrganizationsContactsResponse =
 export const CreateOrganizationsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type CreateOrganizationsContactsError = DefaultErrors;
+export type CreateOrganizationsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a new contact for a resource. */
 export const createOrganizationsContacts: API.OperationMethod<
@@ -723,7 +814,7 @@ export const createOrganizationsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsContactsRequest,
   output: CreateOrganizationsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsContactsRequest {
@@ -752,7 +843,12 @@ export type PatchOrganizationsContactsResponse =
 export const PatchOrganizationsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type PatchOrganizationsContactsError = DefaultErrors;
+export type PatchOrganizationsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a contact. Note: A contact's email address cannot be changed. */
 export const patchOrganizationsContacts: API.OperationMethod<
@@ -763,7 +859,7 @@ export const patchOrganizationsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsContactsRequest,
   output: PatchOrganizationsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsContactsRequest {
@@ -790,7 +886,10 @@ export type ListOrganizationsContactsResponse =
 export const ListOrganizationsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ListContactsResponse;
 
-export type ListOrganizationsContactsError = DefaultErrors;
+export type ListOrganizationsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the contacts that have been set on a resource. */
 export const listOrganizationsContacts: API.PaginatedOperationMethod<
@@ -801,7 +900,7 @@ export const listOrganizationsContacts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsContactsRequest,
   output: ListOrganizationsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -826,7 +925,10 @@ export type GetOrganizationsContactsResponse =
 export const GetOrganizationsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1Contact;
 
-export type GetOrganizationsContactsError = DefaultErrors;
+export type GetOrganizationsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single contact. */
 export const getOrganizationsContacts: API.OperationMethod<
@@ -837,7 +939,7 @@ export const getOrganizationsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsContactsRequest,
   output: GetOrganizationsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsContactsRequest {
@@ -857,7 +959,12 @@ export type DeleteOrganizationsContactsResponse = GoogleProtobufEmpty;
 export const DeleteOrganizationsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOrganizationsContactsError = DefaultErrors;
+export type DeleteOrganizationsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a contact. */
 export const deleteOrganizationsContacts: API.OperationMethod<
@@ -868,7 +975,7 @@ export const deleteOrganizationsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsContactsRequest,
   output: DeleteOrganizationsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComputeOrganizationsContactsRequest {
@@ -910,7 +1017,10 @@ export type ComputeOrganizationsContactsResponse =
 export const ComputeOrganizationsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudEssentialcontactsV1ComputeContactsResponse;
 
-export type ComputeOrganizationsContactsError = DefaultErrors;
+export type ComputeOrganizationsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
 export const computeOrganizationsContacts: API.PaginatedOperationMethod<
@@ -921,7 +1031,7 @@ export const computeOrganizationsContacts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ComputeOrganizationsContactsRequest,
   output: ComputeOrganizationsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -954,7 +1064,12 @@ export type SendTestMessageOrganizationsContactsResponse = GoogleProtobufEmpty;
 export const SendTestMessageOrganizationsContactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type SendTestMessageOrganizationsContactsError = DefaultErrors;
+export type SendTestMessageOrganizationsContactsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Allows a contact admin to send a test message to contact to verify that it has been configured correctly. */
 export const sendTestMessageOrganizationsContacts: API.OperationMethod<
@@ -965,5 +1080,5 @@ export const sendTestMessageOrganizationsContacts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SendTestMessageOrganizationsContactsRequest,
   output: SendTestMessageOrganizationsContactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

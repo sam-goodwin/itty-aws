@@ -2306,6 +2306,52 @@ export const UpdateMemoryLayerMetadata =
   }).annotate({ identifier: "UpdateMemoryLayerMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2324,7 +2370,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -2335,7 +2381,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOperationsProjectsOperationsRequest {
@@ -2369,7 +2415,10 @@ export type ListOperationsProjectsOperationsResponse = ListOperationsResponse;
 export const ListOperationsProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsProjectsOperationsError = DefaultErrors;
+export type ListOperationsProjectsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
@@ -2380,7 +2429,7 @@ export const listOperationsProjectsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsProjectsOperationsRequest,
   output: ListOperationsProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2407,7 +2456,12 @@ export type CreateProjectsInstancesResponse = Operation;
 export const CreateProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesError = DefaultErrors;
+export type CreateProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an instance within a project. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled. */
 export const createProjectsInstances: API.OperationMethod<
@@ -2418,7 +2472,7 @@ export const createProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesRequest,
   output: CreateProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesRequest {
@@ -2438,7 +2492,7 @@ export type GetProjectsInstancesResponse = Instance;
 export const GetProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type GetProjectsInstancesError = DefaultErrors;
+export type GetProjectsInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about an instance. */
 export const getProjectsInstances: API.OperationMethod<
@@ -2449,7 +2503,7 @@ export const getProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesRequest,
   output: GetProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesRequest {
@@ -2472,7 +2526,7 @@ export type ListProjectsInstancesResponse = ListInstancesResponse;
 export const ListProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListInstancesResponse;
 
-export type ListProjectsInstancesError = DefaultErrors;
+export type ListProjectsInstancesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about instances in a project. */
 export const listProjectsInstances: API.PaginatedOperationMethod<
@@ -2483,7 +2537,7 @@ export const listProjectsInstances: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesRequest,
   output: ListProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2510,7 +2564,12 @@ export type UpdateProjectsInstancesResponse = Instance;
 export const UpdateProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Instance;
 
-export type UpdateProjectsInstancesError = DefaultErrors;
+export type UpdateProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an instance within a project. This method updates only the display name and type for an Instance. To update other Instance properties, such as labels, use PartialUpdateInstance. */
 export const updateProjectsInstances: API.OperationMethod<
@@ -2521,7 +2580,7 @@ export const updateProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsInstancesRequest,
   output: UpdateProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PartialUpdateInstanceProjectsInstancesRequest {
@@ -2547,7 +2606,12 @@ export type PartialUpdateInstanceProjectsInstancesResponse = Operation;
 export const PartialUpdateInstanceProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PartialUpdateInstanceProjectsInstancesError = DefaultErrors;
+export type PartialUpdateInstanceProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance. */
 export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
@@ -2558,7 +2622,7 @@ export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PartialUpdateInstanceProjectsInstancesRequest,
   output: PartialUpdateInstanceProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesRequest {
@@ -2578,7 +2642,12 @@ export type DeleteProjectsInstancesResponse = Empty;
 export const DeleteProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesError = DefaultErrors;
+export type DeleteProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete an instance from a project. */
 export const deleteProjectsInstances: API.OperationMethod<
@@ -2589,7 +2658,7 @@ export const deleteProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesRequest,
   output: DeleteProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesRequest {
@@ -2616,7 +2685,12 @@ export type GetIamPolicyProjectsInstancesResponse = Policy;
 export const GetIamPolicyProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
 export const getIamPolicyProjectsInstances: API.OperationMethod<
@@ -2627,7 +2701,7 @@ export const getIamPolicyProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesRequest,
   output: GetIamPolicyProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesRequest {
@@ -2654,7 +2728,12 @@ export type SetIamPolicyProjectsInstancesResponse = Policy;
 export const SetIamPolicyProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on an instance resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstances: API.OperationMethod<
@@ -2665,7 +2744,7 @@ export const setIamPolicyProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesRequest,
   output: SetIamPolicyProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesRequest {
@@ -2693,7 +2772,12 @@ export type TestIamPermissionsProjectsInstancesResponse =
 export const TestIamPermissionsProjectsInstancesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsInstancesError = DefaultErrors;
+export type TestIamPermissionsProjectsInstancesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified instance resource. */
 export const testIamPermissionsProjectsInstances: API.OperationMethod<
@@ -2704,7 +2788,7 @@ export const testIamPermissionsProjectsInstances: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesRequest,
   output: TestIamPermissionsProjectsInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesClustersRequest {
@@ -2730,7 +2814,12 @@ export type CreateProjectsInstancesClustersResponse = Operation;
 export const CreateProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesClustersError = DefaultErrors;
+export type CreateProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled. */
 export const createProjectsInstancesClusters: API.OperationMethod<
@@ -2741,7 +2830,7 @@ export const createProjectsInstancesClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesClustersRequest,
   output: CreateProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesClustersRequest {
@@ -2761,7 +2850,10 @@ export type GetProjectsInstancesClustersResponse = Cluster;
 export const GetProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Cluster;
 
-export type GetProjectsInstancesClustersError = DefaultErrors;
+export type GetProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a cluster. */
 export const getProjectsInstancesClusters: API.OperationMethod<
@@ -2772,7 +2864,7 @@ export const getProjectsInstancesClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesClustersRequest,
   output: GetProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesClustersRequest {
@@ -2795,7 +2887,10 @@ export type ListProjectsInstancesClustersResponse = ListClustersResponse;
 export const ListProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListClustersResponse;
 
-export type ListProjectsInstancesClustersError = DefaultErrors;
+export type ListProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about clusters in an instance. */
 export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
@@ -2806,7 +2901,7 @@ export const listProjectsInstancesClusters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersRequest,
   output: ListProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2833,7 +2928,12 @@ export type UpdateProjectsInstancesClustersResponse = Operation;
 export const UpdateProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateProjectsInstancesClustersError = DefaultErrors;
+export type UpdateProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a cluster within an instance. Note that UpdateCluster does not support updating cluster_config.cluster_autoscaling_config. In order to update it, you must use PartialUpdateCluster. */
 export const updateProjectsInstancesClusters: API.OperationMethod<
@@ -2844,7 +2944,7 @@ export const updateProjectsInstancesClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsInstancesClustersRequest,
   output: UpdateProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PartialUpdateClusterProjectsInstancesClustersRequest {
@@ -2870,7 +2970,12 @@ export type PartialUpdateClusterProjectsInstancesClustersResponse = Operation;
 export const PartialUpdateClusterProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PartialUpdateClusterProjectsInstancesClustersError = DefaultErrors;
+export type PartialUpdateClusterProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Partially updates a cluster within a project. This method is the preferred way to update a Cluster. To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored. Note that an update cannot simultaneously set serve_nodes to non-zero and cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a serve_node count via the update_mask. */
 export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
@@ -2881,7 +2986,7 @@ export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PartialUpdateClusterProjectsInstancesClustersRequest,
   output: PartialUpdateClusterProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesClustersRequest {
@@ -2901,7 +3006,12 @@ export type DeleteProjectsInstancesClustersResponse = Empty;
 export const DeleteProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesClustersError = DefaultErrors;
+export type DeleteProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a cluster from an instance. */
 export const deleteProjectsInstancesClusters: API.OperationMethod<
@@ -2912,7 +3022,7 @@ export const deleteProjectsInstancesClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesClustersRequest,
   output: DeleteProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateMemoryLayerProjectsInstancesClustersRequest {
@@ -2938,7 +3048,12 @@ export type UpdateMemoryLayerProjectsInstancesClustersResponse = Operation;
 export const UpdateMemoryLayerProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UpdateMemoryLayerProjectsInstancesClustersError = DefaultErrors;
+export type UpdateMemoryLayerProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the memory layer of a cluster. To enable the memory layer, set the memory_config. To disable the memory layer, unset the memory_config. */
 export const updateMemoryLayerProjectsInstancesClusters: API.OperationMethod<
@@ -2949,7 +3064,7 @@ export const updateMemoryLayerProjectsInstancesClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMemoryLayerProjectsInstancesClustersRequest,
   output: UpdateMemoryLayerProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetMemoryLayerProjectsInstancesClustersRequest {
@@ -2969,7 +3084,10 @@ export type GetMemoryLayerProjectsInstancesClustersResponse = MemoryLayer;
 export const GetMemoryLayerProjectsInstancesClustersResponse =
   /*@__PURE__*/ /*#__PURE__*/ MemoryLayer;
 
-export type GetMemoryLayerProjectsInstancesClustersError = DefaultErrors;
+export type GetMemoryLayerProjectsInstancesClustersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about the memory layer of a cluster. */
 export const getMemoryLayerProjectsInstancesClusters: API.OperationMethod<
@@ -2980,7 +3098,7 @@ export const getMemoryLayerProjectsInstancesClusters: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMemoryLayerProjectsInstancesClustersRequest,
   output: GetMemoryLayerProjectsInstancesClustersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesClustersMemoryLayersRequest {
@@ -3007,7 +3125,10 @@ export type ListProjectsInstancesClustersMemoryLayersResponse =
 export const ListProjectsInstancesClustersMemoryLayersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMemoryLayersResponse;
 
-export type ListProjectsInstancesClustersMemoryLayersError = DefaultErrors;
+export type ListProjectsInstancesClustersMemoryLayersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about memory layers. */
 export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMethod<
@@ -3018,7 +3139,7 @@ export const listProjectsInstancesClustersMemoryLayers: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersMemoryLayersRequest,
   output: ListProjectsInstancesClustersMemoryLayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3055,7 +3176,10 @@ export type ListProjectsInstancesClustersHotTabletsResponse =
 export const ListProjectsInstancesClustersHotTabletsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHotTabletsResponse;
 
-export type ListProjectsInstancesClustersHotTabletsError = DefaultErrors;
+export type ListProjectsInstancesClustersHotTabletsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists hot tablets in a cluster, within the time range provided. Hot tablets are ordered based on CPU usage. */
 export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMethod<
@@ -3066,7 +3190,7 @@ export const listProjectsInstancesClustersHotTablets: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersHotTabletsRequest,
   output: ListProjectsInstancesClustersHotTabletsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3096,7 +3220,12 @@ export type CreateProjectsInstancesClustersBackupsResponse = Operation;
 export const CreateProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesClustersBackupsError = DefaultErrors;
+export type CreateProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. */
 export const createProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3107,7 +3236,7 @@ export const createProjectsInstancesClustersBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesClustersBackupsRequest,
   output: CreateProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesClustersBackupsRequest {
@@ -3127,7 +3256,10 @@ export type GetProjectsInstancesClustersBackupsResponse = Backup;
 export const GetProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type GetProjectsInstancesClustersBackupsError = DefaultErrors;
+export type GetProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata on a pending or completed Cloud Bigtable Backup. */
 export const getProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3138,7 +3270,7 @@ export const getProjectsInstancesClustersBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesClustersBackupsRequest,
   output: GetProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsInstancesClustersBackupsRequest {
@@ -3164,7 +3296,12 @@ export type PatchProjectsInstancesClustersBackupsResponse = Backup;
 export const PatchProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Backup;
 
-export type PatchProjectsInstancesClustersBackupsError = DefaultErrors;
+export type PatchProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a pending or completed Cloud Bigtable Backup. */
 export const patchProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3175,7 +3312,7 @@ export const patchProjectsInstancesClustersBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesClustersBackupsRequest,
   output: PatchProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesClustersBackupsRequest {
@@ -3195,7 +3332,12 @@ export type DeleteProjectsInstancesClustersBackupsResponse = Empty;
 export const DeleteProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesClustersBackupsError = DefaultErrors;
+export type DeleteProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a pending or completed Cloud Bigtable backup. */
 export const deleteProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3206,7 +3348,7 @@ export const deleteProjectsInstancesClustersBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesClustersBackupsRequest,
   output: DeleteProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesClustersBackupsRequest {
@@ -3238,7 +3380,10 @@ export type ListProjectsInstancesClustersBackupsResponse = ListBackupsResponse;
 export const ListProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBackupsResponse;
 
-export type ListProjectsInstancesClustersBackupsError = DefaultErrors;
+export type ListProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists Cloud Bigtable backups. Returns both completed and pending backups. */
 export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
@@ -3249,7 +3394,7 @@ export const listProjectsInstancesClustersBackups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesClustersBackupsRequest,
   output: ListProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3276,7 +3421,12 @@ export type CopyProjectsInstancesClustersBackupsResponse = Operation;
 export const CopyProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CopyProjectsInstancesClustersBackupsError = DefaultErrors;
+export type CopyProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Copy a Cloud Bigtable backup to a new backup in the destination cluster located in the destination instance and project. */
 export const copyProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3287,7 +3437,7 @@ export const copyProjectsInstancesClustersBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyProjectsInstancesClustersBackupsRequest,
   output: CopyProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesClustersBackupsRequest {
@@ -3314,7 +3464,12 @@ export type GetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
 export const GetIamPolicyProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesClustersBackupsError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3325,7 +3480,7 @@ export const getIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesClustersBackupsRequest,
   output: GetIamPolicyProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesClustersBackupsRequest {
@@ -3352,7 +3507,12 @@ export type SetIamPolicyProjectsInstancesClustersBackupsResponse = Policy;
 export const SetIamPolicyProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesClustersBackupsError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesClustersBackupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3363,7 +3523,7 @@ export const setIamPolicyProjectsInstancesClustersBackups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesClustersBackupsRequest,
   output: SetIamPolicyProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesClustersBackupsRequest {
@@ -3392,7 +3552,11 @@ export const TestIamPermissionsProjectsInstancesClustersBackupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesClustersBackupsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesClustersBackups: API.OperationMethod<
@@ -3403,7 +3567,7 @@ export const testIamPermissionsProjectsInstancesClustersBackups: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesClustersBackupsRequest,
   output: TestIamPermissionsProjectsInstancesClustersBackupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesAppProfilesRequest {
@@ -3436,7 +3600,12 @@ export type CreateProjectsInstancesAppProfilesResponse = AppProfile;
 export const CreateProjectsInstancesAppProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppProfile;
 
-export type CreateProjectsInstancesAppProfilesError = DefaultErrors;
+export type CreateProjectsInstancesAppProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an app profile within an instance. */
 export const createProjectsInstancesAppProfiles: API.OperationMethod<
@@ -3447,7 +3616,7 @@ export const createProjectsInstancesAppProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesAppProfilesRequest,
   output: CreateProjectsInstancesAppProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesAppProfilesRequest {
@@ -3467,7 +3636,10 @@ export type GetProjectsInstancesAppProfilesResponse = AppProfile;
 export const GetProjectsInstancesAppProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AppProfile;
 
-export type GetProjectsInstancesAppProfilesError = DefaultErrors;
+export type GetProjectsInstancesAppProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about an app profile. */
 export const getProjectsInstancesAppProfiles: API.OperationMethod<
@@ -3478,7 +3650,7 @@ export const getProjectsInstancesAppProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesAppProfilesRequest,
   output: GetProjectsInstancesAppProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesAppProfilesRequest {
@@ -3504,7 +3676,10 @@ export type ListProjectsInstancesAppProfilesResponse = ListAppProfilesResponse;
 export const ListProjectsInstancesAppProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAppProfilesResponse;
 
-export type ListProjectsInstancesAppProfilesError = DefaultErrors;
+export type ListProjectsInstancesAppProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about app profiles in an instance. */
 export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
@@ -3515,7 +3690,7 @@ export const listProjectsInstancesAppProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesAppProfilesRequest,
   output: ListProjectsInstancesAppProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3550,7 +3725,12 @@ export type PatchProjectsInstancesAppProfilesResponse = Operation;
 export const PatchProjectsInstancesAppProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesAppProfilesError = DefaultErrors;
+export type PatchProjectsInstancesAppProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an app profile within an instance. */
 export const patchProjectsInstancesAppProfiles: API.OperationMethod<
@@ -3561,7 +3741,7 @@ export const patchProjectsInstancesAppProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesAppProfilesRequest,
   output: PatchProjectsInstancesAppProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesAppProfilesRequest {
@@ -3586,7 +3766,12 @@ export type DeleteProjectsInstancesAppProfilesResponse = Empty;
 export const DeleteProjectsInstancesAppProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesAppProfilesError = DefaultErrors;
+export type DeleteProjectsInstancesAppProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an app profile from an instance. */
 export const deleteProjectsInstancesAppProfiles: API.OperationMethod<
@@ -3597,7 +3782,7 @@ export const deleteProjectsInstancesAppProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesAppProfilesRequest,
   output: DeleteProjectsInstancesAppProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesMaterializedViewsRequest {
@@ -3624,7 +3809,12 @@ export type GetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesMaterializedViewsError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod<
@@ -3635,7 +3825,7 @@ export const getIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesMaterializedViewsRequest,
   output: GetIamPolicyProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesMaterializedViewsRequest {
@@ -3662,7 +3852,12 @@ export type SetIamPolicyProjectsInstancesMaterializedViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesMaterializedViewsError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on an instance resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod<
@@ -3673,7 +3868,7 @@ export const setIamPolicyProjectsInstancesMaterializedViews: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesMaterializedViewsRequest,
   output: SetIamPolicyProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesMaterializedViewsRequest {
@@ -3702,7 +3897,11 @@ export const TestIamPermissionsProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesMaterializedViewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified instance resource. */
 export const testIamPermissionsProjectsInstancesMaterializedViews: API.OperationMethod<
@@ -3713,7 +3912,7 @@ export const testIamPermissionsProjectsInstancesMaterializedViews: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesMaterializedViewsRequest,
   output: TestIamPermissionsProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesMaterializedViewsRequest {
@@ -3745,7 +3944,12 @@ export type CreateProjectsInstancesMaterializedViewsResponse = Operation;
 export const CreateProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesMaterializedViewsError = DefaultErrors;
+export type CreateProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a materialized view within an instance. */
 export const createProjectsInstancesMaterializedViews: API.OperationMethod<
@@ -3756,7 +3960,7 @@ export const createProjectsInstancesMaterializedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesMaterializedViewsRequest,
   output: CreateProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesMaterializedViewsRequest {
@@ -3784,7 +3988,10 @@ export type GetProjectsInstancesMaterializedViewsResponse = MaterializedView;
 export const GetProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MaterializedView;
 
-export type GetProjectsInstancesMaterializedViewsError = DefaultErrors;
+export type GetProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a materialized view. */
 export const getProjectsInstancesMaterializedViews: API.OperationMethod<
@@ -3795,7 +4002,7 @@ export const getProjectsInstancesMaterializedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesMaterializedViewsRequest,
   output: GetProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesMaterializedViewsRequest {
@@ -3830,7 +4037,10 @@ export type ListProjectsInstancesMaterializedViewsResponse =
 export const ListProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMaterializedViewsResponse;
 
-export type ListProjectsInstancesMaterializedViewsError = DefaultErrors;
+export type ListProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about materialized views in an instance. */
 export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMethod<
@@ -3841,7 +4051,7 @@ export const listProjectsInstancesMaterializedViews: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesMaterializedViewsRequest,
   output: ListProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3871,7 +4081,12 @@ export type PatchProjectsInstancesMaterializedViewsResponse = Operation;
 export const PatchProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesMaterializedViewsError = DefaultErrors;
+export type PatchProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a materialized view within an instance. */
 export const patchProjectsInstancesMaterializedViews: API.OperationMethod<
@@ -3882,7 +4097,7 @@ export const patchProjectsInstancesMaterializedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesMaterializedViewsRequest,
   output: PatchProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesMaterializedViewsRequest {
@@ -3905,7 +4120,12 @@ export type DeleteProjectsInstancesMaterializedViewsResponse = Empty;
 export const DeleteProjectsInstancesMaterializedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesMaterializedViewsError = DefaultErrors;
+export type DeleteProjectsInstancesMaterializedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a materialized view from an instance. */
 export const deleteProjectsInstancesMaterializedViews: API.OperationMethod<
@@ -3916,7 +4136,7 @@ export const deleteProjectsInstancesMaterializedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesMaterializedViewsRequest,
   output: DeleteProjectsInstancesMaterializedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesLogicalViewsRequest {
@@ -3943,7 +4163,12 @@ export type GetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const GetIamPolicyProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesLogicalViewsError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
@@ -3954,7 +4179,7 @@ export const getIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesLogicalViewsRequest,
   output: GetIamPolicyProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesLogicalViewsRequest {
@@ -3981,7 +4206,12 @@ export type SetIamPolicyProjectsInstancesLogicalViewsResponse = Policy;
 export const SetIamPolicyProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesLogicalViewsError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on an instance resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
@@ -3992,7 +4222,7 @@ export const setIamPolicyProjectsInstancesLogicalViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesLogicalViewsRequest,
   output: SetIamPolicyProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesLogicalViewsRequest {
@@ -4021,7 +4251,11 @@ export const TestIamPermissionsProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesLogicalViewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified instance resource. */
 export const testIamPermissionsProjectsInstancesLogicalViews: API.OperationMethod<
@@ -4032,7 +4266,7 @@ export const testIamPermissionsProjectsInstancesLogicalViews: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesLogicalViewsRequest,
   output: TestIamPermissionsProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesLogicalViewsRequest {
@@ -4060,7 +4294,12 @@ export type CreateProjectsInstancesLogicalViewsResponse = Operation;
 export const CreateProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesLogicalViewsError = DefaultErrors;
+export type CreateProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a logical view within an instance. */
 export const createProjectsInstancesLogicalViews: API.OperationMethod<
@@ -4071,7 +4310,7 @@ export const createProjectsInstancesLogicalViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesLogicalViewsRequest,
   output: CreateProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesLogicalViewsRequest {
@@ -4091,7 +4330,10 @@ export type GetProjectsInstancesLogicalViewsResponse = LogicalView;
 export const GetProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LogicalView;
 
-export type GetProjectsInstancesLogicalViewsError = DefaultErrors;
+export type GetProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information about a logical view. */
 export const getProjectsInstancesLogicalViews: API.OperationMethod<
@@ -4102,7 +4344,7 @@ export const getProjectsInstancesLogicalViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesLogicalViewsRequest,
   output: GetProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesLogicalViewsRequest {
@@ -4129,7 +4371,10 @@ export type ListProjectsInstancesLogicalViewsResponse =
 export const ListProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLogicalViewsResponse;
 
-export type ListProjectsInstancesLogicalViewsError = DefaultErrors;
+export type ListProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists information about logical views in an instance. */
 export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
@@ -4140,7 +4385,7 @@ export const listProjectsInstancesLogicalViews: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesLogicalViewsRequest,
   output: ListProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4170,7 +4415,12 @@ export type PatchProjectsInstancesLogicalViewsResponse = Operation;
 export const PatchProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesLogicalViewsError = DefaultErrors;
+export type PatchProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a logical view within an instance. */
 export const patchProjectsInstancesLogicalViews: API.OperationMethod<
@@ -4181,7 +4431,7 @@ export const patchProjectsInstancesLogicalViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesLogicalViewsRequest,
   output: PatchProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesLogicalViewsRequest {
@@ -4204,7 +4454,12 @@ export type DeleteProjectsInstancesLogicalViewsResponse = Empty;
 export const DeleteProjectsInstancesLogicalViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesLogicalViewsError = DefaultErrors;
+export type DeleteProjectsInstancesLogicalViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a logical view from an instance. */
 export const deleteProjectsInstancesLogicalViews: API.OperationMethod<
@@ -4215,7 +4470,7 @@ export const deleteProjectsInstancesLogicalViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesLogicalViewsRequest,
   output: DeleteProjectsInstancesLogicalViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesTablesRequest {
@@ -4238,7 +4493,12 @@ export type CreateProjectsInstancesTablesResponse = Table;
 export const CreateProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type CreateProjectsInstancesTablesError = DefaultErrors;
+export type CreateProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request. */
 export const createProjectsInstancesTables: API.OperationMethod<
@@ -4249,7 +4509,7 @@ export const createProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesTablesRequest,
   output: CreateProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesTablesRequest {
@@ -4286,7 +4546,10 @@ export type ListProjectsInstancesTablesResponse = ListTablesResponse;
 export const ListProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTablesResponse;
 
-export type ListProjectsInstancesTablesError = DefaultErrors;
+export type ListProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all tables served from a specified instance. */
 export const listProjectsInstancesTables: API.PaginatedOperationMethod<
@@ -4297,7 +4560,7 @@ export const listProjectsInstancesTables: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesRequest,
   output: ListProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4332,7 +4595,10 @@ export type GetProjectsInstancesTablesResponse = Table;
 export const GetProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type GetProjectsInstancesTablesError = DefaultErrors;
+export type GetProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata information about the specified table. */
 export const getProjectsInstancesTables: API.OperationMethod<
@@ -4343,7 +4609,7 @@ export const getProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesTablesRequest,
   output: GetProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsInstancesTablesRequest {
@@ -4374,7 +4640,12 @@ export type PatchProjectsInstancesTablesResponse = Operation;
 export const PatchProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesTablesError = DefaultErrors;
+export type PatchProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a specified table. */
 export const patchProjectsInstancesTables: API.OperationMethod<
@@ -4385,7 +4656,7 @@ export const patchProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesTablesRequest,
   output: PatchProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesTablesRequest {
@@ -4405,7 +4676,12 @@ export type DeleteProjectsInstancesTablesResponse = Empty;
 export const DeleteProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesTablesError = DefaultErrors;
+export type DeleteProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a specified table and all of its data. */
 export const deleteProjectsInstancesTables: API.OperationMethod<
@@ -4416,7 +4692,7 @@ export const deleteProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesTablesRequest,
   output: DeleteProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UndeleteProjectsInstancesTablesRequest {
@@ -4439,7 +4715,12 @@ export type UndeleteProjectsInstancesTablesResponse = Operation;
 export const UndeleteProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type UndeleteProjectsInstancesTablesError = DefaultErrors;
+export type UndeleteProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a specified table which was accidentally deleted. */
 export const undeleteProjectsInstancesTables: API.OperationMethod<
@@ -4450,7 +4731,7 @@ export const undeleteProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UndeleteProjectsInstancesTablesRequest,
   output: UndeleteProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyColumnFamiliesProjectsInstancesTablesRequest {
@@ -4477,7 +4758,12 @@ export type ModifyColumnFamiliesProjectsInstancesTablesResponse = Table;
 export const ModifyColumnFamiliesProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Table;
 
-export type ModifyColumnFamiliesProjectsInstancesTablesError = DefaultErrors;
+export type ModifyColumnFamiliesProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs a series of column family modifications on the specified table. Either all or none of the modifications will occur before this method returns, but data requests received prior to that point may see a table where only some modifications have taken effect. */
 export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
@@ -4488,7 +4774,7 @@ export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyColumnFamiliesProjectsInstancesTablesRequest,
   output: ModifyColumnFamiliesProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DropRowRangeProjectsInstancesTablesRequest {
@@ -4511,7 +4797,12 @@ export type DropRowRangeProjectsInstancesTablesResponse = Empty;
 export const DropRowRangeProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DropRowRangeProjectsInstancesTablesError = DefaultErrors;
+export type DropRowRangeProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently drop/delete a row range from a specified table. The request can specify whether to delete all rows in a table, or only those that match a particular prefix. Note that row key prefixes used here are treated as service data. For more information about how service data is handled, see the [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). */
 export const dropRowRangeProjectsInstancesTables: API.OperationMethod<
@@ -4522,7 +4813,7 @@ export const dropRowRangeProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DropRowRangeProjectsInstancesTablesRequest,
   output: DropRowRangeProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateConsistencyTokenProjectsInstancesTablesRequest {
@@ -4551,7 +4842,11 @@ export const GenerateConsistencyTokenProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateConsistencyTokenResponse;
 
 export type GenerateConsistencyTokenProjectsInstancesTablesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a consistency token for a Table, which can be used in CheckConsistency to check whether mutations to the table that finished before this call started have been replicated. The tokens will be available for 90 days. */
 export const generateConsistencyTokenProjectsInstancesTables: API.OperationMethod<
@@ -4562,7 +4857,7 @@ export const generateConsistencyTokenProjectsInstancesTables: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateConsistencyTokenProjectsInstancesTablesRequest,
   output: GenerateConsistencyTokenProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CheckConsistencyProjectsInstancesTablesRequest {
@@ -4590,7 +4885,12 @@ export type CheckConsistencyProjectsInstancesTablesResponse =
 export const CheckConsistencyProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckConsistencyResponse;
 
-export type CheckConsistencyProjectsInstancesTablesError = DefaultErrors;
+export type CheckConsistencyProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Checks replication consistency based on a consistency token, that is, if replication has caught up based on the conditions specified in the token and the check request. */
 export const checkConsistencyProjectsInstancesTables: API.OperationMethod<
@@ -4601,7 +4901,7 @@ export const checkConsistencyProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckConsistencyProjectsInstancesTablesRequest,
   output: CheckConsistencyProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RestoreProjectsInstancesTablesRequest {
@@ -4628,7 +4928,12 @@ export type RestoreProjectsInstancesTablesResponse = Operation;
 export const RestoreProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RestoreProjectsInstancesTablesError = DefaultErrors;
+export type RestoreProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new table by restoring from a completed backup. The returned table long-running operation can be used to track the progress of the operation, and to cancel it. The metadata field type is RestoreTableMetadata. The response type is Table, if successful. */
 export const restoreProjectsInstancesTables: API.OperationMethod<
@@ -4639,7 +4944,7 @@ export const restoreProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RestoreProjectsInstancesTablesRequest,
   output: RestoreProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesTablesRequest {
@@ -4666,7 +4971,12 @@ export type GetIamPolicyProjectsInstancesTablesResponse = Policy;
 export const GetIamPolicyProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsInstancesTablesError = DefaultErrors;
+export type GetIamPolicyProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesTables: API.OperationMethod<
@@ -4677,7 +4987,7 @@ export const getIamPolicyProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesTablesRequest,
   output: GetIamPolicyProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesTablesRequest {
@@ -4704,7 +5014,12 @@ export type SetIamPolicyProjectsInstancesTablesResponse = Policy;
 export const SetIamPolicyProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsInstancesTablesError = DefaultErrors;
+export type SetIamPolicyProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesTables: API.OperationMethod<
@@ -4715,7 +5030,7 @@ export const setIamPolicyProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesTablesRequest,
   output: SetIamPolicyProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesTablesRequest {
@@ -4743,7 +5058,12 @@ export type TestIamPermissionsProjectsInstancesTablesResponse =
 export const TestIamPermissionsProjectsInstancesTablesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsInstancesTablesError = DefaultErrors;
+export type TestIamPermissionsProjectsInstancesTablesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesTables: API.OperationMethod<
@@ -4754,7 +5074,7 @@ export const testIamPermissionsProjectsInstancesTables: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesTablesRequest,
   output: TestIamPermissionsProjectsInstancesTablesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesTablesAuthorizedViewsRequest {
@@ -4786,7 +5106,12 @@ export type CreateProjectsInstancesTablesAuthorizedViewsResponse = Operation;
 export const CreateProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesTablesAuthorizedViewsError = DefaultErrors;
+export type CreateProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new AuthorizedView in a table. */
 export const createProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
@@ -4797,7 +5122,7 @@ export const createProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesTablesAuthorizedViewsRequest,
   output: CreateProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsInstancesTablesAuthorizedViewsRequest {
@@ -4832,7 +5157,10 @@ export type ListProjectsInstancesTablesAuthorizedViewsResponse =
 export const ListProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAuthorizedViewsResponse;
 
-export type ListProjectsInstancesTablesAuthorizedViewsError = DefaultErrors;
+export type ListProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all AuthorizedViews from a specific table. */
 export const listProjectsInstancesTablesAuthorizedViews: API.PaginatedOperationMethod<
@@ -4843,7 +5171,7 @@ export const listProjectsInstancesTablesAuthorizedViews: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesAuthorizedViewsRequest,
   output: ListProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4875,7 +5203,10 @@ export type GetProjectsInstancesTablesAuthorizedViewsResponse = AuthorizedView;
 export const GetProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AuthorizedView;
 
-export type GetProjectsInstancesTablesAuthorizedViewsError = DefaultErrors;
+export type GetProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information from a specified AuthorizedView. */
 export const getProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
@@ -4886,7 +5217,7 @@ export const getProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesTablesAuthorizedViewsRequest,
   output: GetProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsInstancesTablesAuthorizedViewsRequest {
@@ -4917,7 +5248,12 @@ export type PatchProjectsInstancesTablesAuthorizedViewsResponse = Operation;
 export const PatchProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesTablesAuthorizedViewsError = DefaultErrors;
+export type PatchProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an AuthorizedView in a table. */
 export const patchProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
@@ -4928,7 +5264,7 @@ export const patchProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesTablesAuthorizedViewsRequest,
   output: PatchProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsInstancesTablesAuthorizedViewsRequest {
@@ -4951,7 +5287,12 @@ export type DeleteProjectsInstancesTablesAuthorizedViewsResponse = Empty;
 export const DeleteProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesTablesAuthorizedViewsError = DefaultErrors;
+export type DeleteProjectsInstancesTablesAuthorizedViewsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a specified AuthorizedView. */
 export const deleteProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
@@ -4962,7 +5303,7 @@ export const deleteProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesTablesAuthorizedViewsRequest,
   output: DeleteProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
@@ -4990,7 +5331,11 @@ export const GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
@@ -5001,7 +5346,7 @@ export const getIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
   output: GetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest {
@@ -5029,7 +5374,11 @@ export const SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesTablesAuthorizedViewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
@@ -5040,7 +5389,7 @@ export const setIamPolicyProjectsInstancesTablesAuthorizedViews: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesTablesAuthorizedViewsRequest,
   output: SetIamPolicyProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest {
@@ -5069,7 +5418,11 @@ export const TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesTablesAuthorizedViewsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesTablesAuthorizedViews: API.OperationMethod<
@@ -5080,7 +5433,7 @@ export const testIamPermissionsProjectsInstancesTablesAuthorizedViews: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesTablesAuthorizedViewsRequest,
   output: TestIamPermissionsProjectsInstancesTablesAuthorizedViewsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
@@ -5108,7 +5461,11 @@ export const GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsInstancesTablesSchemaBundlesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource exists but does not have a policy set. */
 export const getIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMethod<
@@ -5119,7 +5476,7 @@ export const getIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsInstancesTablesSchemaBundlesRequest,
   output: GetIamPolicyProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest {
@@ -5147,7 +5504,11 @@ export const SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsInstancesTablesSchemaBundlesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on a Bigtable resource. Replaces any existing policy. */
 export const setIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMethod<
@@ -5158,7 +5519,7 @@ export const setIamPolicyProjectsInstancesTablesSchemaBundles: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsInstancesTablesSchemaBundlesRequest,
   output: SetIamPolicyProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest {
@@ -5187,7 +5548,11 @@ export const TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsInstancesTablesSchemaBundlesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that the caller has on the specified Bigtable resource. */
 export const testIamPermissionsProjectsInstancesTablesSchemaBundles: API.OperationMethod<
@@ -5198,7 +5563,7 @@ export const testIamPermissionsProjectsInstancesTablesSchemaBundles: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsInstancesTablesSchemaBundlesRequest,
   output: TestIamPermissionsProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsInstancesTablesSchemaBundlesRequest {
@@ -5230,7 +5595,12 @@ export type CreateProjectsInstancesTablesSchemaBundlesResponse = Operation;
 export const CreateProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsInstancesTablesSchemaBundlesError = DefaultErrors;
+export type CreateProjectsInstancesTablesSchemaBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new schema bundle in the specified table. */
 export const createProjectsInstancesTablesSchemaBundles: API.OperationMethod<
@@ -5241,7 +5611,7 @@ export const createProjectsInstancesTablesSchemaBundles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsInstancesTablesSchemaBundlesRequest,
   output: CreateProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsInstancesTablesSchemaBundlesRequest {
@@ -5272,7 +5642,12 @@ export type PatchProjectsInstancesTablesSchemaBundlesResponse = Operation;
 export const PatchProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsInstancesTablesSchemaBundlesError = DefaultErrors;
+export type PatchProjectsInstancesTablesSchemaBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a schema bundle in the specified table. */
 export const patchProjectsInstancesTablesSchemaBundles: API.OperationMethod<
@@ -5283,7 +5658,7 @@ export const patchProjectsInstancesTablesSchemaBundles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsInstancesTablesSchemaBundlesRequest,
   output: PatchProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsInstancesTablesSchemaBundlesRequest {
@@ -5303,7 +5678,10 @@ export type GetProjectsInstancesTablesSchemaBundlesResponse = SchemaBundle;
 export const GetProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SchemaBundle;
 
-export type GetProjectsInstancesTablesSchemaBundlesError = DefaultErrors;
+export type GetProjectsInstancesTablesSchemaBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metadata information about the specified schema bundle. */
 export const getProjectsInstancesTablesSchemaBundles: API.OperationMethod<
@@ -5314,7 +5692,7 @@ export const getProjectsInstancesTablesSchemaBundles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsInstancesTablesSchemaBundlesRequest,
   output: GetProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsInstancesTablesSchemaBundlesRequest {
@@ -5349,7 +5727,10 @@ export type ListProjectsInstancesTablesSchemaBundlesResponse =
 export const ListProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSchemaBundlesResponse;
 
-export type ListProjectsInstancesTablesSchemaBundlesError = DefaultErrors;
+export type ListProjectsInstancesTablesSchemaBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all schema bundles associated with the specified table. */
 export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMethod<
@@ -5360,7 +5741,7 @@ export const listProjectsInstancesTablesSchemaBundles: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsInstancesTablesSchemaBundlesRequest,
   output: ListProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5387,7 +5768,12 @@ export type DeleteProjectsInstancesTablesSchemaBundlesResponse = Empty;
 export const DeleteProjectsInstancesTablesSchemaBundlesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsInstancesTablesSchemaBundlesError = DefaultErrors;
+export type DeleteProjectsInstancesTablesSchemaBundlesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a schema bundle in the specified table. */
 export const deleteProjectsInstancesTablesSchemaBundles: API.OperationMethod<
@@ -5398,7 +5784,7 @@ export const deleteProjectsInstancesTablesSchemaBundles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsInstancesTablesSchemaBundlesRequest,
   output: DeleteProjectsInstancesTablesSchemaBundlesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -5432,7 +5818,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -5443,7 +5829,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

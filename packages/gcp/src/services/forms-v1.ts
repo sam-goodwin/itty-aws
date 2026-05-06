@@ -938,6 +938,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -956,7 +1002,7 @@ export const GetFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFormsResponse = Form;
 export const GetFormsResponse = /*@__PURE__*/ /*#__PURE__*/ Form;
 
-export type GetFormsError = DefaultErrors;
+export type GetFormsError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a form. */
 export const getForms: API.OperationMethod<
@@ -967,7 +1013,7 @@ export const getForms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFormsRequest,
   output: GetFormsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchUpdateFormsRequest {
@@ -994,7 +1040,12 @@ export type BatchUpdateFormsResponse = BatchUpdateFormResponse;
 export const BatchUpdateFormsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdateFormResponse;
 
-export type BatchUpdateFormsError = DefaultErrors;
+export type BatchUpdateFormsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Change the form with a batch of updates. */
 export const batchUpdateForms: API.OperationMethod<
@@ -1005,7 +1056,7 @@ export const batchUpdateForms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdateFormsRequest,
   output: BatchUpdateFormsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFormsRequest {
@@ -1026,7 +1077,12 @@ export const CreateFormsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateFormsResponse = Form;
 export const CreateFormsResponse = /*@__PURE__*/ /*#__PURE__*/ Form;
 
-export type CreateFormsError = DefaultErrors;
+export type CreateFormsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new form using the title given in the provided form message in the request. *Important:* Only the form.info.title and form.info.document_title fields are copied to the new form. All other fields including the form description, items and settings are disallowed. To create a new form and add items, you must first call forms.create to create an empty form with a title and (optional) document title, and then call forms.update to add the items. */
 export const createForms: API.OperationMethod<
@@ -1037,7 +1093,7 @@ export const createForms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFormsRequest,
   output: CreateFormsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetPublishSettingsFormsRequest {
@@ -1064,7 +1120,12 @@ export type SetPublishSettingsFormsResponse = SetPublishSettingsResponse;
 export const SetPublishSettingsFormsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SetPublishSettingsResponse;
 
-export type SetPublishSettingsFormsError = DefaultErrors;
+export type SetPublishSettingsFormsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field. */
 export const setPublishSettingsForms: API.OperationMethod<
@@ -1075,7 +1136,7 @@ export const setPublishSettingsForms: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetPublishSettingsFormsRequest,
   output: SetPublishSettingsFormsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFormsResponsesRequest {
@@ -1098,7 +1159,7 @@ export type GetFormsResponsesResponse = FormResponse;
 export const GetFormsResponsesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FormResponse;
 
-export type GetFormsResponsesError = DefaultErrors;
+export type GetFormsResponsesError = DefaultErrors | NotFound | Forbidden;
 
 /** Get one response from the form. */
 export const getFormsResponses: API.OperationMethod<
@@ -1109,7 +1170,7 @@ export const getFormsResponses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFormsResponsesRequest,
   output: GetFormsResponsesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFormsResponsesRequest {
@@ -1138,7 +1199,7 @@ export type ListFormsResponsesResponse = ListFormResponsesResponse;
 export const ListFormsResponsesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFormResponsesResponse;
 
-export type ListFormsResponsesError = DefaultErrors;
+export type ListFormsResponsesError = DefaultErrors | NotFound | Forbidden;
 
 /** List a form's responses. */
 export const listFormsResponses: API.PaginatedOperationMethod<
@@ -1149,7 +1210,7 @@ export const listFormsResponses: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFormsResponsesRequest,
   output: ListFormsResponsesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1179,7 +1240,12 @@ export const CreateFormsWatchesRequest =
 export type CreateFormsWatchesResponse = Watch;
 export const CreateFormsWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Watch;
 
-export type CreateFormsWatchesError = DefaultErrors;
+export type CreateFormsWatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time). */
 export const createFormsWatches: API.OperationMethod<
@@ -1190,7 +1256,7 @@ export const createFormsWatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFormsWatchesRequest,
   output: CreateFormsWatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFormsWatchesRequest {
@@ -1210,7 +1276,7 @@ export type ListFormsWatchesResponse = ListWatchesResponse;
 export const ListFormsWatchesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListWatchesResponse;
 
-export type ListFormsWatchesError = DefaultErrors;
+export type ListFormsWatchesError = DefaultErrors | NotFound | Forbidden;
 
 /** Return a list of the watches owned by the invoking project. The maximum number of watches is two: For each invoker, the limit is one for each event type per form. */
 export const listFormsWatches: API.OperationMethod<
@@ -1221,7 +1287,7 @@ export const listFormsWatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListFormsWatchesRequest,
   output: ListFormsWatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RenewFormsWatchesRequest {
@@ -1250,7 +1316,12 @@ export const RenewFormsWatchesRequest =
 export type RenewFormsWatchesResponse = Watch;
 export const RenewFormsWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Watch;
 
-export type RenewFormsWatchesError = DefaultErrors;
+export type RenewFormsWatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Renew an existing watch for seven days. The state of the watch after renewal is `ACTIVE`, and the `expire_time` is seven days from the renewal. Renewing a watch in an error state (e.g. `SUSPENDED`) succeeds if the error is no longer present, but fail otherwise. After a watch has expired, RenewWatch returns `NOT_FOUND`. */
 export const renewFormsWatches: API.OperationMethod<
@@ -1261,7 +1332,7 @@ export const renewFormsWatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RenewFormsWatchesRequest,
   output: RenewFormsWatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFormsWatchesRequest {
@@ -1283,7 +1354,12 @@ export const DeleteFormsWatchesRequest =
 export type DeleteFormsWatchesResponse = Empty;
 export const DeleteFormsWatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFormsWatchesError = DefaultErrors;
+export type DeleteFormsWatchesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a watch. */
 export const deleteFormsWatches: API.OperationMethod<
@@ -1294,5 +1370,5 @@ export const deleteFormsWatches: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFormsWatchesRequest,
   output: DeleteFormsWatchesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

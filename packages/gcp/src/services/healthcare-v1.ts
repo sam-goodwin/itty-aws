@@ -2772,6 +2772,52 @@ export const SetBlobStorageSettingsResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2806,7 +2852,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -2817,7 +2863,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2841,7 +2887,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -2852,7 +2898,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsDatasetsRequest {
@@ -2879,7 +2925,12 @@ export type SetIamPolicyProjectsLocationsDatasetsResponse = Policy;
 export const SetIamPolicyProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyProjectsLocationsDatasetsError = DefaultErrors;
+export type SetIamPolicyProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsDatasets: API.OperationMethod<
@@ -2890,7 +2941,7 @@ export const setIamPolicyProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDatasetsRequest,
   output: SetIamPolicyProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDatasetsRequest {
@@ -2915,7 +2966,10 @@ export type GetIamPolicyProjectsLocationsDatasetsResponse = Policy;
 export const GetIamPolicyProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyProjectsLocationsDatasetsError = DefaultErrors;
+export type GetIamPolicyProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsDatasets: API.OperationMethod<
@@ -2926,7 +2980,7 @@ export const getIamPolicyProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDatasetsRequest,
   output: GetIamPolicyProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDatasetsRequest {
@@ -2954,7 +3008,12 @@ export type TestIamPermissionsProjectsLocationsDatasetsResponse =
 export const TestIamPermissionsProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsProjectsLocationsDatasetsError = DefaultErrors;
+export type TestIamPermissionsProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasets: API.OperationMethod<
@@ -2965,7 +3024,7 @@ export const testIamPermissionsProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDatasetsRequest,
   output: TestIamPermissionsProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsRequest {
@@ -2991,7 +3050,12 @@ export type CreateProjectsLocationsDatasetsResponse = Operation;
 export const CreateProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsDatasetsError = DefaultErrors;
+export type CreateProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new health dataset. Results are returned through the Operation interface which returns either an `Operation.response` which contains a Dataset or `Operation.error`. The metadata field type is OperationMetadata. */
 export const createProjectsLocationsDatasets: API.OperationMethod<
@@ -3002,7 +3066,7 @@ export const createProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsRequest,
   output: CreateProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsRequest {
@@ -3028,7 +3092,10 @@ export type ListProjectsLocationsDatasetsResponse = ListDatasetsResponse;
 export const ListProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDatasetsResponse;
 
-export type ListProjectsLocationsDatasetsError = DefaultErrors;
+export type ListProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the health datasets in the current project. */
 export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
@@ -3039,7 +3106,7 @@ export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsRequest,
   output: ListProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3063,7 +3130,12 @@ export type DeleteProjectsLocationsDatasetsResponse = Empty;
 export const DeleteProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDatasetsError = DefaultErrors;
+export type DeleteProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified health dataset and all data contained in the dataset. Deleting a dataset does not affect the sources from which the dataset was imported (if any). */
 export const deleteProjectsLocationsDatasets: API.OperationMethod<
@@ -3074,7 +3146,7 @@ export const deleteProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsRequest,
   output: DeleteProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsRequest {
@@ -3094,7 +3166,10 @@ export type GetProjectsLocationsDatasetsResponse = Dataset;
 export const GetProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type GetProjectsLocationsDatasetsError = DefaultErrors;
+export type GetProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets any metadata associated with a dataset. */
 export const getProjectsLocationsDatasets: API.OperationMethod<
@@ -3105,7 +3180,7 @@ export const getProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsRequest,
   output: GetProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsDatasetsRequest {
@@ -3131,7 +3206,12 @@ export type PatchProjectsLocationsDatasetsResponse = Dataset;
 export const PatchProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type PatchProjectsLocationsDatasetsError = DefaultErrors;
+export type PatchProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates dataset metadata. */
 export const patchProjectsLocationsDatasets: API.OperationMethod<
@@ -3142,7 +3222,7 @@ export const patchProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsRequest,
   output: PatchProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeidentifyProjectsLocationsDatasetsRequest {
@@ -3169,7 +3249,12 @@ export type DeidentifyProjectsLocationsDatasetsResponse = Operation;
 export const DeidentifyProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeidentifyProjectsLocationsDatasetsError = DefaultErrors;
+export type DeidentifyProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new dataset containing de-identified data from the source dataset. The metadata field type is OperationMetadata. If the request is successful, the response field type is DeidentifySummary. If errors occur, error is set. The LRO result may still be successful if de-identification fails for some DICOM instances. The new de-identified dataset will not contain these failed resources. Failed resource totals are tracked in Operation.metadata. Error details are also logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging). */
 export const deidentifyProjectsLocationsDatasets: API.OperationMethod<
@@ -3180,7 +3265,7 @@ export const deidentifyProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeidentifyProjectsLocationsDatasetsRequest,
   output: DeidentifyProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest {
@@ -3208,7 +3293,11 @@ export const SetIamPolicyProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsDatasetsConsentStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3219,7 +3308,7 @@ export const setIamPolicyProjectsLocationsDatasetsConsentStores: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDatasetsConsentStoresRequest,
   output: SetIamPolicyProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest {
@@ -3245,7 +3334,9 @@ export const GetIamPolicyProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsDatasetsConsentStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3256,7 +3347,7 @@ export const getIamPolicyProjectsLocationsDatasetsConsentStores: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDatasetsConsentStoresRequest,
   output: GetIamPolicyProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest {
@@ -3285,7 +3376,11 @@ export const TestIamPermissionsProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDatasetsConsentStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3296,7 +3391,7 @@ export const testIamPermissionsProjectsLocationsDatasetsConsentStores: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDatasetsConsentStoresRequest,
   output: TestIamPermissionsProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsConsentStoresRequest {
@@ -3328,7 +3423,12 @@ export type CreateProjectsLocationsDatasetsConsentStoresResponse = ConsentStore;
 export const CreateProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConsentStore;
 
-export type CreateProjectsLocationsDatasetsConsentStoresError = DefaultErrors;
+export type CreateProjectsLocationsDatasetsConsentStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error. */
 export const createProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3339,7 +3439,7 @@ export const createProjectsLocationsDatasetsConsentStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsConsentStoresRequest,
   output: CreateProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsConsentStoresRequest {
@@ -3359,7 +3459,10 @@ export type GetProjectsLocationsDatasetsConsentStoresResponse = ConsentStore;
 export const GetProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConsentStore;
 
-export type GetProjectsLocationsDatasetsConsentStoresError = DefaultErrors;
+export type GetProjectsLocationsDatasetsConsentStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified consent store. */
 export const getProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3370,7 +3473,7 @@ export const getProjectsLocationsDatasetsConsentStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsConsentStoresRequest,
   output: GetProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsConsentStoresRequest {
@@ -3390,7 +3493,12 @@ export type DeleteProjectsLocationsDatasetsConsentStoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDatasetsConsentStoresError = DefaultErrors;
+export type DeleteProjectsLocationsDatasetsConsentStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified consent store and removes all the consent store's data. */
 export const deleteProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3401,7 +3509,7 @@ export const deleteProjectsLocationsDatasetsConsentStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsConsentStoresRequest,
   output: DeleteProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDatasetsConsentStoresRequest {
@@ -3427,7 +3535,12 @@ export type PatchProjectsLocationsDatasetsConsentStoresResponse = ConsentStore;
 export const PatchProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConsentStore;
 
-export type PatchProjectsLocationsDatasetsConsentStoresError = DefaultErrors;
+export type PatchProjectsLocationsDatasetsConsentStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified consent store. */
 export const patchProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3438,7 +3551,7 @@ export const patchProjectsLocationsDatasetsConsentStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsConsentStoresRequest,
   output: PatchProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsConsentStoresRequest {
@@ -3468,7 +3581,10 @@ export type ListProjectsLocationsDatasetsConsentStoresResponse =
 export const ListProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConsentStoresResponse;
 
-export type ListProjectsLocationsDatasetsConsentStoresError = DefaultErrors;
+export type ListProjectsLocationsDatasetsConsentStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the consent stores in the specified dataset. */
 export const listProjectsLocationsDatasetsConsentStores: API.PaginatedOperationMethod<
@@ -3479,7 +3595,7 @@ export const listProjectsLocationsDatasetsConsentStores: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresRequest,
   output: ListProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3512,7 +3628,11 @@ export const CheckDataAccessProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckDataAccessResponse;
 
 export type CheckDataAccessProjectsLocationsDatasetsConsentStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Checks if a particular data_id of a User data mapping in the specified consent store is consented for the specified use. */
 export const checkDataAccessProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3523,7 +3643,7 @@ export const checkDataAccessProjectsLocationsDatasetsConsentStores: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckDataAccessProjectsLocationsDatasetsConsentStoresRequest,
   output: CheckDataAccessProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest {
@@ -3552,7 +3672,11 @@ export const QueryAccessibleDataProjectsLocationsDatasetsConsentStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type QueryAccessibleDataProjectsLocationsDatasetsConsentStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries all data_ids that are consented for a specified use in the given consent store and writes them to a specified destination. The returned Operation includes a progress counter for the number of User data mappings processed. If the request is successful, a detailed response is returned of type QueryAccessibleDataResponse, contained in the response field when the operation finishes. The metadata field type is OperationMetadata. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). For example, the following sample log entry shows a `failed to evaluate consent policy` error that occurred during a QueryAccessibleData call to consent store `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. ```json jsonPayload: { @type: "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code: 9 message: "failed to evaluate consent policy" } resourceName: "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}" } logName: "projects/{project_id}/logs/healthcare.googleapis.com%2Fquery_accessible_data" operation: { id: "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/operations/{operation_id}" producer: "healthcare.googleapis.com/QueryAccessibleData" } receiveTimestamp: "TIMESTAMP" resource: { labels: { consent_store_id: "{consent_store_id}" dataset_id: "{dataset_id}" location: "{location_id}" project_id: "{project_id}" } type: "healthcare_consent_store" } severity: "ERROR" timestamp: "TIMESTAMP" ``` */
 export const queryAccessibleDataProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3563,7 +3687,7 @@ export const queryAccessibleDataProjectsLocationsDatasetsConsentStores: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryAccessibleDataProjectsLocationsDatasetsConsentStoresRequest,
   output: QueryAccessibleDataProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest {
@@ -3592,7 +3716,11 @@ export const EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresResponse 
   /*@__PURE__*/ /*#__PURE__*/ EvaluateUserConsentsResponse;
 
 export type EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Evaluates the user's Consents for all matching User data mappings. Note: User data mappings are indexed asynchronously, which can cause a slight delay between the time mappings are created or updated and when they are included in EvaluateUserConsents results. */
 export const evaluateUserConsentsProjectsLocationsDatasetsConsentStores: API.OperationMethod<
@@ -3603,7 +3731,7 @@ export const evaluateUserConsentsProjectsLocationsDatasetsConsentStores: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresRequest,
   output: EvaluateUserConsentsProjectsLocationsDatasetsConsentStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest {
@@ -3637,7 +3765,11 @@ export const CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRes
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Attribute definition in the parent consent store. */
 export const createProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -3650,7 +3782,7 @@ export const createProjectsLocationsDatasetsConsentStoresAttributeDefinitions: A
     CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest,
   output:
     CreateProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest {
@@ -3672,7 +3804,9 @@ export const GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRespon
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified Attribute definition. */
 export const getProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -3683,7 +3817,7 @@ export const getProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest,
   output: GetProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest {
@@ -3705,7 +3839,11 @@ export const DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Attribute definition. Fails if the Attribute definition is referenced by any User data mapping, or the latest revision of any Consent. */
 export const deleteProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -3718,7 +3856,7 @@ export const deleteProjectsLocationsDatasetsConsentStoresAttributeDefinitions: A
     DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest,
   output:
     DeleteProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest {
@@ -3746,7 +3884,11 @@ export const PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResp
   /*@__PURE__*/ /*#__PURE__*/ AttributeDefinition;
 
 export type PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified Attribute definition. */
 export const patchProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.OperationMethod<
@@ -3758,7 +3900,7 @@ export const patchProjectsLocationsDatasetsConsentStoresAttributeDefinitions: AP
   input: PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest,
   output:
     PatchProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest {
@@ -3789,7 +3931,9 @@ export const ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRespo
   /*@__PURE__*/ /*#__PURE__*/ ListAttributeDefinitionsResponse;
 
 export type ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Attribute definitions in the specified consent store. */
 export const listProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API.PaginatedOperationMethod<
@@ -3801,7 +3945,7 @@ export const listProjectsLocationsDatasetsConsentStoresAttributeDefinitions: API
   input: ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsRequest,
   output:
     ListProjectsLocationsDatasetsConsentStoresAttributeDefinitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3834,7 +3978,11 @@ export const CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRespons
   /*@__PURE__*/ /*#__PURE__*/ ConsentArtifact;
 
 export type CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Consent artifact in the parent consent store. */
 export const createProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.OperationMethod<
@@ -3845,7 +3993,7 @@ export const createProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest,
   output: CreateProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest {
@@ -3867,7 +4015,9 @@ export const GetProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ConsentArtifact;
 
 export type GetProjectsLocationsDatasetsConsentStoresConsentArtifactsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified Consent artifact. */
 export const getProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.OperationMethod<
@@ -3878,7 +4028,7 @@ export const getProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest,
   output: GetProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest {
@@ -3900,7 +4050,11 @@ export const DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRespons
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Consent artifact. Fails if the artifact is referenced by the latest revision of any Consent. */
 export const deleteProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.OperationMethod<
@@ -3911,7 +4065,7 @@ export const deleteProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest,
   output: DeleteProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest {
@@ -3942,7 +4096,9 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse 
   /*@__PURE__*/ /*#__PURE__*/ ListConsentArtifactsResponse;
 
 export type ListProjectsLocationsDatasetsConsentStoresConsentArtifactsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Consent artifacts in the specified consent store. */
 export const listProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.PaginatedOperationMethod<
@@ -3953,7 +4109,7 @@ export const listProjectsLocationsDatasetsConsentStoresConsentArtifacts: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresConsentArtifactsRequest,
   output: ListProjectsLocationsDatasetsConsentStoresConsentArtifactsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3982,7 +4138,11 @@ export const CreateProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Consent;
 
 export type CreateProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Consent in the parent consent store. */
 export const createProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -3993,7 +4153,7 @@ export const createProjectsLocationsDatasetsConsentStoresConsents: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: CreateProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsConsentStoresConsentsRequest {
@@ -4014,7 +4174,9 @@ export const GetProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Consent;
 
 export type GetProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name. */
 export const getProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -4025,7 +4187,7 @@ export const getProjectsLocationsDatasetsConsentStoresConsents: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: GetProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest {
@@ -4047,7 +4209,11 @@ export const DeleteProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the Consent and its revisions. To keep a record of the Consent but mark it inactive, see [RevokeConsent]. To delete a revision of a Consent, see [DeleteConsentRevision]. This operation does not delete the related Consent artifact. */
 export const deleteProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -4058,7 +4224,7 @@ export const deleteProjectsLocationsDatasetsConsentStoresConsents: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: DeleteProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest {
@@ -4080,7 +4246,11 @@ export const DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRespons
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified revision of a Consent. An INVALID_ARGUMENT error occurs if the specified revision is the latest revision. */
 export const deleteRevisionProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -4091,7 +4261,7 @@ export const deleteRevisionProjectsLocationsDatasetsConsentStoresConsents: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: DeleteRevisionProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDatasetsConsentStoresConsentsRequest {
@@ -4119,7 +4289,11 @@ export const PatchProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Consent;
 
 export type PatchProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the latest revision of the specified Consent by committing a new revision with the changes. A FAILED_PRECONDITION error occurs if the latest revision of the specified Consent is in the `REJECTED` or `REVOKED` state. */
 export const patchProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -4130,7 +4304,7 @@ export const patchProjectsLocationsDatasetsConsentStoresConsents: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: PatchProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest {
@@ -4155,7 +4329,11 @@ export const ActivateProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Consent;
 
 export type ActivateProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Activates the latest revision of the specified Consent by committing a new revision with `state` updated to `ACTIVE`. If the latest revision of the specified Consent is in the `ACTIVE` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the latest revision of the specified Consent is in the `REJECTED` or `REVOKED` state. */
 export const activateProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -4166,7 +4344,7 @@ export const activateProjectsLocationsDatasetsConsentStoresConsents: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ActivateProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: ActivateProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RejectProjectsLocationsDatasetsConsentStoresConsentsRequest {
@@ -4191,7 +4369,11 @@ export const RejectProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Consent;
 
 export type RejectProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rejects the latest revision of the specified Consent by committing a new revision with `state` updated to `REJECTED`. If the latest revision of the specified Consent is in the `REJECTED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the latest revision of the specified Consent is in the `ACTIVE` or `REVOKED` state. */
 export const rejectProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -4202,7 +4384,7 @@ export const rejectProjectsLocationsDatasetsConsentStoresConsents: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RejectProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: RejectProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsConsentStoresConsentsRequest {
@@ -4233,7 +4415,9 @@ export const ListProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListConsentsResponse;
 
 export type ListProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Consent in the given consent store, returning each Consent's latest revision. */
 export const listProjectsLocationsDatasetsConsentStoresConsents: API.PaginatedOperationMethod<
@@ -4244,7 +4428,7 @@ export const listProjectsLocationsDatasetsConsentStoresConsents: API.PaginatedOp
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: ListProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4279,7 +4463,9 @@ export const ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsResponse
   /*@__PURE__*/ /*#__PURE__*/ ListConsentRevisionsResponse;
 
 export type ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the revisions of the specified Consent in reverse chronological order. */
 export const listRevisionsProjectsLocationsDatasetsConsentStoresConsents: API.PaginatedOperationMethod<
@@ -4290,7 +4476,7 @@ export const listRevisionsProjectsLocationsDatasetsConsentStoresConsents: API.Pa
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: ListRevisionsProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4319,7 +4505,11 @@ export const RevokeProjectsLocationsDatasetsConsentStoresConsentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Consent;
 
 export type RevokeProjectsLocationsDatasetsConsentStoresConsentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Revokes the latest revision of the specified Consent by committing a new revision with `state` updated to `REVOKED`. If the latest revision of the specified Consent is in the `REVOKED` state, no new revision is committed. A FAILED_PRECONDITION error occurs if the latest revision of the given consent is in `DRAFT` or `REJECTED` state. */
 export const revokeProjectsLocationsDatasetsConsentStoresConsents: API.OperationMethod<
@@ -4330,7 +4520,7 @@ export const revokeProjectsLocationsDatasetsConsentStoresConsents: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevokeProjectsLocationsDatasetsConsentStoresConsentsRequest,
   output: RevokeProjectsLocationsDatasetsConsentStoresConsentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest {
@@ -4359,7 +4549,11 @@ export const CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRespons
   /*@__PURE__*/ /*#__PURE__*/ UserDataMapping;
 
 export type CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new User data mapping in the parent consent store. */
 export const createProjectsLocationsDatasetsConsentStoresUserDataMappings: API.OperationMethod<
@@ -4370,7 +4564,7 @@ export const createProjectsLocationsDatasetsConsentStoresUserDataMappings: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   output: CreateProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest {
@@ -4392,7 +4586,9 @@ export const GetProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ UserDataMapping;
 
 export type GetProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified User data mapping. */
 export const getProjectsLocationsDatasetsConsentStoresUserDataMappings: API.OperationMethod<
@@ -4403,7 +4599,7 @@ export const getProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   output: GetProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest {
@@ -4425,7 +4621,11 @@ export const DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRespons
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified User data mapping. */
 export const deleteProjectsLocationsDatasetsConsentStoresUserDataMappings: API.OperationMethod<
@@ -4436,7 +4636,7 @@ export const deleteProjectsLocationsDatasetsConsentStoresUserDataMappings: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   output: DeleteProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest {
@@ -4464,7 +4664,11 @@ export const PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse
   /*@__PURE__*/ /*#__PURE__*/ UserDataMapping;
 
 export type PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified User data mapping. */
 export const patchProjectsLocationsDatasetsConsentStoresUserDataMappings: API.OperationMethod<
@@ -4475,7 +4679,7 @@ export const patchProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   output: PatchProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest {
@@ -4506,7 +4710,9 @@ export const ListProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse 
   /*@__PURE__*/ /*#__PURE__*/ ListUserDataMappingsResponse;
 
 export type ListProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the User data mappings in the specified consent store. */
 export const listProjectsLocationsDatasetsConsentStoresUserDataMappings: API.PaginatedOperationMethod<
@@ -4517,7 +4723,7 @@ export const listProjectsLocationsDatasetsConsentStoresUserDataMappings: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   output: ListProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4546,7 +4752,11 @@ export const ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRespon
   /*@__PURE__*/ /*#__PURE__*/ ArchiveUserDataMappingResponse;
 
 export type ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Archives the specified User data mapping. */
 export const archiveProjectsLocationsDatasetsConsentStoresUserDataMappings: API.OperationMethod<
@@ -4557,7 +4767,7 @@ export const archiveProjectsLocationsDatasetsConsentStoresUserDataMappings: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsRequest,
   output: ArchiveProjectsLocationsDatasetsConsentStoresUserDataMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest {
@@ -4586,7 +4796,11 @@ export const SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsDatasetsDataMapperWorkspaces: API.OperationMethod<
@@ -4597,7 +4811,7 @@ export const setIamPolicyProjectsLocationsDatasetsDataMapperWorkspaces: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest,
   output: SetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest {
@@ -4624,7 +4838,9 @@ export const GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsDatasetsDataMapperWorkspaces: API.OperationMethod<
@@ -4635,7 +4851,7 @@ export const getIamPolicyProjectsLocationsDatasetsDataMapperWorkspaces: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesRequest,
   output: GetIamPolicyProjectsLocationsDatasetsDataMapperWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest {
@@ -4664,7 +4880,11 @@ export const TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesResp
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasetsDataMapperWorkspaces: API.OperationMethod<
@@ -4676,7 +4896,7 @@ export const testIamPermissionsProjectsLocationsDatasetsDataMapperWorkspaces: AP
   input: TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesRequest,
   output:
     TestIamPermissionsProjectsLocationsDatasetsDataMapperWorkspacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest {
@@ -4704,7 +4924,11 @@ export const SetIamPolicyProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4715,7 +4939,7 @@ export const setIamPolicyProjectsLocationsDatasetsDicomStores: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDatasetsDicomStoresRequest,
   output: SetIamPolicyProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest {
@@ -4741,7 +4965,9 @@ export const GetIamPolicyProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4752,7 +4978,7 @@ export const getIamPolicyProjectsLocationsDatasetsDicomStores: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDatasetsDicomStoresRequest,
   output: GetIamPolicyProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest {
@@ -4781,7 +5007,11 @@ export const TestIamPermissionsProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4792,7 +5022,7 @@ export const testIamPermissionsProjectsLocationsDatasetsDicomStores: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDatasetsDicomStoresRequest,
   output: TestIamPermissionsProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeidentifyProjectsLocationsDatasetsDicomStoresRequest {
@@ -4819,7 +5049,12 @@ export type DeidentifyProjectsLocationsDatasetsDicomStoresResponse = Operation;
 export const DeidentifyProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeidentifyProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type DeidentifyProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** De-identifies data from the source store and writes it to the destination store. The metadata field type is OperationMetadata. If the request is successful, the response field type is DeidentifyDicomStoreSummary. If errors occur, error is set. The LRO result may still be successful if de-identification fails for some DICOM instances. The output DICOM store will not contain these failed resources. Failed resource totals are tracked in Operation.metadata. Error details are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). */
 export const deidentifyProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4830,7 +5065,7 @@ export const deidentifyProjectsLocationsDatasetsDicomStores: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeidentifyProjectsLocationsDatasetsDicomStoresRequest,
   output: DeidentifyProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest {
@@ -4859,7 +5094,11 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresResponse 
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** SetBlobStorageSettings sets the blob storage settings of the specified resources. */
 export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4870,7 +5109,7 @@ export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStores: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresRequest,
   output: SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsDicomStoresRequest {
@@ -4898,7 +5137,12 @@ export type CreateProjectsLocationsDatasetsDicomStoresResponse = DicomStore;
 export const CreateProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ DicomStore;
 
-export type CreateProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type CreateProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new DICOM store within the parent dataset. */
 export const createProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4909,7 +5153,7 @@ export const createProjectsLocationsDatasetsDicomStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsDicomStoresRequest,
   output: CreateProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsDicomStoresRequest {
@@ -4929,7 +5173,10 @@ export type GetProjectsLocationsDatasetsDicomStoresResponse = DicomStore;
 export const GetProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ DicomStore;
 
-export type GetProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type GetProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified DICOM store. */
 export const getProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4940,7 +5187,7 @@ export const getProjectsLocationsDatasetsDicomStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsDicomStoresRequest,
   output: GetProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsDicomStoresRequest {
@@ -4960,7 +5207,12 @@ export type DeleteProjectsLocationsDatasetsDicomStoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type DeleteProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified DICOM store and removes all images that are contained within it. */
 export const deleteProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -4971,7 +5223,7 @@ export const deleteProjectsLocationsDatasetsDicomStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsDicomStoresRequest,
   output: DeleteProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDatasetsDicomStoresRequest {
@@ -4997,7 +5249,12 @@ export type PatchProjectsLocationsDatasetsDicomStoresResponse = DicomStore;
 export const PatchProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ DicomStore;
 
-export type PatchProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type PatchProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified DICOM store. */
 export const patchProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5008,7 +5265,7 @@ export const patchProjectsLocationsDatasetsDicomStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsDicomStoresRequest,
   output: PatchProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsDicomStoresRequest {
@@ -5038,7 +5295,10 @@ export type ListProjectsLocationsDatasetsDicomStoresResponse =
 export const ListProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDicomStoresResponse;
 
-export type ListProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type ListProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the DICOM stores in the given dataset. */
 export const listProjectsLocationsDatasetsDicomStores: API.PaginatedOperationMethod<
@@ -5049,7 +5309,7 @@ export const listProjectsLocationsDatasetsDicomStores: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsDicomStoresRequest,
   output: ListProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5076,7 +5336,12 @@ export type ImportProjectsLocationsDatasetsDicomStoresResponse = Operation;
 export const ImportProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type ImportProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports data into the DICOM store by copying it from the specified source. Errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging). The metadata field type is OperationMetadata. */
 export const importProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5087,7 +5352,7 @@ export const importProjectsLocationsDatasetsDicomStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDatasetsDicomStoresRequest,
   output: ImportProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsDatasetsDicomStoresRequest {
@@ -5110,7 +5375,12 @@ export type ExportProjectsLocationsDatasetsDicomStoresResponse = Operation;
 export const ExportProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportProjectsLocationsDatasetsDicomStoresError = DefaultErrors;
+export type ExportProjectsLocationsDatasetsDicomStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports data to the specified destination by copying it from the DICOM store. Errors are also logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging). The metadata field type is OperationMetadata. */
 export const exportProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5121,7 +5391,7 @@ export const exportProjectsLocationsDatasetsDicomStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsDatasetsDicomStoresRequest,
   output: ExportProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest {
@@ -5143,7 +5413,9 @@ export const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ DicomStoreMetrics;
 
 export type GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metrics associated with the DICOM store. */
 export const getDICOMStoreMetricsProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5154,7 +5426,7 @@ export const getDICOMStoreMetricsProjectsLocationsDatasetsDicomStores: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest,
   output: GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest {
@@ -5179,7 +5451,9 @@ export const SearchForStudiesProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForStudiesProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForStudies returns a list of matching studies. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForStudies, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForStudies, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForStudiesProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5190,7 +5464,7 @@ export const searchForStudiesProjectsLocationsDatasetsDicomStores: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchForStudiesProjectsLocationsDatasetsDicomStoresRequest,
   output: SearchForStudiesProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest {
@@ -5215,7 +5489,9 @@ export const SearchForSeriesProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForSeriesProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForSeries returns a list of matching series. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForSeries, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForSeries, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForSeriesProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5226,7 +5502,7 @@ export const searchForSeriesProjectsLocationsDatasetsDicomStores: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchForSeriesProjectsLocationsDatasetsDicomStoresRequest,
   output: SearchForSeriesProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest {
@@ -5251,7 +5527,9 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForInstances returns a list of matching instances. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForInstances, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForInstances, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForInstancesProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5262,7 +5540,7 @@ export const searchForInstancesProjectsLocationsDatasetsDicomStores: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchForInstancesProjectsLocationsDatasetsDicomStoresRequest,
   output: SearchForInstancesProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StoreInstancesProjectsLocationsDatasetsDicomStoresRequest {
@@ -5294,7 +5572,11 @@ export const StoreInstancesProjectsLocationsDatasetsDicomStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type StoreInstancesProjectsLocationsDatasetsDicomStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** StoreInstances stores DICOM instances associated with study instance unique identifiers (SUID). See [Store Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5). For details on the implementation of StoreInstances, see [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call StoreInstances, see [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom). */
 export const storeInstancesProjectsLocationsDatasetsDicomStores: API.OperationMethod<
@@ -5305,7 +5587,7 @@ export const storeInstancesProjectsLocationsDatasetsDicomStores: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StoreInstancesProjectsLocationsDatasetsDicomStoresRequest,
   output: StoreInstancesProjectsLocationsDatasetsDicomStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest {
@@ -5334,7 +5616,11 @@ export const SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebS
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** SetBlobStorageSettings sets the blob storage settings of the specified resources. */
 export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudies: API.OperationMethod<
@@ -5347,7 +5633,7 @@ export const setBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebS
     SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest,
   output:
     SetBlobStorageSettingsProjectsLocationsDatasetsDicomStoresDicomWebStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest {
@@ -5369,7 +5655,9 @@ export const GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesR
   /*@__PURE__*/ /*#__PURE__*/ StudyMetrics;
 
 export type GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetStudyMetrics returns metrics for a study. */
 export const getStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies: API.OperationMethod<
@@ -5382,7 +5670,7 @@ export const getStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies:
     GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesRequest,
   output:
     GetStudyMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest {
@@ -5404,7 +5692,9 @@ export const GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies
   /*@__PURE__*/ /*#__PURE__*/ SeriesMetrics;
 
 export type GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetSeriesMetrics returns metrics for a series. */
 export const getSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeries: API.OperationMethod<
@@ -5417,7 +5707,7 @@ export const getSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudies
     GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesRequest,
   output:
     GetSeriesMetricsProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest {
@@ -5439,7 +5729,9 @@ export const GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSe
   /*@__PURE__*/ /*#__PURE__*/ StorageInfo;
 
 export type GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** GetStorageInfo returns the storage info of the specified resource. */
 export const getStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstances: API.OperationMethod<
@@ -5452,7 +5744,7 @@ export const getStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSe
     GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesRequest,
   output:
     GetStorageInfoProjectsLocationsDatasetsDicomStoresDicomWebStudiesSeriesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesRequest {
@@ -5477,7 +5769,9 @@ export const RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveStudy returns all instances within the given study. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveStudy, see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveStudy, see [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom). */
 export const retrieveStudyProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -5488,7 +5782,7 @@ export const retrieveStudyProjectsLocationsDatasetsDicomStoresStudies: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesRequest,
   output: RetrieveStudyProjectsLocationsDatasetsDicomStoresStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest {
@@ -5513,7 +5807,9 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesResponse
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveStudyMetadata returns instance associated with the given study presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveStudyMetadata, see [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveStudyMetadata, see [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata). */
 export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -5524,7 +5820,7 @@ export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudies: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesRequest,
   output: RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest {
@@ -5549,7 +5845,9 @@ export const SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesResponse 
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForSeries returns a list of matching series. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForSeries, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForSeries, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForSeriesProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -5560,7 +5858,7 @@ export const searchForSeriesProjectsLocationsDatasetsDicomStoresStudies: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesRequest,
   output: SearchForSeriesProjectsLocationsDatasetsDicomStoresStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest {
@@ -5585,7 +5883,9 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRespon
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForInstances returns a list of matching instances. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForInstances, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForInstances, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -5596,7 +5896,7 @@ export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudies: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest,
   output: SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest {
@@ -5620,7 +5920,11 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteStudy deletes all instances within the given study. Delete requests are equivalent to the GET requests specified in the Retrieve transaction. The method returns an Operation which will be marked successful when the deletion is complete. Warning: Instances cannot be inserted into a study that is being deleted by an operation until the operation completes. For samples that show how to call DeleteStudy, see [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom). */
 export const deleteProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -5631,7 +5935,7 @@ export const deleteProjectsLocationsDatasetsDicomStoresStudies: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsDicomStoresStudiesRequest,
   output: DeleteProjectsLocationsDatasetsDicomStoresStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest {
@@ -5663,7 +5967,11 @@ export const StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** StoreInstances stores DICOM instances associated with study instance unique identifiers (SUID). See [Store Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5). For details on the implementation of StoreInstances, see [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call StoreInstances, see [Store DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#store-dicom). */
 export const storeInstancesProjectsLocationsDatasetsDicomStoresStudies: API.OperationMethod<
@@ -5674,7 +5982,7 @@ export const storeInstancesProjectsLocationsDatasetsDicomStoresStudies: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesRequest,
   output: StoreInstancesProjectsLocationsDatasetsDicomStoresStudiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest {
@@ -5699,7 +6007,9 @@ export const RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesResp
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveSeries returns all instances within the given study and series. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveSeries, see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveSeries, see [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom). */
 export const retrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -5711,7 +6021,7 @@ export const retrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeries: AP
   input: RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest,
   output:
     RetrieveSeriesProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest {
@@ -5736,7 +6046,9 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRe
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveSeriesMetadata returns instance associated with the given study and series, presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveSeriesMetadata, see [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveSeriesMetadata, see [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata). */
 export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -5749,7 +6061,7 @@ export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeries: 
     RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest,
   output:
     RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest {
@@ -5774,7 +6086,9 @@ export const SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** SearchForInstances returns a list of matching instances. See [Search Transaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6). For details on the implementation of SearchForInstances, see [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction) in the Cloud Healthcare API conformance statement. For samples that show how to call SearchForInstances, see [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom). */
 export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -5787,7 +6101,7 @@ export const searchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeries
     SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest,
   output:
     SearchForInstancesProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest {
@@ -5812,7 +6126,11 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteSeries deletes all instances within the given study and series. Delete requests are equivalent to the GET requests specified in the Retrieve transaction. The method returns an Operation which will be marked successful when the deletion is complete. Warning: Instances cannot be inserted into a series that is being deleted by an operation until the operation completes. For samples that show how to call DeleteSeries, see [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom). */
 export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeries: API.OperationMethod<
@@ -5823,7 +6141,7 @@ export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeries: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesRequest,
   output: DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest {
@@ -5848,7 +6166,9 @@ export const RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveInstance returns instance associated with the given study, series, and SOP Instance UID. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveInstance, see [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances) and [DICOM instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveInstance, see [Retrieve an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance). */
 export const retrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -5861,7 +6181,7 @@ export const retrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest,
   output:
     RetrieveInstanceProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest {
@@ -5889,7 +6209,9 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveRenderedInstance returns instance associated with the given study, series, and SOP Instance UID in an acceptable Rendered Media Type. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveRenderedInstance, see [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveRenderedInstance, see [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer). */
 export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -5902,7 +6224,7 @@ export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest,
   output:
     RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest {
@@ -5927,7 +6249,9 @@ export const RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveInstanceMetadata returns instance associated with the given study, series, and SOP Instance UID presented as metadata. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveInstanceMetadata, see [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveInstanceMetadata, see [Retrieve metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata). */
 export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -5940,7 +6264,7 @@ export const retrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest,
   output:
     RetrieveMetadataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest {
@@ -5965,7 +6289,11 @@ export const DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRes
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** DeleteInstance deletes an instance associated with the given study, series, and SOP Instance UID. Delete requests are equivalent to the GET requests specified in the Retrieve transaction. Study and series search results can take a few seconds to be updated after an instance is deleted using DeleteInstance. For samples that show how to call DeleteInstance, see [Delete a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom). */
 export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: API.OperationMethod<
@@ -5978,7 +6306,7 @@ export const deleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstances: A
     DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesRequest,
   output:
     DeleteProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest {
@@ -6003,7 +6331,9 @@ export const RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInst
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveFrames returns instances associated with the given study, series, SOP Instance UID and frame numbers. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}. For details on the implementation of RetrieveFrames, see [DICOM frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveFrames, see [Retrieve DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom). */
 export const retrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFrames: API.OperationMethod<
@@ -6016,7 +6346,7 @@ export const retrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInst
     RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest,
   output:
     RetrieveFramesProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest {
@@ -6044,7 +6374,9 @@ export const RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** RetrieveRenderedFrames returns instances associated with the given study, series, SOP Instance UID and frame numbers in an acceptable Rendered Media Type. See [RetrieveTransaction] (https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveRenderedFrames, see [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveRenderedFrames, see [Retrieve consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer). */
 export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFrames: API.OperationMethod<
@@ -6057,7 +6389,7 @@ export const retrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesRequest,
   output:
     RetrieveRenderedProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest {
@@ -6082,7 +6414,9 @@ export const RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns uncompressed, unencoded bytes representing the referenced bulkdata tag from an instance. See [Retrieve Transaction](https://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4). For details on the implementation of RetrieveBulkdata, see [Bulkdata resources](https://cloud.google.com/healthcare/docs/dicom#bulkdata-resources) in the Cloud Healthcare API conformance statement. For samples that show how to call RetrieveBulkdata, see [Retrieve bulkdata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-bulkdata). */
 export const retrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdata: API.OperationMethod<
@@ -6095,7 +6429,7 @@ export const retrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesIn
     RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataRequest,
   output:
     RetrieveBulkdataProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesBulkdataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6123,7 +6457,11 @@ export const SetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsDatasetsHl7V2StoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6134,7 +6472,7 @@ export const setIamPolicyProjectsLocationsDatasetsHl7V2Stores: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest,
   output: SetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6160,7 +6498,9 @@ export const GetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsDatasetsHl7V2StoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6171,7 +6511,7 @@ export const getIamPolicyProjectsLocationsDatasetsHl7V2Stores: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDatasetsHl7V2StoresRequest,
   output: GetIamPolicyProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6200,7 +6540,11 @@ export const TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6211,7 +6555,7 @@ export const testIamPermissionsProjectsLocationsDatasetsHl7V2Stores: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest,
   output: TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6239,7 +6583,12 @@ export type CreateProjectsLocationsDatasetsHl7V2StoresResponse = Hl7V2Store;
 export const CreateProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Hl7V2Store;
 
-export type CreateProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type CreateProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new HL7v2 store within the parent dataset. */
 export const createProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6250,7 +6599,7 @@ export const createProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsHl7V2StoresRequest,
   output: CreateProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6270,7 +6619,10 @@ export type GetProjectsLocationsDatasetsHl7V2StoresResponse = Hl7V2Store;
 export const GetProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Hl7V2Store;
 
-export type GetProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type GetProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the specified HL7v2 store. */
 export const getProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6281,7 +6633,7 @@ export const getProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsHl7V2StoresRequest,
   output: GetProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6301,7 +6653,12 @@ export type DeleteProjectsLocationsDatasetsHl7V2StoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type DeleteProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified HL7v2 store and removes all messages that it contains. */
 export const deleteProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6312,7 +6669,7 @@ export const deleteProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsHl7V2StoresRequest,
   output: DeleteProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6342,7 +6699,10 @@ export type ListProjectsLocationsDatasetsHl7V2StoresResponse =
 export const ListProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListHl7V2StoresResponse;
 
-export type ListProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type ListProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the HL7v2 stores in the given dataset. */
 export const listProjectsLocationsDatasetsHl7V2Stores: API.PaginatedOperationMethod<
@@ -6353,7 +6713,7 @@ export const listProjectsLocationsDatasetsHl7V2Stores: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsHl7V2StoresRequest,
   output: ListProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6383,7 +6743,12 @@ export type PatchProjectsLocationsDatasetsHl7V2StoresResponse = Hl7V2Store;
 export const PatchProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Hl7V2Store;
 
-export type PatchProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type PatchProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the HL7v2 store. */
 export const patchProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6394,7 +6759,7 @@ export const patchProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsHl7V2StoresRequest,
   output: PatchProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6417,7 +6782,12 @@ export type ExportProjectsLocationsDatasetsHl7V2StoresResponse = Operation;
 export const ExportProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type ExportProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports the messages to a destination. To filter messages to be exported, define a filter using the start and end time, relative to the message generation time (MSH.7). This API returns an Operation that can be used to track the status of the job by calling GetOperation. Immediate fatal errors appear in the error field. Otherwise, when the operation finishes, a detailed response of type ExportMessagesResponse is returned in the response field. The metadata field type for this operation is OperationMetadata. */
 export const exportProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6428,7 +6798,7 @@ export const exportProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsDatasetsHl7V2StoresRequest,
   output: ExportProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6451,7 +6821,12 @@ export type ImportProjectsLocationsDatasetsHl7V2StoresResponse = Operation;
 export const ImportProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type ImportProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Import messages to the HL7v2 store by loading data from the specified sources. This method is optimized to load large quantities of data using import semantics that ignore some HL7v2 store configuration options and are not suitable for all use cases. It is primarily intended to load data into an empty HL7v2 store that is not being used by other clients. An existing message will be overwritten if a duplicate message is imported. A duplicate message is a message with the same raw bytes as a message that already exists in this HL7v2 store. When a message is overwritten, its labels will also be overwritten. The import operation is idempotent unless the input data contains multiple valid messages with the same raw bytes but different labels. In that case, after the import completes, the store contains exactly one message with those raw bytes but there is no ordering guarantee on which version of the labels it has. The operation result counters do not count duplicated raw bytes as an error and count one success for each message in the input, which might result in a success count larger than the number of messages in the HL7v2 store. If some messages fail to import, for example due to parsing errors, successfully imported messages are not rolled back. This method returns an Operation that can be used to track the status of the import by calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a response of type ImportMessagesResponse is returned in the response field. The metadata field type for this operation is OperationMetadata. */
 export const importProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6462,7 +6837,7 @@ export const importProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDatasetsHl7V2StoresRequest,
   output: ImportProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6484,7 +6859,9 @@ export const GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Hl7V2StoreMetrics;
 
 export type GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metrics associated with the HL7v2 store. */
 export const getHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6495,7 +6872,7 @@ export const getHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2Stores: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresRequest,
   output: GetHL7v2StoreMetricsProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RollbackProjectsLocationsDatasetsHl7V2StoresRequest {
@@ -6518,7 +6895,12 @@ export type RollbackProjectsLocationsDatasetsHl7V2StoresResponse = Operation;
 export const RollbackProjectsLocationsDatasetsHl7V2StoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RollbackProjectsLocationsDatasetsHl7V2StoresError = DefaultErrors;
+export type RollbackProjectsLocationsDatasetsHl7V2StoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rolls back messages from the HL7v2 store to the specified time. This method returns an Operation that can be used to track the status of the rollback by calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed response of type RollbackHl7V2MessagesResponse is returned in the response field. The metadata field type for this operation is OperationMetadata. */
 export const rollbackProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
@@ -6529,7 +6911,7 @@ export const rollbackProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackProjectsLocationsDatasetsHl7V2StoresRequest,
   output: RollbackProjectsLocationsDatasetsHl7V2StoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
@@ -6558,7 +6940,11 @@ export const IngestProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ IngestMessageResponse;
 
 export type IngestProjectsLocationsDatasetsHl7V2StoresMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received. If the method is successful, it generates a response containing an HL7v2 acknowledgment (`ACK`) message. If the method encounters an error, it returns a negative acknowledgment (`NACK`) message. This behavior is suitable for replying to HL7v2 interface systems that expect these acknowledgments. */
 export const ingestProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMethod<
@@ -6569,7 +6955,7 @@ export const ingestProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IngestProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   output: IngestProjectsLocationsDatasetsHl7V2StoresMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
@@ -6594,7 +6980,11 @@ export const CreateProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Message;
 
 export type CreateProjectsLocationsDatasetsHl7V2StoresMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received. */
 export const createProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMethod<
@@ -6605,7 +6995,7 @@ export const createProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   output: CreateProjectsLocationsDatasetsHl7V2StoresMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
@@ -6636,7 +7026,9 @@ export const GetProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Message;
 
 export type GetProjectsLocationsDatasetsHl7V2StoresMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an HL7v2 message. */
 export const getProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMethod<
@@ -6647,7 +7039,7 @@ export const getProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   output: GetProjectsLocationsDatasetsHl7V2StoresMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
@@ -6668,7 +7060,11 @@ export const DeleteProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsDatasetsHl7V2StoresMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an HL7v2 message. */
 export const deleteProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMethod<
@@ -6679,7 +7075,7 @@ export const deleteProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   output: DeleteProjectsLocationsDatasetsHl7V2StoresMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest {
@@ -6723,7 +7119,9 @@ export const ListProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMessagesResponse;
 
 export type ListProjectsLocationsDatasetsHl7V2StoresMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the messages in the given HL7v2 store with support for filtering. Note: HL7v2 messages are indexed asynchronously, so there might be a slight delay between the time a message is created and when it can be found through a filter. */
 export const listProjectsLocationsDatasetsHl7V2StoresMessages: API.PaginatedOperationMethod<
@@ -6734,7 +7132,7 @@ export const listProjectsLocationsDatasetsHl7V2StoresMessages: API.PaginatedOper
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   output: ListProjectsLocationsDatasetsHl7V2StoresMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6765,7 +7163,11 @@ export const PatchProjectsLocationsDatasetsHl7V2StoresMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Message;
 
 export type PatchProjectsLocationsDatasetsHl7V2StoresMessagesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the message. The contents of the message in Message.data and data extracted from the contents such as Message.create_time cannot be altered. Only the Message.labels field is allowed to be updated. The labels in the request are merged with the existing set of labels. Existing labels with the same keys are updated. */
 export const patchProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMethod<
@@ -6776,7 +7178,7 @@ export const patchProjectsLocationsDatasetsHl7V2StoresMessages: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsHl7V2StoresMessagesRequest,
   output: PatchProjectsLocationsDatasetsHl7V2StoresMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest {
@@ -6804,7 +7206,11 @@ export const SetIamPolicyProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type SetIamPolicyProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors. */
 export const setIamPolicyProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -6815,7 +7221,7 @@ export const setIamPolicyProjectsLocationsDatasetsFhirStores: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyProjectsLocationsDatasetsFhirStoresRequest,
   output: SetIamPolicyProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest {
@@ -6841,7 +7247,9 @@ export const GetIamPolicyProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
 export type GetIamPolicyProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set. */
 export const getIamPolicyProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -6852,7 +7260,7 @@ export const getIamPolicyProjectsLocationsDatasetsFhirStores: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyProjectsLocationsDatasetsFhirStoresRequest,
   output: GetIamPolicyProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest {
@@ -6881,7 +7289,11 @@ export const TestIamPermissionsProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
 export type TestIamPermissionsProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
 export const testIamPermissionsProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -6892,7 +7304,7 @@ export const testIamPermissionsProjectsLocationsDatasetsFhirStores: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDatasetsFhirStoresRequest,
   output: TestIamPermissionsProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeidentifyProjectsLocationsDatasetsFhirStoresRequest {
@@ -6919,7 +7331,12 @@ export type DeidentifyProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const DeidentifyProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeidentifyProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type DeidentifyProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** De-identifies data from the source store and writes it to the destination store. The metadata field type is OperationMetadata. If the request is successful, the response field type is DeidentifyFhirStoreSummary. If errors occur, error is set. Error details are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). */
 export const deidentifyProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -6930,7 +7347,7 @@ export const deidentifyProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeidentifyProjectsLocationsDatasetsFhirStoresRequest,
   output: DeidentifyProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Bulk_export_groupProjectsLocationsDatasetsFhirStoresRequest {
@@ -6968,7 +7385,9 @@ export const Bulk_export_groupProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Bulk_export_groupProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Bulk exports a Group resource and resources in the member field, including related resources for each Patient member. The export for each Patient is identical to a GetPatientEverything request. Implements the FHIR implementation guide [$export group of patients](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---group-of-patients). The following headers must be set in the request: * `Accept`: specifies the format of the `OperationOutcome` response. Only `application/fhir+json` is supported. * `Prefer`: specifies whether the response is immediate or asynchronous. Must be to `respond-async` because only asynchronous responses are supported. Specify the destination for the server to write result files by setting the Cloud Storage location bulk_export_gcs_destination on the FHIR store. URI of an existing Cloud Storage directory where the server writes result files, in the format gs://{bucket-id}/{path/to/destination/dir}. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced. Supports the following query parameters: * `_type`: string of comma-delimited FHIR resource types. If provided, only resources of the specified type(s) are exported. * `_since`: if provided, only resources updated after the specified time are exported. * `_outputFormat`: optional, specify ndjson to export data in NDJSON format. Exported file names use the format: {export_id}_{resource_type}.ndjson. * `organizeOutputBy`: resource type to organize the output by. Required and must be set to `Patient`. When specified, output files are organized by instances of the specified resource type, including the resource, referenced resources, and resources that contain references to that resource. On success, the `Content-Location` header of response is set to a URL that you can use to query the status of the export. The URL is in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{export_id}`. See get-fhir-operation-status for more information. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. */
 export const bulk_export_groupProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -6979,7 +7398,7 @@ export const bulk_export_groupProjectsLocationsDatasetsFhirStores: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Bulk_export_groupProjectsLocationsDatasetsFhirStoresRequest,
   output: Bulk_export_groupProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsDatasetsFhirStoresRequest {
@@ -7007,7 +7426,12 @@ export type CreateProjectsLocationsDatasetsFhirStoresResponse = FhirStore;
 export const CreateProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ FhirStore;
 
-export type CreateProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type CreateProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new FHIR store within the parent dataset. */
 export const createProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7018,7 +7442,7 @@ export const createProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsFhirStoresRequest,
   output: CreateProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsFhirStoresRequest {
@@ -7038,7 +7462,10 @@ export type GetProjectsLocationsDatasetsFhirStoresResponse = FhirStore;
 export const GetProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ FhirStore;
 
-export type GetProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type GetProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the configuration of the specified FHIR store. */
 export const getProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7049,7 +7476,7 @@ export const getProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsFhirStoresRequest,
   output: GetProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsDatasetsFhirStoresRequest {
@@ -7075,7 +7502,12 @@ export type PatchProjectsLocationsDatasetsFhirStoresResponse = FhirStore;
 export const PatchProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ FhirStore;
 
-export type PatchProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type PatchProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the configuration of the specified FHIR store. */
 export const patchProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7086,7 +7518,7 @@ export const patchProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsFhirStoresRequest,
   output: PatchProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsDatasetsFhirStoresRequest {
@@ -7106,7 +7538,12 @@ export type DeleteProjectsLocationsDatasetsFhirStoresResponse = Empty;
 export const DeleteProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type DeleteProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified FHIR store and removes all resources within it. */
 export const deleteProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7117,7 +7554,7 @@ export const deleteProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsFhirStoresRequest,
   output: DeleteProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsFhirStoresRequest {
@@ -7147,7 +7584,10 @@ export type ListProjectsLocationsDatasetsFhirStoresResponse =
 export const ListProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFhirStoresResponse;
 
-export type ListProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type ListProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the FHIR stores in the given dataset. */
 export const listProjectsLocationsDatasetsFhirStores: API.PaginatedOperationMethod<
@@ -7158,7 +7598,7 @@ export const listProjectsLocationsDatasetsFhirStores: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsFhirStoresRequest,
   output: ListProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -7185,7 +7625,12 @@ export type ImportProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const ImportProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type ImportProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports resources to the FHIR store by loading data from the specified sources. This method is optimized to load large quantities of data using import semantics that ignore some FHIR store configuration options and are not suitable for all use cases. It is primarily intended to load data into an empty FHIR store that is not being used by other clients. In cases where this method is not appropriate, consider using ExecuteBundle to load data. Every resource in the input must contain a client-supplied ID. Each resource is stored using the supplied ID regardless of the enable_update_create setting on the FHIR store. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Cloud Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. The import process does not enforce referential integrity, regardless of the disable_referential_integrity setting on the FHIR store. This allows the import of resources with arbitrary interdependencies without considering grouping or ordering, but if the input data contains invalid references or if some resources fail to be imported, the FHIR store might be left in a state that violates referential integrity. The import process does not trigger Pub/Sub notification or BigQuery streaming update, regardless of how those are configured on the FHIR store. If a resource with the specified ID already exists, the most recent version of the resource is overwritten without creating a new historical version, regardless of the disable_resource_versioning setting on the FHIR store. If transient failures occur during the import, it's possible that successfully imported resources will be overwritten more than once. The import operation is idempotent unless the input data contains multiple valid resources with the same ID but different contents. In that case, after the import completes, the store contains exactly one resource with that ID but there is no ordering guarantee on which version of the contents it will have. The operation result counters do not count duplicate IDs as an error and count one success for each resource in the input, which might result in a success count larger than the number of resources in the FHIR store. This often occurs when importing data organized in bundles produced by Patient-everything where each bundle contains its own copy of a resource such as Practitioner that might be referred to by many patients. If some resources fail to import, for example due to parsing errors, successfully imported resources are not rolled back. The location and format of the input data is specified by the parameters in ImportResourcesRequest. Note that if no format is specified, this method assumes the `BUNDLE` format. When using the `BUNDLE` format this method ignores the `Bundle.type` field, except that `history` bundles are rejected, and does not apply any of the bundle processing semantics for batch or transaction bundles. Unlike in ExecuteBundle, transaction bundles are not executed as a single transaction and bundle-internal references are not rewritten. The bundle is treated as a collection of resources to be written as provided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As an example, this allows the import of `searchset` bundles produced by a FHIR search or Patient-everything operation. This method returns an Operation that can be used to track the status of the import by calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed response of type ImportResourcesResponse is returned in the response field. The metadata field type for this operation is OperationMetadata. */
 export const importProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7196,7 +7641,7 @@ export const importProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDatasetsFhirStoresRequest,
   output: ImportProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest {
@@ -7221,7 +7666,11 @@ export const ApplyConsentsProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ApplyConsentsProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Apply the Consent resources for the FHIR store and reindex the underlying resources in the FHIR store according to the aggregate consent. The aggregate consent of the patient in scope in this request replaces any previous call of this method. Any Consent resource change after this operation execution (including deletion) requires you to call ApplyConsents again to have effect. This method returns an Operation that can be used to track the progress of the consent resources that were processed by calling GetOperation. Upon completion, the ApplyConsentsResponse additionally contains the number of resources that was reindexed. Errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). To enforce consent check for data access, `consent_config.access_enforced` must be set to true for the FhirStore. FHIR Consent is not supported in DSTU2 or R5. */
 export const applyConsentsProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7232,7 +7681,7 @@ export const applyConsentsProjectsLocationsDatasetsFhirStores: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyConsentsProjectsLocationsDatasetsFhirStoresRequest,
   output: ApplyConsentsProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest {
@@ -7261,7 +7710,11 @@ export const ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
 export type ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies the admin Consent resources for the FHIR store and reindexes the underlying resources in the FHIR store according to the aggregate consents. This method also updates the `consent_config.enforced_admin_consents` field of the FhirStore unless `validate_only=true` in ApplyAdminConsentsRequest. Any admin Consent resource change after this operation execution (including deletion) requires you to call ApplyAdminConsents again for the change to take effect. This method returns an Operation that can be used to track the progress of the resources that were reindexed, by calling GetOperation. Upon completion, the ApplyAdminConsentsResponse additionally contains the number of resources that were reindexed. If at least one Consent resource contains an error or fails be be enforced for any reason, the method returns an error instead of an Operation. No resources will be reindexed and the `consent_config.enforced_admin_consents` field will be unchanged. To enforce a consent check for data access, `consent_config.access_enforced` must be set to true for the FhirStore. FHIR Consent is not supported in DSTU2 or R5. */
 export const applyAdminConsentsProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7272,7 +7725,7 @@ export const applyAdminConsentsProjectsLocationsDatasetsFhirStores: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresRequest,
   output: ApplyAdminConsentsProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest {
@@ -7297,7 +7750,9 @@ export const ExplainDataAccessProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ ExplainDataAccessResponse;
 
 export type ExplainDataAccessProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Explains all the permitted/denied actor, purpose and environment for a given resource. FHIR Consent is not supported in DSTU2 or R5. */
 export const explainDataAccessProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7308,7 +7763,7 @@ export const explainDataAccessProjectsLocationsDatasetsFhirStores: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExplainDataAccessProjectsLocationsDatasetsFhirStoresRequest,
   output: ExplainDataAccessProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExportProjectsLocationsDatasetsFhirStoresRequest {
@@ -7331,7 +7786,12 @@ export type ExportProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const ExportProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type ExportProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Export resources from the FHIR store to the specified destination. This method returns an Operation that can be used to track the status of the export by calling GetOperation. To improve performance, it is recommended to make the `type` filter as specific as possible, including only the resource types that are absolutely needed. This minimizes the size of the initial dataset to be processed and is the most effective way to improve performance. While post-filters like `_since` are useful for refining results, they do not speed up the initial data retrieval phase, which is primarily governed by the `type` filter. Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed response of type ExportResourcesResponse is returned in the response field. The metadata field type for this operation is OperationMetadata. */
 export const exportProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7342,7 +7802,7 @@ export const exportProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportProjectsLocationsDatasetsFhirStoresRequest,
   output: ExportProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkDeleteProjectsLocationsDatasetsFhirStoresRequest {
@@ -7365,7 +7825,12 @@ export type BulkDeleteProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const BulkDeleteProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkDeleteProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type BulkDeleteProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Bulk deletes the FHIR resources from the given FHIR store. This method returns an Operation that can be used to track the progress of the deletion by calling GetOperation. The success and secondary_success counters correspond to the deleted current version and historical versions, respectively. */
 export const bulkDeleteProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7376,7 +7841,7 @@ export const bulkDeleteProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkDeleteProjectsLocationsDatasetsFhirStoresRequest,
   output: BulkDeleteProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest {
@@ -7398,7 +7863,9 @@ export const GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ FhirStoreMetrics;
 
 export type GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets metrics associated with the FHIR store. */
 export const getFHIRStoreMetricsProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7409,7 +7876,7 @@ export const getFHIRStoreMetricsProjectsLocationsDatasetsFhirStores: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest,
   output: GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface RollbackProjectsLocationsDatasetsFhirStoresRequest {
@@ -7432,7 +7899,12 @@ export type RollbackProjectsLocationsDatasetsFhirStoresResponse = Operation;
 export const RollbackProjectsLocationsDatasetsFhirStoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RollbackProjectsLocationsDatasetsFhirStoresError = DefaultErrors;
+export type RollbackProjectsLocationsDatasetsFhirStoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Rolls back resources from the FHIR store to the specified time. This method returns an Operation that can be used to track the status of the rollback by calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed response of type RollbackFhirResourcesResponse is returned in the response field. The metadata field type for this operation is OperationMetadata. */
 export const rollbackProjectsLocationsDatasetsFhirStores: API.OperationMethod<
@@ -7443,7 +7915,7 @@ export const rollbackProjectsLocationsDatasetsFhirStores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RollbackProjectsLocationsDatasetsFhirStoresRequest,
   output: RollbackProjectsLocationsDatasetsFhirStoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7469,7 +7941,12 @@ export type CreateProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const CreateProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type CreateProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type CreateProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a FHIR resource. Implements the FHIR standard create interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#create), [STU3](https://hl7.org/fhir/STU3/http.html#create), [R4](https://hl7.org/fhir/R4/http.html#create), [R5](https://hl7.org/fhir/R5/http.html#create)), which creates a new resource with a server-assigned resource ID. Also supports the FHIR standard conditional create interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#ccreate), [STU3](https://hl7.org/fhir/STU3/http.html#ccreate), [R4](https://hl7.org/fhir/R4/http.html#ccreate), [R5](https://hl7.org/fhir/R5/http.html#ccreate)), specified by supplying an `If-None-Exist` header containing a FHIR search query, limited to searching by resource identifier. If no resources match this search query, the server processes the create operation as normal. When using conditional create, the search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the resource as it was created on the server, including the server-assigned resource ID and version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `create`, see [Creating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource). */
 export const createProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7480,7 +7957,7 @@ export const createProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: CreateProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7505,7 +7982,11 @@ export const Binary_createProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Binary_createProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a FHIR Binary resource. This method can be used to create a Binary resource either by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource is created with this method using the FHIR content type this method's behavior is the same as [`fhir.create`](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create). If a resource type other than Binary is used in the request it's treated in the same way as non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content type is used in the request, a Binary resource will be generated, and the uploaded data will be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be filled in using the value of the `Content-Type` header, and the `securityContext` field (not present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method is 1 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full resource content, do not support Binary resources that are larger than 10 MB. In these cases the resource's `data` field will be omitted. Instead, the "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to indicate that including the data is `unsupported`. On success, an empty `201 Created` response is returned. The newly created resource's ID and version are returned in the Location header. Using `Prefer: representation=resource` is not allowed for this method. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
 export const Binary_createProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7516,7 +7997,7 @@ export const Binary_createProjectsLocationsDatasetsFhirStoresFhir: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Binary_createProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ReadProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7536,7 +8017,10 @@ export type ReadProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const ReadProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type ReadProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type ReadProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the contents of a FHIR resource. Implements the FHIR standard read interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#read), [STU3](https://hl7.org/fhir/STU3/http.html#read), [R4](https://hl7.org/fhir/R4/http.html#read), [R5](https://hl7.org/fhir/R5/http.html#read)). Also supports the FHIR standard conditional read interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#cread), [STU3](https://hl7.org/fhir/STU3/http.html#cread), [R4](https://hl7.org/fhir/R4/http.html#cread), [R5](https://hl7.org/fhir/R5/http.html#cread)) specified by supplying an `If-Modified-Since` header with a date/time value or an `If-None-Match` header with an ETag value. On success, the response body contains a JSON-encoded representation of the resource. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `read`, see [Getting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource). */
 export const readProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7547,7 +8031,7 @@ export const readProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ReadProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: ReadProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7569,7 +8053,9 @@ export const Binary_readProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Binary_readProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the contents of a FHIR Binary resource. This method can be used to retrieve a Binary resource either by using the FHIR JSON mimetype as the value for the Accept header, or as a raw data stream. If the FHIR Accept type is used this method will return a Binary resource with the data base64-encoded, regardless of how the resource was created. The resource data can be retrieved in base64-decoded form if the Accept type of the request matches the value of the resource's `contentType` field. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
 export const Binary_readProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7580,7 +8066,7 @@ export const Binary_readProjectsLocationsDatasetsFhirStoresFhir: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Binary_readProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface VreadProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7600,7 +8086,10 @@ export type VreadProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const VreadProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type VreadProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type VreadProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the contents of a version (current or historical) of a FHIR resource by version ID. Implements the FHIR standard vread interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#vread), [STU3](https://hl7.org/fhir/STU3/http.html#vread), [R4](https://hl7.org/fhir/R4/http.html#vread), [R5](https://hl7.org/fhir/R5/http.html#vread)). On success, the response body contains a JSON-encoded representation of the resource. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `vread`, see [Retrieving a FHIR resource version](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version). */
 export const vreadProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7611,7 +8100,7 @@ export const vreadProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VreadProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: VreadProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7633,7 +8122,9 @@ export const Binary_vreadProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Binary_vreadProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the contents of a version (current or historical) of a FHIR Binary resource by version ID. This method can be used to retrieve a Binary resource version either by using the FHIR JSON mimetype as the value for the Accept header, or as a raw data stream. If the FHIR Accept type is used this method will return a Binary resource with the data base64-encoded, regardless of how the resource version was created. The resource data can be retrieved in base64-decoded form if the Accept type of the request matches the value of the resource version's `contentType` field. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
 export const Binary_vreadProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7644,7 +8135,7 @@ export const Binary_vreadProjectsLocationsDatasetsFhirStoresFhir: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Binary_vreadProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7664,7 +8155,12 @@ export type DeleteProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const DeleteProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type DeleteProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type DeleteProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a FHIR resource. Implements the FHIR standard delete interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#delete), [STU3](https://hl7.org/fhir/STU3/http.html#delete), [R4](https://hl7.org/fhir/R4/http.html#delete), [R5](https://hl7.org/fhir/R5/http.html#delete)). Note: Unless resource versioning is disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted resources will be moved to a history repository that can still be retrieved through vread and related methods, unless they are removed by the purge method. For samples that show how to call `delete`, see [Deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource). */
 export const deleteProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7675,7 +8171,7 @@ export const deleteProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: DeleteProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7700,7 +8196,11 @@ export const ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a FHIR resource that match an identifier search query. Implements the FHIR standard conditional delete interaction, limited to searching by resource identifier. If multiple resources match, 412 Precondition Failed error will be returned. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. Note: Unless resource versioning is disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted resource is moved to a history repository that can still be retrieved through vread and related methods, unless they are removed by the purge method. For samples that show how to call `conditionalDelete`, see [Conditionally deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_deleting_a_fhir_resource). */
 export const conditionalDeleteProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7711,7 +8211,7 @@ export const conditionalDeleteProjectsLocationsDatasetsFhirStoresFhir: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7736,7 +8236,11 @@ export const Binary_updateProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Binary_updateProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the entire contents of a Binary resource. If the specified resource does not exist and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. This method can be used to update a Binary resource either by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource is updated with this method using the FHIR content type this method's behavior is the same as `update`. If a resource type other than Binary is used in the request it will be treated in the same way as non-FHIR data. When a non-FHIR content type is used in the request, a Binary resource will be generated using the ID from the resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be filled in using the value of the `Content-Type` header, and the `securityContext` field (not present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full resource content, do not support Binary resources that are larger than 10 MB. In these cases the resource's `data` field will be omitted. Instead, the "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to indicate that including the data is `unsupported`. On success, an empty 200 OK response will be returned, or a 201 Created if the resource did not exit. The resource's ID and version are returned in the Location header. Using `Prefer: representation=resource` is not allowed for this method. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
 export const Binary_updateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7747,7 +8251,7 @@ export const Binary_updateProjectsLocationsDatasetsFhirStoresFhir: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Binary_updateProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7770,7 +8274,12 @@ export type UpdateProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const UpdateProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type UpdateProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type UpdateProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the entire contents of a resource. Implements the FHIR standard update interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#update), [STU3](https://hl7.org/fhir/STU3/http.html#update), [R4](https://hl7.org/fhir/R4/http.html#update), [R5](https://hl7.org/fhir/R5/http.html#update)). If the specified resource does not exist and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. The resource must contain an `id` element having an identical value to the ID in the REST path of the request. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The conditional update interaction If-None-Match is supported, including the wildcard behaviour, as defined by the R5 spec. This functionality is supported in R4 and R5. For samples that show how to call `update`, see [Updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource). */
 export const updateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7781,7 +8290,7 @@ export const updateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: UpdateProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7809,7 +8318,11 @@ export const ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** If a resource is found with the identifier specified in the query parameters, updates the entire contents of that resource. Implements the FHIR standard conditional update interaction, limited to searching by resource identifier. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. If the search criteria identify more than one match, the request returns a `412 Precondition Failed` error. If the search criteria identify zero matches, and the supplied resource body contains an `id`, and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. If the search criteria identify zero matches, and the supplied resource body does not contain an `id`, the resource is created with a server-assigned ID as per the create method. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `conditionalUpdate`, see [Conditionally updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource). */
 export const conditionalUpdateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7820,7 +8333,7 @@ export const conditionalUpdateProjectsLocationsDatasetsFhirStoresFhir: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7843,7 +8356,12 @@ export type PatchProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const PatchProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type PatchProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type PatchProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates part of an existing resource by applying the operations specified in a [JSON Patch](http://jsonpatch.com/) document. Implements the FHIR standard patch interaction ([STU3](https://hl7.org/fhir/STU3/http.html#patch), [R4](https://hl7.org/fhir/R4/http.html#patch), [R5](https://hl7.org/fhir/R5/http.html#patch)). DSTU2 doesn't define a patch method, but the server supports it in the same way it supports STU3. The request body must contain a JSON Patch document, and the request headers must contain `Content-Type: application/json-patch+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `patch`, see [Patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource). */
 export const patchProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7854,7 +8372,7 @@ export const patchProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: PatchProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7882,7 +8400,11 @@ export const ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** If a resource is found with the identifier specified in the query parameters, updates part of that resource by applying the operations specified in a [JSON Patch](http://jsonpatch.com/) document. Implements the FHIR standard conditional patch interaction, limited to searching by resource identifier. DSTU2 doesn't define a conditional patch method, but the server supports it in the same way it supports STU3. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. If the search criteria identify more than one match, the request returns a `412 Precondition Failed` error. If the search criteria doesn't identify any matches, the request returns a `404 Not Found` error. The request body must contain a JSON Patch document, and the request headers must contain `Content-Type: application/json-patch+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `conditionalPatch`, see [Conditionally patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_patching_a_fhir_resource). */
 export const conditionalPatchProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7893,7 +8415,7 @@ export const conditionalPatchProjectsLocationsDatasetsFhirStoresFhir: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7921,7 +8443,12 @@ export type SearchProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const SearchProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type SearchProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type SearchProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches for resources in the given FHIR store according to criteria specified as query parameters. Implements the FHIR standard search interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#search), [STU3](https://hl7.org/fhir/STU3/http.html#search), [R4](https://hl7.org/fhir/R4/http.html#search), [R5](https://hl7.org/fhir/R5/http.html#search)) using the search semantics described in the FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html), [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html), [R5](https://hl7.org/fhir/R5/search.html)). Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method for the specified type. The `GET` and `POST` methods do not support compartment searches. The `POST` method does not support `application/x-www-form-urlencoded` search parameters. On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`, containing the results of the search. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The server's capability statement, retrieved through capabilities, indicates what search parameters are supported on each FHIR resource. A list of all search parameters defined by the specification can be found in the FHIR Search Parameter Registry ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.html), [R4](https://hl7.org/fhir/R4/searchparameter-registry.html), [R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search parameters for DSTU2 can be found on each resource's definition page. Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4 and R5). Supported search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum number of search results returned defaults to 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The server might return fewer resources than requested to prevent excessively large responses. If there are additional results, the returned `Bundle` contains a link of `relation` "next", which has a `_page_token` parameter for an opaque pagination token that can be used to retrieve the next page. Resources with a total size larger than 5MB or a field count larger than 50,000 might not be fully searchable as the server might trim its generated search index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a slight delay between the time a resource is created or changed, and the time when the change reflects in search results. The only exception is resource identifier data, which is indexed synchronously as a special index. As a result, searching using resource identifier is not subject to indexing delay. To use the special synchronous index, the search term for identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`, and any of the following search result parameters can be used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters, the standard asynchronous index will be used instead. Note that searching against the special index is optimized for resolving a small number of matches. The search isn't optimized if your identifier search criteria matches a large number (i.e. more than 2,000) of resources. For a search query that will match a large number of resources, you can avoiding using the special synchronous index by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. For samples and detailed information, see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search). */
 export const searchProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7932,7 +8459,7 @@ export const searchProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: SearchProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Search_typeProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -7964,7 +8491,11 @@ export const Search_typeProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Search_typeProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Searches for resources in the given FHIR store according to criteria specified as query parameters. Implements the FHIR standard search interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#search), [STU3](https://hl7.org/fhir/STU3/http.html#search), [R4](https://hl7.org/fhir/R4/http.html#search), [R5](https://hl7.org/fhir/R5/http.html#search)) using the search semantics described in the FHIR Search specification ([DSTU2](https://hl7.org/fhir/DSTU2/search.html), [STU3](https://hl7.org/fhir/STU3/search.html), [R4](https://hl7.org/fhir/R4/search.html), [R5](https://hl7.org/fhir/R5/search.html)). Supports four methods of search defined by the specification: * `GET [base]?[parameters]` to search across all resources. * `GET [base]/[type]?[parameters]` to search resources of a specified type. * `POST [base]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method across all resources. * `POST [base]/[type]/_search?[parameters]` as an alternate form having the same semantics as the `GET` method for the specified type. The `GET` and `POST` methods do not support compartment searches. The `POST` method does not support `application/x-www-form-urlencoded` search parameters. On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`, containing the results of the search. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The server's capability statement, retrieved through capabilities, indicates what search parameters are supported on each FHIR resource. A list of all search parameters defined by the specification can be found in the FHIR Search Parameter Registry ([STU3](https://hl7.org/fhir/STU3/searchparameter-registry.html), [R4](https://hl7.org/fhir/R4/searchparameter-registry.html), [R5](https://hl7.org/fhir/R5/searchparameter-registry.html)). FHIR search parameters for DSTU2 can be found on each resource's definition page. Supported search modifiers: `:missing`, `:exact`, `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `recurse` (DSTU2 and STU3) or `:iterate` (R4 and R5). Supported search result parameters: `_sort`, `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and `_elements`. The maximum number of search results returned defaults to 100, which can be overridden by the `_count` parameter up to a maximum limit of 1000. The server might return fewer resources than requested to prevent excessively large responses. If there are additional results, the returned `Bundle` contains a link of `relation` "next", which has a `_page_token` parameter for an opaque pagination token that can be used to retrieve the next page. Resources with a total size larger than 5MB or a field count larger than 50,000 might not be fully searchable as the server might trim its generated search index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a slight delay between the time a resource is created or changed, and the time when the change reflects in search results. The only exception is resource identifier data, which is indexed synchronously as a special index. As a result, searching using resource identifier is not subject to indexing delay. To use the special synchronous index, the search term for identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`, and any of the following search result parameters can be used: * `_count` * `_include` * `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters, the standard asynchronous index will be used instead. Note that searching against the special index is optimized for resolving a small number of matches. The search isn't optimized if your identifier search criteria matches a large number (i.e. more than 2,000) of resources. For a search query that will match a large number of resources, you can avoiding using the special synchronous index by including an additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. For samples and detailed information, see [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search). */
 export const search_typeProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -7975,7 +8506,7 @@ export const search_typeProjectsLocationsDatasetsFhirStoresFhir: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Search_typeProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Search_typeProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8017,7 +8548,9 @@ export const Patient_everythingProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Patient_everythingProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a Patient resource and resources related to that patient. Implements the FHIR extended operation Patient-everything ([DSTU2](https://hl7.org/fhir/DSTU2/patient-operations.html#everything), [STU3](https://hl7.org/fhir/STU3/patient-operations.html#everything), [R4](https://hl7.org/fhir/R4/patient-operation-everything.html), [R5](https://hl7.org/fhir/R5/patient-operation-everything.html)). On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `searchset`, containing the results of the operation. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The resources in scope for the response are: * The patient resource itself. * All the resources directly referenced by the patient resource. * Resources directly referencing the patient resource that meet the inclusion criteria. The inclusion criteria are based on the membership rules in the patient compartment definition ([DSTU2](http://hl7.org/fhir/DSTU2/compartment-patient.html), [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html), [R4](http://hl7.org/fhir/R4/compartmentdefinition-patient.html), [R5](http://hl7.org/fhir/R5/compartmentdefinition-patient.html)), which details the eligible resource types and referencing search parameters. For samples that show how to call `Patient-everything`, see [Getting all patient compartment resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources). */
 export const Patient_everythingProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8028,7 +8561,7 @@ export const Patient_everythingProjectsLocationsDatasetsFhirStoresFhir: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Patient_everythingProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Patient_everythingProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8050,7 +8583,9 @@ export const CapabilitiesProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type CapabilitiesProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the FHIR capability statement ([STU3](https://hl7.org/fhir/STU3/capabilitystatement.html), [R4](https://hl7.org/fhir/R4/capabilitystatement.html), [R5](https://hl7.org/fhir/R5/capabilitystatement.html)), or the [conformance statement](https://hl7.org/fhir/DSTU2/conformance.html) in the DSTU2 case for the store, which contains a description of functionality supported by the server. Implements the FHIR standard capabilities interaction ([STU3](https://hl7.org/fhir/STU3/http.html#capabilities), [R4](https://hl7.org/fhir/R4/http.html#capabilities), [R5](https://hl7.org/fhir/R5/http.html#capabilities)), or the [conformance interaction](https://hl7.org/fhir/DSTU2/http.html#conformance) in the DSTU2 case. On success, the response body contains a JSON-encoded representation of a `CapabilityStatement` resource. */
 export const capabilitiesProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8061,7 +8596,7 @@ export const capabilitiesProjectsLocationsDatasetsFhirStoresFhir: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CapabilitiesProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: CapabilitiesProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8086,7 +8621,11 @@ export const ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Executes all the requests in the given Bundle. Implements the FHIR standard batch/transaction interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#transaction), [STU3](https://hl7.org/fhir/STU3/http.html#transaction), [R4](https://hl7.org/fhir/R4/http.html#transaction), [R5](https://hl7.org/fhir/R5/http.html#transaction)). Supports all interactions within a bundle, except search. This method accepts Bundles of type `batch` and `transaction`, processing them according to the batch processing rules ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.1), [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.17.1), [R4](https://hl7.org/fhir/R4/http.html#brules), [R5](https://hl7.org/fhir/R5/http.html#brules)) and transaction processing rules ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#2.1.0.16.2), [STU3](https://hl7.org/fhir/STU3/http.html#2.21.0.17.2), [R4](https://hl7.org/fhir/R4/http.html#trules), [R5](https://hl7.org/fhir/R5/http.html#trules)). The request body must contain a JSON-encoded FHIR `Bundle` resource, and the request headers must contain `Content-Type: application/fhir+json`. For a batch bundle or a successful transaction, the response body contains a JSON-encoded representation of a `Bundle` resource of type `batch-response` or `transaction-response` containing one entry for each entry in the request, with the outcome of processing the entry. In the case of an error for a transaction bundle, the response body contains a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. This method checks permissions for each request in the bundle. The `executeBundle` permission is required to call this method, but you must also grant sufficient permissions to execute the individual requests in the bundle. For example, if the bundle contains a request to create a FHIR resource, the caller must also have been granted the `healthcare.fhirResources.create` permission. You can use audit logs to view the permissions for `executeBundle` and each request in the bundle. For more information, see [Viewing Cloud Audit logs](https://cloud.google.com/healthcare-api/docs/how-tos/audit-logging). For samples that show how to call `executeBundle`, see [Managing FHIR resources using FHIR bundles](https://cloud.google.com/healthcare/docs/how-tos/fhir-bundles). */
 export const executeBundleProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8097,7 +8636,7 @@ export const executeBundleProjectsLocationsDatasetsFhirStoresFhir: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: ExecuteBundleProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface HistoryProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8131,7 +8670,10 @@ export type HistoryProjectsLocationsDatasetsFhirStoresFhirResponse = HttpBody;
 export const HistoryProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type HistoryProjectsLocationsDatasetsFhirStoresFhirError = DefaultErrors;
+export type HistoryProjectsLocationsDatasetsFhirStoresFhirError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the versions of a resource (including the current version and deleted versions) from the FHIR store. Implements the per-resource form of the FHIR standard history interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#history), [STU3](https://hl7.org/fhir/STU3/http.html#history), [R4](https://hl7.org/fhir/R4/http.html#history), [R5](https://hl7.org/fhir/R5/http.html#history)). On success, the response body contains a JSON-encoded representation of a `Bundle` resource of type `history`, containing the version history sorted from most recent to oldest versions. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `history`, see [Listing FHIR resource versions](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions). */
 export const historyProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8142,7 +8684,7 @@ export const historyProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HistoryProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: HistoryProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Resource_purgeProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8164,7 +8706,11 @@ export const Resource_purgeProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type Resource_purgeProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes all the historical versions of a resource (excluding the current version) from the FHIR store. To remove all versions of a resource, first delete the current version and then call this method. This is not a FHIR standard operation. For samples that show how to call `Resource-purge`, see [Deleting historical versions of a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource). */
 export const Resource_purgeProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8175,7 +8721,7 @@ export const Resource_purgeProjectsLocationsDatasetsFhirStoresFhir: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Resource_purgeProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Resource_purgeProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8208,7 +8754,9 @@ export const Bulk_exportProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Bulk_exportProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Bulk exports all resources from the FHIR store to the specified destination. Implements the FHIR implementation guide [system level $export](https://build.fhir.org/ig/HL7/bulk-data/export.html#endpoint---system-level-export). The following headers must be set in the request: * `Accept`: specifies the format of the `OperationOutcome` response. Only `application/fhir+json` is supported. * `Prefer`: specifies whether the response is immediate or asynchronous. Must be to `respond-async` because only asynchronous responses are supported. Specify the destination for the server to write result files by setting the Cloud Storage location bulk_export_gcs_destination on the FHIR store. URI of an existing Cloud Storage directory where the server writes result files, in the format gs://{bucket-id}/{path/to/destination/dir}. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced. Supports the following query parameters: * `_type`: string of comma-delimited FHIR resource types. If provided, only the resources of the specified type(s) are exported. * `_since`: if provided, only the resources that are updated after the specified time are exported. * `_outputFormat`: optional, specify ndjson to export data in NDJSON format. Exported file names use the format: {export_id}_{resource_type}.ndjson. On success, the `Content-Location` header of the response is set to a URL that the user can use to query the status of the export. The URL is in the format: `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{export_id}`. See get-fhir-operation-status for more information. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. */
 export const bulk_exportProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8219,7 +8767,7 @@ export const bulk_exportProjectsLocationsDatasetsFhirStoresFhir: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Bulk_exportProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Resource_validateProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8254,7 +8802,11 @@ export const Resource_validateProjectsLocationsDatasetsFhirStoresFhirResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Resource_validateProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates an input FHIR resource's conformance to its profiles and the profiles configured on the FHIR store. Implements the FHIR extended operation $validate ([DSTU2](https://hl7.org/fhir/DSTU2/resource-operations.html#validate), [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate), [R4](https://hl7.org/fhir/R4/resource-operation-validate.html). or [R5](https://hl7.org/fhir/R5/resource-operation-validate.html)). The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. The `Parameters` input syntax is not supported. The `profile` query parameter can be used to request that the resource only be validated against a specific profile. If a profile with the given URL cannot be found in the FHIR store then an error is returned. Errors generated by validation contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. */
 export const Resource_validateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8265,7 +8817,7 @@ export const Resource_validateProjectsLocationsDatasetsFhirStoresFhir: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Resource_validateProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: Resource_validateProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8287,7 +8839,9 @@ export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRe
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the consent enforcement status of a single consent resource. On success, the response body contains a JSON-encoded representation of a `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resource, containing the current enforcement status. Does not support DSTU2. */
 export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8300,7 +8854,7 @@ export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: 
     Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest,
   output:
     Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest {
@@ -8330,7 +8884,9 @@ export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStor
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the consent enforcement status of all consent resources for a patient. On success, the response body contains a JSON-encoded representation of a bundle of `Parameters` (http://hl7.org/fhir/parameters.html) FHIR resources, containing the current enforcement status for each consent resource of the patient. Does not support DSTU2. */
 export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
@@ -8343,7 +8899,7 @@ export const Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStor
     Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest,
   output:
     Patient_consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest {
@@ -8365,7 +8921,9 @@ export const Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperati
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the status of operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data status request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-status-request). Operations can have one of these states: * in-progress: response status code is `202` and `X-Progress` header is set to `in progress`. * complete: response status code is `200` and the body is a JSON-encoded operation response as defined by the spec. For a bulk export, this response is defined in https://build.fhir.org/ig/HL7/bulk-data/export.html#response---complete-status. * error: response status code is `5XX`, and the body is a JSON-encoded `OperationOutcome` resource describing the reason for the error. */
 export const get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
@@ -8378,7 +8936,7 @@ export const get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperati
     Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest,
   output:
     Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest {
@@ -8400,7 +8958,11 @@ export const Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsR
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
 export type Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data delete request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-delete-request). Returns success if the operation was successfully cancelled. If the operation is complete, or has already been cancelled, returns an error response. */
 export const delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
@@ -8413,7 +8975,7 @@ export const delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperations:
     Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest,
   output:
     Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsOperationsRequest {
@@ -8448,7 +9010,10 @@ export type ListProjectsLocationsDatasetsOperationsResponse =
 export const ListProjectsLocationsDatasetsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsDatasetsOperationsError = DefaultErrors;
+export type ListProjectsLocationsDatasetsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsDatasetsOperations: API.PaginatedOperationMethod<
@@ -8459,7 +9024,7 @@ export const listProjectsLocationsDatasetsOperations: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsOperationsRequest,
   output: ListProjectsLocationsDatasetsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8483,7 +9048,10 @@ export type GetProjectsLocationsDatasetsOperationsResponse = Operation;
 export const GetProjectsLocationsDatasetsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsDatasetsOperationsError = DefaultErrors;
+export type GetProjectsLocationsDatasetsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsDatasetsOperations: API.OperationMethod<
@@ -8494,7 +9062,7 @@ export const getProjectsLocationsDatasetsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsOperationsRequest,
   output: GetProjectsLocationsDatasetsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CancelProjectsLocationsDatasetsOperationsRequest {
@@ -8517,7 +9085,12 @@ export type CancelProjectsLocationsDatasetsOperationsResponse = Empty;
 export const CancelProjectsLocationsDatasetsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsDatasetsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsDatasetsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsDatasetsOperations: API.OperationMethod<
@@ -8528,7 +9101,7 @@ export const cancelProjectsLocationsDatasetsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsDatasetsOperationsRequest,
   output: CancelProjectsLocationsDatasetsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnalyzeEntitiesProjectsLocationsServicesNlpRequest {
@@ -8556,7 +9129,12 @@ export type AnalyzeEntitiesProjectsLocationsServicesNlpResponse =
 export const AnalyzeEntitiesProjectsLocationsServicesNlpResponse =
   /*@__PURE__*/ /*#__PURE__*/ AnalyzeEntitiesResponse;
 
-export type AnalyzeEntitiesProjectsLocationsServicesNlpError = DefaultErrors;
+export type AnalyzeEntitiesProjectsLocationsServicesNlpError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Analyze heathcare entity in a document. Its response includes the recognized entity mentions and the relationships between them. AnalyzeEntities uses context aware models to detect entities. */
 export const analyzeEntitiesProjectsLocationsServicesNlp: API.OperationMethod<
@@ -8567,5 +9145,5 @@ export const analyzeEntitiesProjectsLocationsServicesNlp: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnalyzeEntitiesProjectsLocationsServicesNlpRequest,
   output: AnalyzeEntitiesProjectsLocationsServicesNlpResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

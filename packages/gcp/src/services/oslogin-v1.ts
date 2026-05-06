@@ -157,6 +157,52 @@ export const ProvisionPosixAccountRequest =
   }).annotate({ identifier: "ProvisionPosixAccountRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -185,7 +231,12 @@ export type SignSshPublicKeyProjectsLocationsResponse =
 export const SignSshPublicKeyProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SignSshPublicKeyResponse;
 
-export type SignSshPublicKeyProjectsLocationsError = DefaultErrors;
+export type SignSshPublicKeyProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine. */
 export const signSshPublicKeyProjectsLocations: API.OperationMethod<
@@ -196,7 +247,7 @@ export const signSshPublicKeyProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignSshPublicKeyProjectsLocationsRequest,
   output: SignSshPublicKeyProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLoginProfileUsersRequest {
@@ -222,7 +273,7 @@ export type GetLoginProfileUsersResponse = LoginProfile;
 export const GetLoginProfileUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ LoginProfile;
 
-export type GetLoginProfileUsersError = DefaultErrors;
+export type GetLoginProfileUsersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine. */
 export const getLoginProfileUsers: API.OperationMethod<
@@ -233,7 +284,7 @@ export const getLoginProfileUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLoginProfileUsersRequest,
   output: GetLoginProfileUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ImportSshPublicKeyUsersRequest {
@@ -268,7 +319,12 @@ export type ImportSshPublicKeyUsersResponse = ImportSshPublicKeyResponse;
 export const ImportSshPublicKeyUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImportSshPublicKeyResponse;
 
-export type ImportSshPublicKeyUsersError = DefaultErrors;
+export type ImportSshPublicKeyUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile. */
 export const importSshPublicKeyUsers: API.OperationMethod<
@@ -279,7 +335,7 @@ export const importSshPublicKeyUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportSshPublicKeyUsersRequest,
   output: ImportSshPublicKeyUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateUsersSshPublicKeysRequest {
@@ -306,7 +362,12 @@ export type CreateUsersSshPublicKeysResponse = SshPublicKey;
 export const CreateUsersSshPublicKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ SshPublicKey;
 
-export type CreateUsersSshPublicKeysError = DefaultErrors;
+export type CreateUsersSshPublicKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an SSH public key */
 export const createUsersSshPublicKeys: API.OperationMethod<
@@ -317,7 +378,7 @@ export const createUsersSshPublicKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSshPublicKeysRequest,
   output: CreateUsersSshPublicKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersSshPublicKeysRequest {
@@ -337,7 +398,12 @@ export type DeleteUsersSshPublicKeysResponse = Empty;
 export const DeleteUsersSshPublicKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteUsersSshPublicKeysError = DefaultErrors;
+export type DeleteUsersSshPublicKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an SSH public key. */
 export const deleteUsersSshPublicKeys: API.OperationMethod<
@@ -348,7 +414,7 @@ export const deleteUsersSshPublicKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSshPublicKeysRequest,
   output: DeleteUsersSshPublicKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetUsersSshPublicKeysRequest {
@@ -368,7 +434,7 @@ export type GetUsersSshPublicKeysResponse = SshPublicKey;
 export const GetUsersSshPublicKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ SshPublicKey;
 
-export type GetUsersSshPublicKeysError = DefaultErrors;
+export type GetUsersSshPublicKeysError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves an SSH public key. */
 export const getUsersSshPublicKeys: API.OperationMethod<
@@ -379,7 +445,7 @@ export const getUsersSshPublicKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSshPublicKeysRequest,
   output: GetUsersSshPublicKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchUsersSshPublicKeysRequest {
@@ -405,7 +471,12 @@ export type PatchUsersSshPublicKeysResponse = SshPublicKey;
 export const PatchUsersSshPublicKeysResponse =
   /*@__PURE__*/ /*#__PURE__*/ SshPublicKey;
 
-export type PatchUsersSshPublicKeysError = DefaultErrors;
+export type PatchUsersSshPublicKeysError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an SSH public key and returns the profile information. This method supports patch semantics. */
 export const patchUsersSshPublicKeys: API.OperationMethod<
@@ -416,7 +487,7 @@ export const patchUsersSshPublicKeys: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersSshPublicKeysRequest,
   output: PatchUsersSshPublicKeysResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersProjectsRequest {
@@ -435,7 +506,12 @@ export const DeleteUsersProjectsRequest =
 export type DeleteUsersProjectsResponse = Empty;
 export const DeleteUsersProjectsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteUsersProjectsError = DefaultErrors;
+export type DeleteUsersProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a POSIX account. */
 export const deleteUsersProjects: API.OperationMethod<
@@ -446,7 +522,7 @@ export const deleteUsersProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersProjectsRequest,
   output: DeleteUsersProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ProvisionPosixAccountUsersProjectsRequest {
@@ -469,7 +545,12 @@ export type ProvisionPosixAccountUsersProjectsResponse = PosixAccount;
 export const ProvisionPosixAccountUsersProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PosixAccount;
 
-export type ProvisionPosixAccountUsersProjectsError = DefaultErrors;
+export type ProvisionPosixAccountUsersProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a POSIX account and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile. */
 export const provisionPosixAccountUsersProjects: API.OperationMethod<
@@ -480,5 +561,5 @@ export const provisionPosixAccountUsersProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ProvisionPosixAccountUsersProjectsRequest,
   output: ProvisionPosixAccountUsersProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

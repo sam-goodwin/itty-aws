@@ -1475,6 +1475,52 @@ export const GenerateRecallPlayGroupingApiTokenResponse =
   }).annotate({ identifier: "GenerateRecallPlayGroupingApiTokenResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1502,7 +1548,10 @@ export type ListAchievementDefinitionsResponse =
 export const ListAchievementDefinitionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementDefinitionsListResponse;
 
-export type ListAchievementDefinitionsError = DefaultErrors;
+export type ListAchievementDefinitionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all the achievement definitions for your application. */
 export const listAchievementDefinitions: API.PaginatedOperationMethod<
@@ -1513,7 +1562,7 @@ export const listAchievementDefinitions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAchievementDefinitionsRequest,
   output: ListAchievementDefinitionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1548,7 +1597,12 @@ export type IncrementAchievementsResponse = AchievementIncrementResponse;
 export const IncrementAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementIncrementResponse;
 
-export type IncrementAchievementsError = DefaultErrors;
+export type IncrementAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Increments the steps of the achievement with the given ID for the currently authenticated player. */
 export const incrementAchievements: API.OperationMethod<
@@ -1559,7 +1613,7 @@ export const incrementAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: IncrementAchievementsRequest,
   output: IncrementAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAchievementsRequest {
@@ -1591,7 +1645,7 @@ export type ListAchievementsResponse = PlayerAchievementListResponse;
 export const ListAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerAchievementListResponse;
 
-export type ListAchievementsError = DefaultErrors;
+export type ListAchievementsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the progress for all your application's achievements for the currently authenticated player. */
 export const listAchievements: API.PaginatedOperationMethod<
@@ -1602,7 +1656,7 @@ export const listAchievements: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAchievementsRequest,
   output: ListAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1631,7 +1685,12 @@ export type RevealAchievementsResponse = AchievementRevealResponse;
 export const RevealAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementRevealResponse;
 
-export type RevealAchievementsError = DefaultErrors;
+export type RevealAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player. */
 export const revealAchievements: API.OperationMethod<
@@ -1642,7 +1701,7 @@ export const revealAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RevealAchievementsRequest,
   output: RevealAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetStepsAtLeastAchievementsRequest {
@@ -1670,7 +1729,12 @@ export type SetStepsAtLeastAchievementsResponse =
 export const SetStepsAtLeastAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementSetStepsAtLeastResponse;
 
-export type SetStepsAtLeastAchievementsError = DefaultErrors;
+export type SetStepsAtLeastAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps parameter is less than the current number of steps that the player already gained for the achievement, the achievement is not modified. */
 export const setStepsAtLeastAchievements: API.OperationMethod<
@@ -1681,7 +1745,7 @@ export const setStepsAtLeastAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetStepsAtLeastAchievementsRequest,
   output: SetStepsAtLeastAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UnlockAchievementsRequest {
@@ -1705,7 +1769,12 @@ export type UnlockAchievementsResponse = AchievementUnlockResponse;
 export const UnlockAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementUnlockResponse;
 
-export type UnlockAchievementsError = DefaultErrors;
+export type UnlockAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unlocks this achievement for the currently authenticated player. */
 export const unlockAchievements: API.OperationMethod<
@@ -1716,7 +1785,7 @@ export const unlockAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnlockAchievementsRequest,
   output: UnlockAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateMultipleAchievementsRequest {
@@ -1741,7 +1810,12 @@ export type UpdateMultipleAchievementsResponse =
 export const UpdateMultipleAchievementsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementUpdateMultipleResponse;
 
-export type UpdateMultipleAchievementsError = DefaultErrors;
+export type UpdateMultipleAchievementsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates multiple achievements for the currently authenticated player. */
 export const updateMultipleAchievements: API.OperationMethod<
@@ -1752,7 +1826,7 @@ export const updateMultipleAchievements: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateMultipleAchievementsRequest,
   output: UpdateMultipleAchievementsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetApplicationsRequest {
@@ -1780,7 +1854,7 @@ export const GetApplicationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetApplicationsResponse = Application;
 export const GetApplicationsResponse = /*@__PURE__*/ /*#__PURE__*/ Application;
 
-export type GetApplicationsError = DefaultErrors;
+export type GetApplicationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the metadata of the application with the given ID. If the requested application is not available for the specified `platformType`, the returned response will not include any instance data. */
 export const getApplications: API.OperationMethod<
@@ -1791,7 +1865,7 @@ export const getApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetApplicationsRequest,
   output: GetApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PlayedApplicationsRequest {}
@@ -1812,7 +1886,12 @@ export const PlayedApplicationsResponse: Schema.Schema<PlayedApplicationsRespons
     {},
   ) as any as Schema.Schema<PlayedApplicationsResponse>;
 
-export type PlayedApplicationsError = DefaultErrors;
+export type PlayedApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Indicate that the currently authenticated user is playing your application. */
 export const playedApplications: API.OperationMethod<
@@ -1823,7 +1902,7 @@ export const playedApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PlayedApplicationsRequest,
   output: PlayedApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface VerifyApplicationsRequest {
@@ -1846,7 +1925,7 @@ export type VerifyApplicationsResponse = ApplicationVerifyResponse;
 export const VerifyApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ApplicationVerifyResponse;
 
-export type VerifyApplicationsError = DefaultErrors;
+export type VerifyApplicationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Verifies the auth token provided with this request is for the application with the specified ID, and returns the ID of the player it was granted for. */
 export const verifyApplications: API.OperationMethod<
@@ -1857,7 +1936,7 @@ export const verifyApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: VerifyApplicationsRequest,
   output: VerifyApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetEndPointApplicationsRequest {
@@ -1888,7 +1967,12 @@ export type GetEndPointApplicationsResponse = EndPoint;
 export const GetEndPointApplicationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EndPoint;
 
-export type GetEndPointApplicationsError = DefaultErrors;
+export type GetEndPointApplicationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns a URL for the requested end point type. */
 export const getEndPointApplications: API.OperationMethod<
@@ -1899,7 +1983,7 @@ export const getEndPointApplications: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetEndPointApplicationsRequest,
   output: GetEndPointApplicationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListByPlayerEventsRequest {
@@ -1925,7 +2009,7 @@ export type ListByPlayerEventsResponse = PlayerEventListResponse;
 export const ListByPlayerEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerEventListResponse;
 
-export type ListByPlayerEventsError = DefaultErrors;
+export type ListByPlayerEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list showing the current progress on events in this application for the currently authenticated user. */
 export const listByPlayerEvents: API.PaginatedOperationMethod<
@@ -1936,7 +2020,7 @@ export const listByPlayerEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListByPlayerEventsRequest,
   output: ListByPlayerEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1967,7 +2051,7 @@ export type ListDefinitionsEventsResponse = EventDefinitionListResponse;
 export const ListDefinitionsEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventDefinitionListResponse;
 
-export type ListDefinitionsEventsError = DefaultErrors;
+export type ListDefinitionsEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of the event definitions in this application. */
 export const listDefinitionsEvents: API.PaginatedOperationMethod<
@@ -1978,7 +2062,7 @@ export const listDefinitionsEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDefinitionsEventsRequest,
   output: ListDefinitionsEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2005,7 +2089,12 @@ export type RecordEventsResponse = EventUpdateResponse;
 export const RecordEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventUpdateResponse;
 
-export type RecordEventsError = DefaultErrors;
+export type RecordEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Records a batch of changes to the number of times events have occurred for the currently authenticated user of this application. */
 export const recordEvents: API.OperationMethod<
@@ -2016,7 +2105,7 @@ export const recordEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RecordEventsRequest,
   output: RecordEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLeaderboardsRequest {
@@ -2039,7 +2128,7 @@ export const GetLeaderboardsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetLeaderboardsResponse = Leaderboard;
 export const GetLeaderboardsResponse = /*@__PURE__*/ /*#__PURE__*/ Leaderboard;
 
-export type GetLeaderboardsError = DefaultErrors;
+export type GetLeaderboardsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the metadata of the leaderboard with the given ID. */
 export const getLeaderboards: API.OperationMethod<
@@ -2050,7 +2139,7 @@ export const getLeaderboards: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLeaderboardsRequest,
   output: GetLeaderboardsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListLeaderboardsRequest {
@@ -2076,7 +2165,7 @@ export type ListLeaderboardsResponse = LeaderboardListResponse;
 export const ListLeaderboardsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaderboardListResponse;
 
-export type ListLeaderboardsError = DefaultErrors;
+export type ListLeaderboardsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all the leaderboard metadata for your application. */
 export const listLeaderboards: API.PaginatedOperationMethod<
@@ -2087,7 +2176,7 @@ export const listLeaderboards: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLeaderboardsRequest,
   output: ListLeaderboardsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2107,7 +2196,10 @@ export type GetMetagameConfigMetagameResponse = MetagameConfig;
 export const GetMetagameConfigMetagameResponse =
   /*@__PURE__*/ /*#__PURE__*/ MetagameConfig;
 
-export type GetMetagameConfigMetagameError = DefaultErrors;
+export type GetMetagameConfigMetagameError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Return the metagame configuration data for the calling application. */
 export const getMetagameConfigMetagame: API.OperationMethod<
@@ -2118,7 +2210,7 @@ export const getMetagameConfigMetagame: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMetagameConfigMetagameRequest,
   output: GetMetagameConfigMetagameResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCategoriesByPlayerMetagameRequest {
@@ -2153,7 +2245,10 @@ export type ListCategoriesByPlayerMetagameResponse = CategoryListResponse;
 export const ListCategoriesByPlayerMetagameResponse =
   /*@__PURE__*/ /*#__PURE__*/ CategoryListResponse;
 
-export type ListCategoriesByPlayerMetagameError = DefaultErrors;
+export type ListCategoriesByPlayerMetagameError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List play data aggregated per category for the player corresponding to `playerId`. */
 export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
@@ -2164,7 +2259,7 @@ export const listCategoriesByPlayerMetagame: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCategoriesByPlayerMetagameRequest,
   output: ListCategoriesByPlayerMetagameResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2195,7 +2290,7 @@ export const GetPlayersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPlayersResponse = Player;
 export const GetPlayersResponse = /*@__PURE__*/ /*#__PURE__*/ Player;
 
-export type GetPlayersError = DefaultErrors;
+export type GetPlayersError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the Player resource with the given ID. To retrieve the player for the currently authenticated user, set `playerId` to `me`. */
 export const getPlayers: API.OperationMethod<
@@ -2206,7 +2301,7 @@ export const getPlayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPlayersRequest,
   output: GetPlayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetScopedPlayerIdsPlayersRequest {}
@@ -2221,7 +2316,10 @@ export type GetScopedPlayerIdsPlayersResponse = ScopedPlayerIds;
 export const GetScopedPlayerIdsPlayersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScopedPlayerIds;
 
-export type GetScopedPlayerIdsPlayersError = DefaultErrors;
+export type GetScopedPlayerIdsPlayersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves scoped player identifiers for currently authenticated user. */
 export const getScopedPlayerIdsPlayers: API.OperationMethod<
@@ -2232,7 +2330,7 @@ export const getScopedPlayerIdsPlayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetScopedPlayerIdsPlayersRequest,
   output: GetScopedPlayerIdsPlayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetMultipleApplicationPlayerIdsPlayersRequest {
@@ -2258,7 +2356,10 @@ export type GetMultipleApplicationPlayerIdsPlayersResponse =
 export const GetMultipleApplicationPlayerIdsPlayersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GetMultipleApplicationPlayerIdsResponse;
 
-export type GetMultipleApplicationPlayerIdsPlayersError = DefaultErrors;
+export type GetMultipleApplicationPlayerIdsPlayersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the application player ids for the currently authenticated player across all requested games by the same developer as the calling application. This will only return ids for players that actually have an id (scoped or otherwise) with that game. */
 export const getMultipleApplicationPlayerIdsPlayers: API.OperationMethod<
@@ -2269,7 +2370,7 @@ export const getMultipleApplicationPlayerIdsPlayers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetMultipleApplicationPlayerIdsPlayersRequest,
   output: GetMultipleApplicationPlayerIdsPlayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPlayersRequest {
@@ -2297,7 +2398,7 @@ export type ListPlayersResponse = PlayerListResponse;
 export const ListPlayersResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerListResponse;
 
-export type ListPlayersError = DefaultErrors;
+export type ListPlayersError = DefaultErrors | NotFound | Forbidden;
 
 /** Get the collection of players for the currently authenticated user. */
 export const listPlayers: API.PaginatedOperationMethod<
@@ -2308,7 +2409,7 @@ export const listPlayers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPlayersRequest,
   output: ListPlayersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2332,7 +2433,7 @@ export type CheckRevisionsResponse = RevisionCheckResponse;
 export const CheckRevisionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RevisionCheckResponse;
 
-export type CheckRevisionsError = DefaultErrors;
+export type CheckRevisionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Checks whether the games client is out of date. */
 export const checkRevisions: API.OperationMethod<
@@ -2343,7 +2444,7 @@ export const checkRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckRevisionsRequest,
   output: CheckRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetScoresRequest {
@@ -2385,7 +2486,7 @@ export type GetScoresResponse = PlayerLeaderboardScoreListResponse;
 export const GetScoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerLeaderboardScoreListResponse;
 
-export type GetScoresError = DefaultErrors;
+export type GetScoresError = DefaultErrors | NotFound | Forbidden;
 
 /** Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one parameter may be set to 'ALL'. */
 export const getScores: API.PaginatedOperationMethod<
@@ -2396,7 +2497,7 @@ export const getScores: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: GetScoresRequest,
   output: GetScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2437,7 +2538,7 @@ export const ListScoresRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListScoresResponse = LeaderboardScores;
 export const ListScoresResponse = /*@__PURE__*/ /*#__PURE__*/ LeaderboardScores;
 
-export type ListScoresError = DefaultErrors;
+export type ListScoresError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the scores in a leaderboard, starting from the top. */
 export const listScores: API.PaginatedOperationMethod<
@@ -2448,7 +2549,7 @@ export const listScores: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListScoresRequest,
   output: ListScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2501,7 +2602,7 @@ export type ListWindowScoresResponse = LeaderboardScores;
 export const ListWindowScoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaderboardScores;
 
-export type ListWindowScoresError = DefaultErrors;
+export type ListWindowScoresError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the scores in a leaderboard around (and including) a player's score. */
 export const listWindowScores: API.PaginatedOperationMethod<
@@ -2512,7 +2613,7 @@ export const listWindowScores: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListWindowScoresRequest,
   output: ListWindowScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2549,7 +2650,12 @@ export type SubmitScoresResponse = PlayerScoreResponse;
 export const SubmitScoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerScoreResponse;
 
-export type SubmitScoresError = DefaultErrors;
+export type SubmitScoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submits a score to the specified leaderboard. */
 export const submitScores: API.OperationMethod<
@@ -2560,7 +2666,7 @@ export const submitScores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitScoresRequest,
   output: SubmitScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SubmitMultipleScoresRequest {
@@ -2587,7 +2693,12 @@ export type SubmitMultipleScoresResponse = PlayerScoreListResponse;
 export const SubmitMultipleScoresResponse =
   /*@__PURE__*/ /*#__PURE__*/ PlayerScoreListResponse;
 
-export type SubmitMultipleScoresError = DefaultErrors;
+export type SubmitMultipleScoresError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Submits multiple scores to leaderboards. */
 export const submitMultipleScores: API.OperationMethod<
@@ -2598,7 +2709,7 @@ export const submitMultipleScores: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SubmitMultipleScoresRequest,
   output: SubmitMultipleScoresResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSnapshotsRequest {
@@ -2619,7 +2730,7 @@ export const GetSnapshotsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSnapshotsResponse = Snapshot;
 export const GetSnapshotsResponse = /*@__PURE__*/ /*#__PURE__*/ Snapshot;
 
-export type GetSnapshotsError = DefaultErrors;
+export type GetSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves the metadata for a given snapshot ID. */
 export const getSnapshots: API.OperationMethod<
@@ -2630,7 +2741,7 @@ export const getSnapshots: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSnapshotsRequest,
   output: GetSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSnapshotsRequest {
@@ -2658,7 +2769,7 @@ export type ListSnapshotsResponse = SnapshotListResponse;
 export const ListSnapshotsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SnapshotListResponse;
 
-export type ListSnapshotsError = DefaultErrors;
+export type ListSnapshotsError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a list of snapshots created by your application for the player corresponding to the player ID. */
 export const listSnapshots: API.PaginatedOperationMethod<
@@ -2669,7 +2780,7 @@ export const listSnapshots: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSnapshotsRequest,
   output: ListSnapshotsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2689,7 +2800,7 @@ export const GetStatsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetStatsResponse = StatsResponse;
 export const GetStatsResponse = /*@__PURE__*/ /*#__PURE__*/ StatsResponse;
 
-export type GetStatsError = DefaultErrors;
+export type GetStatsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns engagement and spend statistics in this application for the currently authenticated user. */
 export const getStats: API.OperationMethod<
@@ -2700,7 +2811,7 @@ export const getStats: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStatsRequest,
   output: GetStatsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LinkPersonaRecallRequest {
@@ -2724,7 +2835,12 @@ export type LinkPersonaRecallResponse = LinkPersonaResponse;
 export const LinkPersonaRecallResponse =
   /*@__PURE__*/ /*#__PURE__*/ LinkPersonaResponse;
 
-export type LinkPersonaRecallError = DefaultErrors;
+export type LinkPersonaRecallError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Associate the PGS Player principal encoded in the provided recall session id with an in-game account */
 export const linkPersonaRecall: API.OperationMethod<
@@ -2735,7 +2851,7 @@ export const linkPersonaRecall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LinkPersonaRecallRequest,
   output: LinkPersonaRecallResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RetrieveTokensRecallRequest {
@@ -2755,7 +2871,7 @@ export type RetrieveTokensRecallResponse = RetrievePlayerTokensResponse;
 export const RetrieveTokensRecallResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrievePlayerTokensResponse;
 
-export type RetrieveTokensRecallError = DefaultErrors;
+export type RetrieveTokensRecallError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve all Recall tokens associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have active PGS Player profile. */
 export const retrieveTokensRecall: API.OperationMethod<
@@ -2766,7 +2882,7 @@ export const retrieveTokensRecall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RetrieveTokensRecallRequest,
   output: RetrieveTokensRecallResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface LastTokenFromAllDeveloperGamesRecallRequest {
@@ -2790,7 +2906,10 @@ export type LastTokenFromAllDeveloperGamesRecallResponse =
 export const LastTokenFromAllDeveloperGamesRecallResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveDeveloperGamesLastPlayerTokenResponse;
 
-export type LastTokenFromAllDeveloperGamesRecallError = DefaultErrors;
+export type LastTokenFromAllDeveloperGamesRecallError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieve the last Recall token from all developer games that is associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have active PGS Player profile. */
 export const lastTokenFromAllDeveloperGamesRecall: API.OperationMethod<
@@ -2801,7 +2920,7 @@ export const lastTokenFromAllDeveloperGamesRecall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LastTokenFromAllDeveloperGamesRecallRequest,
   output: LastTokenFromAllDeveloperGamesRecallResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GamesPlayerTokensRecallRequest {
@@ -2829,7 +2948,7 @@ export type GamesPlayerTokensRecallResponse = RetrieveGamesPlayerTokensResponse;
 export const GamesPlayerTokensRecallResponse =
   /*@__PURE__*/ /*#__PURE__*/ RetrieveGamesPlayerTokensResponse;
 
-export type GamesPlayerTokensRecallError = DefaultErrors;
+export type GamesPlayerTokensRecallError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieve the Recall tokens from all requested games that is associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have an active PGS Player profile. */
 export const gamesPlayerTokensRecall: API.OperationMethod<
@@ -2840,7 +2959,7 @@ export const gamesPlayerTokensRecall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GamesPlayerTokensRecallRequest,
   output: GamesPlayerTokensRecallResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnlinkPersonaRecallRequest {
@@ -2864,7 +2983,12 @@ export type UnlinkPersonaRecallResponse = UnlinkPersonaResponse;
 export const UnlinkPersonaRecallResponse =
   /*@__PURE__*/ /*#__PURE__*/ UnlinkPersonaResponse;
 
-export type UnlinkPersonaRecallError = DefaultErrors;
+export type UnlinkPersonaRecallError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a Recall token linking the PGS Player principal identified by the Recall session and an in-game account identified either by the 'persona' or by the token value. */
 export const unlinkPersonaRecall: API.OperationMethod<
@@ -2875,7 +2999,7 @@ export const unlinkPersonaRecall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnlinkPersonaRecallRequest,
   output: UnlinkPersonaRecallResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ResetPersonaRecallRequest {
@@ -2899,7 +3023,12 @@ export type ResetPersonaRecallResponse = ResetPersonaResponse;
 export const ResetPersonaRecallResponse =
   /*@__PURE__*/ /*#__PURE__*/ ResetPersonaResponse;
 
-export type ResetPersonaRecallError = DefaultErrors;
+export type ResetPersonaRecallError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete all Recall tokens linking the given persona to any player (with or without a profile). */
 export const resetPersonaRecall: API.OperationMethod<
@@ -2910,7 +3039,7 @@ export const resetPersonaRecall: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ResetPersonaRecallRequest,
   output: ResetPersonaRecallResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GeneratePlayGroupingApiTokenAccesstokensRequest {
@@ -2940,7 +3069,12 @@ export type GeneratePlayGroupingApiTokenAccesstokensResponse =
 export const GeneratePlayGroupingApiTokenAccesstokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GeneratePlayGroupingApiTokenResponse;
 
-export type GeneratePlayGroupingApiTokenAccesstokensError = DefaultErrors;
+export type GeneratePlayGroupingApiTokenAccesstokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a Play Grouping API token for the PGS user identified by the attached credential. */
 export const generatePlayGroupingApiTokenAccesstokens: API.OperationMethod<
@@ -2951,7 +3085,7 @@ export const generatePlayGroupingApiTokenAccesstokens: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GeneratePlayGroupingApiTokenAccesstokensRequest,
   output: GeneratePlayGroupingApiTokenAccesstokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateRecallPlayGroupingApiTokenAccesstokensRequest {
@@ -2986,7 +3120,12 @@ export type GenerateRecallPlayGroupingApiTokenAccesstokensResponse =
 export const GenerateRecallPlayGroupingApiTokenAccesstokensResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateRecallPlayGroupingApiTokenResponse;
 
-export type GenerateRecallPlayGroupingApiTokenAccesstokensError = DefaultErrors;
+export type GenerateRecallPlayGroupingApiTokenAccesstokensError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates a Play Grouping API token for the PGS user identified by the Recall session ID provided in the request. */
 export const generateRecallPlayGroupingApiTokenAccesstokens: API.OperationMethod<
@@ -2997,5 +3136,5 @@ export const generateRecallPlayGroupingApiTokenAccesstokens: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateRecallPlayGroupingApiTokenAccesstokensRequest,
   output: GenerateRecallPlayGroupingApiTokenAccesstokensResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

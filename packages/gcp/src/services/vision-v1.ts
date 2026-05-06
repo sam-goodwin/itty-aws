@@ -5879,6 +5879,52 @@ export const GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -5912,7 +5958,7 @@ export type ListOperationsResponse_Op = ListOperationsResponse;
 export const ListOperationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -5923,7 +5969,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5945,7 +5991,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -5956,7 +6002,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOperationsRequest {
@@ -5975,7 +6021,12 @@ export const DeleteOperationsRequest =
 export type DeleteOperationsResponse = Empty;
 export const DeleteOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -5986,7 +6037,7 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOperationsRequest {
@@ -6008,7 +6059,12 @@ export const CancelOperationsRequest =
 export type CancelOperationsResponse = Empty;
 export const CancelOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -6019,7 +6075,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsOperationsRequest {
@@ -6039,7 +6095,7 @@ export type GetProjectsOperationsResponse = Operation;
 export const GetProjectsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsOperationsError = DefaultErrors;
+export type GetProjectsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsOperations: API.OperationMethod<
@@ -6050,7 +6106,7 @@ export const getProjectsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsOperationsRequest,
   output: GetProjectsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsLocationsOperationsRequest {
@@ -6070,7 +6126,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -6081,7 +6140,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsProductSetsRequest {
@@ -6109,7 +6168,12 @@ export type CreateProjectsLocationsProductSetsResponse = ProductSet;
 export const CreateProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductSet;
 
-export type CreateProjectsLocationsProductSetsError = DefaultErrors;
+export type CreateProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters. */
 export const createProjectsLocationsProductSets: API.OperationMethod<
@@ -6120,7 +6184,7 @@ export const createProjectsLocationsProductSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductSetsRequest,
   output: CreateProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductSetsRequest {
@@ -6146,7 +6210,10 @@ export type ListProjectsLocationsProductSetsResponse = ListProductSetsResponse;
 export const ListProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductSetsResponse;
 
-export type ListProjectsLocationsProductSetsError = DefaultErrors;
+export type ListProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists ProductSets in an unspecified order. Possible errors: * Returns INVALID_ARGUMENT if page_size is greater than 100, or less than 1. */
 export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
@@ -6157,7 +6224,7 @@ export const listProjectsLocationsProductSets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductSetsRequest,
   output: ListProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6181,7 +6248,10 @@ export type GetProjectsLocationsProductSetsResponse = ProductSet;
 export const GetProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductSet;
 
-export type GetProjectsLocationsProductSetsError = DefaultErrors;
+export type GetProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information associated with a ProductSet. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist. */
 export const getProjectsLocationsProductSets: API.OperationMethod<
@@ -6192,7 +6262,7 @@ export const getProjectsLocationsProductSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductSetsRequest,
   output: GetProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsProductSetsRequest {
@@ -6218,7 +6288,12 @@ export type PatchProjectsLocationsProductSetsResponse = ProductSet;
 export const PatchProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ProductSet;
 
-export type PatchProjectsLocationsProductSetsError = DefaultErrors;
+export type PatchProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes changes to a ProductSet resource. Only display_name can be updated currently. Possible errors: * Returns NOT_FOUND if the ProductSet does not exist. * Returns INVALID_ARGUMENT if display_name is present in update_mask but missing from the request or longer than 4096 characters. */
 export const patchProjectsLocationsProductSets: API.OperationMethod<
@@ -6229,7 +6304,7 @@ export const patchProjectsLocationsProductSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductSetsRequest,
   output: PatchProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductSetsRequest {
@@ -6249,7 +6324,12 @@ export type DeleteProjectsLocationsProductSetsResponse = Empty;
 export const DeleteProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsProductSetsError = DefaultErrors;
+export type DeleteProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not deleted. The actual image files are not deleted from Google Cloud Storage. */
 export const deleteProjectsLocationsProductSets: API.OperationMethod<
@@ -6260,7 +6340,7 @@ export const deleteProjectsLocationsProductSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductSetsRequest,
   output: DeleteProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AddProductProjectsLocationsProductSetsRequest {
@@ -6283,7 +6363,12 @@ export type AddProductProjectsLocationsProductSetsResponse = Empty;
 export const AddProductProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AddProductProjectsLocationsProductSetsError = DefaultErrors;
+export type AddProductProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a Product to the specified ProductSet. If the Product is already present, no change is made. One Product can be added to at most 100 ProductSets. Possible errors: * Returns NOT_FOUND if the Product or the ProductSet doesn't exist. */
 export const addProductProjectsLocationsProductSets: API.OperationMethod<
@@ -6294,7 +6379,7 @@ export const addProductProjectsLocationsProductSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddProductProjectsLocationsProductSetsRequest,
   output: AddProductProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveProductProjectsLocationsProductSetsRequest {
@@ -6319,7 +6404,12 @@ export type RemoveProductProjectsLocationsProductSetsResponse = Empty;
 export const RemoveProductProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RemoveProductProjectsLocationsProductSetsError = DefaultErrors;
+export type RemoveProductProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a Product from the specified ProductSet. */
 export const removeProductProjectsLocationsProductSets: API.OperationMethod<
@@ -6330,7 +6420,7 @@ export const removeProductProjectsLocationsProductSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveProductProjectsLocationsProductSetsRequest,
   output: RemoveProductProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportProjectsLocationsProductSetsRequest {
@@ -6357,7 +6447,12 @@ export type ImportProjectsLocationsProductSetsResponse = Operation;
 export const ImportProjectsLocationsProductSetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportProjectsLocationsProductSetsError = DefaultErrors;
+export type ImportProjectsLocationsProductSetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Asynchronous API that imports a list of reference images to specified product sets based on a list of image information. The google.longrunning.Operation API can be used to keep track of the progress and results of the request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) `Operation.response` contains `ImportProductSetsResponse`. (results) The input source of this method is a csv file on Google Cloud Storage. For the format of the csv file please see ImportProductSetsGcsSource.csv_file_uri. */
 export const importProjectsLocationsProductSets: API.OperationMethod<
@@ -6368,7 +6463,7 @@ export const importProjectsLocationsProductSets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsProductSetsRequest,
   output: ImportProjectsLocationsProductSetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductSetsProductsRequest {
@@ -6395,7 +6490,10 @@ export type ListProjectsLocationsProductSetsProductsResponse =
 export const ListProjectsLocationsProductSetsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductsInProductSetResponse;
 
-export type ListProjectsLocationsProductSetsProductsError = DefaultErrors;
+export type ListProjectsLocationsProductSetsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the Products in a ProductSet, in an unspecified order. If the ProductSet does not exist, the products field of the response will be empty. Possible errors: * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1. */
 export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMethod<
@@ -6406,7 +6504,7 @@ export const listProjectsLocationsProductSetsProducts: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductSetsProductsRequest,
   output: ListProjectsLocationsProductSetsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6436,7 +6534,12 @@ export type CreateProjectsLocationsProductsResponse = Product;
 export const CreateProjectsLocationsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type CreateProjectsLocationsProductsError = DefaultErrors;
+export type CreateProjectsLocationsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and returns a new product resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is missing or invalid. */
 export const createProjectsLocationsProducts: API.OperationMethod<
@@ -6447,7 +6550,7 @@ export const createProjectsLocationsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsRequest,
   output: CreateProjectsLocationsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductsRequest {
@@ -6473,7 +6576,10 @@ export type ListProjectsLocationsProductsResponse = ListProductsResponse;
 export const ListProjectsLocationsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListProductsResponse;
 
-export type ListProjectsLocationsProductsError = DefaultErrors;
+export type ListProjectsLocationsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists products in an unspecified order. Possible errors: * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1. */
 export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
@@ -6484,7 +6590,7 @@ export const listProjectsLocationsProducts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsRequest,
   output: ListProjectsLocationsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6508,7 +6614,10 @@ export type GetProjectsLocationsProductsResponse = Product;
 export const GetProjectsLocationsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type GetProjectsLocationsProductsError = DefaultErrors;
+export type GetProjectsLocationsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information associated with a Product. Possible errors: * Returns NOT_FOUND if the Product does not exist. */
 export const getProjectsLocationsProducts: API.OperationMethod<
@@ -6519,7 +6628,7 @@ export const getProjectsLocationsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsRequest,
   output: GetProjectsLocationsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsLocationsProductsRequest {
@@ -6545,7 +6654,12 @@ export type PatchProjectsLocationsProductsResponse = Product;
 export const PatchProjectsLocationsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Product;
 
-export type PatchProjectsLocationsProductsError = DefaultErrors;
+export type PatchProjectsLocationsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Makes changes to a Product resource. Only the `display_name`, `description`, and `labels` fields can be updated right now. If labels are updated, the change will not be reflected in queries until the next index time. Possible errors: * Returns NOT_FOUND if the Product does not exist. * Returns INVALID_ARGUMENT if display_name is present in update_mask but is missing from the request or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is present in update_mask but is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is present in update_mask. */
 export const patchProjectsLocationsProducts: API.OperationMethod<
@@ -6556,7 +6670,7 @@ export const patchProjectsLocationsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsProductsRequest,
   output: PatchProjectsLocationsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductsRequest {
@@ -6576,7 +6690,12 @@ export type DeleteProjectsLocationsProductsResponse = Empty;
 export const DeleteProjectsLocationsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsProductsError = DefaultErrors;
+export type DeleteProjectsLocationsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a product and its reference images. Metadata of the product and all its images will be deleted right away, but search queries against ProductSets containing the product may still work until all related caches are refreshed. */
 export const deleteProjectsLocationsProducts: API.OperationMethod<
@@ -6587,7 +6706,7 @@ export const deleteProjectsLocationsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsRequest,
   output: DeleteProjectsLocationsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PurgeProjectsLocationsProductsRequest {
@@ -6614,7 +6733,12 @@ export type PurgeProjectsLocationsProductsResponse = Operation;
 export const PurgeProjectsLocationsProductsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PurgeProjectsLocationsProductsError = DefaultErrors;
+export type PurgeProjectsLocationsProductsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Asynchronous API to delete all Products in a ProductSet or all Products that are in no ProductSet. If a Product is a member of the specified ProductSet in addition to other ProductSets, the Product will still be deleted. It is recommended to not delete the specified ProductSet until after this operation has completed. It is also recommended to not add any of the Products involved in the batch delete to a new ProductSet while this operation is running because those Products may still end up deleted. It's not possible to undo the PurgeProducts operation. Therefore, it is recommended to keep the csv files used in ImportProductSets (if that was how you originally built the Product Set) before starting PurgeProducts, in case you need to re-import the data after deletion. If the plan is to purge all of the Products from a ProductSet and then re-use the empty ProductSet to re-import new Products into the empty ProductSet, you must wait until the PurgeProducts operation has finished for that ProductSet. The google.longrunning.Operation API can be used to keep track of the progress and results of the request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) */
 export const purgeProjectsLocationsProducts: API.OperationMethod<
@@ -6625,7 +6749,7 @@ export const purgeProjectsLocationsProducts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsProductsRequest,
   output: PurgeProjectsLocationsProductsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsProductsReferenceImagesRequest {
@@ -6658,7 +6782,12 @@ export type CreateProjectsLocationsProductsReferenceImagesResponse =
 export const CreateProjectsLocationsProductsReferenceImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReferenceImage;
 
-export type CreateProjectsLocationsProductsReferenceImagesError = DefaultErrors;
+export type CreateProjectsLocationsProductsReferenceImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates and returns a new ReferenceImage resource. The `bounding_poly` field is optional. If `bounding_poly` is not specified, the system will try to detect regions of interest in the image that are compatible with the product_category on the parent product. If it is specified, detection is ALWAYS skipped. The system converts polygons into non-rotated rectangles. Note that the pipeline will resize the image if the image resolution is too large to process (above 50MP). Possible errors: * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if the product does not exist. * Returns INVALID_ARGUMENT if bounding_poly is not provided, and nothing compatible with the parent product's product_category is detected. * Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons. */
 export const createProjectsLocationsProductsReferenceImages: API.OperationMethod<
@@ -6669,7 +6798,7 @@ export const createProjectsLocationsProductsReferenceImages: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsProductsReferenceImagesRequest,
   output: CreateProjectsLocationsProductsReferenceImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsProductsReferenceImagesRequest {
@@ -6689,7 +6818,12 @@ export type DeleteProjectsLocationsProductsReferenceImagesResponse = Empty;
 export const DeleteProjectsLocationsProductsReferenceImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsProductsReferenceImagesError = DefaultErrors;
+export type DeleteProjectsLocationsProductsReferenceImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a reference image. The image metadata will be deleted right away, but search queries against ProductSets containing the image may still work until all related caches are refreshed. The actual image files are not deleted from Google Cloud Storage. */
 export const deleteProjectsLocationsProductsReferenceImages: API.OperationMethod<
@@ -6700,7 +6834,7 @@ export const deleteProjectsLocationsProductsReferenceImages: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsProductsReferenceImagesRequest,
   output: DeleteProjectsLocationsProductsReferenceImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsProductsReferenceImagesRequest {
@@ -6727,7 +6861,10 @@ export type ListProjectsLocationsProductsReferenceImagesResponse =
 export const ListProjectsLocationsProductsReferenceImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReferenceImagesResponse;
 
-export type ListProjectsLocationsProductsReferenceImagesError = DefaultErrors;
+export type ListProjectsLocationsProductsReferenceImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists reference images. Possible errors: * Returns NOT_FOUND if the parent product does not exist. * Returns INVALID_ARGUMENT if the page_size is greater than 100, or less than 1. */
 export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperationMethod<
@@ -6738,7 +6875,7 @@ export const listProjectsLocationsProductsReferenceImages: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsProductsReferenceImagesRequest,
   output: ListProjectsLocationsProductsReferenceImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -6763,7 +6900,10 @@ export type GetProjectsLocationsProductsReferenceImagesResponse =
 export const GetProjectsLocationsProductsReferenceImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ReferenceImage;
 
-export type GetProjectsLocationsProductsReferenceImagesError = DefaultErrors;
+export type GetProjectsLocationsProductsReferenceImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist. */
 export const getProjectsLocationsProductsReferenceImages: API.OperationMethod<
@@ -6774,7 +6914,7 @@ export const getProjectsLocationsProductsReferenceImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsProductsReferenceImagesRequest,
   output: GetProjectsLocationsProductsReferenceImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AnnotateProjectsLocationsImagesRequest {
@@ -6802,7 +6942,12 @@ export type AnnotateProjectsLocationsImagesResponse =
 export const AnnotateProjectsLocationsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateImagesResponse;
 
-export type AnnotateProjectsLocationsImagesError = DefaultErrors;
+export type AnnotateProjectsLocationsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run image detection and annotation for a batch of images. */
 export const annotateProjectsLocationsImages: API.OperationMethod<
@@ -6813,7 +6958,7 @@ export const annotateProjectsLocationsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsLocationsImagesRequest,
   output: AnnotateProjectsLocationsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsLocationsImagesRequest {
@@ -6840,7 +6985,12 @@ export type AsyncBatchAnnotateProjectsLocationsImagesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsLocationsImagesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsLocationsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
@@ -6851,7 +7001,7 @@ export const asyncBatchAnnotateProjectsLocationsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsLocationsImagesRequest,
   output: AsyncBatchAnnotateProjectsLocationsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsLocationsFilesRequest {
@@ -6878,7 +7028,12 @@ export type AnnotateProjectsLocationsFilesResponse = BatchAnnotateFilesResponse;
 export const AnnotateProjectsLocationsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateFilesResponse;
 
-export type AnnotateProjectsLocationsFilesError = DefaultErrors;
+export type AnnotateProjectsLocationsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateProjectsLocationsFiles: API.OperationMethod<
@@ -6889,7 +7044,7 @@ export const annotateProjectsLocationsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsLocationsFilesRequest,
   output: AnnotateProjectsLocationsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsLocationsFilesRequest {
@@ -6916,7 +7071,12 @@ export type AsyncBatchAnnotateProjectsLocationsFilesResponse = Operation;
 export const AsyncBatchAnnotateProjectsLocationsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsLocationsFilesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsLocationsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
@@ -6927,7 +7087,7 @@ export const asyncBatchAnnotateProjectsLocationsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsLocationsFilesRequest,
   output: AsyncBatchAnnotateProjectsLocationsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsImagesRequest {
@@ -6954,7 +7114,12 @@ export type AnnotateProjectsImagesResponse = BatchAnnotateImagesResponse;
 export const AnnotateProjectsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateImagesResponse;
 
-export type AnnotateProjectsImagesError = DefaultErrors;
+export type AnnotateProjectsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run image detection and annotation for a batch of images. */
 export const annotateProjectsImages: API.OperationMethod<
@@ -6965,7 +7130,7 @@ export const annotateProjectsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsImagesRequest,
   output: AnnotateProjectsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsImagesRequest {
@@ -6992,7 +7157,12 @@ export type AsyncBatchAnnotateProjectsImagesResponse = Operation;
 export const AsyncBatchAnnotateProjectsImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsImagesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
@@ -7003,7 +7173,7 @@ export const asyncBatchAnnotateProjectsImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsImagesRequest,
   output: AsyncBatchAnnotateProjectsImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateProjectsFilesRequest {
@@ -7030,7 +7200,12 @@ export type AnnotateProjectsFilesResponse = BatchAnnotateFilesResponse;
 export const AnnotateProjectsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateFilesResponse;
 
-export type AnnotateProjectsFilesError = DefaultErrors;
+export type AnnotateProjectsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateProjectsFiles: API.OperationMethod<
@@ -7041,7 +7216,7 @@ export const annotateProjectsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateProjectsFilesRequest,
   output: AnnotateProjectsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateProjectsFilesRequest {
@@ -7068,7 +7243,12 @@ export type AsyncBatchAnnotateProjectsFilesResponse = Operation;
 export const AsyncBatchAnnotateProjectsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateProjectsFilesError = DefaultErrors;
+export type AsyncBatchAnnotateProjectsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
@@ -7079,7 +7259,7 @@ export const asyncBatchAnnotateProjectsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateProjectsFilesRequest,
   output: AsyncBatchAnnotateProjectsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLocationsOperationsRequest {
@@ -7099,7 +7279,7 @@ export type GetLocationsOperationsResponse = Operation;
 export const GetLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetLocationsOperationsError = DefaultErrors;
+export type GetLocationsOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getLocationsOperations: API.OperationMethod<
@@ -7110,7 +7290,7 @@ export const getLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsOperationsRequest,
   output: GetLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AnnotateImagesRequest {
@@ -7129,7 +7309,12 @@ export type AnnotateImagesResponse = BatchAnnotateImagesResponse;
 export const AnnotateImagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateImagesResponse;
 
-export type AnnotateImagesError = DefaultErrors;
+export type AnnotateImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run image detection and annotation for a batch of images. */
 export const annotateImages: API.OperationMethod<
@@ -7140,7 +7325,7 @@ export const annotateImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateImagesRequest,
   output: AnnotateImagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateImagesRequest_Op {
@@ -7164,7 +7349,12 @@ export type AsyncBatchAnnotateImagesResponse_Op = Operation;
 export const AsyncBatchAnnotateImagesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateImagesError = DefaultErrors;
+export type AsyncBatchAnnotateImagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto. */
 export const asyncBatchAnnotateImages: API.OperationMethod<
@@ -7175,7 +7365,7 @@ export const asyncBatchAnnotateImages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateImagesRequest_Op,
   output: AsyncBatchAnnotateImagesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AnnotateFilesRequest {
@@ -7194,7 +7384,12 @@ export type AnnotateFilesResponse = BatchAnnotateFilesResponse;
 export const AnnotateFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchAnnotateFilesResponse;
 
-export type AnnotateFilesError = DefaultErrors;
+export type AnnotateFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted. */
 export const annotateFiles: API.OperationMethod<
@@ -7205,7 +7400,7 @@ export const annotateFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AnnotateFilesRequest,
   output: AnnotateFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AsyncBatchAnnotateFilesRequest_Op {
@@ -7229,7 +7424,12 @@ export type AsyncBatchAnnotateFilesResponse_Op = Operation;
 export const AsyncBatchAnnotateFilesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type AsyncBatchAnnotateFilesError = DefaultErrors;
+export type AsyncBatchAnnotateFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results). */
 export const asyncBatchAnnotateFiles: API.OperationMethod<
@@ -7240,5 +7440,5 @@ export const asyncBatchAnnotateFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AsyncBatchAnnotateFilesRequest_Op,
   output: AsyncBatchAnnotateFilesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

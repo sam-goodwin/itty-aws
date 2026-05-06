@@ -266,6 +266,52 @@ export const AcknowledgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "AcknowledgeRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -284,7 +330,12 @@ export const CreateTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateTopicsResponse = Topic;
 export const CreateTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type CreateTopicsError = DefaultErrors;
+export type CreateTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates the given topic with the given name. */
 export const createTopics: API.OperationMethod<
@@ -295,7 +346,7 @@ export const createTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateTopicsRequest,
   output: CreateTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishTopicsRequest {
@@ -313,7 +364,12 @@ export const PublishTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PublishTopicsResponse = Empty;
 export const PublishTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type PublishTopicsError = DefaultErrors;
+export type PublishTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a message to the topic. Returns NOT_FOUND if the topic does not exist. */
 export const publishTopics: API.OperationMethod<
@@ -324,7 +380,7 @@ export const publishTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishTopicsRequest,
   output: PublishTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PublishBatchTopicsRequest {
@@ -348,7 +404,12 @@ export type PublishBatchTopicsResponse = PublishBatchResponse;
 export const PublishBatchTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PublishBatchResponse;
 
-export type PublishBatchTopicsError = DefaultErrors;
+export type PublishBatchTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist. */
 export const publishBatchTopics: API.OperationMethod<
@@ -359,7 +420,7 @@ export const publishBatchTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PublishBatchTopicsRequest,
   output: PublishBatchTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTopicsRequest {
@@ -377,7 +438,7 @@ export const GetTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTopicsResponse = Topic;
 export const GetTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type GetTopicsError = DefaultErrors;
+export type GetTopicsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here. */
 export const getTopics: API.OperationMethod<
@@ -388,7 +449,7 @@ export const getTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTopicsRequest,
   output: GetTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListTopicsRequest {
@@ -413,7 +474,7 @@ export type ListTopicsResponse_Op = ListTopicsResponse;
 export const ListTopicsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListTopicsResponse;
 
-export type ListTopicsError = DefaultErrors;
+export type ListTopicsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists matching topics. */
 export const listTopics: API.PaginatedOperationMethod<
@@ -424,7 +485,7 @@ export const listTopics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTopicsRequest,
   output: ListTopicsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -446,7 +507,12 @@ export const DeleteTopicsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteTopicsResponse = Empty;
 export const DeleteTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteTopicsError = DefaultErrors;
+export type DeleteTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name. */
 export const deleteTopics: API.OperationMethod<
@@ -457,7 +523,7 @@ export const deleteTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTopicsRequest,
   output: DeleteTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSubscriptionsRequest {
@@ -477,7 +543,12 @@ export type CreateSubscriptionsResponse = Subscription;
 export const CreateSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type CreateSubscriptionsError = DefaultErrors;
+export type CreateSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. */
 export const createSubscriptions: API.OperationMethod<
@@ -488,7 +559,7 @@ export const createSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSubscriptionsRequest,
   output: CreateSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSubscriptionsRequest {
@@ -508,7 +579,7 @@ export type GetSubscriptionsResponse = Subscription;
 export const GetSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetSubscriptionsError = DefaultErrors;
+export type GetSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the configuration details of a subscription. */
 export const getSubscriptions: API.OperationMethod<
@@ -519,7 +590,7 @@ export const getSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSubscriptionsRequest,
   output: GetSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSubscriptionsRequest {
@@ -545,7 +616,7 @@ export type ListSubscriptionsResponse_Op = ListSubscriptionsResponse;
 export const ListSubscriptionsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
 
-export type ListSubscriptionsError = DefaultErrors;
+export type ListSubscriptionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists matching subscriptions. */
 export const listSubscriptions: API.PaginatedOperationMethod<
@@ -556,7 +627,7 @@ export const listSubscriptions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSubscriptionsRequest,
   output: ListSubscriptionsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -579,7 +650,12 @@ export const DeleteSubscriptionsRequest =
 export type DeleteSubscriptionsResponse = Empty;
 export const DeleteSubscriptionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSubscriptionsError = DefaultErrors;
+export type DeleteSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND. */
 export const deleteSubscriptions: API.OperationMethod<
@@ -590,7 +666,7 @@ export const deleteSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSubscriptionsRequest,
   output: DeleteSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyPushConfigSubscriptionsRequest {
@@ -614,7 +690,12 @@ export type ModifyPushConfigSubscriptionsResponse = Empty;
 export const ModifyPushConfigSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ModifyPushConfigSubscriptionsError = DefaultErrors;
+export type ModifyPushConfigSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified. */
 export const modifyPushConfigSubscriptions: API.OperationMethod<
@@ -625,7 +706,7 @@ export const modifyPushConfigSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyPushConfigSubscriptionsRequest,
   output: ModifyPushConfigSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PullSubscriptionsRequest {
@@ -649,7 +730,12 @@ export type PullSubscriptionsResponse = PullResponse;
 export const PullSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PullResponse;
 
-export type PullSubscriptionsError = DefaultErrors;
+export type PullSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pulls a single message from the server. If return_immediately is true, and no messages are available in the subscription, this method returns FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no messages are available in a reasonable amount of time (to reduce system load). */
 export const pullSubscriptions: API.OperationMethod<
@@ -660,7 +746,7 @@ export const pullSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PullSubscriptionsRequest,
   output: PullSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PullBatchSubscriptionsRequest {
@@ -684,7 +770,12 @@ export type PullBatchSubscriptionsResponse = PullBatchResponse;
 export const PullBatchSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PullBatchResponse;
 
-export type PullBatchSubscriptionsError = DefaultErrors;
+export type PullBatchSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription. */
 export const pullBatchSubscriptions: API.OperationMethod<
@@ -695,7 +786,7 @@ export const pullBatchSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PullBatchSubscriptionsRequest,
   output: PullBatchSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ModifyAckDeadlineSubscriptionsRequest {
@@ -719,7 +810,12 @@ export type ModifyAckDeadlineSubscriptionsResponse = Empty;
 export const ModifyAckDeadlineSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type ModifyAckDeadlineSubscriptionsError = DefaultErrors;
+export type ModifyAckDeadlineSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the Ack deadline for a message received from a pull request. */
 export const modifyAckDeadlineSubscriptions: API.OperationMethod<
@@ -730,7 +826,7 @@ export const modifyAckDeadlineSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyAckDeadlineSubscriptionsRequest,
   output: ModifyAckDeadlineSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface AcknowledgeSubscriptionsRequest {
@@ -754,7 +850,12 @@ export type AcknowledgeSubscriptionsResponse = Empty;
 export const AcknowledgeSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type AcknowledgeSubscriptionsError = DefaultErrors;
+export type AcknowledgeSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull. */
 export const acknowledgeSubscriptions: API.OperationMethod<
@@ -765,5 +866,5 @@ export const acknowledgeSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AcknowledgeSubscriptionsRequest,
   output: AcknowledgeSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

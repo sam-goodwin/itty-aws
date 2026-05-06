@@ -1479,6 +1479,52 @@ export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "HttpBody" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1497,7 +1543,7 @@ export const GetOperationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetOperationsResponse = Operation;
 export const GetOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOperationsError = DefaultErrors;
+export type GetOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOperations: API.OperationMethod<
@@ -1508,7 +1554,7 @@ export const getOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOperationsRequest,
   output: GetOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetLocationsGlobalMetricsScopesRequest {
@@ -1528,7 +1574,10 @@ export type GetLocationsGlobalMetricsScopesResponse = MetricsScope;
 export const GetLocationsGlobalMetricsScopesResponse =
   /*@__PURE__*/ /*#__PURE__*/ MetricsScope;
 
-export type GetLocationsGlobalMetricsScopesError = DefaultErrors;
+export type GetLocationsGlobalMetricsScopesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a specific Metrics Scope, including the list of projects monitored by the specified Metrics Scope. */
 export const getLocationsGlobalMetricsScopes: API.OperationMethod<
@@ -1539,7 +1588,7 @@ export const getLocationsGlobalMetricsScopes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsGlobalMetricsScopesRequest,
   output: GetLocationsGlobalMetricsScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest {
@@ -1566,7 +1615,9 @@ export const ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesResp
   /*@__PURE__*/ /*#__PURE__*/ ListMetricsScopesByMonitoredProjectResponse;
 
 export type ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of every Metrics Scope that a specific MonitoredProject has been added to. The metrics scope representing the specified monitored project will always be the first entry in the response. */
 export const listMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopes: API.OperationMethod<
@@ -1578,7 +1629,7 @@ export const listMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopes: AP
   input: ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest,
   output:
     ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateLocationsGlobalMetricsScopesProjectsRequest {
@@ -1601,7 +1652,12 @@ export type CreateLocationsGlobalMetricsScopesProjectsResponse = Operation;
 export const CreateLocationsGlobalMetricsScopesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateLocationsGlobalMetricsScopesProjectsError = DefaultErrors;
+export type CreateLocationsGlobalMetricsScopesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a MonitoredProject with the given project ID to the specified Metrics Scope. */
 export const createLocationsGlobalMetricsScopesProjects: API.OperationMethod<
@@ -1612,7 +1668,7 @@ export const createLocationsGlobalMetricsScopesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateLocationsGlobalMetricsScopesProjectsRequest,
   output: CreateLocationsGlobalMetricsScopesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLocationsGlobalMetricsScopesProjectsRequest {
@@ -1632,7 +1688,12 @@ export type DeleteLocationsGlobalMetricsScopesProjectsResponse = Operation;
 export const DeleteLocationsGlobalMetricsScopesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteLocationsGlobalMetricsScopesProjectsError = DefaultErrors;
+export type DeleteLocationsGlobalMetricsScopesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a MonitoredProject from the specified Metrics Scope. */
 export const deleteLocationsGlobalMetricsScopesProjects: API.OperationMethod<
@@ -1643,7 +1704,7 @@ export const deleteLocationsGlobalMetricsScopesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsGlobalMetricsScopesProjectsRequest,
   output: DeleteLocationsGlobalMetricsScopesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDashboardsRequest {
@@ -1669,7 +1730,7 @@ export type ListProjectsDashboardsResponse = ListDashboardsResponse;
 export const ListProjectsDashboardsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDashboardsResponse;
 
-export type ListProjectsDashboardsError = DefaultErrors;
+export type ListProjectsDashboardsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on the specified project. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam). */
 export const listProjectsDashboards: API.PaginatedOperationMethod<
@@ -1680,7 +1741,7 @@ export const listProjectsDashboards: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDashboardsRequest,
   output: ListProjectsDashboardsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1704,7 +1765,7 @@ export type GetProjectsDashboardsResponse = Dashboard;
 export const GetProjectsDashboardsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dashboard;
 
-export type GetProjectsDashboardsError = DefaultErrors;
+export type GetProjectsDashboardsError = DefaultErrors | NotFound | Forbidden;
 
 /** Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam). */
 export const getProjectsDashboards: API.OperationMethod<
@@ -1715,7 +1776,7 @@ export const getProjectsDashboards: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDashboardsRequest,
   output: GetProjectsDashboardsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsDashboardsRequest {
@@ -1743,7 +1804,12 @@ export type PatchProjectsDashboardsResponse = Dashboard;
 export const PatchProjectsDashboardsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dashboard;
 
-export type PatchProjectsDashboardsError = DefaultErrors;
+export type PatchProjectsDashboardsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Replaces an existing custom dashboard with a new definition.This method requires the monitoring.dashboards.update permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam). */
 export const patchProjectsDashboards: API.OperationMethod<
@@ -1754,7 +1820,7 @@ export const patchProjectsDashboards: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsDashboardsRequest,
   output: PatchProjectsDashboardsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsDashboardsRequest {
@@ -1782,7 +1848,12 @@ export type CreateProjectsDashboardsResponse = Dashboard;
 export const CreateProjectsDashboardsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dashboard;
 
-export type CreateProjectsDashboardsError = DefaultErrors;
+export type CreateProjectsDashboardsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam). */
 export const createProjectsDashboards: API.OperationMethod<
@@ -1793,7 +1864,7 @@ export const createProjectsDashboards: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDashboardsRequest,
   output: CreateProjectsDashboardsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsDashboardsRequest {
@@ -1813,7 +1884,12 @@ export type DeleteProjectsDashboardsResponse = Empty;
 export const DeleteProjectsDashboardsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsDashboardsError = DefaultErrors;
+export type DeleteProjectsDashboardsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam). */
 export const deleteProjectsDashboards: API.OperationMethod<
@@ -1824,7 +1900,7 @@ export const deleteProjectsDashboards: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsDashboardsRequest,
   output: DeleteProjectsDashboardsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface LabelsProjectsLocationPrometheusApiV1Request {
@@ -1854,7 +1930,12 @@ export type LabelsProjectsLocationPrometheusApiV1Response = HttpBody;
 export const LabelsProjectsLocationPrometheusApiV1Response =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type LabelsProjectsLocationPrometheusApiV1Error = DefaultErrors;
+export type LabelsProjectsLocationPrometheusApiV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists labels for metrics. */
 export const labelsProjectsLocationPrometheusApiV1: API.OperationMethod<
@@ -1865,7 +1946,7 @@ export const labelsProjectsLocationPrometheusApiV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: LabelsProjectsLocationPrometheusApiV1Request,
   output: LabelsProjectsLocationPrometheusApiV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Query_rangeProjectsLocationPrometheusApiV1Request {
@@ -1895,7 +1976,12 @@ export type Query_rangeProjectsLocationPrometheusApiV1Response = HttpBody;
 export const Query_rangeProjectsLocationPrometheusApiV1Response =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type Query_rangeProjectsLocationPrometheusApiV1Error = DefaultErrors;
+export type Query_rangeProjectsLocationPrometheusApiV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Evaluate a PromQL query with start, end time range. */
 export const query_rangeProjectsLocationPrometheusApiV1: API.OperationMethod<
@@ -1906,7 +1992,7 @@ export const query_rangeProjectsLocationPrometheusApiV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Query_rangeProjectsLocationPrometheusApiV1Request,
   output: Query_rangeProjectsLocationPrometheusApiV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface Query_exemplarsProjectsLocationPrometheusApiV1Request {
@@ -1936,7 +2022,12 @@ export type Query_exemplarsProjectsLocationPrometheusApiV1Response = HttpBody;
 export const Query_exemplarsProjectsLocationPrometheusApiV1Response =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type Query_exemplarsProjectsLocationPrometheusApiV1Error = DefaultErrors;
+export type Query_exemplarsProjectsLocationPrometheusApiV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists exemplars relevant to a given PromQL query, */
 export const query_exemplarsProjectsLocationPrometheusApiV1: API.OperationMethod<
@@ -1947,7 +2038,7 @@ export const query_exemplarsProjectsLocationPrometheusApiV1: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: Query_exemplarsProjectsLocationPrometheusApiV1Request,
   output: Query_exemplarsProjectsLocationPrometheusApiV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryProjectsLocationPrometheusApiV1Request {
@@ -1977,7 +2068,12 @@ export type QueryProjectsLocationPrometheusApiV1Response = HttpBody;
 export const QueryProjectsLocationPrometheusApiV1Response =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type QueryProjectsLocationPrometheusApiV1Error = DefaultErrors;
+export type QueryProjectsLocationPrometheusApiV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Evaluate a PromQL query at a single point in time. */
 export const queryProjectsLocationPrometheusApiV1: API.OperationMethod<
@@ -1988,7 +2084,7 @@ export const queryProjectsLocationPrometheusApiV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryProjectsLocationPrometheusApiV1Request,
   output: QueryProjectsLocationPrometheusApiV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SeriesProjectsLocationPrometheusApiV1Request {
@@ -2018,7 +2114,12 @@ export type SeriesProjectsLocationPrometheusApiV1Response = HttpBody;
 export const SeriesProjectsLocationPrometheusApiV1Response =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type SeriesProjectsLocationPrometheusApiV1Error = DefaultErrors;
+export type SeriesProjectsLocationPrometheusApiV1Error =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Lists metadata for metrics. */
 export const seriesProjectsLocationPrometheusApiV1: API.OperationMethod<
@@ -2029,7 +2130,7 @@ export const seriesProjectsLocationPrometheusApiV1: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SeriesProjectsLocationPrometheusApiV1Request,
   output: SeriesProjectsLocationPrometheusApiV1Response,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationPrometheusApiV1MetadataRequest {
@@ -2061,7 +2162,10 @@ export type ListProjectsLocationPrometheusApiV1MetadataResponse = HttpBody;
 export const ListProjectsLocationPrometheusApiV1MetadataResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type ListProjectsLocationPrometheusApiV1MetadataError = DefaultErrors;
+export type ListProjectsLocationPrometheusApiV1MetadataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists metadata for metrics. */
 export const listProjectsLocationPrometheusApiV1Metadata: API.OperationMethod<
@@ -2072,7 +2176,7 @@ export const listProjectsLocationPrometheusApiV1Metadata: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListProjectsLocationPrometheusApiV1MetadataRequest,
   output: ListProjectsLocationPrometheusApiV1MetadataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ValuesProjectsLocationPrometheusApiV1LabelRequest {
@@ -2110,7 +2214,10 @@ export type ValuesProjectsLocationPrometheusApiV1LabelResponse = HttpBody;
 export const ValuesProjectsLocationPrometheusApiV1LabelResponse =
   /*@__PURE__*/ /*#__PURE__*/ HttpBody;
 
-export type ValuesProjectsLocationPrometheusApiV1LabelError = DefaultErrors;
+export type ValuesProjectsLocationPrometheusApiV1LabelError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists possible values for a given label name. */
 export const valuesProjectsLocationPrometheusApiV1Label: API.OperationMethod<
@@ -2121,5 +2228,5 @@ export const valuesProjectsLocationPrometheusApiV1Label: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValuesProjectsLocationPrometheusApiV1LabelRequest,
   output: ValuesProjectsLocationPrometheusApiV1LabelResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

@@ -1168,6 +1168,52 @@ export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 ).annotate({ identifier: "CancelOperationRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1195,7 +1241,12 @@ export type TranslateTextProjectsResponse = TranslateTextResponse;
 export const TranslateTextProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslateTextResponse;
 
-export type TranslateTextProjectsError = DefaultErrors;
+export type TranslateTextProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates input text and returns translated text. */
 export const translateTextProjects: API.OperationMethod<
@@ -1206,7 +1257,7 @@ export const translateTextProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateTextProjectsRequest,
   output: TranslateTextProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RomanizeTextProjectsRequest {
@@ -1229,7 +1280,12 @@ export type RomanizeTextProjectsResponse = RomanizeTextResponse;
 export const RomanizeTextProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RomanizeTextResponse;
 
-export type RomanizeTextProjectsError = DefaultErrors;
+export type RomanizeTextProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Romanize input text written in non-Latin scripts to Latin text. */
 export const romanizeTextProjects: API.OperationMethod<
@@ -1240,7 +1296,7 @@ export const romanizeTextProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RomanizeTextProjectsRequest,
   output: RomanizeTextProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetectLanguageProjectsRequest {
@@ -1267,7 +1323,12 @@ export type DetectLanguageProjectsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DetectLanguageResponse;
 
-export type DetectLanguageProjectsError = DefaultErrors;
+export type DetectLanguageProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detects the language of text within a request. */
 export const detectLanguageProjects: API.OperationMethod<
@@ -1278,7 +1339,7 @@ export const detectLanguageProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetectLanguageProjectsRequest,
   output: DetectLanguageProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSupportedLanguagesProjectsRequest {
@@ -1306,7 +1367,10 @@ export type GetSupportedLanguagesProjectsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SupportedLanguages;
 
-export type GetSupportedLanguagesProjectsError = DefaultErrors;
+export type GetSupportedLanguagesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of supported languages for translation. */
 export const getSupportedLanguagesProjects: API.OperationMethod<
@@ -1317,7 +1381,7 @@ export const getSupportedLanguagesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSupportedLanguagesProjectsRequest,
   output: GetSupportedLanguagesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface AdaptiveMtTranslateProjectsLocationsRequest {
@@ -1345,7 +1409,12 @@ export type AdaptiveMtTranslateProjectsLocationsResponse =
 export const AdaptiveMtTranslateProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdaptiveMtTranslateResponse;
 
-export type AdaptiveMtTranslateProjectsLocationsError = DefaultErrors;
+export type AdaptiveMtTranslateProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translate text using Adaptive MT. */
 export const adaptiveMtTranslateProjectsLocations: API.OperationMethod<
@@ -1356,7 +1425,7 @@ export const adaptiveMtTranslateProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AdaptiveMtTranslateProjectsLocationsRequest,
   output: AdaptiveMtTranslateProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRequest {
@@ -1376,7 +1445,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1387,7 +1456,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchTranslateTextProjectsLocationsRequest {
@@ -1414,7 +1483,12 @@ export type BatchTranslateTextProjectsLocationsResponse = Operation;
 export const BatchTranslateTextProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchTranslateTextProjectsLocationsError = DefaultErrors;
+export type BatchTranslateTextProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates a large volume of text in asynchronous batch mode. This function provides real-time output as the inputs are being processed. If caller cancels a request, the partial results (for an input file, it's all or nothing) may still be available on the specified output location. This call returns immediately and you can use google.longrunning.Operation.name to poll the status of the call. */
 export const batchTranslateTextProjectsLocations: API.OperationMethod<
@@ -1425,7 +1499,7 @@ export const batchTranslateTextProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchTranslateTextProjectsLocationsRequest,
   output: BatchTranslateTextProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TranslateDocumentProjectsLocationsRequest {
@@ -1453,7 +1527,12 @@ export type TranslateDocumentProjectsLocationsResponse =
 export const TranslateDocumentProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslateDocumentResponse;
 
-export type TranslateDocumentProjectsLocationsError = DefaultErrors;
+export type TranslateDocumentProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates documents in synchronous mode. */
 export const translateDocumentProjectsLocations: API.OperationMethod<
@@ -1464,7 +1543,7 @@ export const translateDocumentProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateDocumentProjectsLocationsRequest,
   output: TranslateDocumentProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DetectLanguageProjectsLocationsRequest {
@@ -1491,7 +1570,12 @@ export type DetectLanguageProjectsLocationsResponse = DetectLanguageResponse;
 export const DetectLanguageProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DetectLanguageResponse;
 
-export type DetectLanguageProjectsLocationsError = DefaultErrors;
+export type DetectLanguageProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Detects the language of text within a request. */
 export const detectLanguageProjectsLocations: API.OperationMethod<
@@ -1502,7 +1586,7 @@ export const detectLanguageProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DetectLanguageProjectsLocationsRequest,
   output: DetectLanguageProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSupportedLanguagesProjectsLocationsRequest {
@@ -1530,7 +1614,10 @@ export type GetSupportedLanguagesProjectsLocationsResponse = SupportedLanguages;
 export const GetSupportedLanguagesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SupportedLanguages;
 
-export type GetSupportedLanguagesProjectsLocationsError = DefaultErrors;
+export type GetSupportedLanguagesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of supported languages for translation. */
 export const getSupportedLanguagesProjectsLocations: API.OperationMethod<
@@ -1541,7 +1628,7 @@ export const getSupportedLanguagesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSupportedLanguagesProjectsLocationsRequest,
   output: GetSupportedLanguagesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BatchTranslateDocumentProjectsLocationsRequest {
@@ -1568,7 +1655,12 @@ export type BatchTranslateDocumentProjectsLocationsResponse = Operation;
 export const BatchTranslateDocumentProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BatchTranslateDocumentProjectsLocationsError = DefaultErrors;
+export type BatchTranslateDocumentProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates a large volume of document in asynchronous batch mode. This function provides real-time output as the inputs are being processed. If caller cancels a request, the partial results (for an input file, it's all or nothing) may still be available on the specified output location. This call returns immediately and you can use google.longrunning.Operation.name to poll the status of the call. */
 export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
@@ -1579,7 +1671,7 @@ export const batchTranslateDocumentProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchTranslateDocumentProjectsLocationsRequest,
   output: BatchTranslateDocumentProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TranslateTextProjectsLocationsRequest {
@@ -1606,7 +1698,12 @@ export type TranslateTextProjectsLocationsResponse = TranslateTextResponse;
 export const TranslateTextProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TranslateTextResponse;
 
-export type TranslateTextProjectsLocationsError = DefaultErrors;
+export type TranslateTextProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Translates input text and returns translated text. */
 export const translateTextProjectsLocations: API.OperationMethod<
@@ -1617,7 +1714,7 @@ export const translateTextProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TranslateTextProjectsLocationsRequest,
   output: TranslateTextProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -1651,7 +1748,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1662,7 +1759,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1689,7 +1786,12 @@ export type RefineTextProjectsLocationsResponse = RefineTextResponse;
 export const RefineTextProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RefineTextResponse;
 
-export type RefineTextProjectsLocationsError = DefaultErrors;
+export type RefineTextProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Refines the input translated text to improve the quality. */
 export const refineTextProjectsLocations: API.OperationMethod<
@@ -1700,7 +1802,7 @@ export const refineTextProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RefineTextProjectsLocationsRequest,
   output: RefineTextProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RomanizeTextProjectsLocationsRequest {
@@ -1723,7 +1825,12 @@ export type RomanizeTextProjectsLocationsResponse = RomanizeTextResponse;
 export const RomanizeTextProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ RomanizeTextResponse;
 
-export type RomanizeTextProjectsLocationsError = DefaultErrors;
+export type RomanizeTextProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Romanize input text written in non-Latin scripts to Latin text. */
 export const romanizeTextProjectsLocations: API.OperationMethod<
@@ -1734,7 +1841,7 @@ export const romanizeTextProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RomanizeTextProjectsLocationsRequest,
   output: RomanizeTextProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest {
@@ -1763,7 +1870,11 @@ export const ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ImportAdaptiveMtFileResponse;
 
 export type ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Imports an AdaptiveMtFile and adds all of its sentences into the AdaptiveMtDataset. */
 export const importAdaptiveMtFileProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
@@ -1774,7 +1885,7 @@ export const importAdaptiveMtFileProjectsLocationsAdaptiveMtDatasets: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsRequest,
   output: ImportAdaptiveMtFileProjectsLocationsAdaptiveMtDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsAdaptiveMtDatasetsRequest {
@@ -1794,7 +1905,12 @@ export type DeleteProjectsLocationsAdaptiveMtDatasetsResponse = Empty;
 export const DeleteProjectsLocationsAdaptiveMtDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsAdaptiveMtDatasetsError = DefaultErrors;
+export type DeleteProjectsLocationsAdaptiveMtDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an Adaptive MT dataset, including all its entries and associated metadata. */
 export const deleteProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
@@ -1805,7 +1921,7 @@ export const deleteProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAdaptiveMtDatasetsRequest,
   output: DeleteProjectsLocationsAdaptiveMtDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsAdaptiveMtDatasetsRequest {
@@ -1825,7 +1941,10 @@ export type GetProjectsLocationsAdaptiveMtDatasetsResponse = AdaptiveMtDataset;
 export const GetProjectsLocationsAdaptiveMtDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdaptiveMtDataset;
 
-export type GetProjectsLocationsAdaptiveMtDatasetsError = DefaultErrors;
+export type GetProjectsLocationsAdaptiveMtDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the Adaptive MT dataset. */
 export const getProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
@@ -1836,7 +1955,7 @@ export const getProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAdaptiveMtDatasetsRequest,
   output: GetProjectsLocationsAdaptiveMtDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsAdaptiveMtDatasetsRequest {
@@ -1864,7 +1983,12 @@ export type CreateProjectsLocationsAdaptiveMtDatasetsResponse =
 export const CreateProjectsLocationsAdaptiveMtDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdaptiveMtDataset;
 
-export type CreateProjectsLocationsAdaptiveMtDatasetsError = DefaultErrors;
+export type CreateProjectsLocationsAdaptiveMtDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an Adaptive MT dataset. */
 export const createProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
@@ -1875,7 +1999,7 @@ export const createProjectsLocationsAdaptiveMtDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAdaptiveMtDatasetsRequest,
   output: CreateProjectsLocationsAdaptiveMtDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAdaptiveMtDatasetsRequest {
@@ -1905,7 +2029,10 @@ export type ListProjectsLocationsAdaptiveMtDatasetsResponse =
 export const ListProjectsLocationsAdaptiveMtDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdaptiveMtDatasetsResponse;
 
-export type ListProjectsLocationsAdaptiveMtDatasetsError = DefaultErrors;
+export type ListProjectsLocationsAdaptiveMtDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Adaptive MT datasets for which the caller has read permission. */
 export const listProjectsLocationsAdaptiveMtDatasets: API.PaginatedOperationMethod<
@@ -1916,7 +2043,7 @@ export const listProjectsLocationsAdaptiveMtDatasets: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAdaptiveMtDatasetsRequest,
   output: ListProjectsLocationsAdaptiveMtDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1948,7 +2075,9 @@ export const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdaptiveMtFilesResponse;
 
 export type ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all AdaptiveMtFiles associated to an AdaptiveMtDataset. */
 export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.PaginatedOperationMethod<
@@ -1959,7 +2088,7 @@ export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest,
   output: ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1985,7 +2114,9 @@ export const GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdaptiveMtFile;
 
 export type GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets and AdaptiveMtFile */
 export const getProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.OperationMethod<
@@ -1996,7 +2127,7 @@ export const getProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest,
   output: GetProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest {
@@ -2018,7 +2149,11 @@ export const DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an AdaptiveMtFile along with its sentences. */
 export const deleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.OperationMethod<
@@ -2029,7 +2164,7 @@ export const deleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFiles: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesRequest,
   output: DeleteProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest {
@@ -2056,7 +2191,9 @@ export const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSen
   /*@__PURE__*/ /*#__PURE__*/ ListAdaptiveMtSentencesResponse;
 
 export type ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all AdaptiveMtSentences under a given file/dataset. */
 export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentences: API.PaginatedOperationMethod<
@@ -2069,7 +2206,7 @@ export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSen
     ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesRequest,
   output:
     ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtFilesAdaptiveMtSentencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2100,7 +2237,9 @@ export const ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResponse 
   /*@__PURE__*/ /*#__PURE__*/ ListAdaptiveMtSentencesResponse;
 
 export type ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all AdaptiveMtSentences under a given file/dataset. */
 export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentences: API.PaginatedOperationMethod<
@@ -2111,7 +2250,7 @@ export const listProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentences: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesRequest,
   output: ListProjectsLocationsAdaptiveMtDatasetsAdaptiveMtSentencesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2141,7 +2280,12 @@ export type PatchProjectsLocationsGlossariesResponse = Operation;
 export const PatchProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type PatchProjectsLocationsGlossariesError = DefaultErrors;
+export type PatchProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a glossary. A LRO is used since the update can be async if the glossary's entry file is updated. */
 export const patchProjectsLocationsGlossaries: API.OperationMethod<
@@ -2152,7 +2296,7 @@ export const patchProjectsLocationsGlossaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlossariesRequest,
   output: PatchProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlossariesRequest {
@@ -2181,7 +2325,10 @@ export type ListProjectsLocationsGlossariesResponse = ListGlossariesResponse;
 export const ListProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGlossariesResponse;
 
-export type ListProjectsLocationsGlossariesError = DefaultErrors;
+export type ListProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't exist. */
 export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
@@ -2192,7 +2339,7 @@ export const listProjectsLocationsGlossaries: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlossariesRequest,
   output: ListProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2216,7 +2363,10 @@ export type GetProjectsLocationsGlossariesResponse = Glossary;
 export const GetProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Glossary;
 
-export type GetProjectsLocationsGlossariesError = DefaultErrors;
+export type GetProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist. */
 export const getProjectsLocationsGlossaries: API.OperationMethod<
@@ -2227,7 +2377,7 @@ export const getProjectsLocationsGlossaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlossariesRequest,
   output: GetProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsGlossariesRequest {
@@ -2247,7 +2397,12 @@ export type DeleteProjectsLocationsGlossariesResponse = Operation;
 export const DeleteProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsGlossariesError = DefaultErrors;
+export type DeleteProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a glossary, or cancels glossary construction if the glossary isn't created yet. Returns NOT_FOUND, if the glossary doesn't exist. */
 export const deleteProjectsLocationsGlossaries: API.OperationMethod<
@@ -2258,7 +2413,7 @@ export const deleteProjectsLocationsGlossaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlossariesRequest,
   output: DeleteProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGlossariesRequest {
@@ -2281,7 +2436,12 @@ export type CreateProjectsLocationsGlossariesResponse = Operation;
 export const CreateProjectsLocationsGlossariesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsGlossariesError = DefaultErrors;
+export type CreateProjectsLocationsGlossariesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist. */
 export const createProjectsLocationsGlossaries: API.OperationMethod<
@@ -2292,7 +2452,7 @@ export const createProjectsLocationsGlossaries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlossariesRequest,
   output: CreateProjectsLocationsGlossariesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsGlossariesGlossaryEntriesRequest {
@@ -2317,7 +2477,11 @@ export const PatchProjectsLocationsGlossariesGlossaryEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GlossaryEntry;
 
 export type PatchProjectsLocationsGlossariesGlossaryEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a glossary entry. */
 export const patchProjectsLocationsGlossariesGlossaryEntries: API.OperationMethod<
@@ -2328,7 +2492,7 @@ export const patchProjectsLocationsGlossariesGlossaryEntries: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsGlossariesGlossaryEntriesRequest,
   output: PatchProjectsLocationsGlossariesGlossaryEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsGlossariesGlossaryEntriesRequest {
@@ -2355,7 +2519,10 @@ export type ListProjectsLocationsGlossariesGlossaryEntriesResponse =
 export const ListProjectsLocationsGlossariesGlossaryEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListGlossaryEntriesResponse;
 
-export type ListProjectsLocationsGlossariesGlossaryEntriesError = DefaultErrors;
+export type ListProjectsLocationsGlossariesGlossaryEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the entries for the glossary. */
 export const listProjectsLocationsGlossariesGlossaryEntries: API.PaginatedOperationMethod<
@@ -2366,7 +2533,7 @@ export const listProjectsLocationsGlossariesGlossaryEntries: API.PaginatedOperat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsGlossariesGlossaryEntriesRequest,
   output: ListProjectsLocationsGlossariesGlossaryEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2391,7 +2558,10 @@ export type GetProjectsLocationsGlossariesGlossaryEntriesResponse =
 export const GetProjectsLocationsGlossariesGlossaryEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GlossaryEntry;
 
-export type GetProjectsLocationsGlossariesGlossaryEntriesError = DefaultErrors;
+export type GetProjectsLocationsGlossariesGlossaryEntriesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a single glossary entry by the given id. */
 export const getProjectsLocationsGlossariesGlossaryEntries: API.OperationMethod<
@@ -2402,7 +2572,7 @@ export const getProjectsLocationsGlossariesGlossaryEntries: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsGlossariesGlossaryEntriesRequest,
   output: GetProjectsLocationsGlossariesGlossaryEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsGlossariesGlossaryEntriesRequest {
@@ -2423,7 +2593,11 @@ export const DeleteProjectsLocationsGlossariesGlossaryEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsLocationsGlossariesGlossaryEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a single entry from the glossary */
 export const deleteProjectsLocationsGlossariesGlossaryEntries: API.OperationMethod<
@@ -2434,7 +2608,7 @@ export const deleteProjectsLocationsGlossariesGlossaryEntries: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsGlossariesGlossaryEntriesRequest,
   output: DeleteProjectsLocationsGlossariesGlossaryEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsGlossariesGlossaryEntriesRequest {
@@ -2463,7 +2637,11 @@ export const CreateProjectsLocationsGlossariesGlossaryEntriesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GlossaryEntry;
 
 export type CreateProjectsLocationsGlossariesGlossaryEntriesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a glossary entry. */
 export const createProjectsLocationsGlossariesGlossaryEntries: API.OperationMethod<
@@ -2474,7 +2652,7 @@ export const createProjectsLocationsGlossariesGlossaryEntries: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsGlossariesGlossaryEntriesRequest,
   output: CreateProjectsLocationsGlossariesGlossaryEntriesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsDatasetsRequest {
@@ -2497,7 +2675,12 @@ export type CreateProjectsLocationsDatasetsResponse = Operation;
 export const CreateProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsDatasetsError = DefaultErrors;
+export type CreateProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Dataset. */
 export const createProjectsLocationsDatasets: API.OperationMethod<
@@ -2508,7 +2691,7 @@ export const createProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsDatasetsRequest,
   output: CreateProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ImportDataProjectsLocationsDatasetsRequest {
@@ -2531,7 +2714,12 @@ export type ImportDataProjectsLocationsDatasetsResponse = Operation;
 export const ImportDataProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ImportDataProjectsLocationsDatasetsError = DefaultErrors;
+export type ImportDataProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Import sentence pairs into translation Dataset. */
 export const importDataProjectsLocationsDatasets: API.OperationMethod<
@@ -2542,7 +2730,7 @@ export const importDataProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ImportDataProjectsLocationsDatasetsRequest,
   output: ImportDataProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsDatasetsRequest {
@@ -2562,7 +2750,10 @@ export type GetProjectsLocationsDatasetsResponse = Dataset;
 export const GetProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Dataset;
 
-export type GetProjectsLocationsDatasetsError = DefaultErrors;
+export type GetProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Dataset. */
 export const getProjectsLocationsDatasets: API.OperationMethod<
@@ -2573,7 +2764,7 @@ export const getProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDatasetsRequest,
   output: GetProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsDatasetsRequest {
@@ -2593,7 +2784,12 @@ export type DeleteProjectsLocationsDatasetsResponse = Operation;
 export const DeleteProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsDatasetsError = DefaultErrors;
+export type DeleteProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a dataset and all of its contents. */
 export const deleteProjectsLocationsDatasets: API.OperationMethod<
@@ -2604,7 +2800,7 @@ export const deleteProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsDatasetsRequest,
   output: DeleteProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ExportDataProjectsLocationsDatasetsRequest {
@@ -2627,7 +2823,12 @@ export type ExportDataProjectsLocationsDatasetsResponse = Operation;
 export const ExportDataProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type ExportDataProjectsLocationsDatasetsError = DefaultErrors;
+export type ExportDataProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Exports dataset's data to the provided output location. */
 export const exportDataProjectsLocationsDatasets: API.OperationMethod<
@@ -2638,7 +2839,7 @@ export const exportDataProjectsLocationsDatasets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportDataProjectsLocationsDatasetsRequest,
   output: ExportDataProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDatasetsRequest {
@@ -2664,7 +2865,10 @@ export type ListProjectsLocationsDatasetsResponse = ListDatasetsResponse;
 export const ListProjectsLocationsDatasetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDatasetsResponse;
 
-export type ListProjectsLocationsDatasetsError = DefaultErrors;
+export type ListProjectsLocationsDatasetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists datasets. */
 export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
@@ -2675,7 +2879,7 @@ export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsRequest,
   output: ListProjectsLocationsDatasetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2709,7 +2913,10 @@ export type ListProjectsLocationsDatasetsExamplesResponse =
 export const ListProjectsLocationsDatasetsExamplesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListExamplesResponse;
 
-export type ListProjectsLocationsDatasetsExamplesError = DefaultErrors;
+export type ListProjectsLocationsDatasetsExamplesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists sentence pairs in the dataset. */
 export const listProjectsLocationsDatasetsExamples: API.PaginatedOperationMethod<
@@ -2720,7 +2927,7 @@ export const listProjectsLocationsDatasetsExamples: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDatasetsExamplesRequest,
   output: ListProjectsLocationsDatasetsExamplesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2744,7 +2951,10 @@ export type GetProjectsLocationsOperationsResponse = Operation;
 export const GetProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetProjectsLocationsOperationsError = DefaultErrors;
+export type GetProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getProjectsLocationsOperations: API.OperationMethod<
@@ -2755,7 +2965,7 @@ export const getProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsOperationsRequest,
   output: GetProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsOperationsRequest {
@@ -2775,7 +2985,12 @@ export type DeleteProjectsLocationsOperationsResponse = Empty;
 export const DeleteProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteProjectsLocationsOperations: API.OperationMethod<
@@ -2786,7 +3001,7 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsOperationsRequest,
   output: DeleteProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelProjectsLocationsOperationsRequest {
@@ -2809,7 +3024,12 @@ export type CancelProjectsLocationsOperationsResponse = Empty;
 export const CancelProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelProjectsLocationsOperationsError = DefaultErrors;
+export type CancelProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelProjectsLocationsOperations: API.OperationMethod<
@@ -2820,7 +3040,7 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: CancelProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsOperationsRequest {
@@ -2854,7 +3074,10 @@ export type ListProjectsLocationsOperationsResponse = ListOperationsResponse;
 export const ListProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListProjectsLocationsOperationsError = DefaultErrors;
+export type ListProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -2865,7 +3088,7 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsOperationsRequest,
   output: ListProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2892,7 +3115,12 @@ export type WaitProjectsLocationsOperationsResponse = Operation;
 export const WaitProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type WaitProjectsLocationsOperationsError = DefaultErrors;
+export type WaitProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done. */
 export const waitProjectsLocationsOperations: API.OperationMethod<
@@ -2903,7 +3131,7 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WaitProjectsLocationsOperationsRequest,
   output: WaitProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsLocationsModelsRequest {
@@ -2926,7 +3154,12 @@ export type CreateProjectsLocationsModelsResponse = Operation;
 export const CreateProjectsLocationsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type CreateProjectsLocationsModelsError = DefaultErrors;
+export type CreateProjectsLocationsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Model. */
 export const createProjectsLocationsModels: API.OperationMethod<
@@ -2937,7 +3170,7 @@ export const createProjectsLocationsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsModelsRequest,
   output: CreateProjectsLocationsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsModelsRequest {
@@ -2957,7 +3190,10 @@ export type GetProjectsLocationsModelsResponse = Model;
 export const GetProjectsLocationsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Model;
 
-export type GetProjectsLocationsModelsError = DefaultErrors;
+export type GetProjectsLocationsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a model. */
 export const getProjectsLocationsModels: API.OperationMethod<
@@ -2968,7 +3204,7 @@ export const getProjectsLocationsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsModelsRequest,
   output: GetProjectsLocationsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsModelsRequest {
@@ -2988,7 +3224,12 @@ export type DeleteProjectsLocationsModelsResponse = Operation;
 export const DeleteProjectsLocationsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type DeleteProjectsLocationsModelsError = DefaultErrors;
+export type DeleteProjectsLocationsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a model. */
 export const deleteProjectsLocationsModels: API.OperationMethod<
@@ -2999,7 +3240,7 @@ export const deleteProjectsLocationsModels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsModelsRequest,
   output: DeleteProjectsLocationsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsModelsRequest {
@@ -3028,7 +3269,10 @@ export type ListProjectsLocationsModelsResponse = ListModelsResponse;
 export const ListProjectsLocationsModelsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListModelsResponse;
 
-export type ListProjectsLocationsModelsError = DefaultErrors;
+export type ListProjectsLocationsModelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists models. */
 export const listProjectsLocationsModels: API.PaginatedOperationMethod<
@@ -3039,7 +3283,7 @@ export const listProjectsLocationsModels: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsModelsRequest,
   output: ListProjectsLocationsModelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

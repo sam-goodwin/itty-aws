@@ -3174,6 +3174,52 @@ export const SetUpSpaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SetUpSpaceRequest" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3192,7 +3238,12 @@ export const SetupSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type SetupSpacesResponse = Space;
 export const SetupSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type SetupSpacesError = DefaultErrors;
+export type SetupSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a space and adds specified users to it. The calling user is automatically added to the space, and shouldn't be specified as a membership in the request. For an example, see [Set up a space with initial members](https://developers.google.com/workspace/chat/set-up-spaces). To specify the human members to add, add memberships with the appropriate `membership.member.name`. To add a human user, use `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. To specify the Google groups to add, add memberships with the appropriate `membership.group_member.name`. To add or invite a Google group, use `groups/{group}`, where `{group}` is the `id` for the group from the Cloud Identity Groups API. For example, you can use [Cloud Identity Groups lookup API](https://cloud.google.com/identity/docs/reference/rest/v1/groups/lookup) to retrieve the ID `123456789` for group email `group@example.com`, then you can add the group to the space by setting the `membership.group_member.name` to `groups/123456789`. Group email is not supported, and Google groups can only be added as members in named spaces. For a named space or group chat, if the caller blocks, or is blocked by some members, or doesn't have permission to add some members, then those members aren't added to the created space. To create a direct message (DM) between the calling user and another human user, specify exactly one membership to represent the human user. If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can only use this method to set up a DM with the calling app. To add the calling app as a member of a space or an existing DM between two human users, see [Invite or add a user or app to a space](https://developers.google.com/workspace/chat/create-members). If a DM already exists between two users, even when one user blocks the other at the time a request is made, then the existing DM is returned. Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.spaces.create` - `https://www.googleapis.com/auth/chat.spaces` */
 export const setupSpaces: API.OperationMethod<
@@ -3203,7 +3254,7 @@ export const setupSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetupSpacesRequest,
   output: SetupSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchSpacesRequest {
@@ -3236,7 +3287,7 @@ export type SearchSpacesResponse_Op = SearchSpacesResponse;
 export const SearchSpacesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchSpacesResponse;
 
-export type SearchSpacesError = DefaultErrors;
+export type SearchSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of spaces in a Google Workspace organization based on an administrator's search. In the request, set `use_admin_access` to `true`. For an example, see [Search for and manage spaces](https://developers.google.com/workspace/chat/search-manage-admin). Requires [user authentication with administrator privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges) and one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.admin.spaces.readonly` - `https://www.googleapis.com/auth/chat.admin.spaces` */
 export const searchSpaces: API.PaginatedOperationMethod<
@@ -3247,7 +3298,7 @@ export const searchSpaces: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchSpacesRequest,
   output: SearchSpacesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3274,7 +3325,7 @@ export const GetSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetSpacesResponse = Space;
 export const GetSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type GetSpacesError = DefaultErrors;
+export type GetSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns details about a space. For an example, see [Get details about a space](https://developers.google.com/workspace/chat/get-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.bot` - `https://www.googleapis.com/auth/chat.app.spaces` with [administrator approval](https://support.google.com/a?p=chat-app-auth) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and one of the following authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.spaces.readonly` - `https://www.googleapis.com/auth/chat.admin.spaces` App authentication has the following limitations: - `space.access_settings` is only populated when using the `chat.app.spaces` scope. - `space.predefind_permission_settings` and `space.permission_settings` are only populated when using the `chat.app.spaces` scope, and only for spaces the app created. */
 export const getSpaces: API.OperationMethod<
@@ -3285,7 +3336,7 @@ export const getSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpacesRequest,
   output: GetSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateSpacesRequest {
@@ -3306,7 +3357,12 @@ export const CreateSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CreateSpacesResponse = Space;
 export const CreateSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type CreateSpacesError = DefaultErrors;
+export type CreateSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a space. Can be used to create a named space, or a group chat in `Import mode`. For an example, see [Create a space](https://developers.google.com/workspace/chat/create-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) and one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces.create` - `https://www.googleapis.com/auth/chat.app.spaces` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.create` - `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) When authenticating as an app, the `space.customer` field must be set in the request. When authenticating as an app, the Chat app is added as a member of the space. However, unlike human authentication, the Chat app is not added as a space manager. By default, the Chat app can be removed from the space by all space members. To allow only space managers to remove the app from a space, set `space.permission_settings.manage_apps` to `managers_allowed`. Space membership upon creation depends on whether the space is created in `Import mode`: * **Import mode:** No members are created. * **All other modes:** The calling user is added as a member. This is: * The app itself when using app authentication. * The human user when using user authentication. If you receive the error message `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. */
 export const createSpaces: API.OperationMethod<
@@ -3317,7 +3373,7 @@ export const createSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSpacesRequest,
   output: CreateSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSpacesRequest {
@@ -3340,7 +3396,12 @@ export const DeleteSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DeleteSpacesResponse = Empty;
 export const DeleteSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSpacesError = DefaultErrors;
+export type DeleteSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a named space. Always performs a cascading delete, which means that the space's child resources—like messages posted in the space and memberships in the space—are also deleted. For an example, see [Delete a space](https://developers.google.com/workspace/chat/delete-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: - `https://www.googleapis.com/auth/chat.app.delete` (only in spaces the app created) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.delete` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and the following authorization scope is used: - `https://www.googleapis.com/auth/chat.admin.delete` */
 export const deleteSpaces: API.OperationMethod<
@@ -3351,7 +3412,7 @@ export const deleteSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSpacesRequest,
   output: DeleteSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSpacesRequest {
@@ -3376,7 +3437,7 @@ export type ListSpacesResponse_Op = ListSpacesResponse;
 export const ListSpacesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListSpacesResponse;
 
-export type ListSpacesError = DefaultErrors;
+export type ListSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists spaces the caller is a member of. Group chats and DMs aren't listed until the first message is sent. For an example, see [List spaces](https://developers.google.com/workspace/chat/list-spaces). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` To list all named spaces by Google Workspace organization, use the [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method using Workspace administrator privileges instead. */
 export const listSpaces: API.PaginatedOperationMethod<
@@ -3387,7 +3448,7 @@ export const listSpaces: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesRequest,
   output: ListSpacesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3414,7 +3475,12 @@ export type CompleteImportSpacesResponse = CompleteImportSpaceResponse;
 export const CompleteImportSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CompleteImportSpaceResponse;
 
-export type CompleteImportSpacesError = DefaultErrors;
+export type CompleteImportSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Completes the [import process](https://developers.google.com/workspace/chat/import-data) for the specified space and makes it visible to users. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) and domain-wide delegation with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.import` For more information, see [Authorize Google Chat apps to import data](https://developers.google.com/workspace/chat/authorize-import). */
 export const completeImportSpaces: API.OperationMethod<
@@ -3425,7 +3491,7 @@ export const completeImportSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CompleteImportSpacesRequest,
   output: CompleteImportSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FindGroupChatsSpacesRequest {
@@ -3460,7 +3526,7 @@ export type FindGroupChatsSpacesResponse = FindGroupChatsResponse;
 export const FindGroupChatsSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ FindGroupChatsResponse;
 
-export type FindGroupChatsSpacesError = DefaultErrors;
+export type FindGroupChatsSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** [Developer Preview](https://developers.google.com/workspace/preview): Returns all spaces with `spaceType == GROUP_CHAT`, whose human memberships contain exactly the calling user, and the users specified in `FindGroupChatsRequest.users`. Only members that have joined the conversation are supported. For an example, see [Find group chats](https://developers.google.com/workspace/chat/find-group-chats). If the calling user blocks, or is blocked by, some users, and no spaces with the entire specified set of users are found, this method returns spaces that don't include the blocked or blocking users. The specified set of users must contain only human (non-app) memberships. A request that contains non-human users doesn't return any spaces. Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships` */
 export const findGroupChatsSpaces: API.PaginatedOperationMethod<
@@ -3471,7 +3537,7 @@ export const findGroupChatsSpaces: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FindGroupChatsSpacesRequest,
   output: FindGroupChatsSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3504,7 +3570,12 @@ export const PatchSpacesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchSpacesResponse = Space;
 export const PatchSpacesResponse = /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type PatchSpacesError = DefaultErrors;
+export type PatchSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a space. For an example, see [Update a space](https://developers.google.com/workspace/chat/update-spaces). If you're updating the `displayName` field and receive the error message `ALREADY_EXISTS`, try a different display name.. An existing space within the Google Workspace organization might already use this display name. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) and one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and the following authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.spaces` App authentication has the following limitations: - To update either `space.predefined_permission_settings` or `space.permission_settings`, the app must be the space creator. - Updating the `space.access_settings.audience` is not supported for app authentication. */
 export const patchSpaces: API.OperationMethod<
@@ -3515,7 +3586,7 @@ export const patchSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSpacesRequest,
   output: PatchSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FindDirectMessageSpacesRequest {
@@ -3535,7 +3606,7 @@ export type FindDirectMessageSpacesResponse = Space;
 export const FindDirectMessageSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Space;
 
-export type FindDirectMessageSpacesError = DefaultErrors;
+export type FindDirectMessageSpacesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the existing direct message with the specified user. If no direct message space is found, returns a `404 NOT_FOUND` error. For an example, see [Find a direct message](/chat/api/guides/v1/spaces/find-direct-message). With [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app), returns the direct message space between the specified user and the calling Chat app. With [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), returns the direct message space between the specified user and the authenticated user. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` */
 export const findDirectMessageSpaces: API.OperationMethod<
@@ -3546,7 +3617,7 @@ export const findDirectMessageSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FindDirectMessageSpacesRequest,
   output: FindDirectMessageSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSpacesMessagesRequest {
@@ -3583,7 +3654,7 @@ export type ListSpacesMessagesResponse = ListMessagesResponse;
 export const ListSpacesMessagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMessagesResponse;
 
-export type ListSpacesMessagesError = DefaultErrors;
+export type ListSpacesMessagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists messages in a space that the caller is a member of, including messages from blocked members and spaces. System messages, like those announcing new space members, aren't included. If you list messages from a space with no messages, the response is an empty object. When using a REST/HTTP interface, the response contains an empty JSON object, `{}`. For an example, see [List messages](https://developers.google.com/workspace/chat/api/guides/v1/messages/list). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) with the authorization scope: - `https://www.googleapis.com/auth/chat.app.messages.readonly`. When using this authentication scope, this method only returns public messages in a space. It doesn't include private messages. - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) */
 export const listSpacesMessages: API.PaginatedOperationMethod<
@@ -3594,7 +3665,7 @@ export const listSpacesMessages: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMessagesRequest,
   output: ListSpacesMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3628,7 +3699,12 @@ export const PatchSpacesMessagesRequest =
 export type PatchSpacesMessagesResponse = Message;
 export const PatchSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type PatchSpacesMessagesError = DefaultErrors;
+export type PatchSpacesMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method. For an example, see [Update a message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) When using app authentication, requests can only update messages created by the calling Chat app. */
 export const patchSpacesMessages: API.OperationMethod<
@@ -3639,7 +3715,7 @@ export const patchSpacesMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSpacesMessagesRequest,
   output: PatchSpacesMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSpacesMessagesRequest {
@@ -3669,7 +3745,12 @@ export const UpdateSpacesMessagesRequest =
 export type UpdateSpacesMessagesResponse = Message;
 export const UpdateSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type UpdateSpacesMessagesError = DefaultErrors;
+export type UpdateSpacesMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a message. There's a difference between the `patch` and `update` methods. The `patch` method uses a `patch` request while the `update` method uses a `put` request. We recommend using the `patch` method. For an example, see [Update a message](https://developers.google.com/workspace/chat/update-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) When using app authentication, requests can only update messages created by the calling Chat app. */
 export const updateSpacesMessages: API.OperationMethod<
@@ -3680,7 +3761,7 @@ export const updateSpacesMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSpacesMessagesRequest,
   output: UpdateSpacesMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateSpacesMessagesRequest {
@@ -3720,7 +3801,12 @@ export const CreateSpacesMessagesRequest =
 export type CreateSpacesMessagesResponse = Message;
 export const CreateSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type CreateSpacesMessagesError = DefaultErrors;
+export type CreateSpacesMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a message in a Google Chat space. For an example, see [Send a message](https://developers.google.com/workspace/chat/create-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages.create` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) Chat attributes the message sender differently depending on the type of authentication that you use in your request. The following image shows how Chat attributes a message when you use app authentication. Chat displays the Chat app as the message sender. The content of the message can contain text (`text`), cards (`cardsV2`), and accessory widgets (`accessoryWidgets`). ![Message sent with app authentication](https://developers.google.com/workspace/chat/images/message-app-auth.svg) The following image shows how Chat attributes a message when you use user authentication. Chat displays the user as the message sender and attributes the Chat app to the message by displaying its name. The content of message can only contain text (`text`). ![Message sent with user authentication](https://developers.google.com/workspace/chat/images/message-user-auth.svg) The maximum message size, including the message contents, is 32,000 bytes. For [webhook](https://developers.google.com/workspace/chat/quickstart/webhooks) requests, the response doesn't contain the full message. The response only populates the `name` and `thread.name` fields in addition to the information that was in the request. */
 export const createSpacesMessages: API.OperationMethod<
@@ -3731,7 +3817,7 @@ export const createSpacesMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSpacesMessagesRequest,
   output: CreateSpacesMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpacesMessagesRequest {
@@ -3750,7 +3836,7 @@ export const GetSpacesMessagesRequest =
 export type GetSpacesMessagesResponse = Message;
 export const GetSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Message;
 
-export type GetSpacesMessagesError = DefaultErrors;
+export type GetSpacesMessagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns details about a message. For an example, see [Get details about a message](https://developers.google.com/workspace/chat/get-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.bot`: When using this authorization scope, this method returns details about a message the Chat app has access to, like direct messages and [slash commands](https://developers.google.com/workspace/chat/slash-commands) that invoke the Chat app. - `https://www.googleapis.com/auth/chat.app.messages.readonly` with [administrator approval](https://support.google.com/a?p=chat-app-auth). When using this authentication scope, this method returns details about a public message in a space. - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` Note: Might return a message from a blocked member or space. */
 export const getSpacesMessages: API.OperationMethod<
@@ -3761,7 +3847,7 @@ export const getSpacesMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpacesMessagesRequest,
   output: GetSpacesMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteSpacesMessagesRequest {
@@ -3783,7 +3869,12 @@ export const DeleteSpacesMessagesRequest =
 export type DeleteSpacesMessagesResponse = Empty;
 export const DeleteSpacesMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSpacesMessagesError = DefaultErrors;
+export type DeleteSpacesMessagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a message. For an example, see [Delete a message](https://developers.google.com/workspace/chat/delete-messages). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the authorization scope: - `https://www.googleapis.com/auth/chat.bot` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) When using app authentication, requests can only delete messages created by the calling Chat app. */
 export const deleteSpacesMessages: API.OperationMethod<
@@ -3794,7 +3885,7 @@ export const deleteSpacesMessages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSpacesMessagesRequest,
   output: DeleteSpacesMessagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpacesMessagesAttachmentsRequest {
@@ -3814,7 +3905,10 @@ export type GetSpacesMessagesAttachmentsResponse = Attachment;
 export const GetSpacesMessagesAttachmentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Attachment;
 
-export type GetSpacesMessagesAttachmentsError = DefaultErrors;
+export type GetSpacesMessagesAttachmentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the metadata of a message attachment. The attachment data is fetched using the [media API](https://developers.google.com/workspace/chat/api/reference/rest/v1/media/download). For an example, see [Get metadata about a message attachment](https://developers.google.com/workspace/chat/get-media-attachments). Requires [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.bot` */
 export const getSpacesMessagesAttachments: API.OperationMethod<
@@ -3825,7 +3919,7 @@ export const getSpacesMessagesAttachments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpacesMessagesAttachmentsRequest,
   output: GetSpacesMessagesAttachmentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListSpacesMessagesReactionsRequest {
@@ -3854,7 +3948,10 @@ export type ListSpacesMessagesReactionsResponse = ListReactionsResponse;
 export const ListSpacesMessagesReactionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReactionsResponse;
 
-export type ListSpacesMessagesReactionsError = DefaultErrors;
+export type ListSpacesMessagesReactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists reactions to a message. For an example, see [List reactions for a message](https://developers.google.com/workspace/chat/list-reactions). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.messages.reactions.readonly` - `https://www.googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` */
 export const listSpacesMessagesReactions: API.PaginatedOperationMethod<
@@ -3865,7 +3962,7 @@ export const listSpacesMessagesReactions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMessagesReactionsRequest,
   output: ListSpacesMessagesReactionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3892,7 +3989,12 @@ export type CreateSpacesMessagesReactionsResponse = Reaction;
 export const CreateSpacesMessagesReactionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reaction;
 
-export type CreateSpacesMessagesReactionsError = DefaultErrors;
+export type CreateSpacesMessagesReactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a reaction and adds it to a message. For an example, see [Add a reaction to a message](https://developers.google.com/workspace/chat/create-reactions). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.messages.reactions.create` - `https://www.googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) */
 export const createSpacesMessagesReactions: API.OperationMethod<
@@ -3903,7 +4005,7 @@ export const createSpacesMessagesReactions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSpacesMessagesReactionsRequest,
   output: CreateSpacesMessagesReactionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSpacesMessagesReactionsRequest {
@@ -3923,7 +4025,12 @@ export type DeleteSpacesMessagesReactionsResponse = Empty;
 export const DeleteSpacesMessagesReactionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteSpacesMessagesReactionsError = DefaultErrors;
+export type DeleteSpacesMessagesReactionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a reaction to a message. For an example, see [Delete a reaction](https://developers.google.com/workspace/chat/delete-reactions). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) */
 export const deleteSpacesMessagesReactions: API.OperationMethod<
@@ -3934,7 +4041,7 @@ export const deleteSpacesMessagesReactions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSpacesMessagesReactionsRequest,
   output: DeleteSpacesMessagesReactionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSpacesMembersRequest {
@@ -3976,7 +4083,7 @@ export type ListSpacesMembersResponse = ListMembershipsResponse;
 export const ListSpacesMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMembershipsResponse;
 
-export type ListSpacesMembersError = DefaultErrors;
+export type ListSpacesMembersError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists memberships in a space. For an example, see [List users and Google Chat apps in a space](https://developers.google.com/workspace/chat/list-members). Listing memberships with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) lists memberships in spaces that the Chat app has access to, but excludes Chat app memberships, including its own. Listing memberships with [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) lists memberships in spaces that the authenticated user has access to. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.bot` - `https://www.googleapis.com/auth/chat.app.memberships` (requires [administrator approval](https://support.google.com/a?p=chat-app-auth)) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and one of the following authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.memberships.readonly` - `https://www.googleapis.com/auth/chat.admin.memberships` */
 export const listSpacesMembers: API.PaginatedOperationMethod<
@@ -3987,7 +4094,7 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesMembersRequest,
   output: ListSpacesMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4022,7 +4129,12 @@ export type PatchSpacesMembersResponse = Membership;
 export const PatchSpacesMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Membership;
 
-export type PatchSpacesMembersError = DefaultErrors;
+export type PatchSpacesMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a membership. For an example, see [Update a user's membership in a space](https://developers.google.com/workspace/chat/update-members). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` (only in spaces the app created) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and the following authorization scope is used: - `https://www.googleapis.com/auth/chat.admin.memberships` */
 export const patchSpacesMembers: API.OperationMethod<
@@ -4033,7 +4145,7 @@ export const patchSpacesMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchSpacesMembersRequest,
   output: PatchSpacesMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpacesMembersRequest {
@@ -4057,7 +4169,7 @@ export const GetSpacesMembersRequest =
 export type GetSpacesMembersResponse = Membership;
 export const GetSpacesMembersResponse = /*@__PURE__*/ /*#__PURE__*/ Membership;
 
-export type GetSpacesMembersError = DefaultErrors;
+export type GetSpacesMembersError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns details about a membership. For an example, see [Get details about a user's or Google Chat app's membership](https://developers.google.com/workspace/chat/get-members). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.bot` - `https://www.googleapis.com/auth/chat.app.memberships` (requires [administrator approval](https://support.google.com/a?p=chat-app-auth)) - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships` - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and one of the following authorization scopes is used: - `https://www.googleapis.com/auth/chat.admin.memberships.readonly` - `https://www.googleapis.com/auth/chat.admin.memberships` */
 export const getSpacesMembers: API.OperationMethod<
@@ -4068,7 +4180,7 @@ export const getSpacesMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpacesMembersRequest,
   output: GetSpacesMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateSpacesMembersRequest {
@@ -4096,7 +4208,12 @@ export type CreateSpacesMembersResponse = Membership;
 export const CreateSpacesMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Membership;
 
-export type CreateSpacesMembersError = DefaultErrors;
+export type CreateSpacesMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a membership for the calling Chat app, a user, or a Google Group. Creating memberships for other Chat apps isn't supported. When creating a membership, if the specified member has their auto-accept policy turned off, then they're invited, and must accept the space invitation before joining. Otherwise, creating a membership adds the member directly to the specified space. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` - `https://www.googleapis.com/auth/chat.memberships.app` (to add the calling app to the space) - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and the following authorization scope is used: - `https://www.googleapis.com/auth/chat.admin.memberships` App authentication is not supported for the following use cases: - Inviting users external to the Workspace organization that owns the space. - Adding a Google Group to a space. - Adding a Chat app to a space. For example usage, see: - [Invite or add a user to a space](https://developers.google.com/workspace/chat/create-members#create-user-membership). - [Invite or add a Google Group to a space](https://developers.google.com/workspace/chat/create-members#create-group-membership). - [Add the Chat app to a space](https://developers.google.com/workspace/chat/create-members#create-membership-calling-api). */
 export const createSpacesMembers: API.OperationMethod<
@@ -4107,7 +4224,7 @@ export const createSpacesMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateSpacesMembersRequest,
   output: CreateSpacesMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteSpacesMembersRequest {
@@ -4132,7 +4249,12 @@ export type DeleteSpacesMembersResponse = Membership;
 export const DeleteSpacesMembersResponse =
   /*@__PURE__*/ /*#__PURE__*/ Membership;
 
-export type DeleteSpacesMembersError = DefaultErrors;
+export type DeleteSpacesMembersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a membership. For an example, see [Remove a user or a Google Chat app from a space](https://developers.google.com/workspace/chat/delete-members). Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize): - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) and the authorization scope: - `https://www.googleapis.com/auth/chat.app.memberships` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.memberships` - `https://www.googleapis.com/auth/chat.memberships.app` (to remove the calling app from the space) - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) - User authentication grants administrator privileges when an administrator account authenticates, `use_admin_access` is `true`, and the following authorization scope is used: - `https://www.googleapis.com/auth/chat.admin.memberships` App authentication is not supported for the following use cases: - Removing a Google Group from a space. - Removing a Chat app from a space. To delete memberships for space managers, the requester must be a space manager. If you're using [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) the Chat app must be the space creator. */
 export const deleteSpacesMembers: API.OperationMethod<
@@ -4143,7 +4265,7 @@ export const deleteSpacesMembers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteSpacesMembersRequest,
   output: DeleteSpacesMembersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListSpacesSpaceEventsRequest {
@@ -4172,7 +4294,7 @@ export type ListSpacesSpaceEventsResponse = ListSpaceEventsResponse;
 export const ListSpacesSpaceEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSpaceEventsResponse;
 
-export type ListSpacesSpaceEventsError = DefaultErrors;
+export type ListSpacesSpaceEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists events from a Google Chat space. For each event, the [payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the Chat resource. For example, if you list events about new space members, the server returns `Membership` resources that contain the latest membership details. If new members were removed during the requested period, the event payload contains an empty `Membership` resource. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) with an [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes) appropriate for reading the requested data: - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` - `https://www.googleapis.com/auth/chat.app.spaces.readonly` - `https://www.googleapis.com/auth/chat.app.messages.readonly` - `https://www.googleapis.com/auth/chat.app.memberships` - `https://www.googleapis.com/auth/chat.app.memberships.readonly` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.messages.reactions.readonly` - `https://www.googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships` To list events, the authenticated caller must be a member of the space. For an example, see [List events from a Google Chat space](https://developers.google.com/workspace/chat/list-space-events). */
 export const listSpacesSpaceEvents: API.PaginatedOperationMethod<
@@ -4183,7 +4305,7 @@ export const listSpacesSpaceEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListSpacesSpaceEventsRequest,
   output: ListSpacesSpaceEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4207,7 +4329,7 @@ export type GetSpacesSpaceEventsResponse = SpaceEvent;
 export const GetSpacesSpaceEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SpaceEvent;
 
-export type GetSpacesSpaceEventsError = DefaultErrors;
+export type GetSpacesSpaceEventsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns an event from a Google Chat space. The [event payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload) contains the most recent version of the resource that changed. For example, if you request an event about a new message but the message was later updated, the server returns the updated `Message` resource in the event payload. Note: The `permissionSettings` field is not returned in the Space object of the Space event data for this request. Supports the following types of [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) with an [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes) appropriate for reading the requested data: - [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) with [administrator approval](https://support.google.com/a?p=chat-app-auth) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.app.spaces` - `https://www.googleapis.com/auth/chat.app.spaces.readonly` - `https://www.googleapis.com/auth/chat.app.messages.readonly` - `https://www.googleapis.com/auth/chat.app.memberships` - `https://www.googleapis.com/auth/chat.app.memberships.readonly` - [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following authorization scopes: - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` - `https://www.googleapis.com/auth/chat.messages.readonly` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.messages.reactions.readonly` - `https://www.googleapis.com/auth/chat.messages.reactions` - `https://www.googleapis.com/auth/chat.memberships.readonly` - `https://www.googleapis.com/auth/chat.memberships` To get an event, the authenticated caller must be a member of the space. For an example, see [Get details about an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event). */
 export const getSpacesSpaceEvents: API.OperationMethod<
@@ -4218,7 +4340,7 @@ export const getSpacesSpaceEvents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpacesSpaceEventsRequest,
   output: GetSpacesSpaceEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomEmojisRequest {
@@ -4244,7 +4366,7 @@ export type ListCustomEmojisResponse_Op = ListCustomEmojisResponse;
 export const ListCustomEmojisResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCustomEmojisResponse;
 
-export type ListCustomEmojisError = DefaultErrors;
+export type ListCustomEmojisError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists custom emojis visible to the authenticated user. Custom emojis are only available for Google Workspace accounts, and the administrator must turn custom emojis on for the organization. For more information, see [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.customemojis.readonly` - `https://www.googleapis.com/auth/chat.customemojis` */
 export const listCustomEmojis: API.PaginatedOperationMethod<
@@ -4255,7 +4377,7 @@ export const listCustomEmojis: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomEmojisRequest,
   output: ListCustomEmojisResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4279,7 +4401,12 @@ export type CreateCustomEmojisResponse = CustomEmoji;
 export const CreateCustomEmojisResponse =
   /*@__PURE__*/ /*#__PURE__*/ CustomEmoji;
 
-export type CreateCustomEmojisError = DefaultErrors;
+export type CreateCustomEmojisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a custom emoji. Custom emojis are only available for Google Workspace accounts, and the administrator must turn custom emojis on for the organization. For more information, see [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.customemojis` */
 export const createCustomEmojis: API.OperationMethod<
@@ -4290,7 +4417,7 @@ export const createCustomEmojis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomEmojisRequest,
   output: CreateCustomEmojisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomEmojisRequest {
@@ -4310,7 +4437,7 @@ export const GetCustomEmojisRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type GetCustomEmojisResponse = CustomEmoji;
 export const GetCustomEmojisResponse = /*@__PURE__*/ /*#__PURE__*/ CustomEmoji;
 
-export type GetCustomEmojisError = DefaultErrors;
+export type GetCustomEmojisError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns details about a custom emoji. Custom emojis are only available for Google Workspace accounts, and the administrator must turn custom emojis on for the organization. For more information, see [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.customemojis.readonly` - `https://www.googleapis.com/auth/chat.customemojis` */
 export const getCustomEmojis: API.OperationMethod<
@@ -4321,7 +4448,7 @@ export const getCustomEmojis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomEmojisRequest,
   output: GetCustomEmojisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCustomEmojisRequest {
@@ -4340,7 +4467,12 @@ export const DeleteCustomEmojisRequest =
 export type DeleteCustomEmojisResponse = Empty;
 export const DeleteCustomEmojisResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteCustomEmojisError = DefaultErrors;
+export type DeleteCustomEmojisError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a custom emoji. By default, users can only delete custom emoji they created. [Emoji managers](https://support.google.com/a/answer/12850085) assigned by the administrator can delete any custom emoji in the organization. See [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149). Custom emojis are only available for Google Workspace accounts, and the administrator must turn custom emojis on for the organization. For more information, see [Learn about custom emojis in Google Chat](https://support.google.com/chat/answer/12800149) and [Manage custom emoji permissions](https://support.google.com/a/answer/12850085). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.customemojis` */
 export const deleteCustomEmojis: API.OperationMethod<
@@ -4351,7 +4483,7 @@ export const deleteCustomEmojis: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomEmojisRequest,
   output: DeleteCustomEmojisResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DownloadMediaRequest {
@@ -4369,7 +4501,7 @@ export const DownloadMediaRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type DownloadMediaResponse = Media;
 export const DownloadMediaResponse = /*@__PURE__*/ /*#__PURE__*/ Media;
 
-export type DownloadMediaError = DefaultErrors;
+export type DownloadMediaError = DefaultErrors | NotFound | Forbidden;
 
 /** Downloads media. Download is supported on the URI `/v1/media/{+name}?alt=media`. */
 export const downloadMedia: API.OperationMethod<
@@ -4380,7 +4512,7 @@ export const downloadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DownloadMediaRequest,
   output: DownloadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UploadMediaRequest {
@@ -4406,7 +4538,12 @@ export type UploadMediaResponse = UploadAttachmentResponse;
 export const UploadMediaResponse =
   /*@__PURE__*/ /*#__PURE__*/ UploadAttachmentResponse;
 
-export type UploadMediaError = DefaultErrors;
+export type UploadMediaError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads an attachment. For an example, see [Upload media as a file attachment](https://developers.google.com/workspace/chat/upload-media-attachments). Requires user [authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.messages.create` - `https://www.googleapis.com/auth/chat.messages` - `https://www.googleapis.com/auth/chat.import` (import mode spaces only) You can upload attachments up to 200 MB. Certain file types aren't supported. For details, see [File types blocked by Google Chat](https://support.google.com/chat/answer/7651457?&co=GENIE.Platform%3DDesktop#File%20types%20blocked%20in%20Google%20Chat). */
 export const uploadMedia: API.OperationMethod<
@@ -4417,7 +4554,7 @@ export const uploadMedia: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadMediaRequest,
   output: UploadMediaResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PositionUsersSectionsRequest {
@@ -4440,7 +4577,12 @@ export type PositionUsersSectionsResponse = PositionSectionResponse;
 export const PositionUsersSectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PositionSectionResponse;
 
-export type PositionUsersSectionsError = DefaultErrors;
+export type PositionUsersSectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Changes the sort order of a section. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` */
 export const positionUsersSections: API.OperationMethod<
@@ -4451,7 +4593,7 @@ export const positionUsersSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PositionUsersSectionsRequest,
   output: PositionUsersSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSectionsRequest {
@@ -4477,7 +4619,7 @@ export type ListUsersSectionsResponse = ListSectionsResponse;
 export const ListUsersSectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSectionsResponse;
 
-export type ListUsersSectionsError = DefaultErrors;
+export type ListUsersSectionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists sections available to the Chat user. Sections help users group their conversations and customize the list of spaces displayed in Chat navigation panel. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` - `https://www.googleapis.com/auth/chat.users.sections.readonly` */
 export const listUsersSections: API.PaginatedOperationMethod<
@@ -4488,7 +4630,7 @@ export const listUsersSections: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSectionsRequest,
   output: ListUsersSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4518,7 +4660,12 @@ export type PatchUsersSectionsResponse = GoogleChatV1Section;
 export const PatchUsersSectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChatV1Section;
 
-export type PatchUsersSectionsError = DefaultErrors;
+export type PatchUsersSectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a section. Only sections of type `CUSTOM_SECTION` can be updated. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` */
 export const patchUsersSections: API.OperationMethod<
@@ -4529,7 +4676,7 @@ export const patchUsersSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersSectionsRequest,
   output: PatchUsersSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateUsersSectionsRequest {
@@ -4552,7 +4699,12 @@ export type CreateUsersSectionsResponse = GoogleChatV1Section;
 export const CreateUsersSectionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChatV1Section;
 
-export type CreateUsersSectionsError = DefaultErrors;
+export type CreateUsersSectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a section in Google Chat. Sections help users group conversations and customize the list of spaces displayed in Chat navigation panel. Only sections of type `CUSTOM_SECTION` can be created. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` */
 export const createUsersSections: API.OperationMethod<
@@ -4563,7 +4715,7 @@ export const createUsersSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateUsersSectionsRequest,
   output: CreateUsersSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteUsersSectionsRequest {
@@ -4582,7 +4734,12 @@ export const DeleteUsersSectionsRequest =
 export type DeleteUsersSectionsResponse = Empty;
 export const DeleteUsersSectionsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteUsersSectionsError = DefaultErrors;
+export type DeleteUsersSectionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a section of type `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are moved to Google Chat's default sections and are not deleted. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` */
 export const deleteUsersSections: API.OperationMethod<
@@ -4593,7 +4750,7 @@ export const deleteUsersSections: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteUsersSectionsRequest,
   output: DeleteUsersSectionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListUsersSectionsItemsRequest {
@@ -4622,7 +4779,7 @@ export type ListUsersSectionsItemsResponse = ListSectionItemsResponse;
 export const ListUsersSectionsItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSectionItemsResponse;
 
-export type ListUsersSectionsItemsError = DefaultErrors;
+export type ListUsersSectionsItemsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists items in a section. Only spaces can be section items. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` - `https://www.googleapis.com/auth/chat.users.sections.readonly` */
 export const listUsersSectionsItems: API.PaginatedOperationMethod<
@@ -4633,7 +4790,7 @@ export const listUsersSectionsItems: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListUsersSectionsItemsRequest,
   output: ListUsersSectionsItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4660,7 +4817,12 @@ export type MoveUsersSectionsItemsResponse = MoveSectionItemResponse;
 export const MoveUsersSectionsItemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MoveSectionItemResponse;
 
-export type MoveUsersSectionsItemsError = DefaultErrors;
+export type MoveUsersSectionsItemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves an item from one section to another. For example, if a section contains spaces, this method can be used to move a space to a different section. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` */
 export const moveUsersSectionsItems: API.OperationMethod<
@@ -4671,7 +4833,7 @@ export const moveUsersSectionsItems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveUsersSectionsItemsRequest,
   output: MoveUsersSectionsItemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateSpaceReadStateUsersSpacesRequest {
@@ -4697,7 +4859,12 @@ export type UpdateSpaceReadStateUsersSpacesResponse = SpaceReadState;
 export const UpdateSpaceReadStateUsersSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SpaceReadState;
 
-export type UpdateSpaceReadStateUsersSpacesError = DefaultErrors;
+export type UpdateSpaceReadStateUsersSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a user's read state within a space, used to identify read and unread messages. For an example, see [Update a user's space read state](https://developers.google.com/workspace/chat/update-space-read-state). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.readstate` */
 export const updateSpaceReadStateUsersSpaces: API.OperationMethod<
@@ -4708,7 +4875,7 @@ export const updateSpaceReadStateUsersSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSpaceReadStateUsersSpacesRequest,
   output: UpdateSpaceReadStateUsersSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetSpaceReadStateUsersSpacesRequest {
@@ -4728,7 +4895,10 @@ export type GetSpaceReadStateUsersSpacesResponse = SpaceReadState;
 export const GetSpaceReadStateUsersSpacesResponse =
   /*@__PURE__*/ /*#__PURE__*/ SpaceReadState;
 
-export type GetSpaceReadStateUsersSpacesError = DefaultErrors;
+export type GetSpaceReadStateUsersSpacesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns details about a user's read state within a space, used to identify read and unread messages. For an example, see [Get details about a user's space read state](https://developers.google.com/workspace/chat/get-space-read-state). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.readstate.readonly` - `https://www.googleapis.com/auth/chat.users.readstate` */
 export const getSpaceReadStateUsersSpaces: API.OperationMethod<
@@ -4739,7 +4909,7 @@ export const getSpaceReadStateUsersSpaces: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetSpaceReadStateUsersSpacesRequest,
   output: GetSpaceReadStateUsersSpacesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetThreadReadStateUsersSpacesThreadsRequest {
@@ -4759,7 +4929,10 @@ export type GetThreadReadStateUsersSpacesThreadsResponse = ThreadReadState;
 export const GetThreadReadStateUsersSpacesThreadsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ThreadReadState;
 
-export type GetThreadReadStateUsersSpacesThreadsError = DefaultErrors;
+export type GetThreadReadStateUsersSpacesThreadsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns details about a user's read state within a thread, used to identify read and unread messages. For an example, see [Get details about a user's thread read state](https://developers.google.com/workspace/chat/get-thread-read-state). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.readstate.readonly` - `https://www.googleapis.com/auth/chat.users.readstate` */
 export const getThreadReadStateUsersSpacesThreads: API.OperationMethod<
@@ -4770,7 +4943,7 @@ export const getThreadReadStateUsersSpacesThreads: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetThreadReadStateUsersSpacesThreadsRequest,
   output: GetThreadReadStateUsersSpacesThreadsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetUsersSpacesSpaceNotificationSettingRequest {
@@ -4791,7 +4964,10 @@ export type GetUsersSpacesSpaceNotificationSettingResponse =
 export const GetUsersSpacesSpaceNotificationSettingResponse =
   /*@__PURE__*/ /*#__PURE__*/ SpaceNotificationSetting;
 
-export type GetUsersSpacesSpaceNotificationSettingError = DefaultErrors;
+export type GetUsersSpacesSpaceNotificationSettingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the space notification setting. For an example, see [Get the caller's space notification setting](https://developers.google.com/workspace/chat/get-space-notification-setting). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.spacesettings` */
 export const getUsersSpacesSpaceNotificationSetting: API.OperationMethod<
@@ -4802,7 +4978,7 @@ export const getUsersSpacesSpaceNotificationSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetUsersSpacesSpaceNotificationSettingRequest,
   output: GetUsersSpacesSpaceNotificationSettingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchUsersSpacesSpaceNotificationSettingRequest {
@@ -4829,7 +5005,12 @@ export type PatchUsersSpacesSpaceNotificationSettingResponse =
 export const PatchUsersSpacesSpaceNotificationSettingResponse =
   /*@__PURE__*/ /*#__PURE__*/ SpaceNotificationSetting;
 
-export type PatchUsersSpacesSpaceNotificationSettingError = DefaultErrors;
+export type PatchUsersSpacesSpaceNotificationSettingError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the space notification setting. For an example, see [Update the caller's space notification setting](https://developers.google.com/workspace/chat/update-space-notification-setting). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.spacesettings` */
 export const patchUsersSpacesSpaceNotificationSetting: API.OperationMethod<
@@ -4840,5 +5021,5 @@ export const patchUsersSpacesSpaceNotificationSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchUsersSpacesSpaceNotificationSettingRequest,
   output: PatchUsersSpacesSpaceNotificationSettingResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

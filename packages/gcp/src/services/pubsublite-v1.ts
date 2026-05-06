@@ -491,6 +491,52 @@ export const ListTopicSubscriptionsResponse =
   }).annotate({ identifier: "ListTopicSubscriptionsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -511,7 +557,10 @@ export type GetAdminProjectsLocationsOperationsResponse = Operation;
 export const GetAdminProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetAdminProjectsLocationsOperationsError = DefaultErrors;
+export type GetAdminProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getAdminProjectsLocationsOperations: API.OperationMethod<
@@ -522,7 +571,7 @@ export const getAdminProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdminProjectsLocationsOperationsRequest,
   output: GetAdminProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdminProjectsLocationsOperationsRequest {
@@ -557,7 +606,10 @@ export type ListAdminProjectsLocationsOperationsResponse =
 export const ListAdminProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListAdminProjectsLocationsOperationsError = DefaultErrors;
+export type ListAdminProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listAdminProjectsLocationsOperations: API.PaginatedOperationMethod<
@@ -568,7 +620,7 @@ export const listAdminProjectsLocationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdminProjectsLocationsOperationsRequest,
   output: ListAdminProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -592,7 +644,12 @@ export type DeleteAdminProjectsLocationsOperationsResponse = Empty;
 export const DeleteAdminProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdminProjectsLocationsOperationsError = DefaultErrors;
+export type DeleteAdminProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteAdminProjectsLocationsOperations: API.OperationMethod<
@@ -603,7 +660,7 @@ export const deleteAdminProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdminProjectsLocationsOperationsRequest,
   output: DeleteAdminProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelAdminProjectsLocationsOperationsRequest {
@@ -626,7 +683,12 @@ export type CancelAdminProjectsLocationsOperationsResponse = Empty;
 export const CancelAdminProjectsLocationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelAdminProjectsLocationsOperationsError = DefaultErrors;
+export type CancelAdminProjectsLocationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelAdminProjectsLocationsOperations: API.OperationMethod<
@@ -637,7 +699,7 @@ export const cancelAdminProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelAdminProjectsLocationsOperationsRequest,
   output: CancelAdminProjectsLocationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdminProjectsLocationsTopicsRequest {
@@ -663,7 +725,12 @@ export type PatchAdminProjectsLocationsTopicsResponse = Topic;
 export const PatchAdminProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type PatchAdminProjectsLocationsTopicsError = DefaultErrors;
+export type PatchAdminProjectsLocationsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates properties of the specified topic. */
 export const patchAdminProjectsLocationsTopics: API.OperationMethod<
@@ -674,7 +741,7 @@ export const patchAdminProjectsLocationsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdminProjectsLocationsTopicsRequest,
   output: PatchAdminProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAdminProjectsLocationsTopicsRequest {
@@ -700,7 +767,12 @@ export type CreateAdminProjectsLocationsTopicsResponse = Topic;
 export const CreateAdminProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type CreateAdminProjectsLocationsTopicsError = DefaultErrors;
+export type CreateAdminProjectsLocationsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new topic. */
 export const createAdminProjectsLocationsTopics: API.OperationMethod<
@@ -711,7 +783,7 @@ export const createAdminProjectsLocationsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdminProjectsLocationsTopicsRequest,
   output: CreateAdminProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdminProjectsLocationsTopicsRequest {
@@ -731,7 +803,10 @@ export type GetAdminProjectsLocationsTopicsResponse = Topic;
 export const GetAdminProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Topic;
 
-export type GetAdminProjectsLocationsTopicsError = DefaultErrors;
+export type GetAdminProjectsLocationsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the topic configuration. */
 export const getAdminProjectsLocationsTopics: API.OperationMethod<
@@ -742,7 +817,7 @@ export const getAdminProjectsLocationsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdminProjectsLocationsTopicsRequest,
   output: GetAdminProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPartitionsAdminProjectsLocationsTopicsRequest {
@@ -762,7 +837,10 @@ export type GetPartitionsAdminProjectsLocationsTopicsResponse = TopicPartitions;
 export const GetPartitionsAdminProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TopicPartitions;
 
-export type GetPartitionsAdminProjectsLocationsTopicsError = DefaultErrors;
+export type GetPartitionsAdminProjectsLocationsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the partition information for the requested topic. */
 export const getPartitionsAdminProjectsLocationsTopics: API.OperationMethod<
@@ -773,7 +851,7 @@ export const getPartitionsAdminProjectsLocationsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPartitionsAdminProjectsLocationsTopicsRequest,
   output: GetPartitionsAdminProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdminProjectsLocationsTopicsRequest {
@@ -799,7 +877,10 @@ export type ListAdminProjectsLocationsTopicsResponse = ListTopicsResponse;
 export const ListAdminProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTopicsResponse;
 
-export type ListAdminProjectsLocationsTopicsError = DefaultErrors;
+export type ListAdminProjectsLocationsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of topics for the given project. */
 export const listAdminProjectsLocationsTopics: API.PaginatedOperationMethod<
@@ -810,7 +891,7 @@ export const listAdminProjectsLocationsTopics: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdminProjectsLocationsTopicsRequest,
   output: ListAdminProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -834,7 +915,12 @@ export type DeleteAdminProjectsLocationsTopicsResponse = Empty;
 export const DeleteAdminProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdminProjectsLocationsTopicsError = DefaultErrors;
+export type DeleteAdminProjectsLocationsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified topic. */
 export const deleteAdminProjectsLocationsTopics: API.OperationMethod<
@@ -845,7 +931,7 @@ export const deleteAdminProjectsLocationsTopics: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdminProjectsLocationsTopicsRequest,
   output: DeleteAdminProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdminProjectsLocationsTopicsSubscriptionsRequest {
@@ -872,7 +958,10 @@ export type ListAdminProjectsLocationsTopicsSubscriptionsResponse =
 export const ListAdminProjectsLocationsTopicsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTopicSubscriptionsResponse;
 
-export type ListAdminProjectsLocationsTopicsSubscriptionsError = DefaultErrors;
+export type ListAdminProjectsLocationsTopicsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the subscriptions attached to the specified topic. */
 export const listAdminProjectsLocationsTopicsSubscriptions: API.PaginatedOperationMethod<
@@ -883,7 +972,7 @@ export const listAdminProjectsLocationsTopicsSubscriptions: API.PaginatedOperati
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdminProjectsLocationsTopicsSubscriptionsRequest,
   output: ListAdminProjectsLocationsTopicsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -910,7 +999,12 @@ export type SeekAdminProjectsLocationsSubscriptionsResponse = Operation;
 export const SeekAdminProjectsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type SeekAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+export type SeekAdminProjectsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Performs an out-of-band seek for a subscription to a specified target, which may be timestamps or named positions within the message backlog. Seek translates these targets to cursors for each partition and orchestrates subscribers to start consuming messages from these seek cursors. If an operation is returned, the seek has been registered and subscribers will eventually receive messages from the seek cursors (i.e. eventual consistency), as long as they are using a minimum supported client library version and not a system that tracks cursors independently of Pub/Sub Lite (e.g. Apache Beam, Dataflow, Spark). The seek operation will fail for unsupported clients. If clients would like to know when subscribers react to the seek (or not), they can poll the operation. The seek operation will succeed and complete once subscribers are ready to receive messages from the seek cursors for all partitions of the topic. This means that the seek operation will not complete until all subscribers come online. If the previous seek operation has not yet completed, it will be aborted and the new invocation of seek will supersede it. */
 export const seekAdminProjectsLocationsSubscriptions: API.OperationMethod<
@@ -921,7 +1015,7 @@ export const seekAdminProjectsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SeekAdminProjectsLocationsSubscriptionsRequest,
   output: SeekAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdminProjectsLocationsSubscriptionsRequest {
@@ -947,7 +1041,12 @@ export type PatchAdminProjectsLocationsSubscriptionsResponse = Subscription;
 export const PatchAdminProjectsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type PatchAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+export type PatchAdminProjectsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates properties of the specified subscription. */
 export const patchAdminProjectsLocationsSubscriptions: API.OperationMethod<
@@ -958,7 +1057,7 @@ export const patchAdminProjectsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdminProjectsLocationsSubscriptionsRequest,
   output: PatchAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdminProjectsLocationsSubscriptionsRequest {
@@ -985,7 +1084,10 @@ export type ListAdminProjectsLocationsSubscriptionsResponse =
 export const ListAdminProjectsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSubscriptionsResponse;
 
-export type ListAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+export type ListAdminProjectsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of subscriptions for the given project. */
 export const listAdminProjectsLocationsSubscriptions: API.PaginatedOperationMethod<
@@ -996,7 +1098,7 @@ export const listAdminProjectsLocationsSubscriptions: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdminProjectsLocationsSubscriptionsRequest,
   output: ListAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1020,7 +1122,12 @@ export type DeleteAdminProjectsLocationsSubscriptionsResponse = Empty;
 export const DeleteAdminProjectsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+export type DeleteAdminProjectsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified subscription. */
 export const deleteAdminProjectsLocationsSubscriptions: API.OperationMethod<
@@ -1031,7 +1138,7 @@ export const deleteAdminProjectsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdminProjectsLocationsSubscriptionsRequest,
   output: DeleteAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAdminProjectsLocationsSubscriptionsRequest {
@@ -1068,7 +1175,12 @@ export type CreateAdminProjectsLocationsSubscriptionsResponse = Subscription;
 export const CreateAdminProjectsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type CreateAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+export type CreateAdminProjectsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new subscription. */
 export const createAdminProjectsLocationsSubscriptions: API.OperationMethod<
@@ -1079,7 +1191,7 @@ export const createAdminProjectsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdminProjectsLocationsSubscriptionsRequest,
   output: CreateAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdminProjectsLocationsSubscriptionsRequest {
@@ -1099,7 +1211,10 @@ export type GetAdminProjectsLocationsSubscriptionsResponse = Subscription;
 export const GetAdminProjectsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Subscription;
 
-export type GetAdminProjectsLocationsSubscriptionsError = DefaultErrors;
+export type GetAdminProjectsLocationsSubscriptionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the subscription configuration. */
 export const getAdminProjectsLocationsSubscriptions: API.OperationMethod<
@@ -1110,7 +1225,7 @@ export const getAdminProjectsLocationsSubscriptions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdminProjectsLocationsSubscriptionsRequest,
   output: GetAdminProjectsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateAdminProjectsLocationsReservationsRequest {
@@ -1142,7 +1257,12 @@ export type CreateAdminProjectsLocationsReservationsResponse = Reservation;
 export const CreateAdminProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
-export type CreateAdminProjectsLocationsReservationsError = DefaultErrors;
+export type CreateAdminProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new reservation. */
 export const createAdminProjectsLocationsReservations: API.OperationMethod<
@@ -1153,7 +1273,7 @@ export const createAdminProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAdminProjectsLocationsReservationsRequest,
   output: CreateAdminProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAdminProjectsLocationsReservationsRequest {
@@ -1173,7 +1293,10 @@ export type GetAdminProjectsLocationsReservationsResponse = Reservation;
 export const GetAdminProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
-export type GetAdminProjectsLocationsReservationsError = DefaultErrors;
+export type GetAdminProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the reservation configuration. */
 export const getAdminProjectsLocationsReservations: API.OperationMethod<
@@ -1184,7 +1307,7 @@ export const getAdminProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAdminProjectsLocationsReservationsRequest,
   output: GetAdminProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAdminProjectsLocationsReservationsRequest {
@@ -1211,7 +1334,10 @@ export type ListAdminProjectsLocationsReservationsResponse =
 export const ListAdminProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReservationsResponse;
 
-export type ListAdminProjectsLocationsReservationsError = DefaultErrors;
+export type ListAdminProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the list of reservations for the given project. */
 export const listAdminProjectsLocationsReservations: API.PaginatedOperationMethod<
@@ -1222,7 +1348,7 @@ export const listAdminProjectsLocationsReservations: API.PaginatedOperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdminProjectsLocationsReservationsRequest,
   output: ListAdminProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1246,7 +1372,12 @@ export type DeleteAdminProjectsLocationsReservationsResponse = Empty;
 export const DeleteAdminProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteAdminProjectsLocationsReservationsError = DefaultErrors;
+export type DeleteAdminProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified reservation. */
 export const deleteAdminProjectsLocationsReservations: API.OperationMethod<
@@ -1257,7 +1388,7 @@ export const deleteAdminProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAdminProjectsLocationsReservationsRequest,
   output: DeleteAdminProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAdminProjectsLocationsReservationsRequest {
@@ -1283,7 +1414,12 @@ export type PatchAdminProjectsLocationsReservationsResponse = Reservation;
 export const PatchAdminProjectsLocationsReservationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Reservation;
 
-export type PatchAdminProjectsLocationsReservationsError = DefaultErrors;
+export type PatchAdminProjectsLocationsReservationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates properties of the specified reservation. */
 export const patchAdminProjectsLocationsReservations: API.OperationMethod<
@@ -1294,7 +1430,7 @@ export const patchAdminProjectsLocationsReservations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAdminProjectsLocationsReservationsRequest,
   output: PatchAdminProjectsLocationsReservationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAdminProjectsLocationsReservationsTopicsRequest {
@@ -1321,7 +1457,10 @@ export type ListAdminProjectsLocationsReservationsTopicsResponse =
 export const ListAdminProjectsLocationsReservationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListReservationTopicsResponse;
 
-export type ListAdminProjectsLocationsReservationsTopicsError = DefaultErrors;
+export type ListAdminProjectsLocationsReservationsTopicsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the topics attached to the specified reservation. */
 export const listAdminProjectsLocationsReservationsTopics: API.PaginatedOperationMethod<
@@ -1332,7 +1471,7 @@ export const listAdminProjectsLocationsReservationsTopics: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAdminProjectsLocationsReservationsTopicsRequest,
   output: ListAdminProjectsLocationsReservationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1365,7 +1504,11 @@ export const CommitCursorCursorProjectsLocationsSubscriptionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ CommitCursorResponse;
 
 export type CommitCursorCursorProjectsLocationsSubscriptionsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the committed cursor. */
 export const commitCursorCursorProjectsLocationsSubscriptions: API.OperationMethod<
@@ -1376,7 +1519,7 @@ export const commitCursorCursorProjectsLocationsSubscriptions: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CommitCursorCursorProjectsLocationsSubscriptionsRequest,
   output: CommitCursorCursorProjectsLocationsSubscriptionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCursorProjectsLocationsSubscriptionsCursorsRequest {
@@ -1404,7 +1547,9 @@ export const ListCursorProjectsLocationsSubscriptionsCursorsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPartitionCursorsResponse;
 
 export type ListCursorProjectsLocationsSubscriptionsCursorsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns all committed cursor information for a subscription. */
 export const listCursorProjectsLocationsSubscriptionsCursors: API.PaginatedOperationMethod<
@@ -1415,7 +1560,7 @@ export const listCursorProjectsLocationsSubscriptionsCursors: API.PaginatedOpera
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCursorProjectsLocationsSubscriptionsCursorsRequest,
   output: ListCursorProjectsLocationsSubscriptionsCursorsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1448,7 +1593,11 @@ export const ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ComputeTimeCursorResponse;
 
 export type ComputeTimeCursorTopicStatsProjectsLocationsTopicsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Compute the corresponding cursor for a publish or event time in a topic partition. */
 export const computeTimeCursorTopicStatsProjectsLocationsTopics: API.OperationMethod<
@@ -1459,7 +1608,7 @@ export const computeTimeCursorTopicStatsProjectsLocationsTopics: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComputeTimeCursorTopicStatsProjectsLocationsTopicsRequest,
   output: ComputeTimeCursorTopicStatsProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest {
@@ -1488,7 +1637,11 @@ export const ComputeMessageStatsTopicStatsProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ComputeMessageStatsResponse;
 
 export type ComputeMessageStatsTopicStatsProjectsLocationsTopicsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Compute statistics about a range of messages in a given topic and partition. */
 export const computeMessageStatsTopicStatsProjectsLocationsTopics: API.OperationMethod<
@@ -1499,7 +1652,7 @@ export const computeMessageStatsTopicStatsProjectsLocationsTopics: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComputeMessageStatsTopicStatsProjectsLocationsTopicsRequest,
   output: ComputeMessageStatsTopicStatsProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest {
@@ -1528,7 +1681,11 @@ export const ComputeHeadCursorTopicStatsProjectsLocationsTopicsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ComputeHeadCursorResponse;
 
 export type ComputeHeadCursorTopicStatsProjectsLocationsTopicsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition. */
 export const computeHeadCursorTopicStatsProjectsLocationsTopics: API.OperationMethod<
@@ -1539,5 +1696,5 @@ export const computeHeadCursorTopicStatsProjectsLocationsTopics: API.OperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ComputeHeadCursorTopicStatsProjectsLocationsTopicsRequest,
   output: ComputeHeadCursorTopicStatsProjectsLocationsTopicsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

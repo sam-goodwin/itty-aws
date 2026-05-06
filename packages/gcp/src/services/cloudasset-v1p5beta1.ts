@@ -872,6 +872,31 @@ export const AnalyzeIamPolicyLongrunningMetadata =
   }).annotate({ identifier: "AnalyzeIamPolicyLongrunningMetadata" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -914,7 +939,7 @@ export type ListAssetsResponse_Op = ListAssetsResponse;
 export const ListAssetsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListAssetsResponse;
 
-export type ListAssetsError = DefaultErrors;
+export type ListAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists assets with time and resource types and returns paged results in response. */
 export const listAssets: API.PaginatedOperationMethod<
@@ -925,7 +950,7 @@ export const listAssets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAssetsRequest,
   output: ListAssetsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

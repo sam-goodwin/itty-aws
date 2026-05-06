@@ -251,6 +251,52 @@ export const LeaderboardConfigurationListResponse =
   }).annotate({ identifier: "LeaderboardConfigurationListResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -276,7 +322,12 @@ export const DeleteAchievementConfigurationsResponse: Schema.Schema<DeleteAchiev
     {},
   ) as any as Schema.Schema<DeleteAchievementConfigurationsResponse>;
 
-export type DeleteAchievementConfigurationsError = DefaultErrors;
+export type DeleteAchievementConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete the achievement configuration with the given ID. */
 export const deleteAchievementConfigurations: API.OperationMethod<
@@ -287,7 +338,7 @@ export const deleteAchievementConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteAchievementConfigurationsRequest,
   output: DeleteAchievementConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAchievementConfigurationsRequest {
@@ -310,7 +361,10 @@ export type GetAchievementConfigurationsResponse = AchievementConfiguration;
 export const GetAchievementConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementConfiguration;
 
-export type GetAchievementConfigurationsError = DefaultErrors;
+export type GetAchievementConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the metadata of the achievement configuration with the given ID. */
 export const getAchievementConfigurations: API.OperationMethod<
@@ -321,7 +375,7 @@ export const getAchievementConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAchievementConfigurationsRequest,
   output: GetAchievementConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertAchievementConfigurationsRequest {
@@ -348,7 +402,12 @@ export type InsertAchievementConfigurationsResponse = AchievementConfiguration;
 export const InsertAchievementConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementConfiguration;
 
-export type InsertAchievementConfigurationsError = DefaultErrors;
+export type InsertAchievementConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Insert a new achievement configuration in this application. */
 export const insertAchievementConfigurations: API.OperationMethod<
@@ -359,7 +418,7 @@ export const insertAchievementConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertAchievementConfigurationsRequest,
   output: InsertAchievementConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAchievementConfigurationsRequest {
@@ -389,7 +448,10 @@ export type ListAchievementConfigurationsResponse =
 export const ListAchievementConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementConfigurationListResponse;
 
-export type ListAchievementConfigurationsError = DefaultErrors;
+export type ListAchievementConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of the achievement configurations in this application. */
 export const listAchievementConfigurations: API.PaginatedOperationMethod<
@@ -400,7 +462,7 @@ export const listAchievementConfigurations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAchievementConfigurationsRequest,
   output: ListAchievementConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -432,7 +494,12 @@ export type UpdateAchievementConfigurationsResponse = AchievementConfiguration;
 export const UpdateAchievementConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AchievementConfiguration;
 
-export type UpdateAchievementConfigurationsError = DefaultErrors;
+export type UpdateAchievementConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the metadata of the achievement configuration with the given ID. */
 export const updateAchievementConfigurations: API.OperationMethod<
@@ -443,7 +510,7 @@ export const updateAchievementConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAchievementConfigurationsRequest,
   output: UpdateAchievementConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteLeaderboardConfigurationsRequest {
@@ -468,7 +535,12 @@ export const DeleteLeaderboardConfigurationsResponse: Schema.Schema<DeleteLeader
     {},
   ) as any as Schema.Schema<DeleteLeaderboardConfigurationsResponse>;
 
-export type DeleteLeaderboardConfigurationsError = DefaultErrors;
+export type DeleteLeaderboardConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete the leaderboard configuration with the given ID. */
 export const deleteLeaderboardConfigurations: API.OperationMethod<
@@ -479,7 +551,7 @@ export const deleteLeaderboardConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLeaderboardConfigurationsRequest,
   output: DeleteLeaderboardConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetLeaderboardConfigurationsRequest {
@@ -502,7 +574,10 @@ export type GetLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const GetLeaderboardConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfiguration;
 
-export type GetLeaderboardConfigurationsError = DefaultErrors;
+export type GetLeaderboardConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves the metadata of the leaderboard configuration with the given ID. */
 export const getLeaderboardConfigurations: API.OperationMethod<
@@ -513,7 +588,7 @@ export const getLeaderboardConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLeaderboardConfigurationsRequest,
   output: GetLeaderboardConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertLeaderboardConfigurationsRequest {
@@ -540,7 +615,12 @@ export type InsertLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const InsertLeaderboardConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfiguration;
 
-export type InsertLeaderboardConfigurationsError = DefaultErrors;
+export type InsertLeaderboardConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Insert a new leaderboard configuration in this application. */
 export const insertLeaderboardConfigurations: API.OperationMethod<
@@ -551,7 +631,7 @@ export const insertLeaderboardConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertLeaderboardConfigurationsRequest,
   output: InsertLeaderboardConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLeaderboardConfigurationsRequest {
@@ -581,7 +661,10 @@ export type ListLeaderboardConfigurationsResponse =
 export const ListLeaderboardConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfigurationListResponse;
 
-export type ListLeaderboardConfigurationsError = DefaultErrors;
+export type ListLeaderboardConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of the leaderboard configurations in this application. */
 export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
@@ -592,7 +675,7 @@ export const listLeaderboardConfigurations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLeaderboardConfigurationsRequest,
   output: ListLeaderboardConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -624,7 +707,12 @@ export type UpdateLeaderboardConfigurationsResponse = LeaderboardConfiguration;
 export const UpdateLeaderboardConfigurationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ LeaderboardConfiguration;
 
-export type UpdateLeaderboardConfigurationsError = DefaultErrors;
+export type UpdateLeaderboardConfigurationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the metadata of the leaderboard configuration with the given ID. */
 export const updateLeaderboardConfigurations: API.OperationMethod<
@@ -635,5 +723,5 @@ export const updateLeaderboardConfigurations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateLeaderboardConfigurationsRequest,
   output: UpdateLeaderboardConfigurationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

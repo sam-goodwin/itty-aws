@@ -202,6 +202,31 @@ export const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -229,7 +254,10 @@ export type ListProjectsAndroidAppsDeliveryDataResponse =
 export const ListProjectsAndroidAppsDeliveryDataResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse;
 
-export type ListProjectsAndroidAppsDeliveryDataError = DefaultErrors;
+export type ListProjectsAndroidAppsDeliveryDataError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List aggregate delivery data for the given Android application. */
 export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
@@ -240,7 +268,7 @@ export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAndroidAppsDeliveryDataRequest,
   output: ListProjectsAndroidAppsDeliveryDataResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

@@ -2872,6 +2872,52 @@ export const Presentation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "Presentation" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -2892,7 +2938,7 @@ export type GetPresentationsResponse = Presentation;
 export const GetPresentationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Presentation;
 
-export type GetPresentationsError = DefaultErrors;
+export type GetPresentationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest version of the specified presentation. */
 export const getPresentations: API.OperationMethod<
@@ -2903,7 +2949,7 @@ export const getPresentations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPresentationsRequest,
   output: GetPresentationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreatePresentationsRequest {
@@ -2923,7 +2969,12 @@ export type CreatePresentationsResponse = Presentation;
 export const CreatePresentationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Presentation;
 
-export type CreatePresentationsError = DefaultErrors;
+export type CreatePresentationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a blank presentation using the title given in the request. If a `presentationId` is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored. Returns the created presentation. */
 export const createPresentations: API.OperationMethod<
@@ -2934,7 +2985,7 @@ export const createPresentations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreatePresentationsRequest,
   output: CreatePresentationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchUpdatePresentationsRequest {
@@ -2961,7 +3012,12 @@ export type BatchUpdatePresentationsResponse = BatchUpdatePresentationResponse;
 export const BatchUpdatePresentationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchUpdatePresentationResponse;
 
-export type BatchUpdatePresentationsError = DefaultErrors;
+export type BatchUpdatePresentationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies: the reply to the third request, and another empty reply, in that order. Because other users may be editing the presentation, the presentation might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically. */
 export const batchUpdatePresentations: API.OperationMethod<
@@ -2972,7 +3028,7 @@ export const batchUpdatePresentations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchUpdatePresentationsRequest,
   output: BatchUpdatePresentationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetPresentationsPagesRequest {
@@ -2997,7 +3053,7 @@ export const GetPresentationsPagesRequest =
 export type GetPresentationsPagesResponse = Page;
 export const GetPresentationsPagesResponse = /*@__PURE__*/ /*#__PURE__*/ Page;
 
-export type GetPresentationsPagesError = DefaultErrors;
+export type GetPresentationsPagesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the latest version of the specified page in the presentation. */
 export const getPresentationsPages: API.OperationMethod<
@@ -3008,7 +3064,7 @@ export const getPresentationsPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPresentationsPagesRequest,
   output: GetPresentationsPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetThumbnailPresentationsPagesRequest {
@@ -3049,7 +3105,10 @@ export type GetThumbnailPresentationsPagesResponse = Thumbnail;
 export const GetThumbnailPresentationsPagesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Thumbnail;
 
-export type GetThumbnailPresentationsPagesError = DefaultErrors;
+export type GetThumbnailPresentationsPagesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts as an [expensive read request](https://developers.google.com/workspace/slides/limits) for quota purposes. */
 export const getThumbnailPresentationsPages: API.OperationMethod<
@@ -3060,5 +3119,5 @@ export const getThumbnailPresentationsPages: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetThumbnailPresentationsPagesRequest,
   output: GetThumbnailPresentationsPagesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));

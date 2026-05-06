@@ -80,6 +80,52 @@ export const DefaultBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "DefaultBucket" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -100,7 +146,12 @@ export type DeleteDefaultBucketProjectsResponse = Empty;
 export const DeleteDefaultBucketProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteDefaultBucketProjectsError = DefaultErrors;
+export type DeleteDefaultBucketProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unlinks and deletes the default bucket. */
 export const deleteDefaultBucketProjects: API.OperationMethod<
@@ -111,7 +162,7 @@ export const deleteDefaultBucketProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDefaultBucketProjectsRequest,
   output: DeleteDefaultBucketProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDefaultBucketProjectsRequest {
@@ -131,7 +182,10 @@ export type GetDefaultBucketProjectsResponse = DefaultBucket;
 export const GetDefaultBucketProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ DefaultBucket;
 
-export type GetDefaultBucketProjectsError = DefaultErrors;
+export type GetDefaultBucketProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the default bucket. */
 export const getDefaultBucketProjects: API.OperationMethod<
@@ -142,7 +196,7 @@ export const getDefaultBucketProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDefaultBucketProjectsRequest,
   output: GetDefaultBucketProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsBucketsRequest {
@@ -161,7 +215,7 @@ export const GetProjectsBucketsRequest =
 export type GetProjectsBucketsResponse = Bucket;
 export const GetProjectsBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type GetProjectsBucketsError = DefaultErrors;
+export type GetProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a single linked storage bucket. */
 export const getProjectsBuckets: API.OperationMethod<
@@ -172,7 +226,7 @@ export const getProjectsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsBucketsRequest,
   output: GetProjectsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsBucketsRequest {
@@ -198,7 +252,7 @@ export type ListProjectsBucketsResponse = ListBucketsResponse;
 export const ListProjectsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBucketsResponse;
 
-export type ListProjectsBucketsError = DefaultErrors;
+export type ListProjectsBucketsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the linked storage buckets for a project. */
 export const listProjectsBuckets: API.PaginatedOperationMethod<
@@ -209,7 +263,7 @@ export const listProjectsBuckets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBucketsRequest,
   output: ListProjectsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -240,7 +294,12 @@ export type AddFirebaseProjectsBucketsResponse = Bucket;
 export const AddFirebaseProjectsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Bucket;
 
-export type AddFirebaseProjectsBucketsError = DefaultErrors;
+export type AddFirebaseProjectsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Links a Google Cloud Storage bucket to a Firebase project. */
 export const addFirebaseProjectsBuckets: API.OperationMethod<
@@ -251,7 +310,7 @@ export const addFirebaseProjectsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: AddFirebaseProjectsBucketsRequest,
   output: AddFirebaseProjectsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RemoveFirebaseProjectsBucketsRequest {
@@ -278,7 +337,12 @@ export type RemoveFirebaseProjectsBucketsResponse = Empty;
 export const RemoveFirebaseProjectsBucketsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type RemoveFirebaseProjectsBucketsError = DefaultErrors;
+export type RemoveFirebaseProjectsBucketsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unlinks a linked Google Cloud Storage bucket from a Firebase project. */
 export const removeFirebaseProjectsBuckets: API.OperationMethod<
@@ -289,7 +353,7 @@ export const removeFirebaseProjectsBuckets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RemoveFirebaseProjectsBucketsRequest,
   output: RemoveFirebaseProjectsBucketsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsDefaultBucketRequest {
@@ -316,7 +380,12 @@ export type CreateProjectsDefaultBucketResponse = DefaultBucket;
 export const CreateProjectsDefaultBucketResponse =
   /*@__PURE__*/ /*#__PURE__*/ DefaultBucket;
 
-export type CreateProjectsDefaultBucketError = DefaultErrors;
+export type CreateProjectsDefaultBucketError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Spark tier-eligible Cloud Storage bucket and links it to your Firebase project. If the default bucket already exists, this method will re-link it to your Firebase project. See https://firebase.google.com/pricing for pricing details. */
 export const createProjectsDefaultBucket: API.OperationMethod<
@@ -327,5 +396,5 @@ export const createProjectsDefaultBucket: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsDefaultBucketRequest,
   output: CreateProjectsDefaultBucketResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

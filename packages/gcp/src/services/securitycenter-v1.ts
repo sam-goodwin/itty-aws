@@ -8349,6 +8349,52 @@ export const VulnerabilitySnapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "VulnerabilitySnapshot" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -8369,7 +8415,10 @@ export type GetOrganizationSettingsOrganizationsResponse = OrganizationSettings;
 export const GetOrganizationSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrganizationSettings;
 
-export type GetOrganizationSettingsOrganizationsError = DefaultErrors;
+export type GetOrganizationSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the settings for an organization. */
 export const getOrganizationSettingsOrganizations: API.OperationMethod<
@@ -8380,7 +8429,7 @@ export const getOrganizationSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationSettingsOrganizationsRequest,
   output: GetOrganizationSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateOrganizationSettingsOrganizationsRequest {
@@ -8407,7 +8456,12 @@ export type UpdateOrganizationSettingsOrganizationsResponse =
 export const UpdateOrganizationSettingsOrganizationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ OrganizationSettings;
 
-export type UpdateOrganizationSettingsOrganizationsError = DefaultErrors;
+export type UpdateOrganizationSettingsOrganizationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an organization's settings. */
 export const updateOrganizationSettingsOrganizations: API.OperationMethod<
@@ -8418,7 +8472,7 @@ export const updateOrganizationSettingsOrganizations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateOrganizationSettingsOrganizationsRequest,
   output: UpdateOrganizationSettingsOrganizationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsResourceValueConfigsRequest {
@@ -8438,7 +8492,12 @@ export type DeleteOrganizationsResourceValueConfigsResponse = Empty;
 export const DeleteOrganizationsResourceValueConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsResourceValueConfigsError = DefaultErrors;
+export type DeleteOrganizationsResourceValueConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a ResourceValueConfig. */
 export const deleteOrganizationsResourceValueConfigs: API.OperationMethod<
@@ -8449,7 +8508,7 @@ export const deleteOrganizationsResourceValueConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsResourceValueConfigsRequest,
   output: DeleteOrganizationsResourceValueConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsResourceValueConfigsRequest {
@@ -8470,7 +8529,10 @@ export type GetOrganizationsResourceValueConfigsResponse =
 export const GetOrganizationsResourceValueConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1ResourceValueConfig;
 
-export type GetOrganizationsResourceValueConfigsError = DefaultErrors;
+export type GetOrganizationsResourceValueConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a ResourceValueConfig. */
 export const getOrganizationsResourceValueConfigs: API.OperationMethod<
@@ -8481,7 +8543,7 @@ export const getOrganizationsResourceValueConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsResourceValueConfigsRequest,
   output: GetOrganizationsResourceValueConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsResourceValueConfigsRequest {
@@ -8510,7 +8572,12 @@ export type PatchOrganizationsResourceValueConfigsResponse =
 export const PatchOrganizationsResourceValueConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1ResourceValueConfig;
 
-export type PatchOrganizationsResourceValueConfigsError = DefaultErrors;
+export type PatchOrganizationsResourceValueConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing ResourceValueConfigs with new rules. */
 export const patchOrganizationsResourceValueConfigs: API.OperationMethod<
@@ -8521,7 +8588,7 @@ export const patchOrganizationsResourceValueConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsResourceValueConfigsRequest,
   output: PatchOrganizationsResourceValueConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateOrganizationsResourceValueConfigsRequest {
@@ -8551,7 +8618,12 @@ export type BatchCreateOrganizationsResourceValueConfigsResponse =
 export const BatchCreateOrganizationsResourceValueConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateResourceValueConfigsResponse;
 
-export type BatchCreateOrganizationsResourceValueConfigsError = DefaultErrors;
+export type BatchCreateOrganizationsResourceValueConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a ResourceValueConfig for an organization. Maps user's tags to difference resource values for use by the attack path simulation. */
 export const batchCreateOrganizationsResourceValueConfigs: API.OperationMethod<
@@ -8562,7 +8634,7 @@ export const batchCreateOrganizationsResourceValueConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateOrganizationsResourceValueConfigsRequest,
   output: BatchCreateOrganizationsResourceValueConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsResourceValueConfigsRequest {
@@ -8589,7 +8661,10 @@ export type ListOrganizationsResourceValueConfigsResponse =
 export const ListOrganizationsResourceValueConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListResourceValueConfigsResponse;
 
-export type ListOrganizationsResourceValueConfigsError = DefaultErrors;
+export type ListOrganizationsResourceValueConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all ResourceValueConfigs. */
 export const listOrganizationsResourceValueConfigs: API.PaginatedOperationMethod<
@@ -8600,7 +8675,7 @@ export const listOrganizationsResourceValueConfigs: API.PaginatedOperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsResourceValueConfigsRequest,
   output: ListOrganizationsResourceValueConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8624,7 +8699,12 @@ export type DeleteOrganizationsMuteConfigsResponse = Empty;
 export const DeleteOrganizationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsMuteConfigsError = DefaultErrors;
+export type DeleteOrganizationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing mute config. */
 export const deleteOrganizationsMuteConfigs: API.OperationMethod<
@@ -8635,7 +8715,7 @@ export const deleteOrganizationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsMuteConfigsRequest,
   output: DeleteOrganizationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsMuteConfigsRequest {
@@ -8664,7 +8744,12 @@ export type PatchOrganizationsMuteConfigsResponse =
 export const PatchOrganizationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type PatchOrganizationsMuteConfigsError = DefaultErrors;
+export type PatchOrganizationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a mute config. */
 export const patchOrganizationsMuteConfigs: API.OperationMethod<
@@ -8675,7 +8760,7 @@ export const patchOrganizationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsMuteConfigsRequest,
   output: PatchOrganizationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsMuteConfigsRequest {
@@ -8696,7 +8781,10 @@ export type GetOrganizationsMuteConfigsResponse =
 export const GetOrganizationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type GetOrganizationsMuteConfigsError = DefaultErrors;
+export type GetOrganizationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a mute config. */
 export const getOrganizationsMuteConfigs: API.OperationMethod<
@@ -8707,7 +8795,7 @@ export const getOrganizationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsMuteConfigsRequest,
   output: GetOrganizationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateOrganizationsMuteConfigsRequest {
@@ -8738,7 +8826,12 @@ export type CreateOrganizationsMuteConfigsResponse =
 export const CreateOrganizationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type CreateOrganizationsMuteConfigsError = DefaultErrors;
+export type CreateOrganizationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a mute config. */
 export const createOrganizationsMuteConfigs: API.OperationMethod<
@@ -8749,7 +8842,7 @@ export const createOrganizationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsMuteConfigsRequest,
   output: CreateOrganizationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsMuteConfigsRequest {
@@ -8775,7 +8868,10 @@ export type ListOrganizationsMuteConfigsResponse = ListMuteConfigsResponse;
 export const ListOrganizationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMuteConfigsResponse;
 
-export type ListOrganizationsMuteConfigsError = DefaultErrors;
+export type ListOrganizationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists mute configs. */
 export const listOrganizationsMuteConfigs: API.PaginatedOperationMethod<
@@ -8786,7 +8882,7 @@ export const listOrganizationsMuteConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsMuteConfigsRequest,
   output: ListOrganizationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8819,7 +8915,12 @@ export type PatchOrganizationsLocationsMuteConfigsResponse =
 export const PatchOrganizationsLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type PatchOrganizationsLocationsMuteConfigsError = DefaultErrors;
+export type PatchOrganizationsLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a mute config. */
 export const patchOrganizationsLocationsMuteConfigs: API.OperationMethod<
@@ -8830,7 +8931,7 @@ export const patchOrganizationsLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsLocationsMuteConfigsRequest,
   output: PatchOrganizationsLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsLocationsMuteConfigsRequest {
@@ -8851,7 +8952,10 @@ export type GetOrganizationsLocationsMuteConfigsResponse =
 export const GetOrganizationsLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type GetOrganizationsLocationsMuteConfigsError = DefaultErrors;
+export type GetOrganizationsLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a mute config. */
 export const getOrganizationsLocationsMuteConfigs: API.OperationMethod<
@@ -8862,7 +8966,7 @@ export const getOrganizationsLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsLocationsMuteConfigsRequest,
   output: GetOrganizationsLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsLocationsMuteConfigsRequest {
@@ -8882,7 +8986,12 @@ export type DeleteOrganizationsLocationsMuteConfigsResponse = Empty;
 export const DeleteOrganizationsLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsLocationsMuteConfigsError = DefaultErrors;
+export type DeleteOrganizationsLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing mute config. */
 export const deleteOrganizationsLocationsMuteConfigs: API.OperationMethod<
@@ -8893,7 +9002,7 @@ export const deleteOrganizationsLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsLocationsMuteConfigsRequest,
   output: DeleteOrganizationsLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsAttackPathsRequest {
@@ -8922,7 +9031,10 @@ export type ListOrganizationsAttackPathsResponse = ListAttackPathsResponse;
 export const ListOrganizationsAttackPathsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAttackPathsResponse;
 
-export type ListOrganizationsAttackPathsError = DefaultErrors;
+export type ListOrganizationsAttackPathsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the attack paths for a set of simulation results or valued resources and filter. */
 export const listOrganizationsAttackPaths: API.PaginatedOperationMethod<
@@ -8933,7 +9045,7 @@ export const listOrganizationsAttackPaths: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAttackPathsRequest,
   output: ListOrganizationsAttackPathsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -8970,7 +9082,10 @@ export type ListOrganizationsValuedResourcesResponse =
 export const ListOrganizationsValuedResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListValuedResourcesResponse;
 
-export type ListOrganizationsValuedResourcesError = DefaultErrors;
+export type ListOrganizationsValuedResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the valued resources for a set of simulation results and filter. */
 export const listOrganizationsValuedResources: API.PaginatedOperationMethod<
@@ -8981,7 +9096,7 @@ export const listOrganizationsValuedResources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsValuedResourcesRequest,
   output: ListOrganizationsValuedResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9005,7 +9120,7 @@ export type GetOrganizationsSourcesResponse = Source;
 export const GetOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Source;
 
-export type GetOrganizationsSourcesError = DefaultErrors;
+export type GetOrganizationsSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a source. */
 export const getOrganizationsSources: API.OperationMethod<
@@ -9016,7 +9131,7 @@ export const getOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSourcesRequest,
   output: GetOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface TestIamPermissionsOrganizationsSourcesRequest {
@@ -9044,7 +9159,12 @@ export type TestIamPermissionsOrganizationsSourcesResponse =
 export const TestIamPermissionsOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TestIamPermissionsResponse;
 
-export type TestIamPermissionsOrganizationsSourcesError = DefaultErrors;
+export type TestIamPermissionsOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns the permissions that a caller has on the specified source. */
 export const testIamPermissionsOrganizationsSources: API.OperationMethod<
@@ -9055,7 +9175,7 @@ export const testIamPermissionsOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TestIamPermissionsOrganizationsSourcesRequest,
   output: TestIamPermissionsOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSourcesRequest {
@@ -9081,7 +9201,12 @@ export type PatchOrganizationsSourcesResponse = Source;
 export const PatchOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Source;
 
-export type PatchOrganizationsSourcesError = DefaultErrors;
+export type PatchOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a source. */
 export const patchOrganizationsSources: API.OperationMethod<
@@ -9092,7 +9217,7 @@ export const patchOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSourcesRequest,
   output: PatchOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSourcesRequest {
@@ -9115,7 +9240,12 @@ export type CreateOrganizationsSourcesResponse = Source;
 export const CreateOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Source;
 
-export type CreateOrganizationsSourcesError = DefaultErrors;
+export type CreateOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a source. */
 export const createOrganizationsSources: API.OperationMethod<
@@ -9126,7 +9256,7 @@ export const createOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSourcesRequest,
   output: CreateOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIamPolicyOrganizationsSourcesRequest {
@@ -9153,7 +9283,12 @@ export type GetIamPolicyOrganizationsSourcesResponse = Policy;
 export const GetIamPolicyOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type GetIamPolicyOrganizationsSourcesError = DefaultErrors;
+export type GetIamPolicyOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Gets the access control policy on the specified Source. */
 export const getIamPolicyOrganizationsSources: API.OperationMethod<
@@ -9164,7 +9299,7 @@ export const getIamPolicyOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIamPolicyOrganizationsSourcesRequest,
   output: GetIamPolicyOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSourcesRequest {
@@ -9190,7 +9325,10 @@ export type ListOrganizationsSourcesResponse = ListSourcesResponse;
 export const ListOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSourcesResponse;
 
-export type ListOrganizationsSourcesError = DefaultErrors;
+export type ListOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all sources belonging to an organization. */
 export const listOrganizationsSources: API.PaginatedOperationMethod<
@@ -9201,7 +9339,7 @@ export const listOrganizationsSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesRequest,
   output: ListOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9232,7 +9370,12 @@ export type SetIamPolicyOrganizationsSourcesResponse = Policy;
 export const SetIamPolicyOrganizationsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Policy;
 
-export type SetIamPolicyOrganizationsSourcesError = DefaultErrors;
+export type SetIamPolicyOrganizationsSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Sets the access control policy on the specified Source. */
 export const setIamPolicyOrganizationsSources: API.OperationMethod<
@@ -9243,7 +9386,7 @@ export const setIamPolicyOrganizationsSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetIamPolicyOrganizationsSourcesRequest,
   output: SetIamPolicyOrganizationsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetStateOrganizationsSourcesFindingsRequest {
@@ -9266,7 +9409,12 @@ export type SetStateOrganizationsSourcesFindingsResponse = Finding;
 export const SetStateOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type SetStateOrganizationsSourcesFindingsError = DefaultErrors;
+export type SetStateOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the state of a finding. */
 export const setStateOrganizationsSourcesFindings: API.OperationMethod<
@@ -9277,7 +9425,7 @@ export const setStateOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetStateOrganizationsSourcesFindingsRequest,
   output: SetStateOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetMuteOrganizationsSourcesFindingsRequest {
@@ -9300,7 +9448,12 @@ export type SetMuteOrganizationsSourcesFindingsResponse = Finding;
 export const SetMuteOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type SetMuteOrganizationsSourcesFindingsError = DefaultErrors;
+export type SetMuteOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the mute state of a finding. */
 export const setMuteOrganizationsSourcesFindings: API.OperationMethod<
@@ -9311,7 +9464,7 @@ export const setMuteOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMuteOrganizationsSourcesFindingsRequest,
   output: SetMuteOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSourcesFindingsRequest {
@@ -9337,7 +9490,12 @@ export type PatchOrganizationsSourcesFindingsResponse = Finding;
 export const PatchOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type PatchOrganizationsSourcesFindingsError = DefaultErrors;
+export type PatchOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a finding. The corresponding source must exist for a finding creation to succeed. */
 export const patchOrganizationsSourcesFindings: API.OperationMethod<
@@ -9348,7 +9506,7 @@ export const patchOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSourcesFindingsRequest,
   output: PatchOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsSourcesFindingsRequest {
@@ -9374,7 +9532,12 @@ export type CreateOrganizationsSourcesFindingsResponse = Finding;
 export const CreateOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type CreateOrganizationsSourcesFindingsError = DefaultErrors;
+export type CreateOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a finding. The corresponding source must exist for finding creation to succeed. */
 export const createOrganizationsSourcesFindings: API.OperationMethod<
@@ -9385,7 +9548,7 @@ export const createOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsSourcesFindingsRequest,
   output: CreateOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GroupOrganizationsSourcesFindingsRequest {
@@ -9412,7 +9575,12 @@ export type GroupOrganizationsSourcesFindingsResponse = GroupFindingsResponse;
 export const GroupOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupFindingsResponse;
 
-export type GroupOrganizationsSourcesFindingsError = DefaultErrors;
+export type GroupOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings */
 export const groupOrganizationsSourcesFindings: API.OperationMethod<
@@ -9423,7 +9591,7 @@ export const groupOrganizationsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupOrganizationsSourcesFindingsRequest,
   output: GroupOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSourcesFindingsRequest {
@@ -9466,7 +9634,10 @@ export type ListOrganizationsSourcesFindingsResponse = ListFindingsResponse;
 export const ListOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
 
-export type ListOrganizationsSourcesFindingsError = DefaultErrors;
+export type ListOrganizationsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings */
 export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
@@ -9477,7 +9648,7 @@ export const listOrganizationsSourcesFindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSourcesFindingsRequest,
   output: ListOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9512,7 +9683,11 @@ export const UpdateSecurityMarksOrganizationsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityMarks;
 
 export type UpdateSecurityMarksOrganizationsSourcesFindingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksOrganizationsSourcesFindings: API.OperationMethod<
@@ -9523,7 +9698,7 @@ export const updateSecurityMarksOrganizationsSourcesFindings: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksOrganizationsSourcesFindingsRequest,
   output: UpdateSecurityMarksOrganizationsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchOrganizationsSourcesFindingsExternalSystemsRequest {
@@ -9553,7 +9728,11 @@ export const PatchOrganizationsSourcesFindingsExternalSystemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1ExternalSystem;
 
 export type PatchOrganizationsSourcesFindingsExternalSystemsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates external system. This is for a given finding. */
 export const patchOrganizationsSourcesFindingsExternalSystems: API.OperationMethod<
@@ -9564,7 +9743,7 @@ export const patchOrganizationsSourcesFindingsExternalSystems: API.OperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsSourcesFindingsExternalSystemsRequest,
   output: PatchOrganizationsSourcesFindingsExternalSystemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsNotificationConfigsRequest {
@@ -9594,7 +9773,12 @@ export type CreateOrganizationsNotificationConfigsResponse = NotificationConfig;
 export const CreateOrganizationsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type CreateOrganizationsNotificationConfigsError = DefaultErrors;
+export type CreateOrganizationsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a notification config. */
 export const createOrganizationsNotificationConfigs: API.OperationMethod<
@@ -9605,7 +9789,7 @@ export const createOrganizationsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsNotificationConfigsRequest,
   output: CreateOrganizationsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsNotificationConfigsRequest {
@@ -9632,7 +9816,10 @@ export type ListOrganizationsNotificationConfigsResponse =
 export const ListOrganizationsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotificationConfigsResponse;
 
-export type ListOrganizationsNotificationConfigsError = DefaultErrors;
+export type ListOrganizationsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists notification configs. */
 export const listOrganizationsNotificationConfigs: API.PaginatedOperationMethod<
@@ -9643,7 +9830,7 @@ export const listOrganizationsNotificationConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsNotificationConfigsRequest,
   output: ListOrganizationsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9667,7 +9854,12 @@ export type DeleteOrganizationsNotificationConfigsResponse = Empty;
 export const DeleteOrganizationsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsNotificationConfigsError = DefaultErrors;
+export type DeleteOrganizationsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a notification config. */
 export const deleteOrganizationsNotificationConfigs: API.OperationMethod<
@@ -9678,7 +9870,7 @@ export const deleteOrganizationsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsNotificationConfigsRequest,
   output: DeleteOrganizationsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsNotificationConfigsRequest {
@@ -9698,7 +9890,10 @@ export type GetOrganizationsNotificationConfigsResponse = NotificationConfig;
 export const GetOrganizationsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type GetOrganizationsNotificationConfigsError = DefaultErrors;
+export type GetOrganizationsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a notification config. */
 export const getOrganizationsNotificationConfigs: API.OperationMethod<
@@ -9709,7 +9904,7 @@ export const getOrganizationsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsNotificationConfigsRequest,
   output: GetOrganizationsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsNotificationConfigsRequest {
@@ -9735,7 +9930,12 @@ export type PatchOrganizationsNotificationConfigsResponse = NotificationConfig;
 export const PatchOrganizationsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type PatchOrganizationsNotificationConfigsError = DefaultErrors;
+export type PatchOrganizationsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a notification config. The following update fields are allowed: description, pubsub_topic, streaming_config.filter */
 export const patchOrganizationsNotificationConfigs: API.OperationMethod<
@@ -9746,7 +9946,7 @@ export const patchOrganizationsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsNotificationConfigsRequest,
   output: PatchOrganizationsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GroupOrganizationsAssetsRequest {
@@ -9769,7 +9969,12 @@ export type GroupOrganizationsAssetsResponse = GroupAssetsResponse;
 export const GroupOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupAssetsResponse;
 
-export type GroupOrganizationsAssetsError = DefaultErrors;
+export type GroupOrganizationsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization's assets and groups them by their specified properties. */
 export const groupOrganizationsAssets: API.OperationMethod<
@@ -9780,7 +9985,7 @@ export const groupOrganizationsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupOrganizationsAssetsRequest,
   output: GroupOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsAssetsRequest {
@@ -9823,7 +10028,7 @@ export type ListOrganizationsAssetsResponse = ListAssetsResponse;
 export const ListOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAssetsResponse;
 
-export type ListOrganizationsAssetsError = DefaultErrors;
+export type ListOrganizationsAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists an organization's assets. */
 export const listOrganizationsAssets: API.PaginatedOperationMethod<
@@ -9834,7 +10039,7 @@ export const listOrganizationsAssets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsAssetsRequest,
   output: ListOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -9867,7 +10072,12 @@ export type UpdateSecurityMarksOrganizationsAssetsResponse = SecurityMarks;
 export const UpdateSecurityMarksOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityMarks;
 
-export type UpdateSecurityMarksOrganizationsAssetsError = DefaultErrors;
+export type UpdateSecurityMarksOrganizationsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksOrganizationsAssets: API.OperationMethod<
@@ -9878,7 +10088,7 @@ export const updateSecurityMarksOrganizationsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksOrganizationsAssetsRequest,
   output: UpdateSecurityMarksOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface RunDiscoveryOrganizationsAssetsRequest {
@@ -9905,7 +10115,12 @@ export type RunDiscoveryOrganizationsAssetsResponse = Operation;
 export const RunDiscoveryOrganizationsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type RunDiscoveryOrganizationsAssetsError = DefaultErrors;
+export type RunDiscoveryOrganizationsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Runs asset discovery. The discovery is tracked with a long-running operation. This API can only be called with limited frequency for an organization. If it is called too frequently the caller will receive a TOO_MANY_REQUESTS error. */
 export const runDiscoveryOrganizationsAssets: API.OperationMethod<
@@ -9916,7 +10131,7 @@ export const runDiscoveryOrganizationsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: RunDiscoveryOrganizationsAssetsRequest,
   output: RunDiscoveryOrganizationsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsOperationsRequest {
@@ -9936,7 +10151,12 @@ export type DeleteOrganizationsOperationsResponse = Empty;
 export const DeleteOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsOperationsError = DefaultErrors;
+export type DeleteOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOrganizationsOperations: API.OperationMethod<
@@ -9947,7 +10167,7 @@ export const deleteOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsOperationsRequest,
   output: DeleteOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CancelOrganizationsOperationsRequest {
@@ -9967,7 +10187,12 @@ export type CancelOrganizationsOperationsResponse = Empty;
 export const CancelOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type CancelOrganizationsOperationsError = DefaultErrors;
+export type CancelOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOrganizationsOperations: API.OperationMethod<
@@ -9978,7 +10203,7 @@ export const cancelOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOrganizationsOperationsRequest,
   output: CancelOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsOperationsRequest {
@@ -9998,7 +10223,10 @@ export type GetOrganizationsOperationsResponse = Operation;
 export const GetOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type GetOrganizationsOperationsError = DefaultErrors;
+export type GetOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getOrganizationsOperations: API.OperationMethod<
@@ -10009,7 +10237,7 @@ export const getOrganizationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsOperationsRequest,
   output: GetOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsOperationsRequest {
@@ -10043,7 +10271,10 @@ export type ListOrganizationsOperationsResponse = ListOperationsResponse;
 export const ListOrganizationsOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListOperationsResponse;
 
-export type ListOrganizationsOperationsError = DefaultErrors;
+export type ListOrganizationsOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOrganizationsOperations: API.PaginatedOperationMethod<
@@ -10054,7 +10285,7 @@ export const listOrganizationsOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsOperationsRequest,
   output: ListOrganizationsOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10093,7 +10324,12 @@ export type CreateOrganizationsBigQueryExportsResponse =
 export const CreateOrganizationsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type CreateOrganizationsBigQueryExportsError = DefaultErrors;
+export type CreateOrganizationsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a BigQuery export. */
 export const createOrganizationsBigQueryExports: API.OperationMethod<
@@ -10104,7 +10340,7 @@ export const createOrganizationsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsBigQueryExportsRequest,
   output: CreateOrganizationsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsBigQueryExportsRequest {
@@ -10131,7 +10367,10 @@ export type ListOrganizationsBigQueryExportsResponse =
 export const ListOrganizationsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBigQueryExportsResponse;
 
-export type ListOrganizationsBigQueryExportsError = DefaultErrors;
+export type ListOrganizationsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery exports immediately under the folder plus the ones created under the projects within the folder are returned. */
 export const listOrganizationsBigQueryExports: API.PaginatedOperationMethod<
@@ -10142,7 +10381,7 @@ export const listOrganizationsBigQueryExports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsBigQueryExportsRequest,
   output: ListOrganizationsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10167,7 +10406,10 @@ export type GetOrganizationsBigQueryExportsResponse =
 export const GetOrganizationsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type GetOrganizationsBigQueryExportsError = DefaultErrors;
+export type GetOrganizationsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a BigQuery export. */
 export const getOrganizationsBigQueryExports: API.OperationMethod<
@@ -10178,7 +10420,7 @@ export const getOrganizationsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsBigQueryExportsRequest,
   output: GetOrganizationsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchOrganizationsBigQueryExportsRequest {
@@ -10207,7 +10449,12 @@ export type PatchOrganizationsBigQueryExportsResponse =
 export const PatchOrganizationsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type PatchOrganizationsBigQueryExportsError = DefaultErrors;
+export type PatchOrganizationsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a BigQuery export. */
 export const patchOrganizationsBigQueryExports: API.OperationMethod<
@@ -10218,7 +10465,7 @@ export const patchOrganizationsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsBigQueryExportsRequest,
   output: PatchOrganizationsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOrganizationsBigQueryExportsRequest {
@@ -10238,7 +10485,12 @@ export type DeleteOrganizationsBigQueryExportsResponse = Empty;
 export const DeleteOrganizationsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteOrganizationsBigQueryExportsError = DefaultErrors;
+export type DeleteOrganizationsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing BigQuery export. */
 export const deleteOrganizationsBigQueryExports: API.OperationMethod<
@@ -10249,7 +10501,7 @@ export const deleteOrganizationsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsBigQueryExportsRequest,
   output: DeleteOrganizationsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSimulationsRequest {
@@ -10269,7 +10521,10 @@ export type GetOrganizationsSimulationsResponse = Simulation;
 export const GetOrganizationsSimulationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Simulation;
 
-export type GetOrganizationsSimulationsError = DefaultErrors;
+export type GetOrganizationsSimulationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the simulation by name or the latest simulation for the given organization. */
 export const getOrganizationsSimulations: API.OperationMethod<
@@ -10280,7 +10535,7 @@ export const getOrganizationsSimulations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSimulationsRequest,
   output: GetOrganizationsSimulationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetOrganizationsSimulationsValuedResourcesRequest {
@@ -10300,7 +10555,10 @@ export type GetOrganizationsSimulationsValuedResourcesResponse = ValuedResource;
 export const GetOrganizationsSimulationsValuedResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValuedResource;
 
-export type GetOrganizationsSimulationsValuedResourcesError = DefaultErrors;
+export type GetOrganizationsSimulationsValuedResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get the valued resource by name */
 export const getOrganizationsSimulationsValuedResources: API.OperationMethod<
@@ -10311,7 +10569,7 @@ export const getOrganizationsSimulationsValuedResources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSimulationsValuedResourcesRequest,
   output: GetOrganizationsSimulationsValuedResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSimulationsValuedResourcesRequest {
@@ -10344,7 +10602,10 @@ export type ListOrganizationsSimulationsValuedResourcesResponse =
 export const ListOrganizationsSimulationsValuedResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListValuedResourcesResponse;
 
-export type ListOrganizationsSimulationsValuedResourcesError = DefaultErrors;
+export type ListOrganizationsSimulationsValuedResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the valued resources for a set of simulation results and filter. */
 export const listOrganizationsSimulationsValuedResources: API.PaginatedOperationMethod<
@@ -10355,7 +10616,7 @@ export const listOrganizationsSimulationsValuedResources: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsValuedResourcesRequest,
   output: ListOrganizationsSimulationsValuedResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10390,7 +10651,9 @@ export const ListOrganizationsSimulationsValuedResourcesAttackPathsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAttackPathsResponse;
 
 export type ListOrganizationsSimulationsValuedResourcesAttackPathsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the attack paths for a set of simulation results or valued resources and filter. */
 export const listOrganizationsSimulationsValuedResourcesAttackPaths: API.PaginatedOperationMethod<
@@ -10401,7 +10664,7 @@ export const listOrganizationsSimulationsValuedResourcesAttackPaths: API.Paginat
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsValuedResourcesAttackPathsRequest,
   output: ListOrganizationsSimulationsValuedResourcesAttackPathsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10435,7 +10698,10 @@ export type ListOrganizationsSimulationsAttackPathsResponse =
 export const ListOrganizationsSimulationsAttackPathsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAttackPathsResponse;
 
-export type ListOrganizationsSimulationsAttackPathsError = DefaultErrors;
+export type ListOrganizationsSimulationsAttackPathsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the attack paths for a set of simulation results or valued resources and filter. */
 export const listOrganizationsSimulationsAttackPaths: API.PaginatedOperationMethod<
@@ -10446,7 +10712,7 @@ export const listOrganizationsSimulationsAttackPaths: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsAttackPathsRequest,
   output: ListOrganizationsSimulationsAttackPathsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10481,7 +10747,9 @@ export const ListOrganizationsSimulationsAttackExposureResultsAttackPathsRespons
   /*@__PURE__*/ /*#__PURE__*/ ListAttackPathsResponse;
 
 export type ListOrganizationsSimulationsAttackExposureResultsAttackPathsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the attack paths for a set of simulation results or valued resources and filter. */
 export const listOrganizationsSimulationsAttackExposureResultsAttackPaths: API.PaginatedOperationMethod<
@@ -10492,7 +10760,7 @@ export const listOrganizationsSimulationsAttackExposureResultsAttackPaths: API.P
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSimulationsAttackExposureResultsAttackPathsRequest,
   output: ListOrganizationsSimulationsAttackExposureResultsAttackPathsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10530,7 +10798,9 @@ export const ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRes
   /*@__PURE__*/ /*#__PURE__*/ ListValuedResourcesResponse;
 
 export type ListOrganizationsSimulationsAttackExposureResultsValuedResourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists the valued resources for a set of simulation results and filter. */
 export const listOrganizationsSimulationsAttackExposureResultsValuedResources: API.PaginatedOperationMethod<
@@ -10543,7 +10813,7 @@ export const listOrganizationsSimulationsAttackExposureResultsValuedResources: A
     ListOrganizationsSimulationsAttackExposureResultsValuedResourcesRequest,
   output:
     ListOrganizationsSimulationsAttackExposureResultsValuedResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10578,7 +10848,11 @@ export const CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given parent. These modules are enabled by default. */
 export const createOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -10590,7 +10864,7 @@ export const createOrganizationsSecurityHealthAnalyticsSettingsCustomModules: AP
   input: CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output:
     CreateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -10618,7 +10892,9 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRespon
   /*@__PURE__*/ /*#__PURE__*/ ListSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -10629,7 +10905,7 @@ export const listOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: ListOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10664,7 +10940,11 @@ export const SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRe
   /*@__PURE__*/ /*#__PURE__*/ SimulateSecurityHealthAnalyticsCustomModuleResponse;
 
 export type SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Simulates a given SecurityHealthAnalyticsCustomModule and Resource. */
 export const simulateOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -10677,7 +10957,7 @@ export const simulateOrganizationsSecurityHealthAnalyticsSettingsCustomModules: 
     SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output:
     SimulateOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -10705,7 +10985,9 @@ export const ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomMod
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and all of the parent’s CRM descendants. */
 export const listDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -10718,7 +11000,7 @@ export const listDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomMod
     ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output:
     ListDescendantOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10752,7 +11034,11 @@ export const PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRespo
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask. Updating the enablement state is supported on both resident and inherited modules (though resident modules cannot have an enablement state of "inherited"). Updating the display name and custom config of a module is supported on resident modules only. */
 export const patchOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -10764,7 +11050,7 @@ export const patchOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API
   input: PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output:
     PatchOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -10786,7 +11072,9 @@ export const GetOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type GetOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a SecurityHealthAnalyticsCustomModule. */
 export const getOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -10797,7 +11085,7 @@ export const getOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: GetOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -10819,7 +11107,11 @@ export const DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM hierarchy. This method is only supported for resident custom modules. */
 export const deleteOrganizationsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -10831,7 +11123,7 @@ export const deleteOrganizationsSecurityHealthAnalyticsSettingsCustomModules: AP
   input: DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output:
     DeleteOrganizationsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest {
@@ -10853,7 +11145,9 @@ export const GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModul
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an EffectiveSecurityHealthAnalyticsCustomModule. */
 export const getOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
@@ -10866,7 +11160,7 @@ export const getOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModul
     GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   output:
     GetOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest {
@@ -10894,7 +11188,9 @@ export const ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModu
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -10907,7 +11203,7 @@ export const listOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModu
     ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   output:
     ListOrganizationsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -10942,7 +11238,11 @@ export const ValidateCustomModuleOrganizationsEventThreatDetectionSettingsRespon
   /*@__PURE__*/ /*#__PURE__*/ ValidateEventThreatDetectionCustomModuleResponse;
 
 export type ValidateCustomModuleOrganizationsEventThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates the given Event Threat Detection custom module. */
 export const validateCustomModuleOrganizationsEventThreatDetectionSettings: API.OperationMethod<
@@ -10953,7 +11253,7 @@ export const validateCustomModuleOrganizationsEventThreatDetectionSettings: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateCustomModuleOrganizationsEventThreatDetectionSettingsRequest,
   output: ValidateCustomModuleOrganizationsEventThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateOrganizationsEventThreatDetectionSettingsCustomModulesRequest {
@@ -10982,7 +11282,11 @@ export const CreateOrganizationsEventThreatDetectionSettingsCustomModulesRespons
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type CreateOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default. */
 export const createOrganizationsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -10993,7 +11297,7 @@ export const createOrganizationsEventThreatDetectionSettingsCustomModules: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   output: CreateOrganizationsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListOrganizationsEventThreatDetectionSettingsCustomModulesRequest {
@@ -11021,7 +11325,9 @@ export const ListOrganizationsEventThreatDetectionSettingsCustomModulesResponse 
   /*@__PURE__*/ /*#__PURE__*/ ListEventThreatDetectionCustomModulesResponse;
 
 export type ListOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Event Threat Detection custom modules for the given Resource Manager parent. This includes resident modules defined at the scope of the parent along with modules inherited from ancestors. */
 export const listOrganizationsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -11032,7 +11338,7 @@ export const listOrganizationsEventThreatDetectionSettingsCustomModules: API.Pag
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   output: ListOrganizationsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11058,7 +11364,11 @@ export const DeleteOrganizationsEventThreatDetectionSettingsCustomModulesRespons
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Event Threat Detection custom module and all of its descendants in the Resource Manager hierarchy. This method is only supported for resident custom modules. */
 export const deleteOrganizationsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -11069,7 +11379,7 @@ export const deleteOrganizationsEventThreatDetectionSettingsCustomModules: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   output: DeleteOrganizationsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEventThreatDetectionSettingsCustomModulesRequest {
@@ -11091,7 +11401,9 @@ export const GetOrganizationsEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type GetOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an Event Threat Detection custom module. */
 export const getOrganizationsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -11102,7 +11414,7 @@ export const getOrganizationsEventThreatDetectionSettingsCustomModules: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   output: GetOrganizationsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesRequest {
@@ -11130,7 +11442,9 @@ export const ListDescendantOrganizationsEventThreatDetectionSettingsCustomModule
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all resident Event Threat Detection custom modules under the given Resource Manager parent and its descendants. */
 export const listDescendantOrganizationsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -11143,7 +11457,7 @@ export const listDescendantOrganizationsEventThreatDetectionSettingsCustomModule
     ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   output:
     ListDescendantOrganizationsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11175,7 +11489,11 @@ export const PatchOrganizationsEventThreatDetectionSettingsCustomModulesResponse
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type PatchOrganizationsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Event Threat Detection custom module with the given name based on the given update mask. Updating the enablement state is supported for both resident and inherited modules (though resident modules cannot have an enablement state of "inherited"). Updating the display name or configuration of a module is supported for resident modules only. The type of a module cannot be changed. */
 export const patchOrganizationsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -11186,7 +11504,7 @@ export const patchOrganizationsEventThreatDetectionSettingsCustomModules: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchOrganizationsEventThreatDetectionSettingsCustomModulesRequest,
   output: PatchOrganizationsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest {
@@ -11208,7 +11526,9 @@ export const GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesR
   /*@__PURE__*/ /*#__PURE__*/ EffectiveEventThreatDetectionCustomModule;
 
 export type GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an effective Event Threat Detection custom module at the given level. */
 export const getOrganizationsEventThreatDetectionSettingsEffectiveCustomModules: API.OperationMethod<
@@ -11221,7 +11541,7 @@ export const getOrganizationsEventThreatDetectionSettingsEffectiveCustomModules:
     GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output:
     GetOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest {
@@ -11249,7 +11569,9 @@ export const ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModules
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all effective Event Threat Detection custom modules for the given parent. This includes resident modules defined at the scope of the parent along with modules inherited from its ancestors. */
 export const listOrganizationsEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -11262,7 +11584,7 @@ export const listOrganizationsEventThreatDetectionSettingsEffectiveCustomModules
     ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output:
     ListOrganizationsEventThreatDetectionSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11293,7 +11615,12 @@ export type BulkMuteOrganizationsFindingsResponse = Operation;
 export const BulkMuteOrganizationsFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkMuteOrganizationsFindingsError = DefaultErrors;
+export type BulkMuteOrganizationsFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an organization, folder or project. The findings matched by the filter will be muted after the LRO is done. */
 export const bulkMuteOrganizationsFindings: API.OperationMethod<
@@ -11304,7 +11631,7 @@ export const bulkMuteOrganizationsFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkMuteOrganizationsFindingsRequest,
   output: BulkMuteOrganizationsFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BulkMuteFoldersFindingsRequest {
@@ -11331,7 +11658,12 @@ export type BulkMuteFoldersFindingsResponse = Operation;
 export const BulkMuteFoldersFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkMuteFoldersFindingsError = DefaultErrors;
+export type BulkMuteFoldersFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an organization, folder or project. The findings matched by the filter will be muted after the LRO is done. */
 export const bulkMuteFoldersFindings: API.OperationMethod<
@@ -11342,7 +11674,7 @@ export const bulkMuteFoldersFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkMuteFoldersFindingsRequest,
   output: BulkMuteFoldersFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersSourcesRequest {
@@ -11368,7 +11700,7 @@ export type ListFoldersSourcesResponse = ListSourcesResponse;
 export const ListFoldersSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSourcesResponse;
 
-export type ListFoldersSourcesError = DefaultErrors;
+export type ListFoldersSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all sources belonging to an organization. */
 export const listFoldersSources: API.PaginatedOperationMethod<
@@ -11379,7 +11711,7 @@ export const listFoldersSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersSourcesRequest,
   output: ListFoldersSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11410,7 +11742,12 @@ export type GroupFoldersSourcesFindingsResponse = GroupFindingsResponse;
 export const GroupFoldersSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupFindingsResponse;
 
-export type GroupFoldersSourcesFindingsError = DefaultErrors;
+export type GroupFoldersSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings */
 export const groupFoldersSourcesFindings: API.OperationMethod<
@@ -11421,7 +11758,7 @@ export const groupFoldersSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupFoldersSourcesFindingsRequest,
   output: GroupFoldersSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersSourcesFindingsRequest {
@@ -11464,7 +11801,10 @@ export type ListFoldersSourcesFindingsResponse = ListFindingsResponse;
 export const ListFoldersSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
 
-export type ListFoldersSourcesFindingsError = DefaultErrors;
+export type ListFoldersSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings */
 export const listFoldersSourcesFindings: API.PaginatedOperationMethod<
@@ -11475,7 +11815,7 @@ export const listFoldersSourcesFindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersSourcesFindingsRequest,
   output: ListFoldersSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11508,7 +11848,12 @@ export type UpdateSecurityMarksFoldersSourcesFindingsResponse = SecurityMarks;
 export const UpdateSecurityMarksFoldersSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityMarks;
 
-export type UpdateSecurityMarksFoldersSourcesFindingsError = DefaultErrors;
+export type UpdateSecurityMarksFoldersSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksFoldersSourcesFindings: API.OperationMethod<
@@ -11519,7 +11864,7 @@ export const updateSecurityMarksFoldersSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksFoldersSourcesFindingsRequest,
   output: UpdateSecurityMarksFoldersSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetStateFoldersSourcesFindingsRequest {
@@ -11542,7 +11887,12 @@ export type SetStateFoldersSourcesFindingsResponse = Finding;
 export const SetStateFoldersSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type SetStateFoldersSourcesFindingsError = DefaultErrors;
+export type SetStateFoldersSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the state of a finding. */
 export const setStateFoldersSourcesFindings: API.OperationMethod<
@@ -11553,7 +11903,7 @@ export const setStateFoldersSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetStateFoldersSourcesFindingsRequest,
   output: SetStateFoldersSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetMuteFoldersSourcesFindingsRequest {
@@ -11576,7 +11926,12 @@ export type SetMuteFoldersSourcesFindingsResponse = Finding;
 export const SetMuteFoldersSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type SetMuteFoldersSourcesFindingsError = DefaultErrors;
+export type SetMuteFoldersSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the mute state of a finding. */
 export const setMuteFoldersSourcesFindings: API.OperationMethod<
@@ -11587,7 +11942,7 @@ export const setMuteFoldersSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMuteFoldersSourcesFindingsRequest,
   output: SetMuteFoldersSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersSourcesFindingsRequest {
@@ -11613,7 +11968,12 @@ export type PatchFoldersSourcesFindingsResponse = Finding;
 export const PatchFoldersSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type PatchFoldersSourcesFindingsError = DefaultErrors;
+export type PatchFoldersSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a finding. The corresponding source must exist for a finding creation to succeed. */
 export const patchFoldersSourcesFindings: API.OperationMethod<
@@ -11624,7 +11984,7 @@ export const patchFoldersSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersSourcesFindingsRequest,
   output: PatchFoldersSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFoldersSourcesFindingsExternalSystemsRequest {
@@ -11653,7 +12013,12 @@ export type PatchFoldersSourcesFindingsExternalSystemsResponse =
 export const PatchFoldersSourcesFindingsExternalSystemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1ExternalSystem;
 
-export type PatchFoldersSourcesFindingsExternalSystemsError = DefaultErrors;
+export type PatchFoldersSourcesFindingsExternalSystemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates external system. This is for a given finding. */
 export const patchFoldersSourcesFindingsExternalSystems: API.OperationMethod<
@@ -11664,7 +12029,7 @@ export const patchFoldersSourcesFindingsExternalSystems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersSourcesFindingsExternalSystemsRequest,
   output: PatchFoldersSourcesFindingsExternalSystemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ValidateCustomModuleFoldersEventThreatDetectionSettingsRequest {
@@ -11695,7 +12060,11 @@ export const ValidateCustomModuleFoldersEventThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValidateEventThreatDetectionCustomModuleResponse;
 
 export type ValidateCustomModuleFoldersEventThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates the given Event Threat Detection custom module. */
 export const validateCustomModuleFoldersEventThreatDetectionSettings: API.OperationMethod<
@@ -11706,7 +12075,7 @@ export const validateCustomModuleFoldersEventThreatDetectionSettings: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateCustomModuleFoldersEventThreatDetectionSettingsRequest,
   output: ValidateCustomModuleFoldersEventThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersEventThreatDetectionSettingsCustomModulesRequest {
@@ -11728,7 +12097,9 @@ export const GetFoldersEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type GetFoldersEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an Event Threat Detection custom module. */
 export const getFoldersEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -11739,7 +12110,7 @@ export const getFoldersEventThreatDetectionSettingsCustomModules: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output: GetFoldersEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRequest {
@@ -11767,7 +12138,9 @@ export const ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRespo
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantFoldersEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all resident Event Threat Detection custom modules under the given Resource Manager parent and its descendants. */
 export const listDescendantFoldersEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -11779,7 +12152,7 @@ export const listDescendantFoldersEventThreatDetectionSettingsCustomModules: API
   input: ListDescendantFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output:
     ListDescendantFoldersEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11811,7 +12184,11 @@ export const PatchFoldersEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type PatchFoldersEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Event Threat Detection custom module with the given name based on the given update mask. Updating the enablement state is supported for both resident and inherited modules (though resident modules cannot have an enablement state of "inherited"). Updating the display name or configuration of a module is supported for resident modules only. The type of a module cannot be changed. */
 export const patchFoldersEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -11822,7 +12199,7 @@ export const patchFoldersEventThreatDetectionSettingsCustomModules: API.Operatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output: PatchFoldersEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersEventThreatDetectionSettingsCustomModulesRequest {
@@ -11844,7 +12221,11 @@ export const DeleteFoldersEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteFoldersEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Event Threat Detection custom module and all of its descendants in the Resource Manager hierarchy. This method is only supported for resident custom modules. */
 export const deleteFoldersEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -11855,7 +12236,7 @@ export const deleteFoldersEventThreatDetectionSettingsCustomModules: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output: DeleteFoldersEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersEventThreatDetectionSettingsCustomModulesRequest {
@@ -11884,7 +12265,11 @@ export const CreateFoldersEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type CreateFoldersEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default. */
 export const createFoldersEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -11895,7 +12280,7 @@ export const createFoldersEventThreatDetectionSettingsCustomModules: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output: CreateFoldersEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersEventThreatDetectionSettingsCustomModulesRequest {
@@ -11923,7 +12308,9 @@ export const ListFoldersEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEventThreatDetectionCustomModulesResponse;
 
 export type ListFoldersEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Event Threat Detection custom modules for the given Resource Manager parent. This includes resident modules defined at the scope of the parent along with modules inherited from ancestors. */
 export const listFoldersEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -11934,7 +12321,7 @@ export const listFoldersEventThreatDetectionSettingsCustomModules: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersEventThreatDetectionSettingsCustomModulesRequest,
   output: ListFoldersEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -11960,7 +12347,9 @@ export const GetFoldersEventThreatDetectionSettingsEffectiveCustomModulesRespons
   /*@__PURE__*/ /*#__PURE__*/ EffectiveEventThreatDetectionCustomModule;
 
 export type GetFoldersEventThreatDetectionSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an effective Event Threat Detection custom module at the given level. */
 export const getFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.OperationMethod<
@@ -11971,7 +12360,7 @@ export const getFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output: GetFoldersEventThreatDetectionSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest {
@@ -11999,7 +12388,9 @@ export const ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRespon
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all effective Event Threat Detection custom modules for the given parent. This includes resident modules defined at the scope of the parent along with modules inherited from its ancestors. */
 export const listFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -12010,7 +12401,7 @@ export const listFoldersEventThreatDetectionSettingsEffectiveCustomModules: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output: ListFoldersEventThreatDetectionSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12037,7 +12428,12 @@ export type GroupFoldersAssetsResponse = GroupAssetsResponse;
 export const GroupFoldersAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupAssetsResponse;
 
-export type GroupFoldersAssetsError = DefaultErrors;
+export type GroupFoldersAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization's assets and groups them by their specified properties. */
 export const groupFoldersAssets: API.OperationMethod<
@@ -12048,7 +12444,7 @@ export const groupFoldersAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupFoldersAssetsRequest,
   output: GroupFoldersAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersAssetsRequest {
@@ -12091,7 +12487,7 @@ export type ListFoldersAssetsResponse = ListAssetsResponse;
 export const ListFoldersAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAssetsResponse;
 
-export type ListFoldersAssetsError = DefaultErrors;
+export type ListFoldersAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists an organization's assets. */
 export const listFoldersAssets: API.PaginatedOperationMethod<
@@ -12102,7 +12498,7 @@ export const listFoldersAssets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersAssetsRequest,
   output: ListFoldersAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12135,7 +12531,12 @@ export type UpdateSecurityMarksFoldersAssetsResponse = SecurityMarks;
 export const UpdateSecurityMarksFoldersAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityMarks;
 
-export type UpdateSecurityMarksFoldersAssetsError = DefaultErrors;
+export type UpdateSecurityMarksFoldersAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksFoldersAssets: API.OperationMethod<
@@ -12146,7 +12547,7 @@ export const updateSecurityMarksFoldersAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksFoldersAssetsRequest,
   output: UpdateSecurityMarksFoldersAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersNotificationConfigsRequest {
@@ -12176,7 +12577,12 @@ export type CreateFoldersNotificationConfigsResponse = NotificationConfig;
 export const CreateFoldersNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type CreateFoldersNotificationConfigsError = DefaultErrors;
+export type CreateFoldersNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a notification config. */
 export const createFoldersNotificationConfigs: API.OperationMethod<
@@ -12187,7 +12593,7 @@ export const createFoldersNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersNotificationConfigsRequest,
   output: CreateFoldersNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersNotificationConfigsRequest {
@@ -12214,7 +12620,10 @@ export type ListFoldersNotificationConfigsResponse =
 export const ListFoldersNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotificationConfigsResponse;
 
-export type ListFoldersNotificationConfigsError = DefaultErrors;
+export type ListFoldersNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists notification configs. */
 export const listFoldersNotificationConfigs: API.PaginatedOperationMethod<
@@ -12225,7 +12634,7 @@ export const listFoldersNotificationConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersNotificationConfigsRequest,
   output: ListFoldersNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12249,7 +12658,12 @@ export type DeleteFoldersNotificationConfigsResponse = Empty;
 export const DeleteFoldersNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersNotificationConfigsError = DefaultErrors;
+export type DeleteFoldersNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a notification config. */
 export const deleteFoldersNotificationConfigs: API.OperationMethod<
@@ -12260,7 +12674,7 @@ export const deleteFoldersNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersNotificationConfigsRequest,
   output: DeleteFoldersNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersNotificationConfigsRequest {
@@ -12280,7 +12694,10 @@ export type GetFoldersNotificationConfigsResponse = NotificationConfig;
 export const GetFoldersNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type GetFoldersNotificationConfigsError = DefaultErrors;
+export type GetFoldersNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a notification config. */
 export const getFoldersNotificationConfigs: API.OperationMethod<
@@ -12291,7 +12708,7 @@ export const getFoldersNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersNotificationConfigsRequest,
   output: GetFoldersNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFoldersNotificationConfigsRequest {
@@ -12317,7 +12734,12 @@ export type PatchFoldersNotificationConfigsResponse = NotificationConfig;
 export const PatchFoldersNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type PatchFoldersNotificationConfigsError = DefaultErrors;
+export type PatchFoldersNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a notification config. The following update fields are allowed: description, pubsub_topic, streaming_config.filter */
 export const patchFoldersNotificationConfigs: API.OperationMethod<
@@ -12328,7 +12750,7 @@ export const patchFoldersNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersNotificationConfigsRequest,
   output: PatchFoldersNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersMuteConfigsRequest {
@@ -12348,7 +12770,12 @@ export type DeleteFoldersMuteConfigsResponse = Empty;
 export const DeleteFoldersMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersMuteConfigsError = DefaultErrors;
+export type DeleteFoldersMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing mute config. */
 export const deleteFoldersMuteConfigs: API.OperationMethod<
@@ -12359,7 +12786,7 @@ export const deleteFoldersMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersMuteConfigsRequest,
   output: DeleteFoldersMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersMuteConfigsRequest {
@@ -12380,7 +12807,7 @@ export type GetFoldersMuteConfigsResponse =
 export const GetFoldersMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type GetFoldersMuteConfigsError = DefaultErrors;
+export type GetFoldersMuteConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a mute config. */
 export const getFoldersMuteConfigs: API.OperationMethod<
@@ -12391,7 +12818,7 @@ export const getFoldersMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersMuteConfigsRequest,
   output: GetFoldersMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFoldersMuteConfigsRequest {
@@ -12420,7 +12847,12 @@ export type PatchFoldersMuteConfigsResponse =
 export const PatchFoldersMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type PatchFoldersMuteConfigsError = DefaultErrors;
+export type PatchFoldersMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a mute config. */
 export const patchFoldersMuteConfigs: API.OperationMethod<
@@ -12431,7 +12863,7 @@ export const patchFoldersMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersMuteConfigsRequest,
   output: PatchFoldersMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersMuteConfigsRequest {
@@ -12462,7 +12894,12 @@ export type CreateFoldersMuteConfigsResponse =
 export const CreateFoldersMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type CreateFoldersMuteConfigsError = DefaultErrors;
+export type CreateFoldersMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a mute config. */
 export const createFoldersMuteConfigs: API.OperationMethod<
@@ -12473,7 +12910,7 @@ export const createFoldersMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersMuteConfigsRequest,
   output: CreateFoldersMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersMuteConfigsRequest {
@@ -12499,7 +12936,7 @@ export type ListFoldersMuteConfigsResponse = ListMuteConfigsResponse;
 export const ListFoldersMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMuteConfigsResponse;
 
-export type ListFoldersMuteConfigsError = DefaultErrors;
+export type ListFoldersMuteConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists mute configs. */
 export const listFoldersMuteConfigs: API.PaginatedOperationMethod<
@@ -12510,7 +12947,7 @@ export const listFoldersMuteConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersMuteConfigsRequest,
   output: ListFoldersMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12535,7 +12972,10 @@ export type GetFoldersBigQueryExportsResponse =
 export const GetFoldersBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type GetFoldersBigQueryExportsError = DefaultErrors;
+export type GetFoldersBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a BigQuery export. */
 export const getFoldersBigQueryExports: API.OperationMethod<
@@ -12546,7 +12986,7 @@ export const getFoldersBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersBigQueryExportsRequest,
   output: GetFoldersBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFoldersBigQueryExportsRequest {
@@ -12575,7 +13015,12 @@ export type PatchFoldersBigQueryExportsResponse =
 export const PatchFoldersBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type PatchFoldersBigQueryExportsError = DefaultErrors;
+export type PatchFoldersBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a BigQuery export. */
 export const patchFoldersBigQueryExports: API.OperationMethod<
@@ -12586,7 +13031,7 @@ export const patchFoldersBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersBigQueryExportsRequest,
   output: PatchFoldersBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteFoldersBigQueryExportsRequest {
@@ -12606,7 +13051,12 @@ export type DeleteFoldersBigQueryExportsResponse = Empty;
 export const DeleteFoldersBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersBigQueryExportsError = DefaultErrors;
+export type DeleteFoldersBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing BigQuery export. */
 export const deleteFoldersBigQueryExports: API.OperationMethod<
@@ -12617,7 +13067,7 @@ export const deleteFoldersBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersBigQueryExportsRequest,
   output: DeleteFoldersBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateFoldersBigQueryExportsRequest {
@@ -12652,7 +13102,12 @@ export type CreateFoldersBigQueryExportsResponse =
 export const CreateFoldersBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type CreateFoldersBigQueryExportsError = DefaultErrors;
+export type CreateFoldersBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a BigQuery export. */
 export const createFoldersBigQueryExports: API.OperationMethod<
@@ -12663,7 +13118,7 @@ export const createFoldersBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersBigQueryExportsRequest,
   output: CreateFoldersBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersBigQueryExportsRequest {
@@ -12689,7 +13144,10 @@ export type ListFoldersBigQueryExportsResponse = ListBigQueryExportsResponse;
 export const ListFoldersBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBigQueryExportsResponse;
 
-export type ListFoldersBigQueryExportsError = DefaultErrors;
+export type ListFoldersBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery exports immediately under the folder plus the ones created under the projects within the folder are returned. */
 export const listFoldersBigQueryExports: API.PaginatedOperationMethod<
@@ -12700,7 +13158,7 @@ export const listFoldersBigQueryExports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersBigQueryExportsRequest,
   output: ListFoldersBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12726,7 +13184,11 @@ export const DeleteFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM hierarchy. This method is only supported for resident custom modules. */
 export const deleteFoldersSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -12737,7 +13199,7 @@ export const deleteFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: DeleteFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -12765,7 +13227,9 @@ export const ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRe
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and all of the parent’s CRM descendants. */
 export const listDescendantFoldersSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -12778,7 +13242,7 @@ export const listDescendantFoldersSecurityHealthAnalyticsSettingsCustomModules: 
     ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output:
     ListDescendantFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12812,7 +13276,11 @@ export const PatchFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type PatchFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask. Updating the enablement state is supported on both resident and inherited modules (though resident modules cannot have an enablement state of "inherited"). Updating the display name and custom config of a module is supported on resident modules only. */
 export const patchFoldersSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -12823,7 +13291,7 @@ export const patchFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: PatchFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -12845,7 +13313,9 @@ export const GetFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type GetFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a SecurityHealthAnalyticsCustomModule. */
 export const getFoldersSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -12856,7 +13326,7 @@ export const getFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: GetFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -12887,7 +13357,11 @@ export const CreateFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type CreateFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given parent. These modules are enabled by default. */
 export const createFoldersSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -12898,7 +13372,7 @@ export const createFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: CreateFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -12926,7 +13400,9 @@ export const ListFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listFoldersSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -12937,7 +13413,7 @@ export const listFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Pagina
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: ListFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -12972,7 +13448,11 @@ export const SimulateFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse
   /*@__PURE__*/ /*#__PURE__*/ SimulateSecurityHealthAnalyticsCustomModuleResponse;
 
 export type SimulateFoldersSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Simulates a given SecurityHealthAnalyticsCustomModule and Resource. */
 export const simulateFoldersSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -12983,7 +13463,7 @@ export const simulateFoldersSecurityHealthAnalyticsSettingsCustomModules: API.Op
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SimulateFoldersSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: SimulateFoldersSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest {
@@ -13005,7 +13485,9 @@ export const GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an EffectiveSecurityHealthAnalyticsCustomModule. */
 export const getFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
@@ -13017,7 +13499,7 @@ export const getFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: AP
   input: GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   output:
     GetFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest {
@@ -13045,7 +13527,9 @@ export const ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRes
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -13058,7 +13542,7 @@ export const listFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModules: A
     ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   output:
     ListFoldersSecurityHealthAnalyticsSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13082,7 +13566,12 @@ export type DeleteFoldersLocationsMuteConfigsResponse = Empty;
 export const DeleteFoldersLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteFoldersLocationsMuteConfigsError = DefaultErrors;
+export type DeleteFoldersLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing mute config. */
 export const deleteFoldersLocationsMuteConfigs: API.OperationMethod<
@@ -13093,7 +13582,7 @@ export const deleteFoldersLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFoldersLocationsMuteConfigsRequest,
   output: DeleteFoldersLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetFoldersLocationsMuteConfigsRequest {
@@ -13114,7 +13603,10 @@ export type GetFoldersLocationsMuteConfigsResponse =
 export const GetFoldersLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type GetFoldersLocationsMuteConfigsError = DefaultErrors;
+export type GetFoldersLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a mute config. */
 export const getFoldersLocationsMuteConfigs: API.OperationMethod<
@@ -13125,7 +13617,7 @@ export const getFoldersLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFoldersLocationsMuteConfigsRequest,
   output: GetFoldersLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchFoldersLocationsMuteConfigsRequest {
@@ -13154,7 +13646,12 @@ export type PatchFoldersLocationsMuteConfigsResponse =
 export const PatchFoldersLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type PatchFoldersLocationsMuteConfigsError = DefaultErrors;
+export type PatchFoldersLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a mute config. */
 export const patchFoldersLocationsMuteConfigs: API.OperationMethod<
@@ -13165,7 +13662,7 @@ export const patchFoldersLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFoldersLocationsMuteConfigsRequest,
   output: PatchFoldersLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsMuteConfigsRequest {
@@ -13194,7 +13691,12 @@ export type PatchProjectsMuteConfigsResponse =
 export const PatchProjectsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type PatchProjectsMuteConfigsError = DefaultErrors;
+export type PatchProjectsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a mute config. */
 export const patchProjectsMuteConfigs: API.OperationMethod<
@@ -13205,7 +13707,7 @@ export const patchProjectsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsMuteConfigsRequest,
   output: PatchProjectsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsMuteConfigsRequest {
@@ -13226,7 +13728,7 @@ export type GetProjectsMuteConfigsResponse =
 export const GetProjectsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type GetProjectsMuteConfigsError = DefaultErrors;
+export type GetProjectsMuteConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a mute config. */
 export const getProjectsMuteConfigs: API.OperationMethod<
@@ -13237,7 +13739,7 @@ export const getProjectsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsMuteConfigsRequest,
   output: GetProjectsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsMuteConfigsRequest {
@@ -13257,7 +13759,12 @@ export type DeleteProjectsMuteConfigsResponse = Empty;
 export const DeleteProjectsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsMuteConfigsError = DefaultErrors;
+export type DeleteProjectsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing mute config. */
 export const deleteProjectsMuteConfigs: API.OperationMethod<
@@ -13268,7 +13775,7 @@ export const deleteProjectsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsMuteConfigsRequest,
   output: DeleteProjectsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsMuteConfigsRequest {
@@ -13299,7 +13806,12 @@ export type CreateProjectsMuteConfigsResponse =
 export const CreateProjectsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type CreateProjectsMuteConfigsError = DefaultErrors;
+export type CreateProjectsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a mute config. */
 export const createProjectsMuteConfigs: API.OperationMethod<
@@ -13310,7 +13822,7 @@ export const createProjectsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsMuteConfigsRequest,
   output: CreateProjectsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsMuteConfigsRequest {
@@ -13336,7 +13848,7 @@ export type ListProjectsMuteConfigsResponse = ListMuteConfigsResponse;
 export const ListProjectsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMuteConfigsResponse;
 
-export type ListProjectsMuteConfigsError = DefaultErrors;
+export type ListProjectsMuteConfigsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists mute configs. */
 export const listProjectsMuteConfigs: API.PaginatedOperationMethod<
@@ -13347,7 +13859,7 @@ export const listProjectsMuteConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsMuteConfigsRequest,
   output: ListProjectsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13372,7 +13884,10 @@ export type GetProjectsBigQueryExportsResponse =
 export const GetProjectsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type GetProjectsBigQueryExportsError = DefaultErrors;
+export type GetProjectsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a BigQuery export. */
 export const getProjectsBigQueryExports: API.OperationMethod<
@@ -13383,7 +13898,7 @@ export const getProjectsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsBigQueryExportsRequest,
   output: GetProjectsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsBigQueryExportsRequest {
@@ -13412,7 +13927,12 @@ export type PatchProjectsBigQueryExportsResponse =
 export const PatchProjectsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type PatchProjectsBigQueryExportsError = DefaultErrors;
+export type PatchProjectsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a BigQuery export. */
 export const patchProjectsBigQueryExports: API.OperationMethod<
@@ -13423,7 +13943,7 @@ export const patchProjectsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsBigQueryExportsRequest,
   output: PatchProjectsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsBigQueryExportsRequest {
@@ -13443,7 +13963,12 @@ export type DeleteProjectsBigQueryExportsResponse = Empty;
 export const DeleteProjectsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsBigQueryExportsError = DefaultErrors;
+export type DeleteProjectsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing BigQuery export. */
 export const deleteProjectsBigQueryExports: API.OperationMethod<
@@ -13454,7 +13979,7 @@ export const deleteProjectsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsBigQueryExportsRequest,
   output: DeleteProjectsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsBigQueryExportsRequest {
@@ -13489,7 +14014,12 @@ export type CreateProjectsBigQueryExportsResponse =
 export const CreateProjectsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1BigQueryExport;
 
-export type CreateProjectsBigQueryExportsError = DefaultErrors;
+export type CreateProjectsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a BigQuery export. */
 export const createProjectsBigQueryExports: API.OperationMethod<
@@ -13500,7 +14030,7 @@ export const createProjectsBigQueryExports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsBigQueryExportsRequest,
   output: CreateProjectsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsBigQueryExportsRequest {
@@ -13526,7 +14056,10 @@ export type ListProjectsBigQueryExportsResponse = ListBigQueryExportsResponse;
 export const ListProjectsBigQueryExportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListBigQueryExportsResponse;
 
-export type ListProjectsBigQueryExportsError = DefaultErrors;
+export type ListProjectsBigQueryExportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists BigQuery exports. Note that when requesting BigQuery exports at a given level all exports under that level are also returned e.g. if requesting BigQuery exports under a folder, then all BigQuery exports immediately under the folder plus the ones created under the projects within the folder are returned. */
 export const listProjectsBigQueryExports: API.PaginatedOperationMethod<
@@ -13537,7 +14070,7 @@ export const listProjectsBigQueryExports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsBigQueryExportsRequest,
   output: ListProjectsBigQueryExportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13561,7 +14094,12 @@ export type DeleteProjectsLocationsMuteConfigsResponse = Empty;
 export const DeleteProjectsLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsMuteConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes an existing mute config. */
 export const deleteProjectsLocationsMuteConfigs: API.OperationMethod<
@@ -13572,7 +14110,7 @@ export const deleteProjectsLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsMuteConfigsRequest,
   output: DeleteProjectsLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsLocationsMuteConfigsRequest {
@@ -13601,7 +14139,12 @@ export type PatchProjectsLocationsMuteConfigsResponse =
 export const PatchProjectsLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type PatchProjectsLocationsMuteConfigsError = DefaultErrors;
+export type PatchProjectsLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a mute config. */
 export const patchProjectsLocationsMuteConfigs: API.OperationMethod<
@@ -13612,7 +14155,7 @@ export const patchProjectsLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsMuteConfigsRequest,
   output: PatchProjectsLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsMuteConfigsRequest {
@@ -13633,7 +14176,10 @@ export type GetProjectsLocationsMuteConfigsResponse =
 export const GetProjectsLocationsMuteConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1MuteConfig;
 
-export type GetProjectsLocationsMuteConfigsError = DefaultErrors;
+export type GetProjectsLocationsMuteConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a mute config. */
 export const getProjectsLocationsMuteConfigs: API.OperationMethod<
@@ -13644,7 +14190,7 @@ export const getProjectsLocationsMuteConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsMuteConfigsRequest,
   output: GetProjectsLocationsMuteConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -13666,7 +14212,9 @@ export const GetProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type GetProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a SecurityHealthAnalyticsCustomModule. */
 export const getProjectsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -13677,7 +14225,7 @@ export const getProjectsSecurityHealthAnalyticsSettingsCustomModules: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: GetProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -13705,7 +14253,9 @@ export const ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesR
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all resident SecurityHealthAnalyticsCustomModules under the given CRM parent and all of the parent’s CRM descendants. */
 export const listDescendantProjectsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -13718,7 +14268,7 @@ export const listDescendantProjectsSecurityHealthAnalyticsSettingsCustomModules:
     ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output:
     ListDescendantProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13752,7 +14302,11 @@ export const PatchProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type PatchProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the SecurityHealthAnalyticsCustomModule under the given name based on the given update mask. Updating the enablement state is supported on both resident and inherited modules (though resident modules cannot have an enablement state of "inherited"). Updating the display name and custom config of a module is supported on resident modules only. */
 export const patchProjectsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -13763,7 +14317,7 @@ export const patchProjectsSecurityHealthAnalyticsSettingsCustomModules: API.Oper
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: PatchProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -13785,7 +14339,11 @@ export const DeleteProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse 
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified SecurityHealthAnalyticsCustomModule and all of its descendants in the CRM hierarchy. This method is only supported for resident custom modules. */
 export const deleteProjectsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -13796,7 +14354,7 @@ export const deleteProjectsSecurityHealthAnalyticsSettingsCustomModules: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: DeleteProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -13827,7 +14385,11 @@ export const CreateProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule;
 
 export type CreateProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a resident SecurityHealthAnalyticsCustomModule at the scope of the given CRM parent, and also creates inherited SecurityHealthAnalyticsCustomModules for all CRM descendants of the given parent. These modules are enabled by default. */
 export const createProjectsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -13838,7 +14400,7 @@ export const createProjectsSecurityHealthAnalyticsSettingsCustomModules: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: CreateProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest {
@@ -13866,7 +14428,9 @@ export const ListProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all SecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listProjectsSecurityHealthAnalyticsSettingsCustomModules: API.PaginatedOperationMethod<
@@ -13877,7 +14441,7 @@ export const listProjectsSecurityHealthAnalyticsSettingsCustomModules: API.Pagin
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: ListProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -13912,7 +14476,11 @@ export const SimulateProjectsSecurityHealthAnalyticsSettingsCustomModulesRespons
   /*@__PURE__*/ /*#__PURE__*/ SimulateSecurityHealthAnalyticsCustomModuleResponse;
 
 export type SimulateProjectsSecurityHealthAnalyticsSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Simulates a given SecurityHealthAnalyticsCustomModule and Resource. */
 export const simulateProjectsSecurityHealthAnalyticsSettingsCustomModules: API.OperationMethod<
@@ -13923,7 +14491,7 @@ export const simulateProjectsSecurityHealthAnalyticsSettingsCustomModules: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SimulateProjectsSecurityHealthAnalyticsSettingsCustomModulesRequest,
   output: SimulateProjectsSecurityHealthAnalyticsSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest {
@@ -13945,7 +14513,9 @@ export const GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRes
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule;
 
 export type GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves an EffectiveSecurityHealthAnalyticsCustomModule. */
 export const getProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.OperationMethod<
@@ -13958,7 +14528,7 @@ export const getProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: A
     GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   output:
     GetProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest {
@@ -13986,7 +14556,9 @@ export const ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRe
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveSecurityHealthAnalyticsCustomModulesResponse;
 
 export type ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a list of all EffectiveSecurityHealthAnalyticsCustomModules for the given parent. This includes resident modules defined at the scope of the parent, and inherited modules, inherited from CRM ancestors. */
 export const listProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -13999,7 +14571,7 @@ export const listProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModules: 
     ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesRequest,
   output:
     ListProjectsSecurityHealthAnalyticsSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14034,7 +14606,11 @@ export const ValidateCustomModuleProjectsEventThreatDetectionSettingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ValidateEventThreatDetectionCustomModuleResponse;
 
 export type ValidateCustomModuleProjectsEventThreatDetectionSettingsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Validates the given Event Threat Detection custom module. */
 export const validateCustomModuleProjectsEventThreatDetectionSettings: API.OperationMethod<
@@ -14045,7 +14621,7 @@ export const validateCustomModuleProjectsEventThreatDetectionSettings: API.Opera
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ValidateCustomModuleProjectsEventThreatDetectionSettingsRequest,
   output: ValidateCustomModuleProjectsEventThreatDetectionSettingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsEventThreatDetectionSettingsCustomModulesRequest {
@@ -14074,7 +14650,11 @@ export const CreateProjectsEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type CreateProjectsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a resident Event Threat Detection custom module at the scope of the given Resource Manager parent, and also creates inherited custom modules for all descendants of the given parent. These modules are enabled by default. */
 export const createProjectsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -14085,7 +14665,7 @@ export const createProjectsEventThreatDetectionSettingsCustomModules: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output: CreateProjectsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsEventThreatDetectionSettingsCustomModulesRequest {
@@ -14113,7 +14693,9 @@ export const ListProjectsEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListEventThreatDetectionCustomModulesResponse;
 
 export type ListProjectsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all Event Threat Detection custom modules for the given Resource Manager parent. This includes resident modules defined at the scope of the parent along with modules inherited from ancestors. */
 export const listProjectsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -14124,7 +14706,7 @@ export const listProjectsEventThreatDetectionSettingsCustomModules: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output: ListProjectsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14150,7 +14732,9 @@ export const GetProjectsEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type GetProjectsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an Event Threat Detection custom module. */
 export const getProjectsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -14161,7 +14745,7 @@ export const getProjectsEventThreatDetectionSettingsCustomModules: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output: GetProjectsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListDescendantProjectsEventThreatDetectionSettingsCustomModulesRequest {
@@ -14189,7 +14773,9 @@ export const ListDescendantProjectsEventThreatDetectionSettingsCustomModulesResp
   /*@__PURE__*/ /*#__PURE__*/ ListDescendantEventThreatDetectionCustomModulesResponse;
 
 export type ListDescendantProjectsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all resident Event Threat Detection custom modules under the given Resource Manager parent and its descendants. */
 export const listDescendantProjectsEventThreatDetectionSettingsCustomModules: API.PaginatedOperationMethod<
@@ -14201,7 +14787,7 @@ export const listDescendantProjectsEventThreatDetectionSettingsCustomModules: AP
   input: ListDescendantProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output:
     ListDescendantProjectsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14233,7 +14819,11 @@ export const PatchProjectsEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ EventThreatDetectionCustomModule;
 
 export type PatchProjectsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the Event Threat Detection custom module with the given name based on the given update mask. Updating the enablement state is supported for both resident and inherited modules (though resident modules cannot have an enablement state of "inherited"). Updating the display name or configuration of a module is supported for resident modules only. The type of a module cannot be changed. */
 export const patchProjectsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -14244,7 +14834,7 @@ export const patchProjectsEventThreatDetectionSettingsCustomModules: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output: PatchProjectsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsEventThreatDetectionSettingsCustomModulesRequest {
@@ -14266,7 +14856,11 @@ export const DeleteProjectsEventThreatDetectionSettingsCustomModulesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
 export type DeleteProjectsEventThreatDetectionSettingsCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified Event Threat Detection custom module and all of its descendants in the Resource Manager hierarchy. This method is only supported for resident custom modules. */
 export const deleteProjectsEventThreatDetectionSettingsCustomModules: API.OperationMethod<
@@ -14277,7 +14871,7 @@ export const deleteProjectsEventThreatDetectionSettingsCustomModules: API.Operat
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsEventThreatDetectionSettingsCustomModulesRequest,
   output: DeleteProjectsEventThreatDetectionSettingsCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest {
@@ -14305,7 +14899,9 @@ export const ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRespo
   /*@__PURE__*/ /*#__PURE__*/ ListEffectiveEventThreatDetectionCustomModulesResponse;
 
 export type ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists all effective Event Threat Detection custom modules for the given parent. This includes resident modules defined at the scope of the parent along with modules inherited from its ancestors. */
 export const listProjectsEventThreatDetectionSettingsEffectiveCustomModules: API.PaginatedOperationMethod<
@@ -14317,7 +14913,7 @@ export const listProjectsEventThreatDetectionSettingsEffectiveCustomModules: API
   input: ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output:
     ListProjectsEventThreatDetectionSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14343,7 +14939,9 @@ export const GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesRespon
   /*@__PURE__*/ /*#__PURE__*/ EffectiveEventThreatDetectionCustomModule;
 
 export type GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets an effective Event Threat Detection custom module at the given level. */
 export const getProjectsEventThreatDetectionSettingsEffectiveCustomModules: API.OperationMethod<
@@ -14354,7 +14952,7 @@ export const getProjectsEventThreatDetectionSettingsEffectiveCustomModules: API.
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesRequest,
   output: GetProjectsEventThreatDetectionSettingsEffectiveCustomModulesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface BulkMuteProjectsFindingsRequest {
@@ -14381,7 +14979,12 @@ export type BulkMuteProjectsFindingsResponse = Operation;
 export const BulkMuteProjectsFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Operation;
 
-export type BulkMuteProjectsFindingsError = DefaultErrors;
+export type BulkMuteProjectsFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Kicks off an LRO to bulk mute findings for a parent based on a filter. The parent can be either an organization, folder or project. The findings matched by the filter will be muted after the LRO is done. */
 export const bulkMuteProjectsFindings: API.OperationMethod<
@@ -14392,7 +14995,7 @@ export const bulkMuteProjectsFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BulkMuteProjectsFindingsRequest,
   output: BulkMuteProjectsFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSourcesRequest {
@@ -14418,7 +15021,7 @@ export type ListProjectsSourcesResponse = ListSourcesResponse;
 export const ListProjectsSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListSourcesResponse;
 
-export type ListProjectsSourcesError = DefaultErrors;
+export type ListProjectsSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all sources belonging to an organization. */
 export const listProjectsSources: API.PaginatedOperationMethod<
@@ -14429,7 +15032,7 @@ export const listProjectsSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSourcesRequest,
   output: ListProjectsSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14460,7 +15063,12 @@ export type GroupProjectsSourcesFindingsResponse = GroupFindingsResponse;
 export const GroupProjectsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupFindingsResponse;
 
-export type GroupProjectsSourcesFindingsError = DefaultErrors;
+export type GroupProjectsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings */
 export const groupProjectsSourcesFindings: API.OperationMethod<
@@ -14471,7 +15079,7 @@ export const groupProjectsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupProjectsSourcesFindingsRequest,
   output: GroupProjectsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsSourcesFindingsRequest {
@@ -14514,7 +15122,10 @@ export type ListProjectsSourcesFindingsResponse = ListFindingsResponse;
 export const ListProjectsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListFindingsResponse;
 
-export type ListProjectsSourcesFindingsError = DefaultErrors;
+export type ListProjectsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings */
 export const listProjectsSourcesFindings: API.PaginatedOperationMethod<
@@ -14525,7 +15136,7 @@ export const listProjectsSourcesFindings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsSourcesFindingsRequest,
   output: ListProjectsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14558,7 +15169,12 @@ export type UpdateSecurityMarksProjectsSourcesFindingsResponse = SecurityMarks;
 export const UpdateSecurityMarksProjectsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityMarks;
 
-export type UpdateSecurityMarksProjectsSourcesFindingsError = DefaultErrors;
+export type UpdateSecurityMarksProjectsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksProjectsSourcesFindings: API.OperationMethod<
@@ -14569,7 +15185,7 @@ export const updateSecurityMarksProjectsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksProjectsSourcesFindingsRequest,
   output: UpdateSecurityMarksProjectsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsSourcesFindingsRequest {
@@ -14595,7 +15211,12 @@ export type PatchProjectsSourcesFindingsResponse = Finding;
 export const PatchProjectsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type PatchProjectsSourcesFindingsError = DefaultErrors;
+export type PatchProjectsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates or updates a finding. The corresponding source must exist for a finding creation to succeed. */
 export const patchProjectsSourcesFindings: API.OperationMethod<
@@ -14606,7 +15227,7 @@ export const patchProjectsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSourcesFindingsRequest,
   output: PatchProjectsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetStateProjectsSourcesFindingsRequest {
@@ -14629,7 +15250,12 @@ export type SetStateProjectsSourcesFindingsResponse = Finding;
 export const SetStateProjectsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type SetStateProjectsSourcesFindingsError = DefaultErrors;
+export type SetStateProjectsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the state of a finding. */
 export const setStateProjectsSourcesFindings: API.OperationMethod<
@@ -14640,7 +15266,7 @@ export const setStateProjectsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetStateProjectsSourcesFindingsRequest,
   output: SetStateProjectsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetMuteProjectsSourcesFindingsRequest {
@@ -14663,7 +15289,12 @@ export type SetMuteProjectsSourcesFindingsResponse = Finding;
 export const SetMuteProjectsSourcesFindingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Finding;
 
-export type SetMuteProjectsSourcesFindingsError = DefaultErrors;
+export type SetMuteProjectsSourcesFindingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the mute state of a finding. */
 export const setMuteProjectsSourcesFindings: API.OperationMethod<
@@ -14674,7 +15305,7 @@ export const setMuteProjectsSourcesFindings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetMuteProjectsSourcesFindingsRequest,
   output: SetMuteProjectsSourcesFindingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsSourcesFindingsExternalSystemsRequest {
@@ -14703,7 +15334,12 @@ export type PatchProjectsSourcesFindingsExternalSystemsResponse =
 export const PatchProjectsSourcesFindingsExternalSystemsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleCloudSecuritycenterV1ExternalSystem;
 
-export type PatchProjectsSourcesFindingsExternalSystemsError = DefaultErrors;
+export type PatchProjectsSourcesFindingsExternalSystemsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates external system. This is for a given finding. */
 export const patchProjectsSourcesFindingsExternalSystems: API.OperationMethod<
@@ -14714,7 +15350,7 @@ export const patchProjectsSourcesFindingsExternalSystems: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsSourcesFindingsExternalSystemsRequest,
   output: PatchProjectsSourcesFindingsExternalSystemsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsNotificationConfigsRequest {
@@ -14734,7 +15370,12 @@ export type DeleteProjectsNotificationConfigsResponse = Empty;
 export const DeleteProjectsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsNotificationConfigsError = DefaultErrors;
+export type DeleteProjectsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a notification config. */
 export const deleteProjectsNotificationConfigs: API.OperationMethod<
@@ -14745,7 +15386,7 @@ export const deleteProjectsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsNotificationConfigsRequest,
   output: DeleteProjectsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsNotificationConfigsRequest {
@@ -14765,7 +15406,10 @@ export type GetProjectsNotificationConfigsResponse = NotificationConfig;
 export const GetProjectsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type GetProjectsNotificationConfigsError = DefaultErrors;
+export type GetProjectsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a notification config. */
 export const getProjectsNotificationConfigs: API.OperationMethod<
@@ -14776,7 +15420,7 @@ export const getProjectsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsNotificationConfigsRequest,
   output: GetProjectsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchProjectsNotificationConfigsRequest {
@@ -14802,7 +15446,12 @@ export type PatchProjectsNotificationConfigsResponse = NotificationConfig;
 export const PatchProjectsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type PatchProjectsNotificationConfigsError = DefaultErrors;
+export type PatchProjectsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a notification config. The following update fields are allowed: description, pubsub_topic, streaming_config.filter */
 export const patchProjectsNotificationConfigs: API.OperationMethod<
@@ -14813,7 +15462,7 @@ export const patchProjectsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsNotificationConfigsRequest,
   output: PatchProjectsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateProjectsNotificationConfigsRequest {
@@ -14843,7 +15492,12 @@ export type CreateProjectsNotificationConfigsResponse = NotificationConfig;
 export const CreateProjectsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ NotificationConfig;
 
-export type CreateProjectsNotificationConfigsError = DefaultErrors;
+export type CreateProjectsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a notification config. */
 export const createProjectsNotificationConfigs: API.OperationMethod<
@@ -14854,7 +15508,7 @@ export const createProjectsNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsNotificationConfigsRequest,
   output: CreateProjectsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsNotificationConfigsRequest {
@@ -14881,7 +15535,10 @@ export type ListProjectsNotificationConfigsResponse =
 export const ListProjectsNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListNotificationConfigsResponse;
 
-export type ListProjectsNotificationConfigsError = DefaultErrors;
+export type ListProjectsNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists notification configs. */
 export const listProjectsNotificationConfigs: API.PaginatedOperationMethod<
@@ -14892,7 +15549,7 @@ export const listProjectsNotificationConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsNotificationConfigsRequest,
   output: ListProjectsNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -14919,7 +15576,12 @@ export type GroupProjectsAssetsResponse = GroupAssetsResponse;
 export const GroupProjectsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GroupAssetsResponse;
 
-export type GroupProjectsAssetsError = DefaultErrors;
+export type GroupProjectsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Filters an organization's assets and groups them by their specified properties. */
 export const groupProjectsAssets: API.OperationMethod<
@@ -14930,7 +15592,7 @@ export const groupProjectsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GroupProjectsAssetsRequest,
   output: GroupProjectsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsAssetsRequest {
@@ -14973,7 +15635,7 @@ export type ListProjectsAssetsResponse = ListAssetsResponse;
 export const ListProjectsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAssetsResponse;
 
-export type ListProjectsAssetsError = DefaultErrors;
+export type ListProjectsAssetsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists an organization's assets. */
 export const listProjectsAssets: API.PaginatedOperationMethod<
@@ -14984,7 +15646,7 @@ export const listProjectsAssets: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsAssetsRequest,
   output: ListProjectsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -15017,7 +15679,12 @@ export type UpdateSecurityMarksProjectsAssetsResponse = SecurityMarks;
 export const UpdateSecurityMarksProjectsAssetsResponse =
   /*@__PURE__*/ /*#__PURE__*/ SecurityMarks;
 
-export type UpdateSecurityMarksProjectsAssetsError = DefaultErrors;
+export type UpdateSecurityMarksProjectsAssetsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates security marks. */
 export const updateSecurityMarksProjectsAssets: API.OperationMethod<
@@ -15028,5 +15695,5 @@ export const updateSecurityMarksProjectsAssets: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateSecurityMarksProjectsAssetsRequest,
   output: UpdateSecurityMarksProjectsAssetsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

@@ -1889,6 +1889,52 @@ export const GeneratedIds = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "GeneratedIds" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1911,7 +1957,12 @@ export const InsertTeamdrivesRequest =
 export type InsertTeamdrivesResponse = TeamDrive;
 export const InsertTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
 
-export type InsertTeamdrivesError = DefaultErrors;
+export type InsertTeamdrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `drives.insert` instead. */
 export const insertTeamdrives: API.OperationMethod<
@@ -1922,7 +1973,7 @@ export const insertTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertTeamdrivesRequest,
   output: InsertTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetTeamdrivesRequest {
@@ -1945,7 +1996,7 @@ export const GetTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetTeamdrivesResponse = TeamDrive;
 export const GetTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
 
-export type GetTeamdrivesError = DefaultErrors;
+export type GetTeamdrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Deprecated: Use `drives.get` instead. */
 export const getTeamdrives: API.OperationMethod<
@@ -1956,7 +2007,7 @@ export const getTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetTeamdrivesRequest,
   output: GetTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteTeamdrivesRequest {
@@ -1978,7 +2029,12 @@ export const DeleteTeamdrivesResponse: Schema.Schema<DeleteTeamdrivesResponse> =
     {},
   ) as any as Schema.Schema<DeleteTeamdrivesResponse>;
 
-export type DeleteTeamdrivesError = DefaultErrors;
+export type DeleteTeamdrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `drives.delete` instead. */
 export const deleteTeamdrives: API.OperationMethod<
@@ -1989,7 +2045,7 @@ export const deleteTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteTeamdrivesRequest,
   output: DeleteTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateTeamdrivesRequest {
@@ -2016,7 +2072,12 @@ export const UpdateTeamdrivesRequest =
 export type UpdateTeamdrivesResponse = TeamDrive;
 export const UpdateTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDrive;
 
-export type UpdateTeamdrivesError = DefaultErrors;
+export type UpdateTeamdrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deprecated: Use `drives.update` instead. */
 export const updateTeamdrives: API.OperationMethod<
@@ -2027,7 +2088,7 @@ export const updateTeamdrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateTeamdrivesRequest,
   output: UpdateTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListTeamdrivesRequest {
@@ -2056,7 +2117,7 @@ export const ListTeamdrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListTeamdrivesResponse = TeamDriveList;
 export const ListTeamdrivesResponse = /*@__PURE__*/ /*#__PURE__*/ TeamDriveList;
 
-export type ListTeamdrivesError = DefaultErrors;
+export type ListTeamdrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Deprecated: Use `drives.list` instead. */
 export const listTeamdrives: API.PaginatedOperationMethod<
@@ -2067,7 +2128,7 @@ export const listTeamdrives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListTeamdrivesRequest,
   output: ListTeamdrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2110,7 +2171,12 @@ export const UntrashFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UntrashFilesResponse = File;
 export const UntrashFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type UntrashFilesError = DefaultErrors;
+export type UntrashFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a file from the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files. */
 export const untrashFiles: API.OperationMethod<
@@ -2121,7 +2187,7 @@ export const untrashFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UntrashFilesRequest,
   output: UntrashFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateFilesRequest {
@@ -2227,7 +2293,12 @@ export const UpdateFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateFilesResponse = File;
 export const UpdateFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type UpdateFilesError = DefaultErrors;
+export type UpdateFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a file's metadata, content, or both. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might be changed automatically, such as `modifiedDate`. This method supports patch semantics. This method supports an * /upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:* `* /*` (Specify a valid MIME type, rather than the literal `* /*` value. The literal `* /*` is only used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and Google Drive supported MIME types](https://developers.google.com/workspace/drive/api/guides/mime-types).) For more information on uploading files, see [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads). */
 export const updateFiles: API.OperationMethod<
@@ -2238,7 +2309,7 @@ export const updateFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateFilesRequest,
   output: UpdateFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListFilesRequest {
@@ -2313,7 +2384,7 @@ export const ListFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListFilesResponse = FileList;
 export const ListFilesResponse = /*@__PURE__*/ /*#__PURE__*/ FileList;
 
-export type ListFilesError = DefaultErrors;
+export type ListFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the user's files. For more information, see [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search query combining one or more search terms. This method returns *all* files by default, including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to remove trashed files from the results. */
 export const listFiles: API.PaginatedOperationMethod<
@@ -2324,7 +2395,7 @@ export const listFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListFilesRequest,
   output: ListFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2383,7 +2454,7 @@ export const GetFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetFilesResponse = File;
 export const GetFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type GetFilesError = DefaultErrors;
+export type GetFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response includes the file contents in the response body. Downloading content with `alt=media` only works if the file is stored in Drive. To download Google Docs, Sheets, and Slides use [`files.export`](https://developers.google.com/workspace/drive/api/reference/rest/v2/files/export) instead. For more information, see [Download & export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). */
 export const getFiles: API.OperationMethod<
@@ -2394,7 +2465,7 @@ export const getFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetFilesRequest,
   output: GetFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ModifyLabelsFilesRequest {
@@ -2421,7 +2492,12 @@ export type ModifyLabelsFilesResponse = ModifyLabelsResponse;
 export const ModifyLabelsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ModifyLabelsResponse;
 
-export type ModifyLabelsFilesError = DefaultErrors;
+export type ModifyLabelsFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Modifies the set of labels applied to a file. Returns a list of the labels that were added or modified. */
 export const modifyLabelsFiles: API.OperationMethod<
@@ -2432,7 +2508,7 @@ export const modifyLabelsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ModifyLabelsFilesRequest,
   output: ModifyLabelsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface EmptyTrashFilesRequest {
@@ -2460,7 +2536,12 @@ export const EmptyTrashFilesResponse: Schema.Schema<EmptyTrashFilesResponse> =
     {},
   ) as any as Schema.Schema<EmptyTrashFilesResponse>;
 
-export type EmptyTrashFilesError = DefaultErrors;
+export type EmptyTrashFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes all of the user's trashed files. */
 export const emptyTrashFiles: API.OperationMethod<
@@ -2471,7 +2552,7 @@ export const emptyTrashFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EmptyTrashFilesRequest,
   output: EmptyTrashFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateCseTokenFilesRequest {
@@ -2494,7 +2575,7 @@ export type GenerateCseTokenFilesResponse = GenerateCseTokenResponse;
 export const GenerateCseTokenFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateCseTokenResponse;
 
-export type GenerateCseTokenFilesError = DefaultErrors;
+export type GenerateCseTokenFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Generates a CSE token which can be used to create or update CSE files. */
 export const generateCseTokenFiles: API.OperationMethod<
@@ -2505,7 +2586,7 @@ export const generateCseTokenFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateCseTokenFilesRequest,
   output: GenerateCseTokenFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ExportFilesRequest {
@@ -2529,7 +2610,7 @@ export const ExportFilesResponse: Schema.Schema<ExportFilesResponse> =
     {},
   ) as any as Schema.Schema<ExportFilesResponse>;
 
-export type ExportFilesError = DefaultErrors;
+export type ExportFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Exports a Google Workspace document to the requested MIME type and returns exported byte content. Note that the exported content is limited to 10MB. */
 export const exportFiles: API.OperationMethod<
@@ -2540,7 +2621,7 @@ export const exportFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ExportFilesRequest,
   output: ExportFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface InsertFilesRequest {
@@ -2613,7 +2694,12 @@ export const InsertFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertFilesResponse = File;
 export const InsertFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type InsertFilesError = DefaultErrors;
+export type InsertFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a new file. This method supports an * /upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`* /*` Note: Specify a valid MIME type, rather than the literal `* /*` value. The literal `* /*` is only used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see [Upload file data](https://developers.google.com/workspace/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title` property when inserting files with the API. For example, an operation to insert a JPEG file should specify something like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension` property populated with the extension originally specified in the `title` property. When a Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to determine the extension based on the file's MIME type. */
 export const insertFiles: API.OperationMethod<
@@ -2624,7 +2710,7 @@ export const insertFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertFilesRequest,
   output: InsertFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchFilesRequest {
@@ -2730,7 +2816,12 @@ export const PatchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchFilesResponse = File;
 export const PatchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type PatchFilesError = DefaultErrors;
+export type PatchFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a file's metadata and/or content. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This method supports patch semantics. */
 export const patchFiles: API.OperationMethod<
@@ -2741,7 +2832,7 @@ export const patchFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchFilesRequest,
   output: PatchFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListLabelsFilesRequest {
@@ -2767,7 +2858,7 @@ export const ListLabelsFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type ListLabelsFilesResponse = LabelList;
 export const ListLabelsFilesResponse = /*@__PURE__*/ /*#__PURE__*/ LabelList;
 
-export type ListLabelsFilesError = DefaultErrors;
+export type ListLabelsFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the labels on a file. */
 export const listLabelsFiles: API.PaginatedOperationMethod<
@@ -2778,7 +2869,7 @@ export const listLabelsFiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListLabelsFilesRequest,
   output: ListLabelsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2821,7 +2912,12 @@ export const TrashFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TrashFilesResponse = File;
 export const TrashFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type TrashFilesError = DefaultErrors;
+export type TrashFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a file to the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files. */
 export const trashFiles: API.OperationMethod<
@@ -2832,7 +2928,7 @@ export const trashFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TrashFilesRequest,
   output: TrashFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface TouchFilesRequest {
@@ -2870,7 +2966,12 @@ export const TouchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type TouchFilesResponse = File;
 export const TouchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type TouchFilesError = DefaultErrors;
+export type TouchFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Set the file's updated time to the current server time. */
 export const touchFiles: API.OperationMethod<
@@ -2881,7 +2982,7 @@ export const touchFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: TouchFilesRequest,
   output: TouchFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateIdsFilesRequest {
@@ -2907,7 +3008,7 @@ export type GenerateIdsFilesResponse = GeneratedIds;
 export const GenerateIdsFilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GeneratedIds;
 
-export type GenerateIdsFilesError = DefaultErrors;
+export type GenerateIdsFilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Generates a set of file IDs which can be provided in insert or copy requests. */
 export const generateIdsFiles: API.OperationMethod<
@@ -2918,7 +3019,7 @@ export const generateIdsFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateIdsFilesRequest,
   output: GenerateIdsFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteFilesRequest {
@@ -2954,7 +3055,12 @@ export const DeleteFilesResponse: Schema.Schema<DeleteFilesResponse> =
     {},
   ) as any as Schema.Schema<DeleteFilesResponse>;
 
-export type DeleteFilesError = DefaultErrors;
+export type DeleteFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants owned by the user are also deleted. */
 export const deleteFiles: API.OperationMethod<
@@ -2965,7 +3071,7 @@ export const deleteFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteFilesRequest,
   output: DeleteFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface WatchFilesRequest {
@@ -3022,7 +3128,12 @@ export const WatchFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchFilesResponse = Channel;
 export const WatchFilesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchFilesError = DefaultErrors;
+export type WatchFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Subscribes to changes to a file. */
 export const watchFiles: API.OperationMethod<
@@ -3033,7 +3144,7 @@ export const watchFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchFilesRequest,
   output: WatchFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CopyFilesRequest {
@@ -3104,7 +3215,12 @@ export const CopyFilesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type CopyFilesResponse = File;
 export const CopyFilesResponse = /*@__PURE__*/ /*#__PURE__*/ File;
 
-export type CopyFilesError = DefaultErrors;
+export type CopyFilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a copy of the specified file. */
 export const copyFiles: API.OperationMethod<
@@ -3115,7 +3231,7 @@ export const copyFiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CopyFilesRequest,
   output: CopyFilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetParentsRequest {
@@ -3136,7 +3252,7 @@ export const GetParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetParentsResponse = ParentReference;
 export const GetParentsResponse = /*@__PURE__*/ /*#__PURE__*/ ParentReference;
 
-export type GetParentsError = DefaultErrors;
+export type GetParentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a specific parent reference. */
 export const getParents: API.OperationMethod<
@@ -3147,7 +3263,7 @@ export const getParents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetParentsRequest,
   output: GetParentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteParentsRequest {
@@ -3176,7 +3292,12 @@ export const DeleteParentsResponse: Schema.Schema<DeleteParentsResponse> =
     {},
   ) as any as Schema.Schema<DeleteParentsResponse>;
 
-export type DeleteParentsError = DefaultErrors;
+export type DeleteParentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a parent from a file. */
 export const deleteParents: API.OperationMethod<
@@ -3187,7 +3308,7 @@ export const deleteParents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteParentsRequest,
   output: DeleteParentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertParentsRequest {
@@ -3224,7 +3345,12 @@ export type InsertParentsResponse = ParentReference;
 export const InsertParentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ParentReference;
 
-export type InsertParentsError = DefaultErrors;
+export type InsertParentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a parent folder for a file. */
 export const insertParents: API.OperationMethod<
@@ -3235,7 +3361,7 @@ export const insertParents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertParentsRequest,
   output: InsertParentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListParentsRequest {
@@ -3253,7 +3379,7 @@ export const ListParentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListParentsResponse = ParentList;
 export const ListParentsResponse = /*@__PURE__*/ /*#__PURE__*/ ParentList;
 
-export type ListParentsError = DefaultErrors;
+export type ListParentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's parents. */
 export const listParents: API.OperationMethod<
@@ -3264,7 +3390,7 @@ export const listParents: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListParentsRequest,
   output: ListParentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdatePermissionsRequest {
@@ -3323,7 +3449,12 @@ export const UpdatePermissionsRequest =
 export type UpdatePermissionsResponse = Permission;
 export const UpdatePermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type UpdatePermissionsError = DefaultErrors;
+export type UpdatePermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a permission. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied. */
 export const updatePermissions: API.OperationMethod<
@@ -3334,7 +3465,7 @@ export const updatePermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePermissionsRequest,
   output: UpdatePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetIdForEmailPermissionsRequest {
@@ -3354,7 +3485,10 @@ export type GetIdForEmailPermissionsResponse = PermissionId;
 export const GetIdForEmailPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PermissionId;
 
-export type GetIdForEmailPermissionsError = DefaultErrors;
+export type GetIdForEmailPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns the permission ID for an email address. */
 export const getIdForEmailPermissions: API.OperationMethod<
@@ -3365,7 +3499,7 @@ export const getIdForEmailPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetIdForEmailPermissionsRequest,
   output: GetIdForEmailPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListPermissionsRequest {
@@ -3412,7 +3546,7 @@ export type ListPermissionsResponse = PermissionList;
 export const ListPermissionsResponse =
   /*@__PURE__*/ /*#__PURE__*/ PermissionList;
 
-export type ListPermissionsError = DefaultErrors;
+export type ListPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's or shared drive's permissions. */
 export const listPermissions: API.PaginatedOperationMethod<
@@ -3423,7 +3557,7 @@ export const listPermissions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListPermissionsRequest,
   output: ListPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3464,7 +3598,7 @@ export const GetPermissionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPermissionsResponse = Permission;
 export const GetPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type GetPermissionsError = DefaultErrors;
+export type GetPermissionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a permission by ID. */
 export const getPermissions: API.OperationMethod<
@@ -3475,7 +3609,7 @@ export const getPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPermissionsRequest,
   output: GetPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePermissionsRequest {
@@ -3523,7 +3657,12 @@ export const DeletePermissionsResponse: Schema.Schema<DeletePermissionsResponse>
     {},
   ) as any as Schema.Schema<DeletePermissionsResponse>;
 
-export type DeletePermissionsError = DefaultErrors;
+export type DeletePermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a permission from a file or shared drive. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied. */
 export const deletePermissions: API.OperationMethod<
@@ -3534,7 +3673,7 @@ export const deletePermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePermissionsRequest,
   output: DeletePermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPermissionsRequest {
@@ -3600,7 +3739,12 @@ export const InsertPermissionsRequest =
 export type InsertPermissionsResponse = Permission;
 export const InsertPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type InsertPermissionsError = DefaultErrors;
+export type InsertPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied. */
 export const insertPermissions: API.OperationMethod<
@@ -3611,7 +3755,7 @@ export const insertPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPermissionsRequest,
   output: InsertPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchPermissionsRequest {
@@ -3670,7 +3814,12 @@ export const PatchPermissionsRequest =
 export type PatchPermissionsResponse = Permission;
 export const PatchPermissionsResponse = /*@__PURE__*/ /*#__PURE__*/ Permission;
 
-export type PatchPermissionsError = DefaultErrors;
+export type PatchPermissionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a permission using patch semantics. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied. */
 export const patchPermissions: API.OperationMethod<
@@ -3681,7 +3830,7 @@ export const patchPermissions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPermissionsRequest,
   output: PatchPermissionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteChildrenRequest {
@@ -3710,7 +3859,12 @@ export const DeleteChildrenResponse: Schema.Schema<DeleteChildrenResponse> =
     {},
   ) as any as Schema.Schema<DeleteChildrenResponse>;
 
-export type DeleteChildrenError = DefaultErrors;
+export type DeleteChildrenError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Removes a child from a folder. */
 export const deleteChildren: API.OperationMethod<
@@ -3721,7 +3875,7 @@ export const deleteChildren: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteChildrenRequest,
   output: DeleteChildrenResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetChildrenRequest {
@@ -3742,7 +3896,7 @@ export const GetChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetChildrenResponse = ChildReference;
 export const GetChildrenResponse = /*@__PURE__*/ /*#__PURE__*/ ChildReference;
 
-export type GetChildrenError = DefaultErrors;
+export type GetChildrenError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a specific child reference. */
 export const getChildren: API.OperationMethod<
@@ -3753,7 +3907,7 @@ export const getChildren: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChildrenRequest,
   output: GetChildrenResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListChildrenRequest {
@@ -3783,7 +3937,7 @@ export const ListChildrenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListChildrenResponse = ChildList;
 export const ListChildrenResponse = /*@__PURE__*/ /*#__PURE__*/ ChildList;
 
-export type ListChildrenError = DefaultErrors;
+export type ListChildrenError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a folder's children. */
 export const listChildren: API.PaginatedOperationMethod<
@@ -3794,7 +3948,7 @@ export const listChildren: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChildrenRequest,
   output: ListChildrenResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3836,7 +3990,12 @@ export type InsertChildrenResponse = ChildReference;
 export const InsertChildrenResponse =
   /*@__PURE__*/ /*#__PURE__*/ ChildReference;
 
-export type InsertChildrenError = DefaultErrors;
+export type InsertChildrenError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Inserts a file into a folder. */
 export const insertChildren: API.OperationMethod<
@@ -3847,7 +4006,7 @@ export const insertChildren: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertChildrenRequest,
   output: InsertChildrenResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchRevisionsRequest {
@@ -3875,7 +4034,12 @@ export const PatchRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchRevisionsResponse = Revision;
 export const PatchRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
 
-export type PatchRevisionsError = DefaultErrors;
+export type PatchRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a revision. */
 export const patchRevisions: API.OperationMethod<
@@ -3886,7 +4050,7 @@ export const patchRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRevisionsRequest,
   output: PatchRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRevisionsRequest {
@@ -3907,7 +4071,7 @@ export const GetRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRevisionsResponse = Revision;
 export const GetRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
 
-export type GetRevisionsError = DefaultErrors;
+export type GetRevisionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a specific revision. */
 export const getRevisions: API.OperationMethod<
@@ -3918,7 +4082,7 @@ export const getRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRevisionsRequest,
   output: GetRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteRevisionsRequest {
@@ -3944,7 +4108,12 @@ export const DeleteRevisionsResponse: Schema.Schema<DeleteRevisionsResponse> =
     {},
   ) as any as Schema.Schema<DeleteRevisionsResponse>;
 
-export type DeleteRevisionsError = DefaultErrors;
+export type DeleteRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a file version. You can only delete revisions for files with binary content, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted. */
 export const deleteRevisions: API.OperationMethod<
@@ -3955,7 +4124,7 @@ export const deleteRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRevisionsRequest,
   output: DeleteRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateRevisionsRequest {
@@ -3985,7 +4154,12 @@ export const UpdateRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type UpdateRevisionsResponse = Revision;
 export const UpdateRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ Revision;
 
-export type UpdateRevisionsError = DefaultErrors;
+export type UpdateRevisionsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a revision. */
 export const updateRevisions: API.OperationMethod<
@@ -3996,7 +4170,7 @@ export const updateRevisions: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRevisionsRequest,
   output: UpdateRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListRevisionsRequest {
@@ -4020,7 +4194,7 @@ export const ListRevisionsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRevisionsResponse = RevisionList;
 export const ListRevisionsResponse = /*@__PURE__*/ /*#__PURE__*/ RevisionList;
 
-export type ListRevisionsError = DefaultErrors;
+export type ListRevisionsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's revisions. **Important:** The list of revisions returned by this method might be incomplete for files with a large revision history, including frequently edited Google Docs, Sheets, and Slides. Older revisions might be omitted from the response, meaning the first revision returned may not be the oldest existing revision. The revision history visible in the Workspace editor user interface might be more complete than the list returned by the API. */
 export const listRevisions: API.PaginatedOperationMethod<
@@ -4031,7 +4205,7 @@ export const listRevisions: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRevisionsRequest,
   output: ListRevisionsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4057,7 +4231,12 @@ export const StopChannelsResponse: Schema.Schema<StopChannelsResponse> =
     {},
   ) as any as Schema.Schema<StopChannelsResponse>;
 
-export type StopChannelsError = DefaultErrors;
+export type StopChannelsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stops watching resources through this channel. */
 export const stopChannels: API.OperationMethod<
@@ -4068,7 +4247,7 @@ export const stopChannels: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopChannelsRequest,
   output: StopChannelsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface HideDrivesRequest {
@@ -4086,7 +4265,12 @@ export const HideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type HideDrivesResponse = Drive;
 export const HideDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type HideDrivesError = DefaultErrors;
+export type HideDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Hides a shared drive from the default view. */
 export const hideDrives: API.OperationMethod<
@@ -4097,7 +4281,7 @@ export const hideDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: HideDrivesRequest,
   output: HideDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertDrivesRequest {
@@ -4118,7 +4302,12 @@ export const InsertDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertDrivesResponse = Drive;
 export const InsertDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type InsertDrivesError = DefaultErrors;
+export type InsertDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new shared drive. */
 export const insertDrives: API.OperationMethod<
@@ -4129,7 +4318,7 @@ export const insertDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertDrivesRequest,
   output: InsertDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteDrivesRequest {
@@ -4160,7 +4349,12 @@ export const DeleteDrivesResponse: Schema.Schema<DeleteDrivesResponse> =
     {},
   ) as any as Schema.Schema<DeleteDrivesResponse>;
 
-export type DeleteDrivesError = DefaultErrors;
+export type DeleteDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items. */
 export const deleteDrives: API.OperationMethod<
@@ -4171,7 +4365,7 @@ export const deleteDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteDrivesRequest,
   output: DeleteDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetDrivesRequest {
@@ -4194,7 +4388,7 @@ export const GetDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetDrivesResponse = Drive;
 export const GetDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type GetDrivesError = DefaultErrors;
+export type GetDrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a shared drive's metadata by ID. */
 export const getDrives: API.OperationMethod<
@@ -4205,7 +4399,7 @@ export const getDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetDrivesRequest,
   output: GetDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UnhideDrivesRequest {
@@ -4223,7 +4417,12 @@ export const UnhideDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UnhideDrivesResponse = Drive;
 export const UnhideDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type UnhideDrivesError = DefaultErrors;
+export type UnhideDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Restores a shared drive to the default view. */
 export const unhideDrives: API.OperationMethod<
@@ -4234,7 +4433,7 @@ export const unhideDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnhideDrivesRequest,
   output: UnhideDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListDrivesRequest {
@@ -4263,7 +4462,7 @@ export const ListDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListDrivesResponse = DriveList;
 export const ListDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ DriveList;
 
-export type ListDrivesError = DefaultErrors;
+export type ListDrivesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining one or more search terms. For more information, see the [Search for shared drives](https://developers.google.com/workspace/drive/api/guides/search-shareddrives) guide. */
 export const listDrives: API.PaginatedOperationMethod<
@@ -4274,7 +4473,7 @@ export const listDrives: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListDrivesRequest,
   output: ListDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4305,7 +4504,12 @@ export const UpdateDrivesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateDrivesResponse = Drive;
 export const UpdateDrivesResponse = /*@__PURE__*/ /*#__PURE__*/ Drive;
 
-export type UpdateDrivesError = DefaultErrors;
+export type UpdateDrivesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the metadata for a shared drive. */
 export const updateDrives: API.OperationMethod<
@@ -4316,7 +4520,7 @@ export const updateDrives: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateDrivesRequest,
   output: UpdateDrivesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAppsRequest {
@@ -4346,7 +4550,7 @@ export const ListAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListAppsResponse = AppList;
 export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ AppList;
 
-export type ListAppsError = DefaultErrors;
+export type ListAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a user's installed apps. */
 export const listApps: API.OperationMethod<
@@ -4357,7 +4561,7 @@ export const listApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListAppsRequest,
   output: ListAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetAppsRequest {
@@ -4375,7 +4579,7 @@ export const GetAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAppsResponse = App;
 export const GetAppsResponse = /*@__PURE__*/ /*#__PURE__*/ App;
 
-export type GetAppsError = DefaultErrors;
+export type GetAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a specific app. */
 export const getApps: API.OperationMethod<
@@ -4386,7 +4590,7 @@ export const getApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAppsRequest,
   output: GetAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchRepliesRequest {
@@ -4417,7 +4621,12 @@ export const PatchRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchRepliesResponse = CommentReply;
 export const PatchRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
 
-export type PatchRepliesError = DefaultErrors;
+export type PatchRepliesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing reply. */
 export const patchReplies: API.OperationMethod<
@@ -4428,7 +4637,7 @@ export const patchReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchRepliesRequest,
   output: PatchRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertRepliesRequest {
@@ -4456,7 +4665,12 @@ export const InsertRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertRepliesResponse = CommentReply;
 export const InsertRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
 
-export type InsertRepliesError = DefaultErrors;
+export type InsertRepliesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new reply to the given comment. */
 export const insertReplies: API.OperationMethod<
@@ -4467,7 +4681,7 @@ export const insertReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertRepliesRequest,
   output: InsertRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteRepliesRequest {
@@ -4497,7 +4711,12 @@ export const DeleteRepliesResponse: Schema.Schema<DeleteRepliesResponse> =
     {},
   ) as any as Schema.Schema<DeleteRepliesResponse>;
 
-export type DeleteRepliesError = DefaultErrors;
+export type DeleteRepliesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a reply. */
 export const deleteReplies: API.OperationMethod<
@@ -4508,7 +4727,7 @@ export const deleteReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteRepliesRequest,
   output: DeleteRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetRepliesRequest {
@@ -4540,7 +4759,7 @@ export const GetRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetRepliesResponse = CommentReply;
 export const GetRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
 
-export type GetRepliesError = DefaultErrors;
+export type GetRepliesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a reply. */
 export const getReplies: API.OperationMethod<
@@ -4551,7 +4770,7 @@ export const getReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetRepliesRequest,
   output: GetRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListRepliesRequest {
@@ -4586,7 +4805,7 @@ export const ListRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListRepliesResponse = CommentReplyList;
 export const ListRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReplyList;
 
-export type ListRepliesError = DefaultErrors;
+export type ListRepliesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists all of the replies to a comment. */
 export const listReplies: API.PaginatedOperationMethod<
@@ -4597,7 +4816,7 @@ export const listReplies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListRepliesRequest,
   output: ListRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4633,7 +4852,12 @@ export const UpdateRepliesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateRepliesResponse = CommentReply;
 export const UpdateRepliesResponse = /*@__PURE__*/ /*#__PURE__*/ CommentReply;
 
-export type UpdateRepliesError = DefaultErrors;
+export type UpdateRepliesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing reply. */
 export const updateReplies: API.OperationMethod<
@@ -4644,7 +4868,7 @@ export const updateReplies: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateRepliesRequest,
   output: UpdateRepliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAboutRequest {
@@ -4674,7 +4898,7 @@ export const GetAboutRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAboutResponse = About;
 export const GetAboutResponse = /*@__PURE__*/ /*#__PURE__*/ About;
 
-export type GetAboutError = DefaultErrors;
+export type GetAboutError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the information about the current user along with Drive API settings */
 export const getAbout: API.OperationMethod<
@@ -4685,7 +4909,7 @@ export const getAbout: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAboutRequest,
   output: GetAboutResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetChangesRequest {
@@ -4719,7 +4943,7 @@ export const GetChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetChangesResponse = Change;
 export const GetChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Change;
 
-export type GetChangesError = DefaultErrors;
+export type GetChangesError = DefaultErrors | NotFound | Forbidden;
 
 /** Deprecated: Use `changes.getStartPageToken` and `changes.list` to retrieve recent changes. */
 export const getChanges: API.OperationMethod<
@@ -4730,7 +4954,7 @@ export const getChanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChangesRequest,
   output: GetChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface WatchChangesRequest {
@@ -4813,7 +5037,12 @@ export const WatchChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type WatchChangesResponse = Channel;
 export const WatchChangesResponse = /*@__PURE__*/ /*#__PURE__*/ Channel;
 
-export type WatchChangesError = DefaultErrors;
+export type WatchChangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Subscribe to changes for a user. */
 export const watchChanges: API.OperationMethod<
@@ -4824,7 +5053,7 @@ export const watchChanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: WatchChangesRequest,
   output: WatchChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListChangesRequest {
@@ -4904,7 +5133,7 @@ export const ListChangesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListChangesResponse = ChangeList;
 export const ListChangesResponse = /*@__PURE__*/ /*#__PURE__*/ ChangeList;
 
-export type ListChangesError = DefaultErrors;
+export type ListChangesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the changes for a user or shared drive. */
 export const listChanges: API.PaginatedOperationMethod<
@@ -4915,7 +5144,7 @@ export const listChanges: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListChangesRequest,
   output: ListChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4955,7 +5184,10 @@ export type GetStartPageTokenChangesResponse = StartPageToken;
 export const GetStartPageTokenChangesResponse =
   /*@__PURE__*/ /*#__PURE__*/ StartPageToken;
 
-export type GetStartPageTokenChangesError = DefaultErrors;
+export type GetStartPageTokenChangesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the starting pageToken for listing future changes. */
 export const getStartPageTokenChanges: API.OperationMethod<
@@ -4966,7 +5198,7 @@ export const getStartPageTokenChanges: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetStartPageTokenChangesRequest,
   output: GetStartPageTokenChangesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetPropertiesRequest {
@@ -4990,7 +5222,7 @@ export const GetPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetPropertiesResponse = Property;
 export const GetPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
 
-export type GetPropertiesError = DefaultErrors;
+export type GetPropertiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a property by its key. */
 export const getProperties: API.OperationMethod<
@@ -5001,7 +5233,7 @@ export const getProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetPropertiesRequest,
   output: GetPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeletePropertiesRequest {
@@ -5032,7 +5264,12 @@ export const DeletePropertiesResponse: Schema.Schema<DeletePropertiesResponse> =
     {},
   ) as any as Schema.Schema<DeletePropertiesResponse>;
 
-export type DeletePropertiesError = DefaultErrors;
+export type DeletePropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a property. */
 export const deleteProperties: API.OperationMethod<
@@ -5043,7 +5280,7 @@ export const deleteProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeletePropertiesRequest,
   output: DeletePropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdatePropertiesRequest {
@@ -5075,7 +5312,12 @@ export const UpdatePropertiesRequest =
 export type UpdatePropertiesResponse = Property;
 export const UpdatePropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
 
-export type UpdatePropertiesError = DefaultErrors;
+export type UpdatePropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a property. */
 export const updateProperties: API.OperationMethod<
@@ -5086,7 +5328,7 @@ export const updateProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdatePropertiesRequest,
   output: UpdatePropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListPropertiesRequest {
@@ -5104,7 +5346,7 @@ export const ListPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListPropertiesResponse = PropertyList;
 export const ListPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ PropertyList;
 
-export type ListPropertiesError = DefaultErrors;
+export type ListPropertiesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's properties. */
 export const listProperties: API.OperationMethod<
@@ -5115,7 +5357,7 @@ export const listProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ListPropertiesRequest,
   output: ListPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface PatchPropertiesRequest {
@@ -5148,7 +5390,12 @@ export const PatchPropertiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type PatchPropertiesResponse = Property;
 export const PatchPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
 
-export type PatchPropertiesError = DefaultErrors;
+export type PatchPropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a property. */
 export const patchProperties: API.OperationMethod<
@@ -5159,7 +5406,7 @@ export const patchProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchPropertiesRequest,
   output: PatchPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertPropertiesRequest {
@@ -5185,7 +5432,12 @@ export const InsertPropertiesRequest =
 export type InsertPropertiesResponse = Property;
 export const InsertPropertiesResponse = /*@__PURE__*/ /*#__PURE__*/ Property;
 
-export type InsertPropertiesError = DefaultErrors;
+export type InsertPropertiesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Adds a property to a file, or updates it if it already exists. */
 export const insertProperties: API.OperationMethod<
@@ -5196,7 +5448,7 @@ export const insertProperties: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertPropertiesRequest,
   output: InsertPropertiesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCommentsRequest {
@@ -5222,7 +5474,7 @@ export const GetCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetCommentsResponse = Comment;
 export const GetCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type GetCommentsError = DefaultErrors;
+export type GetCommentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a comment by ID. */
 export const getComments: API.OperationMethod<
@@ -5233,7 +5485,7 @@ export const getComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCommentsRequest,
   output: GetCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCommentsRequest {
@@ -5257,7 +5509,12 @@ export const DeleteCommentsResponse: Schema.Schema<DeleteCommentsResponse> =
     {},
   ) as any as Schema.Schema<DeleteCommentsResponse>;
 
-export type DeleteCommentsError = DefaultErrors;
+export type DeleteCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a comment. */
 export const deleteComments: API.OperationMethod<
@@ -5268,7 +5525,7 @@ export const deleteComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCommentsRequest,
   output: DeleteCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface UpdateCommentsRequest {
@@ -5296,7 +5553,12 @@ export const UpdateCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type UpdateCommentsResponse = Comment;
 export const UpdateCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type UpdateCommentsError = DefaultErrors;
+export type UpdateCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing comment. */
 export const updateComments: API.OperationMethod<
@@ -5307,7 +5569,7 @@ export const updateComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateCommentsRequest,
   output: UpdateCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCommentsRequest {
@@ -5339,7 +5601,7 @@ export const ListCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type ListCommentsResponse = CommentList;
 export const ListCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ CommentList;
 
-export type ListCommentsError = DefaultErrors;
+export type ListCommentsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists a file's comments. */
 export const listComments: API.PaginatedOperationMethod<
@@ -5350,7 +5612,7 @@ export const listComments: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCommentsRequest,
   output: ListCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5383,7 +5645,12 @@ export const PatchCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchCommentsResponse = Comment;
 export const PatchCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type PatchCommentsError = DefaultErrors;
+export type PatchCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates an existing comment. */
 export const patchComments: API.OperationMethod<
@@ -5394,7 +5661,7 @@ export const patchComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchCommentsRequest,
   output: PatchCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface InsertCommentsRequest {
@@ -5415,7 +5682,12 @@ export const InsertCommentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type InsertCommentsResponse = Comment;
 export const InsertCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Comment;
 
-export type InsertCommentsError = DefaultErrors;
+export type InsertCommentsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new comment on the given file. */
 export const insertComments: API.OperationMethod<
@@ -5426,5 +5698,5 @@ export const insertComments: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: InsertCommentsRequest,
   output: InsertCommentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

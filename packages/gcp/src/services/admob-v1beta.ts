@@ -1043,6 +1043,52 @@ export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "ListAppsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1061,7 +1107,7 @@ export const GetAccountsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetAccountsResponse = PublisherAccount;
 export const GetAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ PublisherAccount;
 
-export type GetAccountsError = DefaultErrors;
+export type GetAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about the specified AdMob publisher account. */
 export const getAccounts: API.OperationMethod<
@@ -1072,7 +1118,7 @@ export const getAccounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAccountsRequest,
   output: GetAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsRequest {
@@ -1094,7 +1140,7 @@ export type ListAccountsResponse = ListPublisherAccountsResponse;
 export const ListAccountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListPublisherAccountsResponse;
 
-export type ListAccountsError = DefaultErrors;
+export type ListAccountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the AdMob publisher account that was most recently signed in to from the AdMob UI. For more information, see https://support.google.com/admob/answer/10243672. */
 export const listAccounts: API.PaginatedOperationMethod<
@@ -1105,7 +1151,7 @@ export const listAccounts: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsRequest,
   output: ListAccountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1137,7 +1183,12 @@ export type GenerateAccountsNetworkReportResponse =
 export const GenerateAccountsNetworkReportResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateNetworkReportResponse;
 
-export type GenerateAccountsNetworkReportError = DefaultErrors;
+export type GenerateAccountsNetworkReportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses. */
 export const generateAccountsNetworkReport: API.OperationMethod<
@@ -1148,7 +1199,7 @@ export const generateAccountsNetworkReport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsNetworkReportRequest,
   output: GenerateAccountsNetworkReportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAdSourcesRequest {
@@ -1174,7 +1225,7 @@ export type ListAccountsAdSourcesResponse = ListAdSourcesResponse;
 export const ListAccountsAdSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdSourcesResponse;
 
-export type ListAccountsAdSourcesError = DefaultErrors;
+export type ListAccountsAdSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** List the ad sources. */
 export const listAccountsAdSources: API.PaginatedOperationMethod<
@@ -1185,7 +1236,7 @@ export const listAccountsAdSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdSourcesRequest,
   output: ListAccountsAdSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1215,7 +1266,10 @@ export type ListAccountsAdSourcesAdaptersResponse = ListAdaptersResponse;
 export const ListAccountsAdSourcesAdaptersResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdaptersResponse;
 
-export type ListAccountsAdSourcesAdaptersError = DefaultErrors;
+export type ListAccountsAdSourcesAdaptersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List the adapters of the ad source. */
 export const listAccountsAdSourcesAdapters: API.PaginatedOperationMethod<
@@ -1226,7 +1280,7 @@ export const listAccountsAdSourcesAdapters: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdSourcesAdaptersRequest,
   output: ListAccountsAdSourcesAdaptersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1259,7 +1313,10 @@ export type ListAccountsMediationGroupsResponse = ListMediationGroupsResponse;
 export const ListAccountsMediationGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListMediationGroupsResponse;
 
-export type ListAccountsMediationGroupsError = DefaultErrors;
+export type ListAccountsMediationGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List mediation groups under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const listAccountsMediationGroups: API.PaginatedOperationMethod<
@@ -1270,7 +1327,7 @@ export const listAccountsMediationGroups: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsMediationGroupsRequest,
   output: ListAccountsMediationGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1301,7 +1358,12 @@ export type CreateAccountsMediationGroupsResponse = MediationGroup;
 export const CreateAccountsMediationGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MediationGroup;
 
-export type CreateAccountsMediationGroupsError = DefaultErrors;
+export type CreateAccountsMediationGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a mediation group under the specific AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsMediationGroups: API.OperationMethod<
@@ -1312,7 +1374,7 @@ export const createAccountsMediationGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsMediationGroupsRequest,
   output: CreateAccountsMediationGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchAccountsMediationGroupsRequest {
@@ -1338,7 +1400,12 @@ export type PatchAccountsMediationGroupsResponse = MediationGroup;
 export const PatchAccountsMediationGroupsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MediationGroup;
 
-export type PatchAccountsMediationGroupsError = DefaultErrors;
+export type PatchAccountsMediationGroupsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update the specified mediation group under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const patchAccountsMediationGroups: API.OperationMethod<
@@ -1349,7 +1416,7 @@ export const patchAccountsMediationGroups: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchAccountsMediationGroupsRequest,
   output: PatchAccountsMediationGroupsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsMediationGroupsMediationAbExperimentsRequest {
@@ -1378,7 +1445,11 @@ export const CreateAccountsMediationGroupsMediationAbExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MediationAbExperiment;
 
 export type CreateAccountsMediationGroupsMediationAbExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an A/B testing experiment for a specified AdMob account and a mediation group. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsMediationGroupsMediationAbExperiments: API.OperationMethod<
@@ -1389,7 +1460,7 @@ export const createAccountsMediationGroupsMediationAbExperiments: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsMediationGroupsMediationAbExperimentsRequest,
   output: CreateAccountsMediationGroupsMediationAbExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface StopAccountsMediationGroupsMediationAbExperimentsRequest {
@@ -1414,7 +1485,11 @@ export const StopAccountsMediationGroupsMediationAbExperimentsResponse =
   /*@__PURE__*/ /*#__PURE__*/ MediationAbExperiment;
 
 export type StopAccountsMediationGroupsMediationAbExperimentsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Stop the mediation A/B experiment and choose a variant. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const stopAccountsMediationGroupsMediationAbExperiments: API.OperationMethod<
@@ -1425,7 +1500,7 @@ export const stopAccountsMediationGroupsMediationAbExperiments: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StopAccountsMediationGroupsMediationAbExperimentsRequest,
   output: StopAccountsMediationGroupsMediationAbExperimentsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface BatchCreateAccountsAdUnitMappingsRequest {
@@ -1453,7 +1528,12 @@ export type BatchCreateAccountsAdUnitMappingsResponse =
 export const BatchCreateAccountsAdUnitMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ BatchCreateAdUnitMappingsResponse;
 
-export type BatchCreateAccountsAdUnitMappingsError = DefaultErrors;
+export type BatchCreateAccountsAdUnitMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is 100. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const batchCreateAccountsAdUnitMappings: API.OperationMethod<
@@ -1464,7 +1544,7 @@ export const batchCreateAccountsAdUnitMappings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchCreateAccountsAdUnitMappingsRequest,
   output: BatchCreateAccountsAdUnitMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GenerateAccountsCampaignReportRequest {
@@ -1492,7 +1572,12 @@ export type GenerateAccountsCampaignReportResponse =
 export const GenerateAccountsCampaignReportResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateCampaignReportResponse;
 
-export type GenerateAccountsCampaignReportError = DefaultErrors;
+export type GenerateAccountsCampaignReportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates Campaign Report based on provided specifications. */
 export const generateAccountsCampaignReport: API.OperationMethod<
@@ -1503,7 +1588,7 @@ export const generateAccountsCampaignReport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsCampaignReportRequest,
   output: GenerateAccountsCampaignReportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAdUnitsRequest {
@@ -1529,7 +1614,7 @@ export type ListAccountsAdUnitsResponse = ListAdUnitsResponse;
 export const ListAccountsAdUnitsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdUnitsResponse;
 
-export type ListAccountsAdUnitsError = DefaultErrors;
+export type ListAccountsAdUnitsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the ad units under the specified AdMob account. */
 export const listAccountsAdUnits: API.PaginatedOperationMethod<
@@ -1540,7 +1625,7 @@ export const listAccountsAdUnits: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdUnitsRequest,
   output: ListAccountsAdUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1566,7 +1651,12 @@ export const CreateAccountsAdUnitsRequest =
 export type CreateAccountsAdUnitsResponse = AdUnit;
 export const CreateAccountsAdUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ AdUnit;
 
-export type CreateAccountsAdUnitsError = DefaultErrors;
+export type CreateAccountsAdUnitsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an ad unit under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsAdUnits: API.OperationMethod<
@@ -1577,7 +1667,7 @@ export const createAccountsAdUnits: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsAdUnitsRequest,
   output: CreateAccountsAdUnitsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateAccountsAdUnitsAdUnitMappingsRequest {
@@ -1604,7 +1694,12 @@ export type CreateAccountsAdUnitsAdUnitMappingsResponse = AdUnitMapping;
 export const CreateAccountsAdUnitsAdUnitMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ AdUnitMapping;
 
-export type CreateAccountsAdUnitsAdUnitMappingsError = DefaultErrors;
+export type CreateAccountsAdUnitsAdUnitMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create an ad unit mapping under the specific AdMob account and ad unit. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsAdUnitsAdUnitMappings: API.OperationMethod<
@@ -1615,7 +1710,7 @@ export const createAccountsAdUnitsAdUnitMappings: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsAdUnitsAdUnitMappingsRequest,
   output: CreateAccountsAdUnitsAdUnitMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAdUnitsAdUnitMappingsRequest {
@@ -1645,7 +1740,10 @@ export type ListAccountsAdUnitsAdUnitMappingsResponse =
 export const ListAccountsAdUnitsAdUnitMappingsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAdUnitMappingsResponse;
 
-export type ListAccountsAdUnitsAdUnitMappingsError = DefaultErrors;
+export type ListAccountsAdUnitsAdUnitMappingsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List ad unit mappings under the specified AdMob account and ad unit. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const listAccountsAdUnitsAdUnitMappings: API.PaginatedOperationMethod<
@@ -1656,7 +1754,7 @@ export const listAccountsAdUnitsAdUnitMappings: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAdUnitsAdUnitMappingsRequest,
   output: ListAccountsAdUnitsAdUnitMappingsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1688,7 +1786,12 @@ export type GenerateAccountsMediationReportResponse =
 export const GenerateAccountsMediationReportResponse =
   /*@__PURE__*/ /*#__PURE__*/ GenerateMediationReportResponse;
 
-export type GenerateAccountsMediationReportError = DefaultErrors;
+export type GenerateAccountsMediationReportError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses. */
 export const generateAccountsMediationReport: API.OperationMethod<
@@ -1699,7 +1802,7 @@ export const generateAccountsMediationReport: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GenerateAccountsMediationReportRequest,
   output: GenerateAccountsMediationReportResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAccountsAppsRequest {
@@ -1725,7 +1828,7 @@ export type ListAccountsAppsResponse = ListAppsResponse;
 export const ListAccountsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAppsResponse;
 
-export type ListAccountsAppsError = DefaultErrors;
+export type ListAccountsAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** List the apps under the specified AdMob account. */
 export const listAccountsApps: API.PaginatedOperationMethod<
@@ -1736,7 +1839,7 @@ export const listAccountsApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsAppsRequest,
   output: ListAccountsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1762,7 +1865,12 @@ export const CreateAccountsAppsRequest =
 export type CreateAccountsAppsResponse = App;
 export const CreateAccountsAppsResponse = /*@__PURE__*/ /*#__PURE__*/ App;
 
-export type CreateAccountsAppsError = DefaultErrors;
+export type CreateAccountsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates an app under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access. */
 export const createAccountsApps: API.OperationMethod<
@@ -1773,5 +1881,5 @@ export const createAccountsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsAppsRequest,
   output: CreateAccountsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

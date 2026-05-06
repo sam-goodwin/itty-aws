@@ -830,6 +830,52 @@ export const SearchChainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 }).annotate({ identifier: "SearchChainsResponse" });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -851,7 +897,7 @@ export const GetLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetLocationsResponse = Location;
 export const GetLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetLocationsError = DefaultErrors;
+export type GetLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the specified location. */
 export const getLocations: API.OperationMethod<
@@ -862,7 +908,7 @@ export const getLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetLocationsRequest,
   output: GetLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetGoogleUpdatedLocationsRequest {
@@ -885,7 +931,10 @@ export type GetGoogleUpdatedLocationsResponse = GoogleUpdatedLocation;
 export const GetGoogleUpdatedLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleUpdatedLocation;
 
-export type GetGoogleUpdatedLocationsError = DefaultErrors;
+export type GetGoogleUpdatedLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the version of the specified location, returning a `GoogleUpdatedLocation` that provides the location view as it appears to consumers and masks indicating which fields are different than the merchant's information. */
 export const getGoogleUpdatedLocations: API.OperationMethod<
@@ -896,7 +945,7 @@ export const getGoogleUpdatedLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGoogleUpdatedLocationsRequest,
   output: GetGoogleUpdatedLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UpdateAttributesLocationsRequest {
@@ -924,7 +973,12 @@ export type UpdateAttributesLocationsResponse = Attributes;
 export const UpdateAttributesLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Attributes;
 
-export type UpdateAttributesLocationsError = DefaultErrors;
+export type UpdateAttributesLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Update attributes for a given location. */
 export const updateAttributesLocations: API.OperationMethod<
@@ -935,7 +989,7 @@ export const updateAttributesLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UpdateAttributesLocationsRequest,
   output: UpdateAttributesLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetAttributesLocationsRequest {
@@ -955,7 +1009,7 @@ export type GetAttributesLocationsResponse = Attributes;
 export const GetAttributesLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Attributes;
 
-export type GetAttributesLocationsError = DefaultErrors;
+export type GetAttributesLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Looks up all the attributes set for a given location. */
 export const getAttributesLocations: API.OperationMethod<
@@ -966,7 +1020,7 @@ export const getAttributesLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetAttributesLocationsRequest,
   output: GetAttributesLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteLocationsRequest {
@@ -986,7 +1040,12 @@ export const DeleteLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
 export type DeleteLocationsResponse = Empty;
 export const DeleteLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteLocationsError = DefaultErrors;
+export type DeleteLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a location. If this location cannot be deleted using the API and it is marked so in the `google.mybusiness.businessinformation.v1.LocationState`, use the [Google Business Profile](https://business.google.com/manage/) website. */
 export const deleteLocations: API.OperationMethod<
@@ -997,7 +1056,7 @@ export const deleteLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteLocationsRequest,
   output: DeleteLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchLocationsRequest {
@@ -1026,7 +1085,12 @@ export const PatchLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type PatchLocationsResponse = Location;
 export const PatchLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type PatchLocationsError = DefaultErrors;
+export type PatchLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates the specified location. */
 export const patchLocations: API.OperationMethod<
@@ -1037,7 +1101,7 @@ export const patchLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchLocationsRequest,
   output: PatchLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetGoogleUpdatedLocationsAttributesRequest {
@@ -1057,7 +1121,10 @@ export type GetGoogleUpdatedLocationsAttributesResponse = Attributes;
 export const GetGoogleUpdatedLocationsAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ Attributes;
 
-export type GetGoogleUpdatedLocationsAttributesError = DefaultErrors;
+export type GetGoogleUpdatedLocationsAttributesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the version of the specified location, returning an `Attributes` message that provides the attributes view as it appears to consumers, which may be different than the merchant's information. */
 export const getGoogleUpdatedLocationsAttributes: API.OperationMethod<
@@ -1068,7 +1135,7 @@ export const getGoogleUpdatedLocationsAttributes: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetGoogleUpdatedLocationsAttributesRequest,
   output: GetGoogleUpdatedLocationsAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListAccountsLocationsRequest {
@@ -1103,7 +1170,7 @@ export type ListAccountsLocationsResponse = ListLocationsResponse;
 export const ListAccountsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListAccountsLocationsError = DefaultErrors;
+export type ListAccountsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists the locations for the specified account. */
 export const listAccountsLocations: API.PaginatedOperationMethod<
@@ -1114,7 +1181,7 @@ export const listAccountsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAccountsLocationsRequest,
   output: ListAccountsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1149,7 +1216,12 @@ export type CreateAccountsLocationsResponse = Location;
 export const CreateAccountsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type CreateAccountsLocationsError = DefaultErrors;
+export type CreateAccountsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new Location that will be owned by the logged in user. */
 export const createAccountsLocations: API.OperationMethod<
@@ -1160,7 +1232,7 @@ export const createAccountsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateAccountsLocationsRequest,
   output: CreateAccountsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCategoriesRequest {
@@ -1196,7 +1268,7 @@ export type ListCategoriesResponse_Op = ListCategoriesResponse;
 export const ListCategoriesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ ListCategoriesResponse;
 
-export type ListCategoriesError = DefaultErrors;
+export type ListCategoriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of business categories. Search will match the category name but not the category ID. Search only matches the front of a category name (that is, 'food' may return 'Food Court' but not 'Fast Food Restaurant'). */
 export const listCategories: API.PaginatedOperationMethod<
@@ -1207,7 +1279,7 @@ export const listCategories: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCategoriesRequest,
   output: ListCategoriesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1244,7 +1316,7 @@ export type BatchGetCategoriesResponse_Op = BatchGetCategoriesResponse;
 export const BatchGetCategoriesResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ BatchGetCategoriesResponse;
 
-export type BatchGetCategoriesError = DefaultErrors;
+export type BatchGetCategoriesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns a list of business categories for the provided language and GConcept ids. */
 export const batchGetCategories: API.OperationMethod<
@@ -1255,7 +1327,7 @@ export const batchGetCategories: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: BatchGetCategoriesRequest,
   output: BatchGetCategoriesResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetChainsRequest {
@@ -1273,7 +1345,7 @@ export const GetChainsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 export type GetChainsResponse = Chain;
 export const GetChainsResponse = /*@__PURE__*/ /*#__PURE__*/ Chain;
 
-export type GetChainsError = DefaultErrors;
+export type GetChainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets the specified chain. Returns `NOT_FOUND` if the chain does not exist. */
 export const getChains: API.OperationMethod<
@@ -1284,7 +1356,7 @@ export const getChains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetChainsRequest,
   output: GetChainsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchChainsRequest {
@@ -1306,7 +1378,7 @@ export type SearchChainsResponse_Op = SearchChainsResponse;
 export const SearchChainsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchChainsResponse;
 
-export type SearchChainsError = DefaultErrors;
+export type SearchChainsError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches the chain based on chain name. */
 export const searchChains: API.OperationMethod<
@@ -1317,7 +1389,7 @@ export const searchChains: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchChainsRequest,
   output: SearchChainsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchGoogleLocationsRequest_Op {
@@ -1341,7 +1413,12 @@ export type SearchGoogleLocationsResponse_Op = SearchGoogleLocationsResponse;
 export const SearchGoogleLocationsResponse_Op =
   /*@__PURE__*/ /*#__PURE__*/ SearchGoogleLocationsResponse;
 
-export type SearchGoogleLocationsError = DefaultErrors;
+export type SearchGoogleLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Search all of the possible locations that are a match to the specified request. */
 export const searchGoogleLocations: API.OperationMethod<
@@ -1352,7 +1429,7 @@ export const searchGoogleLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SearchGoogleLocationsRequest_Op,
   output: SearchGoogleLocationsResponse_Op,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListAttributesRequest {
@@ -1393,7 +1470,7 @@ export type ListAttributesResponse = ListAttributeMetadataResponse;
 export const ListAttributesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListAttributeMetadataResponse;
 
-export type ListAttributesError = DefaultErrors;
+export type ListAttributesError = DefaultErrors | NotFound | Forbidden;
 
 /** Returns the list of attributes that would be available for a location with the given primary category and country. */
 export const listAttributes: API.PaginatedOperationMethod<
@@ -1404,7 +1481,7 @@ export const listAttributes: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAttributesRequest,
   output: ListAttributesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

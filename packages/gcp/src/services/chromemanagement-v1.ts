@@ -3471,6 +3471,52 @@ export const GoogleChromeManagementVersionsV1SignDataResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -3504,7 +3550,10 @@ export type ListCustomersTelemetryEventsResponse =
 export const ListCustomersTelemetryEventsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1ListTelemetryEventsResponse;
 
-export type ListCustomersTelemetryEventsError = DefaultErrors;
+export type ListCustomersTelemetryEventsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List telemetry events. */
 export const listCustomersTelemetryEvents: API.PaginatedOperationMethod<
@@ -3515,7 +3564,7 @@ export const listCustomersTelemetryEvents: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryEventsRequest,
   output: ListCustomersTelemetryEventsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3552,7 +3601,10 @@ export type ListCustomersTelemetryDevicesResponse =
 export const ListCustomersTelemetryDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1ListTelemetryDevicesResponse;
 
-export type ListCustomersTelemetryDevicesError = DefaultErrors;
+export type ListCustomersTelemetryDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all telemetry devices. */
 export const listCustomersTelemetryDevices: API.PaginatedOperationMethod<
@@ -3563,7 +3615,7 @@ export const listCustomersTelemetryDevices: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryDevicesRequest,
   output: ListCustomersTelemetryDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3591,7 +3643,10 @@ export type GetCustomersTelemetryDevicesResponse =
 export const GetCustomersTelemetryDevicesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1TelemetryDevice;
 
-export type GetCustomersTelemetryDevicesError = DefaultErrors;
+export type GetCustomersTelemetryDevicesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get telemetry device. */
 export const getCustomersTelemetryDevices: API.OperationMethod<
@@ -3602,7 +3657,7 @@ export const getCustomersTelemetryDevices: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersTelemetryDevicesRequest,
   output: GetCustomersTelemetryDevicesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersTelemetryUsersRequest {
@@ -3635,7 +3690,10 @@ export type ListCustomersTelemetryUsersResponse =
 export const ListCustomersTelemetryUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1ListTelemetryUsersResponse;
 
-export type ListCustomersTelemetryUsersError = DefaultErrors;
+export type ListCustomersTelemetryUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all telemetry users. */
 export const listCustomersTelemetryUsers: API.PaginatedOperationMethod<
@@ -3646,7 +3704,7 @@ export const listCustomersTelemetryUsers: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryUsersRequest,
   output: ListCustomersTelemetryUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3674,7 +3732,10 @@ export type GetCustomersTelemetryUsersResponse =
 export const GetCustomersTelemetryUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1TelemetryUser;
 
-export type GetCustomersTelemetryUsersError = DefaultErrors;
+export type GetCustomersTelemetryUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get telemetry user. */
 export const getCustomersTelemetryUsers: API.OperationMethod<
@@ -3685,7 +3746,7 @@ export const getCustomersTelemetryUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersTelemetryUsersRequest,
   output: GetCustomersTelemetryUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersTelemetryNotificationConfigsRequest {
@@ -3715,7 +3776,10 @@ export type ListCustomersTelemetryNotificationConfigsResponse =
 export const ListCustomersTelemetryNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse;
 
-export type ListCustomersTelemetryNotificationConfigsError = DefaultErrors;
+export type ListCustomersTelemetryNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** List all telemetry notification configs. */
 export const listCustomersTelemetryNotificationConfigs: API.PaginatedOperationMethod<
@@ -3726,7 +3790,7 @@ export const listCustomersTelemetryNotificationConfigs: API.PaginatedOperationMe
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersTelemetryNotificationConfigsRequest,
   output: ListCustomersTelemetryNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3760,7 +3824,12 @@ export type CreateCustomersTelemetryNotificationConfigsResponse =
 export const CreateCustomersTelemetryNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1TelemetryNotificationConfig;
 
-export type CreateCustomersTelemetryNotificationConfigsError = DefaultErrors;
+export type CreateCustomersTelemetryNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Create a telemetry notification config. */
 export const createCustomersTelemetryNotificationConfigs: API.OperationMethod<
@@ -3771,7 +3840,7 @@ export const createCustomersTelemetryNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersTelemetryNotificationConfigsRequest,
   output: CreateCustomersTelemetryNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteCustomersTelemetryNotificationConfigsRequest {
@@ -3792,7 +3861,12 @@ export type DeleteCustomersTelemetryNotificationConfigsResponse =
 export const DeleteCustomersTelemetryNotificationConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteCustomersTelemetryNotificationConfigsError = DefaultErrors;
+export type DeleteCustomersTelemetryNotificationConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Delete a telemetry notification config. */
 export const deleteCustomersTelemetryNotificationConfigs: API.OperationMethod<
@@ -3803,7 +3877,7 @@ export const deleteCustomersTelemetryNotificationConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersTelemetryNotificationConfigsRequest,
   output: DeleteCustomersTelemetryNotificationConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListCustomersProfilesRequest {
@@ -3836,7 +3910,7 @@ export type ListCustomersProfilesResponse =
 export const ListCustomersProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse;
 
-export type ListCustomersProfilesError = DefaultErrors;
+export type ListCustomersProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists Chrome browser profiles of a customer based on the given search and sorting criteria. */
 export const listCustomersProfiles: API.PaginatedOperationMethod<
@@ -3847,7 +3921,7 @@ export const listCustomersProfiles: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersProfilesRequest,
   output: ListCustomersProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -3872,7 +3946,7 @@ export type GetCustomersProfilesResponse =
 export const GetCustomersProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1ChromeBrowserProfile;
 
-export type GetCustomersProfilesError = DefaultErrors;
+export type GetCustomersProfilesError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets a Chrome browser profile with customer ID and profile permanent ID. */
 export const getCustomersProfiles: API.OperationMethod<
@@ -3883,7 +3957,7 @@ export const getCustomersProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersProfilesRequest,
   output: GetCustomersProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteCustomersProfilesRequest {
@@ -3903,7 +3977,12 @@ export type DeleteCustomersProfilesResponse = GoogleProtobufEmpty;
 export const DeleteCustomersProfilesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteCustomersProfilesError = DefaultErrors;
+export type DeleteCustomersProfilesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the data collected from a Chrome browser profile. */
 export const deleteCustomersProfiles: API.OperationMethod<
@@ -3914,7 +3993,7 @@ export const deleteCustomersProfiles: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteCustomersProfilesRequest,
   output: DeleteCustomersProfilesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CreateCustomersProfilesCommandsRequest {
@@ -3940,7 +4019,12 @@ export type CreateCustomersProfilesCommandsResponse =
 export const CreateCustomersProfilesCommandsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand;
 
-export type CreateCustomersProfilesCommandsError = DefaultErrors;
+export type CreateCustomersProfilesCommandsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a Chrome browser profile remote command. */
 export const createCustomersProfilesCommands: API.OperationMethod<
@@ -3951,7 +4035,7 @@ export const createCustomersProfilesCommands: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateCustomersProfilesCommandsRequest,
   output: CreateCustomersProfilesCommandsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersProfilesCommandsRequest {
@@ -3972,7 +4056,10 @@ export type GetCustomersProfilesCommandsResponse =
 export const GetCustomersProfilesCommandsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand;
 
-export type GetCustomersProfilesCommandsError = DefaultErrors;
+export type GetCustomersProfilesCommandsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets a Chrome browser profile remote command. */
 export const getCustomersProfilesCommands: API.OperationMethod<
@@ -3983,7 +4070,7 @@ export const getCustomersProfilesCommands: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersProfilesCommandsRequest,
   output: GetCustomersProfilesCommandsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListCustomersProfilesCommandsRequest {
@@ -4010,7 +4097,10 @@ export type ListCustomersProfilesCommandsResponse =
 export const ListCustomersProfilesCommandsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse;
 
-export type ListCustomersProfilesCommandsError = DefaultErrors;
+export type ListCustomersProfilesCommandsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists remote commands of a Chrome browser profile. */
 export const listCustomersProfilesCommands: API.PaginatedOperationMethod<
@@ -4021,7 +4111,7 @@ export const listCustomersProfilesCommands: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListCustomersProfilesCommandsRequest,
   output: ListCustomersProfilesCommandsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4051,7 +4141,12 @@ export type MoveCustomersThirdPartyProfileUsersResponse =
 export const MoveCustomersThirdPartyProfileUsersResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse;
 
-export type MoveCustomersThirdPartyProfileUsersError = DefaultErrors;
+export type MoveCustomersThirdPartyProfileUsersError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Moves a third party chrome profile user to a destination OU. All profiles associated to that user will be moved to the destination OU. */
 export const moveCustomersThirdPartyProfileUsers: API.OperationMethod<
@@ -4062,7 +4157,7 @@ export const moveCustomersThirdPartyProfileUsers: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: MoveCustomersThirdPartyProfileUsersRequest,
   output: MoveCustomersThirdPartyProfileUsersResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface CountChromeAppRequestsCustomersAppsRequest {
@@ -4098,7 +4193,10 @@ export type CountChromeAppRequestsCustomersAppsResponse =
 export const CountChromeAppRequestsCustomersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountChromeAppRequestsResponse;
 
-export type CountChromeAppRequestsCustomersAppsError = DefaultErrors;
+export type CountChromeAppRequestsCustomersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generate summary of app installation requests. */
 export const countChromeAppRequestsCustomersApps: API.PaginatedOperationMethod<
@@ -4109,7 +4207,7 @@ export const countChromeAppRequestsCustomersApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CountChromeAppRequestsCustomersAppsRequest,
   output: CountChromeAppRequestsCustomersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4151,7 +4249,10 @@ export type FetchDevicesRequestingExtensionCustomersAppsResponse =
 export const FetchDevicesRequestingExtensionCustomersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse;
 
-export type FetchDevicesRequestingExtensionCustomersAppsError = DefaultErrors;
+export type FetchDevicesRequestingExtensionCustomersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of devices that have requested to install an extension. */
 export const fetchDevicesRequestingExtensionCustomersApps: API.PaginatedOperationMethod<
@@ -4162,7 +4263,7 @@ export const fetchDevicesRequestingExtensionCustomersApps: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FetchDevicesRequestingExtensionCustomersAppsRequest,
   output: FetchDevicesRequestingExtensionCustomersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4204,7 +4305,10 @@ export type FetchUsersRequestingExtensionCustomersAppsResponse =
 export const FetchUsersRequestingExtensionCustomersAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1FetchUsersRequestingExtensionResponse;
 
-export type FetchUsersRequestingExtensionCustomersAppsError = DefaultErrors;
+export type FetchUsersRequestingExtensionCustomersAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of users that have requested to install an extension. */
 export const fetchUsersRequestingExtensionCustomersApps: API.PaginatedOperationMethod<
@@ -4215,7 +4319,7 @@ export const fetchUsersRequestingExtensionCustomersApps: API.PaginatedOperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FetchUsersRequestingExtensionCustomersAppsRequest,
   output: FetchUsersRequestingExtensionCustomersAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4240,7 +4344,7 @@ export type GetCustomersAppsAndroidResponse =
 export const GetCustomersAppsAndroidResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1AppDetails;
 
-export type GetCustomersAppsAndroidError = DefaultErrors;
+export type GetCustomersAppsAndroidError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a specific app for a customer by its resource name. */
 export const getCustomersAppsAndroid: API.OperationMethod<
@@ -4251,7 +4355,7 @@ export const getCustomersAppsAndroid: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersAppsAndroidRequest,
   output: GetCustomersAppsAndroidResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCustomersAppsChromeRequest {
@@ -4271,7 +4375,7 @@ export type GetCustomersAppsChromeResponse = GoogleChromeManagementV1AppDetails;
 export const GetCustomersAppsChromeResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1AppDetails;
 
-export type GetCustomersAppsChromeError = DefaultErrors;
+export type GetCustomersAppsChromeError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a specific app for a customer by its resource name. */
 export const getCustomersAppsChrome: API.OperationMethod<
@@ -4282,7 +4386,7 @@ export const getCustomersAppsChrome: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersAppsChromeRequest,
   output: GetCustomersAppsChromeResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetCustomersAppsWebRequest {
@@ -4302,7 +4406,7 @@ export type GetCustomersAppsWebResponse = GoogleChromeManagementV1AppDetails;
 export const GetCustomersAppsWebResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1AppDetails;
 
-export type GetCustomersAppsWebError = DefaultErrors;
+export type GetCustomersAppsWebError = DefaultErrors | NotFound | Forbidden;
 
 /** Get a specific app for a customer by its resource name. */
 export const getCustomersAppsWeb: API.OperationMethod<
@@ -4313,7 +4417,7 @@ export const getCustomersAppsWeb: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersAppsWebRequest,
   output: GetCustomersAppsWebResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest {
@@ -4347,7 +4451,9 @@ export const CountChromeDevicesReachingAutoExpirationDateCustomersReportsRespons
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse;
 
 export type CountChromeDevicesReachingAutoExpirationDateCustomersReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generate report of the number of devices expiring in each month of the selected time frame. Devices are grouped by auto update expiration date and model. Further information can be found [here](https://support.google.com/chrome/a/answer/10564947). */
 export const countChromeDevicesReachingAutoExpirationDateCustomersReports: API.OperationMethod<
@@ -4358,7 +4464,7 @@ export const countChromeDevicesReachingAutoExpirationDateCustomersReports: API.O
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountChromeDevicesReachingAutoExpirationDateCustomersReportsRequest,
   output: CountChromeDevicesReachingAutoExpirationDateCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface EnumeratePrintJobsCustomersReportsRequest {
@@ -4396,7 +4502,10 @@ export type EnumeratePrintJobsCustomersReportsResponse =
 export const EnumeratePrintJobsCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1EnumeratePrintJobsResponse;
 
-export type EnumeratePrintJobsCustomersReportsError = DefaultErrors;
+export type EnumeratePrintJobsCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a list of print jobs. */
 export const enumeratePrintJobsCustomersReports: API.PaginatedOperationMethod<
@@ -4407,7 +4516,7 @@ export const enumeratePrintJobsCustomersReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: EnumeratePrintJobsCustomersReportsRequest,
   output: EnumeratePrintJobsCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4452,7 +4561,10 @@ export type CountPrintJobsByPrinterCustomersReportsResponse =
 export const CountPrintJobsByPrinterCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountPrintJobsByPrinterResponse;
 
-export type CountPrintJobsByPrinterCustomersReportsError = DefaultErrors;
+export type CountPrintJobsByPrinterCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a summary of printing done by each printer. */
 export const countPrintJobsByPrinterCustomersReports: API.PaginatedOperationMethod<
@@ -4463,7 +4575,7 @@ export const countPrintJobsByPrinterCustomersReports: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CountPrintJobsByPrinterCustomersReportsRequest,
   output: CountPrintJobsByPrinterCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4508,7 +4620,10 @@ export type CountPrintJobsByUserCustomersReportsResponse =
 export const CountPrintJobsByUserCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountPrintJobsByUserResponse;
 
-export type CountPrintJobsByUserCustomersReportsError = DefaultErrors;
+export type CountPrintJobsByUserCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a summary of printing done by each user. */
 export const countPrintJobsByUserCustomersReports: API.PaginatedOperationMethod<
@@ -4519,7 +4634,7 @@ export const countPrintJobsByUserCustomersReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CountPrintJobsByUserCustomersReportsRequest,
   output: CountPrintJobsByUserCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4555,7 +4670,10 @@ export type CountActiveDevicesCustomersReportsResponse =
 export const CountActiveDevicesCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountActiveDevicesResponse;
 
-export type CountActiveDevicesCustomersReportsError = DefaultErrors;
+export type CountActiveDevicesCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a count of active devices per set time frames. */
 export const countActiveDevicesCustomersReports: API.OperationMethod<
@@ -4566,7 +4684,7 @@ export const countActiveDevicesCustomersReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountActiveDevicesCustomersReportsRequest,
   output: CountActiveDevicesCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface FindInstalledAppDevicesCustomersReportsRequest {
@@ -4618,7 +4736,10 @@ export type FindInstalledAppDevicesCustomersReportsResponse =
 export const FindInstalledAppDevicesCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1FindInstalledAppDevicesResponse;
 
-export type FindInstalledAppDevicesCustomersReportsError = DefaultErrors;
+export type FindInstalledAppDevicesCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generate report of managed Chrome browser devices that have a specified app installed. */
 export const findInstalledAppDevicesCustomersReports: API.PaginatedOperationMethod<
@@ -4629,7 +4750,7 @@ export const findInstalledAppDevicesCustomersReports: API.PaginatedOperationMeth
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: FindInstalledAppDevicesCustomersReportsRequest,
   output: FindInstalledAppDevicesCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4666,7 +4787,10 @@ export type CountChromeCrashEventsCustomersReportsResponse =
 export const CountChromeCrashEventsCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountChromeCrashEventsResponse;
 
-export type CountChromeCrashEventsCustomersReportsError = DefaultErrors;
+export type CountChromeCrashEventsCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a count of Chrome crash events. */
 export const countChromeCrashEventsCustomersReports: API.OperationMethod<
@@ -4677,7 +4801,7 @@ export const countChromeCrashEventsCustomersReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountChromeCrashEventsCustomersReportsRequest,
   output: CountChromeCrashEventsCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountChromeHardwareFleetDevicesCustomersReportsRequest {
@@ -4708,7 +4832,9 @@ export const CountChromeHardwareFleetDevicesCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse;
 
 export type CountChromeHardwareFleetDevicesCustomersReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Counts of devices with a specific hardware specification from the requested hardware type (for example model name, processor type). Further information can be found here https://support.google.com/chrome/a/answer/10564947 */
 export const countChromeHardwareFleetDevicesCustomersReports: API.OperationMethod<
@@ -4719,7 +4845,7 @@ export const countChromeHardwareFleetDevicesCustomersReports: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountChromeHardwareFleetDevicesCustomersReportsRequest,
   output: CountChromeHardwareFleetDevicesCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountDevicesPerBootTypeCustomersReportsRequest {
@@ -4754,7 +4880,10 @@ export type CountDevicesPerBootTypeCustomersReportsResponse =
 export const CountDevicesPerBootTypeCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountDevicesPerBootTypeResponse;
 
-export type CountDevicesPerBootTypeCustomersReportsError = DefaultErrors;
+export type CountDevicesPerBootTypeCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a count of devices per boot type. */
 export const countDevicesPerBootTypeCustomersReports: API.OperationMethod<
@@ -4765,7 +4894,7 @@ export const countDevicesPerBootTypeCustomersReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountDevicesPerBootTypeCustomersReportsRequest,
   output: CountDevicesPerBootTypeCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountChromeVersionsCustomersReportsRequest {
@@ -4801,7 +4930,10 @@ export type CountChromeVersionsCustomersReportsResponse =
 export const CountChromeVersionsCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountChromeVersionsResponse;
 
-export type CountChromeVersionsCustomersReportsError = DefaultErrors;
+export type CountChromeVersionsCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generate report of installed Chrome versions. */
 export const countChromeVersionsCustomersReports: API.PaginatedOperationMethod<
@@ -4812,7 +4944,7 @@ export const countChromeVersionsCustomersReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CountChromeVersionsCustomersReportsRequest,
   output: CountChromeVersionsCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -4851,7 +4983,10 @@ export type CountDevicesPerReleaseChannelCustomersReportsResponse =
 export const CountDevicesPerReleaseChannelCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse;
 
-export type CountDevicesPerReleaseChannelCustomersReportsError = DefaultErrors;
+export type CountDevicesPerReleaseChannelCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Get a count of devices per channel. */
 export const countDevicesPerReleaseChannelCustomersReports: API.OperationMethod<
@@ -4862,7 +4997,7 @@ export const countDevicesPerReleaseChannelCustomersReports: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountDevicesPerReleaseChannelCustomersReportsRequest,
   output: CountDevicesPerReleaseChannelCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountChromeBrowsersNeedingAttentionCustomersReportsRequest {
@@ -4890,7 +5025,9 @@ export const CountChromeBrowsersNeedingAttentionCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse;
 
 export type CountChromeBrowsersNeedingAttentionCustomersReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Count of Chrome Browsers that have been recently enrolled, have new policy to be synced, or have no recent activity. */
 export const countChromeBrowsersNeedingAttentionCustomersReports: API.OperationMethod<
@@ -4901,7 +5038,7 @@ export const countChromeBrowsersNeedingAttentionCustomersReports: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountChromeBrowsersNeedingAttentionCustomersReportsRequest,
   output: CountChromeBrowsersNeedingAttentionCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountChromeDevicesThatNeedAttentionCustomersReportsRequest {
@@ -4932,7 +5069,9 @@ export const CountChromeDevicesThatNeedAttentionCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse;
 
 export type CountChromeDevicesThatNeedAttentionCustomersReportsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Counts of ChromeOS devices that have not synced policies or have lacked user activity in the past 28 days, are out of date, or are not complaint. Further information can be found here https://support.google.com/chrome/a/answer/10564947 */
 export const countChromeDevicesThatNeedAttentionCustomersReports: API.OperationMethod<
@@ -4943,7 +5082,7 @@ export const countChromeDevicesThatNeedAttentionCustomersReports: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CountChromeDevicesThatNeedAttentionCustomersReportsRequest,
   output: CountChromeDevicesThatNeedAttentionCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CountInstalledAppsCustomersReportsRequest {
@@ -4979,7 +5118,10 @@ export type CountInstalledAppsCustomersReportsResponse =
 export const CountInstalledAppsCustomersReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementV1CountInstalledAppsResponse;
 
-export type CountInstalledAppsCustomersReportsError = DefaultErrors;
+export type CountInstalledAppsCustomersReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Generate report of app installations. */
 export const countInstalledAppsCustomersReports: API.PaginatedOperationMethod<
@@ -4990,7 +5132,7 @@ export const countInstalledAppsCustomersReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: CountInstalledAppsCustomersReportsRequest,
   output: CountInstalledAppsCustomersReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5015,7 +5157,10 @@ export type GetCustomersCertificateProvisioningProcessesResponse =
 export const GetCustomersCertificateProvisioningProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1CertificateProvisioningProcess;
 
-export type GetCustomersCertificateProvisioningProcessesError = DefaultErrors;
+export type GetCustomersCertificateProvisioningProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a certificate provisioning process. */
 export const getCustomersCertificateProvisioningProcesses: API.OperationMethod<
@@ -5026,7 +5171,7 @@ export const getCustomersCertificateProvisioningProcesses: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersCertificateProvisioningProcessesRequest,
   output: GetCustomersCertificateProvisioningProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface UploadCertificateCustomersCertificateProvisioningProcessesRequest {
@@ -5057,7 +5202,11 @@ export const UploadCertificateCustomersCertificateProvisioningProcessesResponse 
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1UploadCertificateResponse;
 
 export type UploadCertificateCustomersCertificateProvisioningProcessesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Uploads a successfully issued certificate for a certificate provisioning process. */
 export const uploadCertificateCustomersCertificateProvisioningProcesses: API.OperationMethod<
@@ -5068,7 +5217,7 @@ export const uploadCertificateCustomersCertificateProvisioningProcesses: API.Ope
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UploadCertificateCustomersCertificateProvisioningProcessesRequest,
   output: UploadCertificateCustomersCertificateProvisioningProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SignDataCustomersCertificateProvisioningProcessesRequest {
@@ -5095,7 +5244,11 @@ export const SignDataCustomersCertificateProvisioningProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type SignDataCustomersCertificateProvisioningProcessesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Requests the client that initiated a certificate provisioning process to sign data. This should only be called after `ClaimCertificateProvisioningProcess` has been successfully executed. */
 export const signDataCustomersCertificateProvisioningProcesses: API.OperationMethod<
@@ -5106,7 +5259,7 @@ export const signDataCustomersCertificateProvisioningProcesses: API.OperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SignDataCustomersCertificateProvisioningProcessesRequest,
   output: SignDataCustomersCertificateProvisioningProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SetFailureCustomersCertificateProvisioningProcessesRequest {
@@ -5133,7 +5286,11 @@ export const SetFailureCustomersCertificateProvisioningProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1SetFailureResponse;
 
 export type SetFailureCustomersCertificateProvisioningProcessesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Marks a certificate provisioning process as failed. */
 export const setFailureCustomersCertificateProvisioningProcesses: API.OperationMethod<
@@ -5144,7 +5301,7 @@ export const setFailureCustomersCertificateProvisioningProcesses: API.OperationM
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: SetFailureCustomersCertificateProvisioningProcessesRequest,
   output: SetFailureCustomersCertificateProvisioningProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ClaimCustomersCertificateProvisioningProcessesRequest {
@@ -5170,7 +5327,12 @@ export type ClaimCustomersCertificateProvisioningProcessesResponse =
 export const ClaimCustomersCertificateProvisioningProcessesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse;
 
-export type ClaimCustomersCertificateProvisioningProcessesError = DefaultErrors;
+export type ClaimCustomersCertificateProvisioningProcessesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Claims a certificate provisioning process. For each certificate provisioning process, this operation can succeed only for one `caller_instance_id`. */
 export const claimCustomersCertificateProvisioningProcesses: API.OperationMethod<
@@ -5181,7 +5343,7 @@ export const claimCustomersCertificateProvisioningProcesses: API.OperationMethod
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ClaimCustomersCertificateProvisioningProcessesRequest,
   output: ClaimCustomersCertificateProvisioningProcessesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetCustomersCertificateProvisioningProcessesOperationsRequest {
@@ -5203,7 +5365,9 @@ export const GetCustomersCertificateProvisioningProcessesOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningOperation;
 
 export type GetCustomersCertificateProvisioningProcessesOperationsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service. */
 export const getCustomersCertificateProvisioningProcessesOperations: API.OperationMethod<
@@ -5214,7 +5378,7 @@ export const getCustomersCertificateProvisioningProcessesOperations: API.Operati
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetCustomersCertificateProvisioningProcessesOperationsRequest,
   output: GetCustomersCertificateProvisioningProcessesOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListOperationsRequest {
@@ -5247,7 +5411,7 @@ export type ListOperationsResponse = GoogleLongrunningListOperationsResponse;
 export const ListOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleLongrunningListOperationsResponse;
 
-export type ListOperationsError = DefaultErrors;
+export type ListOperationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. */
 export const listOperations: API.PaginatedOperationMethod<
@@ -5258,7 +5422,7 @@ export const listOperations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListOperationsRequest,
   output: ListOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -5287,7 +5451,12 @@ export type CancelOperationsResponse = GoogleProtobufEmpty;
 export const CancelOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type CancelOperationsError = DefaultErrors;
+export type CancelOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
 export const cancelOperations: API.OperationMethod<
@@ -5298,7 +5467,7 @@ export const cancelOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteOperationsRequest {
@@ -5318,7 +5487,12 @@ export type DeleteOperationsResponse = GoogleProtobufEmpty;
 export const DeleteOperationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GoogleProtobufEmpty;
 
-export type DeleteOperationsError = DefaultErrors;
+export type DeleteOperationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. */
 export const deleteOperations: API.OperationMethod<
@@ -5329,5 +5503,5 @@ export const deleteOperations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteOperationsRequest,
   output: DeleteOperationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));

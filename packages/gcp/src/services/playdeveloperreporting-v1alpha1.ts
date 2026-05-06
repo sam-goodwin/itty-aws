@@ -1133,6 +1133,52 @@ export const GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse =
   });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -1159,7 +1205,12 @@ export type QueryVitalsAnrrateResponse =
 export const QueryVitalsAnrrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetResponse;
 
-export type QueryVitalsAnrrateError = DefaultErrors;
+export type QueryVitalsAnrrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metric set. */
 export const queryVitalsAnrrate: API.OperationMethod<
@@ -1170,7 +1221,7 @@ export const queryVitalsAnrrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsAnrrateRequest,
   output: QueryVitalsAnrrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVitalsAnrrateRequest {
@@ -1191,7 +1242,7 @@ export type GetVitalsAnrrateResponse =
 export const GetVitalsAnrrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1AnrRateMetricSet;
 
-export type GetVitalsAnrrateError = DefaultErrors;
+export type GetVitalsAnrrateError = DefaultErrors | NotFound | Forbidden;
 
 /** Describes the properties of the metric set. */
 export const getVitalsAnrrate: API.OperationMethod<
@@ -1202,7 +1253,7 @@ export const getVitalsAnrrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsAnrrateRequest,
   output: GetVitalsAnrrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetVitalsLmkrateRequest {
@@ -1223,7 +1274,7 @@ export type GetVitalsLmkrateResponse =
 export const GetVitalsLmkrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1LmkRateMetricSet;
 
-export type GetVitalsLmkrateError = DefaultErrors;
+export type GetVitalsLmkrateError = DefaultErrors | NotFound | Forbidden;
 
 /** Describes the properties of the metric set. */
 export const getVitalsLmkrate: API.OperationMethod<
@@ -1234,7 +1285,7 @@ export const getVitalsLmkrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsLmkrateRequest,
   output: GetVitalsLmkrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryVitalsLmkrateRequest {
@@ -1260,7 +1311,12 @@ export type QueryVitalsLmkrateResponse =
 export const QueryVitalsLmkrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryLmkRateMetricSetResponse;
 
-export type QueryVitalsLmkrateError = DefaultErrors;
+export type QueryVitalsLmkrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metric set. */
 export const queryVitalsLmkrate: API.OperationMethod<
@@ -1271,7 +1327,7 @@ export const queryVitalsLmkrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsLmkrateRequest,
   output: QueryVitalsLmkrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface QueryVitalsSlowstartrateRequest {
@@ -1297,7 +1353,12 @@ export type QueryVitalsSlowstartrateResponse =
 export const QueryVitalsSlowstartrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QuerySlowStartRateMetricSetResponse;
 
-export type QueryVitalsSlowstartrateError = DefaultErrors;
+export type QueryVitalsSlowstartrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metric set. */
 export const queryVitalsSlowstartrate: API.OperationMethod<
@@ -1308,7 +1369,7 @@ export const queryVitalsSlowstartrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsSlowstartrateRequest,
   output: QueryVitalsSlowstartrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVitalsSlowstartrateRequest {
@@ -1329,7 +1390,7 @@ export type GetVitalsSlowstartrateResponse =
 export const GetVitalsSlowstartrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SlowStartRateMetricSet;
 
-export type GetVitalsSlowstartrateError = DefaultErrors;
+export type GetVitalsSlowstartrateError = DefaultErrors | NotFound | Forbidden;
 
 /** Describes the properties of the metric set. */
 export const getVitalsSlowstartrate: API.OperationMethod<
@@ -1340,7 +1401,7 @@ export const getVitalsSlowstartrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsSlowstartrateRequest,
   output: GetVitalsSlowstartrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface GetVitalsSlowrenderingrateRequest {
@@ -1361,7 +1422,10 @@ export type GetVitalsSlowrenderingrateResponse =
 export const GetVitalsSlowrenderingrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SlowRenderingRateMetricSet;
 
-export type GetVitalsSlowrenderingrateError = DefaultErrors;
+export type GetVitalsSlowrenderingrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Describes the properties of the metric set. */
 export const getVitalsSlowrenderingrate: API.OperationMethod<
@@ -1372,7 +1436,7 @@ export const getVitalsSlowrenderingrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsSlowrenderingrateRequest,
   output: GetVitalsSlowrenderingrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryVitalsSlowrenderingrateRequest {
@@ -1398,7 +1462,12 @@ export type QueryVitalsSlowrenderingrateResponse =
 export const QueryVitalsSlowrenderingrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QuerySlowRenderingRateMetricSetResponse;
 
-export type QueryVitalsSlowrenderingrateError = DefaultErrors;
+export type QueryVitalsSlowrenderingrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metric set. */
 export const queryVitalsSlowrenderingrate: API.OperationMethod<
@@ -1409,7 +1478,7 @@ export const queryVitalsSlowrenderingrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsSlowrenderingrateRequest,
   output: QueryVitalsSlowrenderingrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVitalsExcessivewakeuprateRequest {
@@ -1430,7 +1499,10 @@ export type GetVitalsExcessivewakeuprateResponse =
 export const GetVitalsExcessivewakeuprateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ExcessiveWakeupRateMetricSet;
 
-export type GetVitalsExcessivewakeuprateError = DefaultErrors;
+export type GetVitalsExcessivewakeuprateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Describes the properties of the metric set. */
 export const getVitalsExcessivewakeuprate: API.OperationMethod<
@@ -1441,7 +1513,7 @@ export const getVitalsExcessivewakeuprate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsExcessivewakeuprateRequest,
   output: GetVitalsExcessivewakeuprateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryVitalsExcessivewakeuprateRequest {
@@ -1467,7 +1539,12 @@ export type QueryVitalsExcessivewakeuprateResponse =
 export const QueryVitalsExcessivewakeuprateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryExcessiveWakeupRateMetricSetResponse;
 
-export type QueryVitalsExcessivewakeuprateError = DefaultErrors;
+export type QueryVitalsExcessivewakeuprateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metric set. */
 export const queryVitalsExcessivewakeuprate: API.OperationMethod<
@@ -1478,7 +1555,7 @@ export const queryVitalsExcessivewakeuprate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsExcessivewakeuprateRequest,
   output: QueryVitalsExcessivewakeuprateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVitalsCrashrateRequest {
@@ -1499,7 +1576,7 @@ export type GetVitalsCrashrateResponse =
 export const GetVitalsCrashrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1CrashRateMetricSet;
 
-export type GetVitalsCrashrateError = DefaultErrors;
+export type GetVitalsCrashrateError = DefaultErrors | NotFound | Forbidden;
 
 /** Describes the properties of the metric set. */
 export const getVitalsCrashrate: API.OperationMethod<
@@ -1510,7 +1587,7 @@ export const getVitalsCrashrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsCrashrateRequest,
   output: GetVitalsCrashrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryVitalsCrashrateRequest {
@@ -1536,7 +1613,12 @@ export type QueryVitalsCrashrateResponse =
 export const QueryVitalsCrashrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryCrashRateMetricSetResponse;
 
-export type QueryVitalsCrashrateError = DefaultErrors;
+export type QueryVitalsCrashrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metric set. */
 export const queryVitalsCrashrate: API.OperationMethod<
@@ -1547,7 +1629,7 @@ export const queryVitalsCrashrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsCrashrateRequest,
   output: QueryVitalsCrashrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetVitalsStuckbackgroundwakelockrateRequest {
@@ -1568,7 +1650,10 @@ export type GetVitalsStuckbackgroundwakelockrateResponse =
 export const GetVitalsStuckbackgroundwakelockrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1StuckBackgroundWakelockRateMetricSet;
 
-export type GetVitalsStuckbackgroundwakelockrateError = DefaultErrors;
+export type GetVitalsStuckbackgroundwakelockrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Describes the properties of the metric set. */
 export const getVitalsStuckbackgroundwakelockrate: API.OperationMethod<
@@ -1579,7 +1664,7 @@ export const getVitalsStuckbackgroundwakelockrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsStuckbackgroundwakelockrateRequest,
   output: GetVitalsStuckbackgroundwakelockrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryVitalsStuckbackgroundwakelockrateRequest {
@@ -1605,7 +1690,12 @@ export type QueryVitalsStuckbackgroundwakelockrateResponse =
 export const QueryVitalsStuckbackgroundwakelockrateResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryStuckBackgroundWakelockRateMetricSetResponse;
 
-export type QueryVitalsStuckbackgroundwakelockrateError = DefaultErrors;
+export type QueryVitalsStuckbackgroundwakelockrateError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metric set. */
 export const queryVitalsStuckbackgroundwakelockrate: API.OperationMethod<
@@ -1616,7 +1706,7 @@ export const queryVitalsStuckbackgroundwakelockrate: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsStuckbackgroundwakelockrateRequest,
   output: QueryVitalsStuckbackgroundwakelockrateResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface SearchVitalsErrorsIssuesRequest {
@@ -1754,7 +1844,10 @@ export type SearchVitalsErrorsIssuesResponse =
 export const SearchVitalsErrorsIssuesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse;
 
-export type SearchVitalsErrorsIssuesError = DefaultErrors;
+export type SearchVitalsErrorsIssuesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches all error issues in which reports have been grouped. */
 export const searchVitalsErrorsIssues: API.PaginatedOperationMethod<
@@ -1765,7 +1858,7 @@ export const searchVitalsErrorsIssues: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchVitalsErrorsIssuesRequest,
   output: SearchVitalsErrorsIssuesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1899,7 +1992,10 @@ export type SearchVitalsErrorsReportsResponse =
 export const SearchVitalsErrorsReportsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchErrorReportsResponse;
 
-export type SearchVitalsErrorsReportsError = DefaultErrors;
+export type SearchVitalsErrorsReportsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Searches all error reports received for an app. */
 export const searchVitalsErrorsReports: API.PaginatedOperationMethod<
@@ -1910,7 +2006,7 @@ export const searchVitalsErrorsReports: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchVitalsErrorsReportsRequest,
   output: SearchVitalsErrorsReportsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1935,7 +2031,7 @@ export type GetVitalsErrorsCountsResponse =
 export const GetVitalsErrorsCountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ErrorCountMetricSet;
 
-export type GetVitalsErrorsCountsError = DefaultErrors;
+export type GetVitalsErrorsCountsError = DefaultErrors | NotFound | Forbidden;
 
 /** Describes the properties of the metrics set. */
 export const getVitalsErrorsCounts: API.OperationMethod<
@@ -1946,7 +2042,7 @@ export const getVitalsErrorsCounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetVitalsErrorsCountsRequest,
   output: GetVitalsErrorsCountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface QueryVitalsErrorsCountsRequest {
@@ -1972,7 +2068,12 @@ export type QueryVitalsErrorsCountsResponse =
 export const QueryVitalsErrorsCountsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1QueryErrorCountMetricSetResponse;
 
-export type QueryVitalsErrorsCountsError = DefaultErrors;
+export type QueryVitalsErrorsCountsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Queries the metrics in the metrics set. */
 export const queryVitalsErrorsCounts: API.OperationMethod<
@@ -1983,7 +2084,7 @@ export const queryVitalsErrorsCounts: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: QueryVitalsErrorsCountsRequest,
   output: QueryVitalsErrorsCountsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface FetchReleaseFilterOptionsAppsRequest {
@@ -2007,7 +2108,10 @@ export type FetchReleaseFilterOptionsAppsResponse =
 export const FetchReleaseFilterOptionsAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions;
 
-export type FetchReleaseFilterOptionsAppsError = DefaultErrors;
+export type FetchReleaseFilterOptionsAppsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Describes filtering options for releases. */
 export const fetchReleaseFilterOptionsApps: API.OperationMethod<
@@ -2018,7 +2122,7 @@ export const fetchReleaseFilterOptionsApps: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: FetchReleaseFilterOptionsAppsRequest,
   output: FetchReleaseFilterOptionsAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface SearchAppsRequest {
@@ -2041,7 +2145,7 @@ export type SearchAppsResponse =
 export const SearchAppsResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse;
 
-export type SearchAppsError = DefaultErrors;
+export type SearchAppsError = DefaultErrors | NotFound | Forbidden;
 
 /** Searches for Apps accessible by the user. */
 export const searchApps: API.PaginatedOperationMethod<
@@ -2052,7 +2156,7 @@ export const searchApps: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: SearchAppsRequest,
   output: SearchAppsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2085,7 +2189,7 @@ export type ListAnomaliesResponse =
 export const ListAnomaliesResponse =
   /*@__PURE__*/ /*#__PURE__*/ GooglePlayDeveloperReportingV1alpha1ListAnomaliesResponse;
 
-export type ListAnomaliesError = DefaultErrors;
+export type ListAnomaliesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists anomalies in any of the datasets. */
 export const listAnomalies: API.PaginatedOperationMethod<
@@ -2096,7 +2200,7 @@ export const listAnomalies: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListAnomaliesRequest,
   output: ListAnomaliesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",

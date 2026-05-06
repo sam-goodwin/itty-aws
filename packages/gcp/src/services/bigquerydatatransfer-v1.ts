@@ -778,6 +778,52 @@ export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
 });
 
 // ==========================================================================
+// Errors
+// ==========================================================================
+
+export class NotFound extends Schema.TaggedErrorClass<NotFound>()("NotFound", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(NotFound, [{ httpStatus: 404 }]);
+
+export class Forbidden extends Schema.TaggedErrorClass<Forbidden>()(
+  "Forbidden",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(Forbidden, [{ httpStatus: 403 }]);
+
+export class BadRequest extends Schema.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  {
+    code: Schema.optional(Schema.Number),
+    message: Schema.String,
+    status: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+  },
+) {}
+T.applyErrorMatchers(BadRequest, [{ httpStatus: 400 }]);
+
+export class Conflict extends Schema.TaggedErrorClass<Conflict>()("Conflict", {
+  code: Schema.optional(Schema.Number),
+  message: Schema.String,
+  status: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}) {}
+T.applyErrorMatchers(Conflict, [{ httpStatus: 409 }]);
+
+// ==========================================================================
 // Operations
 // ==========================================================================
 
@@ -805,7 +851,12 @@ export type EnrollDataSourcesProjectsResponse = Empty;
 export const EnrollDataSourcesProjectsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type EnrollDataSourcesProjectsError = DefaultErrors;
+export type EnrollDataSourcesProjectsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enroll data sources in a user project. This allows users to create transfer configurations for these data sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer Service](https://cloud.google.com/bigquery/docs/working-with-transfers). */
 export const enrollDataSourcesProjects: API.OperationMethod<
@@ -816,7 +867,7 @@ export const enrollDataSourcesProjects: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollDataSourcesProjectsRequest,
   output: EnrollDataSourcesProjectsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsDataSourcesRequest {
@@ -836,7 +887,7 @@ export type GetProjectsDataSourcesResponse = DataSource;
 export const GetProjectsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type GetProjectsDataSourcesError = DefaultErrors;
+export type GetProjectsDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Retrieves a supported data source and returns its settings. */
 export const getProjectsDataSources: API.OperationMethod<
@@ -847,7 +898,7 @@ export const getProjectsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsDataSourcesRequest,
   output: GetProjectsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CheckValidCredsProjectsDataSourcesRequest {
@@ -875,7 +926,12 @@ export type CheckValidCredsProjectsDataSourcesResponse =
 export const CheckValidCredsProjectsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckValidCredsResponse;
 
-export type CheckValidCredsProjectsDataSourcesError = DefaultErrors;
+export type CheckValidCredsProjectsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns true if valid credentials exist for the given data source and requesting user. */
 export const checkValidCredsProjectsDataSources: API.OperationMethod<
@@ -886,7 +942,7 @@ export const checkValidCredsProjectsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckValidCredsProjectsDataSourcesRequest,
   output: CheckValidCredsProjectsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsDataSourcesRequest {
@@ -912,7 +968,7 @@ export type ListProjectsDataSourcesResponse = ListDataSourcesResponse;
 export const ListProjectsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
 
-export type ListProjectsDataSourcesError = DefaultErrors;
+export type ListProjectsDataSourcesError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists supported data sources and returns their settings. */
 export const listProjectsDataSources: API.PaginatedOperationMethod<
@@ -923,7 +979,7 @@ export const listProjectsDataSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsDataSourcesRequest,
   output: ListProjectsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -954,7 +1010,12 @@ export type UnenrollDataSourcesProjectsLocationsResponse = Empty;
 export const UnenrollDataSourcesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type UnenrollDataSourcesProjectsLocationsError = DefaultErrors;
+export type UnenrollDataSourcesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Unenroll data sources in a user project. This allows users to remove transfer configurations for these data sources. They will no longer appear in the ListDataSources RPC and will also no longer appear in the [BigQuery UI](https://console.cloud.google.com/bigquery). Data transfers configurations of unenrolled data sources will not be scheduled. */
 export const unenrollDataSourcesProjectsLocations: API.OperationMethod<
@@ -965,7 +1026,7 @@ export const unenrollDataSourcesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: UnenrollDataSourcesProjectsLocationsRequest,
   output: UnenrollDataSourcesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsRequest {
@@ -999,7 +1060,7 @@ export type ListProjectsLocationsResponse = ListLocationsResponse;
 export const ListProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListLocationsResponse;
 
-export type ListProjectsLocationsError = DefaultErrors;
+export type ListProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version. */
 export const listProjectsLocations: API.PaginatedOperationMethod<
@@ -1010,7 +1071,7 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsRequest,
   output: ListProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1041,7 +1102,12 @@ export type EnrollDataSourcesProjectsLocationsResponse = Empty;
 export const EnrollDataSourcesProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type EnrollDataSourcesProjectsLocationsError = DefaultErrors;
+export type EnrollDataSourcesProjectsLocationsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Enroll data sources in a user project. This allows users to create transfer configurations for these data sources. They will also appear in the ListDataSources RPC and as such, will appear in the [BigQuery UI](https://console.cloud.google.com/bigquery), and the documents can be found in the public guide for [BigQuery Web UI](https://cloud.google.com/bigquery/bigquery-web-ui) and [Data Transfer Service](https://cloud.google.com/bigquery/docs/working-with-transfers). */
 export const enrollDataSourcesProjectsLocations: API.OperationMethod<
@@ -1052,7 +1118,7 @@ export const enrollDataSourcesProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: EnrollDataSourcesProjectsLocationsRequest,
   output: EnrollDataSourcesProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsRequest {
@@ -1072,7 +1138,7 @@ export type GetProjectsLocationsResponse = Location;
 export const GetProjectsLocationsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Location;
 
-export type GetProjectsLocationsError = DefaultErrors;
+export type GetProjectsLocationsError = DefaultErrors | NotFound | Forbidden;
 
 /** Gets information about a location. */
 export const getProjectsLocations: API.OperationMethod<
@@ -1083,7 +1149,7 @@ export const getProjectsLocations: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsRequest,
   output: GetProjectsLocationsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CreateProjectsLocationsTransferConfigsRequest {
@@ -1125,7 +1191,12 @@ export type CreateProjectsLocationsTransferConfigsResponse = TransferConfig;
 export const CreateProjectsLocationsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferConfig;
 
-export type CreateProjectsLocationsTransferConfigsError = DefaultErrors;
+export type CreateProjectsLocationsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new data transfer configuration. */
 export const createProjectsLocationsTransferConfigs: API.OperationMethod<
@@ -1136,7 +1207,7 @@ export const createProjectsLocationsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsTransferConfigsRequest,
   output: CreateProjectsLocationsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsTransferConfigsRequest {
@@ -1168,7 +1239,10 @@ export type ListProjectsLocationsTransferConfigsResponse =
 export const ListProjectsLocationsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferConfigsResponse;
 
-export type ListProjectsLocationsTransferConfigsError = DefaultErrors;
+export type ListProjectsLocationsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about all transfer configs owned by a project in the specified location. */
 export const listProjectsLocationsTransferConfigs: API.PaginatedOperationMethod<
@@ -1179,7 +1253,7 @@ export const listProjectsLocationsTransferConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTransferConfigsRequest,
   output: ListProjectsLocationsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1224,7 +1298,12 @@ export type PatchProjectsLocationsTransferConfigsResponse = TransferConfig;
 export const PatchProjectsLocationsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferConfig;
 
-export type PatchProjectsLocationsTransferConfigsError = DefaultErrors;
+export type PatchProjectsLocationsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a data transfer configuration. All fields must be set, even if they are not updated. */
 export const patchProjectsLocationsTransferConfigs: API.OperationMethod<
@@ -1235,7 +1314,7 @@ export const patchProjectsLocationsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsTransferConfigsRequest,
   output: PatchProjectsLocationsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface DeleteProjectsLocationsTransferConfigsRequest {
@@ -1255,7 +1334,12 @@ export type DeleteProjectsLocationsTransferConfigsResponse = Empty;
 export const DeleteProjectsLocationsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsTransferConfigsError = DefaultErrors;
+export type DeleteProjectsLocationsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a data transfer configuration, including any associated transfer runs and logs. */
 export const deleteProjectsLocationsTransferConfigs: API.OperationMethod<
@@ -1266,7 +1350,7 @@ export const deleteProjectsLocationsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTransferConfigsRequest,
   output: DeleteProjectsLocationsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsTransferConfigsRequest {
@@ -1286,7 +1370,10 @@ export type GetProjectsLocationsTransferConfigsResponse = TransferConfig;
 export const GetProjectsLocationsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferConfig;
 
-export type GetProjectsLocationsTransferConfigsError = DefaultErrors;
+export type GetProjectsLocationsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about a data transfer config. */
 export const getProjectsLocationsTransferConfigs: API.OperationMethod<
@@ -1297,7 +1384,7 @@ export const getProjectsLocationsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTransferConfigsRequest,
   output: GetProjectsLocationsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StartManualRunsProjectsLocationsTransferConfigsRequest {
@@ -1326,7 +1413,11 @@ export const StartManualRunsProjectsLocationsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StartManualTransferRunsResponse;
 
 export type StartManualRunsProjectsLocationsTransferConfigsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point in time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive) and 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately (schedule_time equals the current time). When scheduling multiple runs within a time range, the first run starts now, and subsequent runs are delayed by 15 seconds each. */
 export const startManualRunsProjectsLocationsTransferConfigs: API.OperationMethod<
@@ -1337,7 +1428,7 @@ export const startManualRunsProjectsLocationsTransferConfigs: API.OperationMetho
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartManualRunsProjectsLocationsTransferConfigsRequest,
   output: StartManualRunsProjectsLocationsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ScheduleRunsProjectsLocationsTransferConfigsRequest {
@@ -1361,7 +1452,12 @@ export type ScheduleRunsProjectsLocationsTransferConfigsResponse =
 export const ScheduleRunsProjectsLocationsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScheduleTransferRunsResponse;
 
-export type ScheduleRunsProjectsLocationsTransferConfigsError = DefaultErrors;
+export type ScheduleRunsProjectsLocationsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead. */
 export const scheduleRunsProjectsLocationsTransferConfigs: API.OperationMethod<
@@ -1372,7 +1468,7 @@ export const scheduleRunsProjectsLocationsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScheduleRunsProjectsLocationsTransferConfigsRequest,
   output: ScheduleRunsProjectsLocationsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsLocationsTransferConfigsRunsRequest {
@@ -1392,7 +1488,10 @@ export type GetProjectsLocationsTransferConfigsRunsResponse = TransferRun;
 export const GetProjectsLocationsTransferConfigsRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferRun;
 
-export type GetProjectsLocationsTransferConfigsRunsError = DefaultErrors;
+export type GetProjectsLocationsTransferConfigsRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about the particular transfer run. */
 export const getProjectsLocationsTransferConfigsRuns: API.OperationMethod<
@@ -1403,7 +1502,7 @@ export const getProjectsLocationsTransferConfigsRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTransferConfigsRunsRequest,
   output: GetProjectsLocationsTransferConfigsRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsLocationsTransferConfigsRunsRequest {
@@ -1423,7 +1522,12 @@ export type DeleteProjectsLocationsTransferConfigsRunsResponse = Empty;
 export const DeleteProjectsLocationsTransferConfigsRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsLocationsTransferConfigsRunsError = DefaultErrors;
+export type DeleteProjectsLocationsTransferConfigsRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified transfer run. */
 export const deleteProjectsLocationsTransferConfigsRuns: API.OperationMethod<
@@ -1434,7 +1538,7 @@ export const deleteProjectsLocationsTransferConfigsRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsLocationsTransferConfigsRunsRequest,
   output: DeleteProjectsLocationsTransferConfigsRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsTransferConfigsRunsRequest {
@@ -1476,7 +1580,10 @@ export type ListProjectsLocationsTransferConfigsRunsResponse =
 export const ListProjectsLocationsTransferConfigsRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferRunsResponse;
 
-export type ListProjectsLocationsTransferConfigsRunsError = DefaultErrors;
+export type ListProjectsLocationsTransferConfigsRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about running and completed transfer runs. */
 export const listProjectsLocationsTransferConfigsRuns: API.PaginatedOperationMethod<
@@ -1487,7 +1594,7 @@ export const listProjectsLocationsTransferConfigsRuns: API.PaginatedOperationMet
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTransferConfigsRunsRequest,
   output: ListProjectsLocationsTransferConfigsRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1529,7 +1636,9 @@ export const ListProjectsLocationsTransferConfigsRunsTransferLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferLogsResponse;
 
 export type ListProjectsLocationsTransferConfigsRunsTransferLogsError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns log messages for the transfer run. */
 export const listProjectsLocationsTransferConfigsRunsTransferLogs: API.PaginatedOperationMethod<
@@ -1540,7 +1649,7 @@ export const listProjectsLocationsTransferConfigsRunsTransferLogs: API.Paginated
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTransferConfigsRunsTransferLogsRequest,
   output: ListProjectsLocationsTransferConfigsRunsTransferLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1566,7 +1675,9 @@ export const GetProjectsLocationsTransferConfigsTransferResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferResource;
 
 export type GetProjectsLocationsTransferConfigsTransferResourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a transfer resource. */
 export const getProjectsLocationsTransferConfigsTransferResources: API.OperationMethod<
@@ -1577,7 +1688,7 @@ export const getProjectsLocationsTransferConfigsTransferResources: API.Operation
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsTransferConfigsTransferResourcesRequest,
   output: GetProjectsLocationsTransferConfigsTransferResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsLocationsTransferConfigsTransferResourcesRequest {
@@ -1608,7 +1719,9 @@ export const ListProjectsLocationsTransferConfigsTransferResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferResourcesResponse;
 
 export type ListProjectsLocationsTransferConfigsTransferResourcesError =
-  DefaultErrors;
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about transfer resources. */
 export const listProjectsLocationsTransferConfigsTransferResources: API.PaginatedOperationMethod<
@@ -1619,7 +1732,7 @@ export const listProjectsLocationsTransferConfigsTransferResources: API.Paginate
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsTransferConfigsTransferResourcesRequest,
   output: ListProjectsLocationsTransferConfigsTransferResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1643,7 +1756,10 @@ export type GetProjectsLocationsDataSourcesResponse = DataSource;
 export const GetProjectsLocationsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ DataSource;
 
-export type GetProjectsLocationsDataSourcesError = DefaultErrors;
+export type GetProjectsLocationsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Retrieves a supported data source and returns its settings. */
 export const getProjectsLocationsDataSources: API.OperationMethod<
@@ -1654,7 +1770,7 @@ export const getProjectsLocationsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsLocationsDataSourcesRequest,
   output: GetProjectsLocationsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface CheckValidCredsProjectsLocationsDataSourcesRequest {
@@ -1682,7 +1798,12 @@ export type CheckValidCredsProjectsLocationsDataSourcesResponse =
 export const CheckValidCredsProjectsLocationsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ CheckValidCredsResponse;
 
-export type CheckValidCredsProjectsLocationsDataSourcesError = DefaultErrors;
+export type CheckValidCredsProjectsLocationsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Returns true if valid credentials exist for the given data source and requesting user. */
 export const checkValidCredsProjectsLocationsDataSources: API.OperationMethod<
@@ -1693,7 +1814,7 @@ export const checkValidCredsProjectsLocationsDataSources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CheckValidCredsProjectsLocationsDataSourcesRequest,
   output: CheckValidCredsProjectsLocationsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsLocationsDataSourcesRequest {
@@ -1719,7 +1840,10 @@ export type ListProjectsLocationsDataSourcesResponse = ListDataSourcesResponse;
 export const ListProjectsLocationsDataSourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListDataSourcesResponse;
 
-export type ListProjectsLocationsDataSourcesError = DefaultErrors;
+export type ListProjectsLocationsDataSourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Lists supported data sources and returns their settings. */
 export const listProjectsLocationsDataSources: API.PaginatedOperationMethod<
@@ -1730,7 +1854,7 @@ export const listProjectsLocationsDataSources: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsLocationsDataSourcesRequest,
   output: ListProjectsLocationsDataSourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1754,7 +1878,12 @@ export type DeleteProjectsTransferConfigsResponse = Empty;
 export const DeleteProjectsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTransferConfigsError = DefaultErrors;
+export type DeleteProjectsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes a data transfer configuration, including any associated transfer runs and logs. */
 export const deleteProjectsTransferConfigs: API.OperationMethod<
@@ -1765,7 +1894,7 @@ export const deleteProjectsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTransferConfigsRequest,
   output: DeleteProjectsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface GetProjectsTransferConfigsRequest {
@@ -1785,7 +1914,10 @@ export type GetProjectsTransferConfigsResponse = TransferConfig;
 export const GetProjectsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferConfig;
 
-export type GetProjectsTransferConfigsError = DefaultErrors;
+export type GetProjectsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about a data transfer config. */
 export const getProjectsTransferConfigs: API.OperationMethod<
@@ -1796,7 +1928,7 @@ export const getProjectsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTransferConfigsRequest,
   output: GetProjectsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface StartManualRunsProjectsTransferConfigsRequest {
@@ -1824,7 +1956,12 @@ export type StartManualRunsProjectsTransferConfigsResponse =
 export const StartManualRunsProjectsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ StartManualTransferRunsResponse;
 
-export type StartManualRunsProjectsTransferConfigsError = DefaultErrors;
+export type StartManualRunsProjectsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Manually initiates transfer runs. You can schedule these runs in two ways: 1. For a specific point in time using the 'requested_run_time' parameter. 2. For a period between 'start_time' (inclusive) and 'end_time' (exclusive). If scheduling a single run, it is set to execute immediately (schedule_time equals the current time). When scheduling multiple runs within a time range, the first run starts now, and subsequent runs are delayed by 15 seconds each. */
 export const startManualRunsProjectsTransferConfigs: API.OperationMethod<
@@ -1835,7 +1972,7 @@ export const startManualRunsProjectsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: StartManualRunsProjectsTransferConfigsRequest,
   output: StartManualRunsProjectsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface PatchProjectsTransferConfigsRequest {
@@ -1876,7 +2013,12 @@ export type PatchProjectsTransferConfigsResponse = TransferConfig;
 export const PatchProjectsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferConfig;
 
-export type PatchProjectsTransferConfigsError = DefaultErrors;
+export type PatchProjectsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Updates a data transfer configuration. All fields must be set, even if they are not updated. */
 export const patchProjectsTransferConfigs: API.OperationMethod<
@@ -1887,7 +2029,7 @@ export const patchProjectsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PatchProjectsTransferConfigsRequest,
   output: PatchProjectsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTransferConfigsRequest {
@@ -1918,7 +2060,10 @@ export type ListProjectsTransferConfigsResponse = ListTransferConfigsResponse;
 export const ListProjectsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferConfigsResponse;
 
-export type ListProjectsTransferConfigsError = DefaultErrors;
+export type ListProjectsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about all transfer configs owned by a project in the specified location. */
 export const listProjectsTransferConfigs: API.PaginatedOperationMethod<
@@ -1929,7 +2074,7 @@ export const listProjectsTransferConfigs: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTransferConfigsRequest,
   output: ListProjectsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -1975,7 +2120,12 @@ export type CreateProjectsTransferConfigsResponse = TransferConfig;
 export const CreateProjectsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferConfig;
 
-export type CreateProjectsTransferConfigsError = DefaultErrors;
+export type CreateProjectsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates a new data transfer configuration. */
 export const createProjectsTransferConfigs: API.OperationMethod<
@@ -1986,7 +2136,7 @@ export const createProjectsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateProjectsTransferConfigsRequest,
   output: CreateProjectsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ScheduleRunsProjectsTransferConfigsRequest {
@@ -2010,7 +2160,12 @@ export type ScheduleRunsProjectsTransferConfigsResponse =
 export const ScheduleRunsProjectsTransferConfigsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ScheduleTransferRunsResponse;
 
-export type ScheduleRunsProjectsTransferConfigsError = DefaultErrors;
+export type ScheduleRunsProjectsTransferConfigsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Creates transfer runs for a time range [start_time, end_time]. For each date - or whatever granularity the data source supports - in the range, one transfer run is created. Note that runs are created per UTC time in the time range. DEPRECATED: use StartManualTransferRuns instead. */
 export const scheduleRunsProjectsTransferConfigs: API.OperationMethod<
@@ -2021,7 +2176,7 @@ export const scheduleRunsProjectsTransferConfigs: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: ScheduleRunsProjectsTransferConfigsRequest,
   output: ScheduleRunsProjectsTransferConfigsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTransferConfigsRunsRequest {
@@ -2062,7 +2217,10 @@ export type ListProjectsTransferConfigsRunsResponse = ListTransferRunsResponse;
 export const ListProjectsTransferConfigsRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferRunsResponse;
 
-export type ListProjectsTransferConfigsRunsError = DefaultErrors;
+export type ListProjectsTransferConfigsRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about running and completed transfer runs. */
 export const listProjectsTransferConfigsRuns: API.PaginatedOperationMethod<
@@ -2073,7 +2231,7 @@ export const listProjectsTransferConfigsRuns: API.PaginatedOperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTransferConfigsRunsRequest,
   output: ListProjectsTransferConfigsRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2097,7 +2255,10 @@ export type GetProjectsTransferConfigsRunsResponse = TransferRun;
 export const GetProjectsTransferConfigsRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferRun;
 
-export type GetProjectsTransferConfigsRunsError = DefaultErrors;
+export type GetProjectsTransferConfigsRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about the particular transfer run. */
 export const getProjectsTransferConfigsRuns: API.OperationMethod<
@@ -2108,7 +2269,7 @@ export const getProjectsTransferConfigsRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTransferConfigsRunsRequest,
   output: GetProjectsTransferConfigsRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface DeleteProjectsTransferConfigsRunsRequest {
@@ -2128,7 +2289,12 @@ export type DeleteProjectsTransferConfigsRunsResponse = Empty;
 export const DeleteProjectsTransferConfigsRunsResponse =
   /*@__PURE__*/ /*#__PURE__*/ Empty;
 
-export type DeleteProjectsTransferConfigsRunsError = DefaultErrors;
+export type DeleteProjectsTransferConfigsRunsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict;
 
 /** Deletes the specified transfer run. */
 export const deleteProjectsTransferConfigsRuns: API.OperationMethod<
@@ -2139,7 +2305,7 @@ export const deleteProjectsTransferConfigsRuns: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: DeleteProjectsTransferConfigsRunsRequest,
   output: DeleteProjectsTransferConfigsRunsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden, BadRequest, Conflict],
 }));
 
 export interface ListProjectsTransferConfigsRunsTransferLogsRequest {
@@ -2176,7 +2342,10 @@ export type ListProjectsTransferConfigsRunsTransferLogsResponse =
 export const ListProjectsTransferConfigsRunsTransferLogsResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferLogsResponse;
 
-export type ListProjectsTransferConfigsRunsTransferLogsError = DefaultErrors;
+export type ListProjectsTransferConfigsRunsTransferLogsError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns log messages for the transfer run. */
 export const listProjectsTransferConfigsRunsTransferLogs: API.PaginatedOperationMethod<
@@ -2187,7 +2356,7 @@ export const listProjectsTransferConfigsRunsTransferLogs: API.PaginatedOperation
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTransferConfigsRunsTransferLogsRequest,
   output: ListProjectsTransferConfigsRunsTransferLogsResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
@@ -2212,7 +2381,10 @@ export type GetProjectsTransferConfigsTransferResourcesResponse =
 export const GetProjectsTransferConfigsTransferResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ TransferResource;
 
-export type GetProjectsTransferConfigsTransferResourcesError = DefaultErrors;
+export type GetProjectsTransferConfigsTransferResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns a transfer resource. */
 export const getProjectsTransferConfigsTransferResources: API.OperationMethod<
@@ -2223,7 +2395,7 @@ export const getProjectsTransferConfigsTransferResources: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetProjectsTransferConfigsTransferResourcesRequest,
   output: GetProjectsTransferConfigsTransferResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
 }));
 
 export interface ListProjectsTransferConfigsTransferResourcesRequest {
@@ -2253,7 +2425,10 @@ export type ListProjectsTransferConfigsTransferResourcesResponse =
 export const ListProjectsTransferConfigsTransferResourcesResponse =
   /*@__PURE__*/ /*#__PURE__*/ ListTransferResourcesResponse;
 
-export type ListProjectsTransferConfigsTransferResourcesError = DefaultErrors;
+export type ListProjectsTransferConfigsTransferResourcesError =
+  | DefaultErrors
+  | NotFound
+  | Forbidden;
 
 /** Returns information about transfer resources. */
 export const listProjectsTransferConfigsTransferResources: API.PaginatedOperationMethod<
@@ -2264,7 +2439,7 @@ export const listProjectsTransferConfigsTransferResources: API.PaginatedOperatio
 > = /*@__PURE__*/ /*#__PURE__*/ API.makePaginated(() => ({
   input: ListProjectsTransferConfigsTransferResourcesRequest,
   output: ListProjectsTransferConfigsTransferResourcesResponse,
-  errors: [],
+  errors: [NotFound, Forbidden],
   pagination: {
     inputToken: "pageToken",
     outputToken: "nextPageToken",
